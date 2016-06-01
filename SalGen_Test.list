@@ -1,0 +1,9 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name SalGen
+
+# List of test suites
+SALGEN/Dome.robot
+SALGEN/Hexapod.robot
+SALGEN/TCS.robot
+SALGEN/Scheduler.robot
