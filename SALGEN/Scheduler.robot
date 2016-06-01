@@ -24,7 +24,7 @@ SSH Into Host
 
 Verify Scheduler XML Definitions exist
 	[Tags]
-	File Should Exist    ${SALWorkDir}/scheduler_Telemetry.xml
+	File Should Exist    ${SALWorkDir}/${subSystem}_Telemetry.xml
 
 Salgen Scheduler Validate
     [Documentation]    Validate the Scheduler XML definitions.
