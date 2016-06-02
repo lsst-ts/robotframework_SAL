@@ -40,7 +40,7 @@ Salgen TCS Validate
     Should Contain    ${output}    Completed ${subSystem} validation
     Directory Should Exist    ${SALWorkDir}/idl-templates
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
-    @{files}=    List Directory    ${SALWorkDir}/idl-templates
+    @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=${subSystem}*
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_ZEMAX.idl
 
@@ -52,7 +52,7 @@ Salgen TCS HTML
 	Log    ${output}
 	Should Contain    ${output}    SAL generator - V${SALVersion}
 	Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
-	@{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}
+	@{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=${subSystem}*
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_ZEMAX-metadata.html
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_ZEMAX-streamdef.html
@@ -68,10 +68,10 @@ Salgen TCS C++
     Should Contain    ${output}    Processing ${subSystem} kernel_TrackingTarget in ${SALWorkDir}
     Should Contain    ${output}    cpp : Done Publisher
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated/sal
-    @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal
+    @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
 Verify TCS Telemetry directories
@@ -102,7 +102,7 @@ Salgen TCS Java
     Should Contain    ${output}    Processing ${subSystem} kernel_TrackingTarget in ${SALWorkDir}
     Should Contain    ${output}    javac : Done Event/Logger
     Directory Should Exist    ${SALWorkDir}/${subSystem}/java
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
 Salgen TCS Python
@@ -116,7 +116,7 @@ Salgen TCS Python
     Should Contain    ${output}    Generating Boost.Python bindings
     Should Contain    ${output}    python : Done SALPY_${subSystem}.so
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}Commander.py
 
@@ -128,6 +128,6 @@ Salgen TCS Labview
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Directory Should Exist    ${SALWorkDir}/${subSystem}/labview
-	@{files}=    List Directory    ${SALWorkDir}/${subSystem}/labview
+	@{files}=    List Directory    ${SALWorkDir}/${subSystem}/labview    pattern=${subSystem}*
 	Log Many    @{files}
 	File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
