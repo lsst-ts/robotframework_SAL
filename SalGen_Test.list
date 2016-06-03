@@ -9,3 +9,4 @@ SALGEN/TCS.robot
 SALGEN/Scheduler.robot
 SALGEN/Rotator.robot
 SALGEN/MTMount.robot
+SALGEN/M1M3.robot
