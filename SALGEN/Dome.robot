@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation     Initial SAL tests.
+Suite Setup    Log Many    ${subSystem}    ${timeout}
 Suite Teardown         Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
