@@ -23,14 +23,14 @@ SSH Into Host
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALInstall}/OpenSpliceDDS
 
-Verify M1M3 XML Definitions exist
+Verify M2MS XML Definitions exist
 	[Tags]
 	File Should Exist    ${SALWorkDir}/${subSystem}_Telemetry.xml
 	File Should Exist    ${SALWorkDir}/${subSystem}_Events.xml
 	File Should Exist    ${SALWorkDir}/${subSystem}_Commands.xml
 
-Salgen M1M3 Validate
-    [Documentation]    Validate the M1M3 XML definitions.
+Salgen M2MS Validate
+    [Documentation]    Validate the M2MS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
@@ -45,7 +45,7 @@ Salgen M1M3 Validate
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_thermal.idl
 
-Salgen M1M3 HTML
+Salgen M2MS HTML
 	[Documentation]    Create web form interfaces.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} html
@@ -58,7 +58,7 @@ Salgen M1M3 HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_thermal-metadata.html
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_thermal-streamdef.html
 
-Salgen M1M3 C++
+Salgen M2MS C++
 	[Documentation]    Generate C++ wrapper. This takes ~2mins.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
@@ -75,7 +75,7 @@ Salgen M1M3 C++
     @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
-Verify M1M3 Telemetry directories
+Verify M2MS Telemetry directories
     [Tags]
     Directory Should Exist    ${SALWorkDir}/${subSystem}_axial_actuators
     Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9201
@@ -86,7 +86,7 @@ Verify M1M3 Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_tangent_actuators
     Directory Should Exist    ${SALWorkDir}/${subSystem}_thermal
 
-Salgen M1M3 Java
+Salgen M2MS Java
     [Documentation]    Generate Java wrapper. This takes ~2mins.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
@@ -100,7 +100,7 @@ Salgen M1M3 Java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
-Salgen M1M3 Python
+Salgen M2MS Python
     [Documentation]    Generate Python wrapper. This takes ~4mins.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
@@ -115,7 +115,7 @@ Salgen M1M3 Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}Commander.py
 
-Salgen M1M3 Labview
+Salgen M2MS Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} labview
