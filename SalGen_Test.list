@@ -11,3 +11,5 @@ SALGEN/Rotator.robot
 SALGEN/MTMount.robot
 SALGEN/M1M3.robot
 SALGEN/M2MS.robot
+SALGEN/Camera.robot
+SALGEN/DM.robot
