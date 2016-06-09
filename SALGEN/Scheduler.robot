@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${timeout}    300s
+${timeout}    600s
 
 *** Test Cases ***
 SSH Into Host
