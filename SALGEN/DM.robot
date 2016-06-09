@@ -80,6 +80,8 @@ Salgen DM C++
 
 Verify DM Telemetry directories
     [Tags]
+	@{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+    Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_alert_dq
     Directory Should Exist    ${SALWorkDir}/${subSystem}_efd_slave_replication_state
     Directory Should Exist    ${SALWorkDir}/${subSystem}_international_network_status

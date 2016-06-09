@@ -77,6 +77,8 @@ Salgen M1M3 C++
 
 Verify M1M3 Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Actuators
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Application
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Electrical

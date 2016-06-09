@@ -77,6 +77,8 @@ Salgen Camera C++
 
 Verify Camera Telemetry directories
     [Tags]
+	@{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+    Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Cold
     Directory Should Exist    ${SALWorkDir}/${subSystem}_SAS
     Directory Should Exist    ${SALWorkDir}/${subSystem}_SDS

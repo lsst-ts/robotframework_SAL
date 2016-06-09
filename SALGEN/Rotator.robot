@@ -77,6 +77,8 @@ Salgen Rotator C++
 
 Verify Rotator Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Electrical
     Directory Should Exist    ${SALWorkDir}/${subSystem}_LimitSensors
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Position

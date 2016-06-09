@@ -77,6 +77,8 @@ Salgen TCS C++
 
 Verify TCS Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_AOCS
     Directory Should Exist    ${SALWorkDir}/${subSystem}_kernel_DawdleFilter 
     Directory Should Exist    ${SALWorkDir}/${subSystem}_kernel_FK5Target

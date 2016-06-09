@@ -45,19 +45,6 @@ Salgen Dome Validate
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_TC.idl
 
-Verify Dome Telemetry directories
-	[Tags]
-	Directory Should Exist    ${SALWorkDir}/${subSystem}_Azimuth
-	Directory Should Exist    ${SALWorkDir}/${subSystem}_Application
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Bogies
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_CapacitorBank
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Electrical
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Louvers
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Metrology
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Screen
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_Shutter
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_TC
-
 Salgen Dome HTML
 	[Documentation]    Create web form interfaces.
 	[Tags]
@@ -87,6 +74,21 @@ Salgen Dome C++
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated/sal
     @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
+
+Verify Dome Telemetry directories
+	[Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
+	Directory Should Exist    ${SALWorkDir}/${subSystem}_Azimuth
+	Directory Should Exist    ${SALWorkDir}/${subSystem}_Application
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Bogies
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_CapacitorBank
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Electrical
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Louvers
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Metrology
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Screen
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Shutter
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_TC
 
 Salgen Dome Java
     [Documentation]    Generate Java wrapper. This takes ~2mins.

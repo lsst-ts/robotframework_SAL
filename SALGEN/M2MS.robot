@@ -77,6 +77,8 @@ Salgen M2MS C++
 
 Verify M2MS Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_axial_actuators
     Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9201
     Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9221

@@ -77,6 +77,8 @@ Salgen MTMount C++
 
 Verify MTMount Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Alt
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Alt_OSS
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Alt_TC

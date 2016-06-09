@@ -75,6 +75,8 @@ Salgen Scheduler C++
 
 Verify Scheduler Telemetry directories
     [Tags]
+    @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
+	Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_econstraints
     Directory Should Exist    ${SALWorkDir}/${subSystem}_interestedProposal
     Directory Should Exist    ${SALWorkDir}/${subSystem}_program
