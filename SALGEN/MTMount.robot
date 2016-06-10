@@ -55,8 +55,8 @@ Salgen MTMount HTML
 	Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
 	@{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_Metrology-metadata.html
-    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_Metrology-streamdef.html
+    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_MotionParameters-metadata.html
+    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_MotionParameters-streamdef.html
 
 Salgen MTMount C++
 	[Documentation]    Generate C++ wrapper. This takes ~2mins.
