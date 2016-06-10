@@ -43,7 +43,7 @@ Salgen M2MS Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_thermal.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_TangentForcesMeasured.idl
 
 Salgen M2MS HTML
 	[Documentation]    Create web form interfaces.
@@ -55,8 +55,8 @@ Salgen M2MS HTML
 	Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
 	@{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_thermal-metadata.html
-    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_thermal-streamdef.html
+    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_TangentForcesMeasured-metadata.html
+    File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_TangentForcesMeasured-streamdef.html
 
 Salgen M2MS C++
 	[Documentation]    Generate C++ wrapper. This takes ~2mins.
@@ -65,8 +65,8 @@ Salgen M2MS C++
 	${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_thermal.idl
-    Should Contain    ${output}    Processing ${subSystem} thermal in ${SALWorkDir}
+    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_TangentForcesMeasured.idl
+    Should Contain    ${output}    Processing ${subSystem} TangentForcesMeasured in ${SALWorkDir}
     Should Contain    ${output}    cpp : Done Publisher
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=${subSystem}*
@@ -79,14 +79,15 @@ Verify M2MS Telemetry directories
     [Tags]
     @{files}=    List Directory    ${SALWorkDir}    pattern=${subSystem}*
 	Log Many    @{files}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_axial_actuators
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9201
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9221
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9426
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_ni9485
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_sensor_ilc
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_tangent_actuators
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_thermal
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_ZenithAngleMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_TangentStrainMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_TangentForcesMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_TangentActuatorPositionAbsoluteEncoderPositionMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_TangentActuatorAbsolutePositionSteps
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_MirrorPositionMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_AxialActuatorPositionAbsoluteEncoderPositionMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_AxialForcesMeasured
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_AxialActuatorAbsolutePositionSteps
 
 Salgen M2MS Java
     [Documentation]    Generate Java wrapper. This takes ~2mins.
@@ -95,8 +96,8 @@ Salgen M2MS Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_thermal.idl
-    Should Contain    ${output}    Processing ${subSystem} thermal in ${SALWorkDir}
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_TangentForcesMeasured.idl
+    Should Contain    ${output}    Processing ${subSystem} TangentForcesMeasured in ${SALWorkDir}
     Should Contain    ${output}    javac : Done Event/Logger
     Directory Should Exist    ${SALWorkDir}/${subSystem}/java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=${subSystem}*
