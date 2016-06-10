@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    camera
-${timeout}    600s
+${timeout}    700s
 
 *** Test Cases ***
 SSH Into Host
