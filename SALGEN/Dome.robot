@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Initial SAL tests.
 Force Tags    
-Suite Setup    Log Many    ${subSystem}    ${timeout}
+Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
 Suite Teardown         Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
@@ -14,8 +14,6 @@ ${timeout}    400s
 SSH Into Host
     [Documentation]    Connect to the SAL host.
     [Tags]
-    Comment    Define variables.
-    Set Global Variable    ${Host}    140.252.33.40
     Comment    Connect.
     Open Connection    ${Host}    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
