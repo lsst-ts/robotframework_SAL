@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Initial SAL tests.
+Documentation    This suite builds the various interfaces for the Scheduler.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
