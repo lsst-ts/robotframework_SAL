@@ -71,7 +71,7 @@ Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
 	Comment    TSS-658.
-    ${output}=    Read Until    Profile_function :     #0
+    ${output}=    Read Until Regexp    Open_profile : 0\\s*Profile_function :     #0
     Log    ${output}
     Should Contain X Times    ${output}    [GetSample] message received :1    10
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
