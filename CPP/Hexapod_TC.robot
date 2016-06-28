@@ -74,7 +74,7 @@ Read Subscriber
     ${output}=    Read Until    temperature : 9
     Log    ${output}
     Should Contain X Times    ${output}    [GetSample] message received :1    9
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    8
+    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
     Should Contain X Times    ${output}    revCode \ :    9
     Should Contain X Times    ${output}    sndStamp \ :    9
     Should Contain X Times    ${output}    origin \ :    9
