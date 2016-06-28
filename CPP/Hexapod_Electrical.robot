@@ -70,15 +70,15 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
-    ${output}=    Read Until    voltage : 0
     Log    ${output}
+    ${output}=    Read Until    voltage : 9
 	Comment    TSS-657.
-    Comment    Should Contain X Times    ${output}    [GetSample] message received :1    10
-    Comment    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
-    Comment    Should Contain X Times    ${output}    revCode \ :    10
-    Comment    Should Contain X Times    ${output}    sndStamp \ :    10
-    Comment    Should Contain X Times    ${output}    origin \ :    10
-    Comment    Should Contain X Times    ${output}    host \ :    10
-    Comment    Should Contain X Times    ${output}    error :    10
-    Comment    Should Contain X Times    ${output}    status :    10
-    Comment    Should Contain X Times    ${output}    voltage :    10
+    Should Contain X Times    ${output}    [GetSample] message received :1    9
+    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    8
+    Should Contain X Times    ${output}    revCode \ :    9
+    Should Contain X Times    ${output}    sndStamp \ :    9
+    Should Contain X Times    ${output}    origin \ :    9
+    Should Contain X Times    ${output}    host \ :    9
+    Should Contain X Times    ${output}    error :    9
+    Should Contain X Times    ${output}    status :    9
+    Should Contain X Times    ${output}    voltage :    9
