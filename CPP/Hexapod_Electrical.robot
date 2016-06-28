@@ -70,9 +70,9 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
-    Log    ${output}
-    ${output}=    Read Until    voltage : 9
 	Comment    TSS-657.
+    ${output}=    Read Until    voltage : 9
+    Log    ${output}
     Should Contain X Times    ${output}    [GetSample] message received :1    9
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
     Should Contain X Times    ${output}    revCode \ :    9
