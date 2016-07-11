@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.404823031 20.59 1 1 1 1 test    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1091676024 10.1207 1 1 1 1 test    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC takeImages] writing a command containing :    1
@@ -77,9 +77,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-	Comment    TSS-677
-    Should Contain X Times    ${output}    numImages :     1    #76.404823031    1
-    Should Contain X Times    ${output}    expTime : 20.59    1
+    Should Contain X Times    ${output}    numImages : 1091676024    1
+    Should Contain X Times    ${output}    expTime : 10.1207    1
     Should Contain X Times    ${output}    shutter : 1    1
     Should Contain X Times    ${output}    science : 1    1
     Should Contain X Times    ${output}    guide : 1    1
@@ -114,9 +113,8 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command takeImages received =
-	Comment    TSS-677.
-    Should Contain X Times    ${output}    numImages :    1    #76.404823031    1
-    Should Contain X Times    ${output}    expTime : 20.59    1
+    Should Contain X Times    ${output}    numImages : 1091676024    1
+    Should Contain X Times    ${output}    expTime : 10.1207    1
     Should Contain X Times    ${output}    shutter : 1    1
     Should Contain X Times    ${output}    science : 1    1
     Should Contain X Times    ${output}    guide : 1    1

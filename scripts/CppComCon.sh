@@ -62,22 +62,6 @@ function getParameterType() {
 	echo $parameterType
 }
 
-function createParameterValue() {
-	arg=$1
-	if [ "$arg" == "double" ]; then
-		value=$( awk -v "seed=$[(RANDOM & 32767) + 32768 * (RANDOM & 32767)]" 'BEGIN { srand(seed); printf("%.2f\n", rand() * 90.0) }' |sed -e 's/[0]*$//g' |sed -e 's/[.]$//g' )
-	elif [ "$arg" == "long" ]; then
-		value=$( awk -v "seed=$[(RANDOM & 32767) + 32768 * (RANDOM & 32767)]" 'BEGIN { srand(seed); printf("%.9f\n", rand() * 90.0) }' )
-	elif [ "$arg" == "short" ]; then
-		value=$( awk -v "seed=$[(RANDOM & 32767) + 32768 * (RANDOM & 32767)]" 'BEGIN { srand(seed); printf("%.0f\n", rand() * 100) }' )
-	elif [ "$arg" == "boolean" ]; then
-        value=1
-	else
-		value="test"
-	fi
-	echo $value
-}
-
 function clearTestSuite() {
     if [ -f $testSuite ]; then
         echo $testSuite exists.  Deleting it before creating a new one.
@@ -285,7 +269,7 @@ function createTestSuite() {
 		unset argumentsArray
 		# If the Topic has no parameters (items), just send a string.
 		if [ ! ${parametersArray[0]} ]; then
-			testValue=$(createParameterValue "string")
+			testValue=$(python random_value.py "string")
 			argumentsArray+=($testValue)
 		# Otherwise, determine the parameter type and create a test value, accordingly.
 		else
@@ -293,7 +277,7 @@ function createTestSuite() {
 				if [ ${parametersArray[$i]} ]; then
 					parameterIndex=$(getParameterIndex ${parametersArray[$i]})
 					parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-					testValue=$(createParameterValue $parameterType)
+					testValue=$(python random_value.py $parameterType)
 					argumentsArray+=($testValue)
 				fi
 			done
