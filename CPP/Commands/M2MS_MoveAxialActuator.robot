@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 48 13.556669375    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 411 1043531009    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC MoveAxialActuator] writing a command containing :    1
@@ -77,9 +77,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    axialActuatorID : 48    1
-	Comment    TSS-677.
-    Should Contain X Times    ${output}    relativeStepsToMove :    1    #13.556669375    1
+    Should Contain X Times    ${output}    axialActuatorID : 411    1
+    Should Contain X Times    ${output}    relativeStepsToMove : 1043531009    1
     Should Contain    ${output}    === command MoveAxialActuator issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -109,9 +108,8 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command MoveAxialActuator received =
-    Should Contain X Times    ${output}    axialActuatorID : 48    1
-	Comment    TSS-677.
-    Should Contain X Times    ${output}    relativeStepsToMove :    1    #13.556669375    1
+    Should Contain X Times    ${output}    axialActuatorID : 411    1
+    Should Contain X Times    ${output}    relativeStepsToMove : 1043531009    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1
@@ -119,5 +117,4 @@ Read Controller
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 303
     Should Contain    ${output}    error    : 0
-
     Should Contain    ${output}    result   : Done : OK

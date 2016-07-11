@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 31.55    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 35.9955    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC move] writing a command containing :    1
@@ -77,7 +77,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 31.55    1
+    Should Contain X Times    ${output}    angle : 35.9955    1
     Should Contain    ${output}    === command move issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -107,7 +107,7 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command move received =
-    Should Contain X Times    ${output}    angle : 31.55    1
+    Should Contain X Times    ${output}    angle : 35.9955    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

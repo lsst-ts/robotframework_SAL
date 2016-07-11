@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 2.3 43.84    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.6425 48.2538    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC Crawl] writing a command containing :    1
@@ -77,8 +77,8 @@ Start Commander
     Should Contain X Times    ${output}    property : velocity    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    azVelocity : 2.3    1
-    Should Contain X Times    ${output}    elVelocity : 43.84    1
+    Should Contain X Times    ${output}    azVelocity : 37.6425    1
+    Should Contain X Times    ${output}    elVelocity : 48.2538    1
     Should Contain    ${output}    === command Crawl issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -108,8 +108,8 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command Crawl received =
-    Should Contain X Times    ${output}    azVelocity : 2.3    1
-    Should Contain X Times    ${output}    elVelocity : 43.84    1
+    Should Contain X Times    ${output}    azVelocity : 37.6425    1
+    Should Contain X Times    ${output}    elVelocity : 48.2538    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

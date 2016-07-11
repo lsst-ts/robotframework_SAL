@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 31.96 22.88 6.29 57.46 48.49 63.78 83.37 18.4 81.07 61.68 42.33 4.28    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 66.8721 4.4126 17.6988 15.6035 59.3459 92.3009 13.8269 73.0125 69.0331 29.4972 69.4745 73.0643    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC configureAcceleration] writing a command containing :    1
@@ -77,18 +77,18 @@ Start Commander
     Should Contain X Times    ${output}    property : acceleration    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xmin : 31.96    1
-    Should Contain X Times    ${output}    xmax : 22.88    1
-    Should Contain X Times    ${output}    ymin : 6.29    1
-    Should Contain X Times    ${output}    ymax : 57.46    1
-    Should Contain X Times    ${output}    zmin : 48.49    1
-    Should Contain X Times    ${output}    zmax : 63.78    1
-    Should Contain X Times    ${output}    umin : 83.37    1
-    Should Contain X Times    ${output}    umax : 18.4    1
-    Should Contain X Times    ${output}    vmin : 81.07    1
-    Should Contain X Times    ${output}    vmax : 61.68    1
-    Should Contain X Times    ${output}    wmin : 42.33    1
-    Should Contain X Times    ${output}    wmax : 4.28    1
+    Should Contain X Times    ${output}    xmin : 66.8721    1
+    Should Contain X Times    ${output}    xmax : 4.4126    1
+    Should Contain X Times    ${output}    ymin : 17.6988    1
+    Should Contain X Times    ${output}    ymax : 15.6035    1
+    Should Contain X Times    ${output}    zmin : 59.3459    1
+    Should Contain X Times    ${output}    zmax : 92.3009    1
+    Should Contain X Times    ${output}    umin : 13.8269    1
+    Should Contain X Times    ${output}    umax : 73.0125    1
+    Should Contain X Times    ${output}    vmin : 69.0331    1
+    Should Contain X Times    ${output}    vmax : 29.4972    1
+    Should Contain X Times    ${output}    wmin : 69.4745    1
+    Should Contain X Times    ${output}    wmax : 73.0643    1
     Should Contain    ${output}    === command configureAcceleration issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -118,18 +118,18 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command configureAcceleration received =
-    Should Contain X Times    ${output}    xmin : 31.96    1
-    Should Contain X Times    ${output}    xmax : 22.88    1
-    Should Contain X Times    ${output}    ymin : 6.29    1
-    Should Contain X Times    ${output}    ymax : 57.46    1
-    Should Contain X Times    ${output}    zmin : 48.49    1
-    Should Contain X Times    ${output}    zmax : 63.78    1
-    Should Contain X Times    ${output}    umin : 83.37    1
-    Should Contain X Times    ${output}    umax : 18.4    1
-    Should Contain X Times    ${output}    vmin : 81.07    1
-    Should Contain X Times    ${output}    vmax : 61.68    1
-    Should Contain X Times    ${output}    wmin : 42.33    1
-    Should Contain X Times    ${output}    wmax : 4.28    1
+    Should Contain X Times    ${output}    xmin : 66.8721    1
+    Should Contain X Times    ${output}    xmax : 4.4126    1
+    Should Contain X Times    ${output}    ymin : 17.6988    1
+    Should Contain X Times    ${output}    ymax : 15.6035    1
+    Should Contain X Times    ${output}    zmin : 59.3459    1
+    Should Contain X Times    ${output}    zmax : 92.3009    1
+    Should Contain X Times    ${output}    umin : 13.8269    1
+    Should Contain X Times    ${output}    umax : 73.0125    1
+    Should Contain X Times    ${output}    vmin : 69.0331    1
+    Should Contain X Times    ${output}    vmax : 29.4972    1
+    Should Contain X Times    ${output}    wmin : 69.4745    1
+    Should Contain X Times    ${output}    wmax : 73.0643    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

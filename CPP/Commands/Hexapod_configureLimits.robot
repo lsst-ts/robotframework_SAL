@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.756963180 23.006477013 18.929683845 44.552592805 34.591188289 75.664591345 20.752925314 16.978368865 29.521139553 64.247092877 15.468603533 6.404594405    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1145632076 502690974 536466889 1370353724 1426269385 146080696 1381540192 974312747 1290377089 130938992 185531778 439334704    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC configureLimits] writing a command containing :    1
@@ -77,19 +77,18 @@ Start Commander
     Should Contain X Times    ${output}    property : limits    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-	Comment    TSS-677.
-    Should Contain X Times    ${output}    xmin :    1    #0.756963180    1
-    Should Contain X Times    ${output}    xmax :    1    #23.006477013    1
-    Should Contain X Times    ${output}    ymin :    1    #18.929683845    1
-    Should Contain X Times    ${output}    ymax :    1    #44.552592805    1
-    Should Contain X Times    ${output}    zmin :    1    #34.591188289    1
-    Should Contain X Times    ${output}    zmax :    1    #75.664591345    1
-    Should Contain X Times    ${output}    umin :    1    #20.752925314    1
-    Should Contain X Times    ${output}    umax :    1    #16.978368865    1
-    Should Contain X Times    ${output}    vmin :    1    #29.521139553    1
-    Should Contain X Times    ${output}    vmax :    1    #64.247092877    1
-    Should Contain X Times    ${output}    wwmin :    1    #15.468603533    1
-    Should Contain X Times    ${output}    wmax :    1    #6.404594405    1
+    Should Contain X Times    ${output}    xmin : 1145632076    1
+    Should Contain X Times    ${output}    xmax : 502690974    1
+    Should Contain X Times    ${output}    ymin : 536466889    1
+    Should Contain X Times    ${output}    ymax : 1370353724    1
+    Should Contain X Times    ${output}    zmin : 1426269385    1
+    Should Contain X Times    ${output}    zmax : 146080696    1
+    Should Contain X Times    ${output}    umin : 1381540192    1
+    Should Contain X Times    ${output}    umax : 974312747    1
+    Should Contain X Times    ${output}    vmin : 1290377089    1
+    Should Contain X Times    ${output}    vmax : 130938992    1
+    Should Contain X Times    ${output}    wwmin : 185531778    1
+    Should Contain X Times    ${output}    wmax : 439334704    1
     Should Contain    ${output}    === command configureLimits issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -119,19 +118,18 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command configureLimits received =
-	Comment    TSS-677.
-    Should Contain X Times    ${output}    xmin :    1    #0.756963180    1
-    Should Contain X Times    ${output}    xmax :    1    #23.006477013    1
-    Should Contain X Times    ${output}    ymin :    1    #18.929683845    1
-    Should Contain X Times    ${output}    ymax :    1    #44.552592805    1
-    Should Contain X Times    ${output}    zmin :    1    #34.591188289    1
-    Should Contain X Times    ${output}    zmax :    1    #75.664591345    1
-    Should Contain X Times    ${output}    umin :    1    #20.752925314    1
-    Should Contain X Times    ${output}    umax :    1    #16.978368865    1
-    Should Contain X Times    ${output}    vmin :    1    #29.521139553    1
-    Should Contain X Times    ${output}    vmax :    1    #64.247092877    1
-    Should Contain X Times    ${output}    wwmin :    1    #15.468603533    1
-    Should Contain X Times    ${output}    wmax :    1    #6.404594405    1
+    Should Contain X Times    ${output}    xmin : 1145632076    1
+    Should Contain X Times    ${output}    xmax : 502690974    1
+    Should Contain X Times    ${output}    ymin : 536466889    1
+    Should Contain X Times    ${output}    ymax : 1370353724    1
+    Should Contain X Times    ${output}    zmin : 1426269385    1
+    Should Contain X Times    ${output}    zmax : 146080696    1
+    Should Contain X Times    ${output}    umin : 1381540192    1
+    Should Contain X Times    ${output}    umax : 974312747    1
+    Should Contain X Times    ${output}    vmin : 1290377089    1
+    Should Contain X Times    ${output}    vmax : 130938992    1
+    Should Contain X Times    ${output}    wwmin : 185531778    1
+    Should Contain X Times    ${output}    wmax : 439334704    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

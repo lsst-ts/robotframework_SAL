@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.91 63.25 54.42 34.43 88.83 68.98 1    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 69.8921 60.0996 42.209 3.0247 96.4399 7.2429 1    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC offset] writing a command containing :    1
@@ -77,12 +77,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 76.91    1
-    Should Contain X Times    ${output}    y : 63.25    1
-    Should Contain X Times    ${output}    z : 54.42    1
-    Should Contain X Times    ${output}    u : 34.43    1
-    Should Contain X Times    ${output}    v : 88.83    1
-    Should Contain X Times    ${output}    w : 68.98    1
+    Should Contain X Times    ${output}    x : 69.8921    1
+    Should Contain X Times    ${output}    y : 60.0996    1
+    Should Contain X Times    ${output}    z : 42.209    1
+    Should Contain X Times    ${output}    u : 3.0247    1
+    Should Contain X Times    ${output}    v : 96.4399    1
+    Should Contain X Times    ${output}    w : 7.2429    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command offset issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
@@ -113,12 +113,12 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command offset received =
-    Should Contain X Times    ${output}    x : 76.91    1
-    Should Contain X Times    ${output}    y : 63.25    1
-    Should Contain X Times    ${output}    z : 54.42    1
-    Should Contain X Times    ${output}    u : 34.43    1
-    Should Contain X Times    ${output}    v : 88.83    1
-    Should Contain X Times    ${output}    w : 68.98    1
+    Should Contain X Times    ${output}    x : 69.8921    1
+    Should Contain X Times    ${output}    y : 60.0996    1
+    Should Contain X Times    ${output}    z : 42.209    1
+    Should Contain X Times    ${output}    u : 3.0247    1
+    Should Contain X Times    ${output}    v : 96.4399    1
+    Should Contain X Times    ${output}    w : 7.2429    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301

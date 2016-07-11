@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 87.77 5.04    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 33.6225 88.1866    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC configureAcceleration] writing a command containing :    1
@@ -77,8 +77,8 @@ Start Commander
     Should Contain X Times    ${output}    property : acceleration    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    amin : 87.77    1
-    Should Contain X Times    ${output}    amax : 5.04    1
+    Should Contain X Times    ${output}    amin : 33.6225    1
+    Should Contain X Times    ${output}    amax : 88.1866    1
     Should Contain    ${output}    === command configureAcceleration issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -108,8 +108,8 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command configureAcceleration received =
-    Should Contain X Times    ${output}    amin : 87.77    1
-    Should Contain X Times    ${output}    amax : 5.04    1
+    Should Contain X Times    ${output}    amin : 33.6225    1
+    Should Contain X Times    ${output}    amax : 88.1866    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

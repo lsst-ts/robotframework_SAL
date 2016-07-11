@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 61.82 42.34 84.41    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 19.5067 40.2088 69.3832    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC PositionMirror] writing a command containing :    1
@@ -77,9 +77,9 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xTilt : 61.82    1
-    Should Contain X Times    ${output}    yTilt : 42.34    1
-    Should Contain X Times    ${output}    piston : 84.41    1
+    Should Contain X Times    ${output}    xTilt : 19.5067    1
+    Should Contain X Times    ${output}    yTilt : 40.2088    1
+    Should Contain X Times    ${output}    piston : 69.3832    1
     Should Contain    ${output}    === command PositionMirror issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -109,9 +109,9 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command PositionMirror received =
-    Should Contain X Times    ${output}    xTilt : 61.82    1
-    Should Contain X Times    ${output}    yTilt : 42.34    1
-    Should Contain X Times    ${output}    piston : 84.41    1
+    Should Contain X Times    ${output}    xTilt : 19.5067    1
+    Should Contain X Times    ${output}    yTilt : 40.2088    1
+    Should Contain X Times    ${output}    piston : 69.3832    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

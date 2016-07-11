@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 79.95 70.76    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 61.0245 0.5659    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC Move] writing a command containing :    1
@@ -77,8 +77,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    azimuth : 79.95    1
-    Should Contain X Times    ${output}    elevation : 70.76    1
+    Should Contain X Times    ${output}    azimuth : 61.0245    1
+    Should Contain X Times    ${output}    elevation : 0.5659    1
     Should Contain    ${output}    === command Move issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -108,8 +108,8 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command Move received =
-    Should Contain X Times    ${output}    azimuth : 79.95    1
-    Should Contain X Times    ${output}    elevation : 70.76    1
+    Should Contain X Times    ${output}    azimuth : 61.0245    1
+    Should Contain X Times    ${output}    elevation : 0.5659    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1

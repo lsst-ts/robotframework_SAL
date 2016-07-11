@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.18 35.86 51.16 70.66 16.71 test    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.7817 61.5769 34.4793 65.4077 77.4079 test    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC trackTarget] writing a command containing :    1
@@ -77,11 +77,11 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 0.18    1
-    Should Contain X Times    ${output}    az_velocity : 35.86    1
-    Should Contain X Times    ${output}    el_angle : 51.16    1
-    Should Contain X Times    ${output}    el_velocity : 70.66    1
-    Should Contain X Times    ${output}    time : 16.71    1
+    Should Contain X Times    ${output}    az_angle : 37.7817    1
+    Should Contain X Times    ${output}    az_velocity : 61.5769    1
+    Should Contain X Times    ${output}    el_angle : 34.4793    1
+    Should Contain X Times    ${output}    el_velocity : 65.4077    1
+    Should Contain X Times    ${output}    time : 77.4079    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
@@ -112,11 +112,11 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command trackTarget received =
-    Should Contain X Times    ${output}    az_angle : 0.18    1
-    Should Contain X Times    ${output}    az_velocity : 35.86    1
-    Should Contain X Times    ${output}    el_angle : 51.16    1
-    Should Contain X Times    ${output}    el_velocity : 70.66    1
-    Should Contain X Times    ${output}    time : 16.71    1
+    Should Contain X Times    ${output}    az_angle : 37.7817    1
+    Should Contain X Times    ${output}    az_velocity : 61.5769    1
+    Should Contain X Times    ${output}    el_angle : 34.4793    1
+    Should Contain X Times    ${output}    el_velocity : 65.4077    1
+    Should Contain X Times    ${output}    time : 77.4079    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301

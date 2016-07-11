@@ -69,7 +69,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 78.08 2.92 67.53    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 67.9212 49.3742 15.9701    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommandC pivot] writing a command containing :    1
@@ -77,9 +77,9 @@ Start Commander
     Should Contain X Times    ${output}    property : pivot    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 78.08    1
-    Should Contain X Times    ${output}    y : 2.92    1
-    Should Contain X Times    ${output}    z : 67.53    1
+    Should Contain X Times    ${output}    x : 67.9212    1
+    Should Contain X Times    ${output}    y : 49.3742    1
+    Should Contain X Times    ${output}    z : 15.9701    1
     Should Contain    ${output}    === command pivot issued =
     Should Contain    ${output}    === [getResponse] reading a message containing :
     Should Contain    ${output}    revCode \ :
@@ -109,9 +109,9 @@ Read Controller
     Should Contain    ${output}    value : 
     Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command pivot received =
-    Should Contain X Times    ${output}    x : 78.08    1
-    Should Contain X Times    ${output}    y : 2.92    1
-    Should Contain X Times    ${output}    z : 67.53    1
+    Should Contain X Times    ${output}    x : 67.9212    1
+    Should Contain X Times    ${output}    y : 49.3742    1
+    Should Contain X Times    ${output}    z : 15.9701    1
     Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    error    : 1
