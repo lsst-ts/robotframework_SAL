@@ -110,7 +110,13 @@ Salgen Dome Maven
 	${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    
+    Should Contain    ${output}    Running maven install
+	Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
+	Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
+	Should Contain    ${output}    [INFO] Finished at:
+    @{files}=    List Directory    ${SALWorkDir}/maven
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen Dome Python
     [Documentation]    Generate Python wrapper. This takes ~4mins.
