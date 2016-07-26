@@ -115,7 +115,7 @@ Salgen TCS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain    ${output}    Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain    ${output}    [INFO] Finished at:
     @{files}=    List Directory    ${SALWorkDir}/maven
