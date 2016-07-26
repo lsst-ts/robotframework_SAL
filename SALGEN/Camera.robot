@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    This suite builds the various interfaces for the Camera.
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
+Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}    ${SALVersion}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot

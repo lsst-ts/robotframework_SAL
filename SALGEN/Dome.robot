@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     This suite builds the various interfaces for the Dome.
 Force Tags    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
+Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}    ${SALVersion}
 Suite Teardown         Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
@@ -35,7 +35,7 @@ Salgen Dome Validate
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} validate
     ${output}=    Read Until Prompt
 	Log    ${output}
-    Should Contain    ${output}    SAL generator - V3.0
+    Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Processing ${subSystem}
     Should Contain    ${output}    Completed ${subSystem} validation
     Directory Should Exist    ${SALWorkDir}/idl-templates
@@ -50,7 +50,7 @@ Salgen Dome HTML
 	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} html
 	${output}=    Read Until Prompt
 	Log    ${output}
-	Should Contain    ${output}    SAL generator - V3.0
+	Should Contain    ${output}    SAL generator - V${SALVersion}
 	Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
 	@{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=${subSystem}*
     Log Many    @{files}
@@ -63,7 +63,7 @@ Salgen Dome C++
 	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    SAL generator - V3.0
+    Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_Application.idl
     Should Contain    ${output}    Processing ${subSystem} Application in ${SALWorkDir}
     Should Contain    ${output}    cpp : Done Publisher
@@ -95,7 +95,7 @@ Salgen Dome Java
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    SAL generator - V3.0
+    Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Application.idl
     Should Contain    ${output}    Processing ${subSystem} Application in ${SALWorkDir}
     Should Contain    ${output}    javac : Done Event/Logger
@@ -103,9 +103,14 @@ Salgen Dome Java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
-Salgen Dome Maven Deploy
-	[Documentation]    Build the JAVA interfaces.
-	[Tags]    skipped
+Salgen Dome Maven
+	[Documentation]    Generate the Maven repository.
+	[Tags]
+	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} maven
+	${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    SAL generator - V${SALVersion}
+    
 
 Salgen Dome Python
     [Documentation]    Generate Python wrapper. This takes ~4mins.
@@ -113,7 +118,7 @@ Salgen Dome Python
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    SAL generator - V3.0
+    Should Contain    ${output}    SAL generator - V${SALVersion}
 	Should Contain    ${output}    Generating Python SAL support for ${subSystem}
     Should Contain    ${output}    Generating Boost.Python bindings
     Should Contain    ${output}    python : Done SALPY_${subSystem}.so
@@ -128,7 +133,7 @@ Salgen Dome Labview
 	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} labview
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    SAL generator - V3.0
+    Should Contain    ${output}    SAL generator - V${SALVersion}
     Directory Should Exist    ${SALWorkDir}/${subSystem}/labview
 	@{files}=    List Directory    ${SALWorkDir}/${subSystem}/labview    pattern=${subSystem}*
 	Log Many    @{files}
