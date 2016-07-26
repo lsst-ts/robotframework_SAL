@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${timeout}    200s
+${timeout}    300s
 
 *** Test Cases ***
 SSH Into Host

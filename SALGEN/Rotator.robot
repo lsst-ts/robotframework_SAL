@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    rotator
-${timeout}    100s
+${timeout}    300s
 
 *** Test Cases ***
 SSH Into Host
