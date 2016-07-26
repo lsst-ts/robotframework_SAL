@@ -62,6 +62,14 @@ function getParameterType() {
 	echo $parameterType
 }
 
+function getParameterCount() {
+    subSystem=$1
+    index=$2
+    itemIndex=$(($3 + 1))
+    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
+    echo $parameterCount
+}
+
 function clearTestSuite() {
     if [ -f $testSuite ]; then
         echo $testSuite exists.  Deleting it before creating a new one.
@@ -277,8 +285,11 @@ function createTestSuite() {
 				if [ ${parametersArray[$i]} ]; then
 					parameterIndex=$(getParameterIndex ${parametersArray[$i]})
 					parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-					testValue=$(python random_value.py $parameterType)
-					argumentsArray+=($testValue)
+					parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+					for i in $(seq 1 $parameterCount); do
+						testValue=$(python random_value.py $parameterType)
+						argumentsArray+=($testValue)
+					done
 				fi
 			done
 		fi
