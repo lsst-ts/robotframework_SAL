@@ -143,15 +143,19 @@ function readSubscriber {
 function createTestSuite {
 	subSystem=$1
 	index=1
-	if [ "$subSystem" == "m1m3" ]; then
-		subSystemUp="M1M3"
-	elif [ "$subSystem" == "m2ms" ]; then
-		subSystemUp="M2MS"
-	elif [ "$subSystem" == "tcs" ]; then
-		subSystemUp="TCS"
-	else
-		subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-	fi
+    if [ "$subSystem" == "m1m3" ]; then
+        subSystemUp="M1M3"
+    elif [ "$subSystem" == "m2ms" ]; then
+        subSystemUp="M2MS"
+    elif [ "$subSystem" == "tcs" ]; then
+        subSystemUp="TCS"
+    elif [ "$subSystem" == "mtmount" ]; then
+        subSystemUp="MTMount"
+    elif [ "$subSystem" == "dm" ]; then
+        subSystemUp="DM"
+    else
+        subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
+    fi
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
 		testSuite=$workDir/${subSystemUp}_${topic}.robot
