@@ -14,7 +14,7 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator scheduler tcs)    #dm, tcs, MTMount, camera
+declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator scheduler tcs)
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
@@ -281,16 +281,14 @@ function createTestSuite() {
 			argumentsArray+=($testValue)
 		# Otherwise, determine the parameter type and create a test value, accordingly.
 		else
-			for i in `seq 0 19`; do
-				if [ ${parametersArray[$i]} ]; then
-					parameterIndex=$(getParameterIndex ${parametersArray[$i]})
+				for i in "${parametersArray[@]}"; do
+  					parameterIndex=$(getParameterIndex $i)
 					parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
 					parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
 					for i in $(seq 1 $parameterCount); do
 						testValue=$(python random_value.py $parameterType)
 						argumentsArray+=($testValue)
 					done
-				fi
 			done
 		fi
 		# Create the Start Commander test case.
