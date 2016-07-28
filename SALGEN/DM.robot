@@ -69,6 +69,7 @@ Salgen DM C++
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_summit_to_base_network_status.idl
     Should Contain    ${output}    Processing ${subSystem} summit_to_base_network_status in ${SALWorkDir}
     Should Contain    ${output}    cpp : Done Publisher
+	Should Not Contain    ${output}    *** DDS error in file
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so

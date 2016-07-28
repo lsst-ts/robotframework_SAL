@@ -64,6 +64,7 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_Application.idl
     Should Contain    ${output}    Processing ${subSystem} interestedProposal in ${SALWorkDir}
     Should Contain    ${output}    cpp : Done Publisher
+	Should Not Contain    ${output}    *** DDS error in file
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
