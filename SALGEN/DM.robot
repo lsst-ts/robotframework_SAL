@@ -25,10 +25,10 @@ Verify DM XML Definitions exist
 	[Tags]
 	File Should Exist    ${SALWorkDir}/${subSystem}_Telemetry.xml
 	File Should Exist    ${SALWorkDir}/${subSystem}_Events.xml
-	File Should Exist    ${SALWorkDir}/${subSystem}_alert.xml
-    File Should Exist    ${SALWorkDir}/${subSystem}_archiver.xml
-    File Should Exist    ${SALWorkDir}/${subSystem}_events.xml
-    File Should Exist    ${SALWorkDir}/${subSystem}_operations.xml
+	File Should Not Exist    ${SALWorkDir}/${subSystem}_alert.xml
+    File Should Not Exist    ${SALWorkDir}/${subSystem}_archiver.xml
+    File Should Not Exist    ${SALWorkDir}/${subSystem}_events.xml
+    File Should Not Exist    ${SALWorkDir}/${subSystem}_operations.xml
 
 Salgen DM Validate
     [Documentation]    Validate the DM XML definitions.
@@ -114,7 +114,7 @@ Salgen DM Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain    ${output}    Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain    ${output}    [INFO] Finished at:
     @{files}=    List Directory    ${SALWorkDir}/maven
