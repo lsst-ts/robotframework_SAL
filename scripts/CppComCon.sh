@@ -221,7 +221,11 @@ function readController() {
     echo "    Should Contain    \${output}    value \ \ \ : $value" >> $testSuite
     echo "    Should Contain    \${output}    === command ${topic} received =" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
+		parameterIndex=$(getParameterIndex $i)
+        parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
+        parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+		n=$i*$parameterCount
+        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
 		(( i++ ))
     done
 	echo "    Should Contain    \${output}    === [ackCommand] acknowledging a command with :" >> $testSuite
