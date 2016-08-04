@@ -2,7 +2,7 @@
 
 *** Variables ***
 ${UserName}      saluser
-${PassWord}	     ${EMPTY}
+${PassWord}      ${EMPTY}
 ${SALInstall}    /opt/sal
 ${SALHome}       ${SalInstall}/lsstsal
 ${SALWorkDir}    ${SalInstall}/test
