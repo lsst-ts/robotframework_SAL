@@ -2,7 +2,6 @@
 Documentation    Hexapod_Actuators communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
-Library    OperatingSystem
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
 
@@ -16,7 +15,7 @@ ${timeout}    30s
 *** Test Cases ***
 Create Publisher Session
     [Documentation]    Connect to the SAL host.
-    [Tags]    smoke    skipped
+    [Tags]    smoke
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
@@ -28,7 +27,7 @@ Create Publisher Session
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
-    [Tags]    smoke    skipped
+    [Tags]    smoke
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
@@ -40,11 +39,11 @@ Create Subscriber Session
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    OperatingSystem.File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
-    OperatingSystem.File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
+    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
+    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
 
 Start Subscriber
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Subscriber
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -56,7 +55,7 @@ Start Subscriber
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${subOut}
 
 Start Publisher
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Publisher
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -69,7 +68,7 @@ Start Publisher
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${pubOut}
 
 Read Subscriber
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Subscriber
 	Comment    TSS-657.
     ${output}=    Read Until    Raw : 9
