@@ -19,8 +19,6 @@ Create Publisher Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-	Log    ${UserName}
-	Log    ${PassWord}
     Login    ${UserName}    ${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
@@ -40,12 +38,12 @@ Create Subscriber Session
     Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
-    [Tags]    smoke
+    [Tags]    smoke    skipped
     File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
 
 Start Subscriber
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Subscriber
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -57,7 +55,7 @@ Start Subscriber
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${subOut}
 
 Start Publisher
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Publisher
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -70,7 +68,7 @@ Start Publisher
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${pubOut}
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Subscriber
 	Comment    TSS-657.
     ${output}=    Read Until    Raw : 9
