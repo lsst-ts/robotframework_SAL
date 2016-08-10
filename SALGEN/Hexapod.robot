@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    This suite builds the various interfaces for the Hexapods.
+Test Timeout    30 seconds
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}    ${SALVersion}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
