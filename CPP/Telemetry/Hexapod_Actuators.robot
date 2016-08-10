@@ -15,7 +15,7 @@ ${timeout}    30s
 *** Test Cases ***
 Create Publisher Session
     [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
+    [Tags]    smoke    skipped
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
@@ -27,7 +27,7 @@ Create Publisher Session
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
+    [Tags]    smoke    skipped
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
