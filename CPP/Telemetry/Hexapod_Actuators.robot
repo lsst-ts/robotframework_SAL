@@ -40,11 +40,11 @@ Create Subscriber Session
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
-    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
+    OperatingSystem.File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
+    OperatingSystem.File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
 
 Start Subscriber
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Subscriber
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -56,7 +56,7 @@ Start Subscriber
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${subOut}
 
 Start Publisher
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Publisher
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -69,7 +69,7 @@ Start Publisher
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${pubOut}
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    skipped
     Switch Connection    Subscriber
 	Comment    TSS-657.
     ${output}=    Read Until    Raw : 9
