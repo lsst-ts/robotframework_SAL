@@ -2,6 +2,7 @@
 Documentation    Hexapod_Actuators communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
+Library    OperatingSystem
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
 
