@@ -1,6 +1,7 @@
 *** Settings ***
 
 *** Variables ***
+${ContInt}       false
 ${UserName}      saluser
 ${PassWord}      ${EMPTY}
 ${SALInstall}    /opt/sal
