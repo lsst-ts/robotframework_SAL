@@ -17,7 +17,7 @@ SSH Into Host
     Open Connection    ${Host}    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     #Login    ${UserName}    ${PassWord}
-	Login With Public Key    ${UserName}    \$HOME/.ssh/id_rsa
+	Login With Public Key    ${UserName}    ${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALInstall}/OpenSpliceDDS
