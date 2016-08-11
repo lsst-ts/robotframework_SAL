@@ -16,6 +16,8 @@ SSH Into Host
     Comment    Connect.
     Open Connection    ${Host}    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
+	Log    ${UserName}
+	Log    ${PassWord}
     Login    ${UserName}    ${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
