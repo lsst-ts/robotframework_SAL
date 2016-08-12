@@ -18,6 +18,7 @@ SSH Into Host
     Comment    Login.
     Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
     Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+	${input}=    Write    echo \$0
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALInstall}/OpenSpliceDDS
