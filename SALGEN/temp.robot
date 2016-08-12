@@ -18,9 +18,5 @@ SSH Into Host
     Comment    Login.
     Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
     Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
-	${input}=    Write    echo $LSST_SDK_INSTALL
+	${input}=    Write    echo $ROBS_TEST
 	${output}=    Read Until Prompt
-    ${input}=    Write    source \$HOME/workspace/ts_sal/rbtsal/scripts/SALenvs.sh
-    ${output}=    Read Until Prompt
-    ${input}=    Write    echo $LSST_SDK_INSTALL
-    ${output}=    Read Until Prompt
