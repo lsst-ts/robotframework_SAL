@@ -108,7 +108,7 @@ Salgen Dome Java
 Salgen Dome Maven
 	[Documentation]    Generate the Maven repository.
 	[Tags]
-	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} maven
+	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
 	${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
