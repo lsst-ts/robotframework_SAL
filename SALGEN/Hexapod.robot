@@ -18,8 +18,6 @@ SSH Into Host
     Comment    Login.
     Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
     Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
-	${input}=    Write    source \$HOME/workspace/ts_sal/rbtsal/scripts/SALenvs.sh
-    ${output}=    Read Until Prompt
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALInstall}/OpenSpliceDDS
