@@ -61,7 +61,9 @@ function createPubSession {
     echo "    Comment    Connect to host." >> $testSuite
     echo "    Open Connection    host=\${Host}    alias=Publisher    timeout=\${timeout}    prompt=\${Prompt}" >> $testSuite
     echo "    Comment    Login." >> $testSuite
-    echo "    Login    \${UserName}    \${PassWord}" >> $testSuite
+    echo "    Log    \${ContInt}" >> $testSuite
+    echo "    Run Keyword If    \"\${ContInt}\"==\"false\"    Login    \${UserName}    \${PassWord}" >> $testSuite
+    echo "    Run Keyword If    \"\${ContInt}\"==\"true\"    Login With Public Key    \${UserName}    keyfile=\${PassWord}" >> $testSuite
     echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
     echo "    Directory Should Exist    \${SALHome}" >> $testSuite
     echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}" >> $testSuite
@@ -76,7 +78,9 @@ function createSubSession {
     echo "    Comment    Connect to host." >> $testSuite
     echo "    Open Connection    host=\${Host}    alias=Subscriber    timeout=\${timeout}    prompt=\${Prompt}" >> $testSuite
     echo "    Comment    Login." >> $testSuite
-    echo "    Login    \${UserName}    \${PassWord}" >> $testSuite
+    echo "    Log    \${ContInt}" >> $testSuite
+    echo "    Run Keyword If    \"\${ContInt}\"==\"false\"    Login    \${UserName}    \${PassWord}" >> $testSuite
+    echo "    Run Keyword If    \"\${ContInt}\"==\"true\"    Login With Public Key    \${UserName}    keyfile=\${PassWord}" >> $testSuite
     echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
     echo "    Directory Should Exist    \${SALHome}" >> $testSuite
     echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}" >> $testSuite
