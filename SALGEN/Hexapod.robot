@@ -18,7 +18,7 @@ SSH Into Host
     Comment    Login.
     Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
     Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
-	${input}=    Write    echo \$0
+	${input}=    Write    cat \$HOME/.bash_profile
     ${output}=    Read Until Prompt
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
