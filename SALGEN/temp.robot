@@ -18,5 +18,5 @@ SSH Into Host
     Comment    Login.
     Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
     Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
-	${input}=    Write    echo $ROBS_TEST
+	${input}=    Write    echo $LSST_SDK_INSTALL
 	${output}=    Read Until Prompt
