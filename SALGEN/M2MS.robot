@@ -131,7 +131,8 @@ Salgen M2MS Python
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}Commander.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller.py
 
 Salgen M2MS Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
