@@ -3,56 +3,56 @@
 --name SAL_Jenkins
 
 # List of salgenerator  test suites
-SALGEN/Camera.robot
-SALGEN/DM.robot
-SALGEN/M2MS.robot
-SALGEN/MTMount.robot
+rbtsal/SALGEN/Camera.robot
+rbtsal/SALGEN/DM.robot
+rbtsal/SALGEN/M2MS.robot
+rbtsal/SALGEN/MTMount.robot
 
 # CPP Publish/Subscribe Telemetry test suites
-CPP/Telemetry/MTMount_Alt.robot
-CPP/Telemetry/MTMount_Alt_OSS.robot
-CPP/Telemetry/MTMount_Alt_TC.robot
-CPP/Telemetry/MTMount_Az.robot
-CPP/Telemetry/MTMount_Az_CW.robot
-CPP/Telemetry/MTMount_Az_OSS.robot
-CPP/Telemetry/MTMount_Az_TC.robot
-CPP/Telemetry/MTMount_Bal.robot
-CPP/Telemetry/MTMount_Cab_TC.robot
-CPP/Telemetry/MTMount_Cam_CW.robot
-CPP/Telemetry/MTMount_DP_1.robot
-CPP/Telemetry/MTMount_DP_2.robot
-CPP/Telemetry/MTMount_MC.robot
-CPP/Telemetry/MTMount_MotionParameters.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Az.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
+rbtsal/rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Az_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Bal.robot
+rbtsal/CPP/Telemetry/MTMount_Cab_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Cam_CW.robot
+rbtsal/CPP/Telemetry/MTMount_DP_1.robot
+rbtsal/CPP/Telemetry/MTMount_DP_2.robot
+rbtsal/CPP/Telemetry/MTMount_MC.robot
+rbtsal/CPP/Telemetry/MTMount_MotionParameters.robot
 
 # CPP Commander/Controller test suites
-CPP/Commands/MTMount_clearerror.robot
-CPP/Commands/MTMount_closeMirrorCover.robot
-CPP/Commands/MTMount_configure.robot
-CPP/Commands/MTMount_disableCamWrap.robot
-CPP/Commands/MTMount_enableCamWrap.robot
-CPP/Commands/MTMount_moveToTarget.robot
-CPP/Commands/MTMount_openMirrorCover.robot
-CPP/Commands/MTMount_trackTarget.robot
+rbtsal/CPP/Commands/MTMount_clearerror.robot
+rbtsal/CPP/Commands/MTMount_closeMirrorCover.robot
+rbtsal/CPP/Commands/MTMount_configure.robot
+rbtsal/CPP/Commands/MTMount_disableCamWrap.robot
+rbtsal/CPP/Commands/MTMount_enableCamWrap.robot
+rbtsal/CPP/Commands/MTMount_moveToTarget.robot
+rbtsal/CPP/Commands/MTMount_openMirrorCover.robot
+rbtsal/CPP/Commands/MTMount_trackTarget.robot
 
 # CPP Event Sender/Logger test suites
-CPP/Events/MTMount_mountError.robot
-CPP/Events/MTMount_mountInPosition.robot
-CPP/Events/MTMount_mountState.robot
-CPP/Events/MTMount_mountWarning.robot
+rbtsal/CPP/Events/MTMount_mountError.robot
+rbtsal/CPP/Events/MTMount_mountInPosition.robot
+rbtsal/CPP/Events/MTMount_mountState.robot
+rbtsal/CPP/Events/MTMount_mountWarning.robot
 
 # JAVA Publish/Subscribe Telemetry test suites
-JAVA/Telemetry/Camera_CCS.robot
-JAVA/Telemetry/Camera_Cluster_Encoder.robot
-JAVA/Telemetry/Camera_Cold.robot
-JAVA/Telemetry/Camera_Cryo.robot
-JAVA/Telemetry/Camera_Filter.robot
-JAVA/Telemetry/Camera_GAS.robot
-JAVA/Telemetry/Camera_GDS.robot
-JAVA/Telemetry/Camera_PCMS.robot
-JAVA/Telemetry/Camera_Prot.robot
-JAVA/Telemetry/Camera_Purge.robot
-JAVA/Telemetry/Camera_SAS.robot
-JAVA/Telemetry/Camera_SDS.robot
-JAVA/Telemetry/Camera_Shutter.robot
-JAVA/Telemetry/Camera_WAS.robot
-JAVA/Telemetry/Camera_WDS.robot
+rbtsal/JAVA/Telemetry/Camera_CCS.robot
+rbtsal/JAVA/Telemetry/Camera_Cluster_Encoder.robot
+rbtsal/JAVA/Telemetry/Camera_Cold.robot
+rbtsal/JAVA/Telemetry/Camera_Cryo.robot
+rbtsal/JAVA/Telemetry/Camera_Filter.robot
+rbtsal/JAVA/Telemetry/Camera_GAS.robot
+rbtsal/JAVA/Telemetry/Camera_GDS.robot
+rbtsal/JAVA/Telemetry/Camera_PCMS.robot
+rbtsal/JAVA/Telemetry/Camera_Prot.robot
+rbtsal/JAVA/Telemetry/Camera_Purge.robot
+rbtsal/JAVA/Telemetry/Camera_SAS.robot
+rbtsal/JAVA/Telemetry/Camera_SDS.robot
+rbtsal/JAVA/Telemetry/Camera_Shutter.robot
+rbtsal/JAVA/Telemetry/Camera_WAS.robot
+rbtsal/JAVA/Telemetry/Camera_WDS.robot
