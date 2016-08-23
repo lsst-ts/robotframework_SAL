@@ -9,8 +9,6 @@ Resource    ../../Global_Vars.robot
 ${subSystem}    hexapod
 ${component}    configureAcceleration
 ${timeout}    30s
-#${conOut}    ${subSystem}_${component}_sub.out
-#${comOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Commander Session
@@ -19,7 +17,9 @@ Create Commander Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -30,7 +30,9 @@ Create Controller Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -46,10 +48,21 @@ Start Commander - Verify Missing Inputs Error
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander     #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}   Usage :  input parameters...
+
+Start Commander - Verify Timeout without Controller
+    [Tags]    functional
+    Switch Connection    Commander
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/cpp/src
+    Comment    Start Commander.
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7.061 29.9856 99.4024 71.9936 29.278 32.0879 27.7316 93.23 56.0277 65.359 74.4226 19.4668
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
 
 Start Controller
     [Tags]    functional
@@ -57,11 +70,10 @@ Start Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_controller    #|tee ${conOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
     ${output}=    Read
     Log    ${output}
     Should Be Empty    ${output}
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${conOut}
 
 Start Commander
     [Tags]    functional
@@ -69,72 +81,55 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 66.8721 4.4126 17.6988 15.6035 59.3459 92.3009 13.8269 73.0125 69.0331 29.4972 69.4745 73.0643    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7.061 29.9856 99.4024 71.9936 29.278 32.0879 27.7316 93.23 56.0277 65.359 74.4226 19.4668
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [issueCommandC configureAcceleration] writing a command containing :    1
+    Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
     Should Contain X Times    ${output}    device : drive    1
     Should Contain X Times    ${output}    property : acceleration    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xmin : 66.8721    1
-    Should Contain X Times    ${output}    xmax : 4.4126    1
-    Should Contain X Times    ${output}    ymin : 17.6988    1
-    Should Contain X Times    ${output}    ymax : 15.6035    1
-    Should Contain X Times    ${output}    zmin : 59.3459    1
-    Should Contain X Times    ${output}    zmax : 92.3009    1
-    Should Contain X Times    ${output}    umin : 13.8269    1
-    Should Contain X Times    ${output}    umax : 73.0125    1
-    Should Contain X Times    ${output}    vmin : 69.0331    1
-    Should Contain X Times    ${output}    vmax : 29.4972    1
-    Should Contain X Times    ${output}    wmin : 69.4745    1
-    Should Contain X Times    ${output}    wmax : 73.0643    1
+    Should Contain X Times    ${output}    xmin : 7.061    1
+    Should Contain X Times    ${output}    xmax : 29.9856    1
+    Should Contain X Times    ${output}    ymin : 99.4024    1
+    Should Contain X Times    ${output}    ymax : 71.9936    1
+    Should Contain X Times    ${output}    zmin : 29.278    1
+    Should Contain X Times    ${output}    zmax : 32.0879    1
+    Should Contain X Times    ${output}    umin : 27.7316    1
+    Should Contain X Times    ${output}    umax : 93.23    1
+    Should Contain X Times    ${output}    vmin : 56.0277    1
+    Should Contain X Times    ${output}    vmax : 65.359    1
+    Should Contain X Times    ${output}    wmin : 74.4226    1
+    Should Contain X Times    ${output}    wmax : 19.4668    1
     Should Contain    ${output}    === command configureAcceleration issued =
-    Should Contain    ${output}    === [getResponse] reading a message containing :
-    Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    error \ \ \ :
-    Should Contain    ${output}    ack \ \ \ \ \ : 300
-    Should Contain    ${output}    result \ \ : SAL ACK
-    Should Contain    ${output}    ack \ \ \ \ \ : 301
-    Should Contain    ${output}    result \ \ : Ack : OK
-    Should Contain    ${output}    ack \ \ \ \ \ : 303
-    Should Contain    ${output}    result \ \ : Done : OK
-    Should Contain    ${output}    === [waitForCompletion] command 0 completed ok :
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${comOut}
+    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === [acceptCommandC configureAcceleration] reading a command containing :
-    Should Contain X Times    ${output}    seqNum \ \ :    3
-    Should Contain X Times    ${output}    error \ \ \ :    2
-    Should Contain    ${output}    device : drive
-    Should Contain    ${output}    device \ \ : drive
-    Should Contain X Times    ${output}    property : acceleration    2
-    Should Contain    ${output}    action : 
-    Should Contain    ${output}    action \ \ : 
-    Should Contain    ${output}    value : 
-    Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command configureAcceleration received =
-    Should Contain X Times    ${output}    xmin : 66.8721    1
-    Should Contain X Times    ${output}    xmax : 4.4126    1
-    Should Contain X Times    ${output}    ymin : 17.6988    1
-    Should Contain X Times    ${output}    ymax : 15.6035    1
-    Should Contain X Times    ${output}    zmin : 59.3459    1
-    Should Contain X Times    ${output}    zmax : 92.3009    1
-    Should Contain X Times    ${output}    umin : 13.8269    1
-    Should Contain X Times    ${output}    umax : 73.0125    1
-    Should Contain X Times    ${output}    vmin : 69.0331    1
-    Should Contain X Times    ${output}    vmax : 29.4972    1
-    Should Contain X Times    ${output}    wmin : 69.4745    1
-    Should Contain X Times    ${output}    wmax : 73.0643    1
-    Should Contain    ${output}    === [ackCommand] acknowledging a command with :
+    Should Contain    ${output}    device : drive
+    Should Contain    ${output}    property : acceleration
+    Should Contain    ${output}    action : 
+    Should Contain    ${output}    value : 
+    Should Contain X Times    ${output}    xmin : 7.061    1
+    Should Contain X Times    ${output}    xmax : 29.9856    1
+    Should Contain X Times    ${output}    ymin : 99.4024    1
+    Should Contain X Times    ${output}    ymax : 71.9936    1
+    Should Contain X Times    ${output}    zmin : 29.278    1
+    Should Contain X Times    ${output}    zmax : 32.0879    1
+    Should Contain X Times    ${output}    umin : 27.7316    1
+    Should Contain X Times    ${output}    umax : 93.23    1
+    Should Contain X Times    ${output}    vmin : 56.0277    1
+    Should Contain X Times    ${output}    vmax : 65.359    1
+    Should Contain X Times    ${output}    wmin : 74.4226    1
+    Should Contain X Times    ${output}    wmax : 19.4668    1
+    Should Contain X Times    ${output}    === [ackCommand_configureAcceleration] acknowledging a command with :    2
+    Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
-    Should Contain    ${output}    error    : 1
+    Should Contain X Times    ${output}    error \ \ \ : 0    2
     Should Contain    ${output}    result   : Ack : OK
-    Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 303
-    Should Contain    ${output}    error    : 0
     Should Contain    ${output}    result   : Done : OK

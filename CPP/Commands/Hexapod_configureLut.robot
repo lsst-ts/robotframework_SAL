@@ -2,7 +2,6 @@
 Documentation    Hexapod_configureLut commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
-Force Tags    TSS-676
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
 
@@ -10,8 +9,6 @@ Resource    ../../Global_Vars.robot
 ${subSystem}    hexapod
 ${component}    configureLut
 ${timeout}    30s
-#${conOut}    ${subSystem}_${component}_sub.out
-#${comOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Commander Session
@@ -20,7 +17,9 @@ Create Commander Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,7 +30,9 @@ Create Controller Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -47,10 +48,21 @@ Start Commander - Verify Missing Inputs Error
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander     #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}   Usage :  input parameters...
+
+Start Commander - Verify Timeout without Controller
+    [Tags]    functional
+    Switch Connection    Commander
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/cpp/src
+    Comment    Start Commander.
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 73.0602 1.9885 26.9143 51.5942 19.9109 45.0498 55.7593 34.6101 35.0459 81.767 52.1891 32.607 67.6862 10.4671 50.8553 71.9939 63.1545 5.1233 3.1997 39.015 62.6738 14.7259 38.7198 79.443 88.011 9.0857 74.8851 45.9613 18.7013 60.4461 16.0232 48.6257 75.8241 5.2968 69.9214 57.6152 65.681 1.1637 45.8173 62.4062 69.6272 9.8275 89.9627 78.8528 34.5716 38.262 98.3211 36.049 99.8671 44.9283 35.9167 72.3945 73.7191 62.9101 45.9947 47.0148 78.9549 56.0107 32.9456 70.3315 91.5956 38.3571 1.7758 61.8995 91.3848 63.1933 62.9376 24.9121 91.4644 3.084 55.9485 99.5464 92.487 18.2219 10.474 93.2882 41.2586 16.1411 78.4189 18.8524 52.8591 2.7705 47.4424 89.7962 48.709 73.0331 88.2544 48.0814 6.4644 55.1397 46.7342 0.0605 78.9453 58.93 69.108 41.9484 23.7523 81.3163 90.4731 2.1347 99.0328 69.2149 73.287 79.083 66.4409 72.4587 84.1333 62.0516 30.3569 24.932 47.8759 54.4048 45.1285 54.873 60.7673 43.9798 32.4892 33.291 43.3859 40.9101 85.4631 18.4422 11.1805 55.0531 15.7829 91.2943 98.5868 93.1006 65.1827 40.0561 47.7154 83.6941 36.3424 19.5175 64.3217 68.9473 82.7774 10.5104 28.4596 48.6004 16.5911 13.1691 92.9989 74.2613 38.1851 41.9895 49.2029 37.7868 82.138 2.7956 21.2312 61.3488 6.7512 19.8521 92.8717 59.9814 17.0446 72.1335 85.0808 1.8764 99.1269 78.3071 95.1414 8.5045 96.0277 71.1579 33.264 27.7075 86.8637 88.987 8.2807 92.4703 48.2011 35.0302 65.4461 10.0489 42.8048 48.6015 76.1689 87.4849 54.9475 49.0706 62.1627 97.5798 1.4831 34.2433 79.3971 12.261 46.8559 11.6779 99.8276 14.9734 60.3163 54.1054 87.5796 66.3017 11.7624 34.759 10.1031 60.1763 64.77 26.8974 42.0508 67.1314 46.4032 49.2864 9.1173 93.8653 98.6022 62.2129 59.0157 77.3281 87.9025 5.3362 97.058 96.0619 29.4396 71.2368 27.5497 69.1412 3.7496 55.2739 35.9236 65.5143 52.3819 86.7597 4.3201 25.7218 52.0439 19.1601 67.8312 40.0559 63.6387 71.5525 56.2737 60.7868 37.7928 13.6189 1.4605 63.0509 27.3176 20.3733 47.896 90.0147 45.5195 60.1861 12.9601 2.9326 76.5428 16.9453 78.4552 96.2441 95.3395 79.5183 68.0288 51.6222 20.2426 29.2724 75.778 0.5617 19.0593 15.4637 40.1371 18.3225 90.9148 40.8347 94.2346 83.2432 13.5207 81.6377 32.8501 15.3589 12.1407 22.2252 95.8453 60.0419 73.3421 13.4469 36.0972 48.4236 9.4582 45.8239 14.2503 69.7171 62.0739 36.9351 23.4021 33.105 30.9261 27.3873 49.1068 98.4757 56.0477 67.8757 72.9256 25.8241 37.5585 42.1298 75.4837 22.5122 49.3866 56.5519 26.8116 26.0256 9.4007 52.2089 60.2938 9.4363 85.0007 27.3809 53.3128 91.858 28.6444 5.8745 55.3576 34.6466 52.6022 56.8014 98.4106 10.4211 86.2216 26.5705 16.7501 90.3578 26.0373 20.3705 5.2186 14.4624 80.8499 70.9989 5.7442 65.4897 98.3902 67.7156 15.9639 91.3893 37.3836 74.0914 45.0232 67.5542 35.8115 59.4239 40.3733 30.1046 97.5417 65.6082 57.0182 49.3237 22.6663 97.0303 91.3348 11.1722 73.2897 81.3152 79.2789 11.8199 78.3138 13.8452 22.9089 80.1765 73.6827 47.6814 82.8515 29.765 61.583 74.803 42.6544 94.9024 7.4755 33.4423 4.4823 82.7689 15.1266 77.8346 66.5579 93.0408 8.2781 91.662 97.7411 61.8855 82.1894 83.7341 39.5068 4.3443 42.2095 33.4651 95.4408 56.9886 30.287 67.7802 26.3322 36.1073 79.7942 8.5237 86.415 92.1914 68.3282 28.4213 80.6455 19.6923 81.894 35.4486 58.4314 80.7804 71.299 58.4985 63.2365 41.5474 38.2976 68.2226 62.972 22.1546 2.5437 44.7 52.9921 25.335 91.0406 24.4418 14.2066 87.4658 68.2087 49.2218 73.6363 1.9421 37.8403 75.192 93.7473 57.7958 93.0353 88.1923 99.0278 22.6255 13.8928 55.9642 22.1634 93.8603 5.1718 35.1286 12.7991 14.5771 68.6063 1.5555 14.2566 2.251 43.7912 84.8598 26.5 46.6588 85.6002 33.6497 12.6078 23.4089 10.3286 34.1694 47.4879 57.694 18.6721 77.045 62.4646 52.6714 88.4514 62.0457 26.7392 5.8837 26.061 95.452 40.042 90.1401 51.1663 74.4792 4.8774 29.6893 32.7049 21.8666 46.9341 2.6255 65.7561 72.174 79.1143 2.0672 0.7631 74.3924 39.2026 77.6241 42.8024 79.2246 83.4925 26.2537 52.163 6.1777 11.6044 90.6209 27.2892 31.6695 64.2544 67.1742 2.3406 78.7779 81.5847 44.8966 11.5262 47.5757 91.1497 32.5248 53.3238 84.3687 84.9297 78.7285 34.271 5.3053 48.6844 74.7119 14.3368 73.064 61.8719 13.7208 95.8935 71.8922 61.1388 78.5621 47.7115 9.9356 45.806 23.5552 83.7266 12.824 51.7284 85.0904 56.3064 16.3662 58.3871 99.7065 58.9826 49.1201 69.2898 90.2766 18.4526 43.9429 39.2206 40.9585
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
 
 Start Controller
     [Tags]    functional
@@ -58,11 +70,10 @@ Start Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_controller    #|tee ${conOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
     ${output}=    Read
     Log    ${output}
     Should Be Empty    ${output}
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${conOut}
 
 Start Commander
     [Tags]    functional
@@ -70,60 +81,43 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 34.78 15.34 21.53 14.86 85.63 47.11    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 73.0602 1.9885 26.9143 51.5942 19.9109 45.0498 55.7593 34.6101 35.0459 81.767 52.1891 32.607 67.6862 10.4671 50.8553 71.9939 63.1545 5.1233 3.1997 39.015 62.6738 14.7259 38.7198 79.443 88.011 9.0857 74.8851 45.9613 18.7013 60.4461 16.0232 48.6257 75.8241 5.2968 69.9214 57.6152 65.681 1.1637 45.8173 62.4062 69.6272 9.8275 89.9627 78.8528 34.5716 38.262 98.3211 36.049 99.8671 44.9283 35.9167 72.3945 73.7191 62.9101 45.9947 47.0148 78.9549 56.0107 32.9456 70.3315 91.5956 38.3571 1.7758 61.8995 91.3848 63.1933 62.9376 24.9121 91.4644 3.084 55.9485 99.5464 92.487 18.2219 10.474 93.2882 41.2586 16.1411 78.4189 18.8524 52.8591 2.7705 47.4424 89.7962 48.709 73.0331 88.2544 48.0814 6.4644 55.1397 46.7342 0.0605 78.9453 58.93 69.108 41.9484 23.7523 81.3163 90.4731 2.1347 99.0328 69.2149 73.287 79.083 66.4409 72.4587 84.1333 62.0516 30.3569 24.932 47.8759 54.4048 45.1285 54.873 60.7673 43.9798 32.4892 33.291 43.3859 40.9101 85.4631 18.4422 11.1805 55.0531 15.7829 91.2943 98.5868 93.1006 65.1827 40.0561 47.7154 83.6941 36.3424 19.5175 64.3217 68.9473 82.7774 10.5104 28.4596 48.6004 16.5911 13.1691 92.9989 74.2613 38.1851 41.9895 49.2029 37.7868 82.138 2.7956 21.2312 61.3488 6.7512 19.8521 92.8717 59.9814 17.0446 72.1335 85.0808 1.8764 99.1269 78.3071 95.1414 8.5045 96.0277 71.1579 33.264 27.7075 86.8637 88.987 8.2807 92.4703 48.2011 35.0302 65.4461 10.0489 42.8048 48.6015 76.1689 87.4849 54.9475 49.0706 62.1627 97.5798 1.4831 34.2433 79.3971 12.261 46.8559 11.6779 99.8276 14.9734 60.3163 54.1054 87.5796 66.3017 11.7624 34.759 10.1031 60.1763 64.77 26.8974 42.0508 67.1314 46.4032 49.2864 9.1173 93.8653 98.6022 62.2129 59.0157 77.3281 87.9025 5.3362 97.058 96.0619 29.4396 71.2368 27.5497 69.1412 3.7496 55.2739 35.9236 65.5143 52.3819 86.7597 4.3201 25.7218 52.0439 19.1601 67.8312 40.0559 63.6387 71.5525 56.2737 60.7868 37.7928 13.6189 1.4605 63.0509 27.3176 20.3733 47.896 90.0147 45.5195 60.1861 12.9601 2.9326 76.5428 16.9453 78.4552 96.2441 95.3395 79.5183 68.0288 51.6222 20.2426 29.2724 75.778 0.5617 19.0593 15.4637 40.1371 18.3225 90.9148 40.8347 94.2346 83.2432 13.5207 81.6377 32.8501 15.3589 12.1407 22.2252 95.8453 60.0419 73.3421 13.4469 36.0972 48.4236 9.4582 45.8239 14.2503 69.7171 62.0739 36.9351 23.4021 33.105 30.9261 27.3873 49.1068 98.4757 56.0477 67.8757 72.9256 25.8241 37.5585 42.1298 75.4837 22.5122 49.3866 56.5519 26.8116 26.0256 9.4007 52.2089 60.2938 9.4363 85.0007 27.3809 53.3128 91.858 28.6444 5.8745 55.3576 34.6466 52.6022 56.8014 98.4106 10.4211 86.2216 26.5705 16.7501 90.3578 26.0373 20.3705 5.2186 14.4624 80.8499 70.9989 5.7442 65.4897 98.3902 67.7156 15.9639 91.3893 37.3836 74.0914 45.0232 67.5542 35.8115 59.4239 40.3733 30.1046 97.5417 65.6082 57.0182 49.3237 22.6663 97.0303 91.3348 11.1722 73.2897 81.3152 79.2789 11.8199 78.3138 13.8452 22.9089 80.1765 73.6827 47.6814 82.8515 29.765 61.583 74.803 42.6544 94.9024 7.4755 33.4423 4.4823 82.7689 15.1266 77.8346 66.5579 93.0408 8.2781 91.662 97.7411 61.8855 82.1894 83.7341 39.5068 4.3443 42.2095 33.4651 95.4408 56.9886 30.287 67.7802 26.3322 36.1073 79.7942 8.5237 86.415 92.1914 68.3282 28.4213 80.6455 19.6923 81.894 35.4486 58.4314 80.7804 71.299 58.4985 63.2365 41.5474 38.2976 68.2226 62.972 22.1546 2.5437 44.7 52.9921 25.335 91.0406 24.4418 14.2066 87.4658 68.2087 49.2218 73.6363 1.9421 37.8403 75.192 93.7473 57.7958 93.0353 88.1923 99.0278 22.6255 13.8928 55.9642 22.1634 93.8603 5.1718 35.1286 12.7991 14.5771 68.6063 1.5555 14.2566 2.251 43.7912 84.8598 26.5 46.6588 85.6002 33.6497 12.6078 23.4089 10.3286 34.1694 47.4879 57.694 18.6721 77.045 62.4646 52.6714 88.4514 62.0457 26.7392 5.8837 26.061 95.452 40.042 90.1401 51.1663 74.4792 4.8774 29.6893 32.7049 21.8666 46.9341 2.6255 65.7561 72.174 79.1143 2.0672 0.7631 74.3924 39.2026 77.6241 42.8024 79.2246 83.4925 26.2537 52.163 6.1777 11.6044 90.6209 27.2892 31.6695 64.2544 67.1742 2.3406 78.7779 81.5847 44.8966 11.5262 47.5757 91.1497 32.5248 53.3238 84.3687 84.9297 78.7285 34.271 5.3053 48.6844 74.7119 14.3368 73.064 61.8719 13.7208 95.8935 71.8922 61.1388 78.5621 47.7115 9.9356 45.806 23.5552 83.7266 12.824 51.7284 85.0904 56.3064 16.3662 58.3871 99.7065 58.9826 49.1201 69.2898 90.2766 18.4526 43.9429 39.2206 40.9585
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [issueCommandC configureLut] writing a command containing :    1
+    Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
     Should Contain X Times    ${output}    device : target    1
     Should Contain X Times    ${output}    property : lut    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xlut : 34.78    1
-    Should Contain X Times    ${output}    ylut : 15.34    1
-    Should Contain X Times    ${output}    zlut : 21.53    1
-    Should Contain X Times    ${output}    ulut : 14.86    1
-    Should Contain X Times    ${output}    vlut : 85.63    1
-    Should Contain X Times    ${output}    wlut : 47.11    1
+    Should Contain X Times    ${output}    xlut : 73.0602    1
+    Should Contain X Times    ${output}    ylut : 1.9885    1
+    Should Contain X Times    ${output}    zlut : 26.9143    1
+    Should Contain X Times    ${output}    ulut : 51.5942    1
+    Should Contain X Times    ${output}    vlut : 19.9109    1
+    Should Contain X Times    ${output}    wlut : 45.0498    1
     Should Contain    ${output}    === command configureLut issued =
-    Should Contain    ${output}    === [getResponse] reading a message containing :
-    Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    error \ \ \ :
-    Should Contain    ${output}    ack \ \ \ \ \ : 300
-    Should Contain    ${output}    result \ \ : SAL ACK
-    Should Contain    ${output}    ack \ \ \ \ \ : 301
-    Should Contain    ${output}    result \ \ : Ack : OK
-    Should Contain    ${output}    ack \ \ \ \ \ : 303
-    Should Contain    ${output}    result \ \ : Done : OK
-    Should Contain    ${output}    === [waitForCompletion] command 0 completed ok :
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${comOut}
+    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === [acceptCommandC configureLut] reading a command containing :
-    Should Contain X Times    ${output}    seqNum \ \ :    3
-    Should Contain X Times    ${output}    error \ \ \ :    2
-    Should Contain    ${output}    device : target
-    Should Contain    ${output}    device \ \ : target
-    Should Contain X Times    ${output}    property : lut    2
-    Should Contain    ${output}    action : 
-    Should Contain    ${output}    action \ \ : 
-    Should Contain    ${output}    value : 
-    Should Contain    ${output}    value \ \ \ : 
     Should Contain    ${output}    === command configureLut received =
-    Should Contain X Times    ${output}    xlut : 34.78    1
-    Should Contain X Times    ${output}    ylut : 15.34    1
-    Should Contain X Times    ${output}    zlut : 21.53    1
-    Should Contain X Times    ${output}    ulut : 14.86    1
-    Should Contain X Times    ${output}    vlut : 85.63    1
-    Should Contain X Times    ${output}    wlut : 47.11    1
-    Should Contain    ${output}    === [ackCommand] acknowledging a command with :
+    Should Contain    ${output}    device : target
+    Should Contain    ${output}    property : lut
+    Should Contain    ${output}    action : 
+    Should Contain    ${output}    value : 
+    Should Contain X Times    ${output}    xlut : 73.0602    1
+    Should Contain X Times    ${output}    ylut : 46.7342    1
+    Should Contain X Times    ${output}    zlut : 54.9475    1
+    Should Contain X Times    ${output}    ulut : 32.8501    1
+    Should Contain X Times    ${output}    vlut : 73.6827    1
+    Should Contain X Times    ${output}    wlut : 12.6078    1
+    Should Contain X Times    ${output}    === [ackCommand_configureLut] acknowledging a command with :    2
+    Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
-    Should Contain    ${output}    error    : 1
+    Should Contain X Times    ${output}    error \ \ \ : 0    2
     Should Contain    ${output}    result   : Ack : OK
-    Should Contain    ${output}    === [ackCommand] acknowledging a command with :
     Should Contain    ${output}    ack      : 303
-    Should Contain    ${output}    error    : 0
     Should Contain    ${output}    result   : Done : OK
