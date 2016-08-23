@@ -9,12 +9,12 @@ rbtsal/SALGEN/M2MS.robot
 rbtsal/SALGEN/MTMount.robot
 
 # CPP Publish/Subscribe Telemetry test suites
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt.robot
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Az.robot
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
-rbtsal/rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Alt.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Az.robot
+rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
+rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
 rbtsal/CPP/Telemetry/MTMount_Az_TC.robot
 rbtsal/CPP/Telemetry/MTMount_Bal.robot
 rbtsal/CPP/Telemetry/MTMount_Cab_TC.robot
