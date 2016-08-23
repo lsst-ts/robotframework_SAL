@@ -92,8 +92,6 @@ function createVariables() {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
-    echo "#\${conOut}    \${subSystem}_\${component}_sub.out" >> $testSuite
-    echo "#\${comOut}    \${subSystem}_\${component}_pub.out" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -145,13 +143,26 @@ function startCommanderInputs() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander $parameter    #|tee \${comOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander $parameter" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
     echo "" >> $testSuite
 }
 
+function startCommanderTimeout() {
+	echo "Start Commander - Verify Timeout without Controller" >> $testSuite
+    echo "    [Tags]    functional" >> $testSuite
+    echo "    Switch Connection    Commander" >> $testSuite
+    echo "    Comment    Move to working directory." >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
+    echo "    Comment    Start Commander." >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander ${argumentsArray[*]}" >> $testSuite
+    echo "    \${output}=    Read Until Prompt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
+    echo "    Should Contain    \${output}    === [waitForCompletion_\${component}] command 0 timed out :" >> $testSuite
+    echo "" >> $testSuite
+}
 function startController() {
     echo "Start Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
@@ -159,11 +170,10 @@ function startController() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Controller." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_controller    #|tee \${conOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_controller" >> $testSuite
     echo "    \${output}=    Read" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Be Empty    \${output}" >> $testSuite
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${conOut}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -177,10 +187,10 @@ function startCommander() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander ${argumentsArray[*]}    #|tee \${comOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander ${argumentsArray[*]}" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === [issueCommandC ${topic}] writing a command containing :    1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    === [issueCommand_\${component}] writing a command containing :    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    device : $device    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    property : $property    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    action : $action    1" >> $testSuite
@@ -190,17 +200,7 @@ function startCommander() {
 		(( i++ ))
     done
 	echo "    Should Contain    \${output}    === command $topic issued =" >>$testSuite
-    echo "    Should Contain    \${output}    === [getResponse] reading a message containing :" >>$testSuite
-    echo "    Should Contain    \${output}    revCode \ :" >>$testSuite
-    echo "    Should Contain    \${output}    error \ \ \ :" >>$testSuite
-    echo "    Should Contain    \${output}    ack \ \ \ \ \ : 300" >>$testSuite
-    echo "    Should Contain    \${output}    result \ \ : SAL ACK" >>$testSuite
-    echo "    Should Contain    \${output}    ack \ \ \ \ \ : 301" >>$testSuite
-    echo "    Should Contain    \${output}    result \ \ : Ack : OK" >>$testSuite
-    echo "    Should Contain    \${output}    ack \ \ \ \ \ : 303" >>$testSuite
-    echo "    Should Contain    \${output}    result \ \ : Done : OK" >>$testSuite
-    echo "    Should Contain    \${output}    === [waitForCompletion] command 0 completed ok :" >>$testSuite
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${comOut}" >> $testSuite
+    echo "    Should Contain    \${output}    === [waitForCompletion_\${component}] command 0 completed ok :" >>$testSuite
     echo "" >> $testSuite
 }
 
@@ -213,17 +213,11 @@ function readController() {
     echo "    Switch Connection    Controller" >> $testSuite
     echo "    \${output}=    Read Until    result \ \ : Done : OK" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    === [acceptCommandC ${topic}] reading a command containing :" >> $testSuite
-    echo "    Should Contain X Times    \${output}    seqNum \ \ :    3" >> $testSuite
-    echo "    Should Contain X Times    \${output}    error \ \ \ :    2" >>$testSuite
-    echo "    Should Contain    \${output}    device : $device" >> $testSuite
-    echo "    Should Contain    \${output}    device \ \ : $device" >> $testSuite
-    echo "    Should Contain X Times    \${output}    property : $property    2" >> $testSuite
-    echo "    Should Contain    \${output}    action : $action" >> $testSuite
-    echo "    Should Contain    \${output}    action \ \ : $action" >> $testSuite
-    echo "    Should Contain    \${output}    value : $value" >> $testSuite
-    echo "    Should Contain    \${output}    value \ \ \ : $value" >> $testSuite
     echo "    Should Contain    \${output}    === command ${topic} received =" >> $testSuite
+    echo "    Should Contain    \${output}    device : $device" >> $testSuite
+    echo "    Should Contain    \${output}    property : $property" >> $testSuite
+    echo "    Should Contain    \${output}    action : $action" >> $testSuite
+    echo "    Should Contain    \${output}    value : $value" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
 		parameterIndex=$(getParameterIndex $i)
         parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
@@ -232,13 +226,12 @@ function readController() {
         echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
 		(( i++ ))
     done
-	echo "    Should Contain    \${output}    === [ackCommand] acknowledging a command with :" >> $testSuite
+	echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    2" >> $testSuite
+	echo "    Should Contain    \${output}    seqNum   :" >> $testSuite
     echo "    Should Contain    \${output}    ack      : 301" >> $testSuite
-    echo "    Should Contain    \${output}    error    : 1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    error \ \ \ : 0    2" >> $testSuite
     echo "    Should Contain    \${output}    result   : Ack : OK" >> $testSuite
-	echo "    Should Contain    \${output}    === [ackCommand] acknowledging a command with :" >> $testSuite
     echo "    Should Contain    \${output}    ack      : 303" >> $testSuite
-    echo "    Should Contain    \${output}    error    : 0" >> $testSuite
     echo "    Should Contain    \${output}    result   : Done : OK" >> $testSuite
 }
 
@@ -279,7 +272,6 @@ function createTestSuite() {
 		createControllerSession
         verifyCompCommanderController
 		startCommanderInputs
-		startController
 
 		# Get the arguments to the commander.
 		unset argumentsArray
@@ -299,6 +291,10 @@ function createTestSuite() {
 					done
 			done
 		fi
+		# Create the Commander Timeout test case.
+		startCommanderTimeout
+		# Create the Start Controller test case.
+		startController
 		# Create the Start Commander test case.
 		startCommander $device $property
 		# Create the Read Controller test case.
