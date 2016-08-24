@@ -2,7 +2,6 @@
 Documentation    DM_dmToBase sender/logger tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
-Force Tags    TSS-683
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
 
@@ -20,7 +19,9 @@ Create Sender Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,7 +32,9 @@ Create Logger Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -70,7 +73,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1228095693    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 837658690    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dm::logevent_dmToBase writing a message containing :    1
@@ -89,6 +92,6 @@ Read Logger
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
     Should Contain X Times    ${output}    === Event dmToBase received =     2
-    Should Contain X Times    ${output}    priority : 1228095693    2
+    Should Contain X Times    ${output}    priority : 837658690    2
     Should Contain X Times    ${output}    image_id :    2
-    Should Contain    ${output}    image_id : 1228095693
+    Should Contain    ${output}    image_id : 837658690

@@ -19,7 +19,9 @@ Create Sender Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -30,7 +32,9 @@ Create Logger Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -69,7 +73,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 746920945 test 1068206892 72.8733    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 19339672 36.7822    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -88,12 +92,10 @@ Read Logger
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
     Should Contain X Times    ${output}    === Event tempError received =     2
-    Should Contain X Times    ${output}    priority : 746920945    2
-    Should Contain X Times    ${output}    priority :    2
-    Should Contain    ${output}    priority : 746920945
+    Should Contain X Times    ${output}    priority : test    2
     Should Contain X Times    ${output}    device :    2
     Should Contain    ${output}    device : test
     Should Contain X Times    ${output}    severity :    2
-    Should Contain    ${output}    severity : 1068206892
+    Should Contain    ${output}    severity : 19339672
     Should Contain X Times    ${output}    temp :    2
-    Should Contain    ${output}    temp : 72.8733
+    Should Contain    ${output}    temp : 36.7822
