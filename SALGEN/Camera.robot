@@ -142,7 +142,7 @@ Salgen Camera Python
 
 Salgen Camera Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
-	[Tags]    skipped
+	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} labview
     ${output}=    Read Until Prompt
     Log    ${output}
