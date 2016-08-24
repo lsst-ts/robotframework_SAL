@@ -1,6 +1,7 @@
 ###  Test Suite list ###
 #  Change the title of the test results
 --name SalJava
+--output JAVA.xml
 
 # Publish/Subscribe Telemetry test suites
 JAVA/Telemetry/Camera_CCS.robot
@@ -24,9 +25,6 @@ JAVA/Telemetry/DM_alert_summary.robot
 JAVA/Telemetry/DM_available_replicators_distributors.robot
 JAVA/Telemetry/DM_efd_slave_replication_state.robot
 JAVA/Telemetry/DM_international_network_status.robot
-JAVA/Telemetry/DM_logevent_image_archived_archive.robot
-JAVA/Telemetry/DM_logevent_image_archived_base.robot
-JAVA/Telemetry/DM_logevent_processed_and_published.robot
 JAVA/Telemetry/DM_raft_images_sent_current.robot
 JAVA/Telemetry/DM_successfully_archived.robot
 JAVA/Telemetry/DM_summit_to_base_network_status.robot

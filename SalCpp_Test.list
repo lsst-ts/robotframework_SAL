@@ -1,6 +1,7 @@
 ###  Test Suite list ###
 #  Change the title of the test results
 --name SalCpp
+--output CPP.xml
 
 # Publish/Subscribe Telemetry test suites
 CPP/Telemetry/Camera_CCS_status.robot
