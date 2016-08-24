@@ -130,14 +130,8 @@ function readSubscriber {
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
-    echo "    \${output}=    Read Until    ${itemsArray[${#itemsArray[@]}-1]} : 0" >> $testSuite
+    echo "    \${output}=    Read" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [GetSample] message received :1    10" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    9" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ :    10" >> $testSuite
-    echo "    Should Contain X Times    \${output}    sndStamp \ :    10" >> $testSuite
-    echo "    Should Contain X Times    \${output}    origin \ :    10" >> $testSuite
-    echo "    Should Contain X Times    \${output}    host \ :    10" >> $testSuite
     for item in "${itemsArray[@]}"; do
         echo "    Should Contain X Times    \${output}    $item :    10" >>$testSuite
     done
