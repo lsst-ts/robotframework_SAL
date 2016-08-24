@@ -74,14 +74,8 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
-    ${output}=    Read Until    Motor_Surface_Temperature_2 : 0
+    ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    [GetSample] message received :1    10
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
-    Should Contain X Times    ${output}    revCode \ :    10
-    Should Contain X Times    ${output}    sndStamp \ :    10
-    Should Contain X Times    ${output}    origin \ :    10
-    Should Contain X Times    ${output}    host \ :    10
     Should Contain X Times    ${output}    Drive_Surface_Temperature_1 :    10
     Should Contain X Times    ${output}    Drive_Surface_Temperature_2 :    10
     Should Contain X Times    ${output}    Motor_Surface_Temperature_1 :    10

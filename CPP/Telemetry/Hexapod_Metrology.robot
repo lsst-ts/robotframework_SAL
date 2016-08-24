@@ -74,14 +74,8 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
-    ${output}=    Read Until    status : 0
+    ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    [GetSample] message received :1    10
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
-    Should Contain X Times    ${output}    revCode \ :    10
-    Should Contain X Times    ${output}    sndStamp \ :    10
-    Should Contain X Times    ${output}    origin \ :    10
-    Should Contain X Times    ${output}    host \ :    10
     Should Contain X Times    ${output}    distance :    10
     Should Contain X Times    ${output}    error :    10
     Should Contain X Times    ${output}    status :    10
