@@ -76,12 +76,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    AngleDif_Actual :    10
-    Should Contain X Times    ${output}    AngleDif_ActualLVDT :    10
-    Should Contain X Times    ${output}    Positive_Power_Off_Switch :    10
-    Should Contain X Times    ${output}    Negative_Power_Off_Switch :    10
-    Should Contain X Times    ${output}    Axis_Status :    10
-    Should Contain X Times    ${output}    Curr_Actual_1 :    10
-    Should Contain X Times    ${output}    Curr_Actual_2 :    10
-    Should Contain X Times    ${output}    Drive_Status_1 :    10
-    Should Contain X Times    ${output}    Drive_Status_2 :    10
+    Should Contain X Times    ${output}    AngleDif_Actual :    9
+    Should Contain X Times    ${output}    AngleDif_ActualLVDT :    9
+    Should Contain X Times    ${output}    Positive_Power_Off_Switch :    9
+    Should Contain X Times    ${output}    Negative_Power_Off_Switch :    9
+    Should Contain X Times    ${output}    Axis_Status :    9
+    Should Contain X Times    ${output}    Curr_Actual_1 :    9
+    Should Contain X Times    ${output}    Curr_Actual_2 :    9
+    Should Contain X Times    ${output}    Drive_Status_1 :    9
+    Should Contain X Times    ${output}    Drive_Status_2 :    9

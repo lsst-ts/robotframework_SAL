@@ -76,8 +76,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    tangentLink_0deg_absolutePositionSteps :    10
-    Should Contain X Times    ${output}    tangentLink_120deg_absolutePositionSteps :    10
-    Should Contain X Times    ${output}    tangentLink_180deg_absolutePositionSteps :    10
-    Should Contain X Times    ${output}    tangentLink_240deg_absolutePositionSteps :    10
-    Should Contain X Times    ${output}    tangentLink_360deg_absolutePositionSteps :    10
+    Should Contain X Times    ${output}    tangentLink_0deg_absolutePositionSteps :    9
+    Should Contain X Times    ${output}    tangentLink_120deg_absolutePositionSteps :    9
+    Should Contain X Times    ${output}    tangentLink_180deg_absolutePositionSteps :    9
+    Should Contain X Times    ${output}    tangentLink_240deg_absolutePositionSteps :    9
+    Should Contain X Times    ${output}    tangentLink_360deg_absolutePositionSteps :    9

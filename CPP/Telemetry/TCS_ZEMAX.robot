@@ -76,6 +76,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    bg_algorithm :    10
-    Should Contain X Times    ${output}    exposure :    10
-    Should Contain X Times    ${output}    iterations :    10
+    Should Contain X Times    ${output}    bg_algorithm :    9
+    Should Contain X Times    ${output}    exposure :    9
+    Should Contain X Times    ${output}    iterations :    9

@@ -76,6 +76,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    force :    10
-    Should Contain X Times    ${output}    stepcnt :    10
-    Should Contain X Times    ${output}    targetpos :    10
+    Should Contain X Times    ${output}    force :    9
+    Should Contain X Times    ${output}    stepcnt :    9
+    Should Contain X Times    ${output}    targetpos :    9

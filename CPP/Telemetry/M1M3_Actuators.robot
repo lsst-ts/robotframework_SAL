@@ -76,11 +76,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    cyltemp :    10
-    Should Contain X Times    ${output}    envtemp :    10
-    Should Contain X Times    ${output}    error :    10
-    Should Contain X Times    ${output}    lvdtcorr :    10
-    Should Contain X Times    ${output}    position :    10
-    Should Contain X Times    ${output}    pressure :    10
-    Should Contain X Times    ${output}    setpoint :    10
-    Should Contain X Times    ${output}    status :    10
+    Should Contain X Times    ${output}    cyltemp :    9
+    Should Contain X Times    ${output}    envtemp :    9
+    Should Contain X Times    ${output}    error :    9
+    Should Contain X Times    ${output}    lvdtcorr :    9
+    Should Contain X Times    ${output}    position :    9
+    Should Contain X Times    ${output}    pressure :    9
+    Should Contain X Times    ${output}    setpoint :    9
+    Should Contain X Times    ${output}    status :    9

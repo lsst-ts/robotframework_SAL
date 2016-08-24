@@ -76,10 +76,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    boosterSpeed :    10
-    Should Contain X Times    ${output}    calibrated :    10
-    Should Contain X Times    ${output}    glycolFlow :    10
-    Should Contain X Times    ${output}    glycolTemperature :    10
-    Should Contain X Times    ${output}    raw :    10
-    Should Contain X Times    ${output}    setPoint :    10
-    Should Contain X Times    ${output}    status :    10
+    Should Contain X Times    ${output}    boosterSpeed :    9
+    Should Contain X Times    ${output}    calibrated :    9
+    Should Contain X Times    ${output}    glycolFlow :    9
+    Should Contain X Times    ${output}    glycolTemperature :    9
+    Should Contain X Times    ${output}    raw :    9
+    Should Contain X Times    ${output}    setPoint :    9
+    Should Contain X Times    ${output}    status :    9

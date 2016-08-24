@@ -76,10 +76,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    azCalibrated :    10
-    Should Contain X Times    ${output}    azEncoder :    10
-    Should Contain X Times    ${output}    elevCalibrated :    10
-    Should Contain X Times    ${output}    elevEncoder :    10
-    Should Contain X Times    ${output}    screenEncoder :    10
-    Should Contain X Times    ${output}    shutterL :    10
-    Should Contain X Times    ${output}    shutterR :    10
+    Should Contain X Times    ${output}    azCalibrated :    9
+    Should Contain X Times    ${output}    azEncoder :    9
+    Should Contain X Times    ${output}    elevCalibrated :    9
+    Should Contain X Times    ${output}    elevEncoder :    9
+    Should Contain X Times    ${output}    screenEncoder :    9
+    Should Contain X Times    ${output}    shutterL :    9
+    Should Contain X Times    ${output}    shutterR :    9

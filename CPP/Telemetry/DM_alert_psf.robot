@@ -76,4 +76,4 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    psf_wcs_last_visit :    10
+    Should Contain X Times    ${output}    psf_wcs_last_visit :    9

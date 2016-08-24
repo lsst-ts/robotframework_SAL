@@ -133,7 +133,7 @@ function readSubscriber {
     echo "    \${output}=    Read" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     for item in "${itemsArray[@]}"; do
-        echo "    Should Contain X Times    \${output}    $item :    10" >>$testSuite
+        echo "    Should Contain X Times    \${output}    $item :    9" >>$testSuite
     done
 }
 

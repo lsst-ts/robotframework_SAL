@@ -76,6 +76,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Demand :    10
-    Should Contain X Times    ${output}    Error :    10
-    Should Contain X Times    ${output}    Position :    10
+    Should Contain X Times    ${output}    Demand :    9
+    Should Contain X Times    ${output}    Error :    9
+    Should Contain X Times    ${output}    Position :    9

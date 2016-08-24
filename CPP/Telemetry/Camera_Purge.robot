@@ -76,15 +76,15 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Accelerometer :    10
-    Should Contain X Times    ${output}    Blower_setting :    10
-    Should Contain X Times    ${output}    Blower_speed :    10
-    Should Contain X Times    ${output}    Body_Flow_meter :    10
-    Should Contain X Times    ${output}    Body_Temp :    10
-    Should Contain X Times    ${output}    Heater_current :    10
-    Should Contain X Times    ${output}    Heaters :    10
-    Should Contain X Times    ${output}    Microphone :    10
-    Should Contain X Times    ${output}    Trunk_Flow_meter :    10
-    Should Contain X Times    ${output}    Trunk_Temp :    10
-    Should Contain X Times    ${output}    Valve_setting :    10
-    Should Contain X Times    ${output}    Valves :    10
+    Should Contain X Times    ${output}    Accelerometer :    9
+    Should Contain X Times    ${output}    Blower_setting :    9
+    Should Contain X Times    ${output}    Blower_speed :    9
+    Should Contain X Times    ${output}    Body_Flow_meter :    9
+    Should Contain X Times    ${output}    Body_Temp :    9
+    Should Contain X Times    ${output}    Heater_current :    9
+    Should Contain X Times    ${output}    Heaters :    9
+    Should Contain X Times    ${output}    Microphone :    9
+    Should Contain X Times    ${output}    Trunk_Flow_meter :    9
+    Should Contain X Times    ${output}    Trunk_Temp :    9
+    Should Contain X Times    ${output}    Valve_setting :    9
+    Should Contain X Times    ${output}    Valves :    9

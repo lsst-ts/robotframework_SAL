@@ -76,18 +76,18 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Humid :    10
-    Should Contain X Times    ${output}    Press :    10
-    Should Contain X Times    ${output}    TLR :    10
-    Should Contain X Times    ${output}    Tai :    10
-    Should Contain X Times    ${output}    Temp :    10
-    Should Contain X Times    ${output}    Wavel :    10
-    Should Contain X Times    ${output}    XOffset :    10
-    Should Contain X Times    ${output}    YOffset :    10
-    Should Contain X Times    ${output}    az :    10
-    Should Contain X Times    ${output}    azdot :    10
-    Should Contain X Times    ${output}    el :    10
-    Should Contain X Times    ${output}    eldot :    10
-    Should Contain X Times    ${output}    focalplaneX :    10
-    Should Contain X Times    ${output}    focalplaneY :    10
-    Should Contain X Times    ${output}    t0 :    10
+    Should Contain X Times    ${output}    Humid :    9
+    Should Contain X Times    ${output}    Press :    9
+    Should Contain X Times    ${output}    TLR :    9
+    Should Contain X Times    ${output}    Tai :    9
+    Should Contain X Times    ${output}    Temp :    9
+    Should Contain X Times    ${output}    Wavel :    9
+    Should Contain X Times    ${output}    XOffset :    9
+    Should Contain X Times    ${output}    YOffset :    9
+    Should Contain X Times    ${output}    az :    9
+    Should Contain X Times    ${output}    azdot :    9
+    Should Contain X Times    ${output}    el :    9
+    Should Contain X Times    ${output}    eldot :    9
+    Should Contain X Times    ${output}    focalplaneX :    9
+    Should Contain X Times    ${output}    focalplaneY :    9
+    Should Contain X Times    ${output}    t0 :    9

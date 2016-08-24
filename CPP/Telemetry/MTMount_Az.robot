@@ -76,24 +76,24 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Angle_Set :    10
-    Should Contain X Times    ${output}    Angle_Actual :    10
-    Should Contain X Times    ${output}    EncHead_Actual_1 :    10
-    Should Contain X Times    ${output}    EncHead_Actual_2 :    10
-    Should Contain X Times    ${output}    EncHead_Actual_3 :    10
-    Should Contain X Times    ${output}    EncHead_Actual_4 :    10
-    Should Contain X Times    ${output}    Vel_Set :    10
-    Should Contain X Times    ${output}    Vel_Actual :    10
-    Should Contain X Times    ${output}    Acc_Actual :    10
-    Should Contain X Times    ${output}    Torque_Set :    10
-    Should Contain X Times    ${output}    Axis_Status :    10
-    Should Contain X Times    ${output}    Positive_Adjustable_Software_Limit :    10
-    Should Contain X Times    ${output}    Negative_Adjustable_Software_Limit :    10
-    Should Contain X Times    ${output}    Positive_Software_Limit :    10
-    Should Contain X Times    ${output}    Negative_Software_Limit :    10
-    Should Contain X Times    ${output}    Positive_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Negative_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Positive_Power_Off_Switch :    10
-    Should Contain X Times    ${output}    Negative_Power_Off_Switch :    10
-    Should Contain X Times    ${output}    Curr_Actual :    10
-    Should Contain X Times    ${output}    Drive_Status :    10
+    Should Contain X Times    ${output}    Angle_Set :    9
+    Should Contain X Times    ${output}    Angle_Actual :    9
+    Should Contain X Times    ${output}    EncHead_Actual_1 :    9
+    Should Contain X Times    ${output}    EncHead_Actual_2 :    9
+    Should Contain X Times    ${output}    EncHead_Actual_3 :    9
+    Should Contain X Times    ${output}    EncHead_Actual_4 :    9
+    Should Contain X Times    ${output}    Vel_Set :    9
+    Should Contain X Times    ${output}    Vel_Actual :    9
+    Should Contain X Times    ${output}    Acc_Actual :    9
+    Should Contain X Times    ${output}    Torque_Set :    9
+    Should Contain X Times    ${output}    Axis_Status :    9
+    Should Contain X Times    ${output}    Positive_Adjustable_Software_Limit :    9
+    Should Contain X Times    ${output}    Negative_Adjustable_Software_Limit :    9
+    Should Contain X Times    ${output}    Positive_Software_Limit :    9
+    Should Contain X Times    ${output}    Negative_Software_Limit :    9
+    Should Contain X Times    ${output}    Positive_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Negative_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Positive_Power_Off_Switch :    9
+    Should Contain X Times    ${output}    Negative_Power_Off_Switch :    9
+    Should Contain X Times    ${output}    Curr_Actual :    9
+    Should Contain X Times    ${output}    Drive_Status :    9

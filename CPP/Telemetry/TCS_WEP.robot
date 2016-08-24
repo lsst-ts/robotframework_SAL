@@ -76,9 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    basis_set_name :    10
-    Should Contain X Times    ${output}    number_of_terms :    10
-    Should Contain X Times    ${output}    z_arr1 :    10
-    Should Contain X Times    ${output}    z_arr2 :    10
-    Should Contain X Times    ${output}    z_arr3 :    10
-    Should Contain X Times    ${output}    z_arr4 :    10
+    Should Contain X Times    ${output}    basis_set_name :    9
+    Should Contain X Times    ${output}    number_of_terms :    9
+    Should Contain X Times    ${output}    z_arr1 :    9
+    Should Contain X Times    ${output}    z_arr2 :    9
+    Should Contain X Times    ${output}    z_arr3 :    9
+    Should Contain X Times    ${output}    z_arr4 :    9

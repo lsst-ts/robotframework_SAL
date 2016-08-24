@@ -76,5 +76,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Calibrated :    10
-    Should Contain X Times    ${output}    Raw :    10
+    Should Contain X Times    ${output}    Calibrated :    9
+    Should Contain X Times    ${output}    Raw :    9

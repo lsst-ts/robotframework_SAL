@@ -76,19 +76,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Aux :    10
-    Should Contain X Times    ${output}    Casspa :    10
-    Should Contain X Times    ${output}    Dec :    10
-    Should Contain X Times    ${output}    Fl :    10
-    Should Contain X Times    ${output}    Humid :    10
-    Should Contain X Times    ${output}    Marked :    10
-    Should Contain X Times    ${output}    Pitch :    10
-    Should Contain X Times    ${output}    Press :    10
-    Should Contain X Times    ${output}    Ra :    10
-    Should Contain X Times    ${output}    Rcorr :    10
-    Should Contain X Times    ${output}    Roll :    10
-    Should Contain X Times    ${output}    Temp :    10
-    Should Contain X Times    ${output}    Tlr :    10
-    Should Contain X Times    ${output}    Wavel :    10
-    Should Contain X Times    ${output}    Xr :    10
-    Should Contain X Times    ${output}    Yr :    10
+    Should Contain X Times    ${output}    Aux :    9
+    Should Contain X Times    ${output}    Casspa :    9
+    Should Contain X Times    ${output}    Dec :    9
+    Should Contain X Times    ${output}    Fl :    9
+    Should Contain X Times    ${output}    Humid :    9
+    Should Contain X Times    ${output}    Marked :    9
+    Should Contain X Times    ${output}    Pitch :    9
+    Should Contain X Times    ${output}    Press :    9
+    Should Contain X Times    ${output}    Ra :    9
+    Should Contain X Times    ${output}    Rcorr :    9
+    Should Contain X Times    ${output}    Roll :    9
+    Should Contain X Times    ${output}    Temp :    9
+    Should Contain X Times    ${output}    Tlr :    9
+    Should Contain X Times    ${output}    Wavel :    9
+    Should Contain X Times    ${output}    Xr :    9
+    Should Contain X Times    ${output}    Yr :    9

@@ -76,19 +76,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Bias_Status :    10
-    Should Contain X Times    ${output}    Bias_current :    10
-    Should Contain X Times    ${output}    Bias_voltage :    10
-    Should Contain X Times    ${output}    Clock_Status :    10
-    Should Contain X Times    ${output}    Clock_current :    10
-    Should Contain X Times    ${output}    Clock_voltage :    10
-    Should Contain X Times    ${output}    FPGA_Status :    10
-    Should Contain X Times    ${output}    FPGA_current :    10
-    Should Contain X Times    ${output}    FPGA_voltage :    10
-    Should Contain X Times    ${output}    Low_Status :    10
-    Should Contain X Times    ${output}    Low_current :    10
-    Should Contain X Times    ${output}    Low_voltage :    10
-    Should Contain X Times    ${output}    OD_Status :    10
-    Should Contain X Times    ${output}    OD_current :    10
-    Should Contain X Times    ${output}    OD_voltage :    10
-    Should Contain X Times    ${output}    REB_ID :    10
+    Should Contain X Times    ${output}    Bias_Status :    9
+    Should Contain X Times    ${output}    Bias_current :    9
+    Should Contain X Times    ${output}    Bias_voltage :    9
+    Should Contain X Times    ${output}    Clock_Status :    9
+    Should Contain X Times    ${output}    Clock_current :    9
+    Should Contain X Times    ${output}    Clock_voltage :    9
+    Should Contain X Times    ${output}    FPGA_Status :    9
+    Should Contain X Times    ${output}    FPGA_current :    9
+    Should Contain X Times    ${output}    FPGA_voltage :    9
+    Should Contain X Times    ${output}    Low_Status :    9
+    Should Contain X Times    ${output}    Low_current :    9
+    Should Contain X Times    ${output}    Low_voltage :    9
+    Should Contain X Times    ${output}    OD_Status :    9
+    Should Contain X Times    ${output}    OD_current :    9
+    Should Contain X Times    ${output}    OD_voltage :    9
+    Should Contain X Times    ${output}    REB_ID :    9

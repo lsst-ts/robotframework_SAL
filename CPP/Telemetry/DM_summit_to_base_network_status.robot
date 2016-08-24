@@ -76,7 +76,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    link_usage :    10
-    Should Contain X Times    ${output}    link_utilization :    10
-    Should Contain X Times    ${output}    link_capacity :    10
-    Should Contain X Times    ${output}    link_latency :    10
+    Should Contain X Times    ${output}    link_usage :    9
+    Should Contain X Times    ${output}    link_utilization :    9
+    Should Contain X Times    ${output}    link_capacity :    9
+    Should Contain X Times    ${output}    link_latency :    9

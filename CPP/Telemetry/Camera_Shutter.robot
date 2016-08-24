@@ -76,10 +76,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Blade_home :    10
-    Should Contain X Times    ${output}    Close_profile :    10
-    Should Contain X Times    ${output}    Motor_current :    10
-    Should Contain X Times    ${output}    Motor_temp :    10
-    Should Contain X Times    ${output}    Open_direction :    10
-    Should Contain X Times    ${output}    Open_profile :    10
-    Should Contain X Times    ${output}    Profile_function :    10
+    Should Contain X Times    ${output}    Blade_home :    9
+    Should Contain X Times    ${output}    Close_profile :    9
+    Should Contain X Times    ${output}    Motor_current :    9
+    Should Contain X Times    ${output}    Motor_temp :    9
+    Should Contain X Times    ${output}    Open_direction :    9
+    Should Contain X Times    ${output}    Open_profile :    9
+    Should Contain X Times    ${output}    Profile_function :    9

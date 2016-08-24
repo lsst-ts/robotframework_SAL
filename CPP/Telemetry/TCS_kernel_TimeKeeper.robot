@@ -76,9 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Cst :    10
-    Should Contain X Times    ${output}    Dcst :    10
-    Should Contain X Times    ${output}    Dsst :    10
-    Should Contain X Times    ${output}    Sst :    10
-    Should Contain X Times    ${output}    Tai :    10
-    Should Contain X Times    ${output}    Tt :    10
+    Should Contain X Times    ${output}    Cst :    9
+    Should Contain X Times    ${output}    Dcst :    9
+    Should Contain X Times    ${output}    Dsst :    9
+    Should Contain X Times    ${output}    Sst :    9
+    Should Contain X Times    ${output}    Tai :    9
+    Should Contain X Times    ${output}    Tt :    9

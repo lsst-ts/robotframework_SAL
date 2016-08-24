@@ -76,4 +76,4 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    summary_data_quality_parameters :    10
+    Should Contain X Times    ${output}    summary_data_quality_parameters :    9

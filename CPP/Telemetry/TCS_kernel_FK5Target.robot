@@ -76,11 +76,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    dec :    10
-    Should Contain X Times    ${output}    epoc :    10
-    Should Contain X Times    ${output}    equinox :    10
-    Should Contain X Times    ${output}    parallax :    10
-    Should Contain X Times    ${output}    pmDec :    10
-    Should Contain X Times    ${output}    pmRA :    10
-    Should Contain X Times    ${output}    ra :    10
-    Should Contain X Times    ${output}    rv :    10
+    Should Contain X Times    ${output}    dec :    9
+    Should Contain X Times    ${output}    epoc :    9
+    Should Contain X Times    ${output}    equinox :    9
+    Should Contain X Times    ${output}    parallax :    9
+    Should Contain X Times    ${output}    pmDec :    9
+    Should Contain X Times    ${output}    pmRA :    9
+    Should Contain X Times    ${output}    ra :    9
+    Should Contain X Times    ${output}    rv :    9

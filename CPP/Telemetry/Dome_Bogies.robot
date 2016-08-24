@@ -76,11 +76,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    currentMeasured :    10
-    Should Contain X Times    ${output}    currentTarget :    10
-    Should Contain X Times    ${output}    rpmMeasured :    10
-    Should Contain X Times    ${output}    rpmTarget :    10
-    Should Contain X Times    ${output}    status :    10
-    Should Contain X Times    ${output}    temperature :    10
-    Should Contain X Times    ${output}    torqueMeasured :    10
-    Should Contain X Times    ${output}    torqueTarget :    10
+    Should Contain X Times    ${output}    currentMeasured :    9
+    Should Contain X Times    ${output}    currentTarget :    9
+    Should Contain X Times    ${output}    rpmMeasured :    9
+    Should Contain X Times    ${output}    rpmTarget :    9
+    Should Contain X Times    ${output}    status :    9
+    Should Contain X Times    ${output}    temperature :    9
+    Should Contain X Times    ${output}    torqueMeasured :    9
+    Should Contain X Times    ${output}    torqueTarget :    9

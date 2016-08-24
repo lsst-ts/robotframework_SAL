@@ -76,10 +76,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    airmass :    10
-    Should Contain X Times    ${output}    catid :    10
-    Should Contain X Times    ${output}    dec :    10
-    Should Contain X Times    ${output}    filter :    10
-    Should Contain X Times    ${output}    numexp :    10
-    Should Contain X Times    ${output}    ra :    10
-    Should Contain X Times    ${output}    rotangle :    10
+    Should Contain X Times    ${output}    airmass :    9
+    Should Contain X Times    ${output}    catid :    9
+    Should Contain X Times    ${output}    dec :    9
+    Should Contain X Times    ${output}    filter :    9
+    Should Contain X Times    ${output}    numexp :    9
+    Should Contain X Times    ${output}    ra :    9
+    Should Contain X Times    ${output}    rotangle :    9

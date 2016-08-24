@@ -76,8 +76,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    PositionX :    10
-    Should Contain X Times    ${output}    PositionY :    10
-    Should Contain X Times    ${output}    T0 :    10
-    Should Contain X Times    ${output}    VelocityX :    10
-    Should Contain X Times    ${output}    VelocityY :    10
+    Should Contain X Times    ${output}    PositionX :    9
+    Should Contain X Times    ${output}    PositionY :    9
+    Should Contain X Times    ${output}    T0 :    9
+    Should Contain X Times    ${output}    VelocityX :    9
+    Should Contain X Times    ${output}    VelocityY :    9

@@ -76,5 +76,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Loader_telemetry :    10
-    Should Contain X Times    ${output}    REB_ID :    10
+    Should Contain X Times    ${output}    Loader_telemetry :    9
+    Should Contain X Times    ${output}    REB_ID :    9

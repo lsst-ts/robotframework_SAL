@@ -76,12 +76,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Board_ID :    10
-    Should Contain X Times    ${output}    Board_current :    10
-    Should Contain X Times    ${output}    Board_temp :    10
-    Should Contain X Times    ${output}    Board_voltage :    10
-    Should Contain X Times    ${output}    CABAC_MUX :    10
-    Should Contain X Times    ${output}    CCD_ID :    10
-    Should Contain X Times    ${output}    CCD_temp :    10
-    Should Contain X Times    ${output}    FPGACheckSum :    10
-    Should Contain X Times    ${output}    REB_ID :    10
+    Should Contain X Times    ${output}    Board_ID :    9
+    Should Contain X Times    ${output}    Board_current :    9
+    Should Contain X Times    ${output}    Board_temp :    9
+    Should Contain X Times    ${output}    Board_voltage :    9
+    Should Contain X Times    ${output}    CABAC_MUX :    9
+    Should Contain X Times    ${output}    CCD_ID :    9
+    Should Contain X Times    ${output}    CCD_temp :    9
+    Should Contain X Times    ${output}    FPGACheckSum :    9
+    Should Contain X Times    ${output}    REB_ID :    9

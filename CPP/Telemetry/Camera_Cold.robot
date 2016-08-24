@@ -76,24 +76,24 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Compressor_load :    10
-    Should Contain X Times    ${output}    Compressor_speed :    10
-    Should Contain X Times    ${output}    Discharge_pressure :    10
-    Should Contain X Times    ${output}    Discharge_temp :    10
-    Should Contain X Times    ${output}    Flow_interlock :    10
-    Should Contain X Times    ${output}    Heater_current :    10
-    Should Contain X Times    ${output}    Heater_voltage :    10
-    Should Contain X Times    ${output}    Intake_flow :    10
-    Should Contain X Times    ${output}    Intake_pressure :    10
-    Should Contain X Times    ${output}    Intake_temp :    10
-    Should Contain X Times    ${output}    Ion_pump :    10
-    Should Contain X Times    ${output}    Mech_pump :    10
-    Should Contain X Times    ${output}    Post_expansion_pressure :    10
-    Should Contain X Times    ${output}    Post_expansion_temp :    10
-    Should Contain X Times    ${output}    Pre_expansion_pressure :    10
-    Should Contain X Times    ${output}    Pre_expansion_temp :    10
-    Should Contain X Times    ${output}    RGA :    10
-    Should Contain X Times    ${output}    Return_temp :    10
-    Should Contain X Times    ${output}    UtilityRoom_temperature :    10
-    Should Contain X Times    ${output}    Vacuum_gauge :    10
-    Should Contain X Times    ${output}    Valve_status :    10
+    Should Contain X Times    ${output}    Compressor_load :    9
+    Should Contain X Times    ${output}    Compressor_speed :    9
+    Should Contain X Times    ${output}    Discharge_pressure :    9
+    Should Contain X Times    ${output}    Discharge_temp :    9
+    Should Contain X Times    ${output}    Flow_interlock :    9
+    Should Contain X Times    ${output}    Heater_current :    9
+    Should Contain X Times    ${output}    Heater_voltage :    9
+    Should Contain X Times    ${output}    Intake_flow :    9
+    Should Contain X Times    ${output}    Intake_pressure :    9
+    Should Contain X Times    ${output}    Intake_temp :    9
+    Should Contain X Times    ${output}    Ion_pump :    9
+    Should Contain X Times    ${output}    Mech_pump :    9
+    Should Contain X Times    ${output}    Post_expansion_pressure :    9
+    Should Contain X Times    ${output}    Post_expansion_temp :    9
+    Should Contain X Times    ${output}    Pre_expansion_pressure :    9
+    Should Contain X Times    ${output}    Pre_expansion_temp :    9
+    Should Contain X Times    ${output}    RGA :    9
+    Should Contain X Times    ${output}    Return_temp :    9
+    Should Contain X Times    ${output}    UtilityRoom_temperature :    9
+    Should Contain X Times    ${output}    Vacuum_gauge :    9
+    Should Contain X Times    ${output}    Valve_status :    9

@@ -76,6 +76,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    focal_plane_current_image_count :    10
-    Should Contain X Times    ${output}    focal_plane_operations_image_count :    10
-    Should Contain X Times    ${output}    last_focal_plane_image_id :    10
+    Should Contain X Times    ${output}    focal_plane_current_image_count :    9
+    Should Contain X Times    ${output}    focal_plane_operations_image_count :    9
+    Should Contain X Times    ${output}    last_focal_plane_image_id :    9

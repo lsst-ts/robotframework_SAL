@@ -76,4 +76,4 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    result :    10
+    Should Contain X Times    ${output}    result :    9

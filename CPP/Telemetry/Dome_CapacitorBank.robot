@@ -76,8 +76,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    charge :    10
-    Should Contain X Times    ${output}    chargeRate :    10
-    Should Contain X Times    ${output}    setpoint :    10
-    Should Contain X Times    ${output}    status :    10
-    Should Contain X Times    ${output}    temperature :    10
+    Should Contain X Times    ${output}    charge :    9
+    Should Contain X Times    ${output}    chargeRate :    9
+    Should Contain X Times    ${output}    setpoint :    9
+    Should Contain X Times    ${output}    status :    9
+    Should Contain X Times    ${output}    temperature :    9

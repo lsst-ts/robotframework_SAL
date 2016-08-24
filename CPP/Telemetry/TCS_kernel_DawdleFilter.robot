@@ -76,5 +76,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Bypass :    10
-    Should Contain X Times    ${output}    T :    10
+    Should Contain X Times    ${output}    Bypass :    9
+    Should Contain X Times    ${output}    T :    9

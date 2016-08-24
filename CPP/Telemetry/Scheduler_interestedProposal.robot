@@ -76,9 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    pairNumber :    10
-    Should Contain X Times    ${output}    proposalId :    10
-    Should Contain X Times    ${output}    subSequenceNumber :    10
-    Should Contain X Times    ${output}    targetId :    10
-    Should Contain X Times    ${output}    targetProposalRankValue :    10
-    Should Contain X Times    ${output}    targetRankPosition :    10
+    Should Contain X Times    ${output}    pairNumber :    9
+    Should Contain X Times    ${output}    proposalId :    9
+    Should Contain X Times    ${output}    subSequenceNumber :    9
+    Should Contain X Times    ${output}    targetId :    9
+    Should Contain X Times    ${output}    targetProposalRankValue :    9
+    Should Contain X Times    ${output}    targetRankPosition :    9

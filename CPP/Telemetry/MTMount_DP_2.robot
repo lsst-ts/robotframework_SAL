@@ -76,16 +76,16 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Pos_Set :    10
-    Should Contain X Times    ${output}    Pos_Actual :    10
-    Should Contain X Times    ${output}    Pos_Actual_Section_1 :    10
-    Should Contain X Times    ${output}    Pos_Actual_Section_2 :    10
-    Should Contain X Times    ${output}    Positive_Section_1_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Negative_Section_1_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Positive_Section_2_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Negative_Section_2_Directional_Limit_Switch :    10
-    Should Contain X Times    ${output}    Axis_Status :    10
-    Should Contain X Times    ${output}    Curr_Actual_1 :    10
-    Should Contain X Times    ${output}    Curr_Actual_2 :    10
-    Should Contain X Times    ${output}    Drive_Status_1 :    10
-    Should Contain X Times    ${output}    Drive_Status_2 :    10
+    Should Contain X Times    ${output}    Pos_Set :    9
+    Should Contain X Times    ${output}    Pos_Actual :    9
+    Should Contain X Times    ${output}    Pos_Actual_Section_1 :    9
+    Should Contain X Times    ${output}    Pos_Actual_Section_2 :    9
+    Should Contain X Times    ${output}    Positive_Section_1_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Negative_Section_1_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Positive_Section_2_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Negative_Section_2_Directional_Limit_Switch :    9
+    Should Contain X Times    ${output}    Axis_Status :    9
+    Should Contain X Times    ${output}    Curr_Actual_1 :    9
+    Should Contain X Times    ${output}    Curr_Actual_2 :    9
+    Should Contain X Times    ${output}    Drive_Status_1 :    9
+    Should Contain X Times    ${output}    Drive_Status_2 :    9

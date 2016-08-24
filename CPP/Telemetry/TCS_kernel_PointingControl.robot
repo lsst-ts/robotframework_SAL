@@ -76,7 +76,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    AGuide :    10
-    Should Contain X Times    ${output}    ALocal :    10
-    Should Contain X Times    ${output}    BGuide :    10
-    Should Contain X Times    ${output}    BLocal :    10
+    Should Contain X Times    ${output}    AGuide :    9
+    Should Contain X Times    ${output}    ALocal :    9
+    Should Contain X Times    ${output}    BGuide :    9
+    Should Contain X Times    ${output}    BLocal :    9

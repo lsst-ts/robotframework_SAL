@@ -76,7 +76,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    completion :    10
-    Should Contain X Times    ${output}    id :    10
-    Should Contain X Times    ${output}    priority :    10
-    Should Contain X Times    ${output}    status :    10
+    Should Contain X Times    ${output}    completion :    9
+    Should Contain X Times    ${output}    id :    9
+    Should Contain X Times    ${output}    priority :    9
+    Should Contain X Times    ${output}    status :    9

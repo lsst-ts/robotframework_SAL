@@ -76,18 +76,18 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    ae2mt :    10
-    Should Contain X Times    ${output}    amprms :    10
-    Should Contain X Times    ${output}    cst :    10
-    Should Contain X Times    ${output}    diurab :    10
-    Should Contain X Times    ${output}    hm :    10
-    Should Contain X Times    ${output}    humid :    10
-    Should Contain X Times    ${output}    press :    10
-    Should Contain X Times    ${output}    refa :    10
-    Should Contain X Times    ${output}    refb :    10
-    Should Contain X Times    ${output}    sst :    10
-    Should Contain X Times    ${output}    tdbj :    10
-    Should Contain X Times    ${output}    temp :    10
-    Should Contain X Times    ${output}    tlat :    10
-    Should Contain X Times    ${output}    tlr :    10
-    Should Contain X Times    ${output}    wavel :    10
+    Should Contain X Times    ${output}    ae2mt :    9
+    Should Contain X Times    ${output}    amprms :    9
+    Should Contain X Times    ${output}    cst :    9
+    Should Contain X Times    ${output}    diurab :    9
+    Should Contain X Times    ${output}    hm :    9
+    Should Contain X Times    ${output}    humid :    9
+    Should Contain X Times    ${output}    press :    9
+    Should Contain X Times    ${output}    refa :    9
+    Should Contain X Times    ${output}    refb :    9
+    Should Contain X Times    ${output}    sst :    9
+    Should Contain X Times    ${output}    tdbj :    9
+    Should Contain X Times    ${output}    temp :    9
+    Should Contain X Times    ${output}    tlat :    9
+    Should Contain X Times    ${output}    tlr :    9
+    Should Contain X Times    ${output}    wavel :    9

@@ -76,9 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    xTilt :    10
-    Should Contain X Times    ${output}    yTilt :    10
-    Should Contain X Times    ${output}    piston :    10
-    Should Contain X Times    ${output}    xPosition :    10
-    Should Contain X Times    ${output}    yPosition :    10
-    Should Contain X Times    ${output}    theta_z_position :    10
+    Should Contain X Times    ${output}    xTilt :    9
+    Should Contain X Times    ${output}    yTilt :    9
+    Should Contain X Times    ${output}    piston :    9
+    Should Contain X Times    ${output}    xPosition :    9
+    Should Contain X Times    ${output}    yPosition :    9
+    Should Contain X Times    ${output}    theta_z_position :    9

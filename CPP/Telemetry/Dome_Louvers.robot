@@ -76,7 +76,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    calibrated :    10
-    Should Contain X Times    ${output}    raw :    10
-    Should Contain X Times    ${output}    temperature :    10
-    Should Contain X Times    ${output}    windSpeed :    10
+    Should Contain X Times    ${output}    calibrated :    9
+    Should Contain X Times    ${output}    raw :    9
+    Should Contain X Times    ${output}    temperature :    9
+    Should Contain X Times    ${output}    windSpeed :    9

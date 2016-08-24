@@ -76,8 +76,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Coeffv :    10
-    Should Contain X Times    ${output}    Model :    10
-    Should Contain X Times    ${output}    Nterml :    10
-    Should Contain X Times    ${output}    Nterms :    10
-    Should Contain X Times    ${output}    Ntermx :    10
+    Should Contain X Times    ${output}    Coeffv :    9
+    Should Contain X Times    ${output}    Model :    9
+    Should Contain X Times    ${output}    Nterml :    9
+    Should Contain X Times    ${output}    Nterms :    9
+    Should Contain X Times    ${output}    Ntermx :    9

@@ -76,9 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    tangentLink_0deg_forceMeasured :    10
-    Should Contain X Times    ${output}    tangentLink_60deg_forceMeasured :    10
-    Should Contain X Times    ${output}    tangentLink_120deg_forceMeasured :    10
-    Should Contain X Times    ${output}    tangentLink_180deg_forceMeasured :    10
-    Should Contain X Times    ${output}    tangentLink_240deg_forceMeasured :    10
-    Should Contain X Times    ${output}    tangentLink_300deg_forceMeasured :    10
+    Should Contain X Times    ${output}    tangentLink_0deg_forceMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_60deg_forceMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_120deg_forceMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_180deg_forceMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_240deg_forceMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_300deg_forceMeasured :    9

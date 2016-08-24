@@ -76,7 +76,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    completion :    10
-    Should Contain X Times    ${output}    priority :    10
-    Should Contain X Times    ${output}    projection :    10
-    Should Contain X Times    ${output}    taskid :    10
+    Should Contain X Times    ${output}    completion :    9
+    Should Contain X Times    ${output}    priority :    9
+    Should Contain X Times    ${output}    projection :    9
+    Should Contain X Times    ${output}    taskid :    9

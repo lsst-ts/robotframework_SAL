@@ -76,8 +76,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    Image_SD :    10
-    Should Contain X Times    ${output}    Image_mean :    10
-    Should Contain X Times    ${output}    Overscan_SD :    10
-    Should Contain X Times    ${output}    Overscan_mean :    10
-    Should Contain X Times    ${output}    PSF :    10
+    Should Contain X Times    ${output}    Image_SD :    9
+    Should Contain X Times    ${output}    Image_mean :    9
+    Should Contain X Times    ${output}    Overscan_SD :    9
+    Should Contain X Times    ${output}    Overscan_mean :    9
+    Should Contain X Times    ${output}    PSF :    9

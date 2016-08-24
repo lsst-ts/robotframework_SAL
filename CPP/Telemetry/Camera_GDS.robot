@@ -76,6 +76,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    REB_ID :    10
-    Should Contain X Times    ${output}    Timing_parameter :    10
-    Should Contain X Times    ${output}    flag :    10
+    Should Contain X Times    ${output}    REB_ID :    9
+    Should Contain X Times    ${output}    Timing_parameter :    9
+    Should Contain X Times    ${output}    flag :    9

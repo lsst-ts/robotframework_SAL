@@ -76,15 +76,15 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    azError :    10
-    Should Contain X Times    ${output}    azPosition :    10
-    Should Contain X Times    ${output}    azTarget :    10
-    Should Contain X Times    ${output}    elevError :    10
-    Should Contain X Times    ${output}    elevPosition :    10
-    Should Contain X Times    ${output}    elevTarget :    10
-    Should Contain X Times    ${output}    lvError :    10
-    Should Contain X Times    ${output}    lvPosition :    10
-    Should Contain X Times    ${output}    lvTarget :    10
-    Should Contain X Times    ${output}    scrError :    10
-    Should Contain X Times    ${output}    scrPosition :    10
-    Should Contain X Times    ${output}    scrTarget :    10
+    Should Contain X Times    ${output}    azError :    9
+    Should Contain X Times    ${output}    azPosition :    9
+    Should Contain X Times    ${output}    azTarget :    9
+    Should Contain X Times    ${output}    elevError :    9
+    Should Contain X Times    ${output}    elevPosition :    9
+    Should Contain X Times    ${output}    elevTarget :    9
+    Should Contain X Times    ${output}    lvError :    9
+    Should Contain X Times    ${output}    lvPosition :    9
+    Should Contain X Times    ${output}    lvTarget :    9
+    Should Contain X Times    ${output}    scrError :    9
+    Should Contain X Times    ${output}    scrPosition :    9
+    Should Contain X Times    ${output}    scrTarget :    9

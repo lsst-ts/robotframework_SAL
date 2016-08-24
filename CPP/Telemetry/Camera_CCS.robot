@@ -76,5 +76,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    CCS_Status :    10
-    Should Contain X Times    ${output}    Image_Status :    10
+    Should Contain X Times    ${output}    CCS_Status :    9
+    Should Contain X Times    ${output}    Image_Status :    9
