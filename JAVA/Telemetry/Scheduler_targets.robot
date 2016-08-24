@@ -19,7 +19,9 @@ Create Publisher Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,7 +33,9 @@ Create Subscriber Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
