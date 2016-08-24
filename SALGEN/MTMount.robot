@@ -58,7 +58,7 @@ Salgen MTMount HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_MotionParameters-streamdef.html
 
 Salgen MTMount C++
-	[Documentation]    Generate C++ wrapper. This takes ~2mins.
+	[Documentation]    Generate C++ wrapper.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
@@ -94,7 +94,7 @@ Verify MTMount Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_MC
 
 Salgen MTMount Java
-    [Documentation]    Generate Java wrapper. This takes ~2mins.
+    [Documentation]    Generate Java wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
@@ -123,7 +123,7 @@ Salgen MTMount Maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen MTMount Python
-    [Documentation]    Generate Python wrapper. This takes ~4mins.
+    [Documentation]    Generate Python wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt

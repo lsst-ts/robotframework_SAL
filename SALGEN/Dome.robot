@@ -59,7 +59,7 @@ Salgen Dome HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_Application-streamdef.html
 
 Salgen Dome C++
-	[Documentation]    Generate C++ wrapper. This takes ~2mins.
+	[Documentation]    Generate C++ wrapper.
 	[Tags]
 	${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
@@ -92,7 +92,7 @@ Verify Dome Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_TC
 
 Salgen Dome Java
-    [Documentation]    Generate Java wrapper. This takes ~2mins.
+    [Documentation]    Generate Java wrapper.
     [Tags]
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
@@ -121,7 +121,7 @@ Salgen Dome Maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen Dome Python
-    [Documentation]    Generate Python wrapper. This takes ~4mins.
+    [Documentation]    Generate Python wrapper.
     [Tags]
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt

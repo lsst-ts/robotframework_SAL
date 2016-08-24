@@ -58,7 +58,7 @@ Salgen M2MS HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_TangentForcesMeasured-streamdef.html
 
 Salgen M2MS C++
-	[Documentation]    Generate C++ wrapper. This takes ~2mins.
+	[Documentation]    Generate C++ wrapper.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
@@ -90,7 +90,7 @@ Verify M2MS Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_AxialActuatorAbsolutePositionSteps
 
 Salgen M2MS Java
-    [Documentation]    Generate Java wrapper. This takes ~2mins.
+    [Documentation]    Generate Java wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
@@ -119,7 +119,7 @@ Salgen M2MS Maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen M2MS Python
-    [Documentation]    Generate Python wrapper. This takes ~4mins.
+    [Documentation]    Generate Python wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt

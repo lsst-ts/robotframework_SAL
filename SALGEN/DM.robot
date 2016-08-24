@@ -61,7 +61,7 @@ Salgen DM HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_summit-streamdef.html
 
 Salgen DM C++
-	[Documentation]    Generate C++ wrapper. This takes ~2mins.
+	[Documentation]    Generate C++ wrapper.
 	[Tags]
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
@@ -93,7 +93,7 @@ Verify DM Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_raft_images_sent_current
 
 Salgen DM Java
-    [Documentation]    Generate Java wrapper. This takes ~2mins.
+    [Documentation]    Generate Java wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
@@ -122,7 +122,7 @@ Salgen DM Maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen DM Python
-    [Documentation]    Generate Python wrapper. This takes ~4mins.
+    [Documentation]    Generate Python wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt

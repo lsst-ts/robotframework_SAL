@@ -58,7 +58,7 @@ Salgen TCS HTML
     File Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}/${subSystem}_ZEMAX-streamdef.html
 
 Salgen TCS C++
-	[Documentation]    Generate C++ wrapper. This takes ~2mins.
+	[Documentation]    Generate C++ wrapper.
 	[Tags]
 	${input}=    Write    ${SALHome}//scripts/salgenerator ${subSystem} sal cpp
 	${output}=    Read Until Prompt
@@ -95,7 +95,7 @@ Verify TCS Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_ZEMAX
 
 Salgen TCS Java
-    [Documentation]    Generate Java wrapper. This takes ~2mins.
+    [Documentation]    Generate Java wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}//scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
@@ -124,7 +124,7 @@ Salgen TCS Maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
 Salgen TCS Python
-    [Documentation]    Generate Python wrapper. This takes ~4mins.
+    [Documentation]    Generate Python wrapper.
     [Tags]
     ${input}=    Write    ${SALHome}//scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
