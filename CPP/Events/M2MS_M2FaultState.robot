@@ -1,13 +1,13 @@
 *** Settings ***
-Documentation    Hexapod_error sender/logger tests.
+Documentation    M2MS_M2FaultState sender/logger tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
-${subSystem}    hexapod
-${component}    error
+${subSystem}    m2ms
+${component}    M2FaultState
 ${timeout}    30s
 #${conOut}    ${subSystem}_${component}_sub.out
 #${comOut}    ${subSystem}_${component}_pub.out
@@ -73,12 +73,12 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 23783    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1715670745 19644    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] hexapod::logevent_error writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2FaultState writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event error generated =
+    Should Contain    ${output}    === Event M2FaultState generated =
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${comOut}
 
 Read Logger
@@ -91,5 +91,9 @@ Read Logger
     Should Contain X Times    ${output}    sndStamp \ :    2
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
-    Should Contain X Times    ${output}    === Event error received =     2
-    Should Contain X Times    ${output}    priority : 23783    2
+    Should Contain X Times    ${output}    === Event M2FaultState received =     2
+    Should Contain X Times    ${output}    priority : 1715670745    2
+    Should Contain X Times    ${output}    priority :    2
+    Should Contain    ${output}    priority : 1715670745
+    Should Contain X Times    ${output}    state :    2
+    Should Contain    ${output}    state : 19644

@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.2496 94.5846 44.2815 64.2739 98.7258 32.6762 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 51.4599 32.5861 7.5674 20.1246 38.1343 59.4492 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.2496 94.5846 44.2815 64.2739 98.7258 32.6762 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 51.4599 32.5861 7.5674 20.1246 38.1343 59.4492 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,12 +89,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 85.2496    1
-    Should Contain X Times    ${output}    y : 94.5846    1
-    Should Contain X Times    ${output}    z : 44.2815    1
-    Should Contain X Times    ${output}    u : 64.2739    1
-    Should Contain X Times    ${output}    v : 98.7258    1
-    Should Contain X Times    ${output}    w : 32.6762    1
+    Should Contain X Times    ${output}    x : 51.4599    1
+    Should Contain X Times    ${output}    y : 32.5861    1
+    Should Contain X Times    ${output}    z : 7.5674    1
+    Should Contain X Times    ${output}    u : 20.1246    1
+    Should Contain X Times    ${output}    v : 38.1343    1
+    Should Contain X Times    ${output}    w : 59.4492    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command offset issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
@@ -109,12 +109,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 85.2496    1
-    Should Contain X Times    ${output}    y : 94.5846    1
-    Should Contain X Times    ${output}    z : 44.2815    1
-    Should Contain X Times    ${output}    u : 64.2739    1
-    Should Contain X Times    ${output}    v : 98.7258    1
-    Should Contain X Times    ${output}    w : 32.6762    1
+    Should Contain X Times    ${output}    x : 51.4599    1
+    Should Contain X Times    ${output}    y : 32.5861    1
+    Should Contain X Times    ${output}    z : 7.5674    1
+    Should Contain X Times    ${output}    u : 20.1246    1
+    Should Contain X Times    ${output}    v : 38.1343    1
+    Should Contain X Times    ${output}    w : 59.4492    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

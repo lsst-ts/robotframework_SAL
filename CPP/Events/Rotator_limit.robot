@@ -73,7 +73,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1924735376 test test    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_limit writing a message containing :    1
@@ -92,7 +92,9 @@ Read Logger
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
     Should Contain X Times    ${output}    === Event limit received =     2
-    Should Contain X Times    ${output}    priority : test    2
+    Should Contain X Times    ${output}    priority : 1924735376    2
+    Should Contain X Times    ${output}    priority :    2
+    Should Contain    ${output}    priority : 1924735376
     Should Contain X Times    ${output}    limit :    2
     Should Contain    ${output}    limit : test
     Should Contain X Times    ${output}    type :    2

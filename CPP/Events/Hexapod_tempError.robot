@@ -73,7 +73,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 1003891854 61.2904    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1938435849 test test 261688416 17.7635    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -92,12 +92,14 @@ Read Logger
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
     Should Contain X Times    ${output}    === Event tempError received =     2
-    Should Contain X Times    ${output}    priority : test    2
+    Should Contain X Times    ${output}    priority : 1938435849    2
+    Should Contain X Times    ${output}    priority :    2
+    Should Contain    ${output}    priority : 1938435849
     Should Contain X Times    ${output}    axis :    2
     Should Contain    ${output}    axis : test
     Should Contain X Times    ${output}    device :    2
     Should Contain    ${output}    device : test
     Should Contain X Times    ${output}    severity :    2
-    Should Contain    ${output}    severity : 1003891854
+    Should Contain    ${output}    severity : 261688416
     Should Contain X Times    ${output}    temp :    2
-    Should Contain    ${output}    temp : 61.2904
+    Should Contain    ${output}    temp : 17.7635

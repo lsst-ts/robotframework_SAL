@@ -100,6 +100,7 @@ CPP/Commands/Hexapod_configureLimits.robot
 CPP/Commands/Hexapod_configureLut.robot
 CPP/Commands/Hexapod_configurePosition.robot
 CPP/Commands/Hexapod_configureVelocity.robot
+CPP/Commands/Hexapod_move.robot
 CPP/Commands/Hexapod_offset.robot
 CPP/Commands/Hexapod_pivot.robot
 CPP/Commands/Hexapod_test.robot
@@ -124,6 +125,7 @@ CPP/Commands/Rotator_configureAcceleration.robot
 CPP/Commands/Rotator_configureVelocity.robot
 CPP/Commands/Rotator_move.robot
 CPP/Commands/Rotator_test.robot
+CPP/Commands/Rotator_track.robot
 CPP/Commands/TCS_wfpCalculate.robot
 CPP/Commands/TCS_wfpSimulate.robot
 
@@ -186,6 +188,7 @@ CPP/Events/M1M3_updateDone.robot
 CPP/Events/M1M3_updateError.robot
 CPP/Events/M2MS_M2AssemblyInPosition.robot
 CPP/Events/M2MS_M2DetailedState.robot
+CPP/Events/M2MS_M2FaultState.robot
 CPP/Events/M2MS_M2SummaryState.robot
 CPP/Events/MTMount_mountError.robot
 CPP/Events/MTMount_mountInPosition.robot

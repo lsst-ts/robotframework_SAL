@@ -19,7 +19,9 @@ Create Publisher Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,19 +33,21 @@ Create Subscriber Session
     Comment    Connect to host.
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Login    ${UserName}    ${PassWord}
+    Log    ${ContInt}
+    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
+    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
-    [Tags]    smoke    skipped
+    [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
 
 Start Subscriber
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Subscriber
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -55,7 +59,7 @@ Start Subscriber
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${subOut}
 
 Start Publisher
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Publisher
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
@@ -68,16 +72,15 @@ Start Publisher
     #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${pubOut}
 
 Read Subscriber
-    [Tags]    functional    skipped
+    [Tags]    functional
     Switch Connection    Subscriber
-	Comment    TSS-657.
-    ${output}=    Read Until    Raw : 9
+    ${output}=    Read Until    Raw : 0
     Log    ${output}
-    Should Contain X Times    ${output}    [GetSample] message received :1    9
+    Should Contain X Times    ${output}    [GetSample] message received :1    10
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
-    Should Contain X Times    ${output}    revCode \ :    9
-    Should Contain X Times    ${output}    sndStamp \ :    9
-    Should Contain X Times    ${output}    origin \ :    9
-    Should Contain X Times    ${output}    host \ :    9
-    Should Contain X Times    ${output}    Calibrated :    9
-    Should Contain X Times    ${output}    Raw :    9
+    Should Contain X Times    ${output}    revCode \ :    10
+    Should Contain X Times    ${output}    sndStamp \ :    10
+    Should Contain X Times    ${output}    origin \ :    10
+    Should Contain X Times    ${output}    host \ :    10
+    Should Contain X Times    ${output}    Calibrated :    10
+    Should Contain X Times    ${output}    Raw :    10

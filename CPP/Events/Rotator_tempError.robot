@@ -73,7 +73,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 66252776    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 269104872 test 1728529566    #|tee ${comOut}
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tempError writing a message containing :    1
@@ -92,8 +92,10 @@ Read Logger
     Should Contain X Times    ${output}    origin \ : 1    2
     Should Contain X Times    ${output}    host \ : 1    2
     Should Contain X Times    ${output}    === Event tempError received =     2
-    Should Contain X Times    ${output}    priority : test    2
+    Should Contain X Times    ${output}    priority : 269104872    2
+    Should Contain X Times    ${output}    priority :    2
+    Should Contain    ${output}    priority : 269104872
     Should Contain X Times    ${output}    device :    2
     Should Contain    ${output}    device : test
     Should Contain X Times    ${output}    severity :    2
-    Should Contain    ${output}    severity : 66252776
+    Should Contain    ${output}    severity : 1728529566
