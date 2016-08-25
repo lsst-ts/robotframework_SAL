@@ -131,9 +131,9 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    7" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    6" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ :    7" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    6" >> $testSuite
+    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    revCode \ :    6" >> $testSuite
     #for item in "${itemsArray[@]}"; do
         #echo "    Should Contain X Times    \${output}    $item :    5" >>$testSuite
     #done
