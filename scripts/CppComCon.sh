@@ -57,7 +57,7 @@ function getParameterIndex() {
 function getParameterType() {
 	subSystem=$1
 	index=$2
-	itemIndex=$(($3 + 1))
+	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
 	parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
 	echo $parameterType
 }
@@ -65,7 +65,7 @@ function getParameterType() {
 function getParameterCount() {
     subSystem=$1
     index=$2
-    itemIndex=$(($3 + 1))
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
     parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
     echo $parameterCount
 }
