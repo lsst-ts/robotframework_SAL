@@ -9,8 +9,6 @@ Resource    ../../Global_Vars.robot
 ${subSystem}    rotator
 ${component}    limit
 ${timeout}    30s
-#${conOut}    ${subSystem}_${component}_sub.out
-#${comOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Sender Session
@@ -50,7 +48,7 @@ Start Sender - Verify Missing Inputs Error
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send     #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}   Usage :  input parameters...
@@ -61,11 +59,10 @@ Start Logger
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Logger.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_log    #|tee ${conOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_log
     ${output}=    Read
     Log    ${output}
     Should Be Empty    ${output}
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${conOut}
 
 Start Sender
     [Tags]    functional
@@ -73,29 +70,20 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1924735376 test test    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1715610520 test test 616604980
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_limit writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event limit generated =
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${comOut}
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read    delay=10s
+    ${output}=    Read Until    priority : 616604980
     Log    ${output}
-    Should Contain X Times    ${output}    === [GetSample] message received :1    2
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    2
-    Should Contain X Times    ${output}    sndStamp \ :    2
-    Should Contain X Times    ${output}    origin \ : 1    2
-    Should Contain X Times    ${output}    host \ : 1    2
-    Should Contain X Times    ${output}    === Event limit received =     2
-    Should Contain X Times    ${output}    priority : 1924735376    2
-    Should Contain X Times    ${output}    priority :    2
-    Should Contain    ${output}    priority : 1924735376
-    Should Contain X Times    ${output}    limit :    2
+    Should Contain X Times    ${output}    === Event limit received =     1
+    Should Contain    ${output}    priority : 1715610520
     Should Contain    ${output}    limit : test
-    Should Contain X Times    ${output}    type :    2
     Should Contain    ${output}    type : test
+    Should Contain    ${output}    priority : 616604980

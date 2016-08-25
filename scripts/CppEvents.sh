@@ -61,9 +61,17 @@ function getParameterIndex() {
 function getParameterType() {
 	subSystem=$1
 	index=$2
-	itemIndex=$(($3 + 1))
+	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
 	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
 	echo $parameterType
+}
+
+function getParameterCount() {
+    subSystem=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+    echo $parameterCount
 }
 
 function clearTestSuite() {
@@ -88,8 +96,6 @@ function createVariables() {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
-    echo "#\${conOut}    \${subSystem}_\${component}_sub.out" >> $testSuite
-    echo "#\${comOut}    \${subSystem}_\${component}_pub.out" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -141,7 +147,7 @@ function startSenderInputs() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send $parameter    #|tee \${comOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send $parameter" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
@@ -155,11 +161,10 @@ function startLogger() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_log    #|tee \${conOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_log" >> $testSuite
     echo "    \${output}=    Read" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Be Empty    \${output}" >> $testSuite
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${conOut}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -173,7 +178,7 @@ function startSender() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}    #|tee \${comOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === [putSample] ${subSystem}::logevent_${topic} writing a message containing :    1" >> $testSuite
@@ -183,7 +188,6 @@ function startSender() {
         #echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
 		#(( i++ ))
     #done
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${comOut}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -195,17 +199,10 @@ function readLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
 	# TSS-682
-    echo "    \${output}=    Read    delay=10s" >> $testSuite    #Until Regexp    priority[\\\W\\\w]*?(priority\\\s:\\\s\\\d+)" >> $testSuite
+    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === [GetSample] message received :1    2" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    2" >> $testSuite
-    echo "    Should Contain X Times    \${output}    sndStamp \ :    2" >>$testSuite
-    echo "    Should Contain X Times    \${output}    origin \ : 1    2" >> $testSuite
-    echo "    Should Contain X Times    \${output}    host \ : 1    2" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === Event ${topic} received =     2" >> $testSuite
-    echo "    Should Contain X Times    \${output}    priority : ${argumentsArray[0]}    2" >> $testSuite
+    echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain X Times    \${output}    $parameter :    2" >>$testSuite
         echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
 		(( i++ ))
     done
@@ -260,15 +257,21 @@ function createTestSuite() {
 			argumentsArray+=($testValue)
 		# Otherwise, determine the parameter type and create a test value, accordingly.
 		else
-			for i in `seq 0 19`; do
-				if [ ${parametersArray[$i]} ]; then
-					parameterIndex=$(getParameterIndex ${parametersArray[$i]})
-					parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-					testValue=$(python random_value.py $parameterType)
-					argumentsArray+=($testValue)
-				fi
-			done
-		fi
+                for i in "${parametersArray[@]}"; do
+                    parameterIndex=$(getParameterIndex $i)
+                    parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
+                    parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+                    for i in $(seq 1 $parameterCount); do
+                        testValue=$(python random_value.py $parameterType)
+                        argumentsArray+=($testValue)
+                    done
+            done
+        fi
+		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
+		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
+		parametersArray=("${parametersArray[@]}" "priority")
+		priority=$(python random_value.py long)
+		argumentsArray=("${argumentsArray[@]}" "$priority")
 		# Create the Start Sender test case.
 		startSender $device $property
 		# Create the Read Logger test case.

@@ -9,8 +9,6 @@ Resource    ../../Global_Vars.robot
 ${subSystem}    dome
 ${component}    lldvOK
 ${timeout}    30s
-#${conOut}    ${subSystem}_${component}_sub.out
-#${comOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Sender Session
@@ -50,7 +48,7 @@ Start Sender - Verify Missing Inputs Error
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send     #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}   Usage :  input parameters...
@@ -61,11 +59,10 @@ Start Logger
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Logger.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_log    #|tee ${conOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_log
     ${output}=    Read
     Log    ${output}
     Should Be Empty    ${output}
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${conOut}
 
 Start Sender
     [Tags]    functional
@@ -73,23 +70,17 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11464    #|tee ${comOut}
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 26690 1205939064
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dome::logevent_lldvOK writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event lldvOK generated =
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${comOut}
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read    delay=10s
+    ${output}=    Read Until    priority : 1205939064
     Log    ${output}
-    Should Contain X Times    ${output}    === [GetSample] message received :1    2
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    2
-    Should Contain X Times    ${output}    sndStamp \ :    2
-    Should Contain X Times    ${output}    origin \ : 1    2
-    Should Contain X Times    ${output}    host \ : 1    2
-    Should Contain X Times    ${output}    === Event lldvOK received =     2
-    Should Contain X Times    ${output}    priority : 11464    2
+    Should Contain X Times    ${output}    === Event lldvOK received =     1
+    Should Contain    ${output}    priority : 26690
