@@ -20,11 +20,7 @@ elif args.datatype == "short":
 elif args.datatype == "int":
         value=random.randint(0,32767)
 elif args.datatype == "boolean":
-		temp=random.randint(0,1)
-		if temp == 1:
-        		value="true"
-		else:
-				value="false"
+		value=random.randint(0,1)
 else:
         value="test"
 
