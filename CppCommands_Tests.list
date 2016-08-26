@@ -1,0 +1,51 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CppTelemetry
+--output CppTelemetry
+
+# Publish/Subscribe Telemetry test suites
+CPP/Commands/Camera_configure.robot
+CPP/Commands/Camera_initGuiders.robot
+CPP/Commands/Camera_initImage.robot
+CPP/Commands/Camera_setFilter.robot
+CPP/Commands/Camera_takeImages.robot
+CPP/Commands/Dome_CloseShutter.robot
+CPP/Commands/Dome_Crawl.robot
+CPP/Commands/Dome_Louvers.robot
+CPP/Commands/Dome_Move.robot
+CPP/Commands/Dome_MovetoCal.robot
+CPP/Commands/Dome_OpenShutter.robot
+CPP/Commands/Dome_Park.robot
+CPP/Commands/Dome_Track.robot
+CPP/Commands/Hexapod_configureAcceleration.robot
+CPP/Commands/Hexapod_configureLimits.robot
+CPP/Commands/Hexapod_configureLut.robot
+CPP/Commands/Hexapod_configureVelocity.robot
+CPP/Commands/Hexapod_move.robot
+CPP/Commands/Hexapod_offset.robot
+CPP/Commands/Hexapod_pivot.robot
+CPP/Commands/Hexapod_test.robot
+CPP/Commands/M1M3_configure.robot
+CPP/Commands/M1M3_status.robot
+CPP/Commands/M1M3_target.robot
+CPP/Commands/M1M3_update.robot
+CPP/Commands/M2MS_ApplyBendingMode.robot
+CPP/Commands/M2MS_ApplyForce.robot
+CPP/Commands/M2MS_MoveAxialActuator.robot
+CPP/Commands/M2MS_PositionMirror.robot
+CPP/Commands/M2MS_SetCorrectionBendingMode.robot
+CPP/Commands/MTMount_clearerror.robot
+CPP/Commands/MTMount_closeMirrorCover.robot
+CPP/Commands/MTMount_configure.robot
+CPP/Commands/MTMount_disableCamWrap.robot
+CPP/Commands/MTMount_enableCamWrap.robot
+CPP/Commands/MTMount_moveToTarget.robot
+CPP/Commands/MTMount_openMirrorCover.robot
+CPP/Commands/MTMount_trackTarget.robot
+CPP/Commands/Rotator_configureAcceleration.robot
+CPP/Commands/Rotator_configureVelocity.robot
+CPP/Commands/Rotator_move.robot
+CPP/Commands/Rotator_test.robot
+CPP/Commands/Rotator_track.robot
+CPP/Commands/TCS_wfpCalculate.robot
+CPP/Commands/TCS_wfpSimulate.robot
