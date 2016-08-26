@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 90.7619 31.4568
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.1216 53.617
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -71,9 +71,9 @@ Start Controller
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
-    ${output}=    Read
+    ${output}=    Read Until    controller ready
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} controller ready
 
 Start Commander
     [Tags]    functional
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 90.7619 31.4568
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.1216 53.617
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,8 +89,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    azimuth : 90.7619    1
-    Should Contain X Times    ${output}    elevation : 31.4568    1
+    Should Contain X Times    ${output}    azimuth : 75.1216    1
+    Should Contain X Times    ${output}    elevation : 53.617    1
     Should Contain    ${output}    === command target issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
@@ -104,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    azimuth : 90.7619    1
-    Should Contain X Times    ${output}    elevation : 31.4568    1
+    Should Contain X Times    ${output}    azimuth : 75.1216    1
+    Should Contain X Times    ${output}    elevation : 53.617    1
     Should Contain X Times    ${output}    === [ackCommand_target] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

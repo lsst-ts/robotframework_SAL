@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10.014 36.8418 63.7945 0.6768 30.1301 39.7656 5.8014 92.8888 46.9813 29.7115 91.838 14.8791 36.1815 65.3736 0.3274 67.2324 0.0379 89.3707 86.4041 29.428 81.716 99.2199 70.5862 44.6669 59.7251 7.9619 64.9754 75.1417 19.51 98.7298 65.6846 97.7855 21.2261 37.8926 24.5513 42.9779 13.8891 14.3094 93.8022 5.1434 4.0616 53.4716 53.338 38.4458 7.1746 55.6761 49.2565 0.6492 29.0858 65.3764 56.0947 67.7591 79.2447 48.6205 47.4872 24.4145 85.6058 33.096 93.3631 8.4706 86.8624 0.8955 94.2072 48.0143 65.038 65.659 18.4937 64.1207 93.7971 9.749 82.8176 79.6939
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.1988 79.9925 91.9971 57.1131 47.7063 81.6999 17.6023 6.707 3.7556 55.9626 1.7008 82.965 21.3946 27.5387 97.1836 64.9521 63.3285 81.6324 4.4631 69.6688 5.2165 72.3623 73.0456 34.1852 78.5442 21.9935 64.2241 73.2966 77.7856 18.9579 73.5635 44.4621 51.7339 72.8964 24.4939 69.377 95.1012 48.1432 55.7135 61.5304 42.4306 30.8817 71.139 6.7465 26.309 32.1437 3.2813 94.2898 69.2169 19.1097 18.6483 43.7315 69.6356 83.2965 43.0169 38.4405 53.606 84.562 81.8649 32.2404 63.7213 90.7231 58.512 73.9701 57.1655 49.6977 72.4045 19.5932 84.7595 70.8411 26.466 69.8433
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -71,9 +71,9 @@ Start Controller
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
-    ${output}=    Read
+    ${output}=    Read Until    controller ready
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} controller ready
 
 Start Commander
     [Tags]    functional
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10.014 36.8418 63.7945 0.6768 30.1301 39.7656 5.8014 92.8888 46.9813 29.7115 91.838 14.8791 36.1815 65.3736 0.3274 67.2324 0.0379 89.3707 86.4041 29.428 81.716 99.2199 70.5862 44.6669 59.7251 7.9619 64.9754 75.1417 19.51 98.7298 65.6846 97.7855 21.2261 37.8926 24.5513 42.9779 13.8891 14.3094 93.8022 5.1434 4.0616 53.4716 53.338 38.4458 7.1746 55.6761 49.2565 0.6492 29.0858 65.3764 56.0947 67.7591 79.2447 48.6205 47.4872 24.4145 85.6058 33.096 93.3631 8.4706 86.8624 0.8955 94.2072 48.0143 65.038 65.659 18.4937 64.1207 93.7971 9.749 82.8176 79.6939
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.1988 79.9925 91.9971 57.1131 47.7063 81.6999 17.6023 6.707 3.7556 55.9626 1.7008 82.965 21.3946 27.5387 97.1836 64.9521 63.3285 81.6324 4.4631 69.6688 5.2165 72.3623 73.0456 34.1852 78.5442 21.9935 64.2241 73.2966 77.7856 18.9579 73.5635 44.4621 51.7339 72.8964 24.4939 69.377 95.1012 48.1432 55.7135 61.5304 42.4306 30.8817 71.139 6.7465 26.309 32.1437 3.2813 94.2898 69.2169 19.1097 18.6483 43.7315 69.6356 83.2965 43.0169 38.4405 53.606 84.562 81.8649 32.2404 63.7213 90.7231 58.512 73.9701 57.1655 49.6977 72.4045 19.5932 84.7595 70.8411 26.466 69.8433
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,7 +89,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    openPercent : 10.014    1
+    Should Contain X Times    ${output}    openPercent : 76.1988    1
     Should Contain    ${output}    === command Louvers issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
@@ -103,7 +103,7 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    openPercent : 10.014    1
+    Should Contain X Times    ${output}    openPercent : 76.1988    1
     Should Contain X Times    ${output}    === [ackCommand_Louvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

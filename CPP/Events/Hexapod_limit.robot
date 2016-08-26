@@ -60,9 +60,9 @@ Start Logger
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Logger.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_log
-    ${output}=    Read
+    ${output}=    Read Until    logger ready =
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    Event ${component} logger ready
 
 Start Sender
     [Tags]    functional
@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2105854285 test test test 1838553599
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1475176620 test test test 8411998
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_limit writing a message containing :    1
@@ -80,11 +80,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1838553599
+    ${output}=    Read Until    priority : 8411998
     Log    ${output}
     Should Contain X Times    ${output}    === Event limit received =     1
-    Should Contain    ${output}    priority : 2105854285
+    Should Contain    ${output}    priority : 1475176620
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    limit : test
     Should Contain    ${output}    type : test
-    Should Contain    ${output}    priority : 1838553599
+    Should Contain    ${output}    priority : 8411998

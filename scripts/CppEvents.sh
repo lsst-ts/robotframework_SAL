@@ -162,9 +162,9 @@ function startLogger() {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_log" >> $testSuite
-    echo "    \${output}=    Read" >> $testSuite
+    echo "    \${output}=    Read Until    logger ready =" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Be Empty    \${output}" >> $testSuite
+    echo "    Should Contain    \${output}    Event \${component} logger ready" >> $testSuite
     echo "" >> $testSuite
 }
 

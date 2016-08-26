@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1258029661 75.0007 1 1 1 1 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 872913017 3.2549 false false true true test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -71,9 +71,9 @@ Start Controller
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
-    ${output}=    Read
+    ${output}=    Read Until    controller ready
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} controller ready
 
 Start Commander
     [Tags]    functional
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1258029661 75.0007 1 1 1 1 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 872913017 3.2549 false false true true test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,12 +89,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    numImages : 1258029661    1
-    Should Contain X Times    ${output}    expTime : 75.0007    1
-    Should Contain X Times    ${output}    shutter : 1    1
-    Should Contain X Times    ${output}    science : 1    1
-    Should Contain X Times    ${output}    guide : 1    1
-    Should Contain X Times    ${output}    wfs : 1    1
+    Should Contain X Times    ${output}    numImages : 872913017    1
+    Should Contain X Times    ${output}    expTime : 3.2549    1
+    Should Contain X Times    ${output}    shutter : false    1
+    Should Contain X Times    ${output}    science : false    1
+    Should Contain X Times    ${output}    guide : true    1
+    Should Contain X Times    ${output}    wfs : true    1
     Should Contain X Times    ${output}    imageSequenceName : test    1
     Should Contain    ${output}    === command takeImages issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
@@ -109,12 +109,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    numImages : 1258029661    1
-    Should Contain X Times    ${output}    expTime : 75.0007    1
-    Should Contain X Times    ${output}    shutter : 1    1
-    Should Contain X Times    ${output}    science : 1    1
-    Should Contain X Times    ${output}    guide : 1    1
-    Should Contain X Times    ${output}    wfs : 1    1
+    Should Contain X Times    ${output}    numImages : 872913017    1
+    Should Contain X Times    ${output}    expTime : 3.2549    1
+    Should Contain X Times    ${output}    shutter : false    1
+    Should Contain X Times    ${output}    science : false    1
+    Should Contain X Times    ${output}    guide : true    1
+    Should Contain X Times    ${output}    wfs : true    1
     Should Contain X Times    ${output}    imageSequenceName : test    1
     Should Contain X Times    ${output}    === [ackCommand_takeImages] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

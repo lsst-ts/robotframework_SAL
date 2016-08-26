@@ -171,9 +171,9 @@ function startController() {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Controller." >> $testSuite
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_controller" >> $testSuite
-    echo "    \${output}=    Read" >> $testSuite
+    echo "    \${output}=    Read Until    controller ready" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Be Empty    \${output}" >> $testSuite
+    echo "    Should Contain    \${output}    \${subSystem}_\${component} controller ready" >> $testSuite
     echo "" >> $testSuite
 }
 

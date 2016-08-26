@@ -60,9 +60,9 @@ Start Logger
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Logger.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_log
-    ${output}=    Read
+    ${output}=    Read Until    logger ready =
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    Event ${component} logger ready
 
 Start Sender
     [Tags]    functional
@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1109831711 test test 557475424 37.9307 1789806460
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1901735133 test test 2064795883 70.008 710400455
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -80,12 +80,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1789806460
+    ${output}=    Read Until    priority : 710400455
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    priority : 1109831711
+    Should Contain    ${output}    priority : 1901735133
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 557475424
-    Should Contain    ${output}    temp : 37.9307
-    Should Contain    ${output}    priority : 1789806460
+    Should Contain    ${output}    severity : 2064795883
+    Should Contain    ${output}    temp : 70.008
+    Should Contain    ${output}    priority : 710400455

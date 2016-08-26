@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 73.0124 59.6631 48.8083
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 41.8182 79.0439 35.6337
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -71,9 +71,9 @@ Start Controller
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Controller.
     ${input}=    Write    ./sacpp_${subSystem}_${component}_controller
-    ${output}=    Read
+    ${output}=    Read Until    controller ready
     Log    ${output}
-    Should Be Empty    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} controller ready
 
 Start Commander
     [Tags]    functional
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 73.0124 59.6631 48.8083
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 41.8182 79.0439 35.6337
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,9 +89,9 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 73.0124    1
-    Should Contain X Times    ${output}    velocity : 59.6631    1
-    Should Contain X Times    ${output}    tai : 48.8083    1
+    Should Contain X Times    ${output}    angle : 41.8182    1
+    Should Contain X Times    ${output}    velocity : 79.0439    1
+    Should Contain X Times    ${output}    tai : 35.6337    1
     Should Contain    ${output}    === command track issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
@@ -105,9 +105,9 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 73.0124    1
-    Should Contain X Times    ${output}    velocity : 59.6631    1
-    Should Contain X Times    ${output}    tai : 48.8083    1
+    Should Contain X Times    ${output}    angle : 41.8182    1
+    Should Contain X Times    ${output}    velocity : 79.0439    1
+    Should Contain X Times    ${output}    tai : 35.6337    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
