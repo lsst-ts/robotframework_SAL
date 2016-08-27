@@ -9,7 +9,7 @@
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/CPP/Telemetry
 arg=${1-all}
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms MTMount rotator scheduler tcs)    #camera, dm, mtmount, tcs - TSS-674, TSS-673, TSS-672, TSS-658
+declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms MTMount rotator scheduler tcs)    #camera, dm, mtmount, tcs - TSS-674, TSS-673, TSS-658
 declare -a topicsArray=($EMPTY)
 declare -a itemsArray=($EMPTY)
 
