@@ -199,7 +199,7 @@ function readLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
 	# TSS-682
-    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
+    echo "    \${output}=    Read Until    priority : ${argumentsArray[0]}" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
@@ -251,27 +251,21 @@ function createTestSuite() {
 
 		# Get the arguments to the sender.
 		unset argumentsArray
-		# If the Topic has no parameters (items), just send a string.
-		if [ ! ${parametersArray[0]} ]; then
-			testValue=$(python random_value.py "int")
-			argumentsArray+=($testValue)
-		# Otherwise, determine the parameter type and create a test value, accordingly.
-		else
-                for i in "${parametersArray[@]}"; do
-                    parameterIndex=$(getParameterIndex $i)
-                    parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-                    parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-                    for i in $(seq 1 $parameterCount); do
-                        testValue=$(python random_value.py $parameterType)
-                        argumentsArray+=($testValue)
-                    done
+		# Determine the parameter type and create a test value, accordingly.
+        for i in "${parametersArray[@]}"; do
+            parameterIndex=$(getParameterIndex $i)
+            parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
+            parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+            for i in $(seq 1 $parameterCount); do
+                testValue=$(python random_value.py $parameterType)
+                argumentsArray+=($testValue)
             done
-        fi
+		done
 		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
 		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-		parametersArray=("${parametersArray[@]}" "priority")
+		parametersArray=("priority" "${parametersArray[@]}")
 		priority=$(python random_value.py long)
-		argumentsArray=("${argumentsArray[@]}" "$priority")
+		argumentsArray=("$priority" "${argumentsArray[@]}")
 		# Create the Start Sender test case.
 		startSender $device $property
 		# Create the Read Logger test case.
