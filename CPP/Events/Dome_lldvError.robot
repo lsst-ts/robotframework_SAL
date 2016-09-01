@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16913 1000379108
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1638090968
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dome::logevent_lldvError writing a message containing :    1
@@ -80,7 +80,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1000379108
+    ${output}=    Read Until    priority : 1638090968
     Log    ${output}
     Should Contain X Times    ${output}    === Event lldvError received =     1
-    Should Contain    ${output}    priority : 16913
+    Should Contain    ${output}    priority : 1638090968

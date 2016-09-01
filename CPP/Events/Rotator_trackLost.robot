@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1369 1374639487
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 807926578
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_trackLost writing a message containing :    1
@@ -80,7 +80,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1374639487
+    ${output}=    Read Until    priority : 807926578
     Log    ${output}
     Should Contain X Times    ${output}    === Event trackLost received =     1
-    Should Contain    ${output}    priority : 1369
+    Should Contain    ${output}    priority : 807926578
