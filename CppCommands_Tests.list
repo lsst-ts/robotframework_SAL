@@ -1,7 +1,7 @@
 ###  Test Suite list ###
 #  Change the title of the test results
---name CppTelemetry
---output CppTelemetry
+--name CppCommands
+--output CppCommands
 
 # Publish/Subscribe Telemetry test suites
 CPP/Commands/Camera_configure.robot

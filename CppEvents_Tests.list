@@ -1,7 +1,7 @@
 ###  Test Suite list ###
 #  Change the title of the test results
---name CppCommands
---output CppCommands
+--name CppEvents
+--output CppEvents
 
 # Commander/Controller test suites
 CPP/Events/Camera_ccsConfigured.robot
