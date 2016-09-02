@@ -3,7 +3,7 @@
 --name CppTelemetry
 --output CppTelemetry
 
-# Event Sender/Logger test suites
+# Publish/Subscribe Telemetry test suites
 CPP/Telemetry/Camera_CCS.robot
 CPP/Telemetry/Camera_Cluster_Encoder.robot
 CPP/Telemetry/Camera_Cold.robot

@@ -3,7 +3,7 @@
 --name CppEvents
 --output CppEvents
 
-# Commander/Controller test suites
+# Event Sender/Logger test suites
 CPP/Events/Camera_ccsConfigured.robot
 CPP/Events/Camera_endInitializeGuider.robot
 CPP/Events/Camera_endInitializeImage.robot
