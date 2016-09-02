@@ -51,7 +51,7 @@ Start Commander - Verify Missing Inputs Error
     ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   Usage :  input parameters...
+    Should Contain    ${output}   Usage : \ input parameters...
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 44.7949 71.6353 3.5408 98.7853 91.8423 58.4293 26.4442 59.6591 5.9914 55.2371 79.1032 40.0922 94.9083 2.0936 15.6676 82.3372 66.6972 58.2489
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 47.5387 67.3243 82.9664 36.201 76.8997 45.8832 31.6236 98.1775 60.2021 67.865 47.6098 8.5217 15.6785 40.3583 2.4541 31.2774 15.18 0.8381
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 44.7949 71.6353 3.5408 98.7853 91.8423 58.4293 26.4442 59.6591 5.9914 55.2371 79.1032 40.0922 94.9083 2.0936 15.6676 82.3372 66.6972 58.2489
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 47.5387 67.3243 82.9664 36.201 76.8997 45.8832 31.6236 98.1775 60.2021 67.865 47.6098 8.5217 15.6785 40.3583 2.4541 31.2774 15.18 0.8381
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,7 +90,7 @@ Start Commander
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 44.7949    1
+    Should Contain X Times    ${output}    z_arr : 47.5387    1
     Should Contain    ${output}    === command wfpSimulate issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
 
@@ -105,7 +105,7 @@ Read Controller
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 58.2489    1
+    Should Contain X Times    ${output}    z_arr : 0.8381    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

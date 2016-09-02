@@ -51,7 +51,7 @@ Start Commander - Verify Missing Inputs Error
     ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   Usage :  input parameters...
+    Should Contain    ${output}   Usage : \ input parameters...
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7.9401 97.9831 22.0194 61.0776 63.0854 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21.0424 79.5398 90.5752 93.1494 69.8326 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7.9401 97.9831 22.0194 61.0776 63.0854 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21.0424 79.5398 90.5752 93.1494 69.8326 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,11 +89,11 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 7.9401    1
-    Should Contain X Times    ${output}    az_velocity : 97.9831    1
-    Should Contain X Times    ${output}    el_angle : 22.0194    1
-    Should Contain X Times    ${output}    el_velocity : 61.0776    1
-    Should Contain X Times    ${output}    time : 63.0854    1
+    Should Contain X Times    ${output}    az_angle : 21.0424    1
+    Should Contain X Times    ${output}    az_velocity : 79.5398    1
+    Should Contain X Times    ${output}    el_angle : 90.5752    1
+    Should Contain X Times    ${output}    el_velocity : 93.1494    1
+    Should Contain X Times    ${output}    time : 69.8326    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
@@ -108,11 +108,11 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 7.9401    1
-    Should Contain X Times    ${output}    az_velocity : 97.9831    1
-    Should Contain X Times    ${output}    el_angle : 22.0194    1
-    Should Contain X Times    ${output}    el_velocity : 61.0776    1
-    Should Contain X Times    ${output}    time : 63.0854    1
+    Should Contain X Times    ${output}    az_angle : 21.0424    1
+    Should Contain X Times    ${output}    az_velocity : 79.5398    1
+    Should Contain X Times    ${output}    el_angle : 90.5752    1
+    Should Contain X Times    ${output}    el_velocity : 93.1494    1
+    Should Contain X Times    ${output}    time : 69.8326    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

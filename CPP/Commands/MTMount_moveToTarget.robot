@@ -51,7 +51,7 @@ Start Commander - Verify Missing Inputs Error
     ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   Usage :  input parameters...
+    Should Contain    ${output}   Usage : \ input parameters...
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -59,7 +59,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 65.3916 34.9293 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.9769 82.6903 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
@@ -81,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 65.3916 34.9293 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.9769 82.6903 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,8 +89,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 65.3916    1
-    Should Contain X Times    ${output}    el_angle : 34.9293    1
+    Should Contain X Times    ${output}    az_angle : 99.9769    1
+    Should Contain X Times    ${output}    el_angle : 82.6903    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command moveToTarget issued =
     Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
@@ -105,8 +105,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 65.3916    1
-    Should Contain X Times    ${output}    el_angle : 34.9293    1
+    Should Contain X Times    ${output}    az_angle : 99.9769    1
+    Should Contain X Times    ${output}    el_angle : 82.6903    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
