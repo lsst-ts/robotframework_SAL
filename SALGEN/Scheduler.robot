@@ -85,7 +85,7 @@ Verify Scheduler Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_iconstraints
     Directory Should Exist    ${SALWorkDir}/${subSystem}_parameters
     Directory Should Exist    ${SALWorkDir}/${subSystem}_progress
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_targets
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_target
 
 Salgen Scheduler Java
     [Documentation]    Generate Java wrapper.
@@ -129,8 +129,8 @@ Salgen Scheduler Python
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
 
 Salgen Scheduler Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
