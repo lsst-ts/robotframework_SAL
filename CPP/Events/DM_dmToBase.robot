@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1123750698 898017574
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1756253906 759437797
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dm::logevent_dmToBase writing a message containing :    1
@@ -80,8 +80,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1123750698
+    ${output}=    Read Until    priority : 759437797
     Log    ${output}
     Should Contain X Times    ${output}    === Event dmToBase received =     1
-    Should Contain    ${output}    priority : 1123750698
-    Should Contain    ${output}    image_id : 898017574
+    Should Contain    ${output}    image_id : 1756253906
+    Should Contain    ${output}    priority : 759437797

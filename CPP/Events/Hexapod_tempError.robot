@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1815732026 test test 1905598904 42.9373
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 1854646805 88.3314 1434980262
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -80,11 +80,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1815732026
+    ${output}=    Read Until    priority : 1434980262
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    priority : 1815732026
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 1905598904
-    Should Contain    ${output}    temp : 42.9373
+    Should Contain    ${output}    severity : 1854646805
+    Should Contain    ${output}    temp : 88.3314
+    Should Contain    ${output}    priority : 1434980262

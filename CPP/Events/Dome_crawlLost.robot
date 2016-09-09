@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1243967971
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1528691939
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dome::logevent_crawlLost writing a message containing :    1
@@ -80,7 +80,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1243967971
+    ${output}=    Read Until    priority : 1528691939
     Log    ${output}
     Should Contain X Times    ${output}    === Event crawlLost received =     1
-    Should Contain    ${output}    priority : 1243967971
+    Should Contain    ${output}    priority : 1528691939

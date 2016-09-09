@@ -14,7 +14,7 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator scheduler tcs)
+declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator tcs) # The scheduler does not currently publish events.
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
@@ -199,7 +199,7 @@ function readLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
 	# TSS-682
-    echo "    \${output}=    Read Until    priority : ${argumentsArray[0]}" >> $testSuite
+    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
@@ -263,9 +263,9 @@ function createTestSuite() {
 		done
 		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
 		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-		parametersArray=("priority" "${parametersArray[@]}")
+		parametersArray=("${parametersArray[@]}" "priority")
 		priority=$(python random_value.py long)
-		argumentsArray=("$priority" "${argumentsArray[@]}")
+		argumentsArray=("${argumentsArray[@]}" "$priority")
 		# Create the Start Sender test case.
 		startSender $device $property
 		# Create the Read Logger test case.

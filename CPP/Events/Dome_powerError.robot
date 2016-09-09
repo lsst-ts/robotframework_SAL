@@ -70,7 +70,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 285423033 test 868904653
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 360322869 1829732262
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dome::logevent_powerError writing a message containing :    1
@@ -80,9 +80,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 285423033
+    ${output}=    Read Until    priority : 1829732262
     Log    ${output}
     Should Contain X Times    ${output}    === Event powerError received =     1
-    Should Contain    ${output}    priority : 285423033
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 868904653
+    Should Contain    ${output}    severity : 360322869
+    Should Contain    ${output}    priority : 1829732262
