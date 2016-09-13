@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Scheduler_targets communications tests.
+Documentation    Scheduler_parkConfig communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -7,7 +7,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    targets
+${component}    parkConfig
 ${timeout}    30s
 #${subOut}    ${subSystem}_${component}_sub.out
 #${pubOut}    ${subSystem}_${component}_pub.out
@@ -76,10 +76,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read
     Log    ${output}
-    Should Contain X Times    ${output}    airmass :    9
-    Should Contain X Times    ${output}    catid :    9
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    filter :    9
-    Should Contain X Times    ${output}    numexp :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    rotangle :    9
+    Should Contain X Times    ${output}    telescope_altitude :    9
+    Should Contain X Times    ${output}    telescope_azimuth :    9
+    Should Contain X Times    ${output}    telescope_rotator :    9
+    Should Contain X Times    ${output}    dome_altitude :    9
+    Should Contain X Times    ${output}    dome_azimuth :    9
+    Should Contain X Times    ${output}    filter_position :    9
