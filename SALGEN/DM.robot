@@ -94,7 +94,7 @@ Verify DM Telemetry directories
 
 Salgen DM Java
     [Documentation]    Generate Java wrapper.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -108,7 +108,7 @@ Salgen DM Java
 
 Salgen DM Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -123,7 +123,7 @@ Salgen DM Maven
 
 Salgen DM Python
     [Documentation]    Generate Python wrapper.
-    [Tags]
+    [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -136,6 +136,16 @@ Salgen DM Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify DM Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_alert_dq_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_alert_dq_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_dmPublished.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_dmPublished.py
 
 Salgen DM Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.

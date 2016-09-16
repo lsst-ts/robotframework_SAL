@@ -86,7 +86,7 @@ Verify Rotator Telemetry directories
 
 Salgen Rotator Java
     [Documentation]    Generate Java wrapper.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -100,7 +100,7 @@ Salgen Rotator Java
 
 Salgen Rotator Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -115,7 +115,7 @@ Salgen Rotator Maven
 
 Salgen Rotator Python
     [Documentation]    Generate Python wrapper.
-    [Tags]
+    [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -128,6 +128,18 @@ Salgen Rotator Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify Rotator Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_move.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_move.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Position_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Position_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_moveOK.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_moveOK.py
 
 Salgen Rotator Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.

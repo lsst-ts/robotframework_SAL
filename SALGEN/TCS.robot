@@ -96,7 +96,7 @@ Verify TCS Telemetry directories
 
 Salgen TCS Java
     [Documentation]    Generate Java wrapper.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}//scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -110,7 +110,7 @@ Salgen TCS Java
 
 Salgen TCS Maven   
     [Documentation]    Generate the Maven repository.
-    [Tags] 
+    [Tags]     java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -125,7 +125,7 @@ Salgen TCS Maven
 
 Salgen TCS Python
     [Documentation]    Generate Python wrapper.
-    [Tags]
+    [Tags]    python
     ${input}=    Write    ${SALHome}//scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -138,6 +138,18 @@ Salgen TCS Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify TCS Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_wfpCalculate.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_wfpCalculate.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_ZEMAX_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_ZEMAX_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_zemaxError.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_zemaxError.py
 
 Salgen TCS Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.

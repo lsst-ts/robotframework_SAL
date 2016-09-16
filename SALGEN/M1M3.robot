@@ -91,7 +91,7 @@ Verify M1M3 Telemetry directories
 
 Salgen M1M3 Java
     [Documentation]    Generate Java wrapper.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -105,7 +105,7 @@ Salgen M1M3 Java
 
 Salgen M1M3 Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -120,7 +120,7 @@ Salgen M1M3 Maven
 
 Salgen M1M3 Python
     [Documentation]    Generate Python wrapper.
-    [Tags]
+    [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -133,6 +133,18 @@ Salgen M1M3 Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify M1M3 Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_target.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_target.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Support_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Support_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_interlock.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_interlock.py
 
 Salgen M1M3 Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.

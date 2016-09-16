@@ -93,7 +93,7 @@ Verify Dome Telemetry directories
 
 Salgen Dome Java
     [Documentation]    Generate Java wrapper.
-    [Tags]
+    [Tags]    java
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -107,7 +107,7 @@ Salgen Dome Java
 
 Salgen Dome Maven
 	[Documentation]    Generate the Maven repository.
-	[Tags]
+	[Tags]    java
 	${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
 	${output}=    Read Until Prompt
     Log    ${output}
@@ -122,7 +122,7 @@ Salgen Dome Maven
 
 Salgen Dome Python
     [Documentation]    Generate Python wrapper.
-    [Tags]
+    [Tags]    python
     ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal python
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -135,6 +135,18 @@ Salgen Dome Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify Dome Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Track.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Track.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_TC_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_TC_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_slewOK.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_slewOK.py
 
 Salgen Dome Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
