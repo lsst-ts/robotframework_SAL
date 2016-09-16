@@ -1,0 +1,19 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name PYTHON
+--output PYTHON
+
+# Python Publish/Subscribe Telemetry test suites
+rbtsal/Python/Telemetry/DM_alert_dq.robot
+rbtsal/Python/Telemetry/DM_alert_psf.robot
+rbtsal/Python/Telemetry/DM_alert_summary.robot
+rbtsal/Python/Telemetry/DM_available_replicators_distributors.robot
+rbtsal/Python/Telemetry/DM_efd_slave_replication_state.robot
+rbtsal/Python/Telemetry/DM_international_network_status.robot
+rbtsal/Python/Telemetry/DM_raft_images_sent_current.robot
+rbtsal/Python/Telemetry/DM_successfully_archived.robot
+rbtsal/Python/Telemetry/DM_summit_to_base_network_status.robot
+
+# Python Commander/Controller test suites
+
+# Python Event Sender/Logger test suites

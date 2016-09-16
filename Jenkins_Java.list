@@ -1,0 +1,21 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name JAVA
+--output JAVA
+
+# JAVA Publish/Subscribe Telemetry test suites
+rbtsal/JAVA/Telemetry/Camera_CCS.robot
+rbtsal/JAVA/Telemetry/Camera_Cluster_Encoder.robot
+rbtsal/JAVA/Telemetry/Camera_Cold.robot
+rbtsal/JAVA/Telemetry/Camera_Cryo.robot
+rbtsal/JAVA/Telemetry/Camera_Filter.robot
+rbtsal/JAVA/Telemetry/Camera_GAS.robot
+rbtsal/JAVA/Telemetry/Camera_GDS.robot
+rbtsal/JAVA/Telemetry/Camera_PCMS.robot
+rbtsal/JAVA/Telemetry/Camera_Prot.robot
+rbtsal/JAVA/Telemetry/Camera_Purge.robot
+rbtsal/JAVA/Telemetry/Camera_SAS.robot
+rbtsal/JAVA/Telemetry/Camera_SDS.robot
+rbtsal/JAVA/Telemetry/Camera_Shutter.robot
+rbtsal/JAVA/Telemetry/Camera_WAS.robot
+rbtsal/JAVA/Telemetry/Camera_WDS.robot

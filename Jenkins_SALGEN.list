@@ -1,0 +1,10 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name SALGENERATOR
+--output SALGENERATOR
+
+# List of salgenerator  test suites
+rbtsal/SALGEN/Camera.robot
+rbtsal/SALGEN/DM.robot
+rbtsal/SALGEN/M2MS.robot
+rbtsal/SALGEN/MTMount.robot

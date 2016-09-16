@@ -1,0 +1,36 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CPP
+--output CPP
+
+# CPP Publish/Subscribe Telemetry test suites
+rbtsal/CPP/Telemetry/MTMount_Alt.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Az.robot
+rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
+rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Az_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Bal.robot
+rbtsal/CPP/Telemetry/MTMount_Cab_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Cam_CW.robot
+rbtsal/CPP/Telemetry/MTMount_DP_1.robot
+rbtsal/CPP/Telemetry/MTMount_DP_2.robot
+rbtsal/CPP/Telemetry/MTMount_MC.robot
+rbtsal/CPP/Telemetry/MTMount_MotionParameters.robot
+
+# CPP Commander/Controller test suites
+rbtsal/CPP/Commands/MTMount_clearerror.robot
+rbtsal/CPP/Commands/MTMount_closeMirrorCover.robot
+rbtsal/CPP/Commands/MTMount_configure.robot
+rbtsal/CPP/Commands/MTMount_disableCamWrap.robot
+rbtsal/CPP/Commands/MTMount_enableCamWrap.robot
+rbtsal/CPP/Commands/MTMount_moveToTarget.robot
+rbtsal/CPP/Commands/MTMount_openMirrorCover.robot
+rbtsal/CPP/Commands/MTMount_trackTarget.robot
+
+# CPP Event Sender/Logger test suites
+rbtsal/CPP/Events/MTMount_mountError.robot
+rbtsal/CPP/Events/MTMount_mountInPosition.robot
+rbtsal/CPP/Events/MTMount_mountState.robot
+rbtsal/CPP/Events/MTMount_mountWarning.robot
