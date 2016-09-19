@@ -115,18 +115,6 @@ Salgen Hexapod Maven
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
 
-Verify Hexapod Python Interfaces
-    [Documentation]    Verify the Python interfaces were properly created.
-    [Tags]    python
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
-    Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_configureAcceleration.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_configureAcceleration.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LimitSensors_Publisher.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LimitSensors_Subscriber.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_limit.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_limit.py
-
 Salgen Hexapod Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
@@ -142,6 +130,18 @@ Salgen Hexapod Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+
+Verify Hexapod Python Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_configureAcceleration.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_configureAcceleration.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LimitSensors_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LimitSensors_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_limit.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_limit.py
 
 Salgen Hexapod Labview
 	[Documentation]    Generate ${subSystem} low-level LabView interface.
