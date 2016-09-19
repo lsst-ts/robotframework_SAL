@@ -8,7 +8,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    dome
-${timeout}    400s
+${timeout}    500s
 
 *** Test Cases ***
 SSH Into Host
