@@ -7,7 +7,7 @@
 
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/Python/Telemetry
+workDir=$HOME/trunk/robotframework_SAL/PYTHON/Telemetry
 arg=${1-all}
 #arg="$(echo ${arg} |tr 'A-Z' 'a-z')"
 declare -a subSystemArray=(camera dm dome hexapod m1m3 m2ms MTMount rotator scheduler tcs)
@@ -56,21 +56,6 @@ function getParameterCount() {
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
     parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
     echo $parameterCount
-}
-
-function getValue {
-	value=$1
-	if [ "$value" == "short" ]; then
-		echo "1"
-	elif [ "$value" == "float" ]; then
-		echo "1.0"
-	#elif [ "$value" == "long" ]; then
-		#echo "1"
-	elif [ "$value" == "string" ]; then
-		echo "testString"
-	else
-		echo "test"
-	fi
 }
 
 function clearTestSuite {
@@ -206,8 +191,8 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
-	determine_return_count $subSystem $topicIndex
+    echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
+    determine_return_count $subSystem $topicIndex
     for parameter in "${parametersArray[@]}"; do
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
