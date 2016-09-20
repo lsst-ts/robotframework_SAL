@@ -88,7 +88,7 @@ JAVA/Telemetry/Scheduler_parameters.robot
 JAVA/Telemetry/Scheduler_program.robot
 JAVA/Telemetry/Scheduler_progress.robot
 JAVA/Telemetry/Scheduler_rankingData.robot
-JAVA/Telemetry/Scheduler_targets.robot
+JAVA/Telemetry/Scheduler_target.robot
 JAVA/Telemetry/TCS_AOCS.robot
 JAVA/Telemetry/TCS_WEP.robot
 JAVA/Telemetry/TCS_ZEMAX.robot
