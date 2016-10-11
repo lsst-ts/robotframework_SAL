@@ -1,0 +1,51 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name PythonCommands
+--output PythonCommands
+
+# Commander/Controller test suites
+PYTHON/Commands/Camera_configure.robot
+PYTHON/Commands/Camera_initGuiders.robot
+PYTHON/Commands/Camera_initImage.robot
+PYTHON/Commands/Camera_setFilter.robot
+PYTHON/Commands/Camera_takeImages.robot
+PYTHON/Commands/Dome_CloseShutter.robot
+PYTHON/Commands/Dome_Crawl.robot
+PYTHON/Commands/Dome_Louvers.robot
+PYTHON/Commands/Dome_Move.robot
+PYTHON/Commands/Dome_MovetoCal.robot
+PYTHON/Commands/Dome_OpenShutter.robot
+PYTHON/Commands/Dome_Park.robot
+PYTHON/Commands/Dome_Track.robot
+PYTHON/Commands/Hexapod_configureAcceleration.robot
+PYTHON/Commands/Hexapod_configureLimits.robot
+PYTHON/Commands/Hexapod_configureLut.robot
+PYTHON/Commands/Hexapod_configureVelocity.robot
+PYTHON/Commands/Hexapod_move.robot
+PYTHON/Commands/Hexapod_offset.robot
+PYTHON/Commands/Hexapod_pivot.robot
+PYTHON/Commands/Hexapod_test.robot
+PYTHON/Commands/M1M3_configure.robot
+PYTHON/Commands/M1M3_status.robot
+PYTHON/Commands/M1M3_target.robot
+PYTHON/Commands/M1M3_update.robot
+PYTHON/Commands/M2MS_ApplyBendingMode.robot
+PYTHON/Commands/M2MS_ApplyForce.robot
+PYTHON/Commands/M2MS_MoveAxialActuator.robot
+PYTHON/Commands/M2MS_PositionMirror.robot
+PYTHON/Commands/M2MS_SetCorrectionMode.robot
+PYTHON/Commands/MTMount_clearerror.robot
+PYTHON/Commands/MTMount_closeMirrorCover.robot
+PYTHON/Commands/MTMount_configure.robot
+PYTHON/Commands/MTMount_disableCamWrap.robot
+PYTHON/Commands/MTMount_enableCamWrap.robot
+PYTHON/Commands/MTMount_moveToTarget.robot
+PYTHON/Commands/MTMount_openMirrorCover.robot
+PYTHON/Commands/MTMount_trackTarget.robot
+PYTHON/Commands/Rotator_configureAcceleration.robot
+PYTHON/Commands/Rotator_configureVelocity.robot
+PYTHON/Commands/Rotator_move.robot
+PYTHON/Commands/Rotator_test.robot
+PYTHON/Commands/Rotator_track.robot
+PYTHON/Commands/TCS_wfpCalculate.robot
+PYTHON/Commands/TCS_wfpSimulate.robot
