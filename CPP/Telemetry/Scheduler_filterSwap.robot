@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Scheduler_timeHandler communications tests.
+Documentation    Scheduler_filterSwap communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    timeHandler
+${component}    filterSwap
 ${timeout}    30s
 
 *** Test Cases ***
@@ -74,5 +74,5 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}night :    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}need_swap :    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_to_unmount :    9

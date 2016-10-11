@@ -1,15 +1,16 @@
 *** Settings ***
-Documentation    Scheduler_timeHandler communications tests.
+Documentation    Scheduler_blockPusher communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
-Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    timeHandler
+${component}    blockPusher
 ${timeout}    30s
+#${subOut}    ${subSystem}_${component}_sub.out
+#${pubOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Publisher Session
@@ -42,37 +43,37 @@ Create Subscriber Session
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
-    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub
+    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/java/standalone/saj_${subSystem}_${component}_pub.jar
+    File Should Exist    ${SALWorkDir}/${subSystem}_${component}/java/standalone/saj_${subSystem}_${component}_sub.jar
 
 Start Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
     Comment    Move to working directory.
-    Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
+    Write    cd ${SALWorkDir}/${subSystem}_${component}/java/standalone
     Comment    Start Subscriber.
-    ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_sub.jar ${subSystem}_${component}DataSubscriber
+    ${output}=    Read Until    [${component} Subscriber] Ready
     Log    ${output}
-    Should Contain    ${output}    [Subscriber] Ready
+    Should Contain    ${output}    [${component} Subscriber] Ready
 
 Start Publisher
     [Tags]    functional
     Switch Connection    Publisher
     Comment    Move to working directory.
-    Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
+    Write    cd ${SALWorkDir}/${subSystem}_${component}/java/standalone
     Comment    Start Publisher.
-    ${input}=    Write    ./sacpp_${subSystem}_pub
+    ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_pub.jar ${subSystem}_${component}DataPublisher
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    [putSample] ${subSystem}::${component} writing a message containing :    9
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
+    Should Contain X Times    ${output}    [putSample ${component}] writing a message containing :    5
+    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
 
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}night :    9
+    Should Contain X Times    ${output}    [getSample ${component} ] message received :    6
+    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
+    Should Contain X Times    ${output}    revCode \ :    6

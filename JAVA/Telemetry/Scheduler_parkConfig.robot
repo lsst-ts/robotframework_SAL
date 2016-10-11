@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Scheduler_targets communications tests.
+Documentation    Scheduler_parkConfig communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -7,7 +7,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    targets
+${component}    parkConfig
 ${timeout}    30s
 #${subOut}    ${subSystem}_${component}_sub.out
 #${pubOut}    ${subSystem}_${component}_pub.out
