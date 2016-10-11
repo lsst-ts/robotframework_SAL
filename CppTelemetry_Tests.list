@@ -97,6 +97,7 @@ CPP/Telemetry/Scheduler_domeConfig.robot
 CPP/Telemetry/Scheduler_driverConfig.robot
 CPP/Telemetry/Scheduler_econstraints.robot
 CPP/Telemetry/Scheduler_field.robot
+CPP/Telemetry/Scheduler_filterSwap.robot
 CPP/Telemetry/Scheduler_iconstraints.robot
 CPP/Telemetry/Scheduler_interestedProposal.robot
 CPP/Telemetry/Scheduler_obsSiteConfig.robot
