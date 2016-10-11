@@ -15,5 +15,10 @@ rbtsal/PYTHON/Telemetry/DM_successfully_archived.robot
 rbtsal/PYTHON/Telemetry/DM_summit_to_base_network_status.robot
 
 # Python Commander/Controller test suites
+rbtsal/PYTHON/Commands/Rotator_configureAcceleration.robot
+rbtsal/PYTHON/Commands/Rotator_configureVelocity.robot
+rbtsal/PYTHON/Commands/Rotator_move.robot
+rbtsal/PYTHON/Commands/Rotator_test.robot
+rbtsal/PYTHON/Commands/Rotator_track.robot
 
 # Python Event Sender/Logger test suites
