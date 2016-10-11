@@ -11,7 +11,7 @@ workDir=$HOME/trunk/robotframework_SAL/CPP/Telemetry
 arg=${1-all}
 declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms MTMount rotator scheduler tcs)    #camera, dm, mtmount, tcs - TSS-674, TSS-673, TSS-658
 declare -a topicsArray=($EMPTY)
-declare -a itemsArray=($EMPTY)
+declare -a parametersArray=($EMPTY)
 
 #  FUNCTIONS
 
@@ -23,7 +23,7 @@ function getTopics {
 
 function getTopicItems {
 	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$2]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$1/$1_Telemetry.xml )
-	itemsArray=($output)
+	parametersArray=($output)
 }
 
 function clearTestSuite {
@@ -39,6 +39,7 @@ function createSettings {
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
+    echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
 	echo "" >> $testSuite
 }
@@ -48,8 +49,6 @@ function createVariables {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
-    echo "#\${subOut}    \${subSystem}_\${component}_sub.out" >> $testSuite
-    echo "#\${pubOut}    \${subSystem}_\${component}_pub.out" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -102,11 +101,10 @@ function startSubscriber {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_sub    #|tee \${subOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_sub" >> $testSuite
     echo "    \${output}=    Read Until    [Subscriber] Ready" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    [Subscriber] Ready" >> $testSuite
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${subOut}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -117,12 +115,11 @@ function startPublisher {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Publisher." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_pub    #|tee \${pubOut}" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_pub" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    [putSample] \${subSystem}::\${component} writing a message containing :    9" >> $testSuite
     echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    9" >> $testSuite
-    echo "    #File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/\${pubOut}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -130,10 +127,11 @@ function readSubscriber {
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
-    echo "    \${output}=    Read" >> $testSuite
+    echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    for item in "${itemsArray[@]}"; do
-        echo "    Should Contain X Times    \${output}    $item :    9" >>$testSuite
+	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
+    for item in "${parametersArray[@]}"; do
+        echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$item :    9" >>$testSuite
     done
 }
 
@@ -160,7 +158,7 @@ function createTestSuite {
 		#  Test to see if the TestSuite exists then, if it does, delete it.
 		clearTestSuite
 		
-		#  Get EFDB EFDB_Topic telemetry items
+		#  Get EFDB EFDB_Topic telemetry parameters
 		getTopicItems $subSystem $index
 
 		#  Create test suite.
