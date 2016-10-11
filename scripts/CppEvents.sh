@@ -252,8 +252,8 @@ function createTestSuite() {
 		# Get the arguments to the sender.
 		unset argumentsArray
 		# Determine the parameter type and create a test value, accordingly.
-        for i in "${parametersArray[@]}"; do
-            parameterIndex=$(getParameterIndex $i)
+        for parameter in "${parametersArray[@]}"; do
+            parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
             for i in $(seq 1 $parameterCount); do
