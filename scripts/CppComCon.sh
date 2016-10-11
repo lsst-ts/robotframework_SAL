@@ -219,7 +219,7 @@ function readController() {
     echo "    Should Contain    \${output}    action : $action" >> $testSuite
     echo "    Should Contain    \${output}    value : $value" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-		parameterIndex=$(getParameterIndex $i)
+		parameterIndex=$(getParameterIndex $i)    #should $i be $parameter?
         parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
         parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
 		n=$i*$parameterCount
