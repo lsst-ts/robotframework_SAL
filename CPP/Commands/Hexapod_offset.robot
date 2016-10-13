@@ -59,10 +59,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 98.0038 97.6073 93.4605 79.1448 34.661 97.0228 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.4676 57.6389 75.2744 33.5573 69.2194 69.3583 0
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +82,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 98.0038 97.6073 93.4605 79.1448 34.661 97.0228 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.4676 57.6389 75.2744 33.5573 69.2194 69.3583 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,15 +90,16 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 98.0038    1
-    Should Contain X Times    ${output}    y : 97.6073    1
-    Should Contain X Times    ${output}    z : 93.4605    1
-    Should Contain X Times    ${output}    u : 79.1448    1
-    Should Contain X Times    ${output}    v : 34.661    1
-    Should Contain X Times    ${output}    w : 97.0228    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 82.4676    1
+    Should Contain X Times    ${output}    y : 57.6389    1
+    Should Contain X Times    ${output}    z : 75.2744    1
+    Should Contain X Times    ${output}    u : 33.5573    1
+    Should Contain X Times    ${output}    v : 69.2194    1
+    Should Contain X Times    ${output}    w : 69.3583    1
+    Should Contain X Times    ${output}    sync : 0    1
     Should Contain    ${output}    === command offset issued =
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Read Controller
     [Tags]    functional
@@ -109,13 +111,13 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 98.0038    1
-    Should Contain X Times    ${output}    y : 97.6073    1
-    Should Contain X Times    ${output}    z : 93.4605    1
-    Should Contain X Times    ${output}    u : 79.1448    1
-    Should Contain X Times    ${output}    v : 34.661    1
-    Should Contain X Times    ${output}    w : 97.0228    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 82.4676    1
+    Should Contain X Times    ${output}    y : 57.6389    1
+    Should Contain X Times    ${output}    z : 75.2744    1
+    Should Contain X Times    ${output}    u : 33.5573    1
+    Should Contain X Times    ${output}    v : 69.2194    1
+    Should Contain X Times    ${output}    w : 69.3583    1
+    Should Contain X Times    ${output}    sync : 0    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -59,10 +59,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 78.621 3.9694 54.2833
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 48.047 84.7536 23.4699
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +82,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 78.621 3.9694 54.2833
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 48.047 84.7536 23.4699
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,11 +90,12 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xTilt : 78.621    1
-    Should Contain X Times    ${output}    yTilt : 3.9694    1
-    Should Contain X Times    ${output}    piston : 54.2833    1
+    Should Contain X Times    ${output}    xTilt : 48.047    1
+    Should Contain X Times    ${output}    yTilt : 84.7536    1
+    Should Contain X Times    ${output}    piston : 23.4699    1
     Should Contain    ${output}    === command PositionMirror issued =
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Read Controller
     [Tags]    functional
@@ -105,9 +107,9 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xTilt : 78.621    1
-    Should Contain X Times    ${output}    yTilt : 3.9694    1
-    Should Contain X Times    ${output}    piston : 54.2833    1
+    Should Contain X Times    ${output}    xTilt : 48.047    1
+    Should Contain X Times    ${output}    yTilt : 84.7536    1
+    Should Contain X Times    ${output}    piston : 23.4699    1
     Should Contain X Times    ${output}    === [ackCommand_PositionMirror] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

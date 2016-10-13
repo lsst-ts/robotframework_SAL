@@ -14,7 +14,7 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator scheduler tcs)
+declare -a subSystemArray=(camera dome hexapod m1m3 m2ms mtmount rotator tcs)    # dm and scheduler have no commands
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
@@ -160,7 +160,8 @@ function startCommanderTimeout() {
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander ${argumentsArray[*]}" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    === [waitForCompletion_\${component}] command 0 timed out :" >> $testSuite
+	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( timed out :)" >>$testSuite
     echo "" >> $testSuite
 }
 function startController() {
@@ -200,7 +201,8 @@ function startCommander() {
 		(( i++ ))
     done
 	echo "    Should Contain    \${output}    === command $topic issued =" >>$testSuite
-    echo "    Should Contain    \${output}    === [waitForCompletion_\${component}] command 0 completed ok :" >>$testSuite
+ 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( timed out :)" >>$testSuite
     echo "" >> $testSuite
 }
 

@@ -59,10 +59,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21.0424 79.5398 90.5752 93.1494 69.8326 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20.5704 39.0565 63.7272 69.4173 10.8206 test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +82,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21.0424 79.5398 90.5752 93.1494 69.8326 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20.5704 39.0565 63.7272 69.4173 10.8206 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,14 +90,15 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 21.0424    1
-    Should Contain X Times    ${output}    az_velocity : 79.5398    1
-    Should Contain X Times    ${output}    el_angle : 90.5752    1
-    Should Contain X Times    ${output}    el_velocity : 93.1494    1
-    Should Contain X Times    ${output}    time : 69.8326    1
+    Should Contain X Times    ${output}    az_angle : 20.5704    1
+    Should Contain X Times    ${output}    az_velocity : 39.0565    1
+    Should Contain X Times    ${output}    el_angle : 63.7272    1
+    Should Contain X Times    ${output}    el_velocity : 69.4173    1
+    Should Contain X Times    ${output}    time : 10.8206    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Read Controller
     [Tags]    functional
@@ -108,11 +110,11 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 21.0424    1
-    Should Contain X Times    ${output}    az_velocity : 79.5398    1
-    Should Contain X Times    ${output}    el_angle : 90.5752    1
-    Should Contain X Times    ${output}    el_velocity : 93.1494    1
-    Should Contain X Times    ${output}    time : 69.8326    1
+    Should Contain X Times    ${output}    az_angle : 20.5704    1
+    Should Contain X Times    ${output}    az_velocity : 39.0565    1
+    Should Contain X Times    ${output}    el_angle : 63.7272    1
+    Should Contain X Times    ${output}    el_velocity : 69.4173    1
+    Should Contain X Times    ${output}    time : 10.8206    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

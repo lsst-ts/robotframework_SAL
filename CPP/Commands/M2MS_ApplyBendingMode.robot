@@ -59,10 +59,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20994 5840 6653 11306 20145 6811 17862 3163 9991 7157 10316 9367 1947 18612 30891 30697 7292 6439 14048 15516 8047 28896 14968 28345 3659 20430 7241 7311 10715 12623 19267 8611 52.6101 43.7203 15.9969 63.3198 21.3509 40.2677 88.7248 62.5298 0.2707 98.3893 77.667 66.4055 84.7728 77.2117 45.1282 23.9483 27.7082 73.1223 38.765 94.3433 81.1506 26.1768 75.0281 97.5122 6.6275 82.9726 78.6033 10.1327 77.6307 26.4271 13.5391 68.0115
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 32433 16184 31309 27315 12678 5133 16139 28371 19761 4612 23366 10488 19090 23457 5311 15666 30548 19231 1559 6504 17658 1097 25953 19169 4799 25371 24130 3702 26454 6188 26831 4196 3.0195 96.7807 38.6503 28.1702 83.2185 23.6055 10.0139 5.9571 81.3992 62.6874 24.8253 89.9527 98.5932 85.7891 42.2673 87.3779 55.7508 89.898 33.66 81.1536 93.8016 25.2045 30.9064 21.9229 52.8391 46.1002 99.4677 68.9575 73.0158 40.3231 2.9125 72.7828
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +82,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20994 5840 6653 11306 20145 6811 17862 3163 9991 7157 10316 9367 1947 18612 30891 30697 7292 6439 14048 15516 8047 28896 14968 28345 3659 20430 7241 7311 10715 12623 19267 8611 52.6101 43.7203 15.9969 63.3198 21.3509 40.2677 88.7248 62.5298 0.2707 98.3893 77.667 66.4055 84.7728 77.2117 45.1282 23.9483 27.7082 73.1223 38.765 94.3433 81.1506 26.1768 75.0281 97.5122 6.6275 82.9726 78.6033 10.1327 77.6307 26.4271 13.5391 68.0115
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 32433 16184 31309 27315 12678 5133 16139 28371 19761 4612 23366 10488 19090 23457 5311 15666 30548 19231 1559 6504 17658 1097 25953 19169 4799 25371 24130 3702 26454 6188 26831 4196 3.0195 96.7807 38.6503 28.1702 83.2185 23.6055 10.0139 5.9571 81.3992 62.6874 24.8253 89.9527 98.5932 85.7891 42.2673 87.3779 55.7508 89.898 33.66 81.1536 93.8016 25.2045 30.9064 21.9229 52.8391 46.1002 99.4677 68.9575 73.0158 40.3231 2.9125 72.7828
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,10 +90,11 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 20994    1
-    Should Contain X Times    ${output}    bendingModeValue : 5840    1
+    Should Contain X Times    ${output}    bendingModeNbr : 32433    1
+    Should Contain X Times    ${output}    bendingModeValue : 16184    1
     Should Contain    ${output}    === command ApplyBendingMode issued =
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Read Controller
     [Tags]    functional
@@ -104,8 +106,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 20994    1
-    Should Contain X Times    ${output}    bendingModeValue : 52.6101    1
+    Should Contain X Times    ${output}    bendingModeNbr : 32433    1
+    Should Contain X Times    ${output}    bendingModeValue : 3.0195    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
