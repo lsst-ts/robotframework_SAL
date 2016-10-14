@@ -3,6 +3,7 @@ Documentation    MTMount_trackTarget commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,10 +60,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.2148 7.1003 95.3146 10.5626 1.2734 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.0788 10.7919 93.9881 32.9057 33.063 test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.2148 7.1003 95.3146 10.5626 1.2734 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.0788 10.7919 93.9881 32.9057 33.063 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,24 +91,25 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 29.2148    1
-    Should Contain X Times    ${output}    az_velocity : 7.1003    1
-    Should Contain X Times    ${output}    el_angle : 95.3146    1
-    Should Contain X Times    ${output}    el_velocity : 10.5626    1
-    Should Contain X Times    ${output}    time : 1.2734    1
+    Should Contain X Times    ${output}    az_angle : 29.0788    1
+    Should Contain X Times    ${output}    az_velocity : 10.7919    1
+    Should Contain X Times    ${output}    el_angle : 93.9881    1
+    Should Contain X Times    ${output}    el_velocity : 32.9057    1
+    Should Contain X Times    ${output}    time : 33.063    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 29.2148    1
-    Should Contain X Times    ${output}    az_velocity = 7.1003    1
-    Should Contain X Times    ${output}    el_angle = 95.3146    1
-    Should Contain X Times    ${output}    el_velocity = 10.5626    1
-    Should Contain X Times    ${output}    time = 1.2734    1
+    Should Contain X Times    ${output}    az_angle = 29.0788    1
+    Should Contain X Times    ${output}    az_velocity = 10.7919    1
+    Should Contain X Times    ${output}    el_angle = 93.9881    1
+    Should Contain X Times    ${output}    el_velocity = 32.9057    1
+    Should Contain X Times    ${output}    time = 33.063    1
     Should Contain X Times    ${output}    cablewrap_orientation = test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

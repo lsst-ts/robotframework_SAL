@@ -3,6 +3,7 @@ Documentation    Camera_takeImages commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,10 +60,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 990172084 21.4102 1 1 1 1 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 928387623 69.7063 1 0 1 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 990172084 21.4102 1 1 1 1 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 928387623 69.7063 1 0 1 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,26 +91,27 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    numImages : 990172084    1
-    Should Contain X Times    ${output}    expTime : 21.4102    1
+    Should Contain X Times    ${output}    numImages : 928387623    1
+    Should Contain X Times    ${output}    expTime : 69.7063    1
     Should Contain X Times    ${output}    shutter : 1    1
-    Should Contain X Times    ${output}    science : 1    1
+    Should Contain X Times    ${output}    science : 0    1
     Should Contain X Times    ${output}    guide : 1    1
-    Should Contain X Times    ${output}    wfs : 1    1
+    Should Contain X Times    ${output}    wfs : 0    1
     Should Contain X Times    ${output}    imageSequenceName : test    1
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    numImages = 990172084    1
-    Should Contain X Times    ${output}    expTime = 21.4102    1
+    Should Contain X Times    ${output}    numImages = 928387623    1
+    Should Contain X Times    ${output}    expTime = 69.7063    1
     Should Contain X Times    ${output}    shutter = 1    1
-    Should Contain X Times    ${output}    science = 1    1
+    Should Contain X Times    ${output}    science = 0    1
     Should Contain X Times    ${output}    guide = 1    1
-    Should Contain X Times    ${output}    wfs = 1    1
+    Should Contain X Times    ${output}    wfs = 0    1
     Should Contain X Times    ${output}    imageSequenceName = test    1
     Should Contain X Times    ${output}    === [ackCommand_takeImages] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

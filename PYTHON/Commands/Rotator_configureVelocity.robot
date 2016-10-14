@@ -3,6 +3,7 @@ Documentation    Rotator_configureVelocity commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,10 +60,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21.5381 8.6771
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.5375 70.4675
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21.5381 8.6771
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.5375 70.4675
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,17 +91,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    vmin : 21.5381    1
-    Should Contain X Times    ${output}    vmax : 8.6771    1
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    Should Contain X Times    ${output}    vmin : 20.5375    1
+    Should Contain X Times    ${output}    vmax : 70.4675    1
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    vmin = 21.5381    1
-    Should Contain X Times    ${output}    vmax = 8.6771    1
+    Should Contain X Times    ${output}    vmin = 20.5375    1
+    Should Contain X Times    ${output}    vmax = 70.4675    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

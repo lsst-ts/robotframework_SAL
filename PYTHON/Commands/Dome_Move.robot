@@ -3,6 +3,7 @@ Documentation    Dome_Move commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,10 +60,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 83.8105 72.3669
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 15.8212 64.7763
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -81,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 83.8105 72.3669
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 15.8212 64.7763
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,17 +91,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    azimuth : 83.8105    1
-    Should Contain X Times    ${output}    elevation : 72.3669    1
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    Should Contain X Times    ${output}    azimuth : 15.8212    1
+    Should Contain X Times    ${output}    elevation : 64.7763    1
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    azimuth = 83.8105    1
-    Should Contain X Times    ${output}    elevation = 72.3669    1
+    Should Contain X Times    ${output}    azimuth = 15.8212    1
+    Should Contain X Times    ${output}    elevation = 64.7763    1
     Should Contain X Times    ${output}    === [ackCommand_Move] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

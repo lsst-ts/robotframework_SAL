@@ -63,7 +63,8 @@ Start Commander - Verify Timeout without Controller
     ${input}=    Write    python ${subSystem}_Commander_${component}.py test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional

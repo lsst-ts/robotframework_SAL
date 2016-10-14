@@ -60,10 +60,11 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 36.159 68.3873 81.5684 50.9708 49.1413 78.934 81.4116 61.0648 67.2679 57.0073 60.7466 58.5254 17.2186 40.6283 74.3427 79.5517 31.9466 6.4669
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 0.8129 98.5314 34.6004 0.6403 69.3962 94.7296 54.0092 18.7586 79.1957 37.6651 48.0039 92.9275 18.5457 0.4599 90.6503 6.6873 91.0018 68.9996
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 36.159 68.3873 81.5684 50.9708 49.1413 78.934 81.4116 61.0648 67.2679 57.0073 60.7466 58.5254 17.2186 40.6283 74.3427 79.5517 31.9466 6.4669
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 0.8129 98.5314 34.6004 0.6403 69.3962 94.7296 54.0092 18.7586 79.1957 37.6651 48.0039 92.9275 18.5457 0.4599 90.6503 6.6873 91.0018 68.9996
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,7 +92,7 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 36.159    1
+    Should Contain X Times    ${output}    z_arr : 0.8129    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -101,7 +102,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    uid = test    1
-    Should Contain X Times    ${output}    z_arr(18) = [36.159, 68.3873, 81.5684, 50.9708, 49.1413, 78.934, 81.4116, 61.0648, 67.2679, 57.0073, 60.7466, 58.5254, 17.2186, 40.6283, 74.3427, 79.5517, 31.9466, 6.4669]    1
+    Should Contain X Times    ${output}    z_arr(18) = [0.8129, 98.5314, 34.6004, 0.6403, 69.3962, 94.7296, 54.0092, 18.7586, 79.1957, 37.6651, 48.0039, 92.9275, 18.5457, 0.4599, 90.6503, 6.6873, 91.0018, 68.9996]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

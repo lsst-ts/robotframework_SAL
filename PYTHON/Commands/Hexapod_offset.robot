@@ -60,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 83.5704 79.5977 48.8825 64.1469 5.4659 65.4969 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 69.8913 2.3274 80.5272 21.9783 64.5371 96.3019 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 83.5704 79.5977 48.8825 64.1469 5.4659 65.4969 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 69.8913 2.3274 80.5272 21.9783 64.5371 96.3019 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,13 +91,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 83.5704    1
-    Should Contain X Times    ${output}    y : 79.5977    1
-    Should Contain X Times    ${output}    z : 48.8825    1
-    Should Contain X Times    ${output}    u : 64.1469    1
-    Should Contain X Times    ${output}    v : 5.4659    1
-    Should Contain X Times    ${output}    w : 65.4969    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 69.8913    1
+    Should Contain X Times    ${output}    y : 2.3274    1
+    Should Contain X Times    ${output}    z : 80.5272    1
+    Should Contain X Times    ${output}    u : 21.9783    1
+    Should Contain X Times    ${output}    v : 64.5371    1
+    Should Contain X Times    ${output}    w : 96.3019    1
+    Should Contain X Times    ${output}    sync : 0    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -106,13 +106,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 83.5704    1
-    Should Contain X Times    ${output}    y = 79.5977    1
-    Should Contain X Times    ${output}    z = 48.8825    1
-    Should Contain X Times    ${output}    u = 64.1469    1
-    Should Contain X Times    ${output}    v = 5.4659    1
-    Should Contain X Times    ${output}    w = 65.4969    1
-    Should Contain X Times    ${output}    sync = 1    1
+    Should Contain X Times    ${output}    x = 69.8913    1
+    Should Contain X Times    ${output}    y = 2.3274    1
+    Should Contain X Times    ${output}    z = 80.5272    1
+    Should Contain X Times    ${output}    u = 21.9783    1
+    Should Contain X Times    ${output}    v = 64.5371    1
+    Should Contain X Times    ${output}    w = 96.3019    1
+    Should Contain X Times    ${output}    sync = 0    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

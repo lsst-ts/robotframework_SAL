@@ -3,6 +3,7 @@ Documentation    Dome_Track commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -62,7 +63,8 @@ Start Commander - Verify Timeout without Controller
     ${input}=    Write    python ${subSystem}_Commander_${component}.py test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 timed out :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
 
 Start Controller
     [Tags]    functional
@@ -90,7 +92,8 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    mode : test    1
-    Should Contain    ${output}    === [waitForCompletion_${component}] command 0 completed ok :
+    ${CmdComplete}=    Get Line    ${output}    -2
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
