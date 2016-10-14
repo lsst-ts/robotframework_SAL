@@ -33,7 +33,7 @@ CPP/Commands/M2MS_ApplyBendingMode.robot
 CPP/Commands/M2MS_ApplyForce.robot
 CPP/Commands/M2MS_MoveAxialActuator.robot
 CPP/Commands/M2MS_PositionMirror.robot
-CPP/Commands/M2MS_SetCorrectionBendingMode.robot
+CPP/Commands/M2MS_SetCorrectionMode.robot
 CPP/Commands/MTMount_clearerror.robot
 CPP/Commands/MTMount_closeMirrorCover.robot
 CPP/Commands/MTMount_configure.robot
