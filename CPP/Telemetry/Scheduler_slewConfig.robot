@@ -73,20 +73,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domalt :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domaz :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domazsettle :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telalt :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telaz :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telopticsopenloop :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telopticsclosedloop :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telsettle :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telrot :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_filter :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_exposures :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_readout :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_adc :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_ins_optics :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_guider_pos :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_guider_adq :    9
+    Should Contain X Times    ${output}    prereq_domalt :    9
+    Should Contain X Times    ${output}    prereq_domaz :    9
+    Should Contain X Times    ${output}    prereq_domazsettle :    9
+    Should Contain X Times    ${output}    prereq_telalt :    9
+    Should Contain X Times    ${output}    prereq_telaz :    9
+    Should Contain X Times    ${output}    prereq_telopticsopenloop :    9
+    Should Contain X Times    ${output}    prereq_telopticsclosedloop :    9
+    Should Contain X Times    ${output}    prereq_telsettle :    9
+    Should Contain X Times    ${output}    prereq_telrot :    9
+    Should Contain X Times    ${output}    prereq_filter :    9
+    Should Contain X Times    ${output}    prereq_exposures :    9
+    Should Contain X Times    ${output}    prereq_readout :    9
+    Should Contain X Times    ${output}    prereq_adc :    9
+    Should Contain X Times    ${output}    prereq_ins_optics :    9
+    Should Contain X Times    ${output}    prereq_guider_pos :    9
+    Should Contain X Times    ${output}    prereq_guider_adq :    9

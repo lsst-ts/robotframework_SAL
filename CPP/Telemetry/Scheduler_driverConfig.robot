@@ -73,14 +73,14 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}coadd_values :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}time_balancing :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timebonus_tmax :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timebonus_bmax :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timebonus_slope :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}night_boundary :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignore_sky_brightness :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignore_airmass :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignore_clouds :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignore_seeing :    9
+    Should Contain X Times    ${output}    coadd_values :    9
+    Should Contain X Times    ${output}    time_balancing :    9
+    Should Contain X Times    ${output}    timebonus_tmax :    9
+    Should Contain X Times    ${output}    timebonus_bmax :    9
+    Should Contain X Times    ${output}    timebonus_slope :    9
+    Should Contain X Times    ${output}    night_boundary :    9
+    Should Contain X Times    ${output}    new_moon_phase_threshold :    9
+    Should Contain X Times    ${output}    ignore_sky_brightness :    9
+    Should Contain X Times    ${output}    ignore_airmass :    9
+    Should Contain X Times    ${output}    ignore_clouds :    9
+    Should Contain X Times    ${output}    ignore_seeing :    9

@@ -73,6 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}seeing :    9
+    Should Contain X Times    ${output}    timestamp :    9
+    Should Contain X Times    ${output}    seeing :    9

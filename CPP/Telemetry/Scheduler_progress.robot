@@ -73,8 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}completion :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}projection :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}taskid :    9
+    Should Contain X Times    ${output}    completion :    9
+    Should Contain X Times    ${output}    priority :    9
+    Should Contain X Times    ${output}    projection :    9
+    Should Contain X Times    ${output}    taskid :    9

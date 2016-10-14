@@ -73,7 +73,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tel_optics_ol_slope :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tel_optics_cl_alt_limit :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tel_optics_cl_delay :    9
+    Should Contain X Times    ${output}    tel_optics_ol_slope :    9
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit :    9
+    Should Contain X Times    ${output}    tel_optics_cl_delay :    9

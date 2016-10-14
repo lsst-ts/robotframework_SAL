@@ -73,6 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}need_swap :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_to_unmount :    9
+    Should Contain X Times    ${output}    need_swap :    9
+    Should Contain X Times    ${output}    filter_to_unmount :    9

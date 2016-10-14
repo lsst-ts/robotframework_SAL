@@ -73,38 +73,36 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-	#${str}=    Remove String    ${output}    \ \ \ \ \
-	#Log    ${str}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetId : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}fieldId :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}request_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dec :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_exposures :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposure_times :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sky_brightness :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}slew_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}cost_bonus :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prop_boost :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}rank :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_proposals :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_values :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_needs :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_bonuses :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_boosts :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_ra :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_dec :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_alt :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_az :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_phase :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}moon_distance :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sun_alt :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sun_az :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sun_ra :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sun_dec :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}sun_elong :    9
+    Should Contain X Times    ${output}    targetId :    9
+    Should Contain X Times    ${output}    fieldId :    9
+    Should Contain X Times    ${output}    filter :    9
+    Should Contain X Times    ${output}    request_time :    9
+    Should Contain X Times    ${output}    request_mjd :    9
+    Should Contain X Times    ${output}    ra :    9
+    Should Contain X Times    ${output}    dec :    9
+    Should Contain X Times    ${output}    angle :    9
+    Should Contain X Times    ${output}    num_exposures :    9
+    Should Contain X Times    ${output}    exposure_times :    9
+    Should Contain X Times    ${output}    airmass :    9
+    Should Contain X Times    ${output}    sky_brightness :    9
+    Should Contain X Times    ${output}    slew_time :    9
+    Should Contain X Times    ${output}    cost_bonus :    9
+    Should Contain X Times    ${output}    prop_boost :    9
+    Should Contain X Times    ${output}    rank :    9
+    Should Contain X Times    ${output}    num_proposals :    9
+    Should Contain X Times    ${output}    proposal_Ids :    9
+    Should Contain X Times    ${output}    proposal_values :    9
+    Should Contain X Times    ${output}    proposal_needs :    9
+    Should Contain X Times    ${output}    proposal_bonuses :    9
+    Should Contain X Times    ${output}    proposal_boosts :    9
+    Should Contain X Times    ${output}    moon_ra :    9
+    Should Contain X Times    ${output}    moon_dec :    9
+    Should Contain X Times    ${output}    moon_alt :    9
+    Should Contain X Times    ${output}    moon_az :    9
+    Should Contain X Times    ${output}    moon_phase :    9
+    Should Contain X Times    ${output}    moon_distance :    9
+    Should Contain X Times    ${output}    sun_alt :    9
+    Should Contain X Times    ${output}    sun_az :    9
+    Should Contain X Times    ${output}    sun_ra :    9
+    Should Contain X Times    ${output}    sun_dec :    9
+    Should Contain X Times    ${output}    sun_elong :    9

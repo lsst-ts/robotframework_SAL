@@ -73,10 +73,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pairNumber :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposalId :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceNumber :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetId :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetProposalRankValue :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetRankPosition :    9
+    Should Contain X Times    ${output}    pairNumber :    9
+    Should Contain X Times    ${output}    proposalId :    9
+    Should Contain X Times    ${output}    subSequenceNumber :    9
+    Should Contain X Times    ${output}    targetId :    9
+    Should Contain X Times    ${output}    targetProposalRankValue :    9
+    Should Contain X Times    ${output}    targetRankPosition :    9

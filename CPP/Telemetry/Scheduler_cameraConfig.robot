@@ -73,16 +73,15 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}readout_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutter_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_mount_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_change_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_max_changes_burst_num :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_max_changes_burst_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_max_changes_avg_num :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_max_changes_avg_time :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_mounted :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_pos :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_removable :    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_unmounted :    9
+    Should Contain X Times    ${output}    readout_time :    9
+    Should Contain X Times    ${output}    shutter_time :    9
+    Should Contain X Times    ${output}    filter_mount_time :    9
+    Should Contain X Times    ${output}    filter_change_time :    9
+    Should Contain X Times    ${output}    filter_max_changes_burst_num :    9
+    Should Contain X Times    ${output}    filter_max_changes_burst_time :    9
+    Should Contain X Times    ${output}    filter_max_changes_avg_num :    9
+    Should Contain X Times    ${output}    filter_max_changes_avg_time :    9
+    Should Contain X Times    ${output}    filter_mounted :    9
+    Should Contain X Times    ${output}    filter_pos :    9
+    Should Contain X Times    ${output}    filter_removable :    9
+    Should Contain X Times    ${output}    filter_unmounted :    9

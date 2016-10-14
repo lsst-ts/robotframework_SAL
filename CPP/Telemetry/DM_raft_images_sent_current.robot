@@ -3,14 +3,13 @@ Documentation    DM_raft_images_sent_current communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    dm
 ${component}    raft_images_sent_current
 ${timeout}    30s
-#${subOut}    ${subSystem}_${component}_sub.out
-#${pubOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Publisher Session
@@ -52,11 +51,10 @@ Start Subscriber
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
-    ${input}=    Write    ./sacpp_${subSystem}_sub    #|tee ${subOut}
+    ${input}=    Write    ./sacpp_${subSystem}_sub
     ${output}=    Read Until    [Subscriber] Ready
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${subOut}
 
 Start Publisher
     [Tags]    functional
@@ -64,17 +62,16 @@ Start Publisher
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Publisher.
-    ${input}=    Write    ./sacpp_${subSystem}_pub    #|tee ${pubOut}
+    ${input}=    Write    ./sacpp_${subSystem}_pub
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    [putSample] ${subSystem}::${component} writing a message containing :    9
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    9
-    #File Should Exist    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/${pubOut}
 
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
-    ${output}=    Read
+    ${output}=    Read    delay=1s
     Log    ${output}
     Should Contain X Times    ${output}    current_mode_image_count :    9
     Should Contain X Times    ${output}    operations_image_count :    9
