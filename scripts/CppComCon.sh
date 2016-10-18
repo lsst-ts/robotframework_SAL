@@ -181,6 +181,7 @@ function startController() {
 
 function startCommander() {
 	i=0
+	n=0
 	device=$1
 	property=$2
     echo "Start Commander" >> $testSuite
@@ -198,7 +199,8 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    action : $action    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    value : $value    1" >> $testSuite
 	for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
+		if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
 		(( i++ ))
     done
 	echo "    Should Contain    \${output}    === command $topic issued =" >>$testSuite
@@ -209,6 +211,7 @@ function startCommander() {
 
 function readController() {
 	i=0
+	n=0
 	device=$1
 	property=$2
     echo "Read Controller" >> $testSuite
@@ -222,10 +225,8 @@ function readController() {
     echo "    Should Contain    \${output}    action : $action" >> $testSuite
     echo "    Should Contain    \${output}    value : $value" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-		parameterIndex=$(getParameterIndex $parameter)
-        parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-        parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
+		if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
 		(( i++ ))
     done
 	echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    2" >> $testSuite
