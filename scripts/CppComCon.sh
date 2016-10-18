@@ -222,11 +222,10 @@ function readController() {
     echo "    Should Contain    \${output}    action : $action" >> $testSuite
     echo "    Should Contain    \${output}    value : $value" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-		parameterIndex=$(getParameterIndex $i)    #should $i be $parameter?
+		parameterIndex=$(getParameterIndex $parameter)
         parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
         parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-		n=$i*$parameterCount
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
+        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
 		(( i++ ))
     done
 	echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    2" >> $testSuite
