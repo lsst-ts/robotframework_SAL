@@ -60,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.8111 10.949 66.2097 64.7362 41.4433 71.8141 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 89.7112 10.0109 54.4411 4.2777 34.5127 76.3206 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.8111 10.949 66.2097 64.7362 41.4433 71.8141 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 89.7112 10.0109 54.4411 4.2777 34.5127 76.3206 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,12 +91,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 99.8111    1
-    Should Contain X Times    ${output}    y : 10.949    1
-    Should Contain X Times    ${output}    z : 66.2097    1
-    Should Contain X Times    ${output}    u : 64.7362    1
-    Should Contain X Times    ${output}    v : 41.4433    1
-    Should Contain X Times    ${output}    w : 71.8141    1
+    Should Contain X Times    ${output}    x : 89.7112    1
+    Should Contain X Times    ${output}    y : 10.0109    1
+    Should Contain X Times    ${output}    z : 54.4411    1
+    Should Contain X Times    ${output}    u : 4.2777    1
+    Should Contain X Times    ${output}    v : 34.5127    1
+    Should Contain X Times    ${output}    w : 76.3206    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -112,12 +112,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 99.8111    1
-    Should Contain X Times    ${output}    y : 10.949    1
-    Should Contain X Times    ${output}    z : 66.2097    1
-    Should Contain X Times    ${output}    u : 64.7362    1
-    Should Contain X Times    ${output}    v : 41.4433    1
-    Should Contain X Times    ${output}    w : 71.8141    1
+    Should Contain X Times    ${output}    x : 89.7112    1
+    Should Contain X Times    ${output}    y : 10.0109    1
+    Should Contain X Times    ${output}    z : 54.4411    1
+    Should Contain X Times    ${output}    u : 4.2777    1
+    Should Contain X Times    ${output}    v : 34.5127    1
+    Should Contain X Times    ${output}    w : 76.3206    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

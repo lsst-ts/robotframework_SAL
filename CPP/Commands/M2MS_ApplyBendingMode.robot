@@ -60,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21657 26087 21150 1417 27976 18098 18611 26108 30230 3447 10584 15731 32766 24345 27101 8319 29803 21784 21938 22723 23624 19406 17196 546 24204 12103 17253 14323 14259 16497 18442 14086 16.6884 68.2986 63.7658 13.3603 51.2859 89.4883 99.9106 25.493 47.8065 4.1197 27.3148 97.4613 74.0923 23.1065 1.975 27.9229 46.2987 12.4831 51.3293 51.2472 47.6504 84.4431 26.0227 60.4908 53.4213 95.9262 83.4789 91.5912 5.0023 8.3494 21.3777 79.5454
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7900 30410 5992 11021 10190 12311 10542 28236 26067 158 3973 31668 28519 18522 2443 2553 16401 12456 2515 22283 8983 30426 28611 15738 10715 19420 6274 14474 19473 13715 31140 1607 40.1148 9.7096 28.2901 43.3743 97.9049 7.9598 45.0808 44.1835 35.5945 20.5729 25.8407 27.785 57.2176 35.1563 13.6473 99.2745 50.8056 87.3907 37.2823 56.0931 12.8285 14.795 95.8761 5.6681 91.9832 96.686 39.3045 68.4052 96.1385 44.6703 50.9271 69.9356
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21657 26087 21150 1417 27976 18098 18611 26108 30230 3447 10584 15731 32766 24345 27101 8319 29803 21784 21938 22723 23624 19406 17196 546 24204 12103 17253 14323 14259 16497 18442 14086 16.6884 68.2986 63.7658 13.3603 51.2859 89.4883 99.9106 25.493 47.8065 4.1197 27.3148 97.4613 74.0923 23.1065 1.975 27.9229 46.2987 12.4831 51.3293 51.2472 47.6504 84.4431 26.0227 60.4908 53.4213 95.9262 83.4789 91.5912 5.0023 8.3494 21.3777 79.5454
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7900 30410 5992 11021 10190 12311 10542 28236 26067 158 3973 31668 28519 18522 2443 2553 16401 12456 2515 22283 8983 30426 28611 15738 10715 19420 6274 14474 19473 13715 31140 1607 40.1148 9.7096 28.2901 43.3743 97.9049 7.9598 45.0808 44.1835 35.5945 20.5729 25.8407 27.785 57.2176 35.1563 13.6473 99.2745 50.8056 87.3907 37.2823 56.0931 12.8285 14.795 95.8761 5.6681 91.9832 96.686 39.3045 68.4052 96.1385 44.6703 50.9271 69.9356
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,8 +91,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 21657    1
-    Should Contain X Times    ${output}    bendingModeValue : 26087    1
+    Should Contain X Times    ${output}    bendingModeNbr : 7900    1
+    Should Contain X Times    ${output}    bendingModeValue : 40.1148    1
     Should Contain    ${output}    === command ApplyBendingMode issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -107,8 +107,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 21657    1
-    Should Contain X Times    ${output}    bendingModeValue : 16.6884    1
+    Should Contain X Times    ${output}    bendingModeNbr : 7900    1
+    Should Contain X Times    ${output}    bendingModeValue : 40.1148    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
