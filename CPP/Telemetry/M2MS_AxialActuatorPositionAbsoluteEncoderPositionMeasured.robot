@@ -73,4 +73,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    axialEncoderPositionMeasured :    9
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 1    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 2    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 3    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 4    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 5    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 6    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 7    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 8    1
+    Should Contain X Times    ${output}    axialEncoderPositionMeasured : 9    1

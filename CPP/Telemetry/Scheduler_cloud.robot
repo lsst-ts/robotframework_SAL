@@ -73,5 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp :    9
-    Should Contain X Times    ${output}    cloud :    9
+    Should Contain X Times    ${output}    timestamp : 1    9
+    Should Contain X Times    ${output}    cloud : 1    9

@@ -73,10 +73,58 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Blade_home :    9
-    Should Contain X Times    ${output}    Close_profile :    9
-    Should Contain X Times    ${output}    Motor_current :    9
-    Should Contain X Times    ${output}    Motor_temp :    9
-    Should Contain X Times    ${output}    Open_direction :    9
-    Should Contain X Times    ${output}    Open_profile :    9
-    Should Contain X Times    ${output}    Profile_function :    9
+    Should Contain X Times    ${output}    Blade_home : 1    1
+    Should Contain X Times    ${output}    Blade_home : 2    1
+    Should Contain X Times    ${output}    Blade_home : 3    1
+    Should Contain X Times    ${output}    Blade_home : 4    1
+    Should Contain X Times    ${output}    Blade_home : 5    1
+    Should Contain X Times    ${output}    Blade_home : 6    1
+    Should Contain X Times    ${output}    Blade_home : 7    1
+    Should Contain X Times    ${output}    Blade_home : 8    1
+    Should Contain X Times    ${output}    Blade_home : 9    1
+    Should Contain X Times    ${output}    Close_profile : 1    1
+    Should Contain X Times    ${output}    Close_profile : 2    1
+    Should Contain X Times    ${output}    Close_profile : 3    1
+    Should Contain X Times    ${output}    Close_profile : 4    1
+    Should Contain X Times    ${output}    Close_profile : 5    1
+    Should Contain X Times    ${output}    Close_profile : 6    1
+    Should Contain X Times    ${output}    Close_profile : 7    1
+    Should Contain X Times    ${output}    Close_profile : 8    1
+    Should Contain X Times    ${output}    Close_profile : 9    1
+    Should Contain X Times    ${output}    Motor_current : 1    1
+    Should Contain X Times    ${output}    Motor_current : 2    1
+    Should Contain X Times    ${output}    Motor_current : 3    1
+    Should Contain X Times    ${output}    Motor_current : 4    1
+    Should Contain X Times    ${output}    Motor_current : 5    1
+    Should Contain X Times    ${output}    Motor_current : 6    1
+    Should Contain X Times    ${output}    Motor_current : 7    1
+    Should Contain X Times    ${output}    Motor_current : 8    1
+    Should Contain X Times    ${output}    Motor_current : 9    1
+    Should Contain X Times    ${output}    Motor_temp : 1    1
+    Should Contain X Times    ${output}    Motor_temp : 2    1
+    Should Contain X Times    ${output}    Motor_temp : 3    1
+    Should Contain X Times    ${output}    Motor_temp : 4    1
+    Should Contain X Times    ${output}    Motor_temp : 5    1
+    Should Contain X Times    ${output}    Motor_temp : 6    1
+    Should Contain X Times    ${output}    Motor_temp : 7    1
+    Should Contain X Times    ${output}    Motor_temp : 8    1
+    Should Contain X Times    ${output}    Motor_temp : 9    1
+    Should Contain X Times    ${output}    Open_direction : 1    9
+    Should Contain X Times    ${output}    Open_profile : 1    1
+    Should Contain X Times    ${output}    Open_profile : 2    1
+    Should Contain X Times    ${output}    Open_profile : 3    1
+    Should Contain X Times    ${output}    Open_profile : 4    1
+    Should Contain X Times    ${output}    Open_profile : 5    1
+    Should Contain X Times    ${output}    Open_profile : 6    1
+    Should Contain X Times    ${output}    Open_profile : 7    1
+    Should Contain X Times    ${output}    Open_profile : 8    1
+    Should Contain X Times    ${output}    Open_profile : 9    1
+    Should Contain X Times    ${output}    Profile_function : 1    1
+    Should Contain X Times    ${output}    Profile_function : 2    1
+    Should Contain X Times    ${output}    Profile_function : 3    1
+    Should Contain X Times    ${output}    Profile_function : 4    1
+    Should Contain X Times    ${output}    Profile_function : 5    1
+    Should Contain X Times    ${output}    Profile_function : 6    1
+    Should Contain X Times    ${output}    Profile_function : 7    1
+    Should Contain X Times    ${output}    Profile_function : 8    1
+    Should Contain X Times    ${output}    Profile_function : 9    1

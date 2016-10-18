@@ -73,4 +73,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    psf_wcs_last_visit :    9
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 1    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 2    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 3    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 4    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 5    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 6    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 7    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 8    1
+    Should Contain X Times    ${output}    psf_wcs_last_visit : 9    1

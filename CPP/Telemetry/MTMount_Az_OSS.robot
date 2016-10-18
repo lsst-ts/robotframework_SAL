@@ -73,14 +73,14 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Local_Remote :    9
-    Should Contain X Times    ${output}    Floating :    9
-    Should Contain X Times    ${output}    Cooling :    9
-    Should Contain X Times    ${output}    Oil :    9
-    Should Contain X Times    ${output}    Pump :    9
-    Should Contain X Times    ${output}    Oil_Flow :    9
-    Should Contain X Times    ${output}    Oil_Pressure :    9
-    Should Contain X Times    ${output}    Oil_Temperature :    9
-    Should Contain X Times    ${output}    Oil_Film :    9
-    Should Contain X Times    ${output}    Oil_Filter_Pressure :    9
-    Should Contain X Times    ${output}    Status :    9
+    Should Contain X Times    ${output}    Local_Remote : 1    9
+    Should Contain X Times    ${output}    Floating : 1    9
+    Should Contain X Times    ${output}    Cooling : 1    9
+    Should Contain X Times    ${output}    Oil : 1    9
+    Should Contain X Times    ${output}    Pump : 1    9
+    Should Contain X Times    ${output}    Oil_Flow : 1    9
+    Should Contain X Times    ${output}    Oil_Pressure : 1    9
+    Should Contain X Times    ${output}    Oil_Temperature : 1    9
+    Should Contain X Times    ${output}    Oil_Film : 1    9
+    Should Contain X Times    ${output}    Oil_Filter_Pressure : 1    9
+    Should Contain X Times    ${output}    Status : 1    9

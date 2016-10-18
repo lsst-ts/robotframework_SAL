@@ -73,6 +73,22 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    tel_optics_ol_slope :    9
-    Should Contain X Times    ${output}    tel_optics_cl_alt_limit :    9
-    Should Contain X Times    ${output}    tel_optics_cl_delay :    9
+    Should Contain X Times    ${output}    tel_optics_ol_slope : 1    9
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 1    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 2    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 3    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 4    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 5    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 6    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 7    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 8    1
+    Should Contain X Times    ${output}    tel_optics_cl_alt_limit : 9    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 1    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 2    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 3    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 4    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 5    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 6    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 7    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 8    1
+    Should Contain X Times    ${output}    tel_optics_cl_delay : 9    1

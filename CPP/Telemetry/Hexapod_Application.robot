@@ -73,6 +73,30 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Demand :    9
-    Should Contain X Times    ${output}    Error :    9
-    Should Contain X Times    ${output}    Position :    9
+    Should Contain X Times    ${output}    Demand : 1    1
+    Should Contain X Times    ${output}    Demand : 2    1
+    Should Contain X Times    ${output}    Demand : 3    1
+    Should Contain X Times    ${output}    Demand : 4    1
+    Should Contain X Times    ${output}    Demand : 5    1
+    Should Contain X Times    ${output}    Demand : 6    1
+    Should Contain X Times    ${output}    Demand : 7    1
+    Should Contain X Times    ${output}    Demand : 8    1
+    Should Contain X Times    ${output}    Demand : 9    1
+    Should Contain X Times    ${output}    Error : 1    1
+    Should Contain X Times    ${output}    Error : 2    1
+    Should Contain X Times    ${output}    Error : 3    1
+    Should Contain X Times    ${output}    Error : 4    1
+    Should Contain X Times    ${output}    Error : 5    1
+    Should Contain X Times    ${output}    Error : 6    1
+    Should Contain X Times    ${output}    Error : 7    1
+    Should Contain X Times    ${output}    Error : 8    1
+    Should Contain X Times    ${output}    Error : 9    1
+    Should Contain X Times    ${output}    Position : 1    1
+    Should Contain X Times    ${output}    Position : 2    1
+    Should Contain X Times    ${output}    Position : 3    1
+    Should Contain X Times    ${output}    Position : 4    1
+    Should Contain X Times    ${output}    Position : 5    1
+    Should Contain X Times    ${output}    Position : 6    1
+    Should Contain X Times    ${output}    Position : 7    1
+    Should Contain X Times    ${output}    Position : 8    1
+    Should Contain X Times    ${output}    Position : 9    1

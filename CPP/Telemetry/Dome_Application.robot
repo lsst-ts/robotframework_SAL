@@ -73,15 +73,39 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    azError :    9
-    Should Contain X Times    ${output}    azPosition :    9
-    Should Contain X Times    ${output}    azTarget :    9
-    Should Contain X Times    ${output}    elevError :    9
-    Should Contain X Times    ${output}    elevPosition :    9
-    Should Contain X Times    ${output}    elevTarget :    9
-    Should Contain X Times    ${output}    lvError :    9
-    Should Contain X Times    ${output}    lvPosition :    9
-    Should Contain X Times    ${output}    lvTarget :    9
-    Should Contain X Times    ${output}    scrError :    9
-    Should Contain X Times    ${output}    scrPosition :    9
-    Should Contain X Times    ${output}    scrTarget :    9
+    Should Contain X Times    ${output}    azError : 1    9
+    Should Contain X Times    ${output}    azPosition : 1    9
+    Should Contain X Times    ${output}    azTarget : 1    9
+    Should Contain X Times    ${output}    elevError : 1    9
+    Should Contain X Times    ${output}    elevPosition : 1    9
+    Should Contain X Times    ${output}    elevTarget : 1    9
+    Should Contain X Times    ${output}    lvError : 1    1
+    Should Contain X Times    ${output}    lvError : 2    1
+    Should Contain X Times    ${output}    lvError : 3    1
+    Should Contain X Times    ${output}    lvError : 4    1
+    Should Contain X Times    ${output}    lvError : 5    1
+    Should Contain X Times    ${output}    lvError : 6    1
+    Should Contain X Times    ${output}    lvError : 7    1
+    Should Contain X Times    ${output}    lvError : 8    1
+    Should Contain X Times    ${output}    lvError : 9    1
+    Should Contain X Times    ${output}    lvPosition : 1    1
+    Should Contain X Times    ${output}    lvPosition : 2    1
+    Should Contain X Times    ${output}    lvPosition : 3    1
+    Should Contain X Times    ${output}    lvPosition : 4    1
+    Should Contain X Times    ${output}    lvPosition : 5    1
+    Should Contain X Times    ${output}    lvPosition : 6    1
+    Should Contain X Times    ${output}    lvPosition : 7    1
+    Should Contain X Times    ${output}    lvPosition : 8    1
+    Should Contain X Times    ${output}    lvPosition : 9    1
+    Should Contain X Times    ${output}    lvTarget : 1    1
+    Should Contain X Times    ${output}    lvTarget : 2    1
+    Should Contain X Times    ${output}    lvTarget : 3    1
+    Should Contain X Times    ${output}    lvTarget : 4    1
+    Should Contain X Times    ${output}    lvTarget : 5    1
+    Should Contain X Times    ${output}    lvTarget : 6    1
+    Should Contain X Times    ${output}    lvTarget : 7    1
+    Should Contain X Times    ${output}    lvTarget : 8    1
+    Should Contain X Times    ${output}    lvTarget : 9    1
+    Should Contain X Times    ${output}    scrError : 1    9
+    Should Contain X Times    ${output}    scrPosition : 1    9
+    Should Contain X Times    ${output}    scrTarget : 1    9

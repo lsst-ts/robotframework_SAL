@@ -73,29 +73,45 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Amprms :    9
-    Should Contain X Times    ${output}    Aoprms :    9
-    Should Contain X Times    ${output}    Daz :    9
-    Should Contain X Times    ${output}    Diurab :    9
-    Should Contain X Times    ${output}    Elong :    9
-    Should Contain X Times    ${output}    Lat :    9
-    Should Contain X Times    ${output}    Refa :    9
-    Should Contain X Times    ${output}    Refb :    9
-    Should Contain X Times    ${output}    St0 :    9
-    Should Contain X Times    ${output}    T0 :    9
-    Should Contain X Times    ${output}    Tt0 :    9
-    Should Contain X Times    ${output}    Ttj :    9
-    Should Contain X Times    ${output}    Ttmtai :    9
-    Should Contain X Times    ${output}    Uau :    9
-    Should Contain X Times    ${output}    Ukm :    9
-    Should Contain X Times    ${output}    Vau :    9
-    Should Contain X Times    ${output}    Vkm :    9
-    Should Contain X Times    ${output}    delat :    9
-    Should Contain X Times    ${output}    delut :    9
-    Should Contain X Times    ${output}    elongm :    9
-    Should Contain X Times    ${output}    hm :    9
-    Should Contain X Times    ${output}    latm :    9
-    Should Contain X Times    ${output}    tai :    9
-    Should Contain X Times    ${output}    ttmtat :    9
-    Should Contain X Times    ${output}    xpm :    9
-    Should Contain X Times    ${output}    ypm :    9
+    Should Contain X Times    ${output}    Amprms : 1    1
+    Should Contain X Times    ${output}    Amprms : 2    1
+    Should Contain X Times    ${output}    Amprms : 3    1
+    Should Contain X Times    ${output}    Amprms : 4    1
+    Should Contain X Times    ${output}    Amprms : 5    1
+    Should Contain X Times    ${output}    Amprms : 6    1
+    Should Contain X Times    ${output}    Amprms : 7    1
+    Should Contain X Times    ${output}    Amprms : 8    1
+    Should Contain X Times    ${output}    Amprms : 9    1
+    Should Contain X Times    ${output}    Aoprms : 1    1
+    Should Contain X Times    ${output}    Aoprms : 2    1
+    Should Contain X Times    ${output}    Aoprms : 3    1
+    Should Contain X Times    ${output}    Aoprms : 4    1
+    Should Contain X Times    ${output}    Aoprms : 5    1
+    Should Contain X Times    ${output}    Aoprms : 6    1
+    Should Contain X Times    ${output}    Aoprms : 7    1
+    Should Contain X Times    ${output}    Aoprms : 8    1
+    Should Contain X Times    ${output}    Aoprms : 9    1
+    Should Contain X Times    ${output}    Daz : 1    9
+    Should Contain X Times    ${output}    Diurab : 1    9
+    Should Contain X Times    ${output}    Elong : 1    9
+    Should Contain X Times    ${output}    Lat : 1    9
+    Should Contain X Times    ${output}    Refa : 1    9
+    Should Contain X Times    ${output}    Refb : 1    9
+    Should Contain X Times    ${output}    St0 : 1    9
+    Should Contain X Times    ${output}    T0 : 1    9
+    Should Contain X Times    ${output}    Tt0 : 1    9
+    Should Contain X Times    ${output}    Ttj : 1    9
+    Should Contain X Times    ${output}    Ttmtai : 1    9
+    Should Contain X Times    ${output}    Uau : 1    9
+    Should Contain X Times    ${output}    Ukm : 1    9
+    Should Contain X Times    ${output}    Vau : 1    9
+    Should Contain X Times    ${output}    Vkm : 1    9
+    Should Contain X Times    ${output}    delat : 1    9
+    Should Contain X Times    ${output}    delut : 1    9
+    Should Contain X Times    ${output}    elongm : 1    9
+    Should Contain X Times    ${output}    hm : 1    9
+    Should Contain X Times    ${output}    latm : 1    9
+    Should Contain X Times    ${output}    tai : 1    9
+    Should Contain X Times    ${output}    ttmtat : 1    9
+    Should Contain X Times    ${output}    xpm : 1    9
+    Should Contain X Times    ${output}    ypm : 1    9

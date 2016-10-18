@@ -73,5 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Bypass :    9
-    Should Contain X Times    ${output}    T :    9
+    Should Contain X Times    ${output}    Bypass : 1    9
+    Should Contain X Times    ${output}    T : 1    9

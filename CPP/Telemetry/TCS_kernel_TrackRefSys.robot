@@ -73,18 +73,34 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    ae2mt :    9
-    Should Contain X Times    ${output}    amprms :    9
-    Should Contain X Times    ${output}    cst :    9
-    Should Contain X Times    ${output}    diurab :    9
-    Should Contain X Times    ${output}    hm :    9
-    Should Contain X Times    ${output}    humid :    9
-    Should Contain X Times    ${output}    press :    9
-    Should Contain X Times    ${output}    refa :    9
-    Should Contain X Times    ${output}    refb :    9
-    Should Contain X Times    ${output}    sst :    9
-    Should Contain X Times    ${output}    tdbj :    9
-    Should Contain X Times    ${output}    temp :    9
-    Should Contain X Times    ${output}    tlat :    9
-    Should Contain X Times    ${output}    tlr :    9
-    Should Contain X Times    ${output}    wavel :    9
+    Should Contain X Times    ${output}    ae2mt : 1    1
+    Should Contain X Times    ${output}    ae2mt : 2    1
+    Should Contain X Times    ${output}    ae2mt : 3    1
+    Should Contain X Times    ${output}    ae2mt : 4    1
+    Should Contain X Times    ${output}    ae2mt : 5    1
+    Should Contain X Times    ${output}    ae2mt : 6    1
+    Should Contain X Times    ${output}    ae2mt : 7    1
+    Should Contain X Times    ${output}    ae2mt : 8    1
+    Should Contain X Times    ${output}    ae2mt : 9    1
+    Should Contain X Times    ${output}    amprms : 1    1
+    Should Contain X Times    ${output}    amprms : 2    1
+    Should Contain X Times    ${output}    amprms : 3    1
+    Should Contain X Times    ${output}    amprms : 4    1
+    Should Contain X Times    ${output}    amprms : 5    1
+    Should Contain X Times    ${output}    amprms : 6    1
+    Should Contain X Times    ${output}    amprms : 7    1
+    Should Contain X Times    ${output}    amprms : 8    1
+    Should Contain X Times    ${output}    amprms : 9    1
+    Should Contain X Times    ${output}    cst : 1    9
+    Should Contain X Times    ${output}    diurab : 1    9
+    Should Contain X Times    ${output}    hm : 1    9
+    Should Contain X Times    ${output}    humid : 1    9
+    Should Contain X Times    ${output}    press : 1    9
+    Should Contain X Times    ${output}    refa : 1    9
+    Should Contain X Times    ${output}    refb : 1    9
+    Should Contain X Times    ${output}    sst : 1    9
+    Should Contain X Times    ${output}    tdbj : 1    9
+    Should Contain X Times    ${output}    temp : 1    9
+    Should Contain X Times    ${output}    tlat : 1    9
+    Should Contain X Times    ${output}    tlr : 1    9
+    Should Contain X Times    ${output}    wavel : 1    9

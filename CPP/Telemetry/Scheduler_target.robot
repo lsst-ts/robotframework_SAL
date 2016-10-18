@@ -73,36 +73,86 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    targetId :    9
-    Should Contain X Times    ${output}    fieldId :    9
-    Should Contain X Times    ${output}    filter :    9
-    Should Contain X Times    ${output}    request_time :    9
-    Should Contain X Times    ${output}    request_mjd :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    angle :    9
-    Should Contain X Times    ${output}    num_exposures :    9
-    Should Contain X Times    ${output}    exposure_times :    9
-    Should Contain X Times    ${output}    airmass :    9
-    Should Contain X Times    ${output}    sky_brightness :    9
-    Should Contain X Times    ${output}    slew_time :    9
-    Should Contain X Times    ${output}    cost_bonus :    9
-    Should Contain X Times    ${output}    prop_boost :    9
-    Should Contain X Times    ${output}    rank :    9
-    Should Contain X Times    ${output}    num_proposals :    9
-    Should Contain X Times    ${output}    proposal_Ids :    9
-    Should Contain X Times    ${output}    proposal_values :    9
-    Should Contain X Times    ${output}    proposal_needs :    9
-    Should Contain X Times    ${output}    proposal_bonuses :    9
-    Should Contain X Times    ${output}    proposal_boosts :    9
-    Should Contain X Times    ${output}    moon_ra :    9
-    Should Contain X Times    ${output}    moon_dec :    9
-    Should Contain X Times    ${output}    moon_alt :    9
-    Should Contain X Times    ${output}    moon_az :    9
-    Should Contain X Times    ${output}    moon_phase :    9
-    Should Contain X Times    ${output}    moon_distance :    9
-    Should Contain X Times    ${output}    sun_alt :    9
-    Should Contain X Times    ${output}    sun_az :    9
-    Should Contain X Times    ${output}    sun_ra :    9
-    Should Contain X Times    ${output}    sun_dec :    9
-    Should Contain X Times    ${output}    sun_elong :    9
+    Should Contain X Times    ${output}    targetId : 1    9
+    Should Contain X Times    ${output}    fieldId : 1    9
+    Should Contain X Times    ${output}    filter : 1    9
+    Should Contain X Times    ${output}    request_time : 1    9
+    Should Contain X Times    ${output}    request_mjd : 1    9
+    Should Contain X Times    ${output}    ra : 1    9
+    Should Contain X Times    ${output}    dec : 1    9
+    Should Contain X Times    ${output}    angle : 1    9
+    Should Contain X Times    ${output}    num_exposures : 1    9
+    Should Contain X Times    ${output}    exposure_times : 1    1
+    Should Contain X Times    ${output}    exposure_times : 2    1
+    Should Contain X Times    ${output}    exposure_times : 3    1
+    Should Contain X Times    ${output}    exposure_times : 4    1
+    Should Contain X Times    ${output}    exposure_times : 5    1
+    Should Contain X Times    ${output}    exposure_times : 6    1
+    Should Contain X Times    ${output}    exposure_times : 7    1
+    Should Contain X Times    ${output}    exposure_times : 8    1
+    Should Contain X Times    ${output}    exposure_times : 9    1
+    Should Contain X Times    ${output}    airmass : 1    9
+    Should Contain X Times    ${output}    sky_brightness : 1    9
+    Should Contain X Times    ${output}    cloud : 1    9
+    Should Contain X Times    ${output}    seeing : 1    9
+    Should Contain X Times    ${output}    slew_time : 1    9
+    Should Contain X Times    ${output}    cost_bonus : 1    9
+    Should Contain X Times    ${output}    prop_boost : 1    9
+    Should Contain X Times    ${output}    rank : 1    9
+    Should Contain X Times    ${output}    num_proposals : 1    9
+    Should Contain X Times    ${output}    proposal_Ids : 1    1
+    Should Contain X Times    ${output}    proposal_Ids : 2    1
+    Should Contain X Times    ${output}    proposal_Ids : 3    1
+    Should Contain X Times    ${output}    proposal_Ids : 4    1
+    Should Contain X Times    ${output}    proposal_Ids : 5    1
+    Should Contain X Times    ${output}    proposal_Ids : 6    1
+    Should Contain X Times    ${output}    proposal_Ids : 7    1
+    Should Contain X Times    ${output}    proposal_Ids : 8    1
+    Should Contain X Times    ${output}    proposal_Ids : 9    1
+    Should Contain X Times    ${output}    proposal_values : 1    1
+    Should Contain X Times    ${output}    proposal_values : 2    1
+    Should Contain X Times    ${output}    proposal_values : 3    1
+    Should Contain X Times    ${output}    proposal_values : 4    1
+    Should Contain X Times    ${output}    proposal_values : 5    1
+    Should Contain X Times    ${output}    proposal_values : 6    1
+    Should Contain X Times    ${output}    proposal_values : 7    1
+    Should Contain X Times    ${output}    proposal_values : 8    1
+    Should Contain X Times    ${output}    proposal_values : 9    1
+    Should Contain X Times    ${output}    proposal_needs : 1    1
+    Should Contain X Times    ${output}    proposal_needs : 2    1
+    Should Contain X Times    ${output}    proposal_needs : 3    1
+    Should Contain X Times    ${output}    proposal_needs : 4    1
+    Should Contain X Times    ${output}    proposal_needs : 5    1
+    Should Contain X Times    ${output}    proposal_needs : 6    1
+    Should Contain X Times    ${output}    proposal_needs : 7    1
+    Should Contain X Times    ${output}    proposal_needs : 8    1
+    Should Contain X Times    ${output}    proposal_needs : 9    1
+    Should Contain X Times    ${output}    proposal_bonuses : 1    1
+    Should Contain X Times    ${output}    proposal_bonuses : 2    1
+    Should Contain X Times    ${output}    proposal_bonuses : 3    1
+    Should Contain X Times    ${output}    proposal_bonuses : 4    1
+    Should Contain X Times    ${output}    proposal_bonuses : 5    1
+    Should Contain X Times    ${output}    proposal_bonuses : 6    1
+    Should Contain X Times    ${output}    proposal_bonuses : 7    1
+    Should Contain X Times    ${output}    proposal_bonuses : 8    1
+    Should Contain X Times    ${output}    proposal_bonuses : 9    1
+    Should Contain X Times    ${output}    proposal_boosts : 1    1
+    Should Contain X Times    ${output}    proposal_boosts : 2    1
+    Should Contain X Times    ${output}    proposal_boosts : 3    1
+    Should Contain X Times    ${output}    proposal_boosts : 4    1
+    Should Contain X Times    ${output}    proposal_boosts : 5    1
+    Should Contain X Times    ${output}    proposal_boosts : 6    1
+    Should Contain X Times    ${output}    proposal_boosts : 7    1
+    Should Contain X Times    ${output}    proposal_boosts : 8    1
+    Should Contain X Times    ${output}    proposal_boosts : 9    1
+    Should Contain X Times    ${output}    moon_ra : 1    9
+    Should Contain X Times    ${output}    moon_dec : 1    9
+    Should Contain X Times    ${output}    moon_alt : 1    9
+    Should Contain X Times    ${output}    moon_az : 1    9
+    Should Contain X Times    ${output}    moon_phase : 1    9
+    Should Contain X Times    ${output}    moon_distance : 1    9
+    Should Contain X Times    ${output}    sun_alt : 1    9
+    Should Contain X Times    ${output}    sun_az : 1    9
+    Should Contain X Times    ${output}    sun_ra : 1    9
+    Should Contain X Times    ${output}    sun_dec : 1    9
+    Should Contain X Times    ${output}    sun_elong : 1    9

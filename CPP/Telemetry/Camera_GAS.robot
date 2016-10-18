@@ -73,12 +73,52 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Board_ID :    9
-    Should Contain X Times    ${output}    Board_current :    9
-    Should Contain X Times    ${output}    Board_temp :    9
-    Should Contain X Times    ${output}    Board_voltage :    9
-    Should Contain X Times    ${output}    CABAC_MUX :    9
-    Should Contain X Times    ${output}    CCD_ID :    9
-    Should Contain X Times    ${output}    CCD_temp :    9
-    Should Contain X Times    ${output}    FPGACheckSum :    9
-    Should Contain X Times    ${output}    REB_ID :    9
+    Should Contain X Times    ${output}    Board_ID : 1    9
+    Should Contain X Times    ${output}    Board_current : 1    1
+    Should Contain X Times    ${output}    Board_current : 2    1
+    Should Contain X Times    ${output}    Board_current : 3    1
+    Should Contain X Times    ${output}    Board_current : 4    1
+    Should Contain X Times    ${output}    Board_current : 5    1
+    Should Contain X Times    ${output}    Board_current : 6    1
+    Should Contain X Times    ${output}    Board_current : 7    1
+    Should Contain X Times    ${output}    Board_current : 8    1
+    Should Contain X Times    ${output}    Board_current : 9    1
+    Should Contain X Times    ${output}    Board_temp : 1    1
+    Should Contain X Times    ${output}    Board_temp : 2    1
+    Should Contain X Times    ${output}    Board_temp : 3    1
+    Should Contain X Times    ${output}    Board_temp : 4    1
+    Should Contain X Times    ${output}    Board_temp : 5    1
+    Should Contain X Times    ${output}    Board_temp : 6    1
+    Should Contain X Times    ${output}    Board_temp : 7    1
+    Should Contain X Times    ${output}    Board_temp : 8    1
+    Should Contain X Times    ${output}    Board_temp : 9    1
+    Should Contain X Times    ${output}    Board_voltage : 1    1
+    Should Contain X Times    ${output}    Board_voltage : 2    1
+    Should Contain X Times    ${output}    Board_voltage : 3    1
+    Should Contain X Times    ${output}    Board_voltage : 4    1
+    Should Contain X Times    ${output}    Board_voltage : 5    1
+    Should Contain X Times    ${output}    Board_voltage : 6    1
+    Should Contain X Times    ${output}    Board_voltage : 7    1
+    Should Contain X Times    ${output}    Board_voltage : 8    1
+    Should Contain X Times    ${output}    Board_voltage : 9    1
+    Should Contain X Times    ${output}    CABAC_MUX : 1    1
+    Should Contain X Times    ${output}    CABAC_MUX : 2    1
+    Should Contain X Times    ${output}    CABAC_MUX : 3    1
+    Should Contain X Times    ${output}    CABAC_MUX : 4    1
+    Should Contain X Times    ${output}    CABAC_MUX : 5    1
+    Should Contain X Times    ${output}    CABAC_MUX : 6    1
+    Should Contain X Times    ${output}    CABAC_MUX : 7    1
+    Should Contain X Times    ${output}    CABAC_MUX : 8    1
+    Should Contain X Times    ${output}    CABAC_MUX : 9    1
+    Should Contain X Times    ${output}    CCD_ID : 1    9
+    Should Contain X Times    ${output}    CCD_temp : 1    9
+    Should Contain X Times    ${output}    FPGACheckSum : 1    1
+    Should Contain X Times    ${output}    FPGACheckSum : 2    1
+    Should Contain X Times    ${output}    FPGACheckSum : 3    1
+    Should Contain X Times    ${output}    FPGACheckSum : 4    1
+    Should Contain X Times    ${output}    FPGACheckSum : 5    1
+    Should Contain X Times    ${output}    FPGACheckSum : 6    1
+    Should Contain X Times    ${output}    FPGACheckSum : 7    1
+    Should Contain X Times    ${output}    FPGACheckSum : 8    1
+    Should Contain X Times    ${output}    FPGACheckSum : 9    1
+    Should Contain X Times    ${output}    REB_ID : 1    9

@@ -73,11 +73,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    epoc :    9
-    Should Contain X Times    ${output}    equinox :    9
-    Should Contain X Times    ${output}    parallax :    9
-    Should Contain X Times    ${output}    pmDec :    9
-    Should Contain X Times    ${output}    pmRA :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    rv :    9
+    Should Contain X Times    ${output}    dec : 1    9
+    Should Contain X Times    ${output}    epoc : 1    9
+    Should Contain X Times    ${output}    equinox : 1    9
+    Should Contain X Times    ${output}    parallax : 1    9
+    Should Contain X Times    ${output}    pmDec : 1    9
+    Should Contain X Times    ${output}    pmRA : 1    9
+    Should Contain X Times    ${output}    ra : 1    9
+    Should Contain X Times    ${output}    rv : 1    9

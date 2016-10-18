@@ -73,8 +73,40 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    charge :    9
-    Should Contain X Times    ${output}    chargeRate :    9
-    Should Contain X Times    ${output}    setpoint :    9
-    Should Contain X Times    ${output}    status :    9
-    Should Contain X Times    ${output}    temperature :    9
+    Should Contain X Times    ${output}    charge : 1    1
+    Should Contain X Times    ${output}    charge : 2    1
+    Should Contain X Times    ${output}    charge : 3    1
+    Should Contain X Times    ${output}    charge : 4    1
+    Should Contain X Times    ${output}    charge : 5    1
+    Should Contain X Times    ${output}    charge : 6    1
+    Should Contain X Times    ${output}    charge : 7    1
+    Should Contain X Times    ${output}    charge : 8    1
+    Should Contain X Times    ${output}    charge : 9    1
+    Should Contain X Times    ${output}    chargeRate : 1    1
+    Should Contain X Times    ${output}    chargeRate : 2    1
+    Should Contain X Times    ${output}    chargeRate : 3    1
+    Should Contain X Times    ${output}    chargeRate : 4    1
+    Should Contain X Times    ${output}    chargeRate : 5    1
+    Should Contain X Times    ${output}    chargeRate : 6    1
+    Should Contain X Times    ${output}    chargeRate : 7    1
+    Should Contain X Times    ${output}    chargeRate : 8    1
+    Should Contain X Times    ${output}    chargeRate : 9    1
+    Should Contain X Times    ${output}    setpoint : 1    9
+    Should Contain X Times    ${output}    status : 1    1
+    Should Contain X Times    ${output}    status : 2    1
+    Should Contain X Times    ${output}    status : 3    1
+    Should Contain X Times    ${output}    status : 4    1
+    Should Contain X Times    ${output}    status : 5    1
+    Should Contain X Times    ${output}    status : 6    1
+    Should Contain X Times    ${output}    status : 7    1
+    Should Contain X Times    ${output}    status : 8    1
+    Should Contain X Times    ${output}    status : 9    1
+    Should Contain X Times    ${output}    temperature : 1    1
+    Should Contain X Times    ${output}    temperature : 2    1
+    Should Contain X Times    ${output}    temperature : 3    1
+    Should Contain X Times    ${output}    temperature : 4    1
+    Should Contain X Times    ${output}    temperature : 5    1
+    Should Contain X Times    ${output}    temperature : 6    1
+    Should Contain X Times    ${output}    temperature : 7    1
+    Should Contain X Times    ${output}    temperature : 8    1
+    Should Contain X Times    ${output}    temperature : 9    1

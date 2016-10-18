@@ -73,8 +73,24 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Coeffv :    9
-    Should Contain X Times    ${output}    Model :    9
-    Should Contain X Times    ${output}    Nterml :    9
-    Should Contain X Times    ${output}    Nterms :    9
-    Should Contain X Times    ${output}    Ntermx :    9
+    Should Contain X Times    ${output}    Coeffv : 1    1
+    Should Contain X Times    ${output}    Coeffv : 2    1
+    Should Contain X Times    ${output}    Coeffv : 3    1
+    Should Contain X Times    ${output}    Coeffv : 4    1
+    Should Contain X Times    ${output}    Coeffv : 5    1
+    Should Contain X Times    ${output}    Coeffv : 6    1
+    Should Contain X Times    ${output}    Coeffv : 7    1
+    Should Contain X Times    ${output}    Coeffv : 8    1
+    Should Contain X Times    ${output}    Coeffv : 9    1
+    Should Contain X Times    ${output}    Model : 1    1
+    Should Contain X Times    ${output}    Model : 2    1
+    Should Contain X Times    ${output}    Model : 3    1
+    Should Contain X Times    ${output}    Model : 4    1
+    Should Contain X Times    ${output}    Model : 5    1
+    Should Contain X Times    ${output}    Model : 6    1
+    Should Contain X Times    ${output}    Model : 7    1
+    Should Contain X Times    ${output}    Model : 8    1
+    Should Contain X Times    ${output}    Model : 9    1
+    Should Contain X Times    ${output}    Nterml : 1    9
+    Should Contain X Times    ${output}    Nterms : 1    9
+    Should Contain X Times    ${output}    Ntermx : 1    9

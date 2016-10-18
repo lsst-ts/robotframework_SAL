@@ -73,10 +73,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    name :    9
-    Should Contain X Times    ${output}    latitude :    9
-    Should Contain X Times    ${output}    longitude :    9
-    Should Contain X Times    ${output}    height :    9
-    Should Contain X Times    ${output}    pressure :    9
-    Should Contain X Times    ${output}    temperature :    9
-    Should Contain X Times    ${output}    relative_humidity :    9
+    Should Contain X Times    ${output}    name : 1    9
+    Should Contain X Times    ${output}    latitude : 1    9
+    Should Contain X Times    ${output}    longitude : 1    9
+    Should Contain X Times    ${output}    height : 1    9
+    Should Contain X Times    ${output}    pressure : 1    9
+    Should Contain X Times    ${output}    temperature : 1    9
+    Should Contain X Times    ${output}    relative_humidity : 1    9

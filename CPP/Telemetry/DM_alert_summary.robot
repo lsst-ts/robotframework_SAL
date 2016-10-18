@@ -73,6 +73,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    alerts_sent :    9
-    Should Contain X Times    ${output}    available_workers :    9
-    Should Contain X Times    ${output}    latency_readout_to_last_alert :    9
+    Should Contain X Times    ${output}    alerts_sent : 1    9
+    Should Contain X Times    ${output}    available_workers : 1    9
+    Should Contain X Times    ${output}    latency_readout_to_last_alert : 1    9

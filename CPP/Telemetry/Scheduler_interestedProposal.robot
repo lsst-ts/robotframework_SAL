@@ -73,9 +73,50 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    pairNumber :    9
-    Should Contain X Times    ${output}    proposalId :    9
-    Should Contain X Times    ${output}    subSequenceNumber :    9
-    Should Contain X Times    ${output}    targetId :    9
-    Should Contain X Times    ${output}    targetProposalRankValue :    9
-    Should Contain X Times    ${output}    targetRankPosition :    9
+    Should Contain X Times    ${output}    observationId : 1    9
+    Should Contain X Times    ${output}    num_proposals : 1    9
+    Should Contain X Times    ${output}    proposal_Ids : 1    1
+    Should Contain X Times    ${output}    proposal_Ids : 2    1
+    Should Contain X Times    ${output}    proposal_Ids : 3    1
+    Should Contain X Times    ${output}    proposal_Ids : 4    1
+    Should Contain X Times    ${output}    proposal_Ids : 5    1
+    Should Contain X Times    ${output}    proposal_Ids : 6    1
+    Should Contain X Times    ${output}    proposal_Ids : 7    1
+    Should Contain X Times    ${output}    proposal_Ids : 8    1
+    Should Contain X Times    ${output}    proposal_Ids : 9    1
+    Should Contain X Times    ${output}    proposal_values : 1    1
+    Should Contain X Times    ${output}    proposal_values : 2    1
+    Should Contain X Times    ${output}    proposal_values : 3    1
+    Should Contain X Times    ${output}    proposal_values : 4    1
+    Should Contain X Times    ${output}    proposal_values : 5    1
+    Should Contain X Times    ${output}    proposal_values : 6    1
+    Should Contain X Times    ${output}    proposal_values : 7    1
+    Should Contain X Times    ${output}    proposal_values : 8    1
+    Should Contain X Times    ${output}    proposal_values : 9    1
+    Should Contain X Times    ${output}    proposal_needs : 1    1
+    Should Contain X Times    ${output}    proposal_needs : 2    1
+    Should Contain X Times    ${output}    proposal_needs : 3    1
+    Should Contain X Times    ${output}    proposal_needs : 4    1
+    Should Contain X Times    ${output}    proposal_needs : 5    1
+    Should Contain X Times    ${output}    proposal_needs : 6    1
+    Should Contain X Times    ${output}    proposal_needs : 7    1
+    Should Contain X Times    ${output}    proposal_needs : 8    1
+    Should Contain X Times    ${output}    proposal_needs : 9    1
+    Should Contain X Times    ${output}    proposal_bonuses : 1    1
+    Should Contain X Times    ${output}    proposal_bonuses : 2    1
+    Should Contain X Times    ${output}    proposal_bonuses : 3    1
+    Should Contain X Times    ${output}    proposal_bonuses : 4    1
+    Should Contain X Times    ${output}    proposal_bonuses : 5    1
+    Should Contain X Times    ${output}    proposal_bonuses : 6    1
+    Should Contain X Times    ${output}    proposal_bonuses : 7    1
+    Should Contain X Times    ${output}    proposal_bonuses : 8    1
+    Should Contain X Times    ${output}    proposal_bonuses : 9    1
+    Should Contain X Times    ${output}    proposal_boosts : 1    1
+    Should Contain X Times    ${output}    proposal_boosts : 2    1
+    Should Contain X Times    ${output}    proposal_boosts : 3    1
+    Should Contain X Times    ${output}    proposal_boosts : 4    1
+    Should Contain X Times    ${output}    proposal_boosts : 5    1
+    Should Contain X Times    ${output}    proposal_boosts : 6    1
+    Should Contain X Times    ${output}    proposal_boosts : 7    1
+    Should Contain X Times    ${output}    proposal_boosts : 8    1
+    Should Contain X Times    ${output}    proposal_boosts : 9    1

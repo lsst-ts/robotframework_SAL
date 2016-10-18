@@ -73,9 +73,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    telescope_altitude :    9
-    Should Contain X Times    ${output}    telescope_azimuth :    9
-    Should Contain X Times    ${output}    telescope_rotator :    9
-    Should Contain X Times    ${output}    dome_altitude :    9
-    Should Contain X Times    ${output}    dome_azimuth :    9
-    Should Contain X Times    ${output}    filter_position :    9
+    Should Contain X Times    ${output}    telescope_altitude : 1    9
+    Should Contain X Times    ${output}    telescope_azimuth : 1    9
+    Should Contain X Times    ${output}    telescope_rotator : 1    9
+    Should Contain X Times    ${output}    dome_altitude : 1    9
+    Should Contain X Times    ${output}    dome_azimuth : 1    9
+    Should Contain X Times    ${output}    filter_position : 1    9

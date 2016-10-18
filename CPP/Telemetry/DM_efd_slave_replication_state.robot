@@ -73,4 +73,4 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    replication_state :    9
+    Should Contain X Times    ${output}    replication_state : 1    9

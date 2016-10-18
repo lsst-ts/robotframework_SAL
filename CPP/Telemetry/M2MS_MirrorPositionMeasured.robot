@@ -73,9 +73,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    xTilt :    9
-    Should Contain X Times    ${output}    yTilt :    9
-    Should Contain X Times    ${output}    piston :    9
-    Should Contain X Times    ${output}    xPosition :    9
-    Should Contain X Times    ${output}    yPosition :    9
-    Should Contain X Times    ${output}    theta_z_position :    9
+    Should Contain X Times    ${output}    xTilt : 1    9
+    Should Contain X Times    ${output}    yTilt : 1    9
+    Should Contain X Times    ${output}    piston : 1    9
+    Should Contain X Times    ${output}    xPosition : 1    9
+    Should Contain X Times    ${output}    yPosition : 1    9
+    Should Contain X Times    ${output}    theta_z_position : 1    9

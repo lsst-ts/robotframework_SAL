@@ -73,11 +73,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    ID :    9
-    Should Contain X Times    ${output}    fov :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    gl :    9
-    Should Contain X Times    ${output}    gb :    9
-    Should Contain X Times    ${output}    el :    9
-    Should Contain X Times    ${output}    eb :    9
+    Should Contain X Times    ${output}    ID : 1    9
+    Should Contain X Times    ${output}    fov : 1    9
+    Should Contain X Times    ${output}    ra : 1    9
+    Should Contain X Times    ${output}    dec : 1    9
+    Should Contain X Times    ${output}    gl : 1    9
+    Should Contain X Times    ${output}    gb : 1    9
+    Should Contain X Times    ${output}    el : 1    9
+    Should Contain X Times    ${output}    eb : 1    9

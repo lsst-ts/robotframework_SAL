@@ -73,5 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    tilt :    9
-    Should Contain X Times    ${output}    tip :    9
+    Should Contain X Times    ${output}    tilt : 1    9
+    Should Contain X Times    ${output}    tip : 1    9

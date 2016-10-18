@@ -73,7 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    AGuide :    9
-    Should Contain X Times    ${output}    ALocal :    9
-    Should Contain X Times    ${output}    BGuide :    9
-    Should Contain X Times    ${output}    BLocal :    9
+    Should Contain X Times    ${output}    AGuide : 1    9
+    Should Contain X Times    ${output}    ALocal : 1    9
+    Should Contain X Times    ${output}    BGuide : 1    9
+    Should Contain X Times    ${output}    BLocal : 1    9

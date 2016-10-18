@@ -73,7 +73,39 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    calibrated :    9
-    Should Contain X Times    ${output}    raw :    9
-    Should Contain X Times    ${output}    temperature :    9
-    Should Contain X Times    ${output}    windSpeed :    9
+    Should Contain X Times    ${output}    calibrated : 1    1
+    Should Contain X Times    ${output}    calibrated : 2    1
+    Should Contain X Times    ${output}    calibrated : 3    1
+    Should Contain X Times    ${output}    calibrated : 4    1
+    Should Contain X Times    ${output}    calibrated : 5    1
+    Should Contain X Times    ${output}    calibrated : 6    1
+    Should Contain X Times    ${output}    calibrated : 7    1
+    Should Contain X Times    ${output}    calibrated : 8    1
+    Should Contain X Times    ${output}    calibrated : 9    1
+    Should Contain X Times    ${output}    raw : 1    1
+    Should Contain X Times    ${output}    raw : 2    1
+    Should Contain X Times    ${output}    raw : 3    1
+    Should Contain X Times    ${output}    raw : 4    1
+    Should Contain X Times    ${output}    raw : 5    1
+    Should Contain X Times    ${output}    raw : 6    1
+    Should Contain X Times    ${output}    raw : 7    1
+    Should Contain X Times    ${output}    raw : 8    1
+    Should Contain X Times    ${output}    raw : 9    1
+    Should Contain X Times    ${output}    temperature : 1    1
+    Should Contain X Times    ${output}    temperature : 2    1
+    Should Contain X Times    ${output}    temperature : 3    1
+    Should Contain X Times    ${output}    temperature : 4    1
+    Should Contain X Times    ${output}    temperature : 5    1
+    Should Contain X Times    ${output}    temperature : 6    1
+    Should Contain X Times    ${output}    temperature : 7    1
+    Should Contain X Times    ${output}    temperature : 8    1
+    Should Contain X Times    ${output}    temperature : 9    1
+    Should Contain X Times    ${output}    windSpeed : 1    1
+    Should Contain X Times    ${output}    windSpeed : 2    1
+    Should Contain X Times    ${output}    windSpeed : 3    1
+    Should Contain X Times    ${output}    windSpeed : 4    1
+    Should Contain X Times    ${output}    windSpeed : 5    1
+    Should Contain X Times    ${output}    windSpeed : 6    1
+    Should Contain X Times    ${output}    windSpeed : 7    1
+    Should Contain X Times    ${output}    windSpeed : 8    1
+    Should Contain X Times    ${output}    windSpeed : 9    1

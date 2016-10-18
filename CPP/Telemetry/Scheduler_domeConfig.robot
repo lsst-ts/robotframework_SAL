@@ -73,10 +73,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    altitude_maxspeed :    9
-    Should Contain X Times    ${output}    altitude_accel :    9
-    Should Contain X Times    ${output}    altitude_decel :    9
-    Should Contain X Times    ${output}    azimuth_maxspeed :    9
-    Should Contain X Times    ${output}    azimuth_accel :    9
-    Should Contain X Times    ${output}    azimuth_decel :    9
-    Should Contain X Times    ${output}    settle_time :    9
+    Should Contain X Times    ${output}    altitude_maxspeed : 1    9
+    Should Contain X Times    ${output}    altitude_accel : 1    9
+    Should Contain X Times    ${output}    altitude_decel : 1    9
+    Should Contain X Times    ${output}    azimuth_maxspeed : 1    9
+    Should Contain X Times    ${output}    azimuth_accel : 1    9
+    Should Contain X Times    ${output}    azimuth_decel : 1    9
+    Should Contain X Times    ${output}    settle_time : 1    9

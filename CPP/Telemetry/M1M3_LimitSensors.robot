@@ -73,5 +73,21 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    liftoff :    9
-    Should Contain X Times    ${output}    limit :    9
+    Should Contain X Times    ${output}    liftoff : 1    1
+    Should Contain X Times    ${output}    liftoff : 2    1
+    Should Contain X Times    ${output}    liftoff : 3    1
+    Should Contain X Times    ${output}    liftoff : 4    1
+    Should Contain X Times    ${output}    liftoff : 5    1
+    Should Contain X Times    ${output}    liftoff : 6    1
+    Should Contain X Times    ${output}    liftoff : 7    1
+    Should Contain X Times    ${output}    liftoff : 8    1
+    Should Contain X Times    ${output}    liftoff : 9    1
+    Should Contain X Times    ${output}    limit : 1    1
+    Should Contain X Times    ${output}    limit : 2    1
+    Should Contain X Times    ${output}    limit : 3    1
+    Should Contain X Times    ${output}    limit : 4    1
+    Should Contain X Times    ${output}    limit : 5    1
+    Should Contain X Times    ${output}    limit : 6    1
+    Should Contain X Times    ${output}    limit : 7    1
+    Should Contain X Times    ${output}    limit : 8    1
+    Should Contain X Times    ${output}    limit : 9    1

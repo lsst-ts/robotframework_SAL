@@ -73,9 +73,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Cst :    9
-    Should Contain X Times    ${output}    Dcst :    9
-    Should Contain X Times    ${output}    Dsst :    9
-    Should Contain X Times    ${output}    Sst :    9
-    Should Contain X Times    ${output}    Tai :    9
-    Should Contain X Times    ${output}    Tt :    9
+    Should Contain X Times    ${output}    Cst : 1    9
+    Should Contain X Times    ${output}    Dcst : 1    9
+    Should Contain X Times    ${output}    Dsst : 1    9
+    Should Contain X Times    ${output}    Sst : 1    9
+    Should Contain X Times    ${output}    Tai : 1    9
+    Should Contain X Times    ${output}    Tt : 1    9

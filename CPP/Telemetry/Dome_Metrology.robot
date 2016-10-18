@@ -73,10 +73,66 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    azCalibrated :    9
-    Should Contain X Times    ${output}    azEncoder :    9
-    Should Contain X Times    ${output}    elevCalibrated :    9
-    Should Contain X Times    ${output}    elevEncoder :    9
-    Should Contain X Times    ${output}    screenEncoder :    9
-    Should Contain X Times    ${output}    shutterL :    9
-    Should Contain X Times    ${output}    shutterR :    9
+    Should Contain X Times    ${output}    azCalibrated : 1    1
+    Should Contain X Times    ${output}    azCalibrated : 2    1
+    Should Contain X Times    ${output}    azCalibrated : 3    1
+    Should Contain X Times    ${output}    azCalibrated : 4    1
+    Should Contain X Times    ${output}    azCalibrated : 5    1
+    Should Contain X Times    ${output}    azCalibrated : 6    1
+    Should Contain X Times    ${output}    azCalibrated : 7    1
+    Should Contain X Times    ${output}    azCalibrated : 8    1
+    Should Contain X Times    ${output}    azCalibrated : 9    1
+    Should Contain X Times    ${output}    azEncoder : 1    1
+    Should Contain X Times    ${output}    azEncoder : 2    1
+    Should Contain X Times    ${output}    azEncoder : 3    1
+    Should Contain X Times    ${output}    azEncoder : 4    1
+    Should Contain X Times    ${output}    azEncoder : 5    1
+    Should Contain X Times    ${output}    azEncoder : 6    1
+    Should Contain X Times    ${output}    azEncoder : 7    1
+    Should Contain X Times    ${output}    azEncoder : 8    1
+    Should Contain X Times    ${output}    azEncoder : 9    1
+    Should Contain X Times    ${output}    elevCalibrated : 1    1
+    Should Contain X Times    ${output}    elevCalibrated : 2    1
+    Should Contain X Times    ${output}    elevCalibrated : 3    1
+    Should Contain X Times    ${output}    elevCalibrated : 4    1
+    Should Contain X Times    ${output}    elevCalibrated : 5    1
+    Should Contain X Times    ${output}    elevCalibrated : 6    1
+    Should Contain X Times    ${output}    elevCalibrated : 7    1
+    Should Contain X Times    ${output}    elevCalibrated : 8    1
+    Should Contain X Times    ${output}    elevCalibrated : 9    1
+    Should Contain X Times    ${output}    elevEncoder : 1    1
+    Should Contain X Times    ${output}    elevEncoder : 2    1
+    Should Contain X Times    ${output}    elevEncoder : 3    1
+    Should Contain X Times    ${output}    elevEncoder : 4    1
+    Should Contain X Times    ${output}    elevEncoder : 5    1
+    Should Contain X Times    ${output}    elevEncoder : 6    1
+    Should Contain X Times    ${output}    elevEncoder : 7    1
+    Should Contain X Times    ${output}    elevEncoder : 8    1
+    Should Contain X Times    ${output}    elevEncoder : 9    1
+    Should Contain X Times    ${output}    screenEncoder : 1    1
+    Should Contain X Times    ${output}    screenEncoder : 2    1
+    Should Contain X Times    ${output}    screenEncoder : 3    1
+    Should Contain X Times    ${output}    screenEncoder : 4    1
+    Should Contain X Times    ${output}    screenEncoder : 5    1
+    Should Contain X Times    ${output}    screenEncoder : 6    1
+    Should Contain X Times    ${output}    screenEncoder : 7    1
+    Should Contain X Times    ${output}    screenEncoder : 8    1
+    Should Contain X Times    ${output}    screenEncoder : 9    1
+    Should Contain X Times    ${output}    shutterL : 1    1
+    Should Contain X Times    ${output}    shutterL : 2    1
+    Should Contain X Times    ${output}    shutterL : 3    1
+    Should Contain X Times    ${output}    shutterL : 4    1
+    Should Contain X Times    ${output}    shutterL : 5    1
+    Should Contain X Times    ${output}    shutterL : 6    1
+    Should Contain X Times    ${output}    shutterL : 7    1
+    Should Contain X Times    ${output}    shutterL : 8    1
+    Should Contain X Times    ${output}    shutterL : 9    1
+    Should Contain X Times    ${output}    shutterR : 1    1
+    Should Contain X Times    ${output}    shutterR : 2    1
+    Should Contain X Times    ${output}    shutterR : 3    1
+    Should Contain X Times    ${output}    shutterR : 4    1
+    Should Contain X Times    ${output}    shutterR : 5    1
+    Should Contain X Times    ${output}    shutterR : 6    1
+    Should Contain X Times    ${output}    shutterR : 7    1
+    Should Contain X Times    ${output}    shutterR : 8    1
+    Should Contain X Times    ${output}    shutterR : 9    1

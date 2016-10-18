@@ -73,19 +73,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    prereq_domalt :    9
-    Should Contain X Times    ${output}    prereq_domaz :    9
-    Should Contain X Times    ${output}    prereq_domazsettle :    9
-    Should Contain X Times    ${output}    prereq_telalt :    9
-    Should Contain X Times    ${output}    prereq_telaz :    9
-    Should Contain X Times    ${output}    prereq_telopticsopenloop :    9
-    Should Contain X Times    ${output}    prereq_telopticsclosedloop :    9
-    Should Contain X Times    ${output}    prereq_telsettle :    9
-    Should Contain X Times    ${output}    prereq_telrot :    9
-    Should Contain X Times    ${output}    prereq_filter :    9
-    Should Contain X Times    ${output}    prereq_exposures :    9
-    Should Contain X Times    ${output}    prereq_readout :    9
-    Should Contain X Times    ${output}    prereq_adc :    9
-    Should Contain X Times    ${output}    prereq_ins_optics :    9
-    Should Contain X Times    ${output}    prereq_guider_pos :    9
-    Should Contain X Times    ${output}    prereq_guider_adq :    9
+    Should Contain X Times    ${output}    prereq_domalt : 1    9
+    Should Contain X Times    ${output}    prereq_domaz : 1    9
+    Should Contain X Times    ${output}    prereq_domazsettle : 1    9
+    Should Contain X Times    ${output}    prereq_telalt : 1    9
+    Should Contain X Times    ${output}    prereq_telaz : 1    9
+    Should Contain X Times    ${output}    prereq_telopticsopenloop : 1    9
+    Should Contain X Times    ${output}    prereq_telopticsclosedloop : 1    9
+    Should Contain X Times    ${output}    prereq_telsettle : 1    9
+    Should Contain X Times    ${output}    prereq_telrot : 1    9
+    Should Contain X Times    ${output}    prereq_filter : 1    9
+    Should Contain X Times    ${output}    prereq_exposures : 1    9
+    Should Contain X Times    ${output}    prereq_readout : 1    9
+    Should Contain X Times    ${output}    prereq_adc : 1    9
+    Should Contain X Times    ${output}    prereq_ins_optics : 1    9
+    Should Contain X Times    ${output}    prereq_guider_pos : 1    9
+    Should Contain X Times    ${output}    prereq_guider_adq : 1    9

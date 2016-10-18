@@ -73,36 +73,44 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    observationId :    9
-    Should Contain X Times    ${output}    observation_start_time :    9
-    Should Contain X Times    ${output}    observation_start_mjd :    9
-    Should Contain X Times    ${output}    observation_start_lst :    9
-    Should Contain X Times    ${output}    night :    9
-    Should Contain X Times    ${output}    targetId :    9
-    Should Contain X Times    ${output}    fieldId :    9
-    Should Contain X Times    ${output}    filter :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    angle :    9
-    Should Contain X Times    ${output}    altitude :    9
-    Should Contain X Times    ${output}    azimuth :    9
-    Should Contain X Times    ${output}    num_exposures :    9
-    Should Contain X Times    ${output}    exposure_times :    9
-    Should Contain X Times    ${output}    visit_time :    9
-    Should Contain X Times    ${output}    sky_brightness :    9
-    Should Contain X Times    ${output}    airmass :    9
-    Should Contain X Times    ${output}    cloud :    9
-    Should Contain X Times    ${output}    seeing_fwhm_500 :    9
-    Should Contain X Times    ${output}    seeing_fwhm_geom :    9
-    Should Contain X Times    ${output}    seeing_fwhm_eff :    9
-    Should Contain X Times    ${output}    moon_ra :    9
-    Should Contain X Times    ${output}    moon_dec :    9
-    Should Contain X Times    ${output}    moon_alt :    9
-    Should Contain X Times    ${output}    moon_az :    9
-    Should Contain X Times    ${output}    moon_phase :    9
-    Should Contain X Times    ${output}    moon_distance :    9
-    Should Contain X Times    ${output}    sun_alt :    9
-    Should Contain X Times    ${output}    sun_az :    9
-    Should Contain X Times    ${output}    sun_ra :    9
-    Should Contain X Times    ${output}    sun_dec :    9
-    Should Contain X Times    ${output}    sun_elong :    9
+    Should Contain X Times    ${output}    observationId : 1    9
+    Should Contain X Times    ${output}    observation_start_time : 1    9
+    Should Contain X Times    ${output}    observation_start_mjd : 1    9
+    Should Contain X Times    ${output}    observation_start_lst : 1    9
+    Should Contain X Times    ${output}    night : 1    9
+    Should Contain X Times    ${output}    targetId : 1    9
+    Should Contain X Times    ${output}    fieldId : 1    9
+    Should Contain X Times    ${output}    filter : 1    9
+    Should Contain X Times    ${output}    ra : 1    9
+    Should Contain X Times    ${output}    dec : 1    9
+    Should Contain X Times    ${output}    angle : 1    9
+    Should Contain X Times    ${output}    altitude : 1    9
+    Should Contain X Times    ${output}    azimuth : 1    9
+    Should Contain X Times    ${output}    num_exposures : 1    9
+    Should Contain X Times    ${output}    exposure_times : 1    1
+    Should Contain X Times    ${output}    exposure_times : 2    1
+    Should Contain X Times    ${output}    exposure_times : 3    1
+    Should Contain X Times    ${output}    exposure_times : 4    1
+    Should Contain X Times    ${output}    exposure_times : 5    1
+    Should Contain X Times    ${output}    exposure_times : 6    1
+    Should Contain X Times    ${output}    exposure_times : 7    1
+    Should Contain X Times    ${output}    exposure_times : 8    1
+    Should Contain X Times    ${output}    exposure_times : 9    1
+    Should Contain X Times    ${output}    visit_time : 1    9
+    Should Contain X Times    ${output}    sky_brightness : 1    9
+    Should Contain X Times    ${output}    airmass : 1    9
+    Should Contain X Times    ${output}    cloud : 1    9
+    Should Contain X Times    ${output}    seeing_fwhm_500 : 1    9
+    Should Contain X Times    ${output}    seeing_fwhm_geom : 1    9
+    Should Contain X Times    ${output}    seeing_fwhm_eff : 1    9
+    Should Contain X Times    ${output}    moon_ra : 1    9
+    Should Contain X Times    ${output}    moon_dec : 1    9
+    Should Contain X Times    ${output}    moon_alt : 1    9
+    Should Contain X Times    ${output}    moon_az : 1    9
+    Should Contain X Times    ${output}    moon_phase : 1    9
+    Should Contain X Times    ${output}    moon_distance : 1    9
+    Should Contain X Times    ${output}    sun_alt : 1    9
+    Should Contain X Times    ${output}    sun_az : 1    9
+    Should Contain X Times    ${output}    sun_ra : 1    9
+    Should Contain X Times    ${output}    sun_dec : 1    9
+    Should Contain X Times    ${output}    sun_elong : 1    9

@@ -73,6 +73,30 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    error :    9
-    Should Contain X Times    ${output}    status :    9
-    Should Contain X Times    ${output}    voltage :    9
+    Should Contain X Times    ${output}    error : 1    1
+    Should Contain X Times    ${output}    error : 2    1
+    Should Contain X Times    ${output}    error : 3    1
+    Should Contain X Times    ${output}    error : 4    1
+    Should Contain X Times    ${output}    error : 5    1
+    Should Contain X Times    ${output}    error : 6    1
+    Should Contain X Times    ${output}    error : 7    1
+    Should Contain X Times    ${output}    error : 8    1
+    Should Contain X Times    ${output}    error : 9    1
+    Should Contain X Times    ${output}    status : 1    1
+    Should Contain X Times    ${output}    status : 2    1
+    Should Contain X Times    ${output}    status : 3    1
+    Should Contain X Times    ${output}    status : 4    1
+    Should Contain X Times    ${output}    status : 5    1
+    Should Contain X Times    ${output}    status : 6    1
+    Should Contain X Times    ${output}    status : 7    1
+    Should Contain X Times    ${output}    status : 8    1
+    Should Contain X Times    ${output}    status : 9    1
+    Should Contain X Times    ${output}    voltage : 1    1
+    Should Contain X Times    ${output}    voltage : 2    1
+    Should Contain X Times    ${output}    voltage : 3    1
+    Should Contain X Times    ${output}    voltage : 4    1
+    Should Contain X Times    ${output}    voltage : 5    1
+    Should Contain X Times    ${output}    voltage : 6    1
+    Should Contain X Times    ${output}    voltage : 7    1
+    Should Contain X Times    ${output}    voltage : 8    1
+    Should Contain X Times    ${output}    voltage : 9    1

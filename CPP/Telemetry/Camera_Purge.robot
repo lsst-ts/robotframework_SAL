@@ -73,15 +73,23 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Accelerometer :    9
-    Should Contain X Times    ${output}    Blower_setting :    9
-    Should Contain X Times    ${output}    Blower_speed :    9
-    Should Contain X Times    ${output}    Body_Flow_meter :    9
-    Should Contain X Times    ${output}    Body_Temp :    9
-    Should Contain X Times    ${output}    Heater_current :    9
-    Should Contain X Times    ${output}    Heaters :    9
-    Should Contain X Times    ${output}    Microphone :    9
-    Should Contain X Times    ${output}    Trunk_Flow_meter :    9
-    Should Contain X Times    ${output}    Trunk_Temp :    9
-    Should Contain X Times    ${output}    Valve_setting :    9
-    Should Contain X Times    ${output}    Valves :    9
+    Should Contain X Times    ${output}    Accelerometer : 1    1
+    Should Contain X Times    ${output}    Accelerometer : 2    1
+    Should Contain X Times    ${output}    Accelerometer : 3    1
+    Should Contain X Times    ${output}    Accelerometer : 4    1
+    Should Contain X Times    ${output}    Accelerometer : 5    1
+    Should Contain X Times    ${output}    Accelerometer : 6    1
+    Should Contain X Times    ${output}    Accelerometer : 7    1
+    Should Contain X Times    ${output}    Accelerometer : 8    1
+    Should Contain X Times    ${output}    Accelerometer : 9    1
+    Should Contain X Times    ${output}    Blower_setting : 1    9
+    Should Contain X Times    ${output}    Blower_speed : 1    9
+    Should Contain X Times    ${output}    Body_Flow_meter : 1    9
+    Should Contain X Times    ${output}    Body_Temp : 1    9
+    Should Contain X Times    ${output}    Heater_current : 1    9
+    Should Contain X Times    ${output}    Heaters : 1    9
+    Should Contain X Times    ${output}    Microphone : 1    9
+    Should Contain X Times    ${output}    Trunk_Flow_meter : 1    9
+    Should Contain X Times    ${output}    Trunk_Temp : 1    9
+    Should Contain X Times    ${output}    Valve_setting : 1    9
+    Should Contain X Times    ${output}    Valves : 1    9

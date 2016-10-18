@@ -73,6 +73,30 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    force :    9
-    Should Contain X Times    ${output}    stepcnt :    9
-    Should Contain X Times    ${output}    targetpos :    9
+    Should Contain X Times    ${output}    force : 1    1
+    Should Contain X Times    ${output}    force : 2    1
+    Should Contain X Times    ${output}    force : 3    1
+    Should Contain X Times    ${output}    force : 4    1
+    Should Contain X Times    ${output}    force : 5    1
+    Should Contain X Times    ${output}    force : 6    1
+    Should Contain X Times    ${output}    force : 7    1
+    Should Contain X Times    ${output}    force : 8    1
+    Should Contain X Times    ${output}    force : 9    1
+    Should Contain X Times    ${output}    stepcnt : 1    1
+    Should Contain X Times    ${output}    stepcnt : 2    1
+    Should Contain X Times    ${output}    stepcnt : 3    1
+    Should Contain X Times    ${output}    stepcnt : 4    1
+    Should Contain X Times    ${output}    stepcnt : 5    1
+    Should Contain X Times    ${output}    stepcnt : 6    1
+    Should Contain X Times    ${output}    stepcnt : 7    1
+    Should Contain X Times    ${output}    stepcnt : 8    1
+    Should Contain X Times    ${output}    stepcnt : 9    1
+    Should Contain X Times    ${output}    targetpos : 1    1
+    Should Contain X Times    ${output}    targetpos : 2    1
+    Should Contain X Times    ${output}    targetpos : 3    1
+    Should Contain X Times    ${output}    targetpos : 4    1
+    Should Contain X Times    ${output}    targetpos : 5    1
+    Should Contain X Times    ${output}    targetpos : 6    1
+    Should Contain X Times    ${output}    targetpos : 7    1
+    Should Contain X Times    ${output}    targetpos : 8    1
+    Should Contain X Times    ${output}    targetpos : 9    1

@@ -73,19 +73,27 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Aux :    9
-    Should Contain X Times    ${output}    Casspa :    9
-    Should Contain X Times    ${output}    Dec :    9
-    Should Contain X Times    ${output}    Fl :    9
-    Should Contain X Times    ${output}    Humid :    9
-    Should Contain X Times    ${output}    Marked :    9
-    Should Contain X Times    ${output}    Pitch :    9
-    Should Contain X Times    ${output}    Press :    9
-    Should Contain X Times    ${output}    Ra :    9
-    Should Contain X Times    ${output}    Rcorr :    9
-    Should Contain X Times    ${output}    Roll :    9
-    Should Contain X Times    ${output}    Temp :    9
-    Should Contain X Times    ${output}    Tlr :    9
-    Should Contain X Times    ${output}    Wavel :    9
-    Should Contain X Times    ${output}    Xr :    9
-    Should Contain X Times    ${output}    Yr :    9
+    Should Contain X Times    ${output}    Aux : 1    1
+    Should Contain X Times    ${output}    Aux : 2    1
+    Should Contain X Times    ${output}    Aux : 3    1
+    Should Contain X Times    ${output}    Aux : 4    1
+    Should Contain X Times    ${output}    Aux : 5    1
+    Should Contain X Times    ${output}    Aux : 6    1
+    Should Contain X Times    ${output}    Aux : 7    1
+    Should Contain X Times    ${output}    Aux : 8    1
+    Should Contain X Times    ${output}    Aux : 9    1
+    Should Contain X Times    ${output}    Casspa : 1    9
+    Should Contain X Times    ${output}    Dec : 1    9
+    Should Contain X Times    ${output}    Fl : 1    9
+    Should Contain X Times    ${output}    Humid : 1    9
+    Should Contain X Times    ${output}    Marked : 1    9
+    Should Contain X Times    ${output}    Pitch : 1    9
+    Should Contain X Times    ${output}    Press : 1    9
+    Should Contain X Times    ${output}    Ra : 1    9
+    Should Contain X Times    ${output}    Rcorr : 1    9
+    Should Contain X Times    ${output}    Roll : 1    9
+    Should Contain X Times    ${output}    Temp : 1    9
+    Should Contain X Times    ${output}    Tlr : 1    9
+    Should Contain X Times    ${output}    Wavel : 1    9
+    Should Contain X Times    ${output}    Xr : 1    9
+    Should Contain X Times    ${output}    Yr : 1    9

@@ -73,11 +73,11 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Azimuth_Position :    9
-    Should Contain X Times    ${output}    Azimuth_Velocity :    9
-    Should Contain X Times    ${output}    Azimuth_Acceleration :    9
-    Should Contain X Times    ${output}    Azimuth_Jerk :    9
-    Should Contain X Times    ${output}    Elevation_Position :    9
-    Should Contain X Times    ${output}    Elevation_Velocity :    9
-    Should Contain X Times    ${output}    Elevation_Acceleration :    9
-    Should Contain X Times    ${output}    ElevationJerk :    9
+    Should Contain X Times    ${output}    Azimuth_Position : 1    9
+    Should Contain X Times    ${output}    Azimuth_Velocity : 1    9
+    Should Contain X Times    ${output}    Azimuth_Acceleration : 1    9
+    Should Contain X Times    ${output}    Azimuth_Jerk : 1    9
+    Should Contain X Times    ${output}    Elevation_Position : 1    9
+    Should Contain X Times    ${output}    Elevation_Velocity : 1    9
+    Should Contain X Times    ${output}    Elevation_Acceleration : 1    9
+    Should Contain X Times    ${output}    ElevationJerk : 1    9

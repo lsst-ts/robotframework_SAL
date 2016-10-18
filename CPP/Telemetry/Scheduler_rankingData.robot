@@ -73,34 +73,50 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    LST :    9
-    Should Contain X Times    ${output}    MJD :    9
-    Should Contain X Times    ${output}    date :    9
-    Should Contain X Times    ${output}    dec :    9
-    Should Contain X Times    ${output}    exposureTime :    9
-    Should Contain X Times    ${output}    fieldId :    9
-    Should Contain X Times    ${output}    filter :    9
-    Should Contain X Times    ${output}    moonAlt :    9
-    Should Contain X Times    ${output}    moonAz :    9
-    Should Contain X Times    ${output}    moonDec :    9
-    Should Contain X Times    ${output}    moonDistance :    9
-    Should Contain X Times    ${output}    moonIllumination :    9
-    Should Contain X Times    ${output}    moonRa :    9
-    Should Contain X Times    ${output}    mountAltitude :    9
-    Should Contain X Times    ${output}    mountAzimuth :    9
-    Should Contain X Times    ${output}    observationNight :    9
-    Should Contain X Times    ${output}    ra :    9
-    Should Contain X Times    ${output}    rotatorAngle :    9
-    Should Contain X Times    ${output}    seeing :    9
-    Should Contain X Times    ${output}    skyAngle :    9
-    Should Contain X Times    ${output}    skyBrightnessFilter :    9
-    Should Contain X Times    ${output}    skyBrightnessV :    9
-    Should Contain X Times    ${output}    slewTime :    9
-    Should Contain X Times    ${output}    sunAlt :    9
-    Should Contain X Times    ${output}    sunAz :    9
-    Should Contain X Times    ${output}    sunElongation :    9
-    Should Contain X Times    ${output}    transparency :    9
-    Should Contain X Times    ${output}    visitTime :    9
-    Should Contain X Times    ${output}    weatherHumidity :    9
-    Should Contain X Times    ${output}    weatherWindDirection :    9
-    Should Contain X Times    ${output}    weatherWindSpeed :    9
+    Should Contain X Times    ${output}    LST : 1    9
+    Should Contain X Times    ${output}    MJD : 1    9
+    Should Contain X Times    ${output}    date : 1    9
+    Should Contain X Times    ${output}    dec : 1    9
+    Should Contain X Times    ${output}    exposureTime : 1    1
+    Should Contain X Times    ${output}    exposureTime : 2    1
+    Should Contain X Times    ${output}    exposureTime : 3    1
+    Should Contain X Times    ${output}    exposureTime : 4    1
+    Should Contain X Times    ${output}    exposureTime : 5    1
+    Should Contain X Times    ${output}    exposureTime : 6    1
+    Should Contain X Times    ${output}    exposureTime : 7    1
+    Should Contain X Times    ${output}    exposureTime : 8    1
+    Should Contain X Times    ${output}    exposureTime : 9    1
+    Should Contain X Times    ${output}    fieldId : 1    9
+    Should Contain X Times    ${output}    filter : 1    1
+    Should Contain X Times    ${output}    filter : 2    1
+    Should Contain X Times    ${output}    filter : 3    1
+    Should Contain X Times    ${output}    filter : 4    1
+    Should Contain X Times    ${output}    filter : 5    1
+    Should Contain X Times    ${output}    filter : 6    1
+    Should Contain X Times    ${output}    filter : 7    1
+    Should Contain X Times    ${output}    filter : 8    1
+    Should Contain X Times    ${output}    filter : 9    1
+    Should Contain X Times    ${output}    moonAlt : 1    9
+    Should Contain X Times    ${output}    moonAz : 1    9
+    Should Contain X Times    ${output}    moonDec : 1    9
+    Should Contain X Times    ${output}    moonDistance : 1    9
+    Should Contain X Times    ${output}    moonIllumination : 1    9
+    Should Contain X Times    ${output}    moonRa : 1    9
+    Should Contain X Times    ${output}    mountAltitude : 1    9
+    Should Contain X Times    ${output}    mountAzimuth : 1    9
+    Should Contain X Times    ${output}    observationNight : 1    9
+    Should Contain X Times    ${output}    ra : 1    9
+    Should Contain X Times    ${output}    rotatorAngle : 1    9
+    Should Contain X Times    ${output}    seeing : 1    9
+    Should Contain X Times    ${output}    skyAngle : 1    9
+    Should Contain X Times    ${output}    skyBrightnessFilter : 1    9
+    Should Contain X Times    ${output}    skyBrightnessV : 1    9
+    Should Contain X Times    ${output}    slewTime : 1    9
+    Should Contain X Times    ${output}    sunAlt : 1    9
+    Should Contain X Times    ${output}    sunAz : 1    9
+    Should Contain X Times    ${output}    sunElongation : 1    9
+    Should Contain X Times    ${output}    transparency : 1    9
+    Should Contain X Times    ${output}    visitTime : 1    9
+    Should Contain X Times    ${output}    weatherHumidity : 1    9
+    Should Contain X Times    ${output}    weatherWindDirection : 1    9
+    Should Contain X Times    ${output}    weatherWindSpeed : 1    9

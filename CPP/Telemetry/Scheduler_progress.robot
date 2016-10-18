@@ -73,7 +73,39 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    completion :    9
-    Should Contain X Times    ${output}    priority :    9
-    Should Contain X Times    ${output}    projection :    9
-    Should Contain X Times    ${output}    taskid :    9
+    Should Contain X Times    ${output}    completion : 1    1
+    Should Contain X Times    ${output}    completion : 2    1
+    Should Contain X Times    ${output}    completion : 3    1
+    Should Contain X Times    ${output}    completion : 4    1
+    Should Contain X Times    ${output}    completion : 5    1
+    Should Contain X Times    ${output}    completion : 6    1
+    Should Contain X Times    ${output}    completion : 7    1
+    Should Contain X Times    ${output}    completion : 8    1
+    Should Contain X Times    ${output}    completion : 9    1
+    Should Contain X Times    ${output}    priority : 1    1
+    Should Contain X Times    ${output}    priority : 2    1
+    Should Contain X Times    ${output}    priority : 3    1
+    Should Contain X Times    ${output}    priority : 4    1
+    Should Contain X Times    ${output}    priority : 5    1
+    Should Contain X Times    ${output}    priority : 6    1
+    Should Contain X Times    ${output}    priority : 7    1
+    Should Contain X Times    ${output}    priority : 8    1
+    Should Contain X Times    ${output}    priority : 9    1
+    Should Contain X Times    ${output}    projection : 1    1
+    Should Contain X Times    ${output}    projection : 2    1
+    Should Contain X Times    ${output}    projection : 3    1
+    Should Contain X Times    ${output}    projection : 4    1
+    Should Contain X Times    ${output}    projection : 5    1
+    Should Contain X Times    ${output}    projection : 6    1
+    Should Contain X Times    ${output}    projection : 7    1
+    Should Contain X Times    ${output}    projection : 8    1
+    Should Contain X Times    ${output}    projection : 9    1
+    Should Contain X Times    ${output}    taskid : 1    1
+    Should Contain X Times    ${output}    taskid : 2    1
+    Should Contain X Times    ${output}    taskid : 3    1
+    Should Contain X Times    ${output}    taskid : 4    1
+    Should Contain X Times    ${output}    taskid : 5    1
+    Should Contain X Times    ${output}    taskid : 6    1
+    Should Contain X Times    ${output}    taskid : 7    1
+    Should Contain X Times    ${output}    taskid : 8    1
+    Should Contain X Times    ${output}    taskid : 9    1

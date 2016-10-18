@@ -73,4 +73,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    codes :    9
+    Should Contain X Times    ${output}    codes : 1    1
+    Should Contain X Times    ${output}    codes : 2    1
+    Should Contain X Times    ${output}    codes : 3    1
+    Should Contain X Times    ${output}    codes : 4    1
+    Should Contain X Times    ${output}    codes : 5    1
+    Should Contain X Times    ${output}    codes : 6    1
+    Should Contain X Times    ${output}    codes : 7    1
+    Should Contain X Times    ${output}    codes : 8    1
+    Should Contain X Times    ${output}    codes : 9    1

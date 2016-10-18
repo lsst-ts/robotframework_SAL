@@ -73,7 +73,39 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    error :    9
-    Should Contain X Times    ${output}    setpoint :    9
-    Should Contain X Times    ${output}    status :    9
-    Should Contain X Times    ${output}    temperature :    9
+    Should Contain X Times    ${output}    error : 1    1
+    Should Contain X Times    ${output}    error : 2    1
+    Should Contain X Times    ${output}    error : 3    1
+    Should Contain X Times    ${output}    error : 4    1
+    Should Contain X Times    ${output}    error : 5    1
+    Should Contain X Times    ${output}    error : 6    1
+    Should Contain X Times    ${output}    error : 7    1
+    Should Contain X Times    ${output}    error : 8    1
+    Should Contain X Times    ${output}    error : 9    1
+    Should Contain X Times    ${output}    setpoint : 1    1
+    Should Contain X Times    ${output}    setpoint : 2    1
+    Should Contain X Times    ${output}    setpoint : 3    1
+    Should Contain X Times    ${output}    setpoint : 4    1
+    Should Contain X Times    ${output}    setpoint : 5    1
+    Should Contain X Times    ${output}    setpoint : 6    1
+    Should Contain X Times    ${output}    setpoint : 7    1
+    Should Contain X Times    ${output}    setpoint : 8    1
+    Should Contain X Times    ${output}    setpoint : 9    1
+    Should Contain X Times    ${output}    status : 1    1
+    Should Contain X Times    ${output}    status : 2    1
+    Should Contain X Times    ${output}    status : 3    1
+    Should Contain X Times    ${output}    status : 4    1
+    Should Contain X Times    ${output}    status : 5    1
+    Should Contain X Times    ${output}    status : 6    1
+    Should Contain X Times    ${output}    status : 7    1
+    Should Contain X Times    ${output}    status : 8    1
+    Should Contain X Times    ${output}    status : 9    1
+    Should Contain X Times    ${output}    temperature : 1    1
+    Should Contain X Times    ${output}    temperature : 2    1
+    Should Contain X Times    ${output}    temperature : 3    1
+    Should Contain X Times    ${output}    temperature : 4    1
+    Should Contain X Times    ${output}    temperature : 5    1
+    Should Contain X Times    ${output}    temperature : 6    1
+    Should Contain X Times    ${output}    temperature : 7    1
+    Should Contain X Times    ${output}    temperature : 8    1
+    Should Contain X Times    ${output}    temperature : 9    1

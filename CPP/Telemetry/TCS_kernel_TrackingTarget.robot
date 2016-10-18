@@ -73,8 +73,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    PositionX :    9
-    Should Contain X Times    ${output}    PositionY :    9
-    Should Contain X Times    ${output}    T0 :    9
-    Should Contain X Times    ${output}    VelocityX :    9
-    Should Contain X Times    ${output}    VelocityY :    9
+    Should Contain X Times    ${output}    PositionX : 1    9
+    Should Contain X Times    ${output}    PositionY : 1    9
+    Should Contain X Times    ${output}    T0 : 1    9
+    Should Contain X Times    ${output}    VelocityX : 1    9
+    Should Contain X Times    ${output}    VelocityY : 1    9

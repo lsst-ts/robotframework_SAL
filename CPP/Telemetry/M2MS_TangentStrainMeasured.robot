@@ -73,9 +73,57 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_0deg_strainsMeasured : 9    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_60deg_strainsMeasured : 9    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_120deg_strainsMeasured : 9    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_180deg_strainsMeasured : 9    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_240deg_strainsMeasured : 9    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 1    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 2    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 3    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 4    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 5    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 6    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 7    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 8    1
+    Should Contain X Times    ${output}    tangentLink_300deg_strainsMeasured : 9    1

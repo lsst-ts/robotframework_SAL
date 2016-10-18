@@ -73,5 +73,5 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Loader_telemetry :    9
-    Should Contain X Times    ${output}    REB_ID :    9
+    Should Contain X Times    ${output}    Loader_telemetry : 1    9
+    Should Contain X Times    ${output}    REB_ID : 1    9

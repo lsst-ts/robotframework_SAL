@@ -73,8 +73,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    tangentLink_0deg_absoluteEncoderPositionMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_120deg_absoluteEncoderPositionMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_180deg_absoluteEncoderPositionMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_240deg_absoluteEncoderPositionMeasured :    9
-    Should Contain X Times    ${output}    tangentLink_360deg_absoluteEncoderPositionMeasured :    9
+    Should Contain X Times    ${output}    tangentLink_0deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${output}    tangentLink_120deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${output}    tangentLink_180deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${output}    tangentLink_240deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${output}    tangentLink_360deg_absoluteEncoderPositionMeasured : 1    9

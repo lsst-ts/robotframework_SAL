@@ -73,8 +73,48 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Image_SD :    9
-    Should Contain X Times    ${output}    Image_mean :    9
-    Should Contain X Times    ${output}    Overscan_SD :    9
-    Should Contain X Times    ${output}    Overscan_mean :    9
-    Should Contain X Times    ${output}    PSF :    9
+    Should Contain X Times    ${output}    Image_SD : 1    1
+    Should Contain X Times    ${output}    Image_SD : 2    1
+    Should Contain X Times    ${output}    Image_SD : 3    1
+    Should Contain X Times    ${output}    Image_SD : 4    1
+    Should Contain X Times    ${output}    Image_SD : 5    1
+    Should Contain X Times    ${output}    Image_SD : 6    1
+    Should Contain X Times    ${output}    Image_SD : 7    1
+    Should Contain X Times    ${output}    Image_SD : 8    1
+    Should Contain X Times    ${output}    Image_SD : 9    1
+    Should Contain X Times    ${output}    Image_mean : 1    1
+    Should Contain X Times    ${output}    Image_mean : 2    1
+    Should Contain X Times    ${output}    Image_mean : 3    1
+    Should Contain X Times    ${output}    Image_mean : 4    1
+    Should Contain X Times    ${output}    Image_mean : 5    1
+    Should Contain X Times    ${output}    Image_mean : 6    1
+    Should Contain X Times    ${output}    Image_mean : 7    1
+    Should Contain X Times    ${output}    Image_mean : 8    1
+    Should Contain X Times    ${output}    Image_mean : 9    1
+    Should Contain X Times    ${output}    Overscan_SD : 1    1
+    Should Contain X Times    ${output}    Overscan_SD : 2    1
+    Should Contain X Times    ${output}    Overscan_SD : 3    1
+    Should Contain X Times    ${output}    Overscan_SD : 4    1
+    Should Contain X Times    ${output}    Overscan_SD : 5    1
+    Should Contain X Times    ${output}    Overscan_SD : 6    1
+    Should Contain X Times    ${output}    Overscan_SD : 7    1
+    Should Contain X Times    ${output}    Overscan_SD : 8    1
+    Should Contain X Times    ${output}    Overscan_SD : 9    1
+    Should Contain X Times    ${output}    Overscan_mean : 1    1
+    Should Contain X Times    ${output}    Overscan_mean : 2    1
+    Should Contain X Times    ${output}    Overscan_mean : 3    1
+    Should Contain X Times    ${output}    Overscan_mean : 4    1
+    Should Contain X Times    ${output}    Overscan_mean : 5    1
+    Should Contain X Times    ${output}    Overscan_mean : 6    1
+    Should Contain X Times    ${output}    Overscan_mean : 7    1
+    Should Contain X Times    ${output}    Overscan_mean : 8    1
+    Should Contain X Times    ${output}    Overscan_mean : 9    1
+    Should Contain X Times    ${output}    PSF : 1    1
+    Should Contain X Times    ${output}    PSF : 2    1
+    Should Contain X Times    ${output}    PSF : 3    1
+    Should Contain X Times    ${output}    PSF : 4    1
+    Should Contain X Times    ${output}    PSF : 5    1
+    Should Contain X Times    ${output}    PSF : 6    1
+    Should Contain X Times    ${output}    PSF : 7    1
+    Should Contain X Times    ${output}    PSF : 8    1
+    Should Contain X Times    ${output}    PSF : 9    1

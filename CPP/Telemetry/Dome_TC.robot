@@ -73,10 +73,66 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    boosterSpeed :    9
-    Should Contain X Times    ${output}    calibrated :    9
-    Should Contain X Times    ${output}    glycolFlow :    9
-    Should Contain X Times    ${output}    glycolTemperature :    9
-    Should Contain X Times    ${output}    raw :    9
-    Should Contain X Times    ${output}    setPoint :    9
-    Should Contain X Times    ${output}    status :    9
+    Should Contain X Times    ${output}    boosterSpeed : 1    1
+    Should Contain X Times    ${output}    boosterSpeed : 2    1
+    Should Contain X Times    ${output}    boosterSpeed : 3    1
+    Should Contain X Times    ${output}    boosterSpeed : 4    1
+    Should Contain X Times    ${output}    boosterSpeed : 5    1
+    Should Contain X Times    ${output}    boosterSpeed : 6    1
+    Should Contain X Times    ${output}    boosterSpeed : 7    1
+    Should Contain X Times    ${output}    boosterSpeed : 8    1
+    Should Contain X Times    ${output}    boosterSpeed : 9    1
+    Should Contain X Times    ${output}    calibrated : 1    1
+    Should Contain X Times    ${output}    calibrated : 2    1
+    Should Contain X Times    ${output}    calibrated : 3    1
+    Should Contain X Times    ${output}    calibrated : 4    1
+    Should Contain X Times    ${output}    calibrated : 5    1
+    Should Contain X Times    ${output}    calibrated : 6    1
+    Should Contain X Times    ${output}    calibrated : 7    1
+    Should Contain X Times    ${output}    calibrated : 8    1
+    Should Contain X Times    ${output}    calibrated : 9    1
+    Should Contain X Times    ${output}    glycolFlow : 1    1
+    Should Contain X Times    ${output}    glycolFlow : 2    1
+    Should Contain X Times    ${output}    glycolFlow : 3    1
+    Should Contain X Times    ${output}    glycolFlow : 4    1
+    Should Contain X Times    ${output}    glycolFlow : 5    1
+    Should Contain X Times    ${output}    glycolFlow : 6    1
+    Should Contain X Times    ${output}    glycolFlow : 7    1
+    Should Contain X Times    ${output}    glycolFlow : 8    1
+    Should Contain X Times    ${output}    glycolFlow : 9    1
+    Should Contain X Times    ${output}    glycolTemperature : 1    1
+    Should Contain X Times    ${output}    glycolTemperature : 2    1
+    Should Contain X Times    ${output}    glycolTemperature : 3    1
+    Should Contain X Times    ${output}    glycolTemperature : 4    1
+    Should Contain X Times    ${output}    glycolTemperature : 5    1
+    Should Contain X Times    ${output}    glycolTemperature : 6    1
+    Should Contain X Times    ${output}    glycolTemperature : 7    1
+    Should Contain X Times    ${output}    glycolTemperature : 8    1
+    Should Contain X Times    ${output}    glycolTemperature : 9    1
+    Should Contain X Times    ${output}    raw : 1    1
+    Should Contain X Times    ${output}    raw : 2    1
+    Should Contain X Times    ${output}    raw : 3    1
+    Should Contain X Times    ${output}    raw : 4    1
+    Should Contain X Times    ${output}    raw : 5    1
+    Should Contain X Times    ${output}    raw : 6    1
+    Should Contain X Times    ${output}    raw : 7    1
+    Should Contain X Times    ${output}    raw : 8    1
+    Should Contain X Times    ${output}    raw : 9    1
+    Should Contain X Times    ${output}    setPoint : 1    1
+    Should Contain X Times    ${output}    setPoint : 2    1
+    Should Contain X Times    ${output}    setPoint : 3    1
+    Should Contain X Times    ${output}    setPoint : 4    1
+    Should Contain X Times    ${output}    setPoint : 5    1
+    Should Contain X Times    ${output}    setPoint : 6    1
+    Should Contain X Times    ${output}    setPoint : 7    1
+    Should Contain X Times    ${output}    setPoint : 8    1
+    Should Contain X Times    ${output}    setPoint : 9    1
+    Should Contain X Times    ${output}    status : 1    1
+    Should Contain X Times    ${output}    status : 2    1
+    Should Contain X Times    ${output}    status : 3    1
+    Should Contain X Times    ${output}    status : 4    1
+    Should Contain X Times    ${output}    status : 5    1
+    Should Contain X Times    ${output}    status : 6    1
+    Should Contain X Times    ${output}    status : 7    1
+    Should Contain X Times    ${output}    status : 8    1
+    Should Contain X Times    ${output}    status : 9    1

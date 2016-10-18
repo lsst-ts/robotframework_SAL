@@ -73,7 +73,39 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    demand :    9
-    Should Contain X Times    ${output}    error :    9
-    Should Contain X Times    ${output}    position :    9
-    Should Contain X Times    ${output}    status :    9
+    Should Contain X Times    ${output}    demand : 1    1
+    Should Contain X Times    ${output}    demand : 2    1
+    Should Contain X Times    ${output}    demand : 3    1
+    Should Contain X Times    ${output}    demand : 4    1
+    Should Contain X Times    ${output}    demand : 5    1
+    Should Contain X Times    ${output}    demand : 6    1
+    Should Contain X Times    ${output}    demand : 7    1
+    Should Contain X Times    ${output}    demand : 8    1
+    Should Contain X Times    ${output}    demand : 9    1
+    Should Contain X Times    ${output}    error : 1    1
+    Should Contain X Times    ${output}    error : 2    1
+    Should Contain X Times    ${output}    error : 3    1
+    Should Contain X Times    ${output}    error : 4    1
+    Should Contain X Times    ${output}    error : 5    1
+    Should Contain X Times    ${output}    error : 6    1
+    Should Contain X Times    ${output}    error : 7    1
+    Should Contain X Times    ${output}    error : 8    1
+    Should Contain X Times    ${output}    error : 9    1
+    Should Contain X Times    ${output}    position : 1    1
+    Should Contain X Times    ${output}    position : 2    1
+    Should Contain X Times    ${output}    position : 3    1
+    Should Contain X Times    ${output}    position : 4    1
+    Should Contain X Times    ${output}    position : 5    1
+    Should Contain X Times    ${output}    position : 6    1
+    Should Contain X Times    ${output}    position : 7    1
+    Should Contain X Times    ${output}    position : 8    1
+    Should Contain X Times    ${output}    position : 9    1
+    Should Contain X Times    ${output}    status : 1    1
+    Should Contain X Times    ${output}    status : 2    1
+    Should Contain X Times    ${output}    status : 3    1
+    Should Contain X Times    ${output}    status : 4    1
+    Should Contain X Times    ${output}    status : 5    1
+    Should Contain X Times    ${output}    status : 6    1
+    Should Contain X Times    ${output}    status : 7    1
+    Should Contain X Times    ${output}    status : 8    1
+    Should Contain X Times    ${output}    status : 9    1

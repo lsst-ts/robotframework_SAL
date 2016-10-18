@@ -73,7 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp :    9
-    Should Contain X Times    ${output}    night :    9
-    Should Contain X Times    ${output}    is_down :    9
-    Should Contain X Times    ${output}    down_duration :    9
+    Should Contain X Times    ${output}    timestamp : 1    9
+    Should Contain X Times    ${output}    night : 1    9
+    Should Contain X Times    ${output}    is_down : 1    9
+    Should Contain X Times    ${output}    down_duration : 1    9
