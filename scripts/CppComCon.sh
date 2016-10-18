@@ -203,7 +203,7 @@ function startCommander() {
     done
 	echo "    Should Contain    \${output}    === command $topic issued =" >>$testSuite
  	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
-    echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( timed out :)" >>$testSuite
+    echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite
 }
 
