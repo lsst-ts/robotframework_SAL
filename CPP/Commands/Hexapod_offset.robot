@@ -3,6 +3,7 @@ Documentation    Hexapod_offset commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.4676 57.6389 75.2744 33.5573 69.2194 69.3583 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 77.3193 53.0181 78.17 49.8083 76.6223 33.5789 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.4676 57.6389 75.2744 33.5573 69.2194 69.3583 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 77.3193 53.0181 78.17 49.8083 76.6223 33.5789 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,16 +91,16 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 82.4676    1
-    Should Contain X Times    ${output}    y : 57.6389    1
-    Should Contain X Times    ${output}    z : 75.2744    1
-    Should Contain X Times    ${output}    u : 33.5573    1
-    Should Contain X Times    ${output}    v : 69.2194    1
-    Should Contain X Times    ${output}    w : 69.3583    1
+    Should Contain X Times    ${output}    x : 77.3193    1
+    Should Contain X Times    ${output}    y : 53.0181    1
+    Should Contain X Times    ${output}    z : 78.17    1
+    Should Contain X Times    ${output}    u : 49.8083    1
+    Should Contain X Times    ${output}    v : 76.6223    1
+    Should Contain X Times    ${output}    w : 33.5789    1
     Should Contain X Times    ${output}    sync : 0    1
     Should Contain    ${output}    === command offset issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
@@ -111,12 +112,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 82.4676    1
-    Should Contain X Times    ${output}    y : 57.6389    1
-    Should Contain X Times    ${output}    z : 75.2744    1
-    Should Contain X Times    ${output}    u : 33.5573    1
-    Should Contain X Times    ${output}    v : 69.2194    1
-    Should Contain X Times    ${output}    w : 69.3583    1
+    Should Contain X Times    ${output}    x : 77.3193    1
+    Should Contain X Times    ${output}    y : 53.0181    1
+    Should Contain X Times    ${output}    z : 78.17    1
+    Should Contain X Times    ${output}    u : 49.8083    1
+    Should Contain X Times    ${output}    v : 76.6223    1
+    Should Contain X Times    ${output}    w : 33.5789    1
     Should Contain X Times    ${output}    sync : 0    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

@@ -3,6 +3,7 @@ Documentation    Hexapod_move commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14.3551 80.904 40.6832 83.0657 19.517 25.0001 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.8111 10.949 66.2097 64.7362 41.4433 71.8141 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14.3551 80.904 40.6832 83.0657 19.517 25.0001 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.8111 10.949 66.2097 64.7362 41.4433 71.8141 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,16 +91,16 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 14.3551    1
-    Should Contain X Times    ${output}    y : 80.904    1
-    Should Contain X Times    ${output}    z : 40.6832    1
-    Should Contain X Times    ${output}    u : 83.0657    1
-    Should Contain X Times    ${output}    v : 19.517    1
-    Should Contain X Times    ${output}    w : 25.0001    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 99.8111    1
+    Should Contain X Times    ${output}    y : 10.949    1
+    Should Contain X Times    ${output}    z : 66.2097    1
+    Should Contain X Times    ${output}    u : 64.7362    1
+    Should Contain X Times    ${output}    v : 41.4433    1
+    Should Contain X Times    ${output}    w : 71.8141    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
@@ -111,13 +112,13 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 14.3551    1
-    Should Contain X Times    ${output}    y : 80.904    1
-    Should Contain X Times    ${output}    z : 40.6832    1
-    Should Contain X Times    ${output}    u : 83.0657    1
-    Should Contain X Times    ${output}    v : 19.517    1
-    Should Contain X Times    ${output}    w : 25.0001    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 99.8111    1
+    Should Contain X Times    ${output}    y : 10.949    1
+    Should Contain X Times    ${output}    z : 66.2097    1
+    Should Contain X Times    ${output}    u : 64.7362    1
+    Should Contain X Times    ${output}    v : 41.4433    1
+    Should Contain X Times    ${output}    w : 71.8141    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

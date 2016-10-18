@@ -3,6 +3,7 @@ Documentation    M1M3_update commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -93,7 +94,7 @@ Start Commander
     Should Contain X Times    ${output}    lut_id : test    1
     Should Contain    ${output}    === command update issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional

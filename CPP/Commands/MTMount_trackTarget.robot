@@ -3,6 +3,7 @@ Documentation    MTMount_trackTarget commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20.5704 39.0565 63.7272 69.4173 10.8206 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 74.5553 9.7912 47.4861 32.2557 32.4806 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20.5704 39.0565 63.7272 69.4173 10.8206 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 74.5553 9.7912 47.4861 32.2557 32.4806 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,15 +91,15 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 20.5704    1
-    Should Contain X Times    ${output}    az_velocity : 39.0565    1
-    Should Contain X Times    ${output}    el_angle : 63.7272    1
-    Should Contain X Times    ${output}    el_velocity : 69.4173    1
-    Should Contain X Times    ${output}    time : 10.8206    1
+    Should Contain X Times    ${output}    az_angle : 74.5553    1
+    Should Contain X Times    ${output}    az_velocity : 9.7912    1
+    Should Contain X Times    ${output}    el_angle : 47.4861    1
+    Should Contain X Times    ${output}    el_velocity : 32.2557    1
+    Should Contain X Times    ${output}    time : 32.4806    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
@@ -110,11 +111,11 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 20.5704    1
-    Should Contain X Times    ${output}    az_velocity : 39.0565    1
-    Should Contain X Times    ${output}    el_angle : 63.7272    1
-    Should Contain X Times    ${output}    el_velocity : 69.4173    1
-    Should Contain X Times    ${output}    time : 10.8206    1
+    Should Contain X Times    ${output}    az_angle : 74.5553    1
+    Should Contain X Times    ${output}    az_velocity : 9.7912    1
+    Should Contain X Times    ${output}    el_angle : 47.4861    1
+    Should Contain X Times    ${output}    el_velocity : 32.2557    1
+    Should Contain X Times    ${output}    time : 32.4806    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

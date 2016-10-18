@@ -3,6 +3,7 @@ Documentation    M2MS_ApplyForce commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 79.3017 83.7742 22.5961 96.7673 77.7106 98.9577 52.6581 13.9522 56.026 20.9796 20.8603 22.7584 77.8533 60.9936 64.8748 12.9621 0.8446 12.4771 63.9387 79.9134 8.179 96.0782 69.4368 62.8173 65.3741 6.7093 71.3512 32.3391 43.2427 95.7263 43.9791 17.3805 17.7691 93.9662 47.5156 79.6602 54.9086 97.242 60.553 19.8712 8.5909 4.9559 90.1034 89.0012 30.162 8.8359 46.7152 94.3463 52.9748 12.4802 3.7172 42.2388 79.0041 24.5432 21.0753 65.0836 31.0433 90.8321 90.9596 2.6644 92.1296 84.0369 96.4632 92.1246 79.4965 70.0359 39.8239 44.2102 77.0597 84.687 74.4559 74.9787
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.9893 39.1277 89.14 94.2927 47.2204 8.4738 63.7955 37.5003 5.6494 46.5128 54.3525 61.3762 73.4826 89.8901 4.5372 67.9754 45.9887 83.1286 9.525 75.192 32.2947 40.1736 51.3936 57.699 31.6908 85.3862 66.8648 74.5803 74.5889 10.8291 98.1763 70.0189 0.3371 91.0492 32.3942 31.8632 80.0808 11.4684 28.1921 68.1693 7.4403 2.137 17.4422 4.9901 79.9999 84.4164 87.0372 90.4452 76.5595 31.3669 19.0724 16.2074 14.8301 20.42 69.5557 0.5425 79.065 63.4586 9.8974 73.4212 72.2101 27.7861 76.8461 84.2865 77.684 55.0777 96.8228 67.321 6.5202 57.3393 26.0848 83.5913
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 79.3017 83.7742 22.5961 96.7673 77.7106 98.9577 52.6581 13.9522 56.026 20.9796 20.8603 22.7584 77.8533 60.9936 64.8748 12.9621 0.8446 12.4771 63.9387 79.9134 8.179 96.0782 69.4368 62.8173 65.3741 6.7093 71.3512 32.3391 43.2427 95.7263 43.9791 17.3805 17.7691 93.9662 47.5156 79.6602 54.9086 97.242 60.553 19.8712 8.5909 4.9559 90.1034 89.0012 30.162 8.8359 46.7152 94.3463 52.9748 12.4802 3.7172 42.2388 79.0041 24.5432 21.0753 65.0836 31.0433 90.8321 90.9596 2.6644 92.1296 84.0369 96.4632 92.1246 79.4965 70.0359 39.8239 44.2102 77.0597 84.687 74.4559 74.9787
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 76.9893 39.1277 89.14 94.2927 47.2204 8.4738 63.7955 37.5003 5.6494 46.5128 54.3525 61.3762 73.4826 89.8901 4.5372 67.9754 45.9887 83.1286 9.525 75.192 32.2947 40.1736 51.3936 57.699 31.6908 85.3862 66.8648 74.5803 74.5889 10.8291 98.1763 70.0189 0.3371 91.0492 32.3942 31.8632 80.0808 11.4684 28.1921 68.1693 7.4403 2.137 17.4422 4.9901 79.9999 84.4164 87.0372 90.4452 76.5595 31.3669 19.0724 16.2074 14.8301 20.42 69.5557 0.5425 79.065 63.4586 9.8974 73.4212 72.2101 27.7861 76.8461 84.2865 77.684 55.0777 96.8228 67.321 6.5202 57.3393 26.0848 83.5913
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,10 +91,10 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    forceSetPoint : 79.3017    1
+    Should Contain X Times    ${output}    forceSetPoint : 76.9893    1
     Should Contain    ${output}    === command ApplyForce issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
@@ -105,7 +106,7 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    forceSetPoint : 79.3017    1
+    Should Contain X Times    ${output}    forceSetPoint : 76.9893    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForce] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

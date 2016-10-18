@@ -3,6 +3,7 @@ Documentation    M2MS_PositionMirror commander/controller tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
+Library    String
 Resource    ../../Global_Vars.robot
 
 *** Variables ***
@@ -59,7 +60,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 48.047 84.7536 23.4699
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 64.6878 43.1204 66.8419
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -82,7 +83,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 48.047 84.7536 23.4699
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 64.6878 43.1204 66.8419
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -90,12 +91,12 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xTilt : 48.047    1
-    Should Contain X Times    ${output}    yTilt : 84.7536    1
-    Should Contain X Times    ${output}    piston : 23.4699    1
+    Should Contain X Times    ${output}    xTilt : 64.6878    1
+    Should Contain X Times    ${output}    yTilt : 43.1204    1
+    Should Contain X Times    ${output}    piston : 66.8419    1
     Should Contain    ${output}    === command PositionMirror issued =
     ${CmdComplete}=    Get Line    ${output}    -2
-    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( timed out :)
+    Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
 Read Controller
     [Tags]    functional
@@ -107,9 +108,9 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xTilt : 48.047    1
-    Should Contain X Times    ${output}    yTilt : 84.7536    1
-    Should Contain X Times    ${output}    piston : 23.4699    1
+    Should Contain X Times    ${output}    xTilt : 64.6878    1
+    Should Contain X Times    ${output}    yTilt : 43.1204    1
+    Should Contain X Times    ${output}    piston : 66.8419    1
     Should Contain X Times    ${output}    === [ackCommand_PositionMirror] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
