@@ -21,9 +21,38 @@ function getTopics {
 	topicsArray=($output)
 }
 
-function getTopicItems {
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$2]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$1/$1_Telemetry.xml )
-	parametersArray=($output)
+function getTopicParameters() {
+    subSystem=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    parametersArray=($output)
+}
+
+function getParameterIndex() {
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
+}
+
+function getParameterType() {
+    subSystem=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    echo $parameterType
+}
+
+function getParameterCount() {
+    subSystem=$1
+    topicIndex=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    echo $parameterCount
 }
 
 function clearTestSuite {
@@ -129,15 +158,23 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
-    for item in "${parametersArray[@]}"; do
-        echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$item :    9" >>$testSuite
+    for parameter in "${parametersArray[@]}"; do
+        parameterIndex=$(getParameterIndex $parameter)
+        parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
+        parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+		if [ $parameterCount -eq 1 ]; then
+        	echo "    Should Contain X Times    \${output}    $parameter : 1    9" >>$testSuite
+		else
+			for num in `seq 1 9`; do
+				echo "    Should Contain X Times    \${output}    $parameter : $num    1" >>$testSuite
+			done
+		fi
     done
 }
 
 function createTestSuite {
 	subSystem=$1
-	index=1
+	topicIndex=1
     if [ "$subSystem" == "m1m3" ]; then
         subSystemUp="M1M3"
     elif [ "$subSystem" == "m2ms" ]; then
@@ -159,7 +196,7 @@ function createTestSuite {
 		clearTestSuite
 		
 		#  Get EFDB EFDB_Topic telemetry parameters
-		getTopicItems $subSystem $index
+		getTopicParameters $subSystem $topicIndex
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -173,7 +210,7 @@ function createTestSuite {
 		startPublisher
 		readSubscriber
 		echo Done with test suite.
-    	(( index++ ))
+    	(( topicIndex++ ))
 	done
 }
 
