@@ -22,3 +22,10 @@ rbtsal/PYTHON/Commands/Rotator_test.robot
 rbtsal/PYTHON/Commands/Rotator_track.robot
 
 # Python Event Sender/Logger test suites
+rbtsal/PYTHON/Events/Rotator_error.robot
+rbtsal/PYTHON/Events/Rotator_interlock.robot
+rbtsal/PYTHON/Events/Rotator_limit.robot
+rbtsal/PYTHON/Events/Rotator_moveOK.robot
+rbtsal/PYTHON/Events/Rotator_tempError.robot
+rbtsal/PYTHON/Events/Rotator_trackLost.robot
+rbtsal/PYTHON/Events/Rotator_tracking.robot
