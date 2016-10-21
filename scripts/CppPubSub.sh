@@ -162,8 +162,10 @@ function readSubscriber {
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-		if [ $parameterCount -eq 1 ]; then
+		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
         	echo "    Should Contain X Times    \${output}    $parameter : 1    9" >>$testSuite
+		elif [[ ( "$parameterType" == "string" ) ]]; then
+			echo "    Should Contain X Times    \${output}    $parameter : LSST    9" >>$testSuite
 		else
 			for num in `seq 1 9`; do
 				echo "    Should Contain X Times    \${output}    $parameter : $num    1" >>$testSuite
