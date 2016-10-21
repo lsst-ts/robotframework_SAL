@@ -87,15 +87,7 @@ Read Subscriber
     Should Contain X Times    ${output}    exposureTime : 8    1
     Should Contain X Times    ${output}    exposureTime : 9    1
     Should Contain X Times    ${output}    fieldId : 1    9
-    Should Contain X Times    ${output}    filter : 1    1
-    Should Contain X Times    ${output}    filter : 2    1
-    Should Contain X Times    ${output}    filter : 3    1
-    Should Contain X Times    ${output}    filter : 4    1
-    Should Contain X Times    ${output}    filter : 5    1
-    Should Contain X Times    ${output}    filter : 6    1
-    Should Contain X Times    ${output}    filter : 7    1
-    Should Contain X Times    ${output}    filter : 8    1
-    Should Contain X Times    ${output}    filter : 9    1
+    Should Contain X Times    ${output}    filter : LSST    9
     Should Contain X Times    ${output}    moonAlt : 1    9
     Should Contain X Times    ${output}    moonAz : 1    9
     Should Contain X Times    ${output}    moonDec : 1    9

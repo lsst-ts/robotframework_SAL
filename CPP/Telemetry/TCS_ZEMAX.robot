@@ -73,14 +73,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    bg_algorithm : 1    1
-    Should Contain X Times    ${output}    bg_algorithm : 2    1
-    Should Contain X Times    ${output}    bg_algorithm : 3    1
-    Should Contain X Times    ${output}    bg_algorithm : 4    1
-    Should Contain X Times    ${output}    bg_algorithm : 5    1
-    Should Contain X Times    ${output}    bg_algorithm : 6    1
-    Should Contain X Times    ${output}    bg_algorithm : 7    1
-    Should Contain X Times    ${output}    bg_algorithm : 8    1
-    Should Contain X Times    ${output}    bg_algorithm : 9    1
+    Should Contain X Times    ${output}    bg_algorithm : LSST    9
     Should Contain X Times    ${output}    exposure : 1    9
     Should Contain X Times    ${output}    iterations : 1    9

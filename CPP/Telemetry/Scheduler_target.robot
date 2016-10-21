@@ -75,7 +75,7 @@ Read Subscriber
     Log    ${output}
     Should Contain X Times    ${output}    targetId : 1    9
     Should Contain X Times    ${output}    fieldId : 1    9
-    Should Contain X Times    ${output}    filter : 1    9
+    Should Contain X Times    ${output}    filter : LSST    9
     Should Contain X Times    ${output}    request_time : 1    9
     Should Contain X Times    ${output}    request_mjd : 1    9
     Should Contain X Times    ${output}    ra : 1    9

@@ -73,7 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    name : 1    9
+    Should Contain X Times    ${output}    name : LSST    9
     Should Contain X Times    ${output}    prop_id : 1    9
     Should Contain X Times    ${output}    twilight_boundary : 1    9
     Should Contain X Times    ${output}    delta_lst : 1    9
@@ -81,7 +81,7 @@ Read Subscriber
     Should Contain X Times    ${output}    max_airmass : 1    9
     Should Contain X Times    ${output}    max_cloud : 1    9
     Should Contain X Times    ${output}    num_region_selections : 1    9
-    Should Contain X Times    ${output}    region_types : 1    9
+    Should Contain X Times    ${output}    region_types : LSST    9
     Should Contain X Times    ${output}    region_minimums : 1    1
     Should Contain X Times    ${output}    region_minimums : 2    1
     Should Contain X Times    ${output}    region_minimums : 3    1
@@ -109,9 +109,9 @@ Read Subscriber
     Should Contain X Times    ${output}    region_bounds : 7    1
     Should Contain X Times    ${output}    region_bounds : 8    1
     Should Contain X Times    ${output}    region_bounds : 9    1
-    Should Contain X Times    ${output}    region_combiners : 1    9
+    Should Contain X Times    ${output}    region_combiners : LSST    9
     Should Contain X Times    ${output}    num_exclusion_selections : 1    9
-    Should Contain X Times    ${output}    exclusion_types : 1    9
+    Should Contain X Times    ${output}    exclusion_types : LSST    9
     Should Contain X Times    ${output}    exclusion_minimums : 1    1
     Should Contain X Times    ${output}    exclusion_minimums : 2    1
     Should Contain X Times    ${output}    exclusion_minimums : 3    1
@@ -140,7 +140,7 @@ Read Subscriber
     Should Contain X Times    ${output}    exclusion_bounds : 8    1
     Should Contain X Times    ${output}    exclusion_bounds : 9    1
     Should Contain X Times    ${output}    num_filters : 1    9
-    Should Contain X Times    ${output}    filter_names : 1    9
+    Should Contain X Times    ${output}    filter_names : LSST    9
     Should Contain X Times    ${output}    num_visits : 1    1
     Should Contain X Times    ${output}    num_visits : 2    1
     Should Contain X Times    ${output}    num_visits : 3    1

@@ -119,12 +119,4 @@ Read Subscriber
     Should Contain X Times    ${output}    Open_profile : 7    1
     Should Contain X Times    ${output}    Open_profile : 8    1
     Should Contain X Times    ${output}    Open_profile : 9    1
-    Should Contain X Times    ${output}    Profile_function : 1    1
-    Should Contain X Times    ${output}    Profile_function : 2    1
-    Should Contain X Times    ${output}    Profile_function : 3    1
-    Should Contain X Times    ${output}    Profile_function : 4    1
-    Should Contain X Times    ${output}    Profile_function : 5    1
-    Should Contain X Times    ${output}    Profile_function : 6    1
-    Should Contain X Times    ${output}    Profile_function : 7    1
-    Should Contain X Times    ${output}    Profile_function : 8    1
-    Should Contain X Times    ${output}    Profile_function : 9    1
+    Should Contain X Times    ${output}    Profile_function : LSST    9

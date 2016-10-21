@@ -73,19 +73,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    prereq_domalt : 1    9
-    Should Contain X Times    ${output}    prereq_domaz : 1    9
-    Should Contain X Times    ${output}    prereq_domazsettle : 1    9
-    Should Contain X Times    ${output}    prereq_telalt : 1    9
-    Should Contain X Times    ${output}    prereq_telaz : 1    9
-    Should Contain X Times    ${output}    prereq_telopticsopenloop : 1    9
-    Should Contain X Times    ${output}    prereq_telopticsclosedloop : 1    9
-    Should Contain X Times    ${output}    prereq_telsettle : 1    9
-    Should Contain X Times    ${output}    prereq_telrot : 1    9
-    Should Contain X Times    ${output}    prereq_filter : 1    9
-    Should Contain X Times    ${output}    prereq_exposures : 1    9
-    Should Contain X Times    ${output}    prereq_readout : 1    9
-    Should Contain X Times    ${output}    prereq_adc : 1    9
-    Should Contain X Times    ${output}    prereq_ins_optics : 1    9
-    Should Contain X Times    ${output}    prereq_guider_pos : 1    9
-    Should Contain X Times    ${output}    prereq_guider_adq : 1    9
+    Should Contain X Times    ${output}    prereq_domalt : LSST    9
+    Should Contain X Times    ${output}    prereq_domaz : LSST    9
+    Should Contain X Times    ${output}    prereq_domazsettle : LSST    9
+    Should Contain X Times    ${output}    prereq_telalt : LSST    9
+    Should Contain X Times    ${output}    prereq_telaz : LSST    9
+    Should Contain X Times    ${output}    prereq_telopticsopenloop : LSST    9
+    Should Contain X Times    ${output}    prereq_telopticsclosedloop : LSST    9
+    Should Contain X Times    ${output}    prereq_telsettle : LSST    9
+    Should Contain X Times    ${output}    prereq_telrot : LSST    9
+    Should Contain X Times    ${output}    prereq_filter : LSST    9
+    Should Contain X Times    ${output}    prereq_exposures : LSST    9
+    Should Contain X Times    ${output}    prereq_readout : LSST    9
+    Should Contain X Times    ${output}    prereq_adc : LSST    9
+    Should Contain X Times    ${output}    prereq_ins_optics : LSST    9
+    Should Contain X Times    ${output}    prereq_guider_pos : LSST    9
+    Should Contain X Times    ${output}    prereq_guider_adq : LSST    9

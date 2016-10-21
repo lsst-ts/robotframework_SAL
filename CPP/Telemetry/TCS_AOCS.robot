@@ -73,12 +73,4 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    result : 1    1
-    Should Contain X Times    ${output}    result : 2    1
-    Should Contain X Times    ${output}    result : 3    1
-    Should Contain X Times    ${output}    result : 4    1
-    Should Contain X Times    ${output}    result : 5    1
-    Should Contain X Times    ${output}    result : 6    1
-    Should Contain X Times    ${output}    result : 7    1
-    Should Contain X Times    ${output}    result : 8    1
-    Should Contain X Times    ${output}    result : 9    1
+    Should Contain X Times    ${output}    result : LSST    9

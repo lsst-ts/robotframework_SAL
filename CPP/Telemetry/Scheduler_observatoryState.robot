@@ -87,6 +87,6 @@ Read Subscriber
     Should Contain X Times    ${output}    telescope_rotator : 1    9
     Should Contain X Times    ${output}    dome_altitude : 1    9
     Should Contain X Times    ${output}    dome_azimuth : 1    9
-    Should Contain X Times    ${output}    filter_position : 1    9
-    Should Contain X Times    ${output}    filter_mounted : 1    9
-    Should Contain X Times    ${output}    filter_unmounted : 1    9
+    Should Contain X Times    ${output}    filter_position : LSST    9
+    Should Contain X Times    ${output}    filter_mounted : LSST    9
+    Should Contain X Times    ${output}    filter_unmounted : LSST    9

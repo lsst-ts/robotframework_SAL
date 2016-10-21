@@ -74,4 +74,4 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     Should Contain X Times    ${output}    need_swap : 1    9
-    Should Contain X Times    ${output}    filter_to_unmount : 1    9
+    Should Contain X Times    ${output}    filter_to_unmount : LSST    9

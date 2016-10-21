@@ -73,7 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    name : 1    9
+    Should Contain X Times    ${output}    name : LSST    9
     Should Contain X Times    ${output}    latitude : 1    9
     Should Contain X Times    ${output}    longitude : 1    9
     Should Contain X Times    ${output}    height : 1    9

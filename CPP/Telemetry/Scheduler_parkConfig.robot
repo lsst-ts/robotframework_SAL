@@ -78,4 +78,4 @@ Read Subscriber
     Should Contain X Times    ${output}    telescope_rotator : 1    9
     Should Contain X Times    ${output}    dome_altitude : 1    9
     Should Contain X Times    ${output}    dome_azimuth : 1    9
-    Should Contain X Times    ${output}    filter_position : 1    9
+    Should Contain X Times    ${output}    filter_position : LSST    9
