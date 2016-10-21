@@ -78,3 +78,8 @@ Read Subscriber
     Should Contain X Times    ${list}    timebonus_bmax = 1.0    10
     Should Contain X Times    ${list}    timebonus_slope = 1.0    10
     Should Contain X Times    ${list}    night_boundary = 1.0    10
+    Should Contain X Times    ${list}    new_moon_phase_threshold = 1.0    10
+    Should Contain X Times    ${list}    ignore_sky_brightness = 1    10
+    Should Contain X Times    ${list}    ignore_airmass = 1    10
+    Should Contain X Times    ${list}    ignore_clouds = 1    10
+    Should Contain X Times    ${list}    ignore_seeing = 1    10

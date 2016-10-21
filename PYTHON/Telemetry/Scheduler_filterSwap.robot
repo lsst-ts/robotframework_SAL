@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Scheduler_interestedProposal communications tests.
+Documentation    Scheduler_filterSwap communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    interestedProposal
+${component}    filterSwap
 ${timeout}    30s
 
 *** Test Cases ***
@@ -72,10 +72,5 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    observationId = 1    10
-    Should Contain X Times    ${list}    num_proposals = 1    10
-    Should Contain X Times    ${list}    proposal_Ids(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
-    Should Contain X Times    ${list}    proposal_values(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
-    Should Contain X Times    ${list}    proposal_needs(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
-    Should Contain X Times    ${list}    proposal_bonuses(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
-    Should Contain X Times    ${list}    proposal_boosts(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
+    Should Contain X Times    ${list}    need_swap = 1    10
+    Should Contain X Times    ${list}    filter_to_unmount = LSST    10

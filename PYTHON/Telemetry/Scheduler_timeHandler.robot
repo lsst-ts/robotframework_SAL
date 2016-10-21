@@ -74,3 +74,5 @@ Read Subscriber
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    timestamp = 1.0    10
     Should Contain X Times    ${list}    night = 1    10
+    Should Contain X Times    ${list}    is_down = 1    10
+    Should Contain X Times    ${list}    down_duration = 1.0    10

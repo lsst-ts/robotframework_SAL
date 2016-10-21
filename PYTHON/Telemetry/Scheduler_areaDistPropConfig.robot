@@ -78,6 +78,7 @@ Read Subscriber
     Should Contain X Times    ${list}    delta_lst = 1.0    10
     Should Contain X Times    ${list}    dec_window = 1.0    10
     Should Contain X Times    ${list}    max_airmass = 1.0    10
+    Should Contain X Times    ${list}    max_cloud = 1.0    10
     Should Contain X Times    ${list}    num_region_selections = 1    10
     Should Contain X Times    ${list}    region_types = LSST    10
     Should Contain X Times    ${list}    region_minimums(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10

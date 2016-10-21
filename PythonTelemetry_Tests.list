@@ -89,6 +89,7 @@ Python/Telemetry/Scheduler_domeConfig.robot
 Python/Telemetry/Scheduler_driverConfig.robot
 Python/Telemetry/Scheduler_econstraints.robot
 Python/Telemetry/Scheduler_field.robot
+Python/Telemetry/Scheduler_filterSwap.robot
 Python/Telemetry/Scheduler_iconstraints.robot
 Python/Telemetry/Scheduler_interestedProposal.robot
 Python/Telemetry/Scheduler_obsSiteConfig.robot

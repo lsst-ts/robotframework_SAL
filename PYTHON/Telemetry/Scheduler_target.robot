@@ -76,6 +76,7 @@ Read Subscriber
     Should Contain X Times    ${list}    fieldId = 1    10
     Should Contain X Times    ${list}    filter = LSST    10
     Should Contain X Times    ${list}    request_time = 1.0    10
+    Should Contain X Times    ${list}    request_mjd = 1.0    10
     Should Contain X Times    ${list}    ra = 1.0    10
     Should Contain X Times    ${list}    dec = 1.0    10
     Should Contain X Times    ${list}    angle = 1.0    10
@@ -83,6 +84,8 @@ Read Subscriber
     Should Contain X Times    ${list}    exposure_times(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
     Should Contain X Times    ${list}    airmass = 1.0    10
     Should Contain X Times    ${list}    sky_brightness = 1.0    10
+    Should Contain X Times    ${list}    cloud = 1.0    10
+    Should Contain X Times    ${list}    seeing = 1.0    10
     Should Contain X Times    ${list}    slew_time = 1.0    10
     Should Contain X Times    ${list}    cost_bonus = 1.0    10
     Should Contain X Times    ${list}    prop_boost = 1.0    10
