@@ -73,14 +73,15 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Local_Remote : 1    9
-    Should Contain X Times    ${output}    Floating : 1    9
-    Should Contain X Times    ${output}    Cooling : 1    9
-    Should Contain X Times    ${output}    Oil : 1    9
-    Should Contain X Times    ${output}    Pump : 1    9
-    Should Contain X Times    ${output}    Oil_Flow : 1    9
-    Should Contain X Times    ${output}    Oil_Pressure : 1    9
-    Should Contain X Times    ${output}    Oil_Temperature : 1    9
-    Should Contain X Times    ${output}    Oil_Film : 1    9
-    Should Contain X Times    ${output}    Oil_Filter_Pressure : 1    9
-    Should Contain X Times    ${output}    Status : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Local_Remote : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Floating : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Cooling : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Pump : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil_Flow : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil_Pressure : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil_Temperature : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil_Film : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Oil_Filter_Pressure : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status : 1    9

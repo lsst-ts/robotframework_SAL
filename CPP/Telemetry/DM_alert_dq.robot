@@ -73,12 +73,13 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 1    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 2    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 3    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 4    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 5    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 6    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 7    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 8    1
-    Should Contain X Times    ${output}    summary_data_quality_parameters : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}summary_data_quality_parameters : 9    1

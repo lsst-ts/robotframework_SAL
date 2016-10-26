@@ -73,21 +73,22 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Calibrated : 1    1
-    Should Contain X Times    ${output}    Calibrated : 2    1
-    Should Contain X Times    ${output}    Calibrated : 3    1
-    Should Contain X Times    ${output}    Calibrated : 4    1
-    Should Contain X Times    ${output}    Calibrated : 5    1
-    Should Contain X Times    ${output}    Calibrated : 6    1
-    Should Contain X Times    ${output}    Calibrated : 7    1
-    Should Contain X Times    ${output}    Calibrated : 8    1
-    Should Contain X Times    ${output}    Calibrated : 9    1
-    Should Contain X Times    ${output}    Raw : 1    1
-    Should Contain X Times    ${output}    Raw : 2    1
-    Should Contain X Times    ${output}    Raw : 3    1
-    Should Contain X Times    ${output}    Raw : 4    1
-    Should Contain X Times    ${output}    Raw : 5    1
-    Should Contain X Times    ${output}    Raw : 6    1
-    Should Contain X Times    ${output}    Raw : 7    1
-    Should Contain X Times    ${output}    Raw : 8    1
-    Should Contain X Times    ${output}    Raw : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 9    1

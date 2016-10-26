@@ -73,12 +73,13 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    axialForceMeasured : 1    1
-    Should Contain X Times    ${output}    axialForceMeasured : 2    1
-    Should Contain X Times    ${output}    axialForceMeasured : 3    1
-    Should Contain X Times    ${output}    axialForceMeasured : 4    1
-    Should Contain X Times    ${output}    axialForceMeasured : 5    1
-    Should Contain X Times    ${output}    axialForceMeasured : 6    1
-    Should Contain X Times    ${output}    axialForceMeasured : 7    1
-    Should Contain X Times    ${output}    axialForceMeasured : 8    1
-    Should Contain X Times    ${output}    axialForceMeasured : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialForceMeasured : 9    1

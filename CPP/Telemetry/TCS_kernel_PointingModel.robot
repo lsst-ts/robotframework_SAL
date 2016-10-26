@@ -73,24 +73,25 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Coeffv : 1    1
-    Should Contain X Times    ${output}    Coeffv : 2    1
-    Should Contain X Times    ${output}    Coeffv : 3    1
-    Should Contain X Times    ${output}    Coeffv : 4    1
-    Should Contain X Times    ${output}    Coeffv : 5    1
-    Should Contain X Times    ${output}    Coeffv : 6    1
-    Should Contain X Times    ${output}    Coeffv : 7    1
-    Should Contain X Times    ${output}    Coeffv : 8    1
-    Should Contain X Times    ${output}    Coeffv : 9    1
-    Should Contain X Times    ${output}    Model : 1    1
-    Should Contain X Times    ${output}    Model : 2    1
-    Should Contain X Times    ${output}    Model : 3    1
-    Should Contain X Times    ${output}    Model : 4    1
-    Should Contain X Times    ${output}    Model : 5    1
-    Should Contain X Times    ${output}    Model : 6    1
-    Should Contain X Times    ${output}    Model : 7    1
-    Should Contain X Times    ${output}    Model : 8    1
-    Should Contain X Times    ${output}    Model : 9    1
-    Should Contain X Times    ${output}    Nterml : 1    9
-    Should Contain X Times    ${output}    Nterms : 1    9
-    Should Contain X Times    ${output}    Ntermx : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Coeffv : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Model : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Nterml : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Nterms : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Ntermx : 1    9

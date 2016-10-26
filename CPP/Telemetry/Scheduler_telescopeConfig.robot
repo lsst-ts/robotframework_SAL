@@ -73,14 +73,15 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    altitude_minpos : 1    9
-    Should Contain X Times    ${output}    altitude_maxpos : 1    9
-    Should Contain X Times    ${output}    azimuth_minpos : 1    9
-    Should Contain X Times    ${output}    azimuth_maxpos : 1    9
-    Should Contain X Times    ${output}    altitude_maxspeed : 1    9
-    Should Contain X Times    ${output}    altitude_accel : 1    9
-    Should Contain X Times    ${output}    altitude_decel : 1    9
-    Should Contain X Times    ${output}    azimuth_maxspeed : 1    9
-    Should Contain X Times    ${output}    azimuth_accel : 1    9
-    Should Contain X Times    ${output}    azimuth_decel : 1    9
-    Should Contain X Times    ${output}    settle_time : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude_minpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude_maxpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth_minpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth_maxpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude_maxspeed : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude_accel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude_decel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth_maxspeed : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth_accel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth_decel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}settle_time : 1    9

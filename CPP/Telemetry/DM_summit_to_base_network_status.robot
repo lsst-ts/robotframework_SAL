@@ -73,7 +73,8 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    link_usage : 1    9
-    Should Contain X Times    ${output}    link_utilization : 1    9
-    Should Contain X Times    ${output}    link_capacity : 1    9
-    Should Contain X Times    ${output}    link_latency : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}link_usage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}link_utilization : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}link_capacity : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}link_latency : 1    9

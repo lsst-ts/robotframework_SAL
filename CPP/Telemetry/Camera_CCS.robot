@@ -73,21 +73,22 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    CCS_Status : 1    1
-    Should Contain X Times    ${output}    CCS_Status : 2    1
-    Should Contain X Times    ${output}    CCS_Status : 3    1
-    Should Contain X Times    ${output}    CCS_Status : 4    1
-    Should Contain X Times    ${output}    CCS_Status : 5    1
-    Should Contain X Times    ${output}    CCS_Status : 6    1
-    Should Contain X Times    ${output}    CCS_Status : 7    1
-    Should Contain X Times    ${output}    CCS_Status : 8    1
-    Should Contain X Times    ${output}    CCS_Status : 9    1
-    Should Contain X Times    ${output}    Image_Status : 1    1
-    Should Contain X Times    ${output}    Image_Status : 2    1
-    Should Contain X Times    ${output}    Image_Status : 3    1
-    Should Contain X Times    ${output}    Image_Status : 4    1
-    Should Contain X Times    ${output}    Image_Status : 5    1
-    Should Contain X Times    ${output}    Image_Status : 6    1
-    Should Contain X Times    ${output}    Image_Status : 7    1
-    Should Contain X Times    ${output}    Image_Status : 8    1
-    Should Contain X Times    ${output}    Image_Status : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCS_Status : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Image_Status : 9    1

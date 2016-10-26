@@ -73,13 +73,14 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp : 1    9
-    Should Contain X Times    ${output}    block : 1    1
-    Should Contain X Times    ${output}    block : 2    1
-    Should Contain X Times    ${output}    block : 3    1
-    Should Contain X Times    ${output}    block : 4    1
-    Should Contain X Times    ${output}    block : 5    1
-    Should Contain X Times    ${output}    block : 6    1
-    Should Contain X Times    ${output}    block : 7    1
-    Should Contain X Times    ${output}    block : 8    1
-    Should Contain X Times    ${output}    block : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 9    1

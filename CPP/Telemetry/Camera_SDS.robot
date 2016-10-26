@@ -73,22 +73,23 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    REB_ID : 1    9
-    Should Contain X Times    ${output}    Timing_parameter : 1    1
-    Should Contain X Times    ${output}    Timing_parameter : 2    1
-    Should Contain X Times    ${output}    Timing_parameter : 3    1
-    Should Contain X Times    ${output}    Timing_parameter : 4    1
-    Should Contain X Times    ${output}    Timing_parameter : 5    1
-    Should Contain X Times    ${output}    Timing_parameter : 6    1
-    Should Contain X Times    ${output}    Timing_parameter : 7    1
-    Should Contain X Times    ${output}    Timing_parameter : 8    1
-    Should Contain X Times    ${output}    Timing_parameter : 9    1
-    Should Contain X Times    ${output}    flag : 1    1
-    Should Contain X Times    ${output}    flag : 2    1
-    Should Contain X Times    ${output}    flag : 3    1
-    Should Contain X Times    ${output}    flag : 4    1
-    Should Contain X Times    ${output}    flag : 5    1
-    Should Contain X Times    ${output}    flag : 6    1
-    Should Contain X Times    ${output}    flag : 7    1
-    Should Contain X Times    ${output}    flag : 8    1
-    Should Contain X Times    ${output}    flag : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}REB_ID : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 9    1

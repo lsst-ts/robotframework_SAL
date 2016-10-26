@@ -73,20 +73,21 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp : 1    9
-    Should Contain X Times    ${output}    pointing_ra : 1    9
-    Should Contain X Times    ${output}    pointing_dec : 1    9
-    Should Contain X Times    ${output}    pointing_angle : 1    9
-    Should Contain X Times    ${output}    pointing_altitude : 1    9
-    Should Contain X Times    ${output}    pointing_azimuth : 1    9
-    Should Contain X Times    ${output}    pointing_pa : 1    9
-    Should Contain X Times    ${output}    pointing_rot : 1    9
-    Should Contain X Times    ${output}    tracking : 1    9
-    Should Contain X Times    ${output}    telescope_altitude : 1    9
-    Should Contain X Times    ${output}    telescope_azimuth : 1    9
-    Should Contain X Times    ${output}    telescope_rotator : 1    9
-    Should Contain X Times    ${output}    dome_altitude : 1    9
-    Should Contain X Times    ${output}    dome_azimuth : 1    9
-    Should Contain X Times    ${output}    filter_position : LSST    9
-    Should Contain X Times    ${output}    filter_mounted : LSST    9
-    Should Contain X Times    ${output}    filter_unmounted : LSST    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_ra : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_dec : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_angle : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_altitude : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_azimuth : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_pa : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointing_rot : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracking : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescope_altitude : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescope_azimuth : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescope_rotator : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dome_altitude : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dome_azimuth : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_position : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_mounted : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_unmounted : LSST    9

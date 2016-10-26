@@ -73,21 +73,22 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    liftoff : 1    1
-    Should Contain X Times    ${output}    liftoff : 2    1
-    Should Contain X Times    ${output}    liftoff : 3    1
-    Should Contain X Times    ${output}    liftoff : 4    1
-    Should Contain X Times    ${output}    liftoff : 5    1
-    Should Contain X Times    ${output}    liftoff : 6    1
-    Should Contain X Times    ${output}    liftoff : 7    1
-    Should Contain X Times    ${output}    liftoff : 8    1
-    Should Contain X Times    ${output}    liftoff : 9    1
-    Should Contain X Times    ${output}    limit : 1    1
-    Should Contain X Times    ${output}    limit : 2    1
-    Should Contain X Times    ${output}    limit : 3    1
-    Should Contain X Times    ${output}    limit : 4    1
-    Should Contain X Times    ${output}    limit : 5    1
-    Should Contain X Times    ${output}    limit : 6    1
-    Should Contain X Times    ${output}    limit : 7    1
-    Should Contain X Times    ${output}    limit : 8    1
-    Should Contain X Times    ${output}    limit : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}limit : 9    1

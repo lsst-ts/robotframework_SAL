@@ -73,27 +73,28 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Aux : 1    1
-    Should Contain X Times    ${output}    Aux : 2    1
-    Should Contain X Times    ${output}    Aux : 3    1
-    Should Contain X Times    ${output}    Aux : 4    1
-    Should Contain X Times    ${output}    Aux : 5    1
-    Should Contain X Times    ${output}    Aux : 6    1
-    Should Contain X Times    ${output}    Aux : 7    1
-    Should Contain X Times    ${output}    Aux : 8    1
-    Should Contain X Times    ${output}    Aux : 9    1
-    Should Contain X Times    ${output}    Casspa : 1    9
-    Should Contain X Times    ${output}    Dec : 1    9
-    Should Contain X Times    ${output}    Fl : 1    9
-    Should Contain X Times    ${output}    Humid : 1    9
-    Should Contain X Times    ${output}    Marked : 1    9
-    Should Contain X Times    ${output}    Pitch : 1    9
-    Should Contain X Times    ${output}    Press : 1    9
-    Should Contain X Times    ${output}    Ra : 1    9
-    Should Contain X Times    ${output}    Rcorr : 1    9
-    Should Contain X Times    ${output}    Roll : 1    9
-    Should Contain X Times    ${output}    Temp : 1    9
-    Should Contain X Times    ${output}    Tlr : 1    9
-    Should Contain X Times    ${output}    Wavel : 1    9
-    Should Contain X Times    ${output}    Xr : 1    9
-    Should Contain X Times    ${output}    Yr : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Aux : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Casspa : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Dec : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Fl : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Humid : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Marked : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Pitch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Press : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Ra : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Rcorr : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Roll : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Temp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Tlr : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Wavel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Xr : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Yr : 1    9

@@ -73,12 +73,13 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Angle_Actual : 1    9
-    Should Contain X Times    ${output}    AngleDif_Actual : 1    9
-    Should Contain X Times    ${output}    Positive_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Negative_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Axis_Status : 1    9
-    Should Contain X Times    ${output}    Curr_Actual_1 : 1    9
-    Should Contain X Times    ${output}    Curr_Actual_2 : 1    9
-    Should Contain X Times    ${output}    Drive_Status_1 : 1    9
-    Should Contain X Times    ${output}    Drive_Status_2 : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Angle_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}AngleDif_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Axis_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Curr_Actual_1 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Curr_Actual_2 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Drive_Status_1 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Drive_Status_2 : 1    9

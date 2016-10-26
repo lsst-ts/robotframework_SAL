@@ -73,11 +73,12 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    minpos : 1    9
-    Should Contain X Times    ${output}    maxpos : 1    9
-    Should Contain X Times    ${output}    filter_change_pos : 1    9
-    Should Contain X Times    ${output}    maxspeed : 1    9
-    Should Contain X Times    ${output}    accel : 1    9
-    Should Contain X Times    ${output}    decel : 1    9
-    Should Contain X Times    ${output}    followsky : 1    9
-    Should Contain X Times    ${output}    resume_angle : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}minpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxpos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_change_pos : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxspeed : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}accel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}decel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}followsky : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}resume_angle : 1    9

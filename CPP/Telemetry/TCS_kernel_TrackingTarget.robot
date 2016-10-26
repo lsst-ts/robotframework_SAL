@@ -73,8 +73,9 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    PositionX : 1    9
-    Should Contain X Times    ${output}    PositionY : 1    9
-    Should Contain X Times    ${output}    T0 : 1    9
-    Should Contain X Times    ${output}    VelocityX : 1    9
-    Should Contain X Times    ${output}    VelocityY : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}PositionX : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}PositionY : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}T0 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}VelocityX : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}VelocityY : 1    9

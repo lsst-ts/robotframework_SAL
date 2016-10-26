@@ -73,19 +73,20 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Bias_Status : 1    9
-    Should Contain X Times    ${output}    Bias_current : 1    9
-    Should Contain X Times    ${output}    Bias_voltage : 1    9
-    Should Contain X Times    ${output}    Clock_Status : 1    9
-    Should Contain X Times    ${output}    Clock_current : 1    9
-    Should Contain X Times    ${output}    Clock_voltage : 1    9
-    Should Contain X Times    ${output}    FPGA_Status : 1    9
-    Should Contain X Times    ${output}    FPGA_current : 1    9
-    Should Contain X Times    ${output}    FPGA_voltage : 1    9
-    Should Contain X Times    ${output}    Low_Status : 1    9
-    Should Contain X Times    ${output}    Low_current : 1    9
-    Should Contain X Times    ${output}    Low_voltage : 1    9
-    Should Contain X Times    ${output}    OD_Status : 1    9
-    Should Contain X Times    ${output}    OD_current : 1    9
-    Should Contain X Times    ${output}    OD_voltage : 1    9
-    Should Contain X Times    ${output}    REB_ID : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Bias_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Bias_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Bias_voltage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Clock_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Clock_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Clock_voltage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGA_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGA_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGA_voltage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Low_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Low_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Low_voltage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}OD_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}OD_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}OD_voltage : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}REB_ID : 1    9

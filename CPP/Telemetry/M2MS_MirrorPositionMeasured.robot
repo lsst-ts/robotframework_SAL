@@ -73,9 +73,10 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    xTilt : 1    9
-    Should Contain X Times    ${output}    yTilt : 1    9
-    Should Contain X Times    ${output}    piston : 1    9
-    Should Contain X Times    ${output}    xPosition : 1    9
-    Should Contain X Times    ${output}    yPosition : 1    9
-    Should Contain X Times    ${output}    theta_z_position : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}xTilt : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}yTilt : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}piston : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPosition : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPosition : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}theta_z_position : 1    9

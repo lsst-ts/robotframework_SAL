@@ -73,23 +73,24 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Accelerometer : 1    1
-    Should Contain X Times    ${output}    Accelerometer : 2    1
-    Should Contain X Times    ${output}    Accelerometer : 3    1
-    Should Contain X Times    ${output}    Accelerometer : 4    1
-    Should Contain X Times    ${output}    Accelerometer : 5    1
-    Should Contain X Times    ${output}    Accelerometer : 6    1
-    Should Contain X Times    ${output}    Accelerometer : 7    1
-    Should Contain X Times    ${output}    Accelerometer : 8    1
-    Should Contain X Times    ${output}    Accelerometer : 9    1
-    Should Contain X Times    ${output}    Blower_setting : 1    9
-    Should Contain X Times    ${output}    Blower_speed : 1    9
-    Should Contain X Times    ${output}    Body_Flow_meter : 1    9
-    Should Contain X Times    ${output}    Body_Temp : 1    9
-    Should Contain X Times    ${output}    Heater_current : 1    9
-    Should Contain X Times    ${output}    Heaters : 1    9
-    Should Contain X Times    ${output}    Microphone : 1    9
-    Should Contain X Times    ${output}    Trunk_Flow_meter : 1    9
-    Should Contain X Times    ${output}    Trunk_Temp : 1    9
-    Should Contain X Times    ${output}    Valve_setting : 1    9
-    Should Contain X Times    ${output}    Valves : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Accelerometer : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Blower_setting : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Blower_speed : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Body_Flow_meter : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Body_Temp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Heater_current : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Heaters : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Microphone : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Trunk_Flow_meter : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Trunk_Temp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Valve_setting : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Valves : 1    9

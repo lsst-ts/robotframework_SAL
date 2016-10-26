@@ -73,6 +73,7 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    focal_plane_current_image_count : 1    9
-    Should Contain X Times    ${output}    focal_plane_operations_image_count : 1    9
-    Should Contain X Times    ${output}    last_focal_plane_image_id : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}focal_plane_current_image_count : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}focal_plane_operations_image_count : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}last_focal_plane_image_id : 1    9

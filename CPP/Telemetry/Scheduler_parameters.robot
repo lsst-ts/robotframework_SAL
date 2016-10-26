@@ -73,12 +73,13 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    parameters : 1    1
-    Should Contain X Times    ${output}    parameters : 2    1
-    Should Contain X Times    ${output}    parameters : 3    1
-    Should Contain X Times    ${output}    parameters : 4    1
-    Should Contain X Times    ${output}    parameters : 5    1
-    Should Contain X Times    ${output}    parameters : 6    1
-    Should Contain X Times    ${output}    parameters : 7    1
-    Should Contain X Times    ${output}    parameters : 8    1
-    Should Contain X Times    ${output}    parameters : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}parameters : 9    1

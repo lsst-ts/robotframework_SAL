@@ -73,19 +73,20 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    prereq_domalt : LSST    9
-    Should Contain X Times    ${output}    prereq_domaz : LSST    9
-    Should Contain X Times    ${output}    prereq_domazsettle : LSST    9
-    Should Contain X Times    ${output}    prereq_telalt : LSST    9
-    Should Contain X Times    ${output}    prereq_telaz : LSST    9
-    Should Contain X Times    ${output}    prereq_telopticsopenloop : LSST    9
-    Should Contain X Times    ${output}    prereq_telopticsclosedloop : LSST    9
-    Should Contain X Times    ${output}    prereq_telsettle : LSST    9
-    Should Contain X Times    ${output}    prereq_telrot : LSST    9
-    Should Contain X Times    ${output}    prereq_filter : LSST    9
-    Should Contain X Times    ${output}    prereq_exposures : LSST    9
-    Should Contain X Times    ${output}    prereq_readout : LSST    9
-    Should Contain X Times    ${output}    prereq_adc : LSST    9
-    Should Contain X Times    ${output}    prereq_ins_optics : LSST    9
-    Should Contain X Times    ${output}    prereq_guider_pos : LSST    9
-    Should Contain X Times    ${output}    prereq_guider_adq : LSST    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domalt : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domaz : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_domazsettle : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telalt : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telaz : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telopticsopenloop : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telopticsclosedloop : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telsettle : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_telrot : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_filter : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_exposures : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_readout : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_adc : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_ins_optics : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_guider_pos : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereq_guider_adq : LSST    9

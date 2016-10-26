@@ -73,26 +73,27 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Angle_Set : 1    9
-    Should Contain X Times    ${output}    Angle_Actual : 1    9
-    Should Contain X Times    ${output}    EncHead_Actual_1 : 1    9
-    Should Contain X Times    ${output}    EncHead_Actual_2 : 1    9
-    Should Contain X Times    ${output}    EncHead_Actual_3 : 1    9
-    Should Contain X Times    ${output}    EncHead_Actual_4 : 1    9
-    Should Contain X Times    ${output}    Vel_Set : 1    9
-    Should Contain X Times    ${output}    Vel_Actual : 1    9
-    Should Contain X Times    ${output}    Acc_Actual : 1    9
-    Should Contain X Times    ${output}    Torque_Set : 1    9
-    Should Contain X Times    ${output}    Axis_Status : 1    9
-    Should Contain X Times    ${output}    Positive_Adjustable_Software_Limit : 1    9
-    Should Contain X Times    ${output}    Negative_Adjustable_Software_Limit : 1    9
-    Should Contain X Times    ${output}    Positive_Operational_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Negative_Operational_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Positive_Software_Limit : 1    9
-    Should Contain X Times    ${output}    Negative_Software_Limit : 1    9
-    Should Contain X Times    ${output}    Positive_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Negative_Directional_Limit_Switch : 1    9
-    Should Contain X Times    ${output}    Positive_Power_Off_Switch : 1    9
-    Should Contain X Times    ${output}    Negative_Power_Off_Switch : 1    9
-    Should Contain X Times    ${output}    Curr_Actual : 1    9
-    Should Contain X Times    ${output}    Drive_Status : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Angle_Set : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Angle_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}EncHead_Actual_1 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}EncHead_Actual_2 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}EncHead_Actual_3 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}EncHead_Actual_4 : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Vel_Set : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Vel_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Acc_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Torque_Set : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Axis_Status : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Adjustable_Software_Limit : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Adjustable_Software_Limit : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Operational_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Operational_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Software_Limit : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Software_Limit : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Directional_Limit_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Positive_Power_Off_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Negative_Power_Off_Switch : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Curr_Actual : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Drive_Status : 1    9

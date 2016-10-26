@@ -73,18 +73,19 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    Humid : 1    9
-    Should Contain X Times    ${output}    Press : 1    9
-    Should Contain X Times    ${output}    TLR : 1    9
-    Should Contain X Times    ${output}    Tai : 1    9
-    Should Contain X Times    ${output}    Temp : 1    9
-    Should Contain X Times    ${output}    Wavel : 1    9
-    Should Contain X Times    ${output}    XOffset : 1    9
-    Should Contain X Times    ${output}    YOffset : 1    9
-    Should Contain X Times    ${output}    az : 1    9
-    Should Contain X Times    ${output}    azdot : 1    9
-    Should Contain X Times    ${output}    el : 1    9
-    Should Contain X Times    ${output}    eldot : 1    9
-    Should Contain X Times    ${output}    focalplaneX : 1    9
-    Should Contain X Times    ${output}    focalplaneY : 1    9
-    Should Contain X Times    ${output}    t0 : 1    9
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Humid : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Press : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}TLR : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Tai : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Temp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Wavel : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}XOffset : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}YOffset : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azdot : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}eldot : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}focalplaneX : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}focalplaneY : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}t0 : 1    9

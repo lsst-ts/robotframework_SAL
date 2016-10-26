@@ -73,12 +73,13 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 1    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 2    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 3    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 4    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 5    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 6    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 7    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 8    1
-    Should Contain X Times    ${output}    axialAbsolutePositionSteps : 9    1
+    @{list}=    Split To Lines    ${output}    start=1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialAbsolutePositionSteps : 9    1
