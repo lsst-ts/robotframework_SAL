@@ -81,14 +81,6 @@ CPP/Telemetry/Rotator_LimitSensors.robot
 CPP/Telemetry/Rotator_Position.robot
 CPP/Telemetry/Rotator_TC.robot
 CPP/Telemetry/Scheduler_Application.robot
-CPP/Telemetry/Scheduler_econstraints.robot
-CPP/Telemetry/Scheduler_iconstraints.robot
-CPP/Telemetry/Scheduler_interestedProposal.robot
-CPP/Telemetry/Scheduler_parameters.robot
-CPP/Telemetry/Scheduler_program.robot
-CPP/Telemetry/Scheduler_progress.robot
-CPP/Telemetry/Scheduler_rankingData.robot
-CPP/Telemetry/Scheduler_Application.robot
 CPP/Telemetry/Scheduler_areaDistPropConfig.robot
 CPP/Telemetry/Scheduler_blockPusher.robot
 CPP/Telemetry/Scheduler_cameraConfig.robot
