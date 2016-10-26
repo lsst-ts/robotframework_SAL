@@ -55,6 +55,9 @@ Start Subscriber
     ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_sub.jar ${subSystem}_${component}DataSubscriber
     ${output}=    Read Until    [${component} Subscriber] Ready
     Log    ${output}
+    Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
+    Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
+    Should Contain    ${output}    reader = ${subSystem}.${component}DataReaderImpl@
     Should Contain    ${output}    [${component} Subscriber] Ready
 
 Start Publisher
@@ -66,6 +69,9 @@ Start Publisher
     ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_pub.jar ${subSystem}_${component}DataPublisher
     ${output}=    Read Until Prompt
     Log    ${output}
+    Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
+    Should Contain    ${output}    [createwriter idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
+    Should Contain    ${output}    writer = ${subSystem}.${component}DataWriterImpl@
     Should Contain X Times    ${output}    [putSample ${component}] writing a message containing :    5
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
 
