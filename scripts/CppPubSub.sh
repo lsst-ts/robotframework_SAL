@@ -158,17 +158,18 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
+	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
 		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
-        	echo "    Should Contain X Times    \${output}    $parameter : 1    9" >>$testSuite
-		elif [[ ( "$parameterType" == "string" ) ]]; then
-			echo "    Should Contain X Times    \${output}    $parameter : LSST    9" >>$testSuite
+        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
+		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" )]]; then
+			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    9" >>$testSuite
 		else
 			for num in `seq 1 9`; do
-				echo "    Should Contain X Times    \${output}    $parameter : $num    1" >>$testSuite
+				echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
 			done
 		fi
     done
