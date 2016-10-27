@@ -74,7 +74,8 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
+    Comment    TSS-911
+	Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 3    1
@@ -82,5 +83,5 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 5    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 6    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 9    1
+    Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 8    1
+    Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 9    1
