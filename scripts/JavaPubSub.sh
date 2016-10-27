@@ -49,8 +49,6 @@ function createVariables {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
-    echo "#\${subOut}    \${subSystem}_\${component}_sub.out" >> $testSuite
-    echo "#\${pubOut}    \${subSystem}_\${component}_pub.out" >> $testSuite
     echo "" >> $testSuite
 }
 
