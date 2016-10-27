@@ -104,4 +104,4 @@ Read Subscriber
     Should Contain X Times    ${list}    sun_az = 1.0    10
     Should Contain X Times    ${list}    sun_ra = 1.0    10
     Should Contain X Times    ${list}    sun_dec = 1.0    10
-    Should Contain X Times    ${list}    sun_elong = 1.0    10
+    Should Contain X Times    ${list}    solar_elong = 1.0    10

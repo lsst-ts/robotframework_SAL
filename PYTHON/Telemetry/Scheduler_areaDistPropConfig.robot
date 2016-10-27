@@ -101,3 +101,4 @@ Read Subscriber
     Should Contain X Times    ${list}    max_num_targets = 1    10
     Should Contain X Times    ${list}    accept_serendipity = 1    10
     Should Contain X Times    ${list}    accept_consecutive_visits = 1    10
+    Should Contain X Times    ${list}    airmass_bonus = 1.0    10
