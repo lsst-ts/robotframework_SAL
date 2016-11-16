@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Dm State Machine tests.
+Documentation    DM State Machine tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

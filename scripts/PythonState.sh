@@ -191,6 +191,8 @@ function createTestSuite() {
 		subSystemUp="TCS"
 	elif [ "$subSystem" == "mtmount" ]; then
 		subSystemUp="MTMount"
+	elif [ "$subSystem" == "dm" ]; then
+        subSystemUp="DM"
 	else
 		subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 	fi
