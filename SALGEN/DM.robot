@@ -16,9 +16,8 @@ SSH Into Host
     Comment    Connect.
     Open Connection    ${Host}    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
-    Directory Should Exist    ${SALInstall}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
+	Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALInstall}/OpenSpliceDDS
 
