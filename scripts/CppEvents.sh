@@ -5,6 +5,8 @@
 #  author: Rob Bovill
 #  email:  rbovill@lsst.org
 
+# Source common functions
+source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/CPP/Events
@@ -96,38 +98,6 @@ function createVariables() {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
-    echo "" >> $testSuite
-}
-
-function createSenderSession() {
-    echo "Create Sender Session" >> $testSuite
-    echo "    [Documentation]    Connect to the SAL host." >> $testSuite
-    echo "    [Tags]    smoke" >> $testSuite
-    echo "    Comment    Connect to host." >> $testSuite
-    echo "    Open Connection    host=\${Host}    alias=Sender    timeout=\${timeout}    prompt=\${Prompt}" >> $testSuite
-    echo "    Comment    Login." >> $testSuite
-    echo "    Log    \${ContInt}" >> $testSuite
-    echo "    Run Keyword If    \"\${ContInt}\"==\"false\"    Login    \${UserName}    \${PassWord}" >> $testSuite
-    echo "    Run Keyword If    \"\${ContInt}\"==\"true\"    Login With Public Key    \${UserName}    keyfile=\${PassWord}" >> $testSuite
-    echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
-    echo "    Directory Should Exist    \${SALHome}" >> $testSuite
-    echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}" >> $testSuite
-    echo "" >> $testSuite
-}
-
-function createLoggerSession() {
-    echo "Create Logger Session" >> $testSuite
-    echo "    [Documentation]    Connect to the SAL host." >> $testSuite
-    echo "    [Tags]    smoke" >> $testSuite
-    echo "    Comment    Connect to host." >> $testSuite
-    echo "    Open Connection    host=\${Host}    alias=Logger    timeout=\${timeout}    prompt=\${Prompt}" >> $testSuite
-    echo "    Comment    Login." >> $testSuite
-    echo "    Log    \${ContInt}" >> $testSuite
-    echo "    Run Keyword If    \"\${ContInt}\"==\"false\"    Login    \${UserName}    \${PassWord}" >> $testSuite
-    echo "    Run Keyword If    \"\${ContInt}\"==\"true\"    Login With Public Key    \${UserName}    keyfile=\${PassWord}" >> $testSuite
-    echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
-    echo "    Directory Should Exist    \${SALHome}" >> $testSuite
-    echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -243,8 +213,8 @@ function createTestSuite() {
 		createSettings
 		createVariables
 		echo "*** Test Cases ***" >> $testSuite
-		createSenderSession
-		createLoggerSession
+        createSession "Sender"
+        createSession "Logger"
         verifyCompSenderLogger
 		startSenderInputs
 		startLogger
