@@ -4,6 +4,7 @@
 ${ContInt}       false
 ${UserName}      saluser
 ${PassWord}      ${EMPTY}
+${KeyFile}       ${EMPTY}
 ${SALInstall}    /opt/sal
 ${SALHome}       ${SalInstall}/lsstsal
 ${SALWorkDir}    ${SalInstall}/test
