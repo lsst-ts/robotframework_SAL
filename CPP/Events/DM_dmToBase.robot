@@ -18,8 +18,7 @@ Create Sender Session
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,8 +30,7 @@ Create Logger Session
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -70,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1756253906 759437797
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 679592901 212867162
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dm::logevent_dmToBase writing a message containing :    1
@@ -80,8 +78,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 759437797
+    ${output}=    Read Until    priority : 212867162
     Log    ${output}
     Should Contain X Times    ${output}    === Event dmToBase received =     1
-    Should Contain    ${output}    image_id : 1756253906
-    Should Contain    ${output}    priority : 759437797
+    Should Contain    ${output}    image_id : 679592901
+    Should Contain    ${output}    priority : 212867162

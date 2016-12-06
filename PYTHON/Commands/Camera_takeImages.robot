@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 928387623 69.7063 1 0 1 0 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 962081755 82.9428 0 0 1 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 928387623 69.7063 1 0 1 0 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 962081755 82.9428 0 0 1 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,9 +89,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    numImages : 928387623    1
-    Should Contain X Times    ${output}    expTime : 69.7063    1
-    Should Contain X Times    ${output}    shutter : 1    1
+    Should Contain X Times    ${output}    numImages : 962081755    1
+    Should Contain X Times    ${output}    expTime : 82.9428    1
+    Should Contain X Times    ${output}    shutter : 0    1
     Should Contain X Times    ${output}    science : 0    1
     Should Contain X Times    ${output}    guide : 1    1
     Should Contain X Times    ${output}    wfs : 0    1
@@ -106,9 +104,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    numImages = 928387623    1
-    Should Contain X Times    ${output}    expTime = 69.7063    1
-    Should Contain X Times    ${output}    shutter = 1    1
+    Should Contain X Times    ${output}    numImages = 962081755    1
+    Should Contain X Times    ${output}    expTime = 82.9428    1
+    Should Contain X Times    ${output}    shutter = 0    1
     Should Contain X Times    ${output}    science = 0    1
     Should Contain X Times    ${output}    guide = 1    1
     Should Contain X Times    ${output}    wfs = 0    1

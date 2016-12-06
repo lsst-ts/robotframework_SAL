@@ -19,8 +19,7 @@ Create Sender Session
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Logger Session
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -71,7 +69,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 709053954
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 92054231
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endRotateCarousel writing a message containing :    1

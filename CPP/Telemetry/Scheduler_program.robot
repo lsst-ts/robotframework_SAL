@@ -19,12 +19,10 @@ Create Publisher Session
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
@@ -33,12 +31,10 @@ Create Subscriber Session
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke

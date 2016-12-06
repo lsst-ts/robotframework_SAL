@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 88.2451 84.3003 63.6681 91.3565 86.1988 48.1231 84.8175 70.3848 10.3811 76.0788 61.0298 59.8703 38.583 23.7291 82.0749 53.3086 0.1717 21.2005
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 95.9466 87.6795 10.0268 73.2247 5.1219 41.6065 41.796 94.297 72.4898 34.8791 10.3906 78.8957 91.5318 79.6782 30.604 88.7631 74.3816 17.4172
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 88.2451 84.3003 63.6681 91.3565 86.1988 48.1231 84.8175 70.3848 10.3811 76.0788 61.0298 59.8703 38.583 23.7291 82.0749 53.3086 0.1717 21.2005
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 95.9466 87.6795 10.0268 73.2247 5.1219 41.6065 41.796 94.297 72.4898 34.8791 10.3906 78.8957 91.5318 79.6782 30.604 88.7631 74.3816 17.4172
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -92,7 +90,7 @@ Start Commander
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 88.2451    1
+    Should Contain X Times    ${output}    z_arr : 95.9466    1
     Should Contain    ${output}    === command wfpSimulate issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -108,7 +106,7 @@ Read Controller
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 88.2451    1
+    Should Contain X Times    ${output}    z_arr : 95.9466    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

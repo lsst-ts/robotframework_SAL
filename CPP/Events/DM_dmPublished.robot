@@ -18,8 +18,7 @@ Create Sender Session
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,8 +30,7 @@ Create Logger Session
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -70,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 839427833 1423198586 694545007
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 830311399 1739072649 1426036153
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dm::logevent_dmPublished writing a message containing :    1
@@ -80,9 +78,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 694545007
+    ${output}=    Read Until    priority : 1426036153
     Log    ${output}
     Should Contain X Times    ${output}    === Event dmPublished received =     1
-    Should Contain    ${output}    visit_identifier : 839427833
-    Should Contain    ${output}    alert_count : 1423198586
-    Should Contain    ${output}    priority : 694545007
+    Should Contain    ${output}    visit_identifier : 830311399
+    Should Contain    ${output}    alert_count : 1739072649
+    Should Contain    ${output}    priority : 1426036153

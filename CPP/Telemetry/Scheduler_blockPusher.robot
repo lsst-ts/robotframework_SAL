@@ -19,12 +19,10 @@ Create Publisher Session
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
@@ -33,12 +31,10 @@ Create Subscriber Session
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
@@ -74,8 +70,7 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Comment    TSS-911
-	Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 3    1
@@ -83,5 +78,5 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 5    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 6    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 7    1
-    Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 8    1
-    Comment    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}block : 9    1

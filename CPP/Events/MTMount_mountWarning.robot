@@ -18,8 +18,7 @@ Create Sender Session
     Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -31,8 +30,7 @@ Create Logger Session
     Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -70,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 53329876 test 622684882
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1662314174 test 502553520
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -80,9 +78,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 622684882
+    ${output}=    Read Until    priority : 502553520
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : 53329876
+    Should Contain    ${output}    id : 1662314174
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 622684882
+    Should Contain    ${output}    priority : 502553520

@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 80.107 56.1664 83.693 8.3311 2.3122 56.4769 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 44.4819 70.166 35.9252 84.0629 4.0906 25.8497 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 80.107 56.1664 83.693 8.3311 2.3122 56.4769 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 44.4819 70.166 35.9252 84.0629 4.0906 25.8497 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,13 +89,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 80.107    1
-    Should Contain X Times    ${output}    y : 56.1664    1
-    Should Contain X Times    ${output}    z : 83.693    1
-    Should Contain X Times    ${output}    u : 8.3311    1
-    Should Contain X Times    ${output}    v : 2.3122    1
-    Should Contain X Times    ${output}    w : 56.4769    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 44.4819    1
+    Should Contain X Times    ${output}    y : 70.166    1
+    Should Contain X Times    ${output}    z : 35.9252    1
+    Should Contain X Times    ${output}    u : 84.0629    1
+    Should Contain X Times    ${output}    v : 4.0906    1
+    Should Contain X Times    ${output}    w : 25.8497    1
+    Should Contain X Times    ${output}    sync : 0    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -106,13 +104,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 80.107    1
-    Should Contain X Times    ${output}    y = 56.1664    1
-    Should Contain X Times    ${output}    z = 83.693    1
-    Should Contain X Times    ${output}    u = 8.3311    1
-    Should Contain X Times    ${output}    v = 2.3122    1
-    Should Contain X Times    ${output}    w = 56.4769    1
-    Should Contain X Times    ${output}    sync = 1    1
+    Should Contain X Times    ${output}    x = 44.4819    1
+    Should Contain X Times    ${output}    y = 70.166    1
+    Should Contain X Times    ${output}    z = 35.9252    1
+    Should Contain X Times    ${output}    u = 84.0629    1
+    Should Contain X Times    ${output}    v = 4.0906    1
+    Should Contain X Times    ${output}    w = 25.8497    1
+    Should Contain X Times    ${output}    sync = 0    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

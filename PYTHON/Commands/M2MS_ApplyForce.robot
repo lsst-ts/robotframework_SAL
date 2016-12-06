@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 27.3702 69.5881 42.4746 70.014 44.4951 97.1073 98.6763 26.6507 45.8672 44.2942 49.3995 93.163 94.19 79.8347 16.8726 42.5221 89.1747 41.2244 62.0943 34.6671 58.5447 80.1318 72.8841 54.5731 34.5127 56.6193 34.1664 33.0775 74.7411 6.1264 49.6923 44.1665 92.868 16.6636 94.7935 55.6385 87.4388 17.8499 23.2161 8.3288 18.7461 75.089 34.0001 7.137 17.1887 12.5627 79.5243 75.9604 88.5498 3.4784 18.5321 27.1083 93.4283 15.3804 42.537 65.2547 93.2056 52.6324 96.2203 60.4321 13.9062 83.805 53.4526 21.0113 63.4272 99.7915 80.1931 67.929 78.1185 59.9785 99.8884 41.2627
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 44.4233 65.7571 95.7076 90.7197 47.1886 91.4341 54.0138 43.5449 42.7136 59.3571 90.9668 0.7506 35.0175 61.3967 33.5444 28.1563 69.329 60.3819 30.8484 21.0714 48.7022 32.8633 19.6579 15.8662 32.2899 41.4472 86.5897 75.0843 41.4116 52.932 27.8886 27.486 62.4066 28.2971 45.2855 91.0542 88.8703 73.9258 90.2423 98.0367 45.8164 15.3338 57.8468 64.9473 97.5011 2.8038 61.4479 73.0557 6.8107 21.3537 33.2827 78.6439 36.6091 96.1293 8.1491 39.041 55.4338 42.6429 87.1745 56.8682 2.609 28.6928 19.7648 53.0192 65.1091 9.4954 77.9042 95.2222 99.4939 26.542 94.5524 62.4906
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 27.3702 69.5881 42.4746 70.014 44.4951 97.1073 98.6763 26.6507 45.8672 44.2942 49.3995 93.163 94.19 79.8347 16.8726 42.5221 89.1747 41.2244 62.0943 34.6671 58.5447 80.1318 72.8841 54.5731 34.5127 56.6193 34.1664 33.0775 74.7411 6.1264 49.6923 44.1665 92.868 16.6636 94.7935 55.6385 87.4388 17.8499 23.2161 8.3288 18.7461 75.089 34.0001 7.137 17.1887 12.5627 79.5243 75.9604 88.5498 3.4784 18.5321 27.1083 93.4283 15.3804 42.537 65.2547 93.2056 52.6324 96.2203 60.4321 13.9062 83.805 53.4526 21.0113 63.4272 99.7915 80.1931 67.929 78.1185 59.9785 99.8884 41.2627
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 44.4233 65.7571 95.7076 90.7197 47.1886 91.4341 54.0138 43.5449 42.7136 59.3571 90.9668 0.7506 35.0175 61.3967 33.5444 28.1563 69.329 60.3819 30.8484 21.0714 48.7022 32.8633 19.6579 15.8662 32.2899 41.4472 86.5897 75.0843 41.4116 52.932 27.8886 27.486 62.4066 28.2971 45.2855 91.0542 88.8703 73.9258 90.2423 98.0367 45.8164 15.3338 57.8468 64.9473 97.5011 2.8038 61.4479 73.0557 6.8107 21.3537 33.2827 78.6439 36.6091 96.1293 8.1491 39.041 55.4338 42.6429 87.1745 56.8682 2.609 28.6928 19.7648 53.0192 65.1091 9.4954 77.9042 95.2222 99.4939 26.542 94.5524 62.4906
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,7 +89,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    forceSetPoint : 27.3702    1
+    Should Contain X Times    ${output}    forceSetPoint : 44.4233    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -100,7 +98,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    forceSetPoint(72) = [27.3702, 69.5881, 42.4746, 70.014, 44.4951, 97.1073, 98.6763, 26.6507, 45.8672, 44.2942, 49.3995, 93.163, 94.19, 79.8347, 16.8726, 42.5221, 89.1747, 41.2244, 62.0943, 34.6671, 58.5447, 80.1318, 72.8841, 54.5731, 34.5127, 56.6193, 34.1664, 33.0775, 74.7411, 6.1264, 49.6923, 44.1665, 92.868, 16.6636, 94.7935, 55.6385, 87.4388, 17.8499, 23.2161, 8.3288, 18.7461, 75.089, 34.0001, 7.137, 17.1887, 12.5627, 79.5243, 75.9604, 88.5498, 3.4784, 18.5321, 27.1083, 93.4283, 15.3804, 42.537, 65.2547, 93.2056, 52.6324, 96.2203, 60.4321, 13.9062, 83.805, 53.4526, 21.0113, 63.4272, 99.7915, 80.1931, 67.929, 78.1185, 59.9785, 99.8884, 41.2627]    1
+    Should Contain X Times    ${output}    forceSetPoint(72) = [44.4233, 65.7571, 95.7076, 90.7197, 47.1886, 91.4341, 54.0138, 43.5449, 42.7136, 59.3571, 90.9668, 0.7506, 35.0175, 61.3967, 33.5444, 28.1563, 69.329, 60.3819, 30.8484, 21.0714, 48.7022, 32.8633, 19.6579, 15.8662, 32.2899, 41.4472, 86.5897, 75.0843, 41.4116, 52.932, 27.8886, 27.486, 62.4066, 28.2971, 45.2855, 91.0542, 88.8703, 73.9258, 90.2423, 98.0367, 45.8164, 15.3338, 57.8468, 64.9473, 97.5011, 2.8038, 61.4479, 73.0557, 6.8107, 21.3537, 33.2827, 78.6439, 36.6091, 96.1293, 8.1491, 39.041, 55.4338, 42.6429, 87.1745, 56.8682, 2.609, 28.6928, 19.7648, 53.0192, 65.1091, 9.4954, 77.9042, 95.2222, 99.4939, 26.542, 94.5524, 62.4906]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForce] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

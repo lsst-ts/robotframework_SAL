@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 31.4839 78.8431 96.7518 89.9438 11.4741 43.966 76.2064 57.2078 25.4937 79.0454 61.3684 82.8841
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 59.9105 45.8658 47.2334 9.2976 88.714 28.672 65.032 96.8495 99.9881 55.0988 74.3139 6.7082
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 31.4839 78.8431 96.7518 89.9438 11.4741 43.966 76.2064 57.2078 25.4937 79.0454 61.3684 82.8841
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 59.9105 45.8658 47.2334 9.2976 88.714 28.672 65.032 96.8495 99.9881 55.0988 74.3139 6.7082
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,18 +89,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xmin : 31.4839    1
-    Should Contain X Times    ${output}    xmax : 78.8431    1
-    Should Contain X Times    ${output}    ymin : 96.7518    1
-    Should Contain X Times    ${output}    ymax : 89.9438    1
-    Should Contain X Times    ${output}    zmin : 11.4741    1
-    Should Contain X Times    ${output}    zmax : 43.966    1
-    Should Contain X Times    ${output}    umin : 76.2064    1
-    Should Contain X Times    ${output}    umax : 57.2078    1
-    Should Contain X Times    ${output}    vmin : 25.4937    1
-    Should Contain X Times    ${output}    vmax : 79.0454    1
-    Should Contain X Times    ${output}    wmin : 61.3684    1
-    Should Contain X Times    ${output}    wmax : 82.8841    1
+    Should Contain X Times    ${output}    xmin : 59.9105    1
+    Should Contain X Times    ${output}    xmax : 45.8658    1
+    Should Contain X Times    ${output}    ymin : 47.2334    1
+    Should Contain X Times    ${output}    ymax : 9.2976    1
+    Should Contain X Times    ${output}    zmin : 88.714    1
+    Should Contain X Times    ${output}    zmax : 28.672    1
+    Should Contain X Times    ${output}    umin : 65.032    1
+    Should Contain X Times    ${output}    umax : 96.8495    1
+    Should Contain X Times    ${output}    vmin : 99.9881    1
+    Should Contain X Times    ${output}    vmax : 55.0988    1
+    Should Contain X Times    ${output}    wmin : 74.3139    1
+    Should Contain X Times    ${output}    wmax : 6.7082    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -111,18 +109,18 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xmin = 31.4839    1
-    Should Contain X Times    ${output}    xmax = 78.8431    1
-    Should Contain X Times    ${output}    ymin = 96.7518    1
-    Should Contain X Times    ${output}    ymax = 89.9438    1
-    Should Contain X Times    ${output}    zmin = 11.4741    1
-    Should Contain X Times    ${output}    zmax = 43.966    1
-    Should Contain X Times    ${output}    umin = 76.2064    1
-    Should Contain X Times    ${output}    umax = 57.2078    1
-    Should Contain X Times    ${output}    vmin = 25.4937    1
-    Should Contain X Times    ${output}    vmax = 79.0454    1
-    Should Contain X Times    ${output}    wmin = 61.3684    1
-    Should Contain X Times    ${output}    wmax = 82.8841    1
+    Should Contain X Times    ${output}    xmin = 59.9105    1
+    Should Contain X Times    ${output}    xmax = 45.8658    1
+    Should Contain X Times    ${output}    ymin = 47.2334    1
+    Should Contain X Times    ${output}    ymax = 9.2976    1
+    Should Contain X Times    ${output}    zmin = 88.714    1
+    Should Contain X Times    ${output}    zmax = 28.672    1
+    Should Contain X Times    ${output}    umin = 65.032    1
+    Should Contain X Times    ${output}    umax = 96.8495    1
+    Should Contain X Times    ${output}    vmin = 99.9881    1
+    Should Contain X Times    ${output}    vmax = 55.0988    1
+    Should Contain X Times    ${output}    wmin = 74.3139    1
+    Should Contain X Times    ${output}    wmax = 6.7082    1
     Should Contain X Times    ${output}    === [ackCommand_configureAcceleration] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

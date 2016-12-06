@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 10219 8264 25998 10057 27307 19217 32116 28676 2738 25611 23791 18741 25536 27352 9550 11100 25146 6063 30844 2549 28285 8245 10290 15450 31551 17266 32064 29244 2140 12701 11287 5219 6.0868 45.0199 16.8018 43.1191 74.8882 46.3279 66.0673 35.8804 32.9315 99.3327 30.666 29.6475 80.1198 58.3478 86.8047 97.3689 93.6628 84.1036 46.1348 45.6053 75.6994 70.0591 49.9097 67.0566 88.6883 32.2383 25.2325 92.4193 7.792 19.83 26.8312 56.5395
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21858 28265 10862 9688 11848 16955 18021 487 28028 22512 4238 20821 21022 19051 25781 19505 16818 8278 12106 16448 19409 13350 14557 17065 5614 18214 15652 26542 28697 10739 15369 2702 78.8129 89.4026 43.7827 31.3387 58.1891 34.8023 18.2675 30.2676 71.107 73.5694 40.8238 76.228 79.6676 23.1316 79.5105 7.561 79.9219 72.9459 11.1812 5.6358 22.3735 44.2011 78.7325 62.3119 7.839 96.6915 98.0761 85.731 22.5041 2.2817 57.1286 59.8993
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 10219 8264 25998 10057 27307 19217 32116 28676 2738 25611 23791 18741 25536 27352 9550 11100 25146 6063 30844 2549 28285 8245 10290 15450 31551 17266 32064 29244 2140 12701 11287 5219 6.0868 45.0199 16.8018 43.1191 74.8882 46.3279 66.0673 35.8804 32.9315 99.3327 30.666 29.6475 80.1198 58.3478 86.8047 97.3689 93.6628 84.1036 46.1348 45.6053 75.6994 70.0591 49.9097 67.0566 88.6883 32.2383 25.2325 92.4193 7.792 19.83 26.8312 56.5395
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21858 28265 10862 9688 11848 16955 18021 487 28028 22512 4238 20821 21022 19051 25781 19505 16818 8278 12106 16448 19409 13350 14557 17065 5614 18214 15652 26542 28697 10739 15369 2702 78.8129 89.4026 43.7827 31.3387 58.1891 34.8023 18.2675 30.2676 71.107 73.5694 40.8238 76.228 79.6676 23.1316 79.5105 7.561 79.9219 72.9459 11.1812 5.6358 22.3735 44.2011 78.7325 62.3119 7.839 96.6915 98.0761 85.731 22.5041 2.2817 57.1286 59.8993
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,8 +89,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    bendingModeNbr : 10219    1
-    Should Contain X Times    ${output}    bendingModeValue : 6.0868    1
+    Should Contain X Times    ${output}    bendingModeNbr : 21858    1
+    Should Contain X Times    ${output}    bendingModeValue : 78.8129    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -101,8 +99,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    bendingModeNbr(32) = [10219, 8264, 25998, 10057, 27307, 19217, 32116, 28676, 2738, 25611, 23791, 18741, 25536, 27352, 9550, 11100, 25146, 6063, 30844, 2549, 28285, 8245, 10290, 15450, 31551, 17266, 32064, 29244, 2140, 12701, 11287, 5219]    1
-    Should Contain X Times    ${output}    bendingModeValue(32) = [6.0868, 45.0199, 16.8018, 43.1191, 74.8882, 46.3279, 66.0673, 35.8804, 32.9315, 99.3327, 30.666, 29.6475, 80.1198, 58.3478, 86.8047, 97.3689, 93.6628, 84.1036, 46.1348, 45.6053, 75.6994, 70.0591, 49.9097, 67.0566, 88.6883, 32.2383, 25.2325, 92.4193, 7.792, 19.83, 26.8312, 56.5395]    1
+    Should Contain X Times    ${output}    bendingModeNbr(32) = [21858, 28265, 10862, 9688, 11848, 16955, 18021, 487, 28028, 22512, 4238, 20821, 21022, 19051, 25781, 19505, 16818, 8278, 12106, 16448, 19409, 13350, 14557, 17065, 5614, 18214, 15652, 26542, 28697, 10739, 15369, 2702]    1
+    Should Contain X Times    ${output}    bendingModeValue(32) = [78.8129, 89.4026, 43.7827, 31.3387, 58.1891, 34.8023, 18.2675, 30.2676, 71.107, 73.5694, 40.8238, 76.228, 79.6676, 23.1316, 79.5105, 7.561, 79.9219, 72.9459, 11.1812, 5.6358, 22.3735, 44.2011, 78.7325, 62.3119, 7.839, 96.6915, 98.0761, 85.731, 22.5041, 2.2817, 57.1286, 59.8993]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

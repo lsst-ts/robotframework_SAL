@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.4151 69.6078 43.5375 52.602 55.0267 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.322 13.1829 71.5606 61.5868 78.0837 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 99.4151 69.6078 43.5375 52.602 55.0267 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.322 13.1829 71.5606 61.5868 78.0837 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,11 +89,11 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 99.4151    1
-    Should Contain X Times    ${output}    az_velocity : 69.6078    1
-    Should Contain X Times    ${output}    el_angle : 43.5375    1
-    Should Contain X Times    ${output}    el_velocity : 52.602    1
-    Should Contain X Times    ${output}    time : 55.0267    1
+    Should Contain X Times    ${output}    az_angle : 82.322    1
+    Should Contain X Times    ${output}    az_velocity : 13.1829    1
+    Should Contain X Times    ${output}    el_angle : 71.5606    1
+    Should Contain X Times    ${output}    el_velocity : 61.5868    1
+    Should Contain X Times    ${output}    time : 78.0837    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -111,11 +109,11 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 99.4151    1
-    Should Contain X Times    ${output}    az_velocity : 69.6078    1
-    Should Contain X Times    ${output}    el_angle : 43.5375    1
-    Should Contain X Times    ${output}    el_velocity : 52.602    1
-    Should Contain X Times    ${output}    time : 55.0267    1
+    Should Contain X Times    ${output}    az_angle : 82.322    1
+    Should Contain X Times    ${output}    az_velocity : 13.1829    1
+    Should Contain X Times    ${output}    el_angle : 71.5606    1
+    Should Contain X Times    ${output}    el_velocity : 61.5868    1
+    Should Contain X Times    ${output}    time : 78.0837    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

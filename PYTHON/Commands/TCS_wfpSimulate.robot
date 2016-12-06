@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 0.8129 98.5314 34.6004 0.6403 69.3962 94.7296 54.0092 18.7586 79.1957 37.6651 48.0039 92.9275 18.5457 0.4599 90.6503 6.6873 91.0018 68.9996
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 76.313 34.3344 76.149 7.4999 17.1132 6.6543 48.9683 6.8454 29.0237 29.5304 35.2266 89.7715 35.2463 38.2417 45.0645 51.1022 19.3819 66.4264
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 0.8129 98.5314 34.6004 0.6403 69.3962 94.7296 54.0092 18.7586 79.1957 37.6651 48.0039 92.9275 18.5457 0.4599 90.6503 6.6873 91.0018 68.9996
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 76.313 34.3344 76.149 7.4999 17.1132 6.6543 48.9683 6.8454 29.0237 29.5304 35.2266 89.7715 35.2463 38.2417 45.0645 51.1022 19.3819 66.4264
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -92,7 +90,7 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 0.8129    1
+    Should Contain X Times    ${output}    z_arr : 76.313    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -102,7 +100,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    uid = test    1
-    Should Contain X Times    ${output}    z_arr(18) = [0.8129, 98.5314, 34.6004, 0.6403, 69.3962, 94.7296, 54.0092, 18.7586, 79.1957, 37.6651, 48.0039, 92.9275, 18.5457, 0.4599, 90.6503, 6.6873, 91.0018, 68.9996]    1
+    Should Contain X Times    ${output}    z_arr(18) = [76.313, 34.3344, 76.149, 7.4999, 17.1132, 6.6543, 48.9683, 6.8454, 29.0237, 29.5304, 35.2266, 89.7715, 35.2463, 38.2417, 45.0645, 51.1022, 19.3819, 66.4264]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

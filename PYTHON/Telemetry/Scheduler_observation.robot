@@ -19,11 +19,10 @@ Create Publisher Session
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}/python
+    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
@@ -32,11 +31,10 @@ Create Subscriber Session
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}/python
+    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
@@ -80,6 +78,8 @@ Read Subscriber
     Should Contain X Times    ${list}    targetId = 1    10
     Should Contain X Times    ${list}    fieldId = 1    10
     Should Contain X Times    ${list}    filter = LSST    10
+    Should Contain X Times    ${list}    num_proposals = 1    10
+    Should Contain X Times    ${list}    proposal_Ids(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
     Should Contain X Times    ${list}    ra = 1.0    10
     Should Contain X Times    ${list}    dec = 1.0    10
     Should Contain X Times    ${list}    angle = 1.0    10

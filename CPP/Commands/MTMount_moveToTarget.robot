@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 12.1455 15.7042 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8726 23.2722 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 12.1455 15.7042 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8726 23.2722 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,8 +89,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 12.1455    1
-    Should Contain X Times    ${output}    el_angle : 15.7042    1
+    Should Contain X Times    ${output}    az_angle : 86.8726    1
+    Should Contain X Times    ${output}    el_angle : 23.2722    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command moveToTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -108,8 +106,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 12.1455    1
-    Should Contain X Times    ${output}    el_angle : 15.7042    1
+    Should Contain X Times    ${output}    az_angle : 86.8726    1
+    Should Contain X Times    ${output}    el_angle : 23.2722    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

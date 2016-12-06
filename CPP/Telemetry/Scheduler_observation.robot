@@ -19,12 +19,10 @@ Create Publisher Session
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
@@ -33,12 +31,10 @@ Create Subscriber Session
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
@@ -82,6 +78,16 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetId : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}fieldId : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : LSST    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_proposals : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposal_Ids : 9    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dec : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 1    9

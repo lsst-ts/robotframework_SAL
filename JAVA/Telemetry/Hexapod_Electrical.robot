@@ -9,8 +9,6 @@ Resource    ../../Global_Vars.robot
 ${subSystem}    hexapod
 ${component}    Electrical
 ${timeout}    30s
-#${subOut}    ${subSystem}_${component}_sub.out
-#${pubOut}    ${subSystem}_${component}_pub.out
 
 *** Test Cases ***
 Create Publisher Session
@@ -20,12 +18,10 @@ Create Publisher Session
     Open Connection    host=${Host}    alias=Publisher    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Create Subscriber Session
     [Documentation]    Connect to the SAL host.
@@ -34,12 +30,10 @@ Create Subscriber Session
     Open Connection    host=${Host}    alias=Subscriber    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_${component}
 
 Verify Component Publisher and Subscriber
     [Tags]    smoke
@@ -80,7 +74,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Comment    TSS-908
-	Comment    Should Contain X Times    ${output}    [getSample ${component} ] message received :    6
-    Comment    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
-    Comment    Should Contain X Times    ${output}    revCode \ :    6
+    Should Contain X Times    ${output}    [getSample ${component} ] message received :    6
+    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
+    Should Contain X Times    ${output}    revCode \ :    6

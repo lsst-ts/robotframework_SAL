@@ -19,8 +19,7 @@ Create Commander Session
     Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -32,8 +31,7 @@ Create Controller Session
     Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
     Comment    Login.
     Log    ${ContInt}
-    Run Keyword If    "${ContInt}"=="false"    Login    ${UserName}    ${PassWord}
-    Run Keyword If    "${ContInt}"=="true"    Login With Public Key    ${UserName}    keyfile=${PassWord}
+    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
     Directory Should Exist    ${SALWorkDir}/${subSystem}
@@ -60,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.835 50.5357 10.4057 32.8644 63.973 47.9499 75.2608 6.6421 81.357 72.8633 6.0303 41.4253 58.2686 8.5666 1.7391 20.0808 81.9064 97.4569 40.0759 46.3288 73.9771 41.416 91.7865 61.487 68.3777 12.9008 49.574 59.3144 73.6189 96.4447 46.1392 95.7747 80.7018 64.8965 19.3008 96.656 38.4394 81.8162 44.7927 49.2904 34.7994 43.488 42.5697 33.8672 22.8299 85.2689 67.7859 62.3246 4.3683 33.2496 51.6903 36.7175 53.8409 50.2625 46.0315 78.1836 13.0879 19.1856 52.4852 39.8522 84.6127 65.4387 40.9661 22.8269 65.5783 5.7512 16.2251 62.583 34.9914 21.6134 52.5357 8.8133
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.8265 87.9246 6.8206 68.7562 90.1161 84.4721 81.7707 96.8725 16.0942 35.1383 7.6639 31.9037 56.6472 72.5841 19.4624 66.1886 83.9186 0.9394 13.3809 98.0658 36.6542 29.4263 14.7948 26.9934 44.6157 40.549 47.359 38.9443 8.0227 99.0063 33.0656 15.1185 90.9899 29.1528 23.1124 48.6961 89.6861 53.092 78.266 9.0534 9.2506 68.5073 19.6515 25.1309 21.9067 67.455 12.3348 40.0315 27.5611 72.403 24.1495 97.1306 97.3817 6.7584 54.9069 52.2105 96.9701 9.4683 76.0933 97.598 77.9875 88.5572 60.4553 68.4743 66.4786 88.868 40.6929 72.1435 87.0181 50.2202 26.7201 25.9666
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -83,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.835 50.5357 10.4057 32.8644 63.973 47.9499 75.2608 6.6421 81.357 72.8633 6.0303 41.4253 58.2686 8.5666 1.7391 20.0808 81.9064 97.4569 40.0759 46.3288 73.9771 41.416 91.7865 61.487 68.3777 12.9008 49.574 59.3144 73.6189 96.4447 46.1392 95.7747 80.7018 64.8965 19.3008 96.656 38.4394 81.8162 44.7927 49.2904 34.7994 43.488 42.5697 33.8672 22.8299 85.2689 67.7859 62.3246 4.3683 33.2496 51.6903 36.7175 53.8409 50.2625 46.0315 78.1836 13.0879 19.1856 52.4852 39.8522 84.6127 65.4387 40.9661 22.8269 65.5783 5.7512 16.2251 62.583 34.9914 21.6134 52.5357 8.8133
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.8265 87.9246 6.8206 68.7562 90.1161 84.4721 81.7707 96.8725 16.0942 35.1383 7.6639 31.9037 56.6472 72.5841 19.4624 66.1886 83.9186 0.9394 13.3809 98.0658 36.6542 29.4263 14.7948 26.9934 44.6157 40.549 47.359 38.9443 8.0227 99.0063 33.0656 15.1185 90.9899 29.1528 23.1124 48.6961 89.6861 53.092 78.266 9.0534 9.2506 68.5073 19.6515 25.1309 21.9067 67.455 12.3348 40.0315 27.5611 72.403 24.1495 97.1306 97.3817 6.7584 54.9069 52.2105 96.9701 9.4683 76.0933 97.598 77.9875 88.5572 60.4553 68.4743 66.4786 88.868 40.6929 72.1435 87.0181 50.2202 26.7201 25.9666
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -91,7 +89,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    openPercent : 85.835    1
+    Should Contain X Times    ${output}    openPercent : 75.8265    1
     Should Contain    ${output}    === command Louvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -106,7 +104,7 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    openPercent : 85.835    1
+    Should Contain X Times    ${output}    openPercent : 75.8265    1
     Should Contain X Times    ${output}    === [ackCommand_Louvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
