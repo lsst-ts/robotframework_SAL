@@ -153,6 +153,8 @@ Salgen M2MS Labview
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Directory Should Exist    ${SALWorkDir}/${subSystem}/labview
-	@{files}=    List Directory    ${SALWorkDir}/${subSystem}/labview    pattern=${subSystem}*
+	@{files}=    List Directory    ${SALWorkDir}/${subSystem}/labview
 	Log Many    @{files}
 	File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
+    File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
+    File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}_Monitor
