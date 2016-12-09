@@ -39,7 +39,26 @@ Salgen DM Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*dm*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_dm.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_alert_dq.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_alert_psf.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_alert_summary.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_available_replicators_distributors.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_efd_slave_replication_state.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_international_network_status.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_raft_images_sent_current.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_successfully_archived.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_summit_to_base_network_status.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_logevent_dmPublished.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_logevent_dmToArchive.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/dm_logevent_dmToBase.idl
 
 Salgen DM HTML
     [Documentation]    Create web form interfaces.
@@ -145,12 +164,12 @@ Verify DM C++ State Command Interfaces
 Verify DM C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmPublished_send
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmPublished_log
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmToArchive_send
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmToArchive_log
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmToBase_send
-    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_logevent_dmToBase_log
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmPublished_send
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmPublished_log
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmToArchive_send
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmToArchive_log
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmToBase_send
+    File Should Exist    ${SALWorkDir}/dm/cpp/src/sacpp_dm_dmToBase_log
 
 Salgen DM Java
     [Documentation]    Generate Java wrapper.
@@ -247,12 +266,12 @@ Verify DM Python Event Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/dm/python    pattern=*dm*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmPublished_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmPublished_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmToArchive_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmToArchive_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmToBase_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_logevent_dmToBase_EventLogger.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmPublished_Event.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmPublished_EventLogger.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToArchive_Event.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToArchive_EventLogger.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToBase_Event.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToBase_EventLogger.py
 
 Salgen DM LabVIEW
     [Documentation]    Generate dm low-level LabView interfaces.

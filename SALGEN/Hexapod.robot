@@ -40,7 +40,35 @@ Salgen Hexapod Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*hexapod*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_hexapod.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_Metrology.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_LimitSensors.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_Electrical.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_Application.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_Actuators.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_TC.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_configureAcceleration.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_configureLimits.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_configureLut.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_move.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_configureVelocity.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_offset.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_pivot.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_command_test.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_error.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_interlock.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_limit.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_slewOK.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_tempError.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_trackLost.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/hexapod_logevent_tracking.idl
 
 Salgen Hexapod HTML
     [Documentation]    Create web form interfaces.
@@ -135,40 +163,40 @@ Verify Hexapod C++ State Command Interfaces
 Verify Hexapod C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureAcceleration_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureAcceleration_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureLimits_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureLimits_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureLut_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureLut_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_move_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_move_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureVelocity_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_configureVelocity_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_offset_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_offset_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_pivot_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_pivot_controller
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_test_commander
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_command_test_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureAcceleration_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureAcceleration_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureLimits_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureLimits_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureLut_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureLut_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_move_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_move_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureVelocity_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_configureVelocity_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_offset_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_offset_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_pivot_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_pivot_controller
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_test_commander
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_test_controller
 
 Verify Hexapod C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_error_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_error_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_interlock_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_interlock_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_limit_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_limit_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_slewOK_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_slewOK_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_tempError_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_tempError_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_trackLost_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_trackLost_log
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_tracking_send
-    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_logevent_tracking_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_error_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_error_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_interlock_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_interlock_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_limit_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_limit_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_slewOK_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_slewOK_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_tempError_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_tempError_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_trackLost_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_trackLost_log
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_tracking_send
+    File Should Exist    ${SALWorkDir}/hexapod/cpp/src/sacpp_hexapod_tracking_log
 
 Salgen Hexapod Java
     [Documentation]    Generate Java wrapper.
@@ -259,42 +287,42 @@ Verify Hexapod Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/hexapod/python    pattern=*hexapod*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureAcceleration_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureAcceleration_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureLimits_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureLimits_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureLut_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureLut_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_move_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_move_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureVelocity_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_configureVelocity_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_offset_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_offset_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_pivot_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_pivot_Controller.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_test_Commander.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_command_test_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureAcceleration_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureAcceleration_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureLimits_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureLimits_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureLut_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureLut_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_move_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_move_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureVelocity_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_configureVelocity_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_offset_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_offset_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_pivot_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_pivot_Controller.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_test_Commander.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_test_Controller.py
 
 Verify Hexapod Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/hexapod/python    pattern=*hexapod*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_error_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_error_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_interlock_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_interlock_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_limit_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_limit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_slewOK_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_slewOK_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_tempError_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_tempError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_trackLost_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_trackLost_EventLogger.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_tracking_Event.py
-    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_logevent_tracking_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_error_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_error_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_interlock_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_interlock_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_limit_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_limit_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_slewOK_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_slewOK_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_tempError_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_tempError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_trackLost_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_trackLost_EventLogger.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_tracking_Event.py
+    File Should Exist    ${SALWorkDir}/hexapod/python/hexapod_tracking_EventLogger.py
 
 Salgen Hexapod LabVIEW
     [Documentation]    Generate hexapod low-level LabView interfaces.

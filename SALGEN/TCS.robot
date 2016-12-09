@@ -40,7 +40,32 @@ Salgen TCS Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*tcs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_tcs.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_PointingModel.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_AOCS.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_TimeKeeper.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_Site.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_Target.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_PointingControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_TrackRefSys.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_ZEMAX.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_PointingLog.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_DawdleFilter.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_OpticsVt.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_WEP.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_TrackingTarget.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_kernel_FK5Target.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_wfpCalculate.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_command_wfpSimulate.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_logevent_wfpDataReady.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/tcs_logevent_zemaxError.idl
 
 Salgen TCS HTML
     [Documentation]    Create web form interfaces.
@@ -167,18 +192,18 @@ Verify TCS C++ State Command Interfaces
 Verify TCS C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_command_wfpCalculate_commander
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_command_wfpCalculate_controller
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_command_wfpSimulate_commander
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_command_wfpSimulate_controller
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpCalculate_commander
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpCalculate_controller
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpSimulate_commander
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpSimulate_controller
 
 Verify TCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_logevent_wfpDataReady_send
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_logevent_wfpDataReady_log
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_logevent_zemaxError_send
-    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_logevent_zemaxError_log
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpDataReady_send
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_wfpDataReady_log
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_zemaxError_send
+    File Should Exist    ${SALWorkDir}/tcs/cpp/src/sacpp_tcs_zemaxError_log
 
 Salgen TCS Java
     [Documentation]    Generate Java wrapper.
@@ -285,20 +310,20 @@ Verify TCS Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/tcs/python    pattern=*tcs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_command_wfpCalculate_Commander.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_command_wfpCalculate_Controller.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_command_wfpSimulate_Commander.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_command_wfpSimulate_Controller.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpCalculate_Commander.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpCalculate_Controller.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpSimulate_Commander.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpSimulate_Controller.py
 
 Verify TCS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/tcs/python    pattern=*tcs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_logevent_wfpDataReady_Event.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_logevent_wfpDataReady_EventLogger.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_logevent_zemaxError_Event.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_logevent_zemaxError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpDataReady_Event.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpDataReady_EventLogger.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_zemaxError_Event.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_zemaxError_EventLogger.py
 
 Salgen TCS LabVIEW
     [Documentation]    Generate tcs low-level LabView interfaces.

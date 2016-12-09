@@ -39,7 +39,25 @@ Salgen OCS Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*ocs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_ocs.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_SequencerHeartbeat.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsEntityStartup.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsEntityShutdown.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsCommandIssued.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsCommandStatus.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsCurrentScript.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsNextScript.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsScriptStart.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsScriptEnd.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsScriptError.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsScriptEntititesInUse.idl
 
 Salgen OCS HTML
     [Documentation]    Create web form interfaces.
@@ -113,26 +131,26 @@ Verify OCS C++ State Command Interfaces
 Verify OCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsEntityStartup_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsEntityStartup_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsEntityShutdown_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsEntityShutdown_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCommandIssued_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCommandIssued_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCommandStatus_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCommandStatus_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCurrentScript_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsCurrentScript_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsNextScript_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsNextScript_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptStart_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptStart_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptEnd_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptEnd_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptError_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptError_log
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptEntititesInUse_send
-    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_logevent_ocsScriptEntititesInUse_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityStartup_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityStartup_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityShutdown_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityShutdown_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCommandIssued_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCommandIssued_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCommandStatus_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCommandStatus_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCurrentScript_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsCurrentScript_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsNextScript_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsNextScript_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptStart_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptStart_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptEnd_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptEnd_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptError_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptError_log
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptEntititesInUse_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsScriptEntititesInUse_log
 
 Salgen OCS Java
     [Documentation]    Generate Java wrapper.
@@ -213,26 +231,26 @@ Verify OCS Python Event Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/ocs/python    pattern=*ocs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsEntityStartup_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsEntityStartup_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsEntityShutdown_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsEntityShutdown_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCommandIssued_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCommandIssued_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCommandStatus_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCommandStatus_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCurrentScript_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsCurrentScript_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsNextScript_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsNextScript_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptStart_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptStart_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptEnd_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptEnd_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptError_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptEntititesInUse_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_logevent_ocsScriptEntititesInUse_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityStartup_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityStartup_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityShutdown_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityShutdown_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandIssued_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandIssued_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandStatus_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandStatus_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCurrentScript_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCurrentScript_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsNextScript_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsNextScript_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptStart_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptStart_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEnd_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEnd_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptError_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEntititesInUse_Event.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEntititesInUse_EventLogger.py
 
 Salgen OCS LabVIEW
     [Documentation]    Generate ocs low-level LabView interfaces.

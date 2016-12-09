@@ -40,7 +40,32 @@ Salgen M2MS Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*m2ms*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_m2ms.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_MirrorPositionMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialForcesMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentForcesMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentStrainMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_ZenithAngleMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialActuatorAbsolutePositionSteps.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentActuatorAbsolutePositionSteps.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_ApplyBendingMode.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_ApplyForce.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_SetCorrectionMode.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_PositionMirror.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_MoveAxialActuator.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_logevent_M2SummaryState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_logevent_M2DetailedState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_logevent_M2FaultState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_logevent_M2AssemblyInPosition.idl
 
 Salgen M2MS HTML
     [Documentation]    Create web form interfaces.
@@ -147,28 +172,28 @@ Verify M2MS C++ State Command Interfaces
 Verify M2MS C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_ApplyBendingMode_commander
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_ApplyBendingMode_controller
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_ApplyForce_commander
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_ApplyForce_controller
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_SetCorrectionMode_commander
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_SetCorrectionMode_controller
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_PositionMirror_commander
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_PositionMirror_controller
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_MoveAxialActuator_commander
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_command_MoveAxialActuator_controller
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_ApplyBendingMode_commander
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_ApplyBendingMode_controller
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_ApplyForce_commander
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_ApplyForce_controller
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_SetCorrectionMode_commander
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_SetCorrectionMode_controller
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_PositionMirror_commander
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_PositionMirror_controller
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_MoveAxialActuator_commander
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_MoveAxialActuator_controller
 
 Verify M2MS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2SummaryState_send
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2SummaryState_log
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2DetailedState_send
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2DetailedState_log
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2FaultState_send
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2FaultState_log
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2AssemblyInPosition_send
-    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_logevent_M2AssemblyInPosition_log
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2SummaryState_send
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2SummaryState_log
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2DetailedState_send
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2DetailedState_log
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2FaultState_send
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2FaultState_log
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2AssemblyInPosition_send
+    File Should Exist    ${SALWorkDir}/m2ms/cpp/src/sacpp_m2ms_M2AssemblyInPosition_log
 
 Salgen M2MS Java
     [Documentation]    Generate Java wrapper.
@@ -265,30 +290,30 @@ Verify M2MS Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m2ms/python    pattern=*m2ms*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_ApplyBendingMode_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_ApplyBendingMode_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_ApplyForce_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_ApplyForce_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_SetCorrectionMode_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_SetCorrectionMode_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_PositionMirror_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_PositionMirror_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_MoveAxialActuator_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_command_MoveAxialActuator_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyBendingMode_Commander.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyBendingMode_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyForce_Commander.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyForce_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SetCorrectionMode_Commander.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SetCorrectionMode_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PositionMirror_Commander.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PositionMirror_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_MoveAxialActuator_Commander.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_MoveAxialActuator_Controller.py
 
 Verify M2MS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m2ms/python    pattern=*m2ms*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2SummaryState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2SummaryState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2DetailedState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2DetailedState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2FaultState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2FaultState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2AssemblyInPosition_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_logevent_M2AssemblyInPosition_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2SummaryState_Event.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2SummaryState_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2DetailedState_Event.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2DetailedState_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2FaultState_Event.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2FaultState_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2AssemblyInPosition_Event.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2AssemblyInPosition_EventLogger.py
 
 Salgen M2MS LabVIEW
     [Documentation]    Generate m2ms low-level LabView interfaces.

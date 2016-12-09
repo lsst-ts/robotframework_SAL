@@ -38,7 +38,42 @@ Salgen Scheduler Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*scheduler*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_scheduler.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_timeHandler.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_cloud.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_seeing.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_filterSwap.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_schedulerConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_driverConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_field.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_obsSiteConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_telescopeConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_rotatorConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_domeConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_cameraConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_slewConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_opticsLoopCorrConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_parkConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_areaDistPropConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_blockPusher.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_observatoryState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_target.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_observation.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_interestedProposal.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_parameters.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_Application.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_program.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_progress.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_rankingData.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_econstraints.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_iconstraints.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_command_stop.idl
 
 Salgen Scheduler HTML
     [Documentation]    Create web form interfaces.

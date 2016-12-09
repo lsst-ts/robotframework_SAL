@@ -40,7 +40,30 @@ Salgen Rotator Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*rotator*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_rotator.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_LimitSensors.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_Position.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_Electrical.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_TC.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_configureAcceleration.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_configureVelocity.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_move.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_track.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_command_test.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_error.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_interlock.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_limit.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_moveOK.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_tempError.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_trackLost.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/rotator_logevent_tracking.idl
 
 Salgen Rotator HTML
     [Documentation]    Create web form interfaces.
@@ -127,34 +150,34 @@ Verify Rotator C++ State Command Interfaces
 Verify Rotator C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_configureAcceleration_commander
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_configureAcceleration_controller
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_configureVelocity_commander
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_configureVelocity_controller
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_move_commander
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_move_controller
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_track_commander
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_track_controller
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_test_commander
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_command_test_controller
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_configureAcceleration_commander
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_configureAcceleration_controller
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_configureVelocity_commander
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_configureVelocity_controller
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_move_commander
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_move_controller
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_track_commander
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_track_controller
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_test_commander
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_test_controller
 
 Verify Rotator C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_error_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_error_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_interlock_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_interlock_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_limit_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_limit_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_moveOK_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_moveOK_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_tempError_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_tempError_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_trackLost_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_trackLost_log
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_tracking_send
-    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_logevent_tracking_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_error_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_error_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_interlock_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_interlock_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_limit_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_limit_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_moveOK_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_moveOK_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_tempError_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_tempError_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_trackLost_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_trackLost_log
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_tracking_send
+    File Should Exist    ${SALWorkDir}/rotator/cpp/src/sacpp_rotator_tracking_log
 
 Salgen Rotator Java
     [Documentation]    Generate Java wrapper.
@@ -241,36 +264,36 @@ Verify Rotator Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/rotator/python    pattern=*rotator*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_configureAcceleration_Commander.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_configureAcceleration_Controller.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_configureVelocity_Commander.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_configureVelocity_Controller.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_move_Commander.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_move_Controller.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_track_Commander.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_track_Controller.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_test_Commander.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_command_test_Controller.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_configureAcceleration_Commander.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_configureAcceleration_Controller.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_configureVelocity_Commander.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_configureVelocity_Controller.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_move_Commander.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_move_Controller.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_track_Commander.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_track_Controller.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_test_Commander.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_test_Controller.py
 
 Verify Rotator Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/rotator/python    pattern=*rotator*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_error_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_error_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_interlock_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_interlock_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_limit_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_limit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_moveOK_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_moveOK_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_tempError_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_tempError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_trackLost_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_trackLost_EventLogger.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_tracking_Event.py
-    File Should Exist    ${SALWorkDir}/rotator/python/rotator_logevent_tracking_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_error_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_error_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_interlock_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_interlock_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_limit_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_limit_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_moveOK_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_moveOK_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_tempError_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_tempError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_trackLost_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_trackLost_EventLogger.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_tracking_Event.py
+    File Should Exist    ${SALWorkDir}/rotator/python/rotator_tracking_EventLogger.py
 
 Salgen Rotator LabVIEW
     [Documentation]    Generate rotator low-level LabView interfaces.
