@@ -101,8 +101,8 @@ function salgenCPP {
 	for topic in "${telemetryArray[@]}"; do
 		echo "    Should Contain    \${output}    Generating SAL CPP code for ${subSystem}_${topic}.idl" >> $testSuite
 	done
-    echo "    Should Contain X Times    \${output}    cpp : Done Publisher    $((${#telemetryArray[@]} + 1))" >> $testSuite
-    echo "    Should Contain X Times    \${output}    cpp : Done Subscriber    $((${#telemetryArray[@]} + 1))" >> $testSuite
+    echo "    Should Contain X Times    \${output}    cpp : Done Publisher    ${#telemetryArray[@]}" >> $testSuite
+    echo "    Should Contain X Times    \${output}    cpp : Done Subscriber    ${#telemetryArray[@]}" >> $testSuite
     echo "    Should Contain X Times    \${output}    cpp : Done Commander    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    cpp : Done Event/Logger    1" >> $testSuite
     echo "" >> $testSuite
@@ -262,8 +262,8 @@ function verifyPythonCommandInterfaces() {
     echo "    @{files}=    List Directory    \${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*" >> $testSuite
     echo "    Log Many    @{files}" >> $testSuite
     for topic in "${commandArray[@]}"; do
-        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_${topic}_Commander.py" >> $testSuite
-        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_${topic}_Controller.py" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_${topic}.py" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_${topic}.py" >> $testSuite
     done
     echo "" >> $testSuite
 }
@@ -275,8 +275,8 @@ function verifyPythonEventInterfaces() {
     echo "    @{files}=    List Directory    \${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*" >> $testSuite
     echo "    Log Many    @{files}" >> $testSuite
     for topic in "${eventArray[@]}"; do
-        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_${topic}_Event.py" >> $testSuite
-        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_${topic}_EventLogger.py" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${topic}.py" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${topic}.py" >> $testSuite
     done
     echo "" >> $testSuite
 }
