@@ -5,6 +5,31 @@
 #  email:  rbovill@lsst.org
 
 #  FUNCTIONS
+function getTelemetryTopics() {
+	subSystem=$1
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
+    echo $output
+}
+
+function getCommandTopics() {
+	subSystem=$1
+    output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_//" )
+    echo $output
+}
+
+function getEventTopics() {
+	subSystem=$1
+    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_//" )
+    echo $output
+}
+
+function clearTestSuite() {
+    if [ -f $testSuite ]; then
+        echo $testSuite exists.  Deleting it before creating a new one.
+        rm -rf $testSuite
+    fi
+}
+
 function createSession() {
 	SessionType=$1
     echo "Create $SessionType Session" >> $testSuite
@@ -17,7 +42,33 @@ function createSession() {
     echo "    Login With Public Key    \${UserName}    keyfile=\${KeyFile}    password=\${PassWord}" >> $testSuite
     echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
     echo "    Directory Should Exist    \${SALHome}" >> $testSuite
-    echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}" >> $testSuite
     echo "" >> $testSuite
 }
 
+function subsystemArray() {
+	echo "camera dome dm hexapod m1m3 m2ms mtmount ocs rotator scheduler tcs"
+}
+
+function stateArray() {
+	echo "enable disable abort enterControl exitControl standby start stop"
+}
+
+function capitializeSubsystem() {
+    subSystem=$1
+	if [ "$subSystem" == "m1m3" ]; then
+        echo "M1M3"
+    elif [ "$subSystem" == "m2ms" ]; then
+        echo "M2MS"
+    elif [ "$subSystem" == "ocs" ]; then
+        echo "OCS"
+    elif [ "$subSystem" == "tcs" ]; then
+        echo "TCS"
+    elif [ "$subSystem" == "mtmount" ]; then
+        echo "MTMount"
+    elif [ "$subSystem" == "dm" ]; then
+        echo "DM"
+    else
+        var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
+		echo $var
+    fi
+}
