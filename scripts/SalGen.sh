@@ -345,10 +345,12 @@ function createTestSuite() {
 #  MAIN
 if [ "$arg" == "all" ]; then
 	for subSystem in "${subSystemArray[@]}"; do
+		if [ "$subSystem" == "mtmount" ]; then $subSystem="MTMount"; fi
 		createTestSuite $subSystem
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
+	if [ "$arg" == "mtmount" ]; then $arg="MTMount"; fi
 	createTestSuite $arg
 	echo COMPLETED all test suites for the $arg.
 else

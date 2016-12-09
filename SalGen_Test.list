@@ -11,6 +11,7 @@ SALGEN/Hexapod.robot
 SALGEN/M1M3.robot
 SALGEN/M2MS.robot
 SALGEN/MTMount.robot
+SALGEN/OCS.robot
 SALGEN/Rotator.robot
 SALGEN/Scheduler.robot
 SALGEN/TCS.robot
