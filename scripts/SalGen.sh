@@ -325,6 +325,7 @@ function createTestSuite() {
     verifyXMLDefinitions
 	salgenValidate
 	salgenHTML
+	# Create and verify C++ interfaces.
 	salgenCPP
 	verifyCppDirectories
 	verifyTelemetryDirectories
@@ -336,8 +337,10 @@ function createTestSuite() {
 	if [[ ${xmls[*]} =~ "${subSystem}_Events.xml" ]]; then
 		verifyCppEventInterfaces
     fi
+	# Create and verify Java interfaces.
 	salgenJava
     salgenMaven
+	# Create and verify Python interfaces.
     salgenPython
     verifyPythonTelemetryInterfaces
     verifyPythonStateInterfaces
@@ -347,7 +350,10 @@ function createTestSuite() {
 	if [[ ${xmls[*]} =~ "${subSystem}_Events.xml" ]]; then
 		verifyPythonEventInterfaces
 	fi
-	salgenLabview
+	# Create LabVIEW interfaces.  NOTE: There are NO such scheduler interfaces.
+	if ! [ "$subSystem" == "scheduler" ]; then
+		salgenLabview
+	fi
 	# Indicate completion of the test suite.
 	echo Done with test suite.
 }

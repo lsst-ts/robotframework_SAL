@@ -379,15 +379,3 @@ Verify Scheduler Python State Command Interfaces
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_Commander_stop.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_Controller_stop.py
 
-Salgen Scheduler LabVIEW
-    [Documentation]    Generate scheduler low-level LabView interfaces.
-    [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler labview
-    ${output}=    Read Until Prompt
-    Log    ${output}
-    Should Contain    ${output}    SAL generator - V${SALVersion}
-    Directory Should Exist    ${SALWorkDir}/scheduler/labview
-    @{files}=    List Directory    ${SALWorkDir}/scheduler/labview
-    Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/scheduler/labview/SAL_scheduler_salShmMonitor.cpp
-    File Should Exist    ${SALWorkDir}/scheduler/labview/SAL_scheduler_shmem.h
