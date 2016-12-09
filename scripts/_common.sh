@@ -46,7 +46,7 @@ function createSession() {
 }
 
 function subsystemArray() {
-	echo "camera dome dm hexapod m1m3 m2ms mtmount ocs rotator scheduler tcs"
+	echo "camera dome dm hexapod m1m3 m2ms MTMount ocs rotator scheduler tcs"
 }
 
 function stateArray() {
