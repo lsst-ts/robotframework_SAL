@@ -98,8 +98,8 @@ Salgen M2MS C++
     Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentActuatorAbsolutePositionSteps.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    10
-    Should Contain X Times    ${output}    cpp : Done Subscriber    10
+    Should Contain X Times    ${output}    cpp : Done Publisher    9
+    Should Contain X Times    ${output}    cpp : Done Subscriber    9
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -290,30 +290,30 @@ Verify M2MS Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m2ms/python    pattern=*m2ms*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyBendingMode_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyBendingMode_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyForce_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ApplyForce_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SetCorrectionMode_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SetCorrectionMode_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PositionMirror_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PositionMirror_Controller.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_MoveAxialActuator_Commander.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_MoveAxialActuator_Controller.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Commander_ApplyBendingMode.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Controller_ApplyBendingMode.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Commander_ApplyForce.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Controller_ApplyForce.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Commander_SetCorrectionMode.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Controller_SetCorrectionMode.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Commander_PositionMirror.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Controller_PositionMirror.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Commander_MoveAxialActuator.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Controller_MoveAxialActuator.py
 
 Verify M2MS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m2ms/python    pattern=*m2ms*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2SummaryState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2SummaryState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2DetailedState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2DetailedState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2FaultState_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2FaultState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2AssemblyInPosition_Event.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_M2AssemblyInPosition_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Event_M2SummaryState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_EventLogger_M2SummaryState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Event_M2DetailedState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_EventLogger_M2DetailedState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Event_M2FaultState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_EventLogger_M2FaultState.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_Event_M2AssemblyInPosition.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_EventLogger_M2AssemblyInPosition.py
 
 Salgen M2MS LabVIEW
     [Documentation]    Generate m2ms low-level LabView interfaces.

@@ -100,8 +100,8 @@ Salgen M1M3 C++
     Should Contain    ${output}    Generating SAL CPP code for m1m3_Electrical.idl
     Should Contain    ${output}    Generating SAL CPP code for m1m3_Surface.idl
     Should Contain    ${output}    Generating SAL CPP code for m1m3_Support.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    10
-    Should Contain X Times    ${output}    cpp : Done Subscriber    10
+    Should Contain X Times    ${output}    cpp : Done Publisher    9
+    Should Contain X Times    ${output}    cpp : Done Subscriber    9
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -296,34 +296,34 @@ Verify M1M3 Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m1m3/python    pattern=*m1m3*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_configure_Commander.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_configure_Controller.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_status_Commander.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_status_Controller.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_target_Commander.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_target_Controller.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_update_Commander.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_update_Controller.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Commander_configure.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Controller_configure.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Commander_status.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Controller_status.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Commander_target.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Controller_target.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Commander_update.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Controller_update.py
 
 Verify M1M3 Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/m1m3/python    pattern=*m1m3*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_interlock_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_interlock_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_limitError_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_limitError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_targetDone_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_targetDone_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_targetError_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_targetError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_tempError_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_tempError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_updateDone_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_updateDone_EventLogger.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_updateError_Event.py
-    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_updateError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_interlock.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_interlock.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_limitError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_limitError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_targetDone.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_targetDone.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_targetError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_targetError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_tempError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_tempError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_updateDone.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_updateDone.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_Event_updateError.py
+    File Should Exist    ${SALWorkDir}/m1m3/python/m1m3_EventLogger_updateError.py
 
 Salgen M1M3 LabVIEW
     [Documentation]    Generate m1m3 low-level LabView interfaces.

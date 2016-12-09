@@ -123,8 +123,8 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for scheduler_rankingData.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_econstraints.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_iconstraints.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    29
-    Should Contain X Times    ${output}    cpp : Done Subscriber    29
+    Should Contain X Times    ${output}    cpp : Done Publisher    28
+    Should Contain X Times    ${output}    cpp : Done Subscriber    28
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 

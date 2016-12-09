@@ -111,8 +111,8 @@ Salgen MTMount C++
     Should Contain    ${output}    Generating SAL CPP code for MTMount_DP_1.idl
     Should Contain    ${output}    Generating SAL CPP code for MTMount_DP_2.idl
     Should Contain    ${output}    Generating SAL CPP code for MTMount_MotionParameters.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    15
-    Should Contain X Times    ${output}    cpp : Done Subscriber    15
+    Should Contain X Times    ${output}    cpp : Done Publisher    14
+    Should Contain X Times    ${output}    cpp : Done Subscriber    14
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -334,36 +334,36 @@ Verify MTMount Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/MTMount/python    pattern=*MTMount*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_closeMirrorCover_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_closeMirrorCover_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_configure_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_configure_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_disableCamWrap_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_disableCamWrap_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_enableCamWrap_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_enableCamWrap_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_moveToTarget_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_moveToTarget_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_openMirrorCover_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_openMirrorCover_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_trackTarget_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_trackTarget_Controller.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_clearerror_Commander.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_clearerror_Controller.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_closeMirrorCover.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_closeMirrorCover.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_configure.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_configure.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_disableCamWrap.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_disableCamWrap.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_enableCamWrap.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_enableCamWrap.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_moveToTarget.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_moveToTarget.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_openMirrorCover.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_openMirrorCover.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_trackTarget.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_trackTarget.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Commander_clearerror.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Controller_clearerror.py
 
 Verify MTMount Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/MTMount/python    pattern=*MTMount*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountState_Event.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountState_EventLogger.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountWarning_Event.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountWarning_EventLogger.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountError_Event.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountInPosition_Event.py
-    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_mountInPosition_EventLogger.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Event_mountState.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_EventLogger_mountState.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Event_mountWarning.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_EventLogger_mountWarning.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Event_mountError.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_EventLogger_mountError.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_Event_mountInPosition.py
+    File Should Exist    ${SALWorkDir}/MTMount/python/MTMount_EventLogger_mountInPosition.py
 
 Salgen MTMount LabVIEW
     [Documentation]    Generate MTMount low-level LabView interfaces.

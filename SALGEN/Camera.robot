@@ -128,8 +128,8 @@ Salgen Camera C++
     Should Contain    ${output}    Generating SAL CPP code for camera_PCMS.idl
     Should Contain    ${output}    Generating SAL CPP code for camera_Cryo.idl
     Should Contain    ${output}    Generating SAL CPP code for camera_WAS.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    16
-    Should Contain X Times    ${output}    cpp : Done Subscriber    16
+    Should Contain X Times    ${output}    cpp : Done Publisher    15
+    Should Contain X Times    ${output}    cpp : Done Subscriber    15
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -386,66 +386,66 @@ Verify Camera Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/camera/python    pattern=*camera*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/camera/python/camera_configure_Commander.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_configure_Controller.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_initGuiders_Commander.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_initGuiders_Controller.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_initImage_Commander.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_initImage_Controller.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_setFilter_Commander.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_setFilter_Controller.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_takeImages_Commander.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_takeImages_Controller.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Commander_configure.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Controller_configure.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Commander_initGuiders.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Controller_initGuiders.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Commander_initImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Controller_initImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Commander_setFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Controller_setFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Commander_takeImages.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Controller_takeImages.py
 
 Verify Camera Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/camera/python    pattern=*camera*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/camera/python/camera_ccsConfigured_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_ccsConfigured_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endInitializeGuider_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endInitializeGuider_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endInitializeImage_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endInitializeImage_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endLoadFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endLoadFilter_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endReadout_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endReadout_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endRotateCarousel_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endRotateCarousel_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endSetFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endSetFilter_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endShutterClose_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endShutterClose_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endShutterOpen_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endShutterOpen_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endTakeImage_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endTakeImage_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endUnloadFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_endUnloadFilter_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_notReadyToTakeImage_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_notReadyToTakeImage_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_prepareToTakeImage_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_prepareToTakeImage_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_readyToTakeImage_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_readyToTakeImage_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startIntegration_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startIntegration_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startLoadFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startLoadFilter_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startReadout_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startReadout_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startRotateCarousel_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startRotateCarousel_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startSetFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startSetFilter_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startShutterClose_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startShutterClose_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startShutterOpen_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startShutterOpen_EventLogger.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startUnloadFilter_Event.py
-    File Should Exist    ${SALWorkDir}/camera/python/camera_startUnloadFilter_EventLogger.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_ccsConfigured.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_ccsConfigured.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endInitializeGuider.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endInitializeGuider.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endInitializeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endInitializeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endLoadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endLoadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endReadout.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endReadout.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endRotateCarousel.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endRotateCarousel.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endSetFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endSetFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endShutterClose.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endShutterClose.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endShutterOpen.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endShutterOpen.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_endUnloadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_endUnloadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_notReadyToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_notReadyToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_prepareToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_prepareToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_readyToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_readyToTakeImage.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startIntegration.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startIntegration.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startLoadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startLoadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startReadout.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startReadout.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startRotateCarousel.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startRotateCarousel.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startSetFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startSetFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startShutterClose.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startShutterClose.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startShutterOpen.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startShutterOpen.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_Event_startUnloadFilter.py
+    File Should Exist    ${SALWorkDir}/camera/python/camera_EventLogger_startUnloadFilter.py
 
 Salgen Camera LabVIEW
     [Documentation]    Generate camera low-level LabView interfaces.

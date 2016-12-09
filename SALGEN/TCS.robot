@@ -103,8 +103,8 @@ Salgen TCS C++
     Should Contain    ${output}    Generating SAL CPP code for tcs_WEP.idl
     Should Contain    ${output}    Generating SAL CPP code for tcs_kernel_TrackingTarget.idl
     Should Contain    ${output}    Generating SAL CPP code for tcs_kernel_FK5Target.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    15
-    Should Contain X Times    ${output}    cpp : Done Subscriber    15
+    Should Contain X Times    ${output}    cpp : Done Publisher    14
+    Should Contain X Times    ${output}    cpp : Done Subscriber    14
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -310,20 +310,20 @@ Verify TCS Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/tcs/python    pattern=*tcs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpCalculate_Commander.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpCalculate_Controller.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpSimulate_Commander.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpSimulate_Controller.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Commander_wfpCalculate.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Controller_wfpCalculate.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Commander_wfpSimulate.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Controller_wfpSimulate.py
 
 Verify TCS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/tcs/python    pattern=*tcs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpDataReady_Event.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_wfpDataReady_EventLogger.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_zemaxError_Event.py
-    File Should Exist    ${SALWorkDir}/tcs/python/tcs_zemaxError_EventLogger.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Event_wfpDataReady.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_EventLogger_wfpDataReady.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_Event_zemaxError.py
+    File Should Exist    ${SALWorkDir}/tcs/python/tcs_EventLogger_zemaxError.py
 
 Salgen TCS LabVIEW
     [Documentation]    Generate tcs low-level LabView interfaces.

@@ -116,8 +116,8 @@ Salgen Dome C++
     Should Contain    ${output}    Generating SAL CPP code for dome_Metrology.idl
     Should Contain    ${output}    Generating SAL CPP code for dome_Electrical.idl
     Should Contain    ${output}    Generating SAL CPP code for dome_Screen.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    11
-    Should Contain X Times    ${output}    cpp : Done Subscriber    11
+    Should Contain X Times    ${output}    cpp : Done Publisher    10
+    Should Contain X Times    ${output}    cpp : Done Subscriber    10
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -345,62 +345,62 @@ Verify Dome Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/dome/python    pattern=*dome*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/dome/python/dome_CloseShutter_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_CloseShutter_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Crawl_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Crawl_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Louvers_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Louvers_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Move_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Move_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_MovetoCal_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_MovetoCal_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_OpenShutter_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_OpenShutter_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Park_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Park_Controller.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Track_Commander.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_Track_Controller.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_CloseShutter.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_CloseShutter.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_Crawl.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_Crawl.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_Louvers.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_Louvers.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_Move.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_Move.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_MovetoCal.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_MovetoCal.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_OpenShutter.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_OpenShutter.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_Park.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_Park.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Commander_Track.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Controller_Track.py
 
 Verify Dome Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/dome/python    pattern=*dome*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/dome/python/dome_AccLimit_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_AccLimit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_VelLimit_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_VelLimit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_crawlLost_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_crawlLost_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_crawling_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_crawling_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_interlock_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_interlock_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_jerkLimit_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_jerkLimit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_lldvError_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_lldvError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_lldvOK_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_lldvOK_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_posLimit_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_posLimit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_powerError_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_powerError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_screenLimit_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_screenLimit_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewError_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewOK_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewOK_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewReady_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_slewReady_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_tempError_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_tempError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_trackLost_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_trackLost_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_tracking_Event.py
-    File Should Exist    ${SALWorkDir}/dome/python/dome_tracking_EventLogger.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_AccLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_AccLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_VelLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_VelLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_crawlLost.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_crawlLost.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_crawling.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_crawling.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_interlock.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_interlock.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_jerkLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_jerkLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_lldvError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_lldvError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_lldvOK.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_lldvOK.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_posLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_posLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_powerError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_powerError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_screenLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_screenLimit.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_slewError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_slewError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_slewOK.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_slewOK.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_slewReady.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_slewReady.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_tempError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_tempError.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_trackLost.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_trackLost.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_Event_tracking.py
+    File Should Exist    ${SALWorkDir}/dome/python/dome_EventLogger_tracking.py
 
 Salgen Dome LabVIEW
     [Documentation]    Generate dome low-level LabView interfaces.

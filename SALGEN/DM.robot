@@ -90,8 +90,8 @@ Salgen DM C++
     Should Contain    ${output}    Generating SAL CPP code for dm_raft_images_sent_current.idl
     Should Contain    ${output}    Generating SAL CPP code for dm_successfully_archived.idl
     Should Contain    ${output}    Generating SAL CPP code for dm_summit_to_base_network_status.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    10
-    Should Contain X Times    ${output}    cpp : Done Subscriber    10
+    Should Contain X Times    ${output}    cpp : Done Publisher    9
+    Should Contain X Times    ${output}    cpp : Done Subscriber    9
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -266,12 +266,12 @@ Verify DM Python Event Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/dm/python    pattern=*dm*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmPublished_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmPublished_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToArchive_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToArchive_EventLogger.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToBase_Event.py
-    File Should Exist    ${SALWorkDir}/dm/python/dm_dmToBase_EventLogger.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_Event_dmPublished.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_EventLogger_dmPublished.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_Event_dmToArchive.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_EventLogger_dmToArchive.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_Event_dmToBase.py
+    File Should Exist    ${SALWorkDir}/dm/python/dm_EventLogger_dmToBase.py
 
 Salgen DM LabVIEW
     [Documentation]    Generate dm low-level LabView interfaces.

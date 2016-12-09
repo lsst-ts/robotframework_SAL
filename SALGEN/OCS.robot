@@ -81,8 +81,8 @@ Salgen OCS C++
     Should Not Contain    ${output}    *** DDS error in file
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Generating SAL CPP code for ocs_SequencerHeartbeat.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    2
-    Should Contain X Times    ${output}    cpp : Done Subscriber    2
+    Should Contain X Times    ${output}    cpp : Done Publisher    1
+    Should Contain X Times    ${output}    cpp : Done Subscriber    1
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -231,26 +231,26 @@ Verify OCS Python Event Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/ocs/python    pattern=*ocs*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityStartup_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityStartup_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityShutdown_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsEntityShutdown_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandIssued_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandIssued_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandStatus_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCommandStatus_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCurrentScript_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsCurrentScript_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsNextScript_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsNextScript_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptStart_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptStart_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEnd_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEnd_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptError_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptError_EventLogger.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEntititesInUse_Event.py
-    File Should Exist    ${SALWorkDir}/ocs/python/ocs_ocsScriptEntititesInUse_EventLogger.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsEntityStartup.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsEntityStartup.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsEntityShutdown.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsEntityShutdown.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsCommandIssued.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsCommandIssued.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsCommandStatus.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsCommandStatus.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsCurrentScript.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsCurrentScript.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsNextScript.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsNextScript.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsScriptStart.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsScriptStart.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsScriptEnd.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsScriptEnd.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsScriptError.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsScriptError.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsScriptEntititesInUse.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsScriptEntititesInUse.py
 
 Salgen OCS LabVIEW
     [Documentation]    Generate ocs low-level LabView interfaces.
