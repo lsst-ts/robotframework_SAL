@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1465378534
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 268926210
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startUnloadFilter writing a message containing :    1
@@ -78,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1465378534
+    ${output}=    Read Until    priority : 268926210
     Log    ${output}
     Should Contain X Times    ${output}    === Event startUnloadFilter received =     1
-    Should Contain    ${output}    priority : 1465378534
+    Should Contain    ${output}    priority : 268926210

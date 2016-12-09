@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 865471638
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2019965861
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startShutterOpen writing a message containing :    1
@@ -78,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 865471638
+    ${output}=    Read Until    priority : 2019965861
     Log    ${output}
     Should Contain X Times    ${output}    === Event startShutterOpen received =     1
-    Should Contain    ${output}    priority : 865471638
+    Should Contain    ${output}    priority : 2019965861

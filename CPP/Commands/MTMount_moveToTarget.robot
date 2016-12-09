@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8726 23.2722 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 79.7165 79.5345 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8726 23.2722 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 79.7165 79.5345 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,8 +87,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 86.8726    1
-    Should Contain X Times    ${output}    el_angle : 23.2722    1
+    Should Contain X Times    ${output}    az_angle : 79.7165    1
+    Should Contain X Times    ${output}    el_angle : 79.5345    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command moveToTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -106,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 86.8726    1
-    Should Contain X Times    ${output}    el_angle : 23.2722    1
+    Should Contain X Times    ${output}    az_angle : 79.7165    1
+    Should Contain X Times    ${output}    el_angle : 79.5345    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

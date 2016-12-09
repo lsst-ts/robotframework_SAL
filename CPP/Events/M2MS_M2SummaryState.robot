@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 8298 1563604410
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 26432 1099179259
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2SummaryState writing a message containing :    1
@@ -78,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1563604410
+    ${output}=    Read Until    priority : 1099179259
     Log    ${output}
     Should Contain X Times    ${output}    === Event M2SummaryState received =     1
-    Should Contain    ${output}    state : 8298
-    Should Contain    ${output}    priority : 1563604410
+    Should Contain    ${output}    state : 26432
+    Should Contain    ${output}    priority : 1099179259

@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 22.8406 30.8577 79.169 96.932 99.7869 81.0648 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 55.9211 29.279 70.9365 12.2597 76.2212 99.2646 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 22.8406 30.8577 79.169 96.932 99.7869 81.0648 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 55.9211 29.279 70.9365 12.2597 76.2212 99.2646 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,12 +87,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 22.8406    1
-    Should Contain X Times    ${output}    y : 30.8577    1
-    Should Contain X Times    ${output}    z : 79.169    1
-    Should Contain X Times    ${output}    u : 96.932    1
-    Should Contain X Times    ${output}    v : 99.7869    1
-    Should Contain X Times    ${output}    w : 81.0648    1
+    Should Contain X Times    ${output}    x : 55.9211    1
+    Should Contain X Times    ${output}    y : 29.279    1
+    Should Contain X Times    ${output}    z : 70.9365    1
+    Should Contain X Times    ${output}    u : 12.2597    1
+    Should Contain X Times    ${output}    v : 76.2212    1
+    Should Contain X Times    ${output}    w : 99.2646    1
     Should Contain X Times    ${output}    sync : 0    1
     Should Contain    ${output}    === command move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -110,12 +108,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 22.8406    1
-    Should Contain X Times    ${output}    y : 30.8577    1
-    Should Contain X Times    ${output}    z : 79.169    1
-    Should Contain X Times    ${output}    u : 96.932    1
-    Should Contain X Times    ${output}    v : 99.7869    1
-    Should Contain X Times    ${output}    w : 81.0648    1
+    Should Contain X Times    ${output}    x : 55.9211    1
+    Should Contain X Times    ${output}    y : 29.279    1
+    Should Contain X Times    ${output}    z : 70.9365    1
+    Should Contain X Times    ${output}    u : 12.2597    1
+    Should Contain X Times    ${output}    v : 76.2212    1
+    Should Contain X Times    ${output}    w : 99.2646    1
     Should Contain X Times    ${output}    sync : 0    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

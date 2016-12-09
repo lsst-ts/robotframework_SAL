@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 3.5952 27.9496 43.767 71.9612 40.5455 28.7985 57.4872 15.9013 19.3577 72.6876 64.8657 42.3461 88.9135 23.3046 26.6716 35.7188 94.4337 2.3898 92.24 46.0869 74.5718 44.2743 20.9931 33.5964 60.4603 92.5988 19.6654 64.4323 66.5763 40.6909 8.4309 34.8107 37.5412 81.4481 18.9781 9.411 57.576 62.6996 51.0496 16.541 99.4606 29.7729 35.4077 69.192 51.0712 28.0818 73.1999 86.2609 26.2534 93.3893 19.5759 35.9894 65.378 59.706 40.4213 77.4531 27.3112 18.9588 15.3725 33.9235 98.2848 97.7496 24.4846 43.4928 64.6824 96.8402 56.8675 79.7183 61.2834 19.2778 51.9514 70.0554
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 51.2957 18.2724 91.4522 24.2612 86.0026 37.0037 56.7349 41.4938 98.7721 13.4748 31.6747 54.7403 23.8083 18.5859 65.7173 82.922 0.2693 66.5769 76.6534 94.7125 84.2996 60.305 60.5914 45.4956 0.1466 88.1436 58.8582 44.5106 82.4955 50.2573 4.6045 22.4431 46.6214 18.4472 13.2148 47.9221 39.2343 23.0423 27.5013 98.2921 88.8421 18.6951 10.6963 26.3267 2.142 34.7695 10.5036 30.527 12.7084 77.157 78.9114 92.8103 41.751 87.7207 66.6428 4.4918 43.6938 51.8912 30.0064 7.5749 66.1153 89.2348 78.1426 35.5509 52.2761 65.4451 2.0715 76.1091 12.383 5.6059 7.7388 86.9803
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 3.5952 27.9496 43.767 71.9612 40.5455 28.7985 57.4872 15.9013 19.3577 72.6876 64.8657 42.3461 88.9135 23.3046 26.6716 35.7188 94.4337 2.3898 92.24 46.0869 74.5718 44.2743 20.9931 33.5964 60.4603 92.5988 19.6654 64.4323 66.5763 40.6909 8.4309 34.8107 37.5412 81.4481 18.9781 9.411 57.576 62.6996 51.0496 16.541 99.4606 29.7729 35.4077 69.192 51.0712 28.0818 73.1999 86.2609 26.2534 93.3893 19.5759 35.9894 65.378 59.706 40.4213 77.4531 27.3112 18.9588 15.3725 33.9235 98.2848 97.7496 24.4846 43.4928 64.6824 96.8402 56.8675 79.7183 61.2834 19.2778 51.9514 70.0554
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 51.2957 18.2724 91.4522 24.2612 86.0026 37.0037 56.7349 41.4938 98.7721 13.4748 31.6747 54.7403 23.8083 18.5859 65.7173 82.922 0.2693 66.5769 76.6534 94.7125 84.2996 60.305 60.5914 45.4956 0.1466 88.1436 58.8582 44.5106 82.4955 50.2573 4.6045 22.4431 46.6214 18.4472 13.2148 47.9221 39.2343 23.0423 27.5013 98.2921 88.8421 18.6951 10.6963 26.3267 2.142 34.7695 10.5036 30.527 12.7084 77.157 78.9114 92.8103 41.751 87.7207 66.6428 4.4918 43.6938 51.8912 30.0064 7.5749 66.1153 89.2348 78.1426 35.5509 52.2761 65.4451 2.0715 76.1091 12.383 5.6059 7.7388 86.9803
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,7 +87,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    openPercent : 3.5952    1
+    Should Contain X Times    ${output}    openPercent : 51.2957    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,7 +96,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    openPercent(72) = [3.5952, 27.9496, 43.767, 71.9612, 40.5455, 28.7985, 57.4872, 15.9013, 19.3577, 72.6876, 64.8657, 42.3461, 88.9135, 23.3046, 26.6716, 35.7188, 94.4337, 2.3898, 92.24, 46.0869, 74.5718, 44.2743, 20.9931, 33.5964, 60.4603, 92.5988, 19.6654, 64.4323, 66.5763, 40.6909, 8.4309, 34.8107, 37.5412, 81.4481, 18.9781, 9.411, 57.576, 62.6996, 51.0496, 16.541, 99.4606, 29.7729, 35.4077, 69.192, 51.0712, 28.0818, 73.1999, 86.2609, 26.2534, 93.3893, 19.5759, 35.9894, 65.378, 59.706, 40.4213, 77.4531, 27.3112, 18.9588, 15.3725, 33.9235, 98.2848, 97.7496, 24.4846, 43.4928, 64.6824, 96.8402, 56.8675, 79.7183, 61.2834, 19.2778, 51.9514, 70.0554]    1
+    Should Contain X Times    ${output}    openPercent(72) = [51.2957, 18.2724, 91.4522, 24.2612, 86.0026, 37.0037, 56.7349, 41.4938, 98.7721, 13.4748, 31.6747, 54.7403, 23.8083, 18.5859, 65.7173, 82.922, 0.2693, 66.5769, 76.6534, 94.7125, 84.2996, 60.305, 60.5914, 45.4956, 0.1466, 88.1436, 58.8582, 44.5106, 82.4955, 50.2573, 4.6045, 22.4431, 46.6214, 18.4472, 13.2148, 47.9221, 39.2343, 23.0423, 27.5013, 98.2921, 88.8421, 18.6951, 10.6963, 26.3267, 2.142, 34.7695, 10.5036, 30.527, 12.7084, 77.157, 78.9114, 92.8103, 41.751, 87.7207, 66.6428, 4.4918, 43.6938, 51.8912, 30.0064, 7.5749, 66.1153, 89.2348, 78.1426, 35.5509, 52.2761, 65.4451, 2.0715, 76.1091, 12.383, 5.6059, 7.7388, 86.9803]    1
     Should Contain X Times    ${output}    === [ackCommand_Louvers] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

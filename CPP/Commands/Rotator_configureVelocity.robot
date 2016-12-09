@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 63.0561 91.6807
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 63.2789 16.4019
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 63.0561 91.6807
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 63.2789 16.4019
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,8 +87,8 @@ Start Commander
     Should Contain X Times    ${output}    property : velocity    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    vmin : 63.0561    1
-    Should Contain X Times    ${output}    vmax : 91.6807    1
+    Should Contain X Times    ${output}    vmin : 63.2789    1
+    Should Contain X Times    ${output}    vmax : 16.4019    1
     Should Contain    ${output}    === command configureVelocity issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -105,8 +103,8 @@ Read Controller
     Should Contain    ${output}    property : velocity
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    vmin : 63.0561    1
-    Should Contain X Times    ${output}    vmax : 91.6807    1
+    Should Contain X Times    ${output}    vmin : 63.2789    1
+    Should Contain X Times    ${output}    vmax : 16.4019    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

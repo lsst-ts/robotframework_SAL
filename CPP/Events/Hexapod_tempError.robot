@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 701906233 70.5561 502491039
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 481917173 40.2109 1722216520
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -78,11 +76,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 502491039
+    ${output}=    Read Until    priority : 1722216520
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 701906233
-    Should Contain    ${output}    temp : 70.5561
-    Should Contain    ${output}    priority : 502491039
+    Should Contain    ${output}    severity : 481917173
+    Should Contain    ${output}    temp : 40.2109
+    Should Contain    ${output}    priority : 1722216520

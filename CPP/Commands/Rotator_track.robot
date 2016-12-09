@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 68.5084 92.2029 86.5631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 65.3512 36.6358 11.8206
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 68.5084 92.2029 86.5631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 65.3512 36.6358 11.8206
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,9 +87,9 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 68.5084    1
-    Should Contain X Times    ${output}    velocity : 92.2029    1
-    Should Contain X Times    ${output}    tai : 86.5631    1
+    Should Contain X Times    ${output}    angle : 65.3512    1
+    Should Contain X Times    ${output}    velocity : 36.6358    1
+    Should Contain X Times    ${output}    tai : 11.8206    1
     Should Contain    ${output}    === command track issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -106,9 +104,9 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 68.5084    1
-    Should Contain X Times    ${output}    velocity : 92.2029    1
-    Should Contain X Times    ${output}    tai : 86.5631    1
+    Should Contain X Times    ${output}    angle : 65.3512    1
+    Should Contain X Times    ${output}    velocity : 36.6358    1
+    Should Contain X Times    ${output}    tai : 11.8206    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

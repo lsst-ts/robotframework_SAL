@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 16.8457 15.6033 73.9102 18.492 59.7646 91.9553 14.4747 45.1857 97.0742 36.6799 1.298 9.8894
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 49.5871 81.7537 85.681 94.9004 66.7385 90.9417 16.2929 35.7374 94.1497 23.2711 29.4286 17.9306
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 16.8457 15.6033 73.9102 18.492 59.7646 91.9553 14.4747 45.1857 97.0742 36.6799 1.298 9.8894
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 49.5871 81.7537 85.681 94.9004 66.7385 90.9417 16.2929 35.7374 94.1497 23.2711 29.4286 17.9306
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,18 +87,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xmin : 16.8457    1
-    Should Contain X Times    ${output}    xmax : 15.6033    1
-    Should Contain X Times    ${output}    ymin : 73.9102    1
-    Should Contain X Times    ${output}    ymax : 18.492    1
-    Should Contain X Times    ${output}    zmin : 59.7646    1
-    Should Contain X Times    ${output}    zmax : 91.9553    1
-    Should Contain X Times    ${output}    umin : 14.4747    1
-    Should Contain X Times    ${output}    umax : 45.1857    1
-    Should Contain X Times    ${output}    vmin : 97.0742    1
-    Should Contain X Times    ${output}    vmax : 36.6799    1
-    Should Contain X Times    ${output}    wmin : 1.298    1
-    Should Contain X Times    ${output}    wmax : 9.8894    1
+    Should Contain X Times    ${output}    xmin : 49.5871    1
+    Should Contain X Times    ${output}    xmax : 81.7537    1
+    Should Contain X Times    ${output}    ymin : 85.681    1
+    Should Contain X Times    ${output}    ymax : 94.9004    1
+    Should Contain X Times    ${output}    zmin : 66.7385    1
+    Should Contain X Times    ${output}    zmax : 90.9417    1
+    Should Contain X Times    ${output}    umin : 16.2929    1
+    Should Contain X Times    ${output}    umax : 35.7374    1
+    Should Contain X Times    ${output}    vmin : 94.1497    1
+    Should Contain X Times    ${output}    vmax : 23.2711    1
+    Should Contain X Times    ${output}    wmin : 29.4286    1
+    Should Contain X Times    ${output}    wmax : 17.9306    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -109,18 +107,18 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xmin = 16.8457    1
-    Should Contain X Times    ${output}    xmax = 15.6033    1
-    Should Contain X Times    ${output}    ymin = 73.9102    1
-    Should Contain X Times    ${output}    ymax = 18.492    1
-    Should Contain X Times    ${output}    zmin = 59.7646    1
-    Should Contain X Times    ${output}    zmax = 91.9553    1
-    Should Contain X Times    ${output}    umin = 14.4747    1
-    Should Contain X Times    ${output}    umax = 45.1857    1
-    Should Contain X Times    ${output}    vmin = 97.0742    1
-    Should Contain X Times    ${output}    vmax = 36.6799    1
-    Should Contain X Times    ${output}    wmin = 1.298    1
-    Should Contain X Times    ${output}    wmax = 9.8894    1
+    Should Contain X Times    ${output}    xmin = 49.5871    1
+    Should Contain X Times    ${output}    xmax = 81.7537    1
+    Should Contain X Times    ${output}    ymin = 85.681    1
+    Should Contain X Times    ${output}    ymax = 94.9004    1
+    Should Contain X Times    ${output}    zmin = 66.7385    1
+    Should Contain X Times    ${output}    zmax = 90.9417    1
+    Should Contain X Times    ${output}    umin = 16.2929    1
+    Should Contain X Times    ${output}    umax = 35.7374    1
+    Should Contain X Times    ${output}    vmin = 94.1497    1
+    Should Contain X Times    ${output}    vmax = 23.2711    1
+    Should Contain X Times    ${output}    wmin = 29.4286    1
+    Should Contain X Times    ${output}    wmax = 17.9306    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

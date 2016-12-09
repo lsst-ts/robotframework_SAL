@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 519628917 882808306 1550187768 1048121154 768131426 1046664742 1152340242 1551439206 1828707463 1192315356 1790264493 1745518880
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1112349164 1443028749 609791302 850651425 905568597 232275778 1298235107 426274874 524758989 1285975696 669995942 11295385
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 519628917 882808306 1550187768 1048121154 768131426 1046664742 1152340242 1551439206 1828707463 1192315356 1790264493 1745518880
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1112349164 1443028749 609791302 850651425 905568597 232275778 1298235107 426274874 524758989 1285975696 669995942 11295385
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,18 +87,18 @@ Start Commander
     Should Contain X Times    ${output}    property : limits    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xmin : 519628917    1
-    Should Contain X Times    ${output}    xmax : 882808306    1
-    Should Contain X Times    ${output}    ymin : 1550187768    1
-    Should Contain X Times    ${output}    ymax : 1048121154    1
-    Should Contain X Times    ${output}    zmin : 768131426    1
-    Should Contain X Times    ${output}    zmax : 1046664742    1
-    Should Contain X Times    ${output}    umin : 1152340242    1
-    Should Contain X Times    ${output}    umax : 1551439206    1
-    Should Contain X Times    ${output}    vmin : 1828707463    1
-    Should Contain X Times    ${output}    vmax : 1192315356    1
-    Should Contain X Times    ${output}    wwmin : 1790264493    1
-    Should Contain X Times    ${output}    wmax : 1745518880    1
+    Should Contain X Times    ${output}    xmin : 1112349164    1
+    Should Contain X Times    ${output}    xmax : 1443028749    1
+    Should Contain X Times    ${output}    ymin : 609791302    1
+    Should Contain X Times    ${output}    ymax : 850651425    1
+    Should Contain X Times    ${output}    zmin : 905568597    1
+    Should Contain X Times    ${output}    zmax : 232275778    1
+    Should Contain X Times    ${output}    umin : 1298235107    1
+    Should Contain X Times    ${output}    umax : 426274874    1
+    Should Contain X Times    ${output}    vmin : 524758989    1
+    Should Contain X Times    ${output}    vmax : 1285975696    1
+    Should Contain X Times    ${output}    wwmin : 669995942    1
+    Should Contain X Times    ${output}    wmax : 11295385    1
     Should Contain    ${output}    === command configureLimits issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -115,18 +113,18 @@ Read Controller
     Should Contain    ${output}    property : limits
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xmin : 519628917    1
-    Should Contain X Times    ${output}    xmax : 882808306    1
-    Should Contain X Times    ${output}    ymin : 1550187768    1
-    Should Contain X Times    ${output}    ymax : 1048121154    1
-    Should Contain X Times    ${output}    zmin : 768131426    1
-    Should Contain X Times    ${output}    zmax : 1046664742    1
-    Should Contain X Times    ${output}    umin : 1152340242    1
-    Should Contain X Times    ${output}    umax : 1551439206    1
-    Should Contain X Times    ${output}    vmin : 1828707463    1
-    Should Contain X Times    ${output}    vmax : 1192315356    1
-    Should Contain X Times    ${output}    wwmin : 1790264493    1
-    Should Contain X Times    ${output}    wmax : 1745518880    1
+    Should Contain X Times    ${output}    xmin : 1112349164    1
+    Should Contain X Times    ${output}    xmax : 1443028749    1
+    Should Contain X Times    ${output}    ymin : 609791302    1
+    Should Contain X Times    ${output}    ymax : 850651425    1
+    Should Contain X Times    ${output}    zmin : 905568597    1
+    Should Contain X Times    ${output}    zmax : 232275778    1
+    Should Contain X Times    ${output}    umin : 1298235107    1
+    Should Contain X Times    ${output}    umax : 426274874    1
+    Should Contain X Times    ${output}    vmin : 524758989    1
+    Should Contain X Times    ${output}    vmax : 1285975696    1
+    Should Contain X Times    ${output}    wwmin : 669995942    1
+    Should Contain X Times    ${output}    wmax : 11295385    1
     Should Contain X Times    ${output}    === [ackCommand_configureLimits] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

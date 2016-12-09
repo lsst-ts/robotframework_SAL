@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9.6729 40.4557 30.1592 89.8119 80.521 23.8724 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 92.1331 42.2424 84.8412 61.3151 15.2249 60.0958 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9.6729 40.4557 30.1592 89.8119 80.521 23.8724 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 92.1331 42.2424 84.8412 61.3151 15.2249 60.0958 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,13 +87,13 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 9.6729    1
-    Should Contain X Times    ${output}    y : 40.4557    1
-    Should Contain X Times    ${output}    z : 30.1592    1
-    Should Contain X Times    ${output}    u : 89.8119    1
-    Should Contain X Times    ${output}    v : 80.521    1
-    Should Contain X Times    ${output}    w : 23.8724    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 92.1331    1
+    Should Contain X Times    ${output}    y : 42.2424    1
+    Should Contain X Times    ${output}    z : 84.8412    1
+    Should Contain X Times    ${output}    u : 61.3151    1
+    Should Contain X Times    ${output}    v : 15.2249    1
+    Should Contain X Times    ${output}    w : 60.0958    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command offset issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -110,13 +108,13 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 9.6729    1
-    Should Contain X Times    ${output}    y : 40.4557    1
-    Should Contain X Times    ${output}    z : 30.1592    1
-    Should Contain X Times    ${output}    u : 89.8119    1
-    Should Contain X Times    ${output}    v : 80.521    1
-    Should Contain X Times    ${output}    w : 23.8724    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 92.1331    1
+    Should Contain X Times    ${output}    y : 42.2424    1
+    Should Contain X Times    ${output}    z : 84.8412    1
+    Should Contain X Times    ${output}    u : 61.3151    1
+    Should Contain X Times    ${output}    v : 15.2249    1
+    Should Contain X Times    ${output}    w : 60.0958    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

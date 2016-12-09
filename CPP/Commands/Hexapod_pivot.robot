@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 89.6834 93.8285 4.5246
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11.6608 59.9621 99.111
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 89.6834 93.8285 4.5246
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11.6608 59.9621 99.111
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,9 +87,9 @@ Start Commander
     Should Contain X Times    ${output}    property : pivot    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 89.6834    1
-    Should Contain X Times    ${output}    y : 93.8285    1
-    Should Contain X Times    ${output}    z : 4.5246    1
+    Should Contain X Times    ${output}    x : 11.6608    1
+    Should Contain X Times    ${output}    y : 59.9621    1
+    Should Contain X Times    ${output}    z : 99.111    1
     Should Contain    ${output}    === command pivot issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -106,9 +104,9 @@ Read Controller
     Should Contain    ${output}    property : pivot
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 89.6834    1
-    Should Contain X Times    ${output}    y : 93.8285    1
-    Should Contain X Times    ${output}    z : 4.5246    1
+    Should Contain X Times    ${output}    x : 11.6608    1
+    Should Contain X Times    ${output}    y : 59.9621    1
+    Should Contain X Times    ${output}    z : 99.111    1
     Should Contain X Times    ${output}    === [ackCommand_pivot] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

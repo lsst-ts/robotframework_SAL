@@ -22,7 +22,6 @@ Create Commander Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Controller Session
     [Documentation]    Connect to the SAL host.
@@ -34,7 +33,6 @@ Create Controller Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Commander and Controller
     [Tags]    smoke
@@ -58,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 76.9007 46.0847 68.6772 17.1648 79.3883 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.1963 25.6729 80.7944 0.444 21.1406 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -81,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 76.9007 46.0847 68.6772 17.1648 79.3883 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.1963 25.6729 80.7944 0.444 21.1406 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -89,11 +87,11 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 76.9007    1
-    Should Contain X Times    ${output}    az_velocity : 46.0847    1
-    Should Contain X Times    ${output}    el_angle : 68.6772    1
-    Should Contain X Times    ${output}    el_velocity : 17.1648    1
-    Should Contain X Times    ${output}    time : 79.3883    1
+    Should Contain X Times    ${output}    az_angle : 20.1963    1
+    Should Contain X Times    ${output}    az_velocity : 25.6729    1
+    Should Contain X Times    ${output}    el_angle : 80.7944    1
+    Should Contain X Times    ${output}    el_velocity : 0.444    1
+    Should Contain X Times    ${output}    time : 21.1406    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -103,11 +101,11 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 76.9007    1
-    Should Contain X Times    ${output}    az_velocity = 46.0847    1
-    Should Contain X Times    ${output}    el_angle = 68.6772    1
-    Should Contain X Times    ${output}    el_velocity = 17.1648    1
-    Should Contain X Times    ${output}    time = 79.3883    1
+    Should Contain X Times    ${output}    az_angle = 20.1963    1
+    Should Contain X Times    ${output}    az_velocity = 25.6729    1
+    Should Contain X Times    ${output}    el_angle = 80.7944    1
+    Should Contain X Times    ${output}    el_velocity = 0.444    1
+    Should Contain X Times    ${output}    time = 21.1406    1
     Should Contain X Times    ${output}    cablewrap_orientation = test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

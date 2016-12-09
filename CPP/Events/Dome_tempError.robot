@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1877276635 1490294572
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 272191931 511401480
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dome::logevent_tempError writing a message containing :    1
@@ -78,9 +76,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1490294572
+    ${output}=    Read Until    priority : 511401480
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 1877276635
-    Should Contain    ${output}    priority : 1490294572
+    Should Contain    ${output}    severity : 272191931
+    Should Contain    ${output}    priority : 511401480

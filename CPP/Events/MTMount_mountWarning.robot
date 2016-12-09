@@ -21,7 +21,6 @@ Create Sender Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Create Logger Session
     [Documentation]    Connect to the SAL host.
@@ -33,7 +32,6 @@ Create Logger Session
     Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
     Directory Should Exist    ${SALInstall}
     Directory Should Exist    ${SALHome}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}
 
 Verify Component Sender and Logger
     [Tags]    smoke
@@ -68,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1662314174 test 502553520
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1042271075 test 1634418827
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -78,9 +76,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 502553520
+    ${output}=    Read Until    priority : 1634418827
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : 1662314174
+    Should Contain    ${output}    id : 1042271075
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 502553520
+    Should Contain    ${output}    priority : 1634418827
