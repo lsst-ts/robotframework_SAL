@@ -178,9 +178,19 @@ Salgen DM Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for dm_Application.idl
-    Should Contain    ${output}    Processing dm Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for dm_alert_dq.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_alert_psf.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_alert_summary.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_available_replicators_distributors.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_efd_slave_replication_state.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_international_network_status.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_raft_images_sent_current.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_successfully_archived.idl
+    Should Contain    ${output}    Generating SAL Java code for dm_summit_to_base_network_status.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    9
+    Should Contain X Times    ${output}    javac : Done Subscriber    9
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/dm/java
     @{files}=    List Directory    ${SALWorkDir}/dm/java    pattern=*dm*
     File Should Exist    ${SALWorkDir}/dm/java/sal_dm.idl
@@ -194,9 +204,9 @@ Salgen DM Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_dm ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 11, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/dm_${SALVersion}/pom.xml
 

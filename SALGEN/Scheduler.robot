@@ -258,9 +258,38 @@ Salgen Scheduler Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Generating SAL Java code for scheduler_timeHandler.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_cloud.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_seeing.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_filterSwap.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_schedulerConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_driverConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_field.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_obsSiteConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_telescopeConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_rotatorConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_domeConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_cameraConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_slewConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_opticsLoopCorrConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_parkConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_areaDistPropConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_blockPusher.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_observatoryState.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_target.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_observation.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_interestedProposal.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_parameters.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_Application.idl
-    Should Contain    ${output}    Processing scheduler Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for scheduler_program.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_progress.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_rankingData.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_econstraints.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_iconstraints.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    28
+    Should Contain X Times    ${output}    javac : Done Subscriber    28
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/scheduler/java
     @{files}=    List Directory    ${SALWorkDir}/scheduler/java    pattern=*scheduler*
     File Should Exist    ${SALWorkDir}/scheduler/java/sal_scheduler.idl
@@ -274,9 +303,9 @@ Salgen Scheduler Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_scheduler ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 8, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/scheduler_${SALVersion}/pom.xml
 

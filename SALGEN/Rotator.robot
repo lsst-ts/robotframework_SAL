@@ -186,9 +186,14 @@ Salgen Rotator Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for rotator_Application.idl
-    Should Contain    ${output}    Processing rotator Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for rotator_LimitSensors.idl
+    Should Contain    ${output}    Generating SAL Java code for rotator_Position.idl
+    Should Contain    ${output}    Generating SAL Java code for rotator_Electrical.idl
+    Should Contain    ${output}    Generating SAL Java code for rotator_TC.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    4
+    Should Contain X Times    ${output}    javac : Done Subscriber    4
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/rotator/java
     @{files}=    List Directory    ${SALWorkDir}/rotator/java    pattern=*rotator*
     File Should Exist    ${SALWorkDir}/rotator/java/sal_rotator.idl
@@ -202,9 +207,9 @@ Salgen Rotator Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_rotator ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 20, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/rotator_${SALVersion}/pom.xml
 

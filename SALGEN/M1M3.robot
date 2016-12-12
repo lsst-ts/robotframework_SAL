@@ -208,9 +208,19 @@ Salgen M1M3 Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Generating SAL Java code for m1m3_LimitSensors.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_Metrology.idl
     Should Contain    ${output}    Generating SAL Java code for m1m3_Application.idl
-    Should Contain    ${output}    Processing m1m3 Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for m1m3_LUT.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_Actuators.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_TC.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_Electrical.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_Surface.idl
+    Should Contain    ${output}    Generating SAL Java code for m1m3_Support.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    9
+    Should Contain X Times    ${output}    javac : Done Subscriber    9
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/m1m3/java
     @{files}=    List Directory    ${SALWorkDir}/m1m3/java    pattern=*m1m3*
     File Should Exist    ${SALWorkDir}/m1m3/java/sal_m1m3.idl
@@ -224,9 +234,9 @@ Salgen M1M3 Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_m1m3 ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 19, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/m1m3_${SALVersion}/pom.xml
 

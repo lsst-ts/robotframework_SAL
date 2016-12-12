@@ -236,9 +236,24 @@ Salgen MTMount Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for MTMount_Application.idl
-    Should Contain    ${output}    Processing MTMount Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Az.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Alt.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Az_CW.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Az_OSS.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Alt_OSS.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Az_TC.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Alt_TC.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Bal.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_MC.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Cam_CW.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_Cab_TC.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_DP_1.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_DP_2.idl
+    Should Contain    ${output}    Generating SAL Java code for MTMount_MotionParameters.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    14
+    Should Contain X Times    ${output}    javac : Done Subscriber    14
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/MTMount/java
     @{files}=    List Directory    ${SALWorkDir}/MTMount/java    pattern=*MTMount*
     File Should Exist    ${SALWorkDir}/MTMount/java/sal_MTMount.idl
@@ -252,9 +267,9 @@ Salgen MTMount Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_MTMount ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 20, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/MTMount_${SALVersion}/pom.xml
 

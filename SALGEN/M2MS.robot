@@ -202,9 +202,19 @@ Salgen M2MS Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for m2ms_Application.idl
-    Should Contain    ${output}    Processing m2ms Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for m2ms_MirrorPositionMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_AxialForcesMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TangentForcesMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TangentStrainMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_ZenithAngleMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_AxialActuatorAbsolutePositionSteps.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TangentActuatorAbsolutePositionSteps.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    9
+    Should Contain X Times    ${output}    javac : Done Subscriber    9
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/m2ms/java
     @{files}=    List Directory    ${SALWorkDir}/m2ms/java    pattern=*m2ms*
     File Should Exist    ${SALWorkDir}/m2ms/java/sal_m2ms.idl
@@ -218,9 +228,9 @@ Salgen M2MS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_m2ms ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 17, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/m2ms_${SALVersion}/pom.xml
 

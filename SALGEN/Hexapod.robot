@@ -205,9 +205,16 @@ Salgen Hexapod Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Generating SAL Java code for hexapod_Metrology.idl
+    Should Contain    ${output}    Generating SAL Java code for hexapod_LimitSensors.idl
+    Should Contain    ${output}    Generating SAL Java code for hexapod_Electrical.idl
     Should Contain    ${output}    Generating SAL Java code for hexapod_Application.idl
-    Should Contain    ${output}    Processing hexapod Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for hexapod_Actuators.idl
+    Should Contain    ${output}    Generating SAL Java code for hexapod_TC.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    6
+    Should Contain X Times    ${output}    javac : Done Subscriber    6
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/hexapod/java
     @{files}=    List Directory    ${SALWorkDir}/hexapod/java    pattern=*hexapod*
     File Should Exist    ${SALWorkDir}/hexapod/java/sal_hexapod.idl
@@ -221,9 +228,9 @@ Salgen Hexapod Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_hexapod ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 23, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/hexapod_${SALVersion}/pom.xml
 

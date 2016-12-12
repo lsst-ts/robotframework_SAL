@@ -286,9 +286,25 @@ Salgen Camera Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for camera_Application.idl
-    Should Contain    ${output}    Processing camera Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for camera_Cold.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_SAS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_SDS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Filter.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Prot.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_CCS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Purge.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_WDS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Cluster_Encoder.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Shutter.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_GDS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_GAS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_PCMS.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_Cryo.idl
+    Should Contain    ${output}    Generating SAL Java code for camera_WAS.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    15
+    Should Contain X Times    ${output}    javac : Done Subscriber    15
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/camera/java
     @{files}=    List Directory    ${SALWorkDir}/camera/java    pattern=*camera*
     File Should Exist    ${SALWorkDir}/camera/java/sal_camera.idl
@@ -302,9 +318,9 @@ Salgen Camera Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_camera ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 35, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/camera_${SALVersion}/pom.xml
 

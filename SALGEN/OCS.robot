@@ -159,9 +159,11 @@ Salgen OCS Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for ocs_Application.idl
-    Should Contain    ${output}    Processing ocs Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for ocs_SequencerHeartbeat.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    1
+    Should Contain X Times    ${output}    javac : Done Subscriber    1
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/ocs/java
     @{files}=    List Directory    ${SALWorkDir}/ocs/java    pattern=*ocs*
     File Should Exist    ${SALWorkDir}/ocs/java/sal_ocs.idl
@@ -175,9 +177,9 @@ Salgen OCS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_ocs ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 18, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/ocs_${SALVersion}/pom.xml
 

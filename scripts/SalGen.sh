@@ -184,9 +184,13 @@ function salgenJava() {
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
-    echo "    Should Contain    \${output}    Generating SAL Java code for ${subSystem}_Application.idl" >> $testSuite
-    echo "    Should Contain    \${output}    Processing ${subSystem} Application in \${SALWorkDir}" >> $testSuite
-    echo "    Should Contain    \${output}    javac : Done Event/Logger" >> $testSuite
+	for topic in "${telemetryArray[@]}"; do
+        echo "    Should Contain    \${output}    Generating SAL Java code for ${subSystem}_${topic}.idl" >> $testSuite
+    done
+	echo "    Should Contain X Times    \${output}    javac : Done Publisher    ${#telemetryArray[@]}" >> $testSuite
+    echo "    Should Contain X Times    \${output}    javac : Done Subscriber    ${#telemetryArray[@]}" >> $testSuite
+    echo "    Should Contain X Times    \${output}    javac : Done Commander    1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    javac : Done Event/Logger    1" >> $testSuite
     echo "    Directory Should Exist    \${SALWorkDir}/${subSystem}/java" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl" >> $testSuite
@@ -203,9 +207,10 @@ function salgenMaven() {
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
     echo "    Should Contain    \${output}    Running maven install" >> $testSuite
     echo "    Should Contain    \${output}    [INFO] Building sal_${subSystem} \${SALVersion}" >> $testSuite
-    echo "    Should Contain    \${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0" >> $testSuite
+	count=$((${#stateArray[@]} + ${#commandArray[@]} + ${#eventArray[@]}))
+    echo "    Should Contain X Times    \${output}    Tests run: $count, Failures: 0, Errors: 0, Skipped: 0    4" >> $testSuite
     echo "    Should Contain X Times    \${output}    [INFO] BUILD SUCCESS    4" >> $testSuite
-    echo "    Should Contain    \${output}    [INFO] Finished at:" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [INFO] Finished at:    4" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/maven" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/maven/${subSystem}_\${SALVersion}/pom.xml" >> $testSuite
     echo "" >> $testSuite

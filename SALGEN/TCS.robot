@@ -212,9 +212,24 @@ Salgen TCS Java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for tcs_Application.idl
-    Should Contain    ${output}    Processing tcs Application in ${SALWorkDir}
-    Should Contain    ${output}    javac : Done Event/Logger
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_PointingModel.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_AOCS.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_TimeKeeper.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_Site.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_Target.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_PointingControl.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_TrackRefSys.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_ZEMAX.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_PointingLog.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_DawdleFilter.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_OpticsVt.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_WEP.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_TrackingTarget.idl
+    Should Contain    ${output}    Generating SAL Java code for tcs_kernel_FK5Target.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    14
+    Should Contain X Times    ${output}    javac : Done Subscriber    14
+    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/tcs/java
     @{files}=    List Directory    ${SALWorkDir}/tcs/java    pattern=*tcs*
     File Should Exist    ${SALWorkDir}/tcs/java/sal_tcs.idl
@@ -228,9 +243,9 @@ Salgen TCS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_tcs ${SALVersion}
-    Should Contain    ${output}    Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+    Should Contain X Times    ${output}    Tests run: 12, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain    ${output}    [INFO] Finished at:
+    Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
     File Should Exist    ${SALWorkDir}/maven/tcs_${SALVersion}/pom.xml
 
