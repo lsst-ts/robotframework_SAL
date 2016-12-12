@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 2051927235 34.8394 1 1 1 1 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 572584784 90.3345 0 0 0 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 2051927235 34.8394 1 1 1 1 test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 572584784 90.3345 0 0 0 0 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,12 +87,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    numImages : 2051927235    1
-    Should Contain X Times    ${output}    expTime : 34.8394    1
-    Should Contain X Times    ${output}    shutter : 1    1
-    Should Contain X Times    ${output}    science : 1    1
-    Should Contain X Times    ${output}    guide : 1    1
-    Should Contain X Times    ${output}    wfs : 1    1
+    Should Contain X Times    ${output}    numImages : 572584784    1
+    Should Contain X Times    ${output}    expTime : 90.3345    1
+    Should Contain X Times    ${output}    shutter : 0    1
+    Should Contain X Times    ${output}    science : 0    1
+    Should Contain X Times    ${output}    guide : 0    1
+    Should Contain X Times    ${output}    wfs : 0    1
     Should Contain X Times    ${output}    imageSequenceName : test    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -102,12 +102,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    numImages = 2051927235    1
-    Should Contain X Times    ${output}    expTime = 34.8394    1
-    Should Contain X Times    ${output}    shutter = 1    1
-    Should Contain X Times    ${output}    science = 1    1
-    Should Contain X Times    ${output}    guide = 1    1
-    Should Contain X Times    ${output}    wfs = 1    1
+    Should Contain X Times    ${output}    numImages = 572584784    1
+    Should Contain X Times    ${output}    expTime = 90.3345    1
+    Should Contain X Times    ${output}    shutter = 0    1
+    Should Contain X Times    ${output}    science = 0    1
+    Should Contain X Times    ${output}    guide = 0    1
+    Should Contain X Times    ${output}    wfs = 0    1
     Should Contain X Times    ${output}    imageSequenceName = test    1
     Should Contain X Times    ${output}    === [ackCommand_takeImages] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

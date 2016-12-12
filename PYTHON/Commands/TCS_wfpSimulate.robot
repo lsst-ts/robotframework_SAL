@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 75.5125 6.2474 45.8239 29.8867 22.596 21.5269 10.7339 45.032 86.1425 76.2797 65.3556 51.3702 62.5238 3.0991 10.1341 61.6561 34.4422 33.7231
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 32.4197 24.3825 62.6933 0.1751 50.5401 23.374 23.5223 99.4326 97.6855 51.5377 17.3693 46.2339 27.5949 29.1639 69.0407 31.9204 18.9232 45.7171
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 75.5125 6.2474 45.8239 29.8867 22.596 21.5269 10.7339 45.032 86.1425 76.2797 65.3556 51.3702 62.5238 3.0991 10.1341 61.6561 34.4422 33.7231
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 32.4197 24.3825 62.6933 0.1751 50.5401 23.374 23.5223 99.4326 97.6855 51.5377 17.3693 46.2339 27.5949 29.1639 69.0407 31.9204 18.9232 45.7171
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 75.5125    1
+    Should Contain X Times    ${output}    z_arr : 32.4197    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,7 +98,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    uid = test    1
-    Should Contain X Times    ${output}    z_arr(18) = [75.5125, 6.2474, 45.8239, 29.8867, 22.596, 21.5269, 10.7339, 45.032, 86.1425, 76.2797, 65.3556, 51.3702, 62.5238, 3.0991, 10.1341, 61.6561, 34.4422, 33.7231]    1
+    Should Contain X Times    ${output}    z_arr(18) = [32.4197, 24.3825, 62.6933, 0.1751, 50.5401, 23.374, 23.5223, 99.4326, 97.6855, 51.5377, 17.3693, 46.2339, 27.5949, 29.1639, 69.0407, 31.9204, 18.9232, 45.7171]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -169,11 +169,15 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    property : $property    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    action : $action    1" >> $testSuite
     echo "    Should Contain X Times    \${output}    value : $value    1" >> $testSuite
-	for parameter in "${parametersArray[@]}"; do
-		if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
-		(( i++ ))
-    done
+    if [ ! ${parametersArray[0]} ]; then
+		echo "    Should Contain X Times    \${output}    state : ${argumentsArray[0]}    1" >>$testSuite
+    else
+		for parameter in "${parametersArray[@]}"; do
+			if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+        	echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
+			(( i++ ))
+    	done
+	fi
 	echo "    Should Contain    \${output}    === command $topic issued =" >>$testSuite
  	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
@@ -195,11 +199,15 @@ function readController() {
     echo "    Should Contain    \${output}    property : $property" >> $testSuite
     echo "    Should Contain    \${output}    action : $action" >> $testSuite
     echo "    Should Contain    \${output}    value : $value" >> $testSuite
-    for parameter in "${parametersArray[@]}"; do
-		if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
-        echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
-		(( i++ ))
-    done
+    if [ ! ${parametersArray[0]} ]; then
+        echo "    Should Contain X Times    \${output}    state : ${argumentsArray[0]}    1" >>$testSuite
+    else
+    	for parameter in "${parametersArray[@]}"; do
+			if [ $i -gt 0 ];then n=$i*$(getParameterCount $subSystem $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+        	echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
+			(( i++ ))
+    	done
+	fi
 	echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    2" >> $testSuite
 	echo "    Should Contain    \${output}    seqNum   :" >> $testSuite
     echo "    Should Contain    \${output}    ack      : 301" >> $testSuite
@@ -251,18 +259,18 @@ function createTestSuite() {
 		unset argumentsArray
 		# If the Topic has no parameters (items), just send a string.
 		if [ ! ${parametersArray[0]} ]; then
-			testValue=$(python random_value.py "string")
+			testValue=$(python random_value.py "state")
 			argumentsArray+=($testValue)
 		# Otherwise, determine the parameter type and create a test value, accordingly.
 		else
-				for i in "${parametersArray[@]}"; do
-  					parameterIndex=$(getParameterIndex $i)
-					parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-					parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-					for i in $(seq 1 $parameterCount); do
-						testValue=$(python random_value.py $parameterType)
-						argumentsArray+=($testValue)
-					done
+			for i in "${parametersArray[@]}"; do
+  				parameterIndex=$(getParameterIndex $i)
+				parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
+				parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+				for i in $(seq 1 $parameterCount); do
+					testValue=$(python random_value.py $parameterType)
+					argumentsArray+=($testValue)
+				done
 			done
 		fi
 		# Create the Commander Timeout test case.

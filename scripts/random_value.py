@@ -21,6 +21,8 @@ elif args.datatype == "int":
         value=random.randint(0,32767)
 elif args.datatype == "boolean":
 		value=random.randint(0,1)
+elif args.datatype == "state":
+		value=random.randint(0,1)
 else:
         value="test"
 
