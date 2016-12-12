@@ -85,7 +85,7 @@ function startCommanderTimeout() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/python" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    python \${subSystem}_Commander_\${component}.py true" >> $testSuite
+    echo "    \${input}=    Write    python \${subSystem}_Commander_\${component}.py 0" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
@@ -118,7 +118,7 @@ function startCommander() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/python" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    python \${subSystem}_Commander_\${component}.py true" >> $testSuite
+    echo "    \${input}=    Write    python \${subSystem}_Commander_\${component}.py 1" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === [issueCommand_\${component}] writing a command containing :    1" >> $testSuite
@@ -126,7 +126,7 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    property :    1" >> $testSuite    #$property TSS-861
     echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     echo "    Should Contain X Times    \${output}    value :    1" >> $testSuite    #$value TSS-861
-    echo "    Should Contain X Times    \${output}    $parameter : true    1" >>$testSuite
+    echo "    Should Contain X Times    \${output}    $parameterType : 1    1" >>$testSuit
 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite

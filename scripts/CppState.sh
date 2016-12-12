@@ -76,7 +76,8 @@ function startCommanderInputs() {
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
-    echo "    Should Contain    \${output}   string    $parameterType;" >> $testSuite
+    echo "    Should Contain    \${output}   boolean" >> $testSuite
+    echo "    Should Contain    \${output}   $parameterType;" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -87,7 +88,7 @@ function startCommanderTimeout() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander true" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander 0" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
@@ -120,7 +121,7 @@ function startCommander() {
     echo "    Comment    Move to working directory." >> $testSuite
     echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander true" >> $testSuite
+    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander 1" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === [issueCommand_\${component}] writing a command containing :    1" >> $testSuite
@@ -128,7 +129,7 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    property :    1" >> $testSuite    #$property TSS-861
     echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     echo "    Should Contain X Times    \${output}    value :    1" >> $testSuite    #$value TSS-861
-    echo "    Should Contain X Times    \${output}    $parameter : true    1" >>$testSuite
+    echo "    Should Contain X Times    \${output}    $parameterType : 1    1" >>$testSuite
 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite
@@ -145,7 +146,7 @@ function readController() {
     echo "    Should Contain    \${output}    property :" >>$testSuite
     echo "    Should Contain    \${output}    action : " >>$testSuite
     echo "    Should Contain    \${output}    value : " >>$testSuite
-    echo "    Should Contain    \${output}    $parameterType : true" >>$testSuite
+    echo "    Should Contain    \${output}    $parameterType : 1" >>$testSuite
     echo "    Should Contain    \${output}    ack      : 301" >>$testSuite
     echo "    Should Contain    \${output}    result   : Ack : OK" >>$testSuite
     echo "    Should Contain    \${output}    ack      : 303" >>$testSuite

@@ -49,7 +49,8 @@ Start Commander - Verify Missing Inputs Error
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}   Usage :  input parameters...
-    Should Contain    ${output}   string    state;
+    Should Contain    ${output}   boolean
+    Should Contain    ${output}   state;
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -57,7 +58,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander true
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +81,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander true
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +89,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}     : true    1
+    Should Contain X Times    ${output}    state : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -102,7 +103,7 @@ Read Controller
     Should Contain    ${output}    property :
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain    ${output}    state : true
+    Should Contain    ${output}    state : 1
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    result   : Ack : OK
     Should Contain    ${output}    ack      : 303
