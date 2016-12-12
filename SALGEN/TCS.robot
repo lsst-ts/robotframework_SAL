@@ -352,3 +352,4 @@ Salgen TCS LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/tcs/labview/SAL_tcs_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/tcs/labview/SAL_tcs_shmem.h
+    File Should Exist    ${SALWorkDir}/tcs/labview/SALLV_tcs.so

@@ -343,3 +343,4 @@ Salgen Hexapod LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/hexapod/labview/SAL_hexapod_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/hexapod/labview/SAL_hexapod_shmem.h
+    File Should Exist    ${SALWorkDir}/hexapod/labview/SALLV_hexapod.so

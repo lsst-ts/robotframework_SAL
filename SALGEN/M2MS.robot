@@ -337,3 +337,4 @@ Salgen M2MS LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/m2ms/labview/SAL_m2ms_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/m2ms/labview/SAL_m2ms_shmem.h
+    File Should Exist    ${SALWorkDir}/m2ms/labview/SALLV_m2ms.so

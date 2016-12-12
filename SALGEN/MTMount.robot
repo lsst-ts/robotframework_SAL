@@ -392,3 +392,4 @@ Salgen MTMount LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/MTMount/labview/SAL_MTMount_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/MTMount/labview/SAL_MTMount_shmem.h
+    File Should Exist    ${SALWorkDir}/MTMount/labview/SALLV_MTMount.so

@@ -266,3 +266,4 @@ Salgen OCS LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/ocs/labview/SAL_ocs_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/ocs/labview/SAL_ocs_shmem.h
+    File Should Exist    ${SALWorkDir}/ocs/labview/SALLV_ocs.so

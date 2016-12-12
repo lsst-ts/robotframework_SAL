@@ -475,3 +475,4 @@ Salgen Camera LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/camera/labview/SAL_camera_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/camera/labview/SAL_camera_shmem.h
+    File Should Exist    ${SALWorkDir}/camera/labview/SALLV_camera.so

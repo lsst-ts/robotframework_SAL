@@ -347,3 +347,4 @@ Salgen M1M3 LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/m1m3/labview/SAL_m1m3_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/m1m3/labview/SAL_m1m3_shmem.h
+    File Should Exist    ${SALWorkDir}/m1m3/labview/SALLV_m1m3.so

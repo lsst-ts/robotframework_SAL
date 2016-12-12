@@ -295,3 +295,4 @@ Salgen DM LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/dm/labview/SAL_dm_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/dm/labview/SAL_dm_shmem.h
+    File Should Exist    ${SALWorkDir}/dm/labview/SALLV_dm.so

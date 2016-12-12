@@ -299,6 +299,7 @@ function salgenLabview() {
     echo "    Log Many    @{files}" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_salShmMonitor.cpp" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so" >> $testSuite
 }
 
 function createTestSuite() {

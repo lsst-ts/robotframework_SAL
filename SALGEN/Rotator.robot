@@ -312,3 +312,4 @@ Salgen Rotator LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/rotator/labview/SAL_rotator_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/rotator/labview/SAL_rotator_shmem.h
+    File Should Exist    ${SALWorkDir}/rotator/labview/SALLV_rotator.so

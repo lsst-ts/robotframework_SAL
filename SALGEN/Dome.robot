@@ -425,3 +425,4 @@ Salgen Dome LabVIEW
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/dome/labview/SAL_dome_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/dome/labview/SAL_dome_shmem.h
+    File Should Exist    ${SALWorkDir}/dome/labview/SALLV_dome.so
