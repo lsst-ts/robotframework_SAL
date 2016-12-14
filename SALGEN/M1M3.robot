@@ -219,8 +219,8 @@ Salgen M1M3 Java
     Should Contain    ${output}    Generating SAL Java code for m1m3_Support.idl
     Should Contain X Times    ${output}    javac : Done Publisher    9
     Should Contain X Times    ${output}    javac : Done Subscriber    9
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
+    Should Contain X Times    ${output}    javac : Done Event/Logger    9
     Directory Should Exist    ${SALWorkDir}/m1m3/java
     @{files}=    List Directory    ${SALWorkDir}/m1m3/java    pattern=*m1m3*
     File Should Exist    ${SALWorkDir}/m1m3/java/sal_m1m3.idl

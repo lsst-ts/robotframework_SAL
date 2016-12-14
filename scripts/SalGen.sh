@@ -189,8 +189,8 @@ function salgenJava() {
     done
 	echo "    Should Contain X Times    \${output}    javac : Done Publisher    ${#telemetryArray[@]}" >> $testSuite
     echo "    Should Contain X Times    \${output}    javac : Done Subscriber    ${#telemetryArray[@]}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    javac : Done Commander    1" >> $testSuite
-    echo "    Should Contain X Times    \${output}    javac : Done Event/Logger    1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    javac : Done Commander/Controller    ${#telemetryArray[@]}" >> $testSuite
+    echo "    Should Contain X Times    \${output}    javac : Done Event/Logger    ${#telemetryArray[@]}" >> $testSuite
     echo "    Directory Should Exist    \${SALWorkDir}/${subSystem}/java" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl" >> $testSuite

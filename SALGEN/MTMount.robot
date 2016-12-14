@@ -252,8 +252,8 @@ Salgen MTMount Java
     Should Contain    ${output}    Generating SAL Java code for MTMount_MotionParameters.idl
     Should Contain X Times    ${output}    javac : Done Publisher    14
     Should Contain X Times    ${output}    javac : Done Subscriber    14
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    14
+    Should Contain X Times    ${output}    javac : Done Event/Logger    14
     Directory Should Exist    ${SALWorkDir}/MTMount/java
     @{files}=    List Directory    ${SALWorkDir}/MTMount/java    pattern=*MTMount*
     File Should Exist    ${SALWorkDir}/MTMount/java/sal_MTMount.idl

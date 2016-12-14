@@ -162,7 +162,7 @@ Salgen OCS Java
     Should Contain    ${output}    Generating SAL Java code for ocs_SequencerHeartbeat.idl
     Should Contain X Times    ${output}    javac : Done Publisher    1
     Should Contain X Times    ${output}    javac : Done Subscriber    1
-    Should Contain X Times    ${output}    javac : Done Commander    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    1
     Should Contain X Times    ${output}    javac : Done Event/Logger    1
     Directory Should Exist    ${SALWorkDir}/ocs/java
     @{files}=    List Directory    ${SALWorkDir}/ocs/java    pattern=*ocs*

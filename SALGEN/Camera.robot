@@ -303,8 +303,8 @@ Salgen Camera Java
     Should Contain    ${output}    Generating SAL Java code for camera_WAS.idl
     Should Contain X Times    ${output}    javac : Done Publisher    15
     Should Contain X Times    ${output}    javac : Done Subscriber    15
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    15
+    Should Contain X Times    ${output}    javac : Done Event/Logger    15
     Directory Should Exist    ${SALWorkDir}/camera/java
     @{files}=    List Directory    ${SALWorkDir}/camera/java    pattern=*camera*
     File Should Exist    ${SALWorkDir}/camera/java/sal_camera.idl

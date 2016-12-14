@@ -213,8 +213,8 @@ Salgen M2MS Java
     Should Contain    ${output}    Generating SAL Java code for m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
     Should Contain X Times    ${output}    javac : Done Publisher    9
     Should Contain X Times    ${output}    javac : Done Subscriber    9
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
+    Should Contain X Times    ${output}    javac : Done Event/Logger    9
     Directory Should Exist    ${SALWorkDir}/m2ms/java
     @{files}=    List Directory    ${SALWorkDir}/m2ms/java    pattern=*m2ms*
     File Should Exist    ${SALWorkDir}/m2ms/java/sal_m2ms.idl

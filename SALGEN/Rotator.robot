@@ -192,8 +192,8 @@ Salgen Rotator Java
     Should Contain    ${output}    Generating SAL Java code for rotator_TC.idl
     Should Contain X Times    ${output}    javac : Done Publisher    4
     Should Contain X Times    ${output}    javac : Done Subscriber    4
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    4
+    Should Contain X Times    ${output}    javac : Done Event/Logger    4
     Directory Should Exist    ${SALWorkDir}/rotator/java
     @{files}=    List Directory    ${SALWorkDir}/rotator/java    pattern=*rotator*
     File Should Exist    ${SALWorkDir}/rotator/java/sal_rotator.idl

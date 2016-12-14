@@ -267,8 +267,8 @@ Salgen Dome Java
     Should Contain    ${output}    Generating SAL Java code for dome_Screen.idl
     Should Contain X Times    ${output}    javac : Done Publisher    10
     Should Contain X Times    ${output}    javac : Done Subscriber    10
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    10
+    Should Contain X Times    ${output}    javac : Done Event/Logger    10
     Directory Should Exist    ${SALWorkDir}/dome/java
     @{files}=    List Directory    ${SALWorkDir}/dome/java    pattern=*dome*
     File Should Exist    ${SALWorkDir}/dome/java/sal_dome.idl

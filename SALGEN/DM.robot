@@ -189,8 +189,8 @@ Salgen DM Java
     Should Contain    ${output}    Generating SAL Java code for dm_summit_to_base_network_status.idl
     Should Contain X Times    ${output}    javac : Done Publisher    9
     Should Contain X Times    ${output}    javac : Done Subscriber    9
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
+    Should Contain X Times    ${output}    javac : Done Event/Logger    9
     Directory Should Exist    ${SALWorkDir}/dm/java
     @{files}=    List Directory    ${SALWorkDir}/dm/java    pattern=*dm*
     File Should Exist    ${SALWorkDir}/dm/java/sal_dm.idl

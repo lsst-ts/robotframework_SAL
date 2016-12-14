@@ -228,8 +228,8 @@ Salgen TCS Java
     Should Contain    ${output}    Generating SAL Java code for tcs_kernel_FK5Target.idl
     Should Contain X Times    ${output}    javac : Done Publisher    14
     Should Contain X Times    ${output}    javac : Done Subscriber    14
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    14
+    Should Contain X Times    ${output}    javac : Done Event/Logger    14
     Directory Should Exist    ${SALWorkDir}/tcs/java
     @{files}=    List Directory    ${SALWorkDir}/tcs/java    pattern=*tcs*
     File Should Exist    ${SALWorkDir}/tcs/java/sal_tcs.idl

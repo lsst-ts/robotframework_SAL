@@ -288,8 +288,8 @@ Salgen Scheduler Java
     Should Contain    ${output}    Generating SAL Java code for scheduler_iconstraints.idl
     Should Contain X Times    ${output}    javac : Done Publisher    28
     Should Contain X Times    ${output}    javac : Done Subscriber    28
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    28
+    Should Contain X Times    ${output}    javac : Done Event/Logger    28
     Directory Should Exist    ${SALWorkDir}/scheduler/java
     @{files}=    List Directory    ${SALWorkDir}/scheduler/java    pattern=*scheduler*
     File Should Exist    ${SALWorkDir}/scheduler/java/sal_scheduler.idl

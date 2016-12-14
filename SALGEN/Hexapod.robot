@@ -213,8 +213,8 @@ Salgen Hexapod Java
     Should Contain    ${output}    Generating SAL Java code for hexapod_TC.idl
     Should Contain X Times    ${output}    javac : Done Publisher    6
     Should Contain X Times    ${output}    javac : Done Subscriber    6
-    Should Contain X Times    ${output}    javac : Done Commander    1
-    Should Contain X Times    ${output}    javac : Done Event/Logger    1
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    6
+    Should Contain X Times    ${output}    javac : Done Event/Logger    6
     Directory Should Exist    ${SALWorkDir}/hexapod/java
     @{files}=    List Directory    ${SALWorkDir}/hexapod/java    pattern=*hexapod*
     File Should Exist    ${SALWorkDir}/hexapod/java/sal_hexapod.idl
