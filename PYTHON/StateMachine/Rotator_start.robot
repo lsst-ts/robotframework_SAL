@@ -95,7 +95,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    configuration = true    1
+    Should Contain X Times    ${output}    configuration = 1    1
     Should Contain X Times    ${output}    === [ackCommand_start] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 303

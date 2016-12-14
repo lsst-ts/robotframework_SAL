@@ -142,7 +142,7 @@ function readController() {
     #echo "    Should Contain X Times    \${output}    property :    1" >> $testSuite    #$property TSS-861
     #echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     #echo "    Should Contain X Times    \${output}    value :    1" >> $testSuite    #$value TSS-861
-    echo "    Should Contain X Times    \${output}    $parameterType = true    1" >>$testSuite
+    echo "    Should Contain X Times    \${output}    $parameterType = 1    1" >>$testSuite
 	echo "    Should Contain X Times    \${output}    === [ackCommand_${state}] acknowledging a command with :    1" >> $testSuite
 	echo "    Should Contain    \${output}    seqNum   :" >> $testSuite
     echo "    Should Contain    \${output}    ack      : 303" >> $testSuite
