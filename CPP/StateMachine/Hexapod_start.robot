@@ -48,9 +48,8 @@ Start Commander - Verify Missing Inputs Error
     ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   Usage :  input parameters...
-    Should Contain    ${output}   boolean
-    Should Contain    ${output}   configuration;
+    Should Contain    ${output}    Usage : \ input parameters...
+    Should Contain    ${output}    configuration;
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional

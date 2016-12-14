@@ -75,9 +75,8 @@ function startCommanderInputs() {
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_commander $parameter" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
-    echo "    Should Contain    \${output}   boolean" >> $testSuite
-    echo "    Should Contain    \${output}   $parameterType;" >> $testSuite
+    echo "    Should Contain    \${output}    Usage : \\ input parameters..." >> $testSuite
+    echo "    Should Contain    \${output}    $parameterType;" >> $testSuite
     echo "" >> $testSuite
 }
 
