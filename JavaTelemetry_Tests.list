@@ -82,7 +82,7 @@ JAVA/Telemetry/Rotator_Position.robot
 JAVA/Telemetry/Rotator_TC.robot
 JAVA/Telemetry/Scheduler_Application.robot
 JAVA/Telemetry/Scheduler_areaDistPropConfig.robot
-JAVA/Telemetry/Scheduler_blockPusher.robot
+#JAVA/Telemetry/Scheduler_blockPusher.robot    # TSS-859
 JAVA/Telemetry/Scheduler_cameraConfig.robot
 JAVA/Telemetry/Scheduler_cloud.robot
 JAVA/Telemetry/Scheduler_domeConfig.robot

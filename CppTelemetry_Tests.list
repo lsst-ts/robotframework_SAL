@@ -82,7 +82,7 @@ CPP/Telemetry/Rotator_Position.robot
 CPP/Telemetry/Rotator_TC.robot
 CPP/Telemetry/Scheduler_Application.robot
 CPP/Telemetry/Scheduler_areaDistPropConfig.robot
-CPP/Telemetry/Scheduler_blockPusher.robot
+#CPP/Telemetry/Scheduler_blockPusher.robot    # TSS-859
 CPP/Telemetry/Scheduler_cameraConfig.robot
 CPP/Telemetry/Scheduler_cloud.robot
 CPP/Telemetry/Scheduler_domeConfig.robot
