@@ -144,18 +144,6 @@ function find_Format_TestValue {
     fi
 }
 
-function determine_return_count {
-    subSystem=$1
-    topicIndex=$2
-	count="10"
-	IFS=" " read -ra array <<< $( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |tr "\n" " ")
-	for item in "${array[@]}"; do
-		if [[ ( "$item" -gt 2000 ) ]]; then
-			count="1"
-		fi
-	done
-}
-
 function readSubscriber {
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
@@ -163,20 +151,19 @@ function readSubscriber {
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
-    determine_return_count $subSystem $topicIndex
     for parameter in "${parametersArray[@]}"; do
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
 		find_Format_TestValue "$parameterType"
 		if [[ ( "$parameterCount" == "1" ) || ( "$parameterType" == "string" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter = $value    $count" >>$testSuite
+			echo "    Should Contain X Times    \${list}    $parameter = $value    10" >>$testSuite
 		elif [[ ( $parameterCount -gt 2000 ) && ( "$parameterType" != "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    $count" >>$testSuite
+			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
 		elif [[ (( "$parameterCount" > "1" )) && ( "$parameterType" == "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [\'L\', \'S\', \'S\', \'T\']    $count" >>$testSuite
+			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [\'L\', \'S\', \'S\', \'T\']    10" >>$testSuite
 		else
-        	echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    $count" >>$testSuite
+        	echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
 		fi
     done
 }
