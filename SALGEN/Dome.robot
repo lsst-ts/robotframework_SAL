@@ -30,7 +30,7 @@ Salgen Dome Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -87,7 +87,7 @@ Salgen Dome Validate
 Salgen Dome HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -101,7 +101,7 @@ Salgen Dome HTML
 Salgen Dome C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -251,7 +251,7 @@ Verify Dome C++ Event Interfaces
 Salgen Dome Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -291,7 +291,7 @@ Salgen Dome Maven
 Salgen Dome Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -416,7 +416,7 @@ Verify Dome Python Event Interfaces
 Salgen Dome LabVIEW
     [Documentation]    Generate dome low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dome labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dome labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

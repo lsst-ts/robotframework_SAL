@@ -30,7 +30,7 @@ Salgen Hexapod Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -73,7 +73,7 @@ Salgen Hexapod Validate
 Salgen Hexapod HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -87,7 +87,7 @@ Salgen Hexapod HTML
 Salgen Hexapod C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -201,7 +201,7 @@ Verify Hexapod C++ Event Interfaces
 Salgen Hexapod Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -237,7 +237,7 @@ Salgen Hexapod Maven
 Salgen Hexapod Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -334,7 +334,7 @@ Verify Hexapod Python Event Interfaces
 Salgen Hexapod LabVIEW
     [Documentation]    Generate hexapod low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator hexapod labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator hexapod labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

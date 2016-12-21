@@ -28,7 +28,7 @@ Salgen Scheduler Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -78,7 +78,7 @@ Salgen Scheduler Validate
 Salgen Scheduler HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -90,7 +90,7 @@ Salgen Scheduler HTML
 Salgen Scheduler C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -254,7 +254,7 @@ Verify Scheduler C++ State Command Interfaces
 Salgen Scheduler Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -312,7 +312,7 @@ Salgen Scheduler Maven
 Salgen Scheduler Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator scheduler sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

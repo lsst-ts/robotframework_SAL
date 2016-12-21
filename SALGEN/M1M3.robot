@@ -30,7 +30,7 @@ Salgen M1M3 Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -72,7 +72,7 @@ Salgen M1M3 Validate
 Salgen M1M3 HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -86,7 +86,7 @@ Salgen M1M3 HTML
 Salgen M1M3 C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -204,7 +204,7 @@ Verify M1M3 C++ Event Interfaces
 Salgen M1M3 Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -243,7 +243,7 @@ Salgen M1M3 Maven
 Salgen M1M3 Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -338,7 +338,7 @@ Verify M1M3 Python Event Interfaces
 Salgen M1M3 LabVIEW
     [Documentation]    Generate m1m3 low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m1m3 labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

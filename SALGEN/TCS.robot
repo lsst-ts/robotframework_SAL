@@ -30,7 +30,7 @@ Salgen TCS Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -70,7 +70,7 @@ Salgen TCS Validate
 Salgen TCS HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -84,7 +84,7 @@ Salgen TCS HTML
 Salgen TCS C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -208,7 +208,7 @@ Verify TCS C++ Event Interfaces
 Salgen TCS Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -252,7 +252,7 @@ Salgen TCS Maven
 Salgen TCS Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -343,7 +343,7 @@ Verify TCS Python Event Interfaces
 Salgen TCS LabVIEW
     [Documentation]    Generate tcs low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator tcs labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator tcs labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

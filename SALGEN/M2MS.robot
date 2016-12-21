@@ -30,7 +30,7 @@ Salgen M2MS Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -70,7 +70,7 @@ Salgen M2MS Validate
 Salgen M2MS HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -84,7 +84,7 @@ Salgen M2MS HTML
 Salgen M2MS C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -198,7 +198,7 @@ Verify M2MS C++ Event Interfaces
 Salgen M2MS Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -237,7 +237,7 @@ Salgen M2MS Maven
 Salgen M2MS Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -328,7 +328,7 @@ Verify M2MS Python Event Interfaces
 Salgen M2MS LabVIEW
     [Documentation]    Generate m2ms low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator m2ms labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

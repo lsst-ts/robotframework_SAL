@@ -46,7 +46,7 @@ function salgenValidate() {
     echo "    [Documentation]    Validate the TCS XML definitions." >> $testSuite
     echo "    [Tags]" >> $testSuite
     echo "    Write    cd \${SALWorkDir}" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} validate" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} validate" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
@@ -75,7 +75,7 @@ function salgenHTML() {
     echo "Salgen $subSystemUp HTML" >> $testSuite
     echo "    [Documentation]    Create web form interfaces." >> $testSuite
     echo "    [Tags]" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} html" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} html" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
@@ -93,7 +93,7 @@ function salgenCPP {
     echo "Salgen $subSystemUp C++" >> $testSuite
     echo "    [Documentation]    Generate C++ wrapper." >> $testSuite
     echo "    [Tags]" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal cpp" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} sal cpp" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Not Contain    \${output}    *** DDS error in file" >> $testSuite
@@ -180,7 +180,7 @@ function salgenJava() {
     echo "Salgen $subSystemUp Java" >> $testSuite
     echo "    [Documentation]    Generate Java wrapper." >> $testSuite
     echo "    [Tags]    java" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal java" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} sal java" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
@@ -220,7 +220,7 @@ function salgenPython() {
     echo "Salgen $subSystemUp Python" >> $testSuite
     echo "    [Documentation]    Generate Python wrapper." >> $testSuite
     echo "    [Tags]    python" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} sal python" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} sal python" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
@@ -290,7 +290,7 @@ function salgenLabview() {
     echo "Salgen $subSystemUp LabVIEW" >> $testSuite
     echo "    [Documentation]    Generate ${subSystem} low-level LabView interfaces." >> $testSuite
     echo "    [Tags]    labview" >> $testSuite
-    echo "    \${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ${subSystem} labview" >> $testSuite
+    echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} labview" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite

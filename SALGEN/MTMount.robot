@@ -30,7 +30,7 @@ Salgen MTMount Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -78,7 +78,7 @@ Salgen MTMount Validate
 Salgen MTMount HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -92,7 +92,7 @@ Salgen MTMount HTML
 Salgen MTMount C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -232,7 +232,7 @@ Verify MTMount C++ Event Interfaces
 Salgen MTMount Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -276,7 +276,7 @@ Salgen MTMount Maven
 Salgen MTMount Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -383,7 +383,7 @@ Verify MTMount Python Event Interfaces
 Salgen MTMount LabVIEW
     [Documentation]    Generate MTMount low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator MTMount labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator MTMount labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

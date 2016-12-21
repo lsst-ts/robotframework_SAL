@@ -30,7 +30,7 @@ Salgen Camera Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -94,7 +94,7 @@ Salgen Camera Validate
 Salgen Camera HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -108,7 +108,7 @@ Salgen Camera HTML
 Salgen Camera C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -282,7 +282,7 @@ Verify Camera C++ Event Interfaces
 Salgen Camera Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -327,7 +327,7 @@ Salgen Camera Maven
 Salgen Camera Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -466,7 +466,7 @@ Verify Camera Python Event Interfaces
 Salgen Camera LabVIEW
     [Documentation]    Generate camera low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator camera labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator camera labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

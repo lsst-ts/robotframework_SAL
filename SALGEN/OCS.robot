@@ -29,7 +29,7 @@ Salgen OCS Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -62,7 +62,7 @@ Salgen OCS Validate
 Salgen OCS HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -75,7 +75,7 @@ Salgen OCS HTML
 Salgen OCS C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -155,7 +155,7 @@ Verify OCS C++ Event Interfaces
 Salgen OCS Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -186,7 +186,7 @@ Salgen OCS Maven
 Salgen OCS Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -257,7 +257,7 @@ Verify OCS Python Event Interfaces
 Salgen OCS LabVIEW
     [Documentation]    Generate ocs low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator ocs labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ocs labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

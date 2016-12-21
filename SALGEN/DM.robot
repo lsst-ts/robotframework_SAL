@@ -29,7 +29,7 @@ Salgen DM Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -63,7 +63,7 @@ Salgen DM Validate
 Salgen DM HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -76,7 +76,7 @@ Salgen DM HTML
 Salgen DM C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -174,7 +174,7 @@ Verify DM C++ Event Interfaces
 Salgen DM Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -213,7 +213,7 @@ Salgen DM Maven
 Salgen DM Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -286,7 +286,7 @@ Verify DM Python Event Interfaces
 Salgen DM LabVIEW
     [Documentation]    Generate dm low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator dm labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator dm labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}

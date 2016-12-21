@@ -30,7 +30,7 @@ Salgen Rotator Validate
     [Documentation]    Validate the TCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator validate
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator validate
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -68,7 +68,7 @@ Salgen Rotator Validate
 Salgen Rotator HTML
     [Documentation]    Create web form interfaces.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator html
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator html
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -82,7 +82,7 @@ Salgen Rotator HTML
 Salgen Rotator C++
     [Documentation]    Generate C++ wrapper.
     [Tags]
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator sal cpp
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
@@ -182,7 +182,7 @@ Verify Rotator C++ Event Interfaces
 Salgen Rotator Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator sal java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -216,7 +216,7 @@ Salgen Rotator Maven
 Salgen Rotator Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator sal python
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator sal python
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
@@ -303,7 +303,7 @@ Verify Rotator Python Event Interfaces
 Salgen Rotator LabVIEW
     [Documentation]    Generate rotator low-level LabView interfaces.
     [Tags]    labview
-    ${input}=    Write    /opt/sal/lsstsal/scripts/salgenerator rotator labview
+    ${input}=    Write    ${SALHome}/scripts/salgenerator rotator labview
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
