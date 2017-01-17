@@ -4,6 +4,7 @@
 --output SALGENERATOR
 
 # List of salgenerator  test suites
+rbtsal/Version.robot
 rbtsal/SALGEN/Camera.robot
 rbtsal/SALGEN/DM.robot
 rbtsal/SALGEN/M2MS.robot

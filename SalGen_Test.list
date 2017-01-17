@@ -4,6 +4,7 @@
 --output SALGENERATOR
 
 # List of test suites
+Version.robot
 SALGEN/Camera.robot
 SALGEN/DM.robot
 SALGEN/Dome.robot
