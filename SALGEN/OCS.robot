@@ -6,7 +6,7 @@ Library    SSHLibrary
 Resource    ../Global_Vars.robot
 
 *** Variables ***
-${timeout}    900s
+${timeout}    1200s
 
 *** Test Cases ***
 Create SALGEN Session

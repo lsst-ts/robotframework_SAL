@@ -28,7 +28,7 @@ function createSettings() {
 
 function createVariables() {
     echo "*** Variables ***" >> $testSuite
-    echo "\${timeout}    900s" >> $testSuite
+    echo "\${timeout}    1200s" >> $testSuite
     echo "" >> $testSuite
 }
 
