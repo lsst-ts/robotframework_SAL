@@ -43,7 +43,7 @@ function verifyXMLDefinitions() {
 
 function salgenValidate() {
     echo "Salgen $subSystemUp Validate" >> $testSuite
-    echo "    [Documentation]    Validate the TCS XML definitions." >> $testSuite
+    echo "    [Documentation]    Validate the $subSystemUp XML definitions." >> $testSuite
     echo "    [Tags]" >> $testSuite
     echo "    Write    cd \${SALWorkDir}" >> $testSuite
     echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator ${subSystem} validate" >> $testSuite
@@ -207,8 +207,6 @@ function salgenMaven() {
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
     echo "    Should Contain    \${output}    Running maven install" >> $testSuite
     echo "    Should Contain    \${output}    [INFO] Building sal_${subSystem} \${SALVersion}" >> $testSuite
-	count=$((${#stateArray[@]} + ${#commandArray[@]} + ${#eventArray[@]}))
-    echo "    Should Contain X Times    \${output}    Tests run: $count, Failures: 0, Errors: 0, Skipped: 0    4" >> $testSuite
     echo "    Should Contain X Times    \${output}    [INFO] BUILD SUCCESS    4" >> $testSuite
     echo "    Should Contain X Times    \${output}    [INFO] Finished at:    4" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/maven" >> $testSuite

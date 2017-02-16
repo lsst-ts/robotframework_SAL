@@ -22,11 +22,12 @@ Create SALGEN Session
 
 Verify OCS XML Defintions exist
     [Tags]
+    File Should Exist    ${SALWorkDir}/ocs_Commands.xml
     File Should Exist    ${SALWorkDir}/ocs_Events.xml
     File Should Exist    ${SALWorkDir}/ocs_Telemetry.xml
 
 Salgen OCS Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the OCS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ocs validate
@@ -48,6 +49,9 @@ Salgen OCS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_start.idl
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_stop.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_sequence.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_command_script.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsEntitySummaryState.idl
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsEntityStartup.idl
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsEntityShutdown.idl
     File Should Exist    ${SALWorkDir}/idl-templates/ocs_logevent_ocsCommandIssued.idl
@@ -69,6 +73,7 @@ Salgen OCS HTML
     Directory Should Exist    ${SALWorkDir}/html/salgenerator/ocs
     @{files}=    List Directory    ${SALWorkDir}/html/salgenerator/ocs    pattern=*ocs*
     Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/html/ocs/ocs_Commands.html
     File Should Exist    ${SALWorkDir}/html/ocs/ocs_Events.html
     File Should Exist    ${SALWorkDir}/html/ocs/ocs_Telemetry.html
 
@@ -128,9 +133,19 @@ Verify OCS C++ State Command Interfaces
     File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_stop_commander
     File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_stop_controller
 
+Verify OCS C++ Command Interfaces
+    [Documentation]    Verify the C++ interfaces were properly created.
+    [Tags]
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_sequence_commander
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_sequence_controller
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_script_commander
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_script_controller
+
 Verify OCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntitySummaryState_send
+    File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntitySummaryState_log
     File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityStartup_send
     File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityStartup_log
     File Should Exist    ${SALWorkDir}/ocs/cpp/src/sacpp_ocs_ocsEntityShutdown_send
@@ -177,7 +192,6 @@ Salgen OCS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_ocs ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 18, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
@@ -228,11 +242,23 @@ Verify OCS Python State Command Interfaces
     File Should Exist    ${SALWorkDir}/ocs/python/ocs_Commander_stop.py
     File Should Exist    ${SALWorkDir}/ocs/python/ocs_Controller_stop.py
 
+Verify OCS Python Command Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/ocs/python    pattern=*ocs*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Commander_sequence.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Controller_sequence.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Commander_script.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Controller_script.py
+
 Verify OCS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/ocs/python    pattern=*ocs*
     Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsEntitySummaryState.py
+    File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsEntitySummaryState.py
     File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsEntityStartup.py
     File Should Exist    ${SALWorkDir}/ocs/python/ocs_EventLogger_ocsEntityStartup.py
     File Should Exist    ${SALWorkDir}/ocs/python/ocs_Event_ocsEntityShutdown.py

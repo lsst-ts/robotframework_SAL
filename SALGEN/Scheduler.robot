@@ -25,7 +25,7 @@ Verify Scheduler XML Defintions exist
     File Should Exist    ${SALWorkDir}/scheduler_Telemetry.xml
 
 Salgen Scheduler Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the Scheduler XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator scheduler validate
@@ -53,7 +53,8 @@ Salgen Scheduler Validate
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_slewConfig.idl
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_opticsLoopCorrConfig.idl
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_parkConfig.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_areaDistPropConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_generalPropConfig.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/scheduler_sequencePropConfig.idl
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_blockPusher.idl
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_observatoryState.idl
     File Should Exist    ${SALWorkDir}/idl-templates/scheduler_target.idl
@@ -110,7 +111,8 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for scheduler_slewConfig.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_opticsLoopCorrConfig.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_parkConfig.idl
-    Should Contain    ${output}    Generating SAL CPP code for scheduler_areaDistPropConfig.idl
+    Should Contain    ${output}    Generating SAL CPP code for scheduler_generalPropConfig.idl
+    Should Contain    ${output}    Generating SAL CPP code for scheduler_sequencePropConfig.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_blockPusher.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_observatoryState.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_target.idl
@@ -123,8 +125,8 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for scheduler_rankingData.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_econstraints.idl
     Should Contain    ${output}    Generating SAL CPP code for scheduler_iconstraints.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    28
-    Should Contain X Times    ${output}    cpp : Done Subscriber    28
+    Should Contain X Times    ${output}    cpp : Done Publisher    29
+    Should Contain X Times    ${output}    cpp : Done Subscriber    29
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -157,7 +159,8 @@ Verify Scheduler Telemetry directories
     Directory Should Exist    ${SALWorkDir}/scheduler_slewConfig
     Directory Should Exist    ${SALWorkDir}/scheduler_opticsLoopCorrConfig
     Directory Should Exist    ${SALWorkDir}/scheduler_parkConfig
-    Directory Should Exist    ${SALWorkDir}/scheduler_areaDistPropConfig
+    Directory Should Exist    ${SALWorkDir}/scheduler_generalPropConfig
+    Directory Should Exist    ${SALWorkDir}/scheduler_sequencePropConfig
     Directory Should Exist    ${SALWorkDir}/scheduler_blockPusher
     Directory Should Exist    ${SALWorkDir}/scheduler_observatoryState
     Directory Should Exist    ${SALWorkDir}/scheduler_target
@@ -204,8 +207,10 @@ Verify Scheduler C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/scheduler_opticsLoopCorrConfig/cpp/standalone/sacpp_scheduler_sub
     File Should Exist    ${SALWorkDir}/scheduler_parkConfig/cpp/standalone/sacpp_scheduler_pub
     File Should Exist    ${SALWorkDir}/scheduler_parkConfig/cpp/standalone/sacpp_scheduler_sub
-    File Should Exist    ${SALWorkDir}/scheduler_areaDistPropConfig/cpp/standalone/sacpp_scheduler_pub
-    File Should Exist    ${SALWorkDir}/scheduler_areaDistPropConfig/cpp/standalone/sacpp_scheduler_sub
+    File Should Exist    ${SALWorkDir}/scheduler_generalPropConfig/cpp/standalone/sacpp_scheduler_pub
+    File Should Exist    ${SALWorkDir}/scheduler_generalPropConfig/cpp/standalone/sacpp_scheduler_sub
+    File Should Exist    ${SALWorkDir}/scheduler_sequencePropConfig/cpp/standalone/sacpp_scheduler_pub
+    File Should Exist    ${SALWorkDir}/scheduler_sequencePropConfig/cpp/standalone/sacpp_scheduler_sub
     File Should Exist    ${SALWorkDir}/scheduler_blockPusher/cpp/standalone/sacpp_scheduler_pub
     File Should Exist    ${SALWorkDir}/scheduler_blockPusher/cpp/standalone/sacpp_scheduler_sub
     File Should Exist    ${SALWorkDir}/scheduler_observatoryState/cpp/standalone/sacpp_scheduler_pub
@@ -273,7 +278,8 @@ Salgen Scheduler Java
     Should Contain    ${output}    Generating SAL Java code for scheduler_slewConfig.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_opticsLoopCorrConfig.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_parkConfig.idl
-    Should Contain    ${output}    Generating SAL Java code for scheduler_areaDistPropConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_generalPropConfig.idl
+    Should Contain    ${output}    Generating SAL Java code for scheduler_sequencePropConfig.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_blockPusher.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_observatoryState.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_target.idl
@@ -286,10 +292,10 @@ Salgen Scheduler Java
     Should Contain    ${output}    Generating SAL Java code for scheduler_rankingData.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_econstraints.idl
     Should Contain    ${output}    Generating SAL Java code for scheduler_iconstraints.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    28
-    Should Contain X Times    ${output}    javac : Done Subscriber    28
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    28
-    Should Contain X Times    ${output}    javac : Done Event/Logger    28
+    Should Contain X Times    ${output}    javac : Done Publisher    29
+    Should Contain X Times    ${output}    javac : Done Subscriber    29
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    29
+    Should Contain X Times    ${output}    javac : Done Event/Logger    29
     Directory Should Exist    ${SALWorkDir}/scheduler/java
     @{files}=    List Directory    ${SALWorkDir}/scheduler/java    pattern=*scheduler*
     File Should Exist    ${SALWorkDir}/scheduler/java/sal_scheduler.idl
@@ -303,7 +309,6 @@ Salgen Scheduler Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_scheduler ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 8, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
@@ -361,8 +366,10 @@ Verify Scheduler Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_opticsLoopCorrConfig_Subscriber.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_parkConfig_Publisher.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_parkConfig_Subscriber.py
-    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_areaDistPropConfig_Publisher.py
-    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_areaDistPropConfig_Subscriber.py
+    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_generalPropConfig_Publisher.py
+    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_generalPropConfig_Subscriber.py
+    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_sequencePropConfig_Publisher.py
+    File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_sequencePropConfig_Subscriber.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_blockPusher_Publisher.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_blockPusher_Subscriber.py
     File Should Exist    ${SALWorkDir}/scheduler/python/scheduler_observatoryState_Publisher.py

@@ -27,7 +27,7 @@ Verify Rotator XML Defintions exist
     File Should Exist    ${SALWorkDir}/rotator_Telemetry.xml
 
 Salgen Rotator Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the Rotator XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator rotator validate
@@ -207,7 +207,6 @@ Salgen Rotator Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_rotator ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 20, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven

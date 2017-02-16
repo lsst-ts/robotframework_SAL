@@ -27,7 +27,7 @@ Verify M2MS XML Defintions exist
     File Should Exist    ${SALWorkDir}/m2ms_Telemetry.xml
 
 Salgen M2MS Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the M2MS XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator m2ms validate
@@ -43,12 +43,19 @@ Salgen M2MS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_MirrorPositionMeasured.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialForcesMeasured.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentForcesMeasured.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentStrainMeasured.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_ZenithAngleMeasured.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialActuatorAbsolutePositionSteps.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentActuatorAbsolutePositionSteps.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_PowerStatus.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TemperaturesMeasured.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_RawDisplacement.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_StepVectorUpdate.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_TargetForces.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_SystemStatus.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_RawTelemetry.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/m2ms_ActuatorLimitSwitches.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_enable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/m2ms_command_abort.idl
@@ -92,14 +99,21 @@ Salgen M2MS C++
     Should Contain    ${output}    Generating SAL CPP code for m2ms_MirrorPositionMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_AxialForcesMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentForcesMeasured.idl
-    Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentStrainMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_ZenithAngleMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_AxialActuatorAbsolutePositionSteps.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentActuatorAbsolutePositionSteps.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
     Should Contain    ${output}    Generating SAL CPP code for m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    9
-    Should Contain X Times    ${output}    cpp : Done Subscriber    9
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_PowerStatus.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_TemperaturesMeasured.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_RawDisplacement.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_StepVectorUpdate.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_TargetForces.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_SystemStatus.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_RawTelemetry.idl
+    Should Contain    ${output}    Generating SAL CPP code for m2ms_ActuatorLimitSwitches.idl
+    Should Contain X Times    ${output}    cpp : Done Publisher    16
+    Should Contain X Times    ${output}    cpp : Done Subscriber    16
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -120,12 +134,19 @@ Verify M2MS Telemetry directories
     Directory Should Exist    ${SALWorkDir}/m2ms_MirrorPositionMeasured
     Directory Should Exist    ${SALWorkDir}/m2ms_AxialForcesMeasured
     Directory Should Exist    ${SALWorkDir}/m2ms_TangentForcesMeasured
-    Directory Should Exist    ${SALWorkDir}/m2ms_TangentStrainMeasured
     Directory Should Exist    ${SALWorkDir}/m2ms_ZenithAngleMeasured
     Directory Should Exist    ${SALWorkDir}/m2ms_AxialActuatorAbsolutePositionSteps
     Directory Should Exist    ${SALWorkDir}/m2ms_TangentActuatorAbsolutePositionSteps
     Directory Should Exist    ${SALWorkDir}/m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured
     Directory Should Exist    ${SALWorkDir}/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured
+    Directory Should Exist    ${SALWorkDir}/m2ms_PowerStatus
+    Directory Should Exist    ${SALWorkDir}/m2ms_TemperaturesMeasured
+    Directory Should Exist    ${SALWorkDir}/m2ms_RawDisplacement
+    Directory Should Exist    ${SALWorkDir}/m2ms_StepVectorUpdate
+    Directory Should Exist    ${SALWorkDir}/m2ms_TargetForces
+    Directory Should Exist    ${SALWorkDir}/m2ms_SystemStatus
+    Directory Should Exist    ${SALWorkDir}/m2ms_RawTelemetry
+    Directory Should Exist    ${SALWorkDir}/m2ms_ActuatorLimitSwitches
 
 Verify M2MS C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -136,8 +157,6 @@ Verify M2MS C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/m2ms_AxialForcesMeasured/cpp/standalone/sacpp_m2ms_sub
     File Should Exist    ${SALWorkDir}/m2ms_TangentForcesMeasured/cpp/standalone/sacpp_m2ms_pub
     File Should Exist    ${SALWorkDir}/m2ms_TangentForcesMeasured/cpp/standalone/sacpp_m2ms_sub
-    File Should Exist    ${SALWorkDir}/m2ms_TangentStrainMeasured/cpp/standalone/sacpp_m2ms_pub
-    File Should Exist    ${SALWorkDir}/m2ms_TangentStrainMeasured/cpp/standalone/sacpp_m2ms_sub
     File Should Exist    ${SALWorkDir}/m2ms_ZenithAngleMeasured/cpp/standalone/sacpp_m2ms_pub
     File Should Exist    ${SALWorkDir}/m2ms_ZenithAngleMeasured/cpp/standalone/sacpp_m2ms_sub
     File Should Exist    ${SALWorkDir}/m2ms_AxialActuatorAbsolutePositionSteps/cpp/standalone/sacpp_m2ms_pub
@@ -148,6 +167,22 @@ Verify M2MS C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured/cpp/standalone/sacpp_m2ms_sub
     File Should Exist    ${SALWorkDir}/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured/cpp/standalone/sacpp_m2ms_pub
     File Should Exist    ${SALWorkDir}/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_PowerStatus/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_PowerStatus/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_TemperaturesMeasured/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_TemperaturesMeasured/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_RawDisplacement/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_RawDisplacement/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_StepVectorUpdate/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_StepVectorUpdate/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_TargetForces/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_TargetForces/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_SystemStatus/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_SystemStatus/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_RawTelemetry/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_RawTelemetry/cpp/standalone/sacpp_m2ms_sub
+    File Should Exist    ${SALWorkDir}/m2ms_ActuatorLimitSwitches/cpp/standalone/sacpp_m2ms_pub
+    File Should Exist    ${SALWorkDir}/m2ms_ActuatorLimitSwitches/cpp/standalone/sacpp_m2ms_sub
 
 Verify M2MS C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -205,16 +240,23 @@ Salgen M2MS Java
     Should Contain    ${output}    Generating SAL Java code for m2ms_MirrorPositionMeasured.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_AxialForcesMeasured.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_TangentForcesMeasured.idl
-    Should Contain    ${output}    Generating SAL Java code for m2ms_TangentStrainMeasured.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_ZenithAngleMeasured.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_AxialActuatorAbsolutePositionSteps.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_TangentActuatorAbsolutePositionSteps.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured.idl
     Should Contain    ${output}    Generating SAL Java code for m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    9
-    Should Contain X Times    ${output}    javac : Done Subscriber    9
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
-    Should Contain X Times    ${output}    javac : Done Event/Logger    9
+    Should Contain    ${output}    Generating SAL Java code for m2ms_PowerStatus.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TemperaturesMeasured.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_RawDisplacement.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_StepVectorUpdate.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_TargetForces.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_SystemStatus.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_RawTelemetry.idl
+    Should Contain    ${output}    Generating SAL Java code for m2ms_ActuatorLimitSwitches.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    16
+    Should Contain X Times    ${output}    javac : Done Subscriber    16
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    16
+    Should Contain X Times    ${output}    javac : Done Event/Logger    16
     Directory Should Exist    ${SALWorkDir}/m2ms/java
     @{files}=    List Directory    ${SALWorkDir}/m2ms/java    pattern=*m2ms*
     File Should Exist    ${SALWorkDir}/m2ms/java/sal_m2ms.idl
@@ -228,7 +270,6 @@ Salgen M2MS Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_m2ms ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 17, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
@@ -262,8 +303,6 @@ Verify M2MS Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_AxialForcesMeasured_Subscriber.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentForcesMeasured_Publisher.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentForcesMeasured_Subscriber.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentStrainMeasured_Publisher.py
-    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentStrainMeasured_Subscriber.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ZenithAngleMeasured_Publisher.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ZenithAngleMeasured_Subscriber.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_AxialActuatorAbsolutePositionSteps_Publisher.py
@@ -274,6 +313,22 @@ Verify M2MS Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_AxialActuatorPositionAbsoluteEncoderPositionMeasured_Subscriber.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured_Publisher.py
     File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TangentActuatorPositionAbsoluteEncoderPositionMeasured_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PowerStatus_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_PowerStatus_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TemperaturesMeasured_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TemperaturesMeasured_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_RawDisplacement_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_RawDisplacement_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_StepVectorUpdate_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_StepVectorUpdate_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TargetForces_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_TargetForces_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SystemStatus_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_SystemStatus_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_RawTelemetry_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_RawTelemetry_Subscriber.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ActuatorLimitSwitches_Publisher.py
+    File Should Exist    ${SALWorkDir}/m2ms/python/m2ms_ActuatorLimitSwitches_Subscriber.py
 
 Verify M2MS Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.

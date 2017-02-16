@@ -26,7 +26,7 @@ Verify DM XML Defintions exist
     File Should Exist    ${SALWorkDir}/dm_Telemetry.xml
 
 Salgen DM Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the DM XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator dm validate
@@ -204,7 +204,6 @@ Salgen DM Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_dm ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 11, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven

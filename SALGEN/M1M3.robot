@@ -27,7 +27,7 @@ Verify M1M3 XML Defintions exist
     File Should Exist    ${SALWorkDir}/m1m3_Telemetry.xml
 
 Salgen M1M3 Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the M1M3 XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator m1m3 validate
@@ -234,7 +234,6 @@ Salgen M1M3 Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_m1m3 ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 19, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven

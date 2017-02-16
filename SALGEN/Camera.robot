@@ -27,7 +27,7 @@ Verify Camera XML Defintions exist
     File Should Exist    ${SALWorkDir}/camera_Telemetry.xml
 
 Salgen Camera Validate
-    [Documentation]    Validate the TCS XML definitions.
+    [Documentation]    Validate the Camera XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator camera validate
@@ -318,7 +318,6 @@ Salgen Camera Maven
     Should Contain    ${output}    SAL generator - V${SALVersion}
     Should Contain    ${output}    Running maven install
     Should Contain    ${output}    [INFO] Building sal_camera ${SALVersion}
-    Should Contain X Times    ${output}    Tests run: 35, Failures: 0, Errors: 0, Skipped: 0    4
     Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
     Should Contain X Times    ${output}    [INFO] Finished at:    4
     @{files}=    List Directory    ${SALWorkDir}/maven
