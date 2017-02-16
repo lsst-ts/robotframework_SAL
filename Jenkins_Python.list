@@ -49,17 +49,26 @@ rbtsal/PYTHON/Telemetry/DM_successfully_archived.robot
 rbtsal/PYTHON/Telemetry/DM_summit_to_base_network_status.robot
 
 # Python Commander/Controller test suites
-rbtsal/PYTHON/Commands/Rotator_configureAcceleration.robot
-rbtsal/PYTHON/Commands/Rotator_configureVelocity.robot
-rbtsal/PYTHON/Commands/Rotator_move.robot
-rbtsal/PYTHON/Commands/Rotator_test.robot
-rbtsal/PYTHON/Commands/Rotator_track.robot
+rbtsal/PYTHON/Commands/M2MS_ApplyBendingMode.robot
+rbtsal/PYTHON/Commands/M2MS_ApplyForce.robot
+rbtsal/PYTHON/Commands/M2MS_MoveAxialActuator.robot
+rbtsal/PYTHON/Commands/M2MS_PositionMirror.robot
+rbtsal/PYTHON/Commands/M2MS_SetCorrectionMode.robot
+rbtsal/PYTHON/Commands/MTMount_clearerror.robot
+rbtsal/PYTHON/Commands/MTMount_closeMirrorCover.robot
+rbtsal/PYTHON/Commands/MTMount_configure.robot
+rbtsal/PYTHON/Commands/MTMount_disableCamWrap.robot
+rbtsal/PYTHON/Commands/MTMount_enableCamWrap.robot
+rbtsal/PYTHON/Commands/MTMount_moveToTarget.robot
+rbtsal/PYTHON/Commands/MTMount_openMirrorCover.robot
+rbtsal/PYTHON/Commands/MTMount_trackTarget.robot
 
 # Python Event Sender/Logger test suites
-rbtsal/PYTHON/Events/Rotator_error.robot
-rbtsal/PYTHON/Events/Rotator_interlock.robot
-rbtsal/PYTHON/Events/Rotator_limit.robot
-rbtsal/PYTHON/Events/Rotator_moveOK.robot
-rbtsal/PYTHON/Events/Rotator_tempError.robot
-rbtsal/PYTHON/Events/Rotator_trackLost.robot
-rbtsal/PYTHON/Events/Rotator_tracking.robot
+rbtsal/PYTHON/Events/M2MS_M2AssemblyInPosition.robot
+rbtsal/PYTHON/Events/M2MS_M2DetailedState.robot
+rbtsal/PYTHON/Events/M2MS_M2FaultState.robot
+rbtsal/PYTHON/Events/M2MS_M2SummaryState.robot
+rbtsal/PYTHON/Events/MTMount_mountError.robot
+rbtsal/PYTHON/Events/MTMount_mountInPosition.robot
+rbtsal/PYTHON/Events/MTMount_mountState.robot
+rbtsal/PYTHON/Events/MTMount_mountWarning.robot
