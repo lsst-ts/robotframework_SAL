@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    This suite builds the various interfaces for the Camera.
+Documentation    This verifies the version of SAL installed on the remote host.
 Suite Setup    Log    ${SALVersion}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
