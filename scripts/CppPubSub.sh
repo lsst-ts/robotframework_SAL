@@ -20,7 +20,7 @@ declare -a parametersArray=($EMPTY)
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$1/$1_Telemetry.xml |sed "s/$1_//" )
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$subSystem/$1 |sed "s/$1_//" )
 	topicsArray=($output)
 }
 
@@ -188,15 +188,20 @@ function createTestSuite {
 
 
 #  MAIN
+declare -a filesArray=$(ls $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/*_Telemetry.xml)
 if [ "$arg" == "all" ]; then
 	for i in "${subSystemArray[@]}"; do
-		getTopics $i
-		createTestSuite $i
+		for file in "${filesArray[@]}"; do
+			getTopics $i
+			createTestSuite $i
+		done
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	getTopics $arg
-	createTestSuite $arg
+	for file in "${filesArray[@]}"; do
+		getTopics $arg
+		createTestSuite $arg
+	done
 	echo COMPLETED all test suites for the $arg.
 else
 	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
