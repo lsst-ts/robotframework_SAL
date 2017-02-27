@@ -70,6 +70,7 @@ Read Subscriber
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    targetId = 1    10
     Should Contain X Times    ${list}    fieldId = 1    10
+    Should Contain X Times    ${list}    groupId = 1    10
     Should Contain X Times    ${list}    filter = LSST    10
     Should Contain X Times    ${list}    request_time = 1.0    10
     Should Contain X Times    ${list}    request_mjd = 1.0    10
@@ -83,7 +84,7 @@ Read Subscriber
     Should Contain X Times    ${list}    cloud = 1.0    10
     Should Contain X Times    ${list}    seeing = 1.0    10
     Should Contain X Times    ${list}    slew_time = 1.0    10
-    Should Contain X Times    ${list}    cost_bonus = 1.0    10
+    Should Contain X Times    ${list}    cost = 1.0    10
     Should Contain X Times    ${list}    prop_boost = 1.0    10
     Should Contain X Times    ${list}    rank = 1.0    10
     Should Contain X Times    ${list}    num_proposals = 1    10
@@ -102,4 +103,4 @@ Read Subscriber
     Should Contain X Times    ${list}    sun_az = 1.0    10
     Should Contain X Times    ${list}    sun_ra = 1.0    10
     Should Contain X Times    ${list}    sun_dec = 1.0    10
-    Should Contain X Times    ${list}    sun_elong = 1.0    10
+    Should Contain X Times    ${list}    solar_elong = 1.0    10

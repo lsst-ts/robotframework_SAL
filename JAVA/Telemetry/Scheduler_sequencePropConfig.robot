@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Scheduler_areaDistPropConfig communications tests.
+Documentation    Scheduler_sequencePropConfig communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -7,7 +7,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    scheduler
-${component}    areaDistPropConfig
+${component}    sequencePropConfig
 ${timeout}    30s
 
 *** Test Cases ***

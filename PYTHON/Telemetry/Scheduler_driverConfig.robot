@@ -70,9 +70,11 @@ Read Subscriber
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    coadd_values = 1    10
     Should Contain X Times    ${list}    time_balancing = 1    10
-    Should Contain X Times    ${list}    timebonus_tmax = 1.0    10
-    Should Contain X Times    ${list}    timebonus_bmax = 1.0    10
-    Should Contain X Times    ${list}    timebonus_slope = 1.0    10
+    Should Contain X Times    ${list}    timecost_time_max = 1.0    10
+    Should Contain X Times    ${list}    timecost_time_ref = 1.0    10
+    Should Contain X Times    ${list}    timecost_cost_ref = 1.0    10
+    Should Contain X Times    ${list}    timecost_weight = 1.0    10
+    Should Contain X Times    ${list}    filtercost_weight = 1.0    10
     Should Contain X Times    ${list}    night_boundary = 1.0    10
     Should Contain X Times    ${list}    new_moon_phase_threshold = 1.0    10
     Should Contain X Times    ${list}    ignore_sky_brightness = 1    10

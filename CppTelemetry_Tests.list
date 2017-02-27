@@ -88,8 +88,7 @@ CPP/Telemetry/Rotator_LimitSensors.robot
 CPP/Telemetry/Rotator_Position.robot
 CPP/Telemetry/Rotator_TC.robot
 CPP/Telemetry/Scheduler_Application.robot
-CPP/Telemetry/Scheduler_areaDistPropConfig.robot
-#CPP/Telemetry/Scheduler_blockPusher.robot    # TSS-859
+CPP/Telemetry/Scheduler_blockPusher.robot
 CPP/Telemetry/Scheduler_cameraConfig.robot
 CPP/Telemetry/Scheduler_cloud.robot
 CPP/Telemetry/Scheduler_domeConfig.robot
@@ -97,6 +96,7 @@ CPP/Telemetry/Scheduler_driverConfig.robot
 CPP/Telemetry/Scheduler_econstraints.robot
 CPP/Telemetry/Scheduler_field.robot
 CPP/Telemetry/Scheduler_filterSwap.robot
+CPP/Telemetry/Scheduler_generalPropConfig.robot
 CPP/Telemetry/Scheduler_iconstraints.robot
 CPP/Telemetry/Scheduler_interestedProposal.robot
 CPP/Telemetry/Scheduler_obsSiteConfig.robot
@@ -111,6 +111,7 @@ CPP/Telemetry/Scheduler_rankingData.robot
 CPP/Telemetry/Scheduler_rotatorConfig.robot
 CPP/Telemetry/Scheduler_schedulerConfig.robot
 CPP/Telemetry/Scheduler_seeing.robot
+CPP/Telemetry/Scheduler_sequencePropConfig.robot
 CPP/Telemetry/Scheduler_slewConfig.robot
 CPP/Telemetry/Scheduler_target.robot
 CPP/Telemetry/Scheduler_telescopeConfig.robot

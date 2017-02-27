@@ -75,6 +75,7 @@ Read Subscriber
     Should Contain X Times    ${list}    night = 1    10
     Should Contain X Times    ${list}    targetId = 1    10
     Should Contain X Times    ${list}    fieldId = 1    10
+    Should Contain X Times    ${list}    groupId = 1    10
     Should Contain X Times    ${list}    filter = LSST    10
     Should Contain X Times    ${list}    num_proposals = 1    10
     Should Contain X Times    ${list}    proposal_Ids(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
@@ -92,6 +93,7 @@ Read Subscriber
     Should Contain X Times    ${list}    seeing_fwhm_500 = 1.0    10
     Should Contain X Times    ${list}    seeing_fwhm_geom = 1.0    10
     Should Contain X Times    ${list}    seeing_fwhm_eff = 1.0    10
+    Should Contain X Times    ${list}    five_sigma_depth = 1.0    10
     Should Contain X Times    ${list}    moon_ra = 1.0    10
     Should Contain X Times    ${list}    moon_dec = 1.0    10
     Should Contain X Times    ${list}    moon_alt = 1.0    10
