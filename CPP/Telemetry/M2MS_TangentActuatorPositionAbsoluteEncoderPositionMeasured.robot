@@ -69,7 +69,8 @@ Read Subscriber
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_0deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_60deg_absoluteEncoderPositionMeasured : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_120deg_absoluteEncoderPositionMeasured : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_180deg_absoluteEncoderPositionMeasured : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_240deg_absoluteEncoderPositionMeasured : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_360deg_absoluteEncoderPositionMeasured : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_300deg_absoluteEncoderPositionMeasured : 1    9

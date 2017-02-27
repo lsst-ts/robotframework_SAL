@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_TangentActuatorAbsolutePositionSteps communications tests.
+Documentation    M2MS_SystemStatus communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    m2ms
-${component}    TangentActuatorAbsolutePositionSteps
+${component}    SystemStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -68,9 +68,12 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_0deg_absolutePositionSteps : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_60deg_absolutePositionSteps : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_120deg_absolutePositionSteps : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_180deg_absolutePositionSteps : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_240deg_absolutePositionSteps : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentLink_300deg_absolutePositionSteps : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusBits : 9    1
