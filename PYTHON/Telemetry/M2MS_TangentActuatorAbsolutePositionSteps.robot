@@ -69,7 +69,8 @@ Read Subscriber
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    tangentLink_0deg_absolutePositionSteps = 1    10
+    Should Contain X Times    ${list}    tangentLink_60deg_absolutePositionSteps = 1    10
     Should Contain X Times    ${list}    tangentLink_120deg_absolutePositionSteps = 1    10
     Should Contain X Times    ${list}    tangentLink_180deg_absolutePositionSteps = 1    10
     Should Contain X Times    ${list}    tangentLink_240deg_absolutePositionSteps = 1    10
-    Should Contain X Times    ${list}    tangentLink_360deg_absolutePositionSteps = 1    10
+    Should Contain X Times    ${list}    tangentLink_300deg_absolutePositionSteps = 1    10

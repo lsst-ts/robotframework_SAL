@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_TangentStrainMeasured communications tests.
+Documentation    M2MS_RawTelemetry communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -7,7 +7,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    m2ms
-${component}    TangentStrainMeasured
+${component}    RawTelemetry
 ${timeout}    30s
 
 *** Test Cases ***

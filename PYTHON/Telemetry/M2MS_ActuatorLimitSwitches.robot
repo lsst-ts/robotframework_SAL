@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_TangentActuatorPositionAbsoluteEncoderPositionMeasured communications tests.
+Documentation    M2MS_ActuatorLimitSwitches communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    m2ms
-${component}    TangentActuatorPositionAbsoluteEncoderPositionMeasured
+${component}    ActuatorLimitSwitches
 ${timeout}    30s
 
 *** Test Cases ***
@@ -68,9 +68,5 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    tangentLink_0deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_60deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_120deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_180deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_240deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_300deg_absoluteEncoderPositionMeasured = 1.0    10
+    Should Contain X Times    ${list}    forward(72) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]    10
+    Should Contain X Times    ${list}    reverse(72) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]    10

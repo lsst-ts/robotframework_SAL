@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_TangentActuatorPositionAbsoluteEncoderPositionMeasured communications tests.
+Documentation    M2MS_PowerStatus communications tests.
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    m2ms
-${component}    TangentActuatorPositionAbsoluteEncoderPositionMeasured
+${component}    PowerStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -68,9 +68,7 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    tangentLink_0deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_60deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_120deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_180deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_240deg_absoluteEncoderPositionMeasured = 1.0    10
-    Should Contain X Times    ${list}    tangentLink_300deg_absoluteEncoderPositionMeasured = 1.0    10
+    Should Contain X Times    ${list}    voltages(16) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]    10
+    Should Contain X Times    ${list}    currents(16) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]    10
+    Should Contain X Times    ${list}    onOff(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
+    Should Contain X Times    ${list}    states(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
