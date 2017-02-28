@@ -20,15 +20,17 @@ declare -a parametersArray=($EMPTY)
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$subSystem/$1 |sed "s/$1_//" )
+	subSystem=$1
+	file=$2
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//" )
 	topicsArray=($output)
 }
 
 function getTopicParameters() {
-    subSystem=$1
+    file=$1
     index=$2
     unset parametersArray
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n ${file} )
     parametersArray=($output)
 }
 
@@ -56,13 +58,6 @@ function getParameterCount() {
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
     parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
     echo $parameterCount
-}
-
-function clearTestSuite {
-    if [ -f $testSuite ]; then
-        echo $testSuite exists.  Deleting it before creating a new one.
-        rm -rf $testSuite
-    fi
 }
 
 function createSettings {
@@ -146,29 +141,14 @@ function readSubscriber {
 
 function createTestSuite {
 	subSystem=$1
+	file=$2
 	topicIndex=1
-    if [ "$subSystem" == "m1m3" ]; then
-        subSystemUp="M1M3"
-    elif [ "$subSystem" == "m2ms" ]; then
-        subSystemUp="M2MS"
-    elif [ "$subSystem" == "tcs" ]; then
-        subSystemUp="TCS"
-    elif [ "$subSystem" == "mtmount" ]; then
-        subSystemUp="MTMount"
-    elif [ "$subSystem" == "dm" ]; then
-        subSystemUp="DM"
-    else
-        subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-    fi
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
 		testSuite=$workDir/${subSystemUp}_${topic}.robot
 		
-		#  Test to see if the TestSuite exists then, if it does, delete it.
-		clearTestSuite
-		
 		#  Get EFDB EFDB_Topic telemetry parameters
-		getTopicParameters $subSystem $topicIndex
+		getTopicParameters $file $topicIndex
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -188,19 +168,29 @@ function createTestSuite {
 
 
 #  MAIN
-declare -a filesArray=$(ls $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/*_Telemetry.xml)
 if [ "$arg" == "all" ]; then
-	for i in "${subSystemArray[@]}"; do
+	for subsystem in "${subSystemArray[@]}"; do
+		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
+		# Get the Subsystem in the correct capitalization.
+    	subSystemUp=$(capitializeSubsystem $subSystem)
+		#  Delete all the test suites.  This is will expose deprecated topics.
+		clearTestSuites $subSystemUp "CPP" "Telemetry"
 		for file in "${filesArray[@]}"; do
-			getTopics $i
-			createTestSuite $i
+			getTopics $subsystem $file
+			createTestSuite $subsystem $file
 		done
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
+	declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$arg/*_Telemetry.xml)
+	subSystemUp=$(capitializeSubsystem $arg)
+	#  Delete all the test suites.  This is will expose deprecated topics.
+	clearTestSuites $subSystemUp "CPP" "Telemetry"
+
 	for file in "${filesArray[@]}"; do
-		getTopics $arg
-		createTestSuite $arg
+		getTopics $arg $file
+		
+		createTestSuite $arg $file
 	done
 	echo COMPLETED all test suites for the $arg.
 else
