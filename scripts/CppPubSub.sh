@@ -172,7 +172,8 @@ if [ "$arg" == "all" ]; then
 	for subsystem in "${subSystemArray[@]}"; do
 		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
 		# Get the Subsystem in the correct capitalization.
-    	subSystemUp=$(capitializeSubsystem $subSystem)
+    	subSystemUp=$(capitializeSubsystem $subsystem)
+		echo "The thing is: "$subSystemUp
 		#  Delete all the test suites.  This is will expose deprecated topics.
 		clearTestSuites $subSystemUp "CPP" "Telemetry"
 		for file in "${filesArray[@]}"; do
