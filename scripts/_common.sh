@@ -27,8 +27,10 @@ function clearTestSuites() {
 	subsystem_type=$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1} #Subsystem type is capitalized
 	language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
 	topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1} #Topic type is capitalized 
+	echo "============================================================================================"
 	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type/${subsystem_type}_*)"
     rm $HOME/trunk/robotframework_SAL/$language/$topic_type/${subsystem_type}_*
+	echo "============================================================================================"
 	echo ""
 }
 
