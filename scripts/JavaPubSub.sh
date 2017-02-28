@@ -21,12 +21,16 @@ declare -a itemsArray=($EMPTY)
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$1/$1_Telemetry.xml |sed "s/$1_//" )
+	subSystem=$1
+    file=$2
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" )
 	topicsArray=($output)
 }
 
 function getTopicItems {
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$2]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$1/$1_Telemetry.xml )
+	file=$1
+	index=$2
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $file )
 	itemsArray=($output)
 }
 
@@ -111,20 +115,8 @@ function readSubscriber {
 
 function createTestSuite {
 	subSystem=$1
+	file=$2
 	index=1
-    if [ "$subSystem" == "m1m3" ]; then
-        subSystemUp="M1M3"
-    elif [ "$subSystem" == "m2ms" ]; then
-        subSystemUp="M2MS"
-    elif [ "$subSystem" == "tcs" ]; then
-        subSystemUp="TCS"
-    elif [ "$subSystem" == "mtmount" ]; then
-        subSystemUp="MTMount"
-    elif [ "$subSystem" == "dm" ]; then
-        subSystemUp="DM"
-    else
-        subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-    fi
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
 		testSuite=$workDir/${subSystemUp}_${topic}.robot
@@ -133,7 +125,7 @@ function createTestSuite {
 		clearTestSuite
 		
 		#  Get EFDB EFDB_Topic telemetry items
-		getTopicItems $subSystem $index
+		getTopicItems $file $index
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -154,16 +146,28 @@ function createTestSuite {
 
 #  MAIN
 if [ "$arg" == "all" ]; then
-	for i in "${subSystemArray[@]}"; do
-		getTopics $i
-		createTestSuite $i
-	done
-	echo COMPLETED ALL test suites for ALL subsystems.
+    for subsystem in "${subSystemArray[@]}"; do
+        declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
+        # Get the Subsystem in the correct capitalization.
+        subSystemUp=$(capitializeSubsystem $subsystem)
+        #  Delete all the test suites.  This is will expose deprecated topics.
+        clearTestSuites $subSystemUp "JAVA" "Telemetry"
+        for file in "${filesArray[@]}"; do
+            getTopics $subsystem $file
+            createTestSuite $subsystem $file
+        done
+    done
+    echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	getTopics $arg
-	createTestSuite $arg
-	echo COMPLETED all test suites for the $arg.
+    declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$arg/*_Telemetry.xml)
+    subSystemUp=$(capitializeSubsystem $arg)
+    #  Delete all the test suites.  This is will expose deprecated topics.
+    clearTestSuites $subSystemUp "JAVA" "Telemetry"
+    for file in "${filesArray[@]}"; do
+        getTopics $arg $file
+        createTestSuite $arg $file
+    done
+    echo COMPLETED all test suites for the $arg.
 else
-	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
+    echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi
-
