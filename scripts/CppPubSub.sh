@@ -48,7 +48,7 @@ function getParameterType() {
     subSystem=$1
     index=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterType=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    parameterType=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
     echo $parameterType
 }
 
@@ -56,7 +56,7 @@ function getParameterCount() {
     subSystem=$1
     topicIndex=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml )
+    parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
 }
 
@@ -117,7 +117,9 @@ function startPublisher {
 }
 
 function readSubscriber {
-    echo "Read Subscriber" >> $testSuite
+	file=$1
+	topicIndex=$2
+	echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
@@ -125,8 +127,8 @@ function readSubscriber {
 	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
         parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $subSystem $topicIndex $parameterIndex)"
-        parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+        parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
+        parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
         	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" )]]; then
@@ -160,7 +162,7 @@ function createTestSuite {
         verifyCompPubSub
 		startSubscriber
 		startPublisher
-		readSubscriber
+		readSubscriber $file $topicIndex
 		echo Done with test suite.
     	(( topicIndex++ ))
 	done
@@ -173,7 +175,6 @@ if [ "$arg" == "all" ]; then
 		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
 		# Get the Subsystem in the correct capitalization.
     	subSystemUp=$(capitializeSubsystem $subsystem)
-		echo "The thing is: "$subSystemUp
 		#  Delete all the test suites.  This is will expose deprecated topics.
 		clearTestSuites $subSystemUp "CPP" "Telemetry"
 		for file in "${filesArray[@]}"; do
