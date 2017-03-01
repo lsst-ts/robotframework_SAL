@@ -27,11 +27,7 @@ declare -a argumentsArray=($EMPTY)
 function getTopics() {
 	subSystem=$1
 	file=$2
-	if [ $(xml sel -t -v "count(//SALEventSet/SALEvent/Alias)" $file) ]; then
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/Alias" -v . -n $file )
-	else
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_logevent_//" )
-	fi
+	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" |sed "s/logevent_//" )
 	topicsArray=($output)
 }
 
@@ -65,7 +61,7 @@ function getParameterCount() {
     file=$1
     index=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $file )
+    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
 }
 
@@ -165,33 +161,20 @@ function readLogger() {
 
 function createTestSuite() {
 	subSystem=$1
+	file=$2
 	topicIndex=1
-	if [ "$subSystem" == "m1m3" ]; then
-		subSystemUp="M1M3"
-	elif [ "$subSystem" == "m2ms" ]; then
-		subSystemUp="M2MS"
-	elif [ "$subSystem" == "tcs" ]; then
-		subSystemUp="TCS"
-	elif [ "$subSystem" == "mtmount" ]; then
-		subSystemUp="MTMount"
-	elif [ "$subSystem" == "dm" ]; then
-		subSystemUp="DM"
-	else
-		subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-	fi
+	# Get the Subsystem in the correct capitalization.
+    subSystemUp=$( capitializeSubsystem $subSystem )
 	for topic in "${topicsArray[@]}"; do
 		device=$EMPTY
 		property=$EMPTY
 		#  Define test suite name
 		testSuite=$workDir/${subSystemUp}_${topic}.robot
 		
-		#  Check to see if the TestSuite exists then, if it does, delete it.
-		clearTestSuite
-		
 		#  Get EFDB_Topic elements
-		getTopicParameters $subSystem $topicIndex
-		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n ~/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
-		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n ~/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+		getTopicParameters $file $topicIndex
+		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
+		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -206,10 +189,10 @@ function createTestSuite() {
 		# Get the arguments to the sender.
 		unset argumentsArray
 		# Determine the parameter type and create a test value, accordingly.
-        for parameter in "${parametersArray[@]}"; do
+		for parameter in "${parametersArray[@]}"; do
             parameterIndex=$(getParameterIndex $parameter)
-            parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-            parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+            parameterType=$(getParameterType $file $topicIndex $parameterIndex)
+            parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
             for i in $(seq 1 $parameterCount); do
                 testValue=$(python random_value.py $parameterType)
                 argumentsArray+=($testValue)
@@ -243,8 +226,7 @@ if [ "$arg" == "all" ]; then
         # Get the Subsystem in the correct capitalization.
         subSystemUp=$(capitializeSubsystem $subSystem)
         # Delete all the test suites.  This is will expose deprecated topics.
-        clearTestSuites $subSystemUp "CPP" "Events"
-
+        clearTestSuites $subSystemUp "PYTHON" "Events"
         for file in "${filesArray[@]}"; do
             getTopics $subSystem $file
             createTestSuite $subSystem $file
@@ -255,7 +237,7 @@ elif [[ ${subSystemArray[*]} =~ $arg ]]; then
     declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$arg/*_Events.xml)
     subSystemUp=$(capitializeSubsystem $arg)
     #  Delete all the test suites.  This is will expose deprecated topics.
-    clearTestSuites $subSystemUp "CPP" "Events"
+    clearTestSuites $subSystemUp "PYTHON" "Events"
 
     for file in "${filesArray[@]}"; do
         getTopics $arg $file
