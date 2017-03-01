@@ -26,11 +26,7 @@ declare -a argumentsArray=($EMPTY)
 function getTopics() {
 	subSystem=$1
 	file=$2
-	if [ $( xml sel -t -v "count(//SALEventSet/SALEvent/Alias)" $file ) ]; then
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/Alias" -v . -n $file )
-	else
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_logevent_//" )
-	fi
+	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" |sed "s/logevent_//" )
 	topicsArray=($output)
 }
 
