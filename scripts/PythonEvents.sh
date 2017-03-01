@@ -23,31 +23,23 @@ declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
 
 #  FUNCTIONS
-# Get the subsystem variable in the correct format.
-function getSubSystem() {
-	if [ "$1" == "mtmount" ]; then
-		echo MTMount
-	else
-		echo $1
-	fi
-}
-
 # Get EFDB_Topics from Telemetry XML.
 function getTopics() {
 	subSystem=$1
-	if [ $(xml sel -t -v "count(//SALEventSet/SALEvent/Alias)" $HOME/trunk/ts_xml/sal_interfaces/$subSystem/${subSystem}_Events.xml) ]; then
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/Alias" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$subSystem/${subSystem}_Events.xml )
+	file=$2
+	if [ $(xml sel -t -v "count(//SALEventSet/SALEvent/Alias)" $file) ]; then
+		output=$( xml sel -t -m "//SALEventSet/SALEvent/Alias" -v . -n $file )
 	else
-		output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/$subSystem/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
+		output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_logevent_//" )
 	fi
 	topicsArray=($output)
 }
 
 function getTopicParameters() {
-	subSystem=$1
+	file=$1
 	index=$2
 	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
 }
 
@@ -62,26 +54,19 @@ function getParameterIndex() {
 }
 
 function getParameterType() {
-	subSystem=$1
+	file=$1
 	index=$2
 	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
 	echo $parameterType
 }
 
 function getParameterCount() {
-    subSystem=$1
+    file=$1
     index=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
-}
-
-function clearTestSuite() {
-    if [ -f $testSuite ]; then
-        echo $testSuite exists.  Deleting it before creating a new one.
-        rm -rf $testSuite
-    fi
 }
 
 function createSettings() {
@@ -253,18 +238,30 @@ function createTestSuite() {
 
 #  MAIN
 if [ "$arg" == "all" ]; then
-	for i in "${subSystemArray[@]}"; do
-		subSystem=$(getSubSystem $i)
-		getTopics $subSystem
-		createTestSuite $subSystem
-	done
-	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	subSystem=$(getSubSystem $arg)
-	getTopics $subSystem
-	createTestSuite $subSystem
-	echo COMPLETED all test suites for the $arg.
-else
-	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
-fi
+    for subSystem in "${subSystemArray[@]}"; do
+        declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subSystem}/*_Events.xml)
+        # Get the Subsystem in the correct capitalization.
+        subSystemUp=$(capitializeSubsystem $subSystem)
+        # Delete all the test suites.  This is will expose deprecated topics.
+        clearTestSuites $subSystemUp "CPP" "Events"
 
+        for file in "${filesArray[@]}"; do
+            getTopics $subSystem $file
+            createTestSuite $subSystem $file
+        done
+    done
+    echo COMPLETED ALL test suites for ALL subsystems.
+elif [[ ${subSystemArray[*]} =~ $arg ]]; then
+    declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$arg/*_Events.xml)
+    subSystemUp=$(capitializeSubsystem $arg)
+    #  Delete all the test suites.  This is will expose deprecated topics.
+    clearTestSuites $subSystemUp "CPP" "Events"
+
+    for file in "${filesArray[@]}"; do
+        getTopics $arg $file
+        createTestSuite $arg $file
+    done
+    echo COMPLETED all test suites for the $arg.
+else
+    echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
+fi
