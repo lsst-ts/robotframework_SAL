@@ -26,10 +26,8 @@ declare -a argumentsArray=($EMPTY)
 # Get EFDB_Topics from Command XML.
 function getTopics() {
 	subSystem=$1
-	if [[ "$subSystem" == "mtmount" ]]; then
-		subSystem="MTMount"
-	fi
 	file=$2
+    if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}//" |sed "s/_command_//" )
 	topicsArray=($output)
 }
@@ -80,6 +78,7 @@ function createSettings() {
 }
 
 function createVariables() {
+    if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -271,10 +270,8 @@ function createTestSuite() {
 if [ "$arg" == "all" ]; then
 	for subsystem in "${subSystemArray[@]}"; do
 		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Commands.xml)
-		# Get the Subsystem in the correct capitalization.
-        subSystemUp=$(capitializeSubsystem $subsystem)
 		# Delete all the test suites.  This is will expose deprecated topics.
-		clearTestSuites $subSystemUp "CPP" "Commands"
+		clearTestSuites $subsystem "CPP" "Commands"
 		
 		for file in "${filesArray[@]}"; do
 			getTopics $subsystem $file
@@ -284,9 +281,8 @@ if [ "$arg" == "all" ]; then
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
 	declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$arg/*_Commands.xml)
-    subSystemUp=$(capitializeSubsystem $arg)
     #  Delete all the test suites.  This is will expose deprecated topics.
-    clearTestSuites $subSystemUp "CPP" "Commands"
+    clearTestSuites $arg "CPP" "Commands"
 
 	for file in "${filesArray[@]}"; do
 		getTopics $arg $file
