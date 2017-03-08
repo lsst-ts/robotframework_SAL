@@ -27,6 +27,7 @@ declare -a argumentsArray=($EMPTY)
 function getTopics() {
 	subSystem=$1
 	file=$2
+	if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" |sed "s/logevent_//" )
 	topicsArray=($output)
 }
