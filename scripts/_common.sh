@@ -90,3 +90,24 @@ function capitializeSubsystem() {
 		echo $var
     fi
 }
+
+function getEntity() {
+	local entity=$1
+	if [ "$entity" == "mtmount" ]; then
+        echo "MTMount"
+    elif [ "$entity" == "domeadb" ]; then
+        echo "domeADB"
+    elif [ "$entity" == "domeaps" ]; then
+		echo "domeAPS"
+    elif [ "$entity" == "domelws" ]; then
+		echo "domeLWS"
+    elif [ "$entity" == "domelouvers" ]; then
+		echo "domeLouvers"
+    elif [ "$entity" == "domemoncs" ]; then
+		echo "domeMONCS"
+    elif [ "$entity" == "domethcs" ]; then
+		echo "domeTHCS"
+	else
+		echo "$entity"
+	fi
+}
