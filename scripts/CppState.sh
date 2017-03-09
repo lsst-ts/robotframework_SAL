@@ -17,8 +17,8 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator scheduler tcs)
-declare -a statesArray=(enable disable abort enterControl exitControl standby start stop)
+declare -a subSystemArray=($(subsystemArray))
+declare -a statesArray=($(stateArray))
 
 #  FUNCTIONS
 # Get the subsystem variable in the correct format.
@@ -49,6 +49,7 @@ function createSettings() {
 }
 
 function createVariables() {
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $state" >> $testSuite

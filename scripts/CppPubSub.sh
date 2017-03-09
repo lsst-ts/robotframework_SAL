@@ -12,7 +12,7 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/CPP/Telemetry
 arg=${1-all}
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms MTMount rotator scheduler tcs)    #camera, dm, mtmount, tcs - TSS-674, TSS-673, TSS-658
+declare -a subSystemArray=($(subsystemArray))
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
@@ -22,7 +22,7 @@ declare -a parametersArray=($EMPTY)
 function getTopics {
 	subSystem=$1
 	file=$2
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//" )
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |rev |cut -d"_" -f 1 |rev )
 	topicsArray=($output)
 }
 
@@ -72,6 +72,7 @@ function createSettings {
 }
 
 function createVariables {
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite

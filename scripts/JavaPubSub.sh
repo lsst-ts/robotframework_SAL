@@ -13,7 +13,7 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 workDir=$HOME/trunk/robotframework_SAL/Java/Telemetry
 arg=${1-all}
 #arg="$(echo ${arg} |tr 'A-Z' 'a-z')"
-declare -a subSystemArray=(camera dm dome hexapod m1m3 m2ms MTMount rotator scheduler tcs)    #dm, mtmount - TSS-771, TSS-773
+declare -a subSystemArray=($(subsystemArray))
 declare -a topicsArray=($EMPTY)
 declare -a itemsArray=($EMPTY)
 
@@ -23,7 +23,7 @@ declare -a itemsArray=($EMPTY)
 function getTopics {
 	subSystem=$1
     file=$2
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" )
+	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |rev |cut -d"_" -f 1 |rev )
 	topicsArray=($output)
 }
 
@@ -52,6 +52,7 @@ function createSettings {
 }
 
 function createVariables {
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite

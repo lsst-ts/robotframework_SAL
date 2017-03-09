@@ -17,7 +17,7 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome dm hexapod m1m3 m2ms mtmount rotator tcs) # The scheduler does not currently publish events.
+declare -a subSystemArray=($(subsystemArray)) # The scheduler does not currently publish events.
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
@@ -28,7 +28,7 @@ function getTopics() {
 	subSystem=$1
 	file=$2
 	if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//" |sed "s/logevent_//" )
+	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |rev |cut -d"_" -f 1 |rev )
 	topicsArray=($output)
 }
 
@@ -78,6 +78,7 @@ function createSettings() {
 }
 
 function createVariables() {
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite

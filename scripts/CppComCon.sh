@@ -17,7 +17,7 @@ device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=(camera dome hexapod m1m3 m2ms mtmount rotator tcs)    # dm and scheduler have no commands
+declare -a subSystemArray=($(subsystemArray))    # dm and scheduler have no commands
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
@@ -28,7 +28,7 @@ function getTopics() {
 	subSystem=$1
 	file=$2
     if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}//" |sed "s/_command_//" )
+	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |rev |cut -d"_" -f 1 |rev )
 	topicsArray=($output)
 }
 
@@ -78,7 +78,7 @@ function createSettings() {
 }
 
 function createVariables() {
-    if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
+    if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
