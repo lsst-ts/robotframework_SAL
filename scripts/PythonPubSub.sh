@@ -25,6 +25,7 @@ declare -a unique_types=($EMPTY)
 function getTopics {
 	subSystem=$1
 	file=$2
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
 	topicsArray=($output)
 }
