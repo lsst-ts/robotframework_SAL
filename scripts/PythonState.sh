@@ -21,14 +21,6 @@ declare -a statesArray=($(stateArray))
 
 #  FUNCTIONS
 # Get the subsystem variable in the correct format.
-function getSubSystem() {
-	if [ "$1" == "mtmount" ]; then
-		echo MTMount
-	else
-		echo $1
-	fi
-}
-
 function clearTestSuite() {
     if [ -f $testSuite ]; then
         echo $testSuite exists.  Deleting it before creating a new one.
@@ -48,7 +40,7 @@ function createSettings() {
 }
 
 function createVariables() {
-	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
+	local subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $state" >> $testSuite
@@ -154,19 +146,6 @@ function readController() {
 function createTestSuite() {
 	subSystem=$1
 	stateIndex=1
-	if [ "$subSystem" == "m1m3" ]; then
-		subSystemUp="M1M3"
-	elif [ "$subSystem" == "m2ms" ]; then
-		subSystemUp="M2MS"
-	elif [ "$subSystem" == "tcs" ]; then
-		subSystemUp="TCS"
-	elif [ "$subSystem" == "mtmount" ]; then
-		subSystemUp="MTMount"
-	elif [ "$subSystem" == "dm" ]; then
-        subSystemUp="DM"
-	else
-		subSystemUp="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-	fi
 	for state in "${statesArray[@]}"; do
 		if [ "$state" == "start" ]; then
 			parameterType="configuration"
@@ -183,7 +162,7 @@ function createTestSuite() {
 		#  Create test suite.
 		echo Creating $testSuite
 		createSettings
-		createVariables
+		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
 		createSession "Commander"
 		createSession "Controller"
@@ -207,13 +186,17 @@ function createTestSuite() {
 
 #  MAIN
 if [ "$arg" == "all" ]; then
-	for i in "${subSystemArray[@]}"; do
-		subSystem=$(getSubSystem $i)
+	for subsystem in "${subSystemArray[@]}"; do
+		# Get the Subsystem in the correct capitalization.
+        subSystemUp=$(capitializeSubsystem $subsystem)
+		subSystem=$(getEntity $subsystem)
 		createTestSuite $subSystem
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	subSystem=$(getSubSystem $arg)
+	# Get the Subsystem in the correct capitalization.
+    subSystemUp=$(capitializeSubsystem $arg)
+	subSystem=$(getEntity $arg)
 	createTestSuite $subSystem
 	echo COMPLETED all test suites for the $arg.
 else
