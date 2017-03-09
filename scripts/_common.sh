@@ -28,7 +28,7 @@ function clearTestSuites() {
 	local slash="/"
 	local subsystem=$(capitializeSubsystem $1)
 	local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
-	if [ -n $3 ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else local topic_type=""; fi #Topic type is capitalized 
+	if [ -n "$3" ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else local topic_type=""; fi #Topic type is capitalized 
 	echo "============================================================================================"
 	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*)"
     rm $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
