@@ -20,9 +20,8 @@ declare -a parametersArray=($EMPTY)
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	subSystem=$1
+	subSystem=$(getEntity $1)
 	file=$2
-	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//g" )
 	topicsArray=($output)
 }
@@ -73,7 +72,7 @@ function createSettings {
 }
 
 function createVariables {
-	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
+	local subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -157,7 +156,7 @@ function createTestSuite {
 		#  Create test suite.
 		echo Creating $testSuite
 		createSettings
-		createVariables
+		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
 		createSession "Publisher"
         createSession "Subscriber"
