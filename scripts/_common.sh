@@ -6,29 +6,29 @@
 
 #  FUNCTIONS
 function getTelemetryTopics() {
-	subSystem=$1
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
+	local subSystem=$1
+    local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
     echo $output
 }
 
 function getCommandTopics() {
-	subSystem=$1
-    output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_command_//" )
+	local subSystem=$1
+    local output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_command_//" )
     echo $output
 }
 
 function getEventTopics() {
-	subSystem=$1
-    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
+	local subSystem=$1
+    local output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
     echo $output
 }
 
 function clearTestSuites() {
 	# Get the terms into the correct capitalization.
-	slash="/"
-	subsystem=$(capitializeSubsystem $1)
-	language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
-	if [ -n $3 ]; then topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else topic_type=""; fi #Topic type is capitalized 
+	local slash="/"
+	local subsystem=$(capitializeSubsystem $1)
+	local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
+	if [ -n $3 ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else local topic_type=""; fi #Topic type is capitalized 
 	echo "============================================================================================"
 	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*)"
     rm $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
@@ -37,7 +37,7 @@ function clearTestSuites() {
 }
 
 function createSession() {
-	SessionType=$1
+	local SessionType=$1
     echo "Create $SessionType Session" >> $testSuite
     echo "    [Documentation]    Connect to the SAL host." >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
@@ -60,7 +60,7 @@ function stateArray() {
 }
 
 function capitializeSubsystem() {
-    subSystem=$1
+    local subSystem=$1
 	if [ "$subSystem" == "m1m3" ]; then
         echo "M1M3"
     elif [ "$subSystem" == "m2ms" ]; then
@@ -86,7 +86,7 @@ function capitializeSubsystem() {
     elif [ "$subSystem" == "domethcs" ]; then
         echo "DomeTHCS"
     else
-        var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
+        local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
     fi
 }
