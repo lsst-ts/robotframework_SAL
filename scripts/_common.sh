@@ -25,15 +25,10 @@ function getEventTopics() {
 
 function clearTestSuites() {
 	# Get the terms into the correct capitalization.
-	var=$3
 	slash="/"
 	subsystem=$(capitializeSubsystem $1)
 	language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
-	if [ -z ${var+x} ]; then topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else topic_type=""; fi #Topic type is capitalized 
-	echo $subsystem
-	echo $language
-	echo $topic_type
-	echo $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
+	if [ -n $3 ]; then topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else topic_type=""; fi #Topic type is capitalized 
 	echo "============================================================================================"
 	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*)"
     rm $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
