@@ -25,12 +25,18 @@ function getEventTopics() {
 
 function clearTestSuites() {
 	# Get the terms into the correct capitalization.
+	var=$3
+	slash="/"
 	subsystem=$(capitializeSubsystem $1)
 	language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
-	topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1} #Topic type is capitalized 
+	if [ -z ${var+x} ]; then topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}${slash}; else topic_type=""; fi #Topic type is capitalized 
+	echo $subsystem
+	echo $language
+	echo $topic_type
+	echo $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
 	echo "============================================================================================"
-	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type/${subsystem}_*)"
-    rm $HOME/trunk/robotframework_SAL/$language/$topic_type/${subsystem}_*
+	echo "Deleting: $(ls -1 $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*)"
+    rm $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
 	echo "============================================================================================"
 	echo ""
 }
@@ -51,7 +57,7 @@ function createSession() {
 }
 
 function subsystemArray() {
-	echo "camera dome dm hexapod m1m3 m2ms MTMount ocs rotator scheduler tcs"
+	echo "camera dome domeadb domeaps domelws domelouvers domemoncs domethcs dm hexapod m1m3 m2ms mtmount ocs rotator scheduler tcs"
 }
 
 function stateArray() {
@@ -72,6 +78,18 @@ function capitializeSubsystem() {
         echo "MTMount"
     elif [ "$subSystem" == "dm" ]; then
         echo "DM"
+	elif [ "$subSystem" == "domeadb" ]; then
+        echo "DomeADB"
+    elif [ "$subSystem" == "domeaps" ]; then
+        echo "DomeAPS"
+    elif [ "$subSystem" == "domelws" ]; then
+        echo "DomeLWS"
+    elif [ "$subSystem" == "domelouvers" ]; then
+        echo "DomeLouvers"
+    elif [ "$subSystem" == "domemoncs" ]; then
+        echo "DomeMONCS"
+    elif [ "$subSystem" == "domethcs" ]; then
+        echo "DomeTHCS"
     else
         var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
