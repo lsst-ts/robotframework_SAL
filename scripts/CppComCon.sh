@@ -25,9 +25,8 @@ declare -a argumentsArray=($EMPTY)
 #  FUNCTIONS
 # Get EFDB_Topics from Command XML.
 function getTopics() {
-	subSystem=$1
+	subSystem=$(getEntity $1)
 	file=$2
-    if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |cut -d"_" -f 3 )
 	topicsArray=($output)
 }
@@ -78,7 +77,7 @@ function createSettings() {
 }
 
 function createVariables() {
-    if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
+	subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -225,7 +224,7 @@ function createTestSuite() {
 		#  Create test suite.
 		echo Creating $testSuite
 		createSettings
-		createVariables
+		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         createSession "Commander"
         createSession "Controller"
