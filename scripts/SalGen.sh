@@ -305,10 +305,10 @@ function createTestSuite() {
 
 	#  Define test suite name
 	subSystemUp=$(capitializeSubsystem $subSystem)
-	testSuite=$workDir/$subSystemUp.robot
+	testSuite=$workDir/${subSystemUp}_salgenerator.robot
 		
 	#  Check to see if the TestSuite exists then, if it does, delete it.
-	clearTestSuite
+	clearTestSuites $subSystem "SALGEN" 
 		
 	# Get XML topic definitions.  Not all subsystems have all types of topics.
 	declare -a xmls=($(ls $HOME/trunk/ts_xml/sal_interfaces/$subSystem))
