@@ -22,6 +22,7 @@ declare -a parametersArray=($EMPTY)
 function getTopics {
 	subSystem=$1
 	file=$2
+	if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
 	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//g" )
 	topicsArray=($output)
 }
@@ -177,7 +178,7 @@ if [ "$arg" == "all" ]; then
 		# Get the Subsystem in the correct capitalization.
     	subSystemUp=$(capitializeSubsystem $subsystem)
 		#  Delete all the test suites.  This is will expose deprecated topics.
-		clearTestSuites $subSystemUp "CPP" "Telemetry"
+		clearTestSuites $subsystem "CPP" "Telemetry"
 		for file in "${filesArray[@]}"; do
 			getTopics $subsystem $file
 			createTestSuite $subsystem $file
