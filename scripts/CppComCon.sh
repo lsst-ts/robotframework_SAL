@@ -28,7 +28,7 @@ function getTopics() {
 	subSystem=$1
 	file=$2
     if [ "$subSystem"=="mtmount" ]; then subSystem="MTMount"; fi
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |rev |cut -d"_" -f 1 |rev )
+	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |cut -d"_" -f 3 )
 	topicsArray=($output)
 }
 
