@@ -6,7 +6,7 @@
 
 #  FUNCTIONS
 function getTelemetryTopics() {
-	local subSystem=$1
+	local subSystem=$(getEntity $1)
     local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
     echo $output
 }
