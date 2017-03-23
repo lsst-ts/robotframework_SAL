@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    dm
 ${component}    dmToBase
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1914682578 1427357318
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 993082429 1693254225
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dm::logevent_dmToBase writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1427357318
+    ${output}=    Read Until    priority : 1693254225
     Log    ${output}
     Should Contain X Times    ${output}    === Event dmToBase received =     1
-    Should Contain    ${output}    image_id : 1914682578
-    Should Contain    ${output}    priority : 1427357318
+    Should Contain    ${output}    image_id : 993082429
+    Should Contain    ${output}    priority : 1693254225

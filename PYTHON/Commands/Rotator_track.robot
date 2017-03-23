@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 37.7914 8.2081 58.1535
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 85.4768 77.0701 53.6696
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 37.7914 8.2081 58.1535
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 85.4768 77.0701 53.6696
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,9 +87,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    angle : 37.7914    1
-    Should Contain X Times    ${output}    velocity : 8.2081    1
-    Should Contain X Times    ${output}    tai : 58.1535    1
+    Should Contain X Times    ${output}    angle : 85.4768    1
+    Should Contain X Times    ${output}    velocity : 77.0701    1
+    Should Contain X Times    ${output}    tai : 53.6696    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,9 +98,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    angle = 37.7914    1
-    Should Contain X Times    ${output}    velocity = 8.2081    1
-    Should Contain X Times    ${output}    tai = 58.1535    1
+    Should Contain X Times    ${output}    angle = 85.4768    1
+    Should Contain X Times    ${output}    velocity = 77.0701    1
+    Should Contain X Times    ${output}    tai = 53.6696    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

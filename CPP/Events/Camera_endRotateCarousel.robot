@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    endRotateCarousel
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 120817827
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1357286250
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endRotateCarousel writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 120817827
+    ${output}=    Read Until    priority : 1357286250
     Log    ${output}
     Should Contain X Times    ${output}    === Event endRotateCarousel received =     1
-    Should Contain    ${output}    priority : 120817827
+    Should Contain    ${output}    priority : 1357286250

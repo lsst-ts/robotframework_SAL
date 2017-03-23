@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    dome
 ${component}    CloseShutter
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,15 +79,15 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : shutter    1
+    Should Contain X Times    ${output}    device : aps    1
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    state : 1    1
+    Should Contain X Times    ${output}    state : 0    1
     Should Contain    ${output}    === command CloseShutter issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -98,11 +98,11 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command CloseShutter received =
-    Should Contain    ${output}    device : shutter
+    Should Contain    ${output}    device : aps
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    state : 1    1
+    Should Contain X Times    ${output}    state : 0    1
     Should Contain X Times    ${output}    === [ackCommand_CloseShutter] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

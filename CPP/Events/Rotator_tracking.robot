@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    rotator
 ${component}    tracking
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1404856364
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2090388668
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tracking writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1404856364
+    ${output}=    Read Until    priority : 2090388668
     Log    ${output}
     Should Contain X Times    ${output}    === Event tracking received =     1
-    Should Contain    ${output}    priority : 1404856364
+    Should Contain    ${output}    priority : 2090388668

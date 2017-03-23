@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    hexapod
 ${component}    tempError
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 481917173 40.2109 1722216520
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 1739059144 90.8964 1665661242
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -76,11 +76,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1722216520
+    ${output}=    Read Until    priority : 1665661242
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 481917173
-    Should Contain    ${output}    temp : 40.2109
-    Should Contain    ${output}    priority : 1722216520
+    Should Contain    ${output}    severity : 1739059144
+    Should Contain    ${output}    temp : 90.8964
+    Should Contain    ${output}    priority : 1665661242

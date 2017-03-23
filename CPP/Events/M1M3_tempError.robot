@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    m1m3
 ${component}    tempError
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1790823522 91.0117 1164785509
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 521967918 46.089 8292623
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -76,10 +76,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1164785509
+    ${output}=    Read Until    priority : 8292623
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 1790823522
-    Should Contain    ${output}    temp : 91.0117
-    Should Contain    ${output}    priority : 1164785509
+    Should Contain    ${output}    severity : 521967918
+    Should Contain    ${output}    temp : 46.089
+    Should Contain    ${output}    priority : 8292623

@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    tcs
 ${component}    wfpSimulate
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 44.8354 8.2331 84.5721 67.2167 21.3081 93.9457 63.7662 11.3628 93.5617 89.8956 97.6905 33.2595 60.9261 73.8375 38.3236 98.0643 80.1871 29.888
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 30.9056 29.699 62.7662 63.5167 59.7857 23.4156 8.0408 77.8913 99.1364 4.6529 4.6456 64.0876 77.7091 15.0766 68.7576 45.7698 70.7661 94.5835
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 44.8354 8.2331 84.5721 67.2167 21.3081 93.9457 63.7662 11.3628 93.5617 89.8956 97.6905 33.2595 60.9261 73.8375 38.3236 98.0643 80.1871 29.888
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander test 30.9056 29.699 62.7662 63.5167 59.7857 23.4156 8.0408 77.8913 99.1364 4.6529 4.6456 64.0876 77.7091 15.0766 68.7576 45.7698 70.7661 94.5835
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 44.8354    1
+    Should Contain X Times    ${output}    z_arr : 30.9056    1
     Should Contain    ${output}    === command wfpSimulate issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -104,7 +104,7 @@ Read Controller
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 44.8354    1
+    Should Contain X Times    ${output}    z_arr : 30.9056    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

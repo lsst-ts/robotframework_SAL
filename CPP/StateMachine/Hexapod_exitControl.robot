@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    hexapod
 ${component}    exitControl
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session

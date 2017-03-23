@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    dome
 ${component}    OpenShutter
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -83,7 +83,7 @@ Start Commander
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : shutter    1
+    Should Contain X Times    ${output}    device : aps    1
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
@@ -98,7 +98,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command OpenShutter received =
-    Should Contain    ${output}    device : shutter
+    Should Contain    ${output}    device : aps
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 

@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    moveToTarget
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.9946 40.5001 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 98.7431 48.0217 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.9946 40.5001 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 98.7431 48.0217 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,8 +87,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 38.9946    1
-    Should Contain X Times    ${output}    el_angle : 40.5001    1
+    Should Contain X Times    ${output}    az_angle : 98.7431    1
+    Should Contain X Times    ${output}    el_angle : 48.0217    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command moveToTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -104,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 38.9946    1
-    Should Contain X Times    ${output}    el_angle : 40.5001    1
+    Should Contain X Times    ${output}    az_angle : 98.7431    1
+    Should Contain X Times    ${output}    el_angle : 48.0217    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

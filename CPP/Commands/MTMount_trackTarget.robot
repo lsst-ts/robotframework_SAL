@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    trackTarget
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 53.4471 81.1516 26.5019 75.3095 44.6186 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 70.9446 51.5771 30.0187 30.9849 93.7827 test
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 53.4471 81.1516 26.5019 75.3095 44.6186 test
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 70.9446 51.5771 30.0187 30.9849 93.7827 test
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,11 +87,11 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 53.4471    1
-    Should Contain X Times    ${output}    az_velocity : 81.1516    1
-    Should Contain X Times    ${output}    el_angle : 26.5019    1
-    Should Contain X Times    ${output}    el_velocity : 75.3095    1
-    Should Contain X Times    ${output}    time : 44.6186    1
+    Should Contain X Times    ${output}    az_angle : 70.9446    1
+    Should Contain X Times    ${output}    az_velocity : 51.5771    1
+    Should Contain X Times    ${output}    el_angle : 30.0187    1
+    Should Contain X Times    ${output}    el_velocity : 30.9849    1
+    Should Contain X Times    ${output}    time : 93.7827    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -107,11 +107,11 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 53.4471    1
-    Should Contain X Times    ${output}    az_velocity : 81.1516    1
-    Should Contain X Times    ${output}    el_angle : 26.5019    1
-    Should Contain X Times    ${output}    el_velocity : 75.3095    1
-    Should Contain X Times    ${output}    time : 44.6186    1
+    Should Contain X Times    ${output}    az_angle : 70.9446    1
+    Should Contain X Times    ${output}    az_velocity : 51.5771    1
+    Should Contain X Times    ${output}    el_angle : 30.0187    1
+    Should Contain X Times    ${output}    el_velocity : 30.9849    1
+    Should Contain X Times    ${output}    time : 93.7827    1
     Should Contain X Times    ${output}    cablewrap_orientation : test    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

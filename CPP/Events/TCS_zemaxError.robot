@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    tcs
 ${component}    zemaxError
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 753854580
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1879120925
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 753854580
+    ${output}=    Read Until    priority : 1879120925
     Log    ${output}
     Should Contain X Times    ${output}    === Event zemaxError received =     1
     Should Contain    ${output}    details : test
-    Should Contain    ${output}    priority : 753854580
+    Should Contain    ${output}    priority : 1879120925

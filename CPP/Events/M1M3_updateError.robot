@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    m1m3
 ${component}    updateError
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 425343441
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 989778938
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_updateError writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 425343441
+    ${output}=    Read Until    priority : 989778938
     Log    ${output}
     Should Contain X Times    ${output}    === Event updateError received =     1
-    Should Contain    ${output}    priority : 425343441
+    Should Contain    ${output}    priority : 989778938

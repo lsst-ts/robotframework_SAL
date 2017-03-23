@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    m2ms
 ${component}    M2FaultState
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1388 187621921
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 25675 1947844948
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2FaultState writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 187621921
+    ${output}=    Read Until    priority : 1947844948
     Log    ${output}
     Should Contain X Times    ${output}    === Event M2FaultState received =     1
-    Should Contain    ${output}    state : 1388
-    Should Contain    ${output}    priority : 187621921
+    Should Contain    ${output}    state : 25675
+    Should Contain    ${output}    priority : 1947844948

@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    setFilter
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session

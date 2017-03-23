@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    mountState
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 990567862 test 1449700711
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2098007927 test 1530551838
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1
@@ -76,9 +76,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1449700711
+    ${output}=    Read Until    priority : 1530551838
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountState received =     1
-    Should Contain    ${output}    id : 990567862
+    Should Contain    ${output}    id : 2098007927
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 1449700711
+    Should Contain    ${output}    priority : 1530551838

@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    hexapod
 ${component}    trackLost
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 143414772
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2027317286
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_trackLost writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 143414772
+    ${output}=    Read Until    priority : 2027317286
     Log    ${output}
     Should Contain X Times    ${output}    === Event trackLost received =     1
-    Should Contain    ${output}    priority : 143414772
+    Should Contain    ${output}    priority : 2027317286

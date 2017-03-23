@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    standby
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session

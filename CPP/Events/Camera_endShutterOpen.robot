@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    endShutterOpen
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 227057914
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 874049168
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endShutterOpen writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 227057914
+    ${output}=    Read Until    priority : 874049168
     Log    ${output}
     Should Contain X Times    ${output}    === Event endShutterOpen received =     1
-    Should Contain    ${output}    priority : 227057914
+    Should Contain    ${output}    priority : 874049168

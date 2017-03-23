@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    m2ms
 ${component}    ApplyBendingMode
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11186 16639 31329 5132 21411 8172 21590 12075 31539 18323 22256 8101 8636 13351 20828 27135 13384 5463 28874 25801 18742 26095 3146 2489 22032 31433 21765 12763 23244 21879 29962 1209 44.2671 52.2336 89.2212 84.1565 15.7055 54.269 28.1148 33.5928 94.0994 44.0267 37.8593 12.8041 44.515 75.0566 97.7804 20.648 37.2989 86.3273 46.5396 14.5157 50.8846 52.953 92.6498 82.0034 88.1791 69.6533 69.1557 8.5487 81.3051 54.7406 42.3549 82.4502
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21228 16297 27655 8555 30111 27073 9645 58 30325 20822 3775 203 5490 23506 22013 6882 13970 28000 14146 6732 19692 10653 341 25038 20716 20633 29579 14987 10738 25930 30600 15260 45.4527 5.3779 46.5381 6.1222 34.0011 40.3155 83.1593 5.2375 73.6036 57.8323 93.3102 11.035 96.6235 38.8081 64.0626 54.6753 52.6625 80.3813 38.1311 61.6649 47.4647 15.2464 27.7957 37.0134 51.0952 84.1894 33.1779 59.1569 19.545 10.9433 8.0949 58.2374
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11186 16639 31329 5132 21411 8172 21590 12075 31539 18323 22256 8101 8636 13351 20828 27135 13384 5463 28874 25801 18742 26095 3146 2489 22032 31433 21765 12763 23244 21879 29962 1209 44.2671 52.2336 89.2212 84.1565 15.7055 54.269 28.1148 33.5928 94.0994 44.0267 37.8593 12.8041 44.515 75.0566 97.7804 20.648 37.2989 86.3273 46.5396 14.5157 50.8846 52.953 92.6498 82.0034 88.1791 69.6533 69.1557 8.5487 81.3051 54.7406 42.3549 82.4502
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21228 16297 27655 8555 30111 27073 9645 58 30325 20822 3775 203 5490 23506 22013 6882 13970 28000 14146 6732 19692 10653 341 25038 20716 20633 29579 14987 10738 25930 30600 15260 45.4527 5.3779 46.5381 6.1222 34.0011 40.3155 83.1593 5.2375 73.6036 57.8323 93.3102 11.035 96.6235 38.8081 64.0626 54.6753 52.6625 80.3813 38.1311 61.6649 47.4647 15.2464 27.7957 37.0134 51.0952 84.1894 33.1779 59.1569 19.545 10.9433 8.0949 58.2374
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,8 +87,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 11186    1
-    Should Contain X Times    ${output}    bendingModeValue : 44.2671    1
+    Should Contain X Times    ${output}    bendingModeNbr : 21228    1
+    Should Contain X Times    ${output}    bendingModeValue : 45.4527    1
     Should Contain    ${output}    === command ApplyBendingMode issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -103,8 +103,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 11186    1
-    Should Contain X Times    ${output}    bendingModeValue : 44.2671    1
+    Should Contain X Times    ${output}    bendingModeNbr : 21228    1
+    Should Contain X Times    ${output}    bendingModeValue : 45.4527    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

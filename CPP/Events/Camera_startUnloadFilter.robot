@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    startUnloadFilter
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 268926210
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 982810008
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startUnloadFilter writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 268926210
+    ${output}=    Read Until    priority : 982810008
     Log    ${output}
     Should Contain X Times    ${output}    === Event startUnloadFilter received =     1
-    Should Contain    ${output}    priority : 268926210
+    Should Contain    ${output}    priority : 982810008

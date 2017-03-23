@@ -56,7 +56,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 844066554 503304156 1507057890 186960478 231248739 15412674 1718425966 865770934 204729422 529740621 570411955 309298961
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1939292304 814360303 680096886 802442545 1177194301 1538420760 1835198760 1756429197 935873118 1814027913 427361423 594471333
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +79,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 844066554 503304156 1507057890 186960478 231248739 15412674 1718425966 865770934 204729422 529740621 570411955 309298961
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1939292304 814360303 680096886 802442545 1177194301 1538420760 1835198760 1756429197 935873118 1814027913 427361423 594471333
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,18 +87,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xmin : 844066554    1
-    Should Contain X Times    ${output}    xmax : 503304156    1
-    Should Contain X Times    ${output}    ymin : 1507057890    1
-    Should Contain X Times    ${output}    ymax : 186960478    1
-    Should Contain X Times    ${output}    zmin : 231248739    1
-    Should Contain X Times    ${output}    zmax : 15412674    1
-    Should Contain X Times    ${output}    umin : 1718425966    1
-    Should Contain X Times    ${output}    umax : 865770934    1
-    Should Contain X Times    ${output}    vmin : 204729422    1
-    Should Contain X Times    ${output}    vmax : 529740621    1
-    Should Contain X Times    ${output}    wwmin : 570411955    1
-    Should Contain X Times    ${output}    wmax : 309298961    1
+    Should Contain X Times    ${output}    xmin : 1939292304    1
+    Should Contain X Times    ${output}    xmax : 814360303    1
+    Should Contain X Times    ${output}    ymin : 680096886    1
+    Should Contain X Times    ${output}    ymax : 802442545    1
+    Should Contain X Times    ${output}    zmin : 1177194301    1
+    Should Contain X Times    ${output}    zmax : 1538420760    1
+    Should Contain X Times    ${output}    umin : 1835198760    1
+    Should Contain X Times    ${output}    umax : 1756429197    1
+    Should Contain X Times    ${output}    vmin : 935873118    1
+    Should Contain X Times    ${output}    vmax : 1814027913    1
+    Should Contain X Times    ${output}    wwmin : 427361423    1
+    Should Contain X Times    ${output}    wmax : 594471333    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -107,18 +107,18 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xmin = 844066554    1
-    Should Contain X Times    ${output}    xmax = 503304156    1
-    Should Contain X Times    ${output}    ymin = 1507057890    1
-    Should Contain X Times    ${output}    ymax = 186960478    1
-    Should Contain X Times    ${output}    zmin = 231248739    1
-    Should Contain X Times    ${output}    zmax = 15412674    1
-    Should Contain X Times    ${output}    umin = 1718425966    1
-    Should Contain X Times    ${output}    umax = 865770934    1
-    Should Contain X Times    ${output}    vmin = 204729422    1
-    Should Contain X Times    ${output}    vmax = 529740621    1
-    Should Contain X Times    ${output}    wwmin = 570411955    1
-    Should Contain X Times    ${output}    wmax = 309298961    1
+    Should Contain X Times    ${output}    xmin = 1939292304    1
+    Should Contain X Times    ${output}    xmax = 814360303    1
+    Should Contain X Times    ${output}    ymin = 680096886    1
+    Should Contain X Times    ${output}    ymax = 802442545    1
+    Should Contain X Times    ${output}    zmin = 1177194301    1
+    Should Contain X Times    ${output}    zmax = 1538420760    1
+    Should Contain X Times    ${output}    umin = 1835198760    1
+    Should Contain X Times    ${output}    umax = 1756429197    1
+    Should Contain X Times    ${output}    vmin = 935873118    1
+    Should Contain X Times    ${output}    vmax = 1814027913    1
+    Should Contain X Times    ${output}    wwmin = 427361423    1
+    Should Contain X Times    ${output}    wmax = 594471333    1
     Should Contain X Times    ${output}    === [ackCommand_configureLimits] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
