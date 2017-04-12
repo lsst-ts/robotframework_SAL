@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeAPS
 ${component}    DriveDisabled
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28957 2131512821
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2563 1412375569
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveDisabled writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2131512821
+    ${output}=    Read Until    priority : 1412375569
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveDisabled received =     1
-    Should Contain    ${output}    driveId : 28957
-    Should Contain    ${output}    priority : 2131512821
+    Should Contain    ${output}    driveId : 2563
+    Should Contain    ${output}    priority : 1412375569

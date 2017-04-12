@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeAPS
 ${component}    BrakeEngaged
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 18125 1849924587
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19570 176634666
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_BrakeEngaged writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1849924587
+    ${output}=    Read Until    priority : 176634666
     Log    ${output}
     Should Contain X Times    ${output}    === Event BrakeEngaged received =     1
-    Should Contain    ${output}    brakeId : 18125
-    Should Contain    ${output}    priority : 1849924587
+    Should Contain    ${output}    brakeId : 19570
+    Should Contain    ${output}    priority : 176634666

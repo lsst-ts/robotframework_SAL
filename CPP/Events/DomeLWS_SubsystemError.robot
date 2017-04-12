@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeLWS
 ${component}    SubsystemError
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 522303233
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 608655736
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_SubsystemError writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 522303233
+    ${output}=    Read Until    priority : 608655736
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
     Should Contain    ${output}    errorCode : test
-    Should Contain    ${output}    priority : 522303233
+    Should Contain    ${output}    priority : 608655736

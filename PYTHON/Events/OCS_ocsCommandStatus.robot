@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 650377128 63.1387 test test 1794848443 test 947073775
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 1787837504 32.1195 test test 1300840717 test 1254016391
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandStatus writing a message containing :    1

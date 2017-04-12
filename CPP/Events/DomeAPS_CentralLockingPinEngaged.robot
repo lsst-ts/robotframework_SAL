@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeAPS
 ${component}    CentralLockingPinEngaged
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 598734691
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 185447671
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_CentralLockingPinEngaged writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 598734691
+    ${output}=    Read Until    priority : 185447671
     Log    ${output}
     Should Contain X Times    ${output}    === Event CentralLockingPinEngaged received =     1
-    Should Contain    ${output}    priority : 598734691
+    Should Contain    ${output}    priority : 185447671

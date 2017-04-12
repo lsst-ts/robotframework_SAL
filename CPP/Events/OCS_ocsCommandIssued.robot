@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    ocs
 ${component}    ocsCommandIssued
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 23653456 41.0308 test test 1167706494 1672193767
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 691797324 86.0772 test test 27093259 1857378052
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandIssued writing a message containing :    1
@@ -76,13 +76,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1672193767
+    ${output}=    Read Until    priority : 1857378052
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCommandIssued received =     1
     Should Contain    ${output}    CommandSource : test
-    Should Contain    ${output}    SequenceNumber : 23653456
-    Should Contain    ${output}    Identifier : 41.0308
+    Should Contain    ${output}    SequenceNumber : 691797324
+    Should Contain    ${output}    Identifier : 86.0772
     Should Contain    ${output}    Timestamp : test
     Should Contain    ${output}    CommandSent : test
-    Should Contain    ${output}    ReturnValue : 1167706494
-    Should Contain    ${output}    priority : 1672193767
+    Should Contain    ${output}    ReturnValue : 27093259
+    Should Contain    ${output}    priority : 1857378052

@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeTHCS
 ${component}    MovementPrevented
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 169416728
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 555863800
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_MovementPrevented writing a message containing :    1
@@ -76,8 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 169416728
+    ${output}=    Read Until    priority : 555863800
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
     Should Contain    ${output}    causeId : test
-    Should Contain    ${output}    priority : 169416728
+    Should Contain    ${output}    priority : 555863800

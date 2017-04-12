@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeLouvers
 ${component}    DriveOverTemp
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 8211 10840 377525850
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 17248 21068 2012263895
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveOverTemp writing a message containing :    1
@@ -76,9 +76,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 377525850
+    ${output}=    Read Until    priority : 2012263895
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveOverTemp received =     1
-    Should Contain    ${output}    louverID : 8211
-    Should Contain    ${output}    driveId : 10840
-    Should Contain    ${output}    priority : 377525850
+    Should Contain    ${output}    louverID : 17248
+    Should Contain    ${output}    driveId : 21068
+    Should Contain    ${output}    priority : 2012263895

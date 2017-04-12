@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    endInitializeGuider
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 400032434
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 597733802
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endInitializeGuider writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 400032434
+    ${output}=    Read Until    priority : 597733802
     Log    ${output}
     Should Contain X Times    ${output}    === Event endInitializeGuider received =     1
-    Should Contain    ${output}    priority : 400032434
+    Should Contain    ${output}    priority : 597733802

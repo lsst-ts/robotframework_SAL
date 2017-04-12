@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    ocs
 ${component}    ocsEntityShutdown
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 57.44 test 154714845 1131236404
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 65.3342 test 1609791719 1232781613
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1
@@ -76,11 +76,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1131236404
+    ${output}=    Read Until    priority : 1232781613
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 57.44
+    Should Contain    ${output}    Identifier : 65.3342
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 154714845
-    Should Contain    ${output}    priority : 1131236404
+    Should Contain    ${output}    Address : 1609791719
+    Should Contain    ${output}    priority : 1232781613

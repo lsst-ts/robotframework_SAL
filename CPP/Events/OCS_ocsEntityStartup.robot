@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    ocs
 ${component}    ocsEntityStartup
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 48.8992 test 1170569992 1900847111
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 49.0846 test 622156780 864430671
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityStartup writing a message containing :    1
@@ -76,11 +76,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1900847111
+    ${output}=    Read Until    priority : 864430671
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityStartup received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 48.8992
+    Should Contain    ${output}    Identifier : 49.0846
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1170569992
-    Should Contain    ${output}    priority : 1900847111
+    Should Contain    ${output}    Address : 622156780
+    Should Contain    ${output}    priority : 864430671

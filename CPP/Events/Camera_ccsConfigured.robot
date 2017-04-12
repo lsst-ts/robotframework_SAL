@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    camera
 ${component}    ccsConfigured
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 758599301
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1614947339
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_ccsConfigured writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 758599301
+    ${output}=    Read Until    priority : 1614947339
     Log    ${output}
     Should Contain X Times    ${output}    === Event ccsConfigured received =     1
-    Should Contain    ${output}    priority : 758599301
+    Should Contain    ${output}    priority : 1614947339

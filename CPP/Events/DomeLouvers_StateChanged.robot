@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeLouvers
 ${component}    StateChanged
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 14173 3975 1809460754
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 17176 23060 17992809
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_StateChanged writing a message containing :    1
@@ -76,9 +76,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1809460754
+    ${output}=    Read Until    priority : 17992809
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    louverID : 14173
-    Should Contain    ${output}    newState : 3975
-    Should Contain    ${output}    priority : 1809460754
+    Should Contain    ${output}    louverID : 17176
+    Should Contain    ${output}    newState : 23060
+    Should Contain    ${output}    priority : 17992809

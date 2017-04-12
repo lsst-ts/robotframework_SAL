@@ -68,7 +68,7 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    dec = 1.0    10
+    Should Contain X Times    ${list}    tdec = 1.0    10
     Should Contain X Times    ${list}    epoc = 1.0    10
     Should Contain X Times    ${list}    equinox = 1.0    10
     Should Contain X Times    ${list}    parallax = 1.0    10

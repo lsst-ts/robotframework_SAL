@@ -8,7 +8,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeADB
 ${component}    RotationEnabled
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Sender Session
@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1640343079
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1969168050
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationEnabled writing a message containing :    1
@@ -76,7 +76,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1640343079
+    ${output}=    Read Until    priority : 1969168050
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationEnabled received =     1
-    Should Contain    ${output}    priority : 1640343079
+    Should Contain    ${output}    priority : 1969168050
