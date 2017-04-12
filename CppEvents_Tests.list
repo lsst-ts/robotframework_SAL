@@ -3,7 +3,10 @@
 --name CppEvents
 --output CppEvents
 
-# Event Sender/Logger test suites
+# List of test suites
+CPP/Events/Archiver_archiverEntityShutdown.robot
+CPP/Events/Archiver_archiverEntityStartup.robot
+CPP/Events/Archiver_archiverEntitySummaryState.robot
 CPP/Events/Camera_ccsConfigured.robot
 CPP/Events/Camera_endInitializeGuider.robot
 CPP/Events/Camera_endInitializeImage.robot
@@ -26,6 +29,9 @@ CPP/Events/Camera_startSetFilter.robot
 CPP/Events/Camera_startShutterClose.robot
 CPP/Events/Camera_startShutterOpen.robot
 CPP/Events/Camera_startUnloadFilter.robot
+CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
+CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
+CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
 CPP/Events/DM_dmPublished.robot
 CPP/Events/DM_dmToArchive.robot
 CPP/Events/DM_dmToBase.robot
@@ -142,6 +148,9 @@ CPP/Events/OCS_ocsScriptEnd.robot
 CPP/Events/OCS_ocsScriptEntititesInUse.robot
 CPP/Events/OCS_ocsScriptError.robot
 CPP/Events/OCS_ocsScriptStart.robot
+CPP/Events/ProcessingCluster_processingclusterEntityShutdown.robot
+CPP/Events/ProcessingCluster_processingclusterEntityStartup.robot
+CPP/Events/ProcessingCluster_processingclusterEntitySummaryState.robot
 CPP/Events/Rotator_error.robot
 CPP/Events/Rotator_interlock.robot
 CPP/Events/Rotator_limit.robot
@@ -149,5 +158,16 @@ CPP/Events/Rotator_moveOK.robot
 CPP/Events/Rotator_tempError.robot
 CPP/Events/Rotator_trackLost.robot
 CPP/Events/Rotator_tracking.robot
+CPP/Events/Sequencer_sequencerCommandIssued.robot
+CPP/Events/Sequencer_sequencerCommandStatus.robot
+CPP/Events/Sequencer_sequencerCurrentScript.robot
+CPP/Events/Sequencer_sequencerEntityShutdown.robot
+CPP/Events/Sequencer_sequencerEntityStartup.robot
+CPP/Events/Sequencer_sequencerEntitySummaryState.robot
+CPP/Events/Sequencer_sequencerNextScript.robot
+CPP/Events/Sequencer_sequencerScriptEnd.robot
+CPP/Events/Sequencer_sequencerScriptEntititesInUse.robot
+CPP/Events/Sequencer_sequencerScriptError.robot
+CPP/Events/Sequencer_sequencerScriptStart.robot
 CPP/Events/TCS_wfpDataReady.robot
 CPP/Events/TCS_zemaxError.robot

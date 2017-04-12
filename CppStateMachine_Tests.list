@@ -3,7 +3,7 @@
 --name CppStateMachine
 --output CppStateMachine
 
-# C++ State Machine test suites
+# List of test suites
 CPP/StateMachine/Camera_abort.robot
 CPP/StateMachine/Camera_disable.robot
 CPP/StateMachine/Camera_enable.robot

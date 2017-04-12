@@ -3,7 +3,10 @@
 --name PythonEvents
 --output PythonEvents
 
-# Event Sender/Logger test suites
+# List of test suites
+PYTHON/Events/Archiver_archiverEntityShutdown.robot
+PYTHON/Events/Archiver_archiverEntityStartup.robot
+PYTHON/Events/Archiver_archiverEntitySummaryState.robot
 PYTHON/Events/Camera_ccsConfigured.robot
 PYTHON/Events/Camera_endInitializeGuider.robot
 PYTHON/Events/Camera_endInitializeImage.robot
@@ -26,6 +29,9 @@ PYTHON/Events/Camera_startSetFilter.robot
 PYTHON/Events/Camera_startShutterClose.robot
 PYTHON/Events/Camera_startShutterOpen.robot
 PYTHON/Events/Camera_startUnloadFilter.robot
+PYTHON/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
+PYTHON/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
+PYTHON/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
 PYTHON/Events/DM_dmPublished.robot
 PYTHON/Events/DM_dmToArchive.robot
 PYTHON/Events/DM_dmToBase.robot
@@ -142,6 +148,9 @@ PYTHON/Events/OCS_ocsScriptEnd.robot
 PYTHON/Events/OCS_ocsScriptEntititesInUse.robot
 PYTHON/Events/OCS_ocsScriptError.robot
 PYTHON/Events/OCS_ocsScriptStart.robot
+PYTHON/Events/ProcessingCluster_processingclusterEntityShutdown.robot
+PYTHON/Events/ProcessingCluster_processingclusterEntityStartup.robot
+PYTHON/Events/ProcessingCluster_processingclusterEntitySummaryState.robot
 PYTHON/Events/Rotator_error.robot
 PYTHON/Events/Rotator_interlock.robot
 PYTHON/Events/Rotator_limit.robot
@@ -149,5 +158,16 @@ PYTHON/Events/Rotator_moveOK.robot
 PYTHON/Events/Rotator_tempError.robot
 PYTHON/Events/Rotator_trackLost.robot
 PYTHON/Events/Rotator_tracking.robot
+PYTHON/Events/Sequencer_sequencerCommandIssued.robot
+PYTHON/Events/Sequencer_sequencerCommandStatus.robot
+PYTHON/Events/Sequencer_sequencerCurrentScript.robot
+PYTHON/Events/Sequencer_sequencerEntityShutdown.robot
+PYTHON/Events/Sequencer_sequencerEntityStartup.robot
+PYTHON/Events/Sequencer_sequencerEntitySummaryState.robot
+PYTHON/Events/Sequencer_sequencerNextScript.robot
+PYTHON/Events/Sequencer_sequencerScriptEnd.robot
+PYTHON/Events/Sequencer_sequencerScriptEntititesInUse.robot
+PYTHON/Events/Sequencer_sequencerScriptError.robot
+PYTHON/Events/Sequencer_sequencerScriptStart.robot
 PYTHON/Events/TCS_wfpDataReady.robot
 PYTHON/Events/TCS_zemaxError.robot

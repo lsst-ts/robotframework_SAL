@@ -3,7 +3,7 @@
 --name CppCommands
 --output CppCommands
 
-# Commander/Controller test suites
+# List of test suites
 CPP/Commands/Camera_configure.robot
 CPP/Commands/Camera_initGuiders.robot
 CPP/Commands/Camera_initImage.robot

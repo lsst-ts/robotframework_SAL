@@ -3,7 +3,8 @@
 --name JavaTelemetry
 --output JavaTelemetry
 
-# Publish/Subscribe Telemetry test suites
+# List of test suites
+JAVA/Telemetry/Archiver_SequencerHeartbeat.robot
 JAVA/Telemetry/Camera_CCS.robot
 JAVA/Telemetry/Camera_Cluster_Encoder.robot
 JAVA/Telemetry/Camera_Cold.robot
@@ -19,6 +20,7 @@ JAVA/Telemetry/Camera_SDS.robot
 JAVA/Telemetry/Camera_Shutter.robot
 JAVA/Telemetry/Camera_WAS.robot
 JAVA/Telemetry/Camera_WDS.robot
+JAVA/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
 JAVA/Telemetry/DM_alert_dq.robot
 JAVA/Telemetry/DM_alert_psf.robot
 JAVA/Telemetry/DM_alert_summary.robot
@@ -81,6 +83,7 @@ JAVA/Telemetry/MTMount_DP_2.robot
 JAVA/Telemetry/MTMount_MC.robot
 JAVA/Telemetry/MTMount_MotionParameters.robot
 JAVA/Telemetry/OCS_SequencerHeartbeat.robot
+JAVA/Telemetry/ProcessingCluster_SequencerHeartbeat.robot
 JAVA/Telemetry/Rotator_Electrical.robot
 JAVA/Telemetry/Rotator_LimitSensors.robot
 JAVA/Telemetry/Rotator_Position.robot
@@ -114,6 +117,7 @@ JAVA/Telemetry/Scheduler_slewConfig.robot
 JAVA/Telemetry/Scheduler_target.robot
 JAVA/Telemetry/Scheduler_telescopeConfig.robot
 JAVA/Telemetry/Scheduler_timeHandler.robot
+JAVA/Telemetry/Sequencer_SequencerHeartbeat.robot
 JAVA/Telemetry/TCS_AOCS.robot
 JAVA/Telemetry/TCS_WEP.robot
 JAVA/Telemetry/TCS_ZEMAX.robot

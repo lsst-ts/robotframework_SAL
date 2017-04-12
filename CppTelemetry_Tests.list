@@ -3,7 +3,8 @@
 --name CppTelemetry
 --output CppTelemetry
 
-# Publish/Subscribe Telemetry test suites
+# List of test suites
+CPP/Telemetry/Archiver_SequencerHeartbeat.robot
 CPP/Telemetry/Camera_CCS.robot
 CPP/Telemetry/Camera_Cluster_Encoder.robot
 CPP/Telemetry/Camera_Cold.robot
@@ -19,6 +20,7 @@ CPP/Telemetry/Camera_SDS.robot
 CPP/Telemetry/Camera_Shutter.robot
 CPP/Telemetry/Camera_WAS.robot
 CPP/Telemetry/Camera_WDS.robot
+CPP/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
 CPP/Telemetry/DM_alert_dq.robot
 CPP/Telemetry/DM_alert_psf.robot
 CPP/Telemetry/DM_alert_summary.robot
@@ -81,6 +83,7 @@ CPP/Telemetry/MTMount_DP_2.robot
 CPP/Telemetry/MTMount_MC.robot
 CPP/Telemetry/MTMount_MotionParameters.robot
 CPP/Telemetry/OCS_SequencerHeartbeat.robot
+CPP/Telemetry/ProcessingCluster_SequencerHeartbeat.robot
 CPP/Telemetry/Rotator_Electrical.robot
 CPP/Telemetry/Rotator_LimitSensors.robot
 CPP/Telemetry/Rotator_Position.robot
@@ -114,6 +117,7 @@ CPP/Telemetry/Scheduler_slewConfig.robot
 CPP/Telemetry/Scheduler_target.robot
 CPP/Telemetry/Scheduler_telescopeConfig.robot
 CPP/Telemetry/Scheduler_timeHandler.robot
+CPP/Telemetry/Sequencer_SequencerHeartbeat.robot
 CPP/Telemetry/TCS_AOCS.robot
 CPP/Telemetry/TCS_WEP.robot
 CPP/Telemetry/TCS_ZEMAX.robot

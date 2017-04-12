@@ -3,7 +3,7 @@
 --name PythonCommands
 --output PythonCommands
 
-# Commander/Controller test suites
+# List of test suites
 PYTHON/Commands/Camera_configure.robot
 PYTHON/Commands/Camera_initGuiders.robot
 PYTHON/Commands/Camera_initImage.robot

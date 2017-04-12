@@ -3,7 +3,8 @@
 --name PythonTelemetry
 --output PythonTelemetry
 
-# Publish/Subscribe Telemetry test suites
+# List of test suites
+PYTHON/Telemetry/Archiver_SequencerHeartbeat.robot
 PYTHON/Telemetry/Camera_CCS.robot
 PYTHON/Telemetry/Camera_Cluster_Encoder.robot
 PYTHON/Telemetry/Camera_Cold.robot
@@ -19,6 +20,7 @@ PYTHON/Telemetry/Camera_SDS.robot
 PYTHON/Telemetry/Camera_Shutter.robot
 PYTHON/Telemetry/Camera_WAS.robot
 PYTHON/Telemetry/Camera_WDS.robot
+PYTHON/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
 PYTHON/Telemetry/DM_alert_dq.robot
 PYTHON/Telemetry/DM_alert_psf.robot
 PYTHON/Telemetry/DM_alert_summary.robot
@@ -81,6 +83,7 @@ PYTHON/Telemetry/MTMount_DP_2.robot
 PYTHON/Telemetry/MTMount_MC.robot
 PYTHON/Telemetry/MTMount_MotionParameters.robot
 PYTHON/Telemetry/OCS_SequencerHeartbeat.robot
+PYTHON/Telemetry/ProcessingCluster_SequencerHeartbeat.robot
 PYTHON/Telemetry/Rotator_Electrical.robot
 PYTHON/Telemetry/Rotator_LimitSensors.robot
 PYTHON/Telemetry/Rotator_Position.robot
@@ -114,6 +117,7 @@ PYTHON/Telemetry/Scheduler_slewConfig.robot
 PYTHON/Telemetry/Scheduler_target.robot
 PYTHON/Telemetry/Scheduler_telescopeConfig.robot
 PYTHON/Telemetry/Scheduler_timeHandler.robot
+PYTHON/Telemetry/Sequencer_SequencerHeartbeat.robot
 PYTHON/Telemetry/TCS_AOCS.robot
 PYTHON/Telemetry/TCS_WEP.robot
 PYTHON/Telemetry/TCS_ZEMAX.robot

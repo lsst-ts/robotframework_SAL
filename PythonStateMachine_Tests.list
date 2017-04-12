@@ -3,7 +3,7 @@
 --name PythonStateMachine
 --output PythonStateMachine
 
-# Python State Machine test suites
+# List of test suites
 PYTHON/StateMachine/Camera_abort.robot
 PYTHON/StateMachine/Camera_disable.robot
 PYTHON/StateMachine/Camera_enable.robot
