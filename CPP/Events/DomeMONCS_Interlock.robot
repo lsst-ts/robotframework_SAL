@@ -66,7 +66,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 731550276 test 480194828
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 2098286210
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1
@@ -76,9 +76,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 480194828
+    ${output}=    Read Until    priority : 2098286210
     Log    ${output}
     Should Contain X Times    ${output}    === Event Interlock received =     1
-    Should Contain    ${output}    priority : 731550276
     Should Contain    ${output}    detail : test
-    Should Contain    ${output}    priority : 480194828
+    Should Contain    ${output}    priority : 2098286210
