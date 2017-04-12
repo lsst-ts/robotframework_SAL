@@ -52,7 +52,8 @@ function createSession() {
 }
 
 function subsystemArray() {
-	echo "camera dome domeadb domeaps domelws domelouvers domemoncs domethcs dm hexapod m1m3 m2ms mtmount ocs rotator scheduler tcs"
+	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs dm hexapod \
+m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
 }
 
 function stateArray() {
@@ -85,6 +86,10 @@ function capitializeSubsystem() {
         echo "DomeMONCS"
     elif [ "$subSystem" == "domethcs" ]; then
         echo "DomeTHCS"
+	elif [ "$subSystem" == "catchuparchiver" ]; then
+        echo "CatchupArchiver"
+	elif [ "$subSystem" == "processingcluster" ]; then
+        echo "ProcessingCluster"
     else
         local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
