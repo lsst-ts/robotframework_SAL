@@ -48,7 +48,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : priority detail priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : detail priority
 
 Start Logger
     [Tags]    functional
@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1137478498 test 1404637106
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 977810316
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1
