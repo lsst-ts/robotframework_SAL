@@ -167,6 +167,7 @@ function createTestSuite {
 		echo Done with test suite.
     	(( topicIndex++ ))
 	done
+	echo ""
 }
 
 

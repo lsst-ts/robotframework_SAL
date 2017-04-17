@@ -142,6 +142,7 @@ function createTestSuite {
 		echo Done with test suite.
     	(( index++ ))
 	done
+    echo ""
 }
 
 

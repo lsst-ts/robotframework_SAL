@@ -217,6 +217,7 @@ function createTestSuite() {
     	# Move to next Topic.
 		(( topicIndex++ ))
 	done
+    echo ""
 }
 
 

@@ -362,6 +362,7 @@ function createTestSuite() {
 	fi
 	# Indicate completion of the test suite.
 	echo Done with test suite.
+	echo ""
 }
 
 

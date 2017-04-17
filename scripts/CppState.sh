@@ -185,6 +185,7 @@ function createTestSuite() {
     	# Move to next Topic.
 		(( stateIndex++ ))
 	done
+    echo ""
 }
 
 
