@@ -57,7 +57,7 @@ function createSession() {
 }
 
 function subsystemArray() {
-	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs dm hexapod \
+	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs hexapod \
 m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
 }
 
@@ -77,8 +77,6 @@ function capitializeSubsystem() {
         echo "TCS"
     elif [ "$subSystem" == "mtmount" ]; then
         echo "MTMount"
-    elif [ "$subSystem" == "dm" ]; then
-        echo "DM"
 	elif [ "$subSystem" == "domeadb" ]; then
         echo "DomeADB"
     elif [ "$subSystem" == "domeaps" ]; then
