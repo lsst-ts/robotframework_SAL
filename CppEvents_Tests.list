@@ -32,9 +32,6 @@ CPP/Events/Camera_startUnloadFilter.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
-CPP/Events/DM_dmPublished.robot
-CPP/Events/DM_dmToArchive.robot
-CPP/Events/DM_dmToBase.robot
 CPP/Events/DomeADB_AccelerationLimitReached.robot
 CPP/Events/DomeADB_AccelerationLimitSubsided.robot
 CPP/Events/DomeADB_BrakeDisengaged.robot

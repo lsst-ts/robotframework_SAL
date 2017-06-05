@@ -12,14 +12,6 @@ PYTHON/StateMachine/Camera_exitControl.robot
 PYTHON/StateMachine/Camera_standby.robot
 PYTHON/StateMachine/Camera_start.robot
 PYTHON/StateMachine/Camera_stop.robot
-PYTHON/StateMachine/DM_abort.robot
-PYTHON/StateMachine/DM_disable.robot
-PYTHON/StateMachine/DM_enable.robot
-PYTHON/StateMachine/DM_enterControl.robot
-PYTHON/StateMachine/DM_exitControl.robot
-PYTHON/StateMachine/DM_standby.robot
-PYTHON/StateMachine/DM_start.robot
-PYTHON/StateMachine/DM_stop.robot
 PYTHON/StateMachine/DomeADB_abort.robot
 PYTHON/StateMachine/DomeADB_disable.robot
 PYTHON/StateMachine/DomeADB_enable.robot

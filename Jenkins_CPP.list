@@ -12,14 +12,6 @@ rbtsal/CPP/StateMachine/Camera_exitControl.robot
 rbtsal/CPP/StateMachine/Camera_standby.robot
 rbtsal/CPP/StateMachine/Camera_start.robot
 rbtsal/CPP/StateMachine/Camera_stop.robot
-rbtsal/CPP/StateMachine/DM_abort.robot
-rbtsal/CPP/StateMachine/DM_disable.robot
-rbtsal/CPP/StateMachine/DM_enable.robot
-rbtsal/CPP/StateMachine/DM_enterControl.robot
-rbtsal/CPP/StateMachine/DM_exitControl.robot
-rbtsal/CPP/StateMachine/DM_standby.robot
-rbtsal/CPP/StateMachine/DM_start.robot
-rbtsal/CPP/StateMachine/DM_stop.robot
 rbtsal/CPP/StateMachine/M2MS_abort.robot
 rbtsal/CPP/StateMachine/M2MS_disable.robot
 rbtsal/CPP/StateMachine/M2MS_enable.robot

@@ -12,14 +12,6 @@ CPP/StateMachine/Camera_exitControl.robot
 CPP/StateMachine/Camera_standby.robot
 CPP/StateMachine/Camera_start.robot
 CPP/StateMachine/Camera_stop.robot
-CPP/StateMachine/DM_abort.robot
-CPP/StateMachine/DM_disable.robot
-CPP/StateMachine/DM_enable.robot
-CPP/StateMachine/DM_enterControl.robot
-CPP/StateMachine/DM_exitControl.robot
-CPP/StateMachine/DM_standby.robot
-CPP/StateMachine/DM_start.robot
-CPP/StateMachine/DM_stop.robot
 CPP/StateMachine/DomeADB_abort.robot
 CPP/StateMachine/DomeADB_disable.robot
 CPP/StateMachine/DomeADB_enable.robot

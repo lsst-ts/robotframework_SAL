@@ -21,15 +21,6 @@ PYTHON/Telemetry/Camera_Shutter.robot
 PYTHON/Telemetry/Camera_WAS.robot
 PYTHON/Telemetry/Camera_WDS.robot
 PYTHON/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
-PYTHON/Telemetry/DM_alert_dq.robot
-PYTHON/Telemetry/DM_alert_psf.robot
-PYTHON/Telemetry/DM_alert_summary.robot
-PYTHON/Telemetry/DM_available_replicators_distributors.robot
-PYTHON/Telemetry/DM_efd_slave_replication_state.robot
-PYTHON/Telemetry/DM_international_network_status.robot
-PYTHON/Telemetry/DM_raft_images_sent_current.robot
-PYTHON/Telemetry/DM_successfully_archived.robot
-PYTHON/Telemetry/DM_summit_to_base_network_status.robot
 PYTHON/Telemetry/DomeADB_status.robot
 PYTHON/Telemetry/DomeAPS_status.robot
 PYTHON/Telemetry/DomeLWS_status.robot

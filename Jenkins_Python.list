@@ -12,14 +12,6 @@ rbtsal/PYTHON/StateMachine/Camera_exitControl.robot
 rbtsal/PYTHON/StateMachine/Camera_standby.robot
 rbtsal/PYTHON/StateMachine/Camera_start.robot
 rbtsal/PYTHON/StateMachine/Camera_stop.robot
-rbtsal/PYTHON/StateMachine/DM_abort.robot
-rbtsal/PYTHON/StateMachine/DM_disable.robot
-rbtsal/PYTHON/StateMachine/DM_enable.robot
-rbtsal/PYTHON/StateMachine/DM_enterControl.robot
-rbtsal/PYTHON/StateMachine/DM_exitControl.robot
-rbtsal/PYTHON/StateMachine/DM_standby.robot
-rbtsal/PYTHON/StateMachine/DM_start.robot
-rbtsal/PYTHON/StateMachine/DM_stop.robot
 rbtsal/PYTHON/StateMachine/M2MS_abort.robot
 rbtsal/PYTHON/StateMachine/M2MS_disable.robot
 rbtsal/PYTHON/StateMachine/M2MS_enable.robot
@@ -38,15 +30,35 @@ rbtsal/PYTHON/StateMachine/MTMount_start.robot
 rbtsal/PYTHON/StateMachine/MTMount_stop.robot
 
 # Python Publish/Subscribe Telemetry test suites
-rbtsal/PYTHON/Telemetry/DM_alert_dq.robot
-rbtsal/PYTHON/Telemetry/DM_alert_psf.robot
-rbtsal/PYTHON/Telemetry/DM_alert_summary.robot
-rbtsal/PYTHON/Telemetry/DM_available_replicators_distributors.robot
-rbtsal/PYTHON/Telemetry/DM_efd_slave_replication_state.robot
-rbtsal/PYTHON/Telemetry/DM_international_network_status.robot
-rbtsal/PYTHON/Telemetry/DM_raft_images_sent_current.robot
-rbtsal/PYTHON/Telemetry/DM_successfully_archived.robot
-rbtsal/PYTHON/Telemetry/DM_summit_to_base_network_status.robot
+rbtsal/PYTHON/Telemetry/Camera_CCS.robot
+rbtsal/PYTHON/Telemetry/Camera_Cluster_Encoder.robot
+rbtsal/PYTHON/Telemetry/Camera_Cold.robot
+rbtsal/PYTHON/Telemetry/Camera_Cryo.robot
+rbtsal/PYTHON/Telemetry/Camera_Filter.robot
+rbtsal/PYTHON/Telemetry/Camera_GAS.robot
+rbtsal/PYTHON/Telemetry/Camera_GDS.robot
+rbtsal/PYTHON/Telemetry/Camera_PCMS.robot
+rbtsal/PYTHON/Telemetry/Camera_Prot.robot
+rbtsal/PYTHON/Telemetry/Camera_Purge.robot
+rbtsal/PYTHON/Telemetry/Camera_SAS.robot
+rbtsal/PYTHON/Telemetry/Camera_SDS.robot
+rbtsal/PYTHON/Telemetry/Camera_Shutter.robot
+rbtsal/PYTHON/Telemetry/Camera_WAS.robot
+rbtsal/PYTHON/Telemetry/Camera_WDS.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_CW.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_OSS.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Bal.robot
+rbtsal/PYTHON/Telemetry/MTMount_Cab_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Cam_CW.robot
+rbtsal/PYTHON/Telemetry/MTMount_DP_1.robot
+rbtsal/PYTHON/Telemetry/MTMount_DP_2.robot
+rbtsal/PYTHON/Telemetry/MTMount_MC.robot
+rbtsal/PYTHON/Telemetry/MTMount_MotionParameters.robot
 
 # Python Commander/Controller test suites
 rbtsal/PYTHON/Commands/M2MS_ApplyBendingMode.robot

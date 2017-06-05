@@ -21,15 +21,6 @@ JAVA/Telemetry/Camera_Shutter.robot
 JAVA/Telemetry/Camera_WAS.robot
 JAVA/Telemetry/Camera_WDS.robot
 JAVA/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
-JAVA/Telemetry/DM_alert_dq.robot
-JAVA/Telemetry/DM_alert_psf.robot
-JAVA/Telemetry/DM_alert_summary.robot
-JAVA/Telemetry/DM_available_replicators_distributors.robot
-JAVA/Telemetry/DM_efd_slave_replication_state.robot
-JAVA/Telemetry/DM_international_network_status.robot
-JAVA/Telemetry/DM_raft_images_sent_current.robot
-JAVA/Telemetry/DM_successfully_archived.robot
-JAVA/Telemetry/DM_summit_to_base_network_status.robot
 JAVA/Telemetry/DomeADB_status.robot
 JAVA/Telemetry/DomeAPS_status.robot
 JAVA/Telemetry/DomeLWS_status.robot

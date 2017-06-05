@@ -32,9 +32,6 @@ PYTHON/Events/Camera_startUnloadFilter.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
-PYTHON/Events/DM_dmPublished.robot
-PYTHON/Events/DM_dmToArchive.robot
-PYTHON/Events/DM_dmToBase.robot
 PYTHON/Events/DomeADB_AccelerationLimitReached.robot
 PYTHON/Events/DomeADB_AccelerationLimitSubsided.robot
 PYTHON/Events/DomeADB_BrakeDisengaged.robot
