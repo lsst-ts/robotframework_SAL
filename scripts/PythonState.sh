@@ -120,7 +120,7 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    property :    1" >> $testSuite    #$property TSS-861
     echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     echo "    Should Contain X Times    \${output}    value :    1" >> $testSuite    #$value TSS-861
-    echo "    Should Contain X Times    \${output}    $parameterType : 1    1" >>$testSuit
+    echo "    Should Contain X Times    \${output}    $parameterType : 1    1" >>$testSuite
 	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite
