@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Scheduler State Machine tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -87,6 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
+    Should Contain X Times    ${output}    state : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 

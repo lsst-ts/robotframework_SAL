@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    MTMount State Machine tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    enterControl
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session
