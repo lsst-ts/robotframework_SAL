@@ -25,7 +25,7 @@ echo "--output SALGENERATOR" >> $argfile
 echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 echo "rbtsal/Version.robot" >> $argfile
-echo "rbtsal/SALGEN/Camera_salgenerator.robot.robot" >> $argfile
-echo "rbtsal/SALGEN/M2MS_salgenerator.robot.robot" >> $argfile
-echo "rbtsal/SALGEN/MTMount_salgenerator.robot.robot" >> $argfile
+echo "rbtsal/SALGEN/Camera_salgenerator.robot" >> $argfile
+echo "rbtsal/SALGEN/M2MS_salgenerator.robot" >> $argfile
+echo "rbtsal/SALGEN/MTMount_salgenerator.robot" >> $argfile
 

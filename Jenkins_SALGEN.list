@@ -5,6 +5,6 @@
 
 # List of test suites
 rbtsal/Version.robot
-rbtsal/SALGEN/Camera_salgenerator.robot.robot
-rbtsal/SALGEN/M2MS_salgenerator.robot.robot
-rbtsal/SALGEN/MTMount_salgenerator.robot.robot
+rbtsal/SALGEN/Camera_salgenerator.robot
+rbtsal/SALGEN/M2MS_salgenerator.robot
+rbtsal/SALGEN/MTMount_salgenerator.robot
