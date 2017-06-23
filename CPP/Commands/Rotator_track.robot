@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Rotator_track commander/controller tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    rotator
 ${component}    track
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 80.4915 24.0258 36.9951
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 47.3175 2.0928 26.4473
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 80.4915 24.0258 36.9951
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 47.3175 2.0928 26.4473
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,9 +88,9 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 80.4915    1
-    Should Contain X Times    ${output}    velocity : 24.0258    1
-    Should Contain X Times    ${output}    tai : 36.9951    1
+    Should Contain X Times    ${output}    angle : 47.3175    1
+    Should Contain X Times    ${output}    velocity : 2.0928    1
+    Should Contain X Times    ${output}    tai : 26.4473    1
     Should Contain    ${output}    === command track issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -104,9 +105,9 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 80.4915    1
-    Should Contain X Times    ${output}    velocity : 24.0258    1
-    Should Contain X Times    ${output}    tai : 36.9951    1
+    Should Contain X Times    ${output}    angle : 47.3175    1
+    Should Contain X Times    ${output}    velocity : 2.0928    1
+    Should Contain X Times    ${output}    tai : 26.4473    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

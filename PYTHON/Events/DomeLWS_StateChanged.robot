@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_StateChanged sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 13732 1101578307
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 24762 552711630
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_StateChanged writing a message containing :    1

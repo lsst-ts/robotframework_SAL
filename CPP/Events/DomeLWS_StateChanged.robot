@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_StateChanged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 15866 1760699518
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 5606 282577007
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_StateChanged writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1760699518
+    ${output}=    Read Until    priority : 282577007
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    newState : 15866
-    Should Contain    ${output}    priority : 1760699518
+    Should Contain    ${output}    newState : 5606
+    Should Contain    ${output}    priority : 282577007

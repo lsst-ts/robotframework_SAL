@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_EchoResponse sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 522569104
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 306155031
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_EchoResponse writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 522569104
+    ${output}=    Read Until    priority : 306155031
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
     Should Contain    ${output}    response : test
-    Should Contain    ${output}    priority : 522569104
+    Should Contain    ${output}    priority : 306155031

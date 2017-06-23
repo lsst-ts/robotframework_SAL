@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    MTMount_clearerror commander/controller tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    clearerror
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session

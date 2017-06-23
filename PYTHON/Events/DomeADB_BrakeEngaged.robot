@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_BrakeEngaged sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 29159 1401890996
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 13436 1264716601
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_BrakeEngaged writing a message containing :    1

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptEnd sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 7.2442 test 1284924169 test 1416702183
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 48.2572 test 1986345626 test 1805597905
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptEnd writing a message containing :    1
@@ -76,12 +77,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1416702183
+    ${output}=    Read Until    priority : 1805597905
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptEnd received =     1
     Should Contain    ${output}    ocsScriptName : test
-    Should Contain    ${output}    ocsScriptIdentifier : 7.2442
+    Should Contain    ${output}    ocsScriptIdentifier : 48.2572
     Should Contain    ${output}    ocsScriptTimestamp : test
-    Should Contain    ${output}    ocsScriptStatusCode : 1284924169
+    Should Contain    ${output}    ocsScriptStatusCode : 1986345626
     Should Contain    ${output}    ocsScriptStatusText : test
-    Should Contain    ${output}    priority : 1416702183
+    Should Contain    ${output}    priority : 1805597905

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerCommandIssued sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 835428309 65.2175 test test 627926189 248723430
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 670687296 53.0975 test test 855222774 1015878658
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandIssued writing a message containing :    1

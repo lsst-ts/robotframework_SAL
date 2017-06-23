@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_StateChanged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 4425 1107741403
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10564 1701949071
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_StateChanged writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1107741403
+    ${output}=    Read Until    priority : 1701949071
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    newState : 4425
-    Should Contain    ${output}    priority : 1107741403
+    Should Contain    ${output}    newState : 10564
+    Should Contain    ${output}    priority : 1701949071

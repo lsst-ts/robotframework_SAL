@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_DriveFault sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 23662 test 1569013187
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 29765 test 327350349
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveFault writing a message containing :    1

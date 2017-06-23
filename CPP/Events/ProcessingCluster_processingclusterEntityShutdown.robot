@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    ProcessingCluster_processingclusterEntityShutdown sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 12.71 test 1340257368 2098786007
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 80.7326 test 1547191291 799452867
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntityShutdown writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2098786007
+    ${output}=    Read Until    priority : 799452867
     Log    ${output}
     Should Contain X Times    ${output}    === Event processingclusterEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 12.71
+    Should Contain    ${output}    Identifier : 80.7326
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1340257368
-    Should Contain    ${output}    priority : 2098786007
+    Should Contain    ${output}    Address : 1547191291
+    Should Contain    ${output}    priority : 799452867

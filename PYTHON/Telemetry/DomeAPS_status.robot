@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_status communications tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -74,7 +75,7 @@ Read Subscriber
     Should Contain X Times    ${list}    drive_torque_actual(4) = [0.0, 1.0, 2.0, 3.0]    10
     Should Contain X Times    ${list}    drive_torque_error(4) = [0.0, 1.0, 2.0, 3.0]    10
     Should Contain X Times    ${list}    drive_torque_cmd(4) = [0.0, 1.0, 2.0, 3.0]    10
-    Should Contain X Times    ${list}    drive_current_actual(4) = [0.0, 1.0, 2.0, 3.0]    10
-    Should Contain X Times    ${list}    drive_temp_actual(4) = [0.0, 1.0, 2.0, 3.0]    10
-    Should Contain X Times    ${list}    resolver_head_raw(4) = [0.0, 1.0, 2.0, 3.0]    10
-    Should Contain X Times    ${list}    resolver_head_calibrated(4) = [0.0, 1.0, 2.0, 3.0]    10
+    Should Contain X Times    ${list}    drive_current_actual() = [0.0, -1.0]    10
+    Should Contain X Times    ${list}    drive_temp_actual() = [0.0, -1.0]    10
+    Should Contain X Times    ${list}    resolver_head_raw() = [0.0, -1.0]    10
+    Should Contain X Times    ${list}    resolver_head_calibrated() = [0.0, -1.0]    10

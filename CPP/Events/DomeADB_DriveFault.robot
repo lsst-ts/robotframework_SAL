@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_DriveFault sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2609 test 89910946
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29021 test 291355915
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveFault writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 89910946
+    ${output}=    Read Until    priority : 291355915
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 2609
+    Should Contain    ${output}    driveId : 29021
     Should Contain    ${output}    errorCode : test
-    Should Contain    ${output}    priority : 89910946
+    Should Contain    ${output}    priority : 291355915

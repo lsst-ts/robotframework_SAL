@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntityShutdown sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 0.86 test 20139668 1696376425
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 5.6182 test 1421852366 36207535
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntityShutdown writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1696376425
+    ${output}=    Read Until    priority : 36207535
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 0.86
+    Should Contain    ${output}    Identifier : 5.6182
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 20139668
-    Should Contain    ${output}    priority : 1696376425
+    Should Contain    ${output}    Address : 1421852366
+    Should Contain    ${output}    priority : 36207535

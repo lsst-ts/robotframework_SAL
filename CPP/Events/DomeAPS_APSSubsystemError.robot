@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_APSSubsystemError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1416016375
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 532156538
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1416016375
+    ${output}=    Read Until    priority : 532156538
     Log    ${output}
     Should Contain X Times    ${output}    === Event APSSubsystemError received =     1
     Should Contain    ${output}    errorCode : test
-    Should Contain    ${output}    priority : 1416016375
+    Should Contain    ${output}    priority : 532156538

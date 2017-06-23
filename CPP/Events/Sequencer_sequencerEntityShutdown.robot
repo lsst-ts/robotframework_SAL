@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerEntityShutdown sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 95.3323 test 362745217 2000501307
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 16.4593 test 1418012768 761424409
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityShutdown writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2000501307
+    ${output}=    Read Until    priority : 761424409
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 95.3323
+    Should Contain    ${output}    Identifier : 16.4593
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 362745217
-    Should Contain    ${output}    priority : 2000501307
+    Should Contain    ${output}    Address : 1418012768
+    Should Contain    ${output}    priority : 761424409

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    M2MS_M2SummaryState sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 14290 1228724885
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10078 391234169
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2SummaryState writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1228724885
+    ${output}=    Read Until    priority : 391234169
     Log    ${output}
     Should Contain X Times    ${output}    === Event M2SummaryState received =     1
-    Should Contain    ${output}    state : 14290
-    Should Contain    ${output}    priority : 1228724885
+    Should Contain    ${output}    state : 10078
+    Should Contain    ${output}    priority : 391234169

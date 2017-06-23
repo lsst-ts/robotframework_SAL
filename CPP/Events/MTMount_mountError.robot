@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    MTMount_mountError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1951060701 test 1729662904
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2009133503 test 1930485316
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1729662904
+    ${output}=    Read Until    priority : 1930485316
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountError received =     1
-    Should Contain    ${output}    id : 1951060701
+    Should Contain    ${output}    id : 2009133503
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 1729662904
+    Should Contain    ${output}    priority : 1930485316

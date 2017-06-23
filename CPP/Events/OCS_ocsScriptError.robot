@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 99.9377 test 2098823803 1109620002 test 1846984819
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 28.4989 test 1490437417 2051109208 test 1912427676
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptError writing a message containing :    1
@@ -76,13 +77,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1846984819
+    ${output}=    Read Until    priority : 1912427676
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptError received =     1
     Should Contain    ${output}    ocsScriptName : test
-    Should Contain    ${output}    ocsScriptIdentifier : 99.9377
+    Should Contain    ${output}    ocsScriptIdentifier : 28.4989
     Should Contain    ${output}    ocsScriptTimestamp : test
-    Should Contain    ${output}    ocsScriptLineNumber : 2098823803
-    Should Contain    ${output}    ocsScriptErrorCode : 1109620002
+    Should Contain    ${output}    ocsScriptLineNumber : 1490437417
+    Should Contain    ${output}    ocsScriptErrorCode : 2051109208
     Should Contain    ${output}    ocsScriptErrorText : test
-    Should Contain    ${output}    priority : 1846984819
+    Should Contain    ${output}    priority : 1912427676

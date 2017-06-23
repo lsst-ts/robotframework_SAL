@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_CentralLockingPinDisengaged sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1681697498
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1730421302
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_CentralLockingPinDisengaged writing a message containing :    1

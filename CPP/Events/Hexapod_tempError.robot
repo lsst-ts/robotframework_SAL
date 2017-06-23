@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_tempError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 424024050 57.0754 233057786
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 792191988 53.3576 1461588861
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 233057786
+    ${output}=    Read Until    priority : 1461588861
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    axis : test
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 424024050
-    Should Contain    ${output}    temp : 57.0754
-    Should Contain    ${output}    priority : 233057786
+    Should Contain    ${output}    severity : 792191988
+    Should Contain    ${output}    temp : 53.3576
+    Should Contain    ${output}    priority : 1461588861

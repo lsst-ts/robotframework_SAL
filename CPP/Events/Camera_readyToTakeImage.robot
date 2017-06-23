@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Camera_readyToTakeImage sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 411063650
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 243419623
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_readyToTakeImage writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 411063650
+    ${output}=    Read Until    priority : 243419623
     Log    ${output}
     Should Contain X Times    ${output}    === Event readyToTakeImage received =     1
-    Should Contain    ${output}    priority : 411063650
+    Should Contain    ${output}    priority : 243419623

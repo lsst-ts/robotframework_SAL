@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_pivot commander/controller tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    hexapod
 ${component}    pivot
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 33.7881 94.1162 15.0945
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 62.9388 21.553 52.3075
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 33.7881 94.1162 15.0945
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 62.9388 21.553 52.3075
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,9 +88,9 @@ Start Commander
     Should Contain X Times    ${output}    property : pivot    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 33.7881    1
-    Should Contain X Times    ${output}    y : 94.1162    1
-    Should Contain X Times    ${output}    z : 15.0945    1
+    Should Contain X Times    ${output}    x : 62.9388    1
+    Should Contain X Times    ${output}    y : 21.553    1
+    Should Contain X Times    ${output}    z : 52.3075    1
     Should Contain    ${output}    === command pivot issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -104,9 +105,9 @@ Read Controller
     Should Contain    ${output}    property : pivot
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 33.7881    1
-    Should Contain X Times    ${output}    y : 94.1162    1
-    Should Contain X Times    ${output}    z : 15.0945    1
+    Should Contain X Times    ${output}    x : 62.9388    1
+    Should Contain X Times    ${output}    y : 21.553    1
+    Should Contain X Times    ${output}    z : 52.3075    1
     Should Contain X Times    ${output}    === [ackCommand_pivot] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

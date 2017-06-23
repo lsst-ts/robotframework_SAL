@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Dome_SetLouvers commander/controller tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    dome
 ${component}    SetLouvers
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 3668 14325 15138 10197 15532 1717 26780 7923 32620 1482 9428 13649 26908 23272 11212 13439 19518 13898 24701 19994 14274 16883 26389 7484 12135 3796 29982 10206 15000 13395 4370 3895 26984 17585
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11329 12007 19200 15987 8136 10428 17365 14303 15316 26477 8341 29217 3608 19956 10421 23904 16143 11649 15958 5185 32582 15795 3625 22468 13412 27120 16796 11287 13629 4439 23938 11574 4570 22747
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 3668 14325 15138 10197 15532 1717 26780 7923 32620 1482 9428 13649 26908 23272 11212 13439 19518 13898 24701 19994 14274 16883 26389 7484 12135 3796 29982 10206 15000 13395 4370 3895 26984 17585
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 11329 12007 19200 15987 8136 10428 17365 14303 15316 26477 8341 29217 3608 19956 10421 23904 16143 11649 15958 5185 32582 15795 3625 22468 13412 27120 16796 11287 13629 4439 23938 11574 4570 22747
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    position : 3668    1
+    Should Contain X Times    ${output}    position : 11329    1
     Should Contain    ${output}    === command SetLouvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -102,7 +103,7 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    position : 3668    1
+    Should Contain X Times    ${output}    position : 11329    1
     Should Contain X Times    ${output}    === [ackCommand_SetLouvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

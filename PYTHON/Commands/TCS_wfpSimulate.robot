@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    TCS_wfpSimulate commander/controller tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 92.205 7.6871 0.6996 67.9101 14.8568 25.4348 90.1706 33.2823 0.6931 11.1973 95.1473 50.5413 77.5239 62.2093 52.2983 87.5754 77.3774 82.5531
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 76.5266 50.428 32.736 45.435 28.0465 45.8172 34.7471 29.3816 7.6145 30.668 65.7852 2.25 55.1593 37.4501 36.0068 48.1276 48.2983 31.2046
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 92.205 7.6871 0.6996 67.9101 14.8568 25.4348 90.1706 33.2823 0.6931 11.1973 95.1473 50.5413 77.5239 62.2093 52.2983 87.5754 77.3774 82.5531
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py test 76.5266 50.428 32.736 45.435 28.0465 45.8172 34.7471 29.3816 7.6145 30.668 65.7852 2.25 55.1593 37.4501 36.0068 48.1276 48.2983 31.2046
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +89,7 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    uid : test    1
-    Should Contain X Times    ${output}    z_arr : 92.205    1
+    Should Contain X Times    ${output}    z_arr : 76.5266    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,7 +99,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    uid = test    1
-    Should Contain X Times    ${output}    z_arr(18) = [92.205, 7.6871, 0.6996, 67.9101, 14.8568, 25.4348, 90.1706, 33.2823, 0.6931, 11.1973, 95.1473, 50.5413, 77.5239, 62.2093, 52.2983, 87.5754, 77.3774, 82.5531]    1
+    Should Contain X Times    ${output}    z_arr(18) = [76.5266, 50.428, 32.736, 45.435, 28.0465, 45.8172, 34.7471, 29.3816, 7.6145, 30.668, 65.7852, 2.25, 55.1593, 37.4501, 36.0068, 48.1276, 48.2983, 31.2046]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Camera_endSetFilter sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 703012460
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1594782308
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endSetFilter writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 703012460
+    ${output}=    Read Until    priority : 1594782308
     Log    ${output}
     Should Contain X Times    ${output}    === Event endSetFilter received =     1
-    Should Contain    ${output}    priority : 703012460
+    Should Contain    ${output}    priority : 1594782308

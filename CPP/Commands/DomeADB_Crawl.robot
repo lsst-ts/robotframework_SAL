@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_Crawl commander/controller tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -9,7 +10,7 @@ Resource    ../../Global_Vars.robot
 *** Variables ***
 ${subSystem}    domeADB
 ${component}    Crawl
-${timeout}    45s
+${timeout}    30s
 
 *** Test Cases ***
 Create Commander Session
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 17.5494 1821788176
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.2416 238643892
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 17.5494 1821788176
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 85.2416 238643892
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,8 +88,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 17.5494    1
-    Should Contain X Times    ${output}    demandTime : 1821788176    1
+    Should Contain X Times    ${output}    angle : 85.2416    1
+    Should Contain X Times    ${output}    demandTime : 238643892    1
     Should Contain    ${output}    === command Crawl issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -103,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 17.5494    1
-    Should Contain X Times    ${output}    demandTime : 1821788176    1
+    Should Contain X Times    ${output}    angle : 85.2416    1
+    Should Contain X Times    ${output}    demandTime : 238643892    1
     Should Contain X Times    ${output}    === [ackCommand_Crawl] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

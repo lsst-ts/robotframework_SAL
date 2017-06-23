@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_StateChanged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 17176 23060 17992809
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12595 3246 759217470
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_StateChanged writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 17992809
+    ${output}=    Read Until    priority : 759217470
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    louverID : 17176
-    Should Contain    ${output}    newState : 23060
-    Should Contain    ${output}    priority : 17992809
+    Should Contain    ${output}    louverID : 12595
+    Should Contain    ${output}    newState : 3246
+    Should Contain    ${output}    priority : 759217470

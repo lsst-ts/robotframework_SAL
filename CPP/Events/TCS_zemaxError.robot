@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    TCS_zemaxError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1565833245
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 40126011
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1565833245
+    ${output}=    Read Until    priority : 40126011
     Log    ${output}
     Should Contain X Times    ${output}    === Event zemaxError received =     1
     Should Contain    ${output}    details : test
-    Should Contain    ${output}    priority : 1565833245
+    Should Contain    ${output}    priority : 40126011

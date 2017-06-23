@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerScriptEntititesInUse sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 6.7373 test test 1865564770
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 70.8627 test test 1187973702
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEntititesInUse writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1865564770
+    ${output}=    Read Until    priority : 1187973702
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptEntititesInUse received =     1
     Should Contain    ${output}    sequencerScriptName : test
-    Should Contain    ${output}    sequencerScriptIdentifier : 6.7373
+    Should Contain    ${output}    sequencerScriptIdentifier : 70.8627
     Should Contain    ${output}    sequencerScriptTimestamp : test
     Should Contain    ${output}    sequencerEntititesList : test
-    Should Contain    ${output}    priority : 1865564770
+    Should Contain    ${output}    priority : 1187973702

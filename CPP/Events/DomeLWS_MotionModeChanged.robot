@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_MotionModeChanged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 25662 1589338378
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12202 807183946
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_MotionModeChanged writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1589338378
+    ${output}=    Read Until    priority : 807183946
     Log    ${output}
     Should Contain X Times    ${output}    === Event MotionModeChanged received =     1
-    Should Contain    ${output}    newMode : 25662
-    Should Contain    ${output}    priority : 1589338378
+    Should Contain    ${output}    newMode : 12202
+    Should Contain    ${output}    priority : 807183946

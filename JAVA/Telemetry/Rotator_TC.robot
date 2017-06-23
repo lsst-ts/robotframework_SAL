@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Rotator_TC communications tests.
+Force Tags    java
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

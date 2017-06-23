@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_BrakeEngaged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19570 176634666
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29334 1621294212
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_BrakeEngaged writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 176634666
+    ${output}=    Read Until    priority : 1621294212
     Log    ${output}
     Should Contain X Times    ${output}    === Event BrakeEngaged received =     1
-    Should Contain    ${output}    brakeId : 19570
-    Should Contain    ${output}    priority : 176634666
+    Should Contain    ${output}    brakeId : 29334
+    Should Contain    ${output}    priority : 1621294212

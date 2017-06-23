@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntitySummaryState sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 75.2199 test 452490474 test test test test test 1060126251
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 96.2119 test 977595491 test test test test test 1197965433
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntitySummaryState writing a message containing :    1
@@ -76,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1060126251
+    ${output}=    Read Until    priority : 1197965433
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntitySummaryState received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 75.2199
+    Should Contain    ${output}    Identifier : 96.2119
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 452490474
+    Should Contain    ${output}    Address : 977595491
     Should Contain    ${output}    CurrentState : test
     Should Contain    ${output}    PreviousState : test
     Should Contain    ${output}    Executing : test
     Should Contain    ${output}    CommandsAvailable : test
     Should Contain    ${output}    ConfigurationsAvailable : test
-    Should Contain    ${output}    priority : 1060126251
+    Should Contain    ${output}    priority : 1197965433

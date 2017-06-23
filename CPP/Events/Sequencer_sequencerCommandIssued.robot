@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerCommandIssued sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 126413686 79.0173 test test 807596001 445322609
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 42516374 19.1149 test test 270714929 1198397886
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandIssued writing a message containing :    1
@@ -76,13 +77,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 445322609
+    ${output}=    Read Until    priority : 1198397886
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerCommandIssued received =     1
     Should Contain    ${output}    CommandSource : test
-    Should Contain    ${output}    SequenceNumber : 126413686
-    Should Contain    ${output}    Identifier : 79.0173
+    Should Contain    ${output}    SequenceNumber : 42516374
+    Should Contain    ${output}    Identifier : 19.1149
     Should Contain    ${output}    Timestamp : test
     Should Contain    ${output}    CommandSent : test
-    Should Contain    ${output}    ReturnValue : 807596001
-    Should Contain    ${output}    priority : 445322609
+    Should Contain    ${output}    ReturnValue : 270714929
+    Should Contain    ${output}    priority : 1198397886

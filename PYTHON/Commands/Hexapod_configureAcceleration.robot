@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_configureAcceleration commander/controller tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -56,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 46.3541 75.944 36.2241 85.2746 0.9237 5.5985 73.843 62.804 56.0697 46.1672 3.1777 11.7288
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 92.5106 61.0031 97.4655 8.2726 24.9192 6.1842 53.875 66.1145 25.7176 93.7169 94.0528 79.8267
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -79,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 46.3541 75.944 36.2241 85.2746 0.9237 5.5985 73.843 62.804 56.0697 46.1672 3.1777 11.7288
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 92.5106 61.0031 97.4655 8.2726 24.9192 6.1842 53.875 66.1145 25.7176 93.7169 94.0528 79.8267
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -87,18 +88,18 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xmin : 46.3541    1
-    Should Contain X Times    ${output}    xmax : 75.944    1
-    Should Contain X Times    ${output}    ymin : 36.2241    1
-    Should Contain X Times    ${output}    ymax : 85.2746    1
-    Should Contain X Times    ${output}    zmin : 0.9237    1
-    Should Contain X Times    ${output}    zmax : 5.5985    1
-    Should Contain X Times    ${output}    umin : 73.843    1
-    Should Contain X Times    ${output}    umax : 62.804    1
-    Should Contain X Times    ${output}    vmin : 56.0697    1
-    Should Contain X Times    ${output}    vmax : 46.1672    1
-    Should Contain X Times    ${output}    wmin : 3.1777    1
-    Should Contain X Times    ${output}    wmax : 11.7288    1
+    Should Contain X Times    ${output}    xmin : 92.5106    1
+    Should Contain X Times    ${output}    xmax : 61.0031    1
+    Should Contain X Times    ${output}    ymin : 97.4655    1
+    Should Contain X Times    ${output}    ymax : 8.2726    1
+    Should Contain X Times    ${output}    zmin : 24.9192    1
+    Should Contain X Times    ${output}    zmax : 6.1842    1
+    Should Contain X Times    ${output}    umin : 53.875    1
+    Should Contain X Times    ${output}    umax : 66.1145    1
+    Should Contain X Times    ${output}    vmin : 25.7176    1
+    Should Contain X Times    ${output}    vmax : 93.7169    1
+    Should Contain X Times    ${output}    wmin : 94.0528    1
+    Should Contain X Times    ${output}    wmax : 79.8267    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -107,18 +108,18 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xmin = 46.3541    1
-    Should Contain X Times    ${output}    xmax = 75.944    1
-    Should Contain X Times    ${output}    ymin = 36.2241    1
-    Should Contain X Times    ${output}    ymax = 85.2746    1
-    Should Contain X Times    ${output}    zmin = 0.9237    1
-    Should Contain X Times    ${output}    zmax = 5.5985    1
-    Should Contain X Times    ${output}    umin = 73.843    1
-    Should Contain X Times    ${output}    umax = 62.804    1
-    Should Contain X Times    ${output}    vmin = 56.0697    1
-    Should Contain X Times    ${output}    vmax = 46.1672    1
-    Should Contain X Times    ${output}    wmin = 3.1777    1
-    Should Contain X Times    ${output}    wmax = 11.7288    1
+    Should Contain X Times    ${output}    xmin = 92.5106    1
+    Should Contain X Times    ${output}    xmax = 61.0031    1
+    Should Contain X Times    ${output}    ymin = 97.4655    1
+    Should Contain X Times    ${output}    ymax = 8.2726    1
+    Should Contain X Times    ${output}    zmin = 24.9192    1
+    Should Contain X Times    ${output}    zmax = 6.1842    1
+    Should Contain X Times    ${output}    umin = 53.875    1
+    Should Contain X Times    ${output}    umax = 66.1145    1
+    Should Contain X Times    ${output}    vmin = 25.7176    1
+    Should Contain X Times    ${output}    vmax = 93.7169    1
+    Should Contain X Times    ${output}    wmin = 94.0528    1
+    Should Contain X Times    ${output}    wmax = 79.8267    1
     Should Contain X Times    ${output}    === [ackCommand_configureAcceleration] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

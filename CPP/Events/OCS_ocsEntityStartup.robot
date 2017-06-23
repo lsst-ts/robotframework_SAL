@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsEntityStartup sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 49.0846 test 622156780 864430671
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 83.8424 test 456854228 722942807
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityStartup writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 864430671
+    ${output}=    Read Until    priority : 722942807
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityStartup received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 49.0846
+    Should Contain    ${output}    Identifier : 83.8424
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 622156780
-    Should Contain    ${output}    priority : 864430671
+    Should Contain    ${output}    Address : 456854228
+    Should Contain    ${output}    priority : 722942807

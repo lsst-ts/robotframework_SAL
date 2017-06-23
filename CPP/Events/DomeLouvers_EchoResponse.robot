@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_EchoResponse sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11890 test 820313955
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10786 test 1492559991
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_EchoResponse writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 820313955
+    ${output}=    Read Until    priority : 1492559991
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    louverID : 11890
+    Should Contain    ${output}    louverID : 10786
     Should Contain    ${output}    response : test
-    Should Contain    ${output}    priority : 820313955
+    Should Contain    ${output}    priority : 1492559991

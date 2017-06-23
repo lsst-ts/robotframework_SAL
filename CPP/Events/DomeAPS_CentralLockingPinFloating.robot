@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_CentralLockingPinFloating sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 118460742
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 542331895
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_CentralLockingPinFloating writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 118460742
+    ${output}=    Read Until    priority : 542331895
     Log    ${output}
     Should Contain X Times    ${output}    === Event CentralLockingPinFloating received =     1
-    Should Contain    ${output}    priority : 118460742
+    Should Contain    ${output}    priority : 542331895

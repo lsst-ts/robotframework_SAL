@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_DriveFault sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19885 test 768357774
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 14471 test 805815828
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveFault writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 768357774
+    ${output}=    Read Until    priority : 805815828
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 19885
+    Should Contain    ${output}    driveId : 14471
     Should Contain    ${output}    errorCode : test
-    Should Contain    ${output}    priority : 768357774
+    Should Contain    ${output}    priority : 805815828

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    MTMount_mountWarning sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 888326987 test 1908713937
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 132762235 test 718776145
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1908713937
+    ${output}=    Read Until    priority : 718776145
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : 888326987
+    Should Contain    ${output}    id : 132762235
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 1908713937
+    Should Contain    ${output}    priority : 718776145

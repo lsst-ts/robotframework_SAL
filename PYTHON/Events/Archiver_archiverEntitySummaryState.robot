@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntitySummaryState sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 8.9083 test 2029930359 test test test test test 1165740728
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 35.7403 test 1680354977 test test test test test 1742389869
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntitySummaryState writing a message containing :    1

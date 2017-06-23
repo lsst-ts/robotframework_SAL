@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    TCS_wfpDataReady sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 189293127
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 875519591
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -76,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 189293127
+    ${output}=    Read Until    priority : 875519591
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
     Should Contain    ${output}    images_location_URI : test
     Should Contain    ${output}    images_match_URI : test
-    Should Contain    ${output}    priority : 189293127
+    Should Contain    ${output}    priority : 875519591

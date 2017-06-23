@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_AccelerationLimitReached sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 239938337
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 504445549
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_AccelerationLimitReached writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 239938337
+    ${output}=    Read Until    priority : 504445549
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerationLimitReached received =     1
-    Should Contain    ${output}    priority : 239938337
+    Should Contain    ${output}    priority : 504445549

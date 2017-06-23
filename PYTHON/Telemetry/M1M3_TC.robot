@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    M1M3_TC communications tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

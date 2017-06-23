@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    ProcessingCluster_processingclusterEntitySummaryState sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 65.3128 test 724923086 test test test test test 1763913185
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 58.2995 test 1354892724 test test test test test 1481989915
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntitySummaryState writing a message containing :    1

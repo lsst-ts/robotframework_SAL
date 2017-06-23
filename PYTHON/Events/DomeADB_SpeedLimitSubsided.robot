@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_SpeedLimitSubsided sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1704077738
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1914025406
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_SpeedLimitSubsided writing a message containing :    1

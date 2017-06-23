@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_DriveReady sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 21204 1750410736
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19823 876273381
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveReady writing a message containing :    1
@@ -76,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1750410736
+    ${output}=    Read Until    priority : 876273381
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveReady received =     1
-    Should Contain    ${output}    driveId : 21204
-    Should Contain    ${output}    priority : 1750410736
+    Should Contain    ${output}    driveId : 19823
+    Should Contain    ${output}    priority : 876273381

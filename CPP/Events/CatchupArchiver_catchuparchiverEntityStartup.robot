@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_catchuparchiverEntityStartup sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 26.3592 test 1569250367 780434823
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 45.1939 test 745999914 482114555
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntityStartup writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 780434823
+    ${output}=    Read Until    priority : 482114555
     Log    ${output}
     Should Contain X Times    ${output}    === Event catchuparchiverEntityStartup received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 26.3592
+    Should Contain    ${output}    Identifier : 45.1939
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1569250367
-    Should Contain    ${output}    priority : 780434823
+    Should Contain    ${output}    Address : 745999914
+    Should Contain    ${output}    priority : 482114555

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptEntititesInUse sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 89.9368 test test 1677887564
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 40.6014 test test 709263850
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptEntititesInUse writing a message containing :    1
@@ -76,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1677887564
+    ${output}=    Read Until    priority : 709263850
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptEntititesInUse received =     1
     Should Contain    ${output}    ocsScriptName : test
-    Should Contain    ${output}    ocsScriptIdentifier : 89.9368
+    Should Contain    ${output}    ocsScriptIdentifier : 40.6014
     Should Contain    ${output}    ocsScriptTimestamp : test
     Should Contain    ${output}    ocsEntititesList : test
-    Should Contain    ${output}    priority : 1677887564
+    Should Contain    ${output}    priority : 709263850

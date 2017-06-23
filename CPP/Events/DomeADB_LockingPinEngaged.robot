@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_LockingPinEngaged sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 893015258
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 935137554
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_LockingPinEngaged writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 893015258
+    ${output}=    Read Until    priority : 935137554
     Log    ${output}
     Should Contain X Times    ${output}    === Event LockingPinEngaged received =     1
-    Should Contain    ${output}    priority : 893015258
+    Should Contain    ${output}    priority : 935137554

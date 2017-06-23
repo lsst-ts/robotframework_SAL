@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsEntitySummaryState sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 17.3587 test 836662398 test test test test test 1714490539
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 73.524 test 1625222997 test test test test test 1582627706
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntitySummaryState writing a message containing :    1

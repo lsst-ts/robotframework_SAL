@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_AccelerationLimitSubsided sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 640355789
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 789903422
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_AccelerationLimitSubsided writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 640355789
+    ${output}=    Read Until    priority : 789903422
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerationLimitSubsided received =     1
-    Should Contain    ${output}    priority : 640355789
+    Should Contain    ${output}    priority : 789903422

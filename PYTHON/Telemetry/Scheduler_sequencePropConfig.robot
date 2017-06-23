@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Scheduler_sequencePropConfig communications tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsCommandIssued sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 734290623 4.3908 test test 1125861838 1119092749
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 2045326982 88.6464 test test 561911562 1133175658
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandIssued writing a message containing :    1

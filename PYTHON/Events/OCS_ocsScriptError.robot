@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptError sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 49.2344 test 1655222501 1740768863 test 1339245488
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 66.9536 test 858597516 1457807930 test 2076792607
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptError writing a message containing :    1

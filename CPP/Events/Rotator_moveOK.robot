@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Rotator_moveOK sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 387210859
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 913064670
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_moveOK writing a message containing :    1
@@ -76,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 387210859
+    ${output}=    Read Until    priority : 913064670
     Log    ${output}
     Should Contain X Times    ${output}    === Event moveOK received =     1
-    Should Contain    ${output}    priority : 387210859
+    Should Contain    ${output}    priority : 913064670

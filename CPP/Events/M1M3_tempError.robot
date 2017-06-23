@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    M1M3_tempError sender/logger tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -66,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1002233701 79.1517 1602733469
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1747028494 66.8472 745126628
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -76,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1602733469
+    ${output}=    Read Until    priority : 745126628
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 1002233701
-    Should Contain    ${output}    temp : 79.1517
-    Should Contain    ${output}    priority : 1602733469
+    Should Contain    ${output}    severity : 1747028494
+    Should Contain    ${output}    temp : 66.8472
+    Should Contain    ${output}    priority : 745126628

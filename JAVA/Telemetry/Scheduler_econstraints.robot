@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Scheduler_econstraints communications tests.
+Force Tags    java
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

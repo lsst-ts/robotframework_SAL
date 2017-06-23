@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    M2MS_TangentForcesMeasured communications tests.
+Force Tags    cpp
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary

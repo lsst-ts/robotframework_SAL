@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsCommandStatus sender/logger tests.
+Force Tags    python
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -67,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 1787837504 32.1195 test test 1300840717 test 1254016391
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 136574637 30.2336 test test 887904697 test 425449361
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandStatus writing a message containing :    1
