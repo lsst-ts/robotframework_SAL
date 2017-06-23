@@ -4,6 +4,14 @@
 --output CppStateMachine
 
 # List of test suites
+CPP/StateMachine/Archiver_abort.robot
+CPP/StateMachine/Archiver_disable.robot
+CPP/StateMachine/Archiver_enable.robot
+CPP/StateMachine/Archiver_enterControl.robot
+CPP/StateMachine/Archiver_exitControl.robot
+CPP/StateMachine/Archiver_standby.robot
+CPP/StateMachine/Archiver_start.robot
+CPP/StateMachine/Archiver_stop.robot
 CPP/StateMachine/Camera_abort.robot
 CPP/StateMachine/Camera_disable.robot
 CPP/StateMachine/Camera_enable.robot
@@ -12,6 +20,14 @@ CPP/StateMachine/Camera_exitControl.robot
 CPP/StateMachine/Camera_standby.robot
 CPP/StateMachine/Camera_start.robot
 CPP/StateMachine/Camera_stop.robot
+CPP/StateMachine/CatchupArchiver_abort.robot
+CPP/StateMachine/CatchupArchiver_disable.robot
+CPP/StateMachine/CatchupArchiver_enable.robot
+CPP/StateMachine/CatchupArchiver_enterControl.robot
+CPP/StateMachine/CatchupArchiver_exitControl.robot
+CPP/StateMachine/CatchupArchiver_standby.robot
+CPP/StateMachine/CatchupArchiver_start.robot
+CPP/StateMachine/CatchupArchiver_stop.robot
 CPP/StateMachine/DomeADB_abort.robot
 CPP/StateMachine/DomeADB_disable.robot
 CPP/StateMachine/DomeADB_enable.robot
@@ -108,6 +124,14 @@ CPP/StateMachine/OCS_exitControl.robot
 CPP/StateMachine/OCS_standby.robot
 CPP/StateMachine/OCS_start.robot
 CPP/StateMachine/OCS_stop.robot
+CPP/StateMachine/ProcessingCluster_abort.robot
+CPP/StateMachine/ProcessingCluster_disable.robot
+CPP/StateMachine/ProcessingCluster_enable.robot
+CPP/StateMachine/ProcessingCluster_enterControl.robot
+CPP/StateMachine/ProcessingCluster_exitControl.robot
+CPP/StateMachine/ProcessingCluster_standby.robot
+CPP/StateMachine/ProcessingCluster_start.robot
+CPP/StateMachine/ProcessingCluster_stop.robot
 CPP/StateMachine/Rotator_abort.robot
 CPP/StateMachine/Rotator_disable.robot
 CPP/StateMachine/Rotator_enable.robot
@@ -124,6 +148,14 @@ CPP/StateMachine/Scheduler_exitControl.robot
 CPP/StateMachine/Scheduler_standby.robot
 CPP/StateMachine/Scheduler_start.robot
 CPP/StateMachine/Scheduler_stop.robot
+CPP/StateMachine/Sequencer_abort.robot
+CPP/StateMachine/Sequencer_disable.robot
+CPP/StateMachine/Sequencer_enable.robot
+CPP/StateMachine/Sequencer_enterControl.robot
+CPP/StateMachine/Sequencer_exitControl.robot
+CPP/StateMachine/Sequencer_standby.robot
+CPP/StateMachine/Sequencer_start.robot
+CPP/StateMachine/Sequencer_stop.robot
 CPP/StateMachine/TCS_abort.robot
 CPP/StateMachine/TCS_disable.robot
 CPP/StateMachine/TCS_enable.robot

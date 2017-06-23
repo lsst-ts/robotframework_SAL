@@ -63,5 +63,7 @@ PYTHON/Commands/Rotator_configureVelocity.robot
 PYTHON/Commands/Rotator_move.robot
 PYTHON/Commands/Rotator_test.robot
 PYTHON/Commands/Rotator_track.robot
+PYTHON/Commands/Sequencer_script.robot
+PYTHON/Commands/Sequencer_sequence.robot
 PYTHON/Commands/TCS_wfpCalculate.robot
 PYTHON/Commands/TCS_wfpSimulate.robot

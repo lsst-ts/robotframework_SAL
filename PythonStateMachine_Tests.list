@@ -4,6 +4,14 @@
 --output PythonStateMachine
 
 # List of test suites
+PYTHON/StateMachine/Archiver_abort.robot
+PYTHON/StateMachine/Archiver_disable.robot
+PYTHON/StateMachine/Archiver_enable.robot
+PYTHON/StateMachine/Archiver_enterControl.robot
+PYTHON/StateMachine/Archiver_exitControl.robot
+PYTHON/StateMachine/Archiver_standby.robot
+PYTHON/StateMachine/Archiver_start.robot
+PYTHON/StateMachine/Archiver_stop.robot
 PYTHON/StateMachine/Camera_abort.robot
 PYTHON/StateMachine/Camera_disable.robot
 PYTHON/StateMachine/Camera_enable.robot
@@ -12,6 +20,14 @@ PYTHON/StateMachine/Camera_exitControl.robot
 PYTHON/StateMachine/Camera_standby.robot
 PYTHON/StateMachine/Camera_start.robot
 PYTHON/StateMachine/Camera_stop.robot
+PYTHON/StateMachine/CatchupArchiver_abort.robot
+PYTHON/StateMachine/CatchupArchiver_disable.robot
+PYTHON/StateMachine/CatchupArchiver_enable.robot
+PYTHON/StateMachine/CatchupArchiver_enterControl.robot
+PYTHON/StateMachine/CatchupArchiver_exitControl.robot
+PYTHON/StateMachine/CatchupArchiver_standby.robot
+PYTHON/StateMachine/CatchupArchiver_start.robot
+PYTHON/StateMachine/CatchupArchiver_stop.robot
 PYTHON/StateMachine/DomeADB_abort.robot
 PYTHON/StateMachine/DomeADB_disable.robot
 PYTHON/StateMachine/DomeADB_enable.robot
@@ -108,6 +124,14 @@ PYTHON/StateMachine/OCS_exitControl.robot
 PYTHON/StateMachine/OCS_standby.robot
 PYTHON/StateMachine/OCS_start.robot
 PYTHON/StateMachine/OCS_stop.robot
+PYTHON/StateMachine/ProcessingCluster_abort.robot
+PYTHON/StateMachine/ProcessingCluster_disable.robot
+PYTHON/StateMachine/ProcessingCluster_enable.robot
+PYTHON/StateMachine/ProcessingCluster_enterControl.robot
+PYTHON/StateMachine/ProcessingCluster_exitControl.robot
+PYTHON/StateMachine/ProcessingCluster_standby.robot
+PYTHON/StateMachine/ProcessingCluster_start.robot
+PYTHON/StateMachine/ProcessingCluster_stop.robot
 PYTHON/StateMachine/Rotator_abort.robot
 PYTHON/StateMachine/Rotator_disable.robot
 PYTHON/StateMachine/Rotator_enable.robot
@@ -124,6 +148,14 @@ PYTHON/StateMachine/Scheduler_exitControl.robot
 PYTHON/StateMachine/Scheduler_standby.robot
 PYTHON/StateMachine/Scheduler_start.robot
 PYTHON/StateMachine/Scheduler_stop.robot
+PYTHON/StateMachine/Sequencer_abort.robot
+PYTHON/StateMachine/Sequencer_disable.robot
+PYTHON/StateMachine/Sequencer_enable.robot
+PYTHON/StateMachine/Sequencer_enterControl.robot
+PYTHON/StateMachine/Sequencer_exitControl.robot
+PYTHON/StateMachine/Sequencer_standby.robot
+PYTHON/StateMachine/Sequencer_start.robot
+PYTHON/StateMachine/Sequencer_stop.robot
 PYTHON/StateMachine/TCS_abort.robot
 PYTHON/StateMachine/TCS_disable.robot
 PYTHON/StateMachine/TCS_enable.robot
