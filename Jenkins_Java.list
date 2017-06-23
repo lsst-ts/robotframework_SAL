@@ -3,6 +3,8 @@
 --name JAVA
 --output JAVA
 
+# List of test suites
+
 # JAVA Publish/Subscribe Telemetry test suites
 rbtsal/JAVA/Telemetry/Camera_CCS.robot
 rbtsal/JAVA/Telemetry/Camera_Cluster_Encoder.robot

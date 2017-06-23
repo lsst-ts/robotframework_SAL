@@ -3,7 +3,40 @@
 --name CPP
 --output CPP
 
-# CPP State Machine  test suites
+# List of test suites
+
+# CPP Publish/Subscribe Telemetry test suites
+rbtsal/CPP/Telemetry/Camera_CCS.robot
+rbtsal/CPP/Telemetry/Camera_Cluster_Encoder.robot
+rbtsal/CPP/Telemetry/Camera_Cold.robot
+rbtsal/CPP/Telemetry/Camera_Cryo.robot
+rbtsal/CPP/Telemetry/Camera_Filter.robot
+rbtsal/CPP/Telemetry/Camera_GAS.robot
+rbtsal/CPP/Telemetry/Camera_GDS.robot
+rbtsal/CPP/Telemetry/Camera_PCMS.robot
+rbtsal/CPP/Telemetry/Camera_Prot.robot
+rbtsal/CPP/Telemetry/Camera_Purge.robot
+rbtsal/CPP/Telemetry/Camera_SAS.robot
+rbtsal/CPP/Telemetry/Camera_SDS.robot
+rbtsal/CPP/Telemetry/Camera_Shutter.robot
+rbtsal/CPP/Telemetry/Camera_WAS.robot
+rbtsal/CPP/Telemetry/Camera_WDS.robot
+rbtsal/CPP/Telemetry/MTMount_Alt.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Az.robot
+rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
+rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
+rbtsal/CPP/Telemetry/MTMount_Az_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Bal.robot
+rbtsal/CPP/Telemetry/MTMount_Cab_TC.robot
+rbtsal/CPP/Telemetry/MTMount_Cam_CW.robot
+rbtsal/CPP/Telemetry/MTMount_DP_1.robot
+rbtsal/CPP/Telemetry/MTMount_DP_2.robot
+rbtsal/CPP/Telemetry/MTMount_MC.robot
+rbtsal/CPP/Telemetry/MTMount_MotionParameters.robot
+
+# CPP State Machine test suites
 rbtsal/CPP/StateMachine/Camera_abort.robot
 rbtsal/CPP/StateMachine/Camera_disable.robot
 rbtsal/CPP/StateMachine/Camera_enable.robot
@@ -29,23 +62,12 @@ rbtsal/CPP/StateMachine/MTMount_standby.robot
 rbtsal/CPP/StateMachine/MTMount_start.robot
 rbtsal/CPP/StateMachine/MTMount_stop.robot
 
-# CPP Publish/Subscribe Telemetry test suites
-rbtsal/CPP/Telemetry/MTMount_Alt.robot
-rbtsal/CPP/Telemetry/MTMount_Alt_OSS.robot
-rbtsal/CPP/Telemetry/MTMount_Alt_TC.robot
-rbtsal/CPP/Telemetry/MTMount_Az.robot
-rbtsal/CPP/Telemetry/MTMount_Az_CW.robot
-rbtsal/CPP/Telemetry/MTMount_Az_OSS.robot
-rbtsal/CPP/Telemetry/MTMount_Az_TC.robot
-rbtsal/CPP/Telemetry/MTMount_Bal.robot
-rbtsal/CPP/Telemetry/MTMount_Cab_TC.robot
-rbtsal/CPP/Telemetry/MTMount_Cam_CW.robot
-rbtsal/CPP/Telemetry/MTMount_DP_1.robot
-rbtsal/CPP/Telemetry/MTMount_DP_2.robot
-rbtsal/CPP/Telemetry/MTMount_MC.robot
-rbtsal/CPP/Telemetry/MTMount_MotionParameters.robot
-
 # CPP Commander/Controller test suites
+rbtsal/CPP/Commands/Camera_configure.robot
+rbtsal/CPP/Commands/Camera_initGuiders.robot
+rbtsal/CPP/Commands/Camera_initImage.robot
+rbtsal/CPP/Commands/Camera_setFilter.robot
+rbtsal/CPP/Commands/Camera_takeImages.robot
 rbtsal/CPP/Commands/MTMount_clearerror.robot
 rbtsal/CPP/Commands/MTMount_closeMirrorCover.robot
 rbtsal/CPP/Commands/MTMount_configure.robot
@@ -56,6 +78,28 @@ rbtsal/CPP/Commands/MTMount_openMirrorCover.robot
 rbtsal/CPP/Commands/MTMount_trackTarget.robot
 
 # CPP Event Sender/Logger test suites
+rbtsal/CPP/Events/Camera_ccsConfigured.robot
+rbtsal/CPP/Events/Camera_endInitializeGuider.robot
+rbtsal/CPP/Events/Camera_endInitializeImage.robot
+rbtsal/CPP/Events/Camera_endLoadFilter.robot
+rbtsal/CPP/Events/Camera_endReadout.robot
+rbtsal/CPP/Events/Camera_endRotateCarousel.robot
+rbtsal/CPP/Events/Camera_endSetFilter.robot
+rbtsal/CPP/Events/Camera_endShutterClose.robot
+rbtsal/CPP/Events/Camera_endShutterOpen.robot
+rbtsal/CPP/Events/Camera_endTakeImage.robot
+rbtsal/CPP/Events/Camera_endUnloadFilter.robot
+rbtsal/CPP/Events/Camera_notReadyToTakeImage.robot
+rbtsal/CPP/Events/Camera_prepareToTakeImage.robot
+rbtsal/CPP/Events/Camera_readyToTakeImage.robot
+rbtsal/CPP/Events/Camera_startIntegration.robot
+rbtsal/CPP/Events/Camera_startLoadFilter.robot
+rbtsal/CPP/Events/Camera_startReadout.robot
+rbtsal/CPP/Events/Camera_startRotateCarousel.robot
+rbtsal/CPP/Events/Camera_startSetFilter.robot
+rbtsal/CPP/Events/Camera_startShutterClose.robot
+rbtsal/CPP/Events/Camera_startShutterOpen.robot
+rbtsal/CPP/Events/Camera_startUnloadFilter.robot
 rbtsal/CPP/Events/MTMount_mountError.robot
 rbtsal/CPP/Events/MTMount_mountInPosition.robot
 rbtsal/CPP/Events/MTMount_mountState.robot

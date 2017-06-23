@@ -3,7 +3,41 @@
 --name PYTHON
 --output PYTHON
 
-# Python State Machine test suites
+# List of test suites
+
+# PYTHON Publish/Subscribe Telemetry test suites
+rbtsal/PYTHON/Telemetry/M2MS_ActuatorLimitSwitches.robot
+rbtsal/PYTHON/Telemetry/M2MS_AxialActuatorAbsolutePositionSteps.robot
+rbtsal/PYTHON/Telemetry/M2MS_AxialActuatorPositionAbsoluteEncoderPositionMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_AxialForcesMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_MirrorPositionMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_PowerStatus.robot
+rbtsal/PYTHON/Telemetry/M2MS_RawDisplacement.robot
+rbtsal/PYTHON/Telemetry/M2MS_RawTelemetry.robot
+rbtsal/PYTHON/Telemetry/M2MS_StepVectorUpdate.robot
+rbtsal/PYTHON/Telemetry/M2MS_SystemStatus.robot
+rbtsal/PYTHON/Telemetry/M2MS_TangentActuatorAbsolutePositionSteps.robot
+rbtsal/PYTHON/Telemetry/M2MS_TangentActuatorPositionAbsoluteEncoderPositionMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_TangentForcesMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_TargetForces.robot
+rbtsal/PYTHON/Telemetry/M2MS_TemperaturesMeasured.robot
+rbtsal/PYTHON/Telemetry/M2MS_ZenithAngleMeasured.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt_OSS.robot
+rbtsal/PYTHON/Telemetry/MTMount_Alt_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_CW.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_OSS.robot
+rbtsal/PYTHON/Telemetry/MTMount_Az_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Bal.robot
+rbtsal/PYTHON/Telemetry/MTMount_Cab_TC.robot
+rbtsal/PYTHON/Telemetry/MTMount_Cam_CW.robot
+rbtsal/PYTHON/Telemetry/MTMount_DP_1.robot
+rbtsal/PYTHON/Telemetry/MTMount_DP_2.robot
+rbtsal/PYTHON/Telemetry/MTMount_MC.robot
+rbtsal/PYTHON/Telemetry/MTMount_MotionParameters.robot
+
+# PYTHON State Machine test suites
 rbtsal/PYTHON/StateMachine/Camera_abort.robot
 rbtsal/PYTHON/StateMachine/Camera_disable.robot
 rbtsal/PYTHON/StateMachine/Camera_enable.robot
@@ -29,38 +63,7 @@ rbtsal/PYTHON/StateMachine/MTMount_standby.robot
 rbtsal/PYTHON/StateMachine/MTMount_start.robot
 rbtsal/PYTHON/StateMachine/MTMount_stop.robot
 
-# Python Publish/Subscribe Telemetry test suites
-rbtsal/PYTHON/Telemetry/Camera_CCS.robot
-rbtsal/PYTHON/Telemetry/Camera_Cluster_Encoder.robot
-rbtsal/PYTHON/Telemetry/Camera_Cold.robot
-rbtsal/PYTHON/Telemetry/Camera_Cryo.robot
-rbtsal/PYTHON/Telemetry/Camera_Filter.robot
-rbtsal/PYTHON/Telemetry/Camera_GAS.robot
-rbtsal/PYTHON/Telemetry/Camera_GDS.robot
-rbtsal/PYTHON/Telemetry/Camera_PCMS.robot
-rbtsal/PYTHON/Telemetry/Camera_Prot.robot
-rbtsal/PYTHON/Telemetry/Camera_Purge.robot
-rbtsal/PYTHON/Telemetry/Camera_SAS.robot
-rbtsal/PYTHON/Telemetry/Camera_SDS.robot
-rbtsal/PYTHON/Telemetry/Camera_Shutter.robot
-rbtsal/PYTHON/Telemetry/Camera_WAS.robot
-rbtsal/PYTHON/Telemetry/Camera_WDS.robot
-rbtsal/PYTHON/Telemetry/MTMount_Alt.robot
-rbtsal/PYTHON/Telemetry/MTMount_Alt_OSS.robot
-rbtsal/PYTHON/Telemetry/MTMount_Alt_TC.robot
-rbtsal/PYTHON/Telemetry/MTMount_Az.robot
-rbtsal/PYTHON/Telemetry/MTMount_Az_CW.robot
-rbtsal/PYTHON/Telemetry/MTMount_Az_OSS.robot
-rbtsal/PYTHON/Telemetry/MTMount_Az_TC.robot
-rbtsal/PYTHON/Telemetry/MTMount_Bal.robot
-rbtsal/PYTHON/Telemetry/MTMount_Cab_TC.robot
-rbtsal/PYTHON/Telemetry/MTMount_Cam_CW.robot
-rbtsal/PYTHON/Telemetry/MTMount_DP_1.robot
-rbtsal/PYTHON/Telemetry/MTMount_DP_2.robot
-rbtsal/PYTHON/Telemetry/MTMount_MC.robot
-rbtsal/PYTHON/Telemetry/MTMount_MotionParameters.robot
-
-# Python Commander/Controller test suites
+# PYTHON Commander/Controller test suites
 rbtsal/PYTHON/Commands/M2MS_ApplyBendingMode.robot
 rbtsal/PYTHON/Commands/M2MS_ApplyForce.robot
 rbtsal/PYTHON/Commands/M2MS_MoveAxialActuator.robot
@@ -75,7 +78,7 @@ rbtsal/PYTHON/Commands/MTMount_moveToTarget.robot
 rbtsal/PYTHON/Commands/MTMount_openMirrorCover.robot
 rbtsal/PYTHON/Commands/MTMount_trackTarget.robot
 
-# Python Event Sender/Logger test suites
+# PYTHON Event Sender/Logger test suites
 rbtsal/PYTHON/Events/M2MS_M2AssemblyInPosition.robot
 rbtsal/PYTHON/Events/M2MS_M2DetailedState.robot
 rbtsal/PYTHON/Events/M2MS_M2FaultState.robot
