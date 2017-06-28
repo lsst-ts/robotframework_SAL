@@ -73,6 +73,6 @@ Read Subscriber
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    [getSample ${component} ] message received :    6
+    Should Contain X Times    ${output}    [getSample ${component} ] message received :    5
     Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
-    Should Contain X Times    ${output}    revCode \ :    6
+    Should Contain X Times    ${output}    revCode \ :    5

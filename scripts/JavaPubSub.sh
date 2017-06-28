@@ -110,9 +110,9 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    6" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    5" >> $testSuite
     echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ :    6" >> $testSuite
+    echo "    Should Contain X Times    \${output}    revCode \ :    5" >> $testSuite
 }
 
 function createTestSuite {
