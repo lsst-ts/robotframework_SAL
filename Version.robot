@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    This verifies the version of SAL installed on the remote host.
+Force Tags    version
 Suite Setup    Log    ${SALVersion}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
@@ -17,8 +18,16 @@ Verify SAL Version
     Comment    Login.
     Log    ${ContInt}
     ${output}=    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-	Should Contain    ${output}    SAL development environment is configured
-	Should Contain    ${output}    LSST middleware toolset environment v${SALVersion} is configured
+	Set Suite Variable    ${versionData}    ${output}
+	Should Contain    ${versionData}    SAL development environment is configured
+	Should Contain    ${versionData}    LSST middleware toolset environment v${SALVersion} is configured
+
+Verify OpenSplice Version
+	[Documentation]    Verify the OpenSplice version and date.
+	[Tags]    smoke
+	Should Contain    ${versionData}    Vortex OpenSplice HDE Release 
+	Should Contain    ${versionData}    ${OpenspliceVersion} For x86_64.linux-debug
+	Should Contain    ${versionData}    Date ${OpenspliceDate}
 
 Verify SAL Version file exists
     [Tags]    smoke
