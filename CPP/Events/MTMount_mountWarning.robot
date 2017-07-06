@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 132762235 test 718776145
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 325836064 test 1745081999
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 718776145
+    ${output}=    Read Until    priority : 1745081999
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : 132762235
+    Should Contain    ${output}    id : 325836064
     Should Contain    ${output}    text : test
-    Should Contain    ${output}    priority : 718776145
+    Should Contain    ${output}    priority : 1745081999

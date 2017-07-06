@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 15488 15491 4035 19796 30208 16250 16862 6980 613 10854 8776 4 8409 9407 18701 22206 17946 368 21049 10953 3134 22891 10141 27338 2211 15268 29952 11232 19506 16480 20739 10578 47.8813 66.1969 47.3441 75.3173 7.825 4.7977 14.809 83.5174 35.6293 17.2496 70.1566 16.7707 92.6531 51.243 21.1175 80.9557 72.8631 34.0395 60.4969 48.3215 11.0085 87.8631 57.0969 13.5629 74.901 31.5095 48.5245 40.4113 95.3987 78.585 17.4693 85.9985
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 17605 10303 6067 6472 29096 6863 31694 24763 9244 26930 13703 5627 7067 2014 15897 18265 19635 29033 9598 4133 26905 7826 26784 25968 24070 30508 4022 2490 101 15987 30355 2033 81.2133 42.5857 1.2146 64.252 26.9047 13.507 15.806 69.2657 15.2229 26.1607 48.2316 31.9256 29.3172 67.1723 50.5188 52.8493 85.667 91.1277 39.2419 59.8491 58.3452 20.8714 79.3924 46.6428 80.6343 95.7507 71.4175 78.2069 53.3569 19.1468 92.7547 51.3972
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 15488 15491 4035 19796 30208 16250 16862 6980 613 10854 8776 4 8409 9407 18701 22206 17946 368 21049 10953 3134 22891 10141 27338 2211 15268 29952 11232 19506 16480 20739 10578 47.8813 66.1969 47.3441 75.3173 7.825 4.7977 14.809 83.5174 35.6293 17.2496 70.1566 16.7707 92.6531 51.243 21.1175 80.9557 72.8631 34.0395 60.4969 48.3215 11.0085 87.8631 57.0969 13.5629 74.901 31.5095 48.5245 40.4113 95.3987 78.585 17.4693 85.9985
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 17605 10303 6067 6472 29096 6863 31694 24763 9244 26930 13703 5627 7067 2014 15897 18265 19635 29033 9598 4133 26905 7826 26784 25968 24070 30508 4022 2490 101 15987 30355 2033 81.2133 42.5857 1.2146 64.252 26.9047 13.507 15.806 69.2657 15.2229 26.1607 48.2316 31.9256 29.3172 67.1723 50.5188 52.8493 85.667 91.1277 39.2419 59.8491 58.3452 20.8714 79.3924 46.6428 80.6343 95.7507 71.4175 78.2069 53.3569 19.1468 92.7547 51.3972
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,8 +88,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 15488    1
-    Should Contain X Times    ${output}    bendingModeValue : 47.8813    1
+    Should Contain X Times    ${output}    bendingModeNbr : 17605    1
+    Should Contain X Times    ${output}    bendingModeValue : 81.2133    1
     Should Contain    ${output}    === command ApplyBendingMode issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -104,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 15488    1
-    Should Contain X Times    ${output}    bendingModeValue : 47.8813    1
+    Should Contain X Times    ${output}    bendingModeNbr : 17605    1
+    Should Contain X Times    ${output}    bendingModeValue : 81.2133    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

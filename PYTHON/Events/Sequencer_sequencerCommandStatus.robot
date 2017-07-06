@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py test 817453403 18.4621 test test 2101864769 test 1840965067
+    ${input}=    Write    python ${subSystem}_Event_${component}.py test 1571416586 92.9243 test test 1688122735 test 1555735253
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandStatus writing a message containing :    1

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12202 807183946
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 20341 487072597
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_MotionModeChanged writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 807183946
+    ${output}=    Read Until    priority : 487072597
     Log    ${output}
     Should Contain X Times    ${output}    === Event MotionModeChanged received =     1
-    Should Contain    ${output}    newMode : 12202
-    Should Contain    ${output}    priority : 807183946
+    Should Contain    ${output}    newMode : 20341
+    Should Contain    ${output}    priority : 487072597

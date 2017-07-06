@@ -110,6 +110,8 @@ PYTHON/Telemetry/Scheduler_telescopeConfig.robot
 PYTHON/Telemetry/Scheduler_timeHandler.robot
 PYTHON/Telemetry/Sequencer_SequencerHeartbeat.robot
 PYTHON/Telemetry/TCS_AOCS.robot
+PYTHON/Telemetry/TCS_LoopTime_ms.robot
+PYTHON/Telemetry/TCS_Timestamp.robot
 PYTHON/Telemetry/TCS_WEP.robot
 PYTHON/Telemetry/TCS_ZEMAX.robot
 PYTHON/Telemetry/TCS_kernel_DawdleFilter.robot

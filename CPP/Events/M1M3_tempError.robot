@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1747028494 66.8472 745126628
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 1596598845 38.0448 1686591948
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 745126628
+    ${output}=    Read Until    priority : 1686591948
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
     Should Contain    ${output}    device : test
-    Should Contain    ${output}    severity : 1747028494
-    Should Contain    ${output}    temp : 66.8472
-    Should Contain    ${output}    priority : 745126628
+    Should Contain    ${output}    severity : 1596598845
+    Should Contain    ${output}    temp : 38.0448
+    Should Contain    ${output}    priority : 1686591948

@@ -65,5 +65,6 @@ CPP/Commands/Rotator_test.robot
 CPP/Commands/Rotator_track.robot
 CPP/Commands/Sequencer_script.robot
 CPP/Commands/Sequencer_sequence.robot
+CPP/Commands/TCS_injectError.robot
 CPP/Commands/TCS_wfpCalculate.robot
 CPP/Commands/TCS_wfpSimulate.robot

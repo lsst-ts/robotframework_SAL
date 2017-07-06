@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 599663363
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 777459983
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_slewOK writing a message containing :    1
@@ -77,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 599663363
+    ${output}=    Read Until    priority : 777459983
     Log    ${output}
     Should Contain X Times    ${output}    === Event slewOK received =     1
-    Should Contain    ${output}    priority : 599663363
+    Should Contain    ${output}    priority : 777459983

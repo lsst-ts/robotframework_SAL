@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 881017228
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 59294521
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_limitError writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 881017228
+    ${output}=    Read Until    priority : 59294521
     Log    ${output}
     Should Contain X Times    ${output}    === Event limitError received =     1
     Should Contain    ${output}    llimit : test
     Should Contain    ${output}    type : test
-    Should Contain    ${output}    priority : 881017228
+    Should Contain    ${output}    priority : 59294521

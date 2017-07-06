@@ -166,5 +166,11 @@ PYTHON/Events/Sequencer_sequencerScriptEnd.robot
 PYTHON/Events/Sequencer_sequencerScriptEntititesInUse.robot
 PYTHON/Events/Sequencer_sequencerScriptError.robot
 PYTHON/Events/Sequencer_sequencerScriptStart.robot
+PYTHON/Events/TCS_DetailedState.robot
+PYTHON/Events/TCS_Heartbeat.robot
+PYTHON/Events/TCS_HeartbeatIn.robot
+PYTHON/Events/TCS_InternalCommand.robot
+PYTHON/Events/TCS_LoopTimeOutOfRange.robot
+PYTHON/Events/TCS_RejectedCommand.robot
 PYTHON/Events/TCS_wfpDataReady.robot
 PYTHON/Events/TCS_zemaxError.robot

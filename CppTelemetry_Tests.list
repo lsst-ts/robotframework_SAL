@@ -110,6 +110,8 @@ CPP/Telemetry/Scheduler_telescopeConfig.robot
 CPP/Telemetry/Scheduler_timeHandler.robot
 CPP/Telemetry/Sequencer_SequencerHeartbeat.robot
 CPP/Telemetry/TCS_AOCS.robot
+CPP/Telemetry/TCS_LoopTime_ms.robot
+CPP/Telemetry/TCS_Timestamp.robot
 CPP/Telemetry/TCS_WEP.robot
 CPP/Telemetry/TCS_ZEMAX.robot
 CPP/Telemetry/TCS_kernel_DawdleFilter.robot

@@ -166,5 +166,11 @@ CPP/Events/Sequencer_sequencerScriptEnd.robot
 CPP/Events/Sequencer_sequencerScriptEntititesInUse.robot
 CPP/Events/Sequencer_sequencerScriptError.robot
 CPP/Events/Sequencer_sequencerScriptStart.robot
+CPP/Events/TCS_DetailedState.robot
+CPP/Events/TCS_Heartbeat.robot
+CPP/Events/TCS_HeartbeatIn.robot
+CPP/Events/TCS_InternalCommand.robot
+CPP/Events/TCS_LoopTimeOutOfRange.robot
+CPP/Events/TCS_RejectedCommand.robot
 CPP/Events/TCS_wfpDataReady.robot
 CPP/Events/TCS_zemaxError.robot

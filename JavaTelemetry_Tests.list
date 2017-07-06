@@ -110,6 +110,8 @@ JAVA/Telemetry/Scheduler_telescopeConfig.robot
 JAVA/Telemetry/Scheduler_timeHandler.robot
 JAVA/Telemetry/Sequencer_SequencerHeartbeat.robot
 JAVA/Telemetry/TCS_AOCS.robot
+JAVA/Telemetry/TCS_LoopTime_ms.robot
+JAVA/Telemetry/TCS_Timestamp.robot
 JAVA/Telemetry/TCS_WEP.robot
 JAVA/Telemetry/TCS_ZEMAX.robot
 JAVA/Telemetry/TCS_kernel_DawdleFilter.robot
