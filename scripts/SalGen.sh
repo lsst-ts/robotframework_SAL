@@ -30,7 +30,7 @@ function createVariables() {
 	entity=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $entity" >> $testSuite
-    echo "\${timeout}    1500s" >> $testSuite
+    echo "\${timeout}    1600s" >> $testSuite
     echo "" >> $testSuite
 }
 

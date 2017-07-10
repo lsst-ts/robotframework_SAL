@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    domeAPS
-${timeout}    1500s
+${timeout}    1600s
 
 *** Test Cases ***
 Create SALGEN Session

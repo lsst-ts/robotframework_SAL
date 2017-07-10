@@ -7,7 +7,7 @@ Resource    ../Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    tcs
-${timeout}    1500s
+${timeout}    1600s
 
 *** Test Cases ***
 Create SALGEN Session
@@ -55,6 +55,8 @@ Salgen TCS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_WEP.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_kernel_TrackingTarget.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_kernel_FK5Target.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_LoopTime_ms.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_Timestamp.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
@@ -65,8 +67,15 @@ Salgen TCS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_stop.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_wfpCalculate.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_wfpSimulate.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_injectError.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_wfpDataReady.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_zemaxError.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_InternalCommand.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_DetailedState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_Heartbeat.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_LoopTimeOutOfRange.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_RejectedCommand.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_HeartbeatIn.idl
 
 Salgen TCS HTML
     [Documentation]    Create web form interfaces.
@@ -104,8 +113,10 @@ Salgen TCS C++
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_WEP.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_kernel_TrackingTarget.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_kernel_FK5Target.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    14
-    Should Contain X Times    ${output}    cpp : Done Subscriber    14
+    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_LoopTime_ms.idl
+    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_Timestamp.idl
+    Should Contain X Times    ${output}    cpp : Done Publisher    16
+    Should Contain X Times    ${output}    cpp : Done Subscriber    16
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -137,6 +148,8 @@ Verify TCS Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_WEP
     Directory Should Exist    ${SALWorkDir}/${subSystem}_kernel_TrackingTarget
     Directory Should Exist    ${SALWorkDir}/${subSystem}_kernel_FK5Target
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_LoopTime_ms
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_Timestamp
 
 Verify TCS C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -169,6 +182,10 @@ Verify TCS C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}_kernel_TrackingTarget/cpp/standalone/sacpp_${subSystem}_sub
     File Should Exist    ${SALWorkDir}/${subSystem}_kernel_FK5Target/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_kernel_FK5Target/cpp/standalone/sacpp_${subSystem}_sub
+    File Should Exist    ${SALWorkDir}/${subSystem}_LoopTime_ms/cpp/standalone/sacpp_${subSystem}_pub
+    File Should Exist    ${SALWorkDir}/${subSystem}_LoopTime_ms/cpp/standalone/sacpp_${subSystem}_sub
+    File Should Exist    ${SALWorkDir}/${subSystem}_Timestamp/cpp/standalone/sacpp_${subSystem}_pub
+    File Should Exist    ${SALWorkDir}/${subSystem}_Timestamp/cpp/standalone/sacpp_${subSystem}_sub
 
 Verify TCS C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -197,6 +214,8 @@ Verify TCS C++ Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpCalculate_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpSimulate_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpSimulate_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_injectError_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_injectError_controller
 
 Verify TCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -205,6 +224,18 @@ Verify TCS C++ Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpDataReady_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_zemaxError_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_zemaxError_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_InternalCommand_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_InternalCommand_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Heartbeat_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Heartbeat_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_LoopTimeOutOfRange_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_LoopTimeOutOfRange_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_RejectedCommand_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_RejectedCommand_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_log
 
 Salgen TCS Java
     [Documentation]    Generate Java wrapper.
@@ -227,10 +258,12 @@ Salgen TCS Java
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_WEP.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TrackingTarget.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_FK5Target.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    14
-    Should Contain X Times    ${output}    javac : Done Subscriber    14
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    14
-    Should Contain X Times    ${output}    javac : Done Event/Logger    14
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LoopTime_ms.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Timestamp.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    16
+    Should Contain X Times    ${output}    javac : Done Subscriber    16
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    16
+    Should Contain X Times    ${output}    javac : Done Event/Logger    16
     Directory Should Exist    ${SALWorkDir}/${subSystem}/java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
@@ -299,6 +332,10 @@ Verify TCS Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_kernel_TrackingTarget_Subscriber.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_kernel_FK5Target_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_kernel_FK5Target_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LoopTime_ms_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_LoopTime_ms_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Timestamp_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Timestamp_Subscriber.py
 
 Verify TCS Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -329,6 +366,8 @@ Verify TCS Python Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_wfpCalculate.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_wfpSimulate.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_wfpSimulate.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_injectError.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_injectError.py
 
 Verify TCS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
@@ -339,6 +378,18 @@ Verify TCS Python Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_wfpDataReady.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_zemaxError.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_zemaxError.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_InternalCommand.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_InternalCommand.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_DetailedState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_DetailedState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_Heartbeat.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_Heartbeat.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_LoopTimeOutOfRange.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_LoopTimeOutOfRange.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_RejectedCommand.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_RejectedCommand.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_HeartbeatIn.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_HeartbeatIn.py
 
 Salgen TCS LabVIEW
     [Documentation]    Generate ${subSystem} low-level LabView interfaces.
