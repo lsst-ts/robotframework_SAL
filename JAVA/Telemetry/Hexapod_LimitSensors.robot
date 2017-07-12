@@ -49,7 +49,7 @@ Start Subscriber
     ${output}=    Read Until    [${component} Subscriber] Ready
     Log    ${output}
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
-    Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
+    Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.ContentFilteredTopicImpl@ 
     Should Contain    ${output}    reader = ${subSystem}.${component}DataReaderImpl@
     Should Contain    ${output}    [${component} Subscriber] Ready
 
