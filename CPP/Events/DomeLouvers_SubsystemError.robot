@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 505 test 198069451
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -7980 test 301309888
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_SubsystemError writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 198069451
+    ${output}=    Read Until    priority : 301309888
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    louverID : 505
+    Should Contain    ${output}    louverID : -7980
     Should Contain    ${output}    errorCode : test
-    Should Contain    ${output}    priority : 198069451
+    Should Contain    ${output}    priority : 301309888

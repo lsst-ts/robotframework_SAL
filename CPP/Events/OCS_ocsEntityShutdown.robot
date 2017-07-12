@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 74.9747 test 1085391282 2106438756
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 29.8609 test 544348890 -1070961029
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1
@@ -77,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2106438756
+    ${output}=    Read Until    priority : -1070961029
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 74.9747
+    Should Contain    ${output}    Identifier : 29.8609
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1085391282
-    Should Contain    ${output}    priority : 2106438756
+    Should Contain    ${output}    Address : 544348890
+    Should Contain    ${output}    priority : -1070961029

@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 
 import random
+import string
 import argparse
 
 
@@ -10,19 +11,26 @@ parser.add_argument('datatype', metavar='T', type=str,
 
 args = parser.parse_args()
 
-
-if args.datatype == "double":
-        value=round(random.uniform(0,100),4)
-elif args.datatype == "long":
-        value=random.randint(0,2147483647)
-elif args.datatype == "short":
-        value=random.randint(0,32767)
+if args.datatype == "boolean":
+	value=random.randint(0,1)
+elif args.datatype == "char":
+	value=random.choice(string.letters)
+elif args.datatype == "double":
+	value=round(random.uniform(0,100),4)
+elif args.datatype == "float":
+	value=random.uniform(0,1)
 elif args.datatype == "int":
-        value=random.randint(0,32767)
-elif args.datatype == "boolean":
-		value=random.randint(0,1)
+	value=random.randint(-32767,32767)
+elif args.datatype == "long":
+	value=random.randint(-2147483647,2147483647)
+elif args.datatype == "short":
+	value=random.randint(-32767,32767)
 elif args.datatype == "state":
-		value=random.randint(0,1)
+	value=random.randint(0,1)
+elif args.datatype == "unsigned long":
+    value=random.randint(0,2147483647)
+elif args.datatype == "unsigned short":
+    value=random.randint(0,65534)
 else:
         value="test"
 

@@ -197,7 +197,7 @@ function createTestSuite() {
             parameterType=$(getParameterType $file $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
             for i in $(seq 1 $parameterCount); do
-                testValue=$(python random_value.py $parameterType)
+                testValue=$(python random_value.py "$parameterType")
                 argumentsArray+=($testValue)
             done
 		done

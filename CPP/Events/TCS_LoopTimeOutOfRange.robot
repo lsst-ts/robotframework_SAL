@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1121355805
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -1312334285
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1121355805
+    ${output}=    Read Until    priority : -1312334285
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
     Should Contain    ${output}    LoopTimeOutOfRange : 0
-    Should Contain    ${output}    priority : 1121355805
+    Should Contain    ${output}    priority : -1312334285

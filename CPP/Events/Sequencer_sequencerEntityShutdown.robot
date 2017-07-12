@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 90.4751 test 1009865711 1069702788
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 48.8078 test 881275464 -27469504
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityShutdown writing a message containing :    1
@@ -77,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1069702788
+    ${output}=    Read Until    priority : -27469504
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntityShutdown received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 90.4751
+    Should Contain    ${output}    Identifier : 48.8078
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1009865711
-    Should Contain    ${output}    priority : 1069702788
+    Should Contain    ${output}    Address : 881275464
+    Should Contain    ${output}    priority : -27469504

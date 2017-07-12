@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test 82779478
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test test -1746111386
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 82779478
+    ${output}=    Read Until    priority : -1746111386
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
     Should Contain    ${output}    images_location_URI : test
     Should Contain    ${output}    images_match_URI : test
-    Should Contain    ${output}    priority : 82779478
+    Should Contain    ${output}    priority : -1746111386

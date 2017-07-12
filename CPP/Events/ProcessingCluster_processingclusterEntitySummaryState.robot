@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 16.6659 test 1876267134 test test test test test 1031563245
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 41.7164 test 1156591714 test test test test test 352151373
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1031563245
+    ${output}=    Read Until    priority : 352151373
     Log    ${output}
     Should Contain X Times    ${output}    === Event processingclusterEntitySummaryState received =     1
     Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 16.6659
+    Should Contain    ${output}    Identifier : 41.7164
     Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 1876267134
+    Should Contain    ${output}    Address : 1156591714
     Should Contain    ${output}    CurrentState : test
     Should Contain    ${output}    PreviousState : test
     Should Contain    ${output}    Executing : test
     Should Contain    ${output}    CommandsAvailable : test
     Should Contain    ${output}    ConfigurationsAvailable : test
-    Should Contain    ${output}    priority : 1031563245
+    Should Contain    ${output}    priority : 352151373

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10336 224680029
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -6494 -1824350124
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveDisabled writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 224680029
+    ${output}=    Read Until    priority : -1824350124
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveDisabled received =     1
-    Should Contain    ${output}    driveId : 10336
-    Should Contain    ${output}    priority : 224680029
+    Should Contain    ${output}    driveId : -6494
+    Should Contain    ${output}    priority : -1824350124
