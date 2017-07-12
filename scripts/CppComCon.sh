@@ -244,10 +244,7 @@ function createTestSuite() {
   				parameterIndex=$(getParameterIndex $i)
 				parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
 				parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-				for i in $(seq 1 $parameterCount); do
-					testValue=$(python random_value.py $parameterType)
-					argumentsArray+=($testValue)
-				done
+            	argumentsArray+=( $(generateArgument "$parameterType" $parameterCount) )
 			done
 		fi
 		# Create the Commander Timeout test case.

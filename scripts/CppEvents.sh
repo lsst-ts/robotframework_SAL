@@ -196,10 +196,7 @@ function createTestSuite() {
             parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $file $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-            for i in $(seq 1 $parameterCount); do
-                testValue=$(python random_value.py "$parameterType")
-                argumentsArray+=($testValue)
-            done
+            argumentsArray+=( $(generateArgument "$parameterType" $parameterCount) )
 		done
 		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
 		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
