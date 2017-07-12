@@ -80,7 +80,12 @@ function startSubscriber {
     echo "    \${output}=    Read Until    [\${component} Subscriber] Ready" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
 	echo "    Should Contain    \${output}    [createTopic] : topicName \${subSystem}_\${component} type = \${subSystem}::\${component}">> $testSuite
-	echo "    Should Contain    \${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ ">> $testSuite
+	if [ $subSystem == "hexapod" ]; then
+		ContentFiltered="ContentFiltered"
+	else
+		ContentFiltered=""
+	fi
+	echo "    Should Contain    \${output}    [createreader idx] : topic org.opensplice.dds.dcps.${ContentFiltered}TopicImpl@ ">> $testSuite
     echo "    Should Contain    \${output}    reader = \${subSystem}.\${component}DataReaderImpl@">> $testSuite
     echo "    Should Contain    \${output}    [\${component} Subscriber] Ready" >> $testSuite
     echo "" >> $testSuite
