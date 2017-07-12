@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 38.996 test -1432201282 test test test test test 1723227101
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send k 53.3084 N 1467068646 y A J b S 482646051
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1723227101
+    ${output}=    Read Until    priority : 482646051
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntitySummaryState received =     1
-    Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 38.996
-    Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : -1432201282
-    Should Contain    ${output}    CurrentState : test
-    Should Contain    ${output}    PreviousState : test
-    Should Contain    ${output}    Executing : test
-    Should Contain    ${output}    CommandsAvailable : test
-    Should Contain    ${output}    ConfigurationsAvailable : test
-    Should Contain    ${output}    priority : 1723227101
+    Should Contain    ${output}    Name : k
+    Should Contain    ${output}    Identifier : 53.3084
+    Should Contain    ${output}    Timestamp : N
+    Should Contain    ${output}    Address : 1467068646
+    Should Contain    ${output}    CurrentState : y
+    Should Contain    ${output}    PreviousState : A
+    Should Contain    ${output}    Executing : J
+    Should Contain    ${output}    CommandsAvailable : b
+    Should Contain    ${output}    ConfigurationsAvailable : S
+    Should Contain    ${output}    priority : 482646051

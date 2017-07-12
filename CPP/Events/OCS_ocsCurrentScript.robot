@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 25.9658 test -870943729
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send E 32.4693 P -451261444
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCurrentScript writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -870943729
+    ${output}=    Read Until    priority : -451261444
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCurrentScript received =     1
-    Should Contain    ${output}    ocsScriptName : test
-    Should Contain    ${output}    ocsScriptIdentifier : 25.9658
-    Should Contain    ${output}    ocsScriptTimestamp : test
-    Should Contain    ${output}    priority : -870943729
+    Should Contain    ${output}    ocsScriptName : E
+    Should Contain    ${output}    ocsScriptIdentifier : 32.4693
+    Should Contain    ${output}    ocsScriptTimestamp : P
+    Should Contain    ${output}    priority : -451261444

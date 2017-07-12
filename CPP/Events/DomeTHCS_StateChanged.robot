@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -18063 303187781
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1668 2075025481
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_StateChanged writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 303187781
+    ${output}=    Read Until    priority : 2075025481
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    newState : -18063
-    Should Contain    ${output}    priority : 303187781
+    Should Contain    ${output}    newState : -1668
+    Should Contain    ${output}    priority : 2075025481

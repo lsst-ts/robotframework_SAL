@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 37.6222 97.9634 37.6238 84.1016 42.4748 95.92 7.1628 60.2136 0.8498 12.7523 41.53 15.05 41.5096 47.4928 88.4444 65.2975 23.3105 18.8071 18.367 98.8127 28.5753 21.7021 20.4876 46.8011 91.7932 80.3266 68.6306 51.2565 73.6245 86.6935 83.9332 55.9318 30.5443 16.5363 41.4467 16.0325 17.0157 85.7831 17.5181 89.2472 74.6222 26.9993 36.3101 51.8345 3.6128 66.5227 15.3963 77.7265 16.6091 42.0687 31.0493 20.8329 37.869 18.2688 61.3394 20.7239 50.7181 34.4601 58.4485 83.717 36.8427 54.3607 45.2182 81.9981 68.2471 62.4151 41.5245 93.8958 79.6471 94.9373 40.3652 43.9512
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 90.5553
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 37.6222 97.9634 37.6238 84.1016 42.4748 95.92 7.1628 60.2136 0.8498 12.7523 41.53 15.05 41.5096 47.4928 88.4444 65.2975 23.3105 18.8071 18.367 98.8127 28.5753 21.7021 20.4876 46.8011 91.7932 80.3266 68.6306 51.2565 73.6245 86.6935 83.9332 55.9318 30.5443 16.5363 41.4467 16.0325 17.0157 85.7831 17.5181 89.2472 74.6222 26.9993 36.3101 51.8345 3.6128 66.5227 15.3963 77.7265 16.6091 42.0687 31.0493 20.8329 37.869 18.2688 61.3394 20.7239 50.7181 34.4601 58.4485 83.717 36.8427 54.3607 45.2182 81.9981 68.2471 62.4151 41.5245 93.8958 79.6471 94.9373 40.3652 43.9512
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 90.5553
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    forceSetPoint : 37.6222    1
+    Should Contain X Times    ${output}    forceSetPoint : 90.5553    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -97,7 +97,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    forceSetPoint(72) = [37.6222, 97.9634, 37.6238, 84.1016, 42.4748, 95.92, 7.1628, 60.2136, 0.8498, 12.7523, 41.53, 15.05, 41.5096, 47.4928, 88.4444, 65.2975, 23.3105, 18.8071, 18.367, 98.8127, 28.5753, 21.7021, 20.4876, 46.8011, 91.7932, 80.3266, 68.6306, 51.2565, 73.6245, 86.6935, 83.9332, 55.9318, 30.5443, 16.5363, 41.4467, 16.0325, 17.0157, 85.7831, 17.5181, 89.2472, 74.6222, 26.9993, 36.3101, 51.8345, 3.6128, 66.5227, 15.3963, 77.7265, 16.6091, 42.0687, 31.0493, 20.8329, 37.869, 18.2688, 61.3394, 20.7239, 50.7181, 34.4601, 58.4485, 83.717, 36.8427, 54.3607, 45.2182, 81.9981, 68.2471, 62.4151, 41.5245, 93.8958, 79.6471, 94.9373, 40.3652, 43.9512]    1
+    Should Contain X Times    ${output}    forceSetPoint(72) = [90.5553]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForce] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

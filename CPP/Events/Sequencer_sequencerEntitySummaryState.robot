@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 88.721 test -284943791 test test test test test 1623672250
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send Q 50.1393 T 2083851857 f v s U K -1976458032
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1623672250
+    ${output}=    Read Until    priority : -1976458032
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntitySummaryState received =     1
-    Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 88.721
-    Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : -284943791
-    Should Contain    ${output}    CurrentState : test
-    Should Contain    ${output}    PreviousState : test
-    Should Contain    ${output}    Executing : test
-    Should Contain    ${output}    CommandsAvailable : test
-    Should Contain    ${output}    ConfigurationsAvailable : test
-    Should Contain    ${output}    priority : 1623672250
+    Should Contain    ${output}    Name : Q
+    Should Contain    ${output}    Identifier : 50.1393
+    Should Contain    ${output}    Timestamp : T
+    Should Contain    ${output}    Address : 2083851857
+    Should Contain    ${output}    CurrentState : f
+    Should Contain    ${output}    PreviousState : v
+    Should Contain    ${output}    Executing : s
+    Should Contain    ${output}    CommandsAvailable : U
+    Should Contain    ${output}    ConfigurationsAvailable : K
+    Should Contain    ${output}    priority : -1976458032

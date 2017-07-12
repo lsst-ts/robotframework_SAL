@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.1639 66.0951 30.9907 80.4571 51.617 84.1374 97.9465 82.0977 69.9763 83.4531 41.0062 22.2028 65.1622 42.1455 33.4915 64.9695 58.1378 8.472 63.4456 66.1946 41.7767 1.0732 2.4571 51.0553 95.3943 49.4837 7.7568 91.6197 24.7067 57.9863 55.5349 36.0 92.8233 76.6233 15.564 84.585 15.351 9.2052 10.1105 45.581 69.302 30.6904 28.6038 26.9976 74.6266 22.9364 73.0559 93.2767 10.5139 0.8271 22.8969 78.2785 97.0031 43.3904 15.5171 75.0006 62.4857 47.6734 67.4886 71.1462 91.0989 85.2048 87.7221 13.9086 74.6057 41.1592 22.5366 28.2528 51.7881 18.3167 22.138 14.5601
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 66.7945
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 75.1639 66.0951 30.9907 80.4571 51.617 84.1374 97.9465 82.0977 69.9763 83.4531 41.0062 22.2028 65.1622 42.1455 33.4915 64.9695 58.1378 8.472 63.4456 66.1946 41.7767 1.0732 2.4571 51.0553 95.3943 49.4837 7.7568 91.6197 24.7067 57.9863 55.5349 36.0 92.8233 76.6233 15.564 84.585 15.351 9.2052 10.1105 45.581 69.302 30.6904 28.6038 26.9976 74.6266 22.9364 73.0559 93.2767 10.5139 0.8271 22.8969 78.2785 97.0031 43.3904 15.5171 75.0006 62.4857 47.6734 67.4886 71.1462 91.0989 85.2048 87.7221 13.9086 74.6057 41.1592 22.5366 28.2528 51.7881 18.3167 22.138 14.5601
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 66.7945
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    forceSetPoint : 75.1639    1
+    Should Contain X Times    ${output}    forceSetPoint : 66.7945    1
     Should Contain    ${output}    === command ApplyForce issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -103,7 +103,7 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    forceSetPoint : 75.1639    1
+    Should Contain X Times    ${output}    forceSetPoint : 66.7945    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForce] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

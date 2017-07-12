@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7635 -25767 -22019 -26588 9809 -32635 -31132 3919 -26912 5831 -7982 28884 -14126 10063 -21834 10078 -32045 -22348 15637 -24847 -25105 -31208 13821 32304 11540 -26125 -6883 24333 24595 -9971 14356 3043 7.6148 5.3504 13.6072 76.8475 60.9473 59.4848 9.9625 0.563 49.2963 80.042 87.9061 72.7284 46.9021 60.3015 54.7713 1.4925 1.2864 21.064 18.5209 4.4562 49.6273 50.4958 77.2177 52.9757 18.8941 14.1077 94.4929 74.9676 34.4613 38.8266 25.8862 81.8397
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -16513 32.2948
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7635 -25767 -22019 -26588 9809 -32635 -31132 3919 -26912 5831 -7982 28884 -14126 10063 -21834 10078 -32045 -22348 15637 -24847 -25105 -31208 13821 32304 11540 -26125 -6883 24333 24595 -9971 14356 3043 7.6148 5.3504 13.6072 76.8475 60.9473 59.4848 9.9625 0.563 49.2963 80.042 87.9061 72.7284 46.9021 60.3015 54.7713 1.4925 1.2864 21.064 18.5209 4.4562 49.6273 50.4958 77.2177 52.9757 18.8941 14.1077 94.4929 74.9676 34.4613 38.8266 25.8862 81.8397
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -16513 32.2948
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,8 +88,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 7635    1
-    Should Contain X Times    ${output}    bendingModeValue : 7.6148    1
+    Should Contain X Times    ${output}    bendingModeNbr : -16513    1
+    Should Contain X Times    ${output}    bendingModeValue :     1
     Should Contain    ${output}    === command ApplyBendingMode issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -104,8 +104,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 7635    1
-    Should Contain X Times    ${output}    bendingModeValue : 7.6148    1
+    Should Contain X Times    ${output}    bendingModeNbr : -16513    1
+    Should Contain X Times    ${output}    bendingModeValue :     1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

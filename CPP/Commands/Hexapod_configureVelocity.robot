@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8926 50.6615 69.9879 55.7877 17.3433 48.4335 97.7776 46.4199 89.7311 68.0003 74.9059 97.0033
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 33.8176 54.5248 37.0004 21.297 79.8301 28.9294 13.2163 96.443 77.8953 53.9132 48.8208 24.2176
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.8926 50.6615 69.9879 55.7877 17.3433 48.4335 97.7776 46.4199 89.7311 68.0003 74.9059 97.0033
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 33.8176 54.5248 37.0004 21.297 79.8301 28.9294 13.2163 96.443 77.8953 53.9132 48.8208 24.2176
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,18 +88,18 @@ Start Commander
     Should Contain X Times    ${output}    property : velocity    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xmin : 86.8926    1
-    Should Contain X Times    ${output}    xmax : 50.6615    1
-    Should Contain X Times    ${output}    ymin : 69.9879    1
-    Should Contain X Times    ${output}    ymax : 55.7877    1
-    Should Contain X Times    ${output}    zmin : 17.3433    1
-    Should Contain X Times    ${output}    zmax : 48.4335    1
-    Should Contain X Times    ${output}    umin : 97.7776    1
-    Should Contain X Times    ${output}    umax : 46.4199    1
-    Should Contain X Times    ${output}    vmin : 89.7311    1
-    Should Contain X Times    ${output}    vmax : 68.0003    1
-    Should Contain X Times    ${output}    wmin : 74.9059    1
-    Should Contain X Times    ${output}    wmax : 97.0033    1
+    Should Contain X Times    ${output}    xmin : 33.8176    1
+    Should Contain X Times    ${output}    xmax : 54.5248    1
+    Should Contain X Times    ${output}    ymin : 37.0004    1
+    Should Contain X Times    ${output}    ymax : 21.297    1
+    Should Contain X Times    ${output}    zmin : 79.8301    1
+    Should Contain X Times    ${output}    zmax : 28.9294    1
+    Should Contain X Times    ${output}    umin : 13.2163    1
+    Should Contain X Times    ${output}    umax : 96.443    1
+    Should Contain X Times    ${output}    vmin : 77.8953    1
+    Should Contain X Times    ${output}    vmax : 53.9132    1
+    Should Contain X Times    ${output}    wmin : 48.8208    1
+    Should Contain X Times    ${output}    wmax : 24.2176    1
     Should Contain    ${output}    === command configureVelocity issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -114,18 +114,18 @@ Read Controller
     Should Contain    ${output}    property : velocity
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xmin : 86.8926    1
-    Should Contain X Times    ${output}    xmax : 50.6615    1
-    Should Contain X Times    ${output}    ymin : 69.9879    1
-    Should Contain X Times    ${output}    ymax : 55.7877    1
-    Should Contain X Times    ${output}    zmin : 17.3433    1
-    Should Contain X Times    ${output}    zmax : 48.4335    1
-    Should Contain X Times    ${output}    umin : 97.7776    1
-    Should Contain X Times    ${output}    umax : 46.4199    1
-    Should Contain X Times    ${output}    vmin : 89.7311    1
-    Should Contain X Times    ${output}    vmax : 68.0003    1
-    Should Contain X Times    ${output}    wmin : 74.9059    1
-    Should Contain X Times    ${output}    wmax : 97.0033    1
+    Should Contain X Times    ${output}    xmin : 33.8176    1
+    Should Contain X Times    ${output}    xmax : 54.5248    1
+    Should Contain X Times    ${output}    ymin : 37.0004    1
+    Should Contain X Times    ${output}    ymax : 21.297    1
+    Should Contain X Times    ${output}    zmin : 79.8301    1
+    Should Contain X Times    ${output}    zmax : 28.9294    1
+    Should Contain X Times    ${output}    umin : 13.2163    1
+    Should Contain X Times    ${output}    umax : 96.443    1
+    Should Contain X Times    ${output}    vmin : 77.8953    1
+    Should Contain X Times    ${output}    vmax : 53.9132    1
+    Should Contain X Times    ${output}    wmin : 48.8208    1
+    Should Contain X Times    ${output}    wmax : 24.2176    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

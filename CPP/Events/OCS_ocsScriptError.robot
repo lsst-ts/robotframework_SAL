@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 75.304 test -537248227 -1575286092 test -168271778
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send y 97.7825 Q -1242698416 -225080960 b -1019111878
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptError writing a message containing :    1
@@ -77,13 +77,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -168271778
+    ${output}=    Read Until    priority : -1019111878
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptError received =     1
-    Should Contain    ${output}    ocsScriptName : test
-    Should Contain    ${output}    ocsScriptIdentifier : 75.304
-    Should Contain    ${output}    ocsScriptTimestamp : test
-    Should Contain    ${output}    ocsScriptLineNumber : -537248227
-    Should Contain    ${output}    ocsScriptErrorCode : -1575286092
-    Should Contain    ${output}    ocsScriptErrorText : test
-    Should Contain    ${output}    priority : -168271778
+    Should Contain    ${output}    ocsScriptName : y
+    Should Contain    ${output}    ocsScriptIdentifier : 97.7825
+    Should Contain    ${output}    ocsScriptTimestamp : Q
+    Should Contain    ${output}    ocsScriptLineNumber : -1242698416
+    Should Contain    ${output}    ocsScriptErrorCode : -225080960
+    Should Contain    ${output}    ocsScriptErrorText : b
+    Should Contain    ${output}    priority : -1019111878

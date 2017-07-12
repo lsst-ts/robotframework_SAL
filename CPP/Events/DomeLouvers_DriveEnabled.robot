@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -21655 21971 1748592781
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 32591 -31985 -592750669
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveEnabled writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1748592781
+    ${output}=    Read Until    priority : -592750669
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveEnabled received =     1
-    Should Contain    ${output}    louverID : -21655
-    Should Contain    ${output}    driveId : 21971
-    Should Contain    ${output}    priority : 1748592781
+    Should Contain    ${output}    louverID : 32591
+    Should Contain    ${output}    driveId : -31985
+    Should Contain    ${output}    priority : -592750669

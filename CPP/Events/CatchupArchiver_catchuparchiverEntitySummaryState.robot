@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send test 29.3666 test 995868324 test test test test test 2010707363
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send g 50.4754 s 504721864 B Y y D T -771613421
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2010707363
+    ${output}=    Read Until    priority : -771613421
     Log    ${output}
     Should Contain X Times    ${output}    === Event catchuparchiverEntitySummaryState received =     1
-    Should Contain    ${output}    Name : test
-    Should Contain    ${output}    Identifier : 29.3666
-    Should Contain    ${output}    Timestamp : test
-    Should Contain    ${output}    Address : 995868324
-    Should Contain    ${output}    CurrentState : test
-    Should Contain    ${output}    PreviousState : test
-    Should Contain    ${output}    Executing : test
-    Should Contain    ${output}    CommandsAvailable : test
-    Should Contain    ${output}    ConfigurationsAvailable : test
-    Should Contain    ${output}    priority : 2010707363
+    Should Contain    ${output}    Name : g
+    Should Contain    ${output}    Identifier : 50.4754
+    Should Contain    ${output}    Timestamp : s
+    Should Contain    ${output}    Address : 504721864
+    Should Contain    ${output}    CurrentState : B
+    Should Contain    ${output}    PreviousState : Y
+    Should Contain    ${output}    Executing : y
+    Should Contain    ${output}    CommandsAvailable : D
+    Should Contain    ${output}    ConfigurationsAvailable : T
+    Should Contain    ${output}    priority : -771613421
