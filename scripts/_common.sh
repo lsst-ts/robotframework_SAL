@@ -119,3 +119,23 @@ function getEntity() {
 		echo "$entity"
 	fi
 }
+
+function randomString() {
+	datatype=$1
+	count=$2
+	value=$(cat /dev/random |base64 | tr -dc 'a-zA-Z' | fold -w $count | head -n 1)
+	echo $value
+}
+
+function generateArgument() {
+	parameterType=$1
+	parameterCount=$2
+	if [[ ($parameterType == "char") || ($parameterType == "string") ]]; then
+		testValue=$(randomString "$parameterType" $parameterCount)
+	else
+		for i in $(seq 1 $parameterCount); do
+		testValue=$(python random_value.py "$parameterType")
+		done
+	fi
+	echo $testValue
+}
