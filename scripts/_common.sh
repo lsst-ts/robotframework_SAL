@@ -133,9 +133,7 @@ function generateArgument() {
 	if [[ ($parameterType == "char") || ($parameterType == "string") ]]; then
 		testValue=$(randomString "$parameterType" $parameterCount)
 	else
-		for i in $(seq 1 $parameterCount); do
 		testValue=$(python random_value.py "$parameterType")
-		done
 	fi
 	echo $testValue
 }

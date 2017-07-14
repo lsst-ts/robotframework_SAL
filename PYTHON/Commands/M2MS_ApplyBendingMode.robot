@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -15153 61.7623
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -17407 -13441 17456 -14137 -5344 30259 -24376 24724 -20220 -17051 27488 -1014 15108 -19621 3221 -17248 -31276 -23282 13583 32324 -22563 -24546 2017 14511 18850 10776 7117 -21954 9238 6362 -5340 20690 91.0578 67.0421 0.5412 50.5129 15.538 28.11 31.1695 93.3109 17.4764 3.9983 86.894 21.5456 18.927 21.8798 60.5901 47.7442 58.161 5.7215 42.2621 66.1785 85.3839 13.4418 98.915 16.5516 27.8403 18.5061 57.9942 94.5759 90.1088 79.3013 94.9428 17.4671
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -15153 61.7623
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -17407 -13441 17456 -14137 -5344 30259 -24376 24724 -20220 -17051 27488 -1014 15108 -19621 3221 -17248 -31276 -23282 13583 32324 -22563 -24546 2017 14511 18850 10776 7117 -21954 9238 6362 -5340 20690 91.0578 67.0421 0.5412 50.5129 15.538 28.11 31.1695 93.3109 17.4764 3.9983 86.894 21.5456 18.927 21.8798 60.5901 47.7442 58.161 5.7215 42.2621 66.1785 85.3839 13.4418 98.915 16.5516 27.8403 18.5061 57.9942 94.5759 90.1088 79.3013 94.9428 17.4671
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,8 +88,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    bendingModeNbr : -15153    1
-    Should Contain X Times    ${output}    bendingModeValue :     1
+    Should Contain X Times    ${output}    bendingModeNbr : -17407    1
+    Should Contain X Times    ${output}    bendingModeValue : 91.0578    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,8 +98,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    bendingModeNbr(32) = [-15153, 61.7623]    1
-    Should Contain X Times    ${output}    bendingModeValue(32) = []    1
+    Should Contain X Times    ${output}    bendingModeNbr(32) = [-17407, -13441, 17456, -14137, -5344, 30259, -24376, 24724, -20220, -17051, 27488, -1014, 15108, -19621, 3221, -17248, -31276, -23282, 13583, 32324, -22563, -24546, 2017, 14511, 18850, 10776, 7117, -21954, 9238, 6362, -5340, 20690]    1
+    Should Contain X Times    ${output}    bendingModeValue(32) = [91.0578, 67.0421, 0.5412, 50.5129, 15.538, 28.11, 31.1695, 93.3109, 17.4764, 3.9983, 86.894, 21.5456, 18.927, 21.8798, 60.5901, 47.7442, 58.161, 5.7215, 42.2621, 66.1785, 85.3839, 13.4418, 98.915, 16.5516, 27.8403, 18.5061, 57.9942, 94.5759, 90.1088, 79.3013, 94.9428, 17.4671]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

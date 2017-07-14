@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14424
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10105 18001 17070 6646 729 496 10238 14599 25442 18147 22884 19842 -18494 13193 -18665 -13923 -32618 -3897 2236 9892 -23888 -23474 15412 23796 8242 19920 -11022 -3408 -15816 52 -23689 18387 -2081 -11125
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14424
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10105 18001 17070 6646 729 496 10238 14599 25442 18147 22884 19842 -18494 13193 -18665 -13923 -32618 -3897 2236 9892 -23888 -23474 15412 23796 8242 19920 -11022 -3408 -15816 52 -23689 18387 -2081 -11125
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    position : 14424    1
+    Should Contain X Times    ${output}    position : 10105    1
     Should Contain    ${output}    === command SetLouvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -103,7 +103,7 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    position : 14424    1
+    Should Contain X Times    ${output}    position : 10105    1
     Should Contain X Times    ${output}    === [ackCommand_SetLouvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

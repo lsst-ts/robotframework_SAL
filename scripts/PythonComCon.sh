@@ -257,7 +257,10 @@ function createTestSuite() {
   				parameterIndex=$(getParameterIndex $parameter)
 				parameterType=$(getParameterType $file $topicIndex $parameterIndex)
 				parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-            	argumentsArray+=( $(generateArgument "$parameterType" $parameterCount) )
+				for i in $(seq 1 $parameterCount); do
+					testValue=$(generateArgument "$parameterType" $parameterCount)
+                    argumentsArray+=( $testValue )
+				done
 			done
 		fi
 		# Create the Commander Timeout test case.
