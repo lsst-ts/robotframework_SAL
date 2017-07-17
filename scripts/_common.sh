@@ -129,9 +129,17 @@ function randomString() {
 
 function generateArgument() {
 	parameterType=$1
-	parameterCount=$2
+	parameterIDLSize=$2
+	# For string and char, an IDL_Size of 1 means arbitrary size, so set parameterIDLSize to a random, positive number.
+	if [[ ($parameterIDLSize == "1") && ($parameterType == "char" || $parameterType == "string") ]]; then
+		parameterIDLSize=$((1 + RANDOM % 1000))
+	fi	
+
+	###### Set the test value. ######
+	# For char and string, the ONE argument is of length IDL_Size.
 	if [[ ($parameterType == "char") || ($parameterType == "string") ]]; then
-		testValue=$(randomString "$parameterType" $parameterCount)
+		testValue=$(randomString "$parameterType" $parameterIDLSize)
+	# For everything else, arrays are allowed.  This is handled in the calling script.
 	else
 		testValue=$(python random_value.py "$parameterType")
 	fi
