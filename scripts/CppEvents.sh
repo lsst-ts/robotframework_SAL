@@ -56,6 +56,14 @@ function getParameterType() {
 	echo $parameterType
 }
 
+function getParameterIDLSize() {
+    subSystem=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Size" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+    echo $parameterIDLSize
+}
+
 function getParameterCount() {
     file=$1
     index=$2
@@ -196,7 +204,12 @@ function createTestSuite() {
             parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $file $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-            argumentsArray+=( $(generateArgument "$parameterType" $parameterCount) )
+			parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
+			#echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
+			for i in $(seq 1 $parameterCount); do
+                testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+                argumentsArray+=( $testValue )
+            done
 		done
 		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
 		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
