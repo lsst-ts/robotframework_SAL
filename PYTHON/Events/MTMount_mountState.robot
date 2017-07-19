@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1187017791 v -500372629
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1549260924 cQMxBxphAOqROSCeldmNftnVBhHZLhawhQRJtrTlBuagLaXGOLEYPhXGlWOsosstfKVpRczZJFbWNUTLaWCylwVoHueYtzJKemIoflPyPuJotFYiqdXaYOYqnGqxZvIlCZgfNodOTZGXvPrPQseqbsbaUUshrlbrOYQJFPCHifpbqHDWdqeXVdbBQUheuEfgrziZQTairIfuEvKTSeCGqqgnyYNHCYfxKtSjpMPOODYSCgZNeMIeoIlzarQnzEBxTnJoUUvWXbEEaUgxpK -1644131688
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1

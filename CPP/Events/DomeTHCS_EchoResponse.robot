@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send P -1585778418
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send sHFHIHbXPJyenNClFpbKSakKrErJQBNkymQuibLCbKrAbbFOslZvcZMfvGwuGjTeSrSKGbaRQkJtWcxqNGorsfDYjaZUFyMkZBryyMFCdMGMisXYWaTbbKBDobKPlIeTfgyNLsAHUsAYrXJXnEsYqVVOMDmMQWAWLyTluRfSRjSSirbKnksGkYQNMfGPHGcwDObsYBFGfPKfvlACwIbnCsAevJDNxhmhmBIfIKIJNiQGrSjFJRYZAmAjmiCBmVsFZsCHTvaqHXeGpWNzKmHrRsjuptdFaJFBRmdiVKxVVJpGbYnnhvRiuQAHZGUMSCwQxTOXEYYDRgNASRkQoQGKCOCgwJqscfPvKItjOsAkoPMQMXTNIYsoZPGfHYLNjFMCczXeCySfgEKRilZeRswxqWHkPpEKEahooycoSbFCqJVmaACYtBTmpeiHqlrOvYLfBfSBzlDkNkEmKwSxlIctKyVPatngCycVlfrrzQvMKNFJKGkqinIYMUhasdAOiLJyDKDFosQqqrapigBNCZngRpAyKugiLpRCVoLaIutKDOwJomL 229204059
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1585778418
+    ${output}=    Read Until    priority : 229204059
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : P
-    Should Contain    ${output}    priority : -1585778418
+    Should Contain    ${output}    response : sHFHIHbXPJyenNClFpbKSakKrErJQBNkymQuibLCbKrAbbFOslZvcZMfvGwuGjTeSrSKGbaRQkJtWcxqNGorsfDYjaZUFyMkZBryyMFCdMGMisXYWaTbbKBDobKPlIeTfgyNLsAHUsAYrXJXnEsYqVVOMDmMQWAWLyTluRfSRjSSirbKnksGkYQNMfGPHGcwDObsYBFGfPKfvlACwIbnCsAevJDNxhmhmBIfIKIJNiQGrSjFJRYZAmAjmiCBmVsFZsCHTvaqHXeGpWNzKmHrRsjuptdFaJFBRmdiVKxVVJpGbYnnhvRiuQAHZGUMSCwQxTOXEYYDRgNASRkQoQGKCOCgwJqscfPvKItjOsAkoPMQMXTNIYsoZPGfHYLNjFMCczXeCySfgEKRilZeRswxqWHkPpEKEahooycoSbFCqJVmaACYtBTmpeiHqlrOvYLfBfSBzlDkNkEmKwSxlIctKyVPatngCycVlfrrzQvMKNFJKGkqinIYMUhasdAOiLJyDKDFosQqqrapigBNCZngRpAyKugiLpRCVoLaIutKDOwJomL
+    Should Contain    ${output}    priority : 229204059

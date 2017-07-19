@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 49.0736 65.0546 26.751 87.907 82.0565 p
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 3.2549 96.3664 86.1385 31.4651 86.7335 DAudbpjXbWxXZKoYqQslvynuAXQzwhxpUcqrWiPCrWsppkmbMmBlYqpSlPXWGyiMZXkmyRNpCbpuZpaTNLqApVuDBqMLcomheRPmCugQKjeurJAsTQcnOcFwGOGToIkNnjjnVzcXKJfkiqUnPRLobedFTaxsrjVRsOCWqcsSQclPNbWIQZwUxGsNlCxLjYVKKotwOobJmJAYqFpZQnTNzMJWwuaiSJdsTEgHfORUrVxZAQdQFLFRmQPbPYmhFPVdlDfoACsRLHNzpNCGlaUWUrhAXSlgFhWDTneHnQcYSLYkHcNvAcKiwRTuXleUwMKBglZIOg
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 49.0736 65.0546 26.751 87.907 82.0565 p
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 3.2549 96.3664 86.1385 31.4651 86.7335 DAudbpjXbWxXZKoYqQslvynuAXQzwhxpUcqrWiPCrWsppkmbMmBlYqpSlPXWGyiMZXkmyRNpCbpuZpaTNLqApVuDBqMLcomheRPmCugQKjeurJAsTQcnOcFwGOGToIkNnjjnVzcXKJfkiqUnPRLobedFTaxsrjVRsOCWqcsSQclPNbWIQZwUxGsNlCxLjYVKKotwOobJmJAYqFpZQnTNzMJWwuaiSJdsTEgHfORUrVxZAQdQFLFRmQPbPYmhFPVdlDfoACsRLHNzpNCGlaUWUrhAXSlgFhWDTneHnQcYSLYkHcNvAcKiwRTuXleUwMKBglZIOg
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,12 +88,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 49.0736    1
-    Should Contain X Times    ${output}    az_velocity : 65.0546    1
-    Should Contain X Times    ${output}    el_angle : 26.751    1
-    Should Contain X Times    ${output}    el_velocity : 87.907    1
-    Should Contain X Times    ${output}    time : 82.0565    1
-    Should Contain X Times    ${output}    cablewrap_orientation : p    1
+    Should Contain X Times    ${output}    az_angle : 3.2549    1
+    Should Contain X Times    ${output}    az_velocity : 96.3664    1
+    Should Contain X Times    ${output}    el_angle : 86.1385    1
+    Should Contain X Times    ${output}    el_velocity : 31.4651    1
+    Should Contain X Times    ${output}    time : 86.7335    1
+    Should Contain X Times    ${output}    cablewrap_orientation : DAudbpjXbWxXZKoYqQslvynuAXQzwhxpUcqrWiPCrWsppkmbMmBlYqpSlPXWGyiMZXkmyRNpCbpuZpaTNLqApVuDBqMLcomheRPmCugQKjeurJAsTQcnOcFwGOGToIkNnjjnVzcXKJfkiqUnPRLobedFTaxsrjVRsOCWqcsSQclPNbWIQZwUxGsNlCxLjYVKKotwOobJmJAYqFpZQnTNzMJWwuaiSJdsTEgHfORUrVxZAQdQFLFRmQPbPYmhFPVdlDfoACsRLHNzpNCGlaUWUrhAXSlgFhWDTneHnQcYSLYkHcNvAcKiwRTuXleUwMKBglZIOg    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -102,12 +102,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 49.0736    1
-    Should Contain X Times    ${output}    az_velocity = 65.0546    1
-    Should Contain X Times    ${output}    el_angle = 26.751    1
-    Should Contain X Times    ${output}    el_velocity = 87.907    1
-    Should Contain X Times    ${output}    time = 82.0565    1
-    Should Contain X Times    ${output}    cablewrap_orientation = p    1
+    Should Contain X Times    ${output}    az_angle = 3.2549    1
+    Should Contain X Times    ${output}    az_velocity = 96.3664    1
+    Should Contain X Times    ${output}    el_angle = 86.1385    1
+    Should Contain X Times    ${output}    el_velocity = 31.4651    1
+    Should Contain X Times    ${output}    time = 86.7335    1
+    Should Contain X Times    ${output}    cablewrap_orientation = DAudbpjXbWxXZKoYqQslvynuAXQzwhxpUcqrWiPCrWsppkmbMmBlYqpSlPXWGyiMZXkmyRNpCbpuZpaTNLqApVuDBqMLcomheRPmCugQKjeurJAsTQcnOcFwGOGToIkNnjjnVzcXKJfkiqUnPRLobedFTaxsrjVRsOCWqcsSQclPNbWIQZwUxGsNlCxLjYVKKotwOobJmJAYqFpZQnTNzMJWwuaiSJdsTEgHfORUrVxZAQdQFLFRmQPbPYmhFPVdlDfoACsRLHNzpNCGlaUWUrhAXSlgFhWDTneHnQcYSLYkHcNvAcKiwRTuXleUwMKBglZIOg    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

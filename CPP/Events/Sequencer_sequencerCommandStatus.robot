@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send t -1265498655 15.4106 b D 640490704 t 1029886376
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JHqdbypmpWClSEtiNCLdukSdCXDpOVAPhXNLQFSNQNmURpRMpZiVeSfgFhlGLFdlbevmqTjnxvezQaWBUHcbyPCLLdkxAdotqMPfbmtzvCfSmkiPKmsJSIzTsZnNmhFhZESmdXCBCfRAfuAAdInRiTJGQOEtghclfPjlspeIoVlxIYDAuguYAqnBWAZmJSvKVGIYpsTvNstanFDepnakFGlGCeoCFcOWIedlrUnVjjbiCjqevVruKlrOJvxqOwlA -1368144316 30.2554 oAIyqvuYGGnwktxrmAMerLwweoGOhoDZfLTigzNTMdgUjYtLCCLYnkLqEibhigWSbUYufVefzpJuKfoJpGEKuJQXNxOzNkxwrkqVxmOgjoOmtUefTbQBBiJxazmXFoXIOxhvoAaUDYzEZqtnhLgOFyBroKetfvgaBgntgaFuaHoFMURUWyAyNUlJUiCOoURZoBrKDTlWZtBVibvrezsUOVRpJFuYiMECOFwYrXtaPmhLxNDfQGRDdkskZGVecIhr VoodccdPCUXZQkLlcPQOncoWcSRjdHqyIgnkPawHIpwPXHsTXqbVuJuzxfWkyAAbbStFdvjwUDsLMlawIMzMFSoJrNgHSxKkBRykdoSWuUEzkOUubJXfjOSjxTMqnnYzgcLIXDLTOWlJHgbuqiUeeWDoXrpeltXDJjnXaWXWrkzWZusssHUzcgxAacMnUsmkqegmuOreGfJNsEiQHqaLjthxPyUKcxFTWssqxmnszyXCabkKJCsPlfKWYLdXVNHs -401679441 avBaYjpIVAGqfDpVLoViqPlhSBjqRUmybsMKZnIljxnvgZQbIeREDoZNgEjiqHohBdAVcVsZJeSmKXmAhKmlLLWlRKeSywGHyyQAFUWvMUkfDulNhYLsGkKNoQExisHccoygcWFrmODXunQVZBVewzfTYyrRAeGTGcYeoQLmwxxtFkwVgppNVFOYWHEZjYqslCZYpXVinPGKudmAYPxFbGfNvuReGpxweUSNhqvSrtcGBIVeFpmnMJQdmCJJMdai 596712964
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandStatus writing a message containing :    1
@@ -77,14 +77,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1029886376
+    ${output}=    Read Until    priority : 596712964
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerCommandStatus received =     1
-    Should Contain    ${output}    CommandSource : t
-    Should Contain    ${output}    SequenceNumber : -1265498655
-    Should Contain    ${output}    Identifier : 15.4106
-    Should Contain    ${output}    Timestamp : b
-    Should Contain    ${output}    CommandSent : D
-    Should Contain    ${output}    StatusValue : 640490704
-    Should Contain    ${output}    Status : t
-    Should Contain    ${output}    priority : 1029886376
+    Should Contain    ${output}    CommandSource : JHqdbypmpWClSEtiNCLdukSdCXDpOVAPhXNLQFSNQNmURpRMpZiVeSfgFhlGLFdlbevmqTjnxvezQaWBUHcbyPCLLdkxAdotqMPfbmtzvCfSmkiPKmsJSIzTsZnNmhFhZESmdXCBCfRAfuAAdInRiTJGQOEtghclfPjlspeIoVlxIYDAuguYAqnBWAZmJSvKVGIYpsTvNstanFDepnakFGlGCeoCFcOWIedlrUnVjjbiCjqevVruKlrOJvxqOwlA
+    Should Contain    ${output}    SequenceNumber : -1368144316
+    Should Contain    ${output}    Identifier : 30.2554
+    Should Contain    ${output}    Timestamp : oAIyqvuYGGnwktxrmAMerLwweoGOhoDZfLTigzNTMdgUjYtLCCLYnkLqEibhigWSbUYufVefzpJuKfoJpGEKuJQXNxOzNkxwrkqVxmOgjoOmtUefTbQBBiJxazmXFoXIOxhvoAaUDYzEZqtnhLgOFyBroKetfvgaBgntgaFuaHoFMURUWyAyNUlJUiCOoURZoBrKDTlWZtBVibvrezsUOVRpJFuYiMECOFwYrXtaPmhLxNDfQGRDdkskZGVecIhr
+    Should Contain    ${output}    CommandSent : VoodccdPCUXZQkLlcPQOncoWcSRjdHqyIgnkPawHIpwPXHsTXqbVuJuzxfWkyAAbbStFdvjwUDsLMlawIMzMFSoJrNgHSxKkBRykdoSWuUEzkOUubJXfjOSjxTMqnnYzgcLIXDLTOWlJHgbuqiUeeWDoXrpeltXDJjnXaWXWrkzWZusssHUzcgxAacMnUsmkqegmuOreGfJNsEiQHqaLjthxPyUKcxFTWssqxmnszyXCabkKJCsPlfKWYLdXVNHs
+    Should Contain    ${output}    StatusValue : -401679441
+    Should Contain    ${output}    Status : avBaYjpIVAGqfDpVLoViqPlhSBjqRUmybsMKZnIljxnvgZQbIeREDoZNgEjiqHohBdAVcVsZJeSmKXmAhKmlLLWlRKeSywGHyyQAFUWvMUkfDulNhYLsGkKNoQExisHccoygcWFrmODXunQVZBVewzfTYyrRAeGTGcYeoQLmwxxtFkwVgppNVFOYWHEZjYqslCZYpXVinPGKudmAYPxFbGfNvuReGpxweUSNhqvSrtcGBIVeFpmnMJQdmCJJMdai
+    Should Contain    ${output}    priority : 596712964

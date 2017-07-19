@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py J 995623175
+    ${input}=    Write    python ${subSystem}_Event_${component}.py iOpLNFMQWHYswwcJgWXYNnbJOKeyFnOnAWsuvUWmBUfmtrGrElTiiponTnuckkUfgqOiXzsZBqTSeEAOqsLOPJQpAaFOxHSzsUsZOoXyhewPkKWWphKhQfsWGxmujKTN -2005921622
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1

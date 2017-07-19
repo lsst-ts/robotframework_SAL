@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send R G 2103314023
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jCYnDMQdqEseqRIsFPZtNCrSWyzxjrkqRfXtJYSvWTOgxNIFhPzohEaVRJdjpoHoOJBgCKXfeffjDwmbZfaDxIHKxyGsOHScuQoGIiGuoOToZxLoOmSsOiNUIRKmqihvxxNcgQcEGElkZJOTBQFcLegiDPmiyAYHrDUWkBAyBtrdrgKlDVdlGTEadpHtGHWGIRgyUyCFyIhketgrcdZDMKyEdFzSJkcUYuiIKmnretMHulvUVyiPoAbhoQcKVppFXrWsQwLjmajAPTBiPfxzqmGpWktTJDGACfrGyYFbHRadRTolfGcbrUPVCDWQZaVkIMTKmtIsuvSGeMKtibwyKYsOvlYxOfPevinkjFNMQhSRtGwaVMYHraEhlNUcRMLfHVFfTTVrhtbJgcxoogwOXvRzIhoYtlRrCnjshcvcirqVfCjbQnIqRuSorEUTfeVrAAJOVFQtDrOXBlFikVfJKgcyFMOkGiNWYddVNEvufCgpFapsaIESAxmQWxOysamlqvxuheFIzlyGGERzqbUJdpMeVAHGsljiLExCXOtLElfywzxrblnqQVHIkwTcgXNfNMnlLTEioCiSsDACUayDHYpsVTrgmdhRaQaaGcAtfiyUUwnYmVdkEYqxPoRDwMYVjSzgUHEkObqkooudzKgTvAquJkVMEfcXVVYYyiZlXhI XwAStqyYdbTKjTfmmEnuHzCLtraYcUOuDLmivZHfMjkLIZsSzvlUvzUnsXDfNEPAPMiqHvrVPZEiVoTZJKqeNMRpgLIKtmmRQfyyWnTWABYokMuDiVUeGtcJFDVvOIqdpwpDvyTJYCoXRTILvqGkkFCmYkdBOMxqRbaUOBndgdActrIxfcBCRBMgkJnRvoxcHIUMlomcUSmrALlNmOXelwRpPyatdGcAnqRwwfNXqmJUAzSmCzHrnQFQSTwuuOzMCZFLbSiClibehCdYMddNemPLjGgaDvyuSEcTEldDxPRgQRFOAOmVodXPFinOqZkzoLVOejsmZklLUFosOUOHoHjqePZYnjJKoiotunbCmjOCuUGbnFsusNaPKzipzseLySukcqEFhgVjFThabgEoCSGqpNcCENKWDtqTdWecCQtEWxuAWrLZlsDsVPySUvGzncooznVkixvPZsMeafFxIsWDZIMRlOfBDgQXnrPyLGJBmfYKfUxQqXlizKTUpECqeDWcsNlMBKQnUREiwgmqbtdPpGFOEpuoyfNxHhOwPebEuzaNfFJnFgqItxtoJyTAxeTwkIstyJgXLsMykFmTtzosFvWeuzehnBBFsKXRbuFuwlxlJKVvSVVxBnYBzNxgqxzuFRCkXafEuZveIVzWRYNnbkWufAcfzpvHnEuYkewzAfrntvjDRDOQazjmmiEvvTQlPfUDFeSQiBZRXwOWNzJqWClKYJAQmvDLYXSjMekrpszQJobjgMRhgqWbBjCaNXHvHMCnhfBbNKyzicChnpbiuScNuKcSFzYnITtgfRgXeNOiDjMsLLpOntgqoKBuUDkkkyDkUnFuywhfJluhhNPdSLXuIVhBmvLdOMwCZEVmvOqMokacKxuqTiGcewrFlwdcSHkiKxZLGUgePszJASyluvJvbaExUSwewSzHVMfInoYgsNY -1164210574
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_limit writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2103314023
+    ${output}=    Read Until    priority : -1164210574
     Log    ${output}
     Should Contain X Times    ${output}    === Event limit received =     1
-    Should Contain    ${output}    rlimit : R
-    Should Contain    ${output}    type : G
-    Should Contain    ${output}    priority : 2103314023
+    Should Contain    ${output}    rlimit : jCYnDMQdqEseqRIsFPZtNCrSWyzxjrkqRfXtJYSvWTOgxNIFhPzohEaVRJdjpoHoOJBgCKXfeffjDwmbZfaDxIHKxyGsOHScuQoGIiGuoOToZxLoOmSsOiNUIRKmqihvxxNcgQcEGElkZJOTBQFcLegiDPmiyAYHrDUWkBAyBtrdrgKlDVdlGTEadpHtGHWGIRgyUyCFyIhketgrcdZDMKyEdFzSJkcUYuiIKmnretMHulvUVyiPoAbhoQcKVppFXrWsQwLjmajAPTBiPfxzqmGpWktTJDGACfrGyYFbHRadRTolfGcbrUPVCDWQZaVkIMTKmtIsuvSGeMKtibwyKYsOvlYxOfPevinkjFNMQhSRtGwaVMYHraEhlNUcRMLfHVFfTTVrhtbJgcxoogwOXvRzIhoYtlRrCnjshcvcirqVfCjbQnIqRuSorEUTfeVrAAJOVFQtDrOXBlFikVfJKgcyFMOkGiNWYddVNEvufCgpFapsaIESAxmQWxOysamlqvxuheFIzlyGGERzqbUJdpMeVAHGsljiLExCXOtLElfywzxrblnqQVHIkwTcgXNfNMnlLTEioCiSsDACUayDHYpsVTrgmdhRaQaaGcAtfiyUUwnYmVdkEYqxPoRDwMYVjSzgUHEkObqkooudzKgTvAquJkVMEfcXVVYYyiZlXhI
+    Should Contain    ${output}    type : XwAStqyYdbTKjTfmmEnuHzCLtraYcUOuDLmivZHfMjkLIZsSzvlUvzUnsXDfNEPAPMiqHvrVPZEiVoTZJKqeNMRpgLIKtmmRQfyyWnTWABYokMuDiVUeGtcJFDVvOIqdpwpDvyTJYCoXRTILvqGkkFCmYkdBOMxqRbaUOBndgdActrIxfcBCRBMgkJnRvoxcHIUMlomcUSmrALlNmOXelwRpPyatdGcAnqRwwfNXqmJUAzSmCzHrnQFQSTwuuOzMCZFLbSiClibehCdYMddNemPLjGgaDvyuSEcTEldDxPRgQRFOAOmVodXPFinOqZkzoLVOejsmZklLUFosOUOHoHjqePZYnjJKoiotunbCmjOCuUGbnFsusNaPKzipzseLySukcqEFhgVjFThabgEoCSGqpNcCENKWDtqTdWecCQtEWxuAWrLZlsDsVPySUvGzncooznVkixvPZsMeafFxIsWDZIMRlOfBDgQXnrPyLGJBmfYKfUxQqXlizKTUpECqeDWcsNlMBKQnUREiwgmqbtdPpGFOEpuoyfNxHhOwPebEuzaNfFJnFgqItxtoJyTAxeTwkIstyJgXLsMykFmTtzosFvWeuzehnBBFsKXRbuFuwlxlJKVvSVVxBnYBzNxgqxzuFRCkXafEuZveIVzWRYNnbkWufAcfzpvHnEuYkewzAfrntvjDRDOQazjmmiEvvTQlPfUDFeSQiBZRXwOWNzJqWClKYJAQmvDLYXSjMekrpszQJobjgMRhgqWbBjCaNXHvHMCnhfBbNKyzicChnpbiuScNuKcSFzYnITtgfRgXeNOiDjMsLLpOntgqoKBuUDkkkyDkUnFuywhfJluhhNPdSLXuIVhBmvLdOMwCZEVmvOqMokacKxuqTiGcewrFlwdcSHkiKxZLGUgePszJASyluvJvbaExUSwewSzHVMfInoYgsNY
+    Should Contain    ${output}    priority : -1164210574

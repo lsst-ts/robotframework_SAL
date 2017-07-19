@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py T 18.0151 U -1887145920
+    ${input}=    Write    python ${subSystem}_Event_${component}.py jxPWmOhtZeLazBdeYlDIhHVPSWDBwPNjtYVTTrpdGXhknQhrXCpoCEiXyFmaFxGtSWtZSAilORvtpgUGtgOrhYpNOFSLvZJtwmDsQIxojytHesAYwPEkkmtIIIcJNkuPRBDvfCEWgvoXlAtSciCYKVtoqyIZjRjKRMqYPCWeKmWbvVFQPdVrLIjxqkYNNKrXvYPndrkFONGUZtzWFizwseSBDzhaIEWGtFgvKWleLehztZhDDytGPtvWTmkjDOST 39.7825 YqkDiiRmiTWqPjInKyJEAcImqNlZEhMqVvmDesoQuDiHjlyABqCEaQgunhgGXVAmpcxUPDCKVCaBBmgsgopOhHTCRsNItnaVjEfSQHpsLCRshksFZSYLPTEhMAgEhOIDcJgpQmKQJFCbaiDMUMJEPgPVcEweNztaKtmgNSBMHKmPTOWiaXasSprudTKWozgfPnXJrBGEgiKZpGqDnzOftsIMWVRedXhhgXIoTxRExMUcAInGdzzYiQyUBesmxirn 1012946584
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptStart writing a message containing :    1

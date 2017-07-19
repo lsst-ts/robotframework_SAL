@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send F -1505067195 29.1707 N D -962001825 s -1272615526
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pUAaMkhVhWfvjQXUMzOQKQOJOUGiXhhcSGRmlMgflGjSBrjzfhFjfllUEmvgKKrGGFvvogifaBVMfhVCuZrwzVfQxnPlsDiuDOWPavyBHlWDprTzeEZHfBEoPtIzfonyqBrmyvZrRcIgLvvtybFPDcaGqAysDYDSXHPOfOWYetYbJmzuoHZvpWUujFNfzQILYbvtwloDrZAIwWqnccvsFaeTmZtequnucSTBofRzVOaXuPNnBIAExTmEdJMuwwEP 276184587 22.8128 jbUhjsPIxbBfcNLlnBLkVZLgwerGhXtRNZHLSNruPpPZiKiNjFAuRgjIqOhZlcRuABgBEKWjNEoLVjHKBLDfAzpfnkuvdiuVJTzrozMzhVdCvievrHqMMVweUSFlaZdkHtKqWmZuBhMWtUvQsVkEOCXGPWuiygWnpOdzGOdQyGryewbMOqFJCtEgYmaHjFIcEVqsqWZYDCaquBDHwccToTtiaFBljhbrknWvmIvslLUnokuJtOxFnKrnrbRCCcrC vXHzasyqDFwJIEAmTfamMReBBcoISCPQRayFlEyFSmHtAETWNovEbpUdJcgSMdvggfiGYxqXyUqBpGpNoPERMbmXOYipTjzxBILsoLHqImTzjkDiHxWuXVdwFRYwFRghgpYzZvaBHTsNxXpTVqljfVjfwmaPlNYYIXaWgEHUymOAuiIXmIHumfUDsnvpytEhnCtMwqDJFGgEVQyquHHHzmarrhBwQUOEtfoLojoFJxOlAqfYdxSCGgiboSrtuWZa -293066083 YmzYJyehaVgErvLKZQchEFRTCxUIDqGqbvrqJoyNMYXdbICNOkdaCeIEajrUIJispNqgVJZnEYkWHcyNrJKcvhZrhQFqqNOUFwHrrNgvFwXTtnnbSmAgniHEUcvvNHtQMMzcaXmegxikHwwdLKRIqphTJJxDGcltIdLqpamNRynNAIllicdrhEMcTHcpWUcBbhUugRVXBQUnDvNPtlusKzISAHESPKvZDxwzaKmoxZnNxPrELaQqfyFRcqVprMAH -288597462
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandStatus writing a message containing :    1
@@ -77,14 +77,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1272615526
+    ${output}=    Read Until    priority : -288597462
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCommandStatus received =     1
-    Should Contain    ${output}    CommandSource : F
-    Should Contain    ${output}    SequenceNumber : -1505067195
-    Should Contain    ${output}    Identifier : 29.1707
-    Should Contain    ${output}    Timestamp : N
-    Should Contain    ${output}    CommandSent : D
-    Should Contain    ${output}    StatusValue : -962001825
-    Should Contain    ${output}    Status : s
-    Should Contain    ${output}    priority : -1272615526
+    Should Contain    ${output}    CommandSource : pUAaMkhVhWfvjQXUMzOQKQOJOUGiXhhcSGRmlMgflGjSBrjzfhFjfllUEmvgKKrGGFvvogifaBVMfhVCuZrwzVfQxnPlsDiuDOWPavyBHlWDprTzeEZHfBEoPtIzfonyqBrmyvZrRcIgLvvtybFPDcaGqAysDYDSXHPOfOWYetYbJmzuoHZvpWUujFNfzQILYbvtwloDrZAIwWqnccvsFaeTmZtequnucSTBofRzVOaXuPNnBIAExTmEdJMuwwEP
+    Should Contain    ${output}    SequenceNumber : 276184587
+    Should Contain    ${output}    Identifier : 22.8128
+    Should Contain    ${output}    Timestamp : jbUhjsPIxbBfcNLlnBLkVZLgwerGhXtRNZHLSNruPpPZiKiNjFAuRgjIqOhZlcRuABgBEKWjNEoLVjHKBLDfAzpfnkuvdiuVJTzrozMzhVdCvievrHqMMVweUSFlaZdkHtKqWmZuBhMWtUvQsVkEOCXGPWuiygWnpOdzGOdQyGryewbMOqFJCtEgYmaHjFIcEVqsqWZYDCaquBDHwccToTtiaFBljhbrknWvmIvslLUnokuJtOxFnKrnrbRCCcrC
+    Should Contain    ${output}    CommandSent : vXHzasyqDFwJIEAmTfamMReBBcoISCPQRayFlEyFSmHtAETWNovEbpUdJcgSMdvggfiGYxqXyUqBpGpNoPERMbmXOYipTjzxBILsoLHqImTzjkDiHxWuXVdwFRYwFRghgpYzZvaBHTsNxXpTVqljfVjfwmaPlNYYIXaWgEHUymOAuiIXmIHumfUDsnvpytEhnCtMwqDJFGgEVQyquHHHzmarrhBwQUOEtfoLojoFJxOlAqfYdxSCGgiboSrtuWZa
+    Should Contain    ${output}    StatusValue : -293066083
+    Should Contain    ${output}    Status : YmzYJyehaVgErvLKZQchEFRTCxUIDqGqbvrqJoyNMYXdbICNOkdaCeIEajrUIJispNqgVJZnEYkWHcyNrJKcvhZrhQFqqNOUFwHrrNgvFwXTtnnbSmAgniHEUcvvNHtQMMzcaXmegxikHwwdLKRIqphTJJxDGcltIdLqpamNRynNAIllicdrhEMcTHcpWUcBbhUugRVXBQUnDvNPtlusKzISAHESPKvZDxwzaKmoxZnNxPrELaQqfyFRcqVprMAH
+    Should Contain    ${output}    priority : -288597462

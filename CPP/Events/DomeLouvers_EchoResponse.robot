@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 14355 f -2063026955
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1826 jnbwicymjkZANuNabANMWwJqEqWXGerLsYIPoWLjkAibPexqiAiEQTByybJRSflKWTcKRmcbxBIzSLvbNQdQaRoKjXTPpsDEehoszuxeYNKZhfasyKNFhipFdoATpSkfLXxSSskezwaEqkQWPLEfeXbsZpgfErAPokLlqupwiKQiyXRwamSfbpBWCNyzXfzfHVNGuuusDxvSLWxzXQEKWtPSkACWiyZnCsbGuTBcVlpbUseqNAWbsMgjiGNZpEGlGWMgJceslcFjVpcdeCfnvobRTYJeoubnNVayUtHrfogFztrcILIcgBaAtbGDxTJeWxEKvGEGSxUBckcSSTBmUzgiGXLFSKBLmSZVKSTLnWujhkbjFicrzZmoeQmNWvsDfvDUOMSZHnTNsWDXbzzRVcQpBFpXmhpmjianMunCILXFbniHSFOUXMcLxzsfXIgIxrhIccrswBjXlPZEGG -1967811031
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_EchoResponse writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2063026955
+    ${output}=    Read Until    priority : -1967811031
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    louverID : 14355
-    Should Contain    ${output}    response : f
-    Should Contain    ${output}    priority : -2063026955
+    Should Contain    ${output}    louverID : -1826
+    Should Contain    ${output}    response : jnbwicymjkZANuNabANMWwJqEqWXGerLsYIPoWLjkAibPexqiAiEQTByybJRSflKWTcKRmcbxBIzSLvbNQdQaRoKjXTPpsDEehoszuxeYNKZhfasyKNFhipFdoATpSkfLXxSSskezwaEqkQWPLEfeXbsZpgfErAPokLlqupwiKQiyXRwamSfbpBWCNyzXfzfHVNGuuusDxvSLWxzXQEKWtPSkACWiyZnCsbGuTBcVlpbUseqNAWbsMgjiGNZpEGlGWMgJceslcFjVpcdeCfnvobRTYJeoubnNVayUtHrfogFztrcILIcgBaAtbGDxTJeWxEKvGEGSxUBckcSSTBmUzgiGXLFSKBLmSZVKSTLnWujhkbjFicrzZmoeQmNWvsDfvDUOMSZHnTNsWDXbzzRVcQpBFpXmhpmjianMunCILXFbniHSFOUXMcLxzsfXIgIxrhIccrswBjXlPZEGG
+    Should Contain    ${output}    priority : -1967811031

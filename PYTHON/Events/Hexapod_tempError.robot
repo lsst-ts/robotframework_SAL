@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py U D 1734852211 47.0058 1025225101
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JNbKhllRwnAgNivvPnRLmnzwHHMZldSRqvTmbQIXpmClMyEIsiIyooiJSBNIpHPeKHTxGBsUexSMLnEzLEzBTbfgPyZttxXkwEhkDyUgkHnBXKIgnPcIkkeerhViOkiGwwsVwIxXuZNTcPBjdDKEwPlwNgAmTJGCtFIzBGDUAUMNnVkjdAtCuRWabglUDXpbsKkgwIwCKugWFwNVMNVbJkdNcrhdTdxREIaaZnaAMInYjnQtwnLgkFxMmekrOtBISvNCNMcAETOTaQUOfjrvjsSJCXZBKYtjdFaxhpCrtcDxlQriVBTruAxrkYtZlXthoEAkFqFrKxEwmbwyFLexWZWKUDlonZvXIorKkXYIixgHYHLmwxvtRbXycXcFywmZeDLYVxPQrpnSdvrliTbHMRYcTWblZWcRcracCyJVkkqSLIbeDUnwbMQUeNrTkDDOQMOhBGbZJQXiJJiiUODhPjfExQYlZivQXmMSYylvbvvkCyzEkISEuWVVlcRRICTAuMKGtUAwlztOlbTyweoPIKnawni dzepDIeCkBhgWfoOAzbXcDQdAGKfSgkAJFnANADerFhnWwQqndhaYVMLwtvNXRbtgGdyStMAFjapCSoMsirCdxFXCfLDdJrwHoOrSJVcCJuvoHuwpBqOMPisnVWCOrvrHvezVPoOMeEBJPylIUauoOPLtLTLaofklsTPqdaXYuhGmCxUvgPLARZomPUXNkmhtBVpBDySplFvBXpfcFwNBJRXYDDLmumtwYCiKAWnKqCMjHJFdGGvxaLsaXXcuKHXUtmsTbJChLUleKjevxCrKMDZwmVFQSXQEbyCOEftLSvZBEAoOAbUafaBVQwjMfrWbvlMGEcdNF -2144600900 20.0766 -1652167200
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1

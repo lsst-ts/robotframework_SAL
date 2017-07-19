@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send r 37.8814 j 1738482516 -1569910393
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MpoiFeSoKRxrlOXhCrJciteNGfTdBDnkIiEfalUIXXKIKOgPzRGNCbxcCKdUiNcVCaBgSLjiwJkrLKnuCIlhVkrKzMvapbbmTiqfYkyrcJEYjlHxSfrOtUclXZcIthaF 90.5375 DbrvDDQVSbMxekAmywvTUGoktmREsPuqZPDepqaBaYnxcXygqxCzlwypLBzCRHGNGTUhbcuQpEcJATMIjcUQznbDbUQkVjCyWsZaavAfHebRkpTwPIzIzymTHGRsPZdxSUpbZHPOaCPAEdLsjkOxwgeiwpqyRVKblWcDSQDcXTkGSnRsxUDTHVROpYeqXDhoGbczxFMlGsggohOkrTzcGgCuIxLIrkVzjFxAwOrHqxzDysJbARTPiWWIZPhXMbiI -548770240 -1965212494
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityStartup writing a message containing :    1
@@ -77,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1569910393
+    ${output}=    Read Until    priority : -1965212494
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntityStartup received =     1
-    Should Contain    ${output}    Name : r
-    Should Contain    ${output}    Identifier : 37.8814
-    Should Contain    ${output}    Timestamp : j
-    Should Contain    ${output}    Address : 1738482516
-    Should Contain    ${output}    priority : -1569910393
+    Should Contain    ${output}    Name : MpoiFeSoKRxrlOXhCrJciteNGfTdBDnkIiEfalUIXXKIKOgPzRGNCbxcCKdUiNcVCaBgSLjiwJkrLKnuCIlhVkrKzMvapbbmTiqfYkyrcJEYjlHxSfrOtUclXZcIthaF
+    Should Contain    ${output}    Identifier : 90.5375
+    Should Contain    ${output}    Timestamp : DbrvDDQVSbMxekAmywvTUGoktmREsPuqZPDepqaBaYnxcXygqxCzlwypLBzCRHGNGTUhbcuQpEcJATMIjcUQznbDbUQkVjCyWsZaavAfHebRkpTwPIzIzymTHGRsPZdxSUpbZHPOaCPAEdLsjkOxwgeiwpqyRVKblWcDSQDcXTkGSnRsxUDTHVROpYeqXDhoGbczxFMlGsggohOkrTzcGgCuIxLIrkVzjFxAwOrHqxzDysJbARTPiWWIZPhXMbiI
+    Should Contain    ${output}    Address : -548770240
+    Should Contain    ${output}    priority : -1965212494

@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21.2505 19.7807 68.1254
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 48.1942 92.076 37.2823
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 21.2505 19.7807 68.1254
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 48.1942 92.076 37.2823
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,9 +88,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 21.2505    1
-    Should Contain X Times    ${output}    y : 19.7807    1
-    Should Contain X Times    ${output}    z : 68.1254    1
+    Should Contain X Times    ${output}    x : 48.1942    1
+    Should Contain X Times    ${output}    y : 92.076    1
+    Should Contain X Times    ${output}    z : 37.2823    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -99,9 +99,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 21.2505    1
-    Should Contain X Times    ${output}    y = 19.7807    1
-    Should Contain X Times    ${output}    z = 68.1254    1
+    Should Contain X Times    ${output}    x = 48.1942    1
+    Should Contain X Times    ${output}    y = 92.076    1
+    Should Contain X Times    ${output}    z = 37.2823    1
     Should Contain X Times    ${output}    === [ackCommand_pivot] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

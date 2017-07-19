@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send m 9.5774 D 1348740258 H u d T e -235736974
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send IiCUXtorCDjMiRMJwgHYzMoWAmSLokTfsdjUtTgplKXwRlmBzgMhqrKUuCtQYWehFYpuPBKkEOOZcKDfznAccAbaDHJeunvuckfBhFTGZLjwMGYOKsOcYWMawLlnmxAi 35.619 JcxMKyVmVmRTIRZduEnorAvqZlybeiJrswjvbNjdpMVCNnUWTPJkadLHghbmWsBQBUcdncbsVdjXoPQriBWLQWgKPUfkJqGhkFNJxvkTFTGrtHaDoxNKqWZjzpNoQxwovYvbrDQVdAvNESpYksvcvENJtksmBvbNaplMhoVHGAFtJUXlOambPvEtOZIWyAIdpDgyfdbZSfJxJvYOouowATNEFbxOFvfUtkXBbwtKUTZzudVJlMtmPSWuCSMaFVcC -1618735014 XdPUSjdylyvRscVECPqNaUXCNNNfjtvnJNINfykvAgdKRQJInNzkoQXIwqNSKqYVUnAbockInxLOyQMZXCDtwUJKcfZtFQGseNGlHHsGpitRkhicypYrxOdpiCTrBkMz AurHKUkgITaaaIPqlPnSpmKsnYGhShQkQZOPKGzHylyhzblYUSyHxhsArQMajdAUqVJmfFddfXPnBxuRILvssMxHvwsQYfFZoLkWILfnXoUacNiOIxJxEWVnDPnLnGdJ KGPgZwLhruTVxVOMrUxjOSCUdvCyRnnzamJYSvClVKYtotPGTZHHQXFrSwcgiEOSfzdSGkLHycCJLNNCdEGUmUWbRxrmJXjljNHdgxPGnzPHNxYcZMmirinoVsXiYakf noglbmBigGOTRQaawHOMIiSHNeuTrqdLgddqdteYrvdaSeGNsSMgZYxiqyMPOzynAvTGPAHHJCMWKJQMEpqfnoNfitqSSsnLHobOvNHYhkBAwPtARSNuqWMKGECcoaYj gWCESHTfeeAKjTbxxMQjLUgcDlDFudZFcDQCXuMYDveFPllRQnBGaXEkZhnhlUjssohigbuYVZIwLDmWpwOZYnNWhGdaendZeBvvJgEqHXrrJAuWAKbMUPUazDIXyAcL 1568135620
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -235736974
+    ${output}=    Read Until    priority : 1568135620
     Log    ${output}
     Should Contain X Times    ${output}    === Event processingclusterEntitySummaryState received =     1
-    Should Contain    ${output}    Name : m
-    Should Contain    ${output}    Identifier : 9.5774
-    Should Contain    ${output}    Timestamp : D
-    Should Contain    ${output}    Address : 1348740258
-    Should Contain    ${output}    CurrentState : H
-    Should Contain    ${output}    PreviousState : u
-    Should Contain    ${output}    Executing : d
-    Should Contain    ${output}    CommandsAvailable : T
-    Should Contain    ${output}    ConfigurationsAvailable : e
-    Should Contain    ${output}    priority : -235736974
+    Should Contain    ${output}    Name : IiCUXtorCDjMiRMJwgHYzMoWAmSLokTfsdjUtTgplKXwRlmBzgMhqrKUuCtQYWehFYpuPBKkEOOZcKDfznAccAbaDHJeunvuckfBhFTGZLjwMGYOKsOcYWMawLlnmxAi
+    Should Contain    ${output}    Identifier : 35.619
+    Should Contain    ${output}    Timestamp : JcxMKyVmVmRTIRZduEnorAvqZlybeiJrswjvbNjdpMVCNnUWTPJkadLHghbmWsBQBUcdncbsVdjXoPQriBWLQWgKPUfkJqGhkFNJxvkTFTGrtHaDoxNKqWZjzpNoQxwovYvbrDQVdAvNESpYksvcvENJtksmBvbNaplMhoVHGAFtJUXlOambPvEtOZIWyAIdpDgyfdbZSfJxJvYOouowATNEFbxOFvfUtkXBbwtKUTZzudVJlMtmPSWuCSMaFVcC
+    Should Contain    ${output}    Address : -1618735014
+    Should Contain    ${output}    CurrentState : XdPUSjdylyvRscVECPqNaUXCNNNfjtvnJNINfykvAgdKRQJInNzkoQXIwqNSKqYVUnAbockInxLOyQMZXCDtwUJKcfZtFQGseNGlHHsGpitRkhicypYrxOdpiCTrBkMz
+    Should Contain    ${output}    PreviousState : AurHKUkgITaaaIPqlPnSpmKsnYGhShQkQZOPKGzHylyhzblYUSyHxhsArQMajdAUqVJmfFddfXPnBxuRILvssMxHvwsQYfFZoLkWILfnXoUacNiOIxJxEWVnDPnLnGdJ
+    Should Contain    ${output}    Executing : KGPgZwLhruTVxVOMrUxjOSCUdvCyRnnzamJYSvClVKYtotPGTZHHQXFrSwcgiEOSfzdSGkLHycCJLNNCdEGUmUWbRxrmJXjljNHdgxPGnzPHNxYcZMmirinoVsXiYakf
+    Should Contain    ${output}    CommandsAvailable : noglbmBigGOTRQaawHOMIiSHNeuTrqdLgddqdteYrvdaSeGNsSMgZYxiqyMPOzynAvTGPAHHJCMWKJQMEpqfnoNfitqSSsnLHobOvNHYhkBAwPtARSNuqWMKGECcoaYj
+    Should Contain    ${output}    ConfigurationsAvailable : gWCESHTfeeAKjTbxxMQjLUgcDlDFudZFcDQCXuMYDveFPllRQnBGaXEkZhnhlUjssohigbuYVZIwLDmWpwOZYnNWhGdaendZeBvvJgEqHXrrJAuWAKbMUPUazDIXyAcL
+    Should Contain    ${output}    priority : 1568135620

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send n -340618448
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send poTqTqFnFUFIdIiQJHQdehNfJpPbviOPcnvkCKsoqGvmLqwJBfDMBHhclniSIogpohZsmbtYIwwCjhEnHCqmcijwkasAhPHYHsDhMdpPwMzhWcIHVaghcvdgolrMxOvjSibkacYnNddLzxaPMIVBHOtSmEGaZEKvHQwgZIQGvvOeVwGaUzGFZSZGGXzlgpkbsKjQlHlWNMPZjcBFKSTsbuglYczQopyZfigiSpwYgHXdEhrOknEjdDFfUPFvKkVVASczGSAkvFkAkfmrNtrmzpsimwkpZLdBQzulkeQwFhPUujsZigRmaWqYVtREPRjATQNRzaJkGLiChHgfzWHXACesKkisxwXqFqRPNbgNvLuqBJHuZQiRUxQGNVWoRpBgjqUlxnXbuoyOpzuqQsIYnggrNIRrgWKZVRegjIzYTUBWoHBEncwsmUzlhrpkqgmFbWMdqtEdaCFefRXSyziNuFrkOjNmbGtdYPJQLaXXPgMylQBgNyrkWJiZgVXxNyLyfpXfspsJdLjMwhnkVIPxCzrERjlimOJbIOrFfDsdypGmhXzcfRUGflWvMhKcGvOLckXWjLukPZGiQoisTbVrpyvZhCxkNRcMNBTYDlGgCaKoCRwIuPzMtbDabfFkUVrsYiGoUiSsEgoRYcifvGUjtuQLoKhIQtCBacCABqAStODVVdgXDVkXrVeMHXpryCjwLClJjVN -1567860436
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -340618448
+    ${output}=    Read Until    priority : -1567860436
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : n
-    Should Contain    ${output}    priority : -340618448
+    Should Contain    ${output}    errorCode : poTqTqFnFUFIdIiQJHQdehNfJpPbviOPcnvkCKsoqGvmLqwJBfDMBHhclniSIogpohZsmbtYIwwCjhEnHCqmcijwkasAhPHYHsDhMdpPwMzhWcIHVaghcvdgolrMxOvjSibkacYnNddLzxaPMIVBHOtSmEGaZEKvHQwgZIQGvvOeVwGaUzGFZSZGGXzlgpkbsKjQlHlWNMPZjcBFKSTsbuglYczQopyZfigiSpwYgHXdEhrOknEjdDFfUPFvKkVVASczGSAkvFkAkfmrNtrmzpsimwkpZLdBQzulkeQwFhPUujsZigRmaWqYVtREPRjATQNRzaJkGLiChHgfzWHXACesKkisxwXqFqRPNbgNvLuqBJHuZQiRUxQGNVWoRpBgjqUlxnXbuoyOpzuqQsIYnggrNIRrgWKZVRegjIzYTUBWoHBEncwsmUzlhrpkqgmFbWMdqtEdaCFefRXSyziNuFrkOjNmbGtdYPJQLaXXPgMylQBgNyrkWJiZgVXxNyLyfpXfspsJdLjMwhnkVIPxCzrERjlimOJbIOrFfDsdypGmhXzcfRUGflWvMhKcGvOLckXWjLukPZGiQoisTbVrpyvZhCxkNRcMNBTYDlGgCaKoCRwIuPzMtbDabfFkUVrsYiGoUiSsEgoRYcifvGUjtuQLoKhIQtCBacCABqAStODVVdgXDVkXrVeMHXpryCjwLClJjVN
+    Should Contain    ${output}    priority : -1567860436

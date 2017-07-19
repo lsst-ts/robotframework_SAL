@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1483069174 G 1642096497
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 467719210 lxnlWXhanPmyUfKxlPpRusQzlGDzppubaMKEScDWfHbjPddAXHgGcxgwYMSpqtFDspAiQjwdWSjojybzqMtJGYHMfFtJHzOppocrTaJjhyKZZZnLWQVwhitrqwXLjWKYlctCeepSgKpeIuvntUVZPASvUujiCGMwOdLpvpcPVbGsjnYAMmpmruoMbRPdEucVXWFJIZqVUAplpOKchpnEJkjYDkTUUDpIXOWJlHSWhHHZVCNVvdnlngsaODYtvWaIQzQrNArhtzdyPVabsVleQHiqYNwcViqYdKGgkNEKZrSbHLBXQdZsNgEPvksvzMUhhEORBQGbCftvgOnGgsBlLQHpWRlkR -348286986
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1642096497
+    ${output}=    Read Until    priority : -348286986
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountState received =     1
-    Should Contain    ${output}    id : 1483069174
-    Should Contain    ${output}    text : G
-    Should Contain    ${output}    priority : 1642096497
+    Should Contain    ${output}    id : 467719210
+    Should Contain    ${output}    text : lxnlWXhanPmyUfKxlPpRusQzlGDzppubaMKEScDWfHbjPddAXHgGcxgwYMSpqtFDspAiQjwdWSjojybzqMtJGYHMfFtJHzOppocrTaJjhyKZZZnLWQVwhitrqwXLjWKYlctCeepSgKpeIuvntUVZPASvUujiCGMwOdLpvpcPVbGsjnYAMmpmruoMbRPdEucVXWFJIZqVUAplpOKchpnEJkjYDkTUUDpIXOWJlHSWhHHZVCNVvdnlngsaODYtvWaIQzQrNArhtzdyPVabsVleQHiqYNwcViqYdKGgkNEKZrSbHLBXQdZsNgEPvksvzMUhhEORBQGbCftvgOnGgsBlLQHpWRlkR
+    Should Contain    ${output}    priority : -348286986

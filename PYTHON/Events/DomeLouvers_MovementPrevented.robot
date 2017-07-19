@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -28338 C 2098678737
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 28831 HQYzPzdfGnxlhqRfTvXuQXMCdAwWKHGtPuKgFjAJnprjQBREizjVZUobHEnWOqsGehfdbmaruEiGYNuiHmZMdanENekIJZCgjjhkxMmbqCnenNxnCqJxHpojgeGCPrcRWAbRrtjBYGoTCUqPJMkxdkDTQpHUCoVxGIMNvSMDtIGdscBZLVjCWyNMpukGgfWjPLLljMOIgmcmNxHscItyyGxAELoTjcpOJJcWnXTEzFisqgLekniLaBJaKBAwruekdDc -1241817920
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementPrevented writing a message containing :    1

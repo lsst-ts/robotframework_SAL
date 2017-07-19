@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14.9126 99.5084 78.8282 21.3828 26.6177 D
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 69.5355 51.5226 12.9268 36.7619 22.974 zOPLdprMnKLDwXRzzeVPiIfPLWGQDRYwhckZWGvocfgjSoujaGuCowKvwGFEJsGYBnRSyHlJluTFDXDAbswsHYlUelqPjnIVrgSdPiJTGyQbKsJYlyLMSQicUWSWRbayQNGkDYCaIPPoxvVDSk
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 14.9126 99.5084 78.8282 21.3828 26.6177 D
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 69.5355 51.5226 12.9268 36.7619 22.974 zOPLdprMnKLDwXRzzeVPiIfPLWGQDRYwhckZWGvocfgjSoujaGuCowKvwGFEJsGYBnRSyHlJluTFDXDAbswsHYlUelqPjnIVrgSdPiJTGyQbKsJYlyLMSQicUWSWRbayQNGkDYCaIPPoxvVDSk
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,12 +88,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 14.9126    1
-    Should Contain X Times    ${output}    az_velocity : 99.5084    1
-    Should Contain X Times    ${output}    el_angle : 78.8282    1
-    Should Contain X Times    ${output}    el_velocity : 21.3828    1
-    Should Contain X Times    ${output}    time : 26.6177    1
-    Should Contain X Times    ${output}    cablewrap_orientation : D    1
+    Should Contain X Times    ${output}    az_angle : 69.5355    1
+    Should Contain X Times    ${output}    az_velocity : 51.5226    1
+    Should Contain X Times    ${output}    el_angle : 12.9268    1
+    Should Contain X Times    ${output}    el_velocity : 36.7619    1
+    Should Contain X Times    ${output}    time : 22.974    1
+    Should Contain X Times    ${output}    cablewrap_orientation : zOPLdprMnKLDwXRzzeVPiIfPLWGQDRYwhckZWGvocfgjSoujaGuCowKvwGFEJsGYBnRSyHlJluTFDXDAbswsHYlUelqPjnIVrgSdPiJTGyQbKsJYlyLMSQicUWSWRbayQNGkDYCaIPPoxvVDSk    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -108,12 +108,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 14.9126    1
-    Should Contain X Times    ${output}    az_velocity : 99.5084    1
-    Should Contain X Times    ${output}    el_angle : 78.8282    1
-    Should Contain X Times    ${output}    el_velocity : 21.3828    1
-    Should Contain X Times    ${output}    time : 26.6177    1
-    Should Contain X Times    ${output}    cablewrap_orientation : D    1
+    Should Contain X Times    ${output}    az_angle : 69.5355    1
+    Should Contain X Times    ${output}    az_velocity : 51.5226    1
+    Should Contain X Times    ${output}    el_angle : 12.9268    1
+    Should Contain X Times    ${output}    el_velocity : 36.7619    1
+    Should Contain X Times    ${output}    time : 22.974    1
+    Should Contain X Times    ${output}    cablewrap_orientation : zOPLdprMnKLDwXRzzeVPiIfPLWGQDRYwhckZWGvocfgjSoujaGuCowKvwGFEJsGYBnRSyHlJluTFDXDAbswsHYlUelqPjnIVrgSdPiJTGyQbKsJYlyLMSQicUWSWRbayQNGkDYCaIPPoxvVDSk    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

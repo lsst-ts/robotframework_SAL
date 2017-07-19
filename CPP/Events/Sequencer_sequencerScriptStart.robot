@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send d 98.7928 y 714106659
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send OENzLyKeSiwXQEIrrIqgtlKIolvJefnQOYLYexHgQaMawbJaIpsQwpJNZKSOSYpEvuPGKCGOfBJpsVDTQqGRUcjdOvCfcheqDvHgWzpZzdSkUnnopVmxEWjgwafsTBQSRrWHlbjopziJaaaHTqgLiyzwloZEqrIqSCrKZnmKCuZBTZkCyRWiIzOZdllehzyPllUTiofpWXkGVeaGtzRdUVKFldQfSziRBoujHVWmZhscjmcvAtfhOkpJApvfWtQN 5.1664 qvLCrlHiQZvhseUpSRwOMwxrlUdDEcUwaqScRmlNuLwPzWYoAJcXeYsJpwGDwlFIdRUqbsRtngMvPqdjfYCgFCQCDDWLGMrEVfoGWnrAVEQoCzbxhrmXHJqgqADFlYgRDUIKRwVWXSDEWPJBeKJkSlmZVDMlSEIhPUCbNQgNVILGyOknaOmJgAaxdqWiBhFCWahMboXeDtufHSEbuSwBKXGDhDvwPszStRzDfPISfloNjbpFMJtUiLPwvhILckMg 1861923787
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptStart writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 714106659
+    ${output}=    Read Until    priority : 1861923787
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptStart received =     1
-    Should Contain    ${output}    sequencerScriptName : d
-    Should Contain    ${output}    sequencerScriptIdentifier : 98.7928
-    Should Contain    ${output}    sequencerScriptTimestamp : y
-    Should Contain    ${output}    priority : 714106659
+    Should Contain    ${output}    sequencerScriptName : OENzLyKeSiwXQEIrrIqgtlKIolvJefnQOYLYexHgQaMawbJaIpsQwpJNZKSOSYpEvuPGKCGOfBJpsVDTQqGRUcjdOvCfcheqDvHgWzpZzdSkUnnopVmxEWjgwafsTBQSRrWHlbjopziJaaaHTqgLiyzwloZEqrIqSCrKZnmKCuZBTZkCyRWiIzOZdllehzyPllUTiofpWXkGVeaGtzRdUVKFldQfSziRBoujHVWmZhscjmcvAtfhOkpJApvfWtQN
+    Should Contain    ${output}    sequencerScriptIdentifier : 5.1664
+    Should Contain    ${output}    sequencerScriptTimestamp : qvLCrlHiQZvhseUpSRwOMwxrlUdDEcUwaqScRmlNuLwPzWYoAJcXeYsJpwGDwlFIdRUqbsRtngMvPqdjfYCgFCQCDDWLGMrEVfoGWnrAVEQoCzbxhrmXHJqgqADFlYgRDUIKRwVWXSDEWPJBeKJkSlmZVDMlSEIhPUCbNQgNVILGyOknaOmJgAaxdqWiBhFCWahMboXeDtufHSEbuSwBKXGDhDvwPszStRzDfPISfloNjbpFMJtUiLPwvhILckMg
+    Should Contain    ${output}    priority : 1861923787

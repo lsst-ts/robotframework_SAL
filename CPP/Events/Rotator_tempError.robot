@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send h 843417947 -182730932
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xeqdVtFiKtVEoRVIGLrcrsYYgWBnEYwxhHjWHRrYLgopNruJdtsiAWSWowKupbeFVbDUgGHx 187073217 -1461437886
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tempError writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -182730932
+    ${output}=    Read Until    priority : -1461437886
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    device : h
-    Should Contain    ${output}    severity : 843417947
-    Should Contain    ${output}    priority : -182730932
+    Should Contain    ${output}    device : xeqdVtFiKtVEoRVIGLrcrsYYgWBnEYwxhHjWHRrYLgopNruJdtsiAWSWowKupbeFVbDUgGHx
+    Should Contain    ${output}    severity : 187073217
+    Should Contain    ${output}    priority : -1461437886

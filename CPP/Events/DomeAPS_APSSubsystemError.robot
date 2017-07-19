@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send r -1586201640
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send omaigabUxahIWQRWQGjpYIyNIHkXIYWTrffugbeyBPsUHbAgBgRJhShlxRRIZzAfpvSlwEHnEYTgjZxodgGBKyqYxwaIuNQnKptGKJfrYNZKSFUEkefxkKJqKukcxOMwIEQaWzhlOknIBTIFGNdjMIqEWjVVNULUEpDhsDVadJWrTJpDcCaQihyudUtmMFVAwatqsSDlZjyYMiWWhjMQreDzfywTRLJXnITSAGvquXjmXVSiqEfDRwqdNIpxlMenlBrIWBIQrUcwmhbVPoeYgcqZcrTEjoXCqzqXNojdtJfhqzXWMdMEipJAUPPJJqqKrTZZLngBUEMZNqBAWGqMmsUnPPnwoplaesoWQQlnghHdYHWXWUSUvnJyjbSVFweOSjKqjjRGENUDdEpuWsmYMmSeZcsfALDuzNAKsXtQqrRlQWogbKLpnjnVFVbTqAMXdeTOvexWenNRnDoBbzNUfhLOXKoYKOiRxOTCHLdyzCZSYAjbCLCNhKykOhcwtfeZfdXHOMADzjjMouaItHRZiCZkYldFBlkLusKoGhuSmWfDvVYzicTxQjKYthCzkStHqbjykYdhLaPMzlnJeGvfgUilhwNluSGnTessKmspWHSVDmWvnkcpAgORQtyVmRMduxshSWTWUeshkIQIkBcbqATiRQiAijbniecMnCPvcwOFAngztezinrNzsYDQWPwwcVhHNWfMHsKFOmbqQNUKrJrmVLVtFyVKZQnGHrfsJbFTAhNcjIIZVMnMakfmTPRAcRFStbonqCBiOXVBRBoUVApynxypGLaMJwwgeVBYymZluwGychHuhLMmXIeRObMQPIjiwzgQPBqHwMXBSpYKCCNTdXOnmneEyYdkIrsCuyigizGMASoTEiKSkbgKDaKUFsauvicLnPGEzDZ 1568072473
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1586201640
+    ${output}=    Read Until    priority : 1568072473
     Log    ${output}
     Should Contain X Times    ${output}    === Event APSSubsystemError received =     1
-    Should Contain    ${output}    errorCode : r
-    Should Contain    ${output}    priority : -1586201640
+    Should Contain    ${output}    errorCode : omaigabUxahIWQRWQGjpYIyNIHkXIYWTrffugbeyBPsUHbAgBgRJhShlxRRIZzAfpvSlwEHnEYTgjZxodgGBKyqYxwaIuNQnKptGKJfrYNZKSFUEkefxkKJqKukcxOMwIEQaWzhlOknIBTIFGNdjMIqEWjVVNULUEpDhsDVadJWrTJpDcCaQihyudUtmMFVAwatqsSDlZjyYMiWWhjMQreDzfywTRLJXnITSAGvquXjmXVSiqEfDRwqdNIpxlMenlBrIWBIQrUcwmhbVPoeYgcqZcrTEjoXCqzqXNojdtJfhqzXWMdMEipJAUPPJJqqKrTZZLngBUEMZNqBAWGqMmsUnPPnwoplaesoWQQlnghHdYHWXWUSUvnJyjbSVFweOSjKqjjRGENUDdEpuWsmYMmSeZcsfALDuzNAKsXtQqrRlQWogbKLpnjnVFVbTqAMXdeTOvexWenNRnDoBbzNUfhLOXKoYKOiRxOTCHLdyzCZSYAjbCLCNhKykOhcwtfeZfdXHOMADzjjMouaItHRZiCZkYldFBlkLusKoGhuSmWfDvVYzicTxQjKYthCzkStHqbjykYdhLaPMzlnJeGvfgUilhwNluSGnTessKmspWHSVDmWvnkcpAgORQtyVmRMduxshSWTWUeshkIQIkBcbqATiRQiAijbniecMnCPvcwOFAngztezinrNzsYDQWPwwcVhHNWfMHsKFOmbqQNUKrJrmVLVtFyVKZQnGHrfsJbFTAhNcjIIZVMnMakfmTPRAcRFStbonqCBiOXVBRBoUVApynxypGLaMJwwgeVBYymZluwGychHuhLMmXIeRObMQPIjiwzgQPBqHwMXBSpYKCCNTdXOnmneEyYdkIrsCuyigizGMASoTEiKSkbgKDaKUFsauvicLnPGEzDZ
+    Should Contain    ${output}    priority : 1568072473

@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py O 80.3022 C 1125888373 1482479910
+    ${input}=    Write    python ${subSystem}_Event_${component}.py XkxQGVZNHRSaqJqJfLltgcioKKGXZwhYgNVnptkiFtlNkkjjuyzBUaYsCdrmtzXZAbNVAsggeAsnwGVAYhjJWVrbhTBGIiDpBAZulRdiEaxLdXBLscgWVuQzkOTDjPLF 66.5309 WUNiRbnljyxDwRphyuFSrTeasWnqaitbjFEzxihMhIktFWRkyQQoPKFRzXprGmUVNfHSGPurwLdwOdJBamWCoLxcFouKfiyoWrJCmyxDMHqEdUwdZtSNreIVkDLaCjbUSFyEhIdJOOznEaJtflUoNGcRKlkJAGokHyuEaDKQzIdjqMOgFogKpVuVizeqOMIfuRvWpDtXyycHjscOOjYGJTERfPoJWANQfkLmrNpPcDcdkyqtmBZmlzgfHfLBBatS -1664817732 151957386
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityStartup writing a message containing :    1

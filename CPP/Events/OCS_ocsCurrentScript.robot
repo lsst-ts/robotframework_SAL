@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send E 32.4693 P -451261444
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send NkQlKjJRIFvfROeIYEHLrrvWxHgBtPegtnyOYjOVJYBGQOJEzedhkrLkFCMKoUllAXGZRGaBNJTVIDgXwIPVWJJSqGfIKtjUfpZabbGVwRqyoCJHJDTlhJRAGWojLfSvxPfqmQxUwloxAkrgrdFvJMqVYJIAKqeAggKrppOcHZQwjUEYDYIkeGPBgsGaUoGVMlIllMsvCcFYFVuJRpwECpTPupjrChOxPFDufQWFWaTcKDmKKkOlixPzCQUgnlRR 0.8468 gBwuzDAwNuTZnFERfDbMNLkzJiSkBXrZOmEHrIGTbQvdhxYaDOfKjbfUhaZOrAfQHTndowANCuVAthkFMijmaECcdHZizmPPgjyGtUtmZgMBIjgwdeCRjUsiUMCSfRpBVqTSCjBObgUHgpKDHUYzjNzMLeLdHHJcZUDucivwtcCiEqDAezYEoCjCHiEqzFpLjHLyGULQxzpjraMmscKNBLBSdWHeolzFifrXiSmrbUxGAmaotwOhdNNvTccKZeGX 1693071574
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCurrentScript writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -451261444
+    ${output}=    Read Until    priority : 1693071574
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCurrentScript received =     1
-    Should Contain    ${output}    ocsScriptName : E
-    Should Contain    ${output}    ocsScriptIdentifier : 32.4693
-    Should Contain    ${output}    ocsScriptTimestamp : P
-    Should Contain    ${output}    priority : -451261444
+    Should Contain    ${output}    ocsScriptName : NkQlKjJRIFvfROeIYEHLrrvWxHgBtPegtnyOYjOVJYBGQOJEzedhkrLkFCMKoUllAXGZRGaBNJTVIDgXwIPVWJJSqGfIKtjUfpZabbGVwRqyoCJHJDTlhJRAGWojLfSvxPfqmQxUwloxAkrgrdFvJMqVYJIAKqeAggKrppOcHZQwjUEYDYIkeGPBgsGaUoGVMlIllMsvCcFYFVuJRpwECpTPupjrChOxPFDufQWFWaTcKDmKKkOlixPzCQUgnlRR
+    Should Contain    ${output}    ocsScriptIdentifier : 0.8468
+    Should Contain    ${output}    ocsScriptTimestamp : gBwuzDAwNuTZnFERfDbMNLkzJiSkBXrZOmEHrIGTbQvdhxYaDOfKjbfUhaZOrAfQHTndowANCuVAthkFMijmaECcdHZizmPPgjyGtUtmZgMBIjgwdeCRjUsiUMCSfRpBVqTSCjBObgUHgpKDHUYzjNzMLeLdHHJcZUDucivwtcCiEqDAezYEoCjCHiEqzFpLjHLyGULQxzpjraMmscKNBLBSdWHeolzFifrXiSmrbUxGAmaotwOhdNNvTccKZeGX
+    Should Contain    ${output}    priority : 1693071574

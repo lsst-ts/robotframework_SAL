@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 70.3352 47.1398 M
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 6.8173 42.8094 kZLqlqVJaFAWwSqTEzWpHWsrhFmxzHLHxITfELmZbbNgzAsevZygjNHkutQQABsfbWKAtOQZujxnJQqoGBVAaYJrLSMrNjOALxeDsNboFkgpYPfgonJtfYQIxoeyvlHJxnuLibbPQGRoCWhGOIKrvbYQwBbiYqPDawhrSjOQnXhwKvdIWpgDimfzfnAjHVVSdUplBlYrDjWnQREbyLJTQhQZdCjldQzxDnvACMEtPudxzgNOoVGjHVzDDbFmAiHISYCwJBFpFoWhDEDEkHWOpDjiocQnrROqhAZEvdnoFDYvIiGQCduyxrdURBqPiXMUOahwAOVLEBSGOzXuGvlJnIIMoxMWqaqTYFOLCWXBdrgSqQwGpKustyOYGMwcgiQDPDUhYIakMvZzhZlifOPebsInBIIJcZCxcVIhrxlFjDfpaFaGgPYNhloORNUnDfjnWwvbDHMArGKVWhMHtfTQSmrqLrqdUQdNGozQYUTJaiTuPpglnpvfsVyRvmaWsjRJmKQNzflXrbCxgpPdQbrGWLlaQmUrCnAEuKqmXNdKlLQITaEXmkQIUBXpzEvPLjdneASneXkFoIPJoXonCYXmycnBd
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 70.3352 47.1398 M
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 6.8173 42.8094 kZLqlqVJaFAWwSqTEzWpHWsrhFmxzHLHxITfELmZbbNgzAsevZygjNHkutQQABsfbWKAtOQZujxnJQqoGBVAaYJrLSMrNjOALxeDsNboFkgpYPfgonJtfYQIxoeyvlHJxnuLibbPQGRoCWhGOIKrvbYQwBbiYqPDawhrSjOQnXhwKvdIWpgDimfzfnAjHVVSdUplBlYrDjWnQREbyLJTQhQZdCjldQzxDnvACMEtPudxzgNOoVGjHVzDDbFmAiHISYCwJBFpFoWhDEDEkHWOpDjiocQnrROqhAZEvdnoFDYvIiGQCduyxrdURBqPiXMUOahwAOVLEBSGOzXuGvlJnIIMoxMWqaqTYFOLCWXBdrgSqQwGpKustyOYGMwcgiQDPDUhYIakMvZzhZlifOPebsInBIIJcZCxcVIhrxlFjDfpaFaGgPYNhloORNUnDfjnWwvbDHMArGKVWhMHtfTQSmrqLrqdUQdNGozQYUTJaiTuPpglnpvfsVyRvmaWsjRJmKQNzflXrbCxgpPdQbrGWLlaQmUrCnAEuKqmXNdKlLQITaEXmkQIUBXpzEvPLjdneASneXkFoIPJoXonCYXmycnBd
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,9 +88,9 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 70.3352    1
-    Should Contain X Times    ${output}    el_angle : 47.1398    1
-    Should Contain X Times    ${output}    cablewrap_orientation : M    1
+    Should Contain X Times    ${output}    az_angle : 6.8173    1
+    Should Contain X Times    ${output}    el_angle : 42.8094    1
+    Should Contain X Times    ${output}    cablewrap_orientation : kZLqlqVJaFAWwSqTEzWpHWsrhFmxzHLHxITfELmZbbNgzAsevZygjNHkutQQABsfbWKAtOQZujxnJQqoGBVAaYJrLSMrNjOALxeDsNboFkgpYPfgonJtfYQIxoeyvlHJxnuLibbPQGRoCWhGOIKrvbYQwBbiYqPDawhrSjOQnXhwKvdIWpgDimfzfnAjHVVSdUplBlYrDjWnQREbyLJTQhQZdCjldQzxDnvACMEtPudxzgNOoVGjHVzDDbFmAiHISYCwJBFpFoWhDEDEkHWOpDjiocQnrROqhAZEvdnoFDYvIiGQCduyxrdURBqPiXMUOahwAOVLEBSGOzXuGvlJnIIMoxMWqaqTYFOLCWXBdrgSqQwGpKustyOYGMwcgiQDPDUhYIakMvZzhZlifOPebsInBIIJcZCxcVIhrxlFjDfpaFaGgPYNhloORNUnDfjnWwvbDHMArGKVWhMHtfTQSmrqLrqdUQdNGozQYUTJaiTuPpglnpvfsVyRvmaWsjRJmKQNzflXrbCxgpPdQbrGWLlaQmUrCnAEuKqmXNdKlLQITaEXmkQIUBXpzEvPLjdneASneXkFoIPJoXonCYXmycnBd    1
     Should Contain    ${output}    === command moveToTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -105,9 +105,9 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 70.3352    1
-    Should Contain X Times    ${output}    el_angle : 47.1398    1
-    Should Contain X Times    ${output}    cablewrap_orientation : M    1
+    Should Contain X Times    ${output}    az_angle : 6.8173    1
+    Should Contain X Times    ${output}    el_angle : 42.8094    1
+    Should Contain X Times    ${output}    cablewrap_orientation : kZLqlqVJaFAWwSqTEzWpHWsrhFmxzHLHxITfELmZbbNgzAsevZygjNHkutQQABsfbWKAtOQZujxnJQqoGBVAaYJrLSMrNjOALxeDsNboFkgpYPfgonJtfYQIxoeyvlHJxnuLibbPQGRoCWhGOIKrvbYQwBbiYqPDawhrSjOQnXhwKvdIWpgDimfzfnAjHVVSdUplBlYrDjWnQREbyLJTQhQZdCjldQzxDnvACMEtPudxzgNOoVGjHVzDDbFmAiHISYCwJBFpFoWhDEDEkHWOpDjiocQnrROqhAZEvdnoFDYvIiGQCduyxrdURBqPiXMUOahwAOVLEBSGOzXuGvlJnIIMoxMWqaqTYFOLCWXBdrgSqQwGpKustyOYGMwcgiQDPDUhYIakMvZzhZlifOPebsInBIIJcZCxcVIhrxlFjDfpaFaGgPYNhloORNUnDfjnWwvbDHMArGKVWhMHtfTQSmrqLrqdUQdNGozQYUTJaiTuPpglnpvfsVyRvmaWsjRJmKQNzflXrbCxgpPdQbrGWLlaQmUrCnAEuKqmXNdKlLQITaEXmkQIUBXpzEvPLjdneASneXkFoIPJoXonCYXmycnBd    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send M 377197053
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VOlrywMtGtKZZdqrTCzEotollQKVaZVGztnVbWXfLRGwGIRPztGXNjVVkbwgaosPWBNHyeLLSVaTllpiJSxEpMmANFktZQ -171174600
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_SubsystemError writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 377197053
+    ${output}=    Read Until    priority : -171174600
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : M
-    Should Contain    ${output}    priority : 377197053
+    Should Contain    ${output}    errorCode : VOlrywMtGtKZZdqrTCzEotollQKVaZVGztnVbWXfLRGwGIRPztGXNjVVkbwgaosPWBNHyeLLSVaTllpiJSxEpMmANFktZQ
+    Should Contain    ${output}    priority : -171174600

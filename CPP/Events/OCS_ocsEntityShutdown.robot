@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send q 15.0677 o 1733378783 250330685
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send NftcqkQcNOnjHIeYbUkfYKKSuleKrDWSZxoXYDliLFDRnpOoAXEmJXyxXUhdyUwGEEaGwWtxatEbenrCABEFmclYIvKwmVocSrCpiVsenpZBTWiwqHkKFYfrwiErUaAc 21.7063 lLGmlfACKgxAJtaeLzwYdfmnlvLVjHbbWbNoxQgvqIgwGUSnhVWEJXxGwzknNuUDDudxqWrJhDwkrIzqSTClNEcQaDWyhQFMWgYsUlSdwdAYYAOqIgPZJFdNcfWBVTlDcMBBvzVzEMXIrfIfkSaZvOHJQbANfTTZAOsuQzyFeheDcmQdCbBjgpYTkeuefaUDhxAtTQeJuKCeYtMsQNVGJKtIDAQKtJYueRfLUjbkuXqSaLfJfGtZpnhZKmcfPmMN -815042022 1815904542
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1
@@ -77,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 250330685
+    ${output}=    Read Until    priority : 1815904542
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityShutdown received =     1
-    Should Contain    ${output}    Name : q
-    Should Contain    ${output}    Identifier : 15.0677
-    Should Contain    ${output}    Timestamp : o
-    Should Contain    ${output}    Address : 1733378783
-    Should Contain    ${output}    priority : 250330685
+    Should Contain    ${output}    Name : NftcqkQcNOnjHIeYbUkfYKKSuleKrDWSZxoXYDliLFDRnpOoAXEmJXyxXUhdyUwGEEaGwWtxatEbenrCABEFmclYIvKwmVocSrCpiVsenpZBTWiwqHkKFYfrwiErUaAc
+    Should Contain    ${output}    Identifier : 21.7063
+    Should Contain    ${output}    Timestamp : lLGmlfACKgxAJtaeLzwYdfmnlvLVjHbbWbNoxQgvqIgwGUSnhVWEJXxGwzknNuUDDudxqWrJhDwkrIzqSTClNEcQaDWyhQFMWgYsUlSdwdAYYAOqIgPZJFdNcfWBVTlDcMBBvzVzEMXIrfIfkSaZvOHJQbANfTTZAOsuQzyFeheDcmQdCbBjgpYTkeuefaUDhxAtTQeJuKCeYtMsQNVGJKtIDAQKtJYueRfLUjbkuXqSaLfJfGtZpnhZKmcfPmMN
+    Should Contain    ${output}    Address : -815042022
+    Should Contain    ${output}    priority : 1815904542

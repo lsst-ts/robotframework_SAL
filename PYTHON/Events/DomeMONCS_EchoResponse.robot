@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py g -604981616
+    ${input}=    Write    python ${subSystem}_Event_${component}.py wMRNdtHnzKmTLAznOuwYHhRvTsUIufoXdXWVXDiKFKhWcANRlerUHIwzHXCFaVpFYxJFYgNfhASLeFtZHXiZYHRvhGHInlqgPgfeNsxvJzUKBTMzcyzEsNsjXVvmLTXzevzrfIJvIvwYaJHHMAHtsJohRZPAQylxdwlWQYGmSKVYHfPghtYLrkfmORSIvjJyYAxIPbmyjUMIVHyuqzDjOaGwyeWsDQJCFbVPizNjPxfcKebkDhICDauxwVYaAUaegczizJMANEopmdPmHhQrqBJAtGykyxlATjRnusDvJbDuIdVkjjoGmALvBoWTaUjSjtChCtslbcmbWaQBVioGYxlhUQXoVEIgYYooUYpKw 1436622094
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_EchoResponse writing a message containing :    1

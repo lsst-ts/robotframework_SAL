@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send y o f 347896300
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EKQRzAJkvlpynhZwnBLligsghOSijxcmVdyvjJesfWvBqzTIVRbBkKIkhgHLTCQZaXhYoAFzIVkgUVVRktbbayFJiLtoEfqjPTDjbomyIqOWNcMTXRTaWXSxaYezsHymtjFxRZAmPEXLNLopsCKwjRIJvjSAEdnuylxkYdioPUPYOGrEWtVoTTQzedqUMHyNwsEZjTalQVkAzeAYGEcivtcMmJsWhdGKqUBmLJIRMdNoqyJIMRcgKtJhxwCMnbyqDJHzNTfHbaeXzagccQCrZAKdZgYlLTNuhqMHTEZEsUsnaxJwdvovPVpyHjCiGnRcuAWqSiBbJUpXKPWJGvMweDZhPXJdvKXLQcEKpJCjxVppZcRRPytLDtmwynerwCMLZUdnIkyDgzqMAgFAoDAoBTKSlkFMKyZeHUauAOMZYymIdEcigomxhzlfnULlObZgADIzmiWlqxpCvCDooXLVvrWndkTNaakutlkVoXoiknFPpwuvsBagtYEbAPSDQBoxpWmcNXelIuFXussLgteNkVibFqkdWzdjehjcrcqmuEBXqXzcyAlMvIpCSwZaiXNScrCUbhwRTpQqPXXJAKnWcDTxoqFyavCQkVVtrABdyVxzMvfTcOtKoIGyeObpRLFDXKIycHhDsnUxKJbmJIQuNQddoERfVWByVsbJZfWzGafUQrDWvAjuUGWgMItHWUshFILxoSHXvKCerojToYEHYgXWWKSufQ UfMMjYgMFhWMrEGerwuHxQmqtKiyKNtRaNALSrTerafbBwUQOZFUnrhDuHdYjYKaGCPUrQXBaqCfbSZNJQnjshbQEaAQjYQPOFpIGYEpdNartiPVomMvguivoBtyHhKHXxSQNEYTnbYLzMwvppSWwvNxNkuZfHQCFezSwVVWTKPwupdHMTZPHDxhvDRZTgnumOgLiLQYMXTBWKkmzumEZsNJLPKcOinGQSxFzLQgWkIURjOrZnrRcupuev GxgSazRyOayEgdsOmwCGCKvNqcxxNqlBcwDdwNnKSArMjzOkAybNVUcPqcQSnMAHrSPxRVGNJbIRhhPjsFfAZUroJNsEzzMOQSbXMEcDLyorWNaRqKFDeZRVokIOjOEwdMYiGhOCNdyTjUVNCehraTlPEMGNSAIeRBfWPNqEFkOGGbGGtaLTzrIPzileBFUBHvJNFeFbcHpXHIiBDpIjwjVXfRWMsRYVTDULXOYmVcnnnRTYPHLeRPBhHgZjupLbvRXeyNFbYgyjpVCITTcuNciaLWjylrKYdyxrUkjNbRcgrlXSlIiFZgKQoHUpsJUrLhmQljgMHCsdEuDqKplezISybZmEynqMBtUrNUPRLFUvqXGNSXryttoQiBizGmNOEyhESgqdDRGsCvHrrHGfIBiILdFzZjvFFzIesItvTOzGydwLAroGsXXRqLUewJlKGCZckFYjNdxzfoKEwfxDqcreumTDBKBvUovVWkDcEVgyvuuFQf 865851683
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_limit writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 347896300
+    ${output}=    Read Until    priority : 865851683
     Log    ${output}
     Should Contain X Times    ${output}    === Event limit received =     1
-    Should Contain    ${output}    axis : y
-    Should Contain    ${output}    limit : o
-    Should Contain    ${output}    type : f
-    Should Contain    ${output}    priority : 347896300
+    Should Contain    ${output}    axis : EKQRzAJkvlpynhZwnBLligsghOSijxcmVdyvjJesfWvBqzTIVRbBkKIkhgHLTCQZaXhYoAFzIVkgUVVRktbbayFJiLtoEfqjPTDjbomyIqOWNcMTXRTaWXSxaYezsHymtjFxRZAmPEXLNLopsCKwjRIJvjSAEdnuylxkYdioPUPYOGrEWtVoTTQzedqUMHyNwsEZjTalQVkAzeAYGEcivtcMmJsWhdGKqUBmLJIRMdNoqyJIMRcgKtJhxwCMnbyqDJHzNTfHbaeXzagccQCrZAKdZgYlLTNuhqMHTEZEsUsnaxJwdvovPVpyHjCiGnRcuAWqSiBbJUpXKPWJGvMweDZhPXJdvKXLQcEKpJCjxVppZcRRPytLDtmwynerwCMLZUdnIkyDgzqMAgFAoDAoBTKSlkFMKyZeHUauAOMZYymIdEcigomxhzlfnULlObZgADIzmiWlqxpCvCDooXLVvrWndkTNaakutlkVoXoiknFPpwuvsBagtYEbAPSDQBoxpWmcNXelIuFXussLgteNkVibFqkdWzdjehjcrcqmuEBXqXzcyAlMvIpCSwZaiXNScrCUbhwRTpQqPXXJAKnWcDTxoqFyavCQkVVtrABdyVxzMvfTcOtKoIGyeObpRLFDXKIycHhDsnUxKJbmJIQuNQddoERfVWByVsbJZfWzGafUQrDWvAjuUGWgMItHWUshFILxoSHXvKCerojToYEHYgXWWKSufQ
+    Should Contain    ${output}    limit : UfMMjYgMFhWMrEGerwuHxQmqtKiyKNtRaNALSrTerafbBwUQOZFUnrhDuHdYjYKaGCPUrQXBaqCfbSZNJQnjshbQEaAQjYQPOFpIGYEpdNartiPVomMvguivoBtyHhKHXxSQNEYTnbYLzMwvppSWwvNxNkuZfHQCFezSwVVWTKPwupdHMTZPHDxhvDRZTgnumOgLiLQYMXTBWKkmzumEZsNJLPKcOinGQSxFzLQgWkIURjOrZnrRcupuev
+    Should Contain    ${output}    type : GxgSazRyOayEgdsOmwCGCKvNqcxxNqlBcwDdwNnKSArMjzOkAybNVUcPqcQSnMAHrSPxRVGNJbIRhhPjsFfAZUroJNsEzzMOQSbXMEcDLyorWNaRqKFDeZRVokIOjOEwdMYiGhOCNdyTjUVNCehraTlPEMGNSAIeRBfWPNqEFkOGGbGGtaLTzrIPzileBFUBHvJNFeFbcHpXHIiBDpIjwjVXfRWMsRYVTDULXOYmVcnnnRTYPHLeRPBhHgZjupLbvRXeyNFbYgyjpVCITTcuNciaLWjylrKYdyxrUkjNbRcgrlXSlIiFZgKQoHUpsJUrLhmQljgMHCsdEuDqKplezISybZmEynqMBtUrNUPRLFUvqXGNSXryttoQiBizGmNOEyhESgqdDRGsCvHrrHGfIBiILdFzZjvFFzIesItvTOzGydwLAroGsXXRqLUewJlKGCZckFYjNdxzfoKEwfxDqcreumTDBKBvUovVWkDcEVgyvuuFQf
+    Should Contain    ${output}    priority : 865851683

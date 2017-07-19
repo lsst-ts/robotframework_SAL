@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py H 32.5612 R -2056541227
+    ${input}=    Write    python ${subSystem}_Event_${component}.py WwkiQHCYSaDTPmLVyRgOlEGwGRqFUlfwKZbtKjnykEoMagprNNePNbdZyJiOCyuDUAHXwmNIxyFEVkPtYmEyyeGuGKgVykyYAFNGJxGFSgKDcoyYIflHNvQHNEjzpFnaAjSnqADGNUGJeuNcCvHRWQSPFeQMlGahpSumrElYNSBOuGSnjNkwRbAFwxrtllPrphUWcApNemfUTNHhFYwkfFUIlqVkSPMRtAUpddGkQFWVFXuSujIWzlzarqswqOAP 84.742 GndbkJZPXJcCPHrJXrftbEUJlYdZRCjMkcbMxggIIrJZgFVbSRbAosNDKtvSVaTynamrTKYFkNHoAcjRqaxiyhlzTSGDUYQbWIXmHfbjOqDENizuvGALYLGFSkdCIuXgqyljxVIljLXhqXNpglyvYtOxLbWMeQcxQTbWFbVoheEjPDgpblicRmcTopVUJtuHwDYAnQTosGoOkYyoQbEtbYScZcpyLgseTmHwhKtvGXiwrIFaqeboolEFbFCQGsZV -1913653057
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsNextScript writing a message containing :    1

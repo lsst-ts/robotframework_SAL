@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py h 82.8478 W -1084989575 1343622462
+    ${input}=    Write    python ${subSystem}_Event_${component}.py tqtnDuErwJplHbQuCkyEbkUlcOPYMaDhyagmwGhUfqnPsiStIkfPhrMoDCdwvvdGeRsvmHAlWGdtkjmFYqpJyYxjtqTrmVbiYTijHgUszqxpqWEYMAgAsEJeMRIfcOfs 8.3258 AUQYwVPwsLKiyTHUFLCeJKAEskZZgTbmGZGiCIjXcKvtWaNDCxLTfrYCJxsDASKOLdgKkPvmLUNDrbpESPecOqWUoEXmfhRZhEHjHZWzpOZFsOZFLshWPNFEphUDCZrPNatSoaWqieJEdIqlFcRtfSNZfsmyzjQTBiEAiHSvkeZglhTvFHdzcIJuCLbNeSfcIJZmwvGHdTPWAPLYppfyxYbDDSLOvREQpBNfuTEAjCfEHMWUXTknGpOLdSctppsC -1934809423 1603092966
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntityStartup writing a message containing :    1

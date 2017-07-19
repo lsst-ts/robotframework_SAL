@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send m 337490170
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YadhsfXrAGOgTRgCKNJBXmINUWEeVYjmgiZNbmIbHXBCbtzslmdihPGjPvpmhkVFdZyBMwhsopeiNGvnbdIjILoiydnVMxRBcEoQBqpJZDrepmtRVdsjyUItdekhSjTsQizfKnrhieNleGqpfLuJWCExxSVzwWxsLlwEQbNemLpohoAzLsQfGnDxIzHWAvqHpBWJXtVLaZQnwXMikQMoksBKvkXxwNwtbodSzKJaBvjnjyEpMZYowcNwgmEePGeaAJbpgZbUEPcKTeAVyjbaeLgsCqnQGUfyjNWMaiXPfTxhpNVeCXuNXpquOkxkTPqwHijgNoqsRQNcgQipsrjWsBvRIJNzfpNfhTvgzIzvlApXKBMQPxtnkJPryjvDPjZnZHNHzIJnqrJZfswlpBLhqAzKSWDSnD -347676265
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_MovementPrevented writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 337490170
+    ${output}=    Read Until    priority : -347676265
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    causeId : m
-    Should Contain    ${output}    priority : 337490170
+    Should Contain    ${output}    causeId : YadhsfXrAGOgTRgCKNJBXmINUWEeVYjmgiZNbmIbHXBCbtzslmdihPGjPvpmhkVFdZyBMwhsopeiNGvnbdIjILoiydnVMxRBcEoQBqpJZDrepmtRVdsjyUItdekhSjTsQizfKnrhieNleGqpfLuJWCExxSVzwWxsLlwEQbNemLpohoAzLsQfGnDxIzHWAvqHpBWJXtVLaZQnwXMikQMoksBKvkXxwNwtbodSzKJaBvjnjyEpMZYowcNwgmEePGeaAJbpgZbUEPcKTeAVyjbaeLgsCqnQGUfyjNWMaiXPfTxhpNVeCXuNXpquOkxkTPqwHijgNoqsRQNcgQipsrjWsBvRIJNzfpNfhTvgzIzvlApXKBMQPxtnkJPryjvDPjZnZHNHzIJnqrJZfswlpBLhqAzKSWDSnD
+    Should Contain    ${output}    priority : -347676265

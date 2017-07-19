@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send x -855226747
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EqPlkatDPsENEMjljzHRifFJsozClJHcAmphCcZYtHAVSiQeEtYRLZtpgYWDOEduHNTAWYCREaICagFYqCEUnuXuggxInVVTShEhrvIjmmGwnkICbHlLzIhsfxTfcrJZBknqqGzFiYayzZruLuMmDIQOgtiRWUDtZrAjuCfESqPUUzzjBnasOOwUeJvOxyuMBgYrRLfKITqCMOYWAxLrgLZYJAchEJtDOSgprUebgWjPKjbQSTqAyoLipLkpyBZqWdusqzNrZKocMrDSZdJAZlGLagahtCrbVsVTSPxbYfrxJEhEZEayFcEGOsvcoWiwalqSwFsckaYiVJGOSQZhsoqZGaQwaFLxCFaTYEhgWzPLGVjToSWzEFcEURsFgbObhaMcALUmOhnyeFBEfVileKVZoUWIhRfIzmCCeWmwPsQEAndSMTFoIHFcvVLeyxdEvMSdtxoIvxRvnGUePCQehaElLXmoivLyxIbMiufyMcNvrMWHBOdWFJdmRuItNaqYKlRltrgfNbtZGIPoOzLagwAjsDHnEJWjBYDEqRwZlmASsBVumKXOdMwUZRVNiLDpVlTtNUzPAnsoUdkEHxzdIjfohDOaffpNaGiLJIvqLVUEQfmonECwTGdUzJkNqYghFtilEXvUKzHoVGxHvzRbKPsMaLKkwdxLrTRyAfygFlDODkHAJC 1256626741
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startIntegration writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -855226747
+    ${output}=    Read Until    priority : 1256626741
     Log    ${output}
     Should Contain X Times    ${output}    === Event startIntegration received =     1
-    Should Contain    ${output}    imageName : x
-    Should Contain    ${output}    priority : -855226747
+    Should Contain    ${output}    imageName : EqPlkatDPsENEMjljzHRifFJsozClJHcAmphCcZYtHAVSiQeEtYRLZtpgYWDOEduHNTAWYCREaICagFYqCEUnuXuggxInVVTShEhrvIjmmGwnkICbHlLzIhsfxTfcrJZBknqqGzFiYayzZruLuMmDIQOgtiRWUDtZrAjuCfESqPUUzzjBnasOOwUeJvOxyuMBgYrRLfKITqCMOYWAxLrgLZYJAchEJtDOSgprUebgWjPKjbQSTqAyoLipLkpyBZqWdusqzNrZKocMrDSZdJAZlGLagahtCrbVsVTSPxbYfrxJEhEZEayFcEGOsvcoWiwalqSwFsckaYiVJGOSQZhsoqZGaQwaFLxCFaTYEhgWzPLGVjToSWzEFcEURsFgbObhaMcALUmOhnyeFBEfVileKVZoUWIhRfIzmCCeWmwPsQEAndSMTFoIHFcvVLeyxdEvMSdtxoIvxRvnGUePCQehaElLXmoivLyxIbMiufyMcNvrMWHBOdWFJdmRuItNaqYKlRltrgfNbtZGIPoOzLagwAjsDHnEJWjBYDEqRwZlmASsBVumKXOdMwUZRVNiLDpVlTtNUzPAnsoUdkEHxzdIjfohDOaffpNaGiLJIvqLVUEQfmonECwTGdUzJkNqYghFtilEXvUKzHoVGxHvzRbKPsMaLKkwdxLrTRyAfygFlDODkHAJC
+    Should Contain    ${output}    priority : 1256626741

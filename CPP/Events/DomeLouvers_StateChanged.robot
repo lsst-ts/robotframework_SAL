@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 6987 -24552 -2002086823
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28123 -24420 -1744199338
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_StateChanged writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2002086823
+    ${output}=    Read Until    priority : -1744199338
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    louverID : 6987
-    Should Contain    ${output}    newState : -24552
-    Should Contain    ${output}    priority : -2002086823
+    Should Contain    ${output}    louverID : 28123
+    Should Contain    ${output}    newState : -24420
+    Should Contain    ${output}    priority : -1744199338

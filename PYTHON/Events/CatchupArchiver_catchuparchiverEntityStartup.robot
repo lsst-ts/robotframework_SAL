@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py f 93.6386 y 1819859294 1053721079
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ZrGUfEgCsMrTnBMgSTHHBixfsTdaNCaxPqaekNMYmquRliaeuYtIhpVhjdsWLabVYqrDvtbLagOmVdUktzDJShSXIyIslsswoGqLlVLHiZHqxAmdKTnpMMCTDJRblmJz 40.1213 bDByGaZPMYMCGMYonHcsilTKqLxIbidVlSCnleBYdYyYULatEDTcIqfgcdgsnAnwGxuSqBDoAnyJBJTCrSbVyomZcZeWYDndWzzooDfNkwFIkdNGutGeFtvrQYtYJoatZAeHlzUfQkhMnaSgOLyailEtcehEvZvHYSQlHFIWfLzERzhzojQIfAlyJdiJVaQmFnNAnPsNUBoiGovGYPPmtItCdUzmHaRKHfRBIulIAhHnabXjOJWTAmytNaeivECu 1312640494 1130437787
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntityStartup writing a message containing :    1

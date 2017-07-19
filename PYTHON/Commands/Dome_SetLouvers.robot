@@ -57,7 +57,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 18398 -20449 -32152 -7884 -15993 19409 32026 -31080 19013 -32222 -29218 -23395 -13635 16741 11787 -4294 -31075 4284 -24392 -13590 -14484 385 -5100 14531 19571 14587 -24242 29671 24037 -18255 23347 30437 -17790 -19906
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7108 -10917 19494 -1571 -32500 -25639 -27702 7173 20061 22532 -19283 -25657 -23297 21487 32489 19432 29710 -2654 -9863 -11213 7719 30170 27998 26238 -31329 -17046 26958 26886 29239 -27484 -1894 -20053 13563 14746
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +80,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 18398 -20449 -32152 -7884 -15993 19409 32026 -31080 19013 -32222 -29218 -23395 -13635 16741 11787 -4294 -31075 4284 -24392 -13590 -14484 385 -5100 14531 19571 14587 -24242 29671 24037 -18255 23347 30437 -17790 -19906
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7108 -10917 19494 -1571 -32500 -25639 -27702 7173 20061 22532 -19283 -25657 -23297 21487 32489 19432 29710 -2654 -9863 -11213 7719 30170 27998 26238 -31329 -17046 26958 26886 29239 -27484 -1894 -20053 13563 14746
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,7 +88,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    position : 18398    1
+    Should Contain X Times    ${output}    position : -7108    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -97,7 +97,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    position(34) = [18398, -20449, -32152, -7884, -15993, 19409, 32026, -31080, 19013, -32222, -29218, -23395, -13635, 16741, 11787, -4294, -31075, 4284, -24392, -13590, -14484, 385, -5100, 14531, 19571, 14587, -24242, 29671, 24037, -18255, 23347, 30437, -17790, -19906]    1
+    Should Contain X Times    ${output}    position(34) = [-7108, -10917, 19494, -1571, -32500, -25639, -27702, 7173, 20061, 22532, -19283, -25657, -23297, 21487, 32489, 19432, 29710, -2654, -9863, -11213, 7719, 30170, 27998, 26238, -31329, -17046, 26958, 26886, 29239, -27484, -1894, -20053, 13563, 14746]    1
     Should Contain X Times    ${output}    === [ackCommand_SetLouvers] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send H K -1883927241
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send CODaHoHuMmrltjcTyYrNHmtwpedhFWTAlfKvaQJJREfpslnZyElKylEleRFMbcurUAYAYFcRKElXtXExOCpDhMPZuxdWTFkqyRvbhmCVIzdPAqrfhDSnkTHYavZCkkkLaqLkLOWPazofNCjTaPJzPWXicBnqFVEssWYZkCVDKfncKObbgXhjmjIgCSAXsvkdpQAxDAkNRkqOCEJrihaQhXYyATkrqhEtExslpZZZWgvGjHGVaOBnGQgZejwFnVDm LibcWfMrXlLlbVwMhbyEUfwuaIkaZxNQhntxnMUWRsgOnEnFzHvIbhMnvJAdQamb 1259686105
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -77,9 +77,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1883927241
+    ${output}=    Read Until    priority : 1259686105
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : H
-    Should Contain    ${output}    images_match_URI : K
-    Should Contain    ${output}    priority : -1883927241
+    Should Contain    ${output}    images_location_URI : CODaHoHuMmrltjcTyYrNHmtwpedhFWTAlfKvaQJJREfpslnZyElKylEleRFMbcurUAYAYFcRKElXtXExOCpDhMPZuxdWTFkqyRvbhmCVIzdPAqrfhDSnkTHYavZCkkkLaqLkLOWPazofNCjTaPJzPWXicBnqFVEssWYZkCVDKfncKObbgXhjmjIgCSAXsvkdpQAxDAkNRkqOCEJrihaQhXYyATkrqhEtExslpZZZWgvGjHGVaOBnGQgZejwFnVDm
+    Should Contain    ${output}    images_match_URI : LibcWfMrXlLlbVwMhbyEUfwuaIkaZxNQhntxnMUWRsgOnEnFzHvIbhMnvJAdQamb
+    Should Contain    ${output}    priority : 1259686105

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -816020497
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1634600320
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_AccelerationLimitSubsided writing a message containing :    1
@@ -77,7 +77,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -816020497
+    ${output}=    Read Until    priority : -1634600320
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerationLimitSubsided received =     1
-    Should Contain    ${output}    priority : -816020497
+    Should Contain    ${output}    priority : -1634600320

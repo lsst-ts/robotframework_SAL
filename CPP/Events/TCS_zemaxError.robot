@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send S -817473036
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ewFzBmfzdOKXSRSdBgyYTZAigRqqcpsLrmpajEErGygGxcmqQqrnmvlbDVBneIrkhcbhbLxNTrFhpOHbHHWVbapfFnnAGYodrewQnjbyhEpqTGrMNSrjuyRbzOdgJvlv -1856176556
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -817473036
+    ${output}=    Read Until    priority : -1856176556
     Log    ${output}
     Should Contain X Times    ${output}    === Event zemaxError received =     1
-    Should Contain    ${output}    details : S
-    Should Contain    ${output}    priority : -817473036
+    Should Contain    ${output}    details : ewFzBmfzdOKXSRSdBgyYTZAigRqqcpsLrmpajEErGygGxcmqQqrnmvlbDVBneIrkhcbhbLxNTrFhpOHbHHWVbapfFnnAGYodrewQnjbyhEpqTGrMNSrjuyRbzOdgJvlv
+    Should Contain    ${output}    priority : -1856176556

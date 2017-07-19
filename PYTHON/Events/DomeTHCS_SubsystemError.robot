@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py B -1243371608
+    ${input}=    Write    python ${subSystem}_Event_${component}.py rfevZHIBBLPAcHvkkiHROTdHEhmxusCMjBMAeJvpuGokxFABAsQWYphzJjIvDijEgYnBEmBiTkTDVbHkcmlNqBoccXWlfcvAjiLQziXTFoVxFEHFSPKxTRIUxKWGoiICOnPLzyvJZmjlfPMFsmvjoRMlzGotRYlSrvBHTODbeoIhUgefJCHaAiTbmPaewymzhRfwRupkoyyFWMEMTIelbXpQLSjVvJLfJlPAURgEgaVVkeiFBvXOlZjeU -1433545665
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send Q 50.1393 T 2083851857 f v s U K -1976458032
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ERBtBhLzueHNwyhGAbcNoDMGGOLWKqzMCqYQjrvTfOvWbmRvBpTMrTJlxyroeUqiBOlxFNSMJbBYMfxhahuHJCgrMFZYrBLwfTzlUdXGgJSnwllbmVgmeLQOzFCIzVmY 49.6473 shnAazRJlGTlyCggSzagRGtXzrgOknKbIoWyJwoGCSaFlZLbGbVcTJcpdrWCLUdogvfSqsZHefJeyEsejNZjrrlfCAakqHefeGqbiUpEUiVyzMVjEqflTJcSNJUiEiKUTZlSTPVxBuRrwrdykGwnBtBipMLPXixujEABtQZymOzDSbRWHYEIGELSubFSXJbLkDZXkIcpnizQudqlbSqbMjRaTeZHJQRhdJxvcXzpCyFddifuaxnEwyCkXotCNTbh -1282186607 MfKpVNPzOIAQOnYkmOoqaWmFmsabPwOQxhTrhYZKLQNHAyqcBXSySKhHIBPMBYiMvVOycMdDyAeYARFusBtwUGAOOXakuNLLzNaEApaTMXYpvyBrLoPVBTgwMNYshTFM rsbsxDFdcdbWrZKFRecyCdZbzrVOhhZDomoOUDnrkAPCpuoVFVNUPrjpsTuhhOwiVYcaYJToxuPazCoRbjTLLKTFlAurrOumZbmKqirJXIxyrwItgYyXXUcrtuOnllBc GTmYiuwnudVRAzPtqBBzUvhLuLIJXiAjxHQbeMHUtlAXpeZpjPqfFaOcjwsFRZLqBsktKAQDddlPYTOAfNUlpgdhjtBvfClCWTmryMeiATqfmoUWcGbuMSVawUUVBQfw jrMcqPSsALrSIBNXpgTyyZejmNpAVXKtugtiLTUcKcyGQnVpesvUxBlrWoNsctlyQHAlVbyBgOAMQxLnOQDpOoULzRpNPaMwiHUQNMSapvKfNFVtAHQjqbeGTiZSimLJ vHfenSLReYeGxHVqvQzqHkKobJTXonXozQErQrcGvupFfmsCOWhMduNtYlcjcDqQSivTOSfGnHTuuQQiREmzWjcXCXHLawLQMexRMnRWDwFjSGdNCwiVcvLlaSTvfXZO 1208956390
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntitySummaryState writing a message containing :    1
@@ -77,16 +77,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1976458032
+    ${output}=    Read Until    priority : 1208956390
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntitySummaryState received =     1
-    Should Contain    ${output}    Name : Q
-    Should Contain    ${output}    Identifier : 50.1393
-    Should Contain    ${output}    Timestamp : T
-    Should Contain    ${output}    Address : 2083851857
-    Should Contain    ${output}    CurrentState : f
-    Should Contain    ${output}    PreviousState : v
-    Should Contain    ${output}    Executing : s
-    Should Contain    ${output}    CommandsAvailable : U
-    Should Contain    ${output}    ConfigurationsAvailable : K
-    Should Contain    ${output}    priority : -1976458032
+    Should Contain    ${output}    Name : ERBtBhLzueHNwyhGAbcNoDMGGOLWKqzMCqYQjrvTfOvWbmRvBpTMrTJlxyroeUqiBOlxFNSMJbBYMfxhahuHJCgrMFZYrBLwfTzlUdXGgJSnwllbmVgmeLQOzFCIzVmY
+    Should Contain    ${output}    Identifier : 49.6473
+    Should Contain    ${output}    Timestamp : shnAazRJlGTlyCggSzagRGtXzrgOknKbIoWyJwoGCSaFlZLbGbVcTJcpdrWCLUdogvfSqsZHefJeyEsejNZjrrlfCAakqHefeGqbiUpEUiVyzMVjEqflTJcSNJUiEiKUTZlSTPVxBuRrwrdykGwnBtBipMLPXixujEABtQZymOzDSbRWHYEIGELSubFSXJbLkDZXkIcpnizQudqlbSqbMjRaTeZHJQRhdJxvcXzpCyFddifuaxnEwyCkXotCNTbh
+    Should Contain    ${output}    Address : -1282186607
+    Should Contain    ${output}    CurrentState : MfKpVNPzOIAQOnYkmOoqaWmFmsabPwOQxhTrhYZKLQNHAyqcBXSySKhHIBPMBYiMvVOycMdDyAeYARFusBtwUGAOOXakuNLLzNaEApaTMXYpvyBrLoPVBTgwMNYshTFM
+    Should Contain    ${output}    PreviousState : rsbsxDFdcdbWrZKFRecyCdZbzrVOhhZDomoOUDnrkAPCpuoVFVNUPrjpsTuhhOwiVYcaYJToxuPazCoRbjTLLKTFlAurrOumZbmKqirJXIxyrwItgYyXXUcrtuOnllBc
+    Should Contain    ${output}    Executing : GTmYiuwnudVRAzPtqBBzUvhLuLIJXiAjxHQbeMHUtlAXpeZpjPqfFaOcjwsFRZLqBsktKAQDddlPYTOAfNUlpgdhjtBvfClCWTmryMeiATqfmoUWcGbuMSVawUUVBQfw
+    Should Contain    ${output}    CommandsAvailable : jrMcqPSsALrSIBNXpgTyyZejmNpAVXKtugtiLTUcKcyGQnVpesvUxBlrWoNsctlyQHAlVbyBgOAMQxLnOQDpOoULzRpNPaMwiHUQNMSapvKfNFVtAHQjqbeGTiZSimLJ
+    Should Contain    ${output}    ConfigurationsAvailable : vHfenSLReYeGxHVqvQzqHkKobJTXonXozQErQrcGvupFfmsCOWhMduNtYlcjcDqQSivTOSfGnHTuuQQiREmzWjcXCXHLawLQMexRMnRWDwFjSGdNCwiVcvLlaSTvfXZO
+    Should Contain    ${output}    priority : 1208956390

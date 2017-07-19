@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send o 2085738635
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UJwpsfqBtJpxioSluaImdlzjBjeBQNAObBhrWTfTRsOuKJKTSZTuJRVjqiamBzmawtQrBrHOMfSYhsGHsZoWVWuChaFsPhNaXEwZyvsxxRazyaxCKLtAefklxRywcLMVhPGkuVHaIxliEgkGgkJqTjkqVlzvcNvRgCEQZLjBVojdukgKXkiXNNzlWPnbiVrAHsCBYVYAjrBVHHURhEBAnuyOxHMTJVdnqAEoWypEZlccXFbfKLOlPhCkpRnXyJOxBUERFneyizAivKfCLfcVxMzBMoPtCCBqppkBRVoVpmFbTtKprZTCezbVHowEtLfYeVhGfVVrYbrQCOHmrgROWiaArMrYsnbeSkIqtuRPPEfZXRhzDYqdSrSNDFzeUYeHnKHRGJPWZokZcXkPPpGwYvsxThwIRHeHMMMEEEWmwtmrWUhGnZjxjSZvyWnHNnOQpKZWKVMnzTdEaNnfedABHkaoKcwePPLCAoGlWYILJLXbwVULSnhmvYxNmifOZRBZdPGNLTarloBeZYGZomjlJOHEifQAstCvdjiBmJdNSDFrjyEielymGwnvYvzhpjUqokIUUOIxEcIRwhUwfNKWXOGTVsUbLzKGyIvBLgrkFoBGLuVUNugVxZmVucwkLMDbvMLDyFpafOjacfJEONuMedpvDmJLPxRWBOWxiRVElWJSeHVjoY -2128674180
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_interlock writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2085738635
+    ${output}=    Read Until    priority : -2128674180
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : o
-    Should Contain    ${output}    priority : 2085738635
+    Should Contain    ${output}    detail : UJwpsfqBtJpxioSluaImdlzjBjeBQNAObBhrWTfTRsOuKJKTSZTuJRVjqiamBzmawtQrBrHOMfSYhsGHsZoWVWuChaFsPhNaXEwZyvsxxRazyaxCKLtAefklxRywcLMVhPGkuVHaIxliEgkGgkJqTjkqVlzvcNvRgCEQZLjBVojdukgKXkiXNNzlWPnbiVrAHsCBYVYAjrBVHHURhEBAnuyOxHMTJVdnqAEoWypEZlccXFbfKLOlPhCkpRnXyJOxBUERFneyizAivKfCLfcVxMzBMoPtCCBqppkBRVoVpmFbTtKprZTCezbVHowEtLfYeVhGfVVrYbrQCOHmrgROWiaArMrYsnbeSkIqtuRPPEfZXRhzDYqdSrSNDFzeUYeHnKHRGJPWZokZcXkPPpGwYvsxThwIRHeHMMMEEEWmwtmrWUhGnZjxjSZvyWnHNnOQpKZWKVMnzTdEaNnfedABHkaoKcwePPLCAoGlWYILJLXbwVULSnhmvYxNmifOZRBZdPGNLTarloBeZYGZomjlJOHEifQAstCvdjiBmJdNSDFrjyEielymGwnvYvzhpjUqokIUUOIxEcIRwhUwfNKWXOGTVsUbLzKGyIvBLgrkFoBGLuVUNugVxZmVucwkLMDbvMLDyFpafOjacfJEONuMedpvDmJLPxRWBOWxiRVElWJSeHVjoY
+    Should Contain    ${output}    priority : -2128674180

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send d 22.7865 t -34743002
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UHGZuBTjsJsznshJDCUEKOmGgJTbuYswrEbzPjlVDHWUVoZFUQelrikygcTHQIuKxJYxHqOCPbtBXEkvDNVLNrCZbUTxrEcJARXXjngZlZbagUdoVXeQyEUhmPFmLEIekVOYNoCnqYClvbKIBUqlnwWuQphsIlIrSlKxHvnOqKJSleamjlaHmftKuFHYhfPARlhASJatvKqXgcpcXJyDwIgRsQMDoEwWpzUjaynlvuMOKBDCTyepTTBceACBnkCu 38.9236 jBlxTJHEKgrYjLYtZYLOtifBXMVVOGLCTwaqeRIpdsuIrLbXGrENJGkmbJkXBHVuaGZSMieCRwhqYPCKaZuinMlxtZzbUyhbDAwbWxKrGiuDeTcTsNAMPWBpEOlxrzBQqGENkyqUtlSSUVwkdzaeabRUmQJYUkqHGoQnUtHPTQUxsSFuXyvjabBYooEEATbUrEBrpMBjufvPCbfenFhIobbwFZhwWhNLgCLPCmXRtsnNilprhZIiuQbIVZyjlzlm 1320132008
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptStart writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -34743002
+    ${output}=    Read Until    priority : 1320132008
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptStart received =     1
-    Should Contain    ${output}    ocsScriptName : d
-    Should Contain    ${output}    ocsScriptIdentifier : 22.7865
-    Should Contain    ${output}    ocsScriptTimestamp : t
-    Should Contain    ${output}    priority : -34743002
+    Should Contain    ${output}    ocsScriptName : UHGZuBTjsJsznshJDCUEKOmGgJTbuYswrEbzPjlVDHWUVoZFUQelrikygcTHQIuKxJYxHqOCPbtBXEkvDNVLNrCZbUTxrEcJARXXjngZlZbagUdoVXeQyEUhmPFmLEIekVOYNoCnqYClvbKIBUqlnwWuQphsIlIrSlKxHvnOqKJSleamjlaHmftKuFHYhfPARlhASJatvKqXgcpcXJyDwIgRsQMDoEwWpzUjaynlvuMOKBDCTyepTTBceACBnkCu
+    Should Contain    ${output}    ocsScriptIdentifier : 38.9236
+    Should Contain    ${output}    ocsScriptTimestamp : jBlxTJHEKgrYjLYtZYLOtifBXMVVOGLCTwaqeRIpdsuIrLbXGrENJGkmbJkXBHVuaGZSMieCRwhqYPCKaZuinMlxtZzbUyhbDAwbWxKrGiuDeTcTsNAMPWBpEOlxrzBQqGENkyqUtlSSUVwkdzaeabRUmQJYUkqHGoQnUtHPTQUxsSFuXyvjabBYooEEATbUrEBrpMBjufvPCbfenFhIobbwFZhwWhNLgCLPCmXRtsnNilprhZIiuQbIVZyjlzlm
+    Should Contain    ${output}    priority : 1320132008

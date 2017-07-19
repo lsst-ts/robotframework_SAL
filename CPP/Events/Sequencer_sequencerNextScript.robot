@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send m 37.0018 A 1401763843
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kFVcOHcPfMzJvFACsgwFZVnmYPUTgGwKQfoQReyrzURpMKBzSMKCdxEHbXNUdvtxFVEXnnzmKznNgeSozkSWMWqLuIJnPAmdrxsBSRwCEzVvNzKePyjDZMRaOJekPnsUybMwKjbreoRsOQtkgVgNGkBTTktGYZZpnfFZfVdHbQTUILHapsLVseDXfqayZYgdqAUrUmByzHQWPKLHonAlHtzsiuqjFzqulFGDNMzMnoEtAvxwkQvjwLYSjCAXbzEb 12.8425 BoqebwFgPlvFEBOSLlBWyBmluVusVlMgsdbdnKzoJyACBKBnJkgqILDkMwoKEFsMnEweyLdSmHkipBrxrNvjhjvgGWzNTnxJCqFRiOXHybxokUsFxWJJWalfSHSSJxgOetmDXqfnKGKdwEdTZPWPVMAbZWAfQecFqUDospxXYlTFmroqRlNYRpjxnEtEzlpvHCjDwBBnkbggMzKZwzyXuHFEISqeFftRZoAhPPxdFufXFrxwbwAMkYPdhiompcnd -1058546835
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerNextScript writing a message containing :    1
@@ -77,10 +77,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1401763843
+    ${output}=    Read Until    priority : -1058546835
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerNextScript received =     1
-    Should Contain    ${output}    sequencerScriptName : m
-    Should Contain    ${output}    sequencerScriptIdentifier : 37.0018
-    Should Contain    ${output}    sequencerScriptTimestamp : A
-    Should Contain    ${output}    priority : 1401763843
+    Should Contain    ${output}    sequencerScriptName : kFVcOHcPfMzJvFACsgwFZVnmYPUTgGwKQfoQReyrzURpMKBzSMKCdxEHbXNUdvtxFVEXnnzmKznNgeSozkSWMWqLuIJnPAmdrxsBSRwCEzVvNzKePyjDZMRaOJekPnsUybMwKjbreoRsOQtkgVgNGkBTTktGYZZpnfFZfVdHbQTUILHapsLVseDXfqayZYgdqAUrUmByzHQWPKLHonAlHtzsiuqjFzqulFGDNMzMnoEtAvxwkQvjwLYSjCAXbzEb
+    Should Contain    ${output}    sequencerScriptIdentifier : 12.8425
+    Should Contain    ${output}    sequencerScriptTimestamp : BoqebwFgPlvFEBOSLlBWyBmluVusVlMgsdbdnKzoJyACBKBnJkgqILDkMwoKEFsMnEweyLdSmHkipBrxrNvjhjvgGWzNTnxJCqFRiOXHybxokUsFxWJJWalfSHSSJxgOetmDXqfnKGKdwEdTZPWPVMAbZWAfQecFqUDospxXYlTFmroqRlNYRpjxnEtEzlpvHCjDwBBnkbggMzKZwzyXuHFEISqeFftRZoAhPPxdFufXFrxwbwAMkYPdhiompcnd
+    Should Contain    ${output}    priority : -1058546835

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send U X 1173531187 2.2136 -2090665456
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YuTcEHZwbkVgXTfcSoXXLZxXdALhuiZNPtajqaQLOlSiCHtxITHmGVqntkGvitUSPjdPLAuldbGQmWPqCRIpbrWInAQLnUAwrsDKnLDuiUgcSxFEFNpIpwSFYEDKNQWbCYlTFpxmGeIQMbedWQQnXWVXHQeCwYkndpVxVqaAUjTUUBOoGdEJqZnVjRBsNZyZWufPOtuonLwcrxKSvFMaukUEgeQeFxCJWFYxFOwQAhCgASltihHMMcpGwKcFbosIKWviDmDFgkywnEEWYwpPkzezdbtEnSiljskoNMHKlImLZbrEjRvQewoTUArzQZotUJzyshyMxzMrsXHpPpVXTDUiRVjZJAmRXhDMtKnuULXItCDwQKdXKcG fZTWrCXvocOMtKDUTnXPQjnSahuJVtPgvcSfEiXePWuHUzTXYHzTbbjThqCrrRqfyYRVWdisRFdvzxzQksCLUBsGrLEvtlDciKMNmnOusWjarMWUaJOBHbRppCadDtynidBkGBWdTVemyAXSdrPtzwoqwykwjEiLgrONSsjsDKALWMTPXFvFJPiZjocNActROiTYTSafAUIuKLBKSsWtCvnsaYKWAlPOlTziTwoVhYlTBlHsCRkLbEnNWILPoevBTMLNWkUmfIyrWwmPdKYXaw -404290242 53.0755 -300613827
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -77,11 +77,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2090665456
+    ${output}=    Read Until    priority : -300613827
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    axis : U
-    Should Contain    ${output}    device : X
-    Should Contain    ${output}    severity : 1173531187
-    Should Contain    ${output}    temp : 2.2136
-    Should Contain    ${output}    priority : -2090665456
+    Should Contain    ${output}    axis : YuTcEHZwbkVgXTfcSoXXLZxXdALhuiZNPtajqaQLOlSiCHtxITHmGVqntkGvitUSPjdPLAuldbGQmWPqCRIpbrWInAQLnUAwrsDKnLDuiUgcSxFEFNpIpwSFYEDKNQWbCYlTFpxmGeIQMbedWQQnXWVXHQeCwYkndpVxVqaAUjTUUBOoGdEJqZnVjRBsNZyZWufPOtuonLwcrxKSvFMaukUEgeQeFxCJWFYxFOwQAhCgASltihHMMcpGwKcFbosIKWviDmDFgkywnEEWYwpPkzezdbtEnSiljskoNMHKlImLZbrEjRvQewoTUArzQZotUJzyshyMxzMrsXHpPpVXTDUiRVjZJAmRXhDMtKnuULXItCDwQKdXKcG
+    Should Contain    ${output}    device : fZTWrCXvocOMtKDUTnXPQjnSahuJVtPgvcSfEiXePWuHUzTXYHzTbbjThqCrrRqfyYRVWdisRFdvzxzQksCLUBsGrLEvtlDciKMNmnOusWjarMWUaJOBHbRppCadDtynidBkGBWdTVemyAXSdrPtzwoqwykwjEiLgrONSsjsDKALWMTPXFvFJPiZjocNActROiTYTSafAUIuKLBKSsWtCvnsaYKWAlPOlTziTwoVhYlTBlHsCRkLbEnNWILPoevBTMLNWkUmfIyrWwmPdKYXaw
+    Should Contain    ${output}    severity : -404290242
+    Should Contain    ${output}    temp : 53.0755
+    Should Contain    ${output}    priority : -300613827

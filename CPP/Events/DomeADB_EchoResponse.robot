@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send a -585792349
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send BJFjWhgaitgFxVLNpRAMUeVlrZBRwahhlvJmSEpUGngwhhCGaInQuPPKbxlwfMAPLSkubRkWjMEUabUAnUXKDUGsYbrxwvmdNHWcadGmFNDMBIKYLsCibSmrQAWzFIGnEHnGMKWjkJqbyKUXYVSkpUltQDlrQAEouryORmMvSwqUiEbiFneUpjZFjZVGqQCgMnPYxHwQSzUEVGPZCVcUunvtlKiJYQGzmxzyTXXphDJBPDbIvxeUDthRjItXCqgMdzTFYBHdGOUqCnCAgkUszVhMjTDpEkgpPlfsdljWuuXirjcbNuNVJaGcvKaMjjwL 976935338
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_EchoResponse writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -585792349
+    ${output}=    Read Until    priority : 976935338
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : a
-    Should Contain    ${output}    priority : -585792349
+    Should Contain    ${output}    response : BJFjWhgaitgFxVLNpRAMUeVlrZBRwahhlvJmSEpUGngwhhCGaInQuPPKbxlwfMAPLSkubRkWjMEUabUAnUXKDUGsYbrxwvmdNHWcadGmFNDMBIKYLsCibSmrQAWzFIGnEHnGMKWjkJqbyKUXYVSkpUltQDlrQAEouryORmMvSwqUiEbiFneUpjZFjZVGqQCgMnPYxHwQSzUEVGPZCVcUunvtlKiJYQGzmxzyTXXphDJBPDbIvxeUDthRjItXCqgMdzTFYBHdGOUqCnCAgkUszVhMjTDpEkgpPlfsdljWuuXirjcbNuNVJaGcvKaMjjwL
+    Should Contain    ${output}    priority : 976935338

@@ -67,7 +67,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send s 1796375645
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send chVbQvWgVRxahcdUydedmwHsNdNjcuzQsBMZKNLJfCBvXTNTENrAdudQFPBJOMCKchEqGThcHCmPfzyLoNyIyhxrpkoKxqBKFWceTFKKpqEdFocgtKTHnHgRSEYrbnDWNNNAEXrNEEwmjOhZoOBUOvkEIstcBMJsVMsjIrJAOGmtLESfJlOgHuJTngsYKEXmdASYUOedhhYciOItHPuGUHlQRNnLYKLDHGFNpyaVQqVTjbzxTZSKnmyZINesXEYVsSbPIOPxjGnyqsPeEwNzKCjWLRwouFrsHCdQNaRBIrDNOjkhbsnYtwFIGqxZLwhLakmVwEtdHVaouArdhxJKcrObcmEmjnlmIMLeuytuqIMbBUuoPEyGZmdLTjktoKgKcrVRnurOfUaxbzwWyGdoWEtkQgLwBAPeLzIMgRBbFTFZtSXtPtKnYnxTYqRrHbKDRJRUPOHssnzZqGyLNuhhPMUCcLihPvlnUjSjfIKNSfOIsECjrdqWdvdVfZEaNMQAxyacuiwoPkdQOAHKtyqJvhoXmNSHuPtOEJJqNzvyYrAMImjhsvvIFjcAClpHXjpxCwnguToNIRLHconJalWRiQiWgRPjDNSgBTVjyRGOuKmVkIGdLXOxMPepxpPfkOCmEoLjpsvkjvmDxyBxaUbzFkTjolpQhtXcfeUdlJrDGEzCdcwAlMjvybNzbCdqFNrNSqOvftOwjnxQGnyENqHusiBApQXYNIeownIsRAurfFwREgxSYCMMmsnXxnPMOooweTIjWyKGTkusGgvsHKzISICtMULyeyKEmzDHSSOyynlMFABTsFmPzMQiboHIdeJcMncvEqvhdRuaZKvicvBwFRHsgFNheoVtooxifZWIURULdCmhienNfDRzDtAzFHcCCGCligRPSvDrqUhyaughlzHyCfObvCwQauLTEwtsZmkJms 2117396669
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_EchoResponse writing a message containing :    1
@@ -77,8 +77,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1796375645
+    ${output}=    Read Until    priority : 2117396669
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : s
-    Should Contain    ${output}    priority : 1796375645
+    Should Contain    ${output}    response : chVbQvWgVRxahcdUydedmwHsNdNjcuzQsBMZKNLJfCBvXTNTENrAdudQFPBJOMCKchEqGThcHCmPfzyLoNyIyhxrpkoKxqBKFWceTFKKpqEdFocgtKTHnHgRSEYrbnDWNNNAEXrNEEwmjOhZoOBUOvkEIstcBMJsVMsjIrJAOGmtLESfJlOgHuJTngsYKEXmdASYUOedhhYciOItHPuGUHlQRNnLYKLDHGFNpyaVQqVTjbzxTZSKnmyZINesXEYVsSbPIOPxjGnyqsPeEwNzKCjWLRwouFrsHCdQNaRBIrDNOjkhbsnYtwFIGqxZLwhLakmVwEtdHVaouArdhxJKcrObcmEmjnlmIMLeuytuqIMbBUuoPEyGZmdLTjktoKgKcrVRnurOfUaxbzwWyGdoWEtkQgLwBAPeLzIMgRBbFTFZtSXtPtKnYnxTYqRrHbKDRJRUPOHssnzZqGyLNuhhPMUCcLihPvlnUjSjfIKNSfOIsECjrdqWdvdVfZEaNMQAxyacuiwoPkdQOAHKtyqJvhoXmNSHuPtOEJJqNzvyYrAMImjhsvvIFjcAClpHXjpxCwnguToNIRLHconJalWRiQiWgRPjDNSgBTVjyRGOuKmVkIGdLXOxMPepxpPfkOCmEoLjpsvkjvmDxyBxaUbzFkTjolpQhtXcfeUdlJrDGEzCdcwAlMjvybNzbCdqFNrNSqOvftOwjnxQGnyENqHusiBApQXYNIeownIsRAurfFwREgxSYCMMmsnXxnPMOooweTIjWyKGTkusGgvsHKzISICtMULyeyKEmzDHSSOyynlMFABTsFmPzMQiboHIdeJcMncvEqvhdRuaZKvicvBwFRHsgFNheoVtooxifZWIURULdCmhienNfDRzDtAzFHcCCGCligRPSvDrqUhyaughlzHyCfObvCwQauLTEwtsZmkJms
+    Should Contain    ${output}    priority : 2117396669

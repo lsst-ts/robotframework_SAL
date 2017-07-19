@@ -68,7 +68,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py a 1046525930 50.1481 e Y 1748200318 V -2049672384
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JRPQUZwwUkCoYfimodrYCUIXWCPgCLQBwDaAKEBsjUgsPRMzTLWaBIwGjwwGbCxpBgVSGbvKMkzYKLhVEdlfUyQSbIwIGWtIFOChMuIHiKGIdRzvoDGwmtQlgyDZUNdiLrdoOUztcyWAOvPEkWPlqVaWiQDWLzQuVOQcUqlUVxxUzFkiOwpQOEphYUoMgBvMGwjctcIbBaCLZcuoOPNKxctVOjmJDgtrYWkiKpxMouPkgRyqsRfYQCSHsocdhxjC 1546629194 52.581 azRbLPymESiuVIOgBBRbkaeKAxyoGtOAXywPdWvqWebWwsTsWACVdJQFKlaIZnJsEZPqBxFDkMPFkiUjmfZhOcGXkVXcdLETJcrCzMEiWGKnFfCBXSGRBIyGhAGNDRyphIIlvXzobBAxRyvzXXKWJdoDPVEOMuytWCPVChbFCrpfAScUQUJJJjHqGEhLfZlokcDURpQNyjIuFNtWUzJfMcvuvYbpNKRuoaEVQbRmkcSBydDffmRGjKbuwiaBwiTs BMKNEBCpyLoYeVNdhsFBOCAlHfxDsUVheFTrgxUdAPkkHfIqMzGsHcaLWyZKemnCTJlxJFLChRtUDwtiUlZvvcLWqnrlFkRxNWjqxHfhIFoUUWQLrSXWiKpspulnCEoZZehUYemKCyHlqkLPQUmOvITFcugTclScrdfTycfunBiaXWMQuiDLMcEEeHsBKDDDtxIbssvDDvUAEUHjpBEZSSdRGrPaJjHOzRFqRpaAHuMkltiHvFkQCukHudnVjhID 995185077 kSYFVOyVEJIZjegzjCepyTtFRPDWkTswLljJlaVWqpwesDSkUZYMOwvjkWemcUUTRWFTXQwieDehFQClXcaTKSDPXIldyDHWxxugslxKreRZNlxBVNLoozxLQTXcnCqxVkjhHgwWkRUlJIjCPrejfoxphuVMjHPmTtQWrvuLzYqScolwehIYcFQGdwCSQrgOVeFojBDiAkVXnHUKaBgMEwKGWehbBdsJDBOfwKQEjPceCpwMrzmTVEqVxbFhbTxH -618547036
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandStatus writing a message containing :    1
