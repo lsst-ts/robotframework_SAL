@@ -2,7 +2,7 @@
 Documentation    ProcessingCluster_processingclusterEntitySummaryState sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py NqNgwDVDUiwglFuDfBCGPaAYLzOXCnjZZyqBluYVlftWsGYjStfHXIcjxIkySqLeQiUGakvpXGokIfaZTedigMLIoWLDbYXiBmjmQjGduPAXLoVHFiEFPUpqaIlpdTin 15.3323 XQJNAgDvKgwbkQtIeOHVZOglKHBjicsaKnYVcHktbCinnxHgWsmxtqnTKBXzZCCBeaEVxaLpDENjhBeMgHhMtQKRkhyoNTsBFHhunbDXXlEecSPqpCHWFIFoEoaNHOMxspLGXGLlIwoplVRlJlSkWMUhNJmXjRhpRgfsYzoniEqWahSexqlWlVXVKzxDIAuExbDIKdFfhVmcepIKjCVjaAapNPslQUMXOlckxEJpMMJCVkJKHOCgAzmAyanWWtBv -1770633522 RsIqeikaZafzGfdqzYCGpSuDoAKsuBewDszbThceIKwyAkCaRZLzcwrtAGTPkhwnqKsxzrpWsYvRaqFWoeSueQisMcyrklZAjVmHsUspphfMURIiKcXlwoyIRXpVgoFr vADahKJQCDsByGbNRKHoGvGxCCGqGRWqoBbvdgDKthDtwfhFqCyifbAhvXaQlGHTwGRdrknHjAcJMRXNaouiCSvficsHpkrEeGPcwPAHxAaQlexktBGsUPaZhOCZashw ThLtcfZTBMjdTXYStVnocYDDIFWrFDCusEXwxKhdCBIkTpklodeKJKvyOFlzWPqfhETOFwHmRulFGdonSnijirHOrcCQczGRZKaWSRzSarfVJyNGZFRfgtwIPKdXOVJt tJpBvxYKssdlpSZOCksBrEZStZdgkIVSmNoTyjdDsLnfsnpXpXNaPUeOwHWkjtkHbnlVrcquzOGmKdpXFCfJDXkCrYjiZKhLyDTHrBammBlBzgtHsZACTmxMiQsfaOtx iXRMVoGNnJcXTzOslEnFWJuABfaSOlrmGbSrUXssnQgOGfrNCfJIsShndrNKZqTrmQBUyKhCSPLTFASVJQiPhbeKiHWmISoSqesLHwIHQMCNWjeewchtYgCCNRcyPqTk -1837233101
+    ${input}=    Write    python ${subSystem}_Event_${component}.py nFeywIPWvKCbNyziDmbtRWWlFvwaygQJKNtiJJuTCtuUIISNrQUXNKMbgHsthsVZwbQQFTgmswtnqHRgGOGYQZPTcxKmEEfztrPiiwJgZhCwgTXTexNkysBygynyWzol 94.8066 gkzrGStJUaWNhaqXYnRYNWRvJARLsGdLCGUoSnKrAjlQnbpZJdTWmFlaRMOoyTyWHNJTDINUThBqxPAZLjAMuSfCcVfZMEMxZaXKoGgsXcVJpMhvzlQxdMNFtscTiWDOKgLzUAnOxuMGOHeLUyIoupACReXuIIBOggwKRLUTZMxVDxDTDPLcnBzSlukECVPupWCVNDuRDgcmkYUnaZbcGwvPDCltwAwYiruGJjuulGrDbAThAJFDGAtFDbrbDPWT -1678536984 OAivhZoZnpWQNKlzLiBfGBPqPbRmJaWEkLSjtgDgxotZdtjHtPrITSOFrKFUTCpBaOhCRgmYcPlZPDNYdIbWPqIWjNUlTBbCOaBSAwSCBuJWZfccmeOTfpGxjFASlghQ GrmgQHzUHnhKPoiQxWNlLbbswTHGLbwfjzKGqyaVdtQigxXLfTGSUCFEvXLNJjstfGBTlOSaTnIReadZZzFSsfgzpZSFDjXTJranMbYVUstPUYXcJBwgkVYZsKeJBgmN vOMVZmoPZBpWjBTljCkkVhDwyUaRbdCSWzONmgjcCmazKMubKvlILhEFAtzFmBgpVBmpNAAGfyAWDalisyBvDCNNEGHaFZANvPngaHKambxtioJrzOeZlsWiCAXhOkKr MzfGYGSMkhPVsAiGAqCwpqXWJqZnyOIcdExOYSwipchXijLZlUDlfwRxNsWYHeiwMFgInCMauFUcCKPxCkOitUhqcYnwHPgzOiMPiQQkcUiWNKTscGTMNdpjLRjbLqFY qFVQIOhGVktGRDIFHeIAkCsbPEXNFceSTQdWyEtoHkeJXmrVgYrfJJraDIqSMGWElyQHFVmyFzBGLcMwRtfwKfgduSAsaMHMdJIgUqOeNYlkKrMQxruZcRCMLTAAjoSr -371779555
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntitySummaryState writing a message containing :    1

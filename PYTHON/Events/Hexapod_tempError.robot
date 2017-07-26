@@ -2,7 +2,7 @@
 Documentation    Hexapod_tempError sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py SayYCPuzuyyzxccDpuaMpDlpWBlvZDpiZejMozygtDMnxgbTCxGDmNzUYoNeqoCyGRyLhGBtyCzHdiOcCYBMuNLwNApTGalcIyxunLgPpJUpDVZKxnvNdFepmpOMxHwJHyNUDuXSBUoiWbFsJfmnUiQVBaOxHratLUeFtIUHwwFEJsJEHhfxELBdmwtucivJhTBQjkrPHrFHAZZGcagrCeUAfrWheYbWXbWLPDsZKBQksqGzyhASMwOXJGyXhSpiHeeuXmUQevGvFlbUcEDJUdcReArdxHaTijeSYbqNznMSBGDACuZSvyFRKVysFOicdcrtfPlSfbKMzBXXWOvzckqsEgszylYBlfcYkIhKqZxhXFcBAWAsfCCdOGAOWnwkIWRrxyUCHbGiyGaqkOZSvLRYOuvkaIoHgfisnMCvcFnoODEdJNdZCNxKFyIjZDHlagUoXLfSlmMvlQMQZqhdDFMhYHKdvBqBSzcaJYcceuzPsaGkNnNemYGecOcbvpLvpOpyfMJXdNATjVBrwWeegLjyhvdDUnWewgPRQapxLOUsjdzYsNFvJoFOIsCLssRqScFymCbnMUryZJRJYTCdGJNtpJpyLPqHybgCMSPluvvKiBiAbAlVKSlzcONTqmbpHDtsGjSRebbxUvHloCcITzJstbebfJZJERavudyEatUDRgLwMdoJpbEgbjuCsiKSgIBbQlLpKfVECOSPNaelPkbdIERGQKSVQhVjFdHCnutzwLjnSGzmoWbvjKwNAOlZeHaSGkSqWLjWySvQTKlDWmWbBJToQHSRqThUBPlgWyToSyfMwRYwCssSJMowPgXKHXvZfiYeOAWBOhojfxqTsAMxOqWNdYpRlgrehMUaaDvKmmfuvkGENsesgPqyMeBcjAxaDwycvWmWqiHnocylhtgfsIdSP kljCwUPobYwGEuebJuFhWwsFNgZMZDZafLIhWkNrXIkMNvkVrEvCzAThTtrSseSZXqdSOPzBlapgmvNwdAgLveBgaisRMHeNVoapnSlzkDBkRwJafFNkGidGrieWcZodsBAhMLpbTctHCsyXIJZxQmbSOPXovqfflEqPWXgkMvNHS -1417472551 79.9618 -1939770186
+    ${input}=    Write    python ${subSystem}_Event_${component}.py yfLIHXqaAkjpknHCeGMJDJXpFBsjsXtKnIoQliLAaqutFByWMEiLaQMcebbRQLMWgQLBsAyjKhHtScizrYvYPptoiySulBLmuADIjpXKSFiOYKTKNmP lSXrwFcEhoOefmnRXiFLpaVyXqsCIENhgQlHjDJNGKRQGKuAdnXuuzEhbLYmntXFNcCVGsifKjwzlaKwKJWKnMdervokDtphtMYQqykZSKLyEbjwXZnhDAfSvHIdCawaUgwQncdQqZAPNpIZVJRUEBqxyhbXShwMdLxrmuESSCtmwwtYJOpxusAsSfVgDfFcVpUbyPCWZRuSjruYpSQmXCBGHrBIIAHxmHwsLqZhIikTqXAbogccXgXLFfavFwwccFpbrHEkLvvmdJRbKHUXrcDSXqoDBewZHerkiftBpxGSNSoDCfehMoYRNCTAsWKAbvsuhHsPgpwkbESaZWnXbCKeFUYxeCXnanlEHJNOHaC -891556152 4.1613 -610600980
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1

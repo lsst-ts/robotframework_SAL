@@ -2,7 +2,7 @@
 Documentation    MTMount_mountError sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -913402529 gJKCXDadSYLlZDOmJLeyHIBdFcDPmxpHeAstdhSjGbPcxGtMSFFGFmzUgRlxWWQhPBNXmKYrhpdOexNXOrmppGjkxocbmjTrHIPfrwuattDduQrRWTaWdDSlcOiZmfVtCvIKSJwhwfespuaoCYHyXUYvlqkNJOWZXsZkwdXtCfZeMbDbkOFeDjVOtVZwBgAwlKASVAQygejQXEdvRZhEgjUdKfrMPyNYWOClTjmfwBBPSvBFvgfWLVCFcwCruluolMxvPMaBetwIGHNmoGAKnzYzIXHKXiTCUYvzawWUjgpzGgyAPlSwjIISlYcVbRQrnZxYHNjQmOKnNYssLVPnXPDLmXglETKHDpHYZiPKFQrpqTrGsmXILmeGiQfIvZOheUDkUxLpWEuxiOPtgvhYQAOFAoNIruszZpKgGHGBhRAMbShFQGUvGdgZheemlpGAqhMwYYSdLrAJUNByQAYqNkomkVJUnvurAbyyIJszfPxfIidyEfqDZHeaRuaRiMsVcudFalKKkPRCklBODuAXnYIlSnFYJTmrugUWwmwaAtkCdOxpVDybjpUSyXNmEuBHUZyRQZfuphLBJkmyWISqEiMbGWlBZUDHmYKoxCRcENrbbITfpyBzFKIMelFHPKZUFVpExOZqkaQDRvRRRaQFpeOKJSotWMwCGKQTERSWwgzKp -307368280
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 376188271 TsgltWSUPRkPkeYrSkhiyMvHxrGdNtxkYByTxJCTwuFrCSSlMKkwTicEDTwfRDrEImlcQtLTbbocnlGHiSwONfsbgHVAAogdTNuywCzhnjHdSOOmeREYYLeqdyJacQvCtuJoERYsWpsjMCWohtBPdadCoTwqBCPgyJaHSdDYvpXfDidPklfarvjIBCFPldwylPnrPAudsxvgZlKfXYnEZskJJLSbVMJHCRctVXlMROjoxglaTIsUlLFDgdPjutRboooNxKQjIZilFKvNAEDKHJTyuepGttiCC -844033527
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1

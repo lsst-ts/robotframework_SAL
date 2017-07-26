@@ -2,7 +2,7 @@
 Documentation    Archiver_archiverEntityStartup sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py XyyqCpimDNCxRZEbZYrEoZerKKyPgvZnmYGKiZnlCldQjEvuXeOCyPmZsrdivZEZEyjkYFBRDThjCsRWOjQbgZYvkKdVVVcIjlEgAcJWZOccQsmhQYZgXMVTaZoyIfJM 38.7248 bJsPudKeTGyeuzkFgTAGIxSMlWoGtSwLRLzcpejIcvREjVXvdRkgqWfBsdYbMhgpjzVZXnUKoVdXagCgRKOlJmuJiigCqmbnqfAqfJrDQfDsOexxPkxpkeDjxQoLGUddcPcWeLVYfBimDzLQVqYoZiPSTeHNcrPuKtmmusZmQabDJZzfzNJeZniSeMwnUrlANvNPNKneMfImaCBQbxZkXOzEhEaUMAMZZhnWCHVTIBcIrdjPoskFhaAfsDIsivvf 911245066 940795518
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JUmHkMhdvBTeRQCsgIittibPkCEhsUBOSMQKprpanlvztsklhJNxatcaHKrCozIFfjCyNGSSAxkJXTfNgclbxatNXrVgWRsClEqNHtDWPCoSuwYtYCStOVUCpbXWKZdh 31.3216 ksQKliGcKNquIGsPEaJxhWmXzqPvDgmvpXaeXMZcSoQdjbzAlhgXQSIcirTCxMdKQoDbjzzcrvUsvOgHDTrVoXbhrhMcpOnPGTqqxLQsriSpexoaaQukblaOlGUcZjrebcImGpODvsuKYWqWYYgknHKMUyfbTNKoxuBjnfKqICDvsiHdtFHnEdWkAMEIziiiQrqCjCRstmyINJnFRBkdSvWtZQOdrMUtUybrhdOeWSREjYlLUYlhqFwpNmymMRFF 1855013963 694245818
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntityStartup writing a message containing :    1

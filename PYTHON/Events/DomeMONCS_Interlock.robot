@@ -2,7 +2,7 @@
 Documentation    DomeMONCS_Interlock sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py XmXoKLqjRpFIEKaPJcGMeSEARYXDfLMMrrTPWZtBFwSURjWIFdmiCiIJVcpvmAPhrSZgcBcSoDFaMTTOgVThbcglCuOygVWVpyMbcQyEiDEUBBJJyFWFZawbiXaLyefXmJoDgEuAuUgleWCziyytLcmwoFIHmIFpaUmbuvmaVdbldaARwJCpXJvEsOHcJYrkUYPwuhWCrPREGoKxtpyExUOhaUPaglHgXmEHjyQUthhtMcyJkKUdXwXvvWdLzNqndXVUgpovJYkmAsaknxlqHIXtqTKmWxIqLDzxXdPtuiekWHQOFaubdlgNumtqmnAmsvmnNxxDcVNehZILJaXfvrQnZZCefwbdmQqpdKbznrbqjcpFWnJJZlIEaANUPoJwfDPotEaxdckgEusclmgkrEvnlKesZQovVEuhTwKGUcAaSNNpmbVJMbySBvEsiMiXZKlQgeulOdwkwlgdubKZrANSNrDqDCdpJidHekUoAuEcMoovPkhirSMfeUmepqEmMfNfkyiukaESJtNdXzvJAJBTkGabmBTaixqXFubWxKvHYCFgQTgegUTSSjvigWjRCdQXkYsJtFkwuXhodIHLgKVVZoXsyUERgfuNUBoNDAErbFUWNDhiEEuyiVwFmEQKNvkddJrmobvdAOSDOxrUpxXLaynVWrAMZoHWxRepQNutVEqRlTQHPBF 1378753210
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ipOQSdZmUGKYOOpGVycDgryGgoTsUHvCJzxytRCSPpYnEtaXTrqRqmToDsqBvIeSQoNtuPCjPUONHnVqOhxyaszcSHbDBskzvljzydEWnhbWZMsRRYPclTvgdFPYrYAzKmPctcIiVqMWqdzLWtIUwESSGbdXhFRJUhjrwwLJwNNyEbMBceQzMLMdNOCMwalUfEQgDIxLOtznTLBfSagdTomVXOYCciKbrxdCuAgihBicvUsFxwJnCgivOVZheIlUqkZAahXeDSyjSMYcjZvlBrRkMHnESxwUKWKIJvbOhipZdyVKbZNzrqFifORcrnwgeaYnSVfxeTBcvbCkBkLimdwSvtRZOSXEyAffNntLhDyvaMXqxfqsGZvuzOFiyVDrVsgXrAxAYIxHFgWwXQgYAdSRhXCrwYRvUZOQAAehsljaLwRSqPdRqBGSTkKeLAvojbYQKhGongLLHSxObasqQhcPuEBxrauKfvOgbudiUdnvowPuhyZnzLNnBzZFebfIsOdTqVjJzOmlXrDPiAilZKxqhgenqYLOACRppnbNOSMuFXFFzlIeQjieqfRvwwEKiMyxlHgCDYiFDsOCbNqLDwMUcvwYwckrauGGMBWYpQYLZSHBpRIFCkrYwjGIJkPEnFWzREUxVOJWIcjvOGGADrKXLQLFCGnygrdOoGRCqlEjdIMEVGcIfQJRmhmqvBScIvVZxXBrUtMUhPrsktWPWPVluCEBIZdoGTYIeQTqFHKpDLvbjLkDHHMqchUXahRhsQAaBJzPWlITZlQwPyrvsaUDPndCxZjTDLIOQrnVHTFAgvndhxfMiaNpTiqEjhSTsEwazPqrJpONSwiPyrNttcSHUkMHbffHEpZhRlNwbqytYLvkzkPRdujIjUHxrjoGYyIDgrPnoXEOfbAqviHOdKbFWJXZseagrMycdcxPnXfmyJLURcihfiVteGh 887160698
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1

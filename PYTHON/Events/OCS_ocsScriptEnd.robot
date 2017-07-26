@@ -2,7 +2,7 @@
 Documentation    OCS_ocsScriptEnd sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py uIvyYAPISUlhRNcxMEFMQRAHiubqILeUFZotuYzDMXUhfilUuuoIpmrUwBraMSARodUEeEkaCGzDrOuHDcbNxXeKpmZZnSsPPQQUtxSoyYZlmtoMjLdXnwScmnYGjgRkjJBVRAGMABjZWuNHVntFMrxIOImfrUICfVCbJREQlgoahkyQJqrBXvEtgiPNyPaJmodLtYVhxmbnCFfCrNtHMFOwPYxagrvThRwehXMCjbEuPNemHBEPMCfVwUrnvEui 64.4171 EmomBTgJhLwkilpAsRhUySURGKtNAyAmyTpXdLzNbgNsGatmjRBDQndHCusakImbwHKfDhyMbVuGgtyUoIxDeemytFTJlyxPWmteZMGWOSTcLADabTlEHDvAeTVOcAxynXeYHQTCbjwbYbFWZXrjEtnCGRYQfYNggjVNYuQfWZPrNMBaLNFjRivuzAqAfPXGuRZRsuptyYAgEDAegMnfgVkaztoZUnPFoBVQCmiiItjIKurFOJoUMQGHlQjsJAcj 226368608 CKvwrzpZDoiHIMvqmrhHccBEctHMENktTUABjXSWsyFACEYcpbJvpbSDhZFAJALSQbRmMxcmLYToEsipzYKNKDuYNsxGSLvXVfLjdjxuywIOTCPlrmmxkLYQABpJxxtfFLINnvjydbXVClSnMAXWHIFPzyzTXglOXRzKPTbpSueKmBdpXckaamVaMTRcJGjhONYesVpVSkBKbEzPpGAfoNQqrQlDosbJrGqoqQAfzlkxDGvKNoUEqHffjXuUPptI -1745107814
+    ${input}=    Write    python ${subSystem}_Event_${component}.py EGSvqSzLnmviBvJFNmJJIdCMOvdzXPzPpZncKJQLLdWHCvGNSbIQDwmpEicySAlJSHHjVwtMzqkbcQlFnPzxsLFgQlvpigqWXsBVjmZqYzzSwEFKaOYKqFFGfiqsHEcnYHcaiwYXYiEikjJgTamBZOsgWBVOstQryZTdxzUrCZhmeREEhEebwBQAKSzVqoxrhwPbDVnHOcoxrQXQLyxEXUcFeLbTWXeXYSsqVgNvFUKbWUWBDWUCneCEeUasbLEV 36.7717 oVSRwWRJnjKdeZYQmhlmBULLSGSPuDMskeJaUOpbZVmseZxHfIrLCEtLZFmDiMTNoKIaUUGSNMXklnOtHrMhyzlgxwusiolXFXFEUCrWUGDqjBRuIneRGQEuUIRAzcXxEFSsNgVRZzbZBaQeloMdUjyHilAQMIyYJHOjSeGBTohkQTJIZvqnRCPGoWGCebzOfSKHiyDFotjWbyTfsyzAhQUCNtzPemTDwwcoHllbbLHILoBabxKeReKVuBYoyfZW -1866052893 msSJsJqXXOElwJgeAMJxlRiUUvRIqstszlZtkQqSjTmtOrfkDYniXXbcRQOgEJAzGCDZlCQjxVwXZvblFzByXKGRYiHuzsbZmwJhODGKqnHAAXhHpqDyyLsBtOSVMedxZcyzeqRRDxxXTFwMyGYKiyyIOBDMRTlcOpMrTyoYYFVrIsIRQevOVXZZZTlZGeMAZuMxQSXNflayhDkTqbKUKpsGjPAsAWhXafuHJjfwBcqLvnjBhQLhkLtMxDkjQxWl 1931801561
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptEnd writing a message containing :    1

@@ -2,7 +2,7 @@
 Documentation    Sequencer_sequencerScriptEnd sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py rmNGRVjFRGLwvHgAYJfnKFJyObvqLWJCXJSDgvRfjHsCfCKRqegEdCCGeGAJBNBLPobUVtZRYqNoUZKUYySYgDcOlhyKJYskHxyGiYnKXMlfuThRvNQSrggptpfhkeJWRnElHciPZCHmFYLdEjDysCJaZLEeaMwMWyzJrlxzdjZxRbNnUeJEzZPNZVkZCfKbNrpFXYiXzxeUGBSreYGskanuZJLupARPTVerIpYCNZkqkLLNlJHEgYoJdeGfCNAj 28.4733 NLpNDGXJxruNpLjZxgPPQZgaOpPVuDbYeFsOSkOVIbNJzouhjtUgjXafJOUEShNPsFutzQNARGjsGiBdDhYTQWWgOiswCxEFQKNqcAjIJXAVjbYoZyUVGFvEXWyJsHDVxjszwjtUeMboABcWFfgSBzkgQqPiHMulpvhjeAObfrCffPedahXTGrrAARUlWXwrBSeEGSvcyRYNNhKCmwePDWKXqVQdyVrnUKBWnJSwjzCtxrJAEpqCksWMqTXvLobW 761166103 uluMYMYqvaPFWkjDKluKpZDVzStdKHJKRpMPxskZCOhVlYUhuAeOFsmDHxWZVrGaVnsXnqjjqCAUgUULDdIdQKmOKfQRKHUrKXPolCFKisOqSBFcGnbXwemuXMfLKejiuKVYrPCHeuhGdUIMdbMCZTHaGfKyNLrwgclOLCYXSktTmwISaCiwbUqfshFqkprCCXAPguWHDVUWCzOvpLHZjfwaZrSPNUTVEKwrGwgNGgsDkXUecaewBUieulPwvMza 2042996012
+    ${input}=    Write    python ${subSystem}_Event_${component}.py mLurZpSnRQTZNWvZGAsPFtDAKQMhVVBmGXvsrByMFTCSXQYcWHJEcufqyQsjYRSKgTZhEIBmrNByoBotjpmhnqUPiXRcLnxgXBpiOPfYKnukMihIslbNSSVBffLPHSNsTDbtvRkmEHnqzmWNMPAkEBwGLjRJQgYzpJSBtaUpbqaTgmMVgrLoqzzdJRdFlXHYXzqeKgdIgsQWNdVROmrKAXsYtDYqJYpwHltCEkQFHfWVyPiDPdzRnABLnaRJzQGP 28.1353 pZIagcQduyioAkTolQuwirQocgYvHubBSPTSiXDfLYdGHpzBnYSnpEntxsWTYkhReLDEjwJcztehwvWhBKDXhrlbldLhOQZJKLcKYuCXNlnUhEwbwPbAeyovMxQYhQYdoLhApqnEquNMnkicIKIbaCTRdSxdkiFkTNTlchqscTnHXVQRYmtHFocvPnvBxidSOQespYGGIdQItUprdCiMVysqRNZHLXvwZNELyomzOdZZUJhlQcWojkuKgrybEciu 2025352361 yigxqwYjelocBXssQdeSVeldsGKEiflXwIBdBTnfBsyYHcgXnbdLvHfRdQmrcpBaiCSPXECfWFGmSgAExPjYysexrUyHZBxSmSnuYDLHRFCFqYqbCKgsVJhhRHkUXWYBnNYIOsBVUVLrUartWBtboJeoChBmKfSymLKbPIlGJVbyyFmyONExvouSEGtqYtQoJsoICCJAaMKLNQzzTVURXymTPcGDKGWPwZuRVoHSzuLMYtipfZDmOszHJrSPDTGA 275884532
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEnd writing a message containing :    1

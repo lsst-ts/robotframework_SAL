@@ -2,7 +2,7 @@
 Documentation    DomeLWS_DriveFault sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -28399 TXOcMZnvThTVRcNZmnbLAJVXzkRWcRUQpCRDdKZvfRlgrJtdNxDBUVEIEeAEpTcMAtYsUIjSPuffMrGhumLwpKQilbJBqqMBOlLllcviMCbHbmjvLzVVaOhQsLkkACZCLGPoBNVOBjMOEvcfNVFTqLgcLBPDgoBRfdnCMFhnnYCxiLVCPqjOuFGMPcjQTqkcPbtmJOsyYpxXgVgZjzvthTSUZLLKMpsOVjUoVIiDbDZfTtbRBCSMJKPiQLrUHgWLineiSGuqPJyzfDmrgrHprWjnPJbyyfYaVJlAQtZeNtdWcQpgARfktyVybdtcYSRNxQGrseYHrFsqpgGWCLckXulISlvHcPVnQRxjxpJnajmjBaYItwBKSaySjVhGEiguHJMPyAkQZySUvQcfZJcdOtrAjGbEhVdvnhaqgiMMTOeEWZtZotAEJKYRojenkKnKKLSnJEyaEacOWLPlSVubjrJUEonEPlszFFlLLwvzXrEfHWBXsyqntADXdWBkQFuLByTtZGBdxZMxWsXKqSBpekAvNAsgfKAWiQApMSgCPDzPzXXKZubUXOBpsLboDNQFAJzTnLaBXvuvLdaBHMAtHTpSskmgMxvfdoljnbxmCgHBmTobyDxwZwAaEYZoIQXWOFceFqtZuYOZKXupvBNIyeCtxzJLagkpYhqujLWJtnNsEueNJZxAIFKTNWhXdPGocwGJVqEhIFjHhpvaIIdIRKrofZQrRgeLlfSPodzLRlRNePoXFxeMaPcKcCMHLrAhreiiWDYrJcLgqTNKFNkBXGQsWoLAWUFRxAUidiBiywrtugMqYfRHYNuDvMnaTSEpOxnIeigTwROHLqWeSTEmoXmpmOOOmUlDaLzgdePhiNCFOZwtMXevvTymbuYWkmRLdBdwHjeYrRItN 1316198428
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 23880 yRjnWmPTRFLpyzsqqgatfdqrCQHdcxsGabjIEaQgtVYhMiemCElcmULQxOpTGlIkKDGpaIMgBluTcPVdUkLvKuNUAlZndubtEmbXHXErHETbfVJJljVFrKaaWdifJasbnRIWQyKoaHLVNGZhApERYOeJYiwBWjLZIcDzGMiRsPoFaeHFsQRGICrDUkqoVgVxcwKMrbmhHOYGQXhxJqPzCaHePtaTiJMsyDTYovQfgUkHzQpdesXAjEnOkZPdprZitZoxltamrCSDAXjGDhWcDGxLVsuFNhMvNCGBNzlffhKWSHsVABCrSCwiBygsOrLiFftGEWzVYyEtmFPopywULeJwODylIafSfgcoonjZObArdrNVqXhAAYaNvCrnwRhZgdKXkACokozZntWHsVHAzGKiKTofyBqmbOBrSREnZnFFmvFhKMyFkwURAezWYtlDlGfmPNFuhYFUnfXC 1897402114
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveFault writing a message containing :    1

@@ -2,7 +2,7 @@
 Documentation    Rotator_tempError sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py JqODmaXnEkXsSNmHQZdKdDllALQDpaJRRoIyDHWmfnpPYGwnLIAXISLzyfdWbxJvAXqFUFzQrooedwpZyUxOgjyWBAzhhObjGjxCjBaIOtQDkjPWQBQxXbicWIdVpgEcYaObdVfZcLDLSCPmeozWziRPzFfcJFrejiIoYHXKfGHlmQqbCyZBZEReoJFLqYMGvkyNkDDxAICxLdmBLUJsjHdsMRZBWPvwiBMYKXHbQOzMVoLrJXvckspfDIgWhdYZXvxyoIJjNspmaKrMKODCmdBFMfHvcEwPSGgLWWqCblWcxPPyKSLKVqbQVKblluGHnmbhvJCCkGvONLbATSwqhOzYkHsMNEjGBJTDYUmGrcILXuuGwZHDzlSLRZvDLDIYmkI 1605314844 271518019
+    ${input}=    Write    python ${subSystem}_Event_${component}.py qkMhOSqYHwawtxnNfIBanEgbvutEgFfQhBpoRFNktOQWRwAyLxXHcVTsYcdTZyHqlskOWkovHZyuQNIjPlmLSivRrYYjLVVnIefeoFYaMOXqpuNwHqUxdNwmqshJVpjtaRjLfnVzIIGnXOzoxwKNQTMshbWugddzMesbxodYbFhddQwNNTGMZkfYnRMHAoUhSgcnrwpANmbIbTyaQceJXqfBDlTGHeleTIOJgNmdzRSIItFTUlScylmJhcqfLvfrqworMtlJzmPSslXsrbLNduTriHKUyzxTqKFffzJEXpgvUFFlEmQCvmhrvCrbtUBPpnrRbhGMYEHXzMMqsrawXBagYmjHzxdZusjXErRVTQHJsXMQmEpfFAngEELxJtLNShtKqrzaDPUKeVxuARJYpurslrFgXpdQOVFAHyJByFDQUfxLNDxylRNynuaqMQTpUSzCYcswADwqQFJpsQKImkkXDJopEpnkjVULXKZNfeWLejHgfzAiRpbSkdyOaFIIMzjzSquySwlAvVkvYlmhowDIwjroUcOLGZLGQBORJACZAshbrlPFebbXtIcHCWqMqumIKAkbenJDZtxOiLcBWirXBhecWrwPCAGKopVdckWfifOLbTsunUFnpLzYlTbVasGalkLKAfGCCVrUBZlzYVnDzGheXYhNJRgEFeipKTioDhlHQROqbhpgCnaFhFzJjWispTGHWavHGMCOSlYJNpPXsZCdiIlDcXIariZELETNBFiNjqgvshyLfKbrLYjmkloHxEHaGWRzGTLgRUOmBziSCHsnkPyjQQMltSyhgmjsiPutWZPzjhogEobVsSPEuOvixqIekfRXHYDpbng -647844992 -1079638930
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tempError writing a message containing :    1

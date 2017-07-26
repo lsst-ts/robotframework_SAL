@@ -2,7 +2,7 @@
 Documentation    M1M3_tempError sender/logger tests.
 Force Tags    python
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-...    AND    Create Session    Publisher    AND    Create Session    Subscriber
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py bRpsAylUwXIfWgzXQBscUCmZLGExnIVcFNmkkzSjkZmlvAAsTYEuWXzKgDsxSNZvwJURaPjfyUAOvSMguEOxJHINVbWpCrNwiDdZkhGbZRbThFyhzfoMBxsShwmfNOghbqnErITpVxwLNStKYEFNiYKdfWluHcvYWvkvmzbpDMeItxEDdJQnKissyDnIFDSEoDRorLPiBLAWaISafWBSgNbAgXWZVMLKqjkyahHlrXvRtZcPqZZJmtKaTcXvvwNaXdNbkTtamOVuwkIyJBkIdPlQAIFLrmAoAydilMaOjwMZjkZEnXPvlScovQqBpBJbKwfvQmPCbVOFIrswyRSVRWGSxmboVoRiRFarIUNZcpzIcvWeWwOTUAYqZXcdgotLZYmxnlFzTPcrllfsvyTUbuBcbydSTsqSUinuPKeYLaFfNjwkRhHWHyMaSQBULVyOgntbMKHEKQNQZVxXTMxwldrvtZjwDeIRDBSSkQCCKlnjKufiiKLorZzfvmonG -1949420306 55.9893 29204154
+    ${input}=    Write    python ${subSystem}_Event_${component}.py uxiXnmvCSaBLaWbIouyKghWPOJaHotWRItxJMGcNHMHErnikoFMAEMhqSoXaNfZQkViEWPSrxEcThNoXVyGFeKmFYMJkYGmrMJgtuCZzgzKYrHnBbhRYfonJQQhJUiwKRoIGBxOOdWQCiAPEFiIGXFuAMhXdiSnuqMAHmLJEsBMqJSPsowyBUiXngFSRCrAKzASTGJrWpPGABVeRlRixmVeMdulboyfMcltxcfHysunjjtSYylQHcOBSGPOWWxlnoHwUEiMrJjGWPgAXuAuqBbdHnRLbMRlCPnfSUWcNrVNEcFgnJSWrfMMHvzyoRIaBgggTKqAQAiGIqgzuSyBybjHYNZYVFsQDXeAqWlGWLmZBxlCSQMTiscGzImILPpQWCAEZcXADMKBAeclwcmtLlYxVxASdYqjjvkNEqCUdboMjBWfvOtPbAKxUXfXGdEPNpBlnEIezUoPLZMYGOZiPzBOingvKJTtPAHhkqFevtAXOdXEfvkaJfTiLXBsJbeIwNluFIxAhinlkAmoukXalQKyZPmWAyWZhQopxCAZFbglkptdgbENrNJspMzktsvBBeOqOvvOUfnWITtXhlCtOeBaTHUUggNnUfHCVMYBNqMwLuIOODmLpPLteBOHrwLEXqVGLehDgJNmFnegVuZBoXzETowhDnRpSnaRfsgFBSvzzhMOMavcaxipsXao -1452384730 92.1436 84575221
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
