@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    Rotator_tracking sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    rotator
@@ -12,28 +14,6 @@ ${component}    tracking
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 114160454
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2030924024
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tracking writing a message containing :    1
@@ -77,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 114160454
+    ${output}=    Read Until    priority : 2030924024
     Log    ${output}
     Should Contain X Times    ${output}    === Event tracking received =     1
-    Should Contain    ${output}    priority : 114160454
+    Should Contain    ${output}    priority : 2030924024

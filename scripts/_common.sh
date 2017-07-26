@@ -41,21 +41,6 @@ function clearTestSuites() {
 	echo ""
 }
 
-function createSession() {
-	local SessionType=$1
-    echo "Create $SessionType Session" >> $testSuite
-    echo "    [Documentation]    Connect to the SAL host." >> $testSuite
-    echo "    [Tags]    smoke" >> $testSuite
-    echo "    Comment    Connect to host." >> $testSuite
-    echo "    Open Connection    host=\${Host}    alias=$SessionType    timeout=\${timeout}    prompt=\${Prompt}" >> $testSuite
-    echo "    Comment    Login." >> $testSuite
-    echo "    Log    \${ContInt}" >> $testSuite
-    echo "    Login With Public Key    \${UserName}    keyfile=\${KeyFile}    password=\${PassWord}" >> $testSuite
-    echo "    Directory Should Exist    \${SALInstall}" >> $testSuite
-    echo "    Directory Should Exist    \${SALHome}" >> $testSuite
-    echo "" >> $testSuite
-}
-
 function subsystemArray() {
 	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs hexapod \
 m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"

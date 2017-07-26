@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Hexapod_offset commander/controller tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    hexapod
@@ -13,28 +15,6 @@ ${component}    offset
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_commander
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 93.0873 76.8159 27.8817 20.4788 43.1047 90.9047 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.5447 43.1253 76.8465 68.6725 79.3426 42.7321 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 93.0873 76.8159 27.8817 20.4788 43.1047 90.9047 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.5447 43.1253 76.8465 68.6725 79.3426 42.7321 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 93.0873    1
-    Should Contain X Times    ${output}    y : 76.8159    1
-    Should Contain X Times    ${output}    z : 27.8817    1
-    Should Contain X Times    ${output}    u : 20.4788    1
-    Should Contain X Times    ${output}    v : 43.1047    1
-    Should Contain X Times    ${output}    w : 90.9047    1
+    Should Contain X Times    ${output}    x : 37.5447    1
+    Should Contain X Times    ${output}    y : 43.1253    1
+    Should Contain X Times    ${output}    z : 76.8465    1
+    Should Contain X Times    ${output}    u : 68.6725    1
+    Should Contain X Times    ${output}    v : 79.3426    1
+    Should Contain X Times    ${output}    w : 42.7321    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command offset issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -109,12 +89,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 93.0873    1
-    Should Contain X Times    ${output}    y : 76.8159    1
-    Should Contain X Times    ${output}    z : 27.8817    1
-    Should Contain X Times    ${output}    u : 20.4788    1
-    Should Contain X Times    ${output}    v : 43.1047    1
-    Should Contain X Times    ${output}    w : 90.9047    1
+    Should Contain X Times    ${output}    x : 37.5447    1
+    Should Contain X Times    ${output}    y : 43.1253    1
+    Should Contain X Times    ${output}    z : 76.8465    1
+    Should Contain X Times    ${output}    u : 68.6725    1
+    Should Contain X Times    ${output}    v : 79.3426    1
+    Should Contain X Times    ${output}    w : 42.7321    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

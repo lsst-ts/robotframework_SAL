@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    DomeLouvers_StateChanged sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    domeLouvers
@@ -12,28 +14,6 @@ ${component}    StateChanged
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28123 -24420 -1744199338
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -11237 -1064 -720847333
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_StateChanged writing a message containing :    1
@@ -77,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1744199338
+    ${output}=    Read Until    priority : -720847333
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    louverID : 28123
-    Should Contain    ${output}    newState : -24420
-    Should Contain    ${output}    priority : -1744199338
+    Should Contain    ${output}    louverID : -11237
+    Should Contain    ${output}    newState : -1064
+    Should Contain    ${output}    priority : -720847333

@@ -32,11 +32,13 @@ function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp} State Machine tests." >> $testSuite
     echo "Force Tags    python" >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
+	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+	echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
+    echo "Resource    ../../common.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
@@ -165,8 +167,6 @@ function createTestSuite() {
 		createSettings
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
-		createSession "Commander"
-		createSession "Controller"
         verifyCompCommanderController
 		startCommanderInputs
 		# Create the Commander Timeout test case.

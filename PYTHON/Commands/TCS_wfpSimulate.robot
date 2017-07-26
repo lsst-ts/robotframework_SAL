@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    TCS_wfpSimulate commander/controller tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcs
@@ -13,28 +15,6 @@ ${component}    wfpSimulate
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_${component}.py
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py tUbBPlfXZFguKLNRLOdZEuKbpIRdkTNrFtynrWOEbRjxWSaUijjDOhVYvvtiiPGR 61.4074 25.1641 5.4037 99.8822 92.5534 80.5649 60.1711 76.3478 82.2522 4.2156 84.5366 38.649 85.7816 40.2996 23.5562 91.1265 79.476 42.4416
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py hZuzwzaOMIeKWBubslZZTScIEQVOJzFfChoptQFTtqkSCAXqkzuHpTVtZOAyYHDO 0.7209 2.9912 69.7193 10.2671 22.4056 69.2411 51.4206 8.2529 61.5765 73.3013 97.7319 58.4908 1.482 58.955 53.8197 45.4074 54.2671 22.1229
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py tUbBPlfXZFguKLNRLOdZEuKbpIRdkTNrFtynrWOEbRjxWSaUijjDOhVYvvtiiPGR 61.4074 25.1641 5.4037 99.8822 92.5534 80.5649 60.1711 76.3478 82.2522 4.2156 84.5366 38.649 85.7816 40.2996 23.5562 91.1265 79.476 42.4416
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py hZuzwzaOMIeKWBubslZZTScIEQVOJzFfChoptQFTtqkSCAXqkzuHpTVtZOAyYHDO 0.7209 2.9912 69.7193 10.2671 22.4056 69.2411 51.4206 8.2529 61.5765 73.3013 97.7319 58.4908 1.482 58.955 53.8197 45.4074 54.2671 22.1229
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    uid : tUbBPlfXZFguKLNRLOdZEuKbpIRdkTNrFtynrWOEbRjxWSaUijjDOhVYvvtiiPGR    1
-    Should Contain X Times    ${output}    z_arr : 61.4074    1
+    Should Contain X Times    ${output}    uid : hZuzwzaOMIeKWBubslZZTScIEQVOJzFfChoptQFTtqkSCAXqkzuHpTVtZOAyYHDO    1
+    Should Contain X Times    ${output}    z_arr : 0.7209    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -98,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    uid = tUbBPlfXZFguKLNRLOdZEuKbpIRdkTNrFtynrWOEbRjxWSaUijjDOhVYvvtiiPGR    1
-    Should Contain X Times    ${output}    z_arr(18) = [61.4074, 25.1641, 5.4037, 99.8822, 92.5534, 80.5649, 60.1711, 76.3478, 82.2522, 4.2156, 84.5366, 38.649, 85.7816, 40.2996, 23.5562, 91.1265, 79.476, 42.4416]    1
+    Should Contain X Times    ${output}    uid = hZuzwzaOMIeKWBubslZZTScIEQVOJzFfChoptQFTtqkSCAXqkzuHpTVtZOAyYHDO    1
+    Should Contain X Times    ${output}    z_arr(18) = [0.7209, 2.9912, 69.7193, 10.2671, 22.4056, 69.2411, 51.4206, 8.2529, 61.5765, 73.3013, 97.7319, 58.4908, 1.482, 58.955, 53.8197, 45.4074, 54.2671, 22.1229]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

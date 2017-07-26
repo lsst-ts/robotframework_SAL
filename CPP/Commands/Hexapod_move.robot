@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Hexapod_move commander/controller tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    hexapod
@@ -13,28 +15,6 @@ ${component}    move
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_commander
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 54.6445 77.1659 7.9635 6.9302 36.1895 4.7125 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.5485 1.5213 16.5919 34.1047 98.8189 12.8741 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 54.6445 77.1659 7.9635 6.9302 36.1895 4.7125 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.5485 1.5213 16.5919 34.1047 98.8189 12.8741 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 54.6445    1
-    Should Contain X Times    ${output}    y : 77.1659    1
-    Should Contain X Times    ${output}    z : 7.9635    1
-    Should Contain X Times    ${output}    u : 6.9302    1
-    Should Contain X Times    ${output}    v : 36.1895    1
-    Should Contain X Times    ${output}    w : 4.7125    1
+    Should Contain X Times    ${output}    x : 59.5485    1
+    Should Contain X Times    ${output}    y : 1.5213    1
+    Should Contain X Times    ${output}    z : 16.5919    1
+    Should Contain X Times    ${output}    u : 34.1047    1
+    Should Contain X Times    ${output}    v : 98.8189    1
+    Should Contain X Times    ${output}    w : 12.8741    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -109,12 +89,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 54.6445    1
-    Should Contain X Times    ${output}    y : 77.1659    1
-    Should Contain X Times    ${output}    z : 7.9635    1
-    Should Contain X Times    ${output}    u : 6.9302    1
-    Should Contain X Times    ${output}    v : 36.1895    1
-    Should Contain X Times    ${output}    w : 4.7125    1
+    Should Contain X Times    ${output}    x : 59.5485    1
+    Should Contain X Times    ${output}    y : 1.5213    1
+    Should Contain X Times    ${output}    z : 16.5919    1
+    Should Contain X Times    ${output}    u : 34.1047    1
+    Should Contain X Times    ${output}    v : 98.8189    1
+    Should Contain X Times    ${output}    w : 12.8741    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

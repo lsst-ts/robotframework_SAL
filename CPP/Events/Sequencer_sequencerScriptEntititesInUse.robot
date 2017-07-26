@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    Sequencer_sequencerScriptEntititesInUse sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    sequencer
@@ -12,28 +14,6 @@ ${component}    sequencerScriptEntititesInUse
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KRNMMAAAYwKLKexPDfRFvoJThnxQqVZTmSYAAZXNfAJcizLZliyDRFpxgUMAridNJajdwARGwysdlgoGhdPnytAZKBsAqJOMPlhSESkUWmDchISZmtQhOPDikulZXsWsQgMbMvOLfREunCDqPKDGimKzeWnyZdndfxKeqrpzzMleDLnrHbNCIEHEhqDODjUigxehUGSZYxllvTiZQhJvvWkMgIpnFEqewJnulnvAGfJgwIPyBtiWmmckDYifeekM 45.0797 VjUKnroUxuNayIUvVrgUWDWXxrmEmdGChvkjIVlpaBbrIWDNZnWJgrRgzcraqsbJyfKJdiqPIByptKUZdwtpjwlfHaTxtVenlhzySGzZVKsZNjIZxWLrDKdOWvxUKKKobCNqxmtPBMyvuSLqmoHAxLHOFVJAlGNKxvoWVILgMHPhtOHWkdmMaANGCXjZsuCZWsJxwbRxihUnQjRPgcNhdsIsgBSpbZHIizvEmdPLsAnTtrdUCwSqnuEqpxbkTfSn WhroHunUnjvpVcjbJLmWSDxUejkWBVbczuZHWKbCXJOvsXZsDsgVDwnbZRsSWYHoHnGlcxqdloLHJOAFJusuuJtwsNSTqPzHzVJuzYkBUIlaMWBjVWpMtYZIVIATWFTyKAERZuqElbCyKLFyFZJlXGMYcoYZoNsuHbHrwihARaYGATzkolSYbkVYCCihcqCCskAhiNqZTcOsvoXUXezgXeIFHhzZHpcGZYelZBjqCsZaDhcodAeKsTDXcXawwEyk -1194396984
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send OSbZyYotPWImBGUqkFCECJWrRqinTRyXrgxGQXOSewjDbVgVPDTuWUDTMuSwFGmdadasUTSFPbHRfRjyzzpacCXuIVPhtkDbrOCqJBOgQYGehicyQYjKjuLxKTvsXqAyfLFbrwKDiQGQWmARXVPaVieTpPKUziWQvqWFQtLMjbzZhGaHOiJxoOjGACIVdBCsTZIQFORtquNtWVZAgMKeBgMZoHPlEnTgrGAVilegVGCPvihcLrPtLAOuXrOAVaKE 72.5585 HDiTnEkWYjbySzKZfexlpCnIdBSyxCviWuznBOJywegCbheZZpYGjJmqgFJYSLDSkTKTEMwbXlapNFfdhcNYKNhADQbPKBXlFFmpWswNUekOZwqbVeAUfvKzJrHKtpPyOXRDDmVLpcHlYLRMFufaTrpcXNvXfUrKtXDfuPhrBbXTkcoQVURbTPygygeydkLaROUTqgMWPKWimQSAgIjahxgKpQisNutxmuNZssnPSvvzCFWpiUrbGMxpEIDLeUIC qAuczQbVuENoBOHoajbStXTGXmLMZYMuXiStTzaOIhaIEKdqysDPncUIPUesGEtENVTYLlWIBnRLkhEVXSsbKEIouuzjSIboSQJBJDczGTmmJDEruwDXObZHPYYQBgPhgXGaNOYlGNzxJIIDuRAcvFOgrGPbOEQcmOXAxOxhtbtCJAwwvJhXwewWKScZNIcqGfazwdpVPtpEaSOoiBDGulynPAXykOHluneEFOSMriaNitwIyxmDoltKvxsUWgoe 1049172939
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEntititesInUse writing a message containing :    1
@@ -77,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1194396984
+    ${output}=    Read Until    priority : 1049172939
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptEntititesInUse received =     1
-    Should Contain    ${output}    sequencerScriptName : KRNMMAAAYwKLKexPDfRFvoJThnxQqVZTmSYAAZXNfAJcizLZliyDRFpxgUMAridNJajdwARGwysdlgoGhdPnytAZKBsAqJOMPlhSESkUWmDchISZmtQhOPDikulZXsWsQgMbMvOLfREunCDqPKDGimKzeWnyZdndfxKeqrpzzMleDLnrHbNCIEHEhqDODjUigxehUGSZYxllvTiZQhJvvWkMgIpnFEqewJnulnvAGfJgwIPyBtiWmmckDYifeekM
-    Should Contain    ${output}    sequencerScriptIdentifier : 45.0797
-    Should Contain    ${output}    sequencerScriptTimestamp : VjUKnroUxuNayIUvVrgUWDWXxrmEmdGChvkjIVlpaBbrIWDNZnWJgrRgzcraqsbJyfKJdiqPIByptKUZdwtpjwlfHaTxtVenlhzySGzZVKsZNjIZxWLrDKdOWvxUKKKobCNqxmtPBMyvuSLqmoHAxLHOFVJAlGNKxvoWVILgMHPhtOHWkdmMaANGCXjZsuCZWsJxwbRxihUnQjRPgcNhdsIsgBSpbZHIizvEmdPLsAnTtrdUCwSqnuEqpxbkTfSn
-    Should Contain    ${output}    sequencerEntititesList : WhroHunUnjvpVcjbJLmWSDxUejkWBVbczuZHWKbCXJOvsXZsDsgVDwnbZRsSWYHoHnGlcxqdloLHJOAFJusuuJtwsNSTqPzHzVJuzYkBUIlaMWBjVWpMtYZIVIATWFTyKAERZuqElbCyKLFyFZJlXGMYcoYZoNsuHbHrwihARaYGATzkolSYbkVYCCihcqCCskAhiNqZTcOsvoXUXezgXeIFHhzZHpcGZYelZBjqCsZaDhcodAeKsTDXcXawwEyk
-    Should Contain    ${output}    priority : -1194396984
+    Should Contain    ${output}    sequencerScriptName : OSbZyYotPWImBGUqkFCECJWrRqinTRyXrgxGQXOSewjDbVgVPDTuWUDTMuSwFGmdadasUTSFPbHRfRjyzzpacCXuIVPhtkDbrOCqJBOgQYGehicyQYjKjuLxKTvsXqAyfLFbrwKDiQGQWmARXVPaVieTpPKUziWQvqWFQtLMjbzZhGaHOiJxoOjGACIVdBCsTZIQFORtquNtWVZAgMKeBgMZoHPlEnTgrGAVilegVGCPvihcLrPtLAOuXrOAVaKE
+    Should Contain    ${output}    sequencerScriptIdentifier : 72.5585
+    Should Contain    ${output}    sequencerScriptTimestamp : HDiTnEkWYjbySzKZfexlpCnIdBSyxCviWuznBOJywegCbheZZpYGjJmqgFJYSLDSkTKTEMwbXlapNFfdhcNYKNhADQbPKBXlFFmpWswNUekOZwqbVeAUfvKzJrHKtpPyOXRDDmVLpcHlYLRMFufaTrpcXNvXfUrKtXDfuPhrBbXTkcoQVURbTPygygeydkLaROUTqgMWPKWimQSAgIjahxgKpQisNutxmuNZssnPSvvzCFWpiUrbGMxpEIDLeUIC
+    Should Contain    ${output}    sequencerEntititesList : qAuczQbVuENoBOHoajbStXTGXmLMZYMuXiStTzaOIhaIEKdqysDPncUIPUesGEtENVTYLlWIBnRLkhEVXSsbKEIouuzjSIboSQJBJDczGTmmJDEruwDXObZHPYYQBgPhgXGaNOYlGNzxJIIDuRAcvFOgrGPbOEQcmOXAxOxhtbtCJAwwvJhXwewWKScZNIcqGfazwdpVPtpEaSOoiBDGulynPAXykOHluneEFOSMriaNitwIyxmDoltKvxsUWgoe
+    Should Contain    ${output}    priority : 1049172939

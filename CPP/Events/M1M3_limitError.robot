@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    M1M3_limitError sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
@@ -12,28 +14,6 @@ ${component}    limitError
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WzIBnYQgBGSZIyuQeLxwIlPBvEeoISXVcYEHtUWnCECgTHKLjPvMcuhfQRRFSnAkUnhkMLqfVnycrLBUhZmGiOWNkodOApmDJVwfMKGavSlegObFOoBPwfPgmpUiSZuYaJPlaYYPbGgpklrwhHZeYsZskyHAyIbECVqeatSlrsXzOqbFhbmTikDRozdaxujTSYIvGLKFYZEFQwgVToHfQFBLGQKAAtXXvnOW FNkaFYMbzxpNHOPCRdZGkvHNtUpmbqsAsAFuUNyLQJAikqfxOTBPfRyKeJHsnaRefmAYibExHWlaHEHOrtfPGKHZLbLSWgkMTpNCIQYWPHFJDzxcEuSNSigHswnfBrBBkeVNIJdlMhAhRKJbXNipaauRYhmiBqfAxkdCdwQWbTKuoEoikcseQDzFUXveLWFxmLvoaVPAptorqmhBkxEKCfCKyYwgzCwldWmZvVJkRELovPoabzbhYKSDGWoacsboOdSbsMGeAuxyjnOfJeeeCfljzLquZNqVjbbyRnFTeieqzsTAMlatiiNZyKOOKOGKNkqAujneywKBSueByApgfzksGfvOKCrBkiqvWQEXLbPKTrPAozdKISfsEijEgphMavWwTgAdtICSNTBWYAxnCvtAkxOMdGKvwoTfsGgHPPpvPiLuyNftsyXqurqovgabAuYayfWDKmgnQXZqzafTcrAGFlFVRDGOsEIxwOfytedxyZbSfnndZgGYcaljpkLloZuXZzNcFeqNmGwYFdvVkESFBXsvxIaFLRHPdlCOnDQKTBFZQygkicPZGBhUuWkHepjyJjgxSoBcwuPyCGknnFQuUnIUGGddxeeOrxitpSnYmfjLQRqfAUfbeLHyNAKjGipootMBTlgnm 349978817
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EZMMkfBBXPxjAhOMOtWUcbyxPICKfUjXNAwpuRYDbYmuwvCoPUmrairjVTkOZIVxTEsFZPyYlvYNznAFaNoucNVRaughimwVNjSLgEOxMqgdJuwbrBOKnAwvlYeDrSggWjaYmBjrwbLUVctPbEmT NWMTLmMdAhgYxyeqwoAqodddJRNyPRGJSgvDGOLllltExtSSGWDspDnDKHaANftOmkiCNIfnhBNPxYbtGoomFuuTzILXFYzEiXeBocwCNEOLNjrUEFnJaVaPSHRiCRgwOYkqZqZcxHSWJsCZRJWlnijjadwYFDQDzTNl 1931207244
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_limitError writing a message containing :    1
@@ -77,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 349978817
+    ${output}=    Read Until    priority : 1931207244
     Log    ${output}
     Should Contain X Times    ${output}    === Event limitError received =     1
-    Should Contain    ${output}    llimit : WzIBnYQgBGSZIyuQeLxwIlPBvEeoISXVcYEHtUWnCECgTHKLjPvMcuhfQRRFSnAkUnhkMLqfVnycrLBUhZmGiOWNkodOApmDJVwfMKGavSlegObFOoBPwfPgmpUiSZuYaJPlaYYPbGgpklrwhHZeYsZskyHAyIbECVqeatSlrsXzOqbFhbmTikDRozdaxujTSYIvGLKFYZEFQwgVToHfQFBLGQKAAtXXvnOW
-    Should Contain    ${output}    type : FNkaFYMbzxpNHOPCRdZGkvHNtUpmbqsAsAFuUNyLQJAikqfxOTBPfRyKeJHsnaRefmAYibExHWlaHEHOrtfPGKHZLbLSWgkMTpNCIQYWPHFJDzxcEuSNSigHswnfBrBBkeVNIJdlMhAhRKJbXNipaauRYhmiBqfAxkdCdwQWbTKuoEoikcseQDzFUXveLWFxmLvoaVPAptorqmhBkxEKCfCKyYwgzCwldWmZvVJkRELovPoabzbhYKSDGWoacsboOdSbsMGeAuxyjnOfJeeeCfljzLquZNqVjbbyRnFTeieqzsTAMlatiiNZyKOOKOGKNkqAujneywKBSueByApgfzksGfvOKCrBkiqvWQEXLbPKTrPAozdKISfsEijEgphMavWwTgAdtICSNTBWYAxnCvtAkxOMdGKvwoTfsGgHPPpvPiLuyNftsyXqurqovgabAuYayfWDKmgnQXZqzafTcrAGFlFVRDGOsEIxwOfytedxyZbSfnndZgGYcaljpkLloZuXZzNcFeqNmGwYFdvVkESFBXsvxIaFLRHPdlCOnDQKTBFZQygkicPZGBhUuWkHepjyJjgxSoBcwuPyCGknnFQuUnIUGGddxeeOrxitpSnYmfjLQRqfAUfbeLHyNAKjGipootMBTlgnm
-    Should Contain    ${output}    priority : 349978817
+    Should Contain    ${output}    llimit : EZMMkfBBXPxjAhOMOtWUcbyxPICKfUjXNAwpuRYDbYmuwvCoPUmrairjVTkOZIVxTEsFZPyYlvYNznAFaNoucNVRaughimwVNjSLgEOxMqgdJuwbrBOKnAwvlYeDrSggWjaYmBjrwbLUVctPbEmT
+    Should Contain    ${output}    type : NWMTLmMdAhgYxyeqwoAqodddJRNyPRGJSgvDGOLllltExtSSGWDspDnDKHaANftOmkiCNIfnhBNPxYbtGoomFuuTzILXFYzEiXeBocwCNEOLNjrUEFnJaVaPSHRiCRgwOYkqZqZcxHSWJsCZRJWlnijjadwYFDQDzTNl
+    Should Contain    ${output}    priority : 1931207244

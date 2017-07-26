@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Sequencer State Machine tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    sequencer
@@ -13,28 +15,6 @@ ${component}    standby
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_${component}.py

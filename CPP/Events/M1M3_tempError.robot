@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    M1M3_tempError sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
@@ -12,28 +14,6 @@ ${component}    tempError
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kBZYvShlwrkWjdvYZwSdeOvklaLsBZoFNkPYlcCRsxzGUnuhLVznMcmGidhrkMdUdTRHfNNxPKAkQNHpNTWWKYWmahCGYZBTgQnWGvniXkhgvJgknNuzM 638507655 15.7234 1711581888
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mrknLffENmXrwBfDxYCnsiYcuLbHpEgfHgNPlSqPAIBgaGVOBiWHsWvfXvHwxRhJRgbOIWRYKEvwtZpxpBojBCWFwPXqwrJxPsXvqdWtLyeKQseadhExRZnmvZWiYUnVbquRoAecbjveDRihXlxrWOwBXsJclBNipyQCpIhdscQBWnCTDHYdmEWxjbwCjgewQKJQOqbABzbMpXDxZRaRcFMTnLXDdzdvLPvVMUrRJNvzPoeKyCmzsvLSdUiPGCkOZXBuMTpJWRCZXgvZPupJQYzKTAaICdpIprfpgWkhTFrslZLOFZeaPLHSyykZADtQCbgTOhTIFhSqRyxHtArlBSvbpHdaeBmULScffUxrRHqhEjQtiDaPNKOwLlMAqFUAPUihhvHMoGjUoQsgCyRiRldmTcoRflADrmCkCBYqpmAycyAiPyJwCBVNPmdbKGjODQewqtPzTZXbEgtdxJmMjATxZsFnYGkPHQGkfooxvpLADIHbwFPOaZofspdfXfjWtiVdiNyBchmYulIxRSsVAnMwTFULFhZXlDwZTUNBOPZoxVPXQtHcZvDjjsCouolIabGOWrNXnIlJeTjNFhtTmXpGHzHxvWbbnBeawQfrMorUwkmUiYXPHGGVuKHaYBmrvUPERmaqQsHNGIXLoByWQFPrZACXZgqFUsmygVpSdikFJxtzpUEjdQXEBSvlIZLvaidEYRtTALLAzYxAFbkWEkWlPkcLcuDkMYuxMRDRrowOquNmubnrzktvKmVzvLshowRBCgMxMkMdTTsheknSOJuUcWWaMSKMFhMgogBiXrywLiJHDnLCQBZRhRhaDRsWgTbqHTFYPW 78486145 58.557 -2081506568
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -77,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1711581888
+    ${output}=    Read Until    priority : -2081506568
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    device : kBZYvShlwrkWjdvYZwSdeOvklaLsBZoFNkPYlcCRsxzGUnuhLVznMcmGidhrkMdUdTRHfNNxPKAkQNHpNTWWKYWmahCGYZBTgQnWGvniXkhgvJgknNuzM
-    Should Contain    ${output}    severity : 638507655
-    Should Contain    ${output}    temp : 15.7234
-    Should Contain    ${output}    priority : 1711581888
+    Should Contain    ${output}    device : mrknLffENmXrwBfDxYCnsiYcuLbHpEgfHgNPlSqPAIBgaGVOBiWHsWvfXvHwxRhJRgbOIWRYKEvwtZpxpBojBCWFwPXqwrJxPsXvqdWtLyeKQseadhExRZnmvZWiYUnVbquRoAecbjveDRihXlxrWOwBXsJclBNipyQCpIhdscQBWnCTDHYdmEWxjbwCjgewQKJQOqbABzbMpXDxZRaRcFMTnLXDdzdvLPvVMUrRJNvzPoeKyCmzsvLSdUiPGCkOZXBuMTpJWRCZXgvZPupJQYzKTAaICdpIprfpgWkhTFrslZLOFZeaPLHSyykZADtQCbgTOhTIFhSqRyxHtArlBSvbpHdaeBmULScffUxrRHqhEjQtiDaPNKOwLlMAqFUAPUihhvHMoGjUoQsgCyRiRldmTcoRflADrmCkCBYqpmAycyAiPyJwCBVNPmdbKGjODQewqtPzTZXbEgtdxJmMjATxZsFnYGkPHQGkfooxvpLADIHbwFPOaZofspdfXfjWtiVdiNyBchmYulIxRSsVAnMwTFULFhZXlDwZTUNBOPZoxVPXQtHcZvDjjsCouolIabGOWrNXnIlJeTjNFhtTmXpGHzHxvWbbnBeawQfrMorUwkmUiYXPHGGVuKHaYBmrvUPERmaqQsHNGIXLoByWQFPrZACXZgqFUsmygVpSdikFJxtzpUEjdQXEBSvlIZLvaidEYRtTALLAzYxAFbkWEkWlPkcLcuDkMYuxMRDRrowOquNmubnrzktvKmVzvLshowRBCgMxMkMdTTsheknSOJuUcWWaMSKMFhMgogBiXrywLiJHDnLCQBZRhRhaDRsWgTbqHTFYPW
+    Should Contain    ${output}    severity : 78486145
+    Should Contain    ${output}    temp : 58.557
+    Should Contain    ${output}    priority : -2081506568

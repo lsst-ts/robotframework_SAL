@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    DomeAPS_DriveFault sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    domeAPS
@@ -12,28 +14,6 @@ ${component}    DriveFault
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -6003 aPVaGgwgvCetrTvqJPkyruowsaeJIauGicBvIheAjlFIRbbkNgqjJbeUcIqDugdBlZFANwDlPhFnzQHrLsYaNbFTlLyjyFycrdxUEskotqxdZbbnZubmGhVJtJJzhyasvgZmazhwNjVkIwJalxyDdfppYHXIiHvhVobicIIXQPJkcUeQzHPkMxaEdYZkbcIPgQBATGmXrobruaqepFhZTlOVHglTYOIyLmQynfbeuYQNiisxGjXaBKGdvrPJeqpkOKAPDXFzxSIAlqefHDqIYuVSYBmWkqfcoEUjGTrFuEvvUKTlQKUVeQeUrpvdoIyCrtAvYqbjqHdkDooXsSYzjxdgkHXvCWNkbZhstfQxtBJAYCjQfawPmVvPEJlobtJZyJafaMdDZvSidZECQeIVAgUqWBbWtBKgQPQGhCfJKdZmQZEmRMGUHcgkENSYvvJlxObMkxdOqyHGUHyxjJvUgNOBObhcjzKZkBLPUWkjPFAgUTsSHjkUSESmprKpTdtOMyluhHwwCSTGbMulbrzrsIdMFNaDplRyFAwjLPZwFhAtPoXhZLNhqRCXIQlQZdHdGTakVxHatevXByPXeJSwbeksdOGgtBhfWHmzvqLalhpqsNsNDadxmjWfVZRvpjzlNbiZySYbAVfjKZogyYDPjJssLyLhsXtNtyomtFDAZftWvAwKLgCDOlRnuHldrUrbiSnMwvtUcxtvJNjHolFcKVuJiopBNytKHvNzqasmJFAUBdjVpDIJNJoizSmDBwGUopTDYKhYKHAHvIlBejVFFZxgFEtNlXooHDatrXsYeASBNqYnRKdRCgluKUdmTBozOQMjvwMnPcVSxyNBcqWGFaCPuw -983784294
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 18425 klJSabdnquzZtKpZHlvvXOmyPVjUVpzZVYDNKtelcqMkkMQmQbTBrtHrKnmowmZqnrygdJLhIiJROkSlLdDniGwNQrOjlHMLlQeOxOMPADJOqIbrAaOTEkAzAaxbEABrADqYbRrfmcDbFdEvwNeIyipbIHfXZbcbKVqkHfZwpbDKfNpBgsXvOCGcpHDJdEnqjgdWoofoOvMapzvXfTjbnzftDxYQHQpmbdpmGZFakFXTribvYKfuGVeKISNfmIbIzeCAYlw 618094970
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveFault writing a message containing :    1
@@ -77,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -983784294
+    ${output}=    Read Until    priority : 618094970
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : -6003
-    Should Contain    ${output}    errorCode : aPVaGgwgvCetrTvqJPkyruowsaeJIauGicBvIheAjlFIRbbkNgqjJbeUcIqDugdBlZFANwDlPhFnzQHrLsYaNbFTlLyjyFycrdxUEskotqxdZbbnZubmGhVJtJJzhyasvgZmazhwNjVkIwJalxyDdfppYHXIiHvhVobicIIXQPJkcUeQzHPkMxaEdYZkbcIPgQBATGmXrobruaqepFhZTlOVHglTYOIyLmQynfbeuYQNiisxGjXaBKGdvrPJeqpkOKAPDXFzxSIAlqefHDqIYuVSYBmWkqfcoEUjGTrFuEvvUKTlQKUVeQeUrpvdoIyCrtAvYqbjqHdkDooXsSYzjxdgkHXvCWNkbZhstfQxtBJAYCjQfawPmVvPEJlobtJZyJafaMdDZvSidZECQeIVAgUqWBbWtBKgQPQGhCfJKdZmQZEmRMGUHcgkENSYvvJlxObMkxdOqyHGUHyxjJvUgNOBObhcjzKZkBLPUWkjPFAgUTsSHjkUSESmprKpTdtOMyluhHwwCSTGbMulbrzrsIdMFNaDplRyFAwjLPZwFhAtPoXhZLNhqRCXIQlQZdHdGTakVxHatevXByPXeJSwbeksdOGgtBhfWHmzvqLalhpqsNsNDadxmjWfVZRvpjzlNbiZySYbAVfjKZogyYDPjJssLyLhsXtNtyomtFDAZftWvAwKLgCDOlRnuHldrUrbiSnMwvtUcxtvJNjHolFcKVuJiopBNytKHvNzqasmJFAUBdjVpDIJNJoizSmDBwGUopTDYKhYKHAHvIlBejVFFZxgFEtNlXooHDatrXsYeASBNqYnRKdRCgluKUdmTBozOQMjvwMnPcVSxyNBcqWGFaCPuw
-    Should Contain    ${output}    priority : -983784294
+    Should Contain    ${output}    driveId : 18425
+    Should Contain    ${output}    errorCode : klJSabdnquzZtKpZHlvvXOmyPVjUVpzZVYDNKtelcqMkkMQmQbTBrtHrKnmowmZqnrygdJLhIiJROkSlLdDniGwNQrOjlHMLlQeOxOMPADJOqIbrAaOTEkAzAaxbEABrADqYbRrfmcDbFdEvwNeIyipbIHfXZbcbKVqkHfZwpbDKfNpBgsXvOCGcpHDJdEnqjgdWoofoOvMapzvXfTjbnzftDxYQHQpmbdpmGZFakFXTribvYKfuGVeKISNfmIbIzeCAYlw
+    Should Contain    ${output}    priority : 618094970

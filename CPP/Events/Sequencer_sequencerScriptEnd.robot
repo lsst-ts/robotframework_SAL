@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    Sequencer_sequencerScriptEnd sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    sequencer
@@ -12,28 +14,6 @@ ${component}    sequencerScriptEnd
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send PVCcVLmRqWSyoyYPnkYOzarYWIhtPbZmTJgYAimvowmhQupPyLNHLHfsGKviNEpEDodWcruKRUmxBbJXdWgXVBWPpWoiyDFEClQtXyGUnurGgxXLIDQYKeQiBYWEXjtcghtqyOJCSzijVQRVjSrsaRVObOtlPtYfotAPwSDDqpOTdfPGJVyQnlohxIGYEqnGSagyCPcnpSMKKfYlETGwWRgKKUvnCUCCSIVFaCWBEnpNLxOXKXdfbvzdFXPlzBZE 86.7989 SSxgcbYVlEWDfLzzStmaFgWAQThMflWVlCbkiYDNJEvFRYYqqDqrAHZEftmGJLxaXCAvtbQHVyIRGkkMDQbmsKTBHngxDzYdOscHvOwThSssuGYOAOXgNszsnzrFXANouBTYlnNbcKaQmQqvSfBDqitPhdENqWVHVIHeOeSvBEKWhXFJxeEZuUIaEIFbOxCPIMsHVPNfTzVVuUYYCzwmZHoYjJuOShzJlPDwcOCnfkebNjNWUtEBSNToALgcaABO -444698634 jJHNVsbuqGAWidHsCCsQSlsdmmECWiCbUsGlAhtxOIEMNaMVzHzhINwPfktfdAfKYTBUXLaoxUAdOqhMUbTOrjDBXgUMaCywgelHwDvkuEohkBIfjYxntxxxkmNOBJcwaaWTunKvyYDDleFShWtZuCbwYRAnHDMuVorWadpBbuiEoGCYbqWDDAcCwbIDqJrHbjMJyCELXZMhOSnFqXrdjGWYQFAdLhZnOhSfuXHxWAaQWRqOKXtuSJIPotsHgTWs 881245705
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send HVhEQBJZsawdZjEUYYmMeHvqJebXZTSPTyOpItkjyesWDUhhEnJZAhiAPJAqhrzvVpvSDLUepRfbVFXdAJdbJHKqCbqlAIIGoyaMURIMlOxmuIpBJwOZTyQItbufTyfJYyrccewiqMgKZsSfQWaQwEgjhRkXAQQCTvjGoXsQAhvhBoyaFRopUvKpIXCDWqTaRQlQAMqGYppmcFqOOzWhYICxmCBeZTUsBOyOpzSHrEsgSSltopDhZddOBoJjxiHh 64.7991 RfdRSoSILOjybNiGFLBTMPWiIkIZzDGCJHiitAYGhCjkaoOmbrLrHpugsiAPDaifwZRjwEEXvjLoQOpjJARTvBjnlbwbiDQndGzSStLAWJNBsSdOywZTWaPmvZpIcdsNfSBjVKmhLPUCVogLqSriwrbAuDsgnegIeHzhnuocjStQJKHcZihBmXWdDOndBYiZHVminnIeuXpUtZxjAAsePftqnlPmvAQgHvBrfHBSuMATtEgrIALFYxiBinMJYfhb 493590092 SvVPAtPAWndgJdhXzlXfmSfljfOcKzHcRCDNtVLxGMfcVlRGEAFHnkIGKDJWDxpIYmcbXZUHeJSMERCuVoMuESiVDgSJUOEyXJgLIQzQLPYoVMItOgjhUZpvldLVgCfLBgWEQgwqBcdmRxwjoYmIWfmsMMefvPVUOrFqeieXleaIbqSsuMhOhtbRxZNSTkpBvWLBcmeRLjMsycjyYISQgHDJmaHUzNTVTrOGFSNaYgBAbgnReRzdgoJGEduGNQXx -758264311
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEnd writing a message containing :    1
@@ -77,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 881245705
+    ${output}=    Read Until    priority : -758264311
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptEnd received =     1
-    Should Contain    ${output}    sequencerScriptName : PVCcVLmRqWSyoyYPnkYOzarYWIhtPbZmTJgYAimvowmhQupPyLNHLHfsGKviNEpEDodWcruKRUmxBbJXdWgXVBWPpWoiyDFEClQtXyGUnurGgxXLIDQYKeQiBYWEXjtcghtqyOJCSzijVQRVjSrsaRVObOtlPtYfotAPwSDDqpOTdfPGJVyQnlohxIGYEqnGSagyCPcnpSMKKfYlETGwWRgKKUvnCUCCSIVFaCWBEnpNLxOXKXdfbvzdFXPlzBZE
-    Should Contain    ${output}    sequencerScriptIdentifier : 86.7989
-    Should Contain    ${output}    sequencerScriptTimestamp : SSxgcbYVlEWDfLzzStmaFgWAQThMflWVlCbkiYDNJEvFRYYqqDqrAHZEftmGJLxaXCAvtbQHVyIRGkkMDQbmsKTBHngxDzYdOscHvOwThSssuGYOAOXgNszsnzrFXANouBTYlnNbcKaQmQqvSfBDqitPhdENqWVHVIHeOeSvBEKWhXFJxeEZuUIaEIFbOxCPIMsHVPNfTzVVuUYYCzwmZHoYjJuOShzJlPDwcOCnfkebNjNWUtEBSNToALgcaABO
-    Should Contain    ${output}    sequencerScriptStatusCode : -444698634
-    Should Contain    ${output}    sequencerScriptStatusText : jJHNVsbuqGAWidHsCCsQSlsdmmECWiCbUsGlAhtxOIEMNaMVzHzhINwPfktfdAfKYTBUXLaoxUAdOqhMUbTOrjDBXgUMaCywgelHwDvkuEohkBIfjYxntxxxkmNOBJcwaaWTunKvyYDDleFShWtZuCbwYRAnHDMuVorWadpBbuiEoGCYbqWDDAcCwbIDqJrHbjMJyCELXZMhOSnFqXrdjGWYQFAdLhZnOhSfuXHxWAaQWRqOKXtuSJIPotsHgTWs
-    Should Contain    ${output}    priority : 881245705
+    Should Contain    ${output}    sequencerScriptName : HVhEQBJZsawdZjEUYYmMeHvqJebXZTSPTyOpItkjyesWDUhhEnJZAhiAPJAqhrzvVpvSDLUepRfbVFXdAJdbJHKqCbqlAIIGoyaMURIMlOxmuIpBJwOZTyQItbufTyfJYyrccewiqMgKZsSfQWaQwEgjhRkXAQQCTvjGoXsQAhvhBoyaFRopUvKpIXCDWqTaRQlQAMqGYppmcFqOOzWhYICxmCBeZTUsBOyOpzSHrEsgSSltopDhZddOBoJjxiHh
+    Should Contain    ${output}    sequencerScriptIdentifier : 64.7991
+    Should Contain    ${output}    sequencerScriptTimestamp : RfdRSoSILOjybNiGFLBTMPWiIkIZzDGCJHiitAYGhCjkaoOmbrLrHpugsiAPDaifwZRjwEEXvjLoQOpjJARTvBjnlbwbiDQndGzSStLAWJNBsSdOywZTWaPmvZpIcdsNfSBjVKmhLPUCVogLqSriwrbAuDsgnegIeHzhnuocjStQJKHcZihBmXWdDOndBYiZHVminnIeuXpUtZxjAAsePftqnlPmvAQgHvBrfHBSuMATtEgrIALFYxiBinMJYfhb
+    Should Contain    ${output}    sequencerScriptStatusCode : 493590092
+    Should Contain    ${output}    sequencerScriptStatusText : SvVPAtPAWndgJdhXzlXfmSfljfOcKzHcRCDNtVLxGMfcVlRGEAFHnkIGKDJWDxpIYmcbXZUHeJSMERCuVoMuESiVDgSJUOEyXJgLIQzQLPYoVMItOgjhUZpvldLVgCfLBgWEQgwqBcdmRxwjoYmIWfmsMMefvPVUOrFqeieXleaIbqSsuMhOhtbRxZNSTkpBvWLBcmeRLjMsycjyYISQgHDJmaHUzNTVTrOGFSNaYgBAbgnReRzdgoJGEduGNQXx
+    Should Contain    ${output}    priority : -758264311

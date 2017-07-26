@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    DomeTHCS_MovementPrevented sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    domeTHCS
@@ -12,28 +14,6 @@ ${component}    MovementPrevented
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TrxZHLYeqxeAYvKDgsqiYhAcvMYvStJMVqkFTUEVlSTPoWKbwailnvxKHMxkjVnaXCCdnLwDULLXDeRPFvFsEJacSPgEkXfGjIzrSCYqSaHHeNTiZwtcrMPRtgKXJiqmYvnkjS 1248976513
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WOmujzxCfFgakvTeGleLytFesqENyymFoorRYIMlaHlwhewRYSCqWYleSOGtZdyLnpadHGYncKEHlzoEjuNBYhEJcbCYMnxParhcMUgArpdFGxgZgdlsmgdsCMYAbytObOeTDklHjkjqCtVTlPrGgmlbZTAtBKgsaRTYFcdLhoCNGpjwezztjjMVCjvOkbiTONgvqHIYXraNsiyezZYvzbJvpPzuZJSqNOqWITmqdrkKFqWTpDtMQCjaMqfQidaAcqyskHdKePaYEFkuHhujJQayUNZiyxGEQcghuUnkJySkfWtUastFcuxGCQC 1962232881
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_MovementPrevented writing a message containing :    1
@@ -77,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1248976513
+    ${output}=    Read Until    priority : 1962232881
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    causeId : TrxZHLYeqxeAYvKDgsqiYhAcvMYvStJMVqkFTUEVlSTPoWKbwailnvxKHMxkjVnaXCCdnLwDULLXDeRPFvFsEJacSPgEkXfGjIzrSCYqSaHHeNTiZwtcrMPRtgKXJiqmYvnkjS
-    Should Contain    ${output}    priority : 1248976513
+    Should Contain    ${output}    causeId : WOmujzxCfFgakvTeGleLytFesqENyymFoorRYIMlaHlwhewRYSCqWYleSOGtZdyLnpadHGYncKEHlzoEjuNBYhEJcbCYMnxParhcMUgArpdFGxgZgdlsmgdsCMYAbytObOeTDklHjkjqCtVTlPrGgmlbZTAtBKgsaRTYFcdLhoCNGpjwezztjjMVCjvOkbiTONgvqHIYXraNsiyezZYvzbJvpPzuZJSqNOqWITmqdrkKFqWTpDtMQCjaMqfQidaAcqyskHdKePaYEFkuHhujJQayUNZiyxGEQcghuUnkJySkfWtUastFcuxGCQC
+    Should Contain    ${output}    priority : 1962232881

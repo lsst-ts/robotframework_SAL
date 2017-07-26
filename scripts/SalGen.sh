@@ -19,10 +19,12 @@ declare -a stateArray=($(stateArray))
 function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    This suite builds the various interfaces for the $subSystemUp." >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${timeout}    \${SALVersion}" >> $testSuite
+	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+	echo "...    AND    Create Session    SALGEN" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Resource    ../Global_Vars.robot" >> $testSuite
+    echo "Resource    ../../common.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
@@ -327,7 +329,6 @@ function createTestSuite() {
 	createSettings
 	createVariables $subSystem
 	echo "*** Test Cases ***" >> $testSuite
-	createSession "SALGEN"
     verifyXMLDefinitions
 	salgenValidate
 	salgenHTML

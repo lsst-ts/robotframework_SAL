@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Hexapod_configureAcceleration commander/controller tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    hexapod
@@ -13,28 +15,6 @@ ${component}    configureAcceleration
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_commander
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 4.5507 98.3109 26.5769 46.3839 17.1792 73.7612 11.2696 61.948 97.276 40.8252 40.5849 90.5843
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 62.4864 21.1118 95.7849 46.522 70.1821 3.8626 83.8219 96.8138 60.2951 71.672 64.3988 25.7438
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 4.5507 98.3109 26.5769 46.3839 17.1792 73.7612 11.2696 61.948 97.276 40.8252 40.5849 90.5843
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 62.4864 21.1118 95.7849 46.522 70.1821 3.8626 83.8219 96.8138 60.2951 71.672 64.3988 25.7438
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,18 +68,18 @@ Start Commander
     Should Contain X Times    ${output}    property : acceleration    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xmin : 4.5507    1
-    Should Contain X Times    ${output}    xmax : 98.3109    1
-    Should Contain X Times    ${output}    ymin : 26.5769    1
-    Should Contain X Times    ${output}    ymax : 46.3839    1
-    Should Contain X Times    ${output}    zmin : 17.1792    1
-    Should Contain X Times    ${output}    zmax : 73.7612    1
-    Should Contain X Times    ${output}    umin : 11.2696    1
-    Should Contain X Times    ${output}    umax : 61.948    1
-    Should Contain X Times    ${output}    vmin : 97.276    1
-    Should Contain X Times    ${output}    vmax : 40.8252    1
-    Should Contain X Times    ${output}    wmin : 40.5849    1
-    Should Contain X Times    ${output}    wmax : 90.5843    1
+    Should Contain X Times    ${output}    xmin : 62.4864    1
+    Should Contain X Times    ${output}    xmax : 21.1118    1
+    Should Contain X Times    ${output}    ymin : 95.7849    1
+    Should Contain X Times    ${output}    ymax : 46.522    1
+    Should Contain X Times    ${output}    zmin : 70.1821    1
+    Should Contain X Times    ${output}    zmax : 3.8626    1
+    Should Contain X Times    ${output}    umin : 83.8219    1
+    Should Contain X Times    ${output}    umax : 96.8138    1
+    Should Contain X Times    ${output}    vmin : 60.2951    1
+    Should Contain X Times    ${output}    vmax : 71.672    1
+    Should Contain X Times    ${output}    wmin : 64.3988    1
+    Should Contain X Times    ${output}    wmax : 25.7438    1
     Should Contain    ${output}    === command configureAcceleration issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -114,18 +94,18 @@ Read Controller
     Should Contain    ${output}    property : acceleration
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xmin : 4.5507    1
-    Should Contain X Times    ${output}    xmax : 98.3109    1
-    Should Contain X Times    ${output}    ymin : 26.5769    1
-    Should Contain X Times    ${output}    ymax : 46.3839    1
-    Should Contain X Times    ${output}    zmin : 17.1792    1
-    Should Contain X Times    ${output}    zmax : 73.7612    1
-    Should Contain X Times    ${output}    umin : 11.2696    1
-    Should Contain X Times    ${output}    umax : 61.948    1
-    Should Contain X Times    ${output}    vmin : 97.276    1
-    Should Contain X Times    ${output}    vmax : 40.8252    1
-    Should Contain X Times    ${output}    wmin : 40.5849    1
-    Should Contain X Times    ${output}    wmax : 90.5843    1
+    Should Contain X Times    ${output}    xmin : 62.4864    1
+    Should Contain X Times    ${output}    xmax : 21.1118    1
+    Should Contain X Times    ${output}    ymin : 95.7849    1
+    Should Contain X Times    ${output}    ymax : 46.522    1
+    Should Contain X Times    ${output}    zmin : 70.1821    1
+    Should Contain X Times    ${output}    zmax : 3.8626    1
+    Should Contain X Times    ${output}    umin : 83.8219    1
+    Should Contain X Times    ${output}    umax : 96.8138    1
+    Should Contain X Times    ${output}    vmin : 60.2951    1
+    Should Contain X Times    ${output}    vmax : 71.672    1
+    Should Contain X Times    ${output}    wmin : 64.3988    1
+    Should Contain X Times    ${output}    wmax : 25.7438    1
     Should Contain X Times    ${output}    === [ackCommand_configureAcceleration] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

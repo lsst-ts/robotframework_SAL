@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    Sequencer_sequencerEntitySummaryState sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    sequencer
@@ -12,28 +14,6 @@ ${component}    sequencerEntitySummaryState
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ERBtBhLzueHNwyhGAbcNoDMGGOLWKqzMCqYQjrvTfOvWbmRvBpTMrTJlxyroeUqiBOlxFNSMJbBYMfxhahuHJCgrMFZYrBLwfTzlUdXGgJSnwllbmVgmeLQOzFCIzVmY 49.6473 shnAazRJlGTlyCggSzagRGtXzrgOknKbIoWyJwoGCSaFlZLbGbVcTJcpdrWCLUdogvfSqsZHefJeyEsejNZjrrlfCAakqHefeGqbiUpEUiVyzMVjEqflTJcSNJUiEiKUTZlSTPVxBuRrwrdykGwnBtBipMLPXixujEABtQZymOzDSbRWHYEIGELSubFSXJbLkDZXkIcpnizQudqlbSqbMjRaTeZHJQRhdJxvcXzpCyFddifuaxnEwyCkXotCNTbh -1282186607 MfKpVNPzOIAQOnYkmOoqaWmFmsabPwOQxhTrhYZKLQNHAyqcBXSySKhHIBPMBYiMvVOycMdDyAeYARFusBtwUGAOOXakuNLLzNaEApaTMXYpvyBrLoPVBTgwMNYshTFM rsbsxDFdcdbWrZKFRecyCdZbzrVOhhZDomoOUDnrkAPCpuoVFVNUPrjpsTuhhOwiVYcaYJToxuPazCoRbjTLLKTFlAurrOumZbmKqirJXIxyrwItgYyXXUcrtuOnllBc GTmYiuwnudVRAzPtqBBzUvhLuLIJXiAjxHQbeMHUtlAXpeZpjPqfFaOcjwsFRZLqBsktKAQDddlPYTOAfNUlpgdhjtBvfClCWTmryMeiATqfmoUWcGbuMSVawUUVBQfw jrMcqPSsALrSIBNXpgTyyZejmNpAVXKtugtiLTUcKcyGQnVpesvUxBlrWoNsctlyQHAlVbyBgOAMQxLnOQDpOoULzRpNPaMwiHUQNMSapvKfNFVtAHQjqbeGTiZSimLJ vHfenSLReYeGxHVqvQzqHkKobJTXonXozQErQrcGvupFfmsCOWhMduNtYlcjcDqQSivTOSfGnHTuuQQiREmzWjcXCXHLawLQMexRMnRWDwFjSGdNCwiVcvLlaSTvfXZO 1208956390
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JPNwqpdYyjcuKJMovNmIDHsuhOuRSKfnvyxSXsukrWiZxovdMnAHKvSUIYrUrvrcObxRbkyPoaZTXgnajGHyueWKcjSrhdijCxjjLPdhomvgSmuqFnGxmUxiHnQyIfkr 79.0183 XmZiUxgkduDjbZMAeQIAAdZUcltyTAfUqOHWVSMOkrjTqwBcDPHbYBJrxqnIseJnXkPTRspUfKLVnJepdtbtOuBREuFPouXJbUJdczIPiPhtqwVkTbYbaZVzajoFcKWknqJTHFdFqGEtGTIVRzAxaqpdfEadDhbMhjMoxcmYbpaDYtvemJBsMFmXMQbJDoBTPdpQcxQyqxdZPxsNCbzYTKBUvssUPkOEORzsxgjBnmmuWvOsijLtOODFXOdLNsOc -1207139390 HbogOYdVhekBGWHJgZGCyztDMGbxEUzYVUXucdyOrslYaWzREXAgitYQDyiMeYvgnyUAdtTyUeXWEbCznBQWKRKFdLDsZxlmbptomBpKjqbAdRxiYpssoUMpQUhqtdNv ZbmOfKNIsDOYWSqYSfZPyXpZQROVCkOyXuSonnqEqkVuSPlqyaLeTuLpfvRTGdSTxjfikeQlxsoLcDGmFPPFKepdMnIzFeMyHvqspDPAtgvunIfMTBMBNLmQMssECCUo dPdrQTUHaJIaMbJNBwkaxkGBqtMmFEhoElHZRwCkowwWLfMDtRgEkIVUUwKToxDUjGluGbZhiWgYmCKFmoiKveTbWqMyiOgCpENagmcMmkNutcufEfIYTaIikwSmSIzD reppbWLzxCfXwMcXgsmdAjWqFavUnGegQMFOmytJVWRoLjzUtWoyLRGliLAGhqeBmTDYuwjDZGhzMtdSBMfihZMvFMRdbQfqLPtxIOZgwepyKSQzlsgpgpEiEOBetxAP kQnoSCBzbEzKcmFWhsresyvfPMCEwAElhdYnxmOeXZmsPznynrxfPTtfKCyKqUxhEKyiEVsGTCzRYURwjMrwwxtubLbjiUZcqOUHpyZBYjBxMFbtZnmanVNySznGeHtJ 875610205
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntitySummaryState writing a message containing :    1
@@ -77,16 +57,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1208956390
+    ${output}=    Read Until    priority : 875610205
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerEntitySummaryState received =     1
-    Should Contain    ${output}    Name : ERBtBhLzueHNwyhGAbcNoDMGGOLWKqzMCqYQjrvTfOvWbmRvBpTMrTJlxyroeUqiBOlxFNSMJbBYMfxhahuHJCgrMFZYrBLwfTzlUdXGgJSnwllbmVgmeLQOzFCIzVmY
-    Should Contain    ${output}    Identifier : 49.6473
-    Should Contain    ${output}    Timestamp : shnAazRJlGTlyCggSzagRGtXzrgOknKbIoWyJwoGCSaFlZLbGbVcTJcpdrWCLUdogvfSqsZHefJeyEsejNZjrrlfCAakqHefeGqbiUpEUiVyzMVjEqflTJcSNJUiEiKUTZlSTPVxBuRrwrdykGwnBtBipMLPXixujEABtQZymOzDSbRWHYEIGELSubFSXJbLkDZXkIcpnizQudqlbSqbMjRaTeZHJQRhdJxvcXzpCyFddifuaxnEwyCkXotCNTbh
-    Should Contain    ${output}    Address : -1282186607
-    Should Contain    ${output}    CurrentState : MfKpVNPzOIAQOnYkmOoqaWmFmsabPwOQxhTrhYZKLQNHAyqcBXSySKhHIBPMBYiMvVOycMdDyAeYARFusBtwUGAOOXakuNLLzNaEApaTMXYpvyBrLoPVBTgwMNYshTFM
-    Should Contain    ${output}    PreviousState : rsbsxDFdcdbWrZKFRecyCdZbzrVOhhZDomoOUDnrkAPCpuoVFVNUPrjpsTuhhOwiVYcaYJToxuPazCoRbjTLLKTFlAurrOumZbmKqirJXIxyrwItgYyXXUcrtuOnllBc
-    Should Contain    ${output}    Executing : GTmYiuwnudVRAzPtqBBzUvhLuLIJXiAjxHQbeMHUtlAXpeZpjPqfFaOcjwsFRZLqBsktKAQDddlPYTOAfNUlpgdhjtBvfClCWTmryMeiATqfmoUWcGbuMSVawUUVBQfw
-    Should Contain    ${output}    CommandsAvailable : jrMcqPSsALrSIBNXpgTyyZejmNpAVXKtugtiLTUcKcyGQnVpesvUxBlrWoNsctlyQHAlVbyBgOAMQxLnOQDpOoULzRpNPaMwiHUQNMSapvKfNFVtAHQjqbeGTiZSimLJ
-    Should Contain    ${output}    ConfigurationsAvailable : vHfenSLReYeGxHVqvQzqHkKobJTXonXozQErQrcGvupFfmsCOWhMduNtYlcjcDqQSivTOSfGnHTuuQQiREmzWjcXCXHLawLQMexRMnRWDwFjSGdNCwiVcvLlaSTvfXZO
-    Should Contain    ${output}    priority : 1208956390
+    Should Contain    ${output}    Name : JPNwqpdYyjcuKJMovNmIDHsuhOuRSKfnvyxSXsukrWiZxovdMnAHKvSUIYrUrvrcObxRbkyPoaZTXgnajGHyueWKcjSrhdijCxjjLPdhomvgSmuqFnGxmUxiHnQyIfkr
+    Should Contain    ${output}    Identifier : 79.0183
+    Should Contain    ${output}    Timestamp : XmZiUxgkduDjbZMAeQIAAdZUcltyTAfUqOHWVSMOkrjTqwBcDPHbYBJrxqnIseJnXkPTRspUfKLVnJepdtbtOuBREuFPouXJbUJdczIPiPhtqwVkTbYbaZVzajoFcKWknqJTHFdFqGEtGTIVRzAxaqpdfEadDhbMhjMoxcmYbpaDYtvemJBsMFmXMQbJDoBTPdpQcxQyqxdZPxsNCbzYTKBUvssUPkOEORzsxgjBnmmuWvOsijLtOODFXOdLNsOc
+    Should Contain    ${output}    Address : -1207139390
+    Should Contain    ${output}    CurrentState : HbogOYdVhekBGWHJgZGCyztDMGbxEUzYVUXucdyOrslYaWzREXAgitYQDyiMeYvgnyUAdtTyUeXWEbCznBQWKRKFdLDsZxlmbptomBpKjqbAdRxiYpssoUMpQUhqtdNv
+    Should Contain    ${output}    PreviousState : ZbmOfKNIsDOYWSqYSfZPyXpZQROVCkOyXuSonnqEqkVuSPlqyaLeTuLpfvRTGdSTxjfikeQlxsoLcDGmFPPFKepdMnIzFeMyHvqspDPAtgvunIfMTBMBNLmQMssECCUo
+    Should Contain    ${output}    Executing : dPdrQTUHaJIaMbJNBwkaxkGBqtMmFEhoElHZRwCkowwWLfMDtRgEkIVUUwKToxDUjGluGbZhiWgYmCKFmoiKveTbWqMyiOgCpENagmcMmkNutcufEfIYTaIikwSmSIzD
+    Should Contain    ${output}    CommandsAvailable : reppbWLzxCfXwMcXgsmdAjWqFavUnGegQMFOmytJVWRoLjzUtWoyLRGliLAGhqeBmTDYuwjDZGhzMtdSBMfihZMvFMRdbQfqLPtxIOZgwepyKSQzlsgpgpEiEOBetxAP
+    Should Contain    ${output}    ConfigurationsAvailable : kQnoSCBzbEzKcmFWhsresyvfPMCEwAElhdYnxmOeXZmsPznynrxfPTtfKCyKqUxhEKyiEVsGTCzRYURwjMrwwxtubLbjiUZcqOUHpyZBYjBxMFbtZnmanVNySznGeHtJ
+    Should Contain    ${output}    priority : 875610205

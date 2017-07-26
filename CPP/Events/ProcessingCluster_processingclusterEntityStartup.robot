@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    ProcessingCluster_processingclusterEntityStartup sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    processingcluster
@@ -12,28 +14,6 @@ ${component}    processingclusterEntityStartup
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KgcmqvPnuhmJPumydDRRtqlxxpQgZeGeopeEKWhUARElgYwTfzTYFYIrVEFeEPVSvbQQXSqBQRMvWkpWSkcyWRmdGBCNzAXcJEdZtWdcuXvZjFedyClvQzqPwwMmbdeR 88.0055 kzfaevcZtaVGScBVHphcsUdDZnWiGXbJdDfvdSqOUJnGzAIwuMHXnqmupXFnOgOnfAVBXEybWIAVNpBQXufthahyGeLqZIkbLGmTAmoxFKMzqMEVHudZpjPmBdTQnxAKSXbawSTooowxOpBsNSbqMVxJUPVBWwaHCSIQNOxizYRMzuUIoiWlCPzZBWzeSGXCAtgHeoxuYwSvkvlJbzhhrJJIWcfvHVjgRpZuRDkLiEyecLsTMGznDEvSqHPLuzJS -810811426 1808273636
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ahImyyMTBhBTCKdmGGsrgmbExlyDAcjbgFoegJNqXliOBYMrdnevOEmEtUctyXgBcujtKznxsWaMTWigkDABwAIcamwsTRWHsGfDPjIKEodfkFYThKIUYNTWQAVnKWvg 45.9693 XYWjcugdVuyAxJBWMKErHdjQbZWxpkbUURsagwfGeOIsNiaHwSrfGmGgxBZYQSdaatSAsRZoSeagbpcPVDxOsvEVFPyzLQxHhbWBcSvYYHZQHlprVYpEBCGbnpKsKeCSSanJIxDyTgjsQsNRhIddhqAvCaYfDAhFtwjJscZZrrditHYGQmDeXGknLNvkdSmNxjFUiTQWSZtcCefFjVNjaVMJumQEBoRfeTQHyEXeMHBrTnZSsRAdcbrJtdBoknsb 2136422836 2128493125
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntityStartup writing a message containing :    1
@@ -77,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1808273636
+    ${output}=    Read Until    priority : 2128493125
     Log    ${output}
     Should Contain X Times    ${output}    === Event processingclusterEntityStartup received =     1
-    Should Contain    ${output}    Name : KgcmqvPnuhmJPumydDRRtqlxxpQgZeGeopeEKWhUARElgYwTfzTYFYIrVEFeEPVSvbQQXSqBQRMvWkpWSkcyWRmdGBCNzAXcJEdZtWdcuXvZjFedyClvQzqPwwMmbdeR
-    Should Contain    ${output}    Identifier : 88.0055
-    Should Contain    ${output}    Timestamp : kzfaevcZtaVGScBVHphcsUdDZnWiGXbJdDfvdSqOUJnGzAIwuMHXnqmupXFnOgOnfAVBXEybWIAVNpBQXufthahyGeLqZIkbLGmTAmoxFKMzqMEVHudZpjPmBdTQnxAKSXbawSTooowxOpBsNSbqMVxJUPVBWwaHCSIQNOxizYRMzuUIoiWlCPzZBWzeSGXCAtgHeoxuYwSvkvlJbzhhrJJIWcfvHVjgRpZuRDkLiEyecLsTMGznDEvSqHPLuzJS
-    Should Contain    ${output}    Address : -810811426
-    Should Contain    ${output}    priority : 1808273636
+    Should Contain    ${output}    Name : ahImyyMTBhBTCKdmGGsrgmbExlyDAcjbgFoegJNqXliOBYMrdnevOEmEtUctyXgBcujtKznxsWaMTWigkDABwAIcamwsTRWHsGfDPjIKEodfkFYThKIUYNTWQAVnKWvg
+    Should Contain    ${output}    Identifier : 45.9693
+    Should Contain    ${output}    Timestamp : XYWjcugdVuyAxJBWMKErHdjQbZWxpkbUURsagwfGeOIsNiaHwSrfGmGgxBZYQSdaatSAsRZoSeagbpcPVDxOsvEVFPyzLQxHhbWBcSvYYHZQHlprVYpEBCGbnpKsKeCSSanJIxDyTgjsQsNRhIddhqAvCaYfDAhFtwjJscZZrrditHYGQmDeXGknLNvkdSmNxjFUiTQWSZtcCefFjVNjaVMJumQEBoRfeTQHyEXeMHBrTnZSsRAdcbrJtdBoknsb
+    Should Contain    ${output}    Address : 2136422836
+    Should Contain    ${output}    priority : 2128493125

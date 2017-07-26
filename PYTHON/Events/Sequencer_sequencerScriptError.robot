@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Sequencer_sequencerScriptError sender/logger tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    sequencer
@@ -13,28 +15,6 @@ ${component}    sequencerScriptError
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
@@ -68,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py zpQOSSDXGJtmhDbjiPftZnJNOfemBqghiQjmuQMLzsloqryIaIGMlyFZODHiaWRRMzzDGTfWERzTLzbVVDBTXfVEPFNpvOpObkXTNDDgAAOmKCnLjSVXcmogTzEEnvIBeZWEahuITIfdTygEWOwQRPbICrszJzqPrZOoSJQEtyrJmafJXeEumXSOBMchgYUUogZGjtrRQUbeKcFqmhokhvlFIIxACfLXlNpqGbKHdMtxGfyeTZKyOGmbeGKDduOu 50.75 IXrMLglOPKdmCoKxbVkrwNdEwdsweMllVRfJlcRkmFSDwrmZwRyRLVMdiwQcrhvtBEetDsAhqaajHYNjGcPtEHAFqdkYtbOEmposroNcYcCCoTPpVEBfjDZvOwlTGcjAVjvLxaceooSaMWgLTZBmliauBCHhIoBQbohtQfPMXUzKsgngnzSYPFNrUmQszjogNZeskUEmpDVFIOfNoZfiXAPLgjloKnlyQArrXKeOGvLuethecyJMZzzniLwJWzzc -1292594644 -1487958077 IFCeBDChGklFVwdYSQsiJHFLzPDoKunmDTFYwmZrDRzrIhOSOykJvZMQDufoilNXcZBXCERAJRGbbkTkJyWEvSdYGPQEBdnxSBbueemRIyllIPChtxNcNiAfMhRwJOsjBjNsHiJINKNnEgVJiVzDmVMOXYzphGaouMHOOvZsQEoXPlBTFfvsMEbUKgTUOhVQLCSIlGTdmzCiqxoTEQdDVnYyXkaEMlazltCQHzLEGWHLbJbAVqMxQsiiDrofSlXc 1495390040
+    ${input}=    Write    python ${subSystem}_Event_${component}.py aloNogYsGSviHGkSLmvIyCxTqypCWXKflNxszScqZtzbZsijzyvBlvimQMIHCsGvgUrrLIMCFxTOJZofmKokLlaVBEJgGFmulorFDreRHrVpgTIhRlqIPkDQIsfzPCwdCBTkLpEneXynnwWfktGnKMaZBmgJSRSFlSumfPRCvxGfGmFduzBTqTEiXVtFiNFVUevwBzqFDeLiTFpxeJiSFsvUDpVYFhhJgoKWASvalLhktosTStxUiBFmDMyqTaQB 70.727 iqPQOzjGwhrhjvtRhUILQDHFJTKKtUapVbyjgaFWJbcQTXXoRTGzZdVNGxhMwosNclHBafcLcSjpvRwAxdqMRHFfvRqwZFTjThzkAdwGNrhDfNtlGiOmTbBijFIGJgFQmeNvNhNurlFWATwPPQsVjuhRVGmcImoYlRjcSTBkoJCFRORdaBUUSfnwTnsjalczmjgNmPwtowhTGfJrzhEGibcwbagiPUiLhuajhwabTvWuwYKNIwnRZEwaRkFUVzXy 450011424 1117781175 vPVoleobJOAlHPFkNGalWhXOqnZSqhVYlRcwOmqkKdQzPXyIyrTntmkhjURBcoAWAXudoshWtrvWFEmEJOrPRdTYmXOVgLXEAepXJxmdOQQsNGsUhPWHSmKRwlAhQtGbJFQVmHKmSovpUeNUgVrWHvhNZETFCqnbGqcSvVhDIFizgdPiEjFfiaIczjkIMczWRvTvTEMFQkjKispuFbEZAspuZuqFWMlIsmvHGrpDNkOakhyREWRyUMGjOZKwXKbW -1374910259
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptError writing a message containing :    1

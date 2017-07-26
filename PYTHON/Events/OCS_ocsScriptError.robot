@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    OCS_ocsScriptError sender/logger tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    ocs
@@ -13,28 +15,6 @@ ${component}    ocsScriptError
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
@@ -68,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py SCMgZqlSsNGdNkLTftnDwUreiLLTfZJBRhAslrrorXmsTqVDzsgTuULrfufjaKqVFfSADtLEigfYKQNCcpgLAytzdjMRbSqCqqzyLCYKHvpFEZNSVdvxekvATFKcUxMeTEDolykKUSRzWzAzZqVsJNhBcdMZrVBbrLPNljkyhAnoIulyqUEJpXhgMOjQOyCyhOLkAEqDQYasbWDHWYdtKKzRMFsGnXvdxMTyygkJDqFimlTtFUmLaPbYLBlUSrLs 87.6886 HlTVZhiKZCPORvprYezqtTkbJTUfMVgVRyXpBvkCIEqsTzvQmsLRcIxHTGFXWfIipvhJIoTJNdILkaxzYoiWYBCXSYjjwxoofCyXrwwkSwgMcYvaeBroOdbIoRDNEhpnGVEZHKXYKFWXeZFdPFmHdNLqVbbPqSupKcCgmpIEQBOFAVZMftpRlDrHtZjRIzAVPciszedTbHXRgxraYWKsbpRkgPodunKZuJVnAvdFarysjpDVxLpkfaIBMTFCTqUC -378598775 124322858 bfekpIteOdIiNhmHLchQbUiyDAEqSuqbfzpCQofGuzFDxqbGgAKPYJHhntEDjRraCRMQOCBoQimiuSPzbyXiJikhapsFozEcRzpGotDmOsMPEoWuCEYVoXuBJwRkdpMYLHHcQgltTTQDbBmVUKKNCZtDLEgBUHiYTwTIyiiiEgVItcjjcqutPwDNupPBopZbsmzLZnmFFHCtXrQZzkRmsUrlkHIVazQWTDIGMoepECjluQZMuHzEGtBiGGTEZxNf 494706062
+    ${input}=    Write    python ${subSystem}_Event_${component}.py CPTkLCKmatHgjMRfHoLvlvDGsHYiWxcrzFyvAijIrzeEMsNSCvrFOBlvyypMqoVAkALXWsfnTfrcYOOTnmvGWbsPENsKrKEgXRGIgEkJreTABiNtPDZmpAKDjlDPKipWiqKlpXHsDmPlBFszToMrkvgiYDeikVeEEMudNcvWZSNnpSYGjohcvcVGEOGTWuORInqUhXuiAKQYvWuhjBdVrBJdrAEFsmqTlwIDTYxaIvwpIbEMGSHHPdgHcHOcYZFC 81.4791 JCSsnQPslpTLpxktNgFmMhIpDOCTyqajvRjptDwXTpWkSRoKhuWFikcykmHujhFwFDlqULuLAmrPXkwgDUYhJLWZTnxWElnkKEtoMaFnQTdgrmquxiyxUbvCnpvKZdqqHDeUlpGaXGxWAbaNwNvppfKfpOgyMhWtkxjTcXGXbQbzsmpzwmzxZdbrczPpdELjRJbvuMkTLDKyvCnkUJFNqfjctvhJwmVFZaVtgolLVraOXjvWxySPipPplrzfsPAK -945150658 2094748266 RsrCSOldsqoviaDdlrvridhryEUnccDoVJreBkyjgVSkdUxxRvZLkCeDHXkkvGvOaodPFbKNpSmNQOYVZozQRARvkHbIHEIqgCINImYmNrEggnwbhKmgmgzNaGxvGYgmbULdUnFMfGtSptGuBgIvEwMhVHWlbdmPXsXvmxMKZNZleGDUYZtFJtHrjmDUgwFmiFOyQTWMPhPvdiJjbPdINUFMRquFAHIKguPRPBvLLsFTNBzpgfkbdkHRBnNCIBLo -504640367
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptError writing a message containing :    1

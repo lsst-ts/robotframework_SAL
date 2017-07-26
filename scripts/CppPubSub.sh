@@ -64,11 +64,13 @@ function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
     echo "Force Tags    cpp" >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
+    echo "Resource    ../../common.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
@@ -159,8 +161,6 @@ function createTestSuite {
 		createSettings
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
-		createSession "Publisher"
-        createSession "Subscriber"
         verifyCompPubSub
 		startSubscriber
 		startPublisher

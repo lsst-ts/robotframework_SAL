@@ -1,10 +1,12 @@
 *** Settings ***
 Documentation    OCS_ocsCommandIssued sender/logger tests.
 Force Tags    cpp
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    ocs
@@ -12,28 +14,6 @@ ${component}    ocsCommandIssued
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_${component}_send
@@ -67,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bHxJCiQTYEIdEDkIizmXaifZQsHlApavyXTamDhPXXFJgidvKVxOwkUNMSCmCaLVhwhGtCpmYLtTxZbwJnanVkXOEMsoFFQEapwZZYhjLInhTZWqQBFVaIlpHjSKYwrxTmYdWFMpgbWKYXiWfUgTRPYegyHnXucivqqPpxMWwGMwLBJrIWCBpRxsGEAVXuPNgFtojtWiQhxICuAZotBafskjrIuyVXdCtmhbKsxcCgbqSDSJzlBXnzDkFiAypLQo -713040802 40.8784 DXvigoyNvOmPrXtCjOPBqnBjUSqShOyoRUBKcrTUwethKmndAgMoWkfOnIbrYHMMbrbYHdbmQwXGDyjkOJijGGWOHmFiNckOjRXIbcWvNXuCbIddEAfxQoNJGkyzlYNtrGsvEqeSlBcuzNfhrJtSruCSWZeMcAYquPLqbZXhbecnRdmujGipZkbnWQOJGboiuBogJxzTbZLpEeQndwtbcdMnhfkoMALIlfqgovhiHNeZAEHlovzhuDtvxjnkxzge QIPRngWbZqvsgtFDpDULiZBGYSVgPesXYDQnZjmyFJxPchHEinDpaACbxpENwJLDTHwwuclNLHEpIxpTYtSrMGdgvDOBPqKEMTUWtHYFvTjwsHVygrkLNnnHrnlvGEwEKFiQKHnznyiYdqyGqhTZFuvEIxsNZfzuDvGxbGrulqxQadBtzwhcqobxWCNQWPigAMpULtNTLSgzuiYuYbyNsKweaWLrgfLLmJNLHaHitmMlboqqJdAprmqQuNrFsPYc -685052452 1109034513
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jcitroucaYWHoDEjNPnwRKzItJmMhyNlfKwOehQmxtDbQGiNdVGdWxodbJcUDMXMESPbhuPGEQqkpAjBZWxZGgmDhbYRDbUWFlUwqtgCqXpLzBoYRgdjSocpGyViFYnraGSRiSdpIcbChPzcnNaWKYxIhsBgeVRpgLwSYIzIccUabHCfaxesnamnvjVWqioWymXnpsTGBaDvEzNzihUPMmpBLUpSdVAQpEtgeATOBYRmjFbpNwfDgUbcFwvXgBcX -1149560968 6.1978 EgGDTjrILrqXbCfaDevCscjMIzJbLsQEsmNrhJlQgGJobfAWuJybaanQsrJhKafhFhHsDPtDVZsYBnVXdEISPxkLolnfcjoWAaZazbtSHnCjeCJOpBmYLjBljGrNGrQLbHIVkmNqWUTJhtbILcmemjyASMfDvTZUYzCOiglBVqjMftriTAgMgSJiJFtFZiDgIaGZqXnfoootuZKZNOLxbsrzNFFaToiwUbWxwDPwyfCFxSIMgpQoeDUOaPYOcuvt HOCcrNLFvuUYtUKLQjBDfcFZmpVWXpjfssnyXsRrDOQNhqlSvnKpIaHnxKyNLGbEZZXNGRtjQpXKbXHOOyHuerRhuqxMscSuBaoaEWqqwTJOfcihKDXETCrpZiSRcwwcEDzcDgnPFuiWnvDbcHUnXqCgxuhJEVgQVswxMBSlCBMfdRRYlLvZgKXTCFtExWLPTDZKlmqGrtQdMTIlrlKmWDCochPHhNWPjibzluwDSGCbvURDFmrSLkwRKYUQnVEj 1038913802 -434420413
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandIssued writing a message containing :    1
@@ -77,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1109034513
+    ${output}=    Read Until    priority : -434420413
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCommandIssued received =     1
-    Should Contain    ${output}    CommandSource : bHxJCiQTYEIdEDkIizmXaifZQsHlApavyXTamDhPXXFJgidvKVxOwkUNMSCmCaLVhwhGtCpmYLtTxZbwJnanVkXOEMsoFFQEapwZZYhjLInhTZWqQBFVaIlpHjSKYwrxTmYdWFMpgbWKYXiWfUgTRPYegyHnXucivqqPpxMWwGMwLBJrIWCBpRxsGEAVXuPNgFtojtWiQhxICuAZotBafskjrIuyVXdCtmhbKsxcCgbqSDSJzlBXnzDkFiAypLQo
-    Should Contain    ${output}    SequenceNumber : -713040802
-    Should Contain    ${output}    Identifier : 40.8784
-    Should Contain    ${output}    Timestamp : DXvigoyNvOmPrXtCjOPBqnBjUSqShOyoRUBKcrTUwethKmndAgMoWkfOnIbrYHMMbrbYHdbmQwXGDyjkOJijGGWOHmFiNckOjRXIbcWvNXuCbIddEAfxQoNJGkyzlYNtrGsvEqeSlBcuzNfhrJtSruCSWZeMcAYquPLqbZXhbecnRdmujGipZkbnWQOJGboiuBogJxzTbZLpEeQndwtbcdMnhfkoMALIlfqgovhiHNeZAEHlovzhuDtvxjnkxzge
-    Should Contain    ${output}    CommandSent : QIPRngWbZqvsgtFDpDULiZBGYSVgPesXYDQnZjmyFJxPchHEinDpaACbxpENwJLDTHwwuclNLHEpIxpTYtSrMGdgvDOBPqKEMTUWtHYFvTjwsHVygrkLNnnHrnlvGEwEKFiQKHnznyiYdqyGqhTZFuvEIxsNZfzuDvGxbGrulqxQadBtzwhcqobxWCNQWPigAMpULtNTLSgzuiYuYbyNsKweaWLrgfLLmJNLHaHitmMlboqqJdAprmqQuNrFsPYc
-    Should Contain    ${output}    ReturnValue : -685052452
-    Should Contain    ${output}    priority : 1109034513
+    Should Contain    ${output}    CommandSource : jcitroucaYWHoDEjNPnwRKzItJmMhyNlfKwOehQmxtDbQGiNdVGdWxodbJcUDMXMESPbhuPGEQqkpAjBZWxZGgmDhbYRDbUWFlUwqtgCqXpLzBoYRgdjSocpGyViFYnraGSRiSdpIcbChPzcnNaWKYxIhsBgeVRpgLwSYIzIccUabHCfaxesnamnvjVWqioWymXnpsTGBaDvEzNzihUPMmpBLUpSdVAQpEtgeATOBYRmjFbpNwfDgUbcFwvXgBcX
+    Should Contain    ${output}    SequenceNumber : -1149560968
+    Should Contain    ${output}    Identifier : 6.1978
+    Should Contain    ${output}    Timestamp : EgGDTjrILrqXbCfaDevCscjMIzJbLsQEsmNrhJlQgGJobfAWuJybaanQsrJhKafhFhHsDPtDVZsYBnVXdEISPxkLolnfcjoWAaZazbtSHnCjeCJOpBmYLjBljGrNGrQLbHIVkmNqWUTJhtbILcmemjyASMfDvTZUYzCOiglBVqjMftriTAgMgSJiJFtFZiDgIaGZqXnfoootuZKZNOLxbsrzNFFaToiwUbWxwDPwyfCFxSIMgpQoeDUOaPYOcuvt
+    Should Contain    ${output}    CommandSent : HOCcrNLFvuUYtUKLQjBDfcFZmpVWXpjfssnyXsRrDOQNhqlSvnKpIaHnxKyNLGbEZZXNGRtjQpXKbXHOOyHuerRhuqxMscSuBaoaEWqqwTJOfcihKDXETCrpZiSRcwwcEDzcDgnPFuiWnvDbcHUnXqCgxuhJEVgQVswxMBSlCBMfdRRYlLvZgKXTCFtExWLPTDZKlmqGrtQdMTIlrlKmWDCochPHhNWPjibzluwDSGCbvURDFmrSLkwRKYUQnVEj
+    Should Contain    ${output}    ReturnValue : 1038913802
+    Should Contain    ${output}    priority : -434420413

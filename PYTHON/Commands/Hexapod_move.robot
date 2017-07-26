@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Hexapod_move commander/controller tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    hexapod
@@ -13,28 +15,6 @@ ${component}    move
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_${component}.py
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 53.797 42.1795 42.1475 53.0158 2.9835 62.5064 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 39.5948 65.8325 88.6626 80.1526 42.4115 55.0088 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 53.797 42.1795 42.1475 53.0158 2.9835 62.5064 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 39.5948 65.8325 88.6626 80.1526 42.4115 55.0088 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 53.797    1
-    Should Contain X Times    ${output}    y : 42.1795    1
-    Should Contain X Times    ${output}    z : 42.1475    1
-    Should Contain X Times    ${output}    u : 53.0158    1
-    Should Contain X Times    ${output}    v : 2.9835    1
-    Should Contain X Times    ${output}    w : 62.5064    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 39.5948    1
+    Should Contain X Times    ${output}    y : 65.8325    1
+    Should Contain X Times    ${output}    z : 88.6626    1
+    Should Contain X Times    ${output}    u : 80.1526    1
+    Should Contain X Times    ${output}    v : 42.4115    1
+    Should Contain X Times    ${output}    w : 55.0088    1
+    Should Contain X Times    ${output}    sync : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -103,13 +83,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 53.797    1
-    Should Contain X Times    ${output}    y = 42.1795    1
-    Should Contain X Times    ${output}    z = 42.1475    1
-    Should Contain X Times    ${output}    u = 53.0158    1
-    Should Contain X Times    ${output}    v = 2.9835    1
-    Should Contain X Times    ${output}    w = 62.5064    1
-    Should Contain X Times    ${output}    sync = 0    1
+    Should Contain X Times    ${output}    x = 39.5948    1
+    Should Contain X Times    ${output}    y = 65.8325    1
+    Should Contain X Times    ${output}    z = 88.6626    1
+    Should Contain X Times    ${output}    u = 80.1526    1
+    Should Contain X Times    ${output}    v = 42.4115    1
+    Should Contain X Times    ${output}    w = 55.0088    1
+    Should Contain X Times    ${output}    sync = 1    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

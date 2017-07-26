@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    Camera_takeImages commander/controller tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    camera
@@ -13,28 +15,6 @@ ${component}    takeImages
 ${timeout}    30s
 
 *** Test Cases ***
-Create Commander Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Commander    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Controller Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Controller    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_${component}.py
@@ -57,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -243911352 64.6858 1 1 0 0 gWPmFLbINdEtxUkDHokVtLSwytVNZAVtFGXZeILylkDdJBYVSUULhnUhTrcvuxKIWmxkBsBMRVOCIbaxelHtFBNSVLiAwFtAfjMyOnPnhBJupbowQbzAPMKQKhwCcRpMZOTickLUYjrIsCpXyvhDLUzTiXdlWAlOjLvBKjTqSeYyrEUTbkKgIBOrXPYyduArckCaWrxWdmcwDtNUaVVeGCPNucOEXRKzewIOSmMdgtYRFMRbvjfQFXwwxAtokapAoXSBlEoLEsFhWIdufZdXrAtmgMetdLGgeolDEjpWuALvQJAoKKJWmMAmKfSpMkvyoSiDZGzOBpYqa
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1455593188 27.9964 0 0 1 1 ikUxuxYqzoUISnCCoKOCXPAiGGjlvQKTlUrqXKjFNWoyhuycYbxVbuYwfswExoJaNhiqvNAnHUWQAaEOFfPGHcCCRKPTpSNeRqSVxZcZjWcKPkqFzeapamVeXUfMlQFpKTdYluMMuPZEsHPhFoGEigJLlwzxJlblKVDxkHDRTCBZXAZlxXXRWoWEKyooZUTShFXXqqLeGaMMfVxdSPFozxLmLsEZSRmPpfsHoSGyeqVhCnKFQpRGuxRuyeJPEJknJcdVCkxCCJnLaJaWKbYpBiBqnURvPDJidXlGzoBbPBcANsSLmbRMGadTHfezDioZWaiRCERtWdaSoTnbFOzztnmpkrHKTFzwINiQePPGBqQZnICXVXmgRdRBykZQrpSkkYAsPIJEwNwwBwogbYFPgEOiVVxIsrnbhVulUNMQiIhNcFyLPfcvyHUPwHLHtVljAKhHaFwfYxMbJTLlTsbiEPBAYqmCqjflBJjofWcxScEnQimZNOcFIKwEidLbmGBDjCQFDNuhGJXKcHffwibyrFfUZDVpIGLflRRLKNripCGealZwUnQAiBJQXtCVqOQlZhPBGkyROqqTatwOfasyHIRSUtamWXZrEjMauHoutHKFTCZcFHqAXWkxOvPPqnqULagSXlsvEFPTqtRnjLbVTjKqvmKHeluElnTjVjgTvQpYvlXoYXjXbNBPLqaSTnJcAQtjdNAvIgfCceEUtpTLNRmnbizyShHvloTmfkdpCrXpLsIVeKsxPkDOwhpxRDVMVMISMeKtfsWRmZuNqpUXDQDtAzqDDkhbnAcQNwvUolXKKVnLBappfAnEyiDFzP
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -80,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -243911352 64.6858 1 1 0 0 gWPmFLbINdEtxUkDHokVtLSwytVNZAVtFGXZeILylkDdJBYVSUULhnUhTrcvuxKIWmxkBsBMRVOCIbaxelHtFBNSVLiAwFtAfjMyOnPnhBJupbowQbzAPMKQKhwCcRpMZOTickLUYjrIsCpXyvhDLUzTiXdlWAlOjLvBKjTqSeYyrEUTbkKgIBOrXPYyduArckCaWrxWdmcwDtNUaVVeGCPNucOEXRKzewIOSmMdgtYRFMRbvjfQFXwwxAtokapAoXSBlEoLEsFhWIdufZdXrAtmgMetdLGgeolDEjpWuALvQJAoKKJWmMAmKfSpMkvyoSiDZGzOBpYqa
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1455593188 27.9964 0 0 1 1 ikUxuxYqzoUISnCCoKOCXPAiGGjlvQKTlUrqXKjFNWoyhuycYbxVbuYwfswExoJaNhiqvNAnHUWQAaEOFfPGHcCCRKPTpSNeRqSVxZcZjWcKPkqFzeapamVeXUfMlQFpKTdYluMMuPZEsHPhFoGEigJLlwzxJlblKVDxkHDRTCBZXAZlxXXRWoWEKyooZUTShFXXqqLeGaMMfVxdSPFozxLmLsEZSRmPpfsHoSGyeqVhCnKFQpRGuxRuyeJPEJknJcdVCkxCCJnLaJaWKbYpBiBqnURvPDJidXlGzoBbPBcANsSLmbRMGadTHfezDioZWaiRCERtWdaSoTnbFOzztnmpkrHKTFzwINiQePPGBqQZnICXVXmgRdRBykZQrpSkkYAsPIJEwNwwBwogbYFPgEOiVVxIsrnbhVulUNMQiIhNcFyLPfcvyHUPwHLHtVljAKhHaFwfYxMbJTLlTsbiEPBAYqmCqjflBJjofWcxScEnQimZNOcFIKwEidLbmGBDjCQFDNuhGJXKcHffwibyrFfUZDVpIGLflRRLKNripCGealZwUnQAiBJQXtCVqOQlZhPBGkyROqqTatwOfasyHIRSUtamWXZrEjMauHoutHKFTCZcFHqAXWkxOvPPqnqULagSXlsvEFPTqtRnjLbVTjKqvmKHeluElnTjVjgTvQpYvlXoYXjXbNBPLqaSTnJcAQtjdNAvIgfCceEUtpTLNRmnbizyShHvloTmfkdpCrXpLsIVeKsxPkDOwhpxRDVMVMISMeKtfsWRmZuNqpUXDQDtAzqDDkhbnAcQNwvUolXKKVnLBappfAnEyiDFzP
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -88,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    numImages : -243911352    1
-    Should Contain X Times    ${output}    expTime : 64.6858    1
-    Should Contain X Times    ${output}    shutter : 1    1
-    Should Contain X Times    ${output}    science : 1    1
-    Should Contain X Times    ${output}    guide : 0    1
-    Should Contain X Times    ${output}    wfs : 0    1
-    Should Contain X Times    ${output}    imageSequenceName : gWPmFLbINdEtxUkDHokVtLSwytVNZAVtFGXZeILylkDdJBYVSUULhnUhTrcvuxKIWmxkBsBMRVOCIbaxelHtFBNSVLiAwFtAfjMyOnPnhBJupbowQbzAPMKQKhwCcRpMZOTickLUYjrIsCpXyvhDLUzTiXdlWAlOjLvBKjTqSeYyrEUTbkKgIBOrXPYyduArckCaWrxWdmcwDtNUaVVeGCPNucOEXRKzewIOSmMdgtYRFMRbvjfQFXwwxAtokapAoXSBlEoLEsFhWIdufZdXrAtmgMetdLGgeolDEjpWuALvQJAoKKJWmMAmKfSpMkvyoSiDZGzOBpYqa    1
+    Should Contain X Times    ${output}    numImages : -1455593188    1
+    Should Contain X Times    ${output}    expTime : 27.9964    1
+    Should Contain X Times    ${output}    shutter : 0    1
+    Should Contain X Times    ${output}    science : 0    1
+    Should Contain X Times    ${output}    guide : 1    1
+    Should Contain X Times    ${output}    wfs : 1    1
+    Should Contain X Times    ${output}    imageSequenceName : ikUxuxYqzoUISnCCoKOCXPAiGGjlvQKTlUrqXKjFNWoyhuycYbxVbuYwfswExoJaNhiqvNAnHUWQAaEOFfPGHcCCRKPTpSNeRqSVxZcZjWcKPkqFzeapamVeXUfMlQFpKTdYluMMuPZEsHPhFoGEigJLlwzxJlblKVDxkHDRTCBZXAZlxXXRWoWEKyooZUTShFXXqqLeGaMMfVxdSPFozxLmLsEZSRmPpfsHoSGyeqVhCnKFQpRGuxRuyeJPEJknJcdVCkxCCJnLaJaWKbYpBiBqnURvPDJidXlGzoBbPBcANsSLmbRMGadTHfezDioZWaiRCERtWdaSoTnbFOzztnmpkrHKTFzwINiQePPGBqQZnICXVXmgRdRBykZQrpSkkYAsPIJEwNwwBwogbYFPgEOiVVxIsrnbhVulUNMQiIhNcFyLPfcvyHUPwHLHtVljAKhHaFwfYxMbJTLlTsbiEPBAYqmCqjflBJjofWcxScEnQimZNOcFIKwEidLbmGBDjCQFDNuhGJXKcHffwibyrFfUZDVpIGLflRRLKNripCGealZwUnQAiBJQXtCVqOQlZhPBGkyROqqTatwOfasyHIRSUtamWXZrEjMauHoutHKFTCZcFHqAXWkxOvPPqnqULagSXlsvEFPTqtRnjLbVTjKqvmKHeluElnTjVjgTvQpYvlXoYXjXbNBPLqaSTnJcAQtjdNAvIgfCceEUtpTLNRmnbizyShHvloTmfkdpCrXpLsIVeKsxPkDOwhpxRDVMVMISMeKtfsWRmZuNqpUXDQDtAzqDDkhbnAcQNwvUolXKKVnLBappfAnEyiDFzP    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -103,13 +83,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    numImages = -243911352    1
-    Should Contain X Times    ${output}    expTime = 64.6858    1
-    Should Contain X Times    ${output}    shutter = 1    1
-    Should Contain X Times    ${output}    science = 1    1
-    Should Contain X Times    ${output}    guide = 0    1
-    Should Contain X Times    ${output}    wfs = 0    1
-    Should Contain X Times    ${output}    imageSequenceName = gWPmFLbINdEtxUkDHokVtLSwytVNZAVtFGXZeILylkDdJBYVSUULhnUhTrcvuxKIWmxkBsBMRVOCIbaxelHtFBNSVLiAwFtAfjMyOnPnhBJupbowQbzAPMKQKhwCcRpMZOTickLUYjrIsCpXyvhDLUzTiXdlWAlOjLvBKjTqSeYyrEUTbkKgIBOrXPYyduArckCaWrxWdmcwDtNUaVVeGCPNucOEXRKzewIOSmMdgtYRFMRbvjfQFXwwxAtokapAoXSBlEoLEsFhWIdufZdXrAtmgMetdLGgeolDEjpWuALvQJAoKKJWmMAmKfSpMkvyoSiDZGzOBpYqa    1
+    Should Contain X Times    ${output}    numImages = -1455593188    1
+    Should Contain X Times    ${output}    expTime = 27.9964    1
+    Should Contain X Times    ${output}    shutter = 0    1
+    Should Contain X Times    ${output}    science = 0    1
+    Should Contain X Times    ${output}    guide = 1    1
+    Should Contain X Times    ${output}    wfs = 1    1
+    Should Contain X Times    ${output}    imageSequenceName = ikUxuxYqzoUISnCCoKOCXPAiGGjlvQKTlUrqXKjFNWoyhuycYbxVbuYwfswExoJaNhiqvNAnHUWQAaEOFfPGHcCCRKPTpSNeRqSVxZcZjWcKPkqFzeapamVeXUfMlQFpKTdYluMMuPZEsHPhFoGEigJLlwzxJlblKVDxkHDRTCBZXAZlxXXRWoWEKyooZUTShFXXqqLeGaMMfVxdSPFozxLmLsEZSRmPpfsHoSGyeqVhCnKFQpRGuxRuyeJPEJknJcdVCkxCCJnLaJaWKbYpBiBqnURvPDJidXlGzoBbPBcANsSLmbRMGadTHfezDioZWaiRCERtWdaSoTnbFOzztnmpkrHKTFzwINiQePPGBqQZnICXVXmgRdRBykZQrpSkkYAsPIJEwNwwBwogbYFPgEOiVVxIsrnbhVulUNMQiIhNcFyLPfcvyHUPwHLHtVljAKhHaFwfYxMbJTLlTsbiEPBAYqmCqjflBJjofWcxScEnQimZNOcFIKwEidLbmGBDjCQFDNuhGJXKcHffwibyrFfUZDVpIGLflRRLKNripCGealZwUnQAiBJQXtCVqOQlZhPBGkyROqqTatwOfasyHIRSUtamWXZrEjMauHoutHKFTCZcFHqAXWkxOvPPqnqULagSXlsvEFPTqtRnjLbVTjKqvmKHeluElnTjVjgTvQpYvlXoYXjXbNBPLqaSTnJcAQtjdNAvIgfCceEUtpTLNRmnbizyShHvloTmfkdpCrXpLsIVeKsxPkDOwhpxRDVMVMISMeKtfsWRmZuNqpUXDQDtAzqDDkhbnAcQNwvUolXKKVnLBappfAnEyiDFzP    1
     Should Contain X Times    ${output}    === [ackCommand_takeImages] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,11 +1,13 @@
 *** Settings ***
 Documentation    OCS_ocsEntitySummaryState sender/logger tests.
 Force Tags    python
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Library    String
 Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    ocs
@@ -13,28 +15,6 @@ ${component}    ocsEntitySummaryState
 ${timeout}    30s
 
 *** Test Cases ***
-Create Sender Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Sender    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
-Create Logger Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=Logger    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify Component Sender and Logger
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
@@ -68,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py hElrqVQnuevYRNsvOrAoEqpQwpbArOXqQWrRyLKZcEyZwhdNlkBvmbQKHOOyNiSjYiwELhYiPaiVWXsPRhClJOPrPhpPpgNAjdExnBfAiDipKDkImKYktpfgHeCasBPy 10.3184 qWEekQHtUWZtCjyFFXFihiFbeScDhlyxCEQxsrZyWvZrCMWpCnqoRLwOsYjISKTmgxTTFLOMkAfHNBXoLJTPKYGKpmYJYDMyrucDVVbzXxStXdJNiIHfQHreecVqLyzNCZdKmexJZeUGAPqdSnkIQAFLiqEUEGwIUbIVGVwFaJzVIhEhXZwLfQjchycYAMgiyQVidXLZKwhtpTJHNZUGduNamndECIrdaUGtsQlbMULrpzWQfkNlpNGNwnAMqfnk 1168574238 VAgyuiqdHMxvjyVlVNGdXpUIPRAuKMiWGLuAptcrpJyvEVXNvnORJgAsiSrvKpmsvLLWkAhVeREsvsgKDCDFkMkyLHAUpMgeEcwEobGSKpDnOxDXMUoLlXqcillGRkCl TITqcyIrfQxfFmKgcetzhcfzldMTWqAARXobxPWFYaIGXASJplOsrMmsdDIGzgfHbbZoytkIGeZDIdurmNjhCbbBoRqytQaxAhYjSiApdZfftHhMPOxrVWzgBlcvACPt xrSxYKlyLcnDtMLNbRWqhUldYGsZKiOeFHRYeVALbEJtPfNVCnTGSNLdWxIchqqgGeBmOkAnNiTkSEWkghoLTxtUyWePmVyvDNfAozTHxEhUsrqXuUMsGZNluzhchTBk bKxpkNEBZTKPzKzVaJKepGEbjbdufsWUdJNpURWmpVAuzOVxuHYSNtWsrssYCCWvaoHlVtohoodsfEcZQnkGdSuYLEuyAidkeVzcvlWGDwLPtOTeDbaKShqeWEgaTOWr BlfTxBJRxfzvgBxfRSXzWZyTMpsPAKCryybvpeTKALhAFohnoRhvdiIEuEnTMelDxhmkvKVVcowlUXZRLZugnAyBnuaFrYjVbHiCnnGDHgybTWYuJnZiBcocRyTqdfPh -941934842
+    ${input}=    Write    python ${subSystem}_Event_${component}.py QQOSlvRavPuuXVrdBRvafAOHIMWsnkUOxwKkKKGoUFhqWPQkXynumHjJcWlZzTeIIrmvxBjrMLZRpNqdMnLXROAWdAxeDgAsXSMAMYTHIpfJEVcfdiIOwojkReSUAvOQ 86.819 MEcGrJYVNcYvRWrKEeQjsKjhiHyIowTHJjiExgNScyxlNBdLqvJRhujHiOLAIMpfmGcILXCYmtCDYYdtQdnIchxYxtmWuDOcYsHjdnvnxYKimRUXiCtjCoYDpmETvvQVEoASDkwDcCKBXIdcsKkVhWYZeFfMGSPWFqZlArAKyrBirFZbgDBXbIvYwjDEPkEcnjUqFVtunoDvIooUSXFgyiPAxmnXdbhjKwpqzhSrXmlwuobSgVufDmEcEDQcDmYz -382250939 cGjdOznezosDNBkixyIChnGdQFcbcNzjijXVgfcfKMapKBJPiAHmydnyluFVQYRoLjjJBtbSlNxPaJNJXbBKHxVQMUUyKmeEfbkwUOUaSdACncOvIIgzEVfHpwRoYpFU TcuHxkBAHRjSkIWSzIqnQNrlAJCjsOlPpgeqlqiVvIUlvyKJMmAhXjOoCynWLaWFRDmNJlglNJGeXyYSpxFXDiMbHfIlVIjWxDJijTFihBdkhkdETCMAuipPHFPNeriv BRyTTlvMOnhWdRLcBKwLACaqPmQXgeouBhighudqPkKdzkbtIBZZMDloVMpFqlPgGRcROZnxmhhSHUahfDbCqufCGFwYYZPpMHPjwsvpPbISKkPtczarlTLwksTfafDL ogqzGdQCkZozVbwQLbvboFfDwxRqPdUqsLnTqvOEWvenRAGxGGgdzsVagLRBhbIivzdwKqxhSesgvjUrTXCkTslvQdfTTkRRcYQSfhcSMShliwluuxIvxodhhiBJYmcP wdfXilbzYkachOxZBuxXpmGfrVpEvaSTaLgScndbCGoRZUhCmTSjaOPAkLegzkzmmwPYdDoydgicgGKszQBzLOhIhXVKZOxhIjicCWrccNbrtxkrhLVEAKGpGKDpWJzv -164904436
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntitySummaryState writing a message containing :    1
