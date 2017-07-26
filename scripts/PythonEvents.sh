@@ -78,7 +78,7 @@ function createSettings() {
     echo "Documentation    ${subSystemUp}_${topic} sender/logger tests." >> $testSuite
     echo "Force Tags    python" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
+	echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
