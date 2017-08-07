@@ -24,7 +24,7 @@ function createSettings() {
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Resource    ../Global_Vars.robot" >> $testSuite
-    echo "Resource    ../../common.robot" >> $testSuite
+    echo "Resource    ../common.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
