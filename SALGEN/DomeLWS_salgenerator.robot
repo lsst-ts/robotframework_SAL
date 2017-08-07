@@ -5,7 +5,7 @@ Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${componen
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
-Resource    ../../common.robot
+Resource    ../common.robot
 
 *** Variables ***
 ${subSystem}    domeLWS
