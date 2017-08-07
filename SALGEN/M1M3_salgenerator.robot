@@ -1,26 +1,17 @@
 *** Settings ***
 Documentation    This suite builds the various interfaces for the M1M3.
-Suite Setup    Log Many    ${Host}    ${timeout}    ${SALVersion}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    SALGEN
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${timeout}    1600s
+${timeout}    1200s
 
 *** Test Cases ***
-Create SALGEN Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=SALGEN    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify M1M3 XML Defintions exist
     [Tags]
     File Should Exist    ${SALWorkDir}/m1m3_Commands.xml
@@ -202,44 +193,6 @@ Verify M1M3 C++ Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_updateError_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_updateError_log
 
-Salgen M1M3 Java
-    [Documentation]    Generate Java wrapper.
-    [Tags]    java
-    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
-    ${output}=    Read Until Prompt
-    Log    ${output}
-    Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LimitSensors.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Metrology.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Application.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LUT.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Actuators.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_TC.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Electrical.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Surface.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Support.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    9
-    Should Contain X Times    ${output}    javac : Done Subscriber    9
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
-    Should Contain X Times    ${output}    javac : Done Event/Logger    9
-    Directory Should Exist    ${SALWorkDir}/${subSystem}/java
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
-    File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
-
-Salgen M1M3 Maven
-    [Documentation]    Generate the Maven repository.
-    [Tags]    java
-    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
-    ${output}=    Read Until Prompt
-    Log    ${output}
-    Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Running maven install
-    Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
-    Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain X Times    ${output}    [INFO] Finished at:    4
-    @{files}=    List Directory    ${SALWorkDir}/maven
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
-
 Salgen M1M3 Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
@@ -348,3 +301,42 @@ Salgen M1M3 LabVIEW
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
+
+Salgen M1M3 Java
+    [Documentation]    Generate Java wrapper.
+    [Tags]    java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LimitSensors.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Metrology.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Application.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LUT.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Actuators.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_TC.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Electrical.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Surface.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Support.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    9
+    Should Contain X Times    ${output}    javac : Done Subscriber    9
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    9
+    Should Contain X Times    ${output}    javac : Done Event/Logger    9
+    Directory Should Exist    ${SALWorkDir}/${subSystem}/java
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
+    File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
+
+Salgen M1M3 Maven
+    [Documentation]    Generate the Maven repository.
+    [Tags]    java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Running maven install
+    Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
+    Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    1
+    Should Contain X Times    ${output}    [INFO] Finished at:    1
+    @{files}=    List Directory    ${SALWorkDir}/maven
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
+

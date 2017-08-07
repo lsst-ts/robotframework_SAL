@@ -32,7 +32,7 @@ function createVariables() {
 	entity=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $entity" >> $testSuite
-    echo "\${timeout}    1600s" >> $testSuite
+    echo "\${timeout}    1200s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -211,8 +211,8 @@ function salgenMaven() {
     echo "    Should Contain    \${output}    SAL generator - V\${SALVersion}" >> $testSuite
     echo "    Should Contain    \${output}    Running maven install" >> $testSuite
     echo "    Should Contain    \${output}    [INFO] Building sal_\${subSystem} \${SALVersion}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [INFO] BUILD SUCCESS    4" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [INFO] Finished at:    4" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [INFO] BUILD SUCCESS    1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [INFO] Finished at:    1" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/maven" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/pom.xml" >> $testSuite
     echo "" >> $testSuite
@@ -302,6 +302,7 @@ function salgenLabview() {
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/labview/SAL_\${subSystem}_salShmMonitor.cpp" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/labview/SAL_\${subSystem}_shmem.h" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/labview/SALLV_\${subSystem}.so" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createTestSuite() {
@@ -344,9 +345,6 @@ function createTestSuite() {
 	if [[ ${xmls[*]} =~ "${subSystem}_Events.xml" ]]; then
 		verifyCppEventInterfaces
     fi
-	# Create and verify Java interfaces.
-	salgenJava
-    salgenMaven
 	# Create and verify Python interfaces.
     salgenPython
     verifyPythonTelemetryInterfaces
@@ -361,6 +359,9 @@ function createTestSuite() {
 	if ! [ "$subSystem" == "scheduler" ]; then
 		salgenLabview
 	fi
+	# Create and verify Java interfaces.
+	salgenJava
+    salgenMaven
 	# Indicate completion of the test suite.
 	echo Done with test suite.
 	echo ""

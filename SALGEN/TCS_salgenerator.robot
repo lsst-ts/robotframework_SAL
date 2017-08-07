@@ -1,26 +1,17 @@
 *** Settings ***
 Documentation    This suite builds the various interfaces for the TCS.
-Suite Setup    Log Many    ${Host}    ${timeout}    ${SALVersion}
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    SALGEN
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    ../Global_Vars.robot
+Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcs
-${timeout}    1600s
+${timeout}    1200s
 
 *** Test Cases ***
-Create SALGEN Session
-    [Documentation]    Connect to the SAL host.
-    [Tags]    smoke
-    Comment    Connect to host.
-    Open Connection    host=${Host}    alias=SALGEN    timeout=${timeout}    prompt=${Prompt}
-    Comment    Login.
-    Log    ${ContInt}
-    Login With Public Key    ${UserName}    keyfile=${KeyFile}    password=${PassWord}
-    Directory Should Exist    ${SALInstall}
-    Directory Should Exist    ${SALHome}
-
 Verify TCS XML Defintions exist
     [Tags]
     File Should Exist    ${SALWorkDir}/tcs_Commands.xml
@@ -237,51 +228,6 @@ Verify TCS C++ Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_log
 
-Salgen TCS Java
-    [Documentation]    Generate Java wrapper.
-    [Tags]    java
-    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
-    ${output}=    Read Until Prompt
-    Log    ${output}
-    Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingModel.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_AOCS.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TimeKeeper.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_Site.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_Target.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingControl.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TrackRefSys.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_ZEMAX.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingLog.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_DawdleFilter.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_OpticsVt.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_WEP.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TrackingTarget.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_FK5Target.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LoopTime_ms.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Timestamp.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    16
-    Should Contain X Times    ${output}    javac : Done Subscriber    16
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    16
-    Should Contain X Times    ${output}    javac : Done Event/Logger    16
-    Directory Should Exist    ${SALWorkDir}/${subSystem}/java
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
-    File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
-
-Salgen TCS Maven
-    [Documentation]    Generate the Maven repository.
-    [Tags]    java
-    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
-    ${output}=    Read Until Prompt
-    Log    ${output}
-    Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Running maven install
-    Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
-    Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    4
-    Should Contain X Times    ${output}    [INFO] Finished at:    4
-    @{files}=    List Directory    ${SALWorkDir}/maven
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
-
 Salgen TCS Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
@@ -404,3 +350,49 @@ Salgen TCS LabVIEW
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_salShmMonitor.cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
+
+Salgen TCS Java
+    [Documentation]    Generate Java wrapper.
+    [Tags]    java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingModel.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_AOCS.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TimeKeeper.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_Site.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_Target.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingControl.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TrackRefSys.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_ZEMAX.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_PointingLog.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_DawdleFilter.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_OpticsVt.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_WEP.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_TrackingTarget.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_kernel_FK5Target.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_LoopTime_ms.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_Timestamp.idl
+    Should Contain X Times    ${output}    javac : Done Publisher    16
+    Should Contain X Times    ${output}    javac : Done Subscriber    16
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    16
+    Should Contain X Times    ${output}    javac : Done Event/Logger    16
+    Directory Should Exist    ${SALWorkDir}/${subSystem}/java
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
+    File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
+
+Salgen TCS Maven
+    [Documentation]    Generate the Maven repository.
+    [Tags]    java
+    ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    SAL generator - V${SALVersion}
+    Should Contain    ${output}    Running maven install
+    Should Contain    ${output}    [INFO] Building sal_${subSystem} ${SALVersion}
+    Should Contain X Times    ${output}    [INFO] BUILD SUCCESS    1
+    Should Contain X Times    ${output}    [INFO] Finished at:    1
+    @{files}=    List Directory    ${SALWorkDir}/maven
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/pom.xml
+
