@@ -66,7 +66,7 @@ function getParameterCount() {
 function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
-    echo "Force Tags    python" >> $testSuite
+    echo "Force Tags    python    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -162,7 +162,7 @@ function readSubscriber {
 		elif [[ ( $parameterCount -gt 2000 ) && ( "$parameterType" != "char" ) ]]; then
 			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
 		elif [[ (( "$parameterCount" > "1" )) && ( "$parameterType" == "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [\'L\', \'S\', \'S\', \'T\']    10" >>$testSuite
+			echo "    Should Contain X Times    \${list}    $parameter = LSST    10" >>$testSuite
 		else
         	echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
 		fi
@@ -179,6 +179,9 @@ function createTestSuite {
 		
 		#  Get EFDB EFDB_Topic telemetry items
 		getTopicParameters $file $topicIndex
+
+        #  Check if test suite should be skipped.
+        skipped=$(checkIfSkipped $subSystem $topic)
 
 		#  Create test suite.
 		echo Creating $testSuite

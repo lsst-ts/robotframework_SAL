@@ -44,7 +44,7 @@ function clearTestSuite {
 function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
-	echo "Force Tags    java" >> $testSuite
+	echo "Force Tags    java    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -135,6 +135,9 @@ function createTestSuite {
 		
 		#  Get EFDB EFDB_Topic telemetry items
 		getTopicItems $file $index
+
+        #  Check if test suite should be skipped.
+        skipped=$(checkIfSkipped $subSystem $topic)
 
 		#  Create test suite.
 		echo Creating $testSuite

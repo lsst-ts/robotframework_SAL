@@ -19,6 +19,7 @@ declare -a stateArray=($(stateArray))
 function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    This suite builds the various interfaces for the $subSystemUp." >> $testSuite
+	echo "Force Tags    salgen    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    SALGEN" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -325,6 +326,10 @@ function createTestSuite() {
 	if [[ ${xmls[*]} =~ "${subSystem}_Events.xml" ]]; then
 		declare -a eventArray=($(getEventTopics $subSystem))
 	fi
+
+    #  Check if test suite should be skipped.
+    skipped=$(checkIfSkipped $subSystem $topic)
+
 	#  Create test suite.
 	echo Creating $testSuite
 	createSettings

@@ -130,3 +130,15 @@ function generateArgument() {
 	fi
 	echo $testValue
 }
+
+function checkIfSkipped() {
+	subsystem=$1
+	topic=$2
+	if [[ ("$subsystem" == "scheduler") && ("$topic" == "blockPusher") ]]; then
+		skipped="    TSS-859"
+	else
+		skipped=""
+	fi
+	echo $skipped
+}
+

@@ -63,7 +63,7 @@ function getParameterCount() {
 function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
-    echo "Force Tags    cpp" >> $testSuite
+    echo "Force Tags    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -155,6 +155,9 @@ function createTestSuite {
 		
 		#  Get EFDB EFDB_Topic telemetry parameters
 		getTopicParameters $file $topicIndex
+
+		#  Check if test suite should be skipped.
+		skipped=$(checkIfSkipped $subSystem $topic)
 
 		#  Create test suite.
 		echo Creating $testSuite

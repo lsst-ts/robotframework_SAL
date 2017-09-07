@@ -31,7 +31,7 @@ function clearTestSuite() {
 function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp} State Machine tests." >> $testSuite
-    echo "Force Tags    python" >> $testSuite
+    echo "Force Tags    python    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -162,6 +162,9 @@ function createTestSuite() {
 		#  Check to see if the TestSuite exists then, if it does, delete it.
 		clearTestSuite
 		
+        #  Check if test suite should be skipped.
+        skipped=$(checkIfSkipped $subSystem $topic)
+
 		#  Create test suite.
 		echo Creating $testSuite
 		createSettings

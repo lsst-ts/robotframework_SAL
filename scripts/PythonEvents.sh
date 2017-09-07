@@ -76,7 +76,7 @@ function getParameterCount() {
 function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystemUp}_${topic} sender/logger tests." >> $testSuite
-    echo "Force Tags    python" >> $testSuite
+    echo "Force Tags    python    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -187,6 +187,9 @@ function createTestSuite() {
 		getTopicParameters $file $topicIndex
 		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
 		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
+
+        #  Check if test suite should be skipped.
+        skipped=$(checkIfSkipped $subSystem $topic)
 
 		#  Create test suite.
 		echo Creating $testSuite
