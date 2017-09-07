@@ -17,8 +17,8 @@ elif args.datatype == "char":
 	value=random.choice(string.letters)
 elif args.datatype == "double":
 	# Generate a random floating point number, and keep only 4 digits of precision.
-	# ... str() to handle the case of XY.0, which SAL modifies to XY.
-	value=str(round(random.uniform(0,100),4))
+	# ... str() and rstrip() to handle the case of XY.0, which SAL modifies to XY.
+	value=str(round(random.uniform(0,100),4)).rstrip('0').rstrip('.')
 elif args.datatype == "float":
 	value=random.uniform(0,1)
 elif args.datatype == "int":
