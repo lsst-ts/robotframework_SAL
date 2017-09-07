@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_mountWarning sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -347644551 UvhpFJdsZUyPwGwzktiwdFVzxUCVsKutTbUuaBjIdOBkZiMUnReuidVjipaPGXiCkdfsixwcsAYKKEPtRRNhtDrOMGeLupyuOTbCqFDFLfzoSgpyOoHzWzzhqyLBYHGCWVyDYgRNGzsAcBpETPRTUhDGRicWpxUNcJGzowFORqWWHYQowayPPBIwVONJGdZsfoQlBidKeOnCHnvpjLlB -1041888274
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 157729006 LpnCIbFeugsPsFENxAtKYxHvLjGVPojISgYdDkyxUyybZsQfkLfnCZgvgNmPbIMMcTcSvDKScXUClmDVorPAgzhAldfsZiRJjGLfcazNJBLdUgWobRaeFazOnROizUxHDMxHEwAFeswDaYYQaddYYqdfkSctTwltwXOhZblvdCVNHQIrCEOWIbOscZnERzcGLHaBuwywhCuDZxfKiBIJSPsRfTlKuknZQrFWPAFpSOCsIXumiMYyouBzZmNEfvpatqRcJszLacsHqdjGleSIfoStyWTDcvtmYQJDafbcGRkqxPPNXYosWHzyFYYjpCglozRbVgAdTRptmxVKmHZGsonuRBPlMfotZxxAwKYmPFcvudNpZDhhviDuxFZhOhQHWUbDJYQZvBoyiBYAjzvFcuXFSpwzjYXFSBpltjrhbFUipcnHYsySHPnWzKTsaPuciUoDDfdRZawcnqwDwZDpIhJwljxdCYHHgMXEHKoJcPXdGofEwUvLmpVjxTTEggsHffepkgeHuwZQEMJvGMLFuCKEORmPJxqSrAmsArwOdmuiBudxOgMGfaZCpDJnIgaagLYezzfFNNhPZcwjgCZfAmssmWJLyUphQzlOzUdqGYHMCuTuLDqCtEJYvIEhxwtjADijftwjyuiqsqBWNmlRlVSPMEtDhPHgMHqaxKcaWwzxZxnUtyvEWMbhrasCemmKovLnLIoKdAckeWGHupgVsPRRWjXLkyDVgNucDGTQQyzrnqdFwkIArksECembIbCljphwJSMYPtHrxBxWJg 65437019
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1041888274
+    ${output}=    Read Until    priority : 65437019
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : -347644551
-    Should Contain    ${output}    text : UvhpFJdsZUyPwGwzktiwdFVzxUCVsKutTbUuaBjIdOBkZiMUnReuidVjipaPGXiCkdfsixwcsAYKKEPtRRNhtDrOMGeLupyuOTbCqFDFLfzoSgpyOoHzWzzhqyLBYHGCWVyDYgRNGzsAcBpETPRTUhDGRicWpxUNcJGzowFORqWWHYQowayPPBIwVONJGdZsfoQlBidKeOnCHnvpjLlB
-    Should Contain    ${output}    priority : -1041888274
+    Should Contain    ${output}    id : 157729006
+    Should Contain    ${output}    text : LpnCIbFeugsPsFENxAtKYxHvLjGVPojISgYdDkyxUyybZsQfkLfnCZgvgNmPbIMMcTcSvDKScXUClmDVorPAgzhAldfsZiRJjGLfcazNJBLdUgWobRaeFazOnROizUxHDMxHEwAFeswDaYYQaddYYqdfkSctTwltwXOhZblvdCVNHQIrCEOWIbOscZnERzcGLHaBuwywhCuDZxfKiBIJSPsRfTlKuknZQrFWPAFpSOCsIXumiMYyouBzZmNEfvpatqRcJszLacsHqdjGleSIfoStyWTDcvtmYQJDafbcGRkqxPPNXYosWHzyFYYjpCglozRbVgAdTRptmxVKmHZGsonuRBPlMfotZxxAwKYmPFcvudNpZDhhviDuxFZhOhQHWUbDJYQZvBoyiBYAjzvFcuXFSpwzjYXFSBpltjrhbFUipcnHYsySHPnWzKTsaPuciUoDDfdRZawcnqwDwZDpIhJwljxdCYHHgMXEHKoJcPXdGofEwUvLmpVjxTTEggsHffepkgeHuwZQEMJvGMLFuCKEORmPJxqSrAmsArwOdmuiBudxOgMGfaZCpDJnIgaagLYezzfFNNhPZcwjgCZfAmssmWJLyUphQzlOzUdqGYHMCuTuLDqCtEJYvIEhxwtjADijftwjyuiqsqBWNmlRlVSPMEtDhPHgMHqaxKcaWwzxZxnUtyvEWMbhrasCemmKovLnLIoKdAckeWGHupgVsPRRWjXLkyDVgNucDGTQQyzrnqdFwkIArksECembIbCljphwJSMYPtHrxBxWJg
+    Should Contain    ${output}    priority : 65437019

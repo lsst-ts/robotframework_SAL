@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeTHCS_EchoResponse sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send yATEkaoWliijjMyTxJpvaIgYjGrKfuiKfDbegaIhpWHVyPKKzLYBTDsFfDUFvSprUBlqlrpLOXmwrngUsTOXNXITOfZOXwOgpaZDnIyrIsdLhJJHKRAXUMEEkGNTCBxtoDerdkNYanDKsYwjRPjwzBnjTfsNvYSyDqicRwyUiUtNvaPZGsQWQayhTHptmTLkHcIJuIGrVtSVGAuIwMNwtIknGy -603115415
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xeaVIsasCNgAPpOujXMsDlCZjfYDvNczhcohbUJkdxuQoOptBuSgOtBpFsBfLbiYhYUvXaBmjeUkwHQOVDUNVYANjIMxngDaylofQhMokWfqnnFFjLTWuAomTGKCzBEqrnQkESmYtDRzfVeTFWypzWTNEWysTOTvbOYwTpXzxbHUjwveuCNjYGeitfQDRTMwgLlJyiKbkknEeYmmqgmGDgjqhIrSEydKjnyaXKZeajlqqEisGkoyZTDdKqPcsKSAUFAatzHLyDiSMUxRAdsDJABDUnPeCGVDqxfIgoluUJXknQQPyZyTukROnnfgHxNjQQpvvMVDPbIIzCseJgpvbJlmhOCQuQweoIKIfsCmWGBjioKsigniyGSHqfXzHVQXiwYpFjEuDYqiLQoDlOcfHgPYIuKhuiutSTYhVWtmehyiuaibwRSJyrNLlgjigiHeXjlzAJKqZDpMyEdUedwBLgmEiNXvqfdjvSIyRuSJkzyUBIuVMeFuoXhimwxSTZHkEObovCehOvzyMzmElbkyBdinXPLTsceZxiRClfFkBGMEWPYeZUIEwVAhyRceaOoRlMXaCbBxUxCklauybWfSHKGumtIpagqgHLylqRgKsjowRxpYHaIxVccOpRHMppKaShBcgZGObGScemfMWCVkVHLWoMlfpFlHySkvkmCCKNbBhTuVoTgbdDGIDwNFoRpRhce 365650766
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -603115415
+    ${output}=    Read Until    priority : 365650766
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : yATEkaoWliijjMyTxJpvaIgYjGrKfuiKfDbegaIhpWHVyPKKzLYBTDsFfDUFvSprUBlqlrpLOXmwrngUsTOXNXITOfZOXwOgpaZDnIyrIsdLhJJHKRAXUMEEkGNTCBxtoDerdkNYanDKsYwjRPjwzBnjTfsNvYSyDqicRwyUiUtNvaPZGsQWQayhTHptmTLkHcIJuIGrVtSVGAuIwMNwtIknGy
-    Should Contain    ${output}    priority : -603115415
+    Should Contain    ${output}    response : xeaVIsasCNgAPpOujXMsDlCZjfYDvNczhcohbUJkdxuQoOptBuSgOtBpFsBfLbiYhYUvXaBmjeUkwHQOVDUNVYANjIMxngDaylofQhMokWfqnnFFjLTWuAomTGKCzBEqrnQkESmYtDRzfVeTFWypzWTNEWysTOTvbOYwTpXzxbHUjwveuCNjYGeitfQDRTMwgLlJyiKbkknEeYmmqgmGDgjqhIrSEydKjnyaXKZeajlqqEisGkoyZTDdKqPcsKSAUFAatzHLyDiSMUxRAdsDJABDUnPeCGVDqxfIgoluUJXknQQPyZyTukROnnfgHxNjQQpvvMVDPbIIzCseJgpvbJlmhOCQuQweoIKIfsCmWGBjioKsigniyGSHqfXzHVQXiwYpFjEuDYqiLQoDlOcfHgPYIuKhuiutSTYhVWtmehyiuaibwRSJyrNLlgjigiHeXjlzAJKqZDpMyEdUedwBLgmEiNXvqfdjvSIyRuSJkzyUBIuVMeFuoXhimwxSTZHkEObovCehOvzyMzmElbkyBdinXPLTsceZxiRClfFkBGMEWPYeZUIEwVAhyRceaOoRlMXaCbBxUxCklauybWfSHKGumtIpagqgHLylqRgKsjowRxpYHaIxVccOpRHMppKaShBcgZGObGScemfMWCVkVHLWoMlfpFlHySkvkmCCKNbBhTuVoTgbdDGIDwNFoRpRhce
+    Should Contain    ${output}    priority : 365650766

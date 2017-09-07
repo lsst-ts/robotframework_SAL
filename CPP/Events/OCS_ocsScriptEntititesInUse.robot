@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptEntititesInUse sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KkSDCXptDGlDxkzMeCwJVwBRBwOqzZkrJLbcMGmuExGTmCANXYqRgbRbZFumgGKmGbGJRYCsBuCcwOVBzOhBGTsZKaFHuVsdLjmpcasdRttozESxfiHMDlyQScEEJwtvOdCZGBbAOMCAhyRqUgFOWzRweFHONCxmNsrtxFAOrONTHesGFSzAdeSQAJESPXfUwyNSFkgAkBlqOfjOUDFdVhjblRLTocFEAsvRuCkRoHcpVapRqDUKPWGSwXyxGZEJ 61.5716 npYrsbriRQNKfbtCCwjtAqWjDFHTxjebaclSqoIMCeJOyeVckhxVaSmZmuTboVoJOliQFRLdofcJgdPIKiajgaQqVWhitPkcnPUFQyUGLiAjgnnQsflUhIBCArxmvfCkfjXLbEMQIvsbUsPggrbfwlWrcvExOdUGsxIuCJqyuaVFluOgEVhlILoqQEcXtwLUFFqVVSUEEZMPMrPhWhDTSCMbKNPnoYPYOhHBPJhOHECTcTDFpIGZJYwwfFgcSniG dJHwNVGGzMtTBrXCjankKFXMreAMIoRvmZYljLAFRvFkPjUoeXYVCepXOZwUGFlMYitaZYAMLspddRNRPxzigttsyAYEheKsQZcmvvoiHxEEcdEEJEXrWHWjLCCIcXLKzzywdJjUQcWpXQRKPdrQRIFwRlCSGvsNISJOxBLXADMToJPRsaXJPfxNIEnogJJslLNxXclNdvvRkpwOrtLDcWJoHKGuFEzPEQOaLYKbpapRJqPWFTKpWbLOvAyzSsYS 1935571724
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kygCfyQcKmwwQtWrmkaWtHiEttAiardqGYonxCkmGZvffwUsiDzNPYTiYiTrDxxQLTcqczKAdfqldqynYYUErZsZDrvdEuyQCdMOXgttFvMJKtUwNGXrjFRQshKbxoPDvwUOQKurneSuENmatfisuMRmRvaiFvPkETcaiYsHtQQTQxAUJHlwmPdkGQdQgAxzROiMnjaspxBtYLcYMPkuOAPjnQSyRPyvpoTpAKzvBfQwwbqGITSUThJfSREfzkTv 1.1287 QVVGtqtCNaRLgHHRcVkfkeQhXCgaVBsakFxjKwICALizQUTRkQOQGdjYeEOtqhNtZXBOFSAzeYuUiBRtMPtadZFcjiltSJYLFbRVmBqkUxwtFZDDnAaCEpmjTsCJaJqoOMbJnhfChbxMEizUjIqsGSiRspeIBpScthfrGLNuRMgOPcPaPQRtYnrRyHwQFXUTmsLeqKhxIupHHKhogHdjIijVxsCdcEIaTKXUuaAPHoXDwtjUIYlRSGqPLvlIpfcr lllcUjESxvjiZlNbxMhsQcIheqAtHIDzwVzYeYwTEWbStnOIPmRQdcexIYgYIXoTPYzsYFZIGpMKgUXwjDbBKleJGkUUfQtdsMEVLLAQoyCrELAWDEhzLBqTpwDLRRNwJayVgbOfTeBbwXIOBxNhKXjYvmiMWvlyyZXHuhxrSlOFVnfrTsBKGhsvrFeRhHneQUwfHpDrxeojwbICgTxVjsnKNGnesHYMNvqUeHufgBiMVdCmcatnNoYNxqBToHRS 1957122453
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptEntititesInUse writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1935571724
+    ${output}=    Read Until    priority : 1957122453
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsScriptEntititesInUse received =     1
-    Should Contain    ${output}    ocsScriptName : KkSDCXptDGlDxkzMeCwJVwBRBwOqzZkrJLbcMGmuExGTmCANXYqRgbRbZFumgGKmGbGJRYCsBuCcwOVBzOhBGTsZKaFHuVsdLjmpcasdRttozESxfiHMDlyQScEEJwtvOdCZGBbAOMCAhyRqUgFOWzRweFHONCxmNsrtxFAOrONTHesGFSzAdeSQAJESPXfUwyNSFkgAkBlqOfjOUDFdVhjblRLTocFEAsvRuCkRoHcpVapRqDUKPWGSwXyxGZEJ
-    Should Contain    ${output}    ocsScriptIdentifier : 61.5716
-    Should Contain    ${output}    ocsScriptTimestamp : npYrsbriRQNKfbtCCwjtAqWjDFHTxjebaclSqoIMCeJOyeVckhxVaSmZmuTboVoJOliQFRLdofcJgdPIKiajgaQqVWhitPkcnPUFQyUGLiAjgnnQsflUhIBCArxmvfCkfjXLbEMQIvsbUsPggrbfwlWrcvExOdUGsxIuCJqyuaVFluOgEVhlILoqQEcXtwLUFFqVVSUEEZMPMrPhWhDTSCMbKNPnoYPYOhHBPJhOHECTcTDFpIGZJYwwfFgcSniG
-    Should Contain    ${output}    ocsEntititesList : dJHwNVGGzMtTBrXCjankKFXMreAMIoRvmZYljLAFRvFkPjUoeXYVCepXOZwUGFlMYitaZYAMLspddRNRPxzigttsyAYEheKsQZcmvvoiHxEEcdEEJEXrWHWjLCCIcXLKzzywdJjUQcWpXQRKPdrQRIFwRlCSGvsNISJOxBLXADMToJPRsaXJPfxNIEnogJJslLNxXclNdvvRkpwOrtLDcWJoHKGuFEzPEQOaLYKbpapRJqPWFTKpWbLOvAyzSsYS
-    Should Contain    ${output}    priority : 1935571724
+    Should Contain    ${output}    ocsScriptName : kygCfyQcKmwwQtWrmkaWtHiEttAiardqGYonxCkmGZvffwUsiDzNPYTiYiTrDxxQLTcqczKAdfqldqynYYUErZsZDrvdEuyQCdMOXgttFvMJKtUwNGXrjFRQshKbxoPDvwUOQKurneSuENmatfisuMRmRvaiFvPkETcaiYsHtQQTQxAUJHlwmPdkGQdQgAxzROiMnjaspxBtYLcYMPkuOAPjnQSyRPyvpoTpAKzvBfQwwbqGITSUThJfSREfzkTv
+    Should Contain    ${output}    ocsScriptIdentifier : 1.1287
+    Should Contain    ${output}    ocsScriptTimestamp : QVVGtqtCNaRLgHHRcVkfkeQhXCgaVBsakFxjKwICALizQUTRkQOQGdjYeEOtqhNtZXBOFSAzeYuUiBRtMPtadZFcjiltSJYLFbRVmBqkUxwtFZDDnAaCEpmjTsCJaJqoOMbJnhfChbxMEizUjIqsGSiRspeIBpScthfrGLNuRMgOPcPaPQRtYnrRyHwQFXUTmsLeqKhxIupHHKhogHdjIijVxsCdcEIaTKXUuaAPHoXDwtjUIYlRSGqPLvlIpfcr
+    Should Contain    ${output}    ocsEntititesList : lllcUjESxvjiZlNbxMhsQcIheqAtHIDzwVzYeYwTEWbStnOIPmRQdcexIYgYIXoTPYzsYFZIGpMKgUXwjDbBKleJGkUUfQtdsMEVLLAQoyCrELAWDEhzLBqTpwDLRRNwJayVgbOfTeBbwXIOBxNhKXjYvmiMWvlyyZXHuhxrSlOFVnfrTsBKGhsvrFeRhHneQUwfHpDrxeojwbICgTxVjsnKNGnesHYMNvqUeHufgBiMVdCmcatnNoYNxqBToHRS
+    Should Contain    ${output}    priority : 1957122453

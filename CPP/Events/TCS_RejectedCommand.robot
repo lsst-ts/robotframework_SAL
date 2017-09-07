@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_RejectedCommand sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 44107 44092 fNndmyJkDhztQxBNrwJOQtnpGeVktjAUKRvDyYNrpOUoIWOJI 1869832882
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19992 54004 kZlZGoKdjcGQDUZKUTIioWaiCeuHfAWByNrnMyhoXBmttBFEbXJUMhsJxOeDYLkVQtFhSXrFExCJhdLwZKcmVoduLnJJukVmVGXZzxmxwosNoKEshUJAMRiqLrOmxTyGKPrJuCXviPDEnoQxdktLflTaAoNuVFpCrashlgkQfQfFaOBqanhMUSecKIAylKKxXsoOuPagAnSFmyJWpqdfpIWczKEsZasHNVFctthauOzEXvcQQGNSCpvnfYCNBNRVPhofyleIkfRFQJpDfLdzCDscjNGhsgTkJaaZNavdTiIscATikIvyWiuCtLKkUMTPTcMdyiVFAJcaRvshQzZpucyRlvLcospPCjCkdaHshqgcKfYOICUVBercVPxxcJxcMFbkscVsgbPLJpdztsDDEoNNFQFNSGzQMVFUmPmHDASpbsnuHRYWNSVdutFkulpxiMdhTSPvjtpwPUwZdHOqbowtnWKvbUJpEhvMNekoJSbVLoOyInOKXZjDYmFFXDAUhlwXkZlvONKpNUtKBwclPVpdGzqOtzFovvrBFaZWNeQBOCNDRcrJCcAprRnZdTEWODmqENCwCEpZCQglhrzUYyruSMeKEzZeGyqvAOpFrCjJgrxPVMqCMRYciHZbekzOtsXNGmIfZKTYSrZJFqFcZJdlfFDHKloACrIUcxbqCggcKAILnNGTYTbvCkLmvWKQXRsekOsYliJJkGjIrLcjgEHGZWfXKeUCjHIJzKTClsVZGOjBgYpTMjGjfTwRnnuUNvlFzoLbkYPgLDUMSXwaVBiRLwlmMOdywjomqSjLBMUZJifLRtkFxTVChTmERoIinVGfDpqfpUnPwCXpOqCBcgZlsMXtcaJDwB 1403920704
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_RejectedCommand writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1869832882
+    ${output}=    Read Until    priority : 1403920704
     Log    ${output}
     Should Contain X Times    ${output}    === Event RejectedCommand received =     1
-    Should Contain    ${output}    CommandValue : 44107
-    Should Contain    ${output}    DisabledState : 44092
-    Should Contain    ${output}    TimeStamp : fNndmyJkDhztQxBNrwJOQtnpGeVktjAUKRvDyYNrpOUoIWOJI
-    Should Contain    ${output}    priority : 1869832882
+    Should Contain    ${output}    CommandValue : 19992
+    Should Contain    ${output}    DisabledState : 54004
+    Should Contain    ${output}    TimeStamp : kZlZGoKdjcGQDUZKUTIioWaiCeuHfAWByNrnMyhoXBmttBFEbXJUMhsJxOeDYLkVQtFhSXrFExCJhdLwZKcmVoduLnJJukVmVGXZzxmxwosNoKEshUJAMRiqLrOmxTyGKPrJuCXviPDEnoQxdktLflTaAoNuVFpCrashlgkQfQfFaOBqanhMUSecKIAylKKxXsoOuPagAnSFmyJWpqdfpIWczKEsZasHNVFctthauOzEXvcQQGNSCpvnfYCNBNRVPhofyleIkfRFQJpDfLdzCDscjNGhsgTkJaaZNavdTiIscATikIvyWiuCtLKkUMTPTcMdyiVFAJcaRvshQzZpucyRlvLcospPCjCkdaHshqgcKfYOICUVBercVPxxcJxcMFbkscVsgbPLJpdztsDDEoNNFQFNSGzQMVFUmPmHDASpbsnuHRYWNSVdutFkulpxiMdhTSPvjtpwPUwZdHOqbowtnWKvbUJpEhvMNekoJSbVLoOyInOKXZjDYmFFXDAUhlwXkZlvONKpNUtKBwclPVpdGzqOtzFovvrBFaZWNeQBOCNDRcrJCcAprRnZdTEWODmqENCwCEpZCQglhrzUYyruSMeKEzZeGyqvAOpFrCjJgrxPVMqCMRYciHZbekzOtsXNGmIfZKTYSrZJFqFcZJdlfFDHKloACrIUcxbqCggcKAILnNGTYTbvCkLmvWKQXRsekOsYliJJkGjIrLcjgEHGZWfXKeUCjHIJzKTClsVZGOjBgYpTMjGjfTwRnnuUNvlFzoLbkYPgLDUMSXwaVBiRLwlmMOdywjomqSjLBMUZJifLRtkFxTVChTmERoIinVGfDpqfpUnPwCXpOqCBcgZlsMXtcaJDwB
+    Should Contain    ${output}    priority : 1403920704

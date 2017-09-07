@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M2MS_M2DetailedState sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 32011 -1615443984
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -27421 -981023084
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2DetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1615443984
+    ${output}=    Read Until    priority : -981023084
     Log    ${output}
     Should Contain X Times    ${output}    === Event M2DetailedState received =     1
-    Should Contain    ${output}    state : 32011
-    Should Contain    ${output}    priority : -1615443984
+    Should Contain    ${output}    state : -27421
+    Should Contain    ${output}    priority : -981023084

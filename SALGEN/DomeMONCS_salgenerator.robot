@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    This suite builds the various interfaces for the DomeMONCS.
+Force Tags    salgen    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${timeout}
 ...    AND    Create Session    SALGEN
 Suite Teardown    Close All Connections

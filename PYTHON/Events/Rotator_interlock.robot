@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_interlock sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py ekbAvEZuBbVyajqpTDSWkPyziGfgCrbjNOhFUWdMxIdijnZWWUfxGapUrNzdciqPymHWnSKPGxIHVahXlSWnYvWYIMDYsprGdsrdjcqyuoMCNxnXconcjINDPGpYmkrnAlIkufDUSjJBhTrAbAnhBAZUCZPsPuVVhuYrCwgIUJlqwjbyDzbLUsZySuUmAAaiogXOiiGBzPmTUTERjKSwfhLPNbxjIOkbQjGYXCvoGZKbmsejqGzCrxivBRtjTPVovKZVTcUDizDymcMHGmpkqGrjTROLobwzpOpPfWGdfuzBvUpZfUAttIQHcxItCSnxWvvjurGQNsZPXfFDJUeDdPzyYVzJcVVTUMeXwwELVfnwZXeQjENnapeimBHzPHnyWPSlmnJOWKEWWYCPrneJgxzkXjuaffBTKVSNQTvQSVJVZaNllOCRfdFercpAYUGnYzEzvLueZDeTfphMOIeqCgRFYtqxOZCqIAubYgbrkJwMtwrhZprWptgbgiVOdhJSugEwByTAevZbUUuchBMkzCAGpEtggIUPgkwyRmHxqfwLMjrwXBDYSZCExQnvOJVAjTUEVfxYtBUKkIrmrXCGUlfEOSgmAFxWMaImxgJpVHUEtsDojrVFtmtjZWpnmIwdRWeovbbLRexeFQgFqdjWYenZntYMxnRvFfOmuAWmlsUeSTrEUhFcznnsorVBPBkIBwDJuQxodzFZFJhRonyoRYpJPwkeRIprFjQnsfrTEefdLPYQMErbteGqGynTUTkPznPmLyrbjRibowCNvJrgnXkmYXJgdHmgZCEoCJlbBDZXAEMcLoasYAszmfTTZLHDzfpxgLYnHVEoSrukciQcGPOqoFnToeZPXpYrJpawVwIzSmMVutDtXVBHnvZmygmCYDnHkgZrniXoQ -1484079450
+    ${input}=    Write    python ${subSystem}_Event_${component}.py BqAbRKZhoQiPRPvaqRTLUlgQIpaPPMvbvRNtybIKoQZcXNHueMyqrWDmjXntHGMETbpIbcKHnCgOFgawUbdCAxivgjtftdfTTKJyRQhkFeDbcIpidqiBecCVEMJhebwCmAMBUwssDshqgbklFUsmmcJKxgXHWMSWYGlTwlNOHdXxOOyxainRcFruzClglXNahhGKoGaKOXPejsNgIQRhtWLJtfFHtdGzfgMvUWntQmLJOqsnNFfWAkAMuhPCGNVajayrApiOmOgcwSCFULIOoqBWWCkRuSnfKdDJDNuekNEhyNiUyvognMGzCXRzKhmxkTecBPOuokLLMEBBYJhwLOzOhgqEkxRQBIalXQoKbVQYJFTUNMLkoarBLMaOUOGpTfJakNXCQabqSTRfBbFEfNboBVCbtOYNWocFOrhiKsPBilJeMjWpBLJBQLRNWMbqvRHCpTRPArNLdDdxEISSTbDRamcxxtTvmCwZEHHHijeiWGQulyQbotNOedDHPxEGWuOBJoJVuyHSHxAJtacCpDbErRWbWhqzPwfwHCLsxclZEoQnFdoqYJuLHkJtdTDbFPvnUzADMlfFhBrBKkRTDUXQvVymVmFQPUW -2135439686
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1

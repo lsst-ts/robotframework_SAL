@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerCommandStatus sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bWPALyoniPTiJjkkvyQakFJQfupvunXKbqYBlyqalZwpobnkvsxFYRMEFaWZnaikCxPiVeDQkdoMnvfuwBkBRgkxhJEizEZnLKPVTMSeZrGZujHKpyIxQEFWOUUXsUbqFYNjwupcQljxaplKjPTNFUNJCxgYVtvggUvdWSfsbCCVEOMlTODsuDloKcOKHKEDqXYGWsCYDbXhdnTApsMTxCNiChErtZdRfwUicQanccaUqcoAYroifrvyaYSupoOG -1004678460 86.169 ChbMguFRmqMsXvrRRoNDuvlknVoJJqxsyeUhcpmjjymJxJsYuktLmDOjRSdwkzyYXiuGaCtIdvvYkbKJCLMQAGoAYEuGlZgCpyvgSzJnmEAsAFDilVUMgxClgWODHMPFFuaElVjFteZMzvanEAFHLHwSOXdEkIrNrLRENoFseWJjwDZrwAOvAFHszyOjngtSHHuVOHfLqOfclwiHTqeyMixiLwBbdVEVNRwibmLxbxZcWomxCHssqExcvUtmxnmM uJvfRkEoIOeAFBwIWCKdwaLYofthLvwHbjGPGoZampEnxMsFxHyQDRmOaTfBSwEvHXIsIGYIUEUgEdZmSUfuFnGKIJuVQVZUpMiZSboAJwzvkCagWDUfPzEGUJhdTIQctyhSSLopYzpItbIcaXoAlCrXTXOuqnEHLvFQBDDKaBMvBvqGVZKMKFbgGEVJwTinqPXvltjyGjnTAIlQbDZAPQtwtAUvFeuzvGtpxHSZdjZuusSDypiHysyiDZSqECtX -1143990397 yTmvnQQnOgeVPDzlEJffyHUCTEanPFLPEgGhaerSYOPWUJayCikNsLJsyjrxqddStEEZmfNkaiQOViyQEjzzyONWAyPsSXqeaRTSDHQPAqmDMnLmCCvQFsyiFQXQaGNfzxrpeCldXkScQnTPAIjzObzphFBSZMzYjUPPNmXlKEQoANgSAAHCkNsgzCuJGSNCARgzQQkpNYaslcJQPbIbrMMICtWgiUBkxJrLuSuRXjvHfzXVwNIgAGqrqmbiROkM 1225784527
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RzMdipEvKUBljspEptfPCkuyzevfWYTKTxhjOAZXbfuswWGOTpKRyDpNrVPDGazVNQkRhOGyHkkgRsDFOgbNtLbBcrioRaHHSEsdJNSIaVtnTxuxWCcJmFTysjmuffRZGKmOHzurmuplUrsTLlOvELBxaOXxLfgeSusfkLPdBWZAXuyXzyBTFACGkgjSNudWrNIYePxfvmtpnUsNenfoeJFCUyGUSpsQLAySvigAIOLqSPlQCELbFxXmPHcnctHO 205169846 53.0014 WGTSVwdaYHPggYwtSWlhYtzoObSqTcmvbtGkSqdunVceXThydeIUcQFtEsZsaVFIFbpEVufMOnPQDuPjbmDFHsKfqoWcgoTTZzWUdwXzuYJAnbtCSfHsQMexwSnnWreEPxnjeObllIQpcaqgLzebyznVJFMcyvhTuzkqPxLbPudoZCcOFVrdYSGuOZdKlLGeBAFYKvLidkkgAAiSaqauAfeRbpJNphLXNDIwcJodbosBllEGGVjNObchTjZzbtsO AbevRMCDDfkSTyoxXazrpmVNgaVuxnytjhmdFEZnXQKVjMCWNfxJLtLTWTIrDnwGXUREinSDBFkughtFQSStKVKGhiufIVMFtUFHqBEvIPJKrUJyCAbKnLUVqIfsMYNiFuLwWBviHLxdaIdTunoqQrhGiZUebtovrvLwZsVxQDCkMWmYkBMcpYkbFsBwxcDIyBQcNUyPguVCSjhfpKNBvTZTRHfZjAZcYTpXUUrhXedBUqarlquwnbznneaoaghU -1717549045 PDETTPtPUitQfCSgUxytmFOnjsXByiARMduunudwUODjYnWdFDmfxFabiOxfYgWxkRELhucgJYPWRFCcGzoJBjgYbqWptSHVpnGEQRhJLqVTQMcgobcJLegswhTMPMLVQQsVVQoFACJncobgurqxNDnjqXDwwtCLuJATwuGlmQbLLJxNxOjLufSnxvRXAJRkvoPMOgzOhjpeYtwyOsChUwneOiJxsHkONpNHtXnLiPQNBNEaNFRkGZKcxvvQqaQU 190312383
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandStatus writing a message containing :    1
@@ -57,14 +57,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1225784527
+    ${output}=    Read Until    priority : 190312383
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerCommandStatus received =     1
-    Should Contain    ${output}    CommandSource : bWPALyoniPTiJjkkvyQakFJQfupvunXKbqYBlyqalZwpobnkvsxFYRMEFaWZnaikCxPiVeDQkdoMnvfuwBkBRgkxhJEizEZnLKPVTMSeZrGZujHKpyIxQEFWOUUXsUbqFYNjwupcQljxaplKjPTNFUNJCxgYVtvggUvdWSfsbCCVEOMlTODsuDloKcOKHKEDqXYGWsCYDbXhdnTApsMTxCNiChErtZdRfwUicQanccaUqcoAYroifrvyaYSupoOG
-    Should Contain    ${output}    SequenceNumber : -1004678460
-    Should Contain    ${output}    Identifier : 86.169
-    Should Contain    ${output}    Timestamp : ChbMguFRmqMsXvrRRoNDuvlknVoJJqxsyeUhcpmjjymJxJsYuktLmDOjRSdwkzyYXiuGaCtIdvvYkbKJCLMQAGoAYEuGlZgCpyvgSzJnmEAsAFDilVUMgxClgWODHMPFFuaElVjFteZMzvanEAFHLHwSOXdEkIrNrLRENoFseWJjwDZrwAOvAFHszyOjngtSHHuVOHfLqOfclwiHTqeyMixiLwBbdVEVNRwibmLxbxZcWomxCHssqExcvUtmxnmM
-    Should Contain    ${output}    CommandSent : uJvfRkEoIOeAFBwIWCKdwaLYofthLvwHbjGPGoZampEnxMsFxHyQDRmOaTfBSwEvHXIsIGYIUEUgEdZmSUfuFnGKIJuVQVZUpMiZSboAJwzvkCagWDUfPzEGUJhdTIQctyhSSLopYzpItbIcaXoAlCrXTXOuqnEHLvFQBDDKaBMvBvqGVZKMKFbgGEVJwTinqPXvltjyGjnTAIlQbDZAPQtwtAUvFeuzvGtpxHSZdjZuusSDypiHysyiDZSqECtX
-    Should Contain    ${output}    StatusValue : -1143990397
-    Should Contain    ${output}    Status : yTmvnQQnOgeVPDzlEJffyHUCTEanPFLPEgGhaerSYOPWUJayCikNsLJsyjrxqddStEEZmfNkaiQOViyQEjzzyONWAyPsSXqeaRTSDHQPAqmDMnLmCCvQFsyiFQXQaGNfzxrpeCldXkScQnTPAIjzObzphFBSZMzYjUPPNmXlKEQoANgSAAHCkNsgzCuJGSNCARgzQQkpNYaslcJQPbIbrMMICtWgiUBkxJrLuSuRXjvHfzXVwNIgAGqrqmbiROkM
-    Should Contain    ${output}    priority : 1225784527
+    Should Contain    ${output}    CommandSource : RzMdipEvKUBljspEptfPCkuyzevfWYTKTxhjOAZXbfuswWGOTpKRyDpNrVPDGazVNQkRhOGyHkkgRsDFOgbNtLbBcrioRaHHSEsdJNSIaVtnTxuxWCcJmFTysjmuffRZGKmOHzurmuplUrsTLlOvELBxaOXxLfgeSusfkLPdBWZAXuyXzyBTFACGkgjSNudWrNIYePxfvmtpnUsNenfoeJFCUyGUSpsQLAySvigAIOLqSPlQCELbFxXmPHcnctHO
+    Should Contain    ${output}    SequenceNumber : 205169846
+    Should Contain    ${output}    Identifier : 53.0014
+    Should Contain    ${output}    Timestamp : WGTSVwdaYHPggYwtSWlhYtzoObSqTcmvbtGkSqdunVceXThydeIUcQFtEsZsaVFIFbpEVufMOnPQDuPjbmDFHsKfqoWcgoTTZzWUdwXzuYJAnbtCSfHsQMexwSnnWreEPxnjeObllIQpcaqgLzebyznVJFMcyvhTuzkqPxLbPudoZCcOFVrdYSGuOZdKlLGeBAFYKvLidkkgAAiSaqauAfeRbpJNphLXNDIwcJodbosBllEGGVjNObchTjZzbtsO
+    Should Contain    ${output}    CommandSent : AbevRMCDDfkSTyoxXazrpmVNgaVuxnytjhmdFEZnXQKVjMCWNfxJLtLTWTIrDnwGXUREinSDBFkughtFQSStKVKGhiufIVMFtUFHqBEvIPJKrUJyCAbKnLUVqIfsMYNiFuLwWBviHLxdaIdTunoqQrhGiZUebtovrvLwZsVxQDCkMWmYkBMcpYkbFsBwxcDIyBQcNUyPguVCSjhfpKNBvTZTRHfZjAZcYTpXUUrhXedBUqarlquwnbznneaoaghU
+    Should Contain    ${output}    StatusValue : -1717549045
+    Should Contain    ${output}    Status : PDETTPtPUitQfCSgUxytmFOnjsXByiARMduunudwUODjYnWdFDmfxFabiOxfYgWxkRELhucgJYPWRFCcGzoJBjgYbqWptSHVpnGEQRhJLqVTQMcgobcJLegswhTMPMLVQQsVVQoFACJncobgurqxNDnjqXDwwtCLuJATwuGlmQbLLJxNxOjLufSnxvRXAJRkvoPMOgzOhjpeYtwyOsChUwneOiJxsHkONpNHtXnLiPQNBNEaNFRkGZKcxvvQqaQU
+    Should Contain    ${output}    priority : 190312383

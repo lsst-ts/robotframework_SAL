@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsEntityStartup sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py zuTBAdwLZeMrJRSDNHqQVBhycEHrDndptNQWooKWnjVUzQtmWZyzCstcsCBJpmCUbpqnlChJVCsDtPpLvsueKbgEuxcUqjmgNhmVCiLUKzhPGusTlUlUxizJhCVYFXOz 51.3685 wUhLgcBcuJvdlLAqTrwaHcbEkCNmHbSPpnaIbropSRDtehbTtVPCuOQVQReBJSiDUgRFRhaPerxsiRJlWyIvWtyDSwvkBqVnePvOKjrvybraEkOLQYxBNrBaHRXYDfYBDZkJtqoyXMFOUiVMkYNddByAKsrPGWqSiuyfoFtAlCcJpCQPLpeVvTNJstjmjCjLOuhkLNIpXROqiHNhTQxaMANilLIZtEgjEnJleoBhjfAUyOCPzmOFlAmZKhYJyyLZ 1729822705 -66070593
+    ${input}=    Write    python ${subSystem}_Event_${component}.py bpgOqcBYueYExBIreEQadzqiecVXBAGEZGYpHjptdWxoqTnanpYyicOVvnrAqIKbgKNjxssBpxNMUttEhfJImqaCVKzQSChPqoRQZtqphZGtgxmLDvaRlUApegPNowXh 77.2701 GDFZFzGzAgsDNKmhxwSgrjeQbbGtrHilyqdcUIgTYrMSnOhlOusNXNpTKAzrYrQgFZkHDFmlfWEUUDLChTHkdROrCzctapzZpBVqWMFjhoGHaWVCKnKGMdsiDSlrRRElQQNhvktOwQVQzohBlPlLgAunvgJWcPDronfuHpottbdjpXMjnrDQzcSLiXVMDYblhZwzzCXxHBMBwIedRfKiASocNsosHmThzrvMguCaRqtvbHXJzFcMiswrWeQvzrZk 1300753190 -1448984337
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityStartup writing a message containing :    1

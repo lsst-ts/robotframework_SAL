@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS_DriveFault sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 18425 klJSabdnquzZtKpZHlvvXOmyPVjUVpzZVYDNKtelcqMkkMQmQbTBrtHrKnmowmZqnrygdJLhIiJROkSlLdDniGwNQrOjlHMLlQeOxOMPADJOqIbrAaOTEkAzAaxbEABrADqYbRrfmcDbFdEvwNeIyipbIHfXZbcbKVqkHfZwpbDKfNpBgsXvOCGcpHDJdEnqjgdWoofoOvMapzvXfTjbnzftDxYQHQpmbdpmGZFakFXTribvYKfuGVeKISNfmIbIzeCAYlw 618094970
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -29469 ANwpRbLgyqDHEosYvnWllWkBGjKNQUHQiTxGfkgRUtswWptTOvzvJrXEV 1665896332
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 618094970
+    ${output}=    Read Until    priority : 1665896332
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 18425
-    Should Contain    ${output}    errorCode : klJSabdnquzZtKpZHlvvXOmyPVjUVpzZVYDNKtelcqMkkMQmQbTBrtHrKnmowmZqnrygdJLhIiJROkSlLdDniGwNQrOjlHMLlQeOxOMPADJOqIbrAaOTEkAzAaxbEABrADqYbRrfmcDbFdEvwNeIyipbIHfXZbcbKVqkHfZwpbDKfNpBgsXvOCGcpHDJdEnqjgdWoofoOvMapzvXfTjbnzftDxYQHQpmbdpmGZFakFXTribvYKfuGVeKISNfmIbIzeCAYlw
-    Should Contain    ${output}    priority : 618094970
+    Should Contain    ${output}    driveId : -29469
+    Should Contain    ${output}    errorCode : ANwpRbLgyqDHEosYvnWllWkBGjKNQUHQiTxGfkgRUtswWptTOvzvJrXEV
+    Should Contain    ${output}    priority : 1665896332

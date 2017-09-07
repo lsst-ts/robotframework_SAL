@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startIntegration sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QCvTSaeOUsUZUbskzDKBBxaUobFSoZCFEOMZfoYZwUBCQjvLhdqyFlDolaOQYindAHTTZLlmYqRErUWijQadUKKGIcaWfyqNuTjkaexALEcfWaACBFBXQlBDqhGULPxVyeXSJMcjYwLnOpxpYjPnrnCIsXDGWRVnsIAbkkygXWhbyfukmILZNdKTciyxUeBiYdTcPMmbAYOPIDVWtDmkzdNGjejhUdswJpeCKbIWqQNRwkZaLKMBButxGJJePCWqIflqwSerGBYadaNWRpjNtpeoxSwmckYAVoRJzsRaIYlHTTMVLNVDSMelXzWcHPYWbUxRqOyzYDrbcMcRNWDCpWcIDSJiHBFgRYzlZUBhmJwhhcAAwZJdANyKQWbfIzPidLZwmhtbNOygfwomgTaUNDQVqniwGqdsPdjlitvbKIHOddapQcrktxivsyywffXGaDibRLUTCFnqfcFWByagjrxhyvJfAtSArNryXErIyjwXQrRvwnLLZAyPaLmeNCIWamkAPqzGiEnLAEgMbxkJKHKEEnYBoJKUJAzNQUxARkAbejZiPJnwUHVoOYfVhOUjFKRUhudFQrKZRtVXgDBnXDbTCiCzNxwTQdvuwfRjrWIwYfVqRYqAUcNqKdHvvVHhshFgRVyvepuerVSiVKfmbwzKkniAxgLktaNRWjZePhKTlDSzz -1327947147
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xqTPaWMdhdcNlajRMTDZWIvMKUCoQHBCvBjYHISGlBoMkQlXAckfBGGZuwvxIwEHQRUEaAXjfANwFtHCpeiwHghBpQfPfLqIMpqfCTLyPwzrXotVGKcYQXRxPchbwODIW 1736341788
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startIntegration writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1327947147
+    ${output}=    Read Until    priority : 1736341788
     Log    ${output}
     Should Contain X Times    ${output}    === Event startIntegration received =     1
-    Should Contain    ${output}    imageName : QCvTSaeOUsUZUbskzDKBBxaUobFSoZCFEOMZfoYZwUBCQjvLhdqyFlDolaOQYindAHTTZLlmYqRErUWijQadUKKGIcaWfyqNuTjkaexALEcfWaACBFBXQlBDqhGULPxVyeXSJMcjYwLnOpxpYjPnrnCIsXDGWRVnsIAbkkygXWhbyfukmILZNdKTciyxUeBiYdTcPMmbAYOPIDVWtDmkzdNGjejhUdswJpeCKbIWqQNRwkZaLKMBButxGJJePCWqIflqwSerGBYadaNWRpjNtpeoxSwmckYAVoRJzsRaIYlHTTMVLNVDSMelXzWcHPYWbUxRqOyzYDrbcMcRNWDCpWcIDSJiHBFgRYzlZUBhmJwhhcAAwZJdANyKQWbfIzPidLZwmhtbNOygfwomgTaUNDQVqniwGqdsPdjlitvbKIHOddapQcrktxivsyywffXGaDibRLUTCFnqfcFWByagjrxhyvJfAtSArNryXErIyjwXQrRvwnLLZAyPaLmeNCIWamkAPqzGiEnLAEgMbxkJKHKEEnYBoJKUJAzNQUxARkAbejZiPJnwUHVoOYfVhOUjFKRUhudFQrKZRtVXgDBnXDbTCiCzNxwTQdvuwfRjrWIwYfVqRYqAUcNqKdHvvVHhshFgRVyvepuerVSiVKfmbwzKkniAxgLktaNRWjZePhKTlDSzz
-    Should Contain    ${output}    priority : -1327947147
+    Should Contain    ${output}    imageName : xqTPaWMdhdcNlajRMTDZWIvMKUCoQHBCvBjYHISGlBoMkQlXAckfBGGZuwvxIwEHQRUEaAXjfANwFtHCpeiwHghBpQfPfLqIMpqfCTLyPwzrXotVGKcYQXRxPchbwODIW
+    Should Contain    ${output}    priority : 1736341788

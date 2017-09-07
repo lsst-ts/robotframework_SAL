@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_DriveOverTemp sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16192 -11284 -378618897
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11460 10549 2032688141
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveOverTemp writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -378618897
+    ${output}=    Read Until    priority : 2032688141
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveOverTemp received =     1
-    Should Contain    ${output}    louverID : 16192
-    Should Contain    ${output}    driveId : -11284
-    Should Contain    ${output}    priority : -378618897
+    Should Contain    ${output}    louverID : 11460
+    Should Contain    ${output}    driveId : 10549
+    Should Contain    ${output}    priority : 2032688141

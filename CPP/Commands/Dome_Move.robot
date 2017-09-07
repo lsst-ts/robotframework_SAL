@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Dome_Move commander/controller tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 23.5831 62.1597
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.3983 89.3632
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 23.5831 62.1597
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 82.3983 89.3632
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    azimuth : 23.5831    1
-    Should Contain X Times    ${output}    elevation : 62.1597    1
+    Should Contain X Times    ${output}    azimuth : 82.3983    1
+    Should Contain X Times    ${output}    elevation : 89.3632    1
     Should Contain    ${output}    === command Move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    azimuth : 23.5831    1
-    Should Contain X Times    ${output}    elevation : 62.1597    1
+    Should Contain X Times    ${output}    azimuth : 82.3983    1
+    Should Contain X Times    ${output}    elevation : 89.3632    1
     Should Contain X Times    ${output}    === [ackCommand_Move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

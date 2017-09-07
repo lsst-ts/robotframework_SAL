@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_moveToTarget commander/controller tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 46.938 24.8623 qlaCpWwgRcQLDApmYjBYZpFNyWTkcGRDXuUiDMKMEXmjoZtGJsgIXwzrQAxhiasJYDVPRHHvkeNTwTqcAwJOdKljjykqogbOcGsdkasEksEPJUJeXkjkjPwIByJFDeekJbKnmxeUMOESBcsnzCRcvMZFclWKjgxYOJQntbpjNqPvGnweJhMpXGHuwoGCvindqSpfITtentzKScqCcTfsgVlQnGBbRoySWXqgixushuaEsaaIpXkMDiPTpqKhsSfeCzTgkseFvHfuPsWLqYInEGKzDaUqPkuyahThPDmZCfpKJfvBpZUKvfCeKOfkAYpaVAFKZnWZxriheMTPtIKPXsjaTjVpWwoUpUhOYoqYjqmvNRAihdChbrdOExtjTLgtRLOXCITIaFBmiEmZdqmAGYzkuAfffhTrphUnIXXhncvGpApPZBkfZkzFgdOerGJcrknfphGdIxRjuhQuNpvCfiAnvedpLxAkYQUOWjFwqoqeQPQnfHpXXJShtOdOBVVgJQRaKFgaVuchREegAJMjQDsuTiHRMpFDGIgyWTykgeIGlsLCuyquqEEVOxToLOSoMyntYobtBsgrZitoPzuUrLfMRPSRwEvkxdlGzVJEYKCmXFytBhYiBSKRLppTAWsHWDHeFnmayhemFrRuzRYLiusxnGEIVjnmuvOCmVUWwMADhACsBwURVQsLChqqOFsxTQygEPMcdgrUtSJrQdtQxUyJaMSBGdFIErAPJRXCpPHrBLiARXCTEBshVvnXMAPKLLVNeWiMUqEmirFhodZqzkJWSYmKHoPQdOJvQcMQzBugJaKCdSbJtKPzSxmrELtXyOMPytmiaLIIbgoYeSfZPFbBvTaKgqiWKlUCeBPOP
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 6.9062 89.2293 UABljlWmVMESQmxOMVvIVJutlmROfbtRTmePQSSBaSaYFBNDLUzJzUmnMitTYrnRtvAaHGmIajhueLNKLAHdIWplloBYqfWAbyDERCGGlvNhUtwqHkydRNyzrxRqlfUpHAVDYvyPlYjxxrGVASnUrVnpDBhadOxlPBCmngNGbMxVgBLMRDePzSRFqqyYgdliAkhWupazrcNdhvhsAXxIkumqPjZnwcLzWVJzLeFEVdQjDJZyYyoAJcgJdQWSmJYQcOiGhYWXOkvxdOvBlcUvDIoIzmCLdgeYTXgnlUNpYuQMLCGqZwRMVtVjhIukojPIYbflSKCwyqAVCZqxTRZHbYWgwHAjmPRoiTDxLjWOlKrkDmGoMPyQiXCEIRpUvomqyEdkiuHhZjbWdfpIvAoXnMYjQbMXHzIdgwgvwatKWwOtQPsxZlTAPCHQwLyko
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 46.938 24.8623 qlaCpWwgRcQLDApmYjBYZpFNyWTkcGRDXuUiDMKMEXmjoZtGJsgIXwzrQAxhiasJYDVPRHHvkeNTwTqcAwJOdKljjykqogbOcGsdkasEksEPJUJeXkjkjPwIByJFDeekJbKnmxeUMOESBcsnzCRcvMZFclWKjgxYOJQntbpjNqPvGnweJhMpXGHuwoGCvindqSpfITtentzKScqCcTfsgVlQnGBbRoySWXqgixushuaEsaaIpXkMDiPTpqKhsSfeCzTgkseFvHfuPsWLqYInEGKzDaUqPkuyahThPDmZCfpKJfvBpZUKvfCeKOfkAYpaVAFKZnWZxriheMTPtIKPXsjaTjVpWwoUpUhOYoqYjqmvNRAihdChbrdOExtjTLgtRLOXCITIaFBmiEmZdqmAGYzkuAfffhTrphUnIXXhncvGpApPZBkfZkzFgdOerGJcrknfphGdIxRjuhQuNpvCfiAnvedpLxAkYQUOWjFwqoqeQPQnfHpXXJShtOdOBVVgJQRaKFgaVuchREegAJMjQDsuTiHRMpFDGIgyWTykgeIGlsLCuyquqEEVOxToLOSoMyntYobtBsgrZitoPzuUrLfMRPSRwEvkxdlGzVJEYKCmXFytBhYiBSKRLppTAWsHWDHeFnmayhemFrRuzRYLiusxnGEIVjnmuvOCmVUWwMADhACsBwURVQsLChqqOFsxTQygEPMcdgrUtSJrQdtQxUyJaMSBGdFIErAPJRXCpPHrBLiARXCTEBshVvnXMAPKLLVNeWiMUqEmirFhodZqzkJWSYmKHoPQdOJvQcMQzBugJaKCdSbJtKPzSxmrELtXyOMPytmiaLIIbgoYeSfZPFbBvTaKgqiWKlUCeBPOP
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 6.9062 89.2293 UABljlWmVMESQmxOMVvIVJutlmROfbtRTmePQSSBaSaYFBNDLUzJzUmnMitTYrnRtvAaHGmIajhueLNKLAHdIWplloBYqfWAbyDERCGGlvNhUtwqHkydRNyzrxRqlfUpHAVDYvyPlYjxxrGVASnUrVnpDBhadOxlPBCmngNGbMxVgBLMRDePzSRFqqyYgdliAkhWupazrcNdhvhsAXxIkumqPjZnwcLzWVJzLeFEVdQjDJZyYyoAJcgJdQWSmJYQcOiGhYWXOkvxdOvBlcUvDIoIzmCLdgeYTXgnlUNpYuQMLCGqZwRMVtVjhIukojPIYbflSKCwyqAVCZqxTRZHbYWgwHAjmPRoiTDxLjWOlKrkDmGoMPyQiXCEIRpUvomqyEdkiuHhZjbWdfpIvAoXnMYjQbMXHzIdgwgvwatKWwOtQPsxZlTAPCHQwLyko
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 46.938    1
-    Should Contain X Times    ${output}    el_angle : 24.8623    1
-    Should Contain X Times    ${output}    cablewrap_orientation : qlaCpWwgRcQLDApmYjBYZpFNyWTkcGRDXuUiDMKMEXmjoZtGJsgIXwzrQAxhiasJYDVPRHHvkeNTwTqcAwJOdKljjykqogbOcGsdkasEksEPJUJeXkjkjPwIByJFDeekJbKnmxeUMOESBcsnzCRcvMZFclWKjgxYOJQntbpjNqPvGnweJhMpXGHuwoGCvindqSpfITtentzKScqCcTfsgVlQnGBbRoySWXqgixushuaEsaaIpXkMDiPTpqKhsSfeCzTgkseFvHfuPsWLqYInEGKzDaUqPkuyahThPDmZCfpKJfvBpZUKvfCeKOfkAYpaVAFKZnWZxriheMTPtIKPXsjaTjVpWwoUpUhOYoqYjqmvNRAihdChbrdOExtjTLgtRLOXCITIaFBmiEmZdqmAGYzkuAfffhTrphUnIXXhncvGpApPZBkfZkzFgdOerGJcrknfphGdIxRjuhQuNpvCfiAnvedpLxAkYQUOWjFwqoqeQPQnfHpXXJShtOdOBVVgJQRaKFgaVuchREegAJMjQDsuTiHRMpFDGIgyWTykgeIGlsLCuyquqEEVOxToLOSoMyntYobtBsgrZitoPzuUrLfMRPSRwEvkxdlGzVJEYKCmXFytBhYiBSKRLppTAWsHWDHeFnmayhemFrRuzRYLiusxnGEIVjnmuvOCmVUWwMADhACsBwURVQsLChqqOFsxTQygEPMcdgrUtSJrQdtQxUyJaMSBGdFIErAPJRXCpPHrBLiARXCTEBshVvnXMAPKLLVNeWiMUqEmirFhodZqzkJWSYmKHoPQdOJvQcMQzBugJaKCdSbJtKPzSxmrELtXyOMPytmiaLIIbgoYeSfZPFbBvTaKgqiWKlUCeBPOP    1
+    Should Contain X Times    ${output}    az_angle : 6.9062    1
+    Should Contain X Times    ${output}    el_angle : 89.2293    1
+    Should Contain X Times    ${output}    cablewrap_orientation : UABljlWmVMESQmxOMVvIVJutlmROfbtRTmePQSSBaSaYFBNDLUzJzUmnMitTYrnRtvAaHGmIajhueLNKLAHdIWplloBYqfWAbyDERCGGlvNhUtwqHkydRNyzrxRqlfUpHAVDYvyPlYjxxrGVASnUrVnpDBhadOxlPBCmngNGbMxVgBLMRDePzSRFqqyYgdliAkhWupazrcNdhvhsAXxIkumqPjZnwcLzWVJzLeFEVdQjDJZyYyoAJcgJdQWSmJYQcOiGhYWXOkvxdOvBlcUvDIoIzmCLdgeYTXgnlUNpYuQMLCGqZwRMVtVjhIukojPIYbflSKCwyqAVCZqxTRZHbYWgwHAjmPRoiTDxLjWOlKrkDmGoMPyQiXCEIRpUvomqyEdkiuHhZjbWdfpIvAoXnMYjQbMXHzIdgwgvwatKWwOtQPsxZlTAPCHQwLyko    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,9 +79,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 46.938    1
-    Should Contain X Times    ${output}    el_angle = 24.8623    1
-    Should Contain X Times    ${output}    cablewrap_orientation = qlaCpWwgRcQLDApmYjBYZpFNyWTkcGRDXuUiDMKMEXmjoZtGJsgIXwzrQAxhiasJYDVPRHHvkeNTwTqcAwJOdKljjykqogbOcGsdkasEksEPJUJeXkjkjPwIByJFDeekJbKnmxeUMOESBcsnzCRcvMZFclWKjgxYOJQntbpjNqPvGnweJhMpXGHuwoGCvindqSpfITtentzKScqCcTfsgVlQnGBbRoySWXqgixushuaEsaaIpXkMDiPTpqKhsSfeCzTgkseFvHfuPsWLqYInEGKzDaUqPkuyahThPDmZCfpKJfvBpZUKvfCeKOfkAYpaVAFKZnWZxriheMTPtIKPXsjaTjVpWwoUpUhOYoqYjqmvNRAihdChbrdOExtjTLgtRLOXCITIaFBmiEmZdqmAGYzkuAfffhTrphUnIXXhncvGpApPZBkfZkzFgdOerGJcrknfphGdIxRjuhQuNpvCfiAnvedpLxAkYQUOWjFwqoqeQPQnfHpXXJShtOdOBVVgJQRaKFgaVuchREegAJMjQDsuTiHRMpFDGIgyWTykgeIGlsLCuyquqEEVOxToLOSoMyntYobtBsgrZitoPzuUrLfMRPSRwEvkxdlGzVJEYKCmXFytBhYiBSKRLppTAWsHWDHeFnmayhemFrRuzRYLiusxnGEIVjnmuvOCmVUWwMADhACsBwURVQsLChqqOFsxTQygEPMcdgrUtSJrQdtQxUyJaMSBGdFIErAPJRXCpPHrBLiARXCTEBshVvnXMAPKLLVNeWiMUqEmirFhodZqzkJWSYmKHoPQdOJvQcMQzBugJaKCdSbJtKPzSxmrELtXyOMPytmiaLIIbgoYeSfZPFbBvTaKgqiWKlUCeBPOP    1
+    Should Contain X Times    ${output}    az_angle = 6.9062    1
+    Should Contain X Times    ${output}    el_angle = 89.2293    1
+    Should Contain X Times    ${output}    cablewrap_orientation = UABljlWmVMESQmxOMVvIVJutlmROfbtRTmePQSSBaSaYFBNDLUzJzUmnMitTYrnRtvAaHGmIajhueLNKLAHdIWplloBYqfWAbyDERCGGlvNhUtwqHkydRNyzrxRqlfUpHAVDYvyPlYjxxrGVASnUrVnpDBhadOxlPBCmngNGbMxVgBLMRDePzSRFqqyYgdliAkhWupazrcNdhvhsAXxIkumqPjZnwcLzWVJzLeFEVdQjDJZyYyoAJcgJdQWSmJYQcOiGhYWXOkvxdOvBlcUvDIoIzmCLdgeYTXgnlUNpYuQMLCGqZwRMVtVjhIukojPIYbflSKCwyqAVCZqxTRZHbYWgwHAjmPRoiTDxLjWOlKrkDmGoMPyQiXCEIRpUvomqyEdkiuHhZjbWdfpIvAoXnMYjQbMXHzIdgwgvwatKWwOtQPsxZlTAPCHQwLyko    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

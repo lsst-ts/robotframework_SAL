@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_DriveFault sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -12167 -2796 ogTqIFsBEntBeLSbNUyUGhjXsRoqacTPseVkHozYmHVEmcMMlFFIpfGzaLxqOpmcDKuJLDLEVLwOQoNJrttGxNMIGhvTZDfzHMWbOhOhnPdvXIGmypfogIolcpSNQDEmyviVSMEWWhxzjpQNOtoVLygFkPuIsNVkcHRucguzHoJQpTgefeuujsCpmjoxDuIJjnPuourhDENDDeoXdpPZuxllaNRqlIPHETNIlHFdeiKMWsgfjaFbbzyvQiDvcrKcnfBgecZFOxiHXqEHXcvkncBbsgCsYWgHUcByePmJaqPcDnoOrVJQjAvYHadSRzNnloJVjytrTgtffJOxPhCoanECwmHQFnbwMEHaSCmATmLERnDGbGfujKJeiGATjmAUHGyFyXRKaiQKTdfTAAQozIPU -1537018658
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -30937 -23939 NdDuXTpEfLcbuGhkyuIsyItxDzKjAIcfQPugYYGoKvoSSPSMgrRpETxzmjUNWyVVmSeCTfsVNpUooUNZNYnCzvKypGXpwAtJhGIDqDQZUylNyclBIIqIaKXkJorFYDitqnfWnzZVzHPuxkvIuGEXaQDisQKeecQCbQy -1007954915
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveFault writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_TC communications tests.
-Force Tags    java
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

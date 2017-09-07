@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsCommandIssued sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jcitroucaYWHoDEjNPnwRKzItJmMhyNlfKwOehQmxtDbQGiNdVGdWxodbJcUDMXMESPbhuPGEQqkpAjBZWxZGgmDhbYRDbUWFlUwqtgCqXpLzBoYRgdjSocpGyViFYnraGSRiSdpIcbChPzcnNaWKYxIhsBgeVRpgLwSYIzIccUabHCfaxesnamnvjVWqioWymXnpsTGBaDvEzNzihUPMmpBLUpSdVAQpEtgeATOBYRmjFbpNwfDgUbcFwvXgBcX -1149560968 6.1978 EgGDTjrILrqXbCfaDevCscjMIzJbLsQEsmNrhJlQgGJobfAWuJybaanQsrJhKafhFhHsDPtDVZsYBnVXdEISPxkLolnfcjoWAaZazbtSHnCjeCJOpBmYLjBljGrNGrQLbHIVkmNqWUTJhtbILcmemjyASMfDvTZUYzCOiglBVqjMftriTAgMgSJiJFtFZiDgIaGZqXnfoootuZKZNOLxbsrzNFFaToiwUbWxwDPwyfCFxSIMgpQoeDUOaPYOcuvt HOCcrNLFvuUYtUKLQjBDfcFZmpVWXpjfssnyXsRrDOQNhqlSvnKpIaHnxKyNLGbEZZXNGRtjQpXKbXHOOyHuerRhuqxMscSuBaoaEWqqwTJOfcihKDXETCrpZiSRcwwcEDzcDgnPFuiWnvDbcHUnXqCgxuhJEVgQVswxMBSlCBMfdRRYlLvZgKXTCFtExWLPTDZKlmqGrtQdMTIlrlKmWDCochPHhNWPjibzluwDSGCbvURDFmrSLkwRKYUQnVEj 1038913802 -434420413
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kYtcHsHGPXMJTWAxvrlCRCYVBARqAHKnXzbMmnxNTpUDqeexZubTYXaOPbabLfZlyCSXNEETGUlaXOJGZnqbJrkAplMPLDAnYSldxyqhEKYsCyGjMWIatKqqBoZlCxNURZHHIyUOyXeJGHNVZmdfxbqFlTATouqmyROCPvCeRevPaFNSuSTQHZSEqCRavFAHhQsVhKgptvmddDEgBlcsuyZYBRrBOmOwQuvPMrrxMEkwDxZSSuvMPENMPiCjOZMB -1486511790 2.8094 LZQdGGNGBuNAzgnbVyIZXoiXgnwNubuBfTSRwQNbEmaWlbeuOBVGBPedfZIzgayNWRqlYaxESGSIIJxITYJIebgZjJuTcNOdwvaBRTFQQfJYAxYJrZXABtfmaJPxtUhPNbHHdPMdRANlvEKuPNqsFicmoHIRRasPTUmSKsTcyHeKmEKOmYgsfisUsVqdBwLxrYZkWrVnKhXNTllrJDrfEKGGRnRGqnzBooHCIcHZXQfAppVwOGwyQVtgQqPabuxm yrFcSUVeBzJpmeyXxbUUQKLAcAnZDBHfOTzShidjdGLImJglHIsLFIaLJqNzMbJjgoqDhoAHDrBucNvOrbXRZEmpCtKGRcXcWxhoOCNWCqlMZFqkNxhKjSIqDHOaMtCdfIekVUFCAWJXcInwfrqFFLFegfySXZxrSxKDnKrfCISuyOHWFvcqnMNRcSYGMXfHiecBDKAgjefvQeguuWAibVQctHPPvUXdnowhDmztmrtDNSAAYsXTTfdzvBQsNEdm 1178720138 -1902465298
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCommandIssued writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -434420413
+    ${output}=    Read Until    priority : -1902465298
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsCommandIssued received =     1
-    Should Contain    ${output}    CommandSource : jcitroucaYWHoDEjNPnwRKzItJmMhyNlfKwOehQmxtDbQGiNdVGdWxodbJcUDMXMESPbhuPGEQqkpAjBZWxZGgmDhbYRDbUWFlUwqtgCqXpLzBoYRgdjSocpGyViFYnraGSRiSdpIcbChPzcnNaWKYxIhsBgeVRpgLwSYIzIccUabHCfaxesnamnvjVWqioWymXnpsTGBaDvEzNzihUPMmpBLUpSdVAQpEtgeATOBYRmjFbpNwfDgUbcFwvXgBcX
-    Should Contain    ${output}    SequenceNumber : -1149560968
-    Should Contain    ${output}    Identifier : 6.1978
-    Should Contain    ${output}    Timestamp : EgGDTjrILrqXbCfaDevCscjMIzJbLsQEsmNrhJlQgGJobfAWuJybaanQsrJhKafhFhHsDPtDVZsYBnVXdEISPxkLolnfcjoWAaZazbtSHnCjeCJOpBmYLjBljGrNGrQLbHIVkmNqWUTJhtbILcmemjyASMfDvTZUYzCOiglBVqjMftriTAgMgSJiJFtFZiDgIaGZqXnfoootuZKZNOLxbsrzNFFaToiwUbWxwDPwyfCFxSIMgpQoeDUOaPYOcuvt
-    Should Contain    ${output}    CommandSent : HOCcrNLFvuUYtUKLQjBDfcFZmpVWXpjfssnyXsRrDOQNhqlSvnKpIaHnxKyNLGbEZZXNGRtjQpXKbXHOOyHuerRhuqxMscSuBaoaEWqqwTJOfcihKDXETCrpZiSRcwwcEDzcDgnPFuiWnvDbcHUnXqCgxuhJEVgQVswxMBSlCBMfdRRYlLvZgKXTCFtExWLPTDZKlmqGrtQdMTIlrlKmWDCochPHhNWPjibzluwDSGCbvURDFmrSLkwRKYUQnVEj
-    Should Contain    ${output}    ReturnValue : 1038913802
-    Should Contain    ${output}    priority : -434420413
+    Should Contain    ${output}    CommandSource : kYtcHsHGPXMJTWAxvrlCRCYVBARqAHKnXzbMmnxNTpUDqeexZubTYXaOPbabLfZlyCSXNEETGUlaXOJGZnqbJrkAplMPLDAnYSldxyqhEKYsCyGjMWIatKqqBoZlCxNURZHHIyUOyXeJGHNVZmdfxbqFlTATouqmyROCPvCeRevPaFNSuSTQHZSEqCRavFAHhQsVhKgptvmddDEgBlcsuyZYBRrBOmOwQuvPMrrxMEkwDxZSSuvMPENMPiCjOZMB
+    Should Contain    ${output}    SequenceNumber : -1486511790
+    Should Contain    ${output}    Identifier : 2.8094
+    Should Contain    ${output}    Timestamp : LZQdGGNGBuNAzgnbVyIZXoiXgnwNubuBfTSRwQNbEmaWlbeuOBVGBPedfZIzgayNWRqlYaxESGSIIJxITYJIebgZjJuTcNOdwvaBRTFQQfJYAxYJrZXABtfmaJPxtUhPNbHHdPMdRANlvEKuPNqsFicmoHIRRasPTUmSKsTcyHeKmEKOmYgsfisUsVqdBwLxrYZkWrVnKhXNTllrJDrfEKGGRnRGqnzBooHCIcHZXQfAppVwOGwyQVtgQqPabuxm
+    Should Contain    ${output}    CommandSent : yrFcSUVeBzJpmeyXxbUUQKLAcAnZDBHfOTzShidjdGLImJglHIsLFIaLJqNzMbJjgoqDhoAHDrBucNvOrbXRZEmpCtKGRcXcWxhoOCNWCqlMZFqkNxhKjSIqDHOaMtCdfIekVUFCAWJXcInwfrqFFLFegfySXZxrSxKDnKrfCISuyOHWFvcqnMNRcSYGMXfHiecBDKAgjefvQeguuWAibVQctHPPvUXdnowhDmztmrtDNSAAYsXTTfdzvBQsNEdm
+    Should Contain    ${output}    ReturnValue : 1178720138
+    Should Contain    ${output}    priority : -1902465298

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_tempError sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py qkMhOSqYHwawtxnNfIBanEgbvutEgFfQhBpoRFNktOQWRwAyLxXHcVTsYcdTZyHqlskOWkovHZyuQNIjPlmLSivRrYYjLVVnIefeoFYaMOXqpuNwHqUxdNwmqshJVpjtaRjLfnVzIIGnXOzoxwKNQTMshbWugddzMesbxodYbFhddQwNNTGMZkfYnRMHAoUhSgcnrwpANmbIbTyaQceJXqfBDlTGHeleTIOJgNmdzRSIItFTUlScylmJhcqfLvfrqworMtlJzmPSslXsrbLNduTriHKUyzxTqKFffzJEXpgvUFFlEmQCvmhrvCrbtUBPpnrRbhGMYEHXzMMqsrawXBagYmjHzxdZusjXErRVTQHJsXMQmEpfFAngEELxJtLNShtKqrzaDPUKeVxuARJYpurslrFgXpdQOVFAHyJByFDQUfxLNDxylRNynuaqMQTpUSzCYcswADwqQFJpsQKImkkXDJopEpnkjVULXKZNfeWLejHgfzAiRpbSkdyOaFIIMzjzSquySwlAvVkvYlmhowDIwjroUcOLGZLGQBORJACZAshbrlPFebbXtIcHCWqMqumIKAkbenJDZtxOiLcBWirXBhecWrwPCAGKopVdckWfifOLbTsunUFnpLzYlTbVasGalkLKAfGCCVrUBZlzYVnDzGheXYhNJRgEFeipKTioDhlHQROqbhpgCnaFhFzJjWispTGHWavHGMCOSlYJNpPXsZCdiIlDcXIariZELETNBFiNjqgvshyLfKbrLYjmkloHxEHaGWRzGTLgRUOmBziSCHsnkPyjQQMltSyhgmjsiPutWZPzjhogEobVsSPEuOvixqIekfRXHYDpbng -647844992 -1079638930
+    ${input}=    Write    python ${subSystem}_Event_${component}.py pBwxCFDkBzcljVLKXUmmOtqbZavbtwcVuxepEEDgEtVBtwqUxpdHVUUTePCwIDXRtfTmAoVzRtrMqwfirWAFzCLQFJDrzdOAGiNGxlmlakKQmdoqOXUQVFpgRTKpPszrMcmfzdVlILwQWposiIgwLrKdokwxeNweudimrtTDXjEyYGMHTpQZczCLZdMdCWwUVUXMBeIFeCxIUNKqjKjTaaEErVNYidclaTmZSactszewqqMixdNMshMHaIRLHZaOTLenCnbeTikWqoLlNmHLNpzjyVnjvcTeeiKAxMRNyizdoXGyEImfLFrJTcJVwWAJEbVezSyDyYLTBYzVLytHtySxhAQwOaNFvFFqHygIDlpcFWGNwKo -1354853963 -2122565559
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tempError writing a message containing :    1

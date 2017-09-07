@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeMONCS_SubsystemError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cWxHwgOMcMdmZuAFACClopZPurLhbNrxtXoCqicRlPWhDSEpQqwZJmPysVuvaQkPizoZGtAcCCgchiwjqZUmYFiZtbFNrTGInOfHdjcHZKKYSMcBmEyUPopiwCxJC -2136253541
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WzkEMVkvkGBJqkYNGIXJcbUFINRoYBbQJjDSBzINslcUUIdEkRvqIrrJtvuyQAGgiBiuHJhfXbIWcclrghpEqUXjKHgzQJTxzkHoiWmSlnUALrckKnxNVMbossuhUOXZIGVrMiAgUSbWEpzouThYiPRqabrMUuqgaxnIWojGGxFXLshErOBoicNYPwAXMRtlrIykOnEHDVYFwwqPnuKnnAlfjKYLthynLHVsJGtUbiboAdmEzbrJatLZoPvUoCZTjnEpzfHdWJLAZteeCprrxCyEKRNBjjPCbbuTnENhKzghkfyjKBivAwPrwSBNMdKqHMeqvJIZsVJTgoTQEmCljZVMbJePLWXMHXHMRQvpYmCxEJkZIZfjEguXzHvwMLSbeiSeqrxIUAPFfeBwVmyjqQQLIXqXYemYMQWQVAwxyojerxSLvtjjRGFCZkHjjKDVrIIlUmyTTMIsbUjvTPXWRCDltjphYlOfnscuLFENWxJpZdnDMzeboCgQEncjkZckmIgWtLNuYLjWGmFuGWUrIZGbGUkMvrhHRRAiBskyTCWPucxSymsvpRZctdKkqQvDdusHyyGJWhBNOGFyPvlXWWByBslZdSNUqaoGpkLlXdRkBVPgfYOiVwTgsimNkZBvcdpfbirgqvIdWqxjVRRfxgszdRFCbnOnHQGWAsXNefRdlFjyZhXWPLMwfwZOGNVUZSFJwDCSXnwPjQBQGHHHfIXLiOkWXgQVeHKVpMwBmiWIBmSjHnJiuRTWXtloNnmcXUBUaDeQcemNUiuFVLNxNrBkDWiCbingVLKrKbgcHkcEdjsedoIUDEMKuxxyCHVosyOUWKbWDuWzmIkYSDbkkOyyzJSmKteGkIaEiKruBeHrfAABofKXRkJTDKAhGlVbsVjRlvYDdqmapRjWFkIWaXLfzXZCBcLmlAGERhVpCMCRefoALHuDZUxbqRAnuL 800504549
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2136253541
+    ${output}=    Read Until    priority : 800504549
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : cWxHwgOMcMdmZuAFACClopZPurLhbNrxtXoCqicRlPWhDSEpQqwZJmPysVuvaQkPizoZGtAcCCgchiwjqZUmYFiZtbFNrTGInOfHdjcHZKKYSMcBmEyUPopiwCxJC
-    Should Contain    ${output}    priority : -2136253541
+    Should Contain    ${output}    errorCode : WzkEMVkvkGBJqkYNGIXJcbUFINRoYBbQJjDSBzINslcUUIdEkRvqIrrJtvuyQAGgiBiuHJhfXbIWcclrghpEqUXjKHgzQJTxzkHoiWmSlnUALrckKnxNVMbossuhUOXZIGVrMiAgUSbWEpzouThYiPRqabrMUuqgaxnIWojGGxFXLshErOBoicNYPwAXMRtlrIykOnEHDVYFwwqPnuKnnAlfjKYLthynLHVsJGtUbiboAdmEzbrJatLZoPvUoCZTjnEpzfHdWJLAZteeCprrxCyEKRNBjjPCbbuTnENhKzghkfyjKBivAwPrwSBNMdKqHMeqvJIZsVJTgoTQEmCljZVMbJePLWXMHXHMRQvpYmCxEJkZIZfjEguXzHvwMLSbeiSeqrxIUAPFfeBwVmyjqQQLIXqXYemYMQWQVAwxyojerxSLvtjjRGFCZkHjjKDVrIIlUmyTTMIsbUjvTPXWRCDltjphYlOfnscuLFENWxJpZdnDMzeboCgQEncjkZckmIgWtLNuYLjWGmFuGWUrIZGbGUkMvrhHRRAiBskyTCWPucxSymsvpRZctdKkqQvDdusHyyGJWhBNOGFyPvlXWWByBslZdSNUqaoGpkLlXdRkBVPgfYOiVwTgsimNkZBvcdpfbirgqvIdWqxjVRRfxgszdRFCbnOnHQGWAsXNefRdlFjyZhXWPLMwfwZOGNVUZSFJwDCSXnwPjQBQGHHHfIXLiOkWXgQVeHKVpMwBmiWIBmSjHnJiuRTWXtloNnmcXUBUaDeQcemNUiuFVLNxNrBkDWiCbingVLKrKbgcHkcEdjsedoIUDEMKuxxyCHVosyOUWKbWDuWzmIkYSDbkkOyyzJSmKteGkIaEiKruBeHrfAABofKXRkJTDKAhGlVbsVjRlvYDdqmapRjWFkIWaXLfzXZCBcLmlAGERhVpCMCRefoALHuDZUxbqRAnuL
+    Should Contain    ${output}    priority : 800504549

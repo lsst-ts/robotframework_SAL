@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_RotationPrevented sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py cNWkfYgcDUvRuahyerBFvTRzQVcMjHsEInBcfiyggpevOrYylbfoTWEBNtvTfxTXYYXnwPKGecTscjrQthMKVUIpULqRNzRNsKcscFikIqTlSTxTJLuvqQRjogHPBSlygXAcrtQnamNwAMLIluCTrlcpTlkCJBacZWtLGclMSyWxOopDLHxZvmTdEdKtmzpWmuMxjmWwEivEMtyjKUgWEruGNNbSANggYasTQKkITmOYrJeeoueeRlhMuwiKlEhLbaqJrEtvCiTmLUMJODTZhLlcMJmVJIHhhXhmjytzrvyKuBbtknBlXaaDCcGoKMFehnGVsfimhgutNFlTDeszXjeJknweqlueRuzbIasxHPFGGTabPxAVueMLXhqljeVkgbtmMHckqfBMDTXvySjzCHXNPsDoeZzLovpjGIVyukmEtiXriKwZNxIlGe -1668919958
+    ${input}=    Write    python ${subSystem}_Event_${component}.py xjJwypdYGRtxKACdePXmqihShAZcAYyeZgRJepStIOEWthaRDwIMFEIhyxDzqxoSPCqrlIzmmlDsrJRgoBLlbfTxeGPfJnMchnPIWSiCHHExjceLMcoweqslxqlEOkjMzlQlhdbvSFybfMrfXSBMLEgeZBQyApuVMkcIeNLmcaOeGXGUCyaOUsHjudLpNRqayHgvZUmuvZmrEYwscMinfiQLRNoNpluCTOnygOHmSPCsVziosQQfoqKLpnAfxBsKKbCmVhBjCKbLcPtUrIUWfOYidcCzSUuXSbkGSrrpgHbkfTCVChjZLvKTVtXolCEIzwjPmArYAaCVntYBcIBPqNPmENzgdCwHJvnohfOvKGOpMBrCOpVxEPzdzuFkdGuGvnZHNjtbAslrIbAJhILbTewFOgRSVoYAFxWnNCQrQAQCIozsdDvXnPrvogUJXzhCfIBEQkxcxOBKvLoatduYOsyZcwvUlNNNALpVUDBgptJCTiWbjAYPdMWoXFbywXQUDUpmTewEshhbKAWTzHSeDTHdtbkbpOqxrzDeJvGucOKWbKrZbBlSBOdMyBNGkTfoCFlHasYTdmjcqVeehFxnuBTXDmEeDuBVtBMPGECnqIiAGpuBQpPncplqkYJxfZsfNcjBJSGLhSudqLVvwekeWcRWmINuIegAgwidqsuJuIqkuMtzZAWepSarcbuqscesTHFgGwNHnBCzKhkWWomBQfBVhQNclDZTuaAtpwZQpZYCjSqiXIQu 1440192668
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationPrevented writing a message containing :    1

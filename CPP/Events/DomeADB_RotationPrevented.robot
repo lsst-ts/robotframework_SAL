@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_RotationPrevented sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XDUFwmJMXZFlzahrMEDlKFRpBciydZoeqHAmSNYdNhexjEjLwQeDQlMChJkpOiyiSQGuVOnpTeTwSLnQiiiZllpkqIOeORjWaifzkwDoLQupaclIGybmazEanTVFwXRHNpriUtUqWJSqydqlHEEjMGlmfbSEtVBMVOvuDLizizdoTOCiIpmwfBxhFTXqtTHIyaNAburelpNPylOCGaHkQWBKBTkTEGlYykgbfQRUfRdopaTlfGxgUMCTxtVKXOeRsEQQHPRYXtrnnUkOMIiVSwzoKQPABTUjuTtXOmTQVsoDPCUMNJUQpLkiMSxzbqZxLBudEzuWTqyphyfGIAzjfBlZSdkgQfkuLtuSJQLZbMwXAexSBJtyXCrbcCtXmghaFNoAOHvBURVHlqlxRpwHzKEpkJTGrqnNljeauRwemoVrNbtWCWYHfpxYlQbYxsfqYYqWxyCXyGYjLdPjpoIhxasTyZDhaLwROrAsqVwKCjfcYTX 1102380997
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RAlhECyHDgoaDTOJvujrSYGwjGiBIAVGBkpkFbqoaUnqJcDQQbHeomqhDGfynGdcyrDTRdCqLLwDxPCKDxpqxTFVOntoqhfIvOyGDhuOigIpHhFBOQoTRYbQCPPuLBKlZwpNhPDUwnTlebSlgeBSOodmqteliecYYwJAgywEIYPobgzfpXtwfbhHIYTJTkvsYuxEpaLEjctBnyXdeUslefqurmwQqGeAGRDyistOKXHKLQXZLayADnAnzRYZWCsjNvMOUDJriMRcAamLONfrkTNdXGeeJHVpjorVTFaXiaaUKEbJuxjMYGWzmclNAmFvOGYrDoJzQaDhhYqvIQgKHZCjaqexdhtGfXJGGIWAMlcjbXfzvobmsaEpmoswvqRNsgtTeQFIimGxnJaPRaDQGkgaaXENNpONIQBaVVsWyPASVASPmmjctLAdVuRKICjXMurdrHNTWSygDAtfifUBCYZLFPVitJHWkhZgEsxmiZZjRZGPTEGuOzFSmHKxJrPGBiPeepuEizqNIKYEvVHRkafGYJcbTXxfDdOGxLtcsbxqJhfCWLVyXJNUXxnpUSIboGlRyINtBvCYCvvwUZBvoWNvrYjNaCvQPgdlRgElcIhNehzPpbHoyWnrdMACmLjZESjepYOjWTndDgnXzNCjVBeZbnFmVLozOjGhlzECuVMKfmcYpuIgKcplANztHJNiHlRFgHISwsFJzgPiPDoSoEMZUhWwQDgfxWxfolDabpyVobmoZeDaTpekudLQoLvvWNzRuooDLEgkSAVWQoihkqNBYPrAfWIDqOubzRoSNUzrlbGgKXUTDcLLwFrOHTfPhmhqKgbRyUPzCwnJdgtGDfrdtPFYQuwdfvNYGrwAkeHJWJTyVHgUNhCOgcAFwNrQLmlyUIvSWwenWFPeTQYWvyOsSWGYwzCGfxiNsjashnmplBhNbCSafz 23122892
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1102380997
+    ${output}=    Read Until    priority : 23122892
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationPrevented received =     1
-    Should Contain    ${output}    causeId : XDUFwmJMXZFlzahrMEDlKFRpBciydZoeqHAmSNYdNhexjEjLwQeDQlMChJkpOiyiSQGuVOnpTeTwSLnQiiiZllpkqIOeORjWaifzkwDoLQupaclIGybmazEanTVFwXRHNpriUtUqWJSqydqlHEEjMGlmfbSEtVBMVOvuDLizizdoTOCiIpmwfBxhFTXqtTHIyaNAburelpNPylOCGaHkQWBKBTkTEGlYykgbfQRUfRdopaTlfGxgUMCTxtVKXOeRsEQQHPRYXtrnnUkOMIiVSwzoKQPABTUjuTtXOmTQVsoDPCUMNJUQpLkiMSxzbqZxLBudEzuWTqyphyfGIAzjfBlZSdkgQfkuLtuSJQLZbMwXAexSBJtyXCrbcCtXmghaFNoAOHvBURVHlqlxRpwHzKEpkJTGrqnNljeauRwemoVrNbtWCWYHfpxYlQbYxsfqYYqWxyCXyGYjLdPjpoIhxasTyZDhaLwROrAsqVwKCjfcYTX
-    Should Contain    ${output}    priority : 1102380997
+    Should Contain    ${output}    causeId : RAlhECyHDgoaDTOJvujrSYGwjGiBIAVGBkpkFbqoaUnqJcDQQbHeomqhDGfynGdcyrDTRdCqLLwDxPCKDxpqxTFVOntoqhfIvOyGDhuOigIpHhFBOQoTRYbQCPPuLBKlZwpNhPDUwnTlebSlgeBSOodmqteliecYYwJAgywEIYPobgzfpXtwfbhHIYTJTkvsYuxEpaLEjctBnyXdeUslefqurmwQqGeAGRDyistOKXHKLQXZLayADnAnzRYZWCsjNvMOUDJriMRcAamLONfrkTNdXGeeJHVpjorVTFaXiaaUKEbJuxjMYGWzmclNAmFvOGYrDoJzQaDhhYqvIQgKHZCjaqexdhtGfXJGGIWAMlcjbXfzvobmsaEpmoswvqRNsgtTeQFIimGxnJaPRaDQGkgaaXENNpONIQBaVVsWyPASVASPmmjctLAdVuRKICjXMurdrHNTWSygDAtfifUBCYZLFPVitJHWkhZgEsxmiZZjRZGPTEGuOzFSmHKxJrPGBiPeepuEizqNIKYEvVHRkafGYJcbTXxfDdOGxLtcsbxqJhfCWLVyXJNUXxnpUSIboGlRyINtBvCYCvvwUZBvoWNvrYjNaCvQPgdlRgElcIhNehzPpbHoyWnrdMACmLjZESjepYOjWTndDgnXzNCjVBeZbnFmVLozOjGhlzECuVMKfmcYpuIgKcplANztHJNiHlRFgHISwsFJzgPiPDoSoEMZUhWwQDgfxWxfolDabpyVobmoZeDaTpekudLQoLvvWNzRuooDLEgkSAVWQoihkqNBYPrAfWIDqOubzRoSNUzrlbGgKXUTDcLLwFrOHTfPhmhqKgbRyUPzCwnJdgtGDfrdtPFYQuwdfvNYGrwAkeHJWJTyVHgUNhCOgcAFwNrQLmlyUIvSWwenWFPeTQYWvyOsSWGYwzCGfxiNsjashnmplBhNbCSafz
+    Should Contain    ${output}    priority : 23122892

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_CrawlLWS commander/controller tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 92.528 -346940817
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 72.7984 -1873581760
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 92.528 -346940817
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 72.7984 -1873581760
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 92.528    1
-    Should Contain X Times    ${output}    demandTime : -346940817    1
+    Should Contain X Times    ${output}    angle : 72.7984    1
+    Should Contain X Times    ${output}    demandTime : -1873581760    1
     Should Contain    ${output}    === command CrawlLWS issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 92.528    1
-    Should Contain X Times    ${output}    demandTime : -346940817    1
+    Should Contain X Times    ${output}    angle : 72.7984    1
+    Should Contain X Times    ${output}    demandTime : -1873581760    1
     Should Contain X Times    ${output}    === [ackCommand_CrawlLWS] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

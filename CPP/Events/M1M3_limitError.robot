@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_limitError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EZMMkfBBXPxjAhOMOtWUcbyxPICKfUjXNAwpuRYDbYmuwvCoPUmrairjVTkOZIVxTEsFZPyYlvYNznAFaNoucNVRaughimwVNjSLgEOxMqgdJuwbrBOKnAwvlYeDrSggWjaYmBjrwbLUVctPbEmT NWMTLmMdAhgYxyeqwoAqodddJRNyPRGJSgvDGOLllltExtSSGWDspDnDKHaANftOmkiCNIfnhBNPxYbtGoomFuuTzILXFYzEiXeBocwCNEOLNjrUEFnJaVaPSHRiCRgwOYkqZqZcxHSWJsCZRJWlnijjadwYFDQDzTNl 1931207244
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VUFtmMhKXwjxVusAXrTWisfggrBDIMwRuAkSkFhNKTqYPMybhiWfJPfhjSEgnffVztTkwBRhznHIGuvvETUEOQZEhqZdrJLOwETafCuJywVmNY SCvItQeRsTKurIdakcWwBzcqDtZSmPhRcnmwzKwyyLVGgkhBODJZRHwjZkklTplzRtzWBOoexGcKdsWnXGXGhAVbCMdFXNOSXRoIkhpEbJvtltyiNBufReaQSdxRueopGMBipQGVOZnGdqhagWOwIySMiqLMSHjoRBYWvfkNDigNvRkqXIVbdyVUMHhXxZvNAXkHuJXQBtxOmaVzacUUjKEJLHnQfaccRdeIhXKfzJdCnZBArPpyifPyqzRZYlniiuoYTcaPYOaHJaYoVppmstRYAJAnwoMSGqVXfAwbwLafUcoSNNZBQXoyeWoXgNgZgTlWysLtnOaBAlZwAqcJQuBaQTXkBueiIGGjV 622825916
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_limitError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1931207244
+    ${output}=    Read Until    priority : 622825916
     Log    ${output}
     Should Contain X Times    ${output}    === Event limitError received =     1
-    Should Contain    ${output}    llimit : EZMMkfBBXPxjAhOMOtWUcbyxPICKfUjXNAwpuRYDbYmuwvCoPUmrairjVTkOZIVxTEsFZPyYlvYNznAFaNoucNVRaughimwVNjSLgEOxMqgdJuwbrBOKnAwvlYeDrSggWjaYmBjrwbLUVctPbEmT
-    Should Contain    ${output}    type : NWMTLmMdAhgYxyeqwoAqodddJRNyPRGJSgvDGOLllltExtSSGWDspDnDKHaANftOmkiCNIfnhBNPxYbtGoomFuuTzILXFYzEiXeBocwCNEOLNjrUEFnJaVaPSHRiCRgwOYkqZqZcxHSWJsCZRJWlnijjadwYFDQDzTNl
-    Should Contain    ${output}    priority : 1931207244
+    Should Contain    ${output}    llimit : VUFtmMhKXwjxVusAXrTWisfggrBDIMwRuAkSkFhNKTqYPMybhiWfJPfhjSEgnffVztTkwBRhznHIGuvvETUEOQZEhqZdrJLOwETafCuJywVmNY
+    Should Contain    ${output}    type : SCvItQeRsTKurIdakcWwBzcqDtZSmPhRcnmwzKwyyLVGgkhBODJZRHwjZkklTplzRtzWBOoexGcKdsWnXGXGhAVbCMdFXNOSXRoIkhpEbJvtltyiNBufReaQSdxRueopGMBipQGVOZnGdqhagWOwIySMiqLMSHjoRBYWvfkNDigNvRkqXIVbdyVUMHhXxZvNAXkHuJXQBtxOmaVzacUUjKEJLHnQfaccRdeIhXKfzJdCnZBArPpyifPyqzRZYlniiuoYTcaPYOaHJaYoVppmstRYAJAnwoMSGqVXfAwbwLafUcoSNNZBQXoyeWoXgNgZgTlWysLtnOaBAlZwAqcJQuBaQTXkBueiIGGjV
+    Should Contain    ${output}    priority : 622825916

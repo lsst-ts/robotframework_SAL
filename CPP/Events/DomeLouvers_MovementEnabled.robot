@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_MovementEnabled sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 8717 -1028002508
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10984 1808450868
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementEnabled writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1028002508
+    ${output}=    Read Until    priority : 1808450868
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementEnabled received =     1
-    Should Contain    ${output}    louverID : 8717
-    Should Contain    ${output}    priority : -1028002508
+    Should Contain    ${output}    louverID : 10984
+    Should Contain    ${output}    priority : 1808450868

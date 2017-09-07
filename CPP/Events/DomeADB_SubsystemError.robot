@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_SubsystemError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send nrqDqgAjqEmsXmemCaIWklbgxKbZtKMKTEvFEXJkQiDRtaxxyePYEMlEImLfjhcbOxtLMRdXaFrZEbebZxIbMGxUnzcCEMyGyhqPCbYAhTCWTQXbRzXjsCzdFfDYdOeCTExDTvPaKHOAdjlxdeNpWUrEWDjsHnJSwjOuhHeSannRIdpOhCFKEVAZqdYYGnydMTXzgsRjvwbZFjJWmqSHpnZCpUnEsYdSWufanynHUMQlIUAxwYnMJkNtiufKtREqnYIaOiBpPaNawUquJrNFenMnBGahObjOEqTFpqWmAnzhkXAuEbaGvqqSdsKWEdSBvNVbVboWdVQggArfGsxlnsIghAjRvMXeMlgKkxEavuOcmYZbXviikULvomoeBNGHLmjULSuHGEsUbNBkXIkkaTkzWhtVrruHIEUxagBSxXGCeTDdmrYLvJSNWCYNUYHcbGxOXYCLfOJUfjqSuMjEwKTyTwEvByleOiKuCZkQksEmzQwkwKUNgkavVTMVOAuWodOoBkHmOxdFACZmfgEnjZZlNGHXsWxTnEznRmIQdoXYSIAsxQYtduiUvMhHtRRZmkVLEljlJYHqRMBoJSCZTdRcTUjAXUcOGNUFDEYenfyvTFbEMExbYAILuaUSXnzmwQOnJeRLHWJjrGiddLKFQPYoCApUSwDgLuLpuHRVFfsEAAymOXtqwSUXVTKKfBKDeODLFJxUETaTqDDfZmClNidvwJnulRxjaiIRkYyB -1098513216
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send aDabvlvOlfoCEhOTsXgxltVFQVMVAgIiiaYZLbWIWRxjottPFcfypTDwaaLQzoiRSpBkoLPXRnKDXjyolVElDSgxQzZpcrJMcyWATJJyKhDCmbyDzhDisRgPFzqaEjYaNzlfxqZPgKDlbIacxFcoNnHIfvZiEweSBRzJeCFrMpZRPFoXQwDYJluJiWzbHKAwUHCiAIIIasAdPJusJUVgiDMpmIhWAWMzmqcthLUQlwBkQECOjytRWQxtPYzDGZjfiketdJSdDbKxoNtoHVYlUoZyVfCiKSuYkFoSHBrPIoKMnvRFvlqOXbGxtwYhJzgHfFBdHPcjerjNaPvOKYePUpBFtBeuDOGFTjtzgfOCncluCiBbbwTowjQmIOabigmMEmcEkjdXWKQMhiuSosxCvYfNSKjpQMPXWcqfGELiLwrBWDfTgCgHkdNiSpbsLbmvTqKqWcNdsDRDkfVhwgACQYORPOtsrflLPwhaIEoGNQhvMWCXcHSOTCethMPGGTNEtfssyNHeHdfanRMLDsjvKGGxvsKfNIFwsmbJAXkkkSufBfohYbQqVDoYEPBifuVIAdRnXGyhdnIQWSZZWWQXIOFXLDRWtayVkNuIzCWXMqbKdopscKqctRfupnCDYaDJxfdeMkxMhpWYtXVQDLukMMfESEvDoLLyvVrPxoXUxpnWPtVlpBDGbjqmsGDVvMZijQRkYUGLlIbxRlUbpadEKQzKaQnYEKDyACvGgRWPwzAFcPmcYEFpdrvHRlEpRGLyHRMXWgboVEYKRcTcBnHHNffbSkwnuhGxKqRZeIhweDRlh -1531864467
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1098513216
+    ${output}=    Read Until    priority : -1531864467
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : nrqDqgAjqEmsXmemCaIWklbgxKbZtKMKTEvFEXJkQiDRtaxxyePYEMlEImLfjhcbOxtLMRdXaFrZEbebZxIbMGxUnzcCEMyGyhqPCbYAhTCWTQXbRzXjsCzdFfDYdOeCTExDTvPaKHOAdjlxdeNpWUrEWDjsHnJSwjOuhHeSannRIdpOhCFKEVAZqdYYGnydMTXzgsRjvwbZFjJWmqSHpnZCpUnEsYdSWufanynHUMQlIUAxwYnMJkNtiufKtREqnYIaOiBpPaNawUquJrNFenMnBGahObjOEqTFpqWmAnzhkXAuEbaGvqqSdsKWEdSBvNVbVboWdVQggArfGsxlnsIghAjRvMXeMlgKkxEavuOcmYZbXviikULvomoeBNGHLmjULSuHGEsUbNBkXIkkaTkzWhtVrruHIEUxagBSxXGCeTDdmrYLvJSNWCYNUYHcbGxOXYCLfOJUfjqSuMjEwKTyTwEvByleOiKuCZkQksEmzQwkwKUNgkavVTMVOAuWodOoBkHmOxdFACZmfgEnjZZlNGHXsWxTnEznRmIQdoXYSIAsxQYtduiUvMhHtRRZmkVLEljlJYHqRMBoJSCZTdRcTUjAXUcOGNUFDEYenfyvTFbEMExbYAILuaUSXnzmwQOnJeRLHWJjrGiddLKFQPYoCApUSwDgLuLpuHRVFfsEAAymOXtqwSUXVTKKfBKDeODLFJxUETaTqDDfZmClNidvwJnulRxjaiIRkYyB
-    Should Contain    ${output}    priority : -1098513216
+    Should Contain    ${output}    errorCode : aDabvlvOlfoCEhOTsXgxltVFQVMVAgIiiaYZLbWIWRxjottPFcfypTDwaaLQzoiRSpBkoLPXRnKDXjyolVElDSgxQzZpcrJMcyWATJJyKhDCmbyDzhDisRgPFzqaEjYaNzlfxqZPgKDlbIacxFcoNnHIfvZiEweSBRzJeCFrMpZRPFoXQwDYJluJiWzbHKAwUHCiAIIIasAdPJusJUVgiDMpmIhWAWMzmqcthLUQlwBkQECOjytRWQxtPYzDGZjfiketdJSdDbKxoNtoHVYlUoZyVfCiKSuYkFoSHBrPIoKMnvRFvlqOXbGxtwYhJzgHfFBdHPcjerjNaPvOKYePUpBFtBeuDOGFTjtzgfOCncluCiBbbwTowjQmIOabigmMEmcEkjdXWKQMhiuSosxCvYfNSKjpQMPXWcqfGELiLwrBWDfTgCgHkdNiSpbsLbmvTqKqWcNdsDRDkfVhwgACQYORPOtsrflLPwhaIEoGNQhvMWCXcHSOTCethMPGGTNEtfssyNHeHdfanRMLDsjvKGGxvsKfNIFwsmbJAXkkkSufBfohYbQqVDoYEPBifuVIAdRnXGyhdnIQWSZZWWQXIOFXLDRWtayVkNuIzCWXMqbKdopscKqctRfupnCDYaDJxfdeMkxMhpWYtXVQDLukMMfESEvDoLLyvVrPxoXUxpnWPtVlpBDGbjqmsGDVvMZijQRkYUGLlIbxRlUbpadEKQzKaQnYEKDyACvGgRWPwzAFcPmcYEFpdrvHRlEpRGLyHRMXWgboVEYKRcTcBnHHNffbSkwnuhGxKqRZeIhweDRlh
+    Should Contain    ${output}    priority : -1531864467

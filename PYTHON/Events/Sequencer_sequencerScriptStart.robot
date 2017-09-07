@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerScriptStart sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py JWtlJYdTzHkstmiLYRVzoTsvoSUJiXWbUhbsgOBrUyMcOuQXZYTvdLoltkpfSThPQFTEHmEJIAKGCOMczQXCFMKPgZKdVledmOTVpXftnIIGymorFVNrGrueljXHeBhjArbWTdyRchBhtEdZGibybXRXdlXXZaooZZXsURlzgtBuAdKkJFlTGYblSAXrhDEhtfiLvPEJizRCKhJWcWVPAdPCqiHYpQQECNJGAJEmHjnyHyTRQhSfOtmQHlynxiKH 21.2885 rgYlxGLJGlxyFxxNnjFmusfYCuGHGqFHRHmuCSEdnpErhlbnWLczlGgxjNifZuVdYkCRgMrlbjKbWTGdHnpKhNrbphRTtiHEiGZiEkpNFUhnSBVvgvqWnhIwlqJXbnYRgnCPijMODPYEBLUDyOCMnHsGMebdHkzkcGbDKBpZxkhACvaeSJQrWtTSmqDadFxjqPIEZFiBoLpWdRMfKfPhoAjNhWrLSWmXDJAqpxIBLDKojTwuxzGsQfKZSlbRcEeC 1639158600
+    ${input}=    Write    python ${subSystem}_Event_${component}.py iNnIiMcnrgBUuPDmlYvPyIVLkinogGHiqpMUpYeqSjsaRnZKnyczHgRUthYnumkhAdPEiyEMOLQaarMyAVQuHdfvfCjOUtddloyOuuWTPozvlaAtoMawrKAMOTNFTwDExoYWhaMAWHRRtsKjSbJhDUCOzeSTLoUldHhqpLcIdKOiIzHIvDNvtZGrZWwLnvsDNHWzRvDGBxHqvlfdtqJjwvPcUPdunEiiBRlwNxpmhXHoUNRNrTNaWYmGFsLPfXnr 51.7656 tzbPmoliPdUmncCgCnjHyQYnIkcxwHMjfnQPrXFDrBLoeYPDFbvgThYswKxdGtMbEpkJnnWJXZNoGAtUqWVcDXLHgeqwfRxnKurfZczSehPNAyKZGrrgJPHgFYFOajNoLnQCXzIpNPeXKCYvITuJcoiGAtcLFLfCPmaWNzSDjODondwQVHUDEtrQDXHKdwRdImqbdReRNuCiKXkSFChpCSsnAovHGIAHnSpEAUuHwxLarlFcUzRljacWNfSaLlLH -67102762
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptStart writing a message containing :    1

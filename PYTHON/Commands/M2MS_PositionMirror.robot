@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M2MS_PositionMirror commander/controller tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 77.1071 29.7464 49.2263
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 87.9546 47.8434 47.2931
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 77.1071 29.7464 49.2263
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 87.9546 47.8434 47.2931
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xTilt : 77.1071    1
-    Should Contain X Times    ${output}    yTilt : 29.7464    1
-    Should Contain X Times    ${output}    piston : 49.2263    1
+    Should Contain X Times    ${output}    xTilt : 87.9546    1
+    Should Contain X Times    ${output}    yTilt : 47.8434    1
+    Should Contain X Times    ${output}    piston : 47.2931    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,9 +79,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xTilt = 77.1071    1
-    Should Contain X Times    ${output}    yTilt = 29.7464    1
-    Should Contain X Times    ${output}    piston = 49.2263    1
+    Should Contain X Times    ${output}    xTilt = 87.9546    1
+    Should Contain X Times    ${output}    yTilt = 47.8434    1
+    Should Contain X Times    ${output}    piston = 47.2931    1
     Should Contain X Times    ${output}    === [ackCommand_PositionMirror] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

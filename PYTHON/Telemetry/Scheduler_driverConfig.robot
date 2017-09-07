@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Scheduler_driverConfig communications tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -56,6 +56,7 @@ Read Subscriber
     Should Contain X Times    ${list}    timecost_cost_ref = 1.0    10
     Should Contain X Times    ${list}    timecost_weight = 1.0    10
     Should Contain X Times    ${list}    filtercost_weight = 1.0    10
+    Should Contain X Times    ${list}    propboost_weight = 1.0    10
     Should Contain X Times    ${list}    night_boundary = 1.0    10
     Should Contain X Times    ${list}    new_moon_phase_threshold = 1.0    10
     Should Contain X Times    ${list}    ignore_sky_brightness = 1    10

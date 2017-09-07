@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Scheduler_sequencePropConfig communications tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -105,6 +105,7 @@ Read Subscriber
     Should Contain X Times    ${list}    accept_consecutive_visits = 1    10
     Should Contain X Times    ${list}    restart_lost_sequences = 1    10
     Should Contain X Times    ${list}    restart_complete_sequences = 1    10
+    Should Contain X Times    ${list}    max_visits_goal = 1    10
     Should Contain X Times    ${list}    airmass_bonus = 1.0    10
     Should Contain X Times    ${list}    hour_angle_bonus = 1.0    10
     Should Contain X Times    ${list}    hour_angle_max = 1.0    10

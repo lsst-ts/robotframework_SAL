@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ProcessingCluster_processingclusterEntityStartup sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ahImyyMTBhBTCKdmGGsrgmbExlyDAcjbgFoegJNqXliOBYMrdnevOEmEtUctyXgBcujtKznxsWaMTWigkDABwAIcamwsTRWHsGfDPjIKEodfkFYThKIUYNTWQAVnKWvg 45.9693 XYWjcugdVuyAxJBWMKErHdjQbZWxpkbUURsagwfGeOIsNiaHwSrfGmGgxBZYQSdaatSAsRZoSeagbpcPVDxOsvEVFPyzLQxHhbWBcSvYYHZQHlprVYpEBCGbnpKsKeCSSanJIxDyTgjsQsNRhIddhqAvCaYfDAhFtwjJscZZrrditHYGQmDeXGknLNvkdSmNxjFUiTQWSZtcCefFjVNjaVMJumQEBoRfeTQHyEXeMHBrTnZSsRAdcbrJtdBoknsb 2136422836 2128493125
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jGIwvjwlJSRiqxcSSzraXGPqXbBCowCzdRuhCCTZdJfkhhJmSPioteOHioJNpndfIveXNnJgNEbFcaUpnQtqNvbZaXMHxmZefRhbEEABmeceiEnRVtIgqJOzleDHYaoL 43.6451 NlmhTWVbfEsHJkFPADPakkzIzIqYBYJNYtbNtKCgbakWNDUPiwppCeNtCoSxgjxINAJdGEoFQriydypOOwwmaqCOMYJWQppxNPwVXNJvtjCVUoXDvDmtoCmgzxYBQfPMNZBnVaTpuDTMcwejZpoVUkKodIZJqnFdfYadCjSelaqwpdkSkmxENLddAHvUfgdXWpepXyIjHeWbNINPXtSJBBlFzSMVeMtcgnWbAldlALHBDBYRemnokkSHVDnZzPAs 3927397 -1856983500
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntityStartup writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2128493125
+    ${output}=    Read Until    priority : -1856983500
     Log    ${output}
     Should Contain X Times    ${output}    === Event processingclusterEntityStartup received =     1
-    Should Contain    ${output}    Name : ahImyyMTBhBTCKdmGGsrgmbExlyDAcjbgFoegJNqXliOBYMrdnevOEmEtUctyXgBcujtKznxsWaMTWigkDABwAIcamwsTRWHsGfDPjIKEodfkFYThKIUYNTWQAVnKWvg
-    Should Contain    ${output}    Identifier : 45.9693
-    Should Contain    ${output}    Timestamp : XYWjcugdVuyAxJBWMKErHdjQbZWxpkbUURsagwfGeOIsNiaHwSrfGmGgxBZYQSdaatSAsRZoSeagbpcPVDxOsvEVFPyzLQxHhbWBcSvYYHZQHlprVYpEBCGbnpKsKeCSSanJIxDyTgjsQsNRhIddhqAvCaYfDAhFtwjJscZZrrditHYGQmDeXGknLNvkdSmNxjFUiTQWSZtcCefFjVNjaVMJumQEBoRfeTQHyEXeMHBrTnZSsRAdcbrJtdBoknsb
-    Should Contain    ${output}    Address : 2136422836
-    Should Contain    ${output}    priority : 2128493125
+    Should Contain    ${output}    Name : jGIwvjwlJSRiqxcSSzraXGPqXbBCowCzdRuhCCTZdJfkhhJmSPioteOHioJNpndfIveXNnJgNEbFcaUpnQtqNvbZaXMHxmZefRhbEEABmeceiEnRVtIgqJOzleDHYaoL
+    Should Contain    ${output}    Identifier : 43.6451
+    Should Contain    ${output}    Timestamp : NlmhTWVbfEsHJkFPADPakkzIzIqYBYJNYtbNtKCgbakWNDUPiwppCeNtCoSxgjxINAJdGEoFQriydypOOwwmaqCOMYJWQppxNPwVXNJvtjCVUoXDvDmtoCmgzxYBQfPMNZBnVaTpuDTMcwejZpoVUkKodIZJqnFdfYadCjSelaqwpdkSkmxENLddAHvUfgdXWpepXyIjHeWbNINPXtSJBBlFzSMVeMtcgnWbAldlALHBDBYRemnokkSHVDnZzPAs
+    Should Contain    ${output}    Address : 3927397
+    Should Contain    ${output}    priority : -1856983500

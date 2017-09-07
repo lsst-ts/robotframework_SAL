@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startLoadFilter sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -623908535
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1664630665
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startLoadFilter writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -623908535
+    ${output}=    Read Until    priority : -1664630665
     Log    ${output}
     Should Contain X Times    ${output}    === Event startLoadFilter received =     1
-    Should Contain    ${output}    priority : -623908535
+    Should Contain    ${output}    priority : -1664630665

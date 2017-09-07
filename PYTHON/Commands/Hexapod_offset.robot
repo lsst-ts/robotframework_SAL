@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_offset commander/controller tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.6793 90.877 32.1842 56.7763 46.2282 73.5262 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 57.3585 52.2862 6.7765 64.181 43.3339 64.4783 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 20.6793 90.877 32.1842 56.7763 46.2282 73.5262 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 57.3585 52.2862 6.7765 64.181 43.3339 64.4783 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 20.6793    1
-    Should Contain X Times    ${output}    y : 90.877    1
-    Should Contain X Times    ${output}    z : 32.1842    1
-    Should Contain X Times    ${output}    u : 56.7763    1
-    Should Contain X Times    ${output}    v : 46.2282    1
-    Should Contain X Times    ${output}    w : 73.5262    1
+    Should Contain X Times    ${output}    x : 57.3585    1
+    Should Contain X Times    ${output}    y : 52.2862    1
+    Should Contain X Times    ${output}    z : 6.7765    1
+    Should Contain X Times    ${output}    u : 64.181    1
+    Should Contain X Times    ${output}    v : 43.3339    1
+    Should Contain X Times    ${output}    w : 64.4783    1
     Should Contain X Times    ${output}    sync : 0    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,12 +83,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 20.6793    1
-    Should Contain X Times    ${output}    y = 90.877    1
-    Should Contain X Times    ${output}    z = 32.1842    1
-    Should Contain X Times    ${output}    u = 56.7763    1
-    Should Contain X Times    ${output}    v = 46.2282    1
-    Should Contain X Times    ${output}    w = 73.5262    1
+    Should Contain X Times    ${output}    x = 57.3585    1
+    Should Contain X Times    ${output}    y = 52.2862    1
+    Should Contain X Times    ${output}    z = 6.7765    1
+    Should Contain X Times    ${output}    u = 64.181    1
+    Should Contain X Times    ${output}    v = 43.3339    1
+    Should Contain X Times    ${output}    w = 64.4783    1
     Should Contain X Times    ${output}    sync = 0    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

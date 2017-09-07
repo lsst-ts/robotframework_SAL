@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_mountError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2144374632 nHyuBJXeSuIYPSnperduKalKOPbMRIYAuqUnxIaolVQJkLKnEEEznlBhfRMDREYNHsgkOhlbffQkDwkyFYLJuHFxeANXqgPkwhuRVQVKBKluibUkrSISXSdCOfAwLvKeGVQTvObtugXNKnHhElJnoXpMrQqizTptowAVMPLAcJkkQLIyIQpGetJNtnCcoNWnmFJJZdqBgABZouxsYVgLIVCjzSVkyqhRbuSpBFMvaHpSgkiLQwJfwpooyHFUOVLxmKwmLsodkajkZFlzWXXCkAEULFlGMmfRtLOVwbsaHnotiJVCjFWiuFEXekwVhVjdAFQtKRqNRmXASiWWLKUnBQXKDfyBXVGpTjDdVflqfyWWpatTvgwQTjsnQoCtAnpULVUWPXFLvVYmZcbvbmTzVaHIqmglxLepBEHXiBpRSWjKVKLUpiPeIWYknoKoOWGnmqNEApZawhcEoVPLOnxeuiuBFwSNYXSLKFhpGdpuqHUBZmgiKOecjEuFEoHgedJdmhgMArrSZNxlWtMfPnmuyoxxoehqnDtyjDDbhKdtafiUSiyNaHJYZROfCqRDmodOHKVVvjkbUvToCCmxRmSiUBxFiiXMNjrwifHGnJrHRoMFCPBBXpIMkhwEOvxHJUUfoWwqSCJdAevsCInwpbbLMePkkNQihhWQxxYonBtkBWBlJmldUfTZOhIsetcUEddTQfS -378203908
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1620014879 PGxmkPjGnghJPNlYTvgBdytanmqjJicAWzWqqWBWGJBBkhPepIroLSCnRIVBXhnTAKidyjbHCfVikVPwszhkJIbXpeeUajSSECfiveqQPPBnzbpCAxFApQtCiSZiAjqRCCicQfdtwckVyaDBvOVqeBMkgNytDbQXXwlrVjSXDaXRRKMXDcHNGXHuXMldAau -834114914
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -378203908
+    ${output}=    Read Until    priority : -834114914
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountError received =     1
-    Should Contain    ${output}    id : 2144374632
-    Should Contain    ${output}    text : nHyuBJXeSuIYPSnperduKalKOPbMRIYAuqUnxIaolVQJkLKnEEEznlBhfRMDREYNHsgkOhlbffQkDwkyFYLJuHFxeANXqgPkwhuRVQVKBKluibUkrSISXSdCOfAwLvKeGVQTvObtugXNKnHhElJnoXpMrQqizTptowAVMPLAcJkkQLIyIQpGetJNtnCcoNWnmFJJZdqBgABZouxsYVgLIVCjzSVkyqhRbuSpBFMvaHpSgkiLQwJfwpooyHFUOVLxmKwmLsodkajkZFlzWXXCkAEULFlGMmfRtLOVwbsaHnotiJVCjFWiuFEXekwVhVjdAFQtKRqNRmXASiWWLKUnBQXKDfyBXVGpTjDdVflqfyWWpatTvgwQTjsnQoCtAnpULVUWPXFLvVYmZcbvbmTzVaHIqmglxLepBEHXiBpRSWjKVKLUpiPeIWYknoKoOWGnmqNEApZawhcEoVPLOnxeuiuBFwSNYXSLKFhpGdpuqHUBZmgiKOecjEuFEoHgedJdmhgMArrSZNxlWtMfPnmuyoxxoehqnDtyjDDbhKdtafiUSiyNaHJYZROfCqRDmodOHKVVvjkbUvToCCmxRmSiUBxFiiXMNjrwifHGnJrHRoMFCPBBXpIMkhwEOvxHJUUfoWwqSCJdAevsCInwpbbLMePkkNQihhWQxxYonBtkBWBlJmldUfTZOhIsetcUEddTQfS
-    Should Contain    ${output}    priority : -378203908
+    Should Contain    ${output}    id : 1620014879
+    Should Contain    ${output}    text : PGxmkPjGnghJPNlYTvgBdytanmqjJicAWzWqqWBWGJBBkhPepIroLSCnRIVBXhnTAKidyjbHCfVikVPwszhkJIbXpeeUajSSECfiveqQPPBnzbpCAxFApQtCiSZiAjqRCCicQfdtwckVyaDBvOVqeBMkgNytDbQXXwlrVjSXDaXRRKMXDcHNGXHuXMldAau
+    Should Contain    ${output}    priority : -834114914

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_tempError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cvyiuilqdVGynDcvQFwKKxmvCKYDtPdoemxsFUrafcrGZlGpUjIRYMDUcDNNobWbyceiglIBuNFdPCZsovEuZqfDfOWJGWfqGtQzlWDBvjOfFtYGwjVABJrxKeDHfAGoHHGClzuZPJYiNwXWEZlDTWJrzRRhNOwjIhLVgpbtqqtIgKlRxzBNJQjcnXioBOvqUghPOVrflVNWeTAIzpCaRROegBrjVDZGMzuUFeIOdCJpUlMmqpoeKzAZRvlEWgGUwKQ CDNiZZvJeyMDAQLvZfcBoFoOrEktoBlMavPWdfHmfNlsVlISdioUltmqDywrBbCYZmLOUbRKzLmsxNzpsPgqcoRXwkCjIcOPXlvBpwQLxWjVLyeUSraqVMmpZiEofvDwCeDgNWEMnnWLGJYhkAkcrpMjjsNRSNEkHeGoUCLThhbCyTMlBHbWMZgejlOMuRESsuanIjNfLVrgsVWeiuCVUraHuRtnThEVlaJhnfEaIQVhAauXfDyZEJPrIgJVGIlZFHlWRVpUkZpKiawAuEzDoUtvMldrqRQjXhQGhrUNWlzaMHodgpLTCArJfquGzWipBIYXAUGsJrOPGHcUTdxtIxAJELBpVhXIHkTkmnnhrnjtjlufPVQZAcJkXvVPhNBakLLPBaoEXbvvttwBUQDCYhjfAGkZwbAWZSzWOwVxUcaXXNJknbRnyXFtdvoHbjPxKUlGLOdwJrfTXupJBQrsPJgIJnPUXyPLhsPfKwPqqKiYLOaNZqZwUGqzbIp -1453252094 70.198 1560259154
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VUWDbCAoZXYsSiqjNFPLFzCwnNEyhAEycFILKxbOCTUrSELyDdBjeNAcSmBpqnSwegzietvtfqNzMKpXzuSgzdOmMMNVubliKbszBVjXTMWItNKMDvPkMhuLBETKyVUsAROWVGlIaPvSsRlbOFDpzCbNlZuMHLVMAcuqlhUScEIjLVWAZLpLPgmlGLIzmThdaIfBfuUnPcFrennzgNfUvkLVRBtyNZYgdLNspObjdVAtbUcNsjdCUNpPKHWQXOzyYzJmZEQXlxQMMfuZJfCiSfHxxqxzQkmckybEsEgeriRpqYIMLaGWDAZhzGYRFAtiAlpmdOjSoFtBBcqPNzlfpJoAnNluKEJGZhXrXLDOSoVOqKOhcMkHZCXolNkMxuzvooOqSebCUcADYAVYzDxGPDpTYjMUbKXjkJVnfnBoJHjaeThLRJrZuSWtjfbBiUVifSukJOkhiCftBJCnKOjfVWWrs HMzNSBbfKgmSYTlWjhkHGQasgptvYYAIzYGDcLVOTfzwkOOHAPFORWaXpIKofOiJMeZHawLBnsdYBtKmnqqIwhCmcqLSreGKibCxYWqoicjqsbhNEuazxSNqQgFRHKrORZlcIuCjGIfwxmlraiqzUukvUnGqOGIofMDCZyySAHRcxLZTHIKOzkLWMYBmiUCptemuwAMmmPZWvqegJKkhvFiiEPpgoLeIVtyZbPymrPchdVwdEYdqcFxRyCNzcuaSxYsLwodhOFdgRFzRUpKItpLSEfxgcrnpQnvtsJKBgJOdyAqLvvZVuUEansQUnEIYjPUzsJGOoxWYhLoADXmNdqahajymAMYsCpECzqmlzuTQMAJendLWEwSgRMYmiAbVeGufaAUZybuhNDjPblHEupasGnKKZKIGDhYgXEaRUbbjGUOBEXKAazPCLxcfWHIAKglelaWFvWKnIfwGvsZqvecuoEEwImOLjzsMqiQvSABkowAVuhiPaXKQRrRAOmppspbRuMXnnedXGBHOTPhAYbRZYQFhnlvKZTIXQjbYaVaINxlCxQLiCryLMcJNZHnXvEKDijWUPeHUJnGWdNHRXodKFHcpxLYBrQZfCurqbXJzqstRuqpgFEjkiFysqRDQoRKQIadieNYXcvmHnuZvOfZmvBioHZzatTkKZuWSGTZKYPEbWXNQRJyLHLDyzAdTHCXeLLzLSMpRLQjAa -1669931108 68.8745 -2105792329
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1560259154
+    ${output}=    Read Until    priority : -2105792329
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    axis : cvyiuilqdVGynDcvQFwKKxmvCKYDtPdoemxsFUrafcrGZlGpUjIRYMDUcDNNobWbyceiglIBuNFdPCZsovEuZqfDfOWJGWfqGtQzlWDBvjOfFtYGwjVABJrxKeDHfAGoHHGClzuZPJYiNwXWEZlDTWJrzRRhNOwjIhLVgpbtqqtIgKlRxzBNJQjcnXioBOvqUghPOVrflVNWeTAIzpCaRROegBrjVDZGMzuUFeIOdCJpUlMmqpoeKzAZRvlEWgGUwKQ
-    Should Contain    ${output}    device : CDNiZZvJeyMDAQLvZfcBoFoOrEktoBlMavPWdfHmfNlsVlISdioUltmqDywrBbCYZmLOUbRKzLmsxNzpsPgqcoRXwkCjIcOPXlvBpwQLxWjVLyeUSraqVMmpZiEofvDwCeDgNWEMnnWLGJYhkAkcrpMjjsNRSNEkHeGoUCLThhbCyTMlBHbWMZgejlOMuRESsuanIjNfLVrgsVWeiuCVUraHuRtnThEVlaJhnfEaIQVhAauXfDyZEJPrIgJVGIlZFHlWRVpUkZpKiawAuEzDoUtvMldrqRQjXhQGhrUNWlzaMHodgpLTCArJfquGzWipBIYXAUGsJrOPGHcUTdxtIxAJELBpVhXIHkTkmnnhrnjtjlufPVQZAcJkXvVPhNBakLLPBaoEXbvvttwBUQDCYhjfAGkZwbAWZSzWOwVxUcaXXNJknbRnyXFtdvoHbjPxKUlGLOdwJrfTXupJBQrsPJgIJnPUXyPLhsPfKwPqqKiYLOaNZqZwUGqzbIp
-    Should Contain    ${output}    severity : -1453252094
-    Should Contain    ${output}    temp : 70.198
-    Should Contain    ${output}    priority : 1560259154
+    Should Contain    ${output}    axis : VUWDbCAoZXYsSiqjNFPLFzCwnNEyhAEycFILKxbOCTUrSELyDdBjeNAcSmBpqnSwegzietvtfqNzMKpXzuSgzdOmMMNVubliKbszBVjXTMWItNKMDvPkMhuLBETKyVUsAROWVGlIaPvSsRlbOFDpzCbNlZuMHLVMAcuqlhUScEIjLVWAZLpLPgmlGLIzmThdaIfBfuUnPcFrennzgNfUvkLVRBtyNZYgdLNspObjdVAtbUcNsjdCUNpPKHWQXOzyYzJmZEQXlxQMMfuZJfCiSfHxxqxzQkmckybEsEgeriRpqYIMLaGWDAZhzGYRFAtiAlpmdOjSoFtBBcqPNzlfpJoAnNluKEJGZhXrXLDOSoVOqKOhcMkHZCXolNkMxuzvooOqSebCUcADYAVYzDxGPDpTYjMUbKXjkJVnfnBoJHjaeThLRJrZuSWtjfbBiUVifSukJOkhiCftBJCnKOjfVWWrs
+    Should Contain    ${output}    device : HMzNSBbfKgmSYTlWjhkHGQasgptvYYAIzYGDcLVOTfzwkOOHAPFORWaXpIKofOiJMeZHawLBnsdYBtKmnqqIwhCmcqLSreGKibCxYWqoicjqsbhNEuazxSNqQgFRHKrORZlcIuCjGIfwxmlraiqzUukvUnGqOGIofMDCZyySAHRcxLZTHIKOzkLWMYBmiUCptemuwAMmmPZWvqegJKkhvFiiEPpgoLeIVtyZbPymrPchdVwdEYdqcFxRyCNzcuaSxYsLwodhOFdgRFzRUpKItpLSEfxgcrnpQnvtsJKBgJOdyAqLvvZVuUEansQUnEIYjPUzsJGOoxWYhLoADXmNdqahajymAMYsCpECzqmlzuTQMAJendLWEwSgRMYmiAbVeGufaAUZybuhNDjPblHEupasGnKKZKIGDhYgXEaRUbbjGUOBEXKAazPCLxcfWHIAKglelaWFvWKnIfwGvsZqvecuoEEwImOLjzsMqiQvSABkowAVuhiPaXKQRrRAOmppspbRuMXnnedXGBHOTPhAYbRZYQFhnlvKZTIXQjbYaVaINxlCxQLiCryLMcJNZHnXvEKDijWUPeHUJnGWdNHRXodKFHcpxLYBrQZfCurqbXJzqstRuqpgFEjkiFysqRDQoRKQIadieNYXcvmHnuZvOfZmvBioHZzatTkKZuWSGTZKYPEbWXNQRJyLHLDyzAdTHCXeLLzLSMpRLQjAa
+    Should Contain    ${output}    severity : -1669931108
+    Should Contain    ${output}    temp : 68.8745
+    Should Contain    ${output}    priority : -2105792329

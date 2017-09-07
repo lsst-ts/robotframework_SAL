@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_MovementPrevented sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 22027 QJwsrHwewaCGoIuyeulMzwkSSNDbUSqBhlEbagUeJjYIFbecCBuiSowLmILKtnV 663017100
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29462 jAqftwyRq 409572345
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementPrevented writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 663017100
+    ${output}=    Read Until    priority : 409572345
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    louverID : 22027
-    Should Contain    ${output}    causeId : QJwsrHwewaCGoIuyeulMzwkSSNDbUSqBhlEbagUeJjYIFbecCBuiSowLmILKtnV
-    Should Contain    ${output}    priority : 663017100
+    Should Contain    ${output}    louverID : 29462
+    Should Contain    ${output}    causeId : jAqftwyRq
+    Should Contain    ${output}    priority : 409572345

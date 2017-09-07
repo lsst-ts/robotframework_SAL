@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_LoopTimeOutOfRange sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1804853997
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1910717852
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1804853997
+    ${output}=    Read Until    priority : 1910717852
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
     Should Contain    ${output}    LoopTimeOutOfRange : 0
-    Should Contain    ${output}    priority : 1804853997
+    Should Contain    ${output}    priority : 1910717852

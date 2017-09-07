@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_DriveEnabled sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -4122 231479826
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 6967 -1602763763
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveEnabled writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 231479826
+    ${output}=    Read Until    priority : -1602763763
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveEnabled received =     1
-    Should Contain    ${output}    driveId : -4122
-    Should Contain    ${output}    priority : 231479826
+    Should Contain    ${output}    driveId : 6967
+    Should Contain    ${output}    priority : -1602763763

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_targetError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1614602305
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -12916049
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_targetError writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1614602305
+    ${output}=    Read Until    priority : -12916049
     Log    ${output}
     Should Contain X Times    ${output}    === Event targetError received =     1
-    Should Contain    ${output}    priority : -1614602305
+    Should Contain    ${output}    priority : -12916049

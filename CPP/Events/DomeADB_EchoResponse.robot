@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_EchoResponse sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send HxtRvBEwYFSqwcjJSpHLuPNkkDgAHNeFNYQQkjbpliotzQmIWedgnbPqJQuykGvCSGODYaoWnnhbYOgYxiusksZHSdtyowzfPkYqXBbnQJkZBVIfESuDYIpMrgJrgfNbkycQOQPgHcDNyitBRMFFSpxmYCxhbIFtAvayFqUGZfKxzAZqAlsaxoyTIddUcbLDJYMZveWBajjyKwHhZqLjRddfxdwSytbpFKYyxEHBgrSeRtxvYBoelSualcbwmnuuCAAudfdQRQfYFizWunwjTjClRryxdRbwDbwDAnJbMfbJuAVABivnqsvHxNXonSLyonjIgZUaiuOMGfeFePHGggLUlzQSDydCOkIySbxugCiSRmgjUssaixyWOarymDNpSiYolymKydntTauHQTmXrMgCfCdjaIXInxaStuDkmJAyNjzwRrHUVspVnMBDvSSumPZyHigpiyUiriNyWVGASbxOuLHcwgprdQIJhdZDZYHAkCtxgnYHMoFwaEmebcUeeGrIbSlxnBjcwQPsstdkVmTuvHtNTLMwlMuPINSdwBRselKlnETJhkoINjvEbgzvBpKmaNMMjvcKHOSqB 2142139924
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pglvYAhsJIauEzRqfkumPzZrtQDCSLTxuTyvmqjBONPOGfewvgYhOrejkYROddDDEWfNKMqGdRJEgglTcmUfHtJACVqANwQQoUdhfUWIhwbkozbMiNQCoXWTKuFAvUNlIoPuRpzRiJwkPtNdEpXTArnkMNJxakWnbDULmFtSCpKTHPwUpZNXhYgPRuztibMLZbfMFaPeSepaFeDMhXhodllxYktjKnNBJKmxurzQPNIJywDeUjQKIglqgpgenojBCMpcPZgcZwMDakMiByzSPkAZAfWICvrxDKWpOkqqLbfaAvdMVUwUpqMmGyDVxXqWMpKHyJmgVNgYbJYeiYRIeuhpLFRqjwbYBvdVFLRhUntyCymdbcrFdbCcrsLDTYaYVNfSNdMmnHshwiuccWRRxWYkdEDdyWWKaEXtQZYIBKQPuRCWMFGYLJMRSewnfqOgjEzxIeEjUSsutacqmBgiHMuWuBhNyXtUeXLdYoCdrssQamUGwBnTlAtTUXWkLqIfYHmAAeNyisqIJpBedyxLhwXMSebfLxcFrXeuIgwtLGjKjaJHcPjdLTIZneHlSQPYJfwWRQEJElUyJSTVXnTquoAheNZpCclkhsFhAQACxdOlDZhPkxtCHErPTXmNHwoZiuPYupgOdoLYQYOkxrKGLXRAinLPVPwAAQzncqBDeKsvvpVQmLfoqPRGRkiBCkfWMAWkppZhciLwqRdNPNtHrBHcNSpQIKlDsSwjChdBMQmbdfUyW 1754904480
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2142139924
+    ${output}=    Read Until    priority : 1754904480
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : HxtRvBEwYFSqwcjJSpHLuPNkkDgAHNeFNYQQkjbpliotzQmIWedgnbPqJQuykGvCSGODYaoWnnhbYOgYxiusksZHSdtyowzfPkYqXBbnQJkZBVIfESuDYIpMrgJrgfNbkycQOQPgHcDNyitBRMFFSpxmYCxhbIFtAvayFqUGZfKxzAZqAlsaxoyTIddUcbLDJYMZveWBajjyKwHhZqLjRddfxdwSytbpFKYyxEHBgrSeRtxvYBoelSualcbwmnuuCAAudfdQRQfYFizWunwjTjClRryxdRbwDbwDAnJbMfbJuAVABivnqsvHxNXonSLyonjIgZUaiuOMGfeFePHGggLUlzQSDydCOkIySbxugCiSRmgjUssaixyWOarymDNpSiYolymKydntTauHQTmXrMgCfCdjaIXInxaStuDkmJAyNjzwRrHUVspVnMBDvSSumPZyHigpiyUiriNyWVGASbxOuLHcwgprdQIJhdZDZYHAkCtxgnYHMoFwaEmebcUeeGrIbSlxnBjcwQPsstdkVmTuvHtNTLMwlMuPINSdwBRselKlnETJhkoINjvEbgzvBpKmaNMMjvcKHOSqB
-    Should Contain    ${output}    priority : 2142139924
+    Should Contain    ${output}    response : pglvYAhsJIauEzRqfkumPzZrtQDCSLTxuTyvmqjBONPOGfewvgYhOrejkYROddDDEWfNKMqGdRJEgglTcmUfHtJACVqANwQQoUdhfUWIhwbkozbMiNQCoXWTKuFAvUNlIoPuRpzRiJwkPtNdEpXTArnkMNJxakWnbDULmFtSCpKTHPwUpZNXhYgPRuztibMLZbfMFaPeSepaFeDMhXhodllxYktjKnNBJKmxurzQPNIJywDeUjQKIglqgpgenojBCMpcPZgcZwMDakMiByzSPkAZAfWICvrxDKWpOkqqLbfaAvdMVUwUpqMmGyDVxXqWMpKHyJmgVNgYbJYeiYRIeuhpLFRqjwbYBvdVFLRhUntyCymdbcrFdbCcrsLDTYaYVNfSNdMmnHshwiuccWRRxWYkdEDdyWWKaEXtQZYIBKQPuRCWMFGYLJMRSewnfqOgjEzxIeEjUSsutacqmBgiHMuWuBhNyXtUeXLdYoCdrssQamUGwBnTlAtTUXWkLqIfYHmAAeNyisqIJpBedyxLhwXMSebfLxcFrXeuIgwtLGjKjaJHcPjdLTIZneHlSQPYJfwWRQEJElUyJSTVXnTquoAheNZpCclkhsFhAQACxdOlDZhPkxtCHErPTXmNHwoZiuPYupgOdoLYQYOkxrKGLXRAinLPVPwAAQzncqBDeKsvvpVQmLfoqPRGRkiBCkfWMAWkppZhciLwqRdNPNtHrBHcNSpQIKlDsSwjChdBMQmbdfUyW
+    Should Contain    ${output}    priority : 1754904480

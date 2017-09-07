@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_EchoResponse sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KnjdgkTxadhpPCZsxUbGgiEveupGxxRQUzLcreskEEHSwFkGDPHFcjskHyqoFMTImmTblUGMfiJWOKCrqbOzkMPKkJJuCJJXqbXceRLyKKRTexCkqGZqIxvmiAAlRzvFlxdsszJhmyyHvWpQAZwalDIVotTjSRgaDyyPqAXQBduHPHgtIbZOSDHIzDhCdxQBMHvSKnoYaOVFnKrhiitPCZttEAowGjQcwSsMFhPyKiCqcytIDFILGyZNEGKtNUImLBOcvlVUTqFPDJbUVdXpAgBmqaHSiSzHXCyVyWxLBWCZQaTwJYFZYyVAVTSFXuXVeLcEOoxXicliVDqLTHPUCbSnKAbTEeEaoiyAAMrAXcBfVBhMTItGJqIEJrQOirMrNbVrOoTfpLOooxalGrBcmSspeMrtjczqRdRWXOCqnbnfxhXwQETteCmCqwIPxDsJJxbhFcAuBWqaEbYPSWnaowOUWxoHFAFiutrWPMZOgNeGqGInFIIVRSQtWEfnywzMGVxcxfBBtZKXGUAoNxmIOCtQuLKfBwlhqqSKgQdlFtnRGXXOfEGraWWAYjPWyYNOrXTHiDDYEPCLkYliEKTsjmhrcpHIHPedSVAkldRjIVhohWIkCWkXRlmgJxntDXvKcBNPPoyuEHGOmwkTNkqWeXHaJEFLjEPAJxZnYnInHtOBAxkHZiAZIinOcXbpfOzlpyvKZLUdkPRQKUfEnsAGSTvoKdmaFvzhqfoPvagiUTyVCgmTpEKfpkQzlvmOKsvHjpBrIYurLCaczcdxYnFiATgAhftEbrEkedmlNsGgKWhfMuaSecFrAzhTczmDRIGlZqfDpKmpQFsIMPgiWVJZcGFVcKeItuOfvvrukfwvqNn -306678328
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hGhafalrNxEsximoxBBmzPLrMMlSZOucPVTUtlUXmqMYLtWxaQmCCjavmuRVKWllOjekYKGAtMxoYsiessJOhJmwhnocyavDwuMoWfJrMwSyNIwxePTrAsOoDbPBVjQqZJdCAXrGIqCUfQJQVfZuLINOsWCciEPfjeInmkmJUMBRYPEdwsvzyYaJJTeSrGdUhmLgMgfBtjuDfaajGKlypCJZZJFcQohdUgcASzyfrTDCUOJJXFOTIgbYUmncIoixnQbhAFLQFcFMHIOqfZrTEmuftnwzkQOJBPVLTEnIoPSubSePfpfvrMcMrYiiZNkWbNbhcrEqGtsMYMcwowrjpVaSmyHOuSEIxxxWEnzDEbbmatpdhDgirqyklxpxMOythVgbfkvESLtkdArmuFjoHpoahlfkxlJtLaBTCeNPgcmKYVPzetGrnWaaWMwPQGZyuUAyYRqAphBEjOGRINbHHpexFGxrNecLfGoVIAtLpGucbYVsmlrdqjzLuoxMuFmLQgtstPgDhZlenwZbwuprqPYiHCApHQnXElkUaOFVaMFFOpSFMnxSLilCMFpQyXoXULwTTOBFmudyxVydVunMdaMwbcPqXpwsbbwpRebWhWQIssuKWnIwCbUAYaCAWGnSWnnPfxGxuxiJanNvyxGWpoUdUAcdufXuCmVGDnGRVzxzAnDacLtXvqnhMwphVDcMUxRenyWnIlmMteWsMQHbvxUCdfPoEjWFGZBoWqUQtdQsZryCByPYNQOSvbBYUnrzDZZbTVYBheFVjuAFDjNCrAxAvoowVYLwWvspNNXGqnaOBTahCGnaxdBAvpylUoySzIBKbPTmWSwBxnzOXgoNVQUQChnSIdZTHXsoBvliwhPZELaZyCtJLRcfvDFENxRYAhhBOGNVnYQqKMkKEAYGdqbXMyyBIyBuHXYoJ -2097897288
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -306678328
+    ${output}=    Read Until    priority : -2097897288
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : KnjdgkTxadhpPCZsxUbGgiEveupGxxRQUzLcreskEEHSwFkGDPHFcjskHyqoFMTImmTblUGMfiJWOKCrqbOzkMPKkJJuCJJXqbXceRLyKKRTexCkqGZqIxvmiAAlRzvFlxdsszJhmyyHvWpQAZwalDIVotTjSRgaDyyPqAXQBduHPHgtIbZOSDHIzDhCdxQBMHvSKnoYaOVFnKrhiitPCZttEAowGjQcwSsMFhPyKiCqcytIDFILGyZNEGKtNUImLBOcvlVUTqFPDJbUVdXpAgBmqaHSiSzHXCyVyWxLBWCZQaTwJYFZYyVAVTSFXuXVeLcEOoxXicliVDqLTHPUCbSnKAbTEeEaoiyAAMrAXcBfVBhMTItGJqIEJrQOirMrNbVrOoTfpLOooxalGrBcmSspeMrtjczqRdRWXOCqnbnfxhXwQETteCmCqwIPxDsJJxbhFcAuBWqaEbYPSWnaowOUWxoHFAFiutrWPMZOgNeGqGInFIIVRSQtWEfnywzMGVxcxfBBtZKXGUAoNxmIOCtQuLKfBwlhqqSKgQdlFtnRGXXOfEGraWWAYjPWyYNOrXTHiDDYEPCLkYliEKTsjmhrcpHIHPedSVAkldRjIVhohWIkCWkXRlmgJxntDXvKcBNPPoyuEHGOmwkTNkqWeXHaJEFLjEPAJxZnYnInHtOBAxkHZiAZIinOcXbpfOzlpyvKZLUdkPRQKUfEnsAGSTvoKdmaFvzhqfoPvagiUTyVCgmTpEKfpkQzlvmOKsvHjpBrIYurLCaczcdxYnFiATgAhftEbrEkedmlNsGgKWhfMuaSecFrAzhTczmDRIGlZqfDpKmpQFsIMPgiWVJZcGFVcKeItuOfvvrukfwvqNn
-    Should Contain    ${output}    priority : -306678328
+    Should Contain    ${output}    response : hGhafalrNxEsximoxBBmzPLrMMlSZOucPVTUtlUXmqMYLtWxaQmCCjavmuRVKWllOjekYKGAtMxoYsiessJOhJmwhnocyavDwuMoWfJrMwSyNIwxePTrAsOoDbPBVjQqZJdCAXrGIqCUfQJQVfZuLINOsWCciEPfjeInmkmJUMBRYPEdwsvzyYaJJTeSrGdUhmLgMgfBtjuDfaajGKlypCJZZJFcQohdUgcASzyfrTDCUOJJXFOTIgbYUmncIoixnQbhAFLQFcFMHIOqfZrTEmuftnwzkQOJBPVLTEnIoPSubSePfpfvrMcMrYiiZNkWbNbhcrEqGtsMYMcwowrjpVaSmyHOuSEIxxxWEnzDEbbmatpdhDgirqyklxpxMOythVgbfkvESLtkdArmuFjoHpoahlfkxlJtLaBTCeNPgcmKYVPzetGrnWaaWMwPQGZyuUAyYRqAphBEjOGRINbHHpexFGxrNecLfGoVIAtLpGucbYVsmlrdqjzLuoxMuFmLQgtstPgDhZlenwZbwuprqPYiHCApHQnXElkUaOFVaMFFOpSFMnxSLilCMFpQyXoXULwTTOBFmudyxVydVunMdaMwbcPqXpwsbbwpRebWhWQIssuKWnIwCbUAYaCAWGnSWnnPfxGxuxiJanNvyxGWpoUdUAcdufXuCmVGDnGRVzxzAnDacLtXvqnhMwphVDcMUxRenyWnIlmMteWsMQHbvxUCdfPoEjWFGZBoWqUQtdQsZryCByPYNQOSvbBYUnrzDZZbTVYBheFVjuAFDjNCrAxAvoowVYLwWvspNNXGqnaOBTahCGnaxdBAvpylUoySzIBKbPTmWSwBxnzOXgoNVQUQChnSIdZTHXsoBvliwhPZELaZyCtJLRcfvDFENxRYAhhBOGNVnYQqKMkKEAYGdqbXMyyBIyBuHXYoJ
+    Should Contain    ${output}    priority : -2097897288

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_tempError sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py yfLIHXqaAkjpknHCeGMJDJXpFBsjsXtKnIoQliLAaqutFByWMEiLaQMcebbRQLMWgQLBsAyjKhHtScizrYvYPptoiySulBLmuADIjpXKSFiOYKTKNmP lSXrwFcEhoOefmnRXiFLpaVyXqsCIENhgQlHjDJNGKRQGKuAdnXuuzEhbLYmntXFNcCVGsifKjwzlaKwKJWKnMdervokDtphtMYQqykZSKLyEbjwXZnhDAfSvHIdCawaUgwQncdQqZAPNpIZVJRUEBqxyhbXShwMdLxrmuESSCtmwwtYJOpxusAsSfVgDfFcVpUbyPCWZRuSjruYpSQmXCBGHrBIIAHxmHwsLqZhIikTqXAbogccXgXLFfavFwwccFpbrHEkLvvmdJRbKHUXrcDSXqoDBewZHerkiftBpxGSNSoDCfehMoYRNCTAsWKAbvsuhHsPgpwkbESaZWnXbCKeFUYxeCXnanlEHJNOHaC -891556152 4.1613 -610600980
+    ${input}=    Write    python ${subSystem}_Event_${component}.py byQoYFLoIPfYTfuDulHHvTApClMKlOItjUXwHgUwMSFOWdeVhqybmAQruebXkQiyCYAigbfXHrVMDigYlOYTxoxVrXmSroMYUmoHYXbhxTFjJETbmnsGAjFhBfSNnHgXTcoDnpABNoxaBHVsjKsYuNeEJKblNQQiEnZtDBKxcbOwYPZyLvxQAkDhytVePBzZHNrhwERZKAVjmkUZohkCUfAXaKiOeVvGFUGMaESjUtQRlaAMCWkEzdTilSrYBAkHdQllYGIsogMqvNtCrbEnkIin QdoetLLlBaowDpBdzeoIVsCHIaiXKskqdFMVWbPWCyechdvkHYjglkXwQGLTDuAvbqfWNoHpgwLGxEUluurScmlllVWxstnyJBvkjHDmpQJMcugvkgmkshDaPYVusFEbkWIxLyGLfallFxAIjsXMVYRajfEkcEmBizzLczxqKSDIjqCnCIqbLAednFtTEOUwlRuyGdcfYxZqaQyAhgQUMfYWgKMzyyLefjcxunGYsaNBDxYLYuTEZvhUiVCMohBiSGDqwCYYXyfIPfembIYPyxTuREcixgZxsuotBwuxfwtFYmPEEadXeuPlEsQhyfNcIlnbKWAnwpXCvMLnMCVJvABHYHTrkHWkmTXdDSRXDGCCIULhglcRpyeEuRErjEPPuyLriHPLwBktOUULXSZCZKbLanzFcGVUvQAyRiujhzoEnUmLiBrJirQvXqbXnvgOxwVZlVaJYpSNFQfrjogqxKsVTCLQYRllOJLmKmyILeRFdtrATGssfIwnHUDqPCbvJvYyVzeeDcvMays 842633474 75.97 -1490908903
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_tempError writing a message containing :    1

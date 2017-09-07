@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_tempError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send iVWZBHlXykVpjNfHzfZnrFIlCjvdkDZPyVznpEhFqTRTSHvHuNCNNbHJLzKsfRFFduDnmBNALtWUIJGuzcYCXnVqBTZcTYyibkWJdpmleNQbMgCvYNHDRHGTRpHOXkxQQvOzzDqSdIEaOWvOTrgnpofjuLmHkYslryEnewtYXYPKwnUHQzwhskqREsKRNxyaWMQbJywAmhRVGgAJcAMvGSLmcMrIfUPddvSLvQBhrXeJODyEtgVNmaRuDTavYWOQUAEWIzpyViVWsanKLmyqFvKTRHsRHpFuXWloGkRqjvcclEiBShTRpOZrQYsuPzkRYezmmWrHDBzKGnZSbFlucBbMZjAGXFQYHWlOEdkkCouXwblVOEGvWCQlYGeGxrcjYQZtsyQdFKZHfGhAViqLrzLwTPoPfZwDrHEDXERgDEstOEDUgUWklrxvqzqMkduXofpXSGduqQRywtjjemzoeVOfXzuXzQbjCCxmUTliMhooiKgNDxidoEnLTkyCkuXwCwfVVuhJdwjxBiNDVYMvgbFCebDFSRhAUdbcZVXWsfXytOXQmDYxHvPcBBGBhXrsRwUHOsmGbjtVJYHPJFagmFYrhKZqcuymNzXBOfQSQCaKjfbWlJVWJVCWtuvDELfkzOXUrdEubfxyllbMkAPkvEvGOkmtUOUWAhTddcHoNTpvLGDviFVnYJEUJRzcTmLBbGcXswNlGlkoNNLlkVtOritLfATUMbjiAgHKvKVYQqrmttcXzScvjFftrOYIchnjxEgcykxvlTtqNWEkiAVVfJWWDOmEDTcQELEWTLHHNQWMoZByEkQaFJqqLagpdxyYRVHFTpAnHxhrJDDrWUIJHpZdqkltYloNmvVhCWSHdOiyaSQjUEmGrazNFjmuybWGMOIeazHcGjFDozfEsSCWnnMNMqWJfYkgJPGDVQzzwJAkTEbDYDGCJRPuptaLksDIzzekmFLRazKjGjvCwVrmVbHfHQgjRUpUytB 1029310664 -837953741
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UGnhbEEIGJTpERCMCpubpqdyrdGhykwXBnSeOdqFmQRRgKatNIoOzkaROpAppsJwtcQkapDjDOpuKOoyLPZkiwDrZFQDlZuBsLvhSWQBGnMArraGeDidZRUCqIPRNJprdwJOKUFkpdlyJBkJmxCqwwtEBxfhiAMSzhUHKaPkyDSvPrJcWhBOxjSMWqRHffvIKnpcyfUFXfOXQdNlfircPMiNElFTfxGgstOtdCqPgxvbYcKSEVETOksaDowyRFHauJXKsstgCtArdMeQqLDwOpKHCyCpHnqRXmOPBBnbonBgIwmpghnPCZFitUhNHAYBJvWsRmjzOqdHJTQDriXvxAXDtLjkzKNInQGkddApvWOceMMBJyhQtuipwqlbJnJGTfkbdrYGnauJqFTAdOARzOSjIdbUHRxPRApdmPPSBIMUKWTaOzeXRCwnZFwUTwknFOHYinfAXaNUGNygJfQXuHCJOrBemaBSBEjjbgdgBcAPEkwqKBfzbcmJhBXUyHrGEOKrBvNAWoqfCuEIUlqkeGbTeYNSnBhQGBsgKwIrReolaJYQizKsBYHNtJzsCawAuGwuIMUYOJfNEJxNhHNYWaXjIBVfUgKFRHmwHffjTqfRUPYdaidALtxzbNfKCiPghUZxbCuiQSiXmcZAbNjqKQvhKIcivMmXmYbYMpvZccJKLYPfgDjxrhUQMoTLdWVgCZEVVzmwQPYoWUstmEPIHM 1395981802 -515227458
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tempError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -837953741
+    ${output}=    Read Until    priority : -515227458
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    device : iVWZBHlXykVpjNfHzfZnrFIlCjvdkDZPyVznpEhFqTRTSHvHuNCNNbHJLzKsfRFFduDnmBNALtWUIJGuzcYCXnVqBTZcTYyibkWJdpmleNQbMgCvYNHDRHGTRpHOXkxQQvOzzDqSdIEaOWvOTrgnpofjuLmHkYslryEnewtYXYPKwnUHQzwhskqREsKRNxyaWMQbJywAmhRVGgAJcAMvGSLmcMrIfUPddvSLvQBhrXeJODyEtgVNmaRuDTavYWOQUAEWIzpyViVWsanKLmyqFvKTRHsRHpFuXWloGkRqjvcclEiBShTRpOZrQYsuPzkRYezmmWrHDBzKGnZSbFlucBbMZjAGXFQYHWlOEdkkCouXwblVOEGvWCQlYGeGxrcjYQZtsyQdFKZHfGhAViqLrzLwTPoPfZwDrHEDXERgDEstOEDUgUWklrxvqzqMkduXofpXSGduqQRywtjjemzoeVOfXzuXzQbjCCxmUTliMhooiKgNDxidoEnLTkyCkuXwCwfVVuhJdwjxBiNDVYMvgbFCebDFSRhAUdbcZVXWsfXytOXQmDYxHvPcBBGBhXrsRwUHOsmGbjtVJYHPJFagmFYrhKZqcuymNzXBOfQSQCaKjfbWlJVWJVCWtuvDELfkzOXUrdEubfxyllbMkAPkvEvGOkmtUOUWAhTddcHoNTpvLGDviFVnYJEUJRzcTmLBbGcXswNlGlkoNNLlkVtOritLfATUMbjiAgHKvKVYQqrmttcXzScvjFftrOYIchnjxEgcykxvlTtqNWEkiAVVfJWWDOmEDTcQELEWTLHHNQWMoZByEkQaFJqqLagpdxyYRVHFTpAnHxhrJDDrWUIJHpZdqkltYloNmvVhCWSHdOiyaSQjUEmGrazNFjmuybWGMOIeazHcGjFDozfEsSCWnnMNMqWJfYkgJPGDVQzzwJAkTEbDYDGCJRPuptaLksDIzzekmFLRazKjGjvCwVrmVbHfHQgjRUpUytB
-    Should Contain    ${output}    severity : 1029310664
-    Should Contain    ${output}    priority : -837953741
+    Should Contain    ${output}    device : UGnhbEEIGJTpERCMCpubpqdyrdGhykwXBnSeOdqFmQRRgKatNIoOzkaROpAppsJwtcQkapDjDOpuKOoyLPZkiwDrZFQDlZuBsLvhSWQBGnMArraGeDidZRUCqIPRNJprdwJOKUFkpdlyJBkJmxCqwwtEBxfhiAMSzhUHKaPkyDSvPrJcWhBOxjSMWqRHffvIKnpcyfUFXfOXQdNlfircPMiNElFTfxGgstOtdCqPgxvbYcKSEVETOksaDowyRFHauJXKsstgCtArdMeQqLDwOpKHCyCpHnqRXmOPBBnbonBgIwmpghnPCZFitUhNHAYBJvWsRmjzOqdHJTQDriXvxAXDtLjkzKNInQGkddApvWOceMMBJyhQtuipwqlbJnJGTfkbdrYGnauJqFTAdOARzOSjIdbUHRxPRApdmPPSBIMUKWTaOzeXRCwnZFwUTwknFOHYinfAXaNUGNygJfQXuHCJOrBemaBSBEjjbgdgBcAPEkwqKBfzbcmJhBXUyHrGEOKrBvNAWoqfCuEIUlqkeGbTeYNSnBhQGBsgKwIrReolaJYQizKsBYHNtJzsCawAuGwuIMUYOJfNEJxNhHNYWaXjIBVfUgKFRHmwHffjTqfRUPYdaidALtxzbNfKCiPghUZxbCuiQSiXmcZAbNjqKQvhKIcivMmXmYbYMpvZccJKLYPfgDjxrhUQMoTLdWVgCZEVVzmwQPYoWUstmEPIHM
+    Should Contain    ${output}    severity : 1395981802
+    Should Contain    ${output}    priority : -515227458

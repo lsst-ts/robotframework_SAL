@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_slewOK sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 778534775
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -898440857
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_slewOK writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 778534775
+    ${output}=    Read Until    priority : -898440857
     Log    ${output}
     Should Contain X Times    ${output}    === Event slewOK received =     1
-    Should Contain    ${output}    priority : 778534775
+    Should Contain    ${output}    priority : -898440857

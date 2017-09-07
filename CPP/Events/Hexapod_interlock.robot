@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_interlock sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send BrxkgvbDYzJEZvkynRBTxeUzMwASjUfTiktPQMLauXBfQxaZnwwXdrIzwEzSIDbMkNPkCJMBoEgHauHiHMYVCfmGmaWgtzgXaodGEMacXEEwlduRIwAvpjeHkVAjETXMYJUZqdeZkXkuxhqIWjSaCUcUUFiMtPbBRSrcuNYYowJLxnlXkteFemiefHUqMtARORASKgFmungwCDdjduBrQsZwPgmNugPOlhtItWm 930904687
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send voNCfrHxoscMLyvberRJyHaJgZrkAnPjyxXZkLgTuyhaEtdanrMffCTuSIpihWDoUChFaHiikpTbEnWGJvUvRbbPNvlOPJbPNNqonlgQqGKaNSxHAtBCwCsjCQPMApLTRjDIzupWXuhFyKcmZIOWrJEVQkoAiWHujIQDwcjPUJXddCwYbjliUnNyxmJZPKnigTDygzzDoIlySvMKQntrdmqGlyTZUDMRzXtLVLFilLOJuyqMvtJmeQIAgIbdwpEJorHYSqVOhelYAeKdUFGovjdaCasSjvFcJKPqqSTNmYtFmfAiIfrCEufRXTNWDbkTpLxDbVUCMMjNUrThZRymhJHwrkKkoxjBEGJIHIXiRidlmWOFdEwmAyazghdFCFXIzEcMcWMQtCQQipySQfrLHJresekpnMlXwRTQthnEPcxcsuDznLfRvBnkYEJGaUgjAvzlZjJbpAtNYsMPoT 942601490
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 930904687
+    ${output}=    Read Until    priority : 942601490
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : BrxkgvbDYzJEZvkynRBTxeUzMwASjUfTiktPQMLauXBfQxaZnwwXdrIzwEzSIDbMkNPkCJMBoEgHauHiHMYVCfmGmaWgtzgXaodGEMacXEEwlduRIwAvpjeHkVAjETXMYJUZqdeZkXkuxhqIWjSaCUcUUFiMtPbBRSrcuNYYowJLxnlXkteFemiefHUqMtARORASKgFmungwCDdjduBrQsZwPgmNugPOlhtItWm
-    Should Contain    ${output}    priority : 930904687
+    Should Contain    ${output}    detail : voNCfrHxoscMLyvberRJyHaJgZrkAnPjyxXZkLgTuyhaEtdanrMffCTuSIpihWDoUChFaHiikpTbEnWGJvUvRbbPNvlOPJbPNNqonlgQqGKaNSxHAtBCwCsjCQPMApLTRjDIzupWXuhFyKcmZIOWrJEVQkoAiWHujIQDwcjPUJXddCwYbjliUnNyxmJZPKnigTDygzzDoIlySvMKQntrdmqGlyTZUDMRzXtLVLFilLOJuyqMvtJmeQIAgIbdwpEJorHYSqVOhelYAeKdUFGovjdaCasSjvFcJKPqqSTNmYtFmfAiIfrCEufRXTNWDbkTpLxDbVUCMMjNUrThZRymhJHwrkKkoxjBEGJIHIXiRidlmWOFdEwmAyazghdFCFXIzEcMcWMQtCQQipySQfrLHJresekpnMlXwRTQthnEPcxcsuDznLfRvBnkYEJGaUgjAvzlZjJbpAtNYsMPoT
+    Should Contain    ${output}    priority : 942601490

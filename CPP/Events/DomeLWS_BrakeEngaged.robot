@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_BrakeEngaged sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -27286 -1270265573
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31215 -1711859635
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_BrakeEngaged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1270265573
+    ${output}=    Read Until    priority : -1711859635
     Log    ${output}
     Should Contain X Times    ${output}    === Event BrakeEngaged received =     1
-    Should Contain    ${output}    brakeId : -27286
-    Should Contain    ${output}    priority : -1270265573
+    Should Contain    ${output}    brakeId : 31215
+    Should Contain    ${output}    priority : -1711859635

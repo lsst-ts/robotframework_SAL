@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ProcessingCluster_processingclusterEntityShutdown sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py WqeVOoZDBBmYFtnilUZsYiQpRTQZWeGEIevgGOpHfeFhWGBNZhOhZShhvWCenCyPWJjIqqYmhYQzdXJPUexQDbVUkZrnKamoIMvJSILbjbPQAUsAetaJNOhBCzbjUUkZ 3.6225 caOuJenaMajKGkvkAWIrRgwdeSCkBoEZVLrZpZWPXHZzwXRRhOASsSgKBjfmjvwbLwOKpIqDjASyLuNFAAhPAThezMjcNlrmgwKqsqjVoEpvDZssQFEWRZfYcSzYGakICOoEaUAGDUJULJpplqURLFLDyyALMgYDiRqfXGoGYPaLDoBmjtTfoEwbPKTdmwXEVRrGEQsCfLgErHWNYduLliZGOeOMpnTvjUJlthWHlwtShbBWbMTyrFvBzNkVVOQg -872841807 23753855
+    ${input}=    Write    python ${subSystem}_Event_${component}.py YkzxQrEfBRSExfXwtKDqtXFpjVrtNFMcfRUgeRvbGUKVPcHiJBlkalJElfTZSxrntyxIdbGJLCzjqcqLfRWFApezdCLcmBzZEFKnUTNiKIddaqQUKXFTUtBmZNcmyDnG 5.3532 cFZBJBHxvkrLGIqtsrXKMXmkNDRktVQfJCNkJIgEHsLTGRvZEazOPAWBejmRILvIWJNizapurrLOHPxFtVQPTYrNFMwgAdwOPYQuZloARzuRoZSyIcKxfIHBvoBbALtkSHmxufqWKEHLgBBXVdJDIeuEZXeTxQoqCSaYIWQLXdRxhPRDpNxUphDpGfXxauPFlBRrvsielpuxfXDSnrXiBreOqBTEwxJpKoprrEhyjaDhPqWYrivyTwyuEkholfhy -273554887 1765769827
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] processingcluster::logevent_processingclusterEntityShutdown writing a message containing :    1

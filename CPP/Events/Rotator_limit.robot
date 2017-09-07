@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_limit sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send iJJoOUNrMqqlvsOdUXAqPGIopBZvhKCKeNXirpHPQrCRpnYshqTofcekXHVWRWwbXDdxtzHfrRCbqfyUqDSrpvRxNyvSxQcuAuOtXmmtUgPkXHDftfButP DYqtqKYEZaWPSHVhZNOkIPCeTBXITQPgZCMogcaeIBwsQhjlNubGOdxEkDVoQlxzJofgLtsANXIpcPXGmhmyUnPiUrRFAfoeWUqdKqnFUvwuIPOrvCUAzUFJKXyfndVkmSUjAANefWAuwWiwmePnKQGrDmVpJfysAvCPZGtamDVVGEAGySIvxUCNdhRZAthMwEmAHScikuceZfESetpnJrvtlMIIwQmGbzmEttHrmqyhCqOEVLqNQebyefyIlrnOvlolMbImIGfJGTgWCdMXXfmzdVYsIgHsElwIzaFZKSRHQTVJXCWiXctcnkBWIhQejYhbYUziPoUOuvshfWqSNNHVVwHuUEIqAycubTfwPfMXUP 1161005052
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send klSJTlGVsCbfsrwUXrngFwztSespXgEOgkskWCStEhCnTPGsjJTuzLVomjqZhLCwhzkTZDoEKAZMWcMbkMnvGJUfTwTmNdQQGHMkYhMFrDkyamRtwvRYwYrNQMpYSqVJtzKHUbYnZIkbqxMtakCdJMrGvbppkuQQwyTsetdDUNgGtgFiOMlVDiVTtyGQOYYELJWBVORMGAeKtEkitdMhfkPAAjEIpeLlCZFQXDRybTHsgbAlYpfolEzfkioRhJZIEZQyiPMWgMwUTIRxdCJobgqLySoETzOTCGDydSuDpHsRjfdRlUDRooHKkomHRtHAFtlFCcrVrvstRknrlzLdgTBWzYNsxDGmsClOhUqxvWCYgNFwPtrocxEsfMggsfyVwCCmLWaOqEeqIgVfqcOYxrnvCctOkUeRkXxeoQUCyDOiuVRuroUawWIwYUEGKQVSGFyCqZkEmcDqZlBDEkanDVPhGhcieRehPNaTZUQBfbGlhGDghcKgubupWqhTyKuKywwBPaynjLPwCnGHTybNMIZtVZbtkzcopMUaNnQvhGMPxRFZaWxjIkJIoJUoqeetjjhFwXovQVMfbrWnRzECxmpxKXvpeGSQNhSZoXlZQKQtfkxEPRejCGvQMvRapfYVhFLaEZKyCwnSalYQbdzejmSAEAawOzYiPZqoLZjbhVJqwMUPvZrqhqmGnZFqZDfXkXtUBZsCMuUTFMHJmPiSzzXurcIORveRvFCBVpLUlPJTSKZKuBOHVtSAfbDSvnjUhwHsJASofQU DUxfYmdHZggbqfQJkIwrNzmNFrl 2056583329
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_limit writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1161005052
+    ${output}=    Read Until    priority : 2056583329
     Log    ${output}
     Should Contain X Times    ${output}    === Event limit received =     1
-    Should Contain    ${output}    rlimit : iJJoOUNrMqqlvsOdUXAqPGIopBZvhKCKeNXirpHPQrCRpnYshqTofcekXHVWRWwbXDdxtzHfrRCbqfyUqDSrpvRxNyvSxQcuAuOtXmmtUgPkXHDftfButP
-    Should Contain    ${output}    type : DYqtqKYEZaWPSHVhZNOkIPCeTBXITQPgZCMogcaeIBwsQhjlNubGOdxEkDVoQlxzJofgLtsANXIpcPXGmhmyUnPiUrRFAfoeWUqdKqnFUvwuIPOrvCUAzUFJKXyfndVkmSUjAANefWAuwWiwmePnKQGrDmVpJfysAvCPZGtamDVVGEAGySIvxUCNdhRZAthMwEmAHScikuceZfESetpnJrvtlMIIwQmGbzmEttHrmqyhCqOEVLqNQebyefyIlrnOvlolMbImIGfJGTgWCdMXXfmzdVYsIgHsElwIzaFZKSRHQTVJXCWiXctcnkBWIhQejYhbYUziPoUOuvshfWqSNNHVVwHuUEIqAycubTfwPfMXUP
-    Should Contain    ${output}    priority : 1161005052
+    Should Contain    ${output}    rlimit : klSJTlGVsCbfsrwUXrngFwztSespXgEOgkskWCStEhCnTPGsjJTuzLVomjqZhLCwhzkTZDoEKAZMWcMbkMnvGJUfTwTmNdQQGHMkYhMFrDkyamRtwvRYwYrNQMpYSqVJtzKHUbYnZIkbqxMtakCdJMrGvbppkuQQwyTsetdDUNgGtgFiOMlVDiVTtyGQOYYELJWBVORMGAeKtEkitdMhfkPAAjEIpeLlCZFQXDRybTHsgbAlYpfolEzfkioRhJZIEZQyiPMWgMwUTIRxdCJobgqLySoETzOTCGDydSuDpHsRjfdRlUDRooHKkomHRtHAFtlFCcrVrvstRknrlzLdgTBWzYNsxDGmsClOhUqxvWCYgNFwPtrocxEsfMggsfyVwCCmLWaOqEeqIgVfqcOYxrnvCctOkUeRkXxeoQUCyDOiuVRuroUawWIwYUEGKQVSGFyCqZkEmcDqZlBDEkanDVPhGhcieRehPNaTZUQBfbGlhGDghcKgubupWqhTyKuKywwBPaynjLPwCnGHTybNMIZtVZbtkzcopMUaNnQvhGMPxRFZaWxjIkJIoJUoqeetjjhFwXovQVMfbrWnRzECxmpxKXvpeGSQNhSZoXlZQKQtfkxEPRejCGvQMvRapfYVhFLaEZKyCwnSalYQbdzejmSAEAawOzYiPZqoLZjbhVJqwMUPvZrqhqmGnZFqZDfXkXtUBZsCMuUTFMHJmPiSzzXurcIORveRvFCBVpLUlPJTSKZKuBOHVtSAfbDSvnjUhwHsJASofQU
+    Should Contain    ${output}    type : DUxfYmdHZggbqfQJkIwrNzmNFrl
+    Should Contain    ${output}    priority : 2056583329

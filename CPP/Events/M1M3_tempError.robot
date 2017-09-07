@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_tempError sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mrknLffENmXrwBfDxYCnsiYcuLbHpEgfHgNPlSqPAIBgaGVOBiWHsWvfXvHwxRhJRgbOIWRYKEvwtZpxpBojBCWFwPXqwrJxPsXvqdWtLyeKQseadhExRZnmvZWiYUnVbquRoAecbjveDRihXlxrWOwBXsJclBNipyQCpIhdscQBWnCTDHYdmEWxjbwCjgewQKJQOqbABzbMpXDxZRaRcFMTnLXDdzdvLPvVMUrRJNvzPoeKyCmzsvLSdUiPGCkOZXBuMTpJWRCZXgvZPupJQYzKTAaICdpIprfpgWkhTFrslZLOFZeaPLHSyykZADtQCbgTOhTIFhSqRyxHtArlBSvbpHdaeBmULScffUxrRHqhEjQtiDaPNKOwLlMAqFUAPUihhvHMoGjUoQsgCyRiRldmTcoRflADrmCkCBYqpmAycyAiPyJwCBVNPmdbKGjODQewqtPzTZXbEgtdxJmMjATxZsFnYGkPHQGkfooxvpLADIHbwFPOaZofspdfXfjWtiVdiNyBchmYulIxRSsVAnMwTFULFhZXlDwZTUNBOPZoxVPXQtHcZvDjjsCouolIabGOWrNXnIlJeTjNFhtTmXpGHzHxvWbbnBeawQfrMorUwkmUiYXPHGGVuKHaYBmrvUPERmaqQsHNGIXLoByWQFPrZACXZgqFUsmygVpSdikFJxtzpUEjdQXEBSvlIZLvaidEYRtTALLAzYxAFbkWEkWlPkcLcuDkMYuxMRDRrowOquNmubnrzktvKmVzvLshowRBCgMxMkMdTTsheknSOJuUcWWaMSKMFhMgogBiXrywLiJHDnLCQBZRhRhaDRsWgTbqHTFYPW 78486145 58.557 -2081506568
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send yanaoBDWShespwegEJNvLieiAJhLqfwwjYGMdVQWNSQEzvSzkZhNMHWgzQcIPdeTbxaJqwKeLLwtbspPyEqhCzqaNVcQCdwgSBBwZUEQSsTZAGwhyXCHQwKMwEGhrhpZNXechSNzqzROpBwtAtxNMBakoIWxhHjlgGulfrVhAmduhVuCrCArRQxlRgYVGPAnofYIOzdBcMcxuvSDytaWLhnUDnFsmTSyGUTLjsYJPWLgrTrlHHdmGFjgXcPvddxIWtecVctJHtqVfiCPviBuboDJPkGGBceDpltlgrMAxEPgZPHtKtFeKsJtOaPUwLhnirfpodIJpZpyCfDyxOTSUkWmTdswYwNexQBUxaTVubpoPPnMRgXrtNhLjrYoTnafCRKBeNVshktLXiVWbAdzedjkhMSMSBWzbFDDQOLencQCdMxXiHZUwmxgNmvItlSEUSDBkscLqdolGHYNlhsBITebTyFbbyLVcCmesvdlLGAmxLXSVDdUDzflQyTFUdpuZENrxpyTVFgcBVUbFqTpbdwehLEgSecRiACvKREFZvhmxVNKkcNIIKPFkBmYFDdESkvgyjXuRPFzNRCNadPiMhOleENzkrwSvmhvYfiXLHXmVArvqbOUhzsgAdLyoHldxsSlpyXWeaFgjrpEGKTFtcgWQNerFOnbRYUJfUQHWISDvbhdjBzjNKJiFVgQvEkzCJkiwhrUYqaMidoTtDSdbIIUCFRgbAelgyXQCwwEtuYoEgCNNGvxrOHVodTgxqoUPUaAlcQsSXGcsEQRxUaxlVyOpStEYQKaHvTDjmeAcLopXSBjQQaDvWWrsvZatQQgbSlmIKIDXaYWdtNBkgnbh 1645224796 42.4732 -545006460
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2081506568
+    ${output}=    Read Until    priority : -545006460
     Log    ${output}
     Should Contain X Times    ${output}    === Event tempError received =     1
-    Should Contain    ${output}    device : mrknLffENmXrwBfDxYCnsiYcuLbHpEgfHgNPlSqPAIBgaGVOBiWHsWvfXvHwxRhJRgbOIWRYKEvwtZpxpBojBCWFwPXqwrJxPsXvqdWtLyeKQseadhExRZnmvZWiYUnVbquRoAecbjveDRihXlxrWOwBXsJclBNipyQCpIhdscQBWnCTDHYdmEWxjbwCjgewQKJQOqbABzbMpXDxZRaRcFMTnLXDdzdvLPvVMUrRJNvzPoeKyCmzsvLSdUiPGCkOZXBuMTpJWRCZXgvZPupJQYzKTAaICdpIprfpgWkhTFrslZLOFZeaPLHSyykZADtQCbgTOhTIFhSqRyxHtArlBSvbpHdaeBmULScffUxrRHqhEjQtiDaPNKOwLlMAqFUAPUihhvHMoGjUoQsgCyRiRldmTcoRflADrmCkCBYqpmAycyAiPyJwCBVNPmdbKGjODQewqtPzTZXbEgtdxJmMjATxZsFnYGkPHQGkfooxvpLADIHbwFPOaZofspdfXfjWtiVdiNyBchmYulIxRSsVAnMwTFULFhZXlDwZTUNBOPZoxVPXQtHcZvDjjsCouolIabGOWrNXnIlJeTjNFhtTmXpGHzHxvWbbnBeawQfrMorUwkmUiYXPHGGVuKHaYBmrvUPERmaqQsHNGIXLoByWQFPrZACXZgqFUsmygVpSdikFJxtzpUEjdQXEBSvlIZLvaidEYRtTALLAzYxAFbkWEkWlPkcLcuDkMYuxMRDRrowOquNmubnrzktvKmVzvLshowRBCgMxMkMdTTsheknSOJuUcWWaMSKMFhMgogBiXrywLiJHDnLCQBZRhRhaDRsWgTbqHTFYPW
-    Should Contain    ${output}    severity : 78486145
-    Should Contain    ${output}    temp : 58.557
-    Should Contain    ${output}    priority : -2081506568
+    Should Contain    ${output}    device : yanaoBDWShespwegEJNvLieiAJhLqfwwjYGMdVQWNSQEzvSzkZhNMHWgzQcIPdeTbxaJqwKeLLwtbspPyEqhCzqaNVcQCdwgSBBwZUEQSsTZAGwhyXCHQwKMwEGhrhpZNXechSNzqzROpBwtAtxNMBakoIWxhHjlgGulfrVhAmduhVuCrCArRQxlRgYVGPAnofYIOzdBcMcxuvSDytaWLhnUDnFsmTSyGUTLjsYJPWLgrTrlHHdmGFjgXcPvddxIWtecVctJHtqVfiCPviBuboDJPkGGBceDpltlgrMAxEPgZPHtKtFeKsJtOaPUwLhnirfpodIJpZpyCfDyxOTSUkWmTdswYwNexQBUxaTVubpoPPnMRgXrtNhLjrYoTnafCRKBeNVshktLXiVWbAdzedjkhMSMSBWzbFDDQOLencQCdMxXiHZUwmxgNmvItlSEUSDBkscLqdolGHYNlhsBITebTyFbbyLVcCmesvdlLGAmxLXSVDdUDzflQyTFUdpuZENrxpyTVFgcBVUbFqTpbdwehLEgSecRiACvKREFZvhmxVNKkcNIIKPFkBmYFDdESkvgyjXuRPFzNRCNadPiMhOleENzkrwSvmhvYfiXLHXmVArvqbOUhzsgAdLyoHldxsSlpyXWeaFgjrpEGKTFtcgWQNerFOnbRYUJfUQHWISDvbhdjBzjNKJiFVgQvEkzCJkiwhrUYqaMidoTtDSdbIIUCFRgbAelgyXQCwwEtuYoEgCNNGvxrOHVodTgxqoUPUaAlcQsSXGcsEQRxUaxlVyOpStEYQKaHvTDjmeAcLopXSBjQQaDvWWrsvZatQQgbSlmIKIDXaYWdtNBkgnbh
+    Should Contain    ${output}    severity : 1645224796
+    Should Contain    ${output}    temp : 42.4732
+    Should Contain    ${output}    priority : -545006460

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_DriveFault sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 15546 zsGAPabHoxWfpRsgNnRULkWMXQuraGJWREjvuHlYEBqBiGBSxodussBFQVgUZwlIyZEfBgHGIQJToRYaDZOfiIVAdbVMVUUxbWCBgDMuCKOcbcLpBoiZoyHVPwMtRmipMzynuasaPoiZHzImPgpGGKFxLVUgETaHiPPviWBrToEXEUAzwlQfvXvGNIZJkTBIqwAzXavOfZqNFmWFfXxQzVuXDhVQNDiwNRkLGIXiliMYCQcVImfDzsLFKUGQAWBmbTFmjatokwqzOIqFpgmJrmesHiCwFzLBGjXNqLiFCXPozvrlBcPFTASTScFShYuokElEyIifOeBptiDAhzPyCCgXcMVtWYgmzTmGpetlgHOPxKFngJDeiuIvfbvkpuGcqyZFtDuMavqkkrjoRbnBGtCqMfaaNOaGIoEJYdUVHWivqNojVYGZNWQZhpuggFBPQsloVCgqoRVtqanBOMqBGBhTQNRSRqnZFPmgzLQLcyOJOgYqDddfTJfoqsKAAOrszotMOEHysXxsPGnnaWJEZfuyjHBfPTWWmDugYtpuJRODerorkIiUnzejQkBZmbepEtPPsrzMWXOAHXjDTWQFtvRVtomOsIZUSKEFJOLBFVxFsLxzFmmLuEPMrxoxAobEKtfYjqGcDucYxyOCfrTIdfcmiURPlxaJMagybrwvQzwAbXXLAVSsYYLRZxvANitT -619534426
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16798 npPXySamYhTBsyTQnawmDrNnFXhAqfFgtlMSEhggvLGYXzevSBNSZBcXqJrchrJvMPnGfqaWcAXskSkLmiAVDwRGyfEfwogyUgDtfjmnMlLciUWQaEcMMTkmTMpblLYDgAAgjrSfWWZMLeuAXnaYZgSEmCrDLGrkMzUiSJhXbpiVUblBFKcVQpzEUFSSjTtTjGuAGBZFFyOUUHNExrhMJSUmBhGSqklMKeBFoSOQtiteYAXWhHAkdHqhAsjazuEtCizoHjQVinFAcohgoaCwEmYmhmfYySGigcaKzmTEQiwaCEDfONNIyktjRrwLPvVwYqcFykqvRmQCdjfnxGPhktFHIteRjTamAABZujLxnAwCkeOzgOOyNwDKoLveeisfXxcedXwNJXZBfxFvuhXtfOqdrFrEPGEWytyVWzuVaxrhFCnylruySpqtOIhZWRkTfMWCakFwJNcenMNJrgudigbRlLJwHtrWVv -2105905959
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -619534426
+    ${output}=    Read Until    priority : -2105905959
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 15546
-    Should Contain    ${output}    errorCode : zsGAPabHoxWfpRsgNnRULkWMXQuraGJWREjvuHlYEBqBiGBSxodussBFQVgUZwlIyZEfBgHGIQJToRYaDZOfiIVAdbVMVUUxbWCBgDMuCKOcbcLpBoiZoyHVPwMtRmipMzynuasaPoiZHzImPgpGGKFxLVUgETaHiPPviWBrToEXEUAzwlQfvXvGNIZJkTBIqwAzXavOfZqNFmWFfXxQzVuXDhVQNDiwNRkLGIXiliMYCQcVImfDzsLFKUGQAWBmbTFmjatokwqzOIqFpgmJrmesHiCwFzLBGjXNqLiFCXPozvrlBcPFTASTScFShYuokElEyIifOeBptiDAhzPyCCgXcMVtWYgmzTmGpetlgHOPxKFngJDeiuIvfbvkpuGcqyZFtDuMavqkkrjoRbnBGtCqMfaaNOaGIoEJYdUVHWivqNojVYGZNWQZhpuggFBPQsloVCgqoRVtqanBOMqBGBhTQNRSRqnZFPmgzLQLcyOJOgYqDddfTJfoqsKAAOrszotMOEHysXxsPGnnaWJEZfuyjHBfPTWWmDugYtpuJRODerorkIiUnzejQkBZmbepEtPPsrzMWXOAHXjDTWQFtvRVtomOsIZUSKEFJOLBFVxFsLxzFmmLuEPMrxoxAobEKtfYjqGcDucYxyOCfrTIdfcmiURPlxaJMagybrwvQzwAbXXLAVSsYYLRZxvANitT
-    Should Contain    ${output}    priority : -619534426
+    Should Contain    ${output}    driveId : 16798
+    Should Contain    ${output}    errorCode : npPXySamYhTBsyTQnawmDrNnFXhAqfFgtlMSEhggvLGYXzevSBNSZBcXqJrchrJvMPnGfqaWcAXskSkLmiAVDwRGyfEfwogyUgDtfjmnMlLciUWQaEcMMTkmTMpblLYDgAAgjrSfWWZMLeuAXnaYZgSEmCrDLGrkMzUiSJhXbpiVUblBFKcVQpzEUFSSjTtTjGuAGBZFFyOUUHNExrhMJSUmBhGSqklMKeBFoSOQtiteYAXWhHAkdHqhAsjazuEtCizoHjQVinFAcohgoaCwEmYmhmfYySGigcaKzmTEQiwaCEDfONNIyktjRrwLPvVwYqcFykqvRmQCdjfnxGPhktFHIteRjTamAABZujLxnAwCkeOzgOOyNwDKoLveeisfXxcedXwNJXZBfxFvuhXtfOqdrFrEPGEWytyVWzuVaxrhFCnylruySpqtOIhZWRkTfMWCakFwJNcenMNJrgudigbRlLJwHtrWVv
+    Should Contain    ${output}    priority : -2105905959

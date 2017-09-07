@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startRotateCarousel sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1132537379
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 504594783
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startRotateCarousel writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1132537379
+    ${output}=    Read Until    priority : 504594783
     Log    ${output}
     Should Contain X Times    ${output}    === Event startRotateCarousel received =     1
-    Should Contain    ${output}    priority : -1132537379
+    Should Contain    ${output}    priority : 504594783

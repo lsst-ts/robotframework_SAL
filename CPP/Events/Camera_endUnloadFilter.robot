@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endUnloadFilter sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2121729431
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1715153970
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endUnloadFilter writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2121729431
+    ${output}=    Read Until    priority : 1715153970
     Log    ${output}
     Should Contain X Times    ${output}    === Event endUnloadFilter received =     1
-    Should Contain    ${output}    priority : 2121729431
+    Should Contain    ${output}    priority : 1715153970

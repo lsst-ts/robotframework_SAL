@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsNextScript sender/logger tests.
-Force Tags    python
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py NIiOQxWdYtQVuUZLVUNtqmsYRfceaBGuXEZIFYomyMjHVWchYDPLZNnobCCedKNtIYujOEEZttzFgeXbCrKpWjOeBrKrnyQqhNnsqjwojrnBAwKyWzEIhhZyNytUPsXQzCTLBbWrzHWmlzCJxdVWkioDrdfPzIWxbpesvLABHmSzTfixbuSjSjLkuIWKRdmgdRlfKxDIghUKDAsneXVTLbrDnJpoAMlVAPJOEoRagIKPZVQGKajUgQDSBnsHPqBH 31.1513 bfPKGOFndaUoPhXoRoKAiSaqpDHALiPBRSoljdKhwIDRhMCHnryqKDyYgGlwMbEVxZArLDqfoJrRwFdlGOTlArCHSNlzEcbXimfmXYUVPYrnxGGzWfvlrdtrpMIzBQldfqLgHWQRPmazLPrfUshQvrqdJojOSteelTLsCDBowRndHWXMEVOKqmtXvCyGcbvegmvcrMmYxCEqDWdfTcYLIHXsJXsZXkiNPavepUMbxSkJGKGrOQkOfTqFBenChXIu -256520853
+    ${input}=    Write    python ${subSystem}_Event_${component}.py CQMraDSFICSATObaelvRGHmpchcvNlWBHDvLYyMDGEuorvwOaMlXtPCwgdywFwJLbljeCDeIzzajaxvTdENtCbuFkobmTTQyVSqngPeQQZGcOLFqZfgYAPAHTuVEBttTgoBkAimpzWTLlVBQtRFmBKzoHGOjgiUsvxeytADadyqZrpnEBwoIblpbrZtKOoKSRKbBycEyXFvXTGmQIhTwztgkfyxBzAIlqDfTAPvMmRyjrLRWBWXpoYbCLdKYArhH 4.2528 JhXAzlDRhdXkfHyEKitXdvKnHOMNIoqeNsQdtcDrKFTADoDyigpYncAHQrEhXoSZXCHTIECVsSHMAKZbDHkKPGeEwcPFibnMGyMXJDDlTAanAWntqdKpUjzhoPwtHSMvqTGFPvrRaGZoyhARlDVwcIejSMEtIxOypEkmWPNlwanDYVJJfWfmxjilCZteUUlusqovQVGjRaHiGbORGJUQwdBIQPmiACkVzNohHyxocyrZTZbiDpcDEoUKMNurDjxX 624006143
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsNextScript writing a message containing :    1

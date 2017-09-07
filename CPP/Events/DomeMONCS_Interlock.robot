@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeMONCS_Interlock sender/logger tests.
-Force Tags    cpp
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UDutFDWeKxBiUnphfOxARdaUlqlG 1201026452
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FbtwrqNRKDyynvIsrHxPxAWlyEcTzMSqnfbBkEOltigZlbrniwskAkNKeeHdNWVkLmPkkKWRQwszCTzEylYWlMVTsfCUPrZYRzRpgKgfnmmgJmMNgBfHNBWgdozEllYgDPtafyGcgaWaRdBoAtBsWWbVPMgKPddHiOkHvOcbjPLZHLyUedIZJnhJqGOVzqxnkfietIKXkXpMYPlXnIRgTlBaGhOifRnURSHJPqUegqAHMgBUhsxYPQqLsaKvRKMmcOjeGnsPjzZkEkhUrIckFZmChXHynTpwDMqfEcloRempPmVpwADWUdApwJOdYcfELkgJHfGBDDRMIGgdYBrpNbWpWqEeDsXDsUSTzsTkqiXpfFjTSHkfGQeVxqYkaAcSCOtOUEkijqqNKiRMNnEUmoFnsEyVgcrcinMkbeBUYTpGWCEPbKNieBhzowoYJWgHxftAuQyZRokHfItzJkHVspqUDtGHVKnbMYuUPFUMKhhLVJBCXWOQOucvnaAkDvpNNaKMHYXNwjDEXfCQSiXQmOvYYGljnZKSblkDRKOzUTLxgJyfdZxYQITQthFtceOHESngAzgZpxlvhvyQdWppAEuWcztheQcQDEBzHYeYOscrEITSzzVGKaJhXkvBnUkbnfCjBmsTpGnFCqzYVsXwKqVPPiPbpTmrBWywlxMStwIivqbzNtSUwhOcNamL 1305020604
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1201026452
+    ${output}=    Read Until    priority : 1305020604
     Log    ${output}
     Should Contain X Times    ${output}    === Event Interlock received =     1
-    Should Contain    ${output}    detail : UDutFDWeKxBiUnphfOxARdaUlqlG
-    Should Contain    ${output}    priority : 1201026452
+    Should Contain    ${output}    detail : FbtwrqNRKDyynvIsrHxPxAWlyEcTzMSqnfbBkEOltigZlbrniwskAkNKeeHdNWVkLmPkkKWRQwszCTzEylYWlMVTsfCUPrZYRzRpgKgfnmmgJmMNgBfHNBWgdozEllYgDPtafyGcgaWaRdBoAtBsWWbVPMgKPddHiOkHvOcbjPLZHLyUedIZJnhJqGOVzqxnkfietIKXkXpMYPlXnIRgTlBaGhOifRnURSHJPqUegqAHMgBUhsxYPQqLsaKvRKMmcOjeGnsPjzZkEkhUrIckFZmChXHynTpwDMqfEcloRempPmVpwADWUdApwJOdYcfELkgJHfGBDDRMIGgdYBrpNbWpWqEeDsXDsUSTzsTkqiXpfFjTSHkfGQeVxqYkaAcSCOtOUEkijqqNKiRMNnEUmoFnsEyVgcrcinMkbeBUYTpGWCEPbKNieBhzowoYJWgHxftAuQyZRokHfItzJkHVspqUDtGHVKnbMYuUPFUMKhhLVJBCXWOQOucvnaAkDvpNNaKMHYXNwjDEXfCQSiXQmOvYYGljnZKSblkDRKOzUTLxgJyfdZxYQITQthFtceOHESngAzgZpxlvhvyQdWppAEuWcztheQcQDEBzHYeYOscrEITSzzVGKaJhXkvBnUkbnfCjBmsTpGnFCqzYVsXwKqVPPiPbpTmrBWywlxMStwIivqbzNtSUwhOcNamL
+    Should Contain    ${output}    priority : 1305020604
