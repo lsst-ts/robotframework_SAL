@@ -42,8 +42,8 @@ function clearTestSuites() {
 }
 
 function subsystemArray() {
-	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs eec environment \
- hexapod m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
+	echo "archiver camera catchuparchiver dmheaderservice dome domeadb domeaps domelws domelouvers domemoncs domethcs \
+eec environment hexapod m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
 }
 
 function stateArray() {
@@ -80,6 +80,8 @@ function capitializeSubsystem() {
         echo "ProcessingCluster"
 	elif [ "$subSystem" == "eec" ]; then
         echo "EEC"
+	elif [ "$subSystem" == "dmheaderservice" ]; then
+        echo "DMHeaderService"
     else
         local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
@@ -102,6 +104,8 @@ function getEntity() {
 		echo "domeMONCS"
     elif [ "$entity" == "domethcs" ]; then
 		echo "domeTHCS"
+	elif [ "$entity" == "dmheaderservice" ]; then
+		echo "dmHeaderService"
 	else
 		echo "$entity"
 	fi
