@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    This verifies the version of SAL installed on the remote host.
 Force Tags    version
-Suite Setup    Log    ${SALVersion}
+Suite Setup    Log Many    ${SALVersion}    ${OpenspliceVersion}    ${OpenspliceDate}
 Suite Teardown    Close All Connections
 Library    SSHLibrary
 Resource    Global_Vars.robot
@@ -25,12 +25,15 @@ Verify SAL Version
 Verify OpenSplice Version
 	[Documentation]    Verify the OpenSplice version and date.
 	[Tags]    smoke
+	Log    ${versionData}
+	Log Many    ${OpenspliceVersion}    ${OpenspliceDate}
 	Should Contain    ${versionData}    Vortex OpenSplice HDE Release 
 	Should Contain    ${versionData}    ${OpenspliceVersion} For x86_64.linux-debug
 	Should Contain    ${versionData}    Date ${OpenspliceDate}
 
 Verify SAL Version file exists
     [Tags]    smoke
+	Log    ${SALInstall}/lsstsal/scripts/sal_version.tcl
     File Should Exist    ${SALInstall}/lsstsal/scripts/sal_version.tcl
 
 Verify SAL Version file contents
