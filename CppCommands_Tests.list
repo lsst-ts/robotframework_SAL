@@ -9,6 +9,12 @@ CPP/Commands/Camera_initGuiders.robot
 CPP/Commands/Camera_initImage.robot
 CPP/Commands/Camera_setFilter.robot
 CPP/Commands/Camera_takeImages.robot
+CPP/Commands/DMHeaderService_Disable.robot
+CPP/Commands/DMHeaderService_Enable.robot
+CPP/Commands/DMHeaderService_EnterControl.robot
+CPP/Commands/DMHeaderService_ExitControl.robot
+CPP/Commands/DMHeaderService_Standby.robot
+CPP/Commands/DMHeaderService_Start.robot
 CPP/Commands/DomeADB_Crawl.robot
 CPP/Commands/DomeADB_Echo.robot
 CPP/Commands/DomeADB_Move.robot

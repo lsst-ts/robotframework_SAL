@@ -21,6 +21,8 @@ JAVA/Telemetry/Camera_Shutter.robot
 JAVA/Telemetry/Camera_WAS.robot
 JAVA/Telemetry/Camera_WDS.robot
 JAVA/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
+JAVA/Telemetry/DMHeaderService_LoopTime_ms.robot
+JAVA/Telemetry/DMHeaderService_Timestamp.robot
 JAVA/Telemetry/DomeADB_status.robot
 JAVA/Telemetry/DomeAPS_status.robot
 JAVA/Telemetry/DomeLWS_status.robot

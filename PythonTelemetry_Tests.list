@@ -21,6 +21,8 @@ PYTHON/Telemetry/Camera_Shutter.robot
 PYTHON/Telemetry/Camera_WAS.robot
 PYTHON/Telemetry/Camera_WDS.robot
 PYTHON/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
+PYTHON/Telemetry/DMHeaderService_LoopTime_ms.robot
+PYTHON/Telemetry/DMHeaderService_Timestamp.robot
 PYTHON/Telemetry/DomeADB_status.robot
 PYTHON/Telemetry/DomeAPS_status.robot
 PYTHON/Telemetry/DomeLWS_status.robot

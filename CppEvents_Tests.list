@@ -32,6 +32,17 @@ CPP/Events/Camera_startUnloadFilter.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
+CPP/Events/DMHeaderService_AppliedSettingsMatchStart.robot
+CPP/Events/DMHeaderService_DetailedState.robot
+CPP/Events/DMHeaderService_ErrorCode.robot
+CPP/Events/DMHeaderService_Heartbeat.robot
+CPP/Events/DMHeaderService_InternalCommand.robot
+CPP/Events/DMHeaderService_LargeFileObjectAvailable.robot
+CPP/Events/DMHeaderService_LoopTimeOutOfRange.robot
+CPP/Events/DMHeaderService_RejectedCommand.robot
+CPP/Events/DMHeaderService_SettingVersions.robot
+CPP/Events/DMHeaderService_SettingsApplied.robot
+CPP/Events/DMHeaderService_SummaryState.robot
 CPP/Events/DomeADB_AccelerationLimitReached.robot
 CPP/Events/DomeADB_AccelerationLimitSubsided.robot
 CPP/Events/DomeADB_BrakeDisengaged.robot

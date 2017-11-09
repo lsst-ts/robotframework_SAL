@@ -9,6 +9,12 @@ PYTHON/Commands/Camera_initGuiders.robot
 PYTHON/Commands/Camera_initImage.robot
 PYTHON/Commands/Camera_setFilter.robot
 PYTHON/Commands/Camera_takeImages.robot
+PYTHON/Commands/DMHeaderService_Disable.robot
+PYTHON/Commands/DMHeaderService_Enable.robot
+PYTHON/Commands/DMHeaderService_EnterControl.robot
+PYTHON/Commands/DMHeaderService_ExitControl.robot
+PYTHON/Commands/DMHeaderService_Standby.robot
+PYTHON/Commands/DMHeaderService_Start.robot
 PYTHON/Commands/DomeADB_Crawl.robot
 PYTHON/Commands/DomeADB_Echo.robot
 PYTHON/Commands/DomeADB_Move.robot
