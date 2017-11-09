@@ -15,6 +15,8 @@ SALGEN/DomeLouvers_salgenerator.robot
 SALGEN/DomeMONCS_salgenerator.robot
 SALGEN/DomeTHCS_salgenerator.robot
 SALGEN/Dome_salgenerator.robot
+SALGEN/EEC_salgenerator.robot
+SALGEN/Environment_salgenerator.robot
 SALGEN/Hexapod_salgenerator.robot
 SALGEN/M1M3_salgenerator.robot
 SALGEN/M2MS_salgenerator.robot
