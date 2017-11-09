@@ -28,6 +28,13 @@ JAVA/Telemetry/DomeLouvers_status.robot
 JAVA/Telemetry/DomeMONCS_status.robot
 JAVA/Telemetry/DomeTHCS_status.robot
 JAVA/Telemetry/Dome_Summary.robot
+JAVA/Telemetry/EEC_LoopTime_ms.robot
+JAVA/Telemetry/EEC_Timestamp.robot
+JAVA/Telemetry/EEC_daysetpoint.robot
+JAVA/Telemetry/EEC_eectelem.robot
+JAVA/Telemetry/EEC_hvactelem.robot
+JAVA/Telemetry/EEC_nightsetpoint.robot
+JAVA/Telemetry/Environment_weather.robot
 JAVA/Telemetry/Hexapod_Actuators.robot
 JAVA/Telemetry/Hexapod_Application.robot
 JAVA/Telemetry/Hexapod_Electrical.robot

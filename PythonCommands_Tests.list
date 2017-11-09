@@ -31,6 +31,17 @@ PYTHON/Commands/Dome_OpenShutter.robot
 PYTHON/Commands/Dome_Park.robot
 PYTHON/Commands/Dome_SetLouvers.robot
 PYTHON/Commands/Dome_StopShutter.robot
+PYTHON/Commands/EEC_Disable.robot
+PYTHON/Commands/EEC_Enable.robot
+PYTHON/Commands/EEC_ExitControl.robot
+PYTHON/Commands/EEC_Standby.robot
+PYTHON/Commands/EEC_Start.robot
+PYTHON/Commands/EEC_daytimemode.robot
+PYTHON/Commands/EEC_engineeringmode.robot
+PYTHON/Commands/EEC_nighttimemode.robot
+PYTHON/Commands/EEC_operatormode.robot
+PYTHON/Commands/EEC_sethvac.robot
+PYTHON/Commands/EEC_setlouvers.robot
 PYTHON/Commands/Hexapod_configureAcceleration.robot
 PYTHON/Commands/Hexapod_configureLimits.robot
 PYTHON/Commands/Hexapod_configureLut.robot

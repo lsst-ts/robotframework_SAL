@@ -28,6 +28,13 @@ PYTHON/Telemetry/DomeLouvers_status.robot
 PYTHON/Telemetry/DomeMONCS_status.robot
 PYTHON/Telemetry/DomeTHCS_status.robot
 PYTHON/Telemetry/Dome_Summary.robot
+PYTHON/Telemetry/EEC_LoopTime_ms.robot
+PYTHON/Telemetry/EEC_Timestamp.robot
+PYTHON/Telemetry/EEC_daysetpoint.robot
+PYTHON/Telemetry/EEC_eectelem.robot
+PYTHON/Telemetry/EEC_hvactelem.robot
+PYTHON/Telemetry/EEC_nightsetpoint.robot
+PYTHON/Telemetry/Environment_weather.robot
 PYTHON/Telemetry/Hexapod_Actuators.robot
 PYTHON/Telemetry/Hexapod_Application.robot
 PYTHON/Telemetry/Hexapod_Electrical.robot

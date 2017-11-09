@@ -28,6 +28,13 @@ CPP/Telemetry/DomeLouvers_status.robot
 CPP/Telemetry/DomeMONCS_status.robot
 CPP/Telemetry/DomeTHCS_status.robot
 CPP/Telemetry/Dome_Summary.robot
+CPP/Telemetry/EEC_LoopTime_ms.robot
+CPP/Telemetry/EEC_Timestamp.robot
+CPP/Telemetry/EEC_daysetpoint.robot
+CPP/Telemetry/EEC_eectelem.robot
+CPP/Telemetry/EEC_hvactelem.robot
+CPP/Telemetry/EEC_nightsetpoint.robot
+CPP/Telemetry/Environment_weather.robot
 CPP/Telemetry/Hexapod_Actuators.robot
 CPP/Telemetry/Hexapod_Application.robot
 CPP/Telemetry/Hexapod_Electrical.robot
