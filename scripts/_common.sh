@@ -42,8 +42,8 @@ function clearTestSuites() {
 }
 
 function subsystemArray() {
-	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs hexapod \
-m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
+	echo "archiver camera catchuparchiver dome domeadb domeaps domelws domelouvers domemoncs domethcs eec environment \
+ hexapod m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
 }
 
 function stateArray() {
@@ -78,6 +78,8 @@ function capitializeSubsystem() {
         echo "CatchupArchiver"
 	elif [ "$subSystem" == "processingcluster" ]; then
         echo "ProcessingCluster"
+	elif [ "$subSystem" == "eec" ]; then
+        echo "EEC"
     else
         local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
@@ -116,8 +118,9 @@ function generateArgument() {
 	parameterType=$1
 	parameterIDLSize=$2
 	# For string and char, an IDL_Size of 1 means arbitrary size, so set parameterIDLSize to a random, positive number.
-	if [[ ($parameterIDLSize == "1") && ($parameterType == "char" || $parameterType == "string") ]]; then
+	if [[ (-z $parameterIDLSize) || ($parameterIDLSize == "1") && ($parameterType == "char" || $parameterType == "string") ]]; then
 		parameterIDLSize=$((1 + RANDOM % 1000))
+		echo $parameterIDLSize
 	fi	
 
 	###### Set the test value. ######
