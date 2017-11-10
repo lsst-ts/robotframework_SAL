@@ -80,7 +80,7 @@ function capitializeSubsystem() {
         echo "ProcessingCluster"
 	elif [ "$subSystem" == "eec" ]; then
         echo "EEC"
-	elif [ "$subSystem" == "dmheaderservice" ]; then
+	elif [ "$subSystem" == "dmHeaderService" ]; then
         echo "DMHeaderService"
     else
         local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
