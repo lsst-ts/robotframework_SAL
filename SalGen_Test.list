@@ -8,6 +8,7 @@ Version.robot
 SALGEN/Archiver_salgenerator.robot
 SALGEN/Camera_salgenerator.robot
 SALGEN/CatchupArchiver_salgenerator.robot
+SALGEN/DMHeaderService_salgenerator.robot
 SALGEN/DomeADB_salgenerator.robot
 SALGEN/DomeAPS_salgenerator.robot
 SALGEN/DomeLWS_salgenerator.robot
