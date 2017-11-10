@@ -59,7 +59,9 @@ Salgen TCS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_stop.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_wfpCalculate.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_wfpSimulate.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_injectError.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_filterChangeRequest.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_stopMotion.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_target.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_wfpDataReady.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_zemaxError.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_InternalCommand.idl
@@ -68,6 +70,9 @@ Salgen TCS Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_LoopTimeOutOfRange.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_RejectedCommand.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_HeartbeatIn.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_FilterChangeInPosition.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_TargetInPosition.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SettingsApplied.idl
 
 Salgen TCS HTML
     [Documentation]    Create web form interfaces.
@@ -206,8 +211,12 @@ Verify TCS C++ Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpCalculate_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpSimulate_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_wfpSimulate_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_injectError_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_injectError_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_filterChangeRequest_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_filterChangeRequest_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stopMotion_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stopMotion_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_target_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_target_controller
 
 Verify TCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -228,6 +237,12 @@ Verify TCS C++ Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_RejectedCommand_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_HeartbeatIn_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_FilterChangeInPosition_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_FilterChangeInPosition_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_TargetInPosition_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_TargetInPosition_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingsApplied_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingsApplied_log
 
 Salgen TCS Python
     [Documentation]    Generate Python wrapper.
@@ -313,8 +328,12 @@ Verify TCS Python Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_wfpCalculate.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_wfpSimulate.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_wfpSimulate.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_injectError.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_injectError.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_filterChangeRequest.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_filterChangeRequest.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_stopMotion.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_stopMotion.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_target.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_target.py
 
 Verify TCS Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
@@ -337,6 +356,12 @@ Verify TCS Python Event Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_RejectedCommand.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_HeartbeatIn.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_HeartbeatIn.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_FilterChangeInPosition.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_FilterChangeInPosition.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_TargetInPosition.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_TargetInPosition.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_SettingsApplied.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_SettingsApplied.py
 
 Salgen TCS LabVIEW
     [Documentation]    Generate ${subSystem} low-level LabView interfaces.

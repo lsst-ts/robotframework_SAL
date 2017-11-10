@@ -315,6 +315,7 @@ function createTestSuite() {
 	clearTestSuites $subSystem "SALGEN" 
 		
 	# Get XML topic definitions.  Not all subsystems have all types of topics.
+	echo $subSystem
 	declare -a xmls=($(ls $HOME/trunk/ts_xml/sal_interfaces/$subSystem))
 	# Declare topic arrays
 	declare -a telemetryArray=($(getTelemetryTopics $subSystem))
@@ -374,13 +375,14 @@ function createTestSuite() {
 #  MAIN
 if [ "$arg" == "all" ]; then
 	for subSystem in "${subSystemArray[@]}"; do
-		if [ "$subSystem" == "mtmount" ]; then subSystem="MTMount"; fi
+		subSystem=$(getEntity $subSystem)
 		createTestSuite $subSystem
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
 elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	createTestSuite $arg
-	echo COMPLETED all test suites for the $arg.
+	subSystem=$(getEntity $arg)
+	createTestSuite $subSystem
+	echo COMPLETED all test suites for the $subSystem.
 else
 	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi
