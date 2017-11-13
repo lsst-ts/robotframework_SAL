@@ -29,3 +29,13 @@ echo "" >> $argfile
 # Find test suites and add them to the argument file.
 echo "# JAVA Publish/Subscribe Telemetry test suites" >> $argfile
 basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Telemetry/Camera_*` |sed 's/^/rbtsal\/JAVA\/Telemetry\//' >> $argfile
+echo "" >> $argfile
+echo "# JAVA State Machine test suites" >> $argfile
+basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/StateMachine/Camera_*` |sed 's/^/rbtsal\/JAVA\/StateMachine\//' >> $argfile
+echo "" >> $argfile
+echo "# JAVA Commander/Controller test suites" >> $argfile
+basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Commands/Camera_*` |sed 's/^/rbtsal\/JAVA\/Commands\//' >> $argfile
+echo "" >> $argfile
+echo "# JAVA Event Sender/Logger test suites" >> $argfile
+basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Events/Camera_*` |sed 's/^/rbtsal\/JAVA\/Events\//' >> $argfile
+
