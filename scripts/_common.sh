@@ -80,6 +80,8 @@ function capitializeSubsystem() {
         echo "ProcessingCluster"
 	elif [ "$subSystem" == "eec" ]; then
         echo "EEC"
+	elif [ "$subSystem" == "dmheaderservice" ]; then
+        echo "DMHeaderService"
 	elif [ "$subSystem" == "dmHeaderService" ]; then
         echo "DMHeaderService"
     else
