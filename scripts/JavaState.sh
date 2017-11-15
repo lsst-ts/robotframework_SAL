@@ -47,7 +47,7 @@ function createVariables() {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $state" >> $testSuite
-    echo "\${timeout}    30s" >> $testSuite
+    echo "\${timeout}    60s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -56,7 +56,21 @@ function verifyCompCommanderController() {
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Commander_\${component}Test.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Controller_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Commander_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Controller_\${component}Test.java" >> $testSuite
     echo "" >> $testSuite
+}
+
+function runMavenTests() {
+	echo "Run Maven Tests" >> $testSuite
+    echo "    [Tags]    smoke" >> $testSuite
+    echo "    Switch Connection    Commander" >> $testSuite
+    echo "    Comment    Move to working directory." >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
+	echo "    Comment    Run the test." >> $testSuite
+	echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Commander_\${component}Test test" >> $testSuite
+    echo "    \${output}=    Read Until Prompt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
 }
 
 function startCommanderInputs() {
@@ -175,6 +189,7 @@ function createTestSuite() {
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompCommanderController
+		runMavenTests
 		#startCommanderInputs
 		# Create the Commander Timeout test case.
 		#startCommanderTimeout
@@ -206,7 +221,6 @@ elif [[ ${subSystemArray[*]} =~ $arg ]]; then
 	# Get the Subsystem in the correct capitalization.
     subSystemUp=$(capitializeSubsystem $arg)
 	subSystem=$(getEntity $arg)
-	getTopics $subSystem
 	createTestSuite $subSystem
 	echo COMPLETED all test suites for the $arg.
 else

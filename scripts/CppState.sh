@@ -206,7 +206,6 @@ elif [[ ${subSystemArray[*]} =~ $arg ]]; then
 	# Get the Subsystem in the correct capitalization.
     subSystemUp=$(capitializeSubsystem $arg)
 	subSystem=$(getEntity $arg)
-	getTopics $subSystem
 	createTestSuite $subSystem
 	echo COMPLETED all test suites for the $arg.
 else
