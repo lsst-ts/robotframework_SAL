@@ -99,7 +99,21 @@ function verifyCompSenderLogger() {
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Event_\${component}Test.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}EventLogger_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Event_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}EventLogger_\${component}Test.java" >> $testSuite
     echo "" >> $testSuite
+}
+
+function runMavenTests() {
+    echo "Run Maven Tests" >> $testSuite
+    echo "    [Tags]    smoke" >> $testSuite
+    echo "    Switch Connection    Sender" >> $testSuite
+    echo "    Comment    Move to working directory." >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
+    echo "    Comment    Run the test." >> $testSuite
+    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Event_\${component}Test test" >> $testSuite
+    echo "    \${output}=    Read Until Prompt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
 }
 
 function startSenderInputs() {
@@ -197,28 +211,29 @@ function createTestSuite() {
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompSenderLogger
+	    runMavenTests
 		#startSenderInputs
 		#startLogger
 
 		# Get the arguments to the sender.
 		unset argumentsArray
 		# Determine the parameter type and create a test value, accordingly.
-        for parameter in "${parametersArray[@]}"; do
-            parameterIndex=$(getParameterIndex $parameter)
-            parameterType=$(getParameterType $file $topicIndex $parameterIndex)
-            parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-			parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
+        #for parameter in "${parametersArray[@]}"; do
+            #parameterIndex=$(getParameterIndex $parameter)
+            #parameterType=$(getParameterType $file $topicIndex $parameterIndex)
+            #parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+			#parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
 			#echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
-			for i in $(seq 1 $parameterCount); do
-                testValue=$(generateArgument "$parameterType" $parameterIDLSize)
-                argumentsArray+=( $testValue )
-            done
-		done
+			#for i in $(seq 1 $parameterCount); do
+                #testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+                #argumentsArray+=( $testValue )
+            #done
+		#done
 		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
 		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-		parametersArray=("${parametersArray[@]}" "priority")
-		priority=$(python random_value.py long)
-		argumentsArray=("${argumentsArray[@]}" "$priority")
+		#parametersArray=("${parametersArray[@]}" "priority")
+		#priority=$(python random_value.py long)
+		#argumentsArray=("${argumentsArray[@]}" "$priority")
 		# Create the Start Sender test case.
 		#startSender $device $property
 		# Create the Read Logger test case.
