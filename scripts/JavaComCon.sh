@@ -101,7 +101,21 @@ function verifyCompCommanderController() {
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Commander_\${component}Test.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Controller_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_*/src/test/java/\${subSystem}Commander\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_*/src/test/java/\${subSystem}Controller_\${component}Test.java" >> $testSuite
     echo "" >> $testSuite
+}
+
+function runMavenTests() {
+    echo "Run Maven Tests" >> $testSuite
+    echo "    [Tags]    smoke" >> $testSuite
+    echo "    Switch Connection    Commander" >> $testSuite
+    echo "    Comment    Move to working directory." >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
+    echo "    Comment    Run the test." >> $testSuite
+    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Commander_\${component}Test test" >> $testSuite
+    echo "    \${output}=    Read Until Prompt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
 }
 
 function startCommanderInputs() {
