@@ -19,4 +19,6 @@ Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}Commander_${component}Test.java
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}Controller_${component}Test.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_*/src/test/java/${subSystem}Commander${component}Test.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_*/src/test/java/${subSystem}Controller_${component}Test.java
 

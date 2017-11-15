@@ -12,11 +12,22 @@ Resource    ../../common.robot
 *** Variables ***
 ${subSystem}    domeLWS
 ${component}    disable
-${timeout}    30s
+${timeout}    60s
 
 *** Test Cases ***
 Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}Commander_${component}Test.java
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}Controller_${component}Test.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Commander_${component}Test.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Controller_${component}Test.java
 
+Run Maven Tests
+    [Tags]    smoke
+    Switch Connection    Commander
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/maven/${subSystem}_${SALVersion}
+    Comment    Run the test.
+    ${input}=    Write    mvn -Dtest=${subSystem}Commander_${component}Test test
+    ${output}=    Read Until Prompt
+    Log    ${output}

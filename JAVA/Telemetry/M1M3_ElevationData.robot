@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_TC communications tests.
+Documentation    M1M3_ElevationData communications tests.
 Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    TC
+${component}    ElevationData
 ${timeout}    30s
 
 *** Test Cases ***

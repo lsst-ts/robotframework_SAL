@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Electrical communications tests.
+Documentation    M1M3_FPGAData communications tests.
 Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    Electrical
+${component}    FPGAData
 ${timeout}    30s
 
 *** Test Cases ***
