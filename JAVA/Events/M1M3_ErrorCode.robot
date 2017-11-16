@@ -21,12 +21,30 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Event_${component}Test.java
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}EventLogger_${component}Test.java
 
-Run Maven Tests
-    [Tags]    smoke
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/maven/${subSystem}_${SALVersion}
+    Comment    Start the EventLogger test.
+    ${input}=    Write    mvn -Dtest=${subSystem}EventLogger_${component}Test test
+
+Start Sender
+    [Tags]    functional
     Switch Connection    Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/maven/${subSystem}_${SALVersion}
-    Comment    Run the test.
+    Comment    Run the Event test.
     ${input}=    Write    mvn -Dtest=${subSystem}Event_${component}Test test
     ${output}=    Read Until Prompt
     Log    ${output}
+    Should Contain X Times    ${output}    === [putSample logevent_ErrorCode] writing a message containing :    1
+    Should Contain    ${output}    revCode \ :
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}    Running ${subSystem}EventLogger_ErrorCodeTest
+    Should Not Contain    ${output}    [ERROR]

@@ -104,18 +104,6 @@ function verifyCompSenderLogger() {
     echo "" >> $testSuite
 }
 
-function runMavenTests() {
-    echo "Run Maven Tests" >> $testSuite
-    echo "    [Tags]    smoke" >> $testSuite
-    echo "    Switch Connection    Sender" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
-    echo "    Comment    Run the test." >> $testSuite
-    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Event_\${component}Test test" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-}
-
 function startSenderInputs() {
     parameter=$EMPTY
     echo "Start Sender - Verify Missing Inputs Error" >> $testSuite
@@ -136,12 +124,10 @@ function startLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
-    echo "    Comment    Start Logger." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_log" >> $testSuite
-    echo "    \${output}=    Read Until    logger ready =" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    Event \${component} logger ready" >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
+    echo "    Comment    Start the EventLogger test." >> $testSuite
+    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}EventLogger_\${component}Test test" >> $testSuite
+    #echo "    \${output}=    Read Until    Scanning for projects..." >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -153,18 +139,13 @@ function startSender() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Sender" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
-    echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}" >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
+    echo "    Comment    Run the Event test." >> $testSuite
+    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Event_\${component}Test test" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === [putSample] ${subSystem}::logevent_${topic} writing a message containing :    1" >> $testSuite
+    echo "    Should Contain X Times    \${output}    === [putSample logevent_${topic}] writing a message containing :    1" >> $testSuite
     echo "    Should Contain    \${output}    revCode \ :" >>$testSuite
-	echo "    Should Contain    \${output}    === Event ${topic} generated =" >> $testSuite
-	#for parameter in "${parametersArray[@]}"; do
-        #echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
-		#(( i++ ))
-    #done
     echo "" >> $testSuite
 }
 
@@ -175,14 +156,10 @@ function readLogger() {
     echo "Read Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
-	# TSS-682
-    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
+    echo "    \${output}=    Read Until Prompt" >>$testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
-    for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
-		(( i++ ))
-    done
+	echo "    Should Contain    \${output}    Running \${subSystem}EventLogger_${topic}Test" >> $testSuite
+	echo "    Should Not Contain    \${output}    [ERROR]" >> $testSuite
 }
 
 function createTestSuite() {
@@ -211,9 +188,8 @@ function createTestSuite() {
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompSenderLogger
-	    runMavenTests
 		#startSenderInputs
-		#startLogger
+		startLogger
 
 		# Get the arguments to the sender.
 		unset argumentsArray
@@ -235,9 +211,9 @@ function createTestSuite() {
 		#priority=$(python random_value.py long)
 		#argumentsArray=("${argumentsArray[@]}" "$priority")
 		# Create the Start Sender test case.
-		#startSender $device $property
+		startSender $device $property
 		# Create the Read Logger test case.
-		#readLogger $device $property
+		readLogger $device $property
 		# Indicate completion of the test suite.
 		echo Done with test suite.
     	# Move to next Topic.
