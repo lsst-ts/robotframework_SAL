@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_LUT communications tests.
+Documentation    M1M3_ElevationData communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    LUT
+${component}    ElevationData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,12 +49,6 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}param : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}InclinometerElevation : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}MeasuredElevation : 1    9

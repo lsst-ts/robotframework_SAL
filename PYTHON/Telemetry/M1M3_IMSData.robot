@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_LUT communications tests.
+Documentation    M1M3_IMSData communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    LUT
+${component}    IMSData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,4 +49,10 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    param(32) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0]    10
+    Should Contain X Times    ${list}    Timestamp = 1.0    10
+    Should Contain X Times    ${list}    XPosition = 1.0    10
+    Should Contain X Times    ${list}    YPosition = 1.0    10
+    Should Contain X Times    ${list}    ZPosition = 1.0    10
+    Should Contain X Times    ${list}    XRotation = 1.0    10
+    Should Contain X Times    ${list}    YRotation = 1.0    10
+    Should Contain X Times    ${list}    ZRotation = 1.0    10

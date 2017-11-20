@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_TC communications tests.
+Documentation    M1M3_DynamicData communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    TC
+${component}    DynamicData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,7 +49,8 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    error(16) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]    10
-    Should Contain X Times    ${list}    setpoint(16) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]    10
-    Should Contain X Times    ${list}    status(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
-    Should Contain X Times    ${list}    temperature(16) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]    10
+    Should Contain X Times    ${list}    Timestamp = 1.0    10
+    Should Contain X Times    ${list}    AzimuthVelocity = 1.0    10
+    Should Contain X Times    ${list}    ElevationVelocity = 1.0    10
+    Should Contain X Times    ${list}    AzimuthAcceleration = 1.0    10
+    Should Contain X Times    ${list}    ElevationAcceleration = 1.0    10

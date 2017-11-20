@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Surface communications tests.
+Documentation    M1M3_AirData communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    Surface
+${component}    AirData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,21 +49,6 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Calibrated : 9    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Raw : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CellAirPressure : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}HardpointAirPressure : 1    9

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_LimitSensors communications tests.
+Documentation    M1M3_DynamicData communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    LimitSensors
+${component}    DynamicData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,21 +49,8 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}liftoff : 9    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}llimit : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}AzimuthVelocity : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ElevationVelocity : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}AzimuthAcceleration : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ElevationAcceleration : 1    9

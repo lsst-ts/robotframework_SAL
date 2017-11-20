@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Electrical communications tests.
+Documentation    M1M3_AirData communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    Electrical
+${component}    AirData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,6 +49,6 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    error(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
-    Should Contain X Times    ${list}    status(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
-    Should Contain X Times    ${list}    voltage(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
+    Should Contain X Times    ${list}    Timestamp = 1.0    10
+    Should Contain X Times    ${list}    CellAirPressure = 1.0    10
+    Should Contain X Times    ${list}    HardpointAirPressure = 1.0    10

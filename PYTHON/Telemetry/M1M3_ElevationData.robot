@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Support communications tests.
+Documentation    M1M3_ElevationData communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    Support
+${component}    ElevationData
 ${timeout}    30s
 
 *** Test Cases ***
@@ -49,6 +49,6 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    force(6) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]    10
-    Should Contain X Times    ${list}    stepcnt(6) = [0, 1, 2, 3, 4, 5]    10
-    Should Contain X Times    ${list}    targetpos(6) = [0, 1, 2, 3, 4, 5]    10
+    Should Contain X Times    ${list}    Timestamp = 1.0    10
+    Should Contain X Times    ${list}    InclinometerElevation = 1.0    10
+    Should Contain X Times    ${list}    MeasuredElevation = 1.0    10
