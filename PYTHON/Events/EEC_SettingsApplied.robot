@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 362 gEDqQeVcAuvjfwxPImzDiUicOvZHpghuRfHAySPsIADOESNaVJaQhNfxzzvjTkfBLDkdRnhThbeNkNQNoKYfjNgDlqDjQKbVynHQgpBAOctdmNPYiDXlfytCYNUgceuvolBlznTSErUavzTWSPVCSBjgYEchAXODerDrshCdpanbxWGdEAzfChOClXqTmDfRCxbsQXQofnJJagzPoLKGOsuEbFUDTGjrgGdQlrzdZSxaPbFuOuLTpUjDoIMalWpvXzeHMyoeOPbNnxAsZpgOAolHHnrOemoVPKiNvIUAuRUbQSuWAbmfiqSTCzRNEUyGsheJSXKeSwOOxxVeppYYihGxVnMiaEsaZIIMTKOqCg 610 76.5137 -1371859069
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 134 zrxLvggAZyqlCGHZROjDufomigUZXUoRjKXuikWgNQOemaEGCQefxxBeJxOmNlIdgLATtWOPmOlTSZmjsTdVUbmGHZdtpsUGPjaDhhVzXcZycrIgryRJXuASfvSjTwKWMjLTpy 84.6763 82607687
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1
