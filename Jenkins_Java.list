@@ -21,3 +21,44 @@ rbtsal/JAVA/Telemetry/Camera_SDS.robot
 rbtsal/JAVA/Telemetry/Camera_Shutter.robot
 rbtsal/JAVA/Telemetry/Camera_WAS.robot
 rbtsal/JAVA/Telemetry/Camera_WDS.robot
+
+# JAVA State Machine test suites
+rbtsal/JAVA/StateMachine/Camera_abort.robot
+rbtsal/JAVA/StateMachine/Camera_disable.robot
+rbtsal/JAVA/StateMachine/Camera_enable.robot
+rbtsal/JAVA/StateMachine/Camera_enterControl.robot
+rbtsal/JAVA/StateMachine/Camera_exitControl.robot
+rbtsal/JAVA/StateMachine/Camera_standby.robot
+rbtsal/JAVA/StateMachine/Camera_start.robot
+rbtsal/JAVA/StateMachine/Camera_stop.robot
+
+# JAVA Commander/Controller test suites
+rbtsal/JAVA/Commands/Camera_configure.robot
+rbtsal/JAVA/Commands/Camera_initGuiders.robot
+rbtsal/JAVA/Commands/Camera_initImage.robot
+rbtsal/JAVA/Commands/Camera_setFilter.robot
+rbtsal/JAVA/Commands/Camera_takeImages.robot
+
+# JAVA Event Sender/Logger test suites
+rbtsal/JAVA/Events/Camera_ccsConfigured.robot
+rbtsal/JAVA/Events/Camera_endInitializeGuider.robot
+rbtsal/JAVA/Events/Camera_endInitializeImage.robot
+rbtsal/JAVA/Events/Camera_endLoadFilter.robot
+rbtsal/JAVA/Events/Camera_endReadout.robot
+rbtsal/JAVA/Events/Camera_endRotateCarousel.robot
+rbtsal/JAVA/Events/Camera_endSetFilter.robot
+rbtsal/JAVA/Events/Camera_endShutterClose.robot
+rbtsal/JAVA/Events/Camera_endShutterOpen.robot
+rbtsal/JAVA/Events/Camera_endTakeImage.robot
+rbtsal/JAVA/Events/Camera_endUnloadFilter.robot
+rbtsal/JAVA/Events/Camera_notReadyToTakeImage.robot
+rbtsal/JAVA/Events/Camera_prepareToTakeImage.robot
+rbtsal/JAVA/Events/Camera_readyToTakeImage.robot
+rbtsal/JAVA/Events/Camera_startIntegration.robot
+rbtsal/JAVA/Events/Camera_startLoadFilter.robot
+rbtsal/JAVA/Events/Camera_startReadout.robot
+rbtsal/JAVA/Events/Camera_startRotateCarousel.robot
+rbtsal/JAVA/Events/Camera_startSetFilter.robot
+rbtsal/JAVA/Events/Camera_startShutterClose.robot
+rbtsal/JAVA/Events/Camera_startShutterOpen.robot
+rbtsal/JAVA/Events/Camera_startUnloadFilter.robot
