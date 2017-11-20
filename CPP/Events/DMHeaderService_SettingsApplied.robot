@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 748 eKCkGUxNaMBknBatixtdDqFRnwnbVigzgXwBDpUyDyEUoOrQsiYGXJRvOhevnPQhBvkJLobtaohlXWPqxBVqAZErodygqpgECeZfHbrFlMILPYxlXDUCeneFQjMlAwkYLeuawcUyApYeTDJCgKPFSbpxFDkwGYQKGNKrXfOnEecGqqrVhfibeBkJdsVsZCJGEvelxvmnnhVwnyWJqRTcShjltYrCoTdooTQVSHoAMcZiCKhgCIrFJwAMVJflswZfhsxbzYhyMmSZeEknoFshblkJxEZcWBvlffPCWFhbZUMVHnpeeoMQJqosMHYXcEOCBdQBiPUHPEaxArYJLMMAtqUTWpHiAWMWwFDpCsfVZihqKTSQUySfwTdthZUWIkjoAwYfgGMleeREJSevSGIMkBDuEwApniwXzuoCrDXfIVuUalNABlKYvTlasKMoyEisXttttNVLAGsIETMnwVQpLKuBtrDPKhyIEfEoWsyVJBZDUYZNhAbduDPUpEXaLjpUBhpFtiQXurtlixbvhZWkWTHmLygKMnYPDXtqFUWbxHuHubNQvRtvikEvxWicSmlearvSZujWelvoduqLplAJIespTMjqkIaBrkpHKziMOTCSkSQSjUZMVvewXcEBwpUWhLRgiYKfLasLyjNvkKikBvrlKriRCejMKECysTIKMPGJUnoOCEDzdRSkqivoOQHgbFrMPZJdzYjRKUHpcFjWrXOiHnDMKnCAvmnrBATUMQTf 996 2.8841 815123995
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 54 sFIENfIIHEXFyCjJEVYAYbkfvxmBtXsdUmSIfiTwlaTuSHeETIPIaI 38.6534 -1165860308
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dmHeaderService::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 815123995
+    ${output}=    Read Until    priority : -1165860308
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : 748
-    Should Contain    ${output}    timestamp : eKCkGUxNaMBknBatixtdDqFRnwnbVigzgXwBDpUyDyEUoOrQsiYGXJRvOhevnPQhBvkJLobtaohlXWPqxBVqAZErodygqpgECeZfHbrFlMILPYxlXDUCeneFQjMlAwkYLeuawcUyApYeTDJCgKPFSbpxFDkwGYQKGNKrXfOnEecGqqrVhfibeBkJdsVsZCJGEvelxvmnnhVwnyWJqRTcShjltYrCoTdooTQVSHoAMcZiCKhgCIrFJwAMVJflswZfhsxbzYhyMmSZeEknoFshblkJxEZcWBvlffPCWFhbZUMVHnpeeoMQJqosMHYXcEOCBdQBiPUHPEaxArYJLMMAtqUTWpHiAWMWwFDpCsfVZihqKTSQUySfwTdthZUWIkjoAwYfgGMleeREJSevSGIMkBDuEwApniwXzuoCrDXfIVuUalNABlKYvTlasKMoyEisXttttNVLAGsIETMnwVQpLKuBtrDPKhyIEfEoWsyVJBZDUYZNhAbduDPUpEXaLjpUBhpFtiQXurtlixbvhZWkWTHmLygKMnYPDXtqFUWbxHuHubNQvRtvikEvxWicSmlearvSZujWelvoduqLplAJIespTMjqkIaBrkpHKziMOTCSkSQSjUZMVvewXcEBwpUWhLRgiYKfLasLyjNvkKikBvrlKriRCejMKECysTIKMPGJUnoOCEDzdRSkqivoOQHgbFrMPZJdzYjRKUHpcFjWrXOiHnDMKnCAvmnrBATUMQTf
-    Should Contain    ${output}    priority : 996
+    Should Contain    ${output}    settings : 54
+    Should Contain    ${output}    timestamp : sFIENfIIHEXFyCjJEVYAYbkfvxmBtXsdUmSIfiTwlaTuSHeETIPIaI
+    Should Contain    ${output}    priority : 38.6534
