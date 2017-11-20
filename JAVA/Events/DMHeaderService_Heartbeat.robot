@@ -20,6 +20,8 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}EventLogger_${component}Test.java
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Event_${component}Test.java
     File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}EventLogger_${component}Test.java
+	${input}=    Write    echo $CLASSPATH $JUNIT_HOME
+	${output}=    Read Until Prompt
 
 Start Logger
     [Tags]    functional
