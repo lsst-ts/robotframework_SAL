@@ -126,7 +126,6 @@ function generateArgument() {
 	# For string and char, an IDL_Size of 1 means arbitrary size, so set parameterIDLSize to a random, positive number.
 	if [[ (-z $parameterIDLSize || $parameterIDLSize == "1") && ($parameterType == "char" || $parameterType == "string") ]]; then
 		parameterIDLSize=$((1 + RANDOM % 1000))
-		echo $parameterIDLSize
 	fi	
 
 	###### Set the test value. ######
