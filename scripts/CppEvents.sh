@@ -208,7 +208,7 @@ function createTestSuite() {
             parameterType=$(getParameterType $file $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 			parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
-			#echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
+			#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
 			for i in $(seq 1 $parameterCount); do
                 testValue=$(generateArgument "$parameterType" $parameterIDLSize)
                 argumentsArray+=( $testValue )
