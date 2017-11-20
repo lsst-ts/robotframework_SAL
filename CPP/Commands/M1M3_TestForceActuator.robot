@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_update commander/controller tests.
+Documentation    M1M3_TestForceActuator commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    update
+${component}    TestForceActuator
 ${timeout}    30s
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander CtlmeDDEUTwoanMrgkemjXdZydNNZmAXOgQhYTtvJryPNoBMIhfRIWfJxtjqHOUtoKsqvccRozfVKetTzYSifpfqrTjEqJoEEddDLfYPDCtdPBnEGUnAoVqCMCMcFJWKQQaoYsFTreNqgslmkg
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1418986781
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,16 +60,16 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander CtlmeDDEUTwoanMrgkemjXdZydNNZmAXOgQhYTtvJryPNoBMIhfRIWfJxtjqHOUtoKsqvccRozfVKetTzYSifpfqrTjEqJoEEddDLfYPDCtdPBnEGUnAoVqCMCMcFJWKQQaoYsFTreNqgslmkg
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1418986781
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : update    1
-    Should Contain X Times    ${output}    property : lut    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    lut_id : CtlmeDDEUTwoanMrgkemjXdZydNNZmAXOgQhYTtvJryPNoBMIhfRIWfJxtjqHOUtoKsqvccRozfVKetTzYSifpfqrTjEqJoEEddDLfYPDCtdPBnEGUnAoVqCMCMcFJWKQQaoYsFTreNqgslmkg    1
-    Should Contain    ${output}    === command update issued =
+    Should Contain X Times    ${output}    ActuatorId : 1418986781    1
+    Should Contain    ${output}    === command TestForceActuator issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,13 +78,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command update received =
-    Should Contain    ${output}    device : update
-    Should Contain    ${output}    property : lut
+    Should Contain    ${output}    === command TestForceActuator received =
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    lut_id : CtlmeDDEUTwoanMrgkemjXdZydNNZmAXOgQhYTtvJryPNoBMIhfRIWfJxtjqHOUtoKsqvccRozfVKetTzYSifpfqrTjEqJoEEddDLfYPDCtdPBnEGUnAoVqCMCMcFJWKQQaoYsFTreNqgslmkg    1
-    Should Contain X Times    ${output}    === [ackCommand_update] acknowledging a command with :    2
+    Should Contain X Times    ${output}    ActuatorId : 1418986781    1
+    Should Contain X Times    ${output}    === [ackCommand_TestForceActuator] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2

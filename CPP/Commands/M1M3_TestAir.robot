@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_target commander/controller tests.
+Documentation    M1M3_TestAir commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    target
+${component}    TestAir
 ${timeout}    30s
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 88.6998 19.8624
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,17 +60,16 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 88.6998 19.8624
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : target    1
-    Should Contain X Times    ${output}    property : position    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    azimuth : 88.6998    1
-    Should Contain X Times    ${output}    elevation : 19.8624    1
-    Should Contain    ${output}    === command target issued =
+    Should Contain X Times    ${output}    TestAir : 0    1
+    Should Contain    ${output}    === command TestAir issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,14 +78,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command target received =
-    Should Contain    ${output}    device : target
-    Should Contain    ${output}    property : position
+    Should Contain    ${output}    === command TestAir received =
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    azimuth : 88.6998    1
-    Should Contain X Times    ${output}    elevation : 19.8624    1
-    Should Contain X Times    ${output}    === [ackCommand_target] acknowledging a command with :    2
+    Should Contain X Times    ${output}    TestAir : 0    1
+    Should Contain X Times    ${output}    === [ackCommand_TestAir] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2
