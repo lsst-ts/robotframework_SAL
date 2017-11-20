@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_SettingVersions sender/logger tests.
+Documentation    M1M3_SettingVersions sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    eec
+${subSystem}    m1m3
 ${component}    SettingVersions
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send clbrsbOSXvotuWtFfwzZsaieeNtEgTgXqUhnUpCdMKcsCXtAeaowWbiSoUnSIHMtqARZdRVLDoUJTFYkIfDXnsKUyCcmHnOaQNxfvqoyzNYDfaIGrlQWQxMvfzSFqpJZFlIaEaxfBccsKjcvFWMOmcTkSiLKxmDctYKzyhmAaHsuywNuKcuXNFmHJEUVOWftfhlGdsvvJYBVOLXeRYUksHBeLsSfowfySjFGWWTAKxMgapVKboxrXIggZbooHnUXvHtlJZOxjjYotMdxKOPtUXhEtYNVraRclEDPrlfebbnvwVmSXYdTFtTKY 29.6846 -2067421777
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 64.4107 KiBjlRiCoSncpHVKhEMKOwcJzYXHGjuVXIQGrmjTEMOwmFXnXbMKnVotfnGSXMfqQECDqkYpHpTkLbOnbLVhPJpcJGIKZEpJpsLXnMEIkDtjTMzsZEUdFsYaaDhCeKBkahWXyZNhRsfKrrfgvQudAhXqoFJJdJWLRPkHJkAuOdxGkJGzYCdfCdoewlLYFkAXzFzWzBziqOXQwQRmtsxCVLMKbiKTKzwiSCCfaMQQlfhEFvqnPmpZmYwvhGkkQYpGFjQIFNgDOUqPTMVPtuPYeVSDeflocaIYhaMejsRLtSlRWhFyzWtafhNbcIDdPiVCwqJQBdLHILszdWKnhfxhQntYmVXTHrKkLpOXGLBKtdxVZUPKTBQMbHxUrRaOxzvUujFUDBVbvUFFJSSCatmZkGjVEhCqKLsrfXNolPVogDGsbRBDBnwqDPUxdLWllaWqfXaGeuTmKLpyyDeKqckqtxFQuqgqeovBDeqmXJKxGXuXaktfnazcwdXJilfDaImdLSnUrwFyllaGwYYWMXIeNbWPtQWeLtRPwYBGQtEWJeJLcHrDcSjPCPxEATPrQkyWrLQWdPWngAwkUqxwrfBvusNDzXHapcxcJuZEBgwQPgsfxgcxqGUgykWZSTAWQzImovbYhRCsYJIxUaiSDgXfeNtpJlxhUfgeoxCbwwwKmYeaSozXIBDBWhdrHUevdLSkuPicCWDVr 1866916578
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_SettingVersions writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event SettingVersions generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2067421777
+    ${output}=    Read Until    priority : 1866916578
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsVersion : clbrsbOSXvotuWtFfwzZsaieeNtEgTgXqUhnUpCdMKcsCXtAeaowWbiSoUnSIHMtqARZdRVLDoUJTFYkIfDXnsKUyCcmHnOaQNxfvqoyzNYDfaIGrlQWQxMvfzSFqpJZFlIaEaxfBccsKjcvFWMOmcTkSiLKxmDctYKzyhmAaHsuywNuKcuXNFmHJEUVOWftfhlGdsvvJYBVOLXeRYUksHBeLsSfowfySjFGWWTAKxMgapVKboxrXIggZbooHnUXvHtlJZOxjjYotMdxKOPtUXhEtYNVraRclEDPrlfebbnvwVmSXYdTFtTKY
-    Should Contain    ${output}    timestamp : 29.6846
-    Should Contain    ${output}    priority : -2067421777
+    Should Contain    ${output}    Timestamp : 64.4107
+    Should Contain    ${output}    RecommendedSettingsVersion : KiBjlRiCoSncpHVKhEMKOwcJzYXHGjuVXIQGrmjTEMOwmFXnXbMKnVotfnGSXMfqQECDqkYpHpTkLbOnbLVhPJpcJGIKZEpJpsLXnMEIkDtjTMzsZEUdFsYaaDhCeKBkahWXyZNhRsfKrrfgvQudAhXqoFJJdJWLRPkHJkAuOdxGkJGzYCdfCdoewlLYFkAXzFzWzBziqOXQwQRmtsxCVLMKbiKTKzwiSCCfaMQQlfhEFvqnPmpZmYwvhGkkQYpGFjQIFNgDOUqPTMVPtuPYeVSDeflocaIYhaMejsRLtSlRWhFyzWtafhNbcIDdPiVCwqJQBdLHILszdWKnhfxhQntYmVXTHrKkLpOXGLBKtdxVZUPKTBQMbHxUrRaOxzvUujFUDBVbvUFFJSSCatmZkGjVEhCqKLsrfXNolPVogDGsbRBDBnwqDPUxdLWllaWqfXaGeuTmKLpyyDeKqckqtxFQuqgqeovBDeqmXJKxGXuXaktfnazcwdXJilfDaImdLSnUrwFyllaGwYYWMXIeNbWPtQWeLtRPwYBGQtEWJeJLcHrDcSjPCPxEATPrQkyWrLQWdPWngAwkUqxwrfBvusNDzXHapcxcJuZEBgwQPgsfxgcxqGUgykWZSTAWQzImovbYhRCsYJIxUaiSDgXfeNtpJlxhUfgeoxCbwwwKmYeaSozXIBDBWhdrHUevdLSkuPicCWDVr
+    Should Contain    ${output}    priority : 1866916578

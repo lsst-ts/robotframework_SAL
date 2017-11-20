@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_targetDone sender/logger tests.
+Documentation    M1M3_ElevationAngleChecks sender/logger tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    targetDone
+${component}    ElevationAngleChecks
 ${timeout}    30s
 
 *** Test Cases ***
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp MatchesTMA MatchesInclinometer MatchesMeasured priority
 
 Start Logger
     [Tags]    functional
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -91479203
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 66.8784 1 1 0 1938583217
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_targetDone writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ElevationAngleChecks writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

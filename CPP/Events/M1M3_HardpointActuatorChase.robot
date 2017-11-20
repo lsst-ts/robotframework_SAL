@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DMHeaderService_Heartbeat sender/logger tests.
+Documentation    M1M3_HardpointActuatorChase sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -9,8 +9,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    dmHeaderService
-${component}    Heartbeat
+${subSystem}    m1m3
+${component}    HardpointActuatorChase
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,18 +47,20 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 217222859
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 48.0746 701546107 0 618095092
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] dmHeaderService::logevent_Heartbeat writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorChase writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event Heartbeat generated =
+    Should Contain    ${output}    === Event HardpointActuatorChase generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 217222859
+    ${output}=    Read Until    priority : 618095092
     Log    ${output}
-    Should Contain X Times    ${output}    === Event Heartbeat received =     1
-    Should Contain    ${output}    heartbeat : 0
-    Should Contain    ${output}    priority : 217222859
+    Should Contain X Times    ${output}    === Event HardpointActuatorChase received =     1
+    Should Contain    ${output}    Timestamp : 48.0746
+    Should Contain    ${output}    ActuatorId : 701546107
+    Should Contain    ${output}    Chasing : 0
+    Should Contain    ${output}    priority : 618095092

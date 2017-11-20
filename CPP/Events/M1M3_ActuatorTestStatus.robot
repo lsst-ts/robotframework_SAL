@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_updateDone sender/logger tests.
+Documentation    M1M3_ActuatorTestStatus sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    updateDone
+${component}    ActuatorTestStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,17 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -457557188
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 85.7992 0 -243511877
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_updateDone writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ActuatorTestStatus writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event updateDone generated =
+    Should Contain    ${output}    === Event ActuatorTestStatus generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -457557188
+    ${output}=    Read Until    priority : -243511877
     Log    ${output}
-    Should Contain X Times    ${output}    === Event updateDone received =     1
-    Should Contain    ${output}    priority : -457557188
+    Should Contain X Times    ${output}    === Event ActuatorTestStatus received =     1
+    Should Contain    ${output}    Timestamp : 85.7992
+    Should Contain    ${output}    AllTestsRan : 0
+    Should Contain    ${output}    priority : -243511877

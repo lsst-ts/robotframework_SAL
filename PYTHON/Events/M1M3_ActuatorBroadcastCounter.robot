@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_tempError sender/logger tests.
+Documentation    M1M3_ActuatorBroadcastCounter sender/logger tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    tempError
+${component}    ActuatorBroadcastCounter
 ${timeout}    30s
 
 *** Test Cases ***
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : device severity temp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ActuatorId CounterOk priority
 
 Start Logger
     [Tags]    functional
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py BspEQQuXIuzbjiwEcBoRmURczmttPzWZwyoTeufgfaIiiIZMgPTEKKPpcvLwXymRkyWUtZQPmAmTmxefSGxDmmAHdYUWzIUizorGKvzjLPRJcHuyxlBqPOtQxkTDwSTVeZEmnRiVrwdePFnwkyDaLmefXRkvqQkIaoFElGEMMMeKIKTbHiAsBNYqfDHifvDsxVRnrTESubOSsGXCjhKWAyMDpJMbLYLeItoBMkNCrhGLLQWrnfmUstFvvyPdkQLUuDusLTJkxWLcPzptiqJNqDJMCiisNHYyUrgNGVPEalbFloLfPfBYxfNkgZFbESioAzwPCLgIRoKyeqWuWgUyAXjOlSvWJOyuPwQFWkTxdYskpqPEmIQqVsNZRvKOGPkwsLcubEeARaBXZmQDzeHXFAxpUEpyRXeYJRqxcrGxAIc 1130792314 20.7804 194286951
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1.5275 1621125507 0 -961599072
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_tempError writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ActuatorBroadcastCounter writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

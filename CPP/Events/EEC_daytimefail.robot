@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12836 -1877098288
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -9249 1383379826
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_daytimefail writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1877098288
+    ${output}=    Read Until    priority : 1383379826
     Log    ${output}
     Should Contain X Times    ${output}    === Event daytimefail received =     1
-    Should Contain    ${output}    status : 12836
-    Should Contain    ${output}    priority : -1877098288
+    Should Contain    ${output}    status : -9249
+    Should Contain    ${output}    priority : 1383379826

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DMHeaderService_Heartbeat sender/logger tests.
+Documentation    M1M3_AirStatus sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -9,8 +9,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    dmHeaderService
-${component}    Heartbeat
+${subSystem}    m1m3
+${component}    AirStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,18 +47,22 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 217222859
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 94.3137 1 0 1 0 -2072187891
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] dmHeaderService::logevent_Heartbeat writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AirStatus writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event Heartbeat generated =
+    Should Contain    ${output}    === Event AirStatus generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 217222859
+    ${output}=    Read Until    priority : -2072187891
     Log    ${output}
-    Should Contain X Times    ${output}    === Event Heartbeat received =     1
-    Should Contain    ${output}    heartbeat : 0
-    Should Contain    ${output}    priority : 217222859
+    Should Contain X Times    ${output}    === Event AirStatus received =     1
+    Should Contain    ${output}    Timestamp : 94.3137
+    Should Contain    ${output}    AirCommandedOn : 1
+    Should Contain    ${output}    AirOn : 0
+    Should Contain    ${output}    AirPressureOk : 1
+    Should Contain    ${output}    HardpointAirPressureOk : 0
+    Should Contain    ${output}    priority : -2072187891

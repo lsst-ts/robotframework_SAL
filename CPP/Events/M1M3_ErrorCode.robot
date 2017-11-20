@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_limitError sender/logger tests.
+Documentation    M1M3_ErrorCode sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    limitError
+${component}    ErrorCode
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VUFtmMhKXwjxVusAXrTWisfggrBDIMwRuAkSkFhNKTqYPMybhiWfJPfhjSEgnffVztTkwBRhznHIGuvvETUEOQZEhqZdrJLOwETafCuJywVmNY SCvItQeRsTKurIdakcWwBzcqDtZSmPhRcnmwzKwyyLVGgkhBODJZRHwjZkklTplzRtzWBOoexGcKdsWnXGXGhAVbCMdFXNOSXRoIkhpEbJvtltyiNBufReaQSdxRueopGMBipQGVOZnGdqhagWOwIySMiqLMSHjoRBYWvfkNDigNvRkqXIVbdyVUMHhXxZvNAXkHuJXQBtxOmaVzacUUjKEJLHnQfaccRdeIhXKfzJdCnZBArPpyifPyqzRZYlniiuoYTcaPYOaHJaYoVppmstRYAJAnwoMSGqVXfAwbwLafUcoSNNZBQXoyeWoXgNgZgTlWysLtnOaBAlZwAqcJQuBaQTXkBueiIGGjV 622825916
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 66.4183 -66939601 -307078862
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_limitError writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ErrorCode writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event limitError generated =
+    Should Contain    ${output}    === Event ErrorCode generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 622825916
+    ${output}=    Read Until    priority : -307078862
     Log    ${output}
-    Should Contain X Times    ${output}    === Event limitError received =     1
-    Should Contain    ${output}    llimit : VUFtmMhKXwjxVusAXrTWisfggrBDIMwRuAkSkFhNKTqYPMybhiWfJPfhjSEgnffVztTkwBRhznHIGuvvETUEOQZEhqZdrJLOwETafCuJywVmNY
-    Should Contain    ${output}    type : SCvItQeRsTKurIdakcWwBzcqDtZSmPhRcnmwzKwyyLVGgkhBODJZRHwjZkklTplzRtzWBOoexGcKdsWnXGXGhAVbCMdFXNOSXRoIkhpEbJvtltyiNBufReaQSdxRueopGMBipQGVOZnGdqhagWOwIySMiqLMSHjoRBYWvfkNDigNvRkqXIVbdyVUMHhXxZvNAXkHuJXQBtxOmaVzacUUjKEJLHnQfaccRdeIhXKfzJdCnZBArPpyifPyqzRZYlniiuoYTcaPYOaHJaYoVppmstRYAJAnwoMSGqVXfAwbwLafUcoSNNZBQXoyeWoXgNgZgTlWysLtnOaBAlZwAqcJQuBaQTXkBueiIGGjV
-    Should Contain    ${output}    priority : 622825916
+    Should Contain X Times    ${output}    === Event ErrorCode received =     1
+    Should Contain    ${output}    Timestamp : 66.4183
+    Should Contain    ${output}    ErrorCode : -66939601
+    Should Contain    ${output}    priority : -307078862

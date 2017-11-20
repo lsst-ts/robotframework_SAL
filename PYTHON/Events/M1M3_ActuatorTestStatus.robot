@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_targetError sender/logger tests.
+Documentation    M1M3_ActuatorTestStatus sender/logger tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    targetError
+${component}    ActuatorTestStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp AllTestsRan priority
 
 Start Logger
     [Tags]    functional
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 402328850
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 34.0922 1 693477558
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_targetError writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ActuatorTestStatus writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

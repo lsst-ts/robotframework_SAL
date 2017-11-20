@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_targetDone sender/logger tests.
+Documentation    M1M3_StartupChecks sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    targetDone
+${component}    StartupChecks
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,17 +47,24 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -444116580
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 36.7108 0 1 0 1 1 0 -1029933733
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_targetDone writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_StartupChecks writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event targetDone generated =
+    Should Contain    ${output}    === Event StartupChecks generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -444116580
+    ${output}=    Read Until    priority : -1029933733
     Log    ${output}
-    Should Contain X Times    ${output}    === Event targetDone received =     1
-    Should Contain    ${output}    priority : -444116580
+    Should Contain X Times    ${output}    === Event StartupChecks received =     1
+    Should Contain    ${output}    Timestamp : 36.7108
+    Should Contain    ${output}    ILCVersionsOk : 0
+    Should Contain    ${output}    DCAVersionsOk : 1
+    Should Contain    ${output}    ILCFirmwareOk : 0
+    Should Contain    ${output}    DCAFirmwareOk : 1
+    Should Contain    ${output}    ILCStatusOk : 1
+    Should Contain    ${output}    DCAStatusOk : 0
+    Should Contain    ${output}    priority : -1029933733

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 331 qkYdRDSpAWoSbnLljUqAoUsrNJsSbzmDjTjfsnZbDHbTfpjvgnSCvXoRPWEMTWChBcozzdLOXVzrSsOxsWPpquEEYOtckQeasrpStaBWGdLXxmTevkvrNqgkqdAUrBXvAXNtQhzUKlditbdSZrgUOpiKmPxUhZdhSDrLArzUFfnMesmyiGQYErxLLuNIuhTdTSZxMCSFaWGNyIZNBaBzEAmgJrAwSFSJxqJNHEjGPgFuWyOKXqdcDFaDCkFtiTCVqgEbJYZwdwglPAJVQqocubbSYvAlqROdDMQSbPGzCCzhXgEsypryVuHlfrdRXGEYAqRchoqGfiD 75.6622 1647553328
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FAslKKgXMZjZWgxsPsDtKuwMrKdvegpn 48.7986 -179245275
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1647553328
+    ${output}=    Read Until    priority : -179245275
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : 331
-    Should Contain    ${output}    timestamp : qkYdRDSpAWoSbnLljUqAoUsrNJsSbzmDjTjfsnZbDHbTfpjvgnSCvXoRPWEMTWChBcozzdLOXVzrSsOxsWPpquEEYOtckQeasrpStaBWGdLXxmTevkvrNqgkqdAUrBXvAXNtQhzUKlditbdSZrgUOpiKmPxUhZdhSDrLArzUFfnMesmyiGQYErxLLuNIuhTdTSZxMCSFaWGNyIZNBaBzEAmgJrAwSFSJxqJNHEjGPgFuWyOKXqdcDFaDCkFtiTCVqgEbJYZwdwglPAJVQqocubbSYvAlqROdDMQSbPGzCCzhXgEsypryVuHlfrdRXGEYAqRchoqGfiD
-    Should Contain    ${output}    priority : 75.6622
+    Should Contain    ${output}    settings : FAslKKgXMZjZWgxsPsDtKuwMrKdvegpn
+    Should Contain    ${output}    timestamp : 48.7986
+    Should Contain    ${output}    priority : -179245275

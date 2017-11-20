@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_interlock sender/logger tests.
+Documentation    M1M3_LowerMirrorComplete sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    interlock
+${component}    LowerMirrorComplete
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,18 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QUvAclPWEwgfQMGnQPESybRJifKmeIjcgLGPLuGOZAPdZoWCQijeHgqPVReexyPwYvbwIwAzeQnIfKOdcLJPNeAstIcPMNiFoTcgIWRCOwlWZeWimnDAUhWZSlyUYqiYIQvSpPLXkkWpzTvMGHOqtWBqPvyQUrGoRiAtncKlHabZWYoRJRYiUJupDxINiEyvDZRewPIHZvkfwOEZXWmunXnooECKKKOAoPpsMTKoUUFQoIGjQsYzTDgYWUjRQBnxiiqdpLisnRtFcNMxWTIwzYxjqSNQIUPVlXcHdHUmeIpLrCkLtjZApxrxqvvhuJYEtLTsZuaIesHXlyaWIWVgRdFwxmXbFwdPIHzerhkSRsxiCfmm 341834097
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 57.9293 1 -468716528
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_interlock writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_LowerMirrorComplete writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event interlock generated =
+    Should Contain    ${output}    === Event LowerMirrorComplete generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 341834097
+    ${output}=    Read Until    priority : -468716528
     Log    ${output}
-    Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : QUvAclPWEwgfQMGnQPESybRJifKmeIjcgLGPLuGOZAPdZoWCQijeHgqPVReexyPwYvbwIwAzeQnIfKOdcLJPNeAstIcPMNiFoTcgIWRCOwlWZeWimnDAUhWZSlyUYqiYIQvSpPLXkkWpzTvMGHOqtWBqPvyQUrGoRiAtncKlHabZWYoRJRYiUJupDxINiEyvDZRewPIHZvkfwOEZXWmunXnooECKKKOAoPpsMTKoUUFQoIGjQsYzTDgYWUjRQBnxiiqdpLisnRtFcNMxWTIwzYxjqSNQIUPVlXcHdHUmeIpLrCkLtjZApxrxqvvhuJYEtLTsZuaIesHXlyaWIWVgRdFwxmXbFwdPIHzerhkSRsxiCfmm
-    Should Contain    ${output}    priority : 341834097
+    Should Contain X Times    ${output}    === Event LowerMirrorComplete received =     1
+    Should Contain    ${output}    Timestamp : 57.9293
+    Should Contain    ${output}    Successful : 1
+    Should Contain    ${output}    priority : -468716528

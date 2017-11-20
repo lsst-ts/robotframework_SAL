@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_interlock sender/logger tests.
+Documentation    M1M3_StatusChecks sender/logger tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    interlock
+${component}    StatusChecks
 ${timeout}    30s
 
 *** Test Cases ***
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : detail priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ILCResetOk DCAResetOk ILCPowerOk DCAPowerOk priority
 
 Start Logger
     [Tags]    functional
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py dCJuCpJistErQLzpYbXhsbcqZNSAqHRYsSUpfEbBgsNlUcmkHqvdGLqKVQibCKZgqnllJdUGTyYbZwKTqcxLgwXpRRmXMleKNjUHxVsGmtrggTVCltpBMpQWymhuPeAYGzmcJaqiTZsjHaNsfOGOjdnbbuMvxETWUvJxNjOlPiJEdGVKmOJrbncYKaoAIVPHIpmvhnIfHYVGRAqMOYVkvCiPBHwLnCeICvbXcViCpRgCwjhYharCuJQUMWFNTVejJoKiesGIcuIGNICxFTXSssDRcqcHkolVNsZHldRFIpGnBLVWejVnlCJlmiWnSFrFCrnmhhbLXYpzLLPSCsIosmKEFCacrHAmSkSPOZZvjTOlZkXckCkFVVnqaTChAVqOvHHzptfpjTyaVAWrFzKHTwkxpZGhDjTJjkKJxFMVfVQllYmRvTuplufJpZwsLOYFDNrMUVrHOgUWSKwQiRyccRfrkhZzrnTTGbuMMjHmhTRYpYRvMyLsqmPVvKbBQtxTPDrNiijPIyOWrqklJmGhKFcLHPffoOcPPYxvvHuHwwmucwQlBehPbFYJtZFuqlVjOCnspOhteFKxJGNwfSeXETeFjoAayJAJFNlhxivuFBMweUSmCespySRgHOsTDqPJuNYlyWWlAQCfcKhgtAVtHDNUOJwMGHgrdDxeTagQgxdTdzCnjaJyxVidZuYZXRfYBWocDcBEOAGhfbqwudWoUiZGEaIYWTwnjVnKnDisNyBrLrebCiZzdascArNanUpeRhTjhWCabjnmafjZHscbintgTyQnMMseQzQZWuAXzQCbJeABApwseAKoTMXMOJYhSpRMJmSHzvmsIiGlrchLXOCNdWbeInltnNBUWBOhSwxMajeIOcxvCYgGYQwRFBGefVhMkmtSdYCctcuFvUwnnsGVjFjUHAYfJNOBgueexVFwya 384646844
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 72.3916 1 1 0 0 1390982751
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_interlock writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_StatusChecks writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

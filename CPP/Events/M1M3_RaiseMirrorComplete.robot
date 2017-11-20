@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_updateError sender/logger tests.
+Documentation    M1M3_RaiseMirrorComplete sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    m1m3
-${component}    updateError
+${component}    RaiseMirrorComplete
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,17 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 440029216
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 35.5652 1 1593627025
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_updateError writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_RaiseMirrorComplete writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event updateError generated =
+    Should Contain    ${output}    === Event RaiseMirrorComplete generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 440029216
+    ${output}=    Read Until    priority : 1593627025
     Log    ${output}
-    Should Contain X Times    ${output}    === Event updateError received =     1
-    Should Contain    ${output}    priority : 440029216
+    Should Contain X Times    ${output}    === Event RaiseMirrorComplete received =     1
+    Should Contain    ${output}    Timestamp : 35.5652
+    Should Contain    ${output}    Successful : 1
+    Should Contain    ${output}    priority : 1593627025
