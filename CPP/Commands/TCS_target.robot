@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_ExitControl commander/controller tests.
+Documentation    TCS_target commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -10,8 +10,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    eec
-${component}    ExitControl
+${subSystem}    tcs
+${component}    target
 ${timeout}    30s
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1098587131 431857076 -1951355783 CzcuawnLIaapBbskMXMlCRNMTXnalHHniezKKjXUOtabWbXVsVPEDPtDrgnxocSd 14.7793 94.0417 6.2726 58.634 -479041213 766440375 50.9668
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1098587131 431857076 -1951355783 CzcuawnLIaapBbskMXMlCRNMTXnalHHniezKKjXUOtabWbXVsVPEDPtDrgnxocSd 14.7793 94.0417 6.2726 58.634 -479041213 766440375 50.9668
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,18 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    exit : 1    1
-    Should Contain    ${output}    === command ExitControl issued =
+    Should Contain X Times    ${output}    targetId : -1098587131    1
+    Should Contain X Times    ${output}    fieldId : 431857076    1
+    Should Contain X Times    ${output}    groupId : -1951355783    1
+    Should Contain X Times    ${output}    filter : CzcuawnLIaapBbskMXMlCRNMTXnalHHniezKKjXUOtabWbXVsVPEDPtDrgnxocSd    1
+    Should Contain X Times    ${output}    requestTime : 14.7793    1
+    Should Contain X Times    ${output}    ra : 94.0417    1
+    Should Contain X Times    ${output}    dec : 6.2726    1
+    Should Contain X Times    ${output}    angle : 58.634    1
+    Should Contain X Times    ${output}    num_exposures : -479041213    1
+    Should Contain X Times    ${output}    exposure_times : 766440375    1
+    Should Contain X Times    ${output}    slew_time : 50.9668    1
+    Should Contain    ${output}    === command target issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,13 +88,23 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command ExitControl received =
+    Should Contain    ${output}    === command target received =
     Should Contain    ${output}    device : 
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    exit : 1    1
-    Should Contain X Times    ${output}    === [ackCommand_ExitControl] acknowledging a command with :    2
+    Should Contain X Times    ${output}    targetId : -1098587131    1
+    Should Contain X Times    ${output}    fieldId : 431857076    1
+    Should Contain X Times    ${output}    groupId : -1951355783    1
+    Should Contain X Times    ${output}    filter : CzcuawnLIaapBbskMXMlCRNMTXnalHHniezKKjXUOtabWbXVsVPEDPtDrgnxocSd    1
+    Should Contain X Times    ${output}    requestTime : 14.7793    1
+    Should Contain X Times    ${output}    ra : 94.0417    1
+    Should Contain X Times    ${output}    dec : 6.2726    1
+    Should Contain X Times    ${output}    angle : 58.634    1
+    Should Contain X Times    ${output}    num_exposures : -479041213    1
+    Should Contain X Times    ${output}    exposure_times : 766440375    1
+    Should Contain X Times    ${output}    slew_time : 50.9668    1
+    Should Contain X Times    ${output}    === [ackCommand_target] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2

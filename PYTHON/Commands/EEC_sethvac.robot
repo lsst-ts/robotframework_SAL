@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 405 18.0256 152 34.3642 131 17.5036 110 16.6689 857 67.2316 836 64.6069 582 67.4181 561 92.0362 379 15.2916 126 94.4984 104 0.1596 851 86.6319 830 86.8017 577 70.4319 556 99.3426
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 27.798 93.3598 52.602 67.076 15.9885 2.2119 99.2536 59.0544 34.9245 88.188 97.4621 96.5891 45.6474 88.0502 90.8635
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 405 18.0256 152 34.3642 131 17.5036 110 16.6689 857 67.2316 836 64.6069 582 67.4181 561 92.0362 379 15.2916 126 94.4984 104 0.1596 851 86.6319 830 86.8017 577 70.4319 556 99.3426
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 27.798 93.3598 52.602 67.076 15.9885 2.2119 99.2536 59.0544 34.9245 88.188 97.4621 96.5891 45.6474 88.0502 90.8635
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    parameters : 405    1
+    Should Contain X Times    ${output}    parameters : 27.798    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    parameters = 405    1
+    Should Contain X Times    ${output}    parameters = 27.798    1
     Should Contain X Times    ${output}    === [ackCommand_sethvac] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

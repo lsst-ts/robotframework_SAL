@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 217 79.5235 196 33.4233 175 74.9502 922 16.3816 901 21.2653 648 55.3768 627 66.2653 374 71.0121 353 18.455 99 45.6011 78 70.8616 825 12.0384 804 14.049 551 18.5149 530 66.9644
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 87.1497 99.7246 79.86 79.0017 28.6047 21.6372 17.7903 69.0757 4.8164 20.881 68.0366 65.9114 88.8638 70.0714 31.3642
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 217 79.5235 196 33.4233 175 74.9502 922 16.3816 901 21.2653 648 55.3768 627 66.2653 374 71.0121 353 18.455 99 45.6011 78 70.8616 825 12.0384 804 14.049 551 18.5149 530 66.9644
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 87.1497 99.7246 79.86 79.0017 28.6047 21.6372 17.7903 69.0757 4.8164 20.881 68.0366 65.9114 88.8638 70.0714 31.3642
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    parameters : 217    1
+    Should Contain X Times    ${output}    parameters : 87.1497    1
     Should Contain    ${output}    === command sethvac issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    parameters : 217    1
+    Should Contain X Times    ${output}    parameters : 87.1497    1
     Should Contain X Times    ${output}    === [ackCommand_sethvac] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

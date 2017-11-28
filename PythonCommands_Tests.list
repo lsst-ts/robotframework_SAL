@@ -101,6 +101,8 @@ PYTHON/Commands/Rotator_test.robot
 PYTHON/Commands/Rotator_track.robot
 PYTHON/Commands/Sequencer_script.robot
 PYTHON/Commands/Sequencer_sequence.robot
-PYTHON/Commands/TCS_injectError.robot
+PYTHON/Commands/TCS_filterChangeRequest.robot
+PYTHON/Commands/TCS_stopMotion.robot
+PYTHON/Commands/TCS_target.robot
 PYTHON/Commands/TCS_wfpCalculate.robot
 PYTHON/Commands/TCS_wfpSimulate.robot

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_ExitControl commander/controller tests.
+Documentation    TCS_stopMotion commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -10,8 +10,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    eec
-${component}    ExitControl
+${subSystem}    tcs
+${component}    stopMotion
 ${timeout}    30s
 
 *** Test Cases ***
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    exit : 1    1
-    Should Contain    ${output}    === command ExitControl issued =
+    Should Contain X Times    ${output}    stopMotion : 1    1
+    Should Contain    ${output}    === command stopMotion issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,13 +78,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command ExitControl received =
+    Should Contain    ${output}    === command stopMotion received =
     Should Contain    ${output}    device : 
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    exit : 1    1
-    Should Contain X Times    ${output}    === [ackCommand_ExitControl] acknowledging a command with :    2
+    Should Contain X Times    ${output}    stopMotion : 1    1
+    Should Contain X Times    ${output}    === [ackCommand_stopMotion] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2
