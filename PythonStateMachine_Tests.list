@@ -92,14 +92,6 @@ PYTHON/StateMachine/Hexapod_exitControl.robot
 PYTHON/StateMachine/Hexapod_standby.robot
 PYTHON/StateMachine/Hexapod_start.robot
 PYTHON/StateMachine/Hexapod_stop.robot
-PYTHON/StateMachine/M1M3_abort.robot
-PYTHON/StateMachine/M1M3_disable.robot
-PYTHON/StateMachine/M1M3_enable.robot
-PYTHON/StateMachine/M1M3_enterControl.robot
-PYTHON/StateMachine/M1M3_exitControl.robot
-PYTHON/StateMachine/M1M3_standby.robot
-PYTHON/StateMachine/M1M3_start.robot
-PYTHON/StateMachine/M1M3_stop.robot
 PYTHON/StateMachine/M2MS_abort.robot
 PYTHON/StateMachine/M2MS_disable.robot
 PYTHON/StateMachine/M2MS_enable.robot

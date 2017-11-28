@@ -92,14 +92,6 @@ CPP/StateMachine/Hexapod_exitControl.robot
 CPP/StateMachine/Hexapod_standby.robot
 CPP/StateMachine/Hexapod_start.robot
 CPP/StateMachine/Hexapod_stop.robot
-CPP/StateMachine/M1M3_abort.robot
-CPP/StateMachine/M1M3_disable.robot
-CPP/StateMachine/M1M3_enable.robot
-CPP/StateMachine/M1M3_enterControl.robot
-CPP/StateMachine/M1M3_exitControl.robot
-CPP/StateMachine/M1M3_standby.robot
-CPP/StateMachine/M1M3_start.robot
-CPP/StateMachine/M1M3_stop.robot
 CPP/StateMachine/M2MS_abort.robot
 CPP/StateMachine/M2MS_disable.robot
 CPP/StateMachine/M2MS_enable.robot
