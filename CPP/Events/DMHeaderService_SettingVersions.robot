@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hStsZntwyKtUNkVFVvEUQzUAeQSHFatUDXxzuWsXxDCrqBQOaIzYevYviNUitSuLJCSILCccMYStlqNmOYuOcGMroqGPuAiIAoihdsgarHaSOdkmXdPHyrauCUymrgdjoIeoTpmwNWNuKeodKtXGpLAivRgYyqFuqihHEEHGvrsgDzgPFSkUlqdWMCGWpglVoPcoyIlqftcxWlGsyccKzLYftZPBuhLWReqZQiWLdcwoPVnqnajNFrQXRnWpNhGuNWvuamgzltBugXQhHUPeSjNGnyPaSqqiwIKEXctZobWNrNJXYfmEInohqRJHvTTptsxpFBDonBEspPgyBZtRbqgXEvoYtHkENbiBNhvWdfuHOsJwQKECGidtvPWLSipjmBFEFXHIEVLsstBogviCLawuoCLgpAqaQByZusDhFfZvuvfYClxZfPotMrYZqSKldktcFuFCRVWHvSPwiYwWHjfowCQaLIPLzOUGRxaRnxDvVMUEFcMeEmzFiMDLCEzEgXmFwYnvasqJQPQJCNmCdFdVTjvnESoYtZppTZAJRkWALEPvjhnLcMGyXzUumYyZLkLFfXQDyomVBkXfwPYfcHdqmqofzyhvhQqAKxayerpefTROBcXwRguNTCdwAGBaukDcpvucVFJWpccfYkyCDRqJchUUyKeVSIgFbogiRpizBdcLKsgIPizevBQbdeSrZuLVIrjfKmgexuiLUfNGGorMSXGSNWlGbdVYAsiVYWjufaJlSHRtQUmxbLyaHWyZSfJkHGcaQYfXFUQsOCXsJApdYhdQPvicnDkQ 79.2994 368563170
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send oOlRtCWofTkRmGyoEygCAHArcoMEWMoYZSCGmocbEtelnaOErjVMhrksWLkKPpwQtrHMRSmEkIXWjNHkVkmqchlNLykWZfBeFUKpXeAlvdtIPepIwxVFAuQlkUyItnhnVgXaUQuxdRgvWseycXXHYHTRmvWUCMgBOtWUKBSWnFZhEezKopIRigAKlOkqacEacgMIpKXOAvCmuyIMrUkzxfGLfyadFNtwAiOYWdjzfjKgjSgrMOHuEtfZWxaaTmfIkQKKtnrBJVBjmZyGguEmaVLsmwkSnLbnWiVNSQMyrEwhhsBtuzzljmcSXpnNFYLkCHDNtqXVKjpbolzCSLFIfoFfsGVKGkGgTEgeayfPnvVNneUCQDgtehqFlBRLLAZaqoiHnfjTBmASwjEyRAvVPZCKxUlBPnuCepCchOOlZgjTZVOKhrWbefxnBbZqwbkUBWMqCnGajxGIarYIdthZTnORMauDkHKlqgyPADaIJbFhdpbpSlnJjVoHJryCszyRyTkbNaoCkxgAyUmmVnwimpWjxJZlLBaHhdljkCIwhmAxtmtfNUCpJBjsPqgHEJwaEgpOdjycHzpbOYuHczppXWMFVBWYYLlCefPseYhGTOsxKvE 7.6621 -256361614
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dmHeaderService::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 368563170
+    ${output}=    Read Until    priority : -256361614
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsVersion : hStsZntwyKtUNkVFVvEUQzUAeQSHFatUDXxzuWsXxDCrqBQOaIzYevYviNUitSuLJCSILCccMYStlqNmOYuOcGMroqGPuAiIAoihdsgarHaSOdkmXdPHyrauCUymrgdjoIeoTpmwNWNuKeodKtXGpLAivRgYyqFuqihHEEHGvrsgDzgPFSkUlqdWMCGWpglVoPcoyIlqftcxWlGsyccKzLYftZPBuhLWReqZQiWLdcwoPVnqnajNFrQXRnWpNhGuNWvuamgzltBugXQhHUPeSjNGnyPaSqqiwIKEXctZobWNrNJXYfmEInohqRJHvTTptsxpFBDonBEspPgyBZtRbqgXEvoYtHkENbiBNhvWdfuHOsJwQKECGidtvPWLSipjmBFEFXHIEVLsstBogviCLawuoCLgpAqaQByZusDhFfZvuvfYClxZfPotMrYZqSKldktcFuFCRVWHvSPwiYwWHjfowCQaLIPLzOUGRxaRnxDvVMUEFcMeEmzFiMDLCEzEgXmFwYnvasqJQPQJCNmCdFdVTjvnESoYtZppTZAJRkWALEPvjhnLcMGyXzUumYyZLkLFfXQDyomVBkXfwPYfcHdqmqofzyhvhQqAKxayerpefTROBcXwRguNTCdwAGBaukDcpvucVFJWpccfYkyCDRqJchUUyKeVSIgFbogiRpizBdcLKsgIPizevBQbdeSrZuLVIrjfKmgexuiLUfNGGorMSXGSNWlGbdVYAsiVYWjufaJlSHRtQUmxbLyaHWyZSfJkHGcaQYfXFUQsOCXsJApdYhdQPvicnDkQ
-    Should Contain    ${output}    timestamp : 79.2994
-    Should Contain    ${output}    priority : 368563170
+    Should Contain    ${output}    recommendedSettingsVersion : oOlRtCWofTkRmGyoEygCAHArcoMEWMoYZSCGmocbEtelnaOErjVMhrksWLkKPpwQtrHMRSmEkIXWjNHkVkmqchlNLykWZfBeFUKpXeAlvdtIPepIwxVFAuQlkUyItnhnVgXaUQuxdRgvWseycXXHYHTRmvWUCMgBOtWUKBSWnFZhEezKopIRigAKlOkqacEacgMIpKXOAvCmuyIMrUkzxfGLfyadFNtwAiOYWdjzfjKgjSgrMOHuEtfZWxaaTmfIkQKKtnrBJVBjmZyGguEmaVLsmwkSnLbnWiVNSQMyrEwhhsBtuzzljmcSXpnNFYLkCHDNtqXVKjpbolzCSLFIfoFfsGVKGkGgTEgeayfPnvVNneUCQDgtehqFlBRLLAZaqoiHnfjTBmASwjEyRAvVPZCKxUlBPnuCepCchOOlZgjTZVOKhrWbefxnBbZqwbkUBWMqCnGajxGIarYIdthZTnORMauDkHKlqgyPADaIJbFhdpbpSlnJjVoHJryCszyRyTkbNaoCkxgAyUmmVnwimpWjxJZlLBaHhdljkCIwhmAxtmtfNUCpJBjsPqgHEJwaEgpOdjycHzpbOYuHczppXWMFVBWYYLlCefPseYhGTOsxKvE
+    Should Contain    ${output}    timestamp : 7.6621
+    Should Contain    ${output}    priority : -256361614

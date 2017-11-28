@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : CommandValue DisabledState TimeStamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : CommandValue detailedState timestamp priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 17977 4422 NaOrYBLCaNTyHpUbvPSsEEiFCbYbqHLkRkjAVVOEkdpFBXriVnIxNbfKAEQPcCyJjSPYrSGEvBtHfxRheIMIXnxgpPjkwahTZDAGECqKciymaNskyHLmHZNUFfjasyYqDRQFkcSESbbKnUssxaSfgeyWfXuUErCvcWhSnLBKrmrrvrfdzzRjnRUUvUycdPTcJpiCoZiXtykGpBgmddCiKOynrDQKGuVliXTZSaUXCKxNbugyyGLIEQKzHodGXOcxxrsdaAcAShkBqKzLSpUGoRvbRJpQsNNhaYnPSifgNssNLxsDGcugUwQgWPZFOfzxPhXtMYFXvREoXhzJtsKtbpfAKzzdlIMGqUZsYJvcNlJPExkVokZSsdZlUJMDdHNirRKnhqLPQtCFYDrRCnNHxCXFlBtrmStWLNjNsJzBztYanOeJlgpyjjSUMgekHlhTrtJmcbWujBLigQivHtFhXISuxwEyaprljJFAOGdwPqTVlxfqFabmAJsPeBjnhSXjVqvXYZdKmtvhGUAGSUHcGMThxLaiqdpRAKMtofFiXFjUzwXhFurRuiseRqvNayWRzyoQQ 1295311297
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 61253 29308 72.0803 -709794135
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_RejectedCommand writing a message containing :    1

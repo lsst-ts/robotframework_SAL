@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_ErrorCode sender/logger tests.
+Documentation    TCS_SettingsApplied sender/logger tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,8 +10,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    eec
-${component}    ErrorCode
+${subSystem}    tcs
+${component}    SettingsApplied
 ${timeout}    30s
 
 *** Test Cases ***
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : errorCode timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : settings timestamp priority
 
 Start Logger
     [Tags]    functional
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -2121842958 2.6367 -1891380398
+    ${input}=    Write    python ${subSystem}_Event_${component}.py DMYposGFIamRfNimxLiItbBMqcUhjUObXtCMAoiMWyEQORmEQMqYfxQcnvsYgfZSjukzECQTccbSWppvWvOXnUDhadOSFcNYdqyMmTyFEeLNukpvDgfFzMdfunGnnNHKIErlgEPcxCAmpvJOkCAFHVOppzpNcowkehWGPOMgYaeTCiPSmyAGIfjLKbvPvostTrPBIUnXSytowjmBXexOxhoVKLvQFHDnlXRbInFwaNQwfZRaMLGWjAgMgiTUaNXLOqSEyfKRTKCrcwvMlFnQZMrwodQKxpnqqltmAcKervbFlAvaLXzFQVtsbezhKSqYCOCoSqnOeWhhXdjFtmkcXKQpNkTuHCmlZXaUCculZJOYYHCsQZVkYOVQaHUHDZxfmFCKupyRHEATtgSPyDwgQbeIEkrVVRXNDKVmbYgGqBCcVReApxPvLPWHWXRgQSqDGqieNddKLLvNjqcQjvkBVSRdrUHswhEmaBtaseDMhLGOawTNqhzTjibgCLMFyuZdkotHwkcuImIvPeLUZThaoNmffhMvOkNaFeurqdGPpkgZqkRCSKejsXwHyvBXAETPOZZvjsgdqZcvkQphWLmbxfFaPuddYuioNrIiKpkPbbLOlgLNKHkGjATRdgDDgHoEMkzZuQmktszINMxQotDlOKFhAxMXzJuaBZIpkjeYtKgJOwNmtkAsFhIkAWxNWCIsIxVAVIMIoRbSZgUZVOnXJVFDGePWSMkRUavDXrKbksdlSljqaSWXnNaIjObIfLlNwfMxXqUGtvfYBLHXtZaYHhgsq 90.8198 809631031
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] eec::logevent_ErrorCode writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

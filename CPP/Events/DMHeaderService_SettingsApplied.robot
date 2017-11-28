@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send crrrRjkVXvIbhwRRiEzFyfdcEgDFhGfRzbXbnWsdfOni 32.4583 824148244
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send sSOffMeFEIJcbDsyZconhFaDqBlZsUceFNtblkhXbnEUvGdHPtLlfGBKKuBRFKaKjKTtQDWQYgleoweTiYSbMaFhGPUjcunZVeELYeLhoslHxOecwfiejotmzipihOUREZDeoJxcMyaUyfJxzWZsFuxLrPZAIDIoRWJEculxYRrXxSfGTKoxWvbSKDLKCGHydAXlFmlvhPUMcwTyUtenjIOCRJYwSgYLLnUHQtvWiPUnGEtjKMvKfmddTfSyjcErcioZQfpyFpFkVMxgJLMcSUMvydiSHcANuSCTRWJLpisJiSmsfErksmUyyMFdljglDXiwzqeAGMQGxmajqAjgoeGuRendUKzSoMrtxZxxnAYRcpVfsIvJaBzXMlvqmNgarEwaTnfrkqRDoEwBFyvedtyVmUKGXKQyLyofhYIVGLHDdJZLFtydXpdVYLpqoRwmlMVXAZTxlvHougGIqFjSePMVafSEUPXSjqzJUEMzsfUqaDlmTbfqqLttzdEJmjeHTxlWgaBDqYuUWztfumqBntYcoRSWMuXTprBNFFKAMeJPYxTtnswESIbmAMbNqefAqDwrBupuIeDuL 14.018 -1174360085
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] dmHeaderService::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 824148244
+    ${output}=    Read Until    priority : -1174360085
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : crrrRjkVXvIbhwRRiEzFyfdcEgDFhGfRzbXbnWsdfOni
-    Should Contain    ${output}    timestamp : 32.4583
-    Should Contain    ${output}    priority : 824148244
+    Should Contain    ${output}    settings : sSOffMeFEIJcbDsyZconhFaDqBlZsUceFNtblkhXbnEUvGdHPtLlfGBKKuBRFKaKjKTtQDWQYgleoweTiYSbMaFhGPUjcunZVeELYeLhoslHxOecwfiejotmzipihOUREZDeoJxcMyaUyfJxzWZsFuxLrPZAIDIoRWJEculxYRrXxSfGTKoxWvbSKDLKCGHydAXlFmlvhPUMcwTyUtenjIOCRJYwSgYLLnUHQtvWiPUnGEtjKMvKfmddTfSyjcErcioZQfpyFpFkVMxgJLMcSUMvydiSHcANuSCTRWJLpisJiSmsfErksmUyyMFdljglDXiwzqeAGMQGxmajqAjgoeGuRendUKzSoMrtxZxxnAYRcpVfsIvJaBzXMlvqmNgarEwaTnfrkqRDoEwBFyvedtyVmUKGXKQyLyofhYIVGLHDdJZLFtydXpdVYLpqoRwmlMVXAZTxlvHougGIqFjSePMVafSEUPXSjqzJUEMzsfUqaDlmTbfqqLttzdEJmjeHTxlWgaBDqYuUWztfumqBntYcoRSWMuXTprBNFFKAMeJPYxTtnswESIbmAMbNqefAqDwrBupuIeDuL
+    Should Contain    ${output}    timestamp : 14.018
+    Should Contain    ${output}    priority : -1174360085

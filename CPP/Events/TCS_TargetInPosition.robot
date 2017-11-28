@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_wfpDataReady sender/logger tests.
+Documentation    TCS_TargetInPosition sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcs
-${component}    wfpDataReady
+${component}    TargetInPosition
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,19 +47,18 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send IRwVkYxtFrxUPUlNFSEwLPpBhlTuLygyreOPalmepUfrmtgiVVPeUbgqbzxtcdUDQmynWJsrhvpkpiLDerfRKqoDFVoIfLRJkAIRgXiFPmKTmzeDbTApPDWMyOLJjPVwSjvnrskBsICXvvbTzlgvzlFjQqPMSutvPqFPdojxzeNZuvAahUmDASgKNoXaouSSBNJSjYyFkaQkpyrBkKGulemIYVMOMzaepHNzrjCCtEQauVIKgPpMXGmUMZPjppLG WpoMjVwraENZcpxQSfCIEMtFPYRdiOuLmeoZFHHmzeIZBjZtbDwKvqaNJUfznzPs -1590098428
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -717492324
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcs::logevent_TargetInPosition writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event wfpDataReady generated =
+    Should Contain    ${output}    === Event TargetInPosition generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1590098428
+    ${output}=    Read Until    priority : -717492324
     Log    ${output}
-    Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : IRwVkYxtFrxUPUlNFSEwLPpBhlTuLygyreOPalmepUfrmtgiVVPeUbgqbzxtcdUDQmynWJsrhvpkpiLDerfRKqoDFVoIfLRJkAIRgXiFPmKTmzeDbTApPDWMyOLJjPVwSjvnrskBsICXvvbTzlgvzlFjQqPMSutvPqFPdojxzeNZuvAahUmDASgKNoXaouSSBNJSjYyFkaQkpyrBkKGulemIYVMOMzaepHNzrjCCtEQauVIKgPpMXGmUMZPjppLG
-    Should Contain    ${output}    images_match_URI : WpoMjVwraENZcpxQSfCIEMtFPYRdiOuLmeoZFHHmzeIZBjZtbDwKvqaNJUfznzPs
-    Should Contain    ${output}    priority : -1590098428
+    Should Contain X Times    ${output}    === Event TargetInPosition received =     1
+    Should Contain    ${output}    TargetInPosition : 0
+    Should Contain    ${output}    priority : -717492324

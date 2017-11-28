@@ -33,6 +33,8 @@ elif args.datatype == "unsigned long":
     value=random.randint(0,2147483647)
 elif args.datatype == "unsigned short":
     value=random.randint(0,65534)
+elif args.datatype == "byte":
+	value=random.randint(0,255)
 else:
         value="test"
 

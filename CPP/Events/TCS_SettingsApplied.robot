@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_wfpDataReady sender/logger tests.
+Documentation    TCS_SettingsApplied sender/logger tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcs
-${component}    wfpDataReady
+${component}    SettingsApplied
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send IRwVkYxtFrxUPUlNFSEwLPpBhlTuLygyreOPalmepUfrmtgiVVPeUbgqbzxtcdUDQmynWJsrhvpkpiLDerfRKqoDFVoIfLRJkAIRgXiFPmKTmzeDbTApPDWMyOLJjPVwSjvnrskBsICXvvbTzlgvzlFjQqPMSutvPqFPdojxzeNZuvAahUmDASgKNoXaouSSBNJSjYyFkaQkpyrBkKGulemIYVMOMzaepHNzrjCCtEQauVIKgPpMXGmUMZPjppLG WpoMjVwraENZcpxQSfCIEMtFPYRdiOuLmeoZFHHmzeIZBjZtbDwKvqaNJUfznzPs -1590098428
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send OFEfnpVfjpvuoxzkEoxETNdIVCOWtOsvxlnAnNAYxxfMJfseVBmvHNvfiwEUYrmYo 41.4351 513477736
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event wfpDataReady generated =
+    Should Contain    ${output}    === Event SettingsApplied generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1590098428
+    ${output}=    Read Until    priority : 513477736
     Log    ${output}
-    Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : IRwVkYxtFrxUPUlNFSEwLPpBhlTuLygyreOPalmepUfrmtgiVVPeUbgqbzxtcdUDQmynWJsrhvpkpiLDerfRKqoDFVoIfLRJkAIRgXiFPmKTmzeDbTApPDWMyOLJjPVwSjvnrskBsICXvvbTzlgvzlFjQqPMSutvPqFPdojxzeNZuvAahUmDASgKNoXaouSSBNJSjYyFkaQkpyrBkKGulemIYVMOMzaepHNzrjCCtEQauVIKgPpMXGmUMZPjppLG
-    Should Contain    ${output}    images_match_URI : WpoMjVwraENZcpxQSfCIEMtFPYRdiOuLmeoZFHHmzeIZBjZtbDwKvqaNJUfznzPs
-    Should Contain    ${output}    priority : -1590098428
+    Should Contain X Times    ${output}    === Event SettingsApplied received =     1
+    Should Contain    ${output}    settings : OFEfnpVfjpvuoxzkEoxETNdIVCOWtOsvxlnAnNAYxxfMJfseVBmvHNvfiwEUYrmYo
+    Should Contain    ${output}    timestamp : 41.4351
+    Should Contain    ${output}    priority : 513477736
