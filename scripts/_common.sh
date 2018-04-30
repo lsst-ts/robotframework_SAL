@@ -42,12 +42,11 @@ function clearTestSuites() {
 }
 
 function subsystemArray() {
-	echo "archiver camera catchuparchiver dmheaderservice dome domeadb domeaps domelws domelouvers domemoncs domethcs \
-eec environment hexapod m1m3 m2ms mtmount ocs processingcluster rotator scheduler sequencer tcs"
+	echo "archiver atHeaderService atMonochromator calibrationElectrometer calibrationSpectrometer camera catchuparchiver dome domeADB domeAPS domeLouvers domeLWS domeMONCS domeTHCS eec headerService hexapod m1m3 m2ms MTMount ocs promptprocessing rotator scheduler sequencer summitFacility tcs tcsAOCS tcsOfc tcsWEP vms"
 }
 
 function stateArray() {
-	echo "enable disable abort enterControl exitControl standby start stop"
+	echo "enable disable enterControl exitControl standby start stop"
 }
 
 function capitializeSubsystem() {
@@ -76,14 +75,22 @@ function capitializeSubsystem() {
         echo "DomeTHCS"
 	elif [ "$subSystem" == "catchuparchiver" ]; then
         echo "CatchupArchiver"
-	elif [ "$subSystem" == "processingcluster" ]; then
-        echo "ProcessingCluster"
+	elif [ "$subSystem" == "promptprocessing" ]; then
+        echo "PromptProcessing"
 	elif [ "$subSystem" == "eec" ]; then
         echo "EEC"
-	elif [ "$subSystem" == "dmheaderservice" ]; then
-        echo "DMHeaderService"
-	elif [ "$subSystem" == "dmHeaderService" ]; then
-        echo "DMHeaderService"
+	elif [ "$subSystem" == "headerservice" ]; then
+        echo "HeaderService"
+	elif [ "$subSystem" == "atHeaderService" ]; then
+        echo "ATHeaderService"
+	elif [ "$subSystem" == "tcsAOCS" ]; then
+        echo "TCSAOCS"
+	elif [ "$subSystem" == "tcsOfc" ]; then
+        echo "TCSOFC"
+	elif [ "$subSystem" == "tcsWEP" ]; then
+        echo "TCSWEP"
+	elif [ "$subSystem" == "vms" ]; then
+        echo "VMS"
     else
         local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
 		echo $var
@@ -92,7 +99,25 @@ function capitializeSubsystem() {
 
 function getEntity() {
 	local entity=$1
-	if [ "$entity" == "mtmount" ]; then
+	if [ "$entity" == "all" ]; then
+        echo "all"
+	elif [ "$entity" == "atarchiver" ]; then
+		echo "atArchiver"
+	elif [ "$entity" == "atheaderservice" ]; then
+		echo "atHeaderService"
+	elif [ "$entity" == "atmonochromator" ]; then
+		echo "atMonochromator"
+	elif [ "$entity" == "atscheduler" ]; then
+		echo "atScheduler"
+	elif [ "$entity" == "atwhitelight" ]; then
+        echo "atWhiteLight"
+	elif [ "$entity" == "summitfacility" ]; then
+		echo "summitFacility"
+	elif [ "$entity" == "calibrationelectrometer" ]; then
+		echo "calibrationElectrometer"
+	elif [ "$entity" == "calibrationspectrometer" ]; then
+		echo "calibrationSpectrometer"
+	elif [ "$entity" == "mtmount" ]; then
         echo "MTMount"
     elif [ "$entity" == "domeadb" ]; then
         echo "domeADB"
@@ -106,8 +131,14 @@ function getEntity() {
 		echo "domeMONCS"
     elif [ "$entity" == "domethcs" ]; then
 		echo "domeTHCS"
-	elif [ "$entity" == "dmheaderservice" ]; then
-		echo "dmHeaderService"
+	elif [ "$entity" == "headerservice" ]; then
+		echo "headerService"
+	elif [ "$entity" == "tcsaocs" ]; then
+		echo "tcsAOCS"
+	elif [ "$entity" == "tcsofc" ]; then
+		echo "tcsOfc"
+	elif [ "$entity" == "tcswep" ]; then
+		echo "tcsWEP"
 	else
 		echo "$entity"
 	fi
@@ -143,7 +174,7 @@ function checkIfSkipped() {
 	subsystem=$1
 	topic=$2
 	if [[ ("$subsystem" == "scheduler") && ("$topic" == "blockPusher") ]]; then
-		skipped="    TSS-859"
+		skipped=""
 	else
 		skipped=""
 	fi
