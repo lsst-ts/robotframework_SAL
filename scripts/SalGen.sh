@@ -374,14 +374,13 @@ function createTestSuite() {
 
 
 #  MAIN
+subSystem=$(getEntity $arg)
 if [ "$arg" == "all" ]; then
 	for subSystem in "${subSystemArray[@]}"; do
-		subSystem=$(getEntity $subSystem)
 		createTestSuite $subSystem
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-    subSystem=$(getEntity $arg)
+elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
     createTestSuite $subSystem
 	echo COMPLETED all test suites for the $subSystem.
 else
