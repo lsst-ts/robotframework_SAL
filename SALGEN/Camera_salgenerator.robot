@@ -23,6 +23,9 @@ Salgen Camera Validate
     [Documentation]    Validate the Camera XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
+    Write    pwd
+    ${output}=    Read
+    Should Contain    ${output}    ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
     ${output}=    Read Until Prompt
     Log    ${output}
