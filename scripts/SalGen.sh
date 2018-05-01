@@ -97,7 +97,7 @@ function salgenHTML() {
 function salgenCPP {
     echo "Salgen $subSystemUp C++" >> $testSuite
     echo "    [Documentation]    Generate C++ wrapper." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator \${subSystem} sal cpp" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
@@ -116,7 +116,7 @@ function salgenCPP {
 function verifyCppDirectories() {
 	echo "Verify C++ Directories" >> $testSuite
     echo "    [Documentation]    Ensure expected C++ directories and files." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}/cpp" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/\${subSystem}/cpp    pattern=*\${subSystem}*" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/libsacpp_\${subSystem}_types.so" >> $testSuite
@@ -128,7 +128,7 @@ function verifyCppDirectories() {
 
 function verifyTelemetryDirectories() {
     echo "Verify $subSystemUp Telemetry directories" >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}    pattern=*\${subSystem}*" >> $testSuite
     echo "    Log Many    @{files}" >> $testSuite
 	for topic in "${telemetryArray[@]}"; do
@@ -140,7 +140,7 @@ function verifyTelemetryDirectories() {
 function verifyCppTelemetryInterfaces() {
     echo "Verify $subSystemUp C++ Telemetry Interfaces" >> $testSuite
     echo "    [Documentation]    Verify the C++ interfaces were properly created." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     for topic in "${telemetryArray[@]}"; do
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_${topic}/cpp/standalone/sacpp_\${subSystem}_pub" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_${topic}/cpp/standalone/sacpp_\${subSystem}_sub" >> $testSuite
@@ -151,7 +151,7 @@ function verifyCppTelemetryInterfaces() {
 function verifyCppStateInterfaces() {
     echo "Verify $subSystemUp C++ State Command Interfaces" >> $testSuite
     echo "    [Documentation]    Verify the C++ interfaces were properly created." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     for state in "${stateArray[@]}"; do
 		echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${state}_commander" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${state}_controller" >> $testSuite
@@ -162,7 +162,7 @@ function verifyCppStateInterfaces() {
 function verifyCppCommandInterfaces() {
     echo "Verify $subSystemUp C++ Command Interfaces" >> $testSuite
     echo "    [Documentation]    Verify the C++ interfaces were properly created." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     for topic in "${commandArray[@]}"; do
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${topic}_commander" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${topic}_controller" >> $testSuite
@@ -173,7 +173,7 @@ function verifyCppCommandInterfaces() {
 function verifyCppEventInterfaces() {
     echo "Verify $subSystemUp C++ Event Interfaces" >> $testSuite
     echo "    [Documentation]    Verify the C++ interfaces were properly created." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    cpp" >> $testSuite
     for topic in "${eventArray[@]}"; do
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${topic}_send" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${topic}_log" >> $testSuite
@@ -253,7 +253,7 @@ function verifyPythonTelemetryInterfaces() {
 function verifyPythonStateInterfaces() {
     echo "Verify $subSystemUp Python State Command Interfaces" >> $testSuite
     echo "    [Documentation]    Verify the C++ interfaces were properly created." >> $testSuite
-    echo "    [Tags]" >> $testSuite
+    echo "    [Tags]    python" >> $testSuite
     for state in "${stateArray[@]}"; do
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Commander_${state}.py" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Controller_${state}.py" >> $testSuite
