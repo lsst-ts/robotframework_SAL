@@ -48,7 +48,6 @@ Salgen Scheduler Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_parkConfig.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_generalPropConfig.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_sequencePropConfig.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_blockPusher.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_observatoryState.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_target.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_observation.idl
@@ -62,7 +61,6 @@ Salgen Scheduler Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_iconstraints.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enterControl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
@@ -106,7 +104,6 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_parkConfig.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_generalPropConfig.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_sequencePropConfig.idl
-    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_blockPusher.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_observatoryState.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_target.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_observation.idl
@@ -118,8 +115,8 @@ Salgen Scheduler C++
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_rankingData.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_econstraints.idl
     Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_iconstraints.idl
-    Should Contain X Times    ${output}    cpp : Done Publisher    29
-    Should Contain X Times    ${output}    cpp : Done Subscriber    29
+    Should Contain X Times    ${output}    cpp : Done Publisher    28
+    Should Contain X Times    ${output}    cpp : Done Subscriber    28
     Should Contain X Times    ${output}    cpp : Done Commander    1
     Should Contain X Times    ${output}    cpp : Done Event/Logger    1
 
@@ -154,7 +151,6 @@ Verify Scheduler Telemetry directories
     Directory Should Exist    ${SALWorkDir}/${subSystem}_parkConfig
     Directory Should Exist    ${SALWorkDir}/${subSystem}_generalPropConfig
     Directory Should Exist    ${SALWorkDir}/${subSystem}_sequencePropConfig
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_blockPusher
     Directory Should Exist    ${SALWorkDir}/${subSystem}_observatoryState
     Directory Should Exist    ${SALWorkDir}/${subSystem}_target
     Directory Should Exist    ${SALWorkDir}/${subSystem}_observation
@@ -204,8 +200,6 @@ Verify Scheduler C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}_generalPropConfig/cpp/standalone/sacpp_${subSystem}_sub
     File Should Exist    ${SALWorkDir}/${subSystem}_sequencePropConfig/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_sequencePropConfig/cpp/standalone/sacpp_${subSystem}_sub
-    File Should Exist    ${SALWorkDir}/${subSystem}_blockPusher/cpp/standalone/sacpp_${subSystem}_pub
-    File Should Exist    ${SALWorkDir}/${subSystem}_blockPusher/cpp/standalone/sacpp_${subSystem}_sub
     File Should Exist    ${SALWorkDir}/${subSystem}_observatoryState/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_observatoryState/cpp/standalone/sacpp_${subSystem}_sub
     File Should Exist    ${SALWorkDir}/${subSystem}_target/cpp/standalone/sacpp_${subSystem}_pub
@@ -236,8 +230,6 @@ Verify Scheduler C++ State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
@@ -262,8 +254,6 @@ Salgen Scheduler Python
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/SALPY_${subSystem}.so
 
 Verify Scheduler Python Telemetry Interfaces
@@ -305,8 +295,6 @@ Verify Scheduler Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_generalPropConfig_Subscriber.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_sequencePropConfig_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_sequencePropConfig_Subscriber.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_blockPusher_Publisher.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_blockPusher_Subscriber.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_observatoryState_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_observatoryState_Subscriber.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_target_Publisher.py
@@ -337,8 +325,6 @@ Verify Scheduler Python State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enterControl.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enterControl.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
@@ -374,7 +360,6 @@ Salgen Scheduler Java
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_parkConfig.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_generalPropConfig.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_sequencePropConfig.idl
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_blockPusher.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_observatoryState.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_target.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_observation.idl
@@ -386,10 +371,10 @@ Salgen Scheduler Java
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_rankingData.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_econstraints.idl
     Should Contain    ${output}    Generating SAL Java code for ${subSystem}_iconstraints.idl
-    Should Contain X Times    ${output}    javac : Done Publisher    29
-    Should Contain X Times    ${output}    javac : Done Subscriber    29
-    Should Contain X Times    ${output}    javac : Done Commander/Controller    29
-    Should Contain X Times    ${output}    javac : Done Event/Logger    29
+    Should Contain X Times    ${output}    javac : Done Publisher    28
+    Should Contain X Times    ${output}    javac : Done Subscriber    28
+    Should Contain X Times    ${output}    javac : Done Commander/Controller    28
+    Should Contain X Times    ${output}    javac : Done Event/Logger    28
     Directory Should Exist    ${SALWorkDir}/${subSystem}/java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
