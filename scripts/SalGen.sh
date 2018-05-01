@@ -233,8 +233,6 @@ function salgenPython() {
     echo "    Directory Should Exist    \${SALWorkDir}/\${subSystem}/python" >> $testSuite
     echo "    @{files}=    List Directory    \${SALWorkDir}/\${subSystem}/python    pattern=*\${subSystem}*" >> $testSuite
     echo "    Log Many    @{files}" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Commander_abort.py" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Controller_abort.py" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/SALPY_\${subSystem}.so" >> $testSuite
     echo "" >> $testSuite
 }
