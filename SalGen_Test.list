@@ -6,9 +6,13 @@
 # List of test suites
 Version.robot
 SALGEN/Archiver_salgenerator.robot
+SALGEN/AtArchiver_salgenerator.robot
+SALGEN/AtCamera_salgenerator.robot
+SALGEN/AtHeaderService_salgenerator.robot
+SALGEN/AtMonochromator_salgenerator.robot
+SALGEN/AtScheduler_salgenerator.robot
 SALGEN/Camera_salgenerator.robot
 SALGEN/CatchupArchiver_salgenerator.robot
-SALGEN/DMHeaderService_salgenerator.robot
 SALGEN/DomeADB_salgenerator.robot
 SALGEN/DomeAPS_salgenerator.robot
 SALGEN/DomeLWS_salgenerator.robot
@@ -17,14 +21,18 @@ SALGEN/DomeMONCS_salgenerator.robot
 SALGEN/DomeTHCS_salgenerator.robot
 SALGEN/Dome_salgenerator.robot
 SALGEN/EEC_salgenerator.robot
-SALGEN/Environment_salgenerator.robot
+SALGEN/EFD_salgenerator.robot
+SALGEN/HeaderService_salgenerator.robot
 SALGEN/Hexapod_salgenerator.robot
 SALGEN/M1M3_salgenerator.robot
 SALGEN/M2MS_salgenerator.robot
 SALGEN/MTMount_salgenerator.robot
 SALGEN/OCS_salgenerator.robot
-SALGEN/ProcessingCluster_salgenerator.robot
 SALGEN/Rotator_salgenerator.robot
 SALGEN/Scheduler_salgenerator.robot
 SALGEN/Sequencer_salgenerator.robot
+SALGEN/SummitFacility_salgenerator.robot
 SALGEN/TCS_salgenerator.robot
+SALGEN/TcsOFC_salgenerator.robot
+SALGEN/TcsWEP_salgenerator.robot
+SALGEN/VMS_salgenerator.robot
