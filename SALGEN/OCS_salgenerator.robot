@@ -71,7 +71,7 @@ Salgen OCS HTML
 
 Salgen OCS C++
     [Documentation]    Generate C++ wrapper.
-    [Tags]
+    [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -85,7 +85,7 @@ Salgen OCS C++
 
 Verify C++ Directories
     [Documentation]    Ensure expected C++ directories and files.
-    [Tags]
+    [Tags]    cpp
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
@@ -94,20 +94,20 @@ Verify C++ Directories
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
 Verify OCS Telemetry directories
-    [Tags]
+    [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat
 
 Verify OCS C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_sub
 
 Verify OCS C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
@@ -125,7 +125,7 @@ Verify OCS C++ State Command Interfaces
 
 Verify OCS C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_sequence_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_sequence_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_script_commander
@@ -133,7 +133,7 @@ Verify OCS C++ Command Interfaces
 
 Verify OCS C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ocsEntitySummaryState_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ocsEntitySummaryState_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ocsEntityStartup_send
@@ -182,7 +182,7 @@ Verify OCS Python Telemetry Interfaces
 
 Verify OCS Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    python
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
