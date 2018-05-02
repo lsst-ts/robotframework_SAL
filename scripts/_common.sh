@@ -180,6 +180,18 @@ function checkIfSkipped() {
 	topic=$2
 	if [[ ("$subsystem" == "scheduler") && ("$topic" == "blockPusher") ]]; then
 		skipped=""
+	elif [[ ("$subsystem" == "summitFacility") ]]; then
+		skipped="TSS-2622"
+	elif [[ ("$subsystem" == "promptprocessing") ]]; then
+		skipped="TSS-2621"
+	elif [[ ("$subsystem" == "catchuparchiver") ]]; then
+		skipped="TSS-2620"
+	elif [[ ("$subsystem" == "calibrationElectrometer") ]]; then
+		skipped="TSS-2619"
+	elif [[ ("$subsystem" == "m1m3") ]]; then
+		skipped="TSS-2617"
+	elif [[ ("$subsystem" == "vms") ]]; then
+		skipped="TSS-2618"
 	else
 		skipped=""
 	fi
