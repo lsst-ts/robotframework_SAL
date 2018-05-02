@@ -47,7 +47,7 @@ function subsystemArray() {
 }
 
 function stateArray() {
-	echo "enable disable enterControl exitControl standby start stop"
+	echo "enable disable standby start"
 }
 
 function capitializeSubsystem() {
