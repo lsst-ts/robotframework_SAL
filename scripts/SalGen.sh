@@ -205,7 +205,7 @@ function salgenJava() {
 function salgenMaven() {
     echo "Salgen $subSystemUp Maven" >> $testSuite
     echo "    [Documentation]    Generate the Maven repository." >> $testSuite
-    echo "    [Tags]    java" >> $testSuite
+    echo "    [Tags]    java    TSS-2602" >> $testSuite
     echo "    \${input}=    Write    \${SALHome}/scripts/salgenerator \${subSystem} maven" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
