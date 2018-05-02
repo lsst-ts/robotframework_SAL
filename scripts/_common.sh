@@ -42,8 +42,8 @@ function clearTestSuites() {
 }
 
 function subsystemArray() {
-	# atcs calibrationElectrometer calibrationSpectrometer promptprocessing (TSS-2608, TSS-2606, TSS-2606, TSS-2605)
-	echo "archiver atArchiver atcamera atHeaderService atMonochromator atScheduler camera catchuparchiver dome domeADB domeAPS domeLouvers domeLWS domeMONCS domeTHCS eec efd headerService hexapod m1m3 m2ms MTMount ocs rotator scheduler sequencer summitFacility tcs tcsOfc tcsWEP vms"
+	# atcs calibrationElectrometer (TSS-2608, TSS-2606)
+	echo "archiver atArchiver atcamera atHeaderService atMonochromator atScheduler camera catchuparchiver dome domeADB domeAPS domeLouvers domeLWS domeMONCS domeTHCS eec efd headerService hexapod m1m3 m2ms MTMount ocs promptprocessing rotator scheduler sequencer summitFacility tcs tcsOfc tcsWEP vms"
 }
 
 function stateArray() {
@@ -122,8 +122,8 @@ function getEntity() {
 		echo "summitFacility"
 	elif [ "$entity" == "calibrationelectrometer" ]; then
 		echo "calibrationElectrometer"
-	elif [ "$entity" == "calibrationspectrometer" ]; then
-		echo "calibrationSpectrometer"
+	elif [ "$entity" == "promptprocessing" ]; then
+		echo "promptProcessing"
 	elif [ "$entity" == "mtmount" ]; then
         echo "MTMount"
     elif [ "$entity" == "domeadb" ]; then

@@ -28,6 +28,7 @@ SALGEN/M1M3_salgenerator.robot
 SALGEN/M2MS_salgenerator.robot
 SALGEN/MTMount_salgenerator.robot
 SALGEN/OCS_salgenerator.robot
+SALGEN/PromptProcessing_salgenerator.robot
 SALGEN/Rotator_salgenerator.robot
 SALGEN/Scheduler_salgenerator.robot
 SALGEN/Sequencer_salgenerator.robot
