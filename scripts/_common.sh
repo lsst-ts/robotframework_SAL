@@ -178,10 +178,12 @@ function generateArgument() {
 function checkIfSkipped() {
 	subsystem=$1
 	topic=$2
-	if [[ ("$subsystem" == "scheduler") && ("$topic" == "blockPusher") ]]; then
-		skipped=""
-	elif [[ ("$subsystem" == "summitFacility") ]]; then
+	if [[ ("$subsystem" == "summitFacility") ]]; then
 		skipped="TSS-2622"
+	elif [[ ("$subsystem" == "tcsOfc") ]]; then
+		skipped="TSS-2625"
+	elif [[ ("$subsystem" == "tcsWEP") ]]; then
+		skipped="TSS-2626"
 	elif [[ ("$subsystem" == "promptprocessing") ]]; then
 		skipped="TSS-2621"
 	elif [[ ("$subsystem" == "catchuparchiver") ]]; then
