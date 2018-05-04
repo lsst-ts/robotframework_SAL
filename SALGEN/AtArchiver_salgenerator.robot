@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    This suite builds the various interfaces for the CatchupArchiver.
-Force Tags    salgen    TSS-2620
+Documentation    This suite builds the various interfaces for the AtArchiver.
+Force Tags    salgen    TSS-2624
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${timeout}
 ...    AND    Create Session    SALGEN
 Suite Teardown    Close All Connections
@@ -9,18 +9,18 @@ Resource    ../Global_Vars.robot
 Resource    ../common.robot
 
 *** Variables ***
-${subSystem}    catchuparchiver
+${subSystem}    atArchiver
 ${timeout}    1200s
 
 *** Test Cases ***
-Verify CatchupArchiver XML Defintions exist
+Verify AtArchiver XML Defintions exist
     [Tags]
-    File Should Exist    ${SALWorkDir}/catchuparchiver_Commands.xml
-    File Should Exist    ${SALWorkDir}/catchuparchiver_Events.xml
-    File Should Exist    ${SALWorkDir}/catchuparchiver_Telemetry.xml
+    File Should Exist    ${SALWorkDir}/atArchiver_Commands.xml
+    File Should Exist    ${SALWorkDir}/atArchiver_Events.xml
+    File Should Exist    ${SALWorkDir}/atArchiver_Telemetry.xml
 
-Salgen CatchupArchiver Validate
-    [Documentation]    Validate the CatchupArchiver XML definitions.
+Salgen AtArchiver Validate
+    [Documentation]    Validate the AtArchiver XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
@@ -38,25 +38,25 @@ Salgen CatchupArchiver Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Enable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Disable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Standby.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_EnterControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_ExitControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_SetValue.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Abort.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_ErrorCode.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_setValue.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_DetailedState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_archiverEntityStartup.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SettingVersions.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_archiverEntitySummaryState.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_ErrorCode.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_archiverEntityShutdown.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SummaryState.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_AppliedSettingsMatchStart.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SettingsApplied.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_DetailedState.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SummaryState.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_catchuparchiverEntitySummaryState.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_catchuparchiverEntityStartup.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_catchuparchiverEntityShutdown.idl
 
-Salgen CatchupArchiver HTML
+Salgen AtArchiver HTML
     [Documentation]    Create web form interfaces.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} html
@@ -66,11 +66,11 @@ Salgen CatchupArchiver HTML
     Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
     @{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/catchuparchiver_Commands.html
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/catchuparchiver_Events.html
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/catchuparchiver_Telemetry.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/atArchiver_Commands.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/atArchiver_Events.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/atArchiver_Telemetry.html
 
-Salgen CatchupArchiver C++
+Salgen AtArchiver C++
     [Documentation]    Generate C++ wrapper.
     [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
@@ -94,19 +94,19 @@ Verify C++ Directories
     @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
-Verify CatchupArchiver Telemetry directories
+Verify AtArchiver Telemetry directories
     [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat
 
-Verify CatchupArchiver C++ Telemetry Interfaces
+Verify AtArchiver C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_sub
 
-Verify CatchupArchiver C++ State Command Interfaces
+Verify AtArchiver C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
@@ -118,49 +118,49 @@ Verify CatchupArchiver C++ State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
 
-Verify CatchupArchiver C++ Command Interfaces
+Verify AtArchiver C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_EnterControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_EnterControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetValue_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetValue_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Abort_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Abort_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setValue_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setValue_controller
 
-Verify CatchupArchiver C++ Event Interfaces
+Verify AtArchiver C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntityStartup_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntityStartup_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingVersions_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingVersions_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntitySummaryState_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntitySummaryState_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntityShutdown_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_archiverEntityShutdown_log
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SummaryState_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SummaryState_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_AppliedSettingsMatchStart_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_AppliedSettingsMatchStart_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingsApplied_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SettingsApplied_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DetailedState_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SummaryState_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SummaryState_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntitySummaryState_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntitySummaryState_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntityStartup_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntityStartup_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntityShutdown_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_catchuparchiverEntityShutdown_log
 
-Salgen CatchupArchiver Python
+Salgen AtArchiver Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
@@ -175,7 +175,7 @@ Salgen CatchupArchiver Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/SALPY_${subSystem}.so
 
-Verify CatchupArchiver Python Telemetry Interfaces
+Verify AtArchiver Python Telemetry Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
@@ -183,7 +183,7 @@ Verify CatchupArchiver Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_SequencerHeartbeat_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_SequencerHeartbeat_Subscriber.py
 
-Verify CatchupArchiver Python State Command Interfaces
+Verify AtArchiver Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    python
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
@@ -195,53 +195,53 @@ Verify CatchupArchiver Python State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
 
-Verify CatchupArchiver Python Command Interfaces
+Verify AtArchiver Python Command Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_EnterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_EnterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_ExitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_ExitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_SetValue.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_SetValue.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_exitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enterControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enterControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_setValue.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_setValue.py
 
-Verify CatchupArchiver Python Event Interfaces
+Verify AtArchiver Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_ErrorCode.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_ErrorCode.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_DetailedState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_DetailedState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_archiverEntityStartup.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_archiverEntityStartup.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_SettingVersions.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_SettingVersions.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_archiverEntitySummaryState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_archiverEntitySummaryState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_ErrorCode.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_ErrorCode.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_archiverEntityShutdown.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_archiverEntityShutdown.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_SummaryState.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_SummaryState.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_AppliedSettingsMatchStart.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_AppliedSettingsMatchStart.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_SettingsApplied.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_SettingsApplied.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_DetailedState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_DetailedState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_SummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_SummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_catchuparchiverEntitySummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_catchuparchiverEntitySummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_catchuparchiverEntityStartup.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_catchuparchiverEntityStartup.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_catchuparchiverEntityShutdown.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_catchuparchiverEntityShutdown.py
 
-Salgen CatchupArchiver LabVIEW
+Salgen AtArchiver LabVIEW
     [Documentation]    Generate ${subSystem} low-level LabView interfaces.
     [Tags]    labview
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} labview
@@ -255,7 +255,7 @@ Salgen CatchupArchiver LabVIEW
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
 
-Salgen CatchupArchiver Java
+Salgen AtArchiver Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
@@ -271,7 +271,7 @@ Salgen CatchupArchiver Java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
-Salgen CatchupArchiver Maven
+Salgen AtArchiver Maven
     [Documentation]    Generate the Maven repository.
     [Tags]    java    TSS-2602
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven

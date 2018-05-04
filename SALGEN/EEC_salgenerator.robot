@@ -39,17 +39,21 @@ Salgen EEC Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_eectelem.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_LoopTime_ms.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_daysetpoint.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_operatormode.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_nighttimemode.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Enable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_ExitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_sethvac.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_daytimemode.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_setlouvers.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_engineeringmode.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Standby.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_AppliedSettingsMatchStart.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_nighttimefail.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_RejectedCommand.idl
@@ -79,7 +83,7 @@ Salgen EEC HTML
 
 Salgen EEC C++
     [Documentation]    Generate C++ wrapper.
-    [Tags]
+    [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -98,7 +102,7 @@ Salgen EEC C++
 
 Verify C++ Directories
     [Documentation]    Ensure expected C++ directories and files.
-    [Tags]
+    [Tags]    cpp
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
@@ -107,7 +111,7 @@ Verify C++ Directories
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
 Verify EEC Telemetry directories
-    [Tags]
+    [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_hvactelem
@@ -119,7 +123,7 @@ Verify EEC Telemetry directories
 
 Verify EEC C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}_hvactelem/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_hvactelem/cpp/standalone/sacpp_${subSystem}_sub
     File Should Exist    ${SALWorkDir}/${subSystem}_Timestamp/cpp/standalone/sacpp_${subSystem}_pub
@@ -133,35 +137,47 @@ Verify EEC C++ Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}_daysetpoint/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_daysetpoint/cpp/standalone/sacpp_${subSystem}_sub
 
+Verify EEC C++ State Command Interfaces
+    [Documentation]    Verify the C++ interfaces were properly created.
+    [Tags]    cpp
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
+
 Verify EEC C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_operatormode_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_operatormode_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_nighttimemode_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_nighttimemode_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_sethvac_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_sethvac_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_daytimemode_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_daytimemode_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setlouvers_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setlouvers_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_engineeringmode_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_engineeringmode_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
 
 Verify EEC C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_AppliedSettingsMatchStart_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_AppliedSettingsMatchStart_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_nighttimefail_send
@@ -220,6 +236,18 @@ Verify EEC Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_daysetpoint_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_daysetpoint_Subscriber.py
 
+Verify EEC Python State Command Interfaces
+    [Documentation]    Verify the C++ interfaces were properly created.
+    [Tags]    python
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
+
 Verify EEC Python Command Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
@@ -229,24 +257,24 @@ Verify EEC Python Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_operatormode.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_nighttimemode.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_nighttimemode.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_ExitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_ExitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_exitControl.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_sethvac.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_sethvac.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_daytimemode.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_daytimemode.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_setlouvers.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_setlouvers.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_engineeringmode.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_engineeringmode.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
 
 Verify EEC Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
@@ -315,7 +343,7 @@ Salgen EEC Java
 
 Salgen EEC Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]    java
+    [Tags]    java    TSS-2602
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}

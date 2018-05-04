@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    This suite builds the various interfaces for the ProcessingCluster.
-Force Tags    salgen    
+Documentation    This suite builds the various interfaces for the TcsOFC.
+Force Tags    salgen    TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${timeout}
 ...    AND    Create Session    SALGEN
 Suite Teardown    Close All Connections
@@ -9,17 +9,18 @@ Resource    ../Global_Vars.robot
 Resource    ../common.robot
 
 *** Variables ***
-${subSystem}    processingcluster
+${subSystem}    tcsOfc
 ${timeout}    1200s
 
 *** Test Cases ***
-Verify ProcessingCluster XML Defintions exist
+Verify TcsOFC XML Defintions exist
     [Tags]
-    File Should Exist    ${SALWorkDir}/processingcluster_Events.xml
-    File Should Exist    ${SALWorkDir}/processingcluster_Telemetry.xml
+    File Should Exist    ${SALWorkDir}/tcsOfc_Commands.xml
+    File Should Exist    ${SALWorkDir}/tcsOfc_Events.xml
+    File Should Exist    ${SALWorkDir}/tcsOfc_Telemetry.xml
 
-Salgen ProcessingCluster Validate
-    [Documentation]    Validate the ProcessingCluster XML definitions.
+Salgen TcsOFC Validate
+    [Documentation]    Validate the TcsOFC XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
@@ -32,20 +33,17 @@ Salgen ProcessingCluster Validate
     Directory Should Exist    ${SALWorkDir}/idl-templates/validated
     @{files}=    List Directory    ${SALWorkDir}/idl-templates    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_SequencerHeartbeat.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_DegreeOfFreedom.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enterControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_stop.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_processingclusterEntitySummaryState.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_processingclusterEntityStartup.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_processingclusterEntityShutdown.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_OffsetCameraHexapod.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_ApplyForces.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_OffsetM2Hexapod.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_ErrorCode.idl
 
-Salgen ProcessingCluster HTML
+Salgen TcsOFC HTML
     [Documentation]    Create web form interfaces.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} html
@@ -55,18 +53,19 @@ Salgen ProcessingCluster HTML
     Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
     @{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/processingcluster_Events.html
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/processingcluster_Telemetry.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/tcsOfc_Commands.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/tcsOfc_Events.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/tcsOfc_Telemetry.html
 
-Salgen ProcessingCluster C++
+Salgen TcsOFC C++
     [Documentation]    Generate C++ wrapper.
-    [Tags]
+    [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Not Contain    ${output}    *** DDS error in file
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_SequencerHeartbeat.idl
+    Should Contain    ${output}    Generating SAL CPP code for ${subSystem}_DegreeOfFreedom.idl
     Should Contain X Times    ${output}    cpp : Done Publisher    1
     Should Contain X Times    ${output}    cpp : Done Subscriber    1
     Should Contain X Times    ${output}    cpp : Done Commander    1
@@ -74,7 +73,7 @@ Salgen ProcessingCluster C++
 
 Verify C++ Directories
     [Documentation]    Ensure expected C++ directories and files.
-    [Tags]
+    [Tags]    cpp
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
@@ -82,49 +81,47 @@ Verify C++ Directories
     @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
-Verify ProcessingCluster Telemetry directories
-    [Tags]
+Verify TcsOFC Telemetry directories
+    [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
-    Directory Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat
+    Directory Should Exist    ${SALWorkDir}/${subSystem}_DegreeOfFreedom
 
-Verify ProcessingCluster C++ Telemetry Interfaces
+Verify TcsOFC C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
-    File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_pub
-    File Should Exist    ${SALWorkDir}/${subSystem}_SequencerHeartbeat/cpp/standalone/sacpp_${subSystem}_sub
+    [Tags]    cpp
+    File Should Exist    ${SALWorkDir}/${subSystem}_DegreeOfFreedom/cpp/standalone/sacpp_${subSystem}_pub
+    File Should Exist    ${SALWorkDir}/${subSystem}_DegreeOfFreedom/cpp/standalone/sacpp_${subSystem}_sub
 
-Verify ProcessingCluster C++ State Command Interfaces
+Verify TcsOFC C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stop_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stop_controller
 
-Verify ProcessingCluster C++ Event Interfaces
+Verify TcsOFC C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntitySummaryState_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntitySummaryState_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntityStartup_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntityStartup_log
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntityShutdown_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_processingclusterEntityShutdown_log
+    [Tags]    cpp
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OffsetCameraHexapod_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OffsetCameraHexapod_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ApplyForces_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ApplyForces_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OffsetM2Hexapod_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OffsetM2Hexapod_controller
 
-Salgen ProcessingCluster Python
+Verify TcsOFC C++ Event Interfaces
+    [Documentation]    Verify the C++ interfaces were properly created.
+    [Tags]    cpp
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ErrorCode_log
+
+Salgen TcsOFC Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
@@ -137,51 +134,49 @@ Salgen ProcessingCluster Python
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/SALPY_${subSystem}.so
 
-Verify ProcessingCluster Python Telemetry Interfaces
+Verify TcsOFC Python Telemetry Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_SequencerHeartbeat_Publisher.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_SequencerHeartbeat_Subscriber.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_DegreeOfFreedom_Publisher.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_DegreeOfFreedom_Subscriber.py
 
-Verify ProcessingCluster Python State Command Interfaces
+Verify TcsOFC Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    python
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_exitControl.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_stop.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_stop.py
 
-Verify ProcessingCluster Python Event Interfaces
+Verify TcsOFC Python Command Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_processingclusterEntitySummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_processingclusterEntitySummaryState.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_processingclusterEntityStartup.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_processingclusterEntityStartup.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_processingclusterEntityShutdown.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_processingclusterEntityShutdown.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_OffsetCameraHexapod.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_OffsetCameraHexapod.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_ApplyForces.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_ApplyForces.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_OffsetM2Hexapod.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_OffsetM2Hexapod.py
 
-Salgen ProcessingCluster LabVIEW
+Verify TcsOFC Python Event Interfaces
+    [Documentation]    Verify the Python interfaces were properly created.
+    [Tags]    python
+    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
+    Log Many    @{files}
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_ErrorCode.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_ErrorCode.py
+
+Salgen TcsOFC LabVIEW
     [Documentation]    Generate ${subSystem} low-level LabView interfaces.
     [Tags]    labview
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} labview
@@ -195,14 +190,14 @@ Salgen ProcessingCluster LabVIEW
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
 
-Salgen ProcessingCluster Java
+Salgen TcsOFC Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    SAL generator - V${SALVersion}
-    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_SequencerHeartbeat.idl
+    Should Contain    ${output}    Generating SAL Java code for ${subSystem}_DegreeOfFreedom.idl
     Should Contain X Times    ${output}    javac : Done Publisher    1
     Should Contain X Times    ${output}    javac : Done Subscriber    1
     Should Contain X Times    ${output}    javac : Done Commander/Controller    1
@@ -211,9 +206,9 @@ Salgen ProcessingCluster Java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
-Salgen ProcessingCluster Maven
+Salgen TcsOFC Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]    java
+    [Tags]    java    TSS-2602
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}

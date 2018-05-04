@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    This suite builds the various interfaces for the Dome.
+Documentation    This suite builds the various interfaces for the EFD.
 Force Tags    salgen    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${timeout}
 ...    AND    Create Session    SALGEN
@@ -9,18 +9,17 @@ Resource    ../Global_Vars.robot
 Resource    ../common.robot
 
 *** Variables ***
-${subSystem}    dome
+${subSystem}    efd
 ${timeout}    1200s
 
 *** Test Cases ***
-Verify Dome XML Defintions exist
+Verify EFD XML Defintions exist
     [Tags]
-    File Should Exist    ${SALWorkDir}/dome_Commands.xml
-    File Should Exist    ${SALWorkDir}/dome_Events.xml
-    File Should Exist    ${SALWorkDir}/dome_Telemetry.xml
+    File Should Exist    ${SALWorkDir}/efd_Events.xml
+    File Should Exist    ${SALWorkDir}/efd_Telemetry.xml
 
-Salgen Dome Validate
-    [Documentation]    Validate the Dome XML definitions.
+Salgen EFD Validate
+    [Documentation]    Validate the EFD XML definitions.
     [Tags]
     Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
@@ -38,16 +37,9 @@ Salgen Dome Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Crawl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Move.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Park.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_SetLouvers.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_CloseShutter.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_OpenShutter.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_StopShutter.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_StateChanged.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_LargeFileObjectAvailable.idl
 
-Salgen Dome HTML
+Salgen EFD HTML
     [Documentation]    Create web form interfaces.
     [Tags]
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} html
@@ -57,11 +49,10 @@ Salgen Dome HTML
     Directory Should Exist    ${SALWorkDir}/html/salgenerator/${subSystem}
     @{files}=    List Directory    ${SALWorkDir}/html/salgenerator/${subSystem}    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/dome_Commands.html
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/dome_Events.html
-    File Should Exist    ${SALWorkDir}/html/${subSystem}/dome_Telemetry.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/efd_Events.html
+    File Should Exist    ${SALWorkDir}/html/${subSystem}/efd_Telemetry.html
 
-Salgen Dome C++
+Salgen EFD C++
     [Documentation]    Generate C++ wrapper.
     [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
@@ -85,19 +76,19 @@ Verify C++ Directories
     @{files}=    List Directory    ${SALWorkDir}/idl-templates/validated/sal    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
-Verify Dome Telemetry directories
+Verify EFD Telemetry directories
     [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_Summary
 
-Verify Dome C++ Telemetry Interfaces
+Verify EFD C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}_Summary/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_Summary/cpp/standalone/sacpp_${subSystem}_sub
 
-Verify Dome C++ State Command Interfaces
+Verify EFD C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
@@ -109,31 +100,13 @@ Verify Dome C++ State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
 
-Verify Dome C++ Command Interfaces
+Verify EFD C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Crawl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Crawl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Move_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Move_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Park_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Park_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetLouvers_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetLouvers_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_CloseShutter_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_CloseShutter_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OpenShutter_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_OpenShutter_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StopShutter_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StopShutter_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_LargeFileObjectAvailable_send
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_LargeFileObjectAvailable_log
 
-Verify Dome C++ Event Interfaces
-    [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]    cpp
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StateChanged_send
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StateChanged_log
-
-Salgen Dome Python
+Salgen EFD Python
     [Documentation]    Generate Python wrapper.
     [Tags]    python
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal python
@@ -148,7 +121,7 @@ Salgen Dome Python
     Log Many    @{files}
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/SALPY_${subSystem}.so
 
-Verify Dome Python Telemetry Interfaces
+Verify EFD Python Telemetry Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
@@ -156,7 +129,7 @@ Verify Dome Python Telemetry Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Summary_Publisher.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Summary_Subscriber.py
 
-Verify Dome Python State Command Interfaces
+Verify EFD Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    python
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
@@ -168,35 +141,15 @@ Verify Dome Python State Command Interfaces
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
 
-Verify Dome Python Command Interfaces
+Verify EFD Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Crawl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Crawl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Move.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Move.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Park.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Park.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_SetLouvers.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_SetLouvers.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_CloseShutter.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_CloseShutter.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_OpenShutter.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_OpenShutter.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_StopShutter.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_StopShutter.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_LargeFileObjectAvailable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_LargeFileObjectAvailable.py
 
-Verify Dome Python Event Interfaces
-    [Documentation]    Verify the Python interfaces were properly created.
-    [Tags]    python
-    @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
-    Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_StateChanged.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_StateChanged.py
-
-Salgen Dome LabVIEW
+Salgen EFD LabVIEW
     [Documentation]    Generate ${subSystem} low-level LabView interfaces.
     [Tags]    labview
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} labview
@@ -210,7 +163,7 @@ Salgen Dome LabVIEW
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SAL_${subSystem}_shmem.h
     File Should Exist    ${SALWorkDir}/${subSystem}/labview/SALLV_${subSystem}.so
 
-Salgen Dome Java
+Salgen EFD Java
     [Documentation]    Generate Java wrapper.
     [Tags]    java
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal java
@@ -226,7 +179,7 @@ Salgen Dome Java
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/java    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/java/sal_${subSystem}.idl
 
-Salgen Dome Maven
+Salgen EFD Maven
     [Documentation]    Generate the Maven repository.
     [Tags]    java    TSS-2602
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven

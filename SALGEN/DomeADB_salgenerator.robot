@@ -36,12 +36,8 @@ Salgen DomeADB Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_status.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enterControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_stop.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Crawl.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Move.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_VelocityMove.idl
@@ -82,7 +78,7 @@ Salgen DomeADB HTML
 
 Salgen DomeADB C++
     [Documentation]    Generate C++ wrapper.
-    [Tags]
+    [Tags]    cpp
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} sal cpp
     ${output}=    Read Until Prompt
     Log    ${output}
@@ -96,7 +92,7 @@ Salgen DomeADB C++
 
 Verify C++ Directories
     [Documentation]    Ensure expected C++ directories and files.
-    [Tags]
+    [Tags]    cpp
     Directory Should Exist    ${SALWorkDir}/${subSystem}/cpp
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/cpp    pattern=*${subSystem}*
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/libsacpp_${subSystem}_types.so
@@ -105,40 +101,32 @@ Verify C++ Directories
     File Should Exist    ${SALWorkDir}/idl-templates/validated/sal/sal_${subSystem}.idl
 
 Verify DomeADB Telemetry directories
-    [Tags]
+    [Tags]    cpp
     @{files}=    List Directory    ${SALWorkDir}    pattern=*${subSystem}*
     Log Many    @{files}
     Directory Should Exist    ${SALWorkDir}/${subSystem}_status
 
 Verify DomeADB C++ Telemetry Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}_status/cpp/standalone/sacpp_${subSystem}_pub
     File Should Exist    ${SALWorkDir}/${subSystem}_status/cpp/standalone/sacpp_${subSystem}_sub
 
 Verify DomeADB C++ State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stop_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_stop_controller
 
 Verify DomeADB C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Crawl_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Crawl_controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Move_commander
@@ -150,7 +138,7 @@ Verify DomeADB C++ Command Interfaces
 
 Verify DomeADB C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    cpp
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StateChanged_send
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_StateChanged_log
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_DriveEnabled_send
@@ -203,8 +191,6 @@ Salgen DomeADB Python
     Directory Should Exist    ${SALWorkDir}/${subSystem}/python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/SALPY_${subSystem}.so
 
 Verify DomeADB Python Telemetry Interfaces
@@ -217,23 +203,15 @@ Verify DomeADB Python Telemetry Interfaces
 
 Verify DomeADB Python State Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
-    [Tags]
+    [Tags]    python
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_exitControl.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
     File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_stop.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_stop.py
 
 Verify DomeADB Python Command Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
@@ -325,7 +303,7 @@ Salgen DomeADB Java
 
 Salgen DomeADB Maven
     [Documentation]    Generate the Maven repository.
-    [Tags]    java
+    [Tags]    java    TSS-2602
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} maven
     ${output}=    Read Until Prompt
     Log    ${output}
