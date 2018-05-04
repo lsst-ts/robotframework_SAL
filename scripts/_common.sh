@@ -184,6 +184,10 @@ function checkIfSkipped() {
 		skipped="TSS-2625"
 	elif [[ ("$subsystem" == "tcsWEP") ]]; then
 		skipped="TSS-2626"
+	elif [[ ("$subsystem" == "archiver") ]]; then
+		skipped="TSS-2623"
+	elif [[ ("$subsystem" == "atArchiver") ]]; then
+		skipped="TSS-2624"
 	elif [[ ("$subsystem" == "promptprocessing") ]]; then
 		skipped="TSS-2621"
 	elif [[ ("$subsystem" == "catchuparchiver") ]]; then
