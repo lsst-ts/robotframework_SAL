@@ -22,11 +22,7 @@ Verify Camera XML Defintions exist
 Salgen Camera Validate
     [Documentation]    Validate the Camera XML definitions.
     [Tags]
-    ${input}=    Write    cd ${SALWorkDir}
-	${output}=    Read Until Prompt
-    ${input}=    Write    pwd
-    ${output}=    Read
-    Should Contain    ${output}    ${SALWorkDir}
+    Write    cd ${SALWorkDir}
     ${input}=    Write    ${SALHome}/scripts/salgenerator ${subSystem} validate
     ${output}=    Read Until Prompt
     Log    ${output}

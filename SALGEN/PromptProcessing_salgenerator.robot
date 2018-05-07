@@ -38,14 +38,14 @@ Salgen PromptProcessing Validate
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Start.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Enable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Disable.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Standby.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_EnterControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_ExitControl.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_SetValue.idl
-    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_Abort.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_start.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_disable.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_standby.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_enterControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_exitControl.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_setValue.idl
+    File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_command_abort.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_ErrorCode.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_SettingVersions.idl
     File Should Exist    ${SALWorkDir}/idl-templates/${subSystem}_logevent_AppliedSettingsMatchStart.idl
@@ -121,22 +121,22 @@ Verify PromptProcessing C++ State Command Interfaces
 Verify PromptProcessing C++ Command Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
     [Tags]    cpp
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Start_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Enable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Disable_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Standby_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_EnterControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_EnterControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_ExitControl_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetValue_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_SetValue_controller
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Abort_commander
-    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_Abort_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_start_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_disable_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_standby_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_enterControl_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_exitControl_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setValue_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_setValue_controller
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_commander
+    File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_abort_controller
 
 Verify PromptProcessing C++ Event Interfaces
     [Documentation]    Verify the C++ interfaces were properly created.
@@ -200,22 +200,22 @@ Verify PromptProcessing Python Command Interfaces
     [Tags]    python
     @{files}=    List Directory    ${SALWorkDir}/${subSystem}/python    pattern=*${subSystem}*
     Log Many    @{files}
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Start.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Enable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Disable.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Standby.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_EnterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_EnterControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_ExitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_ExitControl.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_SetValue.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_SetValue.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_Abort.py
-    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_Abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_start.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_disable.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_standby.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_enterControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_enterControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_exitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_exitControl.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_setValue.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_setValue.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Commander_abort.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Controller_abort.py
 
 Verify PromptProcessing Python Event Interfaces
     [Documentation]    Verify the Python interfaces were properly created.
