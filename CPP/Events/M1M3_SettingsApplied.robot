@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_SettingsApplied sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11.6013 SkbkxXlmmljAAZN -796583101
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 98.5771 dlUZQcjxOneJsrYjMRvUcDeabZheacJEtipmUdyNbWRQBmnvUtauFbyarIslfwDZqROlwURhPoSKHjnecMdVVhyFnzTKmHQZlhHIwpXjUaQOVtFeuxHijvkUNepMIbAVXHroOustBqhnnAnzYAVhaGBFuQVCtidZFwQLKHDOsxpmVlxDjAMzGjZvaxysptcKEMfsPiobmZsxyMsgjctJOsTpYobHDgbWHDlGoBJUrkXVSrzwRXNedospWfVeKosy -802629527
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -796583101
+    ${output}=    Read Until    priority : -802629527
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Timestamp : 11.6013
-    Should Contain    ${output}    Settings : SkbkxXlmmljAAZN
-    Should Contain    ${output}    priority : -796583101
+    Should Contain    ${output}    Timestamp : 98.5771
+    Should Contain    ${output}    Settings : dlUZQcjxOneJsrYjMRvUcDeabZheacJEtipmUdyNbWRQBmnvUtauFbyarIslfwDZqROlwURhPoSKHjnecMdVVhyFnzTKmHQZlhHIwpXjUaQOVtFeuxHijvkUNepMIbAVXHroOustBqhnnAnzYAVhaGBFuQVCtidZFwQLKHDOsxpmVlxDjAMzGjZvaxysptcKEMfsPiobmZsxyMsgjctJOsTpYobHDgbWHDlGoBJUrkXVSrzwRXNedospWfVeKosy
+    Should Contain    ${output}    priority : -802629527

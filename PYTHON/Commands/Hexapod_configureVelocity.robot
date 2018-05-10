@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1.022 95.8355 50.0813 92.5165 42.1178 61.2718 96.3751 43.3179 5.7853 78.3396 70.5808 12.4825
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.560380511671 0.717736127888 0.706486617017 0.78332714201
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1.022 95.8355 50.0813 92.5165 42.1178 61.2718 96.3751 43.3179 5.7853 78.3396 70.5808 12.4825
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.560380511671 0.717736127888 0.706486617017 0.78332714201
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,18 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xmin : 1.022    1
-    Should Contain X Times    ${output}    xmax : 95.8355    1
-    Should Contain X Times    ${output}    ymin : 50.0813    1
-    Should Contain X Times    ${output}    ymax : 92.5165    1
-    Should Contain X Times    ${output}    zmin : 42.1178    1
-    Should Contain X Times    ${output}    zmax : 61.2718    1
-    Should Contain X Times    ${output}    umin : 96.3751    1
-    Should Contain X Times    ${output}    umax : 43.3179    1
-    Should Contain X Times    ${output}    vmin : 5.7853    1
-    Should Contain X Times    ${output}    vmax : 78.3396    1
-    Should Contain X Times    ${output}    wmin : 70.5808    1
-    Should Contain X Times    ${output}    wmax : 12.4825    1
+    Should Contain X Times    ${output}    xymax : 0.560380511671    1
+    Should Contain X Times    ${output}    rxrymax : 0.717736127888    1
+    Should Contain X Times    ${output}    zmax : 0.706486617017    1
+    Should Contain X Times    ${output}    rzmax : 0.78332714201    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -88,18 +80,10 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xmin = 1.022    1
-    Should Contain X Times    ${output}    xmax = 95.8355    1
-    Should Contain X Times    ${output}    ymin = 50.0813    1
-    Should Contain X Times    ${output}    ymax = 92.5165    1
-    Should Contain X Times    ${output}    zmin = 42.1178    1
-    Should Contain X Times    ${output}    zmax = 61.2718    1
-    Should Contain X Times    ${output}    umin = 96.3751    1
-    Should Contain X Times    ${output}    umax = 43.3179    1
-    Should Contain X Times    ${output}    vmin = 5.7853    1
-    Should Contain X Times    ${output}    vmax = 78.3396    1
-    Should Contain X Times    ${output}    wmin = 70.5808    1
-    Should Contain X Times    ${output}    wmax = 12.4825    1
+    Should Contain X Times    ${output}    xymax = 0.560380511671    1
+    Should Contain X Times    ${output}    rxrymax = 0.717736127888    1
+    Should Contain X Times    ${output}    zmax = 0.706486617017    1
+    Should Contain X Times    ${output}    rzmax = 0.78332714201    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

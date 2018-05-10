@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1356585633 LxrYNIzgabfCLRvJZxZPbPvYlcCLQfiisPfjgZriBhEtollHMTUIWwxuMIjmvlQWHjquIaqFCIXcIkyNbriFMyloavgZyCfheSNomdRImLJMnSwRftgcZUwHVXbAouPtMCfrElfuHImkjHAJdFdAfIsmFCnrqYKrrcozLNKNPpyYzPjKbcBvXjChxUHdrmgPnmPhLRLJosKaBwvtampDKjDEhaeXYhOKhTATAKVrbAIDOMCBMzcWJgRKxHNSUfjtqcrMvKYeDpOUeECiAgfjDnuobtiaUzEtmqROmOwFtOwnmVnpNpzBrwRNCTLpvjNSoSHTbLSiPZjBGlOdQOklsfZKFtyRiufPlUdckRoSUFhCSJZfXcLisZXCYYGEEigaZNlPUCoOXJbKWZRcPyEsbjtYcSLYEjhwUByAuvLfAEhavbJRlBRueiXLVdJLPpBWFPQP -60515381
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -42006411 ZICWOAnXfXjgHQdPzxTHNJzpYLsXxunEZpjMFKcZRApSmXsEiaCQtBujSGfxGaSpncsGrgaQGbGAKUWmuxYDvGuoOiVJRUNPizoEkUCRJlNnkkXQnwNSgzoBWqLVJQkVmlkgCOlmPrQphUqmboRCuWexlIORYCTHEflxvxfGzucjkhnrqnhxvMWcOPlOdqBGxclduGgBIvabbPQFoZEsuoEZPjJOwtYhCzPrcLPizik 808299458
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -60515381
+    ${output}=    Read Until    priority : 808299458
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountState received =     1
-    Should Contain    ${output}    id : -1356585633
-    Should Contain    ${output}    text : LxrYNIzgabfCLRvJZxZPbPvYlcCLQfiisPfjgZriBhEtollHMTUIWwxuMIjmvlQWHjquIaqFCIXcIkyNbriFMyloavgZyCfheSNomdRImLJMnSwRftgcZUwHVXbAouPtMCfrElfuHImkjHAJdFdAfIsmFCnrqYKrrcozLNKNPpyYzPjKbcBvXjChxUHdrmgPnmPhLRLJosKaBwvtampDKjDEhaeXYhOKhTATAKVrbAIDOMCBMzcWJgRKxHNSUfjtqcrMvKYeDpOUeECiAgfjDnuobtiaUzEtmqROmOwFtOwnmVnpNpzBrwRNCTLpvjNSoSHTbLSiPZjBGlOdQOklsfZKFtyRiufPlUdckRoSUFhCSJZfXcLisZXCYYGEEigaZNlPUCoOXJbKWZRcPyEsbjtYcSLYEjhwUByAuvLfAEhavbJRlBRueiXLVdJLPpBWFPQP
-    Should Contain    ${output}    priority : -60515381
+    Should Contain    ${output}    id : -42006411
+    Should Contain    ${output}    text : ZICWOAnXfXjgHQdPzxTHNJzpYLsXxunEZpjMFKcZRApSmXsEiaCQtBujSGfxGaSpncsGrgaQGbGAKUWmuxYDvGuoOiVJRUNPizoEkUCRJlNnkkXQnwNSgzoBWqLVJQkVmlkgCOlmPrQphUqmboRCuWexlIORYCTHEflxvxfGzucjkhnrqnhxvMWcOPlOdqBGxclduGgBIvabbPQFoZEsuoEZPjJOwtYhCzPrcLPizik
+    Should Contain    ${output}    priority : 808299458

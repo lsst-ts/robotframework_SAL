@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 47.3133 27.8724 72.1973
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 90.0647 80.6024 88.2157
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,17 +60,17 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 47.3133 27.8724 72.1973
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 90.0647 80.6024 88.2157
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : target    1
-    Should Contain X Times    ${output}    property : position    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    angle : 47.3133    1
-    Should Contain X Times    ${output}    velocity : 27.8724    1
-    Should Contain X Times    ${output}    tai : 72.1973    1
+    Should Contain X Times    ${output}    angle : 90.0647    1
+    Should Contain X Times    ${output}    velocity : 80.6024    1
+    Should Contain X Times    ${output}    tai : 88.2157    1
     Should Contain    ${output}    === command track issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -81,13 +81,13 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command track received =
-    Should Contain    ${output}    device : target
-    Should Contain    ${output}    property : position
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    angle : 47.3133    1
-    Should Contain X Times    ${output}    velocity : 27.8724    1
-    Should Contain X Times    ${output}    tai : 72.1973    1
+    Should Contain X Times    ${output}    angle : 90.0647    1
+    Should Contain X Times    ${output}    velocity : 80.6024    1
+    Should Contain X Times    ${output}    tai : 88.2157    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FbtwrqNRKDyynvIsrHxPxAWlyEcTzMSqnfbBkEOltigZlbrniwskAkNKeeHdNWVkLmPkkKWRQwszCTzEylYWlMVTsfCUPrZYRzRpgKgfnmmgJmMNgBfHNBWgdozEllYgDPtafyGcgaWaRdBoAtBsWWbVPMgKPddHiOkHvOcbjPLZHLyUedIZJnhJqGOVzqxnkfietIKXkXpMYPlXnIRgTlBaGhOifRnURSHJPqUegqAHMgBUhsxYPQqLsaKvRKMmcOjeGnsPjzZkEkhUrIckFZmChXHynTpwDMqfEcloRempPmVpwADWUdApwJOdYcfELkgJHfGBDDRMIGgdYBrpNbWpWqEeDsXDsUSTzsTkqiXpfFjTSHkfGQeVxqYkaAcSCOtOUEkijqqNKiRMNnEUmoFnsEyVgcrcinMkbeBUYTpGWCEPbKNieBhzowoYJWgHxftAuQyZRokHfItzJkHVspqUDtGHVKnbMYuUPFUMKhhLVJBCXWOQOucvnaAkDvpNNaKMHYXNwjDEXfCQSiXQmOvYYGljnZKSblkDRKOzUTLxgJyfdZxYQITQthFtceOHESngAzgZpxlvhvyQdWppAEuWcztheQcQDEBzHYeYOscrEITSzzVGKaJhXkvBnUkbnfCjBmsTpGnFCqzYVsXwKqVPPiPbpTmrBWywlxMStwIivqbzNtSUwhOcNamL 1305020604
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send dNMpeRYCdtFvpKNmtbGZPaMQhaTJfHrmjMwFXyvcPVMeUzszZfTwvCYTUJnLudATgvoLJwGYAlYYmzTidshrREtCaVLvyHICUiQFGMuLzHmMGvlvNlvupMhjoVetFztMRSBDkFFKsbUwPOkZQivQuJfpqaznFJAnTkABMuVgJczjntVhEbZcRxxIXCbVVCLjgBMqwanqYWwDmLCcWwHEMcuLoqIKuUVHJNbtKItAJtUXxykEHJYZLIzSgRpYyCUhkUIYeJLYmqppiRXwLPnIdOOtgeoLXPtgXlpnKrTfMXrEKUQArAapAsgqBCOpGCMDEjOSwQpQAOhgiJwVjBIokXQwVnARWHwuWOFaWgahxvadZzuivvwjEVyGwArNFUqkLURbhijQCnUKzcKVMTidJSYAahrGQUoidcWuPKDAawgKbqNtjTgDxWItQkqFvbsibHhzcoMOKAVzjmgRVzyQYjlfgqGukVdXPHbApzhWwUpDYxvINLaOBuAEWHqTWYHydrylqSzTyyBWQtrdRMZNOpnLmkjOUtrowTsxmHE 912073154
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1305020604
+    ${output}=    Read Until    priority : 912073154
     Log    ${output}
     Should Contain X Times    ${output}    === Event Interlock received =     1
-    Should Contain    ${output}    detail : FbtwrqNRKDyynvIsrHxPxAWlyEcTzMSqnfbBkEOltigZlbrniwskAkNKeeHdNWVkLmPkkKWRQwszCTzEylYWlMVTsfCUPrZYRzRpgKgfnmmgJmMNgBfHNBWgdozEllYgDPtafyGcgaWaRdBoAtBsWWbVPMgKPddHiOkHvOcbjPLZHLyUedIZJnhJqGOVzqxnkfietIKXkXpMYPlXnIRgTlBaGhOifRnURSHJPqUegqAHMgBUhsxYPQqLsaKvRKMmcOjeGnsPjzZkEkhUrIckFZmChXHynTpwDMqfEcloRempPmVpwADWUdApwJOdYcfELkgJHfGBDDRMIGgdYBrpNbWpWqEeDsXDsUSTzsTkqiXpfFjTSHkfGQeVxqYkaAcSCOtOUEkijqqNKiRMNnEUmoFnsEyVgcrcinMkbeBUYTpGWCEPbKNieBhzowoYJWgHxftAuQyZRokHfItzJkHVspqUDtGHVKnbMYuUPFUMKhhLVJBCXWOQOucvnaAkDvpNNaKMHYXNwjDEXfCQSiXQmOvYYGljnZKSblkDRKOzUTLxgJyfdZxYQITQthFtceOHESngAzgZpxlvhvyQdWppAEuWcztheQcQDEBzHYeYOscrEITSzzVGKaJhXkvBnUkbnfCjBmsTpGnFCqzYVsXwKqVPPiPbpTmrBWywlxMStwIivqbzNtSUwhOcNamL
-    Should Contain    ${output}    priority : 1305020604
+    Should Contain    ${output}    detail : dNMpeRYCdtFvpKNmtbGZPaMQhaTJfHrmjMwFXyvcPVMeUzszZfTwvCYTUJnLudATgvoLJwGYAlYYmzTidshrREtCaVLvyHICUiQFGMuLzHmMGvlvNlvupMhjoVetFztMRSBDkFFKsbUwPOkZQivQuJfpqaznFJAnTkABMuVgJczjntVhEbZcRxxIXCbVVCLjgBMqwanqYWwDmLCcWwHEMcuLoqIKuUVHJNbtKItAJtUXxykEHJYZLIzSgRpYyCUhkUIYeJLYmqppiRXwLPnIdOOtgeoLXPtgXlpnKrTfMXrEKUQArAapAsgqBCOpGCMDEjOSwQpQAOhgiJwVjBIokXQwVnARWHwuWOFaWgahxvadZzuivvwjEVyGwArNFUqkLURbhijQCnUKzcKVMTidJSYAahrGQUoidcWuPKDAawgKbqNtjTgDxWItQkqFvbsibHhzcoMOKAVzjmgRVzyQYjlfgqGukVdXPHbApzhWwUpDYxvINLaOBuAEWHqTWYHydrylqSzTyyBWQtrdRMZNOpnLmkjOUtrowTsxmHE
+    Should Contain    ${output}    priority : 912073154

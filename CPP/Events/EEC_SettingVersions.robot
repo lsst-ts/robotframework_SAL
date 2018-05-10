@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zvVWNWCYbiDSkaDxLCSZVBOthNtbdONFzanfDerXJAMXgkxiKUEVyjbDNYbUfVoMxFwbhLAiCMIbcakYMcngIYeqEJXGfXUNwUneULkhfmCtyXHCZdPHnVPlHSCJdMgdCUOEzhffHpxuvAwVbAmnPJFVepOTCxxeYUeWXXMjUwoJxLIlznoIPyHwuvLMoBHHWMXMWVPKskONzsvtEHmvTCXPERcONdihqdXULLalzNmdqOQBuTYZVgdJGyrQTiDMJtCgOybXMaRZUrLwXQTNBPKXBMHnDxiCzijjQCHCshhSBNUttUVyiuyTkMtdezYHhpQSkbFSAOrGxjQgqROywcPWneXYHgFIuEbABYpBnygyocHffQrwOUcYcKsbPuzsVwUtsZbpnpMJZwfqayaBzFlzLqFdJeNfzYgJhBOhVHCZCnKZAOteqhBBmHQygjYxFXdOjHPQtXXPZYtXxZVGFbaKrryAOujEkMSaVCMDiSBgoxwDsAIGfXPLgHRWzzPiIBHehhFARzgdaHzmOylkUUgPiKUBXqh 61.1126 -40479447
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 46.4819 KHjwwXBfYhMAjpodClWBNNKdtlTmyMLYipwylsFrtxavRsilUYuuwxINrcODBMETXmGaUhcBzvVSpdkTFrDhPXJtGhRrxmgbPstSIbSPyVFSHuAFbKcZXOdvBQLSIdAuoxeHEhHkRzDtMtXXJMTkaGWAUrBVWeyXXecIpgPYLqYVBGqxMBbCePOzWKIVtRFKbElnr 1813733209
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -40479447
+    ${output}=    Read Until    priority : 1813733209
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsVersion : zvVWNWCYbiDSkaDxLCSZVBOthNtbdONFzanfDerXJAMXgkxiKUEVyjbDNYbUfVoMxFwbhLAiCMIbcakYMcngIYeqEJXGfXUNwUneULkhfmCtyXHCZdPHnVPlHSCJdMgdCUOEzhffHpxuvAwVbAmnPJFVepOTCxxeYUeWXXMjUwoJxLIlznoIPyHwuvLMoBHHWMXMWVPKskONzsvtEHmvTCXPERcONdihqdXULLalzNmdqOQBuTYZVgdJGyrQTiDMJtCgOybXMaRZUrLwXQTNBPKXBMHnDxiCzijjQCHCshhSBNUttUVyiuyTkMtdezYHhpQSkbFSAOrGxjQgqROywcPWneXYHgFIuEbABYpBnygyocHffQrwOUcYcKsbPuzsVwUtsZbpnpMJZwfqayaBzFlzLqFdJeNfzYgJhBOhVHCZCnKZAOteqhBBmHQygjYxFXdOjHPQtXXPZYtXxZVGFbaKrryAOujEkMSaVCMDiSBgoxwDsAIGfXPLgHRWzzPiIBHehhFARzgdaHzmOylkUUgPiKUBXqh
-    Should Contain    ${output}    timestamp : 61.1126
-    Should Contain    ${output}    priority : -40479447
+    Should Contain    ${output}    timestamp : 46.4819
+    Should Contain    ${output}    recommendedSettingsVersion : KHjwwXBfYhMAjpodClWBNNKdtlTmyMLYipwylsFrtxavRsilUYuuwxINrcODBMETXmGaUhcBzvVSpdkTFrDhPXJtGhRrxmgbPstSIbSPyVFSHuAFbKcZXOdvBQLSIdAuoxeHEhHkRzDtMtXXJMTkaGWAUrBVWeyXXecIpgPYLqYVBGqxMBbCePOzWKIVtRFKbElnr
+    Should Contain    ${output}    priority : 1813733209

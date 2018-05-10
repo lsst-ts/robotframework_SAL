@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -21991 yGkluBqVAZmBbtRDaYRVkVyFTgVhScmjDJDpzvmUnvHjRUUvNQqqtyFHGSUcPnAbMxVnwMpBPNwilesbKpTanoPYXkswWHAWSwFpYPgOKhKCeaqBqawwXhGHpRqkCAsrNjWAAfRgPJcSCtZzCOsXtOoupCGRXBidxWYBUNyMJcmqkMRqgDhmvHYbHmJtPrZeGwSZlvLXYvGbXHnGsLeGTEjgKupIfeDUbeEDbKfVxnRKiVPCaPRverxyaZYQqFiwMPhjEHANsardWeyjWVIvmvdjsjiKvMUkuEyqvqgHoqeaGXCtVtQUEOECsxZWmgHcygbuJlhbBKhcjiJCPyjukDFGYHPXuRGdYgPmANwijlohOSwdFpvexZvJnKCAubtTJKUpYcWSBHToUzQVjSlkxozbDgNzxReHYtWhyRrtOMSiYIDgTSeLSjMINsCKtZjKlNRaVTDongQaXXJYUlTJYJtLbXytgJtqjwKcCbMjIWGARkWeYVxBxMCrutshQAnadXguwdNuTtlJHMHEuUufXPxVrOJkKTWvkWkAKuyDfIGnrdjBCwnbiOLSHHAdANnBeEFsyKtXZvUBxSfcXqmwZlpKrYvDOiilftFtazqDyaOqvFPaMXOYDhlWTHDVwhSIxQTVUtQeGxVRpUhrkQiqqXrOBWcSieihgdqDf 216795053
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 17212 jJGsSoomJFiKjreLibVoSURBGYRnmINOIyxvyuNVXvnXIDcNXoPTOZiFsMEQlsjcPqCGTdjnBXyFdazIKWPnkytlpeHClNbPnESNqeAxZHbrgKLIOByZsviUwnKQtkfferdbHvQUGlhrwrJiMgcvQoyKRoqPJlAjrtfvPQREryYokmDHgrLNtGYyIAggelNDRslhatvofbpGSNDYmwHOsZKsCOloZVtKbnipCJnwhbalBpawLFjklzyirrLxzIctxtwzMZyahmxzDrGnsybujnALhjMhShzioYMfLbyibwuTGFGjLZwDlzjDZRGjpJUpVPJXOCxOlnkSbRNnFjTCSUkyoSzQWPyhvHgaMKxybuTKmkZUqanQAvKGJGgBVRdcjopEVSfvHSNWbjQkWwFmRrkjziTyvNDhIxLlZCMgZtIFGjmQoAnncKQLuZrQUSqxSFyqmYiSXiSDtIsIMJHjprKROIPGrHFJolXQZewtvlExkGuJJEoNimyQrZzzETuVwkYeUBGdZgxyhtJoXVwrJZuSxvvwnMZIKlURVGhHStzmlEVoDdNMnxiGyCOIjLkubxsbLtLbTRjIHiGmaWuguEpjEqGizBMQrIKAyjQqapoeeXGrzTyTsLKKzfTVzmGkFxPnrDAubMvSwmnwUElWRoTsjsYQkMDjCKccEUUDQPEoiPNXoMJGVyAEmQOWmsRvJOyUaqjVPboACjxYyMohOJZcolwuDUTrlACnZOKSLjlcArWqYpgmnmQBHdzSZxrUEwdyyRpdebIifIwOsIVFTblDZXcidKbHVfIiLYDhIPpLTsyFVRTAOZBzDPlRDSkLxrEFZfoCQfPbMGDYEsrtWDszGgpAgaUUQbxmFM 34627978
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_SubsystemError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 216795053
+    ${output}=    Read Until    priority : 34627978
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    louverID : -21991
-    Should Contain    ${output}    errorCode : yGkluBqVAZmBbtRDaYRVkVyFTgVhScmjDJDpzvmUnvHjRUUvNQqqtyFHGSUcPnAbMxVnwMpBPNwilesbKpTanoPYXkswWHAWSwFpYPgOKhKCeaqBqawwXhGHpRqkCAsrNjWAAfRgPJcSCtZzCOsXtOoupCGRXBidxWYBUNyMJcmqkMRqgDhmvHYbHmJtPrZeGwSZlvLXYvGbXHnGsLeGTEjgKupIfeDUbeEDbKfVxnRKiVPCaPRverxyaZYQqFiwMPhjEHANsardWeyjWVIvmvdjsjiKvMUkuEyqvqgHoqeaGXCtVtQUEOECsxZWmgHcygbuJlhbBKhcjiJCPyjukDFGYHPXuRGdYgPmANwijlohOSwdFpvexZvJnKCAubtTJKUpYcWSBHToUzQVjSlkxozbDgNzxReHYtWhyRrtOMSiYIDgTSeLSjMINsCKtZjKlNRaVTDongQaXXJYUlTJYJtLbXytgJtqjwKcCbMjIWGARkWeYVxBxMCrutshQAnadXguwdNuTtlJHMHEuUufXPxVrOJkKTWvkWkAKuyDfIGnrdjBCwnbiOLSHHAdANnBeEFsyKtXZvUBxSfcXqmwZlpKrYvDOiilftFtazqDyaOqvFPaMXOYDhlWTHDVwhSIxQTVUtQeGxVRpUhrkQiqqXrOBWcSieihgdqDf
-    Should Contain    ${output}    priority : 216795053
+    Should Contain    ${output}    louverID : 17212
+    Should Contain    ${output}    errorCode : jJGsSoomJFiKjreLibVoSURBGYRnmINOIyxvyuNVXvnXIDcNXoPTOZiFsMEQlsjcPqCGTdjnBXyFdazIKWPnkytlpeHClNbPnESNqeAxZHbrgKLIOByZsviUwnKQtkfferdbHvQUGlhrwrJiMgcvQoyKRoqPJlAjrtfvPQREryYokmDHgrLNtGYyIAggelNDRslhatvofbpGSNDYmwHOsZKsCOloZVtKbnipCJnwhbalBpawLFjklzyirrLxzIctxtwzMZyahmxzDrGnsybujnALhjMhShzioYMfLbyibwuTGFGjLZwDlzjDZRGjpJUpVPJXOCxOlnkSbRNnFjTCSUkyoSzQWPyhvHgaMKxybuTKmkZUqanQAvKGJGgBVRdcjopEVSfvHSNWbjQkWwFmRrkjziTyvNDhIxLlZCMgZtIFGjmQoAnncKQLuZrQUSqxSFyqmYiSXiSDtIsIMJHjprKROIPGrHFJolXQZewtvlExkGuJJEoNimyQrZzzETuVwkYeUBGdZgxyhtJoXVwrJZuSxvvwnMZIKlURVGhHStzmlEVoDdNMnxiGyCOIjLkubxsbLtLbTRjIHiGmaWuguEpjEqGizBMQrIKAyjQqapoeeXGrzTyTsLKKzfTVzmGkFxPnrDAubMvSwmnwUElWRoTsjsYQkMDjCKccEUUDQPEoiPNXoMJGVyAEmQOWmsRvJOyUaqjVPboACjxYyMohOJZcolwuDUTrlACnZOKSLjlcArWqYpgmnmQBHdzSZxrUEwdyyRpdebIifIwOsIVFTblDZXcidKbHVfIiLYDhIPpLTsyFVRTAOZBzDPlRDSkLxrEFZfoCQfPbMGDYEsrtWDszGgpAgaUUQbxmFM
+    Should Contain    ${output}    priority : 34627978

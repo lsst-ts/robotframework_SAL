@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -647 -7380 oGDsGVYNzoorfSXqRGxNqNHaGidkOCBIHMZFUcbzEbqXSYPCeqoIaJtPHZrJMGoiPHNCOhCqBvkShryxqjSYUjsiyQGrXeWZXfbtRJANtTTdtZaTXaPNDxTaWCyYfeWZXrmBelQjpPAYCeaqyBDFKlOlJpdRofVosLliEiSPMCQpGTgOxXfnXFKCmTMOppFdJfkOfRcxsKZgthoQJVIicqxfTWfvLCstMoEGsOXHWeeSkNZkJNXgjPGRUSifYLZJwBpQFoaoJmLwNISJZBzZNgvuHUsezgfXJufPCGPZYSKjAUaTwATFwqzJlTTnfLymaYeDBPtlnnqvXBiajLdeQEmHdUvdlfxomxjKSKXicCrSKLfPTuokIOViPFbgeNgsvOnweGilMkhPAzfQwcAjPHwUlrnQTSGKpRFASGjmtTYxcuxbXCgIgAMkQMdeiwsHIZHgkBNpMshCdOxXgASvZKCeGOvXMubTxiDiDvGsIODYsJAPPbpyCyszHZVLpkvsPUXbCtB 1646147056
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 9406 -21756 orYpAFLWONefYoDNAooJzOOQcqajnVIdfHbFhVYNSwigCYqajrjJCnFBaGVKzzALWHgpgZrnGaMBKKMzuTnRKQzSPfmKRqQYDjbGSqPhcsIIkTJQfisuXmkPwMeFKzgwcnTuGJUvgxHEBaBrhgYAUhUJSqPTABTbciCfUoOyrhRRpyjwLBCANnTdmQEseAYioPKAQenxQqycOvjDbVpyUAfrpztXlNRNSoYRAzvbUXGBHdyzSlySFYdctTtOSJMixTSrYafeDxEtQGTndweetKtAyQiqzrNYKgiQblzfJMiaJUMAAaPIHfJJyJarRATVlfjQRsgtxBEMyvHOmrYOOfZuZzPCHBadnKGXdqbcmznZqgSQXBeaGOuyKBwKixvwjPNRdacPPaqucAUomqqNvKgwLyzJtJrjukxculFGcHGkJyknMJwYzgRKnYLlGEyeAbLoxXNLnPKkUmhBDVMJcCbYSFBrxUtQcSfkEoxmvNrhEMcbSgyWgFUDavuGAvqgxVdWXABDUiiqxNUzFVUCSVmZxsWTIlnJECcPgdcwbamSNQmvtnOsJXMFGWHaoMoAMatGpFqAshtTfKupVPThMRLHNwvOoPIZLSWvSMBTMWZoqSnJBnMlVHqhTemCsOiYrSWDFmeRMAmnrMdkUpUpvIjELVOXQGteKeZIfBNMwoluFlipzFGVpNiuomuJaYcRujIKwIum 349594295
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveFault writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1646147056
+    ${output}=    Read Until    priority : 349594295
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    louverID : -647
-    Should Contain    ${output}    driveId : -7380
-    Should Contain    ${output}    errorCode : oGDsGVYNzoorfSXqRGxNqNHaGidkOCBIHMZFUcbzEbqXSYPCeqoIaJtPHZrJMGoiPHNCOhCqBvkShryxqjSYUjsiyQGrXeWZXfbtRJANtTTdtZaTXaPNDxTaWCyYfeWZXrmBelQjpPAYCeaqyBDFKlOlJpdRofVosLliEiSPMCQpGTgOxXfnXFKCmTMOppFdJfkOfRcxsKZgthoQJVIicqxfTWfvLCstMoEGsOXHWeeSkNZkJNXgjPGRUSifYLZJwBpQFoaoJmLwNISJZBzZNgvuHUsezgfXJufPCGPZYSKjAUaTwATFwqzJlTTnfLymaYeDBPtlnnqvXBiajLdeQEmHdUvdlfxomxjKSKXicCrSKLfPTuokIOViPFbgeNgsvOnweGilMkhPAzfQwcAjPHwUlrnQTSGKpRFASGjmtTYxcuxbXCgIgAMkQMdeiwsHIZHgkBNpMshCdOxXgASvZKCeGOvXMubTxiDiDvGsIODYsJAPPbpyCyszHZVLpkvsPUXbCtB
-    Should Contain    ${output}    priority : 1646147056
+    Should Contain    ${output}    louverID : 9406
+    Should Contain    ${output}    driveId : -21756
+    Should Contain    ${output}    errorCode : orYpAFLWONefYoDNAooJzOOQcqajnVIdfHbFhVYNSwigCYqajrjJCnFBaGVKzzALWHgpgZrnGaMBKKMzuTnRKQzSPfmKRqQYDjbGSqPhcsIIkTJQfisuXmkPwMeFKzgwcnTuGJUvgxHEBaBrhgYAUhUJSqPTABTbciCfUoOyrhRRpyjwLBCANnTdmQEseAYioPKAQenxQqycOvjDbVpyUAfrpztXlNRNSoYRAzvbUXGBHdyzSlySFYdctTtOSJMixTSrYafeDxEtQGTndweetKtAyQiqzrNYKgiQblzfJMiaJUMAAaPIHfJJyJarRATVlfjQRsgtxBEMyvHOmrYOOfZuZzPCHBadnKGXdqbcmznZqgSQXBeaGOuyKBwKixvwjPNRdacPPaqucAUomqqNvKgwLyzJtJrjukxculFGcHGkJyknMJwYzgRKnYLlGEyeAbLoxXNLnPKkUmhBDVMJcCbYSFBrxUtQcSfkEoxmvNrhEMcbSgyWgFUDavuGAvqgxVdWXABDUiiqxNUzFVUCSVmZxsWTIlnJECcPgdcwbamSNQmvtnOsJXMFGWHaoMoAMatGpFqAshtTfKupVPThMRLHNwvOoPIZLSWvSMBTMWZoqSnJBnMlVHqhTemCsOiYrSWDFmeRMAmnrMdkUpUpvIjELVOXQGteKeZIfBNMwoluFlipzFGVpNiuomuJaYcRujIKwIum
+    Should Contain    ${output}    priority : 349594295

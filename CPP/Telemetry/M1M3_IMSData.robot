@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_IMSData communications tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -50,6 +50,15 @@ Read Subscriber
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timestamp : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}RawSensorData : 9    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}XPosition : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}YPosition : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ZPosition : 1    9

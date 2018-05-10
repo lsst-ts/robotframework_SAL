@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : imageSequenceName imageName imageIndex timeStamp exposureTime priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -590262953
+    ${input}=    Write    python ${subSystem}_Event_${component}.py EaMmPRCpeeJIxgrjRdozXebCwasHItVtsvRqTetlZLKLfoFzvajjuqGrlxfwbBaWTFZeyxwTsLiQnDFhbfFrIVBmPJXTBZawJtUwSAPFYOjZIqjSCAHcATTkWAbrDGlbrvWwRPNsMgveSEHYmzRvscAxlWgLCSxpjfsxjuhDVwpLQtfUpZqZTtiJaPAWVXyFzPhBBCjqhENrzWcgbVetqLjEqCoNQBxEBpcZHZbfBFsaZRxTUTMhLuhNRXaLbACk SkrWqVqioPejvmPshlInjWoeDrrpNfVijgVIKwKpbJHCSbEotWSGsBydDPZaZSGLjoKXtlcEYEaueRrmVTqsFnhRosHLHPYKOrXbIMMFAuNRxdvvuUsIeKmQGnFHqtldAVXyAbvkQqNDAarhvIivsVcibotyvClMKylZUzQVAmlyIRuCLEdpgbEVQjIwmEdjGElNlghsVETaEHjBZCCgmAaiYWqWNtVaqszLdUJwPdHMZbaezktjKlDkxpcObaRX -233328291 41.8784 80.5681 -1802196434
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endReadout writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_LowerM1M3 commander/controller tests.
-Force Tags    python    
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

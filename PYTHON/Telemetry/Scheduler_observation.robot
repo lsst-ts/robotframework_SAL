@@ -61,7 +61,7 @@ Read Subscriber
     Should Contain X Times    ${list}    num_proposals = 1    10
     Should Contain X Times    ${list}    proposal_Ids(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
     Should Contain X Times    ${list}    ra = 1.0    10
-    Should Contain X Times    ${list}    dec = 1.0    10
+    Should Contain X Times    ${list}    decl = 1.0    10
     Should Contain X Times    ${list}    angle = 1.0    10
     Should Contain X Times    ${list}    altitude = 1.0    10
     Should Contain X Times    ${list}    azimuth = 1.0    10

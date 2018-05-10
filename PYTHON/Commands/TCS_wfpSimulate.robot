@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py uiMrmrrXwWdPHGtyEHJUZWNAxTWIYqkZaIHMwPtQBLDWvvvxNTgpGIVLSwcZQPJF 51.8158 66.7577 2.1719 25.9155 97.8151 40.487 87.3419 41.1798 11.4509 91.2875 66.74 39.8456 31.9601 29.8082 33.7376 39.4922 77.9492 59.7766
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py EtOfLogTUGdQpAApDsVfuqgXPMMNSBmAqsExhPUQXJHjJkeRMOucKrNvFFKBDDfW 59.4711 23.9495 46.0174 93.1523 20.4254 65.7013 85.676 54.5326 11.9653 15.0325 89.9948 16.4699 18.8216 44.1846 56.8846 34.4544 6.3886 64.3451
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py uiMrmrrXwWdPHGtyEHJUZWNAxTWIYqkZaIHMwPtQBLDWvvvxNTgpGIVLSwcZQPJF 51.8158 66.7577 2.1719 25.9155 97.8151 40.487 87.3419 41.1798 11.4509 91.2875 66.74 39.8456 31.9601 29.8082 33.7376 39.4922 77.9492 59.7766
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py EtOfLogTUGdQpAApDsVfuqgXPMMNSBmAqsExhPUQXJHjJkeRMOucKrNvFFKBDDfW 59.4711 23.9495 46.0174 93.1523 20.4254 65.7013 85.676 54.5326 11.9653 15.0325 89.9948 16.4699 18.8216 44.1846 56.8846 34.4544 6.3886 64.3451
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    uid : uiMrmrrXwWdPHGtyEHJUZWNAxTWIYqkZaIHMwPtQBLDWvvvxNTgpGIVLSwcZQPJF    1
-    Should Contain X Times    ${output}    z_arr : 51.8158    1
+    Should Contain X Times    ${output}    uid : EtOfLogTUGdQpAApDsVfuqgXPMMNSBmAqsExhPUQXJHjJkeRMOucKrNvFFKBDDfW    1
+    Should Contain X Times    ${output}    z_arr : 59.4711    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    uid = uiMrmrrXwWdPHGtyEHJUZWNAxTWIYqkZaIHMwPtQBLDWvvvxNTgpGIVLSwcZQPJF    1
-    Should Contain X Times    ${output}    z_arr(18) = [51.8158, 66.7577, 2.1719, 25.9155, 97.8151, 40.487, 87.3419, 41.1798, 11.4509, 91.2875, 66.74, 39.8456, 31.9601, 29.8082, 33.7376, 39.4922, 77.9492, 59.7766]    1
+    Should Contain X Times    ${output}    uid = EtOfLogTUGdQpAApDsVfuqgXPMMNSBmAqsExhPUQXJHjJkeRMOucKrNvFFKBDDfW    1
+    Should Contain X Times    ${output}    z_arr(18) = [59.4711, 23.9495, 46.0174, 93.1523, 20.4254, 65.7013, 85.676, 54.5326, 11.9653, 15.0325, 89.9948, 16.4699, 18.8216, 44.1846, 56.8846, 34.4544, 6.3886, 64.3451]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

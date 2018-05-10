@@ -49,4 +49,4 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    Timestamp = LSST    10
+    Should Contain X Times    ${list}    Timestamp = 1.0    10

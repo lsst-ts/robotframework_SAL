@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 455287657
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KLWkRqxMHhmuoXGiqfwGAiYDItMFmALPrkDwmlmWvDxRVWLtiAdVvtMjZYnZJcknhniszHuexEgeHeXRnHwGfiJxPuFYuCuNMGlUgCPWyEKsTqddUHHdXkyxYJRFpiEXFuTMlubHffvHwKwDkAZAHAfjSNQURyblwsSsbnfbyhBNipaVzLMslOFjkJGbzqlfrKGPJLnRbzHqvCXEcTqEpjWftRhwqAGevkZqrIujVRBiwNDattZXRGelxjIEgsFf gKVakjrANmnpyguuQeXlLPaSkPdAAFdMlxAqJeTBflBKnXRxRFHiwwjwhMHpMQluCNoLcJGRXZJQoxLUSJlUvLXuxlOSYXLMqddgMTGNNaoGQtkcUTJfsNzQDWsHXadFMPCUpCyzjhWhpFRZMsBEUAOKSwhNuccBFpEOKPyfghhXVgGRIFwOeTivhMYnLNUEnsNxpgNZNlExPYMvZqTRkhmnPNLBiTwFWKTaROjRVEqkWScnFLDafjAmMKjmVAMw 888724946 52.8177 64.21 -1179389159
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startReadout writing a message containing :    1
@@ -57,7 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 455287657
+    ${output}=    Read Until    priority : -1179389159
     Log    ${output}
     Should Contain X Times    ${output}    === Event startReadout received =     1
-    Should Contain    ${output}    priority : 455287657
+    Should Contain    ${output}    imageSequenceName : KLWkRqxMHhmuoXGiqfwGAiYDItMFmALPrkDwmlmWvDxRVWLtiAdVvtMjZYnZJcknhniszHuexEgeHeXRnHwGfiJxPuFYuCuNMGlUgCPWyEKsTqddUHHdXkyxYJRFpiEXFuTMlubHffvHwKwDkAZAHAfjSNQURyblwsSsbnfbyhBNipaVzLMslOFjkJGbzqlfrKGPJLnRbzHqvCXEcTqEpjWftRhwqAGevkZqrIujVRBiwNDattZXRGelxjIEgsFf
+    Should Contain    ${output}    imageName : gKVakjrANmnpyguuQeXlLPaSkPdAAFdMlxAqJeTBflBKnXRxRFHiwwjwhMHpMQluCNoLcJGRXZJQoxLUSJlUvLXuxlOSYXLMqddgMTGNNaoGQtkcUTJfsNzQDWsHXadFMPCUpCyzjhWhpFRZMsBEUAOKSwhNuccBFpEOKPyfghhXVgGRIFwOeTivhMYnLNUEnsNxpgNZNlExPYMvZqTRkhmnPNLBiTwFWKTaROjRVEqkWScnFLDafjAmMKjmVAMw
+    Should Contain    ${output}    imageIndex : 888724946
+    Should Contain    ${output}    timeStamp : 52.8177
+    Should Contain    ${output}    exposureTime : 64.21
+    Should Contain    ${output}    priority : -1179389159

@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : settings timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp settings priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py aiuBRQXCOLzxVMKmiTHuOPpVSpXgXLivthaUXMFuTyApngdXmuAKqbcaSYHTWFrPSaFttsyqWBMaOrguJpYtstjwKPUHKqtlNhaoNJWmkafgyvIYeVsgWEFdFSMHuZYSwuFGdJHUgmapRrcIoHQGJpHYuRvXwPBGiNqnzYIBnteLtPVqLaHrDmiruWShMpUYiCgnztIbVqRUyGmAhyZBnkIIkkonzCuFGuNVwnIgDRLiFQqnYdzwbCoRRiGoUvgGsItYjokWIdCAFHRkRnNMazblsBgeToN 11.6863 -1404724221
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 91.8447 fbjPPNsVcwZELQpBHcscRSaykwMwBhNHqJwCEZeodFJxtRldBjkbDwrGklCnViIKYHZktZmmCZYUbJunClbhQkRKxskxeENSNthyMIRWtGKNdPXhTJrryUIwujWBQzcYzduWitmlNBevzqWXSJYxwZTmpvJiAQrjBABtgJOKfZesnxPOifLobrorcPuimZcSANYCVmMVANQZYDtLuYPzqMaeKkXVlDlTYNrycITMkNmNbQVMmdVhKHYSwfEvhaFTXqpJxWIIgarjzLuAfCvhsZSSofkTwEaGWRCtTuNNAfFRLsLoLOlUWzhSSMYjVIkWhaJEkZzFgPhMqxaEFyLKRtpZWqEjdDjnUCCoyIrllyanFMxIgyPhVitcRXARGgBLVHhvGmoTFVvIwDxtLbLiCKEAeIVEEsEiDteFqkuvbYrXqNRiBWYxFaXTUXDSAuMsVMMNOexebEyxcgWQwwHhmyUlbUKCHIHtiETnNlVeSZiskXlLCnzJhlOWDUsUuxDUBVAmeqFXQOcSUraUKoWjKFLQArmlDfiOCCsksBOxdZKjIBZuMouPMeubusUqoxfbDzGbuqpZboCNSvWrDebHpTUSEceBUNMHEaDzByfLuzsfBeXuRNsQnFSOPUdIWwEvloVVWcpbDuCPCClXGpwfFWomkJxpqDiVaLqaNHBTlmFRUbOBNXbUxVbQZKTiQVAFCksTCwIOnHXwrfkZsNcmxwGRJEcFyuCgYqfTTguoJgPDsPxYVryfFgWijggrvsdwCiDXTBbEebpcsNyHtfofPNTKEbCzZpCpOGzpIWzdpuPSEhRUXqsBizNhfJHCbP -2133862389
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1

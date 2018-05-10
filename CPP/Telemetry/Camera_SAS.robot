@@ -86,24 +86,8 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CABAC_MUX : 7    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CABAC_MUX : 8    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CABAC_MUX : 9    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 9    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_ID : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCD_temp : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGACheckSum : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGACheckSum : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}FPGACheckSum : 3    1

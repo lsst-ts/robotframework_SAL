@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_ErrorCode sender/logger tests.
-Force Tags    python    
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ErrorCode priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ErrorCode DetailedErrorCode priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 96.3322 63402247 -553086145
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 89.4052 -1634111300 -299391547 2030001316
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ErrorCode writing a message containing :    1

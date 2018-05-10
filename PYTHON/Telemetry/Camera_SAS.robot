@@ -53,8 +53,8 @@ Read Subscriber
     Should Contain X Times    ${list}    Board_current(4) = [0.0, 1.0, 2.0, 3.0]    10
     Should Contain X Times    ${list}    Board_temp(12) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0]    10
     Should Contain X Times    ${list}    Board_voltage(4) = [0.0, 1.0, 2.0, 3.0]    10
-    Should Contain X Times    ${list}    CABAC_MUX(12) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]    10
-    Should Contain X Times    ${list}    CCD_ID(3) = [0, 1, 2]    10
-    Should Contain X Times    ${list}    CCD_temp(3) = [0, 1, 2]    10
-    Should Contain X Times    ${list}    FPGACheckSum(6) = [0, 1, 2, 3, 4, 5]    10
+    Should Contain X Times    ${list}    CABAC_MUX(4) = [0, 1, 2, 3]    10
+    Should Contain X Times    ${list}    CCD_ID = 1    10
+    Should Contain X Times    ${list}    CCD_temp = 1    10
+    Should Contain X Times    ${list}    FPGACheckSum(2) = [0, 1]    10
     Should Contain X Times    ${list}    REB_ID = 1    10

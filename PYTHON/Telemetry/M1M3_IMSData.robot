@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_IMSData communications tests.
-Force Tags    python    
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -50,6 +50,7 @@ Read Subscriber
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    Timestamp = 1.0    10
+    Should Contain X Times    ${list}    RawSensorData(8) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]    10
     Should Contain X Times    ${list}    XPosition = 1.0    10
     Should Contain X Times    ${list}    YPosition = 1.0    10
     Should Contain X Times    ${list}    ZPosition = 1.0    10

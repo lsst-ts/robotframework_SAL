@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_Enable commander/controller tests.
+Documentation    EEC_enable commander/controller tests.
 Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    eec
-${component}    Enable
+${component}    enable
 ${timeout}    60s
 
 *** Test Cases ***

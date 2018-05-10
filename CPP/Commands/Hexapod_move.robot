@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 32.4811 58.9156 6.7142 46.0831 36.1034 14.016 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,21 +60,15 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 32.4811 58.9156 6.7142 46.0831 36.1034 14.016 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : actuators    1
-    Should Contain X Times    ${output}    property : position    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 32.4811    1
-    Should Contain X Times    ${output}    y : 58.9156    1
-    Should Contain X Times    ${output}    z : 6.7142    1
-    Should Contain X Times    ${output}    u : 46.0831    1
-    Should Contain X Times    ${output}    v : 36.1034    1
-    Should Contain X Times    ${output}    w : 14.016    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    state : 0    1
     Should Contain    ${output}    === command move issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -85,17 +79,11 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command move received =
-    Should Contain    ${output}    device : actuators
-    Should Contain    ${output}    property : position
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 32.4811    1
-    Should Contain X Times    ${output}    y : 58.9156    1
-    Should Contain X Times    ${output}    z : 6.7142    1
-    Should Contain X Times    ${output}    u : 46.0831    1
-    Should Contain X Times    ${output}    v : 36.1034    1
-    Should Contain X Times    ${output}    w : 14.016    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    state : 0    1
     Should Contain X Times    ${output}    === [ackCommand_move] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

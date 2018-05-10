@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send voNCfrHxoscMLyvberRJyHaJgZrkAnPjyxXZkLgTuyhaEtdanrMffCTuSIpihWDoUChFaHiikpTbEnWGJvUvRbbPNvlOPJbPNNqonlgQqGKaNSxHAtBCwCsjCQPMApLTRjDIzupWXuhFyKcmZIOWrJEVQkoAiWHujIQDwcjPUJXddCwYbjliUnNyxmJZPKnigTDygzzDoIlySvMKQntrdmqGlyTZUDMRzXtLVLFilLOJuyqMvtJmeQIAgIbdwpEJorHYSqVOhelYAeKdUFGovjdaCasSjvFcJKPqqSTNmYtFmfAiIfrCEufRXTNWDbkTpLxDbVUCMMjNUrThZRymhJHwrkKkoxjBEGJIHIXiRidlmWOFdEwmAyazghdFCFXIzEcMcWMQtCQQipySQfrLHJresekpnMlXwRTQthnEPcxcsuDznLfRvBnkYEJGaUgjAvzlZjJbpAtNYsMPoT 942601490
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send LYCbiPBtbCpqwtdutpHsKixEnFEcZQwdoZelGzJNjUeWHAmsCZSWoFAIJcLBojBXJBYTZZSjKpBhFllPKTNTUtqwQvsRxUxNPpNowhsgXZxWVrdeGyiINtutJYOCgvAgeMpbwiUNyAmZGSmuzonAJcTvnQCrAsKmZJnLYoqBguTLeidnhVSudZHmjqeEyFqzDtwzCrMQyVDfNIcYBIakKLLSKvoskhCuxMYVLWthfmleizugnoojLOWeujBEoRIb 14.9064 1721559162
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1
@@ -57,8 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 942601490
+    ${output}=    Read Until    priority : 1721559162
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : voNCfrHxoscMLyvberRJyHaJgZrkAnPjyxXZkLgTuyhaEtdanrMffCTuSIpihWDoUChFaHiikpTbEnWGJvUvRbbPNvlOPJbPNNqonlgQqGKaNSxHAtBCwCsjCQPMApLTRjDIzupWXuhFyKcmZIOWrJEVQkoAiWHujIQDwcjPUJXddCwYbjliUnNyxmJZPKnigTDygzzDoIlySvMKQntrdmqGlyTZUDMRzXtLVLFilLOJuyqMvtJmeQIAgIbdwpEJorHYSqVOhelYAeKdUFGovjdaCasSjvFcJKPqqSTNmYtFmfAiIfrCEufRXTNWDbkTpLxDbVUCMMjNUrThZRymhJHwrkKkoxjBEGJIHIXiRidlmWOFdEwmAyazghdFCFXIzEcMcWMQtCQQipySQfrLHJresekpnMlXwRTQthnEPcxcsuDznLfRvBnkYEJGaUgjAvzlZjJbpAtNYsMPoT
-    Should Contain    ${output}    priority : 942601490
+    Should Contain    ${output}    detail : LYCbiPBtbCpqwtdutpHsKixEnFEcZQwdoZelGzJNjUeWHAmsCZSWoFAIJcLBojBXJBYTZZSjKpBhFllPKTNTUtqwQvsRxUxNPpNowhsgXZxWVrdeGyiINtutJYOCgvAgeMpbwiUNyAmZGSmuzonAJcTvnQCrAsKmZJnLYoqBguTLeidnhVSudZHmjqeEyFqzDtwzCrMQyVDfNIcYBIakKLLSKvoskhCuxMYVLWthfmleizugnoojLOWeujBEoRIb
+    Should Contain    ${output}    timestamp : 14.9064
+    Should Contain    ${output}    priority : 1721559162

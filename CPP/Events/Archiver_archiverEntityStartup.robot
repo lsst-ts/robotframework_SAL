@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zlGjfPynzceGYHWfSUMDnOvNjBkXBxtCNYzAeOIkvkwUiOThMReUhHzkxpucNaaCwxrTqAGYHOFjXXKSyDFwPGxLLBJTuJwqsqxRQEeXyqjUWNZUyFTYgEKUGPPERadM 47.0405 cJEvNdcPreNQAtIevjGgYBEYUQwUfuDnBSzNVObyKQIVZhOtUBDDApYknWOXkKYjjzEToOgQlQUnbgnrZXKVQLrZWfCVaTclzjFUJCjRUDxptpNqGIZzTcTSnBGdhrSsnMFqMpocJbKmZIeMqCubZyAUaDffOkZDbuhlaoRFrccuojTISlnJtErWjlmYUfVGOcUpmDSRyjzWdNdURbtTbdXbNVIEwUIvAeUTdXdxZaZBpLgKpkxrPzWGjFXhBDzd 185022793 -1164093352
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UnUgpULptuAlzKlQFAOKtRXgOfllafiIUuwybMEjGRbBgQehCvpklKuCGcNwLNcUkJDxrvSqppqXhstREVHbxBKKdTGQpUEtVTDvxAHlVPDsiuoDgQoCNEcpDsSIZOSV 62.4974 wffLpYgjhvvWwWDmwnuaBZbvqxvjjAqSgErRpSclaxSfOkMapmFZUWnqesoHtxxdJHjOnZMlErASxFUzpZGNrFHGyOcUsokckSVKXkjHvJuwSQKdHQFehzgJlLJudlswzsmDfDljFjbMjZnFRPdIcUQkRiurwLVgDmqrrDqtCWTosaJivaNxAJJCMdPqKuzxjCccQmajNFXZBCfMDlZfTfmUIbJNHifwHEccxJMtbMNuOVgMAMUuyhSSbipGNqSe 1800336399 978671271 -1684366519
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntityStartup writing a message containing :    1
@@ -57,11 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1164093352
+    ${output}=    Read Until    priority : -1684366519
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntityStartup received =     1
-    Should Contain    ${output}    Name : zlGjfPynzceGYHWfSUMDnOvNjBkXBxtCNYzAeOIkvkwUiOThMReUhHzkxpucNaaCwxrTqAGYHOFjXXKSyDFwPGxLLBJTuJwqsqxRQEeXyqjUWNZUyFTYgEKUGPPERadM
-    Should Contain    ${output}    Identifier : 47.0405
-    Should Contain    ${output}    Timestamp : cJEvNdcPreNQAtIevjGgYBEYUQwUfuDnBSzNVObyKQIVZhOtUBDDApYknWOXkKYjjzEToOgQlQUnbgnrZXKVQLrZWfCVaTclzjFUJCjRUDxptpNqGIZzTcTSnBGdhrSsnMFqMpocJbKmZIeMqCubZyAUaDffOkZDbuhlaoRFrccuojTISlnJtErWjlmYUfVGOcUpmDSRyjzWdNdURbtTbdXbNVIEwUIvAeUTdXdxZaZBpLgKpkxrPzWGjFXhBDzd
-    Should Contain    ${output}    Address : 185022793
-    Should Contain    ${output}    priority : -1164093352
+    Should Contain    ${output}    Name : UnUgpULptuAlzKlQFAOKtRXgOfllafiIUuwybMEjGRbBgQehCvpklKuCGcNwLNcUkJDxrvSqppqXhstREVHbxBKKdTGQpUEtVTDvxAHlVPDsiuoDgQoCNEcpDsSIZOSV
+    Should Contain    ${output}    Identifier : 62.4974
+    Should Contain    ${output}    Timestamp : wffLpYgjhvvWwWDmwnuaBZbvqxvjjAqSgErRpSclaxSfOkMapmFZUWnqesoHtxxdJHjOnZMlErASxFUzpZGNrFHGyOcUsokckSVKXkjHvJuwSQKdHQFehzgJlLJudlswzsmDfDljFjbMjZnFRPdIcUQkRiurwLVgDmqrrDqtCWTosaJivaNxAJJCMdPqKuzxjCccQmajNFXZBCfMDlZfTfmUIbJNHifwHEccxJMtbMNuOVgMAMUuyhSSbipGNqSe
+    Should Contain    ${output}    Address : 1800336399
+    Should Contain    ${output}    priority : 978671271
+    Should Contain    ${output}    priority : -1684366519

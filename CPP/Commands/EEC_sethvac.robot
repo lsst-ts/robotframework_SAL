@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 87.1497 99.7246 79.86 79.0017 28.6047 21.6372 17.7903 69.0757 4.8164 20.881 68.0366 65.9114 88.8638 70.0714 31.3642
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 93.9766 95.8975 9.1265 81.0333 13.0715 68.1559 53.4056 22.541 93.8653 64.673 46.7277 74.8221 92.477 92.8196 47.5447
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 87.1497 99.7246 79.86 79.0017 28.6047 21.6372 17.7903 69.0757 4.8164 20.881 68.0366 65.9114 88.8638 70.0714 31.3642
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 93.9766 95.8975 9.1265 81.0333 13.0715 68.1559 53.4056 22.541 93.8653 64.673 46.7277 74.8221 92.477 92.8196 47.5447
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    parameters : 87.1497    1
+    Should Contain X Times    ${output}    parameters : 93.9766    1
     Should Contain    ${output}    === command sethvac issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    parameters : 87.1497    1
+    Should Contain X Times    ${output}    parameters : 93.9766    1
     Should Contain X Times    ${output}    === [ackCommand_sethvac] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

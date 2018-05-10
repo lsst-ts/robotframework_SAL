@@ -52,7 +52,7 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}LST : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}MJD : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}date : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dec : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}decl : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 3    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_HardpointActuatorInfo sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 48.951 -761049406 1633805514 -1613178788 1067221306 -1292806400 1979677352 -69598984 1469781529 -737778627 -1354427906 -536105187 900069113 0.456086990368 0.564663990402 0.557627358967 0.535886871866 0.435757994397 0.405846881362 0.924684835079 0.602427476727 0.558886926296 0.536624333642 0.429711289619 0.703453544097 0.238199068914 0.020981691637 0.501683317968 0.976306971701 0.156537454254 0.596225608798 test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test 0.306120114453 0.956030144658 0.580914093027 0.286396180828 0.945773537477 0.672877075259 0.370170713763 0.701069488503 0.607367439252 0.590311938955 0.768124421888 0.155599072911 0.905461451284 0.755751776966 0.616135725694 0.809186564312 0.14344283101 0.0224770477476 0.208811377432 0.157415886041 0.0300839578499 0.604868703559 0.136926436043 0.885605362611 0.873434220947 0.00760084008476 0.870859509158 0.833131295 0.969370740167 0.323922495865 0.848969166767 0.181719030048 0.436743829982 0.899103715282 0.859212460738 0.843143007707 0.819847940053 0.263359134149 0.902704896754 0.265893295145 0.900366136021 0.119689291143 0.313930570522 0.532299546378 0.610585165445 0.141410854392 0.702194397795 0.991199738176 0.969053033077 0.679830830034 0.997684442605 0.976431798298 0.770847445876 0.372248773904 0.815096866303 0.592645312912 0.560819287553 0.501552390017 0.910513493027 0.477596707939 0.524040270968 0.361523652777 0.137657890579 0.952708716025 0.219630321742 0.0794175261889 0.777076259701 0.229568014407 0.0362731778369 0.118815679477 0.142419469444 0.156817054957 1 0 1 1 0 0 1 0 0 1 1 1 1 1 1 0 1 1 1 0 1 1 0 0 1 0 1 1 1 1 0 1 1 1 1 1 1 1 0 0 1 1 0 0 1 1 0 0 1 0 0 0 0 1 65960931
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 39.1171 28946 -24656 -16796 17098 -22992 28832 -1237835879 -910965036 -515787788 480894993 -1059645647 -16926950 -25979 -12947 32393 -24092 -16843 12145 -16937 -29493 7977 10077 -26631 17808 0.307399913011 0.248829848919 0.374401649043 0.0720286628066 0.338010170809 0.473483326692 0.242101501005 0.245604515616 0.989159139467 0.721956764611 0.085171170351 0.523374283218 0.193789117931 0.190038107452 0.0132480113843 0.809088801089 0.96623803512 0.130893864387 test test test test test test 26276 -14838 15790 26943 12909 -4905 -7508 -714 19909 -13075 28859 -30196 -8558 -10503 -19720 -28308 14254 27564 30861 19890 30127 22940 -31005 12907 -9266 8229 23591 7788 -3200 -3588 -30604 28968 9110 -27215 -1783 -20881 27464 1333 32159 21820 18355 32089 0.591682372476 0.392949050031 0.250103480334 0.637023074925 0.460278103152 0.325120405685 0.387633616286 0.80125477712 0.897815279794 0.417576165421 0.531920891211 0.595066315961 0.69110082151 0.918687176201 0.363846949803 0.0890810846487 0.748521642744 0.567381150155 0.0199475321797 0.281774595245 0.867351278599 0.367913488212 0.156784597102 0.730012934502 0.536962277546 0.485679442481 0.0438078732086 0.553541809023 0.36351461729 0.0824020669863 0.457364830499 0.684273907989 0.708113420985 0.575248215529 0.722963695087 0.459051700435 609962064
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorInfo writing a message containing :    1
@@ -57,42 +57,29 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 65960931
+    ${output}=    Read Until    priority : 609962064
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointActuatorInfo received =     1
-    Should Contain    ${output}    Timestamp : 48.951
-    Should Contain    ${output}    ReferenceId : -761049406
-    Should Contain    ${output}    ReferencePosition : 1633805514
-    Should Contain    ${output}    XPosition : -1613178788
-    Should Contain    ${output}    YPosition : 1067221306
-    Should Contain    ${output}    ZPosition : -1292806400
-    Should Contain    ${output}    ILCUniqueId : 1979677352
-    Should Contain    ${output}    ILCApplicationType : -69598984
-    Should Contain    ${output}    NetworkNodeType : 1469781529
-    Should Contain    ${output}    ILCSelectedOptions : -737778627
-    Should Contain    ${output}    NetworkNodeOptions : -1354427906
-    Should Contain    ${output}    MajorRevision : -536105187
-    Should Contain    ${output}    MinorRevision : 900069113
-    Should Contain    ${output}    ADCScanRate : 0.456086990368
-    Should Contain    ${output}    MainADCCalibrationK1 : 0.564663990402
-    Should Contain    ${output}    MainADCCalibrationK2 : 0.557627358967
-    Should Contain    ${output}    MainADCCalibrationK3 : 0.535886871866
-    Should Contain    ${output}    MainADCCalibrationK4 : 0.435757994397
-    Should Contain    ${output}    MainLoadCellOffset : 0.405846881362
-    Should Contain    ${output}    MainLoadCellSensitivity : 0.924684835079
-    Should Contain    ${output}    BackupADCCalibrationK1 : 0.602427476727
-    Should Contain    ${output}    BackupADCCalibrationK2 : 0.558886926296
-    Should Contain    ${output}    BackupADCCalibrationK3 : 0.536624333642
-    Should Contain    ${output}    BackupADCCalibrationK4 : 0.429711289619
-    Should Contain    ${output}    BackupLoadCellOffset : 0.703453544097
-    Should Contain    ${output}    BackupLoadCellSensitivity : 0.238199068914
-    Should Contain    ${output}    MainCalibrationError : 0.020981691637
-    Should Contain    ${output}    BackupCalibrationError : 0.501683317968
-    Should Contain    ${output}    UniqueIdCRCError : 0.976306971701
-    Should Contain    ${output}    ApplicationTypeMismatch : 0.156537454254
-    Should Contain    ${output}    ApplicationMissing : 0.596225608798
-    Should Contain    ${output}    ApplicationCRCMismatch : test
-    Should Contain    ${output}    OneWireMissing : test
-    Should Contain    ${output}    OneWire1Mismatch : test
-    Should Contain    ${output}    OneWire2Mismatch : test
-    Should Contain    ${output}    priority : test
+    Should Contain    ${output}    Timestamp : 39.1171
+    Should Contain    ${output}    ReferenceId : 28946
+    Should Contain    ${output}    ReferencePosition : -24656
+    Should Contain    ${output}    ModbusSubnet : -16796
+    Should Contain    ${output}    ModbusAddress : 17098
+    Should Contain    ${output}    XPosition : -22992
+    Should Contain    ${output}    YPosition : 28832
+    Should Contain    ${output}    ZPosition : -1237835879
+    Should Contain    ${output}    ILCUniqueId : -910965036
+    Should Contain    ${output}    ILCApplicationType : -515787788
+    Should Contain    ${output}    NetworkNodeType : 480894993
+    Should Contain    ${output}    ILCSelectedOptions : -1059645647
+    Should Contain    ${output}    NetworkNodeOptions : -16926950
+    Should Contain    ${output}    MajorRevision : -25979
+    Should Contain    ${output}    MinorRevision : -12947
+    Should Contain    ${output}    ADCScanRate : 32393
+    Should Contain    ${output}    MainLoadCellCoefficient : -24092
+    Should Contain    ${output}    MainLoadCellOffset : -16843
+    Should Contain    ${output}    MainLoadCellSensitivity : 12145
+    Should Contain    ${output}    BackupLoadCellCoefficient : -16937
+    Should Contain    ${output}    BackupLoadCellOffset : -29493
+    Should Contain    ${output}    BackupLoadCellSensitivity : 7977
+    Should Contain    ${output}    priority : 10077

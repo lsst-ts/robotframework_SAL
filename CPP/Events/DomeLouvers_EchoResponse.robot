@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31749 cNGaJuxFgpQgqtDlutetkieFaTRippGXfGbKRvJUSfDsuUlsptUAHqqmlZaGKRvIsWhKIrXLvEzzMEAGBqilhYgQeYJaVHvdadabKhMfQXOeYFwVWabqmugjETdFTNEhoRxmQKhzJPNndwvMfeLnSDbxZeOwKTLXPVcRVuhqfZbSlqLcTWFWWWAsGEDjPBVkNEYfgrdCNdmAehDYfsxpiZxYFXHTUfDnZJBtFfeExsZNozLoZyfAToRiAomnrJMWnlqrNYeujuocYLGnrYMmSsSNeCMoKmVYCXtbOCcfLNurGrUAUaGFUTvURxtqDGORmLpbwBCCxkWfWjOwIwoXzLV 1935033235
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19509 jRxZXTfARbiXKICmTxPcPKsQIFiimoBgCReFBQOjXARNFjygVVWAYxoaJuvJloxSntKQBKliGuJMFBqSGcXNKOjhGeonwKxrXgGSUjdoLdPIZcOLbTWXupzznaOAzpHQBYjgIaqvXxbrgfbOGIquBbEbixgdDglOyQPTuJPNyQimvsSkpyqyESiyszhsrtSTrWRJLphiLODqvsvXuSBHceVxXXiVBxBSosOUKbXYjQktCgKssnDLVoiNDPabyHfJruBddTGMLeujSuzdSyMDIrGhwcxRERopAeUmBanbCbLVmYaZlkGrdObJnxyGVyxuvpTxYbxJzMMbplUNZXoFpJNHefhODrmAwtdNgjdNKDyZbXtdDXarKpLmervMwXjOWZXHNmmEbZXzlwIYgsIuJPYfXSgezmAjIHWQYkvxGfZaYkNBGoaXoLWmjkTDUgPIXzSGRyzLiGVbBTZzDvkRdHXxaPsBIlcnvKvaHPxxcTTTZCtpHVUTtQtRLcMTgOklqrpewUHlBFggyzrbAwKLdVHf 1778426878
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_EchoResponse writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1935033235
+    ${output}=    Read Until    priority : 1778426878
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    louverID : 31749
-    Should Contain    ${output}    response : cNGaJuxFgpQgqtDlutetkieFaTRippGXfGbKRvJUSfDsuUlsptUAHqqmlZaGKRvIsWhKIrXLvEzzMEAGBqilhYgQeYJaVHvdadabKhMfQXOeYFwVWabqmugjETdFTNEhoRxmQKhzJPNndwvMfeLnSDbxZeOwKTLXPVcRVuhqfZbSlqLcTWFWWWAsGEDjPBVkNEYfgrdCNdmAehDYfsxpiZxYFXHTUfDnZJBtFfeExsZNozLoZyfAToRiAomnrJMWnlqrNYeujuocYLGnrYMmSsSNeCMoKmVYCXtbOCcfLNurGrUAUaGFUTvURxtqDGORmLpbwBCCxkWfWjOwIwoXzLV
-    Should Contain    ${output}    priority : 1935033235
+    Should Contain    ${output}    louverID : 19509
+    Should Contain    ${output}    response : jRxZXTfARbiXKICmTxPcPKsQIFiimoBgCReFBQOjXARNFjygVVWAYxoaJuvJloxSntKQBKliGuJMFBqSGcXNKOjhGeonwKxrXgGSUjdoLdPIZcOLbTWXupzznaOAzpHQBYjgIaqvXxbrgfbOGIquBbEbixgdDglOyQPTuJPNyQimvsSkpyqyESiyszhsrtSTrWRJLphiLODqvsvXuSBHceVxXXiVBxBSosOUKbXYjQktCgKssnDLVoiNDPabyHfJruBddTGMLeujSuzdSyMDIrGhwcxRERopAeUmBanbCbLVmYaZlkGrdObJnxyGVyxuvpTxYbxJzMMbplUNZXoFpJNHefhODrmAwtdNgjdNKDyZbXtdDXarKpLmervMwXjOWZXHNmmEbZXzlwIYgsIuJPYfXSgezmAjIHWQYkvxGfZaYkNBGoaXoLWmjkTDUgPIXzSGRyzLiGVbBTZzDvkRdHXxaPsBIlcnvKvaHPxxcTTTZCtpHVUTtQtRLcMTgOklqrpewUHlBFggyzrbAwKLdVHf
+    Should Contain    ${output}    priority : 1778426878

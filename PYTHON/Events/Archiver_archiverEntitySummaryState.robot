@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address CurrentState PreviousState Executing CommandsAvailable ConfigurationsAvailable priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address CurrentState PreviousState Executing CommandsAvailable ConfigurationsAvailable priority priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py EVwJzgTZMdXAtfIfdlMqoJgPIPxAJPpojZRZkgyHufKFuitbnykfDYuIBjGdapUNqhdwsGbryaGuoDCNMhMBHhswbjqMjEMmzZmuXOWpQEkiisuvKsdTwYvbAGdOnLgM 56.7359 yGJOHUxiNCudoanlEKEpElQFeHCrdZttVMZErTwGuiKcsDAyNGxbgsYjCYJxrGHCaJLnqZSkrzNnDKsqYmRTnIZwIjESWlPbKQjRXwyUIOsGXCLudFwWtmMNTMKzuQWjwdgzaaKBdXgfYrPfIQzKonWAcpCycWkltsWbNSSEvtxXzvtlKNqRcfcGSmMYqhmgHYhquelwhqZZhHUmUJKCpTYDiOkuZWpnLISpYlbkpLRngEBhJflijjOzXcCZOfeB 824918544 ZrGfiBmJqToHviZMbwxyVHzxnESXbtrVPmrPxXbcpgfFzBXIlqHHreLlfjZOlUfWHejgAPebiCiOsndhEfLvaMJrUNDCoPFUgAKSxmwxjhpzhyVHSxYvmOqLMSfhePEY reSQFPfxWhNXaLuxlKNdSEuKHvnecTvYAndgZeVGdTsOukxBZrvlBRCDGmAwBQAswjpqyHXTyHZfWhBtyEBIIWqSzDITGFghQcjsYAFMYzrrfJuGtUtxQvCvTEGiwJuf kJRjDCetmRnGGhGCcLgjunsGRyQZBvYkjAwLkrNTpatsSgCrArHtrKQfsUAbTFGwatrJpEoXfKeylKzntNCAhhtYwdGgVtDFezhANROYjDPryOVClcSEApnmgXjYrQOV NCDDbwHRiHeHEDrcElNqOAhPqUhibRXNsKzsNCaCEtwnbfSmZRzoJWswqgkoxJTdjWWgqUafILkeTnctbDJBHTUNoNUfboYUnjGDCtIMuWoPtrniWJWIPeReSCvSzsNG dTLeXamUfSgjEysVDpNPvBUJaOPTPtAICkYlCMqJMcHPmGqKYMzyJgIHMwFgikEyKyvffYPIzksqQLZYyuFOmKyLYgwugTGdsVPlRVRAAOEXOonkdvpalBrLYLCiNbCf 1401104234
+    ${input}=    Write    python ${subSystem}_Event_${component}.py aRXJWpTouTsulHigOdGFgkmTvzjoDadiPNpiSkIATwOgWasgtYabiWluVPMKgDddVJVEQNrNuzztpEOwQgOtHygfOqtgrxQfgzHEKsRtJkykfEehyzbdygVavDowvQQg 44.7999 pFPWsqRVYiVujUktdnepUPXgnFJrpiqIpKRMzuGVwNAIFuPnWkceJmjotzVxyIZuqNKxAbTLEsrJbdCVyAhHTTbyaUaNmAjHZCJUYvGUOKuYZHXUzkRRCaVvkHgjtHAYhLyfSbWPONKmUaLxrfLOpOghicEztxJzrevsmMukpXtCDHsadkXgMThPKfhdmGmwwsRIolWrWwzRepzTGsgUzPebzLzGojQZtPDbUnckIfRxrKJbMbJRacLSNYPLBzqD -947998065 ywxqcZWZwoJPuKFRGGfXmOomaYwyrASGeyaoZqJnmeUYHNWAJHKSNuYzXQsCRYknjweYZgNYlmmdXsICqgtJwMMdcXyvYadheKEwkFclZojqsBuVzvBUTZcDUxuauTtX OyulwXUvptCzSFUpphdpEdlKxmuSfaRKlugvkWgbSKmVZSIbKrxLNlgLArmessjFqksAhazmqrTwCnxWcNUwuxhAzPIqyyehZDbrZACNaDYuJBMggpOkvHAylTtvsicL rHEIpYKBeJYraPGygoorkNZsoIARCuLDCYiCcunYBAayfUCrGMxqzqkIPjgYKuxwKiIaUHZNaZQdpRJWsfoXTWCPGVkgYmIGigDsYSRgIVFsArhEKFQTsIAkpvtxazEj DAcDtpAbAUBkWhTvvhnWpYvkwaHCAuUOCLCZCGwIfcCQWUrzQrbGihWzfxkGGRCHuIOSeuqSAilrTZEhgsbhbyhrcbicyNptaMZmsecykoUbGYoiYqiCtlkzXoTJiErB BxsbQtShEBOIFdqekLlEVjbCwbeLTDptGidxkVJXewJFuUeFraoGfNjMzrOJUAChxkLSEyXPSIZIiNgCebDnGLvlMqQtHbsUacGKqkaAJrIafQRAdXODlMljcVLnSooW 944778765 -2063130389
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntitySummaryState writing a message containing :    1

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send uWoaehiXhwnCTPUWqfrpOnIXujUkZbNIzFvvGVKzcdysNejjcLyUPNhWJtVurKmOLGZypHUxqQiKVlTfdnRxHEAxNtPpsmoXqjWZgEuOrnSOCBosnJiAxyUEoWcmkruyJuuSDovWqPHygTMPwFxKPZYsDiSSPQDfLCDtQsIESaSpEkEzPcSAwKWmkMAypTtSXMJTGiSTGaFNBWyAsszpmqJcfnDTNukEoSebQJMdYdWhPdIhnPfHzULxdDcyMXCT 59.3889 WPgzSrhiZUHLFFEZjuPZCigkIeVCFeMKJfatFHgUruTWJUVrZLSdWlTvIzkJUpRdlfoFpeblivbXvhUDIGvfMqIkYyBPlyOKiJGBRtwqISSFWlvUrfOuoiwuQZuBKxIwiAZTqBToWoPrDxdkwJLsikWAwZhlKcylddyjMcewhuxqxYeiwgsfSJzLqFxbWqcFsMqnKZzQUTosctDJrEYFyeYAZacJVugesKPgILQuBHzdJXKRkaVwXgpkCiFugoFv VyiHIXYcoYWQhmgNauAdUnUkjIYlNJxZCVxUvKyiyXJAVZimVTghjabuaGtxRUAQsGWLrmHYukVXzkrtZvPFOgwjzviHOrzdWObHFtTQxfRHdQWzLecurgCQyIBZLvtcEDajKxuKLogdUDyfuZQQpKhsMhJRUevKYCnOkgozQoepNnnCStFpHIMpKUasEThntdMHQtzdDzcAfFlDMnZoSoKkKSkeXdmuKrCedZiVWbKHrZLofWNQYTBkZxSgWdoi -1190414201
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send rBKtqVxDZhcBdmoQLXMJIEHoXJUwfuJMiihaXNAubzYbmxMLNIIbnEKFlXoCdyAtgFoWdqiiflumArpdqUmSFAjfQHhKtZHUuOBoSmxQavVmCdtriwKEUmUQxJqunNmhGLgzVVGBYlySLOxPmzjTKrcoxOlRsXLyfFkpgGpaguiorWuOxGPltbzYIFKEsIogHLtjVOCdGVHwLCpbWpjXGZoSuYorpqKHsQXXiDcyBkXtfNtKlaanpmwzYlIBZeMA 87.5133 TYggxJeHCQhsInnjyusVfTEQCleZVIWWCGewTCwxhSqHGEvReWdssfQgwZiWXxFXarDzPrjczikfNdrMHiqcaUphbFmSoxbWJTUwBmzyCUVSaLUAiWWbFflhDkgZnLMkMBzclynbaXAkYiTIxoevbnZbJUVpoKpZikmWFyauedsxIvlYtTyBiXnwLDmZOqZPsuflXGWSEQCTXKYMhdMOTpwHufDDzSEHduXeEgRkAKlKoMmKZbLPpEtdbZEFyNWK YiGoDLKFkIcXeJFenlKlLUTsAGSHObuqgiaejPtReKHZXNETtxmHkpGaMjqiBPtPBKtCnPSPNwKmBIwVXxFqEjsLJQPHwzJJSoyzvAuuGIntEXLWelMltKSVlaSEsiCqHbFNlEiwfUAJkvENtyflmLnLpdmvCTduryvYevDxNCIxOMjUFwsgWRuLFxvUHaSKgSLwRkobmbjijgSOlAsfgUbhqgPKkqjjfUtpSCnchQfqBOAUjhCTenjcXCifoTzx 1346239010
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEntititesInUse writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1190414201
+    ${output}=    Read Until    priority : 1346239010
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptEntititesInUse received =     1
-    Should Contain    ${output}    sequencerScriptName : uWoaehiXhwnCTPUWqfrpOnIXujUkZbNIzFvvGVKzcdysNejjcLyUPNhWJtVurKmOLGZypHUxqQiKVlTfdnRxHEAxNtPpsmoXqjWZgEuOrnSOCBosnJiAxyUEoWcmkruyJuuSDovWqPHygTMPwFxKPZYsDiSSPQDfLCDtQsIESaSpEkEzPcSAwKWmkMAypTtSXMJTGiSTGaFNBWyAsszpmqJcfnDTNukEoSebQJMdYdWhPdIhnPfHzULxdDcyMXCT
-    Should Contain    ${output}    sequencerScriptIdentifier : 59.3889
-    Should Contain    ${output}    sequencerScriptTimestamp : WPgzSrhiZUHLFFEZjuPZCigkIeVCFeMKJfatFHgUruTWJUVrZLSdWlTvIzkJUpRdlfoFpeblivbXvhUDIGvfMqIkYyBPlyOKiJGBRtwqISSFWlvUrfOuoiwuQZuBKxIwiAZTqBToWoPrDxdkwJLsikWAwZhlKcylddyjMcewhuxqxYeiwgsfSJzLqFxbWqcFsMqnKZzQUTosctDJrEYFyeYAZacJVugesKPgILQuBHzdJXKRkaVwXgpkCiFugoFv
-    Should Contain    ${output}    sequencerEntititesList : VyiHIXYcoYWQhmgNauAdUnUkjIYlNJxZCVxUvKyiyXJAVZimVTghjabuaGtxRUAQsGWLrmHYukVXzkrtZvPFOgwjzviHOrzdWObHFtTQxfRHdQWzLecurgCQyIBZLvtcEDajKxuKLogdUDyfuZQQpKhsMhJRUevKYCnOkgozQoepNnnCStFpHIMpKUasEThntdMHQtzdDzcAfFlDMnZoSoKkKSkeXdmuKrCedZiVWbKHrZLofWNQYTBkZxSgWdoi
-    Should Contain    ${output}    priority : -1190414201
+    Should Contain    ${output}    sequencerScriptName : rBKtqVxDZhcBdmoQLXMJIEHoXJUwfuJMiihaXNAubzYbmxMLNIIbnEKFlXoCdyAtgFoWdqiiflumArpdqUmSFAjfQHhKtZHUuOBoSmxQavVmCdtriwKEUmUQxJqunNmhGLgzVVGBYlySLOxPmzjTKrcoxOlRsXLyfFkpgGpaguiorWuOxGPltbzYIFKEsIogHLtjVOCdGVHwLCpbWpjXGZoSuYorpqKHsQXXiDcyBkXtfNtKlaanpmwzYlIBZeMA
+    Should Contain    ${output}    sequencerScriptIdentifier : 87.5133
+    Should Contain    ${output}    sequencerScriptTimestamp : TYggxJeHCQhsInnjyusVfTEQCleZVIWWCGewTCwxhSqHGEvReWdssfQgwZiWXxFXarDzPrjczikfNdrMHiqcaUphbFmSoxbWJTUwBmzyCUVSaLUAiWWbFflhDkgZnLMkMBzclynbaXAkYiTIxoevbnZbJUVpoKpZikmWFyauedsxIvlYtTyBiXnwLDmZOqZPsuflXGWSEQCTXKYMhdMOTpwHufDDzSEHduXeEgRkAKlKoMmKZbLPpEtdbZEFyNWK
+    Should Contain    ${output}    sequencerEntititesList : YiGoDLKFkIcXeJFenlKlLUTsAGSHObuqgiaejPtReKHZXNETtxmHkpGaMjqiBPtPBKtCnPSPNwKmBIwVXxFqEjsLJQPHwzJJSoyzvAuuGIntEXLWelMltKSVlaSEsiCqHbFNlEiwfUAJkvENtyflmLnLpdmvCTduryvYevDxNCIxOMjUFwsgWRuLFxvUHaSKgSLwRkobmbjijgSOlAsfgUbhqgPKkqjjfUtpSCnchQfqBOAUjhCTenjcXCifoTzx
+    Should Contain    ${output}    priority : 1346239010
