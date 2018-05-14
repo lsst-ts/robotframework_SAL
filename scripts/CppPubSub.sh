@@ -135,7 +135,7 @@ function readSubscriber {
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
         	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
-		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" )]]; then
+		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    9" >>$testSuite
 		else
 			for num in `seq 1 9`; do
