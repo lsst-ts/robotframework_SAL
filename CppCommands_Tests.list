@@ -86,12 +86,6 @@ CPP/Commands/CatchupArchiver_exitControl.robot
 CPP/Commands/CatchupArchiver_setValue.robot
 CPP/Commands/CatchupArchiver_standby.robot
 CPP/Commands/CatchupArchiver_start.robot
-CPP/Commands/DMHeaderService_Disable.robot
-CPP/Commands/DMHeaderService_Enable.robot
-CPP/Commands/DMHeaderService_EnterControl.robot
-CPP/Commands/DMHeaderService_ExitControl.robot
-CPP/Commands/DMHeaderService_Standby.robot
-CPP/Commands/DMHeaderService_Start.robot
 CPP/Commands/DomeADB_Crawl.robot
 CPP/Commands/DomeADB_Echo.robot
 CPP/Commands/DomeADB_Move.robot

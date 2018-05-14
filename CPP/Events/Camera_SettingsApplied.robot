@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FxpgvAtdgxpUuWdvzpWaCSkYdvGowrvtvXqnbwcEQFxmhckoiBNIpfsstYNcYwqivZfDaIxgxkSPrIyplgYQnbXbWPCHblCgWHOOemvgfCPZizToVodnsxfhRANuaMlydqTbcksIuULDrsWBoQHWYCTkjWRzGkPxhFojtkySWdrFthbleXJpZaIvnxhanWCmJsoXyzVQqPdGPcAWtLgEIeEgXpNlazJqmsHbFTOxzXhIxIxGWGWVcDzNYhlQVIXt 745997258 1831975233
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KclJCuyevBeGLaSBtmHAfMWGKvpoUXZZfnsJKqUgoNauOaCSSmTCtoVVMFsaeldECZoYnHSSMotuXFAnHEveBfkmhakZxzOEmIZInbzhaTvBNDVQMeGYarSGZSYjXkgRrmdgmxEvzDaysEoQIjHnmPplhwsbSjSdEmskyKZZXisVGjqNuqDSiFnRQmJHwGuECXwORltRfxtVqTLHAnnTXanYYTAcHioyNSdTqaGHiHEAtnZSLHcaBPrYZlBvDAtF -80157729 -1790639695
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1831975233
+    ${output}=    Read Until    priority : -1790639695
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : FxpgvAtdgxpUuWdvzpWaCSkYdvGowrvtvXqnbwcEQFxmhckoiBNIpfsstYNcYwqivZfDaIxgxkSPrIyplgYQnbXbWPCHblCgWHOOemvgfCPZizToVodnsxfhRANuaMlydqTbcksIuULDrsWBoQHWYCTkjWRzGkPxhFojtkySWdrFthbleXJpZaIvnxhanWCmJsoXyzVQqPdGPcAWtLgEIeEgXpNlazJqmsHbFTOxzXhIxIxGWGWVcDzNYhlQVIXt
-    Should Contain    ${output}    priority : 745997258
-    Should Contain    ${output}    priority : 1831975233
+    Should Contain    ${output}    Settings : KclJCuyevBeGLaSBtmHAfMWGKvpoUXZZfnsJKqUgoNauOaCSSmTCtoVVMFsaeldECZoYnHSSMotuXFAnHEveBfkmhakZxzOEmIZInbzhaTvBNDVQMeGYarSGZSYjXkgRrmdgmxEvzDaysEoQIjHnmPplhwsbSjSdEmskyKZZXisVGjqNuqDSiFnRQmJHwGuECXwORltRfxtVqTLHAnnTXanYYTAcHioyNSdTqaGHiHEAtnZSLHcaBPrYZlBvDAtF
+    Should Contain    ${output}    priority : -80157729
+    Should Contain    ${output}    priority : -1790639695

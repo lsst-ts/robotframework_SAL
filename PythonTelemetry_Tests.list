@@ -30,8 +30,6 @@ PYTHON/Telemetry/Camera_Shutter.robot
 PYTHON/Telemetry/Camera_WAS.robot
 PYTHON/Telemetry/Camera_WDS.robot
 PYTHON/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
-PYTHON/Telemetry/DMHeaderService_LoopTime_ms.robot
-PYTHON/Telemetry/DMHeaderService_Timestamp.robot
 PYTHON/Telemetry/DomeADB_status.robot
 PYTHON/Telemetry/DomeAPS_status.robot
 PYTHON/Telemetry/DomeLWS_status.robot
@@ -46,7 +44,6 @@ PYTHON/Telemetry/EEC_eectelem.robot
 PYTHON/Telemetry/EEC_hvactelem.robot
 PYTHON/Telemetry/EEC_nightsetpoint.robot
 PYTHON/Telemetry/EFD_Summary.robot
-PYTHON/Telemetry/Environment_weather.robot
 PYTHON/Telemetry/HeaderService_LoopTime_ms.robot
 PYTHON/Telemetry/HeaderService_Timestamp.robot
 PYTHON/Telemetry/Hexapod_Actuators.robot
@@ -93,8 +90,7 @@ PYTHON/Telemetry/MTMount_DP_2.robot
 PYTHON/Telemetry/MTMount_MC.robot
 PYTHON/Telemetry/MTMount_MotionParameters.robot
 PYTHON/Telemetry/OCS_SequencerHeartbeat.robot
-PYTHON/Telemetry/ProcessingCluster_SequencerHeartbeat.robot
-PYTHON/Telemetry/PromptProcessing_SequencerHeartbeat.robot
+PYTHON/Telemetry/PromptProcessing_promptprocessing_SequencerHeartbeat.robot
 PYTHON/Telemetry/Rotator_Application.robot
 PYTHON/Telemetry/Rotator_Electrical.robot
 PYTHON/Telemetry/Rotator_Motors.robot

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SummaryState sender/logger tests.
-Force Tags    java    
+Force Tags    java    TSS-2623
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

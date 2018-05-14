@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zmIuesRlKQoFnEWmNsMUirnvfuBRtPyalbpmIUQBeVcWlSiCKGZVQhgJOsayGUPIVyURtpDzcVWZquJKHvqbGwbgJEXVjXWBSYCzYqJJPyiZDEaRznrQZSNhqwpqyNEPovxlVAEHsmnFMrHixswZcqZIFOXYOdKkywUrxYFzNPLdJUFDGifYlhmVJFoUuhqPftftxturWdbOKXPKmguLZFRGhaDsaESACGTbNGXFlfHCBvJOtYpgdgjEyCPbnElMWhjnaUzycOEXqtZvcCkgyLXKNrLrZjtxdlLdlIsfQtBeuAMTszmTcOUxrqmTRcrPXakZzJSoUWbnAFjnHIxXEYbWnZsqWODeHkDEMHqHBWsxtvgrlm 681315876
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send svYpSaRlABszCEvSqYZDutFUVQMKHQEORNjdEvknyKVgztfkaDTnLXzECBchbgSOmDULFyEndvlFWpNeyKixKTmtYjQESjdxwzPaldeJaccaUeDcvifXdkQqTDyVsDEnfZjhiuvbxILlWMLeVvBqsHbUxYhVBhqfmSeWANpsTbBBnRhqALkmQuTTyjsmIOWmLuPGoKqbaRzPtDmkIwqLilkzFkcDmWkGZhgbLgqqlHHqBGnpyhSGvDgTCNoQYItwpHUthHUGPlWPurmNvtkAgxJoPfxsbhOiehpOFRZuaTuWnqJfAHyBHfmHyEsKRVHZGrzoxcRfTIxiRGsZvxlEfEfoNPSbIEBayEfoSZHzrESPLVKbP -708007421
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 681315876
+    ${output}=    Read Until    priority : -708007421
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : zmIuesRlKQoFnEWmNsMUirnvfuBRtPyalbpmIUQBeVcWlSiCKGZVQhgJOsayGUPIVyURtpDzcVWZquJKHvqbGwbgJEXVjXWBSYCzYqJJPyiZDEaRznrQZSNhqwpqyNEPovxlVAEHsmnFMrHixswZcqZIFOXYOdKkywUrxYFzNPLdJUFDGifYlhmVJFoUuhqPftftxturWdbOKXPKmguLZFRGhaDsaESACGTbNGXFlfHCBvJOtYpgdgjEyCPbnElMWhjnaUzycOEXqtZvcCkgyLXKNrLrZjtxdlLdlIsfQtBeuAMTszmTcOUxrqmTRcrPXakZzJSoUWbnAFjnHIxXEYbWnZsqWODeHkDEMHqHBWsxtvgrlm
-    Should Contain    ${output}    priority : 681315876
+    Should Contain    ${output}    errorCode : svYpSaRlABszCEvSqYZDutFUVQMKHQEORNjdEvknyKVgztfkaDTnLXzECBchbgSOmDULFyEndvlFWpNeyKixKTmtYjQESjdxwzPaldeJaccaUeDcvifXdkQqTDyVsDEnfZjhiuvbxILlWMLeVvBqsHbUxYhVBhqfmSeWANpsTbBBnRhqALkmQuTTyjsmIOWmLuPGoKqbaRzPtDmkIwqLilkzFkcDmWkGZhgbLgqqlHHqBGnpyhSGvDgTCNoQYItwpHUthHUGPlWPurmNvtkAgxJoPfxsbhOiehpOFRZuaTuWnqJfAHyBHfmHyEsKRVHZGrzoxcRfTIxiRGsZvxlEfEfoNPSbIEBayEfoSZHzrESPLVKbP
+    Should Contain    ${output}    priority : -708007421

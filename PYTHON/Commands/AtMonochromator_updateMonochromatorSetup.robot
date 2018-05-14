@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1803511637 94.1851 0.5338 68.9223
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1601758930 42.4797 11.8111 28.452
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1803511637 94.1851 0.5338 68.9223
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1601758930 42.4797 11.8111 28.452
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,10 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    gratingType : 1803511637    1
-    Should Contain X Times    ${output}    fontExitSlitWidth : 94.1851    1
-    Should Contain X Times    ${output}    fontEntranceSlitWidth : 0.5338    1
-    Should Contain X Times    ${output}    wavelength : 68.9223    1
+    Should Contain X Times    ${output}    gratingType : 1601758930    1
+    Should Contain X Times    ${output}    fontExitSlitWidth : 42.4797    1
+    Should Contain X Times    ${output}    fontEntranceSlitWidth : 11.8111    1
+    Should Contain X Times    ${output}    wavelength : 28.452    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -80,10 +80,10 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    gratingType = 1803511637    1
-    Should Contain X Times    ${output}    fontExitSlitWidth = 94.1851    1
-    Should Contain X Times    ${output}    fontEntranceSlitWidth = 0.5338    1
-    Should Contain X Times    ${output}    wavelength = 68.9223    1
+    Should Contain X Times    ${output}    gratingType = 1601758930    1
+    Should Contain X Times    ${output}    fontExitSlitWidth = 42.4797    1
+    Should Contain X Times    ${output}    fontEntranceSlitWidth = 11.8111    1
+    Should Contain X Times    ${output}    wavelength = 28.452    1
     Should Contain X Times    ${output}    === [ackCommand_updateMonochromatorSetup] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

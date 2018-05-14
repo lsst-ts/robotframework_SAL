@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1707129566 177447777 1654584587 FTJfQXTGiijzOAdNmWhzaPzwZjqKVaEoCUCiVeJUixZQJpGvbMWebhGdXUcQdMku 25.3991 36.9792 41.2171 14.2157 -2022993628 -701120626 72.1418
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1367232326 -1262017109 -1074678570 oLHtmxsIeaHoaIaFTNSLZvpdLjpfxbOBcXpmbQgHzDBfuARfJjJrDkHZJVesXFHJ 20.2987 9.8398 64.1804 41.5545 -140422284 -1258759213 38.1138
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1707129566 177447777 1654584587 FTJfQXTGiijzOAdNmWhzaPzwZjqKVaEoCUCiVeJUixZQJpGvbMWebhGdXUcQdMku 25.3991 36.9792 41.2171 14.2157 -2022993628 -701120626 72.1418
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -1367232326 -1262017109 -1074678570 oLHtmxsIeaHoaIaFTNSLZvpdLjpfxbOBcXpmbQgHzDBfuARfJjJrDkHZJVesXFHJ 20.2987 9.8398 64.1804 41.5545 -140422284 -1258759213 38.1138
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,17 +68,17 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    targetId : -1707129566    1
-    Should Contain X Times    ${output}    fieldId : 177447777    1
-    Should Contain X Times    ${output}    groupId : 1654584587    1
-    Should Contain X Times    ${output}    filter : FTJfQXTGiijzOAdNmWhzaPzwZjqKVaEoCUCiVeJUixZQJpGvbMWebhGdXUcQdMku    1
-    Should Contain X Times    ${output}    requestTime : 25.3991    1
-    Should Contain X Times    ${output}    ra : 36.9792    1
-    Should Contain X Times    ${output}    decl : 41.2171    1
-    Should Contain X Times    ${output}    angle : 14.2157    1
-    Should Contain X Times    ${output}    num_exposures : -2022993628    1
-    Should Contain X Times    ${output}    exposure_times : -701120626    1
-    Should Contain X Times    ${output}    slew_time : 72.1418    1
+    Should Contain X Times    ${output}    targetId : -1367232326    1
+    Should Contain X Times    ${output}    fieldId : -1262017109    1
+    Should Contain X Times    ${output}    groupId : -1074678570    1
+    Should Contain X Times    ${output}    filter : oLHtmxsIeaHoaIaFTNSLZvpdLjpfxbOBcXpmbQgHzDBfuARfJjJrDkHZJVesXFHJ    1
+    Should Contain X Times    ${output}    requestTime : 20.2987    1
+    Should Contain X Times    ${output}    ra : 9.8398    1
+    Should Contain X Times    ${output}    decl : 64.1804    1
+    Should Contain X Times    ${output}    angle : 41.5545    1
+    Should Contain X Times    ${output}    num_exposures : -140422284    1
+    Should Contain X Times    ${output}    exposure_times : -1258759213    1
+    Should Contain X Times    ${output}    slew_time : 38.1138    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -87,17 +87,17 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    targetId = -1707129566    1
-    Should Contain X Times    ${output}    fieldId = 177447777    1
-    Should Contain X Times    ${output}    groupId = 1654584587    1
-    Should Contain X Times    ${output}    filter = FTJfQXTGiijzOAdNmWhzaPzwZjqKVaEoCUCiVeJUixZQJpGvbMWebhGdXUcQdMku    1
-    Should Contain X Times    ${output}    requestTime = 25.3991    1
-    Should Contain X Times    ${output}    ra = 36.9792    1
-    Should Contain X Times    ${output}    decl = 41.2171    1
-    Should Contain X Times    ${output}    angle = 14.2157    1
-    Should Contain X Times    ${output}    num_exposures = -2022993628    1
-    Should Contain X Times    ${output}    exposure_times = -701120626    1
-    Should Contain X Times    ${output}    slew_time = 72.1418    1
+    Should Contain X Times    ${output}    targetId = -1367232326    1
+    Should Contain X Times    ${output}    fieldId = -1262017109    1
+    Should Contain X Times    ${output}    groupId = -1074678570    1
+    Should Contain X Times    ${output}    filter = oLHtmxsIeaHoaIaFTNSLZvpdLjpfxbOBcXpmbQgHzDBfuARfJjJrDkHZJVesXFHJ    1
+    Should Contain X Times    ${output}    requestTime = 20.2987    1
+    Should Contain X Times    ${output}    ra = 9.8398    1
+    Should Contain X Times    ${output}    decl = 64.1804    1
+    Should Contain X Times    ${output}    angle = 41.5545    1
+    Should Contain X Times    ${output}    num_exposures = -140422284    1
+    Should Contain X Times    ${output}    exposure_times = -1258759213    1
+    Should Contain X Times    ${output}    slew_time = 38.1138    1
     Should Contain X Times    ${output}    === [ackCommand_target] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

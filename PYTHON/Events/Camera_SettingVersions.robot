@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py JaOhDlTxjmIhLxaJBpzXomtOKggUazIJKRZeOITrhZJbxttHFGiALGjqkExJmhzUpNNUpjlXfEyTcVNZoakOwhBXhJubijAeOCOOjSJlYjMoGtuAZAaPLBJeNHipOtENjZthZlCqtnjxqjZcQZRLLRYcImnyYJkUsODRiSBSrjeUorOgOGVZBjKvjLbZdUYYKtBqAVMWgroxxIqocgsjfoiSnxNlrjdpxDRlhvfhFGqlwdsCupRCRlnAzQlaWiWU 2070228373 306598759
+    ${input}=    Write    python ${subSystem}_Event_${component}.py iHhUnHcLgWAvCjGKJOMGyyqNVaSMMfgBrItncnSreEihlhylqhfRSWVYyvPofFkDeHHIckwRuXcheJmXLNbtPHNQcVseUjtulMybdawMtMdeJfGNiopxryFrEOKLfJPJRedAMvggKvInejZKcJtuFWZQEpQhKqBJQwgXMHEbXiyenIGWFYVelJdBjjKauqHVkUeDUmMUnspiUTealZubbijMZMhaNZvhuLXYkmjbPFgIfoKFJqvxrtvzbtOOkluj 1873188404 1663877101
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingVersions writing a message containing :    1

@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    promptprocessingEntityStartup
 ${timeout}    30s
 

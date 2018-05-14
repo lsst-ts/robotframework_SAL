@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    promptprocessingEntityStartup
 ${timeout}    30s
 
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py UWSkEehujTLdSpoHISDgERmHkcZzsxLBxCeBjWpTcwCIaZMFbNsIbqXSjgOGkQYJhgYyESmWBZmQuVMxapqNoRFysaoDwxnCeMPfavdAhFUjutJnhMMABiquHZBirxBSmCPThfJXVzlASWHDKQLHVpFtliMPoSEoljdrEvkrVNtkHZHeKIYXWqumsNFxTkvaKzxoeUjjlPOfawfKnvVeiwcCxQQonSxHtDDrhKjwGDDpMXEfWDreMRqiIIDfnPFc 62.66 RrYQKyJloPZDuFHenynCvBCkukpPHqibHnUVRBNUUAVHQkzQiaYqqxYsRRNzNiwALYfqiktBePGPNkTdsHPyjRZXLUzbwuHjdQHhGTzpMBLUScDcxBrlqaqEKXjdtWyIrAkohCXolHoFIWtrTtcdaKapTImggzRQcvUzqSiQXnLriewkktazUncklHlpfkvEFXxxMLHZfmHCVMPwEZpoKvxpQVICLRbzhARtNZpJoTQULCSNxCVBkQHSMsCiDPdv -1691102005 437681478 -593592710
+    ${input}=    Write    python ${subSystem}_Event_${component}.py dIlwZmhWiYoRyzQxOeVmOTSnxpxjcDRdxdcitBFVKjJlJAAliMONAXEWuCxJFQlbFWRgvOCXaUysVNZHHFasxFlfSoSSqSjDroQchemrIaIroMSDuhyFwiFMfZhxcijeFzMrPTnmBnTewLzRLArmkFtUUssfigoACnkmPLfjJLUqwPaPMVEUJzYImLoCKmCRZWZDrmotDRPXESbNfvPuMuLEWWjDZpvUSoPdtcSoRAdqFDCjqujBtGIAWNeRHgJT 66.082 cbGXrwTHTPbnmQwSXnelCbMlGgmYyPFDmNjjwsDYUexOFkrKkfPTXplorQoBNbGAGnmPsdByJZJiZXUfdIJSZhgGpKCeveOoIPCAIrrmWZyviwMabrGJfiUHsoRPMIsJVxEXgRAYUcBvvQHNKrxLlbeJixXopaSrqCxiWvAylWtRjLqENnXBmctvTwMpjTucGvCZblHormxvvUmyBmsELQvXrnEYaEYsJFKEczPzXFDykjvAYSXLwigqsMQwAwLV -2123206420 34223757 -84522179
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityStartup writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityStartup writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

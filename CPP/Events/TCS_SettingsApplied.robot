@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RsYAwTvOYXxLJzJZTPyizvnMvUfMONItYtxsgMIZToBVnIiozGWAbaPPxfj 70.2286 -1456825485
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send vuWCbyvsCBJXAKrqHLzdjRhgwKqRARqYYAkvIpUZdUPxkqqrVyNLyqhfMFvPxMKslXvVBqNtUqlqbRiCGbquosAmjNrdluZLAzOQrkEJduMiTQCPcopthgpUSsMkmouNnhJhFMVgDqggzMYYqHDQeSdRKKnzUcoNugettfyxJePfZJvQszhfMlBLmjxetTqngksrYPKZQsCFjPdWrvaLpQSdjyhyVfYQBRYLhXuutnofL 19.5449 -1092153093
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1456825485
+    ${output}=    Read Until    priority : -1092153093
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : RsYAwTvOYXxLJzJZTPyizvnMvUfMONItYtxsgMIZToBVnIiozGWAbaPPxfj
-    Should Contain    ${output}    timestamp : 70.2286
-    Should Contain    ${output}    priority : -1456825485
+    Should Contain    ${output}    settings : vuWCbyvsCBJXAKrqHLzdjRhgwKqRARqYYAkvIpUZdUPxkqqrVyNLyqhfMFvPxMKslXvVBqNtUqlqbRiCGbquosAmjNrdluZLAzOQrkEJduMiTQCPcopthgpUSsMkmouNnhJhFMVgDqggzMYYqHDQeSdRKKnzUcoNugettfyxJePfZJvQszhfMlBLmjxetTqngksrYPKZQsCFjPdWrvaLpQSdjyhyVfYQBRYLhXuutnofL
+    Should Contain    ${output}    timestamp : 19.5449
+    Should Contain    ${output}    priority : -1092153093

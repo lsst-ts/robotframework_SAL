@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    promptprocessingEntityStartup
 ${timeout}    30s
 
@@ -47,22 +47,22 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send nUouiZEwAWTDjxXPsVFqisktDCLJneYLazvUdbjszolUZysajDqpfnHaPggtTZWWBLZNCTVCrGHkTMdexcdIWRYtEASdebkwgFdStBXmVtzjUDTSJsYSlGWnGhkZOEVzWaUjateyCiIjQpLDSAmeYUywWKErVeVaEsveFBzJdpEVhROeteywIkkQwxgLaFlasZxkPduxzJODhTNVbgDkunYmkMlAnLKZpTVvaymtodzNoZzJvBSlCeAbjLtcpVEq 76.79 RvOcFQVRliiphUVttBtHJmoOHbSOTPbINesXVcTZYriJPlidTcIqlXOBcVAifyLnepsXJimjBovAczacmjQhqKpPGnQkrJgGvIQJsQADmYHlwJkIPmYsRjTDsaYzIMjnGSzgRKtZKZHHNQxgCoTLoSIVlFacEcWDmnwnOKXdfnxiDgoRHCtwudGvraOlisMsHVFpFLRFXiFuXumVAUAHyBAlkckiNZxXbyMdxHEXHpGwwaJHPizHTsXaHpQqcyTf 439390393 -717853307 1829011289
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kmNIVhtWzFevQxVlIqcBfUzDLuEisEHTOJSoShFouHUArswZFSuRbpJdobVvSLoSrcOGIDSjXlcwqzwirxUWQXfbUaECaPYMkjGDaUjTyLORrTsGSiZfBCPqCaoPGXkeCHknGsEaUQNLZwMZRbvCuHZPEeAGtWXDHWFBoUzJouMzRYlAwYaUkwgfnvOKFaEdHujiPVribGfOubtgloxAcAFgHcBvmoSsDtlytrwAjCCeYwlVlUgsJNzGZuOAMIAM 19.3689 SjHNMmKsNnUgExHDChlGfdiyfCwBDItoVvrpVHyWaDaVunuOEyzveugcRBlSryaBSrcRFpgyxUFvIlNTWjflDbHfgPVTkccjHIQGdOYEtgFdFXsJJnAIUgtTDVEdLbhqKuViJjrogFzHSdXvZVkBJDwarFmrJFQVNFlIimCLpSLuttDuPBdmWpZOVgTdPmrGhodVEmiGmXFsTxMJqiYmRQwVvNWvghccHCVUnCQkgxxMBypGzyxTWVNgCICvvPwT 508541052 669472843 -43933544
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityStartup writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityStartup writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event promptprocessingEntityStartup generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1829011289
+    ${output}=    Read Until    priority : -43933544
     Log    ${output}
     Should Contain X Times    ${output}    === Event promptprocessingEntityStartup received =     1
-    Should Contain    ${output}    Name : nUouiZEwAWTDjxXPsVFqisktDCLJneYLazvUdbjszolUZysajDqpfnHaPggtTZWWBLZNCTVCrGHkTMdexcdIWRYtEASdebkwgFdStBXmVtzjUDTSJsYSlGWnGhkZOEVzWaUjateyCiIjQpLDSAmeYUywWKErVeVaEsveFBzJdpEVhROeteywIkkQwxgLaFlasZxkPduxzJODhTNVbgDkunYmkMlAnLKZpTVvaymtodzNoZzJvBSlCeAbjLtcpVEq
-    Should Contain    ${output}    Identifier : 76.79
-    Should Contain    ${output}    Timestamp : RvOcFQVRliiphUVttBtHJmoOHbSOTPbINesXVcTZYriJPlidTcIqlXOBcVAifyLnepsXJimjBovAczacmjQhqKpPGnQkrJgGvIQJsQADmYHlwJkIPmYsRjTDsaYzIMjnGSzgRKtZKZHHNQxgCoTLoSIVlFacEcWDmnwnOKXdfnxiDgoRHCtwudGvraOlisMsHVFpFLRFXiFuXumVAUAHyBAlkckiNZxXbyMdxHEXHpGwwaJHPizHTsXaHpQqcyTf
-    Should Contain    ${output}    Address : 439390393
-    Should Contain    ${output}    priority : -717853307
-    Should Contain    ${output}    priority : 1829011289
+    Should Contain    ${output}    Name : kmNIVhtWzFevQxVlIqcBfUzDLuEisEHTOJSoShFouHUArswZFSuRbpJdobVvSLoSrcOGIDSjXlcwqzwirxUWQXfbUaECaPYMkjGDaUjTyLORrTsGSiZfBCPqCaoPGXkeCHknGsEaUQNLZwMZRbvCuHZPEeAGtWXDHWFBoUzJouMzRYlAwYaUkwgfnvOKFaEdHujiPVribGfOubtgloxAcAFgHcBvmoSsDtlytrwAjCCeYwlVlUgsJNzGZuOAMIAM
+    Should Contain    ${output}    Identifier : 19.3689
+    Should Contain    ${output}    Timestamp : SjHNMmKsNnUgExHDChlGfdiyfCwBDItoVvrpVHyWaDaVunuOEyzveugcRBlSryaBSrcRFpgyxUFvIlNTWjflDbHfgPVTkccjHIQGdOYEtgFdFXsJJnAIUgtTDVEdLbhqKuViJjrogFzHSdXvZVkBJDwarFmrJFQVNFlIimCLpSLuttDuPBdmWpZOVgTdPmrGhodVEmiGmXFsTxMJqiYmRQwVvNWvghccHCVUnCQkgxxMBypGzyxTWVNgCICvvPwT
+    Should Contain    ${output}    Address : 508541052
+    Should Contain    ${output}    priority : 669472843
+    Should Contain    ${output}    priority : -43933544

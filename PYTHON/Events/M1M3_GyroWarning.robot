@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 47.1352 1 0 0 1 0 0 1 1 1 0 0 0 1 1 0 0 0 1 1 0 0 1 1 0 0 0 1 0 0 1 0 0 1 0 1 1 1 0 0 1 1 1 0 1 0 1 0 1 880476710
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 19.6177 0 1 1 0 0 0 0 1 1 1 1 0 0 0 1 1 0 0 0 1 1 0 1 1 0 0 0 1 1 0 1 0 1 1 0 1 1 1 1 1 1 0 0 1 1 1 0 1 -1746036599
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_GyroWarning writing a message containing :    1

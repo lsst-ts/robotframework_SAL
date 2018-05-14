@@ -124,17 +124,6 @@ PYTHON/Events/CatchupArchiver_SummaryState.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 PYTHON/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
-PYTHON/Events/DMHeaderService_AppliedSettingsMatchStart.robot
-PYTHON/Events/DMHeaderService_DetailedState.robot
-PYTHON/Events/DMHeaderService_ErrorCode.robot
-PYTHON/Events/DMHeaderService_Heartbeat.robot
-PYTHON/Events/DMHeaderService_InternalCommand.robot
-PYTHON/Events/DMHeaderService_LargeFileObjectAvailable.robot
-PYTHON/Events/DMHeaderService_LoopTimeOutOfRange.robot
-PYTHON/Events/DMHeaderService_RejectedCommand.robot
-PYTHON/Events/DMHeaderService_SettingVersions.robot
-PYTHON/Events/DMHeaderService_SettingsApplied.robot
-PYTHON/Events/DMHeaderService_SummaryState.robot
 PYTHON/Events/DomeADB_AccelerationLimitReached.robot
 PYTHON/Events/DomeADB_AccelerationLimitSubsided.robot
 PYTHON/Events/DomeADB_BrakeDisengaged.robot
@@ -317,9 +306,6 @@ PYTHON/Events/OCS_ocsScriptEnd.robot
 PYTHON/Events/OCS_ocsScriptEntititesInUse.robot
 PYTHON/Events/OCS_ocsScriptError.robot
 PYTHON/Events/OCS_ocsScriptStart.robot
-PYTHON/Events/ProcessingCluster_processingclusterEntityShutdown.robot
-PYTHON/Events/ProcessingCluster_processingclusterEntityStartup.robot
-PYTHON/Events/ProcessingCluster_processingclusterEntitySummaryState.robot
 PYTHON/Events/PromptProcessing_AppliedSettingsMatchStart.robot
 PYTHON/Events/PromptProcessing_DetailedState.robot
 PYTHON/Events/PromptProcessing_ErrorCode.robot

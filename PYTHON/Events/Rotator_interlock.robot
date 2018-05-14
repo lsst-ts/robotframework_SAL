@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py UdxuJnPrEXpZESeWhTjluOWrLnfdHOMpGDnNqnxZGqZQSHTAmILjovkektskHTGTaegkoRcHmrmnLteTGKhzhomquSPbclGZpwFNWHMmvKLCbxzimPaOwfEaBPJSDAMQuYmSEbrjctYlKnfpvhvvpbmNCeAtcgYEPheOLqfCgIEvzZaemIbVpAnfcwGygRpizjQBiulMKLSsVTAxdgugoEYHVWibyfHvwAEyODjAnxiwkrjcbwSuolkspyUJRfFL 19.7486 436095883
+    ${input}=    Write    python ${subSystem}_Event_${component}.py bIBzzaRWhwwkmmkcyFHnhUzJxhYaDpxGETCICznWbAngNCYjUzLTAGSLHhmWYPTZLVBwOfBgQUaKgjRtquiIbSmrhvZykRJmpHNTSqMjYpsXjPDVhxwMfgTinLnbpawCOvitzkpNKpoXSWGMwfcoDSiokCgHEGarQwyihZDvLjsXwwkTOdxelaLFNqEoAfrqDoaQrqYSAxslYAWdGHgXdiusxlUsdyBhDvOkSUvbJptEkhVQnfVbPfkrgCgnYzbX 14.3552 1248831414
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1

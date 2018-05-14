@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19.4354 0 1 1252674502
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.9964 0 0 756597707
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AccelerometerWarning writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1252674502
+    ${output}=    Read Until    priority : 756597707
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerometerWarning received =     1
-    Should Contain    ${output}    Timestamp : 19.4354
+    Should Contain    ${output}    Timestamp : 0.9964
     Should Contain    ${output}    AnyWarning : 0
-    Should Contain    ${output}    ResponseTimeout : 1
-    Should Contain    ${output}    priority : 1252674502
+    Should Contain    ${output}    ResponseTimeout : 0
+    Should Contain    ${output}    priority : 756597707

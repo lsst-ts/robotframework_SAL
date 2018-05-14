@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 82.1422 CrYoVrveTodMCIiHQlEmTMiFnpqxhYRppmqCpcEBqUWXZUZTJnUhuIlSNGMyumXfVrJBzLfzMJWUUvAMDCRBRhAETqyyySYHzivzolEmghqGSwxGBbleMnHQYLcoIpjSCuEgFonKAAztUhsAdoqFwfZldpiVxRrcPMDqRcehiGcakonxgfyIjmPBlAObRnrknbpUCMVqXeYIivSsdGxVtpRRjXaITxvmIIiWXdFhUsHOYPWPOaKjbopGEWFHxwJr -286110311
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 66.4866 bGEgNmTQtOgzAXbMWlNKhoNzHPBdqHSmstmZPbirJZyMoDxRdKDZXvSqUCInbQebHHACoMbTAxgjFZSWnWZxXGvjoiCrpSNjBZTrWRbGqzfFLHzwOvMcVZdjRHiNsPsVciyypTrqmYAUGwZUacCvpgVNVvMjzmzhvzDEpCmXCdwknOnKNqpiiPCqFaymiGKRCaHsSTfRAPnjaozvPwjxmSkSsaGQHHNcyhShZPOwXTMWkDUAPBEQNoIMNWYPPTRZ 1474976364
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_SettingVersions writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SettingVersions sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2623
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EyJIvHYKypedoNceCtTVQVbjBIfbSsCPOEWwnVRAdGiRlSqgebxItFvuSdNJNCkXcVcRbXBqvcpGsjojYpIqaNpGHLakHZftPCnOtqkeYquigNTnrdFDArgGTMnLvfbonwbnIOkESRgHgkaoixtTWMbFAmCFSfELPgEERrhdLFnfTSlDcrVnsJKwEfghGcPowYYHCYFiccfzRAMlWLrcFMKZgAsXIfXUElugPDgSDQfalhvHQAhZyzckvQzxrkJC -1416427674 -1717239912
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send SeOfHBYmISwWCxLrldvngzjtMFfFXQUmsezFxvbLMDzbsCcLqoHCJyleczVcoBLLXAabgKytNbFPXFzqXNOgzuMuEYsnxinDxyMAStsrGsJTqyfAgDbtFAXcQtQOUiflZIPlhSmDNTTPaTwdmKjqFaClGdFZbCYupZdDzMNzoFUEbWLrqKrfUIglRCsxWhzgfwAAEAPebDXIovoNYIfdLeCIgIxsnuvVEGuzFdghCcsnkjIUNnFYonitHNvKJeKN 2116569644 -1689355921
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1717239912
+    ${output}=    Read Until    priority : -1689355921
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : EyJIvHYKypedoNceCtTVQVbjBIfbSsCPOEWwnVRAdGiRlSqgebxItFvuSdNJNCkXcVcRbXBqvcpGsjojYpIqaNpGHLakHZftPCnOtqkeYquigNTnrdFDArgGTMnLvfbonwbnIOkESRgHgkaoixtTWMbFAmCFSfELPgEERrhdLFnfTSlDcrVnsJKwEfghGcPowYYHCYFiccfzRAMlWLrcFMKZgAsXIfXUElugPDgSDQfalhvHQAhZyzckvQzxrkJC
-    Should Contain    ${output}    priority : -1416427674
-    Should Contain    ${output}    priority : -1717239912
+    Should Contain    ${output}    recommendedSettingVersion : SeOfHBYmISwWCxLrldvngzjtMFfFXQUmsezFxvbLMDzbsCcLqoHCJyleczVcoBLLXAabgKytNbFPXFzqXNOgzuMuEYsnxinDxyMAStsrGsJTqyfAgDbtFAXcQtQOUiflZIPlhSmDNTTPaTwdmKjqFaClGdFZbCYupZdDzMNzoFUEbWLrqKrfUIglRCsxWhzgfwAAEAPebDXIovoNYIfdLeCIgIxsnuvVEGuzFdghCcsnkjIUNnFYonitHNvKJeKN
+    Should Contain    ${output}    priority : 2116569644
+    Should Contain    ${output}    priority : -1689355921

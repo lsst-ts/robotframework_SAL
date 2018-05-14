@@ -152,14 +152,6 @@ CPP/StateMachine/OCS_exitControl.robot
 CPP/StateMachine/OCS_standby.robot
 CPP/StateMachine/OCS_start.robot
 CPP/StateMachine/OCS_stop.robot
-CPP/StateMachine/ProcessingCluster_abort.robot
-CPP/StateMachine/ProcessingCluster_disable.robot
-CPP/StateMachine/ProcessingCluster_enable.robot
-CPP/StateMachine/ProcessingCluster_enterControl.robot
-CPP/StateMachine/ProcessingCluster_exitControl.robot
-CPP/StateMachine/ProcessingCluster_standby.robot
-CPP/StateMachine/ProcessingCluster_start.robot
-CPP/StateMachine/ProcessingCluster_stop.robot
 CPP/StateMachine/PromptProcessing_disable.robot
 CPP/StateMachine/PromptProcessing_enable.robot
 CPP/StateMachine/PromptProcessing_standby.robot

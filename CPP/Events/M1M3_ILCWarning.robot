@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 87.3096 749414919 0 0 0 1 0 0 0 0 1 1 1959408712
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 3.0056 1708860380 1 0 0 1 1 1 0 1 0 1 -763553024
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ILCWarning writing a message containing :    1
@@ -57,19 +57,19 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1959408712
+    ${output}=    Read Until    priority : -763553024
     Log    ${output}
     Should Contain X Times    ${output}    === Event ILCWarning received =     1
-    Should Contain    ${output}    Timestamp : 87.3096
-    Should Contain    ${output}    ActuatorId : 749414919
-    Should Contain    ${output}    AnyWarning : 0
+    Should Contain    ${output}    Timestamp : 3.0056
+    Should Contain    ${output}    ActuatorId : 1708860380
+    Should Contain    ${output}    AnyWarning : 1
     Should Contain    ${output}    ResponseTimeout : 0
     Should Contain    ${output}    InvalidCRC : 0
     Should Contain    ${output}    IllegalFunction : 1
-    Should Contain    ${output}    IllegalDataValue : 0
-    Should Contain    ${output}    InvalidLength : 0
+    Should Contain    ${output}    IllegalDataValue : 1
+    Should Contain    ${output}    InvalidLength : 1
     Should Contain    ${output}    UnknownSubnet : 0
-    Should Contain    ${output}    UnknownAddress : 0
-    Should Contain    ${output}    UnknownFunction : 1
+    Should Contain    ${output}    UnknownAddress : 1
+    Should Contain    ${output}    UnknownFunction : 0
     Should Contain    ${output}    UnknownProblem : 1
-    Should Contain    ${output}    priority : 1959408712
+    Should Contain    ${output}    priority : -763553024

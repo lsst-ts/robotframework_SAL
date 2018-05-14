@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.339692835061 0.552488882466 0.500645680491 0.170607147459
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.349004443257 0.335672061435 0.375705434063 0.299363051247
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.339692835061 0.552488882466 0.500645680491 0.170607147459
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.349004443257 0.335672061435 0.375705434063 0.299363051247
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,10 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xymax : 0.339692835061    1
-    Should Contain X Times    ${output}    rxrymax : 0.552488882466    1
-    Should Contain X Times    ${output}    zmax : 0.500645680491    1
-    Should Contain X Times    ${output}    rzmax : 0.170607147459    1
+    Should Contain X Times    ${output}    xymax : 0.349004443257    1
+    Should Contain X Times    ${output}    rxrymax : 0.335672061435    1
+    Should Contain X Times    ${output}    zmax : 0.375705434063    1
+    Should Contain X Times    ${output}    rzmax : 0.299363051247    1
     Should Contain    ${output}    === command configureVelocity issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -86,10 +86,10 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xymax : 0.339692835061    1
-    Should Contain X Times    ${output}    rxrymax : 0.552488882466    1
-    Should Contain X Times    ${output}    zmax : 0.500645680491    1
-    Should Contain X Times    ${output}    rzmax : 0.170607147459    1
+    Should Contain X Times    ${output}    xymax : 0.349004443257    1
+    Should Contain X Times    ${output}    rxrymax : 0.335672061435    1
+    Should Contain X Times    ${output}    zmax : 0.375705434063    1
+    Should Contain X Times    ${output}    rzmax : 0.299363051247    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtArchiver_SettingsApplied sender/logger tests.
-Force Tags    python    
+Force Tags    python    TSS-2624
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py wyujAMUZXpomGJmbLQCJPcorrRFUWKiUuCRBSzlxbpfDDETnaXXezeqRnTmvyWWVYQyJQsDtAJYvmlVRGxhuZhrwUPmqIgBemnHydqyznPtbDJZCNraSBxYCdSuLMOvckgazHACypUdSYvqdGqWeimiJCzlKtYEMxSSwoKJIuNbZCyvtEZaBYgmSuXMQGeRUlunSulltitbrCDTvTZSjxaOiopHbHPLEqwBjPyNooZCiSMIXLJQvJQHKMIOiNXoq -1682866634 1009794282
+    ${input}=    Write    python ${subSystem}_Event_${component}.py PJAsNhUodchCugpGdQMUgCAThVhPSYYHjXAVrcmvKzlxVjTXxsDhqfvQlXDtymfZHEqzDqcDAHgTBnvpfaVcAlFzluQLJQZSpwhYKDlGfCXbbfXDdHSUwgWrDJDwtwGpVRUKtElyYtgjcsniqOUlNCEJaQBtaCOSWiUlCqWKtvQzvdEXUBXIcAYQAcYeRUzcwNndXgxinMehFelVbdPyTyHIMnhsSlmEPYOxHqltiMJfwlbmvXIXezksZGgvswdu -1722524712 -734501778
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SettingsApplied writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_start commander/controller tests.
-Force Tags    java    
+Force Tags    java    TSS-2621
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    start
 ${timeout}    60s
 

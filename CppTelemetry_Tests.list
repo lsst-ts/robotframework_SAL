@@ -30,8 +30,6 @@ CPP/Telemetry/Camera_Shutter.robot
 CPP/Telemetry/Camera_WAS.robot
 CPP/Telemetry/Camera_WDS.robot
 CPP/Telemetry/CatchupArchiver_SequencerHeartbeat.robot
-CPP/Telemetry/DMHeaderService_LoopTime_ms.robot
-CPP/Telemetry/DMHeaderService_Timestamp.robot
 CPP/Telemetry/DomeADB_status.robot
 CPP/Telemetry/DomeAPS_status.robot
 CPP/Telemetry/DomeLWS_status.robot
@@ -46,7 +44,6 @@ CPP/Telemetry/EEC_eectelem.robot
 CPP/Telemetry/EEC_hvactelem.robot
 CPP/Telemetry/EEC_nightsetpoint.robot
 CPP/Telemetry/EFD_Summary.robot
-CPP/Telemetry/Environment_weather.robot
 CPP/Telemetry/HeaderService_LoopTime_ms.robot
 CPP/Telemetry/HeaderService_Timestamp.robot
 CPP/Telemetry/Hexapod_Actuators.robot
@@ -93,8 +90,7 @@ CPP/Telemetry/MTMount_DP_2.robot
 CPP/Telemetry/MTMount_MC.robot
 CPP/Telemetry/MTMount_MotionParameters.robot
 CPP/Telemetry/OCS_SequencerHeartbeat.robot
-CPP/Telemetry/ProcessingCluster_SequencerHeartbeat.robot
-CPP/Telemetry/PromptProcessing_SequencerHeartbeat.robot
+CPP/Telemetry/PromptProcessing_promptprocessing_SequencerHeartbeat.robot
 CPP/Telemetry/Rotator_Application.robot
 CPP/Telemetry/Rotator_Electrical.robot
 CPP/Telemetry/Rotator_Motors.robot

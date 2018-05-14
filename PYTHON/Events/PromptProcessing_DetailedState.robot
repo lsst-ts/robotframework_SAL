@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    DetailedState
 ${timeout}    30s
 
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 849074046 -1068150385 1862947876
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1602343285 1011275208 844366140
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_DetailedState writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_DetailedState writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

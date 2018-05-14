@@ -86,12 +86,6 @@ PYTHON/Commands/CatchupArchiver_exitControl.robot
 PYTHON/Commands/CatchupArchiver_setValue.robot
 PYTHON/Commands/CatchupArchiver_standby.robot
 PYTHON/Commands/CatchupArchiver_start.robot
-PYTHON/Commands/DMHeaderService_Disable.robot
-PYTHON/Commands/DMHeaderService_Enable.robot
-PYTHON/Commands/DMHeaderService_EnterControl.robot
-PYTHON/Commands/DMHeaderService_ExitControl.robot
-PYTHON/Commands/DMHeaderService_Standby.robot
-PYTHON/Commands/DMHeaderService_Start.robot
 PYTHON/Commands/DomeADB_Crawl.robot
 PYTHON/Commands/DomeADB_Echo.robot
 PYTHON/Commands/DomeADB_Move.robot

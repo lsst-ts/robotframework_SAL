@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 26.7711 0.11 1994676430
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 85.524 4.9648 -28308942
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AcquisitionRate writing a message containing :    1

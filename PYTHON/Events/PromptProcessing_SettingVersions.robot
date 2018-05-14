@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    SettingVersions
 ${timeout}    30s
 
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py FUxrNfqTMVAjieajdNzsjfFylSZCSAPUSZeNxeBTqAYKMdJZncbVqHQQmjYCvuPFfCxzbQfetpMNySqwNUVEzPhXwkFgispwUdjVHfJxHJqYJWQYvIieecYsxVlABJRNegTkpCbMPMXsrTkdzEmmWzGTcDXsHrmnPoCPXmKCRofrTUhXlWzAXDPQFPlKpzLQFaWYCzfRGhnsCxDiGYCefTgGmTmsvmUnaCavwZKeSUwLAwSfktcGEcdlAEaJacsg -736705606 -762256480
+    ${input}=    Write    python ${subSystem}_Event_${component}.py yXobEvuhqrHMWBoXmsqbDbspJQmzjULUCGxRusWRhtyGYXhhYgcAYDJFfiiLsEjSvgVKiOYxBQZBEFRijzgHnRLPRwbzIoEIyqBAxHRepNwSXCjGoBEyzcXpxPcOGwRkrlWlZsmQhrUOEQkWJqxaFrvWgKrDqlmXngBACsQuIlJDafGDZuRoFAPfjRvLoLgdNHvjjlcIBKTzycBZpTWKEEyvlUugVQGjkaCjOnrIVvRtrlyqnOpDWkEsPTXiMzIa 1619967876 -2089528524
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SettingVersions writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingVersions writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

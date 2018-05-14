@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_catchuparchiverEntityStartup sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2620
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VdYSFpvKvCPlgYiivvjWKbQDRGjQGFQriipHsDihYVsWmxIMJHnTnCldcfyefxMgYaYtssBqwDCzyvqflkaFXGsSJCgXDWKAbTVUkMMJxFWMmGVsIGdqfRtyCnJSqKnAtgdjSQjqXbtNudOikjypdJNZGPUFuCeRWfKsOedkAheEjVTwdpbPCTJOrPmSBHojyQimSVNQUFJdUYJyTESGtcHUVwyEAQOKUIEYcvWMTzsquTrCCQeYCnciamDwQTOg 95.6004 JajCJnVVTdZTZNRIlnTzTsIQifpfwfxXywakSAHSnhCfOFbtSoPgPzkWsNNifbmQmXMKZtRkIPMfsrWVkUBiyWmiRehNsteEGSFUZnVgKlQznsKZBqMVmzprErZVNRnSrakkQXkNtxfgGInWQLQAejOLQGjbCphaaUWjezHEpfLyagPkSGNJElVqmGpcxpplRLopiewwUzJpmvCtsOLMtNBwQezCgsgmqZKZlIkfCyWShtniFbeFwFrKMIDTcFxJ 1425319389 1842298533 -210552705
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send yQdzcCBtqUObaeVeKEvGCnenuWepQGTHkbzTwRxKxHHaTCxHjNbIhuGwlJHFsEqvZLtAkPAWzjefjPzFqTwXOpFYFnccWpqHlOpkADLxbKzHPWVpSFBrPNUTdkNkjQjDSlYMThdeyYOSBHLWqMZnQuIlVKMqGkkUBQDtWGhcPBYycJqakuEEEoMKhmQoMrDlJkwkbXyHbaTTUzYmaukTnrkhgDNwKKhwduJRvKvOKbCCbLmdxQzqCOneZKEvHhPz 54.6389 sPFMEPjHhdBAHtVbvuskqKIhaWCCtSAnQkvKLmgHmAWZcBsHTQJJgiJGxnjinIgydlCauPodiTAMzSEHVFicrksWsbqwSqCsVGqegfaNOswkuLHcbCxujNYOEFMVtGYQcwplZahsIzCRRsGGErkjeeIrsnKAnpxNgWVxJnhojuYWDXSSgdMzMaUQqzHIQbXcMUDPZFFAfTUocVkVhTIXcdASMHccwrqEztbSnOUYESJvOFUgXATcBEtuRFIXfCtn 2095719997 -233514228 803725546
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntityStartup writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -210552705
+    ${output}=    Read Until    priority : 803725546
     Log    ${output}
     Should Contain X Times    ${output}    === Event catchuparchiverEntityStartup received =     1
-    Should Contain    ${output}    Name : VdYSFpvKvCPlgYiivvjWKbQDRGjQGFQriipHsDihYVsWmxIMJHnTnCldcfyefxMgYaYtssBqwDCzyvqflkaFXGsSJCgXDWKAbTVUkMMJxFWMmGVsIGdqfRtyCnJSqKnAtgdjSQjqXbtNudOikjypdJNZGPUFuCeRWfKsOedkAheEjVTwdpbPCTJOrPmSBHojyQimSVNQUFJdUYJyTESGtcHUVwyEAQOKUIEYcvWMTzsquTrCCQeYCnciamDwQTOg
-    Should Contain    ${output}    Identifier : 95.6004
-    Should Contain    ${output}    Timestamp : JajCJnVVTdZTZNRIlnTzTsIQifpfwfxXywakSAHSnhCfOFbtSoPgPzkWsNNifbmQmXMKZtRkIPMfsrWVkUBiyWmiRehNsteEGSFUZnVgKlQznsKZBqMVmzprErZVNRnSrakkQXkNtxfgGInWQLQAejOLQGjbCphaaUWjezHEpfLyagPkSGNJElVqmGpcxpplRLopiewwUzJpmvCtsOLMtNBwQezCgsgmqZKZlIkfCyWShtniFbeFwFrKMIDTcFxJ
-    Should Contain    ${output}    Address : 1425319389
-    Should Contain    ${output}    priority : 1842298533
-    Should Contain    ${output}    priority : -210552705
+    Should Contain    ${output}    Name : yQdzcCBtqUObaeVeKEvGCnenuWepQGTHkbzTwRxKxHHaTCxHjNbIhuGwlJHFsEqvZLtAkPAWzjefjPzFqTwXOpFYFnccWpqHlOpkADLxbKzHPWVpSFBrPNUTdkNkjQjDSlYMThdeyYOSBHLWqMZnQuIlVKMqGkkUBQDtWGhcPBYycJqakuEEEoMKhmQoMrDlJkwkbXyHbaTTUzYmaukTnrkhgDNwKKhwduJRvKvOKbCCbLmdxQzqCOneZKEvHhPz
+    Should Contain    ${output}    Identifier : 54.6389
+    Should Contain    ${output}    Timestamp : sPFMEPjHhdBAHtVbvuskqKIhaWCCtSAnQkvKLmgHmAWZcBsHTQJJgiJGxnjinIgydlCauPodiTAMzSEHVFicrksWsbqwSqCsVGqegfaNOswkuLHcbCxujNYOEFMVtGYQcwplZahsIzCRRsGGErkjeeIrsnKAnpxNgWVxJnhojuYWDXSSgdMzMaUQqzHIQbXcMUDPZFFAfTUocVkVhTIXcdASMHccwrqEztbSnOUYESJvOFUgXATcBEtuRFIXfCtn
+    Should Contain    ${output}    Address : 2095719997
+    Should Contain    ${output}    priority : -233514228
+    Should Contain    ${output}    priority : 803725546

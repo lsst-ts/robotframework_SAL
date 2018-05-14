@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -455984212
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 976305612
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_FilterChangeInPosition writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -455984212
+    ${output}=    Read Until    priority : 976305612
     Log    ${output}
     Should Contain X Times    ${output}    === Event FilterChangeInPosition received =     1
     Should Contain    ${output}    FilterChangeInPosition : 0
-    Should Contain    ${output}    priority : -455984212
+    Should Contain    ${output}    priority : 976305612

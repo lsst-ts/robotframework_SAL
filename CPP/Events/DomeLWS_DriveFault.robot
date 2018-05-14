@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31288 vfSBsQeDNvxvVThFRIySrWCnWeUfpACWBTPMclZbxfAflcwZcKXLWRiKwjnDiIyMYatORTDuwtZyzROtAezWEYwlDYPXvUzIofYTKJttcWsgqREKbacXzxAoDBjNmCpgWDvrSRAODyBJThwiHgEgnhafkVHgznYytUoVBiJgRRFSCsUYMqfRDyQuwBnUtsSqcXvhjmogJhVNesqRmjqTLsrMaDVDLsSYSlVrnxAvebXDSXePlwvApBkkCwkxrToUNWvZLvoMQejOLcExAQLyTndwpuTtwwNApmSMZSxzgazCuEyefIvkoOSUrjlGTvuwesRABQOvrQrgVWjWoIIDNIaiPdslzOYYlscCEJoTpTBQUjGdbBQpSbGTnzWpcURaJJgZTjxwgjkMQIZRdOYVYDRqwatrSIPQZotraWlpwFgPMsekyvbeZfcJDDlxjGdMYAXmmOdLwXFIAcZLQlrhpAVrfJqvhpZjLSZZoFDeLMbhYJZHZzYeHRaJKBvBXUeGaMGzGBQsJAEycsKWxQHADkLnyTVcrtZjqUteAqwSbvWPCJEobyQIlJCZDigqYmphDEssxGSPXpEoUBMlbPwsHfLYFzOjpYeaEMMnPKoJctuwJSMvTJtJCMZZPcMXXhjxchLfCZxiWcMqxWgHShgtPqDhmcvFOXcjMMXDWaJmqTKNhTdYUJUFqdyBGbmvrGHIKQAUTvjHmizWhqbfvpTgEnjEfsDBNNadXPWMljBkwqbWaVrGRtaFDunZUsewIrmHKIOSoSvDcqDrJUngBPTBGfEXYbzmOhQDsRvaCYciVKcHNtZuPRUwQdiWJYJczmMsQaMzOwqthgPEKQesKbQnZiGeaeCYa -1717612078
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 30771 MfrtGBWkQJYmUsyqYHxGEXuReAjGPAVtjLWfGOkILMWltiYUjANlLGSZIkSslgMrKMwfaBWVNHySyYWLCTrxsccfbpStQxUIeGWyhgeBrLxXVxMyiOHegtebgcUktUHZWyclTDhmLFtIGGHFWREbmHICWbFNSNPYlfnhTaBMAtvjbKIKKAiidCjLtCFTeoFcwxfifxrDHGBTuEcEmZsFlkrxEpRvVFhKbayUtOqlEmVBLgvudhkoltQSvlKZfoCGBMSUicyetYqNJfCpVXLXzaSXaXTJNOdhocRCQboglDskKnAMdZZnxEGxiwabDrNXdeUHOawFOzPRhsnbUKjcYadyzAuYlxWQvrIxampuPQRloAjYtEaAnnXAgNaMVoNvoSZfdciwNMYjlFtnEatsJplWBYtccUhZhGDMuPOvxjSBGwkUZFZzznqzVatgKobrnXEMeURJoyXEBAwXqsKjGPIwXkqeEYjvyXBdnKYdJpGEgjguAcxGFUEqloUmgNnoRiOMmPlsKLsWjWZXGdpeWmPZCWFFEJaaxqWhv -1104551835
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1717612078
+    ${output}=    Read Until    priority : -1104551835
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 31288
-    Should Contain    ${output}    errorCode : vfSBsQeDNvxvVThFRIySrWCnWeUfpACWBTPMclZbxfAflcwZcKXLWRiKwjnDiIyMYatORTDuwtZyzROtAezWEYwlDYPXvUzIofYTKJttcWsgqREKbacXzxAoDBjNmCpgWDvrSRAODyBJThwiHgEgnhafkVHgznYytUoVBiJgRRFSCsUYMqfRDyQuwBnUtsSqcXvhjmogJhVNesqRmjqTLsrMaDVDLsSYSlVrnxAvebXDSXePlwvApBkkCwkxrToUNWvZLvoMQejOLcExAQLyTndwpuTtwwNApmSMZSxzgazCuEyefIvkoOSUrjlGTvuwesRABQOvrQrgVWjWoIIDNIaiPdslzOYYlscCEJoTpTBQUjGdbBQpSbGTnzWpcURaJJgZTjxwgjkMQIZRdOYVYDRqwatrSIPQZotraWlpwFgPMsekyvbeZfcJDDlxjGdMYAXmmOdLwXFIAcZLQlrhpAVrfJqvhpZjLSZZoFDeLMbhYJZHZzYeHRaJKBvBXUeGaMGzGBQsJAEycsKWxQHADkLnyTVcrtZjqUteAqwSbvWPCJEobyQIlJCZDigqYmphDEssxGSPXpEoUBMlbPwsHfLYFzOjpYeaEMMnPKoJctuwJSMvTJtJCMZZPcMXXhjxchLfCZxiWcMqxWgHShgtPqDhmcvFOXcjMMXDWaJmqTKNhTdYUJUFqdyBGbmvrGHIKQAUTvjHmizWhqbfvpTgEnjEfsDBNNadXPWMljBkwqbWaVrGRtaFDunZUsewIrmHKIOSoSvDcqDrJUngBPTBGfEXYbzmOhQDsRvaCYciVKcHNtZuPRUwQdiWJYJczmMsQaMzOwqthgPEKQesKbQnZiGeaeCYa
-    Should Contain    ${output}    priority : -1717612078
+    Should Contain    ${output}    driveId : 30771
+    Should Contain    ${output}    errorCode : MfrtGBWkQJYmUsyqYHxGEXuReAjGPAVtjLWfGOkILMWltiYUjANlLGSZIkSslgMrKMwfaBWVNHySyYWLCTrxsccfbpStQxUIeGWyhgeBrLxXVxMyiOHegtebgcUktUHZWyclTDhmLFtIGGHFWREbmHICWbFNSNPYlfnhTaBMAtvjbKIKKAiidCjLtCFTeoFcwxfifxrDHGBTuEcEmZsFlkrxEpRvVFhKbayUtOqlEmVBLgvudhkoltQSvlKZfoCGBMSUicyetYqNJfCpVXLXzaSXaXTJNOdhocRCQboglDskKnAMdZZnxEGxiwabDrNXdeUHOawFOzPRhsnbUKjcYadyzAuYlxWQvrIxampuPQRloAjYtEaAnnXAgNaMVoNvoSZfdciwNMYjlFtnEatsJplWBYtccUhZhGDMuPOvxjSBGwkUZFZzznqzVatgKobrnXEMeURJoyXEBAwXqsKjGPIwXkqeEYjvyXBdnKYdJpGEgjguAcxGFUEqloUmgNnoRiOMmPlsKLsWjWZXGdpeWmPZCWFFEJaaxqWhv
+    Should Contain    ${output}    priority : -1104551835

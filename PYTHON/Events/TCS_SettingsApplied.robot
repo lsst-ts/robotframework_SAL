@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py YyZXmRvGXIINwlqpUKOlMcsOUddVAJfCwzYjmPyeEXdbXrhLjRaaNiLsXaPSSevblSOQDzwxJNKOoIcrBfmtWxzXbZTkdAgViwwgdSihteMndaeJOKBLaOPUYqYRpdJsUnnAfEpfegKNMZwbGCsFrVdhiPWWwYTmIICDkuTzJbLjAEkANmEJKeRVhguRpPNayJCPTkHQXREBybZwJoBnexdObrGSAfStTXGoZljZYhbEdWdNWbNFIJVhqwzQvczVqbdPjFHNUegdnqEOzmABMQhLVuBquUSkyubOplJmXDgbHBFWczGwioePeJAhhn 67.4301 74268419
+    ${input}=    Write    python ${subSystem}_Event_${component}.py UZhfeHYDapsaiAdDDxbuYXXmuVAWeDBuQeceWDKVqwydEcwMGmHEUThfqRsIdFvHNbrTZaLqGOrqGRWQcfSxXRKmHnGjuVSvXtNqbCrwpihilUPMylRpQagkYORNwSUbFcPwAOSuexAENlrWucvyKigmbqgMSDUxTSYpQdiljejvdjFoWadnzWnttLKOztSqmjHAfBQgDX 74.9232 -177356435
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1

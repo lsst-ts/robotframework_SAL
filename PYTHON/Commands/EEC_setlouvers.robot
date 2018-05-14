@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -24028 -7003 -16910 -6382 4743 -12426 23418 18734 10670 7502 3753 21949 18439 29821 -29194 10916 21393 -11985 -26605 -10662 -27277 -18217 26268 -3425 22876 14530 -12529 -22849 724 10594 -11189 -30120 -10842 -25737 -31206 12935 -11576 9579 -27095 -5894 12695 2072 292 1895 -25265 -2652 -4051 -23184 17405 -4553 -213 3465 24377 12670 7729 28205 22352 12861 -7758 20835
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -20187 7776 -5710 30089 3937 -21959 12914 294 31230 8140 -21378 8379 -15808 18006 -19991 -15885 -24398 5573 -3614 -10252 -23286 -12810 11119 -5509 -5955 -739 9153 -15951 -1022 -14477 557 -22978 -16745 -3266 -616 26184 28085 -14001 -15502 25532 -1598 -25378 -24751 17294 -6498 30080 -14934 16230 21913 -31078 -13248 7299 30307 26260 -1224 26286 -14037 29003 18951 -2308
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -24028 -7003 -16910 -6382 4743 -12426 23418 18734 10670 7502 3753 21949 18439 29821 -29194 10916 21393 -11985 -26605 -10662 -27277 -18217 26268 -3425 22876 14530 -12529 -22849 724 10594 -11189 -30120 -10842 -25737 -31206 12935 -11576 9579 -27095 -5894 12695 2072 292 1895 -25265 -2652 -4051 -23184 17405 -4553 -213 3465 24377 12670 7729 28205 22352 12861 -7758 20835
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -20187 7776 -5710 30089 3937 -21959 12914 294 31230 8140 -21378 8379 -15808 18006 -19991 -15885 -24398 5573 -3614 -10252 -23286 -12810 11119 -5509 -5955 -739 9153 -15951 -1022 -14477 557 -22978 -16745 -3266 -616 26184 28085 -14001 -15502 25532 -1598 -25378 -24751 17294 -6498 30080 -14934 16230 21913 -31078 -13248 7299 30307 26260 -1224 26286 -14037 29003 18951 -2308
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    position : -24028    1
+    Should Contain X Times    ${output}    position : -20187    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    position(60) = [-24028, -7003, -16910, -6382, 4743, -12426, 23418, 18734, 10670, 7502, 3753, 21949, 18439, 29821, -29194, 10916, 21393, -11985, -26605, -10662, -27277, -18217, 26268, -3425, 22876, 14530, -12529, -22849, 724, 10594, -11189, -30120, -10842, -25737, -31206, 12935, -11576, 9579, -27095, -5894, 12695, 2072, 292, 1895, -25265, -2652, -4051, -23184, 17405, -4553, -213, 3465, 24377, 12670, 7729, 28205, 22352, 12861, -7758, 20835]    1
+    Should Contain X Times    ${output}    position(60) = [-20187, 7776, -5710, 30089, 3937, -21959, 12914, 294, 31230, 8140, -21378, 8379, -15808, 18006, -19991, -15885, -24398, 5573, -3614, -10252, -23286, -12810, 11119, -5509, -5955, -739, 9153, -15951, -1022, -14477, 557, -22978, -16745, -3266, -616, 26184, 28085, -14001, -15502, 25532, -1598, -25378, -24751, 17294, -6498, 30080, -14934, 16230, 21913, -31078, -13248, 7299, 30307, 26260, -1224, 26286, -14037, 29003, 18951, -2308]    1
     Should Contain X Times    ${output}    === [ackCommand_setlouvers] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pIlffUQnXVNwkSeZbNoJxCWYWZfmPuQinkBhKDuhycXxAcbULEOnvGfSinajifajFQPcoqGxyMXMbWXaphwIJcZTNskkvdZcLnUnKzjFGrMbdEzGRkoppSoERIJZSOYettnKVTXGEpUyTsqnosHXLquZEqxUCDSHAYnFUALdKjCaktTrTScClgwIKszYUzoqMiizawSaugGFjPVPcqOEjhMiFYzKBmYiXoWoQKPWevVKFgHnchEpmuLyXtvosXSb fUJItVXTcJsyituZypdDXyEGeoofrwdIcatdILGBsuJmqFSVakpAkRmHVrOcmTIj -274319742
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bXPPwCbkXkeStDIGzTwzsHArkHtayPzZYatbZpnZIkKSGUkyoLDNWZVdTWrcHgUFijqnaRMigeAnxWhTICdbjocgaItmEDnYtfnkHffjlNnbsPgBVxBDJtopmpCYCgvHXLuyLkDqbhFTBrUGdrcjLFOhCWvSBEdhrQhkIdaZlfRyIVKJzRChlPnXBGnnDuqBFUiPLHMIKOXyNKLWCdaoGyJgGnwDpOlnKdicmglpJdPJzHYnzBfvGsdqtXXJehec aryVjfBjvXHwjKkqwJzsKjDHvlojNrrWhCJBswUBzIGApPYtisVJpOvFBYpUvUgh -695705934
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -274319742
+    ${output}=    Read Until    priority : -695705934
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : pIlffUQnXVNwkSeZbNoJxCWYWZfmPuQinkBhKDuhycXxAcbULEOnvGfSinajifajFQPcoqGxyMXMbWXaphwIJcZTNskkvdZcLnUnKzjFGrMbdEzGRkoppSoERIJZSOYettnKVTXGEpUyTsqnosHXLquZEqxUCDSHAYnFUALdKjCaktTrTScClgwIKszYUzoqMiizawSaugGFjPVPcqOEjhMiFYzKBmYiXoWoQKPWevVKFgHnchEpmuLyXtvosXSb
-    Should Contain    ${output}    images_match_URI : fUJItVXTcJsyituZypdDXyEGeoofrwdIcatdILGBsuJmqFSVakpAkRmHVrOcmTIj
-    Should Contain    ${output}    priority : -274319742
+    Should Contain    ${output}    images_location_URI : bXPPwCbkXkeStDIGzTwzsHArkHtayPzZYatbZpnZIkKSGUkyoLDNWZVdTWrcHgUFijqnaRMigeAnxWhTICdbjocgaItmEDnYtfnkHffjlNnbsPgBVxBDJtopmpCYCgvHXLuyLkDqbhFTBrUGdrcjLFOhCWvSBEdhrQhkIdaZlfRyIVKJzRChlPnXBGnnDuqBFUiPLHMIKOXyNKLWCdaoGyJgGnwDpOlnKdicmglpJdPJzHYnzBfvGsdqtXXJehec
+    Should Contain    ${output}    images_match_URI : aryVjfBjvXHwjKkqwJzsKjDHvlojNrrWhCJBswUBzIGApPYtisVJpOvFBYpUvUgh
+    Should Contain    ${output}    priority : -695705934

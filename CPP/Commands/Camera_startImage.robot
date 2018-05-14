@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander KfegGvumoWEzoHPwStANQALEWkwcITWGTfmsdYMqoShQlUxwTcghxmDlRCMqJLJvAYzfTXfYQlYFkQYFLAxSrsPIWlhtyaFKMfdBCMqHyItMyZOgdQQCzPGYatPXlDHPhirqkninOjlPACMOIeTaWOhABpMiAoyIgufwWOxrhirXKMkuQFkKAJRdxBPbKjKlWmUnEIxQhSLCfLfcCbYXKFECPZfZUDHQvvhCwTjgZiDbmWVdrPxrGTrVrXQsEKYa 0 0 0 0 1.4829
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander CgNqXuPoDWFbfHriGiSwDoBYGOXZnuxebPqvUjJffSAqDYIfLLUODdUaHlrXbXSbgSDFgBRWuTYhoLalCJxUKJbkFUcZgzzzHQzBmSTpFijsscTgsOOirALCyaIEUsWQbxlphAttTYCqdUTsuIqNnPdYlWKJFDzdqJcyBwCyaRoklerNkTtGMsjRwTtJbOQmZXjyvBwvrkNPjofxEQQzUQbtoSrlcIDvrpwClEFuArZOgFuMIXmyCJDonVpQtimM 1 0 1 0 63.7668
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander KfegGvumoWEzoHPwStANQALEWkwcITWGTfmsdYMqoShQlUxwTcghxmDlRCMqJLJvAYzfTXfYQlYFkQYFLAxSrsPIWlhtyaFKMfdBCMqHyItMyZOgdQQCzPGYatPXlDHPhirqkninOjlPACMOIeTaWOhABpMiAoyIgufwWOxrhirXKMkuQFkKAJRdxBPbKjKlWmUnEIxQhSLCfLfcCbYXKFECPZfZUDHQvvhCwTjgZiDbmWVdrPxrGTrVrXQsEKYa 0 0 0 0 1.4829
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander CgNqXuPoDWFbfHriGiSwDoBYGOXZnuxebPqvUjJffSAqDYIfLLUODdUaHlrXbXSbgSDFgBRWuTYhoLalCJxUKJbkFUcZgzzzHQzBmSTpFijsscTgsOOirALCyaIEUsWQbxlphAttTYCqdUTsuIqNnPdYlWKJFDzdqJcyBwCyaRoklerNkTtGMsjRwTtJbOQmZXjyvBwvrkNPjofxEQQzUQbtoSrlcIDvrpwClEFuArZOgFuMIXmyCJDonVpQtimM 1 0 1 0 63.7668
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    imageSequenceName : KfegGvumoWEzoHPwStANQALEWkwcITWGTfmsdYMqoShQlUxwTcghxmDlRCMqJLJvAYzfTXfYQlYFkQYFLAxSrsPIWlhtyaFKMfdBCMqHyItMyZOgdQQCzPGYatPXlDHPhirqkninOjlPACMOIeTaWOhABpMiAoyIgufwWOxrhirXKMkuQFkKAJRdxBPbKjKlWmUnEIxQhSLCfLfcCbYXKFECPZfZUDHQvvhCwTjgZiDbmWVdrPxrGTrVrXQsEKYa    1
-    Should Contain X Times    ${output}    shutter : 0    1
+    Should Contain X Times    ${output}    imageSequenceName : CgNqXuPoDWFbfHriGiSwDoBYGOXZnuxebPqvUjJffSAqDYIfLLUODdUaHlrXbXSbgSDFgBRWuTYhoLalCJxUKJbkFUcZgzzzHQzBmSTpFijsscTgsOOirALCyaIEUsWQbxlphAttTYCqdUTsuIqNnPdYlWKJFDzdqJcyBwCyaRoklerNkTtGMsjRwTtJbOQmZXjyvBwvrkNPjofxEQQzUQbtoSrlcIDvrpwClEFuArZOgFuMIXmyCJDonVpQtimM    1
+    Should Contain X Times    ${output}    shutter : 1    1
     Should Contain X Times    ${output}    science : 0    1
-    Should Contain X Times    ${output}    guide : 0    1
+    Should Contain X Times    ${output}    guide : 1    1
     Should Contain X Times    ${output}    wfs : 0    1
-    Should Contain X Times    ${output}    timeout : 1.4829    1
+    Should Contain X Times    ${output}    timeout : 63.7668    1
     Should Contain    ${output}    === command startImage issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    imageSequenceName : KfegGvumoWEzoHPwStANQALEWkwcITWGTfmsdYMqoShQlUxwTcghxmDlRCMqJLJvAYzfTXfYQlYFkQYFLAxSrsPIWlhtyaFKMfdBCMqHyItMyZOgdQQCzPGYatPXlDHPhirqkninOjlPACMOIeTaWOhABpMiAoyIgufwWOxrhirXKMkuQFkKAJRdxBPbKjKlWmUnEIxQhSLCfLfcCbYXKFECPZfZUDHQvvhCwTjgZiDbmWVdrPxrGTrVrXQsEKYa    1
-    Should Contain X Times    ${output}    shutter : 0    1
+    Should Contain X Times    ${output}    imageSequenceName : CgNqXuPoDWFbfHriGiSwDoBYGOXZnuxebPqvUjJffSAqDYIfLLUODdUaHlrXbXSbgSDFgBRWuTYhoLalCJxUKJbkFUcZgzzzHQzBmSTpFijsscTgsOOirALCyaIEUsWQbxlphAttTYCqdUTsuIqNnPdYlWKJFDzdqJcyBwCyaRoklerNkTtGMsjRwTtJbOQmZXjyvBwvrkNPjofxEQQzUQbtoSrlcIDvrpwClEFuArZOgFuMIXmyCJDonVpQtimM    1
+    Should Contain X Times    ${output}    shutter : 1    1
     Should Contain X Times    ${output}    science : 0    1
-    Should Contain X Times    ${output}    guide : 0    1
+    Should Contain X Times    ${output}    guide : 1    1
     Should Contain X Times    ${output}    wfs : 0    1
-    Should Contain X Times    ${output}    timeout : 1.4829    1
+    Should Contain X Times    ${output}    timeout : 63.7668    1
     Should Contain X Times    ${output}    === [ackCommand_startImage] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

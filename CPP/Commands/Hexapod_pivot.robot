@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.674157446933 0.453617123685 0.00332265187081
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.139145994186 0.264681391367 0.184963755077
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.674157446933 0.453617123685 0.00332265187081
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.139145994186 0.264681391367 0.184963755077
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 0.674157446933    1
-    Should Contain X Times    ${output}    y : 0.453617123685    1
-    Should Contain X Times    ${output}    z : 0.00332265187081    1
+    Should Contain X Times    ${output}    x : 0.139145994186    1
+    Should Contain X Times    ${output}    y : 0.264681391367    1
+    Should Contain X Times    ${output}    z : 0.184963755077    1
     Should Contain    ${output}    === command pivot issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -85,9 +85,9 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 0.674157446933    1
-    Should Contain X Times    ${output}    y : 0.453617123685    1
-    Should Contain X Times    ${output}    z : 0.00332265187081    1
+    Should Contain X Times    ${output}    x : 0.139145994186    1
+    Should Contain X Times    ${output}    y : 0.264681391367    1
+    Should Contain X Times    ${output}    z : 0.184963755077    1
     Should Contain X Times    ${output}    === [ackCommand_pivot] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

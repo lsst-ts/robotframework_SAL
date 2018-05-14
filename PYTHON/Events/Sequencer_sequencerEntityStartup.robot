@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py wiwGwEyeoFfSMGFkgarWSyERWZQepFabtblmjqWVobYlURhjuVMNRigaLoiVxlrKoenUhjougXOQeqXVDBbxJvDpMuEKUgSKtyHAROJuxuMIfwgmombeLjcwaDquCDoN 41.0272 PFQFejoKkWZvhZwEuaitKLUQvobbuPkFbVLVqcJhRstLvMRybuVwGCHWjpKDsChkOfIGPSMhuVeaVFuXiKuuBbqIgLOFojucBVCkkySkiqYmfwRkrieYTjkSHNneokWRWIanGnjcHUANgNLdGvmGGNmuJyrIZMOzabpIBpYLEXUhTtRmHgvRhpHBDodtWDITNUVIrusPbitdApYxVYwFLPHvcHsSFBUgtlMmItTDmROAvyvBSBFSjgJnZSlGIDom 1456310490 109922236
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ipyuXNuZziIlxWNNWqhKctqfJtovnbwqWvmlamMtQiUepAPllsWJBcqQipRKFlLSbgiyKwcppeJQONuYMiqyWhAftDCnencncLlUXmaBSWuHQLCVTbgOQgNjCtHSRQar 19.5837 iuxYIaINFuQIaewCcQfHIbXkjUtpoDNOTIOwDqfDvRUEafLQrjhHFDjvydhYeDKgLPPuwKTylrYqaGMhyHfLQnDXeoKSQTSCNGTkoUGPpoIJgxAATSjEuTfelWEDQAcOhYSubGBdZHxnBBFkohdQGhKoUhBkwuQTYQSaPcrDnrcWvSIuAqfsiZzQeyQqfWQgFdYwEadqzrsjFJBXDKYJmGVLhLXeTQojTwdUJhBkbInQdqyaqAxZNVfbSSQKbZut -588453376 1825759784
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityStartup writing a message containing :    1

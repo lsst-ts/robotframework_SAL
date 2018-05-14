@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -12116 fCPHqgJhPbgdbFTeeYnfKmvXNUdGtFERTEemadvjjukoAHUJcARxrgNarSAMlERCapMkVIvFtRrUMpWhjSdsjNHeCYtufEyyJbESwwrDOYYlksCHItfLXAnYBcaITWayLsxhZUtnqRJGolIvlQWiTXCNjNYbcZctZDWgKosfTkfXNAgiAKSPquaMvPmxMjcmKgpdFRGuBz 11467421
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28725 ixEhqeqHlXHBctYvSsAzcvbyHIjertLSXTQHcTbrNphhzVbiNtnaQyNLubLkiTPSaUfFdmaRVKfloooQGeLTgxeJwNqhoWjsaCPJYNCYTzbySZTygbfNovBZGfBnZgcKtqlHoaYuIRcboRNZibphGTlHtLDTpQDCXIkLuPSpSczuozPzImBEjMUHDtLoBuqjDRATUPvyHXSejXgGNGfzXnUTnuKEroIrUWFSqeTZclWmXPCjPNOWdojmZdbVuGTpNQuAImDWJZtbjSXCKMmhNiVjGsWULKoeuSnHcPNkqPzQvQoTrOKwQUksKEaTzvvvxSEKwzFgsARiOCqtBFxeRjoKYLHdmISpjjZjCaTQcgTkORCHJDHSgxpYqbPmBOwxxBrWVUvhBGzKHozDPxlfeqsPTFaOjwNdaegOUvnnErRNYzPwxhRafCbOsUDqHEyzjyEpynolpLjgrTgfLEfXyNlfcANYQlJLVlxgqkeatQJPbwLcFBVVgtFTKNjhmdSBvMfYoJmmGjfNzsuFurRUGvovxIhaxpYtrbCwEklTTlLekOHCjKVIsDPsXHGvgJDaWxdZuszYEWwguktuJokkEZEYDrNsDxRqeITccSZkSIFMoNCoVgnBAyRnRaiqQdmLFLtnApkHUMyfeJnJXX -2058719472
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementPrevented writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 11467421
+    ${output}=    Read Until    priority : -2058719472
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    louverID : -12116
-    Should Contain    ${output}    causeId : fCPHqgJhPbgdbFTeeYnfKmvXNUdGtFERTEemadvjjukoAHUJcARxrgNarSAMlERCapMkVIvFtRrUMpWhjSdsjNHeCYtufEyyJbESwwrDOYYlksCHItfLXAnYBcaITWayLsxhZUtnqRJGolIvlQWiTXCNjNYbcZctZDWgKosfTkfXNAgiAKSPquaMvPmxMjcmKgpdFRGuBz
-    Should Contain    ${output}    priority : 11467421
+    Should Contain    ${output}    louverID : 28725
+    Should Contain    ${output}    causeId : ixEhqeqHlXHBctYvSsAzcvbyHIjertLSXTQHcTbrNphhzVbiNtnaQyNLubLkiTPSaUfFdmaRVKfloooQGeLTgxeJwNqhoWjsaCPJYNCYTzbySZTygbfNovBZGfBnZgcKtqlHoaYuIRcboRNZibphGTlHtLDTpQDCXIkLuPSpSczuozPzImBEjMUHDtLoBuqjDRATUPvyHXSejXgGNGfzXnUTnuKEroIrUWFSqeTZclWmXPCjPNOWdojmZdbVuGTpNQuAImDWJZtbjSXCKMmhNiVjGsWULKoeuSnHcPNkqPzQvQoTrOKwQUksKEaTzvvvxSEKwzFgsARiOCqtBFxeRjoKYLHdmISpjjZjCaTQcgTkORCHJDHSgxpYqbPmBOwxxBrWVUvhBGzKHozDPxlfeqsPTFaOjwNdaegOUvnnErRNYzPwxhRafCbOsUDqHEyzjyEpynolpLjgrTgfLEfXyNlfcANYQlJLVlxgqkeatQJPbwLcFBVVgtFTKNjhmdSBvMfYoJmmGjfNzsuFurRUGvovxIhaxpYtrbCwEklTTlLekOHCjKVIsDPsXHGvgJDaWxdZuszYEWwguktuJokkEZEYDrNsDxRqeITccSZkSIFMoNCoVgnBAyRnRaiqQdmLFLtnApkHUMyfeJnJXX
+    Should Contain    ${output}    priority : -2058719472

@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 80.5865 95.724 89.471 49.1058 75.6626 93.7422 75.2621 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 76.4963 67.1721 79.0228 20.923 90.1952 94.869 63.2008 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 80.5865 95.724 89.471 49.1058 75.6626 93.7422 75.2621 0
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 76.4963 67.1721 79.0228 20.923 90.1952 94.869 63.2008 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    timestamp : 80.5865    1
-    Should Contain X Times    ${output}    offset : 95.724    1
+    Should Contain X Times    ${output}    timestamp : 76.4963    1
+    Should Contain X Times    ${output}    offset : 67.1721    1
     Should Contain X Times    ${output}    synchrony :     1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -79,8 +79,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp = 80.5865    1
-    Should Contain X Times    ${output}    offset = 95.724    1
+    Should Contain X Times    ${output}    timestamp = 76.4963    1
+    Should Contain X Times    ${output}    offset = 67.1721    1
     Should Contain X Times    ${output}    synchrony =     1
     Should Contain X Times    ${output}    === [ackCommand_OffsetM2Hexapod] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

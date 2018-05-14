@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    AppliedSettingsMatchStart
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 497371032 329706354
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1347047867 1614054385
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event AppliedSettingsMatchStart generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 329706354
+    ${output}=    Read Until    priority : 1614054385
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 1
-    Should Contain    ${output}    priority : 497371032
-    Should Contain    ${output}    priority : 329706354
+    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 0
+    Should Contain    ${output}    priority : 1347047867
+    Should Contain    ${output}    priority : 1614054385

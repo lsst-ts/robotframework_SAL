@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 13488 KCyhBCWikcjqWBslibhcBxEhYCBONWEkazWmYTspOySSxyMxosOGnmdrTaTgMEwDQJvZIKcwphxlzfBksitCOOLJHRCNQpjEdCbluKIiyLFiUZFRvGNMcweOuGhmKNnqQXisXzRCrmfJccgfOpLgtGjuVXuOpWsRPmfVfBMRhhdusMyPlvoBIydCCfKbkZNXbBAmqrqszmlJZizkmzgZVGfWhGyNXwPqqBxDATIjylYGxDwgXGokBSiQcvBdjTjGywQKyqwWnSsFtcjnxl 425238756
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 474 xCyZWOgTdRmekIalAnJbAAunsufZFkTjPuZxsHEwHOhcbPQbRVZlenRsIDRDbCErJPoerQfjBSVfRRwvMZNqYVSSOnhvDDrmeJkBOrLIlzyqmizbSkbJhpMOAYrcGhyjIOUEuBUhktAUFcQEwEeyInAXdLfXoDjWJNjZcDgofjakEsrWYwhdwimzrxUlrxaLOshvFtgUCCiljfunTJPOBoWmoVpWhqNjFGCqMCNCcwIzMUfzPnWzHvGHDkSJRsMVFlGfdmShPNKaiQSkK 1868529156
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 425238756
+    ${output}=    Read Until    priority : 1868529156
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 13488
-    Should Contain    ${output}    errorCode : KCyhBCWikcjqWBslibhcBxEhYCBONWEkazWmYTspOySSxyMxosOGnmdrTaTgMEwDQJvZIKcwphxlzfBksitCOOLJHRCNQpjEdCbluKIiyLFiUZFRvGNMcweOuGhmKNnqQXisXzRCrmfJccgfOpLgtGjuVXuOpWsRPmfVfBMRhhdusMyPlvoBIydCCfKbkZNXbBAmqrqszmlJZizkmzgZVGfWhGyNXwPqqBxDATIjylYGxDwgXGokBSiQcvBdjTjGywQKyqwWnSsFtcjnxl
-    Should Contain    ${output}    priority : 425238756
+    Should Contain    ${output}    driveId : 474
+    Should Contain    ${output}    errorCode : xCyZWOgTdRmekIalAnJbAAunsufZFkTjPuZxsHEwHOhcbPQbRVZlenRsIDRDbCErJPoerQfjBSVfRRwvMZNqYVSSOnhvDDrmeJkBOrLIlzyqmizbSkbJhpMOAYrcGhyjIOUEuBUhktAUFcQEwEeyInAXdLfXoDjWJNjZcDgofjakEsrWYwhdwimzrxUlrxaLOshvFtgUCCiljfunTJPOBoWmoVpWhqNjFGCqMCNCcwIzMUfzPnWzHvGHDkSJRsMVFlGfdmShPNKaiQSkK
+    Should Contain    ${output}    priority : 1868529156

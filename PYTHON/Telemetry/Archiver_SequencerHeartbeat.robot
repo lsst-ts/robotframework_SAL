@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SequencerHeartbeat communications tests.
-Force Tags    python    
+Force Tags    python    TSS-2623
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

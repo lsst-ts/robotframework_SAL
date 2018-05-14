@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py oOXDNXmZeznjJjSNcdXQPREaqaisidWuaYSyTxJhjXaAPNuwQcwIPdxbgmeKXnaVoHSIpsBIjZRkwimxBMreqsjGUQGiCHxwJyZXNpDXyzuhFVZGwkdBTMgfnsNLDZUtGoJdXmAFHkxiZMdiSAxFytVwnGeVLcmHJrVmowPXSvEiFVGmaEAbaclNibbYSDBDTdtBXEuwPvjfoDwzicLXeAEBZZHaZqSBgVwKfdgweWoDJvnDzUJVBjMpVJgDsauZ 7.78 -1896794427
+    ${input}=    Write    python ${subSystem}_Event_${component}.py BrFcGeAmISVatoUFACxhFdKhpLfhdvAyFBgmsJiRjZmvoIEwDXgnAeacQeSCgGbyGnTTuKeaJdTilHAwnpEchCFESxecOJSTOGWLwgrziRXTrPNjaFFekvnywBBDMFYzgWfYftbwvjYloGzWrKRNvvWeUzeonkmsSIKhveKbGEFHUWOXdgrKZcueOqYMtKGRdAQtMQAUwvJYFRpsRXQhVYVePVSnBXNhRbzlqXIiTEOyyIuDSBMkOhTNlBdlPjVy 22.7836 1324944576
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1

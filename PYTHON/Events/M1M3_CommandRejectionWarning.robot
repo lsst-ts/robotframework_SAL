@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 86.9408 ixHYewpTRRUxnTKOkDXqbmGOXpmioSunFbtSbTwSKVMlkCANOJfQvdGhpGlPUien AItXZGonQSLRywqZYVsGjhxsjnPEoeemPQdoFycgFcRkXJbpQkqoHZBjyNpaGlDirZzJtYRNZhxocqlnQBLqpcdNeUJrXvBxqGfmvhRtmNPmHbxkoMyElrdValTVVCXw 1465656009
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 70.1608 INXuDVqimBXTjruYCFSljZOWWHypvxZoSmUoZNWmjWPBHhiVRnrrtdjCbFIjTglc bLcxBriLfflTmLbGtjUbuCaCliBiqDeermoCMLplrVGlWqQOPcLyDbdGtkppfwdAvMwzcOkSwlpsCNADMjpskKduuGZmXdhtekoOXzGbbYnCtCezNuxLYsUDrCFrfLna 1424640947
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_CommandRejectionWarning writing a message containing :    1

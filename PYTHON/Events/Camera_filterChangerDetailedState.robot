@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -778846805 -1565070239 -1966853674
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -580573427 1716715616 414646116
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_filterChangerDetailedState writing a message containing :    1

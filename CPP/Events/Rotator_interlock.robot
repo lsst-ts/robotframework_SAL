@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send POHbyWoDOpHnEwKJuFfekJbcsrlfwOVERaETVDIuxLJNkSvPmznspoyfMpPEtIkpIVRxxLjEsCWJJdZhUZzdghpLbPVXBAHjCNgDJOEGFAFcgohrbbwkbSGamaeMLHlIHULUPtnIrXmmTWpzQNfjDTiiHNmtTBVHhgrXYaBqJAvhdkxtpAxfRcACtwZbYTyFFvtyATeodajyqKDjobiTylZWLLaydGmhVoyXsfiTvtFDXCSbIjZKupmssoSPkPIC 27.4597 1975549607
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XZDGWRTKrvlTYwVYLbBQIwcViwACrnbHFCmnsRzbgsyyPiueJotkEsPmcNKbmHGSzhPsXvHMAukoudyzMkkdCwvsNPdBgXoNhBPfAAFrkjpWVKIzRzERfYaPfwksOYUSwdXXCGAiGBtBjkNymdBSYaSVnsIxhJqrKwmePHSjUbwoAAIMHWUoiFmJBGNGHpcDBMJSPOphDnHCeMlnntjWKHbsLxsOoMXqxMiVaVrppxHsSaJpeAecYfprBYTgJqdN 62.6751 -1311217191
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1975549607
+    ${output}=    Read Until    priority : -1311217191
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : POHbyWoDOpHnEwKJuFfekJbcsrlfwOVERaETVDIuxLJNkSvPmznspoyfMpPEtIkpIVRxxLjEsCWJJdZhUZzdghpLbPVXBAHjCNgDJOEGFAFcgohrbbwkbSGamaeMLHlIHULUPtnIrXmmTWpzQNfjDTiiHNmtTBVHhgrXYaBqJAvhdkxtpAxfRcACtwZbYTyFFvtyATeodajyqKDjobiTylZWLLaydGmhVoyXsfiTvtFDXCSbIjZKupmssoSPkPIC
-    Should Contain    ${output}    timestamp : 27.4597
-    Should Contain    ${output}    priority : 1975549607
+    Should Contain    ${output}    detail : XZDGWRTKrvlTYwVYLbBQIwcViwACrnbHFCmnsRzbgsyyPiueJotkEsPmcNKbmHGSzhPsXvHMAukoudyzMkkdCwvsNPdBgXoNhBPfAAFrkjpWVKIzRzERfYaPfwksOYUSwdXXCGAiGBtBjkNymdBSYaSVnsIxhJqrKwmePHSjUbwoAAIMHWUoiFmJBGNGHpcDBMJSPOphDnHCeMlnntjWKHbsLxsOoMXqxMiVaVrppxHsSaJpeAecYfprBYTgJqdN
+    Should Contain    ${output}    timestamp : 62.6751
+    Should Contain    ${output}    priority : -1311217191

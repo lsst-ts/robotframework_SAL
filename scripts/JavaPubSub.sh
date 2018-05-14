@@ -106,8 +106,7 @@ function startPublisher {
     echo "    Should Contain    \${output}    [createTopic] : topicName \${subSystem}_\${component} type = \${subSystem}::\${component}">> $testSuite
     echo "    Should Contain    \${output}    [createwriter idx] : topic org.opensplice.dds.dcps.TopicImpl@ ">> $testSuite
     echo "    Should Contain    \${output}    writer = \${subSystem}.\${component}DataWriterImpl@">> $testSuite
-    echo "    Should Contain X Times    \${output}    [putSample \${component}] writing a message containing :    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Publisher] message sent    5" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -117,9 +116,8 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ :    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Subscriber] samples    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Subscriber] message received :    5" >> $testSuite
 }
 
 function createTestSuite {

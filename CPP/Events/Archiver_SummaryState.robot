@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SummaryState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2623
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -977999846 1738314945 243541325
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -201733048 -1178486991 833484608
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SummaryState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 243541325
+    ${output}=    Read Until    priority : 833484608
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    SummaryStateValue : -977999846
-    Should Contain    ${output}    priority : 1738314945
-    Should Contain    ${output}    priority : 243541325
+    Should Contain    ${output}    SummaryStateValue : -201733048
+    Should Contain    ${output}    priority : -1178486991
+    Should Contain    ${output}    priority : 833484608

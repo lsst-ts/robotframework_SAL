@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    SettingsApplied
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QYCUSClRlGCPVtabhMLJgqjzedGNUXOJzvFhkzMTebGNdKzldIwYjAFaAwoVKjMJummpPDbieHDYlQJGgwCRRAreTyZpQXBJbugdmYSGymvOrInJGuoyaczNOoNPAzIGAlsppZrPqcESpgTYdTSWOrjWwILWAXkcRbBqucfJkozRScIUsYZegIPFKJdGFYGLZLrUVYXlZSxtUBlpqhUdOJzQTjmtvxIVlgmcSkNnqBsgFMtEuKNtVwmWsNjHRfoq -142888075 -1008954488
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wVshXFBKPDpOCKLuUjAXaRPMNnbnuiFyqqZjTIzRqqFjnwpKvZlnDgADrXSMpKjeOBWCFeoiNvdFYBuauSnOnsdZKmoQVQPnLFYxuwXJOiyOpZnQqlPFmRQiHQtbPMqhKNYIWXermObqLRTIIPeGHODwbuZKMnlsYTTMcENlgvqXWlwNWfjvNZvzgCzRmCTEMnFZlyJwWvrCxVOtZyBqSbDywnBgtzLySzKlFpFFvuCjSXYimMxrTUSmheEMqVmz -392070071 -946386386
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SettingsApplied writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingsApplied writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event SettingsApplied generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1008954488
+    ${output}=    Read Until    priority : -946386386
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : QYCUSClRlGCPVtabhMLJgqjzedGNUXOJzvFhkzMTebGNdKzldIwYjAFaAwoVKjMJummpPDbieHDYlQJGgwCRRAreTyZpQXBJbugdmYSGymvOrInJGuoyaczNOoNPAzIGAlsppZrPqcESpgTYdTSWOrjWwILWAXkcRbBqucfJkozRScIUsYZegIPFKJdGFYGLZLrUVYXlZSxtUBlpqhUdOJzQTjmtvxIVlgmcSkNnqBsgFMtEuKNtVwmWsNjHRfoq
-    Should Contain    ${output}    priority : -142888075
-    Should Contain    ${output}    priority : -1008954488
+    Should Contain    ${output}    Settings : wVshXFBKPDpOCKLuUjAXaRPMNnbnuiFyqqZjTIzRqqFjnwpKvZlnDgADrXSMpKjeOBWCFeoiNvdFYBuauSnOnsdZKmoQVQPnLFYxuwXJOiyOpZnQqlPFmRQiHQtbPMqhKNYIWXermObqLRTIIPeGHODwbuZKMnlsYTTMcENlgvqXWlwNWfjvNZvzgCzRmCTEMnFZlyJwWvrCxVOtZyBqSbDywnBgtzLySzKlFpFFvuCjSXYimMxrTUSmheEMqVmz
+    Should Contain    ${output}    priority : -392070071
+    Should Contain    ${output}    priority : -946386386

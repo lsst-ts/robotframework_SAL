@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16.5754 1 1 1 -145045254
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 39.1807 0 1 1 858574097
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_CellLightWarning writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -145045254
+    ${output}=    Read Until    priority : 858574097
     Log    ${output}
     Should Contain X Times    ${output}    === Event CellLightWarning received =     1
-    Should Contain    ${output}    Timestamp : 16.5754
-    Should Contain    ${output}    AnyWarning : 1
+    Should Contain    ${output}    Timestamp : 39.1807
+    Should Contain    ${output}    AnyWarning : 0
     Should Contain    ${output}    CellLightsOutputMismatch : 1
     Should Contain    ${output}    CellLightsSensorMismatch : 1
-    Should Contain    ${output}    priority : -145045254
+    Should Contain    ${output}    priority : 858574097

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send aRJijXdLAEqHRkfPcQPLKUcpnLEXwiaWvtPXryrQWTwPTbHOQbbrdCSwdCNKKxRiGNjXOzmtyiCnnnLgZIhwklrMchowFjbCXXDBZrXGdHsOFLOYwPchzaZMJhrXaXYUdskWHmztReKxcCgHaRZhApZBATAMyZNhrjZJctpFJalongEoigLcRSMQIqduhEbGtclqPGBQAJQJuMGPwmzWPNOUyzEFtuBWtHCsEzOgXKatSMVzLAqtNYKsCmBbkgCLbNFWwauHAxwpRxQqVcPwFuWtWuSDQDpwxZPaypeSIpKxipdXeythZJwjGoeISLsPXIYlOKihhcYxsOTdYppIZhrlvoMOmGTDIeQOKdykTQkwVKUNbDnDnTHoyEYafsLmJgbQZETreeAwXFxvwpHxubDdUejtBtLdzIpqZChDysWhooPnRceDvBzJRIivBFkRBDXHwDcjqPzIbIoSjYJYkoWMIgOQVUdKruxjSknEdJFnOCcGkpXBcMkOIBEQUBfrgrKexxdWqEoaaIMkLhRBixXDgkjDzWJkOJoWhvMPDCZebYDpMEXSllgdZcCnXBYCLFLQpWXDoAZmgXqmzcqGaFYkqdSRSmMypJUZGZgAspZiksVJKNSdrYuTgUZKhbpJIYPeveqgMcpmDmCDSXiNGWmqEEDGYqylRtXjnhuvRZtOJBmEetSfuYFgngmc 5.0083 -1469132647
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send NnDQVidUNjRUkIULBldcuCQVIsVlOlXSwTweoZSJIesRlHsPRlCMGkgGxWgMqYfWcvMnenjWFZHLqWzxVDgiWzeIRPBvFcBUvGEBhpIRzmYBjvEnnJujsoRSKJmVwCNMGKGwjOLMLvXLYLhjoRiKKexfKvMtxKtRWcmciKjixKrahueFDNBbDGRnKTjzoDcYarYLrWavNcnhxchlwYVICXmWqPrTbKhWSDFbcgfhyqPBtQqkXhopLwOWRiKTqardufTEpSFZDAxubygfiUyStqkllZPEVbxzEqdScdOIgTcCuWbBllelgVwKwSBNNKJiYenUIQeOusOWyukQbhBWsvywpYDApYEcxxaDLKlwSicoIsleFIPjFUiZLiJdhigpJkxxgXycUxEfzYbSPdHqfdsUYtYmqdbkguDOWEbRILiMKZGzpfHbJSlxnehGKMYxAtkMrFPAHBmBAcHOJiqqcYVsVCIyunXpZhuPcBJZDvbfHoykKxdcAIChmvqLcOWJfhkjCEjGjcrVvBanBMSRxDFvUzNnjEbDvOfcmdbaBeCKTnSiNmzWpJmJTHkGAsYhuXrkqqrckIcqmfwNKsCVrvgevcSzZCKBxWiTlcTdnWotidUSvTBtYFoNIAapogpppQJYJzHFALcPkuoInnzqNInHkaHqZspgJeFoEzuAfFkBDmYULWHjNhsVttguTGfipjFfPlMNpnbegJTWHxjqDMhNxhadeFeTarFDfHhTaXtPCUznyUdZmUFEbxeZLKLlJBxoYuWvxcYFBsghpzHYZhLgJnYYKJZqEjBFQikaVlkrJTFdJjsbacEPdtAaIKbackSVYmTeIsatDIMqfzXzcFXrc 3.1044 1734618524
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1469132647
+    ${output}=    Read Until    priority : 1734618524
     Log    ${output}
     Should Contain X Times    ${output}    === Event WavefrontErrorCalculated received =     1
-    Should Contain    ${output}    sensorID : aRJijXdLAEqHRkfPcQPLKUcpnLEXwiaWvtPXryrQWTwPTbHOQbbrdCSwdCNKKxRiGNjXOzmtyiCnnnLgZIhwklrMchowFjbCXXDBZrXGdHsOFLOYwPchzaZMJhrXaXYUdskWHmztReKxcCgHaRZhApZBATAMyZNhrjZJctpFJalongEoigLcRSMQIqduhEbGtclqPGBQAJQJuMGPwmzWPNOUyzEFtuBWtHCsEzOgXKatSMVzLAqtNYKsCmBbkgCLbNFWwauHAxwpRxQqVcPwFuWtWuSDQDpwxZPaypeSIpKxipdXeythZJwjGoeISLsPXIYlOKihhcYxsOTdYppIZhrlvoMOmGTDIeQOKdykTQkwVKUNbDnDnTHoyEYafsLmJgbQZETreeAwXFxvwpHxubDdUejtBtLdzIpqZChDysWhooPnRceDvBzJRIivBFkRBDXHwDcjqPzIbIoSjYJYkoWMIgOQVUdKruxjSknEdJFnOCcGkpXBcMkOIBEQUBfrgrKexxdWqEoaaIMkLhRBixXDgkjDzWJkOJoWhvMPDCZebYDpMEXSllgdZcCnXBYCLFLQpWXDoAZmgXqmzcqGaFYkqdSRSmMypJUZGZgAspZiksVJKNSdrYuTgUZKhbpJIYPeveqgMcpmDmCDSXiNGWmqEEDGYqylRtXjnhuvRZtOJBmEetSfuYFgngmc
-    Should Contain    ${output}    timestamp : 5.0083
-    Should Contain    ${output}    priority : -1469132647
+    Should Contain    ${output}    sensorID : NnDQVidUNjRUkIULBldcuCQVIsVlOlXSwTweoZSJIesRlHsPRlCMGkgGxWgMqYfWcvMnenjWFZHLqWzxVDgiWzeIRPBvFcBUvGEBhpIRzmYBjvEnnJujsoRSKJmVwCNMGKGwjOLMLvXLYLhjoRiKKexfKvMtxKtRWcmciKjixKrahueFDNBbDGRnKTjzoDcYarYLrWavNcnhxchlwYVICXmWqPrTbKhWSDFbcgfhyqPBtQqkXhopLwOWRiKTqardufTEpSFZDAxubygfiUyStqkllZPEVbxzEqdScdOIgTcCuWbBllelgVwKwSBNNKJiYenUIQeOusOWyukQbhBWsvywpYDApYEcxxaDLKlwSicoIsleFIPjFUiZLiJdhigpJkxxgXycUxEfzYbSPdHqfdsUYtYmqdbkguDOWEbRILiMKZGzpfHbJSlxnehGKMYxAtkMrFPAHBmBAcHOJiqqcYVsVCIyunXpZhuPcBJZDvbfHoykKxdcAIChmvqLcOWJfhkjCEjGjcrVvBanBMSRxDFvUzNnjEbDvOfcmdbaBeCKTnSiNmzWpJmJTHkGAsYhuXrkqqrckIcqmfwNKsCVrvgevcSzZCKBxWiTlcTdnWotidUSvTBtYFoNIAapogpppQJYJzHFALcPkuoInnzqNInHkaHqZspgJeFoEzuAfFkBDmYULWHjNhsVttguTGfipjFfPlMNpnbegJTWHxjqDMhNxhadeFeTarFDfHhTaXtPCUznyUdZmUFEbxeZLKLlJBxoYuWvxcYFBsghpzHYZhLgJnYYKJZqEjBFQikaVlkrJTFdJjsbacEPdtAaIKbackSVYmTeIsatDIMqfzXzcFXrc
+    Should Contain    ${output}    timestamp : 3.1044
+    Should Contain    ${output}    priority : 1734618524

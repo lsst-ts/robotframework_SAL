@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.64356779876 0.762253401878 0.117422435417 0.271688498153 0.176186888323 0.339122784701
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.813828057296 0.985680485667 0.37123529217 0.127386841483 0.939677721737 0.440720247744
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.64356779876 0.762253401878 0.117422435417 0.271688498153 0.176186888323 0.339122784701
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.813828057296 0.985680485667 0.37123529217 0.127386841483 0.939677721737 0.440720247744
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    XTranslation : 0.64356779876    1
-    Should Contain X Times    ${output}    YTranslation : 0.762253401878    1
-    Should Contain X Times    ${output}    ZTranslation : 0.117422435417    1
-    Should Contain X Times    ${output}    XRotation : 0.271688498153    1
-    Should Contain X Times    ${output}    YRotation : 0.176186888323    1
-    Should Contain X Times    ${output}    ZRotation : 0.339122784701    1
+    Should Contain X Times    ${output}    XTranslation : 0.813828057296    1
+    Should Contain X Times    ${output}    YTranslation : 0.985680485667    1
+    Should Contain X Times    ${output}    ZTranslation : 0.37123529217    1
+    Should Contain X Times    ${output}    XRotation : 0.127386841483    1
+    Should Contain X Times    ${output}    YRotation : 0.939677721737    1
+    Should Contain X Times    ${output}    ZRotation : 0.440720247744    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -82,12 +82,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    XTranslation = 0.64356779876    1
-    Should Contain X Times    ${output}    YTranslation = 0.762253401878    1
-    Should Contain X Times    ${output}    ZTranslation = 0.117422435417    1
-    Should Contain X Times    ${output}    XRotation = 0.271688498153    1
-    Should Contain X Times    ${output}    YRotation = 0.176186888323    1
-    Should Contain X Times    ${output}    ZRotation = 0.339122784701    1
+    Should Contain X Times    ${output}    XTranslation = 0.813828057296    1
+    Should Contain X Times    ${output}    YTranslation = 0.985680485667    1
+    Should Contain X Times    ${output}    ZTranslation = 0.37123529217    1
+    Should Contain X Times    ${output}    XRotation = 0.127386841483    1
+    Should Contain X Times    ${output}    YRotation = 0.939677721737    1
+    Should Contain X Times    ${output}    ZRotation = 0.440720247744    1
     Should Contain X Times    ${output}    === [ackCommand_TranslateM1M3] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

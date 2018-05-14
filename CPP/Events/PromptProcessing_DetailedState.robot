@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    DetailedState
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2006576656 2111353072 1226370483
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 690135108 1490388173 -1551968507
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_DetailedState writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_DetailedState writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event DetailedState generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1226370483
+    ${output}=    Read Until    priority : -1551968507
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    DetailedState : 2006576656
-    Should Contain    ${output}    priority : 2111353072
-    Should Contain    ${output}    priority : 1226370483
+    Should Contain    ${output}    DetailedState : 690135108
+    Should Contain    ${output}    priority : 1490388173
+    Should Contain    ${output}    priority : -1551968507

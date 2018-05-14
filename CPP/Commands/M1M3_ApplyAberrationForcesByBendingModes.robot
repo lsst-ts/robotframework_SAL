@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.95036844242 0.969560471865 0.343348439821 0.179593221908 0.491243716623 0.777494372114 0.943256439491 0.648825444462 0.64184805307 0.834365232272 0.939170385269 0.16109435976 0.580070996533 0.84411800808 0.126624123562 0.556245198647 0.087059446486 0.465948315365 0.445977593512 0.547640534036 0.295093836428 0.620913202648
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.0885404542689 0.594155829027 0.371382809567 0.737174348792 0.207388979841 0.988858805881 0.599207853499 0.10024194172 0.363332921388 0.797415480165 0.75442489592 0.663277180129 0.398933646601 0.265842926918 0.334626490027 0.386427531018 0.838619448747 0.144704585938 0.772634400319 0.194498086883 0.47895397302 0.369728037394
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.95036844242 0.969560471865 0.343348439821 0.179593221908 0.491243716623 0.777494372114 0.943256439491 0.648825444462 0.64184805307 0.834365232272 0.939170385269 0.16109435976 0.580070996533 0.84411800808 0.126624123562 0.556245198647 0.087059446486 0.465948315365 0.445977593512 0.547640534036 0.295093836428 0.620913202648
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.0885404542689 0.594155829027 0.371382809567 0.737174348792 0.207388979841 0.988858805881 0.599207853499 0.10024194172 0.363332921388 0.797415480165 0.75442489592 0.663277180129 0.398933646601 0.265842926918 0.334626490027 0.386427531018 0.838619448747 0.144704585938 0.772634400319 0.194498086883 0.47895397302 0.369728037394
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    Coefficients : 0.95036844242    1
+    Should Contain X Times    ${output}    Coefficients : 0.0885404542689    1
     Should Contain    ${output}    === command ApplyAberrationForcesByBendingModes issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    Coefficients : 0.95036844242    1
+    Should Contain X Times    ${output}    Coefficients : 0.0885404542689    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyAberrationForcesByBendingModes] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

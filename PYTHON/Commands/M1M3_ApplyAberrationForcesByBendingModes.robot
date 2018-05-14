@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.610215719674 0.0144008178251 0.946713360902 0.715355444222 0.137712014324 0.358022291487 0.43977143341 0.996126810696 0.242951866444 0.231400531719 0.581462046973 0.200909670149 0.249839871831 0.569263869475 0.792304379796 0.154378443167 0.110981022043 0.332427271473 0.72175925446 0.134216217035 0.701393709696 0.645911389073
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.402032506893 0.519737094529 0.860279825616 0.712483523404 0.0507243935112 0.431065114676 0.77926991055 0.538138087004 0.374978163919 0.127637430896 0.459774693907 0.502576613303 0.131030853547 0.438318729971 0.878185599746 0.544853615726 0.879065449426 0.657919759673 0.0361061775524 0.69524707335 0.376479146763 0.360637893461
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.610215719674 0.0144008178251 0.946713360902 0.715355444222 0.137712014324 0.358022291487 0.43977143341 0.996126810696 0.242951866444 0.231400531719 0.581462046973 0.200909670149 0.249839871831 0.569263869475 0.792304379796 0.154378443167 0.110981022043 0.332427271473 0.72175925446 0.134216217035 0.701393709696 0.645911389073
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.402032506893 0.519737094529 0.860279825616 0.712483523404 0.0507243935112 0.431065114676 0.77926991055 0.538138087004 0.374978163919 0.127637430896 0.459774693907 0.502576613303 0.131030853547 0.438318729971 0.878185599746 0.544853615726 0.879065449426 0.657919759673 0.0361061775524 0.69524707335 0.376479146763 0.360637893461
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    Coefficients : 0.610215719674    1
+    Should Contain X Times    ${output}    Coefficients : 0.402032506893    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    Coefficients(22) = [0.610215719674, 0.0144008178251, 0.946713360902, 0.715355444222, 0.137712014324, 0.358022291487, 0.43977143341, 0.996126810696, 0.242951866444, 0.231400531719, 0.581462046973, 0.200909670149, 0.249839871831, 0.569263869475, 0.792304379796, 0.154378443167, 0.110981022043, 0.332427271473, 0.72175925446, 0.134216217035, 0.701393709696, 0.645911389073]    1
+    Should Contain X Times    ${output}    Coefficients(22) = [0.402032506893, 0.519737094529, 0.860279825616, 0.712483523404, 0.0507243935112, 0.431065114676, 0.77926991055, 0.538138087004, 0.374978163919, 0.127637430896, 0.459774693907, 0.502576613303, 0.131030853547, 0.438318729971, 0.878185599746, 0.544853615726, 0.879065449426, 0.657919759673, 0.0361061775524, 0.69524707335, 0.376479146763, 0.360637893461]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyAberrationForcesByBendingModes] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

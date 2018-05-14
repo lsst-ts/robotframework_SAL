@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    promptprocessingEntityShutdown
 ${timeout}    30s
 
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py ymdCmFfNyrNSjXpHisqvUsOnEkLzhQYrrIZvYkafKGPYAiyLPxOkGXEzfpjDqGdZDIGsgHPMLhJyqRdQFpCbKMNPGjnrZcPqPrWzYYsuRnHcfkCUQGFlySBTIFjkSWmglCmWZwAstpPPPLdmeKHEOihsJOcBbvRNEtvkxvXLzElhuhwharJgKiLNBcOUBkCVepiKPgAYzLBllWfTpTEdJaNTljLpGEbqNgDLpwGYXNkGzpcOgdfqzhxkjTIvlmWw 72.0177 zetLBmtPvqRMYUXcFPvcPHIqcKJoYVdHPtqXnUJJdlVvxkoYOsYCGhxgcNTszpLJQeAiGIxsCspYeJPOQDHIGJoykuRSoKuvqwOjhIUgJRHTQkmbsdnkPlYBTOGQKqZyseZAGXMawYZIQbBEFgURwFnZekjXDEVYJVedNENsMySFHjYLIxrxwNgJQwLHSbobqiBnBrYVmEyYJaudMzRswPBytCLyHneRSqgTxgIYAwdzgBHnKnliAsTluuOXaGZd -1298495232 -495643497 -1073369263
+    ${input}=    Write    python ${subSystem}_Event_${component}.py DpfYUahNMhuzqPJTcsqawBUCwIRcyuKBTQjLdXwcDoEhFrYjBRgBSLmWjswVpBHynKzGSlAmqiUOpzlhNEHSXFWvExpMhvAalZYNtQXeequcbmgHwmAOYgtHOCWZCxwSkUdrooQkjWkFWHAtadUNPuGNTNjFyqiYhtjNOsUzeZlLbKTECMXoaGnSWiwwyESGNhqxQeQqyGHEpQzBZHUZczwmwZxluJIRtINsdgSkDuRYAxcnYkfFgvzdICZzEKuV 89.1078 BHgtvVyqaNfBndGxTvtKMSsIRqRFJbbkUgQyzenjOidNDXAIimVTjBWMHmrnuGDepkOZYvLbFvNsKQGavYOkxRYyrsOxiEZNUYAVXXoZnrtvBVlxyPfuyTmAfqcBcpOnBnoQdlbHWobxaQTWIJKkJuBguHgcSLafkACXEIBDdwMIZThJpxnsGwkcIjgtPxWtyNoAggUuJvROrbifZIKDRGQrstAfazlEBTsynEUIxRXDdbmCfcEhdyPMCPACVgHW 1580829201 1188547685 470073112
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 65.2804 1 0 1 0 1 1 1 1 1 0 1 1 1 1 0 2146359716
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 6.9813 0 0 0 0 0 1 0 0 0 1 0 1 0 1 1 -235298779
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_DisplacementSensorWarning writing a message containing :    1
@@ -57,23 +57,23 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2146359716
+    ${output}=    Read Until    priority : -235298779
     Log    ${output}
     Should Contain X Times    ${output}    === Event DisplacementSensorWarning received =     1
-    Should Contain    ${output}    Timestamp : 65.2804
-    Should Contain    ${output}    AnyWarning : 1
+    Should Contain    ${output}    Timestamp : 6.9813
+    Should Contain    ${output}    AnyWarning : 0
     Should Contain    ${output}    SensorReportsInvalidCommand : 0
-    Should Contain    ${output}    SensorReportsCommunicationTimeoutError : 1
+    Should Contain    ${output}    SensorReportsCommunicationTimeoutError : 0
     Should Contain    ${output}    SensorReportsDataLengthError : 0
-    Should Contain    ${output}    SensorReportsNumberOfParametersError : 1
+    Should Contain    ${output}    SensorReportsNumberOfParametersError : 0
     Should Contain    ${output}    SensorReportsParameterError : 1
-    Should Contain    ${output}    SensorReportsCommunicationError : 1
-    Should Contain    ${output}    SensorReportsIDNumberError : 1
-    Should Contain    ${output}    SensorReportsExpansionLineError : 1
-    Should Contain    ${output}    SensorReportsWriteControlError : 0
-    Should Contain    ${output}    ResponseTimeout : 1
+    Should Contain    ${output}    SensorReportsCommunicationError : 0
+    Should Contain    ${output}    SensorReportsIDNumberError : 0
+    Should Contain    ${output}    SensorReportsExpansionLineError : 0
+    Should Contain    ${output}    SensorReportsWriteControlError : 1
+    Should Contain    ${output}    ResponseTimeout : 0
     Should Contain    ${output}    InvalidLength : 1
-    Should Contain    ${output}    InvalidResponse : 1
+    Should Contain    ${output}    InvalidResponse : 0
     Should Contain    ${output}    UnknownCommand : 1
-    Should Contain    ${output}    UnknownProblem : 0
-    Should Contain    ${output}    priority : 2146359716
+    Should Contain    ${output}    UnknownProblem : 1
+    Should Contain    ${output}    priority : -235298779

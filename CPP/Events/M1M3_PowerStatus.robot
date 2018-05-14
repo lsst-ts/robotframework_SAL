@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 58.2136 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 -873451707
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31.5478 0 0 0 1 1 0 1 1 0 0 1 1 0 1 0 0 -14399177
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PowerStatus writing a message containing :    1
@@ -57,24 +57,24 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -873451707
+    ${output}=    Read Until    priority : -14399177
     Log    ${output}
     Should Contain X Times    ${output}    === Event PowerStatus received =     1
-    Should Contain    ${output}    Timestamp : 58.2136
+    Should Contain    ${output}    Timestamp : 31.5478
     Should Contain    ${output}    PowerNetworkACommandedOn : 0
     Should Contain    ${output}    PowerNetworkAOutputOn : 0
     Should Contain    ${output}    PowerNetworkBCommandedOn : 0
-    Should Contain    ${output}    PowerNetworkBOutputOn : 0
-    Should Contain    ${output}    PowerNetworkCCommandedOn : 0
-    Should Contain    ${output}    PowerNetworkCOutputOn : 1
-    Should Contain    ${output}    PowerNetworkDCommandedOn : 0
-    Should Contain    ${output}    PowerNetworkDOutputOn : 0
+    Should Contain    ${output}    PowerNetworkBOutputOn : 1
+    Should Contain    ${output}    PowerNetworkCCommandedOn : 1
+    Should Contain    ${output}    PowerNetworkCOutputOn : 0
+    Should Contain    ${output}    PowerNetworkDCommandedOn : 1
+    Should Contain    ${output}    PowerNetworkDOutputOn : 1
     Should Contain    ${output}    AuxPowerNetworkACommandedOn : 0
-    Should Contain    ${output}    AuxPowerNetworkAOutputOn : 1
-    Should Contain    ${output}    AuxPowerNetworkBCommandedOn : 0
-    Should Contain    ${output}    AuxPowerNetworkBOutputOn : 0
+    Should Contain    ${output}    AuxPowerNetworkAOutputOn : 0
+    Should Contain    ${output}    AuxPowerNetworkBCommandedOn : 1
+    Should Contain    ${output}    AuxPowerNetworkBOutputOn : 1
     Should Contain    ${output}    AuxPowerNetworkCCommandedOn : 0
     Should Contain    ${output}    AuxPowerNetworkCOutputOn : 1
     Should Contain    ${output}    AuxPowerNetworkDCommandedOn : 0
     Should Contain    ${output}    AuxPowerNetworkDOutputOn : 0
-    Should Contain    ${output}    priority : -873451707
+    Should Contain    ${output}    priority : -14399177

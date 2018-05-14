@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 65.2966 1 0 0 1 1 1 1 1 0 0 1 1 0 0 0 1 1 1 0 0 0 0 1 0 1 1 1 0 0 1 0 1 0 1 0 0 0 0 1 0 1 0 0 1 1 0 1 0 1 1 0 1 0 1 1 1 0 1 1 1 1 1 0 0 1 1 0 1 1 0 0 0 0 1 1 0 1 0 1 1 1 1 0 1 0 0 1 1 1 1 0 0 1 0 1 1 0 1 1 1 0 1 0 1 1 1 0 0 1 0 0 1 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 0 0 0 0 1 0 1 0 0 0 0 0 1 1 0 0 1 0 0 1 0 1 0 0 1 0 1 1 0 0 1 1 1 1 1 1 1 0 0 1 1 0 1 1 1 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 1 1568777886
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 23.5989 0 1 1 1 1 0 0 0 0 1 0 1 1 1 0 0 0 0 0 0 1 0 0 1 1 1 1 0 0 0 1 1 1 1 1 1 0 0 1 0 0 1 1 0 0 0 1 1 1 1 1 1 0 1 0 0 1 0 1 1 0 0 0 0 1 0 1 1 1 1 1 0 1 1 1 0 0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 1 0 1 0 1 0 0 1 0 1 0 1 0 0 0 1 0 0 1 1 0 0 1 1 1 0 0 0 1 1 1 1 1 0 1 0 1 1 1 0 1 0 0 1 0 1 0 1 1 1 0 0 1 0 1 0 1 0 1 0 1 0 0 1 0 0 0 1 1 1225796848
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointMonitorWarning writing a message containing :    1

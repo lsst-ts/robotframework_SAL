@@ -124,17 +124,6 @@ JAVA/Events/CatchupArchiver_SummaryState.robot
 JAVA/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 JAVA/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 JAVA/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
-JAVA/Events/DMHeaderService_AppliedSettingsMatchStart.robot
-JAVA/Events/DMHeaderService_DetailedState.robot
-JAVA/Events/DMHeaderService_ErrorCode.robot
-JAVA/Events/DMHeaderService_Heartbeat.robot
-JAVA/Events/DMHeaderService_InternalCommand.robot
-JAVA/Events/DMHeaderService_LargeFileObjectAvailable.robot
-JAVA/Events/DMHeaderService_LoopTimeOutOfRange.robot
-JAVA/Events/DMHeaderService_RejectedCommand.robot
-JAVA/Events/DMHeaderService_SettingVersions.robot
-JAVA/Events/DMHeaderService_SettingsApplied.robot
-JAVA/Events/DMHeaderService_SummaryState.robot
 JAVA/Events/DomeADB_AccelerationLimitReached.robot
 JAVA/Events/DomeADB_AccelerationLimitSubsided.robot
 JAVA/Events/DomeADB_BrakeDisengaged.robot
@@ -317,9 +306,6 @@ JAVA/Events/OCS_ocsScriptEnd.robot
 JAVA/Events/OCS_ocsScriptEntititesInUse.robot
 JAVA/Events/OCS_ocsScriptError.robot
 JAVA/Events/OCS_ocsScriptStart.robot
-JAVA/Events/ProcessingCluster_processingclusterEntityShutdown.robot
-JAVA/Events/ProcessingCluster_processingclusterEntityStartup.robot
-JAVA/Events/ProcessingCluster_processingclusterEntitySummaryState.robot
 JAVA/Events/PromptProcessing_AppliedSettingsMatchStart.robot
 JAVA/Events/PromptProcessing_DetailedState.robot
 JAVA/Events/PromptProcessing_ErrorCode.robot

@@ -124,17 +124,6 @@ CPP/Events/CatchupArchiver_SummaryState.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
 CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
-CPP/Events/DMHeaderService_AppliedSettingsMatchStart.robot
-CPP/Events/DMHeaderService_DetailedState.robot
-CPP/Events/DMHeaderService_ErrorCode.robot
-CPP/Events/DMHeaderService_Heartbeat.robot
-CPP/Events/DMHeaderService_InternalCommand.robot
-CPP/Events/DMHeaderService_LargeFileObjectAvailable.robot
-CPP/Events/DMHeaderService_LoopTimeOutOfRange.robot
-CPP/Events/DMHeaderService_RejectedCommand.robot
-CPP/Events/DMHeaderService_SettingVersions.robot
-CPP/Events/DMHeaderService_SettingsApplied.robot
-CPP/Events/DMHeaderService_SummaryState.robot
 CPP/Events/DomeADB_AccelerationLimitReached.robot
 CPP/Events/DomeADB_AccelerationLimitSubsided.robot
 CPP/Events/DomeADB_BrakeDisengaged.robot
@@ -317,9 +306,6 @@ CPP/Events/OCS_ocsScriptEnd.robot
 CPP/Events/OCS_ocsScriptEntititesInUse.robot
 CPP/Events/OCS_ocsScriptError.robot
 CPP/Events/OCS_ocsScriptStart.robot
-CPP/Events/ProcessingCluster_processingclusterEntityShutdown.robot
-CPP/Events/ProcessingCluster_processingclusterEntityStartup.robot
-CPP/Events/ProcessingCluster_processingclusterEntitySummaryState.robot
 CPP/Events/PromptProcessing_AppliedSettingsMatchStart.robot
 CPP/Events/PromptProcessing_DetailedState.robot
 CPP/Events/PromptProcessing_ErrorCode.robot

@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -558725026 91.9671 1042082184
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -2124683202 14.4898 949185040
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_ErrorCode writing a message containing :    1

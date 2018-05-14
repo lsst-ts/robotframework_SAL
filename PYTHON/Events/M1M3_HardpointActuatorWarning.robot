@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 7.1596 0 1 1 0 0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 1 1 1 0 1 1 1 1 1 1 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 0 0 1 1 0 0 1 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 1 0 1 1 0 0 1 0 1 1 1 0 0 0 1 1 1 0 0 1 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0 1 0 0 1 0 0 1 0 0 0 1 1 1 1 0 0 1 1 0 1 0 1 1304801292
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 26.82 0 1 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 0 1 1 1 0 1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 0 0 0 1 0 0 0 0 0 1 1 0 0 1 0 0 1 1 0 0 1 0 0 1 1 1 0 0 1 1 1 0 0 1 1 1 1 0 1 1 0 0 0 1 0 1 0 0 1 0 1 1 0 0 0 1 1 0 1 1 0 0 0 1 0 0 1 1 1 0 1 1 0 0 1 0 1 0 1 0 1 1 0 0 1 1 0 0 1 1 0 1 0 0 0 1 1 1 1 1 0 1 0 1 0 0 0 0 1 1 0 0 1 1 0 1 0 1 1 0 0 0 0 1 -185142806
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorWarning writing a message containing :    1

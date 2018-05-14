@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FgODqwhsWAAglUTcwiFgFiVHfiIWhFEHnlEQnXVKZjyMlMRVuuwwokOmsNDcURpPbjCGUBkhAqqgoVwAVvSKheWGGNLQKteEeemvihbjtWrhVdClqaQjOZveTDBkczQwNBNjSTQjDkJZsrrDijzkgflhfNjyPmJiAhbEsiwJHVwqyudHTihVXwiYoFOGLYYtEyiQIEeohOmLbvZlJUUYkdrtwFucNbkifdyhWRdQklOLJgCBnypGtjlJrmIxXHna 11.5359 kTlcpaoSmHzODvUWagocUagptPJfllfqdlQAFIOLVrPqNUKjDuBtpjxTsOSIXoLSrkmWmWPGJLkIBUeJxzNyNzvxPeYNFRABrVRcHoCVDjdqSDzoeEStLCqfWfzjUWbllsEGezdpIetLXqZcvHIWabsGOsZrbaiRKGWtTzJIuJdDehavTELZxJlNwJRlcGopxwEilVGMKcrkgCFuDvLGeOCdqffXYkEmwVpnMUMCwfSOqMcFSibbGofVmfKBPwrf 789099386 tSznvSZFkXkVzFFmRMYDEggdkvUaBsHkMUrUFoQouKfhkuSotsoqnllGKMvaggnELmgxzSFQFJcUvCFdgMrHtChEfhbNwGnaPjmefthHOveXIUgdoKqbGvwkeDyRWLMBNytTosKVZHQRoGHYTHmQxlRHijWZGgALEDSmyMOYGDYOjhzyvgEKiTgjhixwpBLbKdjeacJCPvGrPZXnpfYkQAwZowBPpBmeEMsyoflEMPXIoGsROnOhLXnYbXDQfxmH 889103076
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AZMoBXkRmOxYtFZxUPeCXIGiCHcKGeNEcNNQFUycFDRlnEAvTMSHatJairlQeRxdEySvtgLFdFWkNOroanAREsbradwdDyVzDBJVucMqgofmHwPPAWhEgJoYemUoqfqXTYJiTIVpwLBJZNSlSUHKVLqBkEBeMbftGoxNegAMuOURBRTtybjkrOUUcZCwLVLPXhZFbOSLTaoIfOyWqbWVmztqHXVeDNzZcxDRjkQxPLXXhNrECaqyaauRJJHhmgMd 13.7848 UsEhUCRAqJLOcHzCXXZUjJGgsgJjEVlgKvReRzvpksuoHTXntEzvmILxoRxFJZtJQURxvdgxoRiqyOlnlSrvSoTKEXWheVhOdVLWofdzXdBvNHvyLVTyqnZeiYfDLNvETVzoLxJOpluTyVqHCzhShYfdfmlTjuXaCFafjTmXJkyVqybdPzjHrMrMfAboAPalBZmstEweweGGQkChnvQIkVAFjHDxaNoFpmpagDTqyFZouTruAMulEHlIhgHVwFLX 248557311 AbLFcxOEGjBYMBVuITmOsWmfKSJlkhSgKTaerbBRNjapdEHVZTbVSzxScmXHYOPwkROUQhoXuVeNWHRTYwmWNPRpWJfjgwsCcitgIJpGQHPFGNzwmPoRKsCyyXnJUeIjtWyLQYsytmZHnOKsNhcOweWREEUuuqqItgSxURzkUnmWiNRDKVArrLIygefrsPRnoNBAGMxzSdYcMgVCuZSXUmYZCRvyxUQeVNPgLuZymoslEwsbZFXBmAwcbCMGelSr -1935572670
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerScriptEnd writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 889103076
+    ${output}=    Read Until    priority : -1935572670
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerScriptEnd received =     1
-    Should Contain    ${output}    sequencerScriptName : FgODqwhsWAAglUTcwiFgFiVHfiIWhFEHnlEQnXVKZjyMlMRVuuwwokOmsNDcURpPbjCGUBkhAqqgoVwAVvSKheWGGNLQKteEeemvihbjtWrhVdClqaQjOZveTDBkczQwNBNjSTQjDkJZsrrDijzkgflhfNjyPmJiAhbEsiwJHVwqyudHTihVXwiYoFOGLYYtEyiQIEeohOmLbvZlJUUYkdrtwFucNbkifdyhWRdQklOLJgCBnypGtjlJrmIxXHna
-    Should Contain    ${output}    sequencerScriptIdentifier : 11.5359
-    Should Contain    ${output}    sequencerScriptTimestamp : kTlcpaoSmHzODvUWagocUagptPJfllfqdlQAFIOLVrPqNUKjDuBtpjxTsOSIXoLSrkmWmWPGJLkIBUeJxzNyNzvxPeYNFRABrVRcHoCVDjdqSDzoeEStLCqfWfzjUWbllsEGezdpIetLXqZcvHIWabsGOsZrbaiRKGWtTzJIuJdDehavTELZxJlNwJRlcGopxwEilVGMKcrkgCFuDvLGeOCdqffXYkEmwVpnMUMCwfSOqMcFSibbGofVmfKBPwrf
-    Should Contain    ${output}    sequencerScriptStatusCode : 789099386
-    Should Contain    ${output}    sequencerScriptStatusText : tSznvSZFkXkVzFFmRMYDEggdkvUaBsHkMUrUFoQouKfhkuSotsoqnllGKMvaggnELmgxzSFQFJcUvCFdgMrHtChEfhbNwGnaPjmefthHOveXIUgdoKqbGvwkeDyRWLMBNytTosKVZHQRoGHYTHmQxlRHijWZGgALEDSmyMOYGDYOjhzyvgEKiTgjhixwpBLbKdjeacJCPvGrPZXnpfYkQAwZowBPpBmeEMsyoflEMPXIoGsROnOhLXnYbXDQfxmH
-    Should Contain    ${output}    priority : 889103076
+    Should Contain    ${output}    sequencerScriptName : AZMoBXkRmOxYtFZxUPeCXIGiCHcKGeNEcNNQFUycFDRlnEAvTMSHatJairlQeRxdEySvtgLFdFWkNOroanAREsbradwdDyVzDBJVucMqgofmHwPPAWhEgJoYemUoqfqXTYJiTIVpwLBJZNSlSUHKVLqBkEBeMbftGoxNegAMuOURBRTtybjkrOUUcZCwLVLPXhZFbOSLTaoIfOyWqbWVmztqHXVeDNzZcxDRjkQxPLXXhNrECaqyaauRJJHhmgMd
+    Should Contain    ${output}    sequencerScriptIdentifier : 13.7848
+    Should Contain    ${output}    sequencerScriptTimestamp : UsEhUCRAqJLOcHzCXXZUjJGgsgJjEVlgKvReRzvpksuoHTXntEzvmILxoRxFJZtJQURxvdgxoRiqyOlnlSrvSoTKEXWheVhOdVLWofdzXdBvNHvyLVTyqnZeiYfDLNvETVzoLxJOpluTyVqHCzhShYfdfmlTjuXaCFafjTmXJkyVqybdPzjHrMrMfAboAPalBZmstEweweGGQkChnvQIkVAFjHDxaNoFpmpagDTqyFZouTruAMulEHlIhgHVwFLX
+    Should Contain    ${output}    sequencerScriptStatusCode : 248557311
+    Should Contain    ${output}    sequencerScriptStatusText : AbLFcxOEGjBYMBVuITmOsWmfKSJlkhSgKTaerbBRNjapdEHVZTbVSzxScmXHYOPwkROUQhoXuVeNWHRTYwmWNPRpWJfjgwsCcitgIJpGQHPFGNzwmPoRKsCyyXnJUeIjtWyLQYsytmZHnOKsNhcOweWREEUuuqqItgSxURzkUnmWiNRDKVArrLIygefrsPRnoNBAGMxzSdYcMgVCuZSXUmYZCRvyxUQeVNPgLuZymoslEwsbZFXBmAwcbCMGelSr
+    Should Contain    ${output}    priority : -1935572670

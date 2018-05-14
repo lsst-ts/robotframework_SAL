@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.0415 61.4646 62.8668 13.1842 18.4892 74.0967 64.7396 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 42.424 19.92 35.7242 69.8023 86.7988 32.5442 23.6423 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.0415 61.4646 62.8668 13.1842 18.4892 74.0967 64.7396 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 42.424 19.92 35.7242 69.8023 86.7988 32.5442 23.6423 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    timestamp : 38.0415    1
-    Should Contain X Times    ${output}    offset : 61.4646    1
+    Should Contain X Times    ${output}    timestamp : 42.424    1
+    Should Contain X Times    ${output}    offset : 19.92    1
     Should Contain X Times    ${output}    synchrony :     1
     Should Contain    ${output}    === command OffsetCameraHexapod issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -85,8 +85,8 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    timestamp : 38.0415    1
-    Should Contain X Times    ${output}    offset : 61.4646    1
+    Should Contain X Times    ${output}    timestamp : 42.424    1
+    Should Contain X Times    ${output}    offset : 19.92    1
     Should Contain X Times    ${output}    synchrony :     1
     Should Contain X Times    ${output}    === [ackCommand_OffsetCameraHexapod] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

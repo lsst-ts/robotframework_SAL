@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_DetailedState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2620
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 559976330 712774271 -544769835
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -288303955 1949652071 662762959
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_DetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -544769835
+    ${output}=    Read Until    priority : 662762959
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    DetailedState : 559976330
-    Should Contain    ${output}    priority : 712774271
-    Should Contain    ${output}    priority : -544769835
+    Should Contain    ${output}    DetailedState : -288303955
+    Should Contain    ${output}    priority : 1949652071
+    Should Contain    ${output}    priority : 662762959

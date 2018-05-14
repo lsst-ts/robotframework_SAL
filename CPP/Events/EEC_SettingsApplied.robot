@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31.3598 zGrPCJkkrpvHQqJkiAjLdkeMnQnXDSyhQaHDKSwFQrIJWsEGmGeghLSNUrfPGXheUjbzrSwagUwRwlOAeqyQWSDPEsXbzZcApVcjsLVfKoLbbMBCpmKIipTvlfayuXAwAmFCqZQeLFjwZvmanOswBVDAgSIRPGBfMEooYBGlKnqEiklPNAZWApOHaaWkMRKNSAWYCySDYhEATIRdSHtJnHpigjgmtWFmGiwNhVNOPjDQYFuYaNWioidvqspWPvCohunCLTnjbNDaxSUDIfgnWsFvBxrRLkwIyRsJzbkViMUFjWwoFPyrFzTbjcRGbuPeUJnRbybztOpppywAGpJVoaYcPRDvnPsKemFBKNSVwFgtfXDSaIyqHwkvEpkOddQTGUifCnegWBHqMTrObDPjCYzeOPGxmAZSMdCVrShtxhyTDjqPQkABHypXSACLmiaMqGykIEIcaWfJaiSsoiBlRdcVrFQpAyNpHxOUbgbqEzglNooghOhhBOgcsBDHHiuXIdlcbrclCToPzuVKtyWkmFHfTHQjvqcdtsQPTdmhGGrFIkSiToHSrfFlDSkprIIvmepuhyfLOEXigSYKxubqziWUMHktfBQcDlqZwXAJRpPdLrCsZsdAWgWaoGxHwGyBEwngMZeeFNJCGlfcjPjLuTNwCBOIBMxcLsvuxkrGRRNR -1883861109
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 78.1551 VcdsxCyoOKSzeBlovcmGTHWpQUgLkFMBEeeivfPGFlcwFgjCQteAZHuyVLqyLepHGaygbzNyXlbKWoznQTEJMZvYHZeSdylcuhyWIhjLWbDcRpILpFYWizLHQcVYtDOWXlskYyZPkrpOcXWTYpfrGJBXsXjjknkODrgWbUCsocQKaNadxQrueQExznumZGCCSCpuNCSHmnnLdOqAhqudvGboyZArctnZXfJlbgtKpFSUvtXgBTDRncgYdPDdctRCQLiWeGRbHGEAxxnVpJTiwqjzDkLDlhZUqsEYsSddoESRUisGhsyDNQRXEJcSzpqAUOutijdbIpBZzPWHOxikKIMtfWMluyheXwAgbtyOPqSrcbwJcySnWldwPvShKxfVuIrfiWjsnUrsVgVMuWaLgcBjliqsnkAXmhVbKsVZkXjXMIcxZJylvkfDiXHZdiiKLBXgkErDRgjxJaNcSRZOdCPYtvRqWAeSIatYAVRfNRwEFUBnQtIdNmcyeZtnXFHhjsaZRhWdWlhtMTNynLILIoeQOCdsZyhrvGUnFrEvrqlsemefmIzPZOrKycWVzzOLxKLusaZkYLYEbCWdReUXMbqQUOTTIbVXwrgoUkHAeWiZYyMhaxPqvLHqGDiLXmAtkNVQrIyJVuxooVSfMnstwaRUxHiHTICiRQhuZVsikfg -749541634
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1883861109
+    ${output}=    Read Until    priority : -749541634
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    timestamp : 31.3598
-    Should Contain    ${output}    settings : zGrPCJkkrpvHQqJkiAjLdkeMnQnXDSyhQaHDKSwFQrIJWsEGmGeghLSNUrfPGXheUjbzrSwagUwRwlOAeqyQWSDPEsXbzZcApVcjsLVfKoLbbMBCpmKIipTvlfayuXAwAmFCqZQeLFjwZvmanOswBVDAgSIRPGBfMEooYBGlKnqEiklPNAZWApOHaaWkMRKNSAWYCySDYhEATIRdSHtJnHpigjgmtWFmGiwNhVNOPjDQYFuYaNWioidvqspWPvCohunCLTnjbNDaxSUDIfgnWsFvBxrRLkwIyRsJzbkViMUFjWwoFPyrFzTbjcRGbuPeUJnRbybztOpppywAGpJVoaYcPRDvnPsKemFBKNSVwFgtfXDSaIyqHwkvEpkOddQTGUifCnegWBHqMTrObDPjCYzeOPGxmAZSMdCVrShtxhyTDjqPQkABHypXSACLmiaMqGykIEIcaWfJaiSsoiBlRdcVrFQpAyNpHxOUbgbqEzglNooghOhhBOgcsBDHHiuXIdlcbrclCToPzuVKtyWkmFHfTHQjvqcdtsQPTdmhGGrFIkSiToHSrfFlDSkprIIvmepuhyfLOEXigSYKxubqziWUMHktfBQcDlqZwXAJRpPdLrCsZsdAWgWaoGxHwGyBEwngMZeeFNJCGlfcjPjLuTNwCBOIBMxcLsvuxkrGRRNR
-    Should Contain    ${output}    priority : -1883861109
+    Should Contain    ${output}    timestamp : 78.1551
+    Should Contain    ${output}    settings : VcdsxCyoOKSzeBlovcmGTHWpQUgLkFMBEeeivfPGFlcwFgjCQteAZHuyVLqyLepHGaygbzNyXlbKWoznQTEJMZvYHZeSdylcuhyWIhjLWbDcRpILpFYWizLHQcVYtDOWXlskYyZPkrpOcXWTYpfrGJBXsXjjknkODrgWbUCsocQKaNadxQrueQExznumZGCCSCpuNCSHmnnLdOqAhqudvGboyZArctnZXfJlbgtKpFSUvtXgBTDRncgYdPDdctRCQLiWeGRbHGEAxxnVpJTiwqjzDkLDlhZUqsEYsSddoESRUisGhsyDNQRXEJcSzpqAUOutijdbIpBZzPWHOxikKIMtfWMluyheXwAgbtyOPqSrcbwJcySnWldwPvShKxfVuIrfiWjsnUrsVgVMuWaLgcBjliqsnkAXmhVbKsVZkXjXMIcxZJylvkfDiXHZdiiKLBXgkErDRgjxJaNcSRZOdCPYtvRqWAeSIatYAVRfNRwEFUBnQtIdNmcyeZtnXFHhjsaZRhWdWlhtMTNynLILIoeQOCdsZyhrvGUnFrEvrqlsemefmIzPZOrKycWVzzOLxKLusaZkYLYEbCWdReUXMbqQUOTTIbVXwrgoUkHAeWiZYyMhaxPqvLHqGDiLXmAtkNVQrIyJVuxooVSfMnstwaRUxHiHTICiRQhuZVsikfg
+    Should Contain    ${output}    priority : -749541634

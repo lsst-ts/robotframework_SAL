@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 99.0311 zHKjXJyrIHYQoVFHcvlbOyqBABaYNOTgGUYGdTAkSykFrMpSJdNgRLfelGgZQQMXaPYgEiKscXIEutFPJPrUAvOeFwOpydNsQvSHPYCWGGdPGaZOwLMxZIEhNKfIxlXMIcCfvINsIJAPMPVCbiBXNIzGISyJDRWBMSyPUYWnaAlViloxGGgbHpWAySfihqnTyVsSPapnhEdcJBFetMdIumqvXXfwztMfNyAIYpHgiEZTqGntWONCuHzYifPYmPsCAqbvBBNXPmVYaGViBGAHbvuZKKsoyNOyDXIYwaMZkflKZLdkyuMnlpkyyCdYjoyyzilPQcEOXRecdyIWJMhrbNdrRwSSaDIVGeYpGEuvueK -259340030
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 93.4472 WsEslYveXSVbzuGUqNUudMOOPoWmwWptHVeJDbmFNCcGlEVxqEeMfMKRoOWKegYszZRobHxZZyIDNxpaDtxZtGcHDLBZqMNWyTlmKFhFfgRGeANghtNlqLEddaoSrfcfqpCmLXtmrqygsczbHVEtRfquZeAnpAtDbEABaIJAUtzPQDbYiaWMKuAiUnMEXTQJfCvydzLanUNfTNjmFModOfEQllGcLIByTu 1721187525
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1

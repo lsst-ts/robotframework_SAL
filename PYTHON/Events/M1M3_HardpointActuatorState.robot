@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 13.8299 -17499 27755 27148 22457 -15130 -8538 9507 -29633 24164 21956 -20248 -13049 -1786966736
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 35.0544 -4696 2418 -7508 -26740 28607 -20895 22982 -14080 2241 -23450 -22719 -29270 -734819112
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorState writing a message containing :    1

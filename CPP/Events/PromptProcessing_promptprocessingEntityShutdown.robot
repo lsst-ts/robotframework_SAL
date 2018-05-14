@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptprocessing
+${subSystem}    promptProcessing
 ${component}    promptprocessingEntityShutdown
 ${timeout}    30s
 
@@ -47,22 +47,22 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xWShuWbtfjsntJKuhGsybOmIhCjuRUgsKToDLSEyecKoVQPiMasWLOgiggTtaaiNaBogvtQtALwbITFVDyYcEwiMcUfOpJcAghuHYjoblPaoWQBpBQWlVtpJgJLOHlvAmujKeWFVmlkINVOYsWigAGLULkaifvkEJqgUetQoQeFfMgqaqJgmcxEvVtmwPkfgrmkjJbkOClwMdoDwYJCZPqdjzLcdAhPBWEZAMOktICOCDXaZJnEuxxKPahgsjqGK 85.0161 XIVuwblEfMzyJibPEbWMfGtiyGyNoqZKmUnsrzKWIrvrkeablrAzulAWZIdbMmTFfioIjZLNPUTsHkKVVzkCYQjqsRfYLcAoaEibNiWgjnFtAmIPcCNllzipOKfBSkiQQUHSKsTNhtczTKeKwueqvKEphcAtQKwEzkEXPDovdhzTSZdKxGpdpoQLVYKqLXmhRTFHHQgmcmNmqffcKjaoxwhmKAGRoogJtzzmVTfwQVizneOsSOfQOFkJoSbWbKmQ -475574100 1226683510 1007004766
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jvclUJmMhOvOFCGHRaIrjmLWgfrTysbmxjlduYsonRCUvTUPhWlowAlZaBxkQayEDiPPrnfabpcsQJNXEqXyUFmhybPyzNTviFsCNTsbqjfSJotNuxwhFIwkehbHMMiTyjkZLFthcFsltmMInuLXxBEzseaXSoYBextynritRKDFuxeMRwnvuCnBPqNcLggVpPWXLVmRkiGmzdqCfgTwIrWLSFbXRiFgQehAQbUtiDLLprHzynVSEovmldmBLjYo 32.5338 TlLNftXZDHiVADiYQBBCxgoRSbhUWwqWvwNVIDAhhCOfLXDCKnFfkqTFYeJaCLbNkxIzEIqSnjRRvTnwDoItzRpTppcLhraruZBPdxEHUagZrjzeRdcqEaMwfeVkrFPBtYfoxLymgkvIQaEoCiiTxVahwzcMxCllirgXdaqbUWUSFywRtXluAqRARjavRBZdnjMxUXPdZymsuYMhaAcDdtEBLciNfZyuEOmfWjTkuEZqDPCWNtUvlDchQKrHwjUW -1664283449 381947417 -120508631
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event promptprocessingEntityShutdown generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1007004766
+    ${output}=    Read Until    priority : -120508631
     Log    ${output}
     Should Contain X Times    ${output}    === Event promptprocessingEntityShutdown received =     1
-    Should Contain    ${output}    Name : xWShuWbtfjsntJKuhGsybOmIhCjuRUgsKToDLSEyecKoVQPiMasWLOgiggTtaaiNaBogvtQtALwbITFVDyYcEwiMcUfOpJcAghuHYjoblPaoWQBpBQWlVtpJgJLOHlvAmujKeWFVmlkINVOYsWigAGLULkaifvkEJqgUetQoQeFfMgqaqJgmcxEvVtmwPkfgrmkjJbkOClwMdoDwYJCZPqdjzLcdAhPBWEZAMOktICOCDXaZJnEuxxKPahgsjqGK
-    Should Contain    ${output}    Identifier : 85.0161
-    Should Contain    ${output}    Timestamp : XIVuwblEfMzyJibPEbWMfGtiyGyNoqZKmUnsrzKWIrvrkeablrAzulAWZIdbMmTFfioIjZLNPUTsHkKVVzkCYQjqsRfYLcAoaEibNiWgjnFtAmIPcCNllzipOKfBSkiQQUHSKsTNhtczTKeKwueqvKEphcAtQKwEzkEXPDovdhzTSZdKxGpdpoQLVYKqLXmhRTFHHQgmcmNmqffcKjaoxwhmKAGRoogJtzzmVTfwQVizneOsSOfQOFkJoSbWbKmQ
-    Should Contain    ${output}    Address : -475574100
-    Should Contain    ${output}    priority : 1226683510
-    Should Contain    ${output}    priority : 1007004766
+    Should Contain    ${output}    Name : jvclUJmMhOvOFCGHRaIrjmLWgfrTysbmxjlduYsonRCUvTUPhWlowAlZaBxkQayEDiPPrnfabpcsQJNXEqXyUFmhybPyzNTviFsCNTsbqjfSJotNuxwhFIwkehbHMMiTyjkZLFthcFsltmMInuLXxBEzseaXSoYBextynritRKDFuxeMRwnvuCnBPqNcLggVpPWXLVmRkiGmzdqCfgTwIrWLSFbXRiFgQehAQbUtiDLLprHzynVSEovmldmBLjYo
+    Should Contain    ${output}    Identifier : 32.5338
+    Should Contain    ${output}    Timestamp : TlLNftXZDHiVADiYQBBCxgoRSbhUWwqWvwNVIDAhhCOfLXDCKnFfkqTFYeJaCLbNkxIzEIqSnjRRvTnwDoItzRpTppcLhraruZBPdxEHUagZrjzeRdcqEaMwfeVkrFPBtYfoxLymgkvIQaEoCiiTxVahwzcMxCllirgXdaqbUWUSFywRtXluAqRARjavRBZdnjMxUXPdZymsuYMhaAcDdtEBLciNfZyuEOmfWjTkuEZqDPCWNtUvlDchQKrHwjUW
+    Should Contain    ${output}    Address : -1664283449
+    Should Contain    ${output}    priority : 381947417
+    Should Contain    ${output}    priority : -120508631

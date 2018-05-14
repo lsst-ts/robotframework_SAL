@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 39.1171 28946 -24656 -16796 17098 -22992 28832 -1237835879 -910965036 -515787788 480894993 -1059645647 -16926950 -25979 -12947 32393 -24092 -16843 12145 -16937 -29493 7977 10077 -26631 17808 0.307399913011 0.248829848919 0.374401649043 0.0720286628066 0.338010170809 0.473483326692 0.242101501005 0.245604515616 0.989159139467 0.721956764611 0.085171170351 0.523374283218 0.193789117931 0.190038107452 0.0132480113843 0.809088801089 0.96623803512 0.130893864387 test test test test test test 26276 -14838 15790 26943 12909 -4905 -7508 -714 19909 -13075 28859 -30196 -8558 -10503 -19720 -28308 14254 27564 30861 19890 30127 22940 -31005 12907 -9266 8229 23591 7788 -3200 -3588 -30604 28968 9110 -27215 -1783 -20881 27464 1333 32159 21820 18355 32089 0.591682372476 0.392949050031 0.250103480334 0.637023074925 0.460278103152 0.325120405685 0.387633616286 0.80125477712 0.897815279794 0.417576165421 0.531920891211 0.595066315961 0.69110082151 0.918687176201 0.363846949803 0.0890810846487 0.748521642744 0.567381150155 0.0199475321797 0.281774595245 0.867351278599 0.367913488212 0.156784597102 0.730012934502 0.536962277546 0.485679442481 0.0438078732086 0.553541809023 0.36351461729 0.0824020669863 0.457364830499 0.684273907989 0.708113420985 0.575248215529 0.722963695087 0.459051700435 609962064
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 87.9891 -2897 -31784 32146 443 8811 -6683 -35305581 785400404 -547352036 2039835245 -1690045929 -1433010624 31210 4629 -9429 -8957 -28807 20353 30464 9530 25714 -24062 15186 12319 0.206057519656 0.329180874354 0.702883026898 0.0583090940594 0.238699317824 0.23666168239 0.00397358564615 0.726806664617 0.127216642165 0.812583419897 0.545972593892 0.440578370809 0.795359789204 0.2976106044 0.710019505798 0.293657780246 0.746507397254 0.425194837234 test test test test test test -10064 -2178 24088 10879 -17747 1409 -29689 17356 -9516 -8973 10460 -22069 19194 -23051 6257 15151 -30919 -28552 9965 4097 26945 -9818 26851 12215 -24258 28405 2194 13219 -24704 -1459 -16158 -14731 -3457 -1466 15831 -28176 -28680 -25143 2667 16850 -24582 -5950 0.676978162683 0.755646101947 0.646971119543 0.102819188495 0.916874097573 0.559010581488 0.918247143221 0.715497554665 0.635442470165 0.498022636134 0.759692770225 0.557414549321 0.334564061981 0.770468447949 0.348264864405 0.00163643632863 0.582158127355 0.0629409037057 0.873390503625 0.589859580839 0.190693880812 0.631820023271 0.992722772986 0.927413587293 0.699149725453 0.376894409272 0.213859636909 0.330081899967 0.95700606289 0.651508868076 0.128153921547 0.997407610535 0.976203274464 0.755237460577 0.968623263122 0.0282166538452 1207351335
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorInfo writing a message containing :    1
@@ -57,29 +57,29 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 609962064
+    ${output}=    Read Until    priority : 1207351335
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointActuatorInfo received =     1
-    Should Contain    ${output}    Timestamp : 39.1171
-    Should Contain    ${output}    ReferenceId : 28946
-    Should Contain    ${output}    ReferencePosition : -24656
-    Should Contain    ${output}    ModbusSubnet : -16796
-    Should Contain    ${output}    ModbusAddress : 17098
-    Should Contain    ${output}    XPosition : -22992
-    Should Contain    ${output}    YPosition : 28832
-    Should Contain    ${output}    ZPosition : -1237835879
-    Should Contain    ${output}    ILCUniqueId : -910965036
-    Should Contain    ${output}    ILCApplicationType : -515787788
-    Should Contain    ${output}    NetworkNodeType : 480894993
-    Should Contain    ${output}    ILCSelectedOptions : -1059645647
-    Should Contain    ${output}    NetworkNodeOptions : -16926950
-    Should Contain    ${output}    MajorRevision : -25979
-    Should Contain    ${output}    MinorRevision : -12947
-    Should Contain    ${output}    ADCScanRate : 32393
-    Should Contain    ${output}    MainLoadCellCoefficient : -24092
-    Should Contain    ${output}    MainLoadCellOffset : -16843
-    Should Contain    ${output}    MainLoadCellSensitivity : 12145
-    Should Contain    ${output}    BackupLoadCellCoefficient : -16937
-    Should Contain    ${output}    BackupLoadCellOffset : -29493
-    Should Contain    ${output}    BackupLoadCellSensitivity : 7977
-    Should Contain    ${output}    priority : 10077
+    Should Contain    ${output}    Timestamp : 87.9891
+    Should Contain    ${output}    ReferenceId : -2897
+    Should Contain    ${output}    ReferencePosition : -31784
+    Should Contain    ${output}    ModbusSubnet : 32146
+    Should Contain    ${output}    ModbusAddress : 443
+    Should Contain    ${output}    XPosition : 8811
+    Should Contain    ${output}    YPosition : -6683
+    Should Contain    ${output}    ZPosition : -35305581
+    Should Contain    ${output}    ILCUniqueId : 785400404
+    Should Contain    ${output}    ILCApplicationType : -547352036
+    Should Contain    ${output}    NetworkNodeType : 2039835245
+    Should Contain    ${output}    ILCSelectedOptions : -1690045929
+    Should Contain    ${output}    NetworkNodeOptions : -1433010624
+    Should Contain    ${output}    MajorRevision : 31210
+    Should Contain    ${output}    MinorRevision : 4629
+    Should Contain    ${output}    ADCScanRate : -9429
+    Should Contain    ${output}    MainLoadCellCoefficient : -8957
+    Should Contain    ${output}    MainLoadCellOffset : -28807
+    Should Contain    ${output}    MainLoadCellSensitivity : 20353
+    Should Contain    ${output}    BackupLoadCellCoefficient : 30464
+    Should Contain    ${output}    BackupLoadCellOffset : 9530
+    Should Contain    ${output}    BackupLoadCellSensitivity : 25714
+    Should Contain    ${output}    priority : -24062

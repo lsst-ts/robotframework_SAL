@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7887 -9530 17534 173 31715 -20485 29518 -8936 27654 -549 23695 -16729 20871 -15527 -24247 11766 -7097 2969 24572 27910 22229 5826 10121 15063 30239 1925 -24515 -26460 -18631 1277 26455 12941 34.0812 43.8566 77.8093 10.1244 6.8827 2.5422 67.8714 0.6033 35.6059 51.4572 66.7702 40.8342 15.1457 63.2985 68.6611 7.0071 59.0225 30.8479 87.3616 91.6031 13.7356 6.8009 83.5678 30.4046 58.5725 46.9881 3.2016 59.5258 78.8027 16.5779 10.4963 1.787
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -13292 -3043 1820 -14720 -14364 1036 -15271 25589 2981 -19225 8467 -19675 168 4920 2398 -2814 -14558 22962 21439 -9492 -15885 8211 -31341 -18256 -15761 -24047 4204 -21223 -15176 26968 -9573 -31088 2.697 90.9966 48.9444 89.9353 83.7923 21.1807 66.25 84.6513 85.2598 36.7352 76.6728 55.1378 56.2879 44.4464 9.0881 84.3771 50.2383 7.4827 91.5826 9.2743 16.4914 82.376 9.0579 17.5405 45.7348 40.6497 81.1588 83.9184 34.1033 0.953 26.8927 40.4661
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7887 -9530 17534 173 31715 -20485 29518 -8936 27654 -549 23695 -16729 20871 -15527 -24247 11766 -7097 2969 24572 27910 22229 5826 10121 15063 30239 1925 -24515 -26460 -18631 1277 26455 12941 34.0812 43.8566 77.8093 10.1244 6.8827 2.5422 67.8714 0.6033 35.6059 51.4572 66.7702 40.8342 15.1457 63.2985 68.6611 7.0071 59.0225 30.8479 87.3616 91.6031 13.7356 6.8009 83.5678 30.4046 58.5725 46.9881 3.2016 59.5258 78.8027 16.5779 10.4963 1.787
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -13292 -3043 1820 -14720 -14364 1036 -15271 25589 2981 -19225 8467 -19675 168 4920 2398 -2814 -14558 22962 21439 -9492 -15885 8211 -31341 -18256 -15761 -24047 4204 -21223 -15176 26968 -9573 -31088 2.697 90.9966 48.9444 89.9353 83.7923 21.1807 66.25 84.6513 85.2598 36.7352 76.6728 55.1378 56.2879 44.4464 9.0881 84.3771 50.2383 7.4827 91.5826 9.2743 16.4914 82.376 9.0579 17.5405 45.7348 40.6497 81.1588 83.9184 34.1033 0.953 26.8927 40.4661
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    bendingModeNbr : -7887    1
-    Should Contain X Times    ${output}    bendingModeValue : 34.0812    1
+    Should Contain X Times    ${output}    bendingModeNbr : -13292    1
+    Should Contain X Times    ${output}    bendingModeValue : 2.697    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    bendingModeNbr(32) = [-7887, -9530, 17534, 173, 31715, -20485, 29518, -8936, 27654, -549, 23695, -16729, 20871, -15527, -24247, 11766, -7097, 2969, 24572, 27910, 22229, 5826, 10121, 15063, 30239, 1925, -24515, -26460, -18631, 1277, 26455, 12941]    1
-    Should Contain X Times    ${output}    bendingModeValue(32) = [34.0812, 43.8566, 77.8093, 10.1244, 6.8827, 2.5422, 67.8714, 0.6033, 35.6059, 51.4572, 66.7702, 40.8342, 15.1457, 63.2985, 68.6611, 7.0071, 59.0225, 30.8479, 87.3616, 91.6031, 13.7356, 6.8009, 83.5678, 30.4046, 58.5725, 46.9881, 3.2016, 59.5258, 78.8027, 16.5779, 10.4963, 1.787]    1
+    Should Contain X Times    ${output}    bendingModeNbr(32) = [-13292, -3043, 1820, -14720, -14364, 1036, -15271, 25589, 2981, -19225, 8467, -19675, 168, 4920, 2398, -2814, -14558, 22962, 21439, -9492, -15885, 8211, -31341, -18256, -15761, -24047, 4204, -21223, -15176, 26968, -9573, -31088]    1
+    Should Contain X Times    ${output}    bendingModeValue(32) = [2.697, 90.9966, 48.9444, 89.9353, 83.7923, 21.1807, 66.25, 84.6513, 85.2598, 36.7352, 76.6728, 55.1378, 56.2879, 44.4464, 9.0881, 84.3771, 50.2383, 7.4827, 91.5826, 9.2743, 16.4914, 82.376, 9.0579, 17.5405, 45.7348, 40.6497, 81.1588, 83.9184, 34.1033, 0.953, 26.8927, 40.4661]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

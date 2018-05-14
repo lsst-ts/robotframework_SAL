@@ -86,12 +86,6 @@ JAVA/Commands/CatchupArchiver_exitControl.robot
 JAVA/Commands/CatchupArchiver_setValue.robot
 JAVA/Commands/CatchupArchiver_standby.robot
 JAVA/Commands/CatchupArchiver_start.robot
-JAVA/Commands/DMHeaderService_Disable.robot
-JAVA/Commands/DMHeaderService_Enable.robot
-JAVA/Commands/DMHeaderService_EnterControl.robot
-JAVA/Commands/DMHeaderService_ExitControl.robot
-JAVA/Commands/DMHeaderService_Standby.robot
-JAVA/Commands/DMHeaderService_Start.robot
 JAVA/Commands/DomeADB_Crawl.robot
 JAVA/Commands/DomeADB_Echo.robot
 JAVA/Commands/DomeADB_Move.robot
