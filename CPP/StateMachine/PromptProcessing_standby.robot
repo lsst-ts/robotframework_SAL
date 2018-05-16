@@ -10,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    standby
 ${timeout}    30s
 

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_DetailedState sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    DetailedState
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1496356089 -231485810 -365708631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1275649731 -24084056 414615099
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_DetailedState writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_DetailedState writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event DetailedState generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -365708631
+    ${output}=    Read Until    priority : 414615099
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    DetailedState : -1496356089
-    Should Contain    ${output}    priority : -231485810
-    Should Contain    ${output}    priority : -365708631
+    Should Contain    ${output}    DetailedState : -1275649731
+    Should Contain    ${output}    priority : -24084056
+    Should Contain    ${output}    priority : 414615099

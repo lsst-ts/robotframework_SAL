@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_promptprocessingEntityShutdown sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    promptprocessingEntityShutdown
 ${timeout}    30s
 
@@ -47,22 +47,22 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mGgPqsVLQzoNwZfOCtAjABuLWoyOhbSOyIsXEHIpeAXAMdqTSrNWJJBjCoRQOzFpbziBBDSiRrPAoAeNHyUufFMOzihdIDaKtRxhgSoPJRRngDQLOjHEFaxehKDGdRZBmXIfpxKAzaxNUfkyzwWgehzuJjCHVfGJhMAhbHlGKjxGXbCYwsrrNMQxwGMDQYkosvBEcYAtvhZcyvBUOopWCvWTuRiatRaTMLBXdqIciKLnvVfpJEgBxDjwMFLwSdfe 30.3804 ZlcloeHoIsXBppxkenEcEUlvWMYYHPOYzngvDjhvQzlHiRQjIDmUCSYKrApjIUCxDviYAOCNlPguomiIXowwBIkcRYlriBmrxVGjqwkZTzWenRxaaBFrrFdNQdJAlGkTsugDgoCpPNQQIqEQrmSGvEZpYCYXyAuDajKSjzFvYRDvcBBAPSrrzLUXipPiFDCrMlsnzALDkvBzwCaarUiROQmZiCzdDkHUKnLDXojaRTDcxvTnnxfEjKRXiqAuXMuS -1991815713 13924635 1046624784
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TqYqFFssIuxLwjqsLhjdnPPBbTcqHEyWeiCJnYuwweXxRyrwtwqbBWcgFFFpyEDCLgGdCUPaWyleaYKJlBZvSQPhpaBINOlXgCQdMkOknCyZqoccntmLpycezRjmRpoVDLiTElmmdmhLGxnTbDzEcnDLxfSGSycTYwMGcuxWLxDEwcAZXLNfkqCMHxLqdJiZxRltyRAcsYjocxQBLDhiOHBsWTIYirsCyazGjdDjmxALKrbGZslTWbVrNPRkgixo 40.6807 FSbLjGZGqMHQlrudIOPOgSlpkViFhKxtBRCRHurkexcsZQtiQSezEwYHgBNNhPZJCAIOSMJzflrCupWidwftOqIBoIKCGCzXSfocxipAHcFCbNbDvVvMjDtstmkHjtfdStEffVkpLfuzSolWvSysQsAXWiNkyLOMFotSHwmVUjbNpuzntZQmxfCwdNjNXnOnjrPBjsjNIVKomoUzPGBZjXHHphoTvYqXGHHWAcbAZjiBLoiqFObXNSMOcJBcLngd 50973950 2083297896 1433672475
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event promptprocessingEntityShutdown generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1046624784
+    ${output}=    Read Until    priority : 1433672475
     Log    ${output}
     Should Contain X Times    ${output}    === Event promptprocessingEntityShutdown received =     1
-    Should Contain    ${output}    Name : mGgPqsVLQzoNwZfOCtAjABuLWoyOhbSOyIsXEHIpeAXAMdqTSrNWJJBjCoRQOzFpbziBBDSiRrPAoAeNHyUufFMOzihdIDaKtRxhgSoPJRRngDQLOjHEFaxehKDGdRZBmXIfpxKAzaxNUfkyzwWgehzuJjCHVfGJhMAhbHlGKjxGXbCYwsrrNMQxwGMDQYkosvBEcYAtvhZcyvBUOopWCvWTuRiatRaTMLBXdqIciKLnvVfpJEgBxDjwMFLwSdfe
-    Should Contain    ${output}    Identifier : 30.3804
-    Should Contain    ${output}    Timestamp : ZlcloeHoIsXBppxkenEcEUlvWMYYHPOYzngvDjhvQzlHiRQjIDmUCSYKrApjIUCxDviYAOCNlPguomiIXowwBIkcRYlriBmrxVGjqwkZTzWenRxaaBFrrFdNQdJAlGkTsugDgoCpPNQQIqEQrmSGvEZpYCYXyAuDajKSjzFvYRDvcBBAPSrrzLUXipPiFDCrMlsnzALDkvBzwCaarUiROQmZiCzdDkHUKnLDXojaRTDcxvTnnxfEjKRXiqAuXMuS
-    Should Contain    ${output}    Address : -1991815713
-    Should Contain    ${output}    priority : 13924635
-    Should Contain    ${output}    priority : 1046624784
+    Should Contain    ${output}    Name : TqYqFFssIuxLwjqsLhjdnPPBbTcqHEyWeiCJnYuwweXxRyrwtwqbBWcgFFFpyEDCLgGdCUPaWyleaYKJlBZvSQPhpaBINOlXgCQdMkOknCyZqoccntmLpycezRjmRpoVDLiTElmmdmhLGxnTbDzEcnDLxfSGSycTYwMGcuxWLxDEwcAZXLNfkqCMHxLqdJiZxRltyRAcsYjocxQBLDhiOHBsWTIYirsCyazGjdDjmxALKrbGZslTWbVrNPRkgixo
+    Should Contain    ${output}    Identifier : 40.6807
+    Should Contain    ${output}    Timestamp : FSbLjGZGqMHQlrudIOPOgSlpkViFhKxtBRCRHurkexcsZQtiQSezEwYHgBNNhPZJCAIOSMJzflrCupWidwftOqIBoIKCGCzXSfocxipAHcFCbNbDvVvMjDtstmkHjtfdStEffVkpLfuzSolWvSysQsAXWiNkyLOMFotSHwmVUjbNpuzntZQmxfCwdNjNXnOnjrPBjsjNIVKomoUzPGBZjXHHphoTvYqXGHHWAcbAZjiBLoiqFObXNSMOcJBcLngd
+    Should Contain    ${output}    Address : 50973950
+    Should Contain    ${output}    priority : 2083297896
+    Should Contain    ${output}    priority : 1433672475

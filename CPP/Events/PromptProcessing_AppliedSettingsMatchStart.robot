@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    AppliedSettingsMatchStart
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1899427904 1135675057
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 680460580 227531331
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event AppliedSettingsMatchStart generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1135675057
+    ${output}=    Read Until    priority : 227531331
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 0
-    Should Contain    ${output}    priority : 1899427904
-    Should Contain    ${output}    priority : 1135675057
+    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 1
+    Should Contain    ${output}    priority : 680460580
+    Should Contain    ${output}    priority : 227531331

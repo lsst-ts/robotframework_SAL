@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SummaryState sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    SummaryState
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1455203968 538479844 -1936338156
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 610717707 -603648884 -517131369
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SummaryState writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SummaryState writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event SummaryState generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1936338156
+    ${output}=    Read Until    priority : -517131369
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    SummaryStateValue : 1455203968
-    Should Contain    ${output}    priority : 538479844
-    Should Contain    ${output}    priority : -1936338156
+    Should Contain    ${output}    SummaryStateValue : 610717707
+    Should Contain    ${output}    priority : -603648884
+    Should Contain    ${output}    priority : -517131369

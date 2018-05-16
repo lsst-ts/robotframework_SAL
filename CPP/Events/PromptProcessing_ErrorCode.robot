@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_ErrorCode sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    ErrorCode
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -606543166 217882409 -190615951
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1349191464 -61615694 1990981779
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_ErrorCode writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_ErrorCode writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event ErrorCode generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -190615951
+    ${output}=    Read Until    priority : 1990981779
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -606543166
-    Should Contain    ${output}    priority : 217882409
-    Should Contain    ${output}    priority : -190615951
+    Should Contain    ${output}    errorCode : 1349191464
+    Should Contain    ${output}    priority : -61615694
+    Should Contain    ${output}    priority : 1990981779

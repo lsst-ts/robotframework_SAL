@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingVersions sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    SettingVersions
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jLeLUROqCBcNxcsjIWbgaGYgzCwJgcMgpiBzmckCbvaAnNmXaoYawbjZevfiylRaUqYmVmhwYmkhKnwkfgUgJixhsagEGvLValwCfQUWpPteZlDVlGCpteLSJBwGWemUDGPBWVlbqcPIpXzUkMaOTYmktdmWMxJytbxRFFWDCTykppeRGxMWVguMOBUiXJYHUVMQmAbuQpWafJldSlmybpZNvwNuLNrbChRVeJjmbCEdwoxAjKDAYcmpKlJXhFIQ -1026338934 307868332
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VYJRTMTMRmUIcRnQiaPtHNTzERuhepsVQlpslZdYohZHUkPZmmnJLAdtFQjbNhMFwcvoSTBdtsSuQpoGOWDXvYeLIwIShFLhxWrSJrTQgVZgVaaaPvzfSvpIGKjOSuycxJsbRlcWnssgLccMYQFsdCpTkKseGYCBJurvsdGUWXSvXDuHxZTfpuUkRAVRgvCuemdBwUuiJpOJwfxfKRaQFbGEpNqXzlZxTuTbZNtXuXuGkOSFDmbXxBRnHPzPRhjl -1960702712 -2040163077
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingVersions writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SettingVersions writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event SettingVersions generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 307868332
+    ${output}=    Read Until    priority : -2040163077
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : jLeLUROqCBcNxcsjIWbgaGYgzCwJgcMgpiBzmckCbvaAnNmXaoYawbjZevfiylRaUqYmVmhwYmkhKnwkfgUgJixhsagEGvLValwCfQUWpPteZlDVlGCpteLSJBwGWemUDGPBWVlbqcPIpXzUkMaOTYmktdmWMxJytbxRFFWDCTykppeRGxMWVguMOBUiXJYHUVMQmAbuQpWafJldSlmybpZNvwNuLNrbChRVeJjmbCEdwoxAjKDAYcmpKlJXhFIQ
-    Should Contain    ${output}    priority : -1026338934
-    Should Contain    ${output}    priority : 307868332
+    Should Contain    ${output}    recommendedSettingVersion : VYJRTMTMRmUIcRnQiaPtHNTzERuhepsVQlpslZdYohZHUkPZmmnJLAdtFQjbNhMFwcvoSTBdtsSuQpoGOWDXvYeLIwIShFLhxWrSJrTQgVZgVaaaPvzfSvpIGKjOSuycxJsbRlcWnssgLccMYQFsdCpTkKseGYCBJurvsdGUWXSvXDuHxZTfpuUkRAVRgvCuemdBwUuiJpOJwfxfKRaQFbGEpNqXzlZxTuTbZNtXuXuGkOSFDmbXxBRnHPzPRhjl
+    Should Contain    ${output}    priority : -1960702712
+    Should Contain    ${output}    priority : -2040163077

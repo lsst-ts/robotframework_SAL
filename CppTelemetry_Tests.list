@@ -90,6 +90,7 @@ CPP/Telemetry/MTMount_DP_2.robot
 CPP/Telemetry/MTMount_MC.robot
 CPP/Telemetry/MTMount_MotionParameters.robot
 CPP/Telemetry/OCS_SequencerHeartbeat.robot
+CPP/Telemetry/PromptProcessing_SequencerHeartbeat.robot
 CPP/Telemetry/Rotator_Application.robot
 CPP/Telemetry/Rotator_Electrical.robot
 CPP/Telemetry/Rotator_Motors.robot

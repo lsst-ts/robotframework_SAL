@@ -123,7 +123,7 @@ function getEntity() {
 	elif [ "$entity" == "calibrationelectrometer" ]; then
 		echo "calibrationElectrometer"
 	elif [ "$entity" == "promptprocessing" ]; then
-		echo "promptProcessing"
+		echo "promptprocessing"
 	elif [ "$entity" == "mtmount" ]; then
         echo "MTMount"
     elif [ "$entity" == "domeadb" ]; then
@@ -201,7 +201,7 @@ function checkIfSkipped() {
 		skipped="TSS-2625"
 	elif [[ ("$subsystem" == "tcsWEP") ]]; then
 		skipped="TSS-2626"
-	elif [[ ("$subsystem" == "promptProcessing") ]]; then
+	elif [[ ("$subsystem" == "promptprocessing") ]]; then
 		skipped="TSS-2633"
 	elif [[ ("$subsystem" == "calibrationElectrometer") ]]; then
 		skipped="TSS-2619"

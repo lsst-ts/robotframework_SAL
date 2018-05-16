@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingsApplied sender/logger tests.
-Force Tags    cpp    TSS-2678
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -9,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    SettingsApplied
 ${timeout}    30s
 
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XCuEBFbTjpUCslmceLwkTFoRdXFRYSEEOtplVqneYJLcyvnatYUVTckIybQoXEbHsjcKACAvAJgCIKpHzZyrXYRIvUcRdXDZYoUIMXmKwEeBSKrMvptVpGIIUOCckbWWJSbltpWXkfIRcObOHKJpxRydxvxrTLMFuFlHpWSXEKGSvhZjuZcEfMLUIBogppwgtRnRZjXcTgkaafodJEybVSgCyLcESmFEvYsUxHkvRQJUcAxHsNbUoYnkMaDabqQV -450227151 -1842635046
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send BDxXRblhNrTvpdsXvIaLpVimWMkUyYLaquzpPgPiSVLisVewKeJTRRGVXXKEPnmhWPeAwTVTEKTxSTODInebaIqYgOPXweKuribCWolxjfFnGljSgXqzgiucfFhYKpaxkiZsCgmJQmaKxrEeldHBibnueCQSeZttwDpmSaprvnTOlhtxFqXXcrEURjfBMbgpmAyalUtskVYSjavCiPMjALcFBwUIpYLElFCNTUSBbtFaHYUdUFEtDFBjKezEJqHG 634103347 1739713679
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingsApplied writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SettingsApplied writing a message containing :    1
     Should Contain    ${output}    revCode \ :
     Should Contain    ${output}    === Event SettingsApplied generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1842635046
+    ${output}=    Read Until    priority : 1739713679
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : XCuEBFbTjpUCslmceLwkTFoRdXFRYSEEOtplVqneYJLcyvnatYUVTckIybQoXEbHsjcKACAvAJgCIKpHzZyrXYRIvUcRdXDZYoUIMXmKwEeBSKrMvptVpGIIUOCckbWWJSbltpWXkfIRcObOHKJpxRydxvxrTLMFuFlHpWSXEKGSvhZjuZcEfMLUIBogppwgtRnRZjXcTgkaafodJEybVSgCyLcESmFEvYsUxHkvRQJUcAxHsNbUoYnkMaDabqQV
-    Should Contain    ${output}    priority : -450227151
-    Should Contain    ${output}    priority : -1842635046
+    Should Contain    ${output}    Settings : BDxXRblhNrTvpdsXvIaLpVimWMkUyYLaquzpPgPiSVLisVewKeJTRRGVXXKEPnmhWPeAwTVTEKTxSTODInebaIqYgOPXweKuribCWolxjfFnGljSgXqzgiucfFhYKpaxkiZsCgmJQmaKxrEeldHBibnueCQSeZttwDpmSaprvnTOlhtxFqXXcrEURjfBMbgpmAyalUtskVYSjavCiPMjALcFBwUIpYLElFCNTUSBbtFaHYUdUFEtDFBjKezEJqHG
+    Should Contain    ${output}    priority : 634103347
+    Should Contain    ${output}    priority : 1739713679
