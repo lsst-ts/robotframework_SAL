@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_Cluster_Encoder communications tests.
-Force Tags    java    Checking if skipped: camera
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

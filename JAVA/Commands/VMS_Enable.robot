@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    VMS_Enable commander/controller tests.
-Force Tags    java    Checking if skipped: vms
-TSS-2618
+Force Tags    java    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

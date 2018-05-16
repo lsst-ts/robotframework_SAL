@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingVersions sender/logger tests.
-Force Tags    java    Checking if skipped: promptProcessing
-TSS-2633
+Force Tags    java    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +9,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    SettingVersions
 ${timeout}    30s
 

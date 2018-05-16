@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_target commander/controller tests.
-Force Tags    java    Checking if skipped: tcs
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

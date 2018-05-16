@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    SummitFacility_Start commander/controller tests.
-Force Tags    java    Checking if skipped: summitFacility
-TSS-2622
+Force Tags    java    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

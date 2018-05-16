@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_clearError commander/controller tests.
-Force Tags    java    Checking if skipped: hexapod
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

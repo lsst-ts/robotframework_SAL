@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    HeaderService_LargeFileObjectAvailable sender/logger tests.
-Force Tags    java    Checking if skipped: headerService
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

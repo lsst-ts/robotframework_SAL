@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    Scheduler_observatoryState communications tests.
-Force Tags    java    
+Documentation    PromptProcessing_SequencerHeartbeat communications tests.
+Force Tags    java    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -9,8 +9,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    scheduler
-${component}    observatoryState
+${subSystem}    promptprocessing
+${component}    SequencerHeartbeat
 ${timeout}    30s
 
 *** Test Cases ***

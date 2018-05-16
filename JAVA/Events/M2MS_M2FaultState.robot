@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M2MS_M2FaultState sender/logger tests.
-Force Tags    java    Checking if skipped: m2ms
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

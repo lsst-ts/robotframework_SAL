@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerEntityStartup sender/logger tests.
-Force Tags    java    Checking if skipped: sequencer
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

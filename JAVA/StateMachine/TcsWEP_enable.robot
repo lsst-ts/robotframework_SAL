@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    TcsWEP State Machine tests.
-Force Tags    java    Checking if skipped: tcsWEP
-TSS-2626
+Force Tags    java    TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

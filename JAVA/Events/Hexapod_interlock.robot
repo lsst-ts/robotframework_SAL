@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_interlock sender/logger tests.
-Force Tags    java    Checking if skipped: hexapod
+Force Tags    java    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

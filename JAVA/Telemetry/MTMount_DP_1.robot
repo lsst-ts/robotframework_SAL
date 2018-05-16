@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_DP_1 communications tests.
-Force Tags    java    Checking if skipped: MTMount
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_discardRows commander/controller tests.
-Force Tags    java    Checking if skipped: camera
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

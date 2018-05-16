@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_SequencerHeartbeat communications tests.
-Force Tags    java    Checking if skipped: sequencer
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
