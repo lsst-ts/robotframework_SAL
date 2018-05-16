@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_interlock sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send kwDDNoKgShxhxXrLQvhnvGKHAonvbUhHgXANLnowqbazimXvfSmrHuRyKBxjNHYWPEQKbgRWGURoinCPQeMMzcUJbldDrPkTzIiXwwzFZOESgfcLmEgzGNJqqRpGXvwlhyiQgEZWatOYFODwQVOlXYgENbBOKaPVQsEiFrPhuLJHCIQhprYVVQVLVSeJcQffEyGvrFhniAwcQXwiSBRWYYvxvAxKMlzClvsssWKaladYcmzQVPLLtJTYMXgAHUoz 79.2591 -1035213366
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send LSdRKJIelukJqthDxXTHcrTCGVJFVugbvcrSVoHKICsbzuihmiqodsHXrTnZMwybLpygZhuxxUqRiJmNeJuYwDiUdqWuzUlFvMfScFbqHprCSdIuNljAoAazJCflKxjJeoKAtRmsbXSxdcETDErXbOFaJpZOKjQSnEcrYywChXLaQoCpobubQtOgkpFOusxpZtmKjwAkMohDlleUPmdKXSABhnqsBceICJsGTYfBTmMfXPClHllKjywRpLZTYqQC 19.7565 -1001587847
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1035213366
+    ${output}=    Read Until    priority : -1001587847
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : kwDDNoKgShxhxXrLQvhnvGKHAonvbUhHgXANLnowqbazimXvfSmrHuRyKBxjNHYWPEQKbgRWGURoinCPQeMMzcUJbldDrPkTzIiXwwzFZOESgfcLmEgzGNJqqRpGXvwlhyiQgEZWatOYFODwQVOlXYgENbBOKaPVQsEiFrPhuLJHCIQhprYVVQVLVSeJcQffEyGvrFhniAwcQXwiSBRWYYvxvAxKMlzClvsssWKaladYcmzQVPLLtJTYMXgAHUoz
-    Should Contain    ${output}    timestamp : 79.2591
-    Should Contain    ${output}    priority : -1035213366
+    Should Contain    ${output}    detail : LSdRKJIelukJqthDxXTHcrTCGVJFVugbvcrSVoHKICsbzuihmiqodsHXrTnZMwybLpygZhuxxUqRiJmNeJuYwDiUdqWuzUlFvMfScFbqHprCSdIuNljAoAazJCflKxjJeoKAtRmsbXSxdcETDErXbOFaJpZOKjQSnEcrYywChXLaQoCpobubQtOgkpFOusxpZtmKjwAkMohDlleUPmdKXSABhnqsBceICJsGTYfBTmMfXPClHllKjywRpLZTYqQC
+    Should Contain    ${output}    timestamp : 19.7565
+    Should Contain    ${output}    priority : -1001587847

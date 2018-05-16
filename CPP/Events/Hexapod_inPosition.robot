@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_inPosition sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 51.0238 -967779279
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29.2576 -1153180631
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_inPosition writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -967779279
+    ${output}=    Read Until    priority : -1153180631
     Log    ${output}
     Should Contain X Times    ${output}    === Event inPosition received =     1
-    Should Contain    ${output}    timestamp : 51.0238
-    Should Contain    ${output}    priority : -967779279
+    Should Contain    ${output}    timestamp : 29.2576
+    Should Contain    ${output}    priority : -1153180631

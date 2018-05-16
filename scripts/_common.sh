@@ -181,6 +181,10 @@ function checkIfSkipped() {
 	messageType=$3
 	if [[ ("$subsystem" == "summitFacility") ]]; then
 		skipped="TSS-2622"
+    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2680"
+    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
+        skipped="TSS-2679"
 	elif [[ ("$subsystem" == "camera") && ("$messageType" == "events") ]]; then
 		skipped="TSS-2677"
     elif [[ ("$subsystem" == "promptProcessing") && ("$messageType" == "events") ]]; then
