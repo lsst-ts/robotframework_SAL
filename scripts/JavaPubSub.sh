@@ -79,7 +79,7 @@ function startSubscriber {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/java/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
     echo "    \${input}=    Write    java -cp \$SAL_HOME/lib/saj_\${subSystem}_types.jar:./classes:\$OSPL_HOME/jar/dcpssaj.jar:saj_\${subSystem}_\${component}_sub.jar \${subSystem}_\${component}DataSubscriber" >> $testSuite
-    echo "    \${output}=    Read Until    [\${component} Subscriber] Ready" >> $testSuite
+    echo "    \${output}=    Read Until    [\${component} Subscriber] Ready ..." >> $testSuite
     echo "    Log    \${output}" >> $testSuite
 	echo "    Should Contain    \${output}    [createTopic] : topicName \${subSystem}_\${component} type = \${subSystem}::\${component}">> $testSuite
 	if [ $subSystem == "hexapod" ]; then
