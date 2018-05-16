@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_endReadout sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send tbZlButnJbRDtBcSfmssbplWBVZBJIfJCqZzkFgmVBbrvPjJPCGxNJhYDveWWZQsxndPVhyObUerddmauUGtjfMToASEQIqomAtiIYnDLFHyFEQhvZKftNFAfSMrZfcBCUPAjWKOcucsEQRVNjaOrXzjoungjxZkStgLKbFRiyzxCLAwGiRzvhGtUSSgBkpaCtVZjulXxJLoxaGUMEXpOOZKnCBMeSQSgKLnWSlloBrmLnfEMOvkkgKERWeiTDjG -2130801245 bVAocgJthfDAtyCvHiIyabHvxjSjHPlYVuonYeESDPLrOCMhvbkRTXXltdDzuTXMWZfPiNsdObhUXaxlJMBtWGDQPRXCzivAAQsYoqcxVBYcTBXhXtSvvZMkEXaNrQPyhZxnnjbjQcxGCXotTLNFMofgpNJoAVxFnFJZtfEckzqXlODxCSxkTWwWynkLGsuRuzwjmmQWBMaZVGrIACeipOLwgAxytzTUZDhmkvMgkhwlwhSvdptLAyEXMHBErXpD 293235542 73.7282 44.1782 672806129
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send lyytIqoILgwDArJIXRPKWVUSCbpMDcKoEVGRqozMIqpqaMpzKgPjSRwcqFihgcyNPaEIFuEMJBrTKAqmlYQKGqIdWkFMLNeQREtncxgVpCdPwGfYfvZNNfLykQyRUkJtFPwNJmZOUaPqejuCkRmiVsahYTETocYIGDtsULzycIEKMBdKJqMOgttMoRHylgYmKjFhOUnniDYCmuMbQljqZTBvdrVrsaaeMFyJZhiCFIWxKnGgEOAAkjbrsJUqlDai -997743280 JTuWCcCAeKDIQEQsUGbnmvXXDSbKzKNkDxfuGVHptWjgOxscewpsZjSrzkXtxTDRGxCJBjHtileVLUTHrjtZgtrBhFCTJrKKfjklDsKtxJjkvszrgcVLjPRknOOOXmZxFrBtvpaIwVsGVlFHGtMPfFqvkpTOkZhrfgemElVkAjXxMrvbukrBFvDhaQKjqksOFMshsAncsKrsUmqXENYQHZayOuygzRxdjOLWKgOcQZYWDSryBLiRTVOdcVKmqMpc 1078892236 96.1068 62.2584 1489628486
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_endReadout writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 672806129
+    ${output}=    Read Until    priority : 1489628486
     Log    ${output}
     Should Contain X Times    ${output}    === Event endReadout received =     1
-    Should Contain    ${output}    imageSequenceName : tbZlButnJbRDtBcSfmssbplWBVZBJIfJCqZzkFgmVBbrvPjJPCGxNJhYDveWWZQsxndPVhyObUerddmauUGtjfMToASEQIqomAtiIYnDLFHyFEQhvZKftNFAfSMrZfcBCUPAjWKOcucsEQRVNjaOrXzjoungjxZkStgLKbFRiyzxCLAwGiRzvhGtUSSgBkpaCtVZjulXxJLoxaGUMEXpOOZKnCBMeSQSgKLnWSlloBrmLnfEMOvkkgKERWeiTDjG
-    Should Contain    ${output}    imagesInSequence : -2130801245
-    Should Contain    ${output}    imageName : bVAocgJthfDAtyCvHiIyabHvxjSjHPlYVuonYeESDPLrOCMhvbkRTXXltdDzuTXMWZfPiNsdObhUXaxlJMBtWGDQPRXCzivAAQsYoqcxVBYcTBXhXtSvvZMkEXaNrQPyhZxnnjbjQcxGCXotTLNFMofgpNJoAVxFnFJZtfEckzqXlODxCSxkTWwWynkLGsuRuzwjmmQWBMaZVGrIACeipOLwgAxytzTUZDhmkvMgkhwlwhSvdptLAyEXMHBErXpD
-    Should Contain    ${output}    imageIndex : 293235542
-    Should Contain    ${output}    timeStamp : 73.7282
-    Should Contain    ${output}    exposureTime : 44.1782
-    Should Contain    ${output}    priority : 672806129
+    Should Contain    ${output}    imageSequenceName : lyytIqoILgwDArJIXRPKWVUSCbpMDcKoEVGRqozMIqpqaMpzKgPjSRwcqFihgcyNPaEIFuEMJBrTKAqmlYQKGqIdWkFMLNeQREtncxgVpCdPwGfYfvZNNfLykQyRUkJtFPwNJmZOUaPqejuCkRmiVsahYTETocYIGDtsULzycIEKMBdKJqMOgttMoRHylgYmKjFhOUnniDYCmuMbQljqZTBvdrVrsaaeMFyJZhiCFIWxKnGgEOAAkjbrsJUqlDai
+    Should Contain    ${output}    imagesInSequence : -997743280
+    Should Contain    ${output}    imageName : JTuWCcCAeKDIQEQsUGbnmvXXDSbKzKNkDxfuGVHptWjgOxscewpsZjSrzkXtxTDRGxCJBjHtileVLUTHrjtZgtrBhFCTJrKKfjklDsKtxJjkvszrgcVLjPRknOOOXmZxFrBtvpaIwVsGVlFHGtMPfFqvkpTOkZhrfgemElVkAjXxMrvbukrBFvDhaQKjqksOFMshsAncsKrsUmqXENYQHZayOuygzRxdjOLWKgOcQZYWDSryBLiRTVOdcVKmqMpc
+    Should Contain    ${output}    imageIndex : 1078892236
+    Should Contain    ${output}    timeStamp : 96.1068
+    Should Contain    ${output}    exposureTime : 62.2584
+    Should Contain    ${output}    priority : 1489628486

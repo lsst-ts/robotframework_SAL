@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_imageReadoutParameters sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send caKJcCUjnTjsBiawUqNErfJeKuYFyIhCcibWFTvfiHouuukqFrNmkTHKTlERHGyuuxdRAfDkSsLFJCWBLzcRuSDxwWpJifZlVouuSjzqSDhzAqEcSAzgmyNJyalVDZlhqxNJYzypvhBsvuwBVwBgZtHsSnsVAvepFsuYGtCVViGLwybJhsIjVjPqwAfahpotIukKqnKLcnNdFpreuZEKhydyMBTDHtGuPjZdrFQHKHLgvETiEDFIroneKpriBllL UBhaazdlGCqTjeyTjxlcXAPgNrHUcduiaftUuHPSvAOuDUdkCAfPMRJsCOksKdVwRCiTBdEOTdRzqPmCFhXevHunAsfCrLMaqEYsOXgXZZsvaTbShWTKwpvNkahHIfVqXaKYagwsUfQlfmhVGKsDoaROWNIoTDqoBXpMPlPNSxDoshPjMSnRnLhKNLkelAHMmyvxqDBcExNJhbatcKblskpFiHOARiAfKqnqKTVQgIwzeIQDoLQdDmSeUkCUvSXn 1363119701 -1707664874 -1749176897 -1216582831 1234538615 972340260 -936225018 -911589328 1936473400 -187399181
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DteSoIekhkkBYxkSRAMBOqRnIlPEKZzEDZrWXeZiyyktwpLvKTpgFBojIcoYJLPHhyDDgcqtGIjnbbsBHtUFlAKayqEGwbiJbwINUVXLkxHxKXhNdLFszgdSGqXfrHBFAHAFKoFpGToBxjVNvLzdcViUrxExlpDccOneSVHpYKrsNybYiJlvqdXoymjMjEXuOEpuaDFyFcGHDOCakOmhvaifPRdJJnzELGEjXgVySdMtLlKtpHnyNXIRYrXlXbjA IiaMSyIvqekPZslcmXZzPHkPqeKNgTklmmyyiGwVvmVGFnTmucZQiFTTqdBLZqLJKTnKxuFbAlsZKDUJEpThIHFAScdIloGiXIwLgdiSDpNRlgDATkoiCENsPDangsyRHjyWHoJdpdrRdmbPXDPewkQHrBmMicCxltLHGUjBRbliHeBImXmBBRdWkQgkkwTXCrimfElOUyxFbGhLBAnykRmmUBMhadpztzYKnMthhDPqeZXiaeEumydHiPEMsReC -1655090498 1878607500 2075229384 -1560537022 854678148 -1202413944 -164790963 1473184044 1507341431 2009485790
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadoutParameters writing a message containing :    1
@@ -57,18 +57,18 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -187399181
+    ${output}=    Read Until    priority : 2009485790
     Log    ${output}
     Should Contain X Times    ${output}    === Event imageReadoutParameters received =     1
-    Should Contain    ${output}    imageName : caKJcCUjnTjsBiawUqNErfJeKuYFyIhCcibWFTvfiHouuukqFrNmkTHKTlERHGyuuxdRAfDkSsLFJCWBLzcRuSDxwWpJifZlVouuSjzqSDhzAqEcSAzgmyNJyalVDZlhqxNJYzypvhBsvuwBVwBgZtHsSnsVAvepFsuYGtCVViGLwybJhsIjVjPqwAfahpotIukKqnKLcnNdFpreuZEKhydyMBTDHtGuPjZdrFQHKHLgvETiEDFIroneKpriBllL
-    Should Contain    ${output}    ccdNames : UBhaazdlGCqTjeyTjxlcXAPgNrHUcduiaftUuHPSvAOuDUdkCAfPMRJsCOksKdVwRCiTBdEOTdRzqPmCFhXevHunAsfCrLMaqEYsOXgXZZsvaTbShWTKwpvNkahHIfVqXaKYagwsUfQlfmhVGKsDoaROWNIoTDqoBXpMPlPNSxDoshPjMSnRnLhKNLkelAHMmyvxqDBcExNJhbatcKblskpFiHOARiAfKqnqKTVQgIwzeIQDoLQdDmSeUkCUvSXn
-    Should Contain    ${output}    ccdType : 1363119701
-    Should Contain    ${output}    overRows : -1707664874
-    Should Contain    ${output}    overCols : -1749176897
-    Should Contain    ${output}    readRows : -1216582831
-    Should Contain    ${output}    readCols : 1234538615
-    Should Contain    ${output}    readCols2 : 972340260
-    Should Contain    ${output}    preCols : -936225018
-    Should Contain    ${output}    preRows : -911589328
-    Should Contain    ${output}    postCols : 1936473400
-    Should Contain    ${output}    priority : -187399181
+    Should Contain    ${output}    imageName : DteSoIekhkkBYxkSRAMBOqRnIlPEKZzEDZrWXeZiyyktwpLvKTpgFBojIcoYJLPHhyDDgcqtGIjnbbsBHtUFlAKayqEGwbiJbwINUVXLkxHxKXhNdLFszgdSGqXfrHBFAHAFKoFpGToBxjVNvLzdcViUrxExlpDccOneSVHpYKrsNybYiJlvqdXoymjMjEXuOEpuaDFyFcGHDOCakOmhvaifPRdJJnzELGEjXgVySdMtLlKtpHnyNXIRYrXlXbjA
+    Should Contain    ${output}    ccdNames : IiaMSyIvqekPZslcmXZzPHkPqeKNgTklmmyyiGwVvmVGFnTmucZQiFTTqdBLZqLJKTnKxuFbAlsZKDUJEpThIHFAScdIloGiXIwLgdiSDpNRlgDATkoiCENsPDangsyRHjyWHoJdpdrRdmbPXDPewkQHrBmMicCxltLHGUjBRbliHeBImXmBBRdWkQgkkwTXCrimfElOUyxFbGhLBAnykRmmUBMhadpztzYKnMthhDPqeZXiaeEumydHiPEMsReC
+    Should Contain    ${output}    ccdType : -1655090498
+    Should Contain    ${output}    overRows : 1878607500
+    Should Contain    ${output}    overCols : 2075229384
+    Should Contain    ${output}    readRows : -1560537022
+    Should Contain    ${output}    readCols : 854678148
+    Should Contain    ${output}    readCols2 : -1202413944
+    Should Contain    ${output}    preCols : -164790963
+    Should Contain    ${output}    preRows : 1473184044
+    Should Contain    ${output}    postCols : 1507341431
+    Should Contain    ${output}    priority : 2009485790

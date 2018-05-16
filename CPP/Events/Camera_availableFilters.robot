@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_availableFilters sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send HKyrPGFSwlxOIOUrKpmwOftUUNJCXcaXWUHEUwyMxkgnpGqnPYqTRTpAKMTfFTdQvavPcdIRYxyowIMzlkQOmTLkUiStcMALqRflvneGyvwkeItfKfabpSKvmaNJPcfciDjEyHwdMYOfHcmQuyenSNunQQEMuQGFYsiOqkKOtWIQlhsyXVRJmrOlLohfUgvCVWanuLffOJgoutjXVKJxdDPklybETcQvojwTNWBoJIOKjkqNGzRuRBXwiqIwSIBg -1234457233 -1110381840
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YOiaVarEksuTAuDPIQniApUKDlzpDflKiyrVAFbXUAHPmaXTBcdGKWwRUjBiPJHNAiDtCTFIUFNyleJXiJvBYVajBnxaoNvhGHMUEQfcmNXUMgFPRwmjfSJveUjKffBQpXWIwoXOBWguYhUbvnyXNOYDRcmFrgKyeZBwhRLjSQzqzhJjcGxMNSctaTpSAvIfcSgQQfsQaqbSqbBcyZwiEYVCDGYPOJJnIqPDTbeRdiFTPyQZGHPSjmEidZkERJng -377435004 -2022704741
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_availableFilters writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1110381840
+    ${output}=    Read Until    priority : -2022704741
     Log    ${output}
     Should Contain X Times    ${output}    === Event availableFilters received =     1
-    Should Contain    ${output}    filterNames : HKyrPGFSwlxOIOUrKpmwOftUUNJCXcaXWUHEUwyMxkgnpGqnPYqTRTpAKMTfFTdQvavPcdIRYxyowIMzlkQOmTLkUiStcMALqRflvneGyvwkeItfKfabpSKvmaNJPcfciDjEyHwdMYOfHcmQuyenSNunQQEMuQGFYsiOqkKOtWIQlhsyXVRJmrOlLohfUgvCVWanuLffOJgoutjXVKJxdDPklybETcQvojwTNWBoJIOKjkqNGzRuRBXwiqIwSIBg
-    Should Contain    ${output}    priority : -1234457233
-    Should Contain    ${output}    priority : -1110381840
+    Should Contain    ${output}    filterNames : YOiaVarEksuTAuDPIQniApUKDlzpDflKiyrVAFbXUAHPmaXTBcdGKWwRUjBiPJHNAiDtCTFIUFNyleJXiJvBYVajBnxaoNvhGHMUEQfcmNXUMgFPRwmjfSJveUjKffBQpXWIwoXOBWguYhUbvnyXNOYDRcmFrgKyeZBwhRLjSQzqzhJjcGxMNSctaTpSAvIfcSgQQfsQaqbSqbBcyZwiEYVCDGYPOJJnIqPDTbeRdiFTPyQZGHPSjmEidZkERJng
+    Should Contain    ${output}    priority : -377435004
+    Should Contain    ${output}    priority : -2022704741

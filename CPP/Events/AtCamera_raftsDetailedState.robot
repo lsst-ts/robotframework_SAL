@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_raftsDetailedState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1684955163 -2127738829 1096438256
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1808094032 -1974141273 -1776231273
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_raftsDetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1096438256
+    ${output}=    Read Until    priority : -1776231273
     Log    ${output}
     Should Contain X Times    ${output}    === Event raftsDetailedState received =     1
-    Should Contain    ${output}    substate : 1684955163
-    Should Contain    ${output}    priority : -2127738829
-    Should Contain    ${output}    priority : 1096438256
+    Should Contain    ${output}    substate : -1808094032
+    Should Contain    ${output}    priority : -1974141273
+    Should Contain    ${output}    priority : -1776231273

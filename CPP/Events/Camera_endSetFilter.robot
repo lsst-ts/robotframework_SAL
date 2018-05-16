@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endSetFilter sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zIwLrdULySicSgDXCoCpeMRhnlYUhLeiuMHGBuyEZAWvUJurSBCIpqJiHFczKWlhshyQPuyIMLDMrXYDKFbilKKclKwqwBKCgHBpuToGMktECrLodespkSYBZoMQEzsWiUzeOnUBvhLGaQLIMfKYwduARxdXGjLfrMncmFbGzWzJwjgTLbmnWDqXCcdiOeZMcDZAHvXPXovQYCGuonkEejjFaNypSuDEwkVTfhoTqszWwsyBUyBDmDuksDXvmwHY -205799354 82410092
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send PBchLuhoDXEtUXQCRHBzKXQisVvnaAsOnEYbtqxOPPCMEUzEHcJAlmELXFNVjoDayezjsWviFLtIYUGYIRMVCsLKoGimJKxTRjvFifEqgyMeUdsLlSCoTFTllNGVefJWVcrsjjCVvhSQEQYcenfEltuuFQygSzJZXmignpWZjJpxqyHDobXfkJWEqxpDCxWvEGgeKgcPdEmuLrqepRATbZeoajCgtDntbyoqMVhiKJScBrjeVcDTkJVlmFDdLkKL -1319884877 1127059825
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endSetFilter writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 82410092
+    ${output}=    Read Until    priority : 1127059825
     Log    ${output}
     Should Contain X Times    ${output}    === Event endSetFilter received =     1
-    Should Contain    ${output}    filterName : zIwLrdULySicSgDXCoCpeMRhnlYUhLeiuMHGBuyEZAWvUJurSBCIpqJiHFczKWlhshyQPuyIMLDMrXYDKFbilKKclKwqwBKCgHBpuToGMktECrLodespkSYBZoMQEzsWiUzeOnUBvhLGaQLIMfKYwduARxdXGjLfrMncmFbGzWzJwjgTLbmnWDqXCcdiOeZMcDZAHvXPXovQYCGuonkEejjFaNypSuDEwkVTfhoTqszWwsyBUyBDmDuksDXvmwHY
-    Should Contain    ${output}    priority : -205799354
-    Should Contain    ${output}    priority : 82410092
+    Should Contain    ${output}    filterName : PBchLuhoDXEtUXQCRHBzKXQisVvnaAsOnEYbtqxOPPCMEUzEHcJAlmELXFNVjoDayezjsWviFLtIYUGYIRMVCsLKoGimJKxTRjvFifEqgyMeUdsLlSCoTFTllNGVefJWVcrsjjCVvhSQEQYcenfEltuuFQygSzJZXmignpWZjJpxqyHDobXfkJWEqxpDCxWvEGgeKgcPdEmuLrqepRATbZeoajCgtDntbyoqMVhiKJScBrjeVcDTkJVlmFDdLkKL
+    Should Contain    ${output}    priority : -1319884877
+    Should Contain    ${output}    priority : 1127059825

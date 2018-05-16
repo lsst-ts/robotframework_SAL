@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_ErrorCode sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2673
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -884973127 348307211 -785184633
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1024738927 -727354253 -218871746
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -785184633
+    ${output}=    Read Until    priority : -218871746
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -884973127
-    Should Contain    ${output}    priority : 348307211
-    Should Contain    ${output}    priority : -785184633
+    Should Contain    ${output}    errorCode : -1024738927
+    Should Contain    ${output}    priority : -727354253
+    Should Contain    ${output}    priority : -218871746

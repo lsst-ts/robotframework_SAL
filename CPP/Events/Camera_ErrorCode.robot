@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_ErrorCode sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1134135147 -527891008 -502606899
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -897530459 -1265665148 1474904067
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -502606899
+    ${output}=    Read Until    priority : 1474904067
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : 1134135147
-    Should Contain    ${output}    priority : -527891008
-    Should Contain    ${output}    priority : -502606899
+    Should Contain    ${output}    errorCode : -897530459
+    Should Contain    ${output}    priority : -1265665148
+    Should Contain    ${output}    priority : 1474904067

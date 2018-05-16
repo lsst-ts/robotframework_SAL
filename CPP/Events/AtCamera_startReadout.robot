@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_startReadout sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send gTTlJIyySBUuNhimBUAgnzSCnoWigrzzfiKeMZUBQCfMEQEVCNPALnCoPxWdeFUgLFuuTRNRYzvDYyyVgYoNsSfUceAUnmmzVYoWObANeGYdKMxHhaSINeCQNIbSUEWJrwASZQrIVyIGqiikavpBgkFlpkBqcVrShgtmlwWusDoDbyvCPquBleWcCbIfrzIapMsxciSmlGHMmCclZUjyrxzzLDCTOGPcMSNhOhdyaWiubyGksvPprhKjKSlUxwmo -1543924442 HiEpDWsSylkZTbdPVjiUasopjGHyDcxbbtXAiuNzxdczKsUSDtJwZSplfQxrnbFodTBVvGLjwkmvYbvihkNWjYAKMEKDEhFpxYXzuPxlOIVqVmvzPCdTSGEYdBRGSsOCuISTtDbBgMbaXNPiwaDJqVYGEyQUTmyKjThWoiNxBiXsHHXaDLmaVxHXGlSnmZZcBDutCQqiSYVWHepJZxjXAJhDHHsIqcDaEPhOtykWxkfYvkFozgWINUPUBrNFwHGJ 2067774438 86.6376 49.3771 1008453133
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WaKdWycBCBSeqVdHbDmrvcqkVncyeqnKWdWhkbBtlSChEFHtueHAmmGitKBhgCCzUShxsGkcJYulUDaqpsOZlQdgDpboNGvywQjoVLvoMcDlJOodWdyTBqLWjQgEIDNCPhPxhnUdcytABMmxxUEkJtoeKGHTooOFAfNlwhVVgWLMCmoGkUjtDffEHkNCBWlgPGCuLLGptMaLCrLdfXPfQrWOQaFuViIUxKnSbJbjDsWkgLQjGpjypDDsWHIZVcDP -513904678 ClkmyYXPRlzNmHzYdZhbVolashgLlBkhaZRLXkgQEsapIraRMYSMFsqGmFbEBzHNWvrTMnaTYxHKRulIgSZRzqwldJLtwqZyEUvkjZsudeyMKnhnHfavOOXYCCvdeyttJxEfqgpTVlqCrLBBMYLPemMlwKsgCMRGknaIyMWnZekmPJQbqdNoLNhPpPBJoNixfEwESRUcjZYIXTwNSUcyDXzLgbRdOQfqsmXfnSdExDfJSzWPgWRCCUfZxyQKawWf 1310446071 43.3093 47.5503 1496790911
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_startReadout writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1008453133
+    ${output}=    Read Until    priority : 1496790911
     Log    ${output}
     Should Contain X Times    ${output}    === Event startReadout received =     1
-    Should Contain    ${output}    imageSequenceName : gTTlJIyySBUuNhimBUAgnzSCnoWigrzzfiKeMZUBQCfMEQEVCNPALnCoPxWdeFUgLFuuTRNRYzvDYyyVgYoNsSfUceAUnmmzVYoWObANeGYdKMxHhaSINeCQNIbSUEWJrwASZQrIVyIGqiikavpBgkFlpkBqcVrShgtmlwWusDoDbyvCPquBleWcCbIfrzIapMsxciSmlGHMmCclZUjyrxzzLDCTOGPcMSNhOhdyaWiubyGksvPprhKjKSlUxwmo
-    Should Contain    ${output}    imagesInSequence : -1543924442
-    Should Contain    ${output}    imageName : HiEpDWsSylkZTbdPVjiUasopjGHyDcxbbtXAiuNzxdczKsUSDtJwZSplfQxrnbFodTBVvGLjwkmvYbvihkNWjYAKMEKDEhFpxYXzuPxlOIVqVmvzPCdTSGEYdBRGSsOCuISTtDbBgMbaXNPiwaDJqVYGEyQUTmyKjThWoiNxBiXsHHXaDLmaVxHXGlSnmZZcBDutCQqiSYVWHepJZxjXAJhDHHsIqcDaEPhOtykWxkfYvkFozgWINUPUBrNFwHGJ
-    Should Contain    ${output}    imageIndex : 2067774438
-    Should Contain    ${output}    timeStamp : 86.6376
-    Should Contain    ${output}    exposureTime : 49.3771
-    Should Contain    ${output}    priority : 1008453133
+    Should Contain    ${output}    imageSequenceName : WaKdWycBCBSeqVdHbDmrvcqkVncyeqnKWdWhkbBtlSChEFHtueHAmmGitKBhgCCzUShxsGkcJYulUDaqpsOZlQdgDpboNGvywQjoVLvoMcDlJOodWdyTBqLWjQgEIDNCPhPxhnUdcytABMmxxUEkJtoeKGHTooOFAfNlwhVVgWLMCmoGkUjtDffEHkNCBWlgPGCuLLGptMaLCrLdfXPfQrWOQaFuViIUxKnSbJbjDsWkgLQjGpjypDDsWHIZVcDP
+    Should Contain    ${output}    imagesInSequence : -513904678
+    Should Contain    ${output}    imageName : ClkmyYXPRlzNmHzYdZhbVolashgLlBkhaZRLXkgQEsapIraRMYSMFsqGmFbEBzHNWvrTMnaTYxHKRulIgSZRzqwldJLtwqZyEUvkjZsudeyMKnhnHfavOOXYCCvdeyttJxEfqgpTVlqCrLBBMYLPemMlwKsgCMRGknaIyMWnZekmPJQbqdNoLNhPpPBJoNixfEwESRUcjZYIXTwNSUcyDXzLgbRdOQfqsmXfnSdExDfJSzWPgWRCCUfZxyQKawWf
+    Should Contain    ${output}    imageIndex : 1310446071
+    Should Contain    ${output}    timeStamp : 43.3093
+    Should Contain    ${output}    exposureTime : 47.5503
+    Should Contain    ${output}    priority : 1496790911

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startShutterOpen sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 45362873 -1767721282
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1085124645 -1099257124
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startShutterOpen writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1767721282
+    ${output}=    Read Until    priority : -1099257124
     Log    ${output}
     Should Contain X Times    ${output}    === Event startShutterOpen received =     1
-    Should Contain    ${output}    priority : 45362873
-    Should Contain    ${output}    priority : -1767721282
+    Should Contain    ${output}    priority : -1085124645
+    Should Contain    ${output}    priority : -1099257124

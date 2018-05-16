@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_calibrationDetailedState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -8070411 1361951756 -1289192913
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1219685811 318797616 1094816098
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_calibrationDetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1289192913
+    ${output}=    Read Until    priority : 1094816098
     Log    ${output}
     Should Contain X Times    ${output}    === Event calibrationDetailedState received =     1
-    Should Contain    ${output}    substate : -8070411
-    Should Contain    ${output}    priority : 1361951756
-    Should Contain    ${output}    priority : -1289192913
+    Should Contain    ${output}    substate : -1219685811
+    Should Contain    ${output}    priority : 318797616
+    Should Contain    ${output}    priority : 1094816098

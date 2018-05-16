@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_SettingVersions sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JDdPfwqFgttyBskVNIopBVVUyzWVKerHFzaJVnpeIRCQFkRkCgPShAzGFYaEJEJCGOAhplHpHBLdrdMFwdgLkBUqExLHonIRGuKQRJVQBBXqAhJOzWuExcEtkNiLeXEcmWJLIsrZilbqpgYQRpfqqUYranQqUBcHikyWiJFhBkOmytwMTlUMcFiooAoDmzINbDKvZELVSqWlqnSIePpRHjMdENFXRNeHQSeJZeOAyaNULGYAlgygEikwXtaPqmuE -1604042205 359751719
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YAOhTRWKwiZwdlyJGPikXXYPRjeWklAyNkrdjJLkupXOpyHEVlDLYtNkVEeULjJVryRJnPVAIvtiruGJkCUvDsReTZHEYPPyYAhSdpPZmEJIaialnXYHJIEmSGYsvFSMLANocTtJIKebqAYyTwjrAbbffeUlssgSErYpdcWNBGolWpwQxUUZMhHCTVqgDqaaztNbFBWMkVDuFzOQyWyCTZWqNXkaExPhYCPzlPYGsURxdptloikjoOUTHbrYuOyM -1080684704 696367053
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 359751719
+    ${output}=    Read Until    priority : 696367053
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : JDdPfwqFgttyBskVNIopBVVUyzWVKerHFzaJVnpeIRCQFkRkCgPShAzGFYaEJEJCGOAhplHpHBLdrdMFwdgLkBUqExLHonIRGuKQRJVQBBXqAhJOzWuExcEtkNiLeXEcmWJLIsrZilbqpgYQRpfqqUYranQqUBcHikyWiJFhBkOmytwMTlUMcFiooAoDmzINbDKvZELVSqWlqnSIePpRHjMdENFXRNeHQSeJZeOAyaNULGYAlgygEikwXtaPqmuE
-    Should Contain    ${output}    priority : -1604042205
-    Should Contain    ${output}    priority : 359751719
+    Should Contain    ${output}    recommendedSettingVersion : YAOhTRWKwiZwdlyJGPikXXYPRjeWklAyNkrdjJLkupXOpyHEVlDLYtNkVEeULjJVryRJnPVAIvtiruGJkCUvDsReTZHEYPPyYAhSdpPZmEJIaialnXYHJIEmSGYsvFSMLANocTtJIKebqAYyTwjrAbbffeUlssgSErYpdcWNBGolWpwQxUUZMhHCTVqgDqaaztNbFBWMkVDuFzOQyWyCTZWqNXkaExPhYCPzlPYGsURxdptloikjoOUTHbrYuOyM
+    Should Contain    ${output}    priority : -1080684704
+    Should Contain    ${output}    priority : 696367053

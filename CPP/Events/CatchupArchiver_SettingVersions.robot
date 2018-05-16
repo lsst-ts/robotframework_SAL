@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MKvqJbKuHLTvyqfBUzZQRDTatHNnseGkPzEYJUDoXXURvoYEjrUSFvvdePtjxBhrZxKQuItzSwyPMDDQOpvYJGtlLlAJRDrEaYKFCmizJYbByyIPsdeEDvVDThmHRbqTfHuhbrihRaZoHpQFWUnOZTmAEuepUmtVvrdeUSdWOtvRCvWjqUDwkfZaNytJtsEChvIgMHqPAFOOdoVJZNwjLrxbGIYaSNWFgxEIRmWiLVmoXECtiPWcNsktGtxcDzrM -1807521210 -820046384
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send yKMkkQdpNxgzVQaPaLFBjQkONsVjCiaiVxlDFCqepWgtMvuuWJGyKniiDjYRtoYBsObInkCYBuOrBvHyxPQxuAFTmEiuRRozJFBqyZAPGURNyFAcmSXVqLCgHCaXnNMJvgmVMnsSprTzyUVtmdNArbtaNcVhMzjJVyhTHqNoYXyxCdZcjNUQlMRWYbaHsdmNIqDMUEBdafTfZkIxlmBrvRJZoLWHpBnKteMVKLHHLdvyEuvcPzWRDsKaBAtzcZlR -120647989 -1586157828
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -820046384
+    ${output}=    Read Until    priority : -1586157828
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : MKvqJbKuHLTvyqfBUzZQRDTatHNnseGkPzEYJUDoXXURvoYEjrUSFvvdePtjxBhrZxKQuItzSwyPMDDQOpvYJGtlLlAJRDrEaYKFCmizJYbByyIPsdeEDvVDThmHRbqTfHuhbrihRaZoHpQFWUnOZTmAEuepUmtVvrdeUSdWOtvRCvWjqUDwkfZaNytJtsEChvIgMHqPAFOOdoVJZNwjLrxbGIYaSNWFgxEIRmWiLVmoXECtiPWcNsktGtxcDzrM
-    Should Contain    ${output}    priority : -1807521210
-    Should Contain    ${output}    priority : -820046384
+    Should Contain    ${output}    recommendedSettingVersion : yKMkkQdpNxgzVQaPaLFBjQkONsVjCiaiVxlDFCqepWgtMvuuWJGyKniiDjYRtoYBsObInkCYBuOrBvHyxPQxuAFTmEiuRRozJFBqyZAPGURNyFAcmSXVqLCgHCaXnNMJvgmVMnsSprTzyUVtmdNArbtaNcVhMzjJVyhTHqNoYXyxCdZcjNUQlMRWYbaHsdmNIqDMUEBdafTfZkIxlmBrvRJZoLWHpBnKteMVKLHHLdvyEuvcPzWRDsKaBAtzcZlR
+    Should Contain    ${output}    priority : -120647989
+    Should Contain    ${output}    priority : -1586157828

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingVersions sender/logger tests.
-Force Tags    cpp    TSS-2633
+Force Tags    cpp    TSS-2678
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AoQqwSFQCHsoMpuPgjkvpkMpzaxXzzjXhkKYPeNKisESkLauBtwfnZqnrjdXhxNYhKLbcEuUBkkedFBZAEqjGWTWexnnPLBUqbLZPlkoVAdIpdoIveFhpyklgyCpZDnLxbCMIFOTarEdfqobxZehziSDNlAgbJuyMXhqMjJPMNCZErbyVTyeVnOBFoATcOAMnHuMfNabhOMwQvllmBSnmeHItQdpWcdaFeDbGYLJXHjQNpdSJnLyIyvMyhJUTiYq -386912381 1583445783
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jLeLUROqCBcNxcsjIWbgaGYgzCwJgcMgpiBzmckCbvaAnNmXaoYawbjZevfiylRaUqYmVmhwYmkhKnwkfgUgJixhsagEGvLValwCfQUWpPteZlDVlGCpteLSJBwGWemUDGPBWVlbqcPIpXzUkMaOTYmktdmWMxJytbxRFFWDCTykppeRGxMWVguMOBUiXJYHUVMQmAbuQpWafJldSlmybpZNvwNuLNrbChRVeJjmbCEdwoxAjKDAYcmpKlJXhFIQ -1026338934 307868332
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1583445783
+    ${output}=    Read Until    priority : 307868332
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : AoQqwSFQCHsoMpuPgjkvpkMpzaxXzzjXhkKYPeNKisESkLauBtwfnZqnrjdXhxNYhKLbcEuUBkkedFBZAEqjGWTWexnnPLBUqbLZPlkoVAdIpdoIveFhpyklgyCpZDnLxbCMIFOTarEdfqobxZehziSDNlAgbJuyMXhqMjJPMNCZErbyVTyeVnOBFoATcOAMnHuMfNabhOMwQvllmBSnmeHItQdpWcdaFeDbGYLJXHjQNpdSJnLyIyvMyhJUTiYq
-    Should Contain    ${output}    priority : -386912381
-    Should Contain    ${output}    priority : 1583445783
+    Should Contain    ${output}    recommendedSettingVersion : jLeLUROqCBcNxcsjIWbgaGYgzCwJgcMgpiBzmckCbvaAnNmXaoYawbjZevfiylRaUqYmVmhwYmkhKnwkfgUgJixhsagEGvLValwCfQUWpPteZlDVlGCpteLSJBwGWemUDGPBWVlbqcPIpXzUkMaOTYmktdmWMxJytbxRFFWDCTykppeRGxMWVguMOBUiXJYHUVMQmAbuQpWafJldSlmybpZNvwNuLNrbChRVeJjmbCEdwoxAjKDAYcmpKlJXhFIQ
+    Should Contain    ${output}    priority : -1026338934
+    Should Contain    ${output}    priority : 307868332

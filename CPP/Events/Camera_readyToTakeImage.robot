@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_readyToTakeImage sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 35329072 -1378648577
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1075365311 1324350149
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_readyToTakeImage writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1378648577
+    ${output}=    Read Until    priority : 1324350149
     Log    ${output}
     Should Contain X Times    ${output}    === Event readyToTakeImage received =     1
-    Should Contain    ${output}    priority : 35329072
-    Should Contain    ${output}    priority : -1378648577
+    Should Contain    ${output}    priority : -1075365311
+    Should Contain    ${output}    priority : 1324350149

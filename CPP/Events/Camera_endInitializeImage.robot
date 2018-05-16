@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endInitializeImage sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -682173383 -1458153356
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1786226257 -250907863
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endInitializeImage writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1458153356
+    ${output}=    Read Until    priority : -250907863
     Log    ${output}
     Should Contain X Times    ${output}    === Event endInitializeImage received =     1
-    Should Contain    ${output}    priority : -682173383
-    Should Contain    ${output}    priority : -1458153356
+    Should Contain    ${output}    priority : 1786226257
+    Should Contain    ${output}    priority : -250907863

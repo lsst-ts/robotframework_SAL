@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_shutterDetailedState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -746255670 -1801424408 930663714
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 317927633 914062595 169662402
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_shutterDetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 930663714
+    ${output}=    Read Until    priority : 169662402
     Log    ${output}
     Should Contain X Times    ${output}    === Event shutterDetailedState received =     1
-    Should Contain    ${output}    substate : -746255670
-    Should Contain    ${output}    priority : -1801424408
-    Should Contain    ${output}    priority : 930663714
+    Should Contain    ${output}    substate : 317927633
+    Should Contain    ${output}    priority : 914062595
+    Should Contain    ${output}    priority : 169662402
