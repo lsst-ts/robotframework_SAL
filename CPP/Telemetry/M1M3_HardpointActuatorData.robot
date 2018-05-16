@@ -27,7 +27,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
     ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${output}=    Read Until    [Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
 

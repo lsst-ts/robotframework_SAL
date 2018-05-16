@@ -99,7 +99,7 @@ function startSubscriber {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_sub" >> $testSuite
-    echo "    \${output}=    Read Until    [Subscriber] Ready" >> $testSuite
+    echo "    \${output}=    Read Until    [Subscriber] Ready ..." >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    [Subscriber] Ready" >> $testSuite
     echo "" >> $testSuite
