@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -852869973 -2015827768 -1755811433
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 53457416 -106538891 -3376937
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_ccsCommandState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1755811433
+    ${output}=    Read Until    priority : -3376937
     Log    ${output}
     Should Contain X Times    ${output}    === Event ccsCommandState received =     1
-    Should Contain    ${output}    substate : -852869973
-    Should Contain    ${output}    priority : -2015827768
-    Should Contain    ${output}    priority : -1755811433
+    Should Contain    ${output}    substate : 53457416
+    Should Contain    ${output}    priority : -106538891
+    Should Contain    ${output}    priority : -3376937

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsEntityShutdown sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: ocs
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py OBqUOsZLsdgnJjshPHOOzmPxovcHMYAhYpiSwPxiTpdAbZkyhSZkmetjTQGVGPsSejHADMpnhRdkMWkCLVaDEpQqWcfUqBwxHDXxynXDPwytVdpPHvIRkugNGBHtuIKm 28.7669 aZVDClulvAqDpTCMCfwtuEVAQhnlYywlvljYUeEuItNcuhCEhWZEORzqOgCVWxgufcZoSFpaYNbUsbMmgigcONDDBwzMZyuxEQrpdevGfQSMJknGjZvNNytsDDXCPKGfRoWjiAokzbAbvmPgkxdpdxQkArBOyoNVRQPlqrYUUiZYseJQvOBoLUmHKGXLiffcEEndKgNLaBrNWMRcayhzMYVsJfjrfxMGWEIQSmZqYCOAPOzDExfXkATDlUzKAqwG 665510308 1564995076
+    ${input}=    Write    python ${subSystem}_Event_${component}.py KHoWjcUqbSemjfhhmTKfrPBuGdMAtiQUwnQnXzFdtLmoBdWIMpvmfOCwwNVpCmBbMYsBrtjLhJiRUtmoHsdixKuswuZHUjyFeTVrHvjfBhhibOnAvUCJElniOvxvugRp 94.6845 RLNrtrfKGxyIUbRlWYpBTqBTamdRKJltyCJRBFKlrPOCmfVayrQfCClYeYPctcAruEehUCWBFmcZcMmMsoAxyoJzFbKQqBbDmUDWBTWOmNDzELMQdVgjoPkTcuOIuvfitahzZSIWIBrrPYBJvHwLyWcUKPmNqolxgRsNeMlRMeWVsxAbTlSYvfDbzfDBqYuUifChqUBDoEkEBozOrqPSipCLiBsmTPHXrcFFFwlUrAWUSqrDdaIYKXBYYwdNcXEa -344366811 -545900979
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1

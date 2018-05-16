@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    SummitFacility_SettingVersions sender/logger tests.
-Force Tags    python    TSS-2622
+Force Tags    python    Checking if skipped: summitFacility
+TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py dEoAcAwEzOsTAxJSRGuiCiIsBJZKCYRGxJSPcQyrZMxzyEGyOjJQNCcAIAwGNEphdLVpOyaSlJnwoPCpZUmGMIZGOrrmKlnaLHCoilyhULpHSePzThYDMrRAsugveuZGHUOezASAhZwadwNmYlEViJyKxYmbVrRxACWheaCQawVjMhzxPRDZkwBAHMXCnvGwpFlrScIpGHcaEMWsrptgDuqwaYRnKkUaNTkYqWfpuYkhOnYIpuFkPnBUynQnNSfiwpltagBetFIdXfCcgMElKGwViJKUfoNaBsYukMarjWSWwXHALOBRCaijbUanqhEbNctjTttgGIAdpZtDsqcQrJVVWMjGPIxYtSSOcsvBFhcPAKXqGQAjcnuduzcBekXAUHzvReUYYebkcGPVhSFXOMccxLBZKrQjbWRyMQVTwQBNgSbBPVGGalYlUXmNCAQMTUHmAfTQnpbrqzjmwGoWmXimhHKPIymrVVyNKJwgfxTbBAiGBjJQppIYdNwpiXMWxXaoEEEOZtGiTDIqaUgBDWFOvSsNSOcKdKTBNYHoGwhKJCXmtiOhrpvRizSWcfqBiGYyFMhCWaBzLcLsuGfaFTVVxivkcbpQHkTgTSwSucSOBndtXBMkasjsxJltjiCapmdAhSZGPXOlNLmwuitnqFqgDANsIDRodTTpwlNTrOgIDJTRUNrDBSEjONHAsWsadiPtiDsOmDTLqgoFtMoZQfQYYJEGvLYOgKvAiVpkptfrlZfdvrntFcLbzIDJjEYJvqhMYnrVQGfoxfDDapsJOPNMZawMfZHWSWraeeWKabtaHdwhoSXKNgdniWiMMAzNtCtwVucMQHUCVQtTgujuYUSMHokgLVDTofWRGmPpCSwtgnoEiNprEvZFjizZKCxtfwtRfdklJCOmqrzPISUasyIpBNSsgCLbLuXkjXYodTNrZChRfbMWKRSsWSYNKSquGkuXHnbfRoCWGaVFeHOkmtFR ohJVdsGqqSSYlJILqzZwzHeCSqrlMuIlaOhXWyUdbKyqnsdorQsNyGInipFeKgQdvMpmppICYpNWEhQtvaLbMcaYvNJQDWrxRjkBMXlgdzicxXvkhazpBEpIdFqbewwVSRoLdWGpuPvjDOTlttEtbLWzBMXoReoRVbwrPubmxnCIpDqvWbKttoNkLVAcoqPNwEAuoSIrFzvnpfIkWSdoinNPzHsusPmWEqDCiyR 86.8732 -1132820677
+    ${input}=    Write    python ${subSystem}_Event_${component}.py RsQXJQFMrtaBlkdaxlmmVNoojWGVbFksKKsGmpUOApgrXSypPuvltpGQmjlykgEScbyPyohAVgOHAbUindxPblyGnlzXStINfFKJBanOHpZZecAbQgiljOIfQCAPTOzxsdpJqZBoPhRieooVYsjVbcVLPYgbhUVNKVQDfqYsOSdbdaGSRFksLTASkJzjVRWmOZJOXaxiQCPdZrQYjkvJGeQQwldlqSfKObxegdBvzamluhGqROQXDTQuZqfafod VhSWBdpiBPjRXYQUVZAEkFgDdndlKCuLdswCZlEGjXIOHjiTMEKkxeItVlpfUUVfQfeyvQHrTeaZTehdZGEHpmvPbWCyJNAAFhVPFtpqalsqASgiJhFWZggjgzlGqwhcRNQkUabqFUhziMSujbtZVjZAVKXTXwShXUweLtlBHMFKBZzxRxlwbAEDlEXYOCiJFvRyEKPcmTcHtlYqVgbepUsyLhpPvcONqmOZwPiMHXdrQJAMlRHPdGHxARzAFtPpXuWSIFCOnafvEXQGzaJGZEurHVWJNeZdDBUGsXlZzNwKdEdyYebzkQTklUuPDsfmQQoGMOaalWDlfkXpOsyUVvKrSRLIuKqAIZBcQrvjvRppJcUzOdWajrtUKMDUyClnccszzApnwVEqEUGYJjhiFPvhDnvQiaiissdjdpbEVZrmhfTVBlMFwwVQxqaLzKdtWbujeyehXKeJkprffcKhXywlBYkffPYnoClivaYCfLqzbzYSCSveXml 9.0329 12708589
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_SettingVersions writing a message containing :    1

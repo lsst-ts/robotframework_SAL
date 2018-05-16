@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_SettingVersions sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atMonochromator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py OBwuNtgZEyDDSFhlMRdkmdMlTQvcuFcShLASaMEjZddwGTPLbicbkKIjbonXnLyzTtPSYlgVRmpGdUgkrgvDpQzVOpPrgcdgNkiNLwTDawZlLmCVFfhzPItdifQRCNszQaQYgHwFQAZYyCmhXxOVbRjcwgsfcASwSBimDXeXxrtInkIpDwzMHGPAyXwOOuqOcYZhpRgYkQSmdRYiaXcHgsDRwOLDwxylrADYbokehnNbqAqbgjPOBsLyndQWfrgN ilwcApMzYZygqSdeRGlMDkXZoNTOsMSzoQyAtOPlqZUEVALCiQbsLKizXsxMrvvbOhjVpTnvTGevvNaRJSWaBirbDUEpBisnwqZBhAoTeTxNhBbLFjASnEUSbfofNwLnVJDqwTVvbTwFMyifqgYBCzQXZPyqsykBkoYMDMofbEBWkNQGGcHySoWfmWdAoYSfEdbeMLKKboerbUeyMPstKVFWMXRppzVnaVfEoeVmdgMeYnbfgPlhNTfuyKcBJJet -318377143
+    ${input}=    Write    python ${subSystem}_Event_${component}.py luIfbeamNIryPPMMRdPvRIHbkKquaKrZpCFMtewlEdpBFxWQxIADHrHCfPIEyaQoIJPkmtxtfYWNRJzfDURBmxzUpryDCrANzoqbYCqCdHwkNicXRXNddHpXCIuNKjILeyaatlbcMQOngNlJgodjJMQUkJhTVzgOqefNWbptyvkkWrutZDyJphjEzITSdXmhYMJjIBsYgBHoDGyfrBIIxoxGTgAUUnjiewPcjQqcJXrAgHkhUBgukYKbkgevjaIA sfsSEQuULhgXTQUFIiLThDOkKqPvIbJXEEroKqQAmQIAxErXkNnsbVhQrgFOMyLKwUjjdsSRiyUQyiBtGpbqBASaGfcmSPBXdDXniGTrDPRluVhTEYNtxMvzJeTOtaBnHipkdbnGOlhsssCJKBsgvNLMswjBvVyPBaDpKAfBlPjTRMMJqdKNysVhgSELhCdctrrVQxtnRvRdusoCFQtPPsLjVOiRJrmfTXOEvnMzdooAsBhSWRvbZLyeCJDntDdb -733754297
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingVersions writing a message containing :    1

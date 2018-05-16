@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_CommandRejectionWarning sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 70.1608 INXuDVqimBXTjruYCFSljZOWWHypvxZoSmUoZNWmjWPBHhiVRnrrtdjCbFIjTglc bLcxBriLfflTmLbGtjUbuCaCliBiqDeermoCMLplrVGlWqQOPcLyDbdGtkppfwdAvMwzcOkSwlpsCNADMjpskKduuGZmXdhtekoOXzGbbYnCtCezNuxLYsUDrCFrfLna 1424640947
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 88.3539 jxbfBrrAWFwjIigDldZEAhFOAUVIZUaVUaAXFWZzKgkpqZScpkiUhBDhFonkSTQk ijzZLTJeYdyOwtllYdqdVZRNbveaVpWTTNVFtkwUMpHiHzblDVWjXMscfijtbnitpKdNkymYrtVRamzXRRvswoZMrVnemhmXWeHOXEOLSzOrFlvZwiVsCVlstYGpxbxa 1765924193
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_CommandRejectionWarning writing a message containing :    1

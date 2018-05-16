@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M2MS_TargetForces communications tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: m2ms
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

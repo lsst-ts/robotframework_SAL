@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SettingsApplied sender/logger tests.
-Force Tags    python    TSS-2623
+Force Tags    python    Checking if skipped: archiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py lnVDhrOjfGnJmkfFVFNaUPAIuNNRoZKNRMKHPlxUSxZIryZPuShphywZpvkQTRPDcXCBiIccoWwNMaVxrEumUkwLLKUojSTeROXGsrnRurfToilhkkSHnBfVHdgFvxbVmhiTYGrHZfIMranoRYaOhMLtdEMGuZAHjrtmshicKLrLyYuwQxfGbIRuRGDwHxssyQkTuUjDrlNbvoIJuefBGOSKHXcnAyYVDrbfnpjWZbYetqfAkMxKcOmgNyqEczef -1049343047 -1912035923
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JQCKeeKLATyczHmydKPVWmIkfmXXdkaeWvhcBIbyKLSzwSKBprpTGQgcDaiSpqpmooUWYSgEWnrKpvRxegRzfPxhgDvUoAcjjUgsIoYIEloycNkvzrKUvavKzyUxitnMVzCazavpXhmgyyErjlFRklrsFixKMjxkWecsSPVFsKWAvXzxIswGYoeQQTZMQWiNiBEBSdhCVUdTYULnMMBmzYFCChiQfSBiEeafXSJqkNFPmBgvVVaGdpvFTpeNYbEZ -862003294 905585616
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingsApplied writing a message containing :    1

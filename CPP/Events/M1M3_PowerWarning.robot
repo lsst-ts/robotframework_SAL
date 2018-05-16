@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 53.7428 1 1 1 0 1 1 1 1 0 475303440
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 63.9589 0 0 0 1 1 0 1 0 0 179563996
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PowerWarning writing a message containing :    1
@@ -57,17 +57,17 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 475303440
+    ${output}=    Read Until    priority : 179563996
     Log    ${output}
     Should Contain X Times    ${output}    === Event PowerWarning received =     1
-    Should Contain    ${output}    Timestamp : 53.7428
-    Should Contain    ${output}    AnyWarning : 1
-    Should Contain    ${output}    PowerNetworkAOutputMismatch : 1
-    Should Contain    ${output}    PowerNetworkBOutputMismatch : 1
-    Should Contain    ${output}    PowerNetworkCOutputMismatch : 0
+    Should Contain    ${output}    Timestamp : 63.9589
+    Should Contain    ${output}    AnyWarning : 0
+    Should Contain    ${output}    PowerNetworkAOutputMismatch : 0
+    Should Contain    ${output}    PowerNetworkBOutputMismatch : 0
+    Should Contain    ${output}    PowerNetworkCOutputMismatch : 1
     Should Contain    ${output}    PowerNetworkDOutputMismatch : 1
-    Should Contain    ${output}    AuxPowerNetworkAOutputMismatch : 1
+    Should Contain    ${output}    AuxPowerNetworkAOutputMismatch : 0
     Should Contain    ${output}    AuxPowerNetworkBOutputMismatch : 1
-    Should Contain    ${output}    AuxPowerNetworkCOutputMismatch : 1
+    Should Contain    ${output}    AuxPowerNetworkCOutputMismatch : 0
     Should Contain    ${output}    AuxPowerNetworkDOutputMismatch : 0
-    Should Contain    ${output}    priority : 475303440
+    Should Contain    ${output}    priority : 179563996

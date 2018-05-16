@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_SettingsApplied sender/logger tests.
-Force Tags    cpp    TSS-2620
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send eCTwCQVnuXDnYfurAdBctVPZdkGYPoIzzkbjLqHEEYUefDBAXzSvfzprUfgaInsmlhioalpShJbIknPqAFnaIRsXKgEFpZsTXNRJqvkHYrqFZJUqkWVJptoKGafNDznXGKfmwEVfqWjoFGIQXCYvjcpYQkWozVpyRHcQaffbipSxtLkfeSRMwoXEHzhaChubpRmbbOUBEdwzrAKAWrFtWMjiHyyRylLUjEdmpvFOxQuebAiEspbPuqPOtxIdtwcx -1903007548 -909441278
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xywUIdwRnkkVNFNMFfJmgektIShBoJbRwbsmrbTEJhaEfdRpoWmbcNqFvNJzAAuWclLvnYqROAFruLoroRQOFZlDSuyRGowghhnFWSOLcsDQuJGGXlEtUPAxjseUNscCpnFTHZVnWGxMrFjNoQtiulyblKQtlJYGBohqbirAPXzBGMnZBKMYhFzvLumnuXNgnJVPgIlqLbihJshkejGoOZGxfZossFTLuajUjReXuEnGawBuxKtEraHPvYeCHYBc 715579348 -1171090119
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -909441278
+    ${output}=    Read Until    priority : -1171090119
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : eCTwCQVnuXDnYfurAdBctVPZdkGYPoIzzkbjLqHEEYUefDBAXzSvfzprUfgaInsmlhioalpShJbIknPqAFnaIRsXKgEFpZsTXNRJqvkHYrqFZJUqkWVJptoKGafNDznXGKfmwEVfqWjoFGIQXCYvjcpYQkWozVpyRHcQaffbipSxtLkfeSRMwoXEHzhaChubpRmbbOUBEdwzrAKAWrFtWMjiHyyRylLUjEdmpvFOxQuebAiEspbPuqPOtxIdtwcx
-    Should Contain    ${output}    priority : -1903007548
-    Should Contain    ${output}    priority : -909441278
+    Should Contain    ${output}    Settings : xywUIdwRnkkVNFNMFfJmgektIShBoJbRwbsmrbTEJhaEfdRpoWmbcNqFvNJzAAuWclLvnYqROAFruLoroRQOFZlDSuyRGowghhnFWSOLcsDQuJGGXlEtUPAxjseUNscCpnFTHZVnWGxMrFjNoQtiulyblKQtlJYGBohqbirAPXzBGMnZBKMYhFzvLumnuXNgnJVPgIlqLbihJshkejGoOZGxfZossFTLuajUjReXuEnGawBuxKtEraHPvYeCHYBc
+    Should Contain    ${output}    priority : 715579348
+    Should Contain    ${output}    priority : -1171090119

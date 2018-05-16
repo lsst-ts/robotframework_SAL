@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YaXMtyhTSMLyiKmtrnfqKxfHgzFVTjrPrUFlqBeqSFgrVGkciGMwqeunISdtbkyzcfUysLEfJFCEHCzMVSJPYLmneNYHFqjQgzZeyyhnVVPHFOgGfxkhzKQCtQSuWfCKWLkABkhpXHAlsCFlHbufNcPdJWvwaFhoWtgFINcLqbKnaCAUlffwpNvLtSmxGivqKkeIvTzTMzDzEhhZqUisrkHvxpfFNRPXRgJutGAbCYZBxBgpuOXnAhfFMbbwCqhwjooIFogtPohwUIPvSmKYONQcGKjTEaKoXKfYmyIIZQacZgGItHUTSySndKtPQZEJlLZrcbrhwxJsQOKeiRjgiHxOOlcAejOQoNpRgljvJUuDxXdoYmeZYfKVwwttJDIEVHchU 510284890
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DPInNzvrHETyMlTWQppweHmeufCUbHxINxLMSkhLKLsbHDxRSMPMzgonzKSuVssCtrJAyfFRBIpRiXCljZngeeQArMHzlpOgLkRqznJWhClkafwbpmgyTNYIQLWsIiCTAdEmYpahjVBLZpyBggDGcCLCykyXMLZZsbGdfxQmUVEwRBPoWydHZxbjofGyiSgLQVyIoYezxDEzGODvfMUQYgmWOJhknBnDItVEwEPtDieoKundgoNrcrvhozPLrZjVHrvJJoRfyYvrEBAfIxonAtmvAUZjrzbYAvGmyhdfIFZbMytfqPhJKwTevZzbdzQASrFjnglfBEDCmvELIzriRGUYXMZbqXHlioMYiblgwanBBxOGYKeJDgGOowScBpKCMAaAifqySteBDQgvoQmMhcwvBedMSTeTpncOlbhoalCXPFZogWiQGSTzLJpvFCPOtphmLqijJFjuhGzLnChKcbLvawOrEAekXUqZeUzKFrPiRrfGfIYtAHdkOVmOveQsgQsysEZxyutrMTWnhBEuXLByxIMeThXeUjcjkMXCRsOWnymtFRjbAibEMeYAfCDtKCMeeaDzHeYuzqSHHXdShvekfafHPXmgDhEVSPoPFtjujccEJRDFxxhKFsglHeBkqjxylHHZCznJQGBBzGNKXILrihGLiYZirRLkkhVasapBcOSAiOIJlEXKpGKwSdkfmmxmMkSOjDbUBVNfurnfarVnbBkcoJeMDoZLCHULlNkZHfZJFvDGBikzFM 359741410
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 510284890
+    ${output}=    Read Until    priority : 359741410
     Log    ${output}
     Should Contain X Times    ${output}    === Event APSSubsystemError received =     1
-    Should Contain    ${output}    errorCode : YaXMtyhTSMLyiKmtrnfqKxfHgzFVTjrPrUFlqBeqSFgrVGkciGMwqeunISdtbkyzcfUysLEfJFCEHCzMVSJPYLmneNYHFqjQgzZeyyhnVVPHFOgGfxkhzKQCtQSuWfCKWLkABkhpXHAlsCFlHbufNcPdJWvwaFhoWtgFINcLqbKnaCAUlffwpNvLtSmxGivqKkeIvTzTMzDzEhhZqUisrkHvxpfFNRPXRgJutGAbCYZBxBgpuOXnAhfFMbbwCqhwjooIFogtPohwUIPvSmKYONQcGKjTEaKoXKfYmyIIZQacZgGItHUTSySndKtPQZEJlLZrcbrhwxJsQOKeiRjgiHxOOlcAejOQoNpRgljvJUuDxXdoYmeZYfKVwwttJDIEVHchU
-    Should Contain    ${output}    priority : 510284890
+    Should Contain    ${output}    errorCode : DPInNzvrHETyMlTWQppweHmeufCUbHxINxLMSkhLKLsbHDxRSMPMzgonzKSuVssCtrJAyfFRBIpRiXCljZngeeQArMHzlpOgLkRqznJWhClkafwbpmgyTNYIQLWsIiCTAdEmYpahjVBLZpyBggDGcCLCykyXMLZZsbGdfxQmUVEwRBPoWydHZxbjofGyiSgLQVyIoYezxDEzGODvfMUQYgmWOJhknBnDItVEwEPtDieoKundgoNrcrvhozPLrZjVHrvJJoRfyYvrEBAfIxonAtmvAUZjrzbYAvGmyhdfIFZbMytfqPhJKwTevZzbdzQASrFjnglfBEDCmvELIzriRGUYXMZbqXHlioMYiblgwanBBxOGYKeJDgGOowScBpKCMAaAifqySteBDQgvoQmMhcwvBedMSTeTpncOlbhoalCXPFZogWiQGSTzLJpvFCPOtphmLqijJFjuhGzLnChKcbLvawOrEAekXUqZeUzKFrPiRrfGfIYtAHdkOVmOveQsgQsysEZxyutrMTWnhBEuXLByxIMeThXeUjcjkMXCRsOWnymtFRjbAibEMeYAfCDtKCMeeaDzHeYuzqSHHXdShvekfafHPXmgDhEVSPoPFtjujccEJRDFxxhKFsglHeBkqjxylHHZCznJQGBBzGNKXILrihGLiYZirRLkkhVasapBcOSAiOIJlEXKpGKwSdkfmmxmMkSOjDbUBVNfurnfarVnbBkcoJeMDoZLCHULlNkZHfZJFvDGBikzFM
+    Should Contain    ${output}    priority : 359741410

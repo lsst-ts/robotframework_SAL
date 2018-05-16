@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingsApplied sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: promptProcessing
+TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py HWpQkYWFHHRdyOPHgFEYQmQldLPdgYEMFmFexXREZOxzwuqldZLyxAEWFyYsFCHqUvtoNxyUDnhYcHeKfGUiwLKrhYctSOWXjEkGKGDWyPOmzAnyJRKrJxsOchmurHBPprmsTVbZKAsPHRgbuElMFaEPLTkaALYBthyPsBuYLxgTpWyOzrrqtudCaUlCgsobcbNVXXocqCeyEJcXqMuIkwhpFTfxjioEgyBaUIDIdhoCejLrZWdMesLwKFEOYXXJ 805388499 519739533
+    ${input}=    Write    python ${subSystem}_Event_${component}.py xwZBOIUoIbklOwoEbJJueSyVnnNUGyQTsYTVrlJDchBaQhxvofdVGEtFRZzcQjoRjOOFeYtAmxamUAKluWgfLtILVqgFuJbUoZaiKzNSsuywrfliGAQmmzGpzDZfKVkRuLgyGQzrUHOlmvrauzIgdbfqucCmeZmSxNAaWwFSoCfqadTkZbixCMDQknRMIhXlnpdYNInsWsTHdrffwMDwDjqyydjMjCXaPXMWjDgCzRlOADpjlCURVqOakvvrsPfJ 1972706369 -1802003268
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingsApplied writing a message containing :    1

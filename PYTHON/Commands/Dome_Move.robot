@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Dome_Move commander/controller tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: dome
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 43.5375 7.337
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 81.9157 6.6102
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 43.5375 7.337
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 81.9157 6.6102
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    azimuth : 43.5375    1
-    Should Contain X Times    ${output}    elevation : 7.337    1
+    Should Contain X Times    ${output}    azimuth : 81.9157    1
+    Should Contain X Times    ${output}    elevation : 6.6102    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    azimuth = 43.5375    1
-    Should Contain X Times    ${output}    elevation = 7.337    1
+    Should Contain X Times    ${output}    azimuth = 81.9157    1
+    Should Contain X Times    ${output}    elevation = 6.6102    1
     Should Contain X Times    ${output}    === [ackCommand_Move] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

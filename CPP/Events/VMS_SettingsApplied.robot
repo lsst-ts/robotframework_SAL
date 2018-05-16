@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 4.3425 yxCMQqOCfgQkAvKfFNcTAszdCyNFNDacTfjEWtQakAycdjlcVBPTqCnRMXJtiAFRmHtYXkimHriddjWUyyJncLGNMzCIZaioWQsgybbaIjzEBuxYBqjnGuBHGWlpzgBeSKpLbArCSRnOYKKBPuxnCviriBOhvJomdafilgJVnuqbKDopaBIhwosYUXHVGpFXwFwzjMpHezBXAGDiaRCAJDTlkHTmyIWmnABgaffJfrLlIOlYrFZbZemnCmFsHZZR 43889047
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 66.3289 SALyrpQpRzIsZwrhTgmjufnDbiLlbpxyAlrOKaUDgfsJKtwCaSlecORMsLgQyFbQpBjWvBRZpuZBIMqrvHUcXJDeDcjwXZgVcKvLElmNREPYvahkeCQrbxnVjVXLqMJEZgosiQjdxCmIzkbxNgbwdqlzQoqBxMycilRiIiCAcUSmcHpuefrqdkfVjFVjJahrGOyvWfCAJTcTWWuZJQPnGzqBMDrCXjIvXKBAXLXRSzqcPZtbDbhCCDtbIXoOVouT -892602971
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 43889047
+    ${output}=    Read Until    priority : -892602971
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Timestamp : 4.3425
-    Should Contain    ${output}    Settings : yxCMQqOCfgQkAvKfFNcTAszdCyNFNDacTfjEWtQakAycdjlcVBPTqCnRMXJtiAFRmHtYXkimHriddjWUyyJncLGNMzCIZaioWQsgybbaIjzEBuxYBqjnGuBHGWlpzgBeSKpLbArCSRnOYKKBPuxnCviriBOhvJomdafilgJVnuqbKDopaBIhwosYUXHVGpFXwFwzjMpHezBXAGDiaRCAJDTlkHTmyIWmnABgaffJfrLlIOlYrFZbZemnCmFsHZZR
-    Should Contain    ${output}    priority : 43889047
+    Should Contain    ${output}    Timestamp : 66.3289
+    Should Contain    ${output}    Settings : SALyrpQpRzIsZwrhTgmjufnDbiLlbpxyAlrOKaUDgfsJKtwCaSlecORMsLgQyFbQpBjWvBRZpuZBIMqrvHUcXJDeDcjwXZgVcKvLElmNREPYvahkeCQrbxnVjVXLqMJEZgosiQjdxCmIzkbxNgbwdqlzQoqBxMycilRiIiCAcUSmcHpuefrqdkfVjFVjJahrGOyvWfCAJTcTWWuZJQPnGzqBMDrCXjIvXKBAXLXRSzqcPZtbDbhCCDtbIXoOVouT
+    Should Contain    ${output}    priority : -892602971

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 4.1302 1821 -9677 -25923 23261 29267 -31331 23927 1789 24253 -9399 -21193 -30658 31685 4998 13959 16429 -29569 -4858 test test test test test test -17672 -13556 -25539 19780 28481 19159 -24468 -23998 32347 -16953 -23502 -18749 -20282 -26899 11438 6494 -19823 -17966 13666 2257 -14457 -24090 -1695 19166 test test test test test test -21323 14692 -21911 -6347 17396 6961 -631 -19151 -10654 20399 25131 -1359 32650 21889 -12821 24908 28935 2497 -1495634950
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 36.1446 -11847 -23582 -4537 -19726 -6607 13730 -3017 -31127 11984 2707 -15170 -17629 9047 -10017 -2759 -7547 -21738 19853 test test test test test test -30959 -7085 -14277 -24100 7098 -7585 25962 7132 10682 -16388 -20402 -375 25939 -14042 -20569 14835 -8554 24234 12791 12735 9707 3499 5653 -4636 test test test test test test -26692 -19728 12274 9470 -16351 2760 27059 2216 4493 -27027 -14920 -31907 29398 31440 8554 -26605 -150 18135 -1881374018
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointMonitorInfo writing a message containing :    1
@@ -57,20 +57,20 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1495634950
+    ${output}=    Read Until    priority : -1881374018
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointMonitorInfo received =     1
-    Should Contain    ${output}    Timestamp : 4.1302
-    Should Contain    ${output}    ReferenceId : 1821
-    Should Contain    ${output}    ModbusSubnet : -9677
-    Should Contain    ${output}    ModbusAddress : -25923
-    Should Contain    ${output}    ILCUniqueId : 23261
-    Should Contain    ${output}    ILCApplicationType : 29267
-    Should Contain    ${output}    NetworkNodeType : -31331
-    Should Contain    ${output}    MajorRevision : 23927
-    Should Contain    ${output}    MinorRevision : 1789
-    Should Contain    ${output}    MezzanineUniqueId : 24253
-    Should Contain    ${output}    MezzanineFirmwareType : -9399
-    Should Contain    ${output}    MezzanineMajorRevision : -21193
-    Should Contain    ${output}    MezzanineMinorRevision : -30658
-    Should Contain    ${output}    priority : 31685
+    Should Contain    ${output}    Timestamp : 36.1446
+    Should Contain    ${output}    ReferenceId : -11847
+    Should Contain    ${output}    ModbusSubnet : -23582
+    Should Contain    ${output}    ModbusAddress : -4537
+    Should Contain    ${output}    ILCUniqueId : -19726
+    Should Contain    ${output}    ILCApplicationType : -6607
+    Should Contain    ${output}    NetworkNodeType : 13730
+    Should Contain    ${output}    MajorRevision : -3017
+    Should Contain    ${output}    MinorRevision : -31127
+    Should Contain    ${output}    MezzanineUniqueId : 11984
+    Should Contain    ${output}    MezzanineFirmwareType : 2707
+    Should Contain    ${output}    MezzanineMajorRevision : -15170
+    Should Contain    ${output}    MezzanineMinorRevision : -17629
+    Should Contain    ${output}    priority : 9047

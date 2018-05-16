@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_start commander/controller tests.
-Force Tags    java    TSS-2621
+Force Tags    java    Checking if skipped: promptprocessing
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1375617275 -91399180 246013414
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -2099858897 1943774409 426248375
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_shutterDetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 246013414
+    ${output}=    Read Until    priority : 426248375
     Log    ${output}
     Should Contain X Times    ${output}    === Event shutterDetailedState received =     1
-    Should Contain    ${output}    substate : -1375617275
-    Should Contain    ${output}    priority : -91399180
-    Should Contain    ${output}    priority : 246013414
+    Should Contain    ${output}    substate : -2099858897
+    Should Contain    ${output}    priority : 1943774409
+    Should Contain    ${output}    priority : 426248375

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11.1483 qqJrtRRRDntaOYNqtWNgwoQeRmyDMUJNZxBqLvnKoLAorYuNPIboUYbqAzDqCRIsYgnSaamsVWVuBShfHkBsMVzasGbVmRbFmosNItaUZOZFVVELMHgWanVlXekrqVPdsAAHwQFmTWgWYoxDtyhdiWuJrtAVVEnHwccphgpvKXKxaPyTVwmZgSTtIksbJSNIBzmRaLEPkNtYsyRDBhlPMsdTcokvCzYcOZLEliSjJtLnsAWzzfKwOdKhKiOsEzlUQRFtCptdKbjdyjCDBBqBVucgQhkTCte -389408939
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 35.0148 nnveBoSSuQGFSwpUzbrOHZFfYsipQfIiQrWPrYFmyNpnUUckaywvwUoxdIWhuFMekTgyIudphKyoWDvpkmekgbeaMMuIFWgKNpzzsIstjXVcpwyzXqAZdixtqllnIEVAzbxfCudJpucTFOVYWOarfxhjDUvTKyuEOpADEoTkkEYYjFcZhuQhWGNXOerCoEQuDAeOdXNAHlCQsLZgsbRnesoStBgWgTsBHhaLoFnUAxLmjUdPIGLOOSzRszCMKfJdVMeIcwZlhDJkzLbNObBLeWIZoFfLYDbhIEnZdaEHfzTWElzyaVHWmGFVQJnvobaJXhVXAhLNnYRIidrDEbKPhbJDzQKFrrXkglVyLTNGPqkOBQueruRwoEgDQRFoaAtyPjpUirnJuwpPXmjUBmpcdLHNsJAwbGjicGTMBkpRqDKHiVEDPZQoRXWXVSeEudOasRzRGlFfPCkloTuMaNvafMOTlxCjDZCxerQrAAVfsOFoZigVLwUwpOATetIeLwQmgedtBGtQFbEKrxvKqfMAlozkmZtSOFXdoGHJQfNIjhOvdTCXFHahZwrecDxXHAJjqLasmDWkNmLDudYYeZheHrqtljeryWPebjWTwvLfgcddvcXevnFzeSwwCBrenBAoSPZXooSgYFhzIfsVEOtCMPopHGVqHVbyXomQNPrbxMlWWnIBqgNpdPKnLRcASUqqadFUXQLAXYNhanbDvCODQkCnUxpkslFljFHtXjEIylPdZLirnfgJoOepQeLIsXXcNFZqqzXyzhBfmJyBWSvfQyUfoPQekaIPhvuJVCeGcREuCAISgSqRGWJcXnWRYYrgCxbqeLsgNpQtxGRSqgFisXQidWdYcIlkTejpRxpWFagPhNdDiQDJjSQxGmWculpakwuUZfgtIdwnzcofsfiEOkgUzYeUxunnHqANfhgNhshNWcYHIwqSryUJQihBzAyJNGNGjHuBMDHnqpAi 108106253
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -389408939
+    ${output}=    Read Until    priority : 108106253
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    timestamp : 11.1483
-    Should Contain    ${output}    recommendedSettingsVersion : qqJrtRRRDntaOYNqtWNgwoQeRmyDMUJNZxBqLvnKoLAorYuNPIboUYbqAzDqCRIsYgnSaamsVWVuBShfHkBsMVzasGbVmRbFmosNItaUZOZFVVELMHgWanVlXekrqVPdsAAHwQFmTWgWYoxDtyhdiWuJrtAVVEnHwccphgpvKXKxaPyTVwmZgSTtIksbJSNIBzmRaLEPkNtYsyRDBhlPMsdTcokvCzYcOZLEliSjJtLnsAWzzfKwOdKhKiOsEzlUQRFtCptdKbjdyjCDBBqBVucgQhkTCte
-    Should Contain    ${output}    priority : -389408939
+    Should Contain    ${output}    timestamp : 35.0148
+    Should Contain    ${output}    recommendedSettingsVersion : nnveBoSSuQGFSwpUzbrOHZFfYsipQfIiQrWPrYFmyNpnUUckaywvwUoxdIWhuFMekTgyIudphKyoWDvpkmekgbeaMMuIFWgKNpzzsIstjXVcpwyzXqAZdixtqllnIEVAzbxfCudJpucTFOVYWOarfxhjDUvTKyuEOpADEoTkkEYYjFcZhuQhWGNXOerCoEQuDAeOdXNAHlCQsLZgsbRnesoStBgWgTsBHhaLoFnUAxLmjUdPIGLOOSzRszCMKfJdVMeIcwZlhDJkzLbNObBLeWIZoFfLYDbhIEnZdaEHfzTWElzyaVHWmGFVQJnvobaJXhVXAhLNnYRIidrDEbKPhbJDzQKFrrXkglVyLTNGPqkOBQueruRwoEgDQRFoaAtyPjpUirnJuwpPXmjUBmpcdLHNsJAwbGjicGTMBkpRqDKHiVEDPZQoRXWXVSeEudOasRzRGlFfPCkloTuMaNvafMOTlxCjDZCxerQrAAVfsOFoZigVLwUwpOATetIeLwQmgedtBGtQFbEKrxvKqfMAlozkmZtSOFXdoGHJQfNIjhOvdTCXFHahZwrecDxXHAJjqLasmDWkNmLDudYYeZheHrqtljeryWPebjWTwvLfgcddvcXevnFzeSwwCBrenBAoSPZXooSgYFhzIfsVEOtCMPopHGVqHVbyXomQNPrbxMlWWnIBqgNpdPKnLRcASUqqadFUXQLAXYNhanbDvCODQkCnUxpkslFljFHtXjEIylPdZLirnfgJoOepQeLIsXXcNFZqqzXyzhBfmJyBWSvfQyUfoPQekaIPhvuJVCeGcREuCAISgSqRGWJcXnWRYYrgCxbqeLsgNpQtxGRSqgFisXQidWdYcIlkTejpRxpWFagPhNdDiQDJjSQxGmWculpakwuUZfgtIdwnzcofsfiEOkgUzYeUxunnHqANfhgNhshNWcYHIwqSryUJQihBzAyJNGNGjHuBMDHnqpAi
+    Should Contain    ${output}    priority : 108106253

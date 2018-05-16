@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -387071755 9.1811 -81882367
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1979287075 56.6512 -266521393
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -81882367
+    ${output}=    Read Until    priority : -266521393
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -387071755
-    Should Contain    ${output}    timestamp : 9.1811
-    Should Contain    ${output}    priority : -81882367
+    Should Contain    ${output}    errorCode : 1979287075
+    Should Contain    ${output}    timestamp : 56.6512
+    Should Contain    ${output}    priority : -266521393

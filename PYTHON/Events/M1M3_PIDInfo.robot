@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_PIDInfo sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 92.6458 80.1146 91.2669 65.2653 70.0306 33.9469 8.2657 2.139 49.9131 69.2443 44.9293 98.2817 49.0901 66.3639 94.4751 60.4696 77.9784 37.3539 76.1286 90.8169 46.9971 22.7329 7.2537 66.7205 1.3336 50.2869 93.9919 78.4927 18.1945 17.338 54.6132 84.2952 26.1336 69.1952 68.2977 6.7171 16.5691 45.7481 63.8341 93.1341 39.1959 76.7493 44.7699 70.4083 32.4151 88.4502 67.5448 78.5629 14.9956 0.0263 70.6742 59.5385 81.3201 51.2633 88.7236 5.3988 21.4911 73.3491 3.1398 84.2349 89.9134 2099043765
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 4.9775 61.7081 30.2692 22.7411 61.8062 90.8324 89.4285 96.7887 81.4714 72.8102 90.3671 76.8895 8.361 90.8686 17.3819 1.6695 54.8752 73.0263 9.7424 16.959 45.3968 68.4305 58.7735 21.6515 19.3894 28.7223 8.2169 3.7704 86.9099 6.0595 21.2663 69.0372 33.7937 98.7024 64.0366 28.9454 84.088 24.1196 85.6084 80.9503 55.8875 68.8835 53.2055 40.4298 98.6015 56.3811 10.0781 98.7463 5.6766 45.132 42.7204 48.6603 45.3972 90.2609 75.2415 37.3429 22.7158 70.747 25.2655 43.7955 67.5322 2098655385
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PIDInfo writing a message containing :    1

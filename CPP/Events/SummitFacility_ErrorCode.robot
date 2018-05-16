@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1511946901 76.3159 1379800381
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1572074691 85.5142 -581518715
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1379800381
+    ${output}=    Read Until    priority : -581518715
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : 1511946901
-    Should Contain    ${output}    timestamp : 76.3159
-    Should Contain    ${output}    priority : 1379800381
+    Should Contain    ${output}    errorCode : -1572074691
+    Should Contain    ${output}    timestamp : 85.5142
+    Should Contain    ${output}    priority : -581518715

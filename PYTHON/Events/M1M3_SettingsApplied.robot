@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_SettingsApplied sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 51.496 CHeiQiwdsYWkSvAgGMnvDPvbicDtfxQkGxXJwEBbIubLXDvdReaAcQdshrzRUYqKgnODoxesQDkNXmloKOGlGSVprAviGVZvlJZWdvbKchJDhRnEKUeiueSRCTVgtBmWhnGMtoybSqLpcfBKPmspbnmXBwfhyUYWTFTnXPwhbFdNZjZXjascrdYAKYtUnnoCENleliHEOyBwFGYtLoWGaAErFwGDIHPqFbUaAjUrwDwuqdGTuwyQCufQnmwTuiis -1128775607
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 20.9144 NddNkjmMxKZAaZxhQHUnxRTsrhkhfyafXAEOjKtpZQaZVLvVOfIJMLUwfIydLWSCLUjHXztidSaXGfBaotlivVemLKMDXsHGbHjOKDvUAFAgADUvEcLbGRHTvQBXSzRQrQfGxLvrtsPLdlTlwkStTEtYkierWuZjepJwkcRxwGWihPhHNjTEuDVzhyFeqaGSvFKnjOZfpzZjVFBGGfqFEnPypVaYHOvsZygOHXRwMVFPmwpKEBhpkUouvVpZOEKL -1890211809
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_SettingsApplied writing a message containing :    1

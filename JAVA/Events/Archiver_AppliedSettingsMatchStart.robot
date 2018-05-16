@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    java    TSS-2623
+Force Tags    java    Checking if skipped: archiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1452816030 cPjnnWzqxnuqijYvOyTPQMHmYDLKjNRwpIjpkgxlVymvZhhSQlrQrltcjet 1875042926
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1188628732 xENZKKDRAJhKYSQDPCGxonjwfYmEKiOTKsEIEkFitnKUMPCeLYDKQunFFEkFWjTvsKNhwNLmnxGwNoRLIUtJmLOvYvsVWIBZacRfBvfqFdVEzgzALGUZrwIqYbsxLdSmaCPVgbQgIObekwPeXMfBldAcxRvWwtQouHSIJLsUncSnBLQFSYjqtRTfkzcdkViiYRuypMKHPuyBSjngghtkOaPXVtAkggsWIoXdyNZsmKVAXoRWjAuBogCkfXQbHlYhqaPCMKhSrlfbZXoQDJcoGVFkpNuFqEFnjPSkqBxAOLfdgUlOcoOsELZZjoKCMlBmHRVvfHysgCkumSTeBLVZVBlOeyixMWjLxyXmhjApzlwyqcDibJuKKsYbKOppMpbuASHxXdhxTNgPntPQpgnmWRtKGAhiCYTIBPcbYvPghtzmRpPnLTnIVSxPHmtHtwloNCDZZFbPlyMJqbDqlOSRdIppVtixMyvxJMjhJaWPoDvvcpydoDpSKWFHnvAkqorWLclKnlkdBUBJiooYRhyWnfFsqJCrZOxGudOWHsaHUgawhfZVRHLrBHyDXnOLwhWXrynwwEjdkqbjXjALYTQmlbtDHsXNVUNPzDxzXEeKRkdXEPSojRrKJxJlHnXpBqoumFGMMXhBFaTjeiHWjgKCZXAAdAjkUPOZLikmcElsPEr 76915875
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1875042926
+    ${output}=    Read Until    priority : 76915875
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountError received =     1
-    Should Contain    ${output}    id : -1452816030
-    Should Contain    ${output}    text : cPjnnWzqxnuqijYvOyTPQMHmYDLKjNRwpIjpkgxlVymvZhhSQlrQrltcjet
-    Should Contain    ${output}    priority : 1875042926
+    Should Contain    ${output}    id : -1188628732
+    Should Contain    ${output}    text : xENZKKDRAJhKYSQDPCGxonjwfYmEKiOTKsEIEkFitnKUMPCeLYDKQunFFEkFWjTvsKNhwNLmnxGwNoRLIUtJmLOvYvsVWIBZacRfBvfqFdVEzgzALGUZrwIqYbsxLdSmaCPVgbQgIObekwPeXMfBldAcxRvWwtQouHSIJLsUncSnBLQFSYjqtRTfkzcdkViiYRuypMKHPuyBSjngghtkOaPXVtAkggsWIoXdyNZsmKVAXoRWjAuBogCkfXQbHlYhqaPCMKhSrlfbZXoQDJcoGVFkpNuFqEFnjPSkqBxAOLfdgUlOcoOsELZZjoKCMlBmHRVvfHysgCkumSTeBLVZVBlOeyixMWjLxyXmhjApzlwyqcDibJuKKsYbKOppMpbuASHxXdhxTNgPntPQpgnmWRtKGAhiCYTIBPcbYvPghtzmRpPnLTnIVSxPHmtHtwloNCDZZFbPlyMJqbDqlOSRdIppVtixMyvxJMjhJaWPoDvvcpydoDpSKWFHnvAkqorWLclKnlkdBUBJiooYRhyWnfFsqJCrZOxGudOWHsaHUgawhfZVRHLrBHyDXnOLwhWXrynwwEjdkqbjXjALYTQmlbtDHsXNVUNPzDxzXEeKRkdXEPSojRrKJxJlHnXpBqoumFGMMXhBFaTjeiHWjgKCZXAAdAjkUPOZLikmcElsPEr
+    Should Contain    ${output}    priority : 76915875

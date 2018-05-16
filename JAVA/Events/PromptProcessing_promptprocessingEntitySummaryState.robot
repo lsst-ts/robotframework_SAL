@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    PromptProcessing_promptprocessingEntitySummaryState sender/logger tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: promptProcessing
+TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

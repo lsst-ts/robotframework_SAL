@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    PromptProcessing_SummaryState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: promptProcessing
+TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -799230059 -592514717 1419494279
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -221764759 -2106111042 -411283858
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SummaryState writing a message containing :    1

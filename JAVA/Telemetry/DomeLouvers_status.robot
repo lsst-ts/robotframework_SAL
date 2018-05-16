@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLouvers_status communications tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: domeLouvers
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

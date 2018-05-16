@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    SummitFacility_SummaryState sender/logger tests.
-Force Tags    python    TSS-2622
+Force Tags    python    Checking if skipped: summitFacility
+TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1920350758 76.2494 -1893765942
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1652567822 87.4091 -906479697
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_SummaryState writing a message containing :    1

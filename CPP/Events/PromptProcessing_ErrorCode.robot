@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_ErrorCode sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1780565585 1065034254 2117057450
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 47657591 932422269 1688908149
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2117057450
+    ${output}=    Read Until    priority : 1688908149
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -1780565585
-    Should Contain    ${output}    priority : 1065034254
-    Should Contain    ${output}    priority : 2117057450
+    Should Contain    ${output}    errorCode : 47657591
+    Should Contain    ${output}    priority : 932422269
+    Should Contain    ${output}    priority : 1688908149

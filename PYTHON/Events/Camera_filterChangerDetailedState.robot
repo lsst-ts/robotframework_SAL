@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_filterChangerDetailedState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: camera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -580573427 1716715616 414646116
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1882609994 1512039536 1444232067
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_filterChangerDetailedState writing a message containing :    1

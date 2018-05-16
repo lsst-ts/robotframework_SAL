@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_ILCWarning sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 47.9206 1156263235 1 1 1 0 1 1 1 0 0 1 1009156051
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 56.921 -177933639 1 0 1 0 1 0 1 1 1 1 -1634889406
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ILCWarning writing a message containing :    1

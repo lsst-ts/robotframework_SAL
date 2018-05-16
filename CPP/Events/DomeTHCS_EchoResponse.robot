@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QRWVdQkNqIDpnzTKjDqIlygOrlHdkdZSqHFOBEcNWyPNgTnUKxmucCFppMainzQbXFqfGNkXWSOYJApUXPYXbTzBpTjRJxxiXSGDbVjzaIHFRUHqLeqyfYIQiEAVUNScLIcArTGSdTbfuMEyDEqMxXKrFzDfPfVQzEjvdvbUBDoTmEiJSjyILmeJpVAwUMgDqaZvdvDGmAbgLsJPYfQkmqTMYwEhneApcRfdnsPihkAHkRlUByakGLmhLUkIswVJEvDfZIDgrFbzRbEsiDuhuGKvhdSgBWXqICZwaxODLVMaejFipCNtEgHjgUbhMSVOPNvbyFjDqlUeOwRbZKVpwxbAYMWmzpdFNtkgHOLaRHUsfdoOGwdmbgFOhttrqFIZAuQzOCBUHlzsVnCddToAdkYcSoeyZFrgKbUwqVrpUmVJoBfGJkBtuOyHsDUvPvrDANFvwiCRPdMvTDvVYzlhBywyKxIBeBgEGhUSblOzarrXYobHbsWNJgPqWjRFWApruDqNyZwkdrmxVbhOGlfdECEGHoRNYaoESpDlkknizWVJvSNLykAKZaKdpSYbgNAtoZkArtJXsoDXqFNsgUciIxJdbZnDFZfxkLoozlieTMNQHTmshLY 617902136
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YgoGzycVmAmTVzAaTRZxSoabcXqQUGQQpeOUttPPzFZZjPFwccqtYcDYgVUDqQe -922021544
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 617902136
+    ${output}=    Read Until    priority : -922021544
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : QRWVdQkNqIDpnzTKjDqIlygOrlHdkdZSqHFOBEcNWyPNgTnUKxmucCFppMainzQbXFqfGNkXWSOYJApUXPYXbTzBpTjRJxxiXSGDbVjzaIHFRUHqLeqyfYIQiEAVUNScLIcArTGSdTbfuMEyDEqMxXKrFzDfPfVQzEjvdvbUBDoTmEiJSjyILmeJpVAwUMgDqaZvdvDGmAbgLsJPYfQkmqTMYwEhneApcRfdnsPihkAHkRlUByakGLmhLUkIswVJEvDfZIDgrFbzRbEsiDuhuGKvhdSgBWXqICZwaxODLVMaejFipCNtEgHjgUbhMSVOPNvbyFjDqlUeOwRbZKVpwxbAYMWmzpdFNtkgHOLaRHUsfdoOGwdmbgFOhttrqFIZAuQzOCBUHlzsVnCddToAdkYcSoeyZFrgKbUwqVrpUmVJoBfGJkBtuOyHsDUvPvrDANFvwiCRPdMvTDvVYzlhBywyKxIBeBgEGhUSblOzarrXYobHbsWNJgPqWjRFWApruDqNyZwkdrmxVbhOGlfdECEGHoRNYaoESpDlkknizWVJvSNLykAKZaKdpSYbgNAtoZkArtJXsoDXqFNsgUciIxJdbZnDFZfxkLoozlieTMNQHTmshLY
-    Should Contain    ${output}    priority : 617902136
+    Should Contain    ${output}    response : YgoGzycVmAmTVzAaTRZxSoabcXqQUGQQpeOUttPPzFZZjPFwccqtYcDYgVUDqQe
+    Should Contain    ${output}    priority : -922021544

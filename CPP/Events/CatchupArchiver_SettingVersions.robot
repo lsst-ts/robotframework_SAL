@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_SettingVersions sender/logger tests.
-Force Tags    cpp    TSS-2620
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bWURJMsDRjTjrzOtETkOsERrDKpTbFaiQFFBcBwwMWsHVkDtXMBnZAzwHsbZAMFktciblkxnCxLvwsQcrBTCWAlDxzpvUpmKFNmngDEWFznTePoIrIyfLqijnohnZUvVmxoAZfrhLpbFYwLQtaRkowuKGbwYwGcoHgnCkWZCgRnaZnJbptgMdjdwHTKqKXrPynucIiJPeiPNArpAIWScPLRHduqZwcXWjWvPZfHModIivJOhHGUMqiCBspZzIxFs -1233306534 1470468593
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MKvqJbKuHLTvyqfBUzZQRDTatHNnseGkPzEYJUDoXXURvoYEjrUSFvvdePtjxBhrZxKQuItzSwyPMDDQOpvYJGtlLlAJRDrEaYKFCmizJYbByyIPsdeEDvVDThmHRbqTfHuhbrihRaZoHpQFWUnOZTmAEuepUmtVvrdeUSdWOtvRCvWjqUDwkfZaNytJtsEChvIgMHqPAFOOdoVJZNwjLrxbGIYaSNWFgxEIRmWiLVmoXECtiPWcNsktGtxcDzrM -1807521210 -820046384
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1470468593
+    ${output}=    Read Until    priority : -820046384
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : bWURJMsDRjTjrzOtETkOsERrDKpTbFaiQFFBcBwwMWsHVkDtXMBnZAzwHsbZAMFktciblkxnCxLvwsQcrBTCWAlDxzpvUpmKFNmngDEWFznTePoIrIyfLqijnohnZUvVmxoAZfrhLpbFYwLQtaRkowuKGbwYwGcoHgnCkWZCgRnaZnJbptgMdjdwHTKqKXrPynucIiJPeiPNArpAIWScPLRHduqZwcXWjWvPZfHModIivJOhHGUMqiCBspZzIxFs
-    Should Contain    ${output}    priority : -1233306534
-    Should Contain    ${output}    priority : 1470468593
+    Should Contain    ${output}    recommendedSettingVersion : MKvqJbKuHLTvyqfBUzZQRDTatHNnseGkPzEYJUDoXXURvoYEjrUSFvvdePtjxBhrZxKQuItzSwyPMDDQOpvYJGtlLlAJRDrEaYKFCmizJYbByyIPsdeEDvVDThmHRbqTfHuhbrihRaZoHpQFWUnOZTmAEuepUmtVvrdeUSdWOtvRCvWjqUDwkfZaNytJtsEChvIgMHqPAFOOdoVJZNwjLrxbGIYaSNWFgxEIRmWiLVmoXECtiPWcNsktGtxcDzrM
+    Should Contain    ${output}    priority : -1807521210
+    Should Contain    ${output}    priority : -820046384

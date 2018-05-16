@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsOFC_ErrorCode sender/logger tests.
-Force Tags    java    TSS-2625
+Force Tags    java    Checking if skipped: tcsOfc
+TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

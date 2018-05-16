@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0 0 0 1 1 1 1 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 1 1 0 0 0 0 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0 0 0 1 1 1 1 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 1 1 0 0 0 0 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    TurnPowerNetworkAOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkBOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkCOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkDOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkBOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkAOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkBOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkCOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkDOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkBOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOn : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOn : 0    1
     Should Contain    ${output}    === command TurnPowerOn issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -90,13 +90,13 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    TurnPowerNetworkAOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkBOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkCOn : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkDOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkBOn : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkAOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkBOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkCOn : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkDOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkBOn : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOn : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOn : 0    1
     Should Contain X Times    ${output}    === [ackCommand_TurnPowerOn] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

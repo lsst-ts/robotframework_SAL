@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_kernel_Site communications tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: tcs
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

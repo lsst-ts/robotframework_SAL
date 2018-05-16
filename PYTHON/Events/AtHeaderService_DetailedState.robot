@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtHeaderService_DetailedState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atHeaderService
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 45711 1702777928
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 40351 355963756
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_DetailedState writing a message containing :    1

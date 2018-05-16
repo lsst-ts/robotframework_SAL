@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_SettingsAppliedMonoHeartbeat sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atMonochromator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.0842351665127 0.726801908233 1147141443
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.366664929779 0.093462702884 -473246149
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonoHeartbeat writing a message containing :    1

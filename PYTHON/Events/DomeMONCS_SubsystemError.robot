@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeMONCS_SubsystemError sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: domeMONCS
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py AUXwegUEgPgoCXREJNhWKjdCAaWmucYRhoApoMJgZkRZeNZlQICKUnxtesSkHtIfbficDQLJNrNhsKIrHElGhInsarasHrqmXIXyyjSQIqjAvUPlAIYwAhVfAeDaxGuOMwPSlIlTBfiIqYRpemUdYCZIJCGeaGjRlQLvTfQtFkYOZdCxDhKGOlWQHrdTtWQmCJafwnTgvxYgIxoAZnkjTLXJzoOsmooKtdGyNePbEJjltXljwPKOfIhTINtwlDvFEhnREiKhRGujHQRHJEwveONuDIAIfaVSxskoEIwOcrvtTFXXcdsiuJUxkLVCauRrmuUtvjIPtWLInTGdgepZUXPNienbgOewZsMxQGQHCpkrRDLuecjnevsMNCKUBfBEAmWWlcNvOAklyNBFNouPgMhbgrmHgzhaSObEopNaHmTrutcvtPSgcBZXHzCPsiPxEcuLBXxTIeaAnJjPqykTZGJxZQYUbMIZHdziBLLFVjriwNtAkFvgytMDbmZrSDjnwOzVjagUXOHnDxXJxtQAbPvSuxJdQqcVKMOFuDOtZBGRPrMefKXcpSKrJiYFhuUpWvLqYriDOc -995692824
+    ${input}=    Write    python ${subSystem}_Event_${component}.py kwbmZGoccASZbGvMIjQRmZokAltRJioQJuvgnreXwdzaXQszYSHYmRzscgGNsuEegwIxCQgkTWtXTMsFkydSorftbnQQFdnxzufXapQzTPDaQNmgTDZyvrrwGEbqbAStDfzELISKEyNNGnGYMJdhHIusBCvsaQyIOGrKdGLUdtqMLqMLrvvLXKVMTocNzLkqjMVgDeEtqXsAErLLzdHBNjcKCVfZmLinsDQhjrYmbRrlzvCiRrtSkBHzbwwpahDczxbZXOgtmkNrUXfszzKkgoPrqZjLAhsQzDVlSBHpYcwigqkDcXqYBeIgNUTNNJIxsxpzRvGGMSFbsWMUSxNEPeUlWQvzRnotHYBeTPFlZjULNGxeddlGdlHEjRYRerMDgPfBqhlNCBzRJejwCvheCRZTWVKUuKHEajMjHDCEokiwMpTgddOjeqAGdFRQaKXVIcekZCvUuNgmbUAaqZRGagtqVgcNVpWzuOXgKchKptshiiOvRqbBWHaOmNXNtiMtYkLgluIcwPvuYCRBxLdhQbkRDOviSqWiQQEXjfDQXvTsqWtBknJanUrXsOkKCYGUnmCWStmJNIxLFUAlPQzjjpCFDLxzjcJimRCWEdjscaTOUQrtDwgUKzqKHuhNwnRhEsKLZqhBfaQFpNHpEOizgReGRSebbIcxBHjttnoJdkJIDAbjyEPRBkFPmLMRZbQxFwuBzbACgNxDadIRQshhhjxDjpmrqVallRKpikKCwowMlMhNjmYAloduhTMqKNreUQItkEOSCWwtMJXuvDgjsdfnyEMXXkTRdqqBSoSZzCTKmCuwvgFsssbxSPWDmZcbjHqHzHjNbyyAmwtqrdpITpVzTTWGRjyvQAcsYRjQDrkJkruSwkwBfYYzzkvYBOVceaxPsSbAXrVXPIqdMkeJoHIHpyClDsejJClMVysvRyVrYRLRMVRLBBAMeMDuAAZtFnhVyRfJmdeyLvebYuiMaCytjFiXkSoSGObuwhy 1974923995
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_SubsystemError writing a message containing :    1

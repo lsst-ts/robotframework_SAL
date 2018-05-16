@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtHeaderService_SummaryState sender/logger tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: atHeaderService
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

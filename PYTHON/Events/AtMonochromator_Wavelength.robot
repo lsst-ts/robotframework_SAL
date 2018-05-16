@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_Wavelength sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atMonochromator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.892505089475 62.8949 1578716240
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.175497639276 82.9594 1812436745
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_Wavelength writing a message containing :    1

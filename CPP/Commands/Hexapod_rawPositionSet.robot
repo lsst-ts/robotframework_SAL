@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1749136208 1132893881 -930244983 -1754089638 355111694 448569687 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1031300968 -1125849943 397121983 946099890 -64329068 -732640119 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1749136208 1132893881 -930244983 -1754089638 355111694 448569687 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1031300968 -1125849943 397121983 946099890 -64329068 -732640119 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    a1 : -1749136208    1
-    Should Contain X Times    ${output}    a2 : 1132893881    1
-    Should Contain X Times    ${output}    a3 : -930244983    1
-    Should Contain X Times    ${output}    a4 : -1754089638    1
-    Should Contain X Times    ${output}    a5 : 355111694    1
-    Should Contain X Times    ${output}    a6 : 448569687    1
+    Should Contain X Times    ${output}    a1 : -1031300968    1
+    Should Contain X Times    ${output}    a2 : -1125849943    1
+    Should Contain X Times    ${output}    a3 : 397121983    1
+    Should Contain X Times    ${output}    a4 : 946099890    1
+    Should Contain X Times    ${output}    a5 : -64329068    1
+    Should Contain X Times    ${output}    a6 : -732640119    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command rawPositionSet issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -89,12 +89,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    a1 : -1749136208    1
-    Should Contain X Times    ${output}    a2 : 1132893881    1
-    Should Contain X Times    ${output}    a3 : -930244983    1
-    Should Contain X Times    ${output}    a4 : -1754089638    1
-    Should Contain X Times    ${output}    a5 : 355111694    1
-    Should Contain X Times    ${output}    a6 : 448569687    1
+    Should Contain X Times    ${output}    a1 : -1031300968    1
+    Should Contain X Times    ${output}    a2 : -1125849943    1
+    Should Contain X Times    ${output}    a3 : 397121983    1
+    Should Contain X Times    ${output}    a4 : 946099890    1
+    Should Contain X Times    ${output}    a5 : -64329068    1
+    Should Contain X Times    ${output}    a6 : -732640119    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_rawPositionSet] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

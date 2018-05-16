@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SummaryState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1210100189 1947170231 -395540293
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -821345453 1313446702 -1327550701
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SummaryState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -395540293
+    ${output}=    Read Until    priority : -1327550701
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    SummaryStateValue : -1210100189
-    Should Contain    ${output}    priority : 1947170231
-    Should Contain    ${output}    priority : -395540293
+    Should Contain    ${output}    SummaryStateValue : -821345453
+    Should Contain    ${output}    priority : 1313446702
+    Should Contain    ${output}    priority : -1327550701

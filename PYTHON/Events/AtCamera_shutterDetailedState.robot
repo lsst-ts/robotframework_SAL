@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_shutterDetailedState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atcamera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 297078025 -421811876 -705976513
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 919324116 -936131809 -1314134198
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_shutterDetailedState writing a message containing :    1

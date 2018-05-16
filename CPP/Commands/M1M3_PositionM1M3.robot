@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.771599788277 0.777443597632 0.861154495864 0.296744861908 0.237721512497 0.318112319784
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.0728009474892 0.494441447593 0.912166997441 0.598172177431 0.0951603309944 0.0784428029065
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.771599788277 0.777443597632 0.861154495864 0.296744861908 0.237721512497 0.318112319784
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.0728009474892 0.494441447593 0.912166997441 0.598172177431 0.0951603309944 0.0784428029065
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    XPosition : 0.771599788277    1
-    Should Contain X Times    ${output}    YPosition : 0.777443597632    1
-    Should Contain X Times    ${output}    ZPosition : 0.861154495864    1
-    Should Contain X Times    ${output}    XRotation : 0.296744861908    1
-    Should Contain X Times    ${output}    YRotation : 0.237721512497    1
-    Should Contain X Times    ${output}    ZRotation : 0.318112319784    1
+    Should Contain X Times    ${output}    XPosition : 0.0728009474892    1
+    Should Contain X Times    ${output}    YPosition : 0.494441447593    1
+    Should Contain X Times    ${output}    ZPosition : 0.912166997441    1
+    Should Contain X Times    ${output}    XRotation : 0.598172177431    1
+    Should Contain X Times    ${output}    YRotation : 0.0951603309944    1
+    Should Contain X Times    ${output}    ZRotation : 0.0784428029065    1
     Should Contain    ${output}    === command PositionM1M3 issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    XPosition : 0.771599788277    1
-    Should Contain X Times    ${output}    YPosition : 0.777443597632    1
-    Should Contain X Times    ${output}    ZPosition : 0.861154495864    1
-    Should Contain X Times    ${output}    XRotation : 0.296744861908    1
-    Should Contain X Times    ${output}    YRotation : 0.237721512497    1
-    Should Contain X Times    ${output}    ZRotation : 0.318112319784    1
+    Should Contain X Times    ${output}    XPosition : 0.0728009474892    1
+    Should Contain X Times    ${output}    YPosition : 0.494441447593    1
+    Should Contain X Times    ${output}    ZPosition : 0.912166997441    1
+    Should Contain X Times    ${output}    XRotation : 0.598172177431    1
+    Should Contain X Times    ${output}    YRotation : 0.0951603309944    1
+    Should Contain X Times    ${output}    ZRotation : 0.0784428029065    1
     Should Contain X Times    ${output}    === [ackCommand_PositionM1M3] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

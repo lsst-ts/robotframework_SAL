@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SummaryState sender/logger tests.
-Force Tags    python    TSS-2623
+Force Tags    python    Checking if skipped: archiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1162690207 -416959657 -1789879467
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1458375246 709200936 -1598659171
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SummaryState writing a message containing :    1

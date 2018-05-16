@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    SummitFacility_ErrorCode sender/logger tests.
-Force Tags    python    TSS-2622
+Force Tags    python    Checking if skipped: summitFacility
+TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -2124683202 14.4898 949185040
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -872810311 38.5455 939751290
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_ErrorCode writing a message containing :    1

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsOFC_OffsetCameraHexapod commander/controller tests.
-Force Tags    python    TSS-2625
+Force Tags    python    Checking if skipped: tcsOfc
+TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +38,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 54.4136 9.2562 36.2574 38.0079 97.5656 2.7083 52.0828 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 14.3958 35.1421 91.3769 8.9136 31.9905 61.0459 46.3004 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +61,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 54.4136 9.2562 36.2574 38.0079 97.5656 2.7083 52.0828 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 14.3958 35.1421 91.3769 8.9136 31.9905 61.0459 46.3004 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +69,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    timestamp : 54.4136    1
-    Should Contain X Times    ${output}    offset : 9.2562    1
+    Should Contain X Times    ${output}    timestamp : 14.3958    1
+    Should Contain X Times    ${output}    offset : 35.1421    1
     Should Contain X Times    ${output}    synchrony :     1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -79,8 +80,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    timestamp = 54.4136    1
-    Should Contain X Times    ${output}    offset = 9.2562    1
+    Should Contain X Times    ${output}    timestamp = 14.3958    1
+    Should Contain X Times    ${output}    offset = 35.1421    1
     Should Contain X Times    ${output}    synchrony =     1
     Should Contain X Times    ${output}    === [ackCommand_OffsetCameraHexapod] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

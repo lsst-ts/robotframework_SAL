@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsWEP_WavefrontError communications tests.
-Force Tags    python    TSS-2626
+Force Tags    python    Checking if skipped: tcsWEP
+TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

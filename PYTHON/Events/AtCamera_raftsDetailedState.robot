@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_raftsDetailedState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atcamera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -105066091 643813383 224420188
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1242385353 -729802114 332579539
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_raftsDetailedState writing a message containing :    1

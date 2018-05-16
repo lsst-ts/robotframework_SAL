@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.8086 83.9863 53.5222 38.9958 0.2588 egSzxKnZioHOSwmKgVpfPVFEEaPfdKHJyUMaXXtGCANWxNCpqQwyDbTAEwDIgejYYjLrvyhuNXFiVXVxJCwKyyTdtiKJAJtEaHeIYBodTDfwrzwyQayUNmoqybyZqMQESwuVqpcuRPOBeGEjVLiBhvdFfjwQPnMSzQzIHoqsQMKilomKuSMmTNpSXNPijenQdsoHfgWsAyNgkOhxmzdfRSpsGFRCnqOCYkctohhpQmtWjCmkjsIBKMwGMSHMsyTXQWaeRFctuzfAgJLhovSReVqFDeEnnhncrUwvxEzijYMAfDKkcfmYBSLrExyrlbaEiZJSgAmrhTLjkWqhmVZOVzBULNUvxNKlPUnteoyvLJkYgWQpUUxuVAsTcmEifBfhNiuwPjeQJMZrlPfDgTXoEAsMeohBvtWsxRXJOutDSsmnfPPvKtKeKloqGFJvcnBFRmrOwALxlkGQzeGUErgponOHmvpwMGIByAtyTxbzXUoRBtMEkftqnxzJetuvpIpCtkeFEWmxFpKrqTBwWWNOs
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1.436 0.1269 8.2379 34.7819 47.5548 fxPrTPcJoyYLNphJzWSwcQULVeUjPmxLPbBOMAtmoSXQlIwqfPFtmaeBaCsXbNsbzvMGqwRWOQHNZpRqKtSGFDLsWbyvllEZKnKjQlWdVJWGbXowHTxQZUyagyQaBWAIfUeFKnuPGdjQUZKbPzRzcyGcOLKpQNPmxXFoiojFRPkeCJOyvNAHZrVHZfRdNJjbSeATlHcrPIZbNdQqDtJzbYgPehSUNrErvDlmyGJvrrCooedyNXFNwPSqyKRQstwvqNzOeNbOzaWefjmBhKPgzYDcPkaJolnWVYQUzCOdfgoBnIwFXWpbhFoHVzKAvqfqqNXtvfljUtlVJdnAAmgLFIEyORXseLdFmrBQjPziKPlfAnTHvBRschZiiMqgkrUpfvlAGCXQmVkzaiGlpciaugggiidOANkDyUGZfEsNXXbQJkzbCTIXeWHUhyDqLgvoSoBUUbpolpIEoYZqKEbnaHQOEJadkQlZNxocLkiDnNnzVLHzqTSnwrxBEWZYNovzjduFVTtmUeqJfRWlQbRZJajZlaMJkemQsMCcfxGGimmsloaJlChajyXieesMudipLOdCRhzIxOvREWRlCsfaxHyIhhSXmxHMrQCbOXGWslmRgObNbtVLLoFYBFCaeKKEmILniEiybUZianDdGerDpTYnmPOlrvHbaRYkNXzwEwyJDKwWFYrDCjIeSxtOhxuFpXPNUAnODBFXVbgmMvUGfZUlPIBHAXnhMEFRtGcGAkdhFZFSziqoScWYHlffTMCBxwvMxMuBjTmqcXeMcvcDxXtkTYgzyTtAoROsYyfCAatOjIayKyhpvohg
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 37.8086 83.9863 53.5222 38.9958 0.2588 egSzxKnZioHOSwmKgVpfPVFEEaPfdKHJyUMaXXtGCANWxNCpqQwyDbTAEwDIgejYYjLrvyhuNXFiVXVxJCwKyyTdtiKJAJtEaHeIYBodTDfwrzwyQayUNmoqybyZqMQESwuVqpcuRPOBeGEjVLiBhvdFfjwQPnMSzQzIHoqsQMKilomKuSMmTNpSXNPijenQdsoHfgWsAyNgkOhxmzdfRSpsGFRCnqOCYkctohhpQmtWjCmkjsIBKMwGMSHMsyTXQWaeRFctuzfAgJLhovSReVqFDeEnnhncrUwvxEzijYMAfDKkcfmYBSLrExyrlbaEiZJSgAmrhTLjkWqhmVZOVzBULNUvxNKlPUnteoyvLJkYgWQpUUxuVAsTcmEifBfhNiuwPjeQJMZrlPfDgTXoEAsMeohBvtWsxRXJOutDSsmnfPPvKtKeKloqGFJvcnBFRmrOwALxlkGQzeGUErgponOHmvpwMGIByAtyTxbzXUoRBtMEkftqnxzJetuvpIpCtkeFEWmxFpKrqTBwWWNOs
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1.436 0.1269 8.2379 34.7819 47.5548 fxPrTPcJoyYLNphJzWSwcQULVeUjPmxLPbBOMAtmoSXQlIwqfPFtmaeBaCsXbNsbzvMGqwRWOQHNZpRqKtSGFDLsWbyvllEZKnKjQlWdVJWGbXowHTxQZUyagyQaBWAIfUeFKnuPGdjQUZKbPzRzcyGcOLKpQNPmxXFoiojFRPkeCJOyvNAHZrVHZfRdNJjbSeATlHcrPIZbNdQqDtJzbYgPehSUNrErvDlmyGJvrrCooedyNXFNwPSqyKRQstwvqNzOeNbOzaWefjmBhKPgzYDcPkaJolnWVYQUzCOdfgoBnIwFXWpbhFoHVzKAvqfqqNXtvfljUtlVJdnAAmgLFIEyORXseLdFmrBQjPziKPlfAnTHvBRschZiiMqgkrUpfvlAGCXQmVkzaiGlpciaugggiidOANkDyUGZfEsNXXbQJkzbCTIXeWHUhyDqLgvoSoBUUbpolpIEoYZqKEbnaHQOEJadkQlZNxocLkiDnNnzVLHzqTSnwrxBEWZYNovzjduFVTtmUeqJfRWlQbRZJajZlaMJkemQsMCcfxGGimmsloaJlChajyXieesMudipLOdCRhzIxOvREWRlCsfaxHyIhhSXmxHMrQCbOXGWslmRgObNbtVLLoFYBFCaeKKEmILniEiybUZianDdGerDpTYnmPOlrvHbaRYkNXzwEwyJDKwWFYrDCjIeSxtOhxuFpXPNUAnODBFXVbgmMvUGfZUlPIBHAXnhMEFRtGcGAkdhFZFSziqoScWYHlffTMCBxwvMxMuBjTmqcXeMcvcDxXtkTYgzyTtAoROsYyfCAatOjIayKyhpvohg
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 37.8086    1
-    Should Contain X Times    ${output}    az_velocity : 83.9863    1
-    Should Contain X Times    ${output}    el_angle : 53.5222    1
-    Should Contain X Times    ${output}    el_velocity : 38.9958    1
-    Should Contain X Times    ${output}    time : 0.2588    1
-    Should Contain X Times    ${output}    cablewrap_orientation : egSzxKnZioHOSwmKgVpfPVFEEaPfdKHJyUMaXXtGCANWxNCpqQwyDbTAEwDIgejYYjLrvyhuNXFiVXVxJCwKyyTdtiKJAJtEaHeIYBodTDfwrzwyQayUNmoqybyZqMQESwuVqpcuRPOBeGEjVLiBhvdFfjwQPnMSzQzIHoqsQMKilomKuSMmTNpSXNPijenQdsoHfgWsAyNgkOhxmzdfRSpsGFRCnqOCYkctohhpQmtWjCmkjsIBKMwGMSHMsyTXQWaeRFctuzfAgJLhovSReVqFDeEnnhncrUwvxEzijYMAfDKkcfmYBSLrExyrlbaEiZJSgAmrhTLjkWqhmVZOVzBULNUvxNKlPUnteoyvLJkYgWQpUUxuVAsTcmEifBfhNiuwPjeQJMZrlPfDgTXoEAsMeohBvtWsxRXJOutDSsmnfPPvKtKeKloqGFJvcnBFRmrOwALxlkGQzeGUErgponOHmvpwMGIByAtyTxbzXUoRBtMEkftqnxzJetuvpIpCtkeFEWmxFpKrqTBwWWNOs    1
+    Should Contain X Times    ${output}    az_angle : 1.436    1
+    Should Contain X Times    ${output}    az_velocity : 0.1269    1
+    Should Contain X Times    ${output}    el_angle : 8.2379    1
+    Should Contain X Times    ${output}    el_velocity : 34.7819    1
+    Should Contain X Times    ${output}    time : 47.5548    1
+    Should Contain X Times    ${output}    cablewrap_orientation : fxPrTPcJoyYLNphJzWSwcQULVeUjPmxLPbBOMAtmoSXQlIwqfPFtmaeBaCsXbNsbzvMGqwRWOQHNZpRqKtSGFDLsWbyvllEZKnKjQlWdVJWGbXowHTxQZUyagyQaBWAIfUeFKnuPGdjQUZKbPzRzcyGcOLKpQNPmxXFoiojFRPkeCJOyvNAHZrVHZfRdNJjbSeATlHcrPIZbNdQqDtJzbYgPehSUNrErvDlmyGJvrrCooedyNXFNwPSqyKRQstwvqNzOeNbOzaWefjmBhKPgzYDcPkaJolnWVYQUzCOdfgoBnIwFXWpbhFoHVzKAvqfqqNXtvfljUtlVJdnAAmgLFIEyORXseLdFmrBQjPziKPlfAnTHvBRschZiiMqgkrUpfvlAGCXQmVkzaiGlpciaugggiidOANkDyUGZfEsNXXbQJkzbCTIXeWHUhyDqLgvoSoBUUbpolpIEoYZqKEbnaHQOEJadkQlZNxocLkiDnNnzVLHzqTSnwrxBEWZYNovzjduFVTtmUeqJfRWlQbRZJajZlaMJkemQsMCcfxGGimmsloaJlChajyXieesMudipLOdCRhzIxOvREWRlCsfaxHyIhhSXmxHMrQCbOXGWslmRgObNbtVLLoFYBFCaeKKEmILniEiybUZianDdGerDpTYnmPOlrvHbaRYkNXzwEwyJDKwWFYrDCjIeSxtOhxuFpXPNUAnODBFXVbgmMvUGfZUlPIBHAXnhMEFRtGcGAkdhFZFSziqoScWYHlffTMCBxwvMxMuBjTmqcXeMcvcDxXtkTYgzyTtAoROsYyfCAatOjIayKyhpvohg    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 37.8086    1
-    Should Contain X Times    ${output}    az_velocity : 83.9863    1
-    Should Contain X Times    ${output}    el_angle : 53.5222    1
-    Should Contain X Times    ${output}    el_velocity : 38.9958    1
-    Should Contain X Times    ${output}    time : 0.2588    1
-    Should Contain X Times    ${output}    cablewrap_orientation : egSzxKnZioHOSwmKgVpfPVFEEaPfdKHJyUMaXXtGCANWxNCpqQwyDbTAEwDIgejYYjLrvyhuNXFiVXVxJCwKyyTdtiKJAJtEaHeIYBodTDfwrzwyQayUNmoqybyZqMQESwuVqpcuRPOBeGEjVLiBhvdFfjwQPnMSzQzIHoqsQMKilomKuSMmTNpSXNPijenQdsoHfgWsAyNgkOhxmzdfRSpsGFRCnqOCYkctohhpQmtWjCmkjsIBKMwGMSHMsyTXQWaeRFctuzfAgJLhovSReVqFDeEnnhncrUwvxEzijYMAfDKkcfmYBSLrExyrlbaEiZJSgAmrhTLjkWqhmVZOVzBULNUvxNKlPUnteoyvLJkYgWQpUUxuVAsTcmEifBfhNiuwPjeQJMZrlPfDgTXoEAsMeohBvtWsxRXJOutDSsmnfPPvKtKeKloqGFJvcnBFRmrOwALxlkGQzeGUErgponOHmvpwMGIByAtyTxbzXUoRBtMEkftqnxzJetuvpIpCtkeFEWmxFpKrqTBwWWNOs    1
+    Should Contain X Times    ${output}    az_angle : 1.436    1
+    Should Contain X Times    ${output}    az_velocity : 0.1269    1
+    Should Contain X Times    ${output}    el_angle : 8.2379    1
+    Should Contain X Times    ${output}    el_velocity : 34.7819    1
+    Should Contain X Times    ${output}    time : 47.5548    1
+    Should Contain X Times    ${output}    cablewrap_orientation : fxPrTPcJoyYLNphJzWSwcQULVeUjPmxLPbBOMAtmoSXQlIwqfPFtmaeBaCsXbNsbzvMGqwRWOQHNZpRqKtSGFDLsWbyvllEZKnKjQlWdVJWGbXowHTxQZUyagyQaBWAIfUeFKnuPGdjQUZKbPzRzcyGcOLKpQNPmxXFoiojFRPkeCJOyvNAHZrVHZfRdNJjbSeATlHcrPIZbNdQqDtJzbYgPehSUNrErvDlmyGJvrrCooedyNXFNwPSqyKRQstwvqNzOeNbOzaWefjmBhKPgzYDcPkaJolnWVYQUzCOdfgoBnIwFXWpbhFoHVzKAvqfqqNXtvfljUtlVJdnAAmgLFIEyORXseLdFmrBQjPziKPlfAnTHvBRschZiiMqgkrUpfvlAGCXQmVkzaiGlpciaugggiidOANkDyUGZfEsNXXbQJkzbCTIXeWHUhyDqLgvoSoBUUbpolpIEoYZqKEbnaHQOEJadkQlZNxocLkiDnNnzVLHzqTSnwrxBEWZYNovzjduFVTtmUeqJfRWlQbRZJajZlaMJkemQsMCcfxGGimmsloaJlChajyXieesMudipLOdCRhzIxOvREWRlCsfaxHyIhhSXmxHMrQCbOXGWslmRgObNbtVLLoFYBFCaeKKEmILniEiybUZianDdGerDpTYnmPOlrvHbaRYkNXzwEwyJDKwWFYrDCjIeSxtOhxuFpXPNUAnODBFXVbgmMvUGfZUlPIBHAXnhMEFRtGcGAkdhFZFSziqoScWYHlffTMCBxwvMxMuBjTmqcXeMcvcDxXtkTYgzyTtAoROsYyfCAatOjIayKyhpvohg    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

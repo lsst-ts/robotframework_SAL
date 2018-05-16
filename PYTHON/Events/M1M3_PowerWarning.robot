@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_PowerWarning sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 2.7098 0 0 0 0 0 0 0 1 0 9525012
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 90.3726 0 1 0 0 1 1 1 1 1 -725398141
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PowerWarning writing a message containing :    1

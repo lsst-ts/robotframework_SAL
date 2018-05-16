@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtHeaderService_disable commander/controller tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: atHeaderService
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endUnloadFilter sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: camera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1010688342 1995956075
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -457477454 1992839261
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endUnloadFilter writing a message containing :    1

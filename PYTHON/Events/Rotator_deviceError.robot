@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_deviceError sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: rotator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 PnTSIowqCVRQcjvZqIGzfYVBwLcIDAoebsNVzAYkhrnBFJSGwVdeawPJxLnfodWjVidqikpinHCuUbqRgxaJkemdyuuNmmTUVPPFahQhjENpMqnkirkCOQHaEfSmyUcZTGMTyLRcbEFzJCnXcMuEUyBaGjkXQXTIuKOLZeRphFooahfhToRBuaqjRZNZxHcGwIsDjdzreEjiqKaFGGPnJpjmqGAJwuJbphOjACnRDTDfEFoHLwOHkFCnQWAhpRGb 2087199 62.4889 -1470488421
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 lmjATiOKYyGrapQFFGAarxcEXUdtwToOLmjgwUimHHwxVIyYajUlTUwYoRcLAOvDyVCmvTrSpWEUDpZXZsRVteRnmsMxETLkgsvPnotjNTabwkNdCjzqEkcwTjpiRLaNZpWdksQzdbtORewGCBspkYEtFujgwqJniQcpGtLsuOaGcyECEDBnaQnxTCcxfEFPBSooqqMQZbfBayFqYhZUliVGzUajHFZWsfqJZbLeuDddEfskAyPgxtblxhXFJWjK 576600593 65.5692 -294201484
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1

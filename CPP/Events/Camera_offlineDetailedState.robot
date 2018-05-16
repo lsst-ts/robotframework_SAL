@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1789529034 -1036991326 -103680039
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1716197516 -401584313 -194227147
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_offlineDetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -103680039
+    ${output}=    Read Until    priority : -194227147
     Log    ${output}
     Should Contain X Times    ${output}    === Event offlineDetailedState received =     1
-    Should Contain    ${output}    substate : -1789529034
-    Should Contain    ${output}    priority : -1036991326
-    Should Contain    ${output}    priority : -103680039
+    Should Contain    ${output}    substate : -1716197516
+    Should Contain    ${output}    priority : -401584313
+    Should Contain    ${output}    priority : -194227147

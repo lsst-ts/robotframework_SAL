@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 64007763 aVWsJeTsNRzrXmqBcXJJsUwfxzpSVfUzhBKZWvTMpxfRaXVhLPjfrqJkWtpZUKAxZeoXZmpemjEbhuCCvJwYZTvLQaXGQXXwXWuuZMuGNmIEwSVSsSWznRbYRWjNixDOkPYPYUZqIgnjdXFVrNPsvvWhiGTiFRKYyERwDiynTciuhqYKPcBLAIxhaGtaGeUJYEwuIDKHUIvlToYiyEdKLPNFHvrqUUAjyJGQiURNUMXxIQgqeLiojwNrMYNQODkrcFAprrUJiyMCGODWoTHEhAsITDPEDjgvhYZVvjmHUCYkGerOdwtxMgoWqRoZVlJXNSDsvfLaCulUUimcsNuZFzsRPmBrWlZwPTqeFOlaRonZcGKSMWwcJXqKGLfQiVFApgZjrCuIudctlXikpnvZzriGoWqmPQpmMLDuexCTGsjKWBVpUOhdKkSogWGpeUMeyScuzaupljNBOXDDuTpkoRishklgZsTtOxOIZgMzHyTYTZzbHSkLXguWBtXsNehlCepeeZFSQTczwHwyIrguGLDLwXXctQnHLMxKraZrN 723164320
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1767623559 VqATwrGuBrufroJ 152903607
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 723164320
+    ${output}=    Read Until    priority : 152903607
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountState received =     1
-    Should Contain    ${output}    id : 64007763
-    Should Contain    ${output}    text : aVWsJeTsNRzrXmqBcXJJsUwfxzpSVfUzhBKZWvTMpxfRaXVhLPjfrqJkWtpZUKAxZeoXZmpemjEbhuCCvJwYZTvLQaXGQXXwXWuuZMuGNmIEwSVSsSWznRbYRWjNixDOkPYPYUZqIgnjdXFVrNPsvvWhiGTiFRKYyERwDiynTciuhqYKPcBLAIxhaGtaGeUJYEwuIDKHUIvlToYiyEdKLPNFHvrqUUAjyJGQiURNUMXxIQgqeLiojwNrMYNQODkrcFAprrUJiyMCGODWoTHEhAsITDPEDjgvhYZVvjmHUCYkGerOdwtxMgoWqRoZVlJXNSDsvfLaCulUUimcsNuZFzsRPmBrWlZwPTqeFOlaRonZcGKSMWwcJXqKGLfQiVFApgZjrCuIudctlXikpnvZzriGoWqmPQpmMLDuexCTGsjKWBVpUOhdKkSogWGpeUMeyScuzaupljNBOXDDuTpkoRishklgZsTtOxOIZgMzHyTYTZzbHSkLXguWBtXsNehlCepeeZFSQTczwHwyIrguGLDLwXXctQnHLMxKraZrN
-    Should Contain    ${output}    priority : 723164320
+    Should Contain    ${output}    id : 1767623559
+    Should Contain    ${output}    text : VqATwrGuBrufroJ
+    Should Contain    ${output}    priority : 152903607

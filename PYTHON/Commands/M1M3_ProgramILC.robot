@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_ProgramILC commander/controller tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +38,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 256461511 TXOmUUnPhsHDogWXheJytvtcLNehHKTsQmhGKGKCrSftGbsRftzydiNkSHXxqdIWVUltnDLNDeTQsvzCfSLHiZSTjsWTYuQcWZIJODCZqmvMjWIMSRhXsZaRIHWXnDZpgNRmQRpRzKgzlrNsssZdSHjXLsUwkIVsuoqerbXIWBOkVdiBKJBeGofzMSJBwlNyWxnFKOeVloGqhsUaQtyrJySsNevuxxKraZRvLsMpbhwdylUOAYzmpDVagLgqERUH
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 410576554 vuHebUDzpmeBWOxRhJvhvaWMwEoUgNVUKXvXZXpRSfimxKVxTwIqJiBcFHGDhQKlwXaTtmmKiyyasyjJrITOOlTGmeMOHkQDVmPvZUedzUHoFkXTOXwYVtqUWHLWQyGCAbNfQsdnccRyjtdesYImnehjaceeaYIfxAOEMVzlzVzkNGyNlZcgCNBdTpODfNtgpsWqPXnnhABBITLAOEwzIxKvEzuySgURqoQSPpFXKyECQBIRafMCsIjNMGxbqUEv
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +61,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 256461511 TXOmUUnPhsHDogWXheJytvtcLNehHKTsQmhGKGKCrSftGbsRftzydiNkSHXxqdIWVUltnDLNDeTQsvzCfSLHiZSTjsWTYuQcWZIJODCZqmvMjWIMSRhXsZaRIHWXnDZpgNRmQRpRzKgzlrNsssZdSHjXLsUwkIVsuoqerbXIWBOkVdiBKJBeGofzMSJBwlNyWxnFKOeVloGqhsUaQtyrJySsNevuxxKraZRvLsMpbhwdylUOAYzmpDVagLgqERUH
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 410576554 vuHebUDzpmeBWOxRhJvhvaWMwEoUgNVUKXvXZXpRSfimxKVxTwIqJiBcFHGDhQKlwXaTtmmKiyyasyjJrITOOlTGmeMOHkQDVmPvZUedzUHoFkXTOXwYVtqUWHLWQyGCAbNfQsdnccRyjtdesYImnehjaceeaYIfxAOEMVzlzVzkNGyNlZcgCNBdTpODfNtgpsWqPXnnhABBITLAOEwzIxKvEzuySgURqoQSPpFXKyECQBIRafMCsIjNMGxbqUEv
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +69,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    ActuatorId : 256461511    1
-    Should Contain X Times    ${output}    FilePath : TXOmUUnPhsHDogWXheJytvtcLNehHKTsQmhGKGKCrSftGbsRftzydiNkSHXxqdIWVUltnDLNDeTQsvzCfSLHiZSTjsWTYuQcWZIJODCZqmvMjWIMSRhXsZaRIHWXnDZpgNRmQRpRzKgzlrNsssZdSHjXLsUwkIVsuoqerbXIWBOkVdiBKJBeGofzMSJBwlNyWxnFKOeVloGqhsUaQtyrJySsNevuxxKraZRvLsMpbhwdylUOAYzmpDVagLgqERUH    1
+    Should Contain X Times    ${output}    ActuatorId : 410576554    1
+    Should Contain X Times    ${output}    FilePath : vuHebUDzpmeBWOxRhJvhvaWMwEoUgNVUKXvXZXpRSfimxKVxTwIqJiBcFHGDhQKlwXaTtmmKiyyasyjJrITOOlTGmeMOHkQDVmPvZUedzUHoFkXTOXwYVtqUWHLWQyGCAbNfQsdnccRyjtdesYImnehjaceeaYIfxAOEMVzlzVzkNGyNlZcgCNBdTpODfNtgpsWqPXnnhABBITLAOEwzIxKvEzuySgURqoQSPpFXKyECQBIRafMCsIjNMGxbqUEv    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +79,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    ActuatorId = 256461511    1
-    Should Contain X Times    ${output}    FilePath = TXOmUUnPhsHDogWXheJytvtcLNehHKTsQmhGKGKCrSftGbsRftzydiNkSHXxqdIWVUltnDLNDeTQsvzCfSLHiZSTjsWTYuQcWZIJODCZqmvMjWIMSRhXsZaRIHWXnDZpgNRmQRpRzKgzlrNsssZdSHjXLsUwkIVsuoqerbXIWBOkVdiBKJBeGofzMSJBwlNyWxnFKOeVloGqhsUaQtyrJySsNevuxxKraZRvLsMpbhwdylUOAYzmpDVagLgqERUH    1
+    Should Contain X Times    ${output}    ActuatorId = 410576554    1
+    Should Contain X Times    ${output}    FilePath = vuHebUDzpmeBWOxRhJvhvaWMwEoUgNVUKXvXZXpRSfimxKVxTwIqJiBcFHGDhQKlwXaTtmmKiyyasyjJrITOOlTGmeMOHkQDVmPvZUedzUHoFkXTOXwYVtqUWHLWQyGCAbNfQsdnccRyjtdesYImnehjaceeaYIfxAOEMVzlzVzkNGyNlZcgCNBdTpODfNtgpsWqPXnnhABBITLAOEwzIxKvEzuySgURqoQSPpFXKyECQBIRafMCsIjNMGxbqUEv    1
     Should Contain X Times    ${output}    === [ackCommand_ProgramILC] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

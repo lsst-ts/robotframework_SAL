@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.10499223433 0.108917522417 0.208060037692 -647594244
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.901873013045 0.110232159764 0.230646913191 -1709769450
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_CoolingMonitoring writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -647594244
+    ${output}=    Read Until    priority : -1709769450
     Log    ${output}
     Should Contain X Times    ${output}    === Event CoolingMonitoring received =     1
-    Should Contain    ${output}    inputTemperature : 0.10499223433
-    Should Contain    ${output}    outputTemperature : 0.108917522417
-    Should Contain    ${output}    flowRate : 0.208060037692
-    Should Contain    ${output}    priority : -647594244
+    Should Contain    ${output}    inputTemperature : 0.901873013045
+    Should Contain    ${output}    outputTemperature : 0.110232159764
+    Should Contain    ${output}    flowRate : 0.230646913191
+    Should Contain    ${output}    priority : -1709769450

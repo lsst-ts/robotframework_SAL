@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 ojeWzoVJLlOyGLcBqttPILxRDeSQvMWrKmYAUmBGsBnGasrcZHUdYGGTtLSzBThBzKAnsXQPXzuXEXSlyyOmFBWXKLhSPpvaSSrsXfksMATbQDOoJoOkmBmuWSbQcaGBPDIAPEUyjdChPZvZwNZADBJXLpMsQpGpQiABenetxjYyYamZrxgwmflWlxumCztCBQohSnmkvYtuwOmFvaqsSGxpNFppmnQdtMapaBazpGAIOnfpCnlkRMjjhMhNcHoy -1454600877 19.4759 -1366339709
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 QASGnrDGPjTZBXxYFBgiPyeugsZxaVVvVYqThtOOzDQSQIVBiiYeRjVUCKEEsskeELTQmaZFbRshvRiSkYbRrpFZkTReqUfSLMzHeknFfYsqIbcztMYbPRVacLPzTkGbYMtFDhBRXbhdRCFpjrsXSsYdDLpbNaMMwCNoQqOFIVmqEDFVfeuzagJJuJRdVcETYtIWutDNOohOXqtZgXzJvlqZFSuDWCKtYgpemPjDtcHdqvcgREqefDGtnPwPvAJP 1745491980 17.6137 95836295
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1366339709
+    ${output}=    Read Until    priority : 95836295
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
-    Should Contain    ${output}    state : 0
-    Should Contain    ${output}    device : ojeWzoVJLlOyGLcBqttPILxRDeSQvMWrKmYAUmBGsBnGasrcZHUdYGGTtLSzBThBzKAnsXQPXzuXEXSlyyOmFBWXKLhSPpvaSSrsXfksMATbQDOoJoOkmBmuWSbQcaGBPDIAPEUyjdChPZvZwNZADBJXLpMsQpGpQiABenetxjYyYamZrxgwmflWlxumCztCBQohSnmkvYtuwOmFvaqsSGxpNFppmnQdtMapaBazpGAIOnfpCnlkRMjjhMhNcHoy
-    Should Contain    ${output}    severity : -1454600877
-    Should Contain    ${output}    timestamp : 19.4759
-    Should Contain    ${output}    priority : -1366339709
+    Should Contain    ${output}    state : 1
+    Should Contain    ${output}    device : QASGnrDGPjTZBXxYFBgiPyeugsZxaVVvVYqThtOOzDQSQIVBiiYeRjVUCKEEsskeELTQmaZFbRshvRiSkYbRrpFZkTReqUfSLMzHeknFfYsqIbcztMYbPRVacLPzTkGbYMtFDhBRXbhdRCFpjrsXSsYdDLpbNaMMwCNoQqOFIVmqEDFVfeuzagJJuJRdVcETYtIWutDNOohOXqtZgXzJvlqZFSuDWCKtYgpemPjDtcHdqvcgREqefDGtnPwPvAJP
+    Should Contain    ${output}    severity : 1745491980
+    Should Contain    ${output}    timestamp : 17.6137
+    Should Contain    ${output}    priority : 95836295

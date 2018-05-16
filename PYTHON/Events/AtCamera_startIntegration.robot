@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_startIntegration sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atcamera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py JWzXqXeyDZBQfaHVHadpZSUxOSqKAvXAaSJLvMgPSQqVnnyQJgTykfQIzBkzjWPrBRKhzVmQCaCAZbjTloRevWMsJukLeFchVbdmfKEaifRoXDKRvDSVGyECMvDNIahhcUPmBdJCESrDyknzqxAypRgKUUdiQAWqluZLgJBVhDOZejBudXRLlAstUEAMdqicrvLNnyuKsSNaIFzHknFNeXwxbLdlIwtigxbeDeJtGLQwhzMZYqfcrMwrwljAgalJ -1326301962 xCdVztsDvoYruJxocqqGMROkTWfoAKVdoSkupQCDqMPmjNImwJUGMhwwngdntMzGKplVlWzhBDHLAGjJyxpDxkNjLiBjgkiGnWyonNFxgmVDpeSeFkgGdUGjfpTOYGPjvUosGnfiPZSwKwGhwTXtYfebuGUWynAEoQjvXvPpkLnkPlBLJPCratFQMTqMJczGcmgjnlRrsamiRpvnSZzgayykGsEfseJVzAuFKHSqzOpqevbdCuYzGINYoKcSqOXc 646988851 82.6025 75.4745 1082964638
+    ${input}=    Write    python ${subSystem}_Event_${component}.py DcKYuVswfLyGvLSTTaQljXPCaMbcUjsdeygorHWphaXlYxoYNtUIxBIyxgyUtLiFRYiaCPRQQDwxYbUPLmCEUmvornEYcBozsJQpvLJftCABQNNcMXClILkdzARxTPVpPGDZycIhrTRUeAtiKZiVPQwtwcxMmpCyNYtDWQGKvGTnjyqjSCzgBllXYxZgGWjBdpSOjrWjOqhkGSmaQUDStjNDxosBNBJsXeHlDhPFQGTYJEfonFTzasHCMQkmThQU 1583100672 ITsSxemGjUgggVdbRECAVjeTwCMwLZjIPacbhlAXjAkgUYFvkzHUDMkBunwOaCBaNdsRChoQtMawEfbBBetdMUuAovSRGeeQxSgnVjRYDHgAwrSfyGfRnLfkzBDrdGCMpeGHYrZSapoavlowspUiiWWyicLrKZlefpqPHTeqrSXKLPXFBTcirKyfwutpSaeNRZDhqETEZIlMpLDtVDLuHSUeBkvYbxHdBKIwKkOtJowwDLOCSJecSYSocKassaCu -309839232 76.4976 63.5817 -477617052
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_startIntegration writing a message containing :    1

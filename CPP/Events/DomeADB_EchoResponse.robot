@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send riGABqqgNsSBBpPdFyfHAcnKMgUTazIXBFbkGwSqMnwacMpUGYIKfFyNSgxykyTLGoLsCsqZYGINRQToaQzPSYzioPyuhVmvZlhTzvdHxOrAGeQDEdgrDubmTKLBWAGbPVyxfVaJSPvVWZlyKUdQilINZEfwlEtHZiUOSGYolpBFQKDUbLOQXzzaZMgEkQUHWqlXDHytwxhxlbhDMSokOJauGWpbMMeUFjDjWZHopKGDAJMwTcMfhdIrqyVOAjfalcrzgRYtyhVoDdRLpnjSvQTBfEKBbnnCNeoIfeqYEMRoDBGMjBPUcWORYMTVQeMXOqIpQEEQGjpFNoZmDfggrVzqApVljJGmwgVoZlmBEDBORiqsZMyMoxKXNBbPCADWKPlbDHgYQafrrUMWOJsRdwNxsIjTfafzFYpdDFCNsgGxgybKwdEoqAdWnfBWxHxZNrKfSsZFViPZMseLMTbnoKvrXBnWXzGwdZvbEoAoSgmOIRFURMXtCMHtSkgvQjqlqTFQicxSpOHgvmbwhWnbFyNqJrITHrYcTaXqMnpKeatBSbGMXYoPgfAVILhmSBdfaxWCslmLUGDhzNTKIjsNzghqxYPtQMWaRCIlnpFpLKICvWUOyJgVWhwiwiFEZZTVVfKqoToZnvbBQBoYZpnBEbzOxFhdlOoKNekEBwkaZyeLlFHLvUqrBWcKdmEJpreHKDGMvUiRQTLXzGnpxGVeGUEEvKlaoNIloWRXIqDLqvjPNyUXAnUCjMdIxaTUZPCVGfEGIbyUSTXOhlJsYMEQBCPhkBpLHZvoEjLiMvXbuiXsqYgpxyRYWwIbWMeN -862750016
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YBUwpcKqLpmpSKiqdTRkRLKJKspzxblkVjUqPvMNtoxAZlUZfcBofIwjGxcdTqTZUgqZUpgcypXcLBMHCczhqRiZZsedIadwJUlJxDyvOYraXKgNiSLxVPEHjuNYznkDgmmZUcCteVZFYYKTVOsDTTFEvThnJINNjbTBGStVaSJguGTwhBtgpHmYotDgLkWOMKjjNQkeowjNyUzUpRdphVbAIamPyHFNwaDGHWgujSZICeGNDIZdZjWEKYZXRmcrKvpYshvApQtItSZFwKGdcjlfNtdjxiFcgEVkyHDPQgOVupzfinXiGPuYbkFavXeMULkRQoYVDOWjLujGQtOLJQImYRXtmJHwmJpHYjzxfhnMtQtACpqBYTTmZsZJPRRWlnCUyvnaXuacClQmUhOUBGdzsGAwmNQJRfYfAkwzRsWIMJUDzzpDAyFXEzAeSVmgYWWLbDLHkYRFqjpUbzEReeGoSlivgSshKzexQTYUotFNijYz 912182372
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -862750016
+    ${output}=    Read Until    priority : 912182372
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : riGABqqgNsSBBpPdFyfHAcnKMgUTazIXBFbkGwSqMnwacMpUGYIKfFyNSgxykyTLGoLsCsqZYGINRQToaQzPSYzioPyuhVmvZlhTzvdHxOrAGeQDEdgrDubmTKLBWAGbPVyxfVaJSPvVWZlyKUdQilINZEfwlEtHZiUOSGYolpBFQKDUbLOQXzzaZMgEkQUHWqlXDHytwxhxlbhDMSokOJauGWpbMMeUFjDjWZHopKGDAJMwTcMfhdIrqyVOAjfalcrzgRYtyhVoDdRLpnjSvQTBfEKBbnnCNeoIfeqYEMRoDBGMjBPUcWORYMTVQeMXOqIpQEEQGjpFNoZmDfggrVzqApVljJGmwgVoZlmBEDBORiqsZMyMoxKXNBbPCADWKPlbDHgYQafrrUMWOJsRdwNxsIjTfafzFYpdDFCNsgGxgybKwdEoqAdWnfBWxHxZNrKfSsZFViPZMseLMTbnoKvrXBnWXzGwdZvbEoAoSgmOIRFURMXtCMHtSkgvQjqlqTFQicxSpOHgvmbwhWnbFyNqJrITHrYcTaXqMnpKeatBSbGMXYoPgfAVILhmSBdfaxWCslmLUGDhzNTKIjsNzghqxYPtQMWaRCIlnpFpLKICvWUOyJgVWhwiwiFEZZTVVfKqoToZnvbBQBoYZpnBEbzOxFhdlOoKNekEBwkaZyeLlFHLvUqrBWcKdmEJpreHKDGMvUiRQTLXzGnpxGVeGUEEvKlaoNIloWRXIqDLqvjPNyUXAnUCjMdIxaTUZPCVGfEGIbyUSTXOhlJsYMEQBCPhkBpLHZvoEjLiMvXbuiXsqYgpxyRYWwIbWMeN
-    Should Contain    ${output}    priority : -862750016
+    Should Contain    ${output}    response : YBUwpcKqLpmpSKiqdTRkRLKJKspzxblkVjUqPvMNtoxAZlUZfcBofIwjGxcdTqTZUgqZUpgcypXcLBMHCczhqRiZZsedIadwJUlJxDyvOYraXKgNiSLxVPEHjuNYznkDgmmZUcCteVZFYYKTVOsDTTFEvThnJINNjbTBGStVaSJguGTwhBtgpHmYotDgLkWOMKjjNQkeowjNyUzUpRdphVbAIamPyHFNwaDGHWgujSZICeGNDIZdZjWEKYZXRmcrKvpYshvApQtItSZFwKGdcjlfNtdjxiFcgEVkyHDPQgOVupzfinXiGPuYbkFavXeMULkRQoYVDOWjLujGQtOLJQImYRXtmJHwmJpHYjzxfhnMtQtACpqBYTTmZsZJPRRWlnCUyvnaXuacClQmUhOUBGdzsGAwmNQJRfYfAkwzRsWIMJUDzzpDAyFXEzAeSVmgYWWLbDLHkYRFqjpUbzEReeGoSlivgSshKzexQTYUotFNijYz
+    Should Contain    ${output}    priority : 912182372

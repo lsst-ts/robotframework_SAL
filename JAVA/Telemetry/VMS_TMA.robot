@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    VMS_TMA communications tests.
-Force Tags    java    TSS-2618
+Force Tags    java    Checking if skipped: vms
+TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

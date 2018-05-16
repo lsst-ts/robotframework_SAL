@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_ApplyOffsetForcesByMirrorForce commander/controller tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +38,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.793637790811 0.360527932011 0.0141024492724 0.39989508332 0.32420319363 0.581472999424
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.872542162854 0.00673805124507 0.635376837417 0.194503063167 0.310400002716 0.487896620521
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +61,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.793637790811 0.360527932011 0.0141024492724 0.39989508332 0.32420319363 0.581472999424
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.872542162854 0.00673805124507 0.635376837417 0.194503063167 0.310400002716 0.487896620521
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +69,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    XForce : 0.793637790811    1
-    Should Contain X Times    ${output}    YForce : 0.360527932011    1
-    Should Contain X Times    ${output}    ZForce : 0.0141024492724    1
-    Should Contain X Times    ${output}    XMoment : 0.39989508332    1
-    Should Contain X Times    ${output}    YMoment : 0.32420319363    1
-    Should Contain X Times    ${output}    ZMoment : 0.581472999424    1
+    Should Contain X Times    ${output}    XForce : 0.872542162854    1
+    Should Contain X Times    ${output}    YForce : 0.00673805124507    1
+    Should Contain X Times    ${output}    ZForce : 0.635376837417    1
+    Should Contain X Times    ${output}    XMoment : 0.194503063167    1
+    Should Contain X Times    ${output}    YMoment : 0.310400002716    1
+    Should Contain X Times    ${output}    ZMoment : 0.487896620521    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -82,12 +83,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    XForce = 0.793637790811    1
-    Should Contain X Times    ${output}    YForce = 0.360527932011    1
-    Should Contain X Times    ${output}    ZForce = 0.0141024492724    1
-    Should Contain X Times    ${output}    XMoment = 0.39989508332    1
-    Should Contain X Times    ${output}    YMoment = 0.32420319363    1
-    Should Contain X Times    ${output}    ZMoment = 0.581472999424    1
+    Should Contain X Times    ${output}    XForce = 0.872542162854    1
+    Should Contain X Times    ${output}    YForce = 0.00673805124507    1
+    Should Contain X Times    ${output}    ZForce = 0.635376837417    1
+    Should Contain X Times    ${output}    XMoment = 0.194503063167    1
+    Should Contain X Times    ${output}    YMoment = 0.310400002716    1
+    Should Contain X Times    ${output}    ZMoment = 0.487896620521    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyOffsetForcesByMirrorForce] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

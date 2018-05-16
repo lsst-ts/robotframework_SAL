@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_SettingsApplied sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: tcs
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py UZhfeHYDapsaiAdDDxbuYXXmuVAWeDBuQeceWDKVqwydEcwMGmHEUThfqRsIdFvHNbrTZaLqGOrqGRWQcfSxXRKmHnGjuVSvXtNqbCrwpihilUPMylRpQagkYORNwSUbFcPwAOSuexAENlrWucvyKigmbqgMSDUxTSYpQdiljejvdjFoWadnzWnttLKOztSqmjHAfBQgDX 74.9232 -177356435
+    ${input}=    Write    python ${subSystem}_Event_${component}.py THFUFGcdAAVXYildEcuhxNiJmhfDkRFVySdGjFRtYzKAxKmJZmNVUaTGzUzzwYeSdbKzmowuQygzbiimFWpxUvKCNSsaDfgNpqCoVMmGdKyjlsRqAzZECDkoGmBhDfqDRUmsdjwSbRGILMOrisYKrhsnqtknNxLOKwCUrQDCgfNNupffkdbeZnryOxYSGGfxzJAIaHvdWGCioORDUYFPyTXeBhUrPsnssJhQalnjlUIOcuGAOQbPrOWMWqsfUEAzevkUGXmBVxTDgiMKSTXCAIbAjLFJunzyKaaedsYkAmVVBuOsHNQlOnXoHFFmYwhVukobQbzGZAJmzeZoadQNHucCBbKKLxCBRptCerzuOqvBkniIiPvSSTXGhMyEiLBMJyVSiTerYsxMpUUxgkgVxKeEbjdOWQMZWaIJNZLMFjEuIGExlyLNoYYXNWiPCYaNkfSdGvBKsiUhBUfUfjOoflBgjZBBOeLOskwxlNhHikeJhiwpOmXeQndvIUITXMifSmlFoLjRbqMdeJOJmfePVcgQpkxbCDfYPMUDHRvbsZxfBuwCHgzkiptSOvDemGYtPXPNHWifIJ 38.3163 1759561069
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1

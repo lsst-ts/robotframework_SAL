@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_RejectedCommand sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: eec
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 31737 63868 32.3287 -1743945353
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 14990 45155 95.9632 -1641510362
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_RejectedCommand writing a message containing :    1

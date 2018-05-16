@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -17321 21281 -25109 -14508 -11910 4884 31800 28826 -17998 24965 -18333 17959 932 -17627 -31373 -14611 -23539 20530 -18997 -28529 -4730 14367 -9542 -20494 -9396 -25903 32718 -30984 -19927 -2037 -31251 30884 4561 -12548
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 23593 27646 -12603 -18665 22567 25740 26182 -26175 -3814 362 20330 -11 24344 -18939 22196 -4450 331 8824 2639 22864 16797 30560 1712 31635 -31437 20717 -27087 29399 -10760 -15389 13793 -4244 5831 -30136
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -17321 21281 -25109 -14508 -11910 4884 31800 28826 -17998 24965 -18333 17959 932 -17627 -31373 -14611 -23539 20530 -18997 -28529 -4730 14367 -9542 -20494 -9396 -25903 32718 -30984 -19927 -2037 -31251 30884 4561 -12548
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 23593 27646 -12603 -18665 22567 25740 26182 -26175 -3814 362 20330 -11 24344 -18939 22196 -4450 331 8824 2639 22864 16797 30560 1712 31635 -31437 20717 -27087 29399 -10760 -15389 13793 -4244 5831 -30136
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    position : -17321    1
+    Should Contain X Times    ${output}    position : 23593    1
     Should Contain    ${output}    === command SetLouvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    position : -17321    1
+    Should Contain X Times    ${output}    position : 23593    1
     Should Contain X Times    ${output}    === [ackCommand_SetLouvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1987824774 -354980550
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1811807892 -814955273
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_ErrorCode writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -354980550
+    ${output}=    Read Until    priority : -814955273
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -1987824774
-    Should Contain    ${output}    priority : -354980550
+    Should Contain    ${output}    errorCode : -1811807892
+    Should Contain    ${output}    priority : -814955273

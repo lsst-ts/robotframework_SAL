@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 63.4934 1033319028 -530556399
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 84.147 -386326189 -343591286
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -530556399
+    ${output}=    Read Until    priority : -343591286
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    timestamp : 63.4934
-    Should Contain    ${output}    errorCode : 1033319028
-    Should Contain    ${output}    priority : -530556399
+    Should Contain    ${output}    timestamp : 84.147
+    Should Contain    ${output}    errorCode : -386326189
+    Should Contain    ${output}    priority : -343591286

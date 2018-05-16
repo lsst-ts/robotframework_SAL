@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsOFC_ErrorCode sender/logger tests.
-Force Tags    python    TSS-2625
+Force Tags    python    Checking if skipped: tcsOfc
+TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 67.7342 320605968 -1851516909
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 18.287 943519611 -1844889240
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_ErrorCode writing a message containing :    1

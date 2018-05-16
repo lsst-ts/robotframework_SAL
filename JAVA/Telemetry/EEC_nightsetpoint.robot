@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_nightsetpoint communications tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: eec
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

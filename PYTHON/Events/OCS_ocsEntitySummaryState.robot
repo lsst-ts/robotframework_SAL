@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsEntitySummaryState sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: ocs
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py UNXHAIkiqfPjsQZQlYRCdHfFehMEkGmiectpmFRSvxPxbDXfuKjqoNKIewOPaQfaemekqhVusZYrhNJFjGsRkBpXXrKCQNlBVhDFauLBUVjDoekZMneTuOMEPcMmcKIH 3.5551 ZdythzTNlfNPXKbLStaeavjUewSBkqyVAnaWaRzUqiNDbkKcIAtSHQxxrVHYpHfCBessYXdtbdIySzImXfMkqukcLIKfwQnTmXpvGjbdkZNFHwHqPZKtLSrwvIZjEvmUdrBKiTGXnUpOemfQgZldBrHorHvcdmSlYaiDVdPuFenrrviCbUbkPnUIqdfMvOZlQpgDDQJPdKrtvTZFEUvTlyGjNnjnFtLQZqneVunQaczLmNWoHQYMTyhccINODueK -1678595747 OgmSOohqXLltRDSjksHfVNPXOeLPjzCjyPMROZUeZhNhbgCSLGTxaWmpDUpFWqTUcnareuKgeZkEjrarMMWajEVsfkdeIsYjAigqNdNnBmavcTKHAgHyAtyuCTfKWYwK exfGprcmOLGyIfgePdLHiZtNPmcXxOwGAXnYSwFvqoecZLxWivnQfybMmheXRCZytPpzJgnOKYiDWbPRiiEUHGTXhwOitpPQoBJpVJFwGuXacoOUCwJAoRnHiMQZezYM PVcgFALsCpKBfWHcDWEzFiGhNGFqwZdhwhiABAqgJoAzyFBVPXtfHoyldmFLiZTbycjJXRbfrjnwkVYUThZJYMTwoQJErctnoHEVeoSnMfbBmJKSGWpMtDetqmsxtYNy oasGpErkrVQLDVseemmtuqhydEgGkbdZlfszKSwjNtQTHYrlcZbTvtfTOzqDNLrrOZFzSNkwtRUkGyUZMqqhbRzHbQolMYBotfrmkSeUDOWjdGVACfFQGlYqgcCztIGf XdHMSZhlgsASSoirSlEieXikYiCeKCtOLJIquBzbzvrcLYqqvVQrNrEfUaDWHdFpSVLShbJQVMFGJRfgHZRZtpZYLpcMEziqpVqytUeeDOYuwZOhJFDMLMvtuHtOoXQI 1703019799
+    ${input}=    Write    python ${subSystem}_Event_${component}.py oLQibkaWFnXOAWdrpJWPgMoYCfyuBmimcqAKlSAMTuGRHRYDTHeLNpRumDxITjHgORSGrCMeDuClWhoXhMYTEbrMjsKNJkoyqhnIvHmIypEKyQTMadYimiPuBAcEJgoG 74.8407 znGIFzqopZXcNNvObZFQdGiNrfBdKXKrCazmfuUeIHcUxkFwhlZlQMljYBIcATISWCIRSvunzIWqQiRaKGBZfLbWiMBRnupRFYZRgNLGVltxOKsMfGzLyjSIsgPztRAvuOOepZhGyAqSLJtKTjnhhOnPUFwbnNoMhmEXVmldfnKCLWWzhkrldpXtloCENKMOzzUNnZCtPrkdYZUyTcTrdZeljFxZQMFGRrNWAWtjHRndQfanUDDUVnWaxzfmLJqW 1055187929 fjefTGmjfNSRlYSvDhbcCfLKTlTIvVtlMQSmRGIlIcfBuFuVzPAeSovStaptBWKcOZeYFcRsgdXOgyHjfQqeJHWLOmaniVADFtYqEokNfFwFbyokmNWqaNkyVZSPABMf WumbLJHreBlPmhhABPfTokziMwLvwditViskdhnUbNrVYBKSMdAVlYwRzRvWdmUyUVVEittGfVybByJWNSLjmcPkPNupkHADxAaCXndTMkCLsGrWDmDkSWySLnpNmlbT PlbGAKNopRQLQljPEGufioeEudfQhQSZFPvmbZSlubfOOOskwPVtinKytXrarlrrUdZwzupJadvsmYFJiUGwIBcUJFmkuzexNnBvOoUjJhXFXJRTfUKJVgAZGGLNUmvu BKpuYJJHdKhLMdhoKsafRlIKeiKIhqVvObqloGVxxOKtNYyMvpBEMMCGHbeXeJRPXHytjmQymSqjHxiisLGnZaqIspwGSevSckbVUcWWhjoGRzCgjxEcJEgEJcTblKRL PTksAtZMLdgNEYMhHPmimePoWidRgnDpNsCSvjHyyURvkDykhdeZOaCdhKGStwNXPzCInCecQovxfHiGOCSytSUetIrGALqyVNDigLrpguheutxNOPWFlcnoAJKiaYOr 1754461485
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntitySummaryState writing a message containing :    1

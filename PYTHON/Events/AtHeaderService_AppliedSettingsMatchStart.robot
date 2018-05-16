@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtHeaderService_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atHeaderService
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 81.9304 0 -190695805
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 25.7877 1 -2114371060
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_AppliedSettingsMatchStart writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_configureVelocity commander/controller tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: hexapod
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0675493066108 0.63231300567 0.0502027554971 0.0990428572227
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.89254175402 0.989481525079 0.882045748422 0.598410406258
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0675493066108 0.63231300567 0.0502027554971 0.0990428572227
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.89254175402 0.989481525079 0.882045748422 0.598410406258
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,10 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xymax : 0.0675493066108    1
-    Should Contain X Times    ${output}    rxrymax : 0.63231300567    1
-    Should Contain X Times    ${output}    zmax : 0.0502027554971    1
-    Should Contain X Times    ${output}    rzmax : 0.0990428572227    1
+    Should Contain X Times    ${output}    xymax : 0.89254175402    1
+    Should Contain X Times    ${output}    rxrymax : 0.989481525079    1
+    Should Contain X Times    ${output}    zmax : 0.882045748422    1
+    Should Contain X Times    ${output}    rzmax : 0.598410406258    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -80,10 +80,10 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xymax = 0.0675493066108    1
-    Should Contain X Times    ${output}    rxrymax = 0.63231300567    1
-    Should Contain X Times    ${output}    zmax = 0.0502027554971    1
-    Should Contain X Times    ${output}    rzmax = 0.0990428572227    1
+    Should Contain X Times    ${output}    xymax = 0.89254175402    1
+    Should Contain X Times    ${output}    rxrymax = 0.989481525079    1
+    Should Contain X Times    ${output}    zmax = 0.882045748422    1
+    Should Contain X Times    ${output}    rzmax = 0.598410406258    1
     Should Contain X Times    ${output}    === [ackCommand_configureVelocity] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -792847499 50.0639 2.7722 1.0926
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1775816047 68.4881 86.3118 22.6171
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -792847499 50.0639 2.7722 1.0926
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1775816047 68.4881 86.3118 22.6171
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,10 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    gratingType : -792847499    1
-    Should Contain X Times    ${output}    fontExitSlitWidth : 50.0639    1
-    Should Contain X Times    ${output}    fontEntranceSlitWidth : 2.7722    1
-    Should Contain X Times    ${output}    wavelength : 1.0926    1
+    Should Contain X Times    ${output}    gratingType : 1775816047    1
+    Should Contain X Times    ${output}    fontExitSlitWidth : 68.4881    1
+    Should Contain X Times    ${output}    fontEntranceSlitWidth : 86.3118    1
+    Should Contain X Times    ${output}    wavelength : 22.6171    1
     Should Contain    ${output}    === command updateMonochromatorSetup issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -86,10 +86,10 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    gratingType : -792847499    1
-    Should Contain X Times    ${output}    fontExitSlitWidth : 50.0639    1
-    Should Contain X Times    ${output}    fontEntranceSlitWidth : 2.7722    1
-    Should Contain X Times    ${output}    wavelength : 1.0926    1
+    Should Contain X Times    ${output}    gratingType : 1775816047    1
+    Should Contain X Times    ${output}    fontExitSlitWidth : 68.4881    1
+    Should Contain X Times    ${output}    fontEntranceSlitWidth : 86.3118    1
+    Should Contain X Times    ${output}    wavelength : 22.6171    1
     Should Contain X Times    ${output}    === [ackCommand_updateMonochromatorSetup] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

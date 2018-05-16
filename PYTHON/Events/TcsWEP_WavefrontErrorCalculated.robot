@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsWEP_WavefrontErrorCalculated sender/logger tests.
-Force Tags    python    TSS-2626
+Force Tags    python    Checking if skipped: tcsWEP
+TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py AEySzniOYymyeSrxlUhFfkDBjlwqCEOIlDZKVKJeFnHTjSXQnBeqQwpuWSgWhpCPSNjxdnfspRttGJboUTBmLnQoKivTLsafTugIyeYnrpDhTRKobZQaEpiGhZKetBZzmcUUZOdyBYWKQKRebhOcKCelbthLQVOjrZzPsKbzIrMdDzdHbaSEgdilxaziGiXbtCkCOxIWZerDHroJwNpoXdxbfvVdmrtdMRGMvljmkphnCVRbZLpjUMyXzvPveWRpkfZpqQiEBbuStrMfmjZyWAezWEZJKlRioowPRPElFjVKycVgDEzogfUzJZSmtwUzVPBMnaMHvsWNgINZxPhpQXOmfZvrUQKAmcWgvdvjHvFPFxEXlpHEEcWgRdTqJApoOEoHvEFtzSRYNRvnaboCrFZNEymwNWpzTIGRDMsiVSaWzBgsNAfXUGqUQFhRKqtHuqyWrjKWNTCXRBjoKMFdNHQFwtKcSCwMwiUrWWdOzGgYXlxJIwreVFcUPIonilWyVrtoDcJFLtcqriLqUXzNKyjhCxfDyVSebOgewYKDitzLBysoECnVNXzCFzHMovLGjgiEqLifOzYLnlXEXYLnGTHSKUItPtSyCeICJeYhPbkACdUCCmFWzDBHscKytuheZlELjEqziHFPPNsHIobfT 64.8907 -14253370
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JIwragNdyAvgpcFenrlPVOgmylllaEPqxiemNRajGrzgFttibWNqDAETglOIdSgTdMHjpbjlOQthhDNaxGLftcwUPWEqJMYcYxXjulpXpDUcbRxBMaNdWMaAiOvOrkcBagwxNQNJC 13.1837 1333038648
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1

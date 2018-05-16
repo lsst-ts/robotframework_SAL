@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_enterControl commander/controller tests.
-Force Tags    java    
+Force Tags    java    Checking if skipped: atMonochromator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

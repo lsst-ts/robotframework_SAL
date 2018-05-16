@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsWEP_ErrorCode sender/logger tests.
-Force Tags    python    TSS-2626
+Force Tags    python    Checking if skipped: tcsWEP
+TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -868086596 21.0402 1543304317
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1540934601 22.0501 -679183993
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_ErrorCode writing a message containing :    1

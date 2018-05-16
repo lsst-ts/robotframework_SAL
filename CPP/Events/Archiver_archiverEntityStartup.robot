@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntityStartup sender/logger tests.
-Force Tags    cpp    TSS-2623
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send vdNBOOdejoNefpdIJlMTQGsbtBuVZfVqNsjDwPXQKzogNzKDTrfpiwFaMyAuxLiBmFdmFxvVSkcBCUgENTsZbcrPCDNzYsOYzYdaXBmmmsVULXbUWmAdQspnudNNbIyE 32.0603 LszgthXwOqgIWRAhtfeGntGWyQydslkIVwUTNQkQotRKrkQTONifSrwWpBDPzXZvfyPtXRJcJaNjPFAiAPBNKpZiqWOcbftnYPVZpbjgXpfJuUugsqRrvGjfHQQDeTAPzKzXTUNOjHrDXTYNtLaPImKblcYeQrYjXJOJnatSSIlGILuXeBnDYeSrQqvINTwOJuFAtGrayMRPCNCIXWfKMKOeTrjUGMPidtxQHuXUmnjWyEJOvnFjDJvMHqcgvleB 532645763 182098246 651344148
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VOfOShQzvuTaJVghwNWOLAcvQNQolCxRWrJzXcdUjtjexnJqjTXgCHxUVVWZqzgQgvdFFbDwrQzvtROYkIrYkXZulGqkJQYsETVFuDxmsgThGiEoLDFepzfwaNyzlLmP 23.9662 aVaGfZzjCmHjLBtXxyJBokQqgNHvFADachncBsWVJcuPZQlkWxMxTPkQvaeOsZpjtvVClzoBstwiZOiwnjmtGUVbpMylbrTPSgPJuiiZIBThQzQISIpncTQLCPdthKrEUJHleWRijfLgBqcOjBljBxPtgXeNqhyZiIsFFlTEZnoLUordpZizijvdBOnBImZAiFOKnFYzQawaImRQEdzjCTNNlOYmumyVKokyZpqIdCVJrOmeWMGeJhnRRndiOsjm 1535993640 1065966072 -1915791825
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntityStartup writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 651344148
+    ${output}=    Read Until    priority : -1915791825
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntityStartup received =     1
-    Should Contain    ${output}    Name : vdNBOOdejoNefpdIJlMTQGsbtBuVZfVqNsjDwPXQKzogNzKDTrfpiwFaMyAuxLiBmFdmFxvVSkcBCUgENTsZbcrPCDNzYsOYzYdaXBmmmsVULXbUWmAdQspnudNNbIyE
-    Should Contain    ${output}    Identifier : 32.0603
-    Should Contain    ${output}    Timestamp : LszgthXwOqgIWRAhtfeGntGWyQydslkIVwUTNQkQotRKrkQTONifSrwWpBDPzXZvfyPtXRJcJaNjPFAiAPBNKpZiqWOcbftnYPVZpbjgXpfJuUugsqRrvGjfHQQDeTAPzKzXTUNOjHrDXTYNtLaPImKblcYeQrYjXJOJnatSSIlGILuXeBnDYeSrQqvINTwOJuFAtGrayMRPCNCIXWfKMKOeTrjUGMPidtxQHuXUmnjWyEJOvnFjDJvMHqcgvleB
-    Should Contain    ${output}    Address : 532645763
-    Should Contain    ${output}    priority : 182098246
-    Should Contain    ${output}    priority : 651344148
+    Should Contain    ${output}    Name : VOfOShQzvuTaJVghwNWOLAcvQNQolCxRWrJzXcdUjtjexnJqjTXgCHxUVVWZqzgQgvdFFbDwrQzvtROYkIrYkXZulGqkJQYsETVFuDxmsgThGiEoLDFepzfwaNyzlLmP
+    Should Contain    ${output}    Identifier : 23.9662
+    Should Contain    ${output}    Timestamp : aVaGfZzjCmHjLBtXxyJBokQqgNHvFADachncBsWVJcuPZQlkWxMxTPkQvaeOsZpjtvVClzoBstwiZOiwnjmtGUVbpMylbrTPSgPJuiiZIBThQzQISIpncTQLCPdthKrEUJHleWRijfLgBqcOjBljBxPtgXeNqhyZiIsFFlTEZnoLUordpZizijvdBOnBImZAiFOKnFYzQawaImRQEdzjCTNNlOYmumyVKokyZpqIdCVJrOmeWMGeJhnRRndiOsjm
+    Should Contain    ${output}    Address : 1535993640
+    Should Contain    ${output}    priority : 1065966072
+    Should Contain    ${output}    priority : -1915791825

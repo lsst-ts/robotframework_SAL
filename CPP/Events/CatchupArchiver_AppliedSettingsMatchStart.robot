@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    cpp    TSS-2620
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 -1087467422 2074492423
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 1144585333 5371286
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_AppliedSettingsMatchStart writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2074492423
+    ${output}=    Read Until    priority : 5371286
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
     Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 1
-    Should Contain    ${output}    priority : -1087467422
-    Should Contain    ${output}    priority : 2074492423
+    Should Contain    ${output}    priority : 1144585333
+    Should Contain    ${output}    priority : 5371286

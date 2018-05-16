@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_ErrorCode sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: eec
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 91.4298 -1743546858 -1978223172
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 68.845 9715640 -551182515
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_ErrorCode writing a message containing :    1

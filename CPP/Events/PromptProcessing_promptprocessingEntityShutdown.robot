@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_promptprocessingEntityShutdown sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jvclUJmMhOvOFCGHRaIrjmLWgfrTysbmxjlduYsonRCUvTUPhWlowAlZaBxkQayEDiPPrnfabpcsQJNXEqXyUFmhybPyzNTviFsCNTsbqjfSJotNuxwhFIwkehbHMMiTyjkZLFthcFsltmMInuLXxBEzseaXSoYBextynritRKDFuxeMRwnvuCnBPqNcLggVpPWXLVmRkiGmzdqCfgTwIrWLSFbXRiFgQehAQbUtiDLLprHzynVSEovmldmBLjYo 32.5338 TlLNftXZDHiVADiYQBBCxgoRSbhUWwqWvwNVIDAhhCOfLXDCKnFfkqTFYeJaCLbNkxIzEIqSnjRRvTnwDoItzRpTppcLhraruZBPdxEHUagZrjzeRdcqEaMwfeVkrFPBtYfoxLymgkvIQaEoCiiTxVahwzcMxCllirgXdaqbUWUSFywRtXluAqRARjavRBZdnjMxUXPdZymsuYMhaAcDdtEBLciNfZyuEOmfWjTkuEZqDPCWNtUvlDchQKrHwjUW -1664283449 381947417 -120508631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send vIEnityFuOZpZWDlVenLuQJnkCJZLHDeojJXHjeXqdxRvavcqFtMshwqYwiqtTgThdUgOcDwQpGpaICoOLCUUXoYUESqrxePZGitOBHNzEModtJnLcuuSxNkRTpqdEjjhzsgALkpjTWafiseiUjhhsdTikpBBxqyyfCQPyIheiGmhMllJIiasYRRKjdxWVakQUkqfGJIMbikIhPppkyQRaYClcTvyIurWceDjjKaBWTekmArvvdTRJUqFXaKeQQK 7.5423 iYokmIjsZPOhpKjbtdzKlmGLjiFiTvqywHauvkloFrhbavWJodPpMWsRUdLKhNITjDbpiljRfiqPhLieFBFNdmJpvirhJrBloXVZcixlQCwprIaIIVLURiLCBhXFzDtBmavTHLaoUsieHTZDTFJbmQfTrDCobppYZRIqjoKroTlsEpTUvgmMxZzDcfOoezJFnvyHOielrAWafHXlGZWSBSUfiQLTziRbVLTlIMlbdRNKDSmOKmEvacRvHwjpXBby -441099328 999347796 1661582648
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityShutdown writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -120508631
+    ${output}=    Read Until    priority : 1661582648
     Log    ${output}
     Should Contain X Times    ${output}    === Event promptprocessingEntityShutdown received =     1
-    Should Contain    ${output}    Name : jvclUJmMhOvOFCGHRaIrjmLWgfrTysbmxjlduYsonRCUvTUPhWlowAlZaBxkQayEDiPPrnfabpcsQJNXEqXyUFmhybPyzNTviFsCNTsbqjfSJotNuxwhFIwkehbHMMiTyjkZLFthcFsltmMInuLXxBEzseaXSoYBextynritRKDFuxeMRwnvuCnBPqNcLggVpPWXLVmRkiGmzdqCfgTwIrWLSFbXRiFgQehAQbUtiDLLprHzynVSEovmldmBLjYo
-    Should Contain    ${output}    Identifier : 32.5338
-    Should Contain    ${output}    Timestamp : TlLNftXZDHiVADiYQBBCxgoRSbhUWwqWvwNVIDAhhCOfLXDCKnFfkqTFYeJaCLbNkxIzEIqSnjRRvTnwDoItzRpTppcLhraruZBPdxEHUagZrjzeRdcqEaMwfeVkrFPBtYfoxLymgkvIQaEoCiiTxVahwzcMxCllirgXdaqbUWUSFywRtXluAqRARjavRBZdnjMxUXPdZymsuYMhaAcDdtEBLciNfZyuEOmfWjTkuEZqDPCWNtUvlDchQKrHwjUW
-    Should Contain    ${output}    Address : -1664283449
-    Should Contain    ${output}    priority : 381947417
-    Should Contain    ${output}    priority : -120508631
+    Should Contain    ${output}    Name : vIEnityFuOZpZWDlVenLuQJnkCJZLHDeojJXHjeXqdxRvavcqFtMshwqYwiqtTgThdUgOcDwQpGpaICoOLCUUXoYUESqrxePZGitOBHNzEModtJnLcuuSxNkRTpqdEjjhzsgALkpjTWafiseiUjhhsdTikpBBxqyyfCQPyIheiGmhMllJIiasYRRKjdxWVakQUkqfGJIMbikIhPppkyQRaYClcTvyIurWceDjjKaBWTekmArvvdTRJUqFXaKeQQK
+    Should Contain    ${output}    Identifier : 7.5423
+    Should Contain    ${output}    Timestamp : iYokmIjsZPOhpKjbtdzKlmGLjiFiTvqywHauvkloFrhbavWJodPpMWsRUdLKhNITjDbpiljRfiqPhLieFBFNdmJpvirhJrBloXVZcixlQCwprIaIIVLURiLCBhXFzDtBmavTHLaoUsieHTZDTFJbmQfTrDCobppYZRIqjoKroTlsEpTUvgmMxZzDcfOoezJFnvyHOielrAWafHXlGZWSBSUfiQLTziRbVLTlIMlbdRNKDSmOKmEvacRvHwjpXBby
+    Should Contain    ${output}    Address : -441099328
+    Should Contain    ${output}    priority : 999347796
+    Should Contain    ${output}    priority : 1661582648

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_ClearAberrationForces commander/controller tests.
-Force Tags    java    TSS-2617
+Force Tags    java    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

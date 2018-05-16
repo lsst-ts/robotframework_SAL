@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Rotator_trackLost sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: rotator
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 94.9261 874060838
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 71.6384 -1992707196
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_trackLost writing a message containing :    1

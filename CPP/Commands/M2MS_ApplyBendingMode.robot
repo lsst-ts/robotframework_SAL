@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10943 -21997 -6884 -18633 -4157 21721 -25793 14502 -1702 20802 -20414 -13291 -31991 -21580 27373 1279 9567 3728 11231 30763 -24082 19283 -15083 30100 20768 15680 31647 9648 -27515 15478 -16593 -25233 30.6624 69.7395 91.1986 80.6434 36.3124 4.9685 47.0914 6.4922 88.2826 34.693 92.8994 12.4843 24.132 7.1432 17.4161 14.6461 62.1113 94.3873 22.9514 69.8587 32.1502 61.0949 47.0178 15.5436 66.3647 19.4132 26.9854 47.5472 43.3756 72.346 9.6083 55.5912
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -20428 -3286 -27097 26732 -29863 3262 29492 -6120 -4823 -5797 -16333 29777 9865 -2385 -31741 27223 -7966 24200 -31530 17064 -23670 -8967 -1166 -6032 21386 31804 6316 -25177 4062 19121 28883 -5239 54.4711 68.6279 90.3086 13.9209 10.9591 6.8191 73.416 90.4481 98.3632 37.9989 7.9468 80.884 22.4376 64.1613 45.9293 27.2839 48.8161 36.4542 8.8171 17.2606 9.5987 72.6721 71.781 78.7248 53.1246 35.2891 1.6592 56.857 31.886 14.0443 9.2417 30.9058
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 10943 -21997 -6884 -18633 -4157 21721 -25793 14502 -1702 20802 -20414 -13291 -31991 -21580 27373 1279 9567 3728 11231 30763 -24082 19283 -15083 30100 20768 15680 31647 9648 -27515 15478 -16593 -25233 30.6624 69.7395 91.1986 80.6434 36.3124 4.9685 47.0914 6.4922 88.2826 34.693 92.8994 12.4843 24.132 7.1432 17.4161 14.6461 62.1113 94.3873 22.9514 69.8587 32.1502 61.0949 47.0178 15.5436 66.3647 19.4132 26.9854 47.5472 43.3756 72.346 9.6083 55.5912
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -20428 -3286 -27097 26732 -29863 3262 29492 -6120 -4823 -5797 -16333 29777 9865 -2385 -31741 27223 -7966 24200 -31530 17064 -23670 -8967 -1166 -6032 21386 31804 6316 -25177 4062 19121 28883 -5239 54.4711 68.6279 90.3086 13.9209 10.9591 6.8191 73.416 90.4481 98.3632 37.9989 7.9468 80.884 22.4376 64.1613 45.9293 27.2839 48.8161 36.4542 8.8171 17.2606 9.5987 72.6721 71.781 78.7248 53.1246 35.2891 1.6592 56.857 31.886 14.0443 9.2417 30.9058
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    bendingModeNbr : 10943    1
-    Should Contain X Times    ${output}    bendingModeValue : 30.6624    1
+    Should Contain X Times    ${output}    bendingModeNbr : -20428    1
+    Should Contain X Times    ${output}    bendingModeValue : 54.4711    1
     Should Contain    ${output}    === command ApplyBendingMode issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    bendingModeNbr : 10943    1
-    Should Contain X Times    ${output}    bendingModeValue : 30.6624    1
+    Should Contain X Times    ${output}    bendingModeNbr : -20428    1
+    Should Contain X Times    ${output}    bendingModeValue : 54.4711    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyBendingMode] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsOFC State Machine tests.
-Force Tags    java    TSS-2625
+Force Tags    java    Checking if skipped: tcsOfc
+TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

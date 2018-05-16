@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_configureLimits commander/controller tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: hexapod
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0552437510472 0.00835875603424 0.274512266094 0.590346202667 0.690440245268 0.429060355963
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0887248183294 0.0455046096906 0.241027113186 0.442392206326 0.689615316322 0.601758573129
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0552437510472 0.00835875603424 0.274512266094 0.590346202667 0.690440245268 0.429060355963
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.0887248183294 0.0455046096906 0.241027113186 0.442392206326 0.689615316322 0.601758573129
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    xymax : 0.0552437510472    1
-    Should Contain X Times    ${output}    zmin : 0.00835875603424    1
-    Should Contain X Times    ${output}    zmax : 0.274512266094    1
-    Should Contain X Times    ${output}    uvmax : 0.590346202667    1
-    Should Contain X Times    ${output}    wmin : 0.690440245268    1
-    Should Contain X Times    ${output}    wmax : 0.429060355963    1
+    Should Contain X Times    ${output}    xymax : 0.0887248183294    1
+    Should Contain X Times    ${output}    zmin : 0.0455046096906    1
+    Should Contain X Times    ${output}    zmax : 0.241027113186    1
+    Should Contain X Times    ${output}    uvmax : 0.442392206326    1
+    Should Contain X Times    ${output}    wmin : 0.689615316322    1
+    Should Contain X Times    ${output}    wmax : 0.601758573129    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -82,12 +82,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    xymax = 0.0552437510472    1
-    Should Contain X Times    ${output}    zmin = 0.00835875603424    1
-    Should Contain X Times    ${output}    zmax = 0.274512266094    1
-    Should Contain X Times    ${output}    uvmax = 0.590346202667    1
-    Should Contain X Times    ${output}    wmin = 0.690440245268    1
-    Should Contain X Times    ${output}    wmax = 0.429060355963    1
+    Should Contain X Times    ${output}    xymax = 0.0887248183294    1
+    Should Contain X Times    ${output}    zmin = 0.0455046096906    1
+    Should Contain X Times    ${output}    zmax = 0.241027113186    1
+    Should Contain X Times    ${output}    uvmax = 0.442392206326    1
+    Should Contain X Times    ${output}    wmin = 0.689615316322    1
+    Should Contain X Times    ${output}    wmax = 0.601758573129    1
     Should Contain X Times    ${output}    === [ackCommand_configureLimits] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_imageReadoutParameters sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: atcamera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py BUxDSQQzDqWcYjAQhZLDIqnVWcUUFnekthrkyaCfeBSYBTmSwyQMxXCmPoXUSrTIjhGHWycbhXrEahmxpGpJUGPUJIuRuguAtcbuinDmsXwbGGtWZZBUJIPfgbYjNwSQcEJhmKhLVRXUGKkXjLaIajREpnMBufKnYLMmJpyWSrYUfHHfHHdogySBdvXmsAXoRECWkLrYjZITLpEIomJufxhXnOfZBlwtmgdZKbjithbqwGQjtqEERxszdOxPYCNQ MBxmJWClHkrbsvUHjRZLKrXGNVwTtVhBHyVTpZkytapRuTSvzncsHbzRydqGFdRbyKhWdlXetYNsESxFCgbQHTLMwSSutzPIkAgYRwNmlrrtnwURxvrXAZBmcooffRqpRjYDPYfLNEGWnYtKlsxiilRJcTuFPEUZZafffdZmILlrJwvRQQaEwltybEhnUNtTkrBgOtjIChWZwFQyWHaUIkrRvtvErqkGGWjrqqNzDXiHLLaylEdBqhjCrVgkJpjr 1421623597 -853734502 1011779698 -1818516404 -1305310391 -1316201229 -839673451 1483505152 -321542413 534047328
+    ${input}=    Write    python ${subSystem}_Event_${component}.py PFFZvEjxBjeHvbPPsxMSvUEkeJSncfbnazKiHrNysgrxOuVhJDdgDIJtAASJRZcOeoVpXTtHJTrqBvgiawzNYwWdMjGIrBeUloTyZaKJDMExcLXTsrVqCSDuDHdPMmaqLGUVZGMvZzVbdeajxWwfsHdIAKcjLHryhSMTkVTjTPuprDLtjuOtXnLtDjwHlZhlZCkMZlxYyLlRqinBbvGzeyDqULkDekPKXJGQvDVBuGjYYKcYLWbjxogLLDCCQNgz WdtjSgQOwkAdDHIyBTHqYLVuhvONDcbsDyGfsIZOnIgsVIucylMtbdPAFgxbPsGtyymUxLQUOsRIBsJPuMTlNRRhFvanngJoUlaJROpLRGVDPCaDOpVdEHfFPQhozIjeIGCMAvjqswfCLrCFjWOYiXrBlfnAssWBnIQSeznWrGuHrrGoeJIsBEytQTiYWZktTpBOjPRbfugrvlloTmdUpLiiVUfFgtVxWWtBgAswznIWPDxfZhoojIKDZPmIONzN 1364682451 986220845 1819561681 1402951611 1227294372 -138486049 443997603 -1872538497 -1769864647 -835105312
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadoutParameters writing a message containing :    1

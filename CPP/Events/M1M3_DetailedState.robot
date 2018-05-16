@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 49.4076 -1757124645 -1348806888
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 59.4597 -2127030658 -691878050
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_DetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1348806888
+    ${output}=    Read Until    priority : -691878050
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    Timestamp : 49.4076
-    Should Contain    ${output}    DetailedState : -1757124645
-    Should Contain    ${output}    priority : -1348806888
+    Should Contain    ${output}    Timestamp : 59.4597
+    Should Contain    ${output}    DetailedState : -2127030658
+    Should Contain    ${output}    priority : -691878050

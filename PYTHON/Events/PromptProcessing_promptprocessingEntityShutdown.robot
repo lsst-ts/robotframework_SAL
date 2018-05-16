@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    PromptProcessing_promptprocessingEntityShutdown sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: promptProcessing
+TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py DpfYUahNMhuzqPJTcsqawBUCwIRcyuKBTQjLdXwcDoEhFrYjBRgBSLmWjswVpBHynKzGSlAmqiUOpzlhNEHSXFWvExpMhvAalZYNtQXeequcbmgHwmAOYgtHOCWZCxwSkUdrooQkjWkFWHAtadUNPuGNTNjFyqiYhtjNOsUzeZlLbKTECMXoaGnSWiwwyESGNhqxQeQqyGHEpQzBZHUZczwmwZxluJIRtINsdgSkDuRYAxcnYkfFgvzdICZzEKuV 89.1078 BHgtvVyqaNfBndGxTvtKMSsIRqRFJbbkUgQyzenjOidNDXAIimVTjBWMHmrnuGDepkOZYvLbFvNsKQGavYOkxRYyrsOxiEZNUYAVXXoZnrtvBVlxyPfuyTmAfqcBcpOnBnoQdlbHWobxaQTWIJKkJuBguHgcSLafkACXEIBDdwMIZThJpxnsGwkcIjgtPxWtyNoAggUuJvROrbifZIKDRGQrstAfazlEBTsynEUIxRXDdbmCfcEhdyPMCPACVgHW 1580829201 1188547685 470073112
+    ${input}=    Write    python ${subSystem}_Event_${component}.py HcXpkJPHpQvuuPkKsxFwTVXLaDElZqVIrqXBjAOJSJcvzKDBMYWyZFIbUkdVeVVzggYTcfXggFjuVPcnZxGCPCEaNEYAxeMlbFBjAxXvWelWnQrZVxsrfjwgbhOfNyKdtwxbrMbHPnWnsieKbPnqcGjWTyepsRXvPbchEQYjKZcrRJKdgqOepRqtGIpibbIfkphJwQrYlbxzxNxmeHKakYRUjkZvmLeRffZRYllStQlweJhMqybhRMykkQDKctfD 66.0513 jdbqQunndyeTmkuqYERqcbuDzgXYTnofApfEtrBsxeTWhHbKYVpBgQXUZzQUgTrejHYsXybLFFATESiyUQNZDvipKsuGHWvVsMXsGItepleJuuNiUsYCNhHjOWZJZunLtxmyGxkhTsMygliTqjzXVtjWMMOeOjHJdkLoeTzctGjFzVkmZXZpNyqXmPjkfacYNxhubdkYdHefOGRHOtFfUCJqNJKCAHePchIhweRtIBloSRuoTfBaXBuHlQzbSBkf -2132080074 -1341030283 -2123170126
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_promptprocessingEntityShutdown writing a message containing :    1

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    TcsOFC_DegreeOfFreedom communications tests.
-Force Tags    python    TSS-2625
+Force Tags    python    Checking if skipped: tcsOfc
+TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

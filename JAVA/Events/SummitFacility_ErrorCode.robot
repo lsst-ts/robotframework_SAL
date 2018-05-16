@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    SummitFacility_ErrorCode sender/logger tests.
-Force Tags    java    TSS-2622
+Force Tags    java    Checking if skipped: summitFacility
+TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

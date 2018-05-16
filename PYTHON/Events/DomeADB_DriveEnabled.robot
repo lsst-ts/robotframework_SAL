@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_DriveEnabled sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: domeADB
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -3159 -2011405304
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -12773 290577715
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveEnabled writing a message containing :    1

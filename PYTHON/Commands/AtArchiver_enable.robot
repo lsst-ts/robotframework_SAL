@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtArchiver_enable commander/controller tests.
-Force Tags    python    TSS-2624
+Force Tags    python    Checking if skipped: atArchiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_stopMotion commander/controller tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: tcs
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

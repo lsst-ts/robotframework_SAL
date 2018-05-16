@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntitySummaryState sender/logger tests.
-Force Tags    python    TSS-2623
+Force Tags    python    Checking if skipped: archiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py riVWrqLAFbDkjkzKwFvEzRDWDUoYmZAibjtlWysjXjcgBcfIxKvMbXfuZsRPYfTjmLLHqwxQOeOHbBmZdutBoILZBJpRzBMmpdZINGnQCdHrTAGHKGMbxqxjhQhSggxO 32.701 QUXOwDUWainQQOEppDuJJQcHyXACkQdzpsPnuSyQwiJhuSYWaWYtfwTwjOmnbXVSlwsuWWlxZmvMPwpMFIaHLStkDsEsdLBCrbBHEexEiKnMidMGQSqisLAmJOKqFlgDgPIhgiPkxOIlamAltYZPWvySHymFkwaDlbGTEwDNDQNQaRvjLLdfKVawqbNkMDXwDSdASBYiVBEPGpLiaQlUDrViFyKfCmhyVOJmhTBpvBmyQEZfdMpqMYNeImanHUCi 336974964 DUentFvyVMvVaRtyJzYqWGnOHikcLluRHAkgxRntmMfaSdKpqLaINJeOJjEFKHBoMCyRKNCqfZfiaHvtMpgzJHwuPciAwdrAUytMvtgjcBsvQLCguautFDiwvpZrEYKn uAbdVJnAImXLeXRrZUWJQYUpQxWPqMytYWRBkRHYXJljZoOqHcgclutOzVIPGfonFiDDceaNWihbeoVcXHUmAdFXUCfeVvkVehWWgKDZemEjYqEMyzIyZEmrleZylKQy NUPiPyrykTuXjaQlLJPEFRxEmcBxXBOvBUCJHaxYazBzEDRFbhlmTSSwaQzxVjUnFvsJtpsgIHZzDJRosSuquVLhhsDOXplSaALzjlkdKrPrQOYTKboCTDesvlPIcBVq vkDFHuFGqvwkyJnMhCEnkKtpKEjcLqOZCfARRQwPLxarzOIxxwYniTUahZMOBTRrctODKCbmnANDuPuVWHwlbobpUofSTbdbnEgNCyIEjQpFlyccoSmrvVfVqKByYgoc VKcUcdyLRduAzxVppFqgwWEohMFcZESEjGlIBBDivbLdHMuNvCnSXiglHXjEdSFFskdlLZxCYzAQlomHbSCafTZYdDQQNHurnLhwEbsflibLmCNLMWETqILBpYEFjAcJ -1694061262 -1747812712
+    ${input}=    Write    python ${subSystem}_Event_${component}.py LDUAXhwwmpnkiegYmPklEMbFqCWRilImRNEoXAHsPuJVUdUgETUFeTqHNOJEYqTcgJSlNsUfutKuYOyHANEOvTjgTDdigyoIngXomPHyPiaLsmrwsVaKMaeaRHGfwtaJ 36.8444 jleUsgJLIRFoWBQLxGIIWXEkohuFSWaUBfGhouILIcpJKKNiGuPkjqLLqaKgKmnEJZaCVWSuRfsWUdruYFWcxqLRBAKnIhdWGjmHINsSidoMaEsHErsArJRcdmeGHMsmOWwUKPKsuSxcPkyBhMOWtsOzfIdvXOoIsfajEEJZmgTqXIHhAiiPLrfjhVEtfOeGiQGprOaYlHyfuPJkfrhTPYIZBpHeKlyKeDxCxklXoQYPgGbJLdlJkKwrfiyLYDpc -2082691047 nvhFxwPwbkvEeyqEpppLynUybLTTXePTzunkDvihPlxATIyQITLOsuQtlSilftaHKtuAaKXjVnUaHZsKLJkkXbWxrZlzFZLRUgeadoOnJAsfjgpbpDbmIvheDwNAAANI CNESyWeUGBfiJCKNSJbQfRMEWppvxhTPzjYeDrIWBQmbhmNAHQEkrORzCaCwXnnScqyxECMgrgISEVsRbGoYeerSexhLrEiAhuaYiTkyxPGbAECFqMclreJJcSCcEkQM AubudhruostoGMFFmCtpYZegKQrJkoiNOYMIMjimGQORgywFSNYEtrBVbCFtEYCbxwQBhMBXBEhSvaKzKUQiRTrZnrsaeFlMqOIqrjnPeTJqvDVuHAxRdEAHgzYUImHd wgTbuHjlQPxoQOkvxxuqYRZrkVvLjYRlbvGEgMXhgylgjazQLKEksoknsSAAMAFMUHtHXcslIVjdAPggbpaJFdfpGchdRcLUWXXkXEEFoGueiPfjcpvIrsWFZCOxwuvX fPiNkFEvRcJDWQtVUvXctdWXRUwUNBqMFVpTperJCmQKtrmdwXNZDUXNhLWEQPotEbEdDWVkKTQAYJtIdOJCgGKcwrnLDzdQyukytccMhrDckKHgCjSbGtXLHCeYkElT 1439699211 -751150087
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntitySummaryState writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtArchiver_DetailedState sender/logger tests.
-Force Tags    python    TSS-2624
+Force Tags    python    Checking if skipped: atArchiver
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 252083633 -1519871876 -1850046562
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -646275439 -285466390 589451278
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_DetailedState writing a message containing :    1

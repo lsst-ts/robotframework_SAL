@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SettingVersions sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jBuZJYguBqgcBNJdDtoHmdFOvMeubNcuGxdalYHDoOgBxVXTmylKROpCaldmYyCkczAkycefceBfiQInlbAgJwnpOiBBMlzXggiPjIdjtmbgItELDCbkalkoerwpwXMkkigdqDSpSPXxqAAtylMrQClSoEhEyXkGNtbrqbXGTFYNmNNliKHXcfTTXglRtBezimvOIPhDwOUJKqRyJQeRNiUzFBSDkdolLprCjrVTDTvtyOTPQsrRJPyVBiGImvPj 749309733 -960981284
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AoQqwSFQCHsoMpuPgjkvpkMpzaxXzzjXhkKYPeNKisESkLauBtwfnZqnrjdXhxNYhKLbcEuUBkkedFBZAEqjGWTWexnnPLBUqbLZPlkoVAdIpdoIveFhpyklgyCpZDnLxbCMIFOTarEdfqobxZehziSDNlAgbJuyMXhqMjJPMNCZErbyVTyeVnOBFoATcOAMnHuMfNabhOMwQvllmBSnmeHItQdpWcdaFeDbGYLJXHjQNpdSJnLyIyvMyhJUTiYq -386912381 1583445783
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -960981284
+    ${output}=    Read Until    priority : 1583445783
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : jBuZJYguBqgcBNJdDtoHmdFOvMeubNcuGxdalYHDoOgBxVXTmylKROpCaldmYyCkczAkycefceBfiQInlbAgJwnpOiBBMlzXggiPjIdjtmbgItELDCbkalkoerwpwXMkkigdqDSpSPXxqAAtylMrQClSoEhEyXkGNtbrqbXGTFYNmNNliKHXcfTTXglRtBezimvOIPhDwOUJKqRyJQeRNiUzFBSDkdolLprCjrVTDTvtyOTPQsrRJPyVBiGImvPj
-    Should Contain    ${output}    priority : 749309733
-    Should Contain    ${output}    priority : -960981284
+    Should Contain    ${output}    recommendedSettingVersion : AoQqwSFQCHsoMpuPgjkvpkMpzaxXzzjXhkKYPeNKisESkLauBtwfnZqnrjdXhxNYhKLbcEuUBkkedFBZAEqjGWTWexnnPLBUqbLZPlkoVAdIpdoIveFhpyklgyCpZDnLxbCMIFOTarEdfqobxZehziSDNlAgbJuyMXhqMjJPMNCZErbyVTyeVnOBFoATcOAMnHuMfNabhOMwQvllmBSnmeHItQdpWcdaFeDbGYLJXHjQNpdSJnLyIyvMyhJUTiYq
+    Should Contain    ${output}    priority : -386912381
+    Should Contain    ${output}    priority : 1583445783

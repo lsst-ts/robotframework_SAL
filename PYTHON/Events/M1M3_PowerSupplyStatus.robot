@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    M1M3_PowerSupplyStatus sender/logger tests.
-Force Tags    python    TSS-2617
+Force Tags    python    Checking if skipped: m1m3
+TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +49,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 97.9539 0 0 1 1 1 1 0 1 0 0 0 1 0 0 0 1 0 0 1 1 1 1 1 -1241764936
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 11.2332 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 1 1 1 0 1 1 0 0 -1123223702
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PowerSupplyStatus writing a message containing :    1

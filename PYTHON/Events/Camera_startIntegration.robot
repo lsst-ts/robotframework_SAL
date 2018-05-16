@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startIntegration sender/logger tests.
-Force Tags    python    
+Force Tags    python    Checking if skipped: camera
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py SYUwUNRWoWzUylYLbSwhTGmCmccNhIQEvpVdkJJJsyTjAjmZzQyAeQsIHzFguxsrVSGwxNzAXReDCIuVXCUVeYJAZbaFlyaNANDhTTQtlapzemFjXKaQaGJuUtTHoZcRojeQpbvnjifYbddYNdQTFNhpcYAUnmfcYkAHcMpghkdJMjrRslQIhdBtGiuubzMMejuXkkyBlmGjMngaLfpIBdoBNYTSMYarWFmMSwgHBZGNqbVyuFYOtswONnkqoukZ zrJtHCVySRsuHyqNHlsZbZaezLUoPexziZBVhlcxjgFEBrxZevhqUCUnHRgZYWmXMtjAIDQQzgpAGIWAIDgTAdGirKNPgMVrJBUCMFHLDBHYaJyFluWdokhkdXNpDQsFLqMZJxbisIdDEIAbCQxrFsrYJEbTKKdwSZRuwjesLgZlBbVttbOQPmBOBNsWkWfPonRQOkdgGbMSMEtTcGpalmwpplqfVHoKBpVOQmhRfKrIQjTTzKiNlqmaaUcSzTQY -430993112 30.2477 46.0842 -1577623050
+    ${input}=    Write    python ${subSystem}_Event_${component}.py YTXWezAnooreNJBqRPlnmtzNcCflFNWIIIRNobRIGBmGKIujOLZmRAFYObcYylCqlwvzYWLljSyIGBfoUMOHRyorRAErgrnwjYChUepaPmMugEoWjYiWEidzCyMOpsCZYAhifBREpjaeVQanSLqFcUTSZZvyEKKdhxaUbxjJarenqyeKGHeVohXTBMMUsErbeJpdPxJyleyHdfdtNOLXyHcttNSPQwhqnlKsktGgqaZQVTIExuUVNuSoWwouagRS aaTlgEUcrGfPmTWeoTPhjyXdJszjhEtTOxyCNNDVpyxvXSAhUgrgyiIUUeTsDMEnvuWzYVEkuNGrlArmyrQHooHbqmlWGLYGZWElwCXzdunMmIuFhebdJMstCBDiVLXrauWZIyltGWPUlPKTvHxDydciLTgWuBfTiMrsYKHxkwOIikDqWXalduYUVPqETcdvaFxxkFAYmZqIlPKGKdZcbBGbdqOukgQLMyUiJuSEGvMEciMsWHOqBbVpAWOJWHum 384339264 91.6912 60.8338 1904869649
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startIntegration writing a message containing :    1

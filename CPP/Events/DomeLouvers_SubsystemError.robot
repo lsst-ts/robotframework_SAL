@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -24033 ZdNkqWAJHwhLbszEwJSwDGoelsaiDsUNkELNxGJdVgZILjRUtVUVxhzieYSbXQQvRthhPaDCkpJSUvzDCPkXuvLyPeoZNhgLNtZUdttjkMqDMrxvbXwNYZFTnNgAicrawateMflmAfgnEIzNPsfbGsDJGmwNhNNprhgAtbxuimBCQtGLKoxFpJbIgsKVfTSLvOfooMNWaWTYouPXMUChWlRKZtXtOjhYotaZbogtetAkaHtxwTeXSRFMEQCEZFbSxfoGyvGcztyZoivpLmCBtqyZUOCPDecKamnaUmBOMtZKxyAEniIfZSXWpfwOdyPKhLmyrx -859770348
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 15478 hfQFCgEXVLgKELKVPVdfzMVkRUPWcNPjnieEPCylGLUMNcDhrnxbKUnNJKlOrwceyOfdOyxNQkfXoFMbVxDAZDqxpgYySljuYyfQjtrkjHuibwXcZNlXnBHdPunNZpNQIclFHBCnUgNnSvZJaWeyJMdpTipWthgfOppuHkIWxBwrixnjIDXUwEVuvycxmCzwVmchbgWOGhtVNdOFXtGZopjuZWQVgRSsRInFUuKgamMaXkWRxrkyyASyXbwOeTvqNGrfrvlwsJSPMRswBegCpmayAKPjrKKMwehbLbWihimMnglqa 1840790907
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_SubsystemError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -859770348
+    ${output}=    Read Until    priority : 1840790907
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    louverID : -24033
-    Should Contain    ${output}    errorCode : ZdNkqWAJHwhLbszEwJSwDGoelsaiDsUNkELNxGJdVgZILjRUtVUVxhzieYSbXQQvRthhPaDCkpJSUvzDCPkXuvLyPeoZNhgLNtZUdttjkMqDMrxvbXwNYZFTnNgAicrawateMflmAfgnEIzNPsfbGsDJGmwNhNNprhgAtbxuimBCQtGLKoxFpJbIgsKVfTSLvOfooMNWaWTYouPXMUChWlRKZtXtOjhYotaZbogtetAkaHtxwTeXSRFMEQCEZFbSxfoGyvGcztyZoivpLmCBtqyZUOCPDecKamnaUmBOMtZKxyAEniIfZSXWpfwOdyPKhLmyrx
-    Should Contain    ${output}    priority : -859770348
+    Should Contain    ${output}    louverID : 15478
+    Should Contain    ${output}    errorCode : hfQFCgEXVLgKELKVPVdfzMVkRUPWcNPjnieEPCylGLUMNcDhrnxbKUnNJKlOrwceyOfdOyxNQkfXoFMbVxDAZDqxpgYySljuYyfQjtrkjHuibwXcZNlXnBHdPunNZpNQIclFHBCnUgNnSvZJaWeyJMdpTipWthgfOppuHkIWxBwrixnjIDXUwEVuvycxmCzwVmchbgWOGhtVNdOFXtGZopjuZWQVgRSsRInFUuKgamMaXkWRxrkyyASyXbwOeTvqNGrfrvlwsJSPMRswBegCpmayAKPjrKKMwehbLbWihimMnglqa
+    Should Contain    ${output}    priority : 1840790907
