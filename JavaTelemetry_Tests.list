@@ -90,7 +90,6 @@ JAVA/Telemetry/MTMount_DP_2.robot
 JAVA/Telemetry/MTMount_MC.robot
 JAVA/Telemetry/MTMount_MotionParameters.robot
 JAVA/Telemetry/OCS_SequencerHeartbeat.robot
-JAVA/Telemetry/PromptProcessing_promptprocessing_SequencerHeartbeat.robot
 JAVA/Telemetry/Rotator_Application.robot
 JAVA/Telemetry/Rotator_Electrical.robot
 JAVA/Telemetry/Rotator_Motors.robot

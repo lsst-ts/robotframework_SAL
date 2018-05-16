@@ -90,7 +90,6 @@ PYTHON/Telemetry/MTMount_DP_2.robot
 PYTHON/Telemetry/MTMount_MC.robot
 PYTHON/Telemetry/MTMount_MotionParameters.robot
 PYTHON/Telemetry/OCS_SequencerHeartbeat.robot
-PYTHON/Telemetry/PromptProcessing_promptprocessing_SequencerHeartbeat.robot
 PYTHON/Telemetry/Rotator_Application.robot
 PYTHON/Telemetry/Rotator_Electrical.robot
 PYTHON/Telemetry/Rotator_Motors.robot

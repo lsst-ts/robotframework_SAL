@@ -167,7 +167,6 @@ function createTestSuite() {
 		clearTestSuite
 		
         #  Check if test suite should be skipped.
-		echo "Checking if skipped: $subSystem"
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
