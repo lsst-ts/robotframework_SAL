@@ -178,8 +178,21 @@ function generateArgument() {
 function checkIfSkipped() {
 	subsystem=$1
 	topic=$2
+	messageType=$3
 	if [[ ("$subsystem" == "summitFacility") ]]; then
 		skipped="TSS-2622"
+	elif [[ ("$subsystem" == "camera") && ("$messageType" == "events") ]]; then
+		skipped="TSS-2677"
+    elif [[ ("$subsystem" == "promptProcessing") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2678"
+    elif [[ ("$subsystem" == "catchupArchiver") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2676"
+    elif [[ ("$subsystem" == "atcamera") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2675"
+    elif [[ ("$subsystem" == "atArchiver") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2674"
+    elif [[ ("$subsystem" == "archiver") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2673"
 	elif [[ ("$subsystem" == "tcsOfc") ]]; then
 		skipped="TSS-2625"
 	elif [[ ("$subsystem" == "tcsWEP") ]]; then

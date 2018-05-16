@@ -229,6 +229,7 @@ function readController() {
 
 function createTestSuite() {
 	subSystem=$1
+    messageType="commands"
 	file=$2
 	topicIndex=1
 	# Get the Subsystem in the correct capitalization.
@@ -246,7 +247,7 @@ function createTestSuite() {
 		property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n $file )
 
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite

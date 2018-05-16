@@ -142,6 +142,7 @@ function readController() {
 
 function createTestSuite() {
 	subSystem=$1
+    messageType="state"
 	stateIndex=1
 	for state in "${statesArray[@]}"; do
 		if [ "$state" == "start" ]; then
@@ -157,7 +158,7 @@ function createTestSuite() {
 		clearTestSuite
 		
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite

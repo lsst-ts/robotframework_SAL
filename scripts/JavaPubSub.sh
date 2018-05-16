@@ -122,6 +122,7 @@ function readSubscriber {
 
 function createTestSuite {
 	subSystem=$1
+    messageType="telemetry"
 	file=$2
 	index=1
 	for topic in "${topicsArray[@]}"; do
@@ -135,7 +136,7 @@ function createTestSuite {
 		getTopicItems $file $index
 
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite
