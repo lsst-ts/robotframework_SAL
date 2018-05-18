@@ -47,7 +47,6 @@ JAVA/StateMachine/CatchupArchiver_enterControl.robot
 JAVA/StateMachine/CatchupArchiver_exitControl.robot
 JAVA/StateMachine/CatchupArchiver_standby.robot
 JAVA/StateMachine/CatchupArchiver_start.robot
-JAVA/StateMachine/CatchupArchiver_stop.robot
 JAVA/StateMachine/DomeADB_abort.robot
 JAVA/StateMachine/DomeADB_disable.robot
 JAVA/StateMachine/DomeADB_enable.robot

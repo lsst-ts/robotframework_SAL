@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_standby commander/controller tests.
-Force Tags    python    Checking if skipped: atMonochromator
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

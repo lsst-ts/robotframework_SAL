@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    M1M3_DisplacementSensorWarning sender/logger tests.
-Force Tags    python    Checking if skipped: m1m3
-TSS-2617
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -49,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 15.2412 1 0 1 0 1 0 1 1 1 0 0 0 0 0 1 111433700
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 63.2256 0 0 1 0 1 1 1 0 0 1 1 1 0 1 0 1282165696
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_DisplacementSensorWarning writing a message containing :    1

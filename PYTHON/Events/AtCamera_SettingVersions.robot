@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_SettingVersions sender/logger tests.
-Force Tags    python    Checking if skipped: atcamera
+Force Tags    python    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py EDVlICIBjrAFpaFaKMAIxcZyZZnBGgdqXkpLyrowpdLQComDNiUbyUklMvglYieFuTmLGPchcQZFAmlhsksBxNAfoYUYpRVsogCKtynxtkRTrvwMhyTXIJVZHtLyckGnbOEbrqsmDFXMIbhAEsJkuSUSOyCJfMhfBJeYsUlMRifdbQqOtEbXkIKCexyqNKTcSQUmQJmOxfnXlqdZLZnlHYBhfidqXYoKbGKrfTMILNPQePNKsAYCypmhbFLcVnxO 1859564871 309785665
+    ${input}=    Write    python ${subSystem}_Event_${component}.py nTYUPQxYGBKRHDinJIpnVaaOhNTYwhmNdIKGLUSAVYjxsdwbKvBcxxgmEAcsfVcwyDVZBmaDslfGXfMJFYWkmgfULHGWcKWHxUtpWcIAmRzkKGcgOKxhGOwRYrTWGhLvtRsCAbHRJbCQYEaXxACzxfkEHlYZYkgBBxDhknYAcSfwLQOnDPFlFideadkqDFXxydGpFQSskcvRjfEfFuDdqHtLojcQKNlvQBDqcEQGDabQcqauFrMfQZINMYUuGoTn 2024378293 -1470231905
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_SettingVersions writing a message containing :    1

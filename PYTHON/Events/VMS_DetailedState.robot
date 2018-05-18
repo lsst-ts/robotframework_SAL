@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    VMS_DetailedState sender/logger tests.
-Force Tags    python    Checking if skipped: vms
-TSS-2618
+Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -49,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 23.6732 376982215 -851395540
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 38.2463 1626081303 -1071285496
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_DetailedState writing a message containing :    1

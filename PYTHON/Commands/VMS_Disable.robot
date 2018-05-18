@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    VMS_Disable commander/controller tests.
-Force Tags    python    Checking if skipped: vms
-TSS-2618
+Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

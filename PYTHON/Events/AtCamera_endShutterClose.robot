@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_endShutterClose sender/logger tests.
-Force Tags    python    Checking if skipped: atcamera
+Force Tags    python    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -716810894 1106002379
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -455123566 -749960779
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_endShutterClose writing a message containing :    1

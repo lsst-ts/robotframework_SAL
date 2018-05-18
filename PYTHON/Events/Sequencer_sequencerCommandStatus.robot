@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerCommandStatus sender/logger tests.
-Force Tags    python    Checking if skipped: sequencer
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py RvBUtiuPOySSiWlIRUGYMOSSRynAyEcPAqbkgRcXkEIGfQgJkeWPJGDpRyyfMCeCHwYfECGrnrQQIEsbVDPViGPKhLApdjNkVejhXIuuIwufIPtZPeZWjLBOQKrnAkdoOqqScWoAnenspXKNJhAonwdTmlZHlowhXsxBZweGdtTVnVwNATZKFUaLvsKRHAQNYAhrnbxvAoJtQyQUfzBKfBCeoGgxleuRjKQOTRxMBDqLnpEEseOaHXzKSntYvyxR -818071935 54.9491 nQyAtNVGnlIrTgBrtzNAeZNKRQPPiiAoytMBosWrStkMRcJhzywTIJYDovwNDJfcvQfpWPSkllngjWvoqkfISVeoeOjHPHGWSwEXMNcsnLUzxZNaQYrWIGdiSRAIpWxJOmYvTlreAsqkreQHWONFVswaWxZmBxjxCBucPCjMStePFfdfqbAFhUNBfmMROvsqqiYJdvMdEKXzrNqlAadivOjbwPVABcwDzHPipjOAXObFBUllcxsBtGYFnqYOXkDj PJAxzfzmrCZEMxsNaNTYZMlAaICueLhwHodgIKhDvkhsYwnQroCNslwinIMsiJjoIbXPgXrrdPQSDKHynMyQYgzSqIHiKbcQePbUAOHfHnxxJsGmeWnLqlSRpgYwiRHrGKQDyfilZrVDjVwWGPsSjRYEgIgnHlmLXaZhCFxENyoBQVhBGBqCfSYLOHHfRcNTrMpoMGQLRFejtjCiRCcoHaWpzhUxbmfCRtXWEgzYLJGPfiiScsBtkxRrTYuRwlUf -1445826757 fdLrLSwfYZLSFtHNKhvyXPwWbbbNzqrzdQsWKPmtePSKiubqrTWERAHrDUXOJINTKkwBrUiRIJMZJKXcDgAzfKvOUbcmPzmAZtcvRaiuvLJeYVbsvpCvAORLvkwbTDGaaWJNMpNqlLRMpsZIvDGbwdEkAFAqEdEiCjdvenQqBzIxIHaokOVpUGGnusvFyKCxAalLwsNOvRmqNQQHaZSdmWuYmwRulgPwJWoNfsdYfJijeXNiFiYWPDzJokETQnRu -2019250281
+    ${input}=    Write    python ${subSystem}_Event_${component}.py BKkgJgeQBuriVSCnbxondyeZhPZorkOokDVFkJZUFsTUgyvyKeniDRuYLeLjmTkAbEBECYzGrjPLDGfSVNDcCQqEgYhjIHLMYWAAVYelDwqjaMkXbAZVVhVRIdcHXJhBrxdtbJHoFVEILrjxbnVNaUAwjtpDJzrQzdkdKivyETGVkRbKIUKVlFwkuLEEVcVgvoDQMJoLtskhBZveOlmiKtGNhXwPCZkqRVkkORwngtFAxsnLdUpdHPiaomxdQkBj -1291508018 71.9898 rPqNjbnYKsGCvdEUGvAsMqehTmjWACXtOXCOpPEgxVgPmBKltkxnvgDkhNilJohgKfcGUHCQdmhcioZiWQeRsMuxpJRmiBNIoXXcNFBpkrdPgnExTURIWhXkKfcvtUBFwWfMnQZqbcIJVQgPaRDqxmUydqWhujNoidehaJllKJJKkqQQnRGQrNRkEmJvDEnwRDXiRrjvmavBkerhzHkCJmkQkmUYMcwWjifRxeFiOTxiIPoERuEmEJGtgKOrYBEW yNpeVtdRBcVIrdBPrRRDsxfrZrAhaBeKecMyaErqihoIbSSmOjmlWkfSOTNXJOwRpqZpsokafmIacfMJrFMsuQAMKMTzibbXajYREBXVwRnbntTTafSvaycnLzTXohGOeSXrQEYTyIxxTfzHtqudBwDzAULgCSzxUptHiWckgpVFTIyclZKLBfowARwWuYWlpJujXBCsIQyxgeDqKPtjxyjLoiRnpVpZkbJtrnsJVPMCJKbOdAhtsDkYgyONWZlu -1047339019 gxqXaZfknCriiZhlmtFacrplbczsEQyHLFcRdYygELRixouDRsPEKvRNxZPWkChwqAhqWzOTwxSfPJazJJVkxbexIDpZrxxRBYnaEVXFTBwPsgWQwjPgrKtetQOvehoeGrgyHiNyJDyQvSoaCWKXntNKnbLSOQyPIdJVnPdUnysNGtkJGPvVhIbyuzaMVEKHPinNODsgTVnjNkeBYAlYDuOVGjhJVJMWlbbbqNesUnMataPPDkLohzGcRcDVyalW -2078305616
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandStatus writing a message containing :    1

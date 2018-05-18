@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    M1M3_ApplyActiveOpticForcesByBendingModes commander/controller tests.
-Force Tags    python    Checking if skipped: m1m3
-TSS-2617
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -38,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.805232796811 0.875255841433 0.0631400497883 0.35986920807 0.6647889005 0.426176893408 0.716088980193 0.519277749361 0.735037469127 0.831700794972 0.204192176593 0.69596346136 0.247078257747 0.0735686869252 0.0914894912555 0.00748293359928 0.682095301008 0.170335556997 0.470152481191 0.345442289375 0.776212558334 0.61602710265
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.526536104292 0.887560011975 0.837292471041 0.847156723694 0.479945027786 0.166709580261 0.45039047842 0.324575591403 0.995733868356 0.49402565613 0.807633958563 0.394251790861 0.567037185369 0.612532948567 0.0278719680174 0.736870877068 0.812030620967 0.187100192714 0.0276547448968 0.149927819098 0.181581448218 0.699008905433
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -61,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.805232796811 0.875255841433 0.0631400497883 0.35986920807 0.6647889005 0.426176893408 0.716088980193 0.519277749361 0.735037469127 0.831700794972 0.204192176593 0.69596346136 0.247078257747 0.0735686869252 0.0914894912555 0.00748293359928 0.682095301008 0.170335556997 0.470152481191 0.345442289375 0.776212558334 0.61602710265
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.526536104292 0.887560011975 0.837292471041 0.847156723694 0.479945027786 0.166709580261 0.45039047842 0.324575591403 0.995733868356 0.49402565613 0.807633958563 0.394251790861 0.567037185369 0.612532948567 0.0278719680174 0.736870877068 0.812030620967 0.187100192714 0.0276547448968 0.149927819098 0.181581448218 0.699008905433
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -69,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    Coefficients : 0.805232796811    1
+    Should Contain X Times    ${output}    Coefficients : 0.526536104292    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    Coefficients(22) = [0.805232796811, 0.875255841433, 0.0631400497883, 0.35986920807, 0.6647889005, 0.426176893408, 0.716088980193, 0.519277749361, 0.735037469127, 0.831700794972, 0.204192176593, 0.69596346136, 0.247078257747, 0.0735686869252, 0.0914894912555, 0.00748293359928, 0.682095301008, 0.170335556997, 0.470152481191, 0.345442289375, 0.776212558334, 0.61602710265]    1
+    Should Contain X Times    ${output}    Coefficients(22) = [0.526536104292, 0.887560011975, 0.837292471041, 0.847156723694, 0.479945027786, 0.166709580261, 0.45039047842, 0.324575591403, 0.995733868356, 0.49402565613, 0.807633958563, 0.394251790861, 0.567037185369, 0.612532948567, 0.0278719680174, 0.736870877068, 0.812030620967, 0.187100192714, 0.0276547448968, 0.149927819098, 0.181581448218, 0.699008905433]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyActiveOpticForcesByBendingModes] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

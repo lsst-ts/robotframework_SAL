@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtArchiver_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    python    Checking if skipped: atArchiver
+Force Tags    python    TSS-2674
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 -20748636 1535070249
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 -1136811468 -261097968
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_AppliedSettingsMatchStart writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_wfpSimulate commander/controller tests.
-Force Tags    python    Checking if skipped: tcs
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py RhJsuWrvdTEjpOzCNuZzaBmixaWWVsxPatwxPLiXPjoDvCltGHmDWcglLTvWvkqc 12.8574 88.8712 98.1274 13.6534 5.1377 84.2048 64.9666 17.0905 64.6869 95.5707 60.2252 51.2507 50.2644 58.5234 82.3305 84.0357 44.6426 33.3241
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py vjyPXQPITaFXUzOBhMlupRayLMsHAnABnVgahQuxBVqaXLGhRFUmPlzkWDyFvgpc 67.9226 85.6918 91.4619 85.8973 20.6887 13.1734 58.6161 8.1101 80.0726 45.5097 71.4941 77.9608 86.6632 79.466 28.1457 44.7982 41.9052 43.6042
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py RhJsuWrvdTEjpOzCNuZzaBmixaWWVsxPatwxPLiXPjoDvCltGHmDWcglLTvWvkqc 12.8574 88.8712 98.1274 13.6534 5.1377 84.2048 64.9666 17.0905 64.6869 95.5707 60.2252 51.2507 50.2644 58.5234 82.3305 84.0357 44.6426 33.3241
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py vjyPXQPITaFXUzOBhMlupRayLMsHAnABnVgahQuxBVqaXLGhRFUmPlzkWDyFvgpc 67.9226 85.6918 91.4619 85.8973 20.6887 13.1734 58.6161 8.1101 80.0726 45.5097 71.4941 77.9608 86.6632 79.466 28.1457 44.7982 41.9052 43.6042
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    uid : RhJsuWrvdTEjpOzCNuZzaBmixaWWVsxPatwxPLiXPjoDvCltGHmDWcglLTvWvkqc    1
-    Should Contain X Times    ${output}    z_arr : 12.8574    1
+    Should Contain X Times    ${output}    uid : vjyPXQPITaFXUzOBhMlupRayLMsHAnABnVgahQuxBVqaXLGhRFUmPlzkWDyFvgpc    1
+    Should Contain X Times    ${output}    z_arr : 67.9226    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    uid = RhJsuWrvdTEjpOzCNuZzaBmixaWWVsxPatwxPLiXPjoDvCltGHmDWcglLTvWvkqc    1
-    Should Contain X Times    ${output}    z_arr(18) = [12.8574, 88.8712, 98.1274, 13.6534, 5.1377, 84.2048, 64.9666, 17.0905, 64.6869, 95.5707, 60.2252, 51.2507, 50.2644, 58.5234, 82.3305, 84.0357, 44.6426, 33.3241]    1
+    Should Contain X Times    ${output}    uid = vjyPXQPITaFXUzOBhMlupRayLMsHAnABnVgahQuxBVqaXLGhRFUmPlzkWDyFvgpc    1
+    Should Contain X Times    ${output}    z_arr(18) = [67.9226, 85.6918, 91.4619, 85.8973, 20.6887, 13.1734, 58.6161, 8.1101, 80.0726, 45.5097, 71.4941, 77.9608, 86.6632, 79.466, 28.1457, 44.7982, 41.9052, 43.6042]    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

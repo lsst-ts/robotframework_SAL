@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_ccsCommandState sender/logger tests.
-Force Tags    python    Checking if skipped: camera
+Force Tags    python    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1218976801 744686911 263176215
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -551851826 1040009866 1569166172
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_ccsCommandState writing a message containing :    1

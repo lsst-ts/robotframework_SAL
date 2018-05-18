@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    VMS_SettingsApplied sender/logger tests.
-Force Tags    python    Checking if skipped: vms
-TSS-2618
+Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -49,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 9.8691 kbkqhTKMNKOgSGAcijyybRzfuLnLmGECmzwkcvSfYioCRqnzSThshRTorFaswEJtVxXNaedYLYrWgnhnGsJygKlJtolBhMkazMJgQOLozjzuaIcmKoakXHeyuaeKTzXTLslITBydATSVfdQTYzROtSFSTgoNStLWeGIsbOizwzbqfopgkgSDVhPPevhYcCpsYlsBYdgrRrLWwsejRLZxWkKCcWrNbMKSkkWrIkxjAdRPlJRnrJqpdobaJVYOhjvg 2076183819
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 68.8907 bOtqgdZUdJZWFKIUDfSTXQCblrPpxhNoZGiYLTpiYznRDDEmGvTipgILJFgejjCNZlTPcwLqxRpynPaVqwmtfSlzTgCDYLOrPBPHQEolKNScbZvurwfxAlltEPlrefPwwgcUEVxeoyscWwkSSGiEplMHkrbllaLtuHmNpSfxWmZPDHmbYVLqPhyYUaHdHzMxXlhSrOCxOripxcFuVNDtAYZDsPLYodzImFcjdDpLEeIdNwkocqjmpvNXyBndyJfj 1766588108
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_SettingsApplied writing a message containing :    1

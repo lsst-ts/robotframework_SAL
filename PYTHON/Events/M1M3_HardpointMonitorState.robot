@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    M1M3_HardpointMonitorState sender/logger tests.
-Force Tags    python    Checking if skipped: m1m3
-TSS-2617
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -49,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 26.1912 -5745 21699 13546 30302 29971 -19824 1420297952
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 94.4266 -9474 -6331 -23134 -21647 -16723 -25316 -965968496
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointMonitorState writing a message containing :    1

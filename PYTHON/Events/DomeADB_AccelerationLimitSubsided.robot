@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeADB_AccelerationLimitSubsided sender/logger tests.
-Force Tags    python    Checking if skipped: domeADB
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 961740799
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 279836311
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_AccelerationLimitSubsided writing a message containing :    1

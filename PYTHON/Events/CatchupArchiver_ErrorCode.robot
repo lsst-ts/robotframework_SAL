@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_ErrorCode sender/logger tests.
-Force Tags    python    Checking if skipped: catchuparchiver
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1923638069 -1513846249 -599463028
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1213425195 -1808069613 101077722
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_ErrorCode writing a message containing :    1

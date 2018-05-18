@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    HeaderService_SummaryState sender/logger tests.
-Force Tags    python    Checking if skipped: headerService
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 34.634 -1254968951 -1112435130
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 4.6895 -87919713 -595518698
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_SummaryState writing a message containing :    1

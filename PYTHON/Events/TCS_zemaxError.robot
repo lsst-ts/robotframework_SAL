@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_zemaxError sender/logger tests.
-Force Tags    python    Checking if skipped: tcs
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py nFoRkzoFmEzObwtvpilWFQDmxWdawscYcPJRzpTXJdeknTPWULLgforSTVtzinHGfeCTvKpdGpqmziiKiVGcbRBjUYnMjoLTjAEfMsDoGQETJSfGLMtZBzysMRClEjsJ 327516425
+    ${input}=    Write    python ${subSystem}_Event_${component}.py UjJqHVqFOGUqhNVDtYZdidOjvqlWDpnakgzzHMdVapdpmDlhAXaZIVzDFvUwJEPiFaVRBlCgnMdMhVwXgAjhAhoXbNuUlGQqNjFRZcyxNoKgdSNLPcfbYZQcWZcmPVXG 289327802
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1

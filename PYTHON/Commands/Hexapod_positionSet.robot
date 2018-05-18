@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_positionSet commander/controller tests.
-Force Tags    python    Checking if skipped: hexapod
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.118353046811 0.932847300465 0.79210461048 0.731795676895 0.11431090478 0.486249350323 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.204198781078 0.522141655433 0.95463931249 0.553545611112 0.502470554927 0.225792631167 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.118353046811 0.932847300465 0.79210461048 0.731795676895 0.11431090478 0.486249350323 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.204198781078 0.522141655433 0.95463931249 0.553545611112 0.502470554927 0.225792631167 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    x : 0.118353046811    1
-    Should Contain X Times    ${output}    y : 0.932847300465    1
-    Should Contain X Times    ${output}    z : 0.79210461048    1
-    Should Contain X Times    ${output}    u : 0.731795676895    1
-    Should Contain X Times    ${output}    v : 0.11431090478    1
-    Should Contain X Times    ${output}    w : 0.486249350323    1
+    Should Contain X Times    ${output}    x : 0.204198781078    1
+    Should Contain X Times    ${output}    y : 0.522141655433    1
+    Should Contain X Times    ${output}    z : 0.95463931249    1
+    Should Contain X Times    ${output}    u : 0.553545611112    1
+    Should Contain X Times    ${output}    v : 0.502470554927    1
+    Should Contain X Times    ${output}    w : 0.225792631167    1
     Should Contain X Times    ${output}    sync : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,12 +83,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    x = 0.118353046811    1
-    Should Contain X Times    ${output}    y = 0.932847300465    1
-    Should Contain X Times    ${output}    z = 0.79210461048    1
-    Should Contain X Times    ${output}    u = 0.731795676895    1
-    Should Contain X Times    ${output}    v = 0.11431090478    1
-    Should Contain X Times    ${output}    w = 0.486249350323    1
+    Should Contain X Times    ${output}    x = 0.204198781078    1
+    Should Contain X Times    ${output}    y = 0.522141655433    1
+    Should Contain X Times    ${output}    z = 0.95463931249    1
+    Should Contain X Times    ${output}    u = 0.553545611112    1
+    Should Contain X Times    ${output}    v = 0.502470554927    1
+    Should Contain X Times    ${output}    w = 0.225792631167    1
     Should Contain X Times    ${output}    sync = 1    1
     Should Contain X Times    ${output}    === [ackCommand_positionSet] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

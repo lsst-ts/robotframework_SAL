@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    VMS_AcquisitionRate sender/logger tests.
-Force Tags    python    Checking if skipped: vms
-TSS-2618
+Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -49,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 45.8237 70.0846 499330821
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 60.29 47.3689 1683335994
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AcquisitionRate writing a message containing :    1

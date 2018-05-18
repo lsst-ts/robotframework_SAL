@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_Timestamp communications tests.
-Force Tags    python    Checking if skipped: atMonochromator
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections

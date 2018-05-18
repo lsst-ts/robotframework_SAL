@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CatchupArchiver_catchuparchiverEntityStartup sender/logger tests.
-Force Tags    python    Checking if skipped: catchuparchiver
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py nimqYZolvLHKeuojqaUiUhLprVJoqqNcgVhSrkrnPHeJsBJvrMehejDVtfWTSHgHyzQZWrMgRIbwqKTtCbYnyVpdOFHSjPWMCnripmHjEUkLrAXupUSMXnToLedbWNUSNdJfgpWkyGRBpRdMVogUyveabOftRCzadEQnsJiHrBUPRRMRdIvemqHdMsgkBhnYTWGibkpnwntwcwHHQgaStWGVMfZzMtzDxrvtawHRebVpPoEsrtjYgftgjrJnHrpA 56.7546 YTNCetuVNaymFLmopwQUWEgWeUZrhTnlZSLirtfqWcikKdwaHhlaCIKMYNZiTywhjdQmLAWSCgLxyGbpiLgbQBsHxewuVLIOSCrBZoYCzsBeYAHeSwgyTOqciifCZRSfLCZTmfxdXNNNKKKNloBfeNDHJeVnJFkqvqMoyEmiZTkkpWdvCwtRSUrrMElcasxmadvVqGIADVjhUdSUKTCDmrMliCeTfkGAGQdVrEVObuBOwOuUORKcEJzvxgJivsfo -428877544 1924167552 2053877166
+    ${input}=    Write    python ${subSystem}_Event_${component}.py PnzQpNmjYSqGMZWnsLenehTgQLHnzOFUQSuIzXJHREHZuuxDjcaPoLnHqXWdxedARsZcohxtiMcZtdlzEgSTFshwvlOlkqqgbgaTiddITFTGsHaQbwIyckBvpgcQJHYooAqHwTXQwoHHNenMBxQYXKRlBGCCOwbeNjmqWqTcpQowxcaUMUyBotBjNqUTbYMmNWUdeqsqDgbMoQYFgZqriuROXmgGVAzAlwwHovNWlnIYPQnUoZbYzKTAfnuaGLfA 31.6149 PGoXLajGoURfVXTTfcqTkxIQqxUDnxsMuuRWhqOobzNqixqcrgyCynUmKMCJITjAGfmFECnAVyMESocLxJiJVjpOfVxtHhgqdzVHNgPlcDyitMUGnUmKOkGbjplTfgnhVPnPJHMbaNtNizCOcfwqGmwkRmEGGTEUoXHEAkHQXwXRNCjDtXePBGaLgzfpkwLMvOAcYboxzVyNhJyBxCmNiWCLrdxYgZKdSjxovbedRfVOoNBCjpLhMMeEkfOgugUV -491416044 2128646034 -434556634
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntityStartup writing a message containing :    1

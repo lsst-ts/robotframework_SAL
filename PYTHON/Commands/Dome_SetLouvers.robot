@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Dome_SetLouvers commander/controller tests.
-Force Tags    python    Checking if skipped: dome
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -9035 2633 1795 15300 12831 5321 8623 -28883 14005 16066 -30059 -9188 -3013 5398 -5742 31604 11835 10297 7010 -26621 -9612 16649 -29428 -31611 -31834 1422 6935 -23895 26085 -22490 1172 14476 -14772 -10899
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7287 -29915 -321 -11423 7248 -15426 29511 -1203 -16689 9634 18609 22458 -12839 -20847 12630 24341 -30289 -19100 7254 -10386 12002 -16049 -18411 -29427 -8334 4029 -13597 -19277 -27076 -19565 -1110 -25600 2416 -32666
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py -9035 2633 1795 15300 12831 5321 8623 -28883 14005 16066 -30059 -9188 -3013 5398 -5742 31604 11835 10297 7010 -26621 -9612 16649 -29428 -31611 -31834 1422 6935 -23895 26085 -22490 1172 14476 -14772 -10899
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -7287 -29915 -321 -11423 7248 -15426 29511 -1203 -16689 9634 18609 22458 -12839 -20847 12630 24341 -30289 -19100 7254 -10386 12002 -16049 -18411 -29427 -8334 4029 -13597 -19277 -27076 -19565 -1110 -25600 2416 -32666
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    position : -9035    1
+    Should Contain X Times    ${output}    position : -7287    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    position(34) = [-9035, 2633, 1795, 15300, 12831, 5321, 8623, -28883, 14005, 16066, -30059, -9188, -3013, 5398, -5742, 31604, 11835, 10297, 7010, -26621, -9612, 16649, -29428, -31611, -31834, 1422, 6935, -23895, 26085, -22490, 1172, 14476, -14772, -10899]    1
+    Should Contain X Times    ${output}    position(34) = [-7287, -29915, -321, -11423, 7248, -15426, 29511, -1203, -16689, 9634, 18609, 22458, -12839, -20847, 12630, 24341, -30289, -19100, 7254, -10386, 12002, -16049, -18411, -29427, -8334, 4029, -13597, -19277, -27076, -19565, -1110, -25600, 2416, -32666]    1
     Should Contain X Times    ${output}    === [ackCommand_SetLouvers] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

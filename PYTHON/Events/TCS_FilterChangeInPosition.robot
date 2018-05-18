@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_FilterChangeInPosition sender/logger tests.
-Force Tags    python    Checking if skipped: tcs
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 440973902
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 -1492328715
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_FilterChangeInPosition writing a message containing :    1

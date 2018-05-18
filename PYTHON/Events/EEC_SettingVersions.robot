@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_SettingVersions sender/logger tests.
-Force Tags    python    Checking if skipped: eec
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 52.1487 YIwLOcvCPccYQGWmBowaIpBgaamObkeBzOmoAOPXTTgwNCemFPNuTsrBfpUyjFwURzqPuZtpJfTLWMeJDCFAyeRmUViRAPQZHFyPvNwepqcoWutyWihGHNwoxSfsDIldVWDmRvTpKFmSidTLSrPAdgTYADMFNPqDuXPvwNwWsEemRDZSkkyjlPJEaZPNJFVnKqeEOoqEFazBLqyyfwwXKmfOMyHpSXbAJJMvmYfRtMYidZMVYpIwkInSGnsrjQbUCmVgktXozyCbJfkkYujONybfOPCjAUwzlUGyXSWzIdvlAGqFhYnCHpBbdhjkVTculHmHixAAydYMfykFnEtNwbmtykiTAkZpccADtQBIoJmoLjNtdceMuUHswejJIEZEGJcNrTUDkKqsFraSGkMAXBEzZEjYvKeaIGKhfiRBJaMSDAtihsGKPPFBbLmwcdzilUlncKhbcMZuvysuPYsQqOacqJkJaWVpJJcXpRzTwuaZBhzjBMifmrwpwgpLFLEJDPhwdZpyhKylzsXcVjjTJwqrQPcCByIiPCMGyuaKjxdKNxEvmRpvbVyVDSZJdCnjguAQUYNfldMQBntOhhsNTSncRRSzspJkCrnGOjYHcBvGNEqDvgaPHAFvqJyAgDcvUuunuSicBrpdmNOwBFMSHSwopZHKTkXVeopfDiDZYMtJWxkBZPmxlZWrGIRnbQNgUHmrPaHCzvMoSyZHzfYeevJcFrD -851422383
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 44.5055 JXgxpFelqPxfYHdQqISlXQmFFRnIMHdrNkjXxTKGSuqjOlrkoyBwrDaWYRnMNHVdGcDTqcpSqndSegMRqNpBjIFjtycIcRMkLeThLWMAKwRwUPivdOjNtvxxFqOCokpUQOpaDKgHSODfsemzXcZCJFIliXwaOEnnxIolOLnyUUQWXDqDCCoENeHpLvRzRrZrEuExboHncQrnMyhAsZFblQSEWERaPuWFsAfgoWZUywaRkzIZhbcmrHjthWkZUcMKzLumbGLOOKqlhoWeOqUNRxGLupBLSTVzPGkMdCwOQxipArXKNXkfDgwVHzbjQnDdJqwhBQJbPUTuVTBpNvOFRzaxJYfiWpgIfppWtweIJRtiPLrGgwUYilSvJBoYNWUPbyxMvwCwtAzQyjaqBrwNoNpYyvimlgnpYFcPUTpGRqTauaTfbJhzokfUoxPngNOXJMwWxoUArLWQdcjgpYZAhxVaxxPYnMyNgJsSpexvSlAuzCpwlypIEAGRQQCLKGlFPDlqhdUoBUvToueePQXPZzCZLjvalbaTYQWySZKbfehGUvrbTETwwcHmZkri -1667239384
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1

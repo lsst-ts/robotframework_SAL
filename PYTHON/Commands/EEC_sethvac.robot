@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_sethvac commander/controller tests.
-Force Tags    python    Checking if skipped: eec
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 86.8102 92.4853 69.2147 92.9524 54.3901 60.7622 44.8881 37.5913 12.282 46.6912 73.4592 34.5555 11.0934 42.6693 88.9042
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 79.839 26.063 21.0801 45.6295 20.3004 96.4446 73.0233 17.421 25.7187 66.2539 8.8905 49.3839 73.974 21.8865 61.9001
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 86.8102 92.4853 69.2147 92.9524 54.3901 60.7622 44.8881 37.5913 12.282 46.6912 73.4592 34.5555 11.0934 42.6693 88.9042
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 79.839 26.063 21.0801 45.6295 20.3004 96.4446 73.0233 17.421 25.7187 66.2539 8.8905 49.3839 73.974 21.8865 61.9001
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    parameters : 86.8102    1
+    Should Contain X Times    ${output}    parameters : 79.839    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    parameters = 86.8102    1
+    Should Contain X Times    ${output}    parameters = 79.839    1
     Should Contain X Times    ${output}    === [ackCommand_sethvac] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

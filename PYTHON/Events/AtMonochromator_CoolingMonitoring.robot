@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_CoolingMonitoring sender/logger tests.
-Force Tags    python    Checking if skipped: atMonochromator
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.00913719608418 0.12479731473 0.714540675547 1743213151
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.731298532635 0.139775054335 0.835138437778 1818800650
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_CoolingMonitoring writing a message containing :    1

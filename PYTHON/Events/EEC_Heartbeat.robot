@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    EEC_Heartbeat sender/logger tests.
-Force Tags    python    Checking if skipped: eec
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 -694630847
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 -1527782739
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_Heartbeat writing a message containing :    1

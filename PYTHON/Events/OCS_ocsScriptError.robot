@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    OCS_ocsScriptError sender/logger tests.
-Force Tags    python    Checking if skipped: ocs
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py tMCJCrEAgJARdbGyxJiKvYIMTjkKEDcefgZMYEqNYwTelTeoBmAdaJQnFluAtYhlKGTpBrhAMJSOnnYCbYOCvuHegDmmzLxbpdzpGEzqaLxfEXyojDhpzPIkMyywJXXiAJvBeAQwlIJwzSMiGrKlMjCZbAGVoJRmaxeeLQrXhRdTtcyKSqYeLOpRQAVZKsJWCEqZOjhBCCryaLOfkoxgeNnDlzwuqluVmAGSiSrlPNuYlvUEHanlZNXNwjdUOmmn 16.9119 bENqhROkWPogCwYgenHrolcBgfvVBakOZeKZkCJsYiNfTEOjZmHeVksIPhUYvIScgqztkZeuxcIBCcVjGcLCfOtvVfVyVCpsujpJKDcRDkMFGCKizcbCYDxVdZKmBZOjAsloBkNPCKiHbTqwVoiAiBulLPCSPndQwlrzyTzgWFkLBSifjeYHQVmpVfOCaZetWqhpjvXpKFxMAJGtmEmVyWxyoyMYmczQWRoTHukaevGNkapYECNvMWUczyPpBNZl -37188157 1592901900 iEWkzhGrPNYtAjGeAeHDGwQaxnQlrmjhaDJCAXHkiKIigRXYCoIEzFrBFyYfCkyCFNZlkkLTsChFQqBAeWCsneLblZhiurGXPyIBdhCAGRDLmPMYoGXWsuFFgqApGQrNnNcGSJfltzQJPWJULYrpNFqFvNQtTCuhZJypsRPPOZxOzYoqpZFJbyjdElmpQJcWgeTHxUtWYbsCquKZRjKRJGpkpPvNeSRSZySZAfSDfEBFOeogJedMEleyoSASnkSE -1608911444
+    ${input}=    Write    python ${subSystem}_Event_${component}.py lxDESqItSCTRcphIGhnuBSQSfEBTOdVXDeEWLZCvBrdTOAWSDxtTYjnRoYolLtfImfJmtxqNBPLqMCInMxzEGNGlCHJLwNRqBaqRFcBcurWcJOkYDyOUyoqsKEqfHRXnJYfeXwcEwycugTKZVbItcEuegBYAifcaiwXIshnbxCwDkZtqsCOUzmxxKLpXCPHPpomeSmJcYOMHbAlnsZorJHHHWVpxtrcOeVrTZeZgILjvRkysFYeMLDLZSBWLtwfp 99.1748 sFxsRADXwgtrHrpAqxVRjucdyeLRLufLKToFxMGpZPWdOCEESWoldpmtsMErEOLrlkhxtlYgsfafSKWRqtDxLQqoUQehXPWizIHswMJtNdizxfscXalgHSjvYoTxDmZqciUUSSyUzmfSRUyykOrYiQWxdSoQEkSEQvFehGtWUHVJfgfpjToWhtUdOmlKqbegWcAeCuMCaRhiogrBcRwPruZlcASGaIxVEveUavPdpXvhqRrZOIPtHyoKftqDpBgK -971782813 438443567 AijamSzCTUFpwHdliaxpQNUbKxJaiOuqntkNieJdfTWCykNJxfngVepmYkvSfzYJwCPfEgVEFqeTYLXqidDvETsSfoHQnFiASwRUxrEYbCiapigvGHMKabAAwUrDbnwjIBXKpmUQAyEfgxClRCFGmDBOeQIphkflUeDNhzMeEJfDGpkHCptzyGUdMPMCcsplkbYmJChApEGvtfgInCkRDFHDcWpHWHbjYiBFTzvuAQBCzmZRFvPVymnnSaJzqXAA 171894681
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsScriptError writing a message containing :    1

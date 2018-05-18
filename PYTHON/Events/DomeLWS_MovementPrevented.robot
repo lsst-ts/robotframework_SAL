@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_MovementPrevented sender/logger tests.
-Force Tags    python    Checking if skipped: domeLWS
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py uOyYcpzyRGImwBibsuKUpnnJkEOEQzUsMPjrKKGKskbDNOzNqWFVLpoxVomeKUYglGxryiUjacQXwNudjAVJjPZYKPrLkqljUIIvsThobRRXOYlgukfkMNflrOPoCtSIfUGzaVzCqwAVFJuwWYOaQsGgcauwpHUTbQSpVTrMIXeHsjILVlHpVrMDovFFrBRcVwibrpyhqjGisazTgFSZGgNlgcBzZgRHtAxoNmqciPPxwhodKDkIBjsaIlNjdWpJuFUUrfjxkydDjsPOAZFymHUXQfsIMMrPzrvLrEqSBegggBSYezLKCNnYvajlGZVFZAZkpeNFOpEhzBesCCkbLCJxgxKhGsuBltAnfZpoihXeHhSXvQKndVVleffXnHzhdAYaLQnHReBhAnprmsgdeHZMOcyxIjpfqDnHUmHuPwPEMpLZrolNksJI 1201885782
+    ${input}=    Write    python ${subSystem}_Event_${component}.py AMLQYUadApGUPGdjQaLIccHMwALYeDpennMBTCnqImPnvvSiTaHEncTdqmWSniteWGRDoquslafKQgPoOLPrldXnyKwjcpuviRpLcWlUymQBohNbDtzRASDKuENQggOQjACDNGZXjhZCpfIZvdsgJhxLAmuEeyvKAEVKyIpkamSZaAbYBaIwaMZXZDHCv 898764617
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_MovementPrevented writing a message containing :    1

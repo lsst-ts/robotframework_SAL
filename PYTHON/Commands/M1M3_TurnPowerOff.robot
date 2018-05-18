@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    M1M3_TurnPowerOff commander/controller tests.
-Force Tags    python    Checking if skipped: m1m3
-TSS-2617
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -38,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1 1 0 1 1 0 1 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1 1 0 0 0 0 0 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -61,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1 1 0 1 1 0 1 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1 1 0 0 0 0 0 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -72,10 +71,10 @@ Start Commander
     Should Contain X Times    ${output}    TurnPowerNetworkAOff : 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkBOff : 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkCOff : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkDOff : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkDOff : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff : 0    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 1    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,10 +87,10 @@ Read Controller
     Should Contain X Times    ${output}    TurnPowerNetworkAOff = 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkBOff = 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkCOff = 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkDOff = 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff = 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkDOff = 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff = 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff = 0    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff = 1    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff = 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff = 1    1
     Should Contain X Times    ${output}    === [ackCommand_TurnPowerOff] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :

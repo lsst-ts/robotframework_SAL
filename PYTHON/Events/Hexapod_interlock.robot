@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_interlock sender/logger tests.
-Force Tags    python    Checking if skipped: hexapod
+Force Tags    python    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py cyXwqUbUCSJgnlkLeFULtwNgOunJeECcpTmepmSqgftNTkHYtgxoilghQdEdUEbiUZdyKRTgIGqdjejMuqwUWZDgxKDmaNkGwfOTVASKpWagGPYLGBWaKtklrBSalKIIuInqfSXrlpcqSZSFGzWMXakmNJSvfhVzhqnUqCgeDMAzQWNhhpEFbNDPCquiiYAdPeveoPRVFcRuDtiqaGcSLDnsjkJbAOgvXIkDWGnGtjhTRFVGyzritGTxjHFChDqX 15.6157 -636039926
+    ${input}=    Write    python ${subSystem}_Event_${component}.py TKyaODNLxgDvOqoQeVmWqsWtqjITWLesHmwjIawrxsGrlKMCyWoplsKGcmgrdqEZeeeMRPUlXcKmCYxkuYuIowUURHFYjcrvMXouQEpxozlzyVPnQqNsjCEKgFfMlUjTesFbxLVprOhRLdpCTzENesdhiFCqhITGQqHylXIroIFFUCZWfKmedbWemsAaoWoUuRAsXTnnpqvjmnBntCXNWzQbMPKueBHMUxixEKMeldMpDswOvNSmcnzIcWpxcSHr 64.645 1298303289
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1

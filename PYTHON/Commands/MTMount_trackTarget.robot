@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_trackTarget commander/controller tests.
-Force Tags    python    Checking if skipped: MTMount
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 31.5304 31.3143 89.9156 52.1029 63.3974 EMdLDsgDRXiCjyyYSkuGNWBVEGkFbQdEqgpDuFuqJzjciBZBqovhOLOKSFViwGAvbABRECHkgEIWRWRxeQGwOTLFDjtotFcOiZUFAtfRRAMpzvxsjmLeinmvElfBhvsSjTZDcajBWHdJSRPneqGyDBSDDiESOoOKsvHgrZmuibUJHurtiwfzuJYhVaHwceXfabbWmSdKyIjGgygyndFhChzdDfJwUIkfjOEzpxvdLPRGcxsnEJXXkAckFPEaOXGEjJbuZtngxQrFUSnlfiDhnASdIRXKTlAgWHCZxvOreaRgnxkrDRWKpKDelVqEKpLurziCKDqyMwKZgotGzUvbPSTrKzjSzLKxOZWBeRcQqWUhdbnDJqxnSAfLlCwMicSBIBImZqmcybHUWqSzGocyPTSSEIjbBjfLTJpVyMXOkbofKWljvEsdmPpbrwqAHRvJgpfxrINMtxotBVhQPLZcFgLpnBZEZuEchZNpzZSVEcioKmrrEAFwmkFXyVhALcetUamSLLaRGnwtYoMCtADNllKZvaepZbZlpscxYCBuMLEAlUtjiBYEZQkuDebTzgPztSMxjDSHkdNtCRCRjFtWMfBskedQbdmraRlCKUzwGroZVIicuEFQEHKOdNLMYfcPqVrIjbQhNWcUW
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.2596 50.2265 78.9021 29.8271 86.0534 HskoTlNINGtdtGOtkOPjzRtebhCRnmiTVODnEEfpuxhauLgfwkGbSTheKuJzqrJNDXQWpKTBFfpFbCoPQCRZrrIcHEUGDmpRXSHORkdcHoADwyDGXmtBkuvDDyaDZfSgSDIUg
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 31.5304 31.3143 89.9156 52.1029 63.3974 EMdLDsgDRXiCjyyYSkuGNWBVEGkFbQdEqgpDuFuqJzjciBZBqovhOLOKSFViwGAvbABRECHkgEIWRWRxeQGwOTLFDjtotFcOiZUFAtfRRAMpzvxsjmLeinmvElfBhvsSjTZDcajBWHdJSRPneqGyDBSDDiESOoOKsvHgrZmuibUJHurtiwfzuJYhVaHwceXfabbWmSdKyIjGgygyndFhChzdDfJwUIkfjOEzpxvdLPRGcxsnEJXXkAckFPEaOXGEjJbuZtngxQrFUSnlfiDhnASdIRXKTlAgWHCZxvOreaRgnxkrDRWKpKDelVqEKpLurziCKDqyMwKZgotGzUvbPSTrKzjSzLKxOZWBeRcQqWUhdbnDJqxnSAfLlCwMicSBIBImZqmcybHUWqSzGocyPTSSEIjbBjfLTJpVyMXOkbofKWljvEsdmPpbrwqAHRvJgpfxrINMtxotBVhQPLZcFgLpnBZEZuEchZNpzZSVEcioKmrrEAFwmkFXyVhALcetUamSLLaRGnwtYoMCtADNllKZvaepZbZlpscxYCBuMLEAlUtjiBYEZQkuDebTzgPztSMxjDSHkdNtCRCRjFtWMfBskedQbdmraRlCKUzwGroZVIicuEFQEHKOdNLMYfcPqVrIjbQhNWcUW
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.2596 50.2265 78.9021 29.8271 86.0534 HskoTlNINGtdtGOtkOPjzRtebhCRnmiTVODnEEfpuxhauLgfwkGbSTheKuJzqrJNDXQWpKTBFfpFbCoPQCRZrrIcHEUGDmpRXSHORkdcHoADwyDGXmtBkuvDDyaDZfSgSDIUg
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 31.5304    1
-    Should Contain X Times    ${output}    az_velocity : 31.3143    1
-    Should Contain X Times    ${output}    el_angle : 89.9156    1
-    Should Contain X Times    ${output}    el_velocity : 52.1029    1
-    Should Contain X Times    ${output}    time : 63.3974    1
-    Should Contain X Times    ${output}    cablewrap_orientation : EMdLDsgDRXiCjyyYSkuGNWBVEGkFbQdEqgpDuFuqJzjciBZBqovhOLOKSFViwGAvbABRECHkgEIWRWRxeQGwOTLFDjtotFcOiZUFAtfRRAMpzvxsjmLeinmvElfBhvsSjTZDcajBWHdJSRPneqGyDBSDDiESOoOKsvHgrZmuibUJHurtiwfzuJYhVaHwceXfabbWmSdKyIjGgygyndFhChzdDfJwUIkfjOEzpxvdLPRGcxsnEJXXkAckFPEaOXGEjJbuZtngxQrFUSnlfiDhnASdIRXKTlAgWHCZxvOreaRgnxkrDRWKpKDelVqEKpLurziCKDqyMwKZgotGzUvbPSTrKzjSzLKxOZWBeRcQqWUhdbnDJqxnSAfLlCwMicSBIBImZqmcybHUWqSzGocyPTSSEIjbBjfLTJpVyMXOkbofKWljvEsdmPpbrwqAHRvJgpfxrINMtxotBVhQPLZcFgLpnBZEZuEchZNpzZSVEcioKmrrEAFwmkFXyVhALcetUamSLLaRGnwtYoMCtADNllKZvaepZbZlpscxYCBuMLEAlUtjiBYEZQkuDebTzgPztSMxjDSHkdNtCRCRjFtWMfBskedQbdmraRlCKUzwGroZVIicuEFQEHKOdNLMYfcPqVrIjbQhNWcUW    1
+    Should Contain X Times    ${output}    az_angle : 0.2596    1
+    Should Contain X Times    ${output}    az_velocity : 50.2265    1
+    Should Contain X Times    ${output}    el_angle : 78.9021    1
+    Should Contain X Times    ${output}    el_velocity : 29.8271    1
+    Should Contain X Times    ${output}    time : 86.0534    1
+    Should Contain X Times    ${output}    cablewrap_orientation : HskoTlNINGtdtGOtkOPjzRtebhCRnmiTVODnEEfpuxhauLgfwkGbSTheKuJzqrJNDXQWpKTBFfpFbCoPQCRZrrIcHEUGDmpRXSHORkdcHoADwyDGXmtBkuvDDyaDZfSgSDIUg    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -82,12 +82,12 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 31.5304    1
-    Should Contain X Times    ${output}    az_velocity = 31.3143    1
-    Should Contain X Times    ${output}    el_angle = 89.9156    1
-    Should Contain X Times    ${output}    el_velocity = 52.1029    1
-    Should Contain X Times    ${output}    time = 63.3974    1
-    Should Contain X Times    ${output}    cablewrap_orientation = EMdLDsgDRXiCjyyYSkuGNWBVEGkFbQdEqgpDuFuqJzjciBZBqovhOLOKSFViwGAvbABRECHkgEIWRWRxeQGwOTLFDjtotFcOiZUFAtfRRAMpzvxsjmLeinmvElfBhvsSjTZDcajBWHdJSRPneqGyDBSDDiESOoOKsvHgrZmuibUJHurtiwfzuJYhVaHwceXfabbWmSdKyIjGgygyndFhChzdDfJwUIkfjOEzpxvdLPRGcxsnEJXXkAckFPEaOXGEjJbuZtngxQrFUSnlfiDhnASdIRXKTlAgWHCZxvOreaRgnxkrDRWKpKDelVqEKpLurziCKDqyMwKZgotGzUvbPSTrKzjSzLKxOZWBeRcQqWUhdbnDJqxnSAfLlCwMicSBIBImZqmcybHUWqSzGocyPTSSEIjbBjfLTJpVyMXOkbofKWljvEsdmPpbrwqAHRvJgpfxrINMtxotBVhQPLZcFgLpnBZEZuEchZNpzZSVEcioKmrrEAFwmkFXyVhALcetUamSLLaRGnwtYoMCtADNllKZvaepZbZlpscxYCBuMLEAlUtjiBYEZQkuDebTzgPztSMxjDSHkdNtCRCRjFtWMfBskedQbdmraRlCKUzwGroZVIicuEFQEHKOdNLMYfcPqVrIjbQhNWcUW    1
+    Should Contain X Times    ${output}    az_angle = 0.2596    1
+    Should Contain X Times    ${output}    az_velocity = 50.2265    1
+    Should Contain X Times    ${output}    el_angle = 78.9021    1
+    Should Contain X Times    ${output}    el_velocity = 29.8271    1
+    Should Contain X Times    ${output}    time = 86.0534    1
+    Should Contain X Times    ${output}    cablewrap_orientation = HskoTlNINGtdtGOtkOPjzRtebhCRnmiTVODnEEfpuxhauLgfwkGbSTheKuJzqrJNDXQWpKTBFfpFbCoPQCRZrrIcHEUGDmpRXSHORkdcHoADwyDGXmtBkuvDDyaDZfSgSDIUg    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

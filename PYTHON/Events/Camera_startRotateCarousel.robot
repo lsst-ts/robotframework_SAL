@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startRotateCarousel sender/logger tests.
-Force Tags    python    Checking if skipped: camera
+Force Tags    python    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1383900782 -2133127200
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1744902830 -782896860
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startRotateCarousel writing a message containing :    1

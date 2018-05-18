@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing State Machine tests.
-Force Tags    python    Checking if skipped: promptProcessing
-TSS-2633
+Force Tags    python    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -11,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    enable
 ${timeout}    30s
 

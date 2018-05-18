@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Sequencer_sequencerEntityStartup sender/logger tests.
-Force Tags    python    Checking if skipped: sequencer
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py YzeQLjqMOwXlRsfTvHiGQGBYzeOOCLXbWbkVZiiZlJfgljtuGsbbzewBUZjQeCtnieaolIUlENQxaSOwqSXurVpwVObIuPlmdtPCcROQYTUBcYQNyNqLHAjgbAWapmDj 90.587 JuapkJtPwYLHXjNZDxqHZBKrJIgdazQOhqrivcxkRsPqyJbaoVhekCfalcorHzUfsPqhZVHwSnaxAeKepqjPJCEMbSGXGKfnjlCLqCzkPhCivJSuSsKAgfMiEIPOkFfMTwzQgryiSZhjCBbFyKSVYEwQmSWIRassSGCXJpSsjJvQPMHaERMPXHoTfZhhMxmkWzukxKdAMZQBaojgLNDFrdDaJEUWsHcKdpOSzOyBUUjpDymjiuctrUqfMGOTCvai 1108768442 29346483
+    ${input}=    Write    python ${subSystem}_Event_${component}.py dMBvFYyxLntuxrCKjNzDqkCRFTsBuelqlsbtRxhJfMVLXpNxNCdfrekdFSXmtiqArzUSgDJyoaHLsjdetBFTMmSpqqISqMkwzNUBzPNHHthjYTxCvMAdfgBikECMQpUM 55.4866 RgkVJunbpjAZmSbQMarpKUatSfuSNQTjZUQEsmwoVvRCPmKbCloJxvKcJmwpOZQlIHGgBluJrRLQRnMtPrjGZfcDRqsdCOFeiRqqnYMvUFviwTjZPeOlikwxOfjFOrtgdAZkcAIzxqrKtsnELIymVlWuayLSTEXSIPcsSWyQMHIfuAWZDbduAgXEeAamiqINTiFrEimPFgrJuBYsSasRNCIoWJblknuLdPUVZVZPGhUNkOXoxeVTuWKDtPkXwXxP -1374280424 514978829
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityStartup writing a message containing :    1

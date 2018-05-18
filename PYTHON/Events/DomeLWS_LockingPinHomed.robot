@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_LockingPinHomed sender/logger tests.
-Force Tags    python    Checking if skipped: domeLWS
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 13470 2105227262
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -21905 780629811
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_LockingPinHomed writing a message containing :    1

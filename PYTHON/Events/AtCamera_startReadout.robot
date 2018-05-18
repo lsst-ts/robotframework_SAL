@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_startReadout sender/logger tests.
-Force Tags    python    Checking if skipped: atcamera
+Force Tags    python    TSS-2675
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py VMCsRTztVIxUsBaGoaBDYIphuYOXfkaNRRQOqgyHwRizTKnyiHqUrLgrRnHFPuDIUoKgqJreFkBJGPoeCiNsMXFIlXdgywZuGxYdYxTeeCIcBythshIUzTMhDIXWGbpZfIOgqEkGRlLuuowAgOKTDXanPlZtmQDQEsFQXdXBRJBibhIwSvwAHrejuegdaQkkWIGunYqqapSWAToMkzxOGJLAzeJovCzqcuRpOulhJNqCAfSreRMeZIxqQYmQZNjO -1250792317 UtaECoHXqobrBHCzDFMVcFcWvctkMaFUaOgqzIBIRTSbzjwFyjKLDmPOJBEaJRxkvFIGshuzuDZelzqpWyYtpsoTYSDCdWByeXyFHqrUJllEUfoVysnFfWYQwDFfSBbBdHixOchhXjfGIsVHyXnUAisOZEtjqsiDiIAFPuaibLhKfzSukMLTPPqApMEDvLFrDiyzUpSXGtjqwPvDqOTtBoFkNUwoUiIoIrlScCXRWhXdqLVYHYnYXstwsHpqPswW 923511651 97.9039 60.6811 977453082
+    ${input}=    Write    python ${subSystem}_Event_${component}.py mXFjMJbgBBXPsBDlLbygzDkFtwHmdIIKruviJQknNXMFeWYlQXMpUUzsfYAWmRMBTpknQDQykqngerlICTeHwuuEPpThnlXiBHhFvIPqGHdpZPXKaQPuaHzkvCsYyGZnbBQFrDpICnMorqoTLgjRdPzrlMIRBjcOYUINdKfAKgVnVilpsergmVuuImeCisEMzmvDnbluagwzIqPiFqNHAdHuaJkYnxTvGldyYYRDSvdeluughBbAdZGmlNdIXdGu -834036845 OpRcMBtdyVxsxLkVAYvGpsVUbGQrowGlfCPVjwNFngfZzFHlItSsnbZbqguTippQBdAefpzPXYHRZPvgDZlBKKNTrMidNQpJtXFNbVEqUiWdcjHJXyauLfWkcTupJAPeZQtuVNZIxcnRCKSuaWqxrorLyluTfdFyXkHlQaSmFCshsZRYJInrBDcbhGaIkBAlYNjnfROcdCXyGNBUSAdGUYvSAlfEeNChprvLWWfzeYtBvKOqXvCRkweizHJdDvgf 1944465698 83.1157 31.8969 1959665180
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_startReadout writing a message containing :    1

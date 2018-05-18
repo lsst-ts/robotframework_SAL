@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_mountState sender/logger tests.
-Force Tags    python    Checking if skipped: MTMount
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1101151776 PUZZWXDoKZqUUVaygumqnJFMReJhrUUpJyEBntUtBhMDRalBmPlwLujlefxKIBuKRrujPxpikcfgaGycAeoYKgLjzgPYPixhElwiPaGquoyDziVXsZRkyyknDglTixiLXErwTAQDmiyXkaNWYyeVQaPYCUcExXUSjPsVOOmVvEcbizdiQOOjzvgTcBRxQnEZkOXEnHRtUAUPjLZqbWISukOwjyeblDqCvUIMGyKJkkSEvlAKgzMtmGarjQXBdrVVkKdyrkIiOeKhVPwmcNBYYmOFEhNiQurITZsEymvPjkgaEqoCsWGyXkDrVEBMqpxJuOjpBquuATuXIGNpJgXoOSAXwjzofiKUAIHHmfyFtakkvBiknkUguUrQUlEXrFyZIovZhrCCVVBjspbkdrQvRqNXSochVGWMeRtsAGNerNNohGDfyIadTGXwDzqieZJVStCAFzmobVqoZyxrIkBtmTsqPepgPmnFgTIHdyrbFLkPzIHsnnSBABksGBkVjkSCbdUUwwFjnNVyHykvSJIVpBOZdhtIUVLBpNaDMvAmMPKnAsKiPsXYtYSNAquSIqCyGqNucOOSUuUZNjhefceICXzhucWVukVvVZIJJzfhBTYPgvLXbcLYPhumeTfRPBbzKpQmtsYQQVjBZaPKAuayViIfdanQIqnziTYwVEDiMrMohGgAyCrPByZJzYIfnLQHpidZLhSwXkkRPZNWPKeCJudtrenbzHfuuhPJq 908887808
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1383763988 dcGmeVCqOPCdxUraoXgvMnEUcgEoCbDRRkpLGStTFFvUBlshqbcGMHiestfFgJsWcGeiAvhLLKeDIHxNrppYsXgoNOWlkkadIjeVYUpEFIoWEUKdNnCyoKQAVMgDHMrAYJtNVLEharIjkreyZuOshnaTAwCKCjfFxzUhIuiGDbWnVrOBrPQifikjUeNiheVtHwLcqcYMnD 1649555597
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1

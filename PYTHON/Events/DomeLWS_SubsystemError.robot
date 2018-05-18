@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeLWS_SubsystemError sender/logger tests.
-Force Tags    python    Checking if skipped: domeLWS
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py CMWSNQzyzAWDvlKCjpyjztuawfcinIduVdPruxWGBKTITvaOUUUBDiVbcAygvqJJvQHbFhQsDNJypCmkxOFwjKpJgwwVjfnsiJbdSWtncXcpzTzxdNaNBUcDwiCjRVeZIHUVWvRcLRHuEkQOmcFNgLuppkQwElArVWfFlmfrkrAWCZzZWwmNuWpLWEBswIgsgvDjQBJouMgWPqjDarQpJBgjsRPLqVElTplgDLmMRGKzUnHYkCxwGItIdBRCgXtsvWaEawBthCguBSyJbUqnEPOuFcwyIprsRQbLRQCgBHGWfqnZablslfAGbzsFNlNOdMNZQDOvKVkhMboMEQxyIlMJmchgHUxSiejdqkaSBaJkWItOeofRJoctKkPCGIOGQBlgKrkWdAqCPlKFroSkiEvZJZhIQvVqskvUVwaNxDfWWNReDhXLgYewCSjngpSXLWKOPVHqvsGzqgoYFrfqemyLjXMXeHesIutdEpAiUzfiXGBhdIEbiXNLmvmvkttbdFEOVOplhHreauwfLlVAzURyzwfIEmZejqDpNyCfjXWQzNxZAkktbxnqcyYsOzFspCqNYOTnFGSEoyeLcSdXQgPEGOvXhcMckyeFBjnSSMbUJrAUSQqwZFnEosOLSCRXCpeaTcaOObQkUSjbJSynYexFVtAAodhAmmipBwzwWpmgedZURdFszZjhSdTbgpYglhPLkUeIlCaMQYqXpIoJmkbcXQXaiHBpTWDuSBHbzTipkEBVastgGHcxZAbCrvGspfSVnQeBCJLQYDrDGMQyVXRTCrdyFybxuRuJnZLQIcSyGJmvwZKZOmMURcqOMuzEZQuslsykDHmtKYyNiaVZQoxowovbGaFtbvIquDkSdqKbGObbsBzsCFfIOzmGVlYErPWeHmPUZxDFIjbpoXyFyKQHIyUVewKgEvtMPyiqwiJvpUhbhLBypLhnsmjDEGaoYrBksenYGDOQkbHHIhZOEvEsrTwXyRwb -2011828395
+    ${input}=    Write    python ${subSystem}_Event_${component}.py wDlBULTvREVWdETfUnuTNGFqndrYngyvXrQsQcEOVcRYzfEkbcjKXeThXKkHarvLxGsOVEqIckMVrsBfNXqgHMNHCbKGoxnoBhEvnoAkehxXnCYrcTNklbwgKiBvphjfHmhPXZubrVUtwkBXeUOrfnIwjoUDtMgqxqCKdimIhBJgpKtWmVzGRsMMGISUEzsLOaRslGShmJkECWdPBQdZGERHMWKTtIRBQavKRWwSedsyycTbKEhESVeWHieownyNzmCvWTqOvrLxNlfUNTrYGpCunkIrQvefLGrlVGHxyPVTVNvkTtCHuEuVskqdrmLtdgAuReBeXamJaqrCUmRMbGBMNrzPSjvmveTbZpyRHsfYlPPNUYadKnGGWsSLSEJktLmeZECZmEEgJSbCifQOdyBbMLTQBscucDJuTkDrXufGsMPUXxlaALJlyCpKUZTdKzgiAOzsVtxmUFJladKHABbrmbGqQCysImlPEpuzBZVzGTcXonJrvMFeqbiamloywiumMDzAfmbgnzbKYeOYkyFvtuExOoSFidZUUbsVdVShwMJmjdMZUWyqXiHcvdExwVUYHtsaxMcwWQLPyzmZqlPwjbKQvPKKmddtfYepDTTZDfQbCKWJrkcKPklgYoGfRLVPRAkzFatfRbWCcnRXpqglcYOMMkiXbhYGTPolZJqwUfzgwFZnBdoTsVSFQSRpijYRJqEtykMEyCFkPdAYyiNtRvAOSgDAXkvkqsurUOhEaZRcZAPdWWqHfSZtWrNgwsbnhKnNmaTzJmHNtLMqwZCrTKazZUMIhgBvuOHkhEeCSwrCZILKYssFYNZSRASspnnteRfozVzxdhoUFybuw 1252848493
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_SubsystemError writing a message containing :    1

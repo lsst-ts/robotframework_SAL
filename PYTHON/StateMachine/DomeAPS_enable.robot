@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DomeAPS State Machine tests.
-Force Tags    python    Checking if skipped: domeAPS
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

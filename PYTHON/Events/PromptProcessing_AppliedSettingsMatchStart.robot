@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_AppliedSettingsMatchStart sender/logger tests.
-Force Tags    python    Checking if skipped: promptProcessing
-TSS-2633
+Force Tags    python    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -11,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    AppliedSettingsMatchStart
 ${timeout}    30s
 
@@ -49,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 1413347973 1484606266
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 881630086 1787578380
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_AppliedSettingsMatchStart writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

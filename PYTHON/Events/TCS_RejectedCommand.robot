@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_RejectedCommand sender/logger tests.
-Force Tags    python    Checking if skipped: tcs
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 32532 31341 10.0965 -56603593
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 19555 56506 38.5768 -471671086
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_RejectedCommand writing a message containing :    1

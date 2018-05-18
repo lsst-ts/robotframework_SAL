@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_deviceError sender/logger tests.
-Force Tags    python    Checking if skipped: hexapod
+Force Tags    python    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py SehUTjRwaCvMZKsibjjEXsUPYPtqpKqFldqlWITDkFsqkIbyByFDtbaqLGygiHlYOdgrmHPPdAvdlcYyGZCACLOkBOQSJufIdnHXrBUTqSIMuKaAtTIAOovftbPAoUSGOAhoWjMZIIBmiPfLYBxeyAslxYAbQxLIfVIzitarvReOhRITBDpVcZbkhNgfsGUysthUwyvLXUoYPsMXfZkHqkgmkoHHVfEKGHMKBlInbfvofwTdXlBRHCjEHZBRBUfo -919872327 56.1697 GVdWXGryzUzokcNLHAUqnVClWxAmINJYDGCKpocetYxVSBvIEBIeVWfjVzlZrkHIhKHgmaqLWhQoVYkuHLkIPsQamQVsuLacKqKPXdCDfCWCkgVYFjLsrMRMOEfGbhGSjYkmJhdMLqlbEPZeHIofrrjdknVQdMgrllXzBXQsPfkSvTMjMXxJhurBXKqeZGULOLCjRJZAXTqBeEFllkyryXPeyBicCFxImMAQSgabrOFxpRuHXgjiuhZOrfJjBfxJ 1789950339
+    ${input}=    Write    python ${subSystem}_Event_${component}.py GRLninqwnPyZowgQWDbFdfQYaFDJcbxAUlJrYtoJjzCyMdvqKufLUPdTbOvkoJcHurCfAIbCaxdzxmdyjtiCEoRCFpqxgZFREnolldnnksVeWPgbXuHEOIrQBenBhhdPiihbBzmnOMTVTXOFiymWlGUjMUYuusrqRBOEfWQGGbucaWspQhgpKchZXFzxeuBJJIXqfgQuJuJEvfCFcsKdtuGRPaUPcfgGzFYqyuDdIuuHiuAYbsLVOUFeecplutog 1994011153 31.5475 QahPojprfAcbxPXujmOfbaChfyvWhyWmEJKkPulCOepVfSrwytzwYnnOeZDyTqSFWcyPcekPLItzVfbLmLsgosXPUsRMbBurkjshZuwgsGOrjenCuehoRWcbyeQjKjBDsmvIOYqXXQbMEIIKiqfYGdZrmVuPhWLMRswIsUTocWlZtzwCdWXtVUvYAwVNtGxUVpSYLishtoQxSrJfbBpEWnraDCwXEKqNtGmtFqtcLnqdGAdMHTJqaBVdkjOkfijD 745189838
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_deviceError writing a message containing :    1

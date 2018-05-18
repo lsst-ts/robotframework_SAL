@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    PromptProcessing_SummaryState sender/logger tests.
-Force Tags    python    Checking if skipped: promptProcessing
-TSS-2633
+Force Tags    python    TSS-2633
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -11,7 +10,7 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    promptProcessing
+${subSystem}    promptprocessing
 ${component}    SummaryState
 ${timeout}    30s
 
@@ -49,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -221764759 -2106111042 -411283858
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 2097072876 -1871618584 1248152759
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] promptProcessing::logevent_SummaryState writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SummaryState writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

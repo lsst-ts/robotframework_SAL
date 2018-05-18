@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endOfImageTelemetry sender/logger tests.
-Force Tags    python    Checking if skipped: camera
+Force Tags    python    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py yZPQmWLxxwLggHJjOMBlKfNqVorhTLFvFBaNBlWzkcVAXsuTZMqmNgNYOKInHjEPtWMVWuNVUUaWXedCHCqCXTAknzLFlBrnSwVictduXWYkBpYZqYyzkQRvNBGocoupHSFuGpjSRCrhhXShCiOjbCxBnWFUUabgFNNMwSNMehtNNQjoKXGxSudTdIVPxeiwkSytLONAwUdZUalzKIWTznXsQbxzEXQuxIzAegPEXwXSCXODNOnfBQXVbAnIjliJ JRmaboSwTTugYfJYLpxKxfFrobFCxPqzkZQPaSaTkxhmluJOdxnrbLJzJEleRcuBSztKKMzZqJAomNrCVZyDWpezREDEMBMcjnxybkgsGlCwKrNwFemfpJzbgaBZjmGQllpJHfITtRsxWdWQQsvRgYIJYnYbooUqRXmzOqTKytsqIZbcDLZKwkeueRMRaGETEZBqeCmmjLCDXCWlaLWEhTrEanSfvGIzWoRZFbaIlPnhesmnJTMgFvMSMmRcuYDA -178425272 34.6736 46.0171 -1783164692
+    ${input}=    Write    python ${subSystem}_Event_${component}.py KXoezfiCeEuAdipAxKmvcJMEfqSevTqiKfVUTiGjCmObXSejhJAXaJPiUBkgmcxBGzmLYMorAimYRsaOWtTyKDgalLnunXqskWAOXGrHyNaeFCijXZvlXonWnQOPERHGKDiPKixqtvihrcyjuFOxHDmXZlywLSoekwGQMbpzcqXFHRQwjhTUJisrmkTbdAqjSpcwwwmYzVJDsagAhhjmRdyBEGVpAUvXSfzLNsnCaYvVxOoMZACjGlGykdItGAFC sacmWpbfFcYOMDuHeMgdHaSCixPXDxOrtTJSzNEagTjBMDtFzMwyueQSzTzPIFBarZXYmiXhRVToDGCQDGwBumBpSxgmbSYzyjLFkMWCLADXmkOrJEfhKGgimelJzklQrAzbNilkfuTCRnHHMhGcktTEYZjDqmPOVcOqhMEnulGHxvyCHQiNLZwMNDcLQlbTWqIPCdhADNdghqIdEzRvbQVaWZaHCVftEWfUFTsCsAvQyMYPPsbXDGHdfdNnJOzC 2119885100 78.4584 90.5769 1628788729
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endOfImageTelemetry writing a message containing :    1

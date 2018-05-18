@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtMonochromator_SettingsAppliedMonoCommunication sender/logger tests.
-Force Tags    python    Checking if skipped: atMonochromator
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py hkwhTRjTMqktHQy -379952281 0.768852900247 0.585316513415 0.0191759162908 1043403959
+    ${input}=    Write    python ${subSystem}_Event_${component}.py CXegXMrVkeOFZyL -453989292 0.366631947815 0.762873595538 0.0445908809314 -1888909267
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonoCommunication writing a message containing :    1

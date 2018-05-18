@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_SettingVersions sender/logger tests.
-Force Tags    python    Checking if skipped: camera
+Force Tags    python    TSS-2677
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py dCIldPgeqkeDDbqWZAkYBUSIpqSDDBcJoOzmBIbZtoxIAvrrNrSEBAaPBMLukNxBwaryPSQahhFNPQjFRJmppnrpOMWCgvELPfetuzdwNOxDNhnfbmnKVuRcqYorzkuenIiozpCwSempZbvteBUfLKwTTizBKlyIMcDlPhqfkBdbwFSKTXtYNJfMDrayxZloGxXNqCgyZEOmUrhVwMvcEqYWYZNgAJbRcgsjbGAmTyRwiagsIvSifwNLufUAwlct -598005547 1034940577
+    ${input}=    Write    python ${subSystem}_Event_${component}.py TlVNVqPHnSxBGwsZerjLuZHqQcQutxdoxLGcjMXOLOWjAXAQKDowbEMPWmnjmTsIeYTJAEdFOaBksmffePLLSnzKkclZtpidkLWJEKlRYCdaJMuFMvcmqqNCPgMVRlEutEKjCqvWRDdVEFicZlspcSbIHHPNbJTGkksTbzXFhdAwKLLLFJaElDRsdIQlkehDzixdHMssfSffjJpWrkYRMQAIBHoFyvcYebhdkdyaOdyUxgVYwlHEeyckxLoRNVAV 1387179328 1334789406
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingVersions writing a message containing :    1

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtHeaderService_SettingVersions sender/logger tests.
-Force Tags    python    Checking if skipped: atHeaderService
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 72.3882 EDfMZXqSIRTHgtCvvYRxWUBxDyHtMbZq 1619994857
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 51.5027 ixjGEQjKCcMLysEfgiUpcLZwRxigyqyT 652854097
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_SettingVersions writing a message containing :    1

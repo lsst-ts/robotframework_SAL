@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTMount_moveToTarget commander/controller tests.
-Force Tags    python    Checking if skipped: MTMount
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 72.5608 74.1014 bOmSqgdNEHfSuiZypeGpWFSGNIVdNmYPZIPwMJsawkKSwxfNoAzUhLGzvmmTOAflUcvNOuckLFerNmqOGEoAPBeyfzZpRwadPzlNJOPfVOfkXmkefPdpEgKiOfUMiyudyZYAApzviOPZCWJaFUXkqACAhPYCVNjpwbglbTiHQtjFHULsIWHcGvxIyxlYYgResQNPaZuWokmEMCRoGQEXJhimqdclwxCyuDiujTZLRfgEfZcweJmSDvVkfuiAMIlwNojqSITlPycqHqfIMYoQMTrFvAAbJMTfYgdUeJjQkicJplCwEqXgddZJxkzescyTrYpNXDClnGUWDAwJlxILjlDxTPrAAxBlpSXcdZIuUcVQP
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 50.725 69.3046 yvaHZrCEDOeHipMXkQlmeeyCxSaNnZvHBRsuVIOlTMvIxsrodUfUrdtejgUxycNtUlUvmWYEHUCAQEJlBCHnLvsMNutPfqdwRJinttKAZPrwDdHByyZANCq
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 72.5608 74.1014 bOmSqgdNEHfSuiZypeGpWFSGNIVdNmYPZIPwMJsawkKSwxfNoAzUhLGzvmmTOAflUcvNOuckLFerNmqOGEoAPBeyfzZpRwadPzlNJOPfVOfkXmkefPdpEgKiOfUMiyudyZYAApzviOPZCWJaFUXkqACAhPYCVNjpwbglbTiHQtjFHULsIWHcGvxIyxlYYgResQNPaZuWokmEMCRoGQEXJhimqdclwxCyuDiujTZLRfgEfZcweJmSDvVkfuiAMIlwNojqSITlPycqHqfIMYoQMTrFvAAbJMTfYgdUeJjQkicJplCwEqXgddZJxkzescyTrYpNXDClnGUWDAwJlxILjlDxTPrAAxBlpSXcdZIuUcVQP
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 50.725 69.3046 yvaHZrCEDOeHipMXkQlmeeyCxSaNnZvHBRsuVIOlTMvIxsrodUfUrdtejgUxycNtUlUvmWYEHUCAQEJlBCHnLvsMNutPfqdwRJinttKAZPrwDdHByyZANCq
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 72.5608    1
-    Should Contain X Times    ${output}    el_angle : 74.1014    1
-    Should Contain X Times    ${output}    cablewrap_orientation : bOmSqgdNEHfSuiZypeGpWFSGNIVdNmYPZIPwMJsawkKSwxfNoAzUhLGzvmmTOAflUcvNOuckLFerNmqOGEoAPBeyfzZpRwadPzlNJOPfVOfkXmkefPdpEgKiOfUMiyudyZYAApzviOPZCWJaFUXkqACAhPYCVNjpwbglbTiHQtjFHULsIWHcGvxIyxlYYgResQNPaZuWokmEMCRoGQEXJhimqdclwxCyuDiujTZLRfgEfZcweJmSDvVkfuiAMIlwNojqSITlPycqHqfIMYoQMTrFvAAbJMTfYgdUeJjQkicJplCwEqXgddZJxkzescyTrYpNXDClnGUWDAwJlxILjlDxTPrAAxBlpSXcdZIuUcVQP    1
+    Should Contain X Times    ${output}    az_angle : 50.725    1
+    Should Contain X Times    ${output}    el_angle : 69.3046    1
+    Should Contain X Times    ${output}    cablewrap_orientation : yvaHZrCEDOeHipMXkQlmeeyCxSaNnZvHBRsuVIOlTMvIxsrodUfUrdtejgUxycNtUlUvmWYEHUCAQEJlBCHnLvsMNutPfqdwRJinttKAZPrwDdHByyZANCq    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,9 +79,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 72.5608    1
-    Should Contain X Times    ${output}    el_angle = 74.1014    1
-    Should Contain X Times    ${output}    cablewrap_orientation = bOmSqgdNEHfSuiZypeGpWFSGNIVdNmYPZIPwMJsawkKSwxfNoAzUhLGzvmmTOAflUcvNOuckLFerNmqOGEoAPBeyfzZpRwadPzlNJOPfVOfkXmkefPdpEgKiOfUMiyudyZYAApzviOPZCWJaFUXkqACAhPYCVNjpwbglbTiHQtjFHULsIWHcGvxIyxlYYgResQNPaZuWokmEMCRoGQEXJhimqdclwxCyuDiujTZLRfgEfZcweJmSDvVkfuiAMIlwNojqSITlPycqHqfIMYoQMTrFvAAbJMTfYgdUeJjQkicJplCwEqXgddZJxkzescyTrYpNXDClnGUWDAwJlxILjlDxTPrAAxBlpSXcdZIuUcVQP    1
+    Should Contain X Times    ${output}    az_angle = 50.725    1
+    Should Contain X Times    ${output}    el_angle = 69.3046    1
+    Should Contain X Times    ${output}    cablewrap_orientation = yvaHZrCEDOeHipMXkQlmeeyCxSaNnZvHBRsuVIOlTMvIxsrodUfUrdtejgUxycNtUlUvmWYEHUCAQEJlBCHnLvsMNutPfqdwRJinttKAZPrwDdHByyZANCq    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
