@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WsCiuKYCKHVaAqytTddAKYsiQhLVgPOAgPvlXsZjyXVzhkPERMBdLmPshkXNZpBrOIItvKydKSqHzPQFnKMPBjzdaMuaUEVjDkuKlVpXZNhxkjlzKoOBeddUDJWITmxQlyUoHMMVhRiMppAMLfFadhedAumtLZRmbbXDuHPiRCofKPtGcPiwJfLtIhVvSObGJlkcGnOyeGOlzXuZyOYQIMhvempAWUpNoYusTpCdlevFYpjKUqWxjPIqCgZINVJG GNrHfUuJFNcvYfgJKBoImvdSxzHFpDfAHvxKOoAjquJCYbZxTYwPoXtWbkptpUfPGezMZurKZAmwygRpaXiTVRSXEHKOBLmvVEkdeXvRYHijtnTuBnHpPKlNDDLydbUvHSWfgxSPiyTuftdyYEfqMaRqoACToavDDLgowNdtfzqjaTIwBuupeVqczEtnpnwXyvcEyhgAATrPicXJuDjZueqRyinFtnXDTIAtHyFbYkKTNFEiOLTmelyuYxoEtoAz -1050186518
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pDmtpxpnfYqwrXoUKLPsbHdYRUHyDbcCyjDntDcnjvHikCAJSuJNmnSayqVNXpPeEfmYIYyxUOdNutLRwzGvGjBNCbXttOcqcIArnmWdDxhleZJjbHSEewlBsKTdkexKyQXweQuLkiFQZYqeCwTZrigGVOQrzKmoRqCevCFpJYcXRUbVziTpgNMZxYOWETvZHDjFGjYmrwJSNdhhxsumYLzmCNZlTzIbLJOhOdlHCKAGxUiDMhhewDOcxppeYEsD zqAWDeSlwyHHBOfNnkjPqPpsVVFDcHzPFOLdAiOhPRDcOFSLnoUCGNDDXCUklzlprmgPprUambLhCvWFTlLRpcqdNPoQVllKcXnSmlIApdnLUMHKShliiYzLIFDRmcdEFfbMldhQciXswmqyLSnMlHnvscJafgsOuKsGZRSgzDdsAcHYJsmqTaZEllXrkzXoSwxKHdmROBzYKovKcwWoDONMvFdgIZnbWOWWDRwrIkPtaqQbopOtBxXDBdiBDdmM 783744002
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1050186518
+    ${output}=    Read Until    priority : 783744002
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsVersion : WsCiuKYCKHVaAqytTddAKYsiQhLVgPOAgPvlXsZjyXVzhkPERMBdLmPshkXNZpBrOIItvKydKSqHzPQFnKMPBjzdaMuaUEVjDkuKlVpXZNhxkjlzKoOBeddUDJWITmxQlyUoHMMVhRiMppAMLfFadhedAumtLZRmbbXDuHPiRCofKPtGcPiwJfLtIhVvSObGJlkcGnOyeGOlzXuZyOYQIMhvempAWUpNoYusTpCdlevFYpjKUqWxjPIqCgZINVJG
-    Should Contain    ${output}    recommendedSettingsLabels : GNrHfUuJFNcvYfgJKBoImvdSxzHFpDfAHvxKOoAjquJCYbZxTYwPoXtWbkptpUfPGezMZurKZAmwygRpaXiTVRSXEHKOBLmvVEkdeXvRYHijtnTuBnHpPKlNDDLydbUvHSWfgxSPiyTuftdyYEfqMaRqoACToavDDLgowNdtfzqjaTIwBuupeVqczEtnpnwXyvcEyhgAATrPicXJuDjZueqRyinFtnXDTIAtHyFbYkKTNFEiOLTmelyuYxoEtoAz
-    Should Contain    ${output}    priority : -1050186518
+    Should Contain    ${output}    recommendedSettingsVersion : pDmtpxpnfYqwrXoUKLPsbHdYRUHyDbcCyjDntDcnjvHikCAJSuJNmnSayqVNXpPeEfmYIYyxUOdNutLRwzGvGjBNCbXttOcqcIArnmWdDxhleZJjbHSEewlBsKTdkexKyQXweQuLkiFQZYqeCwTZrigGVOQrzKmoRqCevCFpJYcXRUbVziTpgNMZxYOWETvZHDjFGjYmrwJSNdhhxsumYLzmCNZlTzIbLJOhOdlHCKAGxUiDMhhewDOcxppeYEsD
+    Should Contain    ${output}    recommendedSettingsLabels : zqAWDeSlwyHHBOfNnkjPqPpsVVFDcHzPFOLdAiOhPRDcOFSLnoUCGNDDXCUklzlprmgPprUambLhCvWFTlLRpcqdNPoQVllKcXnSmlIApdnLUMHKShliiYzLIFDRmcdEFfbMldhQciXswmqyLSnMlHnvscJafgsOuKsGZRSgzDdsAcHYJsmqTaZEllXrkzXoSwxKHdmROBzYKovKcwWoDONMvFdgIZnbWOWWDRwrIkPtaqQbopOtBxXDBdiBDdmM
+    Should Contain    ${output}    priority : 783744002

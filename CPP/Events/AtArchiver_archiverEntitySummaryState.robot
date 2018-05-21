@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DtyMTxLkyqLQcHhbwBytbfWGFOyhiMaIFVEdWgaTENdVbnnjrqbybxsPKmSOPNTQazpUmBHXSQawGDwaDvGYMLnEYHAUjyJCRwBwiChHMGWUdSmrAIkWOuMYIMjJJIGp 88.9093 funQvBVHdzCUWgfHaTuDCjhFQXmwDWZQSbVNuHohUZJokNQVvrbeaHFBVDnUkDnJMVqMqapqMwzblSvnJrGZHGabCjIeAGlLCpxXRejYXLmhPrJxByDGElRexIRltnngOqlfsVxJQWOYhjvONmJiiEkhadbZMUPyFlrcAgxtHgwCswQbezkpYZxvngoHhPNcCVxOVIXVCHaazEdapSfHHHsRVaiuqLGigmIlNhMiAeqQaNglTItrdLTNVLJPeood -1776540772 AvemOheoURYDANjmTvpQjXtKCQqhDOtVOuOnasnYkdbjGdjcgkreOjGDHVzLPNauwDozFcUOfEIHVMBluovNJEIEdXCakWciOSMlnjzzrZwEpnHTwwOADjXHTuYjNnSR hZoGFAonOHbRaEbGiKiRGCNThLkAjkxmKUweZMbSrxUMcwNFaBBdEXwppiegchKixHDmPKIfpaKlUILbEoSAETFWtlYkGpgmKVIuMOzmiBqsnRQdLdpjFhyZacooxrVS qVlXyEMfZjYTNCkJigztVdnenNleNZZgADWfAmFkggFxZdfiGGJVMZulbpYZlSpKihQYmjSPldRYbyLbpFadCbgpSiNRpKfpblvhPoWGJtjAVBQCWGINRZPfpPQEPBOI BvRmMcAxgeyCZRYfnLPHuNyKpUbnHhjkkQIvCsKSghfzhgeVhBfdstovofdsLFTKfxVbnTchfaVzbxYPDqDqwXqiHSeHrqbqwHLUgBvnCPEIRuApEnkFrMaRHxGJnkwb JpvzgDFUSIeFPbPxuvwpUJUwGKkQCEBiYYzIguxjnFfYXMkLkgrFHtphVlhfiDXvvxLfrwpccgvYYcSMnZfNdgmKMiNflZVKAhTxenExNbNycwHIBqaImegtbaFYQSZw -1885806987 -1245189448
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ClzQohXqYSbNYmzmZovXpXqxUHSpJmkAntnuElRGEeUZNIebnVqlkFZCGzZxpbATTkzKUyhHaEQFfDnwjpwwXsCxlzNbMOeolJdjyOZVSAzMCaMNsKBvXuxnoffTwMQm 55.0982 tlFpcoNyuYAYkKKeCQqvWIfGeINWeeLdVSpJFkFkWDNPzJTQSJwNjRCLJZIajefBeAypMoGRqDBClRQNIDXEeqZfEpSYTRiYTMOoFqcwBeEeldNSMBLqtRanlIxgDptVscEwqAvYMamOtmBoTbmPONIPWKZhdKBxDyAqTOjpEyTHlaPsQhsXzjoQlyOOoGMFGQySwyerlcuewLnIQXDzGiBnqiyYeHTGLooHQgoHaUfEVwURlOSoOGdZSUEuWQoG 448893888 bguPGhgifplItyknmVmeRmYqtLdKNPaQcWwClIOndkCRfkGAcnWzOQXKdBHLVHJiuaqSNUpACsKuzboVvRCMHfCpMpTBBYquZIqstVhDRdAarUvzrwFIzSYdtNtFPlkL OAykAdKcxXtftdtDawkiLVXYhFUSMLdyiboZKBVGOSwGqvDRBdvinbqCoNuuMXcZilpXddysgAZuasfhxSfZGfKeXTtPfJNytTzoztVDQCClVLRYOGJmbPtiSSbtxpTY kLiDEJUELLbdJWYIbAPVCQuVZXhBKXpSyPQHTnGXeVbgjeyBzsOWUXxXwdjWndxVNkJLImrBrDycADijEBGBVTBJMbbJzuDxoKGJwYMdsQjwGWWkWozjJEmUYRTQmxQv QgGWXwLgIlJtLamvOrtcyMaPfrYJHwHDDjGilMqawkzQSaBpDwbeWXQalMilEaVJuDjtxCkLcBQfTJulpwYAEGddKaZiraMuCbkBRgVhPXWaPmlDXbmnqSSHVFmDiCec ycgqdMKWzeSSlCewbAXcoRltbgkWmKSWWuEXBzEVrXgFuxzxCisXxPsmROMgqWJCCOgTQsFrsabvTBKqiaffNaEwUvxTOvGQwLNZLZsvpYvSXpTmaxDQIwcupngGOUmt -1829017233
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_archiverEntitySummaryState writing a message containing :    1
@@ -57,17 +57,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1245189448
+    ${output}=    Read Until    priority : -1829017233
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntitySummaryState received =     1
-    Should Contain    ${output}    Name : DtyMTxLkyqLQcHhbwBytbfWGFOyhiMaIFVEdWgaTENdVbnnjrqbybxsPKmSOPNTQazpUmBHXSQawGDwaDvGYMLnEYHAUjyJCRwBwiChHMGWUdSmrAIkWOuMYIMjJJIGp
-    Should Contain    ${output}    Identifier : 88.9093
-    Should Contain    ${output}    Timestamp : funQvBVHdzCUWgfHaTuDCjhFQXmwDWZQSbVNuHohUZJokNQVvrbeaHFBVDnUkDnJMVqMqapqMwzblSvnJrGZHGabCjIeAGlLCpxXRejYXLmhPrJxByDGElRexIRltnngOqlfsVxJQWOYhjvONmJiiEkhadbZMUPyFlrcAgxtHgwCswQbezkpYZxvngoHhPNcCVxOVIXVCHaazEdapSfHHHsRVaiuqLGigmIlNhMiAeqQaNglTItrdLTNVLJPeood
-    Should Contain    ${output}    Address : -1776540772
-    Should Contain    ${output}    CurrentState : AvemOheoURYDANjmTvpQjXtKCQqhDOtVOuOnasnYkdbjGdjcgkreOjGDHVzLPNauwDozFcUOfEIHVMBluovNJEIEdXCakWciOSMlnjzzrZwEpnHTwwOADjXHTuYjNnSR
-    Should Contain    ${output}    PreviousState : hZoGFAonOHbRaEbGiKiRGCNThLkAjkxmKUweZMbSrxUMcwNFaBBdEXwppiegchKixHDmPKIfpaKlUILbEoSAETFWtlYkGpgmKVIuMOzmiBqsnRQdLdpjFhyZacooxrVS
-    Should Contain    ${output}    Executing : qVlXyEMfZjYTNCkJigztVdnenNleNZZgADWfAmFkggFxZdfiGGJVMZulbpYZlSpKihQYmjSPldRYbyLbpFadCbgpSiNRpKfpblvhPoWGJtjAVBQCWGINRZPfpPQEPBOI
-    Should Contain    ${output}    CommandsAvailable : BvRmMcAxgeyCZRYfnLPHuNyKpUbnHhjkkQIvCsKSghfzhgeVhBfdstovofdsLFTKfxVbnTchfaVzbxYPDqDqwXqiHSeHrqbqwHLUgBvnCPEIRuApEnkFrMaRHxGJnkwb
-    Should Contain    ${output}    ConfigurationsAvailable : JpvzgDFUSIeFPbPxuvwpUJUwGKkQCEBiYYzIguxjnFfYXMkLkgrFHtphVlhfiDXvvxLfrwpccgvYYcSMnZfNdgmKMiNflZVKAhTxenExNbNycwHIBqaImegtbaFYQSZw
-    Should Contain    ${output}    priority : -1885806987
-    Should Contain    ${output}    priority : -1245189448
+    Should Contain    ${output}    Name : ClzQohXqYSbNYmzmZovXpXqxUHSpJmkAntnuElRGEeUZNIebnVqlkFZCGzZxpbATTkzKUyhHaEQFfDnwjpwwXsCxlzNbMOeolJdjyOZVSAzMCaMNsKBvXuxnoffTwMQm
+    Should Contain    ${output}    Identifier : 55.0982
+    Should Contain    ${output}    Timestamp : tlFpcoNyuYAYkKKeCQqvWIfGeINWeeLdVSpJFkFkWDNPzJTQSJwNjRCLJZIajefBeAypMoGRqDBClRQNIDXEeqZfEpSYTRiYTMOoFqcwBeEeldNSMBLqtRanlIxgDptVscEwqAvYMamOtmBoTbmPONIPWKZhdKBxDyAqTOjpEyTHlaPsQhsXzjoQlyOOoGMFGQySwyerlcuewLnIQXDzGiBnqiyYeHTGLooHQgoHaUfEVwURlOSoOGdZSUEuWQoG
+    Should Contain    ${output}    Address : 448893888
+    Should Contain    ${output}    CurrentState : bguPGhgifplItyknmVmeRmYqtLdKNPaQcWwClIOndkCRfkGAcnWzOQXKdBHLVHJiuaqSNUpACsKuzboVvRCMHfCpMpTBBYquZIqstVhDRdAarUvzrwFIzSYdtNtFPlkL
+    Should Contain    ${output}    PreviousState : OAykAdKcxXtftdtDawkiLVXYhFUSMLdyiboZKBVGOSwGqvDRBdvinbqCoNuuMXcZilpXddysgAZuasfhxSfZGfKeXTtPfJNytTzoztVDQCClVLRYOGJmbPtiSSbtxpTY
+    Should Contain    ${output}    Executing : kLiDEJUELLbdJWYIbAPVCQuVZXhBKXpSyPQHTnGXeVbgjeyBzsOWUXxXwdjWndxVNkJLImrBrDycADijEBGBVTBJMbbJzuDxoKGJwYMdsQjwGWWkWozjJEmUYRTQmxQv
+    Should Contain    ${output}    CommandsAvailable : QgGWXwLgIlJtLamvOrtcyMaPfrYJHwHDDjGilMqawkzQSaBpDwbeWXQalMilEaVJuDjtxCkLcBQfTJulpwYAEGddKaZiraMuCbkBRgVhPXWaPmlDXbmnqSSHVFmDiCec
+    Should Contain    ${output}    ConfigurationsAvailable : ycgqdMKWzeSSlCewbAXcoRltbgkWmKSWWuEXBzEVrXgFuxzxCisXxPsmROMgqWJCCOgTQsFrsabvTBKqiaffNaEwUvxTOvGQwLNZLZsvpYvSXpTmaxDQIwcupngGOUmt
+    Should Contain    ${output}    priority : -1829017233

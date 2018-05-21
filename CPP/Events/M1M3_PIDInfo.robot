@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12.2118 37.3863 93.9051 0.8324 27.5318 77.3167 6.8869 84.2385 5.5468 32.7891 11.6385 5.1177 55.6024 26.5136 52.9144 50.5509 86.8072 29.9906 18.6988 38.1467 70.9466 97.4195 56.3954 7.23 32.7213 60.4344 92.3294 92.7709 97.3433 20.7439 58.0797 59.6417 70.8428 30.5659 49.1623 54.1786 58.4879 28.9737 49.2358 90.1671 45.3972 59.1189 42.6387 36.2029 70.1682 77.8033 86.044 19.695 86.0678 34.0481 27.1285 54.2867 65.3444 36.3875 94.8418 6.1231 40.8461 84.5328 3.8315 90.9211 24.8818 332858952
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 95.6984 36.4614 73.7136 70.3647 67.6154 91.4388 58.5942 62.8805 37.7879 34.8101 79.0822 12.762 56.829 49.8136 76.9717 67.403 7.3513 13.4983 38.7296 50.6372 42.5263 47.1078 31.7714 20.6275 58.163 57.3218 23.8973 22.1395 39.5337 57.1538 5.9933 55.7756 70.607 46.0972 41.4716 84.6302 83.4113 55.1878 78.1018 47.2284 68.2053 53.4099 72.3995 3.306 25.9768 18.3179 24.1415 86.7799 36.0471 31.7896 85.1208 74.7337 59.7056 37.9107 96.6121 1.9517 23.1923 73.4488 20.2975 78.659 40.4184 -2119744363
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PIDInfo writing a message containing :    1
@@ -57,18 +57,18 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 332858952
+    ${output}=    Read Until    priority : -2119744363
     Log    ${output}
     Should Contain X Times    ${output}    === Event PIDInfo received =     1
-    Should Contain    ${output}    Timestamp : 12.2118
-    Should Contain    ${output}    Timestep : 37.3863
-    Should Contain    ${output}    P : 93.9051
-    Should Contain    ${output}    I : 0.8324
-    Should Contain    ${output}    D : 27.5318
-    Should Contain    ${output}    N : 77.3167
-    Should Contain    ${output}    CalculatedA : 6.8869
-    Should Contain    ${output}    CalculatedB : 84.2385
-    Should Contain    ${output}    CalculatedC : 5.5468
-    Should Contain    ${output}    CalculatedD : 32.7891
-    Should Contain    ${output}    CalculatedE : 11.6385
-    Should Contain    ${output}    priority : 5.1177
+    Should Contain    ${output}    Timestamp : 95.6984
+    Should Contain    ${output}    Timestep : 36.4614
+    Should Contain    ${output}    P : 73.7136
+    Should Contain    ${output}    I : 70.3647
+    Should Contain    ${output}    D : 67.6154
+    Should Contain    ${output}    N : 91.4388
+    Should Contain    ${output}    CalculatedA : 58.5942
+    Should Contain    ${output}    CalculatedB : 62.8805
+    Should Contain    ${output}    CalculatedC : 37.7879
+    Should Contain    ${output}    CalculatedD : 34.8101
+    Should Contain    ${output}    CalculatedE : 79.0822
+    Should Contain    ${output}    priority : 12.762

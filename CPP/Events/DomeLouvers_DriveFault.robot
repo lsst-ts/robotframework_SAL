@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 26837 -12967 VRJRgSjujpADtlzUBBgDJIOJkaBUTOhrfqEGPvGjUFvFAIKMFZayjCBrZjjmoucJYJafCXbCQkpBTULAosZaupEFtxBEXGYCAlusjSxyKzWbzuqGAJWwTKfVjNOMUVHemBHtYECqpKmlsSjqdln 740495947
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -4319 -26191 boNEQdGvxAQvGtQhPkhGQepJsOrdCSiZbloFMgJCPzkOCAefBifuNpiuWnuvgaorXOTfWoyVetRCDeceKQjbqZmvJGCMlgZCeCYfcXWqabeHaZqjUUoGDCDtymeoxsBPXTSNrmBZZxvCKwdZcNGdPQSLvhuZDvoCuKWEpAUMkFkrWulmDweMsaFqafxvuooDZlunQtBSSugLTwkvgbiOUAWNEnjOkODPxNJgAXvVQSlJZScnUMkiuKiKLtkUioOtyQBYKPVoyitDDeXrhKWEdLJAIprJIWgIhqjZkgwZHbsEKOTccsMgBugkqMfvEEHVtPfYKUljAhYHKfuFdkevEDhCCLLXgNJklcgjraEArywkhihKoSuyZJPNfxNIZxrPHAQArEnMphdLtCsaeosqQKmGqwhrAOaftEyjfFbCQwCfvUrsZxNOFRuoLbDptejzkLQwwXbRxsIevBUUzxVMvMWsfFCplSzEFqFRgiSewcNKxJjsHtCsNeAoAZYnplfIlzvOitPUVRxLYZWaMIZruXUrpXNjnielqmfevZTjnyAZIjfFBEDasvuSSmZXOEKvluCcXxMzwGnWJJwRqISFJXslWFlTWVmepkJSeIRYaZqDhKvrAjfWWWsBCGtWUBxlRRcDboROqWfzjzXoibCyPpkbAstUCphDSRjnPZNqlnBDOqBcYQmsSZubtCpofdtzVYOWoStNexziVCFQxbhgftnSVDvuPQoRslMaMEWcKWjLrQcXHTdBfEGLJlRZNStskfPkGKMpVkwUipaIHivGofeeMqkUMiBqChTRdDyJAGcqbFonSIWNAtvFHEwHIVabTmGCKDHw -1748837070
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveFault writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 740495947
+    ${output}=    Read Until    priority : -1748837070
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    louverID : 26837
-    Should Contain    ${output}    driveId : -12967
-    Should Contain    ${output}    errorCode : VRJRgSjujpADtlzUBBgDJIOJkaBUTOhrfqEGPvGjUFvFAIKMFZayjCBrZjjmoucJYJafCXbCQkpBTULAosZaupEFtxBEXGYCAlusjSxyKzWbzuqGAJWwTKfVjNOMUVHemBHtYECqpKmlsSjqdln
-    Should Contain    ${output}    priority : 740495947
+    Should Contain    ${output}    louverID : -4319
+    Should Contain    ${output}    driveId : -26191
+    Should Contain    ${output}    errorCode : boNEQdGvxAQvGtQhPkhGQepJsOrdCSiZbloFMgJCPzkOCAefBifuNpiuWnuvgaorXOTfWoyVetRCDeceKQjbqZmvJGCMlgZCeCYfcXWqabeHaZqjUUoGDCDtymeoxsBPXTSNrmBZZxvCKwdZcNGdPQSLvhuZDvoCuKWEpAUMkFkrWulmDweMsaFqafxvuooDZlunQtBSSugLTwkvgbiOUAWNEnjOkODPxNJgAXvVQSlJZScnUMkiuKiKLtkUioOtyQBYKPVoyitDDeXrhKWEdLJAIprJIWgIhqjZkgwZHbsEKOTccsMgBugkqMfvEEHVtPfYKUljAhYHKfuFdkevEDhCCLLXgNJklcgjraEArywkhihKoSuyZJPNfxNIZxrPHAQArEnMphdLtCsaeosqQKmGqwhrAOaftEyjfFbCQwCfvUrsZxNOFRuoLbDptejzkLQwwXbRxsIevBUUzxVMvMWsfFCplSzEFqFRgiSewcNKxJjsHtCsNeAoAZYnplfIlzvOitPUVRxLYZWaMIZruXUrpXNjnielqmfevZTjnyAZIjfFBEDasvuSSmZXOEKvluCcXxMzwGnWJJwRqISFJXslWFlTWVmepkJSeIRYaZqDhKvrAjfWWWsBCGtWUBxlRRcDboROqWfzjzXoibCyPpkbAstUCphDSRjnPZNqlnBDOqBcYQmsSZubtCpofdtzVYOWoStNexziVCFQxbhgftnSVDvuPQoRslMaMEWcKWjLrQcXHTdBfEGLJlRZNStskfPkGKMpVkwUipaIHivGofeeMqkUMiBqChTRdDyJAGcqbFonSIWNAtvFHEwHIVabTmGCKDHw
+    Should Contain    ${output}    priority : -1748837070

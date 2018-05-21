@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WxQedhgcWTSUvOnzPPzrntNfKeLNpDrSwFJHGTCkqCvjIZzhCTGzYphIyrJidapjQTXbmZmWPGoaHjotXjQxeqzfMmCcPegfTpUtIewXzsaHPDvHaunYzHJTnTKgkcFD -341035469
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send OOKmnrrDbgrosGfLPxdVKuIMTkXtVibMuYmyaXXRAlTYfVxGQVkXDhZrRvSLvPKRSJcvYzhBfZtneZOzoJRrzuTmAXBoLnQOWqHUlnFfiuYmvsuvHqkvqbIUExkhHCyM -1532178982
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -341035469
+    ${output}=    Read Until    priority : -1532178982
     Log    ${output}
     Should Contain X Times    ${output}    === Event zemaxError received =     1
-    Should Contain    ${output}    details : WxQedhgcWTSUvOnzPPzrntNfKeLNpDrSwFJHGTCkqCvjIZzhCTGzYphIyrJidapjQTXbmZmWPGoaHjotXjQxeqzfMmCcPegfTpUtIewXzsaHPDvHaunYzHJTnTKgkcFD
-    Should Contain    ${output}    priority : -341035469
+    Should Contain    ${output}    details : OOKmnrrDbgrosGfLPxdVKuIMTkXtVibMuYmyaXXRAlTYfVxGQVkXDhZrRvSLvPKRSJcvYzhBfZtneZOzoJRrzuTmAXBoLnQOWqHUlnFfiuYmvsuvHqkvqbIUExkhHCyM
+    Should Contain    ${output}    priority : -1532178982

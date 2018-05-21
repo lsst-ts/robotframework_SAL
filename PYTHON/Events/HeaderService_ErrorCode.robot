@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 76.3309 431399724 -2043865679
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 4.0767 -443606830 -1654005462
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_ErrorCode writing a message containing :    1

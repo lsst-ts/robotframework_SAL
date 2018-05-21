@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py GRLninqwnPyZowgQWDbFdfQYaFDJcbxAUlJrYtoJjzCyMdvqKufLUPdTbOvkoJcHurCfAIbCaxdzxmdyjtiCEoRCFpqxgZFREnolldnnksVeWPgbXuHEOIrQBenBhhdPiihbBzmnOMTVTXOFiymWlGUjMUYuusrqRBOEfWQGGbucaWspQhgpKchZXFzxeuBJJIXqfgQuJuJEvfCFcsKdtuGRPaUPcfgGzFYqyuDdIuuHiuAYbsLVOUFeecplutog 1994011153 31.5475 QahPojprfAcbxPXujmOfbaChfyvWhyWmEJKkPulCOepVfSrwytzwYnnOeZDyTqSFWcyPcekPLItzVfbLmLsgosXPUsRMbBurkjshZuwgsGOrjenCuehoRWcbyeQjKjBDsmvIOYqXXQbMEIIKiqfYGdZrmVuPhWLMRswIsUTocWlZtzwCdWXtVUvYAwVNtGxUVpSYLishtoQxSrJfbBpEWnraDCwXEKqNtGmtFqtcLnqdGAdMHTJqaBVdkjOkfijD 745189838
+    ${input}=    Write    python ${subSystem}_Event_${component}.py GxaUEljMqhSvrAXxGKEnKMZIVBdQqDhhddUDMjhwSWfjcAXtXkKdDmEbRTgcpUrcYTjRWzAggQnZYasNhckHxSnNyNyZfaYgNOQtRdZsHeMUaLBjBaKsriBbjPlPbMqiMCANdsKPKkILrSbdFVQTPlrFDsyEYLIsNKzjYgeAwkyKyvDarvtpujPlGLywdyKzEJGAqztlSZLuqAOrJmHmDldRGITpUReyBUTdzYOZooewJoYbGUzCTcVnNeVQgRRG 153648341 15.676 ueQPkGfsiisCXWlHpxlijixJQushRtLslGRpEUieEZfOpqTISdwZaWjCeaAGHWNOcnGxTQEWDUWGIkVdozHKBafZaPfaoPqOYdJnesaXZlYIFrwLTdkoyhHclUqNhivWTvrGLbdkodNjVsZcGozfSfCLYQyShFPVmKOxIuTfEofLXYxsxdMmRlPBAfpsGfNEeYKohKoPpSLvBAWvPHpEegzXelQkwBWrKfafInCrZAOXPaJfUvMImPlHUCguhIDf -1394064839
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_deviceError writing a message containing :    1

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pSLzABWPFdGfoghsfVBrOdtblAQhewbOMpKEmcWlaIkTxMSLciJSbCyAHMXfVFNEetcPdYAESFfnhnrlyFTFBnmdW -756980747
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send qpAjhNGqttWbXZMBzgfhxzfqsLEadSHBqXEtVPhXdsPrVEHUmfMMMLBqOokyfGbfrSvqQzVPrVPzqkCpWRHkVEfnnTGtJn -333116524
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_MovementPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -756980747
+    ${output}=    Read Until    priority : -333116524
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    causeId : pSLzABWPFdGfoghsfVBrOdtblAQhewbOMpKEmcWlaIkTxMSLciJSbCyAHMXfVFNEetcPdYAESFfnhnrlyFTFBnmdW
-    Should Contain    ${output}    priority : -756980747
+    Should Contain    ${output}    causeId : qpAjhNGqttWbXZMBzgfhxzfqsLEadSHBqXEtVPhXdsPrVEHUmfMMMLBqOokyfGbfrSvqQzVPrVPzqkCpWRHkVEfnnTGtJn
+    Should Contain    ${output}    priority : -333116524

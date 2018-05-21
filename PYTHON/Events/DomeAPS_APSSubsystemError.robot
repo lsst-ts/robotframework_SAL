@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py tqmMyVzXumqbvwYMsitLXxWuHPgbAETlUQkbHtZYvTyFfMlwrmsinrWQfslSkLKzMVdphUPdupbybkdsBQmCSqCTjeIEWYfZPKaBrvvEsCUOJxHHiOBNQkKOhIyoYke 966005193
+    ${input}=    Write    python ${subSystem}_Event_${component}.py APhnDTHGUCtzrXPpecZVizxWhgUNizouQCVleXwdhiAswxnosLPQZvOluwGPCEpiLUUvYHGaeNDbfiqNgEYneklfHBUsAcNTNaQWgpdUqFbCEgQuJjykciCNkohExkvJVihBAJxqBIoqZiZjfVYwRPLetXAIlAHSYHOqiHgakywHvJlVwinejEOlUdKpCKVeVRUXzAbfrcWviiXgiffltuDDXggNFMSmGCIGbpuSjrfUoNRzuUorugunPBRkUmXcPZnkcqkFGRfrccfUZzwnyLKlbEQVmXjOhuTNchoSaLwTvQDMPpyFiEuGwwlvWtzCoFIYFZtEkbHQjTGNQRDEqRWpmGdzJIHhXxUMEHSHkuajRFHAGimjZMMjWmpWZWEARaYqUjhCJDmDBAoxpkwNOoNqUmxOPVQgOXwwaQeJvafXlBSTTovCRESVbkYvpScTpdSCuYSiWMLQWXySCckhyprMlVATlFPPKuxNLviPeyfpPaaWrDuzPHfeywuyifopNTh 1143298495
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1

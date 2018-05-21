@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YgoGzycVmAmTVzAaTRZxSoabcXqQUGQQpeOUttPPzFZZjPFwccqtYcDYgVUDqQe -922021544
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq 1098696627
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -922021544
+    ${output}=    Read Until    priority : 1098696627
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : YgoGzycVmAmTVzAaTRZxSoabcXqQUGQQpeOUttPPzFZZjPFwccqtYcDYgVUDqQe
-    Should Contain    ${output}    priority : -922021544
+    Should Contain    ${output}    response : wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq
+    Should Contain    ${output}    priority : 1098696627

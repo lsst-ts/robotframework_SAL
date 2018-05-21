@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1533328559 187868140 -1264385145
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1535204552 1403602870
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1264385145
+    ${output}=    Read Until    priority : 1403602870
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : 1533328559
-    Should Contain    ${output}    priority : 187868140
-    Should Contain    ${output}    priority : -1264385145
+    Should Contain    ${output}    errorCode : -1535204552
+    Should Contain    ${output}    priority : 1403602870

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UGmycPJfXbyciBqnfYXhCDefKbOoivEfcNMuatiYnrKChNIzHHQtKJGkjHbQHLdGxmSinWBckfkbRjneTnaNcNWSMCazLdelhHUKflTREIoSkbNBzfhdSeXZgtlpnZFnWMPIKAwSHBxXbUIbyCDEaFeppMtMuotTkAEHvWNnbncAiPLzwKIGptaMTCTfBceyEgmMLbPl 523389428
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YthMjNWusIsqRbhkHBrjyMdNLrcLwPeJLVAXWSBXcXQmcUJODBNJppaXXBmBGhJkprMKZqgKwigAGhCKlSjMfwzmuHAeoKUvIcsHCIxNDxUobTqhWckLgNTssRcMyjOJzAsnTarmrOiZBXyUvWcwgmbBzMoPmDVYuOAWuPwmOrPQIPuXYxQSJEpxVCSPWfCkurmNuOZRrqeDeagOJIAEMjrNeFGYJgZBwTIAAqnrYJijcWVbUObAXLCLFeELQgxBicNNxnWEONNuZgesbvRonsmBdzqenvIOiPbTFPhdsAnguApZPRYqDfaVdlnANpuJKQzVufjOGHqGygoWooGSxJFxNgdqpWmzZGGSYLeBbnETEIKpgvLwNPaEnheuDtFummBQUmKWgVJWHKDAKRNKBLLdYLRfboYjcZcQOVyjHvWBGlVueobx -2098752792
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 523389428
+    ${output}=    Read Until    priority : -2098752792
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : UGmycPJfXbyciBqnfYXhCDefKbOoivEfcNMuatiYnrKChNIzHHQtKJGkjHbQHLdGxmSinWBckfkbRjneTnaNcNWSMCazLdelhHUKflTREIoSkbNBzfhdSeXZgtlpnZFnWMPIKAwSHBxXbUIbyCDEaFeppMtMuotTkAEHvWNnbncAiPLzwKIGptaMTCTfBceyEgmMLbPl
-    Should Contain    ${output}    priority : 523389428
+    Should Contain    ${output}    response : YthMjNWusIsqRbhkHBrjyMdNLrcLwPeJLVAXWSBXcXQmcUJODBNJppaXXBmBGhJkprMKZqgKwigAGhCKlSjMfwzmuHAeoKUvIcsHCIxNDxUobTqhWckLgNTssRcMyjOJzAsnTarmrOiZBXyUvWcwgmbBzMoPmDVYuOAWuPwmOrPQIPuXYxQSJEpxVCSPWfCkurmNuOZRrqeDeagOJIAEMjrNeFGYJgZBwTIAAqnrYJijcWVbUObAXLCLFeELQgxBicNNxnWEONNuZgesbvRonsmBdzqenvIOiPbTFPhdsAnguApZPRYqDfaVdlnANpuJKQzVufjOGHqGygoWooGSxJFxNgdqpWmzZGGSYLeBbnETEIKpgvLwNPaEnheuDtFummBQUmKWgVJWHKDAKRNKBLLdYLRfboYjcZcQOVyjHvWBGlVueobx
+    Should Contain    ${output}    priority : -2098752792

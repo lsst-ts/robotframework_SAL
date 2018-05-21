@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -11221 1485467846
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 8564 -1877728759
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2DetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1485467846
+    ${output}=    Read Until    priority : -1877728759
     Log    ${output}
     Should Contain X Times    ${output}    === Event M2DetailedState received =     1
-    Should Contain    ${output}    state : -11221
-    Should Contain    ${output}    priority : 1485467846
+    Should Contain    ${output}    state : 8564
+    Should Contain    ${output}    priority : -1877728759

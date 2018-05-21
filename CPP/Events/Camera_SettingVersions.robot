@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YAOhTRWKwiZwdlyJGPikXXYPRjeWklAyNkrdjJLkupXOpyHEVlDLYtNkVEeULjJVryRJnPVAIvtiruGJkCUvDsReTZHEYPPyYAhSdpPZmEJIaialnXYHJIEmSGYsvFSMLANocTtJIKebqAYyTwjrAbbffeUlssgSErYpdcWNBGolWpwQxUUZMhHCTVqgDqaaztNbFBWMkVDuFzOQyWyCTZWqNXkaExPhYCPzlPYGsURxdptloikjoOUTHbrYuOyM -1080684704 696367053
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WGtCZbrwuwfQlpWTMmBnoWAUgODHKyeDTkPccsJyPnuFgfGpgTyQcCriKjOQtHPFECerPOlpfmhfQIwDqwxopSDOfFVokNSlyLjHPAaBtsHMPShrlmQwbSxDkaKpuvYhZgNeRPqBZSOlTORAMDSlRAUQPgzfbnoxoZaXRNkOJnPIFkdolnIZTZoZvQtYBMxosIaciYZadnzkKLaKbPXhATjykUttaqFBuBaQbRoxXYvREJgVYFjBdWJJKqoXFxpS 455700470
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 696367053
+    ${output}=    Read Until    priority : 455700470
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : YAOhTRWKwiZwdlyJGPikXXYPRjeWklAyNkrdjJLkupXOpyHEVlDLYtNkVEeULjJVryRJnPVAIvtiruGJkCUvDsReTZHEYPPyYAhSdpPZmEJIaialnXYHJIEmSGYsvFSMLANocTtJIKebqAYyTwjrAbbffeUlssgSErYpdcWNBGolWpwQxUUZMhHCTVqgDqaaztNbFBWMkVDuFzOQyWyCTZWqNXkaExPhYCPzlPYGsURxdptloikjoOUTHbrYuOyM
-    Should Contain    ${output}    priority : -1080684704
-    Should Contain    ${output}    priority : 696367053
+    Should Contain    ${output}    recommendedSettingVersion : WGtCZbrwuwfQlpWTMmBnoWAUgODHKyeDTkPccsJyPnuFgfGpgTyQcCriKjOQtHPFECerPOlpfmhfQIwDqwxopSDOfFVokNSlyLjHPAaBtsHMPShrlmQwbSxDkaKpuvYhZgNeRPqBZSOlTORAMDSlRAUQPgzfbnoxoZaXRNkOJnPIFkdolnIZTZoZvQtYBMxosIaciYZadnzkKLaKbPXhATjykUttaqFBuBaQbRoxXYvREJgVYFjBdWJJKqoXFxpS
+    Should Contain    ${output}    priority : 455700470

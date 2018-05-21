@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 53.1918 1 1 1 -330549874
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 81.2038 1 1 1 1587552726
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AirSupplyWarning writing a message containing :    1

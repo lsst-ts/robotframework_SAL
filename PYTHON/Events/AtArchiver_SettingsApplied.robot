@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : Settings priority priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Settings priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py HAwwPdBpKSrlhPuvSUIyLJvDnbEpnRmYnEzXTGSivrBQyYFxVNvWsufjzzAWPzQkfJOGntkFOmLMPGLLWYVUxzJaxVdaOqppLhnVmPlZjStLBACKyvwLySpIGTAsTWAXGEfUXKLluvLsBdGzBwreNuGMyFzPNyfWElLHgdTwCUAqbbWpQHGRvvTPDuSXPVzClOwGoIzodMLuhlRytZLIZAyYrPXMPeOJEDpCPXEoKHaCFFEOYZqLtSgzJNgoZZcC 1406236577 -607251236
+    ${input}=    Write    python ${subSystem}_Event_${component}.py zUXkvsFWSaymjowTSkqkRirSwwjlCUusYUIcmjwGzEggOmGvwGgKpasOYpQuIJUtHkedDUxQAMdLxxvfemlzNwNSRmMffyewIbnqFrVZhzTyROHBtqcIOxULRmbXiqcBbqkQavwQszgTaYyVyaJzMDBASxNoZJiCHnOaJtlmuMNlQvETCOGDMmPyQDKpQobtMtmcBZDvUvYccSquyySstUEzwPLMeLcdNAKysRRYxdsCAujYWVKXkJXvxdmPbJbO -1779819704
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SettingsApplied writing a message containing :    1

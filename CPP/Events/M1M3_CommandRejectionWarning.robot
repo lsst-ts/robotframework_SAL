@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 22.614 CLhzblELjLTZjGcDiGuVWvtLsPUSptUDQwNrZxpmChDglVxHhHZqkAzcyNevtDau IohIHiYeQBIUGVskcDyTbPxBIwtiUelECwzlBpiHsLUhtcobsEIKSYoMrPxKhkZfAyZVsyXEcymvSqMAXttUEcjjAZKhmfXgJTWleiBUNOpZnsbVmWWfiNKRZZoHswHE -52036438
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 62.5215 kaMmZZIgMIGMftKqapMnmUXBcaFHbDmfliBRbmOmBmsBmgamlxCHuLehSGeZCsQe SOkoUpMVtveFOicaIJMvNUvrRpjQrIlUISqOFvkWAnYwMqxsZYdVzKvKXPgmIXvXwyPcGBGbFbdzYUsqHHCwgUtvPHAkyXvDcyWrAVeZHsToTevwqRXNtLAzavPfmPbu -1744521887
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_CommandRejectionWarning writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -52036438
+    ${output}=    Read Until    priority : -1744521887
     Log    ${output}
     Should Contain X Times    ${output}    === Event CommandRejectionWarning received =     1
-    Should Contain    ${output}    Timestamp : 22.614
-    Should Contain    ${output}    Command : CLhzblELjLTZjGcDiGuVWvtLsPUSptUDQwNrZxpmChDglVxHhHZqkAzcyNevtDau
-    Should Contain    ${output}    Reason : IohIHiYeQBIUGVskcDyTbPxBIwtiUelECwzlBpiHsLUhtcobsEIKSYoMrPxKhkZfAyZVsyXEcymvSqMAXttUEcjjAZKhmfXgJTWleiBUNOpZnsbVmWWfiNKRZZoHswHE
-    Should Contain    ${output}    priority : -52036438
+    Should Contain    ${output}    Timestamp : 62.5215
+    Should Contain    ${output}    Command : kaMmZZIgMIGMftKqapMnmUXBcaFHbDmfliBRbmOmBmsBmgamlxCHuLehSGeZCsQe
+    Should Contain    ${output}    Reason : SOkoUpMVtveFOicaIJMvNUvrRpjQrIlUISqOFvkWAnYwMqxsZYdVzKvKXPgmIXvXwyPcGBGbFbdzYUsqHHCwgUtvPHAkyXvDcyWrAVeZHsToTevwqRXNtLAzavPfmPbu
+    Should Contain    ${output}    priority : -1744521887

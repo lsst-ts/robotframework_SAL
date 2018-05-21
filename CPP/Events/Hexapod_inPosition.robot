@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29.2576 -1153180631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 86.1331 673844112
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_inPosition writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1153180631
+    ${output}=    Read Until    priority : 673844112
     Log    ${output}
     Should Contain X Times    ${output}    === Event inPosition received =     1
-    Should Contain    ${output}    timestamp : 29.2576
-    Should Contain    ${output}    priority : -1153180631
+    Should Contain    ${output}    timestamp : 86.1331
+    Should Contain    ${output}    priority : 673844112

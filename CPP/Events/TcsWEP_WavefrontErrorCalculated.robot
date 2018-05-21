@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ckBLiCinsyjTZxDjqZVPYnlVrKoNjkcEyRWyuyaEskdNB 54.4408 -1103961261
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MsHmuHoUDFdgKbMBfyQzhApbwdptDjIoxFcSgtpfFsVJqbRsGEibJGTlTKafPTBIuZmKJsTbkWKxYHHUdEGVYeTYKkAmqFOmaCQCvxYEzxBwNBqfwmiILjYHbgZAvlKXHmsTCtKwxbwZyvNqYlrzQRmxDmgAIHbXPpUUfLPXvDtHavVSxUcUpygTrWsVUHDhBabJukyPLRkmDyOFpSkmQjzTsZfXIcEHWiIwnxqjZgdEDNrsQRPUraHKxYnlKrIobIniOwMlTkdUfbeJiWGvYAwWYYeLQaDVmNNMlSVXcgylJNMisvjgNkATxXlxuncBOIujhxqjrNGCJHALVCWdtWZWcpwsHpMnomCPhyrKIDnauiAIDQABwRrzHpVCsJUOxhrtcFggWdlRgyMJHXnGsTkVvFPgCFXaWRFRRAFiKhrVMMcwDtZJPiltStLOyGHVySekGXeTrcuSHRXYcYABfmDeHUlaRvkqRKachfqavhongaEAUJGfYYKdflRDDHijLmNIfDEUkFXeZcQKjCSLUwpbnyKdARYcrTAYXMFBNnHIhIVwlWhXVunvoJPtYiVYPwyqYjXtTKSGAlewvPzbWGrjFjLeowvuESOrnSMmngCNcvxxwZqhGLavdIuntcvoEQocAxsXCmoaQHehKjQjvnjdOkwQOkqlOMUWSVdSWsngyChofxXWIHVwfmQpCPZzFnDZagvwkyJyCpTmrVAdNvmooNlYVRzpVPQpFrQkVPWSGPTTiSNxvlDiLwgJBKzZDFeuqAIQwyPhwuXyjLeRMRRBRUcGipVddbizpNqSsUHxvPwDlyQMvURLciewPXcdgHVTtWKsTfgqTrSxmpJhfqowRkvTAShEdWhcmBUWakRsJPVHKKylvPYSQBGVSowsuNElhGKkdrWOQKlgLHcTAXBUppYESuDCDEyTUz 42.7491 -1127289656
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1103961261
+    ${output}=    Read Until    priority : -1127289656
     Log    ${output}
     Should Contain X Times    ${output}    === Event WavefrontErrorCalculated received =     1
-    Should Contain    ${output}    sensorID : ckBLiCinsyjTZxDjqZVPYnlVrKoNjkcEyRWyuyaEskdNB
-    Should Contain    ${output}    timestamp : 54.4408
-    Should Contain    ${output}    priority : -1103961261
+    Should Contain    ${output}    sensorID : MsHmuHoUDFdgKbMBfyQzhApbwdptDjIoxFcSgtpfFsVJqbRsGEibJGTlTKafPTBIuZmKJsTbkWKxYHHUdEGVYeTYKkAmqFOmaCQCvxYEzxBwNBqfwmiILjYHbgZAvlKXHmsTCtKwxbwZyvNqYlrzQRmxDmgAIHbXPpUUfLPXvDtHavVSxUcUpygTrWsVUHDhBabJukyPLRkmDyOFpSkmQjzTsZfXIcEHWiIwnxqjZgdEDNrsQRPUraHKxYnlKrIobIniOwMlTkdUfbeJiWGvYAwWYYeLQaDVmNNMlSVXcgylJNMisvjgNkATxXlxuncBOIujhxqjrNGCJHALVCWdtWZWcpwsHpMnomCPhyrKIDnauiAIDQABwRrzHpVCsJUOxhrtcFggWdlRgyMJHXnGsTkVvFPgCFXaWRFRRAFiKhrVMMcwDtZJPiltStLOyGHVySekGXeTrcuSHRXYcYABfmDeHUlaRvkqRKachfqavhongaEAUJGfYYKdflRDDHijLmNIfDEUkFXeZcQKjCSLUwpbnyKdARYcrTAYXMFBNnHIhIVwlWhXVunvoJPtYiVYPwyqYjXtTKSGAlewvPzbWGrjFjLeowvuESOrnSMmngCNcvxxwZqhGLavdIuntcvoEQocAxsXCmoaQHehKjQjvnjdOkwQOkqlOMUWSVdSWsngyChofxXWIHVwfmQpCPZzFnDZagvwkyJyCpTmrVAdNvmooNlYVRzpVPQpFrQkVPWSGPTTiSNxvlDiLwgJBKzZDFeuqAIQwyPhwuXyjLeRMRRBRUcGipVddbizpNqSsUHxvPwDlyQMvURLciewPXcdgHVTtWKsTfgqTrSxmpJhfqowRkvTAShEdWhcmBUWakRsJPVHKKylvPYSQBGVSowsuNElhGKkdrWOQKlgLHcTAXBUppYESuDCDEyTUz
+    Should Contain    ${output}    timestamp : 42.7491
+    Should Contain    ${output}    priority : -1127289656

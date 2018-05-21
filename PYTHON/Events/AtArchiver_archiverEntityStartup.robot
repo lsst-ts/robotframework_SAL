@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address priority priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py xaYUPUsmUVQANBJnQcabMjrlYLDvCEeCUuWMWeuwzhGFXhNReqhMkzHYHJXSkrZqAiYrxGqnFqhCujKbhwanRviPyCmrfyirUHUnzAxdOipYbZeibWNrtjlopnQtCdnf 30.1532 BUnmJyLLlvMUYcEYdpgodYVimIrZfIKxMLFbmiFZfXjIJqyJUgTboeuSgmpETxQTmYeWUdlZkjCQYIUoMXPhRHFoYNcnEzHmXIFugmhOladSyEhmJFdwsOtgPjpKEcUYsDWwrACQZRIpYoGImfknQXOLLWdLiNxepchRpoZniFduElXspYjmhRSZgErDzjlkucNyhTTaFZeuUDWjrYohAUJCJklLgDQaAKjrhxnaWZWNUFkKkNhBpCmKiaYTCehC 35793965 521398273 -866932061
+    ${input}=    Write    python ${subSystem}_Event_${component}.py XQxbiSvcCmjyZlvPcKSEpLVsVxzwvhcOaAFBHMydjOubcrKOOASFTQhyKUTmighxthyEpdrKUfsoVzTGbrukdChLylaxHkiibJYQrRUnVxPENoJkMcRfqBQALvFcKdKO 80.5175 VtPRPVVIbMIehPnYBKepEKTECMdwZkfgkPZyqurQCOzyDQTylxtppVUYiddgWIBwAwooKXTkuNijtcwtQyInroGHVfuOsaKuuWwXAhLKOUwyXRQvFNeZxxOBffOjdxNzzCdTlvxdLYCUqzlvhIZsUiRvDiKYqjjHjQTNpthvuAfbSvTWEVaSemBuieEaQqkwoKCOuVhqbegcuYmvyZmPMBllPYwZhoARIcihIzHcBjuuNSUkfzbPmUbTkagFbLIW 1893368766 -1948166817
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_archiverEntityStartup writing a message containing :    1

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19.191 ycgtPiPgZTpcnfStcKNZelDElhNEelInmFHJaZpEyvZsDoHemxQTHbldiWsNekWvQlChtjDpEVTAzDldwuMdhagQpjKoeakdUXLcORXNxTSFkGVxcrjAMMPnAQrdaqesyounhbHHATykhpaXhlRqJqAtgPamGsblxbwnPzxuGzbiBNWIXjstUATiZtTpRqwQSFHLpbHudAzcTHSwmMBmlFxaQFpZSlLQsovxcLugtsnFuKIaMZOKgvDwEdvZeGoN -737963624
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 67.972 YNgojGktGegDRIqyCExsIzGcQCfoPcspPGewLGzHjMoenXBBJBsgKaEhkyAAoDhmgCvMtLWaiYNdBShDNIdGvbWPUPhverhGGioutgiqIROeaYOBtzlVqqljGWWIacQAYphprFoSuSOaPgHkDLYQWnEloHFhYDexnDmbsOqsaFpObizlmCoSXqsyHQgihwFBBJmbYJVDPwAezELjbKGBlMBZKqzJqQewuUCoULQaPgAeJGKoWXcvZeURQRQOGkEI 1253121547
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -737963624
+    ${output}=    Read Until    priority : 1253121547
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    Timestamp : 19.191
-    Should Contain    ${output}    RecommendedSettingsVersion : ycgtPiPgZTpcnfStcKNZelDElhNEelInmFHJaZpEyvZsDoHemxQTHbldiWsNekWvQlChtjDpEVTAzDldwuMdhagQpjKoeakdUXLcORXNxTSFkGVxcrjAMMPnAQrdaqesyounhbHHATykhpaXhlRqJqAtgPamGsblxbwnPzxuGzbiBNWIXjstUATiZtTpRqwQSFHLpbHudAzcTHSwmMBmlFxaQFpZSlLQsovxcLugtsnFuKIaMZOKgvDwEdvZeGoN
-    Should Contain    ${output}    priority : -737963624
+    Should Contain    ${output}    Timestamp : 67.972
+    Should Contain    ${output}    RecommendedSettingsVersion : YNgojGktGegDRIqyCExsIzGcQCfoPcspPGewLGzHjMoenXBBJBsgKaEhkyAAoDhmgCvMtLWaiYNdBShDNIdGvbWPUPhverhGGioutgiqIROeaYOBtzlVqqljGWWIacQAYphprFoSuSOaPgHkDLYQWnEloHFhYDexnDmbsOqsaFpObizlmCoSXqsyHQgihwFBBJmbYJVDPwAezELjbKGBlMBZKqzJqQewuUCoULQaPgAeJGKoWXcvZeURQRQOGkEI
+    Should Contain    ${output}    priority : 1253121547

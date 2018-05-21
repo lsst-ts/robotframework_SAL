@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 QASGnrDGPjTZBXxYFBgiPyeugsZxaVVvVYqThtOOzDQSQIVBiiYeRjVUCKEEsskeELTQmaZFbRshvRiSkYbRrpFZkTReqUfSLMzHeknFfYsqIbcztMYbPRVacLPzTkGbYMtFDhBRXbhdRCFpjrsXSsYdDLpbNaMMwCNoQqOFIVmqEDFVfeuzagJJuJRdVcETYtIWutDNOohOXqtZgXzJvlqZFSuDWCKtYgpemPjDtcHdqvcgREqefDGtnPwPvAJP 1745491980 17.6137 95836295
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 EkXkLJPCFJOjNVgENiAbsoTHdhnBVWxPMMsXqboRrvNDnUgbmGVqTKesizrposWRpHpgZajhHPoykhCgqzfXgkqcVTJnsmgSAeiDeIYPaSMvGQCwLsCxWcDkNbHCFjpgeQOXlVkqbscYPFKcpEliOxJhtbWAkzAMFzkzQvLVvrcfkQftOIMYLobFMtgKKXcSVARBleuZudSZGGbytEMCyoTKHFXRhXkSBXMFMfiKrSSlxMebzeSmcmRWZLzQiwKX 252031580 68.5637 1122373613
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 95836295
+    ${output}=    Read Until    priority : 1122373613
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
-    Should Contain    ${output}    state : 1
-    Should Contain    ${output}    device : QASGnrDGPjTZBXxYFBgiPyeugsZxaVVvVYqThtOOzDQSQIVBiiYeRjVUCKEEsskeELTQmaZFbRshvRiSkYbRrpFZkTReqUfSLMzHeknFfYsqIbcztMYbPRVacLPzTkGbYMtFDhBRXbhdRCFpjrsXSsYdDLpbNaMMwCNoQqOFIVmqEDFVfeuzagJJuJRdVcETYtIWutDNOohOXqtZgXzJvlqZFSuDWCKtYgpemPjDtcHdqvcgREqefDGtnPwPvAJP
-    Should Contain    ${output}    severity : 1745491980
-    Should Contain    ${output}    timestamp : 17.6137
-    Should Contain    ${output}    priority : 95836295
+    Should Contain    ${output}    state : 0
+    Should Contain    ${output}    device : EkXkLJPCFJOjNVgENiAbsoTHdhnBVWxPMMsXqboRrvNDnUgbmGVqTKesizrposWRpHpgZajhHPoykhCgqzfXgkqcVTJnsmgSAeiDeIYPaSMvGQCwLsCxWcDkNbHCFjpgeQOXlVkqbscYPFKcpEliOxJhtbWAkzAMFzkzQvLVvrcfkQftOIMYLobFMtgKKXcSVARBleuZudSZGGbytEMCyoTKHFXRhXkSBXMFMfiKrSSlxMebzeSmcmRWZLzQiwKX
+    Should Contain    ${output}    severity : 252031580
+    Should Contain    ${output}    timestamp : 68.5637
+    Should Contain    ${output}    priority : 1122373613

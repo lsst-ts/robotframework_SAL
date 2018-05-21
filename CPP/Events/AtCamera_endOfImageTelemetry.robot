@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ypljFwPBxHsFsIlHsMxwLRvCpNjXyjiuJAwHzfHpLAILJPotDUFCOfYJQpbVHGRjISHMzjIdwDhMBqGjSPDBrmaAZLcHJfWjfHuWIswBpEbuPlfaogrhsfnWWDwvHkLfhfjMMFiLybtkAlykNfeXnrEINWLymQddjQTaOnEhRnvyyeNMSefORwEgvDDjtGUtyXZogILDwMMguIbRtChNzkeNTJQNtkFCpunPDvzmZdWPvWxzREkZRfNesMxBHGfR 605229193 PEPbbPhtKKzIbjvdLLQnqbUhysBSPsIzgiVgpGwvSZbXnIKbIUMLdLjvSeyQiRPZecLdWvEISznWeHADxIrnaDCSxzywGQAASEYkEdDhjdxrIJwyJhwgLrTyTjkDxmXwPKqTKGgHnIEXTZwQxtttyfroAGFoXuQRibxLeJuLMDfyZCwyJjySzFgxbbFVSoAzXcvKHNFsihcHmIlYmnHWgMulpXNEQZtBVdUheHPrKaZBIoHcAgiKfBOWKeMwRCfn -1181686657 17.5662 28.5812 -1239115196
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JSisccGMzDkYnwGGgIuvSSPxEfzJzomujGjwsaOaQowGjyhNqIhJIrhecNpfHfhiKoMNLbihXRNmuEggPQHQVDitvaKZDNUFDWTFDaxYKjpkejdAbBftpoJBORdJhIeUbMUMTqwUlbVWSwoIMKDbgxfgZlKBYxhURzdGeWAJHpmOmCGoTkwnuBFSEVYFSPhbDpxlCBxIRBodcLDEnXGzOFYSvugzOAUFSqUPMMdRTGwrsVGMrOHZzLQZjIZcnqKN -1317483791 YOiVPkXsdDpTQdeVgkDMhbalWbZeGkCYPxScTrSfFJdAYmakqLDDluEqGvZnChrshUtzuOmgZQPxXLHfpVOgiqgeCRnfbBOHmRfrFkeJizrRUfoNXSpXhFbOVwlqFXZIgArLtarrLgWUiBOpMdZFFcwEvNkPPPLfpCTvAdRxVqBIKruYuzCMTnoVsolBfUcsruXSZjRJMOEjJUWpLPRLoWLqscAlaHIngbMKUBTPsXmcpkBcdPPveJXxCGstfJhh 1603850607 24.3499 49.1689 33270146
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_endOfImageTelemetry writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1239115196
+    ${output}=    Read Until    priority : 33270146
     Log    ${output}
     Should Contain X Times    ${output}    === Event endOfImageTelemetry received =     1
-    Should Contain    ${output}    imageSequenceName : ypljFwPBxHsFsIlHsMxwLRvCpNjXyjiuJAwHzfHpLAILJPotDUFCOfYJQpbVHGRjISHMzjIdwDhMBqGjSPDBrmaAZLcHJfWjfHuWIswBpEbuPlfaogrhsfnWWDwvHkLfhfjMMFiLybtkAlykNfeXnrEINWLymQddjQTaOnEhRnvyyeNMSefORwEgvDDjtGUtyXZogILDwMMguIbRtChNzkeNTJQNtkFCpunPDvzmZdWPvWxzREkZRfNesMxBHGfR
-    Should Contain    ${output}    imagesInSequence : 605229193
-    Should Contain    ${output}    imageName : PEPbbPhtKKzIbjvdLLQnqbUhysBSPsIzgiVgpGwvSZbXnIKbIUMLdLjvSeyQiRPZecLdWvEISznWeHADxIrnaDCSxzywGQAASEYkEdDhjdxrIJwyJhwgLrTyTjkDxmXwPKqTKGgHnIEXTZwQxtttyfroAGFoXuQRibxLeJuLMDfyZCwyJjySzFgxbbFVSoAzXcvKHNFsihcHmIlYmnHWgMulpXNEQZtBVdUheHPrKaZBIoHcAgiKfBOWKeMwRCfn
-    Should Contain    ${output}    imageIndex : -1181686657
-    Should Contain    ${output}    timeStamp : 17.5662
-    Should Contain    ${output}    exposureTime : 28.5812
-    Should Contain    ${output}    priority : -1239115196
+    Should Contain    ${output}    imageSequenceName : JSisccGMzDkYnwGGgIuvSSPxEfzJzomujGjwsaOaQowGjyhNqIhJIrhecNpfHfhiKoMNLbihXRNmuEggPQHQVDitvaKZDNUFDWTFDaxYKjpkejdAbBftpoJBORdJhIeUbMUMTqwUlbVWSwoIMKDbgxfgZlKBYxhURzdGeWAJHpmOmCGoTkwnuBFSEVYFSPhbDpxlCBxIRBodcLDEnXGzOFYSvugzOAUFSqUPMMdRTGwrsVGMrOHZzLQZjIZcnqKN
+    Should Contain    ${output}    imagesInSequence : -1317483791
+    Should Contain    ${output}    imageName : YOiVPkXsdDpTQdeVgkDMhbalWbZeGkCYPxScTrSfFJdAYmakqLDDluEqGvZnChrshUtzuOmgZQPxXLHfpVOgiqgeCRnfbBOHmRfrFkeJizrRUfoNXSpXhFbOVwlqFXZIgArLtarrLgWUiBOpMdZFFcwEvNkPPPLfpCTvAdRxVqBIKruYuzCMTnoVsolBfUcsruXSZjRJMOEjJUWpLPRLoWLqscAlaHIngbMKUBTPsXmcpkBcdPPveJXxCGstfJhh
+    Should Contain    ${output}    imageIndex : 1603850607
+    Should Contain    ${output}    timeStamp : 24.3499
+    Should Contain    ${output}    exposureTime : 49.1689
+    Should Contain    ${output}    priority : 33270146

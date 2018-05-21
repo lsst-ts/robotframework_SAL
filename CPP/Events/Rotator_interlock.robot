@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wxjgRugcUNVwzLqmGibSUoKsokzcRdSWVHlGWQYmnmYFqAARSdgGtzrXtndmwDmQpBwlecfaThmubLHrEFtfUpSrmJNTRtuwfrYjxwdpsKXtGmHXdsjexWoCpzkxZWgotJEftEHoXfzitkbBRinPjwTLZZLTCsEQKtpxtGWQiAgYhCRfvVfLHaTJRxwQJszvYXxYxWfXVXlJniKPYYiJiewzIwvhpxnenIlBNXDcvAUETJyPqlenZlvBqTjWCHkU 67.9851 -265891445
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UmUmFBFcHvqzIIoKRYltDVfdTSNqqxOiiogXbKpeuzHLzsedirGcHEUsXGMgMUIptrnqyHmOUUFkbZlJyVNTrFHvGuUpZQochHiKBjQKAMlJQlCPLLdExmqpIjNVaTMXSjScsrtluXXCUXDaMGVYUEkuzSEgXZMknlsDCELHlKowjUiSnKxtXVwoXbtZDpXRcGaWMZcAHVWQjPCbhlTxmBpbDWfEjcnZybxGxQdICiWUueKOpKtouAHakcMIRjpe 90.3704 230139753
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -265891445
+    ${output}=    Read Until    priority : 230139753
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : wxjgRugcUNVwzLqmGibSUoKsokzcRdSWVHlGWQYmnmYFqAARSdgGtzrXtndmwDmQpBwlecfaThmubLHrEFtfUpSrmJNTRtuwfrYjxwdpsKXtGmHXdsjexWoCpzkxZWgotJEftEHoXfzitkbBRinPjwTLZZLTCsEQKtpxtGWQiAgYhCRfvVfLHaTJRxwQJszvYXxYxWfXVXlJniKPYYiJiewzIwvhpxnenIlBNXDcvAUETJyPqlenZlvBqTjWCHkU
-    Should Contain    ${output}    timestamp : 67.9851
-    Should Contain    ${output}    priority : -265891445
+    Should Contain    ${output}    detail : UmUmFBFcHvqzIIoKRYltDVfdTSNqqxOiiogXbKpeuzHLzsedirGcHEUsXGMgMUIptrnqyHmOUUFkbZlJyVNTrFHvGuUpZQochHiKBjQKAMlJQlCPLLdExmqpIjNVaTMXSjScsrtluXXCUXDaMGVYUEkuzSEgXZMknlsDCELHlKowjUiSnKxtXVwoXbtZDpXRcGaWMZcAHVWQjPCbhlTxmBpbDWfEjcnZybxGxQdICiWUueKOpKtouAHakcMIRjpe
+    Should Contain    ${output}    timestamp : 90.3704
+    Should Contain    ${output}    priority : 230139753

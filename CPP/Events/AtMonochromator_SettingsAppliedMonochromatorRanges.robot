@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.879196010822 0.301770253068 0.605592484178 0.0370871118779 0.810240711678 0.162645893676 0.414475022203 1541326487
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.0031815839215 0.550860180576 0.74788497838 0.192415111731 0.350327528121 0.507385569347 0.48065507982 301187011
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonochromatorRanges writing a message containing :    1
@@ -57,14 +57,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1541326487
+    ${output}=    Read Until    priority : 301187011
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsAppliedMonochromatorRanges received =     1
-    Should Contain    ${output}    wavelengthGR1 : 0.879196010822
-    Should Contain    ${output}    wavelenlengthGR1_GR2 : 0.301770253068
-    Should Contain    ${output}    wavelenlengthGR2 : 0.605592484178
-    Should Contain    ${output}    minSlitWidth : 0.0370871118779
-    Should Contain    ${output}    maxSlitWidth : 0.810240711678
-    Should Contain    ${output}    minWavelength : 0.162645893676
-    Should Contain    ${output}    maxWavelength : 0.414475022203
-    Should Contain    ${output}    priority : 1541326487
+    Should Contain    ${output}    wavelengthGR1 : 0.0031815839215
+    Should Contain    ${output}    wavelenlengthGR1_GR2 : 0.550860180576
+    Should Contain    ${output}    wavelenlengthGR2 : 0.74788497838
+    Should Contain    ${output}    minSlitWidth : 0.192415111731
+    Should Contain    ${output}    maxSlitWidth : 0.350327528121
+    Should Contain    ${output}    minWavelength : 0.507385569347
+    Should Contain    ${output}    maxWavelength : 0.48065507982
+    Should Contain    ${output}    priority : 301187011

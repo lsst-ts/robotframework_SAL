@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : appliedSettingsMatchStartIsTrue priority priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : appliedSettingsMatchStartIsTrue priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 1222348629 -2097464694
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 -165129335
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_AppliedSettingsMatchStart writing a message containing :    1

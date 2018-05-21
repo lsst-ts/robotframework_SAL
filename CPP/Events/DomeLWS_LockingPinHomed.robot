@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28787 645392962
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -19101 -677067418
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_LockingPinHomed writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 645392962
+    ${output}=    Read Until    priority : -677067418
     Log    ${output}
     Should Contain X Times    ${output}    === Event LockingPinHomed received =     1
-    Should Contain    ${output}    lockingPinID : 28787
-    Should Contain    ${output}    priority : 645392962
+    Should Contain    ${output}    lockingPinID : -19101
+    Should Contain    ${output}    priority : -677067418

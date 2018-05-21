@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 57.5954 1 1 0 0 -751283093
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 53.105 0 1 1 0 1095860297
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AirSupplyStatus writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -751283093
+    ${output}=    Read Until    priority : 1095860297
     Log    ${output}
     Should Contain X Times    ${output}    === Event AirSupplyStatus received =     1
-    Should Contain    ${output}    Timestamp : 57.5954
-    Should Contain    ${output}    AirCommandedOn : 1
+    Should Contain    ${output}    Timestamp : 53.105
+    Should Contain    ${output}    AirCommandedOn : 0
     Should Contain    ${output}    AirCommandOutputOn : 1
-    Should Contain    ${output}    AirValveOpened : 0
+    Should Contain    ${output}    AirValveOpened : 1
     Should Contain    ${output}    AirValveClosed : 0
-    Should Contain    ${output}    priority : -751283093
+    Should Contain    ${output}    priority : 1095860297

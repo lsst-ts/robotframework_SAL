@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 15717 ragcleviAitYmDETwyDPTnHxvWzKYwdNfsKWztqTbDzHWMkSOfijzhQxgHFOxkNmVnheuAXRwwAGBaxsnlMbpDXUIHkfPaeGYlhKzxtdRHXEaInhyxRyUjZlaCzRFsPxzomuQekCBVlAWhwWKPpAIKOphaucjfpoIEFRxqLsLjnbSWlaNEyRzbMEalhfIPbHtONruGaUjpaCqgRJZTtKaAVjPPHWUnqgHFgTIgECTpJxEjxWgsraZKnAkcjfiKMkwvOyjVYbcdvmKMcKoOqXffMsXLmEwvwsoXCaMaAmmEQAhRNxYSSDabUobufnISuuDZIWIyEVDAmzuyPHISnYWRcXBpiaQBnkcmRGUSlRPhFGDXaSHFYaLJehlNYtTVLYyrLHjxWLPmhsUKLeCBBBwlMMMGmAUbcrgxYuMjgtvahOvYXZrbFCdkxlTeBhcVzUyQACOaXgbilFNAsyPMTbnMooXRxMtQjPYnXZBZAwhTmwOvPUqbMyusspeMQOyIYvzUEwTmEjtfYjGOCIdqkJmqsspgaXMFAWVrtwmCVlJGMOCwKpHmZVPqevQkkLAuNRhpOmEDzhIDZGdgexjPACLiAgPQbGoSGzytqVBNGYLOYjiywpUgtXHvXsFeDDoMcHlVGFCjqCKYDKfaLppQopLydiUqDoXtEVblPBzvKxJQFDwduSWDIxjICLgxKxCINNLmdofYEqhwhRRTUqcdHqNJMeIwvTBjmYINSZQYzDBspNzElIhZzqERpuAKHqfyWlHeailoDRKiX -133858788
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16194 vAeSjtCtHqjMTLImKlmUWxjKOlbzpDTtMIAIeQuVmDxcQTyWGnswdspeCrbRSLxtIiwuVFxbnlxJGLDhioubiTuIxTyxXdLfhGjFPebUagZUaiXDZHZSaaKRMVXnyzBCtTntLsofShzUWSMpTZvZpQQQkBLWPozUeZTWCXBBSzKLHQtwoCXNnHuvlrcofoPXvahDsrufTNHfwpcMJgNsjhRYmMNPlAzAOwKunoGoWvAlTAuJJSSwCrtJOknWFRPeAbpDItWCYzajCXjSCqgsQnClxPLBUGxEMpnWocnSdfwfAvdbjauUlhtezSmaMROebZmgQgAfprpuOaNVhkMeAteckFiZgrEsBYwVflqgGLwkjaHkvhjzTyzmIXzrDdDbyKgpLzTawSBwKdDwlAYPVkMOQZZWloXLlwXsGmaCDRtLUiKOgEJLvfpimqrTiwRTwBvLoezsgqeyfaLzsNQUEikiHPyyTNglozvAanIPbfvhxTfQmdHGBHsVbVyvbUnVKmCidAKRePNErqLRKqBlDLQObcSIsmmlSUxzkCtMPiBawnhWqWFbkjWVNuxNqKSxAfklxQImBrhtyCZpCjzerXVOikIAiQoeLHFWvYqoQaOxqBNjZPMXNWomFdLRjrqDKIWHdRNdPIZxvurLhLiUvAQrKJmIMLFVsdvFQOGAadbUPlJGkSPIsWJOuuDKiSVHYpJvxpIWhFtNNKFnlfMSnZQqaxmYnwSZgaBGxIBjctFxuIahHvoOnOQwvKFvyoAPqnHHiGaCpizqUCn -276015677
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -133858788
+    ${output}=    Read Until    priority : -276015677
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : 15717
-    Should Contain    ${output}    errorCode : ragcleviAitYmDETwyDPTnHxvWzKYwdNfsKWztqTbDzHWMkSOfijzhQxgHFOxkNmVnheuAXRwwAGBaxsnlMbpDXUIHkfPaeGYlhKzxtdRHXEaInhyxRyUjZlaCzRFsPxzomuQekCBVlAWhwWKPpAIKOphaucjfpoIEFRxqLsLjnbSWlaNEyRzbMEalhfIPbHtONruGaUjpaCqgRJZTtKaAVjPPHWUnqgHFgTIgECTpJxEjxWgsraZKnAkcjfiKMkwvOyjVYbcdvmKMcKoOqXffMsXLmEwvwsoXCaMaAmmEQAhRNxYSSDabUobufnISuuDZIWIyEVDAmzuyPHISnYWRcXBpiaQBnkcmRGUSlRPhFGDXaSHFYaLJehlNYtTVLYyrLHjxWLPmhsUKLeCBBBwlMMMGmAUbcrgxYuMjgtvahOvYXZrbFCdkxlTeBhcVzUyQACOaXgbilFNAsyPMTbnMooXRxMtQjPYnXZBZAwhTmwOvPUqbMyusspeMQOyIYvzUEwTmEjtfYjGOCIdqkJmqsspgaXMFAWVrtwmCVlJGMOCwKpHmZVPqevQkkLAuNRhpOmEDzhIDZGdgexjPACLiAgPQbGoSGzytqVBNGYLOYjiywpUgtXHvXsFeDDoMcHlVGFCjqCKYDKfaLppQopLydiUqDoXtEVblPBzvKxJQFDwduSWDIxjICLgxKxCINNLmdofYEqhwhRRTUqcdHqNJMeIwvTBjmYINSZQYzDBspNzElIhZzqERpuAKHqfyWlHeailoDRKiX
-    Should Contain    ${output}    priority : -133858788
+    Should Contain    ${output}    driveId : 16194
+    Should Contain    ${output}    errorCode : vAeSjtCtHqjMTLImKlmUWxjKOlbzpDTtMIAIeQuVmDxcQTyWGnswdspeCrbRSLxtIiwuVFxbnlxJGLDhioubiTuIxTyxXdLfhGjFPebUagZUaiXDZHZSaaKRMVXnyzBCtTntLsofShzUWSMpTZvZpQQQkBLWPozUeZTWCXBBSzKLHQtwoCXNnHuvlrcofoPXvahDsrufTNHfwpcMJgNsjhRYmMNPlAzAOwKunoGoWvAlTAuJJSSwCrtJOknWFRPeAbpDItWCYzajCXjSCqgsQnClxPLBUGxEMpnWocnSdfwfAvdbjauUlhtezSmaMROebZmgQgAfprpuOaNVhkMeAteckFiZgrEsBYwVflqgGLwkjaHkvhjzTyzmIXzrDdDbyKgpLzTawSBwKdDwlAYPVkMOQZZWloXLlwXsGmaCDRtLUiKOgEJLvfpimqrTiwRTwBvLoezsgqeyfaLzsNQUEikiHPyyTNglozvAanIPbfvhxTfQmdHGBHsVbVyvbUnVKmCidAKRePNErqLRKqBlDLQObcSIsmmlSUxzkCtMPiBawnhWqWFbkjWVNuxNqKSxAfklxQImBrhtyCZpCjzerXVOikIAiQoeLHFWvYqoQaOxqBNjZPMXNWomFdLRjrqDKIWHdRNdPIZxvurLhLiUvAQrKJmIMLFVsdvFQOGAadbUPlJGkSPIsWJOuuDKiSVHYpJvxpIWhFtNNKFnlfMSnZQqaxmYnwSZgaBGxIBjctFxuIahHvoOnOQwvKFvyoAPqnHHiGaCpizqUCn
+    Should Contain    ${output}    priority : -276015677

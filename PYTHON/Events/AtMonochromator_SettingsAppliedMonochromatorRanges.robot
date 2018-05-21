@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.718191482567 0.858615753618 0.730743069139 0.987129690978 0.7584488656 0.985935786124 0.883045025253 1883480049
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.40670943178 0.897287081762 0.0217330957203 0.974009860461 0.0131272310039 0.101715433239 0.199995094915 216183567
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonochromatorRanges writing a message containing :    1

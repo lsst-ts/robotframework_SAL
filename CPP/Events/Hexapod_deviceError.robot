@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send dOsaNBauZYNagwepDyPvPUEUwYmnpnlDAVeXAjJQqvaOSHFoyDYoHmknYekYoJCTLrWsdZEJqUMbPjqWVqoTMsCexvOEZQKjswuIGvhwgHutExyyfTChHJkkdcZxvTjuEGpjUHKumbDhZZTSmDNmcbOoTiSXSNCfCzugvzEXIRZlvzLOqSDGvWcftqAgaslzubWGNkymfrJDQmetFbIZXjCMDSJVgwZFFxRGxzAgluuMlTIrpsSUmthyhuMkZGpl 1665452700 17.3619 RGBqJQAMHpyfRtdixxFILQEVehZrvfKtyOeYMziCMwTheVOvMHcouBYxtsFDzCmcPQWdDTnrQIEpCRAJtEaPhCPXYftzBPWiQQfRcLngrJHnnzaFhbTdETdKbyzheWbvEFdPJtBoUSUqhmSBAguZlweElpBwtxZdwsxooZiLYvEgnJlgoekVppNVKCVAUzwfxNVCmMIkweyrJHTJvzvULYCkTAgfphOrZyArzYNyVUpokpfTLjjxhMkglMKhAPYz -461198631
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jlxpbazzPMtfHOcACMaVYaDbbAxwroLlNvPJcQafNLMvXIAdDoKuSKCDILBVowXhKAgpQYGEFxvZnRDuiEOlJxwjblDkAYnaZDGWCjnrQEkAJJZpwRaanTGJznDMuGddUWIyIWPYhBgIVGxplmUZpoeYLXtRHZfnvuUPbDjFeQIqHyqBgAQHmXeBNLHyGtPNvSjcGhYuFZRHKksmOkTyzxEBNVTcUFLbpFZlFzzNxfEmHNnEKnEVBDPLzmmzMshZ -1252993796 90.0317 HUsLDLFBatbtJdCvxrlMSqouqCIhvqwUNdXtEDApReqjEgOYfBbVmRvRsjjQYEChRCCECDzelmImWaTPszqfdbaTLeIuLBMHOqFVkarNbNJCbrQLeIBiPGCxzAVbdFeydrBeNdrIvqFtllIcORFStTBjaCLszQCTCQlJfwJKPVhTwMypUlOpgzLSarbpRBsWLdZswhsDCAwZygUuwAcozNepdLohXxusFhUJcBgiuhuCCdSZHRwLcJhJYerGoEKt 1848136358
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -461198631
+    ${output}=    Read Until    priority : 1848136358
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
-    Should Contain    ${output}    device : dOsaNBauZYNagwepDyPvPUEUwYmnpnlDAVeXAjJQqvaOSHFoyDYoHmknYekYoJCTLrWsdZEJqUMbPjqWVqoTMsCexvOEZQKjswuIGvhwgHutExyyfTChHJkkdcZxvTjuEGpjUHKumbDhZZTSmDNmcbOoTiSXSNCfCzugvzEXIRZlvzLOqSDGvWcftqAgaslzubWGNkymfrJDQmetFbIZXjCMDSJVgwZFFxRGxzAgluuMlTIrpsSUmthyhuMkZGpl
-    Should Contain    ${output}    severity : 1665452700
-    Should Contain    ${output}    timestamp : 17.3619
-    Should Contain    ${output}    code : RGBqJQAMHpyfRtdixxFILQEVehZrvfKtyOeYMziCMwTheVOvMHcouBYxtsFDzCmcPQWdDTnrQIEpCRAJtEaPhCPXYftzBPWiQQfRcLngrJHnnzaFhbTdETdKbyzheWbvEFdPJtBoUSUqhmSBAguZlweElpBwtxZdwsxooZiLYvEgnJlgoekVppNVKCVAUzwfxNVCmMIkweyrJHTJvzvULYCkTAgfphOrZyArzYNyVUpokpfTLjjxhMkglMKhAPYz
-    Should Contain    ${output}    priority : -461198631
+    Should Contain    ${output}    device : jlxpbazzPMtfHOcACMaVYaDbbAxwroLlNvPJcQafNLMvXIAdDoKuSKCDILBVowXhKAgpQYGEFxvZnRDuiEOlJxwjblDkAYnaZDGWCjnrQEkAJJZpwRaanTGJznDMuGddUWIyIWPYhBgIVGxplmUZpoeYLXtRHZfnvuUPbDjFeQIqHyqBgAQHmXeBNLHyGtPNvSjcGhYuFZRHKksmOkTyzxEBNVTcUFLbpFZlFzzNxfEmHNnEKnEVBDPLzmmzMshZ
+    Should Contain    ${output}    severity : -1252993796
+    Should Contain    ${output}    timestamp : 90.0317
+    Should Contain    ${output}    code : HUsLDLFBatbtJdCvxrlMSqouqCIhvqwUNdXtEDApReqjEgOYfBbVmRvRsjjQYEChRCCECDzelmImWaTPszqfdbaTLeIuLBMHOqFVkarNbNJCbrQLeIBiPGCxzAVbdFeydrBeNdrIvqFtllIcORFStTBjaCLszQCTCQlJfwJKPVhTwMypUlOpgzLSarbpRBsWLdZswhsDCAwZygUuwAcozNepdLohXxusFhUJcBgiuhuCCdSZHRwLcJhJYerGoEKt
+    Should Contain    ${output}    priority : 1848136358

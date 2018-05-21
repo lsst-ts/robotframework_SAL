@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address priority priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Name Identifier Timestamp Address priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py PLmrIWITxVUdLzbTZDNxjcpolBCaWImZQofdBEUudbGulBUnpCyVQdrzsFADhclzphvuuyOJwhUBxqQsOetVKseLhGrndlNnhExAAFBJixbVIqkPOFHWIxpBEXESyHPoxyFuyCAdsbPhUNBNAnHoKpOtBwoXQxQcRkzbfRNTMqglZivBGzhyAvsgwuQqiqbDHnKmbOfdRiwOZKGzSIsGMSqrNuJsaWnQnhPIseJCgllQBfsVMfhWHHeaGpbWfjHM 10.9258 jtmLPefIfyXuaifEiCUogNBBTZjwiQIOLXjflWQIHrsAZCYqdIkMKUFrGrUbLBYSlOmobgDbcSQjtlBoVZwerokWIfBnWKYPfPvfXaTfVwujBkmILEVnrPguEQaDtnBoawohRfBuJCFkhobgvXCqthUdYrozfejUsYzfnjeEzloQLbgbcJnyctcPrFbQYlzYVkWTKZMaUyNlamwjgwAURcEvFpsweSleQePOsKxJIvAvRfZyabUnazkZzmpAumJY -1224996254 -1801847621 670397171
+    ${input}=    Write    python ${subSystem}_Event_${component}.py isFBPcKxVoqGcsbAJjrdjJcTlalTFkXKcBawZCuiyEijfMNyFFPFdcyowLvTmfeBcbzOEtCczqODuTjwMorLUYGVxPLdFbzfoenfgszvDttizWGHqKWgVWqgwJLsTeqIMwAWFJMPnIDhoiQLfXZNqsrkDqZzdmDBTKsePMXzToEuHlMhtCdMlCtXOWhEyPOfMaQWEHwRbZFttHuyTQmFOOPHGPUbJvkSPqjATpLyYAeYzZTdVTrTcXKbtBSutFAx 97.5064 EMsGrJNcIpcsFlIVmJHNWEDTEmYamKLHMscANVNHCstLbLBbxCYXCvtXaQOamOLGHISsHsJfaYfpnVTduIYlgijnnifiqCDLlBwxrNExdhYloJrZiBafvPraqPHDWnRlDeZtdMbojJifUYZQByhTBnahJkMmBGAcwFZUarKYPkQCSUFFxlHdybaWozkKYyJPwQFwsDUnNhJqiGyvgwmqJrSbIwHJSNLyOpxOBwbtfuhsVyQurmJmYMevOgUIYVlX 1900884920 950210597
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_promptprocessingEntityShutdown writing a message containing :    1

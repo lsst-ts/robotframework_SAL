@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : recommendedSettingVersion priority priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : recommendedSettingVersion priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py wFHnzyvlyHvhqCDuZINhVZjMnbuLgRJqnPtXPtItYTyWQbWgkVYhwEZqRratPySwMVYBTwCqjFOeJcADBKwovLXiGtglSaWwgtIZmKtWYythOIszrhxLpUYMkloxgwvEuMNNjNcrUIgGdOSkzDrdaGihlEUsFmYcCQmciNBGbRLGIuWiryyYmBOferkAviwdmeAvbFwCDLXKFIItXCLsygDdIqNoqCpWTUyzRRctEYLvpJPQPChWZEMDiEHdobMr -540976885 -2042240714
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ymBNADgSrGzUYcLjaEtAAgrtyVLJGOqdzIQXFcVzTqFjqOAuMTofCLbuAfsuMmkhuwuIEBhWfImSdJnAhnZVoQMfkqRYdvrLQisvPNRToiXEkosRSrCPabiqRcieuUhvNCWdqNunBawZMmnQikLaHEEuvdVbGBNedMECjlrdUNTIefNbXndnUIveNeiuuahWgCoCDJbgYHKhFlHemdeNTlJoOMzXDywVGtnMxRRTnokduYMMuYdBjSIJOoHCGouU -1268764701
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingVersions writing a message containing :    1

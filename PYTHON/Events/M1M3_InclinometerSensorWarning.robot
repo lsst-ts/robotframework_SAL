@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 92.4674 0 0 1 1 1 1 0 1 0 1118294937
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 58.9597 1 0 1 1 0 0 0 0 0 -1906042063
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_InclinometerSensorWarning writing a message containing :    1

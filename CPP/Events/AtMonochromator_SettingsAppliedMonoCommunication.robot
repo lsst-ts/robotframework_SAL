@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send krALriNCfRzQSJW -594874806 0.429243505542 0.356138448031 0.0421812100347 227274649
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KXOmOHeHtQiAufo 678829960 0.00463500558767 0.765151693803 0.753968115322 -514067023
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonoCommunication writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 227274649
+    ${output}=    Read Until    priority : -514067023
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsAppliedMonoCommunication received =     1
-    Should Contain    ${output}    IP : krALriNCfRzQSJW
-    Should Contain    ${output}    portRange : -594874806
-    Should Contain    ${output}    readTimeout : 0.429243505542
-    Should Contain    ${output}    writeTimeout : 0.356138448031
-    Should Contain    ${output}    connectionTimeout : 0.0421812100347
-    Should Contain    ${output}    priority : 227274649
+    Should Contain    ${output}    IP : KXOmOHeHtQiAufo
+    Should Contain    ${output}    portRange : 678829960
+    Should Contain    ${output}    readTimeout : 0.00463500558767
+    Should Contain    ${output}    writeTimeout : 0.765151693803
+    Should Contain    ${output}    connectionTimeout : 0.753968115322
+    Should Contain    ${output}    priority : -514067023

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 60.6881 0 1 1 0 0 1 1 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 1 1 1 0 1 1 0 1 0 0 0 0 0 0 1 1 0 1 1 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 1 1 0 1 0 0 0 1 1 1 1 0 0 1 1 1 0 1 0 0 0 1 1 0 0 1 1 0 1 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 0 0 1 0 1 1 1 0 0 1 1 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 1 0 1 0 1 1 0 0 1 1 0 1 1 1 1 0 0 0 0 1 0 0 0 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 0 1 0 1 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 1 1 1 0 0 0 1 0 0 1 1 1 1 0 1 0 1 1 1 1 1 0 0 0 0 1 0 1 0 1 0 0 1 0 1 1 1 1 1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 0 1 0 1 1 1 1 0 0 1 0 1 0 1 1 1 1 1 1 0 1 0 1 1 0 0 1 0 1 0 1 0 0 1 1 1 1 0 0 1 0 1 1 0 0 0 1 1 0 1 0 0 1 0 1 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 1 1 0 0 1 0 1 0 0 1 1 1 0 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 0 0 1 0 1 0 0 0 1 1 0 0 0 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 1 1 1 1 1 0 1 0 0 1 1 0 0 0 1 1 0 1 1 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 0 0 1 0 0 1 1 0 0 0 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 1 0 1 1 0 0 0 0 1 0 0 1 1 0 1 0 0 1 0 0 0 0 1 0 0 0 1 1 1 0 0 1 0 1 0 0 0 1 1 1 1 0 1 1 1 0 1 1 0 0 0 1 0 0 0 1 0 1 1 1 0 1 1 0 0 1 1 1 1 0 1 0 1 0 0 0 1 0 0 1 0 1 1 1 1 1 0 1 0 0 0 1 0 1 0 1 0 1 1 1 1 1 0 0 1 0 0 1 1 1 0 1 1 1 1 1 1 1 0 1 0 0 1 1 0 1 1 1 0 1 1 0 0 0 1 0 1 0 0 0 1 1 0 1 1 1 0 0 1 1 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 1 1 1 1 0 1 0 1 0 1 1 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 1 1 1 1 1 1 0 1 1 0 1 0 1 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 0 1 1 0 0 0 1 1 1 0 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 0 1 1 0 1 1 0 0 1 0 0 1 1 1 1 1 0 0 1 1 0 1 0 0 0 1 1 0 0 0 1 1 0 0 1 0 0 1 0 1 0 0 1 0 1 0 1 1 1 0 1 0 0 0 1 1 1 1 0 0 1 1 0 0 1 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 0 1 1 0 0 0 0 0 1 1 1 1 1 1 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 1 1 0 1 0 1 0 1 1 0 0 1 1 0 1 0 1 1 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 0 1 1 0 1 0 1 1 0 1 0 1 1 0 1 0 0 1 0 0 1 1 1 0 1 1 0 0 0 1 1 1 0 0 0 1 0 1 0 0 1 1 0 1 0 1 0 1 0 0 0 1 1 1 0 1 1 0 0 0 1 0 1 0 0 1 1 0 1 1 1 1 0 1 1 0 1 0 0 0 0 0 1 1 0 0 1 1 1 1 0 0 1 1 0 0 0 0 0 1 0 1 0 0 0 0 1 1 1 1 1 1 1 0 0 0 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 1 0 0 0 0 1 1 1 1 0 0 1 0 1 0 0 1 1 1 1 1 1 0 1 0 0 0 1 0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 0 1 1 1 1 0 1 0 1 1 0 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 1 0 0 0 1 1 0 0 1 1 0 1 1 0 1 0 0 0 1 1 0 0 0 0 1 0 1 1 1 1 1 1 1 0 1 0 1 1 0 0 1 0 0 1 1 1 0 1 0 1 0 1 0 0 1 0 1 0 1 1 1 1 1 0 1 0 1 1 0 1 1 1 0 0 1 1 1 1 1 1 1 1 1 0 0 1 1 0 0 1 1 1 1 1 1 0 1 0 1 1 0 0 0 1 0 0 0 0 1 1 1 1 0 0 0 0 0 1 1 1 1 0 0 0 1 0 1 1 1 0 1 1 0 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 0 1 1 1 1 0 1 0 0 0 1 1 1 0 0 1 0 1 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 1 1 0 1 1 1 1 1 1 0 0 1 0 0 1 1 1 0 1 1 0 1 0 1 1 0 1 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 0 0 0 1 1 1 1 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 1 1 0 0 0 0 1 1 0 1 0 1 1 0 0 0 1 1 1 1 1 1 0 1 1 1 0 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1 1 0 1 1 1 1 1 0 0 1 1 1 1 1 0 0 0 0 0 0 1 1 1 0 0 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 1 1 0 1 1 1 0 0 0 0 0 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 0 1 1 1 1 0 0 1 1 0 0 1 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 0 1 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 1 1 1 1 1 1 0 1 1 1 1 0 1 1 0 0 1 0 0 1 1 1 0 0 1 0 1 1 0 0 1 0 0 0 1 1 1 1 0 0 0 0 0 1 1 1 1 0 1 1 1 0 0 0 1 0 0 0 1 1 0 1 1 1 1 0 1 0 1 1 0 0 1 1 0 1 1 0 1 1 1 0 0 1 0 1 1 1 0 1 0 0 0 1 0 1 1 0 0 1 1 1 1 1 0 1 0 0 0 0 1 1 0 0 1 1 0 0 0 1 1 0 0 1 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 1 1 0 0 1 1 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 0 0 1 1 1 1 0 0 1 1 1 0 0 1 0 0 0 0 1 1 0 0 1 1 1 0 0 1 1 1 0 0 1 1 1 0 1 0 0 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 1 1 0 1 1 1 1 0 1 1 1 1 0 0 1 1 0 0 0 1 0 1 1 1 0 1 1 0 0 1 0 0 0 0 1 1 0 1 0 1 1 1 1 0 1 0 1 0 1 0 1 1 1 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 1 0 0 0 1 1 0 1 1 0 0 1 1 0 0 0 0 1 0 1 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 0 1 0 1 1 0 0 1 1 0 1 1 0 0 1 1 1 1 0 1 1 0 0 1 1 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 0 1 1 0 0 1 1 0 1 1 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 0 1 0 0 1 1 0 1 0 1 0 0 1 0 0 1 0 1 1 1 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 1 0 0 1 1 1 1 0 1 0 1 0 1 1 0 0 1 0 0 1 0 0 1 1 1 1 0 1 1 0 1 1 1 0 0 1 0 1 0 1 1 0 0 0 1 0 1 1 1 1 1 0 0 1 0 0 0 0 1 0 0 1 0 1 0 1 1 1 1 0 0 1 1 0 1 1 1 1 0 0 1 1 1 1 0 1 0 0 0 0 0 1 1 0 1 1 1 0 0 0 0 1 0 0 0 0 1 1 1 0 1 1 1 0 0 0 0 0 1 1 1 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 1 1 1 0 1 1 0 1 0 0 0 1 1 0 0 0 0 1 1 0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 0 0 1 202857623
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 82.9734 1 0 1 0 1 0 1 1 1 0 1 1 1 1 1 0 1 0 0 1 0 0 0 1 0 0 0 1 1 1 0 0 1 0 0 1 0 0 1 0 0 0 1 1 0 0 0 1 0 0 1 1 0 0 1 0 1 0 1 0 0 1 1 1 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 1 0 0 0 0 1 1 1 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 1 1 1 0 1 0 0 1 1 1 1 1 0 0 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 0 0 1 1 1 0 1 0 0 1 0 1 1 1 1 1 1 0 0 1 1 1 0 1 0 1 0 0 1 1 1 1 1 1 1 0 1 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 1 1 1 0 1 0 0 1 1 1 1 1 1 1 1 0 1 0 0 1 0 0 0 1 0 1 1 1 1 1 0 0 1 1 0 0 1 0 0 1 1 1 1 0 1 1 1 1 1 0 1 1 0 0 0 0 1 1 0 0 1 1 1 1 1 1 0 1 1 0 0 1 1 1 1 1 1 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 0 0 0 1 1 1 1 0 0 1 1 0 1 1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 1 1 1 1 0 0 1 1 1 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 1 1 0 0 0 1 1 0 0 0 1 0 1 0 1 1 0 1 0 1 1 1 0 0 0 1 0 0 1 0 0 1 0 0 1 1 1 1 1 1 1 1 0 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 1 0 1 0 0 1 0 1 0 1 1 1 1 0 1 1 0 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 0 1 0 1 0 0 0 0 0 1 1 1 0 1 1 0 1 1 1 1 0 1 0 1 1 1 1 0 0 1 1 0 1 0 0 0 0 1 1 0 1 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 0 1 1 0 0 0 1 0 1 0 0 0 0 1 0 0 1 0 1 0 1 0 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1 1 0 1 1 1 1 0 0 1 0 0 1 1 0 1 0 1 0 0 0 1 1 0 1 1 0 0 0 1 1 0 0 0 0 1 1 1 1 0 0 1 0 1 1 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 0 1 1 0 0 1 1 1 0 1 0 1 0 1 1 0 0 1 1 1 1 0 0 0 0 1 1 0 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 1 0 1 1 0 1 1 1 0 1 1 0 0 0 1 0 1 1 1 0 1 0 1 1 1 1 1 1 0 0 0 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 0 1 1 1 1 1 0 1 0 1 1 0 1 0 0 0 1 1 0 0 0 0 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 0 1 0 1 0 1 1 0 0 0 0 1 1 0 1 1 0 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 0 0 1 1 0 1 1 0 0 0 0 0 1 1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 0 1 1 0 1 0 1 0 1 1 0 0 1 0 0 0 1 1 1 0 1 1 0 0 0 0 1 0 1 1 0 1 0 0 0 0 1 0 1 0 1 0 0 1 1 1 1 0 0 0 1 0 0 0 1 0 1 0 1 1 0 0 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 1 0 0 0 0 1 1 0 0 1 0 1 1 1 1 1 1 0 1 1 0 1 0 0 1 1 1 1 0 0 0 1 1 1 1 1 1 0 1 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 0 1 0 0 1 1 0 1 0 1 0 0 1 1 1 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 1 1 0 1 0 0 0 1 1 1 1 1 1 0 0 1 1 1 0 0 1 1 0 0 0 1 1 1 1 0 0 1 1 0 1 1 0 0 0 0 1 1 1 0 0 0 1 1 0 0 1 0 1 0 1 0 1 1 0 1 1 1 1 0 0 0 1 1 0 0 1 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 0 0 0 1 0 0 1 0 0 1 1 1 0 1 0 1 1 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 1 1 0 1 0 1 0 1 0 0 0 0 0 0 1 1 0 0 0 0 1 1 1 0 0 0 0 1 0 1 0 0 1 1 1 1 0 0 0 1 1 0 1 1 0 0 0 1 0 1 0 1 0 1 1 0 1 1 0 0 1 1 0 1 1 1 1 1 0 1 1 1 1 0 1 1 1 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 1 0 1 1 0 0 1 0 1 0 0 1 1 1 1 1 1 1 0 1 0 0 0 1 1 1 0 1 0 1 1 1 0 0 0 1 1 0 1 1 0 1 1 1 0 1 0 1 1 1 1 0 0 1 0 0 1 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 1 1 1 0 1 0 0 1 0 0 1 1 0 0 0 1 1 1 0 0 0 1 1 1 1 1 1 1 1 0 1 1 0 0 1 0 0 0 1 1 1 1 1 1 0 1 1 1 0 1 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 1 0 0 0 1 0 0 1 0 1 1 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 1 1 0 1 1 1 1 0 1 1 0 0 0 1 0 0 1 1 1 1 0 1 1 1 0 0 1 1 0 1 1 1 1 1 1 1 0 1 0 1 1 0 1 1 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 0 1 1 0 1 0 1 0 1 0 0 1 0 1 0 0 0 1 1 1 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 1 1 1 1 1 1 1 0 1 1 1 1 0 1 1 1 0 0 0 0 1 0 1 0 1 1 1 1 1 1 0 0 0 1 1 0 1 0 1 1 1 0 0 1 1 0 1 0 1 1 1 0 1 0 0 0 0 1 0 0 0 1 1 1 0 0 1 1 1 1 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 1 1 0 1 0 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 1 1 1 0 1 1 1 0 1 0 0 0 1 0 0 1 0 0 0 0 1 1 1 1 0 0 0 1 1 1 0 1 1 1 0 0 0 1 1 1 0 0 1 0 1 0 0 0 0 0 1 1 0 1 1 1 1 0 1 0 0 0 1 0 1 0 1 0 1 0 0 1 1 0 1 1 1 0 0 0 1 0 0 1 1 0 1 0 1 1 0 0 0 0 0 1 0 1 0 0 1 0 0 1 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 1 1 1 1 0 0 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 1 0 1 0 1 1 0 0 0 0 0 1 1 0 1 0 1 1 0 1 0 1 1 1 1 0 1 1 0 1 1 1 0 0 1 1 0 1 0 1 1 1 1 0 0 1 1 1 1 1 1 1 0 0 1 0 1 0 1 0 0 1 1 1 1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 1 1 0 1 0 0 0 0 1 1 1 1 0 1 0 0 1 1 1 1 0 1 0 1 0 1 0 0 0 0 1 0 1 1 0 1 1 0 1 1 1 0 1 0 1 1 0 0 0 1 1 1 1 0 0 0 1 1 0 0 1 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1 1 0 1 0 1 1 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 1 0 1 1 1 0 0 0 1 1 0 1 0 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 1 0 0 1 1 0 0 1 0 1 1 1 0 1 0 1 1 1 0 0 0 1 0 1 0 1 0 0 1 1 1 0 1 1 0 1 1 0 0 0 1 1 1 0 1 0 0 0 1 0 0 1 1 0 0 1 1 1 0 0 1 1 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1 0 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 -706863196
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ForceSetpointWarning writing a message containing :    1
@@ -57,43 +57,43 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 202857623
+    ${output}=    Read Until    priority : -706863196
     Log    ${output}
     Should Contain X Times    ${output}    === Event ForceSetpointWarning received =     1
-    Should Contain    ${output}    Timestamp : 60.6881
-    Should Contain    ${output}    AnyWarning : 0
-    Should Contain    ${output}    AnySafetyLimitWarning : 1
+    Should Contain    ${output}    Timestamp : 82.9734
+    Should Contain    ${output}    AnyWarning : 1
+    Should Contain    ${output}    AnySafetyLimitWarning : 0
     Should Contain    ${output}    SafetyLimitWarning : 1
     Should Contain    ${output}    XMomentWarning : 0
-    Should Contain    ${output}    YMomentWarning : 0
-    Should Contain    ${output}    ZMomentWarning : 1
+    Should Contain    ${output}    YMomentWarning : 1
+    Should Contain    ${output}    ZMomentWarning : 0
     Should Contain    ${output}    AnyNearNeighborWarning : 1
-    Should Contain    ${output}    NearNeighborWarning : 0
+    Should Contain    ${output}    NearNeighborWarning : 1
     Should Contain    ${output}    MagnitudeWarning : 1
-    Should Contain    ${output}    AnyFarNeighborWarning : 1
-    Should Contain    ${output}    FarNeighborWarning : 0
-    Should Contain    ${output}    AnyElevationForceWarning : 0
+    Should Contain    ${output}    AnyFarNeighborWarning : 0
+    Should Contain    ${output}    FarNeighborWarning : 1
+    Should Contain    ${output}    AnyElevationForceWarning : 1
     Should Contain    ${output}    ElevationForceWarning : 1
-    Should Contain    ${output}    AnyAzimuthForceWarning : 0
-    Should Contain    ${output}    AzimuthForceWarning : 0
-    Should Contain    ${output}    AnyThermalForceWarning : 1
-    Should Contain    ${output}    ThermalForceWarning : 0
-    Should Contain    ${output}    AnyBalanceForceWarning : 1
+    Should Contain    ${output}    AnyAzimuthForceWarning : 1
+    Should Contain    ${output}    AzimuthForceWarning : 1
+    Should Contain    ${output}    AnyThermalForceWarning : 0
+    Should Contain    ${output}    ThermalForceWarning : 1
+    Should Contain    ${output}    AnyBalanceForceWarning : 0
     Should Contain    ${output}    BalanceForceWarning : 0
-    Should Contain    ${output}    AnyAccelerationForceWarning : 0
+    Should Contain    ${output}    AnyAccelerationForceWarning : 1
     Should Contain    ${output}    AccelerationForceWarning : 0
     Should Contain    ${output}    ActiveOpticNetForceWarning : 0
-    Should Contain    ${output}    AnyActiveOpticForceWarning : 1
+    Should Contain    ${output}    AnyActiveOpticForceWarning : 0
     Should Contain    ${output}    ActiveOpticForceWarning : 1
-    Should Contain    ${output}    AnyStaticForceWarning : 1
+    Should Contain    ${output}    AnyStaticForceWarning : 0
     Should Contain    ${output}    StaticForceWarning : 0
-    Should Contain    ${output}    AberrationNetForceWarning : 1
+    Should Contain    ${output}    AberrationNetForceWarning : 0
     Should Contain    ${output}    AnyAberrationForceWarning : 1
-    Should Contain    ${output}    AberrationForceWarning : 0
+    Should Contain    ${output}    AberrationForceWarning : 1
     Should Contain    ${output}    AnyOffsetForceWarning : 1
     Should Contain    ${output}    OffsetForceWarning : 0
     Should Contain    ${output}    AnyVelocityForceWarning : 0
-    Should Contain    ${output}    VelocityForceWarning : 0
+    Should Contain    ${output}    VelocityForceWarning : 1
     Should Contain    ${output}    AnyForceWarning : 0
     Should Contain    ${output}    ForceWarning : 0
-    Should Contain    ${output}    priority : 0
+    Should Contain    ${output}    priority : 1

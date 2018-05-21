@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -136507810
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1020091135
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_AccelerationLimitReached writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -136507810
+    ${output}=    Read Until    priority : 1020091135
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerationLimitReached received =     1
-    Should Contain    ${output}    priority : -136507810
+    Should Contain    ${output}    priority : 1020091135
