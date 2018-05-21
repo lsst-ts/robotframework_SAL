@@ -11,7 +11,6 @@ PYTHON/StateMachine/Archiver_enterControl.robot
 PYTHON/StateMachine/Archiver_exitControl.robot
 PYTHON/StateMachine/Archiver_standby.robot
 PYTHON/StateMachine/Archiver_start.robot
-PYTHON/StateMachine/Archiver_stop.robot
 PYTHON/StateMachine/AtArchiver_disable.robot
 PYTHON/StateMachine/AtArchiver_enable.robot
 PYTHON/StateMachine/AtArchiver_standby.robot
