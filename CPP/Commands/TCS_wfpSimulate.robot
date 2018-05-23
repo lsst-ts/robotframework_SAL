@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander SrTWLGsJpoJZKqRIPfnhNBNDuFYkVKkejMLPLdGrugVEjwHsueAvNbLofZKgeawP 15.5707 91.8742 12.4664 49.6256 13.8726 99.6696 76.6211 2.2392 32.6081 15.9226 35.6107 65.0538 70.9835 41.2976 19.1999 3.1164 63.997 34.7255
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander BEjLLyvviIbedBnMMmhbJjWWeYqzMLvhofzdETRQaOQGmARVrdrVuyDOkaofvYnc 37.4529 60.8366 49.2432 22.2447 80.9445 45.5472 13.9542 3.5827 24.6635 71.926 99.1221 18.2574 1.8782 22.0207 40.3921 96.2672 20.5708 2.6142
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander SrTWLGsJpoJZKqRIPfnhNBNDuFYkVKkejMLPLdGrugVEjwHsueAvNbLofZKgeawP 15.5707 91.8742 12.4664 49.6256 13.8726 99.6696 76.6211 2.2392 32.6081 15.9226 35.6107 65.0538 70.9835 41.2976 19.1999 3.1164 63.997 34.7255
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander BEjLLyvviIbedBnMMmhbJjWWeYqzMLvhofzdETRQaOQGmARVrdrVuyDOkaofvYnc 37.4529 60.8366 49.2432 22.2447 80.9445 45.5472 13.9542 3.5827 24.6635 71.926 99.1221 18.2574 1.8782 22.0207 40.3921 96.2672 20.5708 2.6142
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    uid : SrTWLGsJpoJZKqRIPfnhNBNDuFYkVKkejMLPLdGrugVEjwHsueAvNbLofZKgeawP    1
-    Should Contain X Times    ${output}    z_arr : 15.5707    1
+    Should Contain X Times    ${output}    uid : BEjLLyvviIbedBnMMmhbJjWWeYqzMLvhofzdETRQaOQGmARVrdrVuyDOkaofvYnc    1
+    Should Contain X Times    ${output}    z_arr : 37.4529    1
     Should Contain    ${output}    === command wfpSimulate issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    uid : SrTWLGsJpoJZKqRIPfnhNBNDuFYkVKkejMLPLdGrugVEjwHsueAvNbLofZKgeawP    1
-    Should Contain X Times    ${output}    z_arr : 15.5707    1
+    Should Contain X Times    ${output}    uid : BEjLLyvviIbedBnMMmhbJjWWeYqzMLvhofzdETRQaOQGmARVrdrVuyDOkaofvYnc    1
+    Should Contain X Times    ${output}    z_arr : 37.4529    1
     Should Contain X Times    ${output}    === [ackCommand_wfpSimulate] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

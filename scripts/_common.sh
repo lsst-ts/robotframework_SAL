@@ -199,6 +199,10 @@ function checkIfSkipped() {
 		skipped="TSS-2618"
 	elif [[ ("$subsystem" == "atMonochromator") && ("$topic" == "InternalCommand") ]]; then
 		skipped="TSS-2724"
+	elif [[ ("$subsystem" == "eec") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
+	elif [[ ("$subsystem" == "tcs") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
 	else
 		skipped=""
 	fi

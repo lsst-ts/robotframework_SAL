@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VgUqjdziRzvkyRVrdvQWuskzCZlHvFComDKvkfxCemesFpFOChkVZCwpYUyKMeNWQBlNIEzAqYLhDsGdwSJYtMTqHvxNScRPIjquVNPvRKkLzmvsUqFSxGHKvfASzBcoPvQJgfYmSBqvoQfqmlnYbchlcAjpUNvUbmzUHWyArIgzsnNsnMhWZApvvumefSyPXRbWkOGARPoKuaQBNiNpOsGbnGQJqECofkdqgiiZGAMqiMwzwmCCyTrFELSgvSWs rDerAqwajLtUAfYAIiruTEzOqYYTAYiZgDLtsgEKUpxPAmuJqvvMovktEoqpWFJr 1871764639
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zbMzHcxAFuKytQUAZJdWFmswMHsEVGcHbIXfVAoeBOPgvuMTcsHOMueKriAlstrSltshsglZGgJgtobGRXmiTPDMBzKZCPpoRlkuVCKPdQfeHifScgqNCQVoAoIdpuMCTXJDUPTNfHLyWUkIfpemsjJXpbDJrBHSDusdEUNFUwvwqWhTkgByWVFPKeAJPrqnpbBNJuLtgAuoepqpSLGBvydoykwVSrYIdyqpwfihVwXLCRdsoNtBSWpFzgiWioaK wCmuvdXLMvvnMPltLLlpNJeEaraGKKMdAeCslFeltpbbEhMMGqfAxeuaoHGxZTRj -399487070
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1871764639
+    ${output}=    Read Until    priority : -399487070
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : VgUqjdziRzvkyRVrdvQWuskzCZlHvFComDKvkfxCemesFpFOChkVZCwpYUyKMeNWQBlNIEzAqYLhDsGdwSJYtMTqHvxNScRPIjquVNPvRKkLzmvsUqFSxGHKvfASzBcoPvQJgfYmSBqvoQfqmlnYbchlcAjpUNvUbmzUHWyArIgzsnNsnMhWZApvvumefSyPXRbWkOGARPoKuaQBNiNpOsGbnGQJqECofkdqgiiZGAMqiMwzwmCCyTrFELSgvSWs
-    Should Contain    ${output}    images_match_URI : rDerAqwajLtUAfYAIiruTEzOqYYTAYiZgDLtsgEKUpxPAmuJqvvMovktEoqpWFJr
-    Should Contain    ${output}    priority : 1871764639
+    Should Contain    ${output}    images_location_URI : zbMzHcxAFuKytQUAZJdWFmswMHsEVGcHbIXfVAoeBOPgvuMTcsHOMueKriAlstrSltshsglZGgJgtobGRXmiTPDMBzKZCPpoRlkuVCKPdQfeHifScgqNCQVoAoIdpuMCTXJDUPTNfHLyWUkIfpemsjJXpbDJrBHSDusdEUNFUwvwqWhTkgByWVFPKeAJPrqnpbBNJuLtgAuoepqpSLGBvydoykwVSrYIdyqpwfihVwXLCRdsoNtBSWpFzgiWioaK
+    Should Contain    ${output}    images_match_URI : wCmuvdXLMvvnMPltLLlpNJeEaraGKKMdAeCslFeltpbbEhMMGqfAxeuaoHGxZTRj
+    Should Contain    ${output}    priority : -399487070
