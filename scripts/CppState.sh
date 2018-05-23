@@ -194,6 +194,7 @@ function createTestSuite() {
 
 
 #  MAIN
+subSystem=$(getEntity $arg)
 if [ "$arg" == "all" ]; then
 	for subsystem in "${subSystemArray[@]}"; do
 		# Get the Subsystem in the correct capitalization.
@@ -202,12 +203,11 @@ if [ "$arg" == "all" ]; then
 		createTestSuite $subSystem
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
+elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
 	# Get the Subsystem in the correct capitalization.
-    subSystemUp=$(capitializeSubsystem $arg)
-	subSystem=$(getEntity $arg)
+    subSystemUp=$(capitializeSubsystem $subSystem)
 	createTestSuite $subSystem
-	echo COMPLETED all test suites for the $arg.
+	echo COMPLETED all test suites for the $subSystem.
 else
 	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi
