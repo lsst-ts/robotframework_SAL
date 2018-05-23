@@ -88,6 +88,10 @@ function capitializeSubsystem() {
         echo "EEC"
 	elif [ "$subSystem" == "headerservice" ]; then
         echo "HeaderService"
+	elif [ "$subSystem" == "atarchiver" ]; then
+        echo "AtArchiver"
+	elif [ "$subSystem" == "atmonochromator" ]; then
+        echo "AtMonochromator"
 	elif [ "$subSystem" == "atHeaderService" ]; then
         echo "AtHeaderService"
 	elif [ "$subSystem" == "tcsOfc" ]; then
