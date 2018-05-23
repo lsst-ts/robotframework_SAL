@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_offlineDetailedState sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -683794570 -1277765641
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -619338347 1190713717
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_offlineDetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1277765641
+    ${output}=    Read Until    priority : 1190713717
     Log    ${output}
     Should Contain X Times    ${output}    === Event offlineDetailedState received =     1
-    Should Contain    ${output}    substate : -683794570
-    Should Contain    ${output}    priority : -1277765641
+    Should Contain    ${output}    substate : -619338347
+    Should Contain    ${output}    priority : 1190713717

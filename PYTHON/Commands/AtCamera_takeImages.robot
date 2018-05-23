@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1644093141 66.2602 1 1 1 1 orEcvwXxcIlyhfkMcqWSMrQklscQmgzPrfooKuZXZgCTvuhvHRsyiJCEudLEzUZEFpBaSqaroQVmeTQEHTIYbkGAOEOkzcXsSbgyyzOrKHugEYSczCZyOBnlqeXTbePAAyXhuxjZcrxMRQlmJXvyiDOigpUWmLJPLtWXigdkkEbYUxWhfxRcOrcpWGhoNONhDufnhYZoygKjrRhDEGLCfTRGDCmihHWZVaJiPwgiKrqTIblHYRniGksgUQeXrzfo
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1671616786 16.1509 1 1 1 1 XmKPqisVxrMdknBmrpCfgFHGrKCAsJciRfuOWNFMUHpBsmaQHOSnxkbWNRNzZzgxtBMbmxsEamKilQZiqyxWDkSjQZVZGMTnhUuQJqqxFXrXqhiMvRbPEvvpLfnvTXDkJeSjZCiELyplpFoKVXsuiZUTIUTJdIewMDPxwqzoXxvVcqmuFQqzGjXfHFaqxPFhVFYMEPHhQiYCybIaVnKOhjRqPPbChcLiYJPXcDouLMDqVVULdzKkWkMSjVPrpyVA
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1644093141 66.2602 1 1 1 1 orEcvwXxcIlyhfkMcqWSMrQklscQmgzPrfooKuZXZgCTvuhvHRsyiJCEudLEzUZEFpBaSqaroQVmeTQEHTIYbkGAOEOkzcXsSbgyyzOrKHugEYSczCZyOBnlqeXTbePAAyXhuxjZcrxMRQlmJXvyiDOigpUWmLJPLtWXigdkkEbYUxWhfxRcOrcpWGhoNONhDufnhYZoygKjrRhDEGLCfTRGDCmihHWZVaJiPwgiKrqTIblHYRniGksgUQeXrzfo
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1671616786 16.1509 1 1 1 1 XmKPqisVxrMdknBmrpCfgFHGrKCAsJciRfuOWNFMUHpBsmaQHOSnxkbWNRNzZzgxtBMbmxsEamKilQZiqyxWDkSjQZVZGMTnhUuQJqqxFXrXqhiMvRbPEvvpLfnvTXDkJeSjZCiELyplpFoKVXsuiZUTIUTJdIewMDPxwqzoXxvVcqmuFQqzGjXfHFaqxPFhVFYMEPHhQiYCybIaVnKOhjRqPPbChcLiYJPXcDouLMDqVVULdzKkWkMSjVPrpyVA
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    numImages : 1644093141    1
-    Should Contain X Times    ${output}    expTime : 66.2602    1
+    Should Contain X Times    ${output}    numImages : 1671616786    1
+    Should Contain X Times    ${output}    expTime : 16.1509    1
     Should Contain X Times    ${output}    shutter : 1    1
     Should Contain X Times    ${output}    science : 1    1
     Should Contain X Times    ${output}    guide : 1    1
     Should Contain X Times    ${output}    wfs : 1    1
-    Should Contain X Times    ${output}    imageSequenceName : orEcvwXxcIlyhfkMcqWSMrQklscQmgzPrfooKuZXZgCTvuhvHRsyiJCEudLEzUZEFpBaSqaroQVmeTQEHTIYbkGAOEOkzcXsSbgyyzOrKHugEYSczCZyOBnlqeXTbePAAyXhuxjZcrxMRQlmJXvyiDOigpUWmLJPLtWXigdkkEbYUxWhfxRcOrcpWGhoNONhDufnhYZoygKjrRhDEGLCfTRGDCmihHWZVaJiPwgiKrqTIblHYRniGksgUQeXrzfo    1
+    Should Contain X Times    ${output}    imageSequenceName : XmKPqisVxrMdknBmrpCfgFHGrKCAsJciRfuOWNFMUHpBsmaQHOSnxkbWNRNzZzgxtBMbmxsEamKilQZiqyxWDkSjQZVZGMTnhUuQJqqxFXrXqhiMvRbPEvvpLfnvTXDkJeSjZCiELyplpFoKVXsuiZUTIUTJdIewMDPxwqzoXxvVcqmuFQqzGjXfHFaqxPFhVFYMEPHhQiYCybIaVnKOhjRqPPbChcLiYJPXcDouLMDqVVULdzKkWkMSjVPrpyVA    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -83,13 +83,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    numImages = 1644093141    1
-    Should Contain X Times    ${output}    expTime = 66.2602    1
+    Should Contain X Times    ${output}    numImages = 1671616786    1
+    Should Contain X Times    ${output}    expTime = 16.1509    1
     Should Contain X Times    ${output}    shutter = 1    1
     Should Contain X Times    ${output}    science = 1    1
     Should Contain X Times    ${output}    guide = 1    1
     Should Contain X Times    ${output}    wfs = 1    1
-    Should Contain X Times    ${output}    imageSequenceName = orEcvwXxcIlyhfkMcqWSMrQklscQmgzPrfooKuZXZgCTvuhvHRsyiJCEudLEzUZEFpBaSqaroQVmeTQEHTIYbkGAOEOkzcXsSbgyyzOrKHugEYSczCZyOBnlqeXTbePAAyXhuxjZcrxMRQlmJXvyiDOigpUWmLJPLtWXigdkkEbYUxWhfxRcOrcpWGhoNONhDufnhYZoygKjrRhDEGLCfTRGDCmihHWZVaJiPwgiKrqTIblHYRniGksgUQeXrzfo    1
+    Should Contain X Times    ${output}    imageSequenceName = XmKPqisVxrMdknBmrpCfgFHGrKCAsJciRfuOWNFMUHpBsmaQHOSnxkbWNRNzZzgxtBMbmxsEamKilQZiqyxWDkSjQZVZGMTnhUuQJqqxFXrXqhiMvRbPEvvpLfnvTXDkJeSjZCiELyplpFoKVXsuiZUTIUTJdIewMDPxwqzoXxvVcqmuFQqzGjXfHFaqxPFhVFYMEPHhQiYCybIaVnKOhjRqPPbChcLiYJPXcDouLMDqVVULdzKkWkMSjVPrpyVA    1
     Should Contain X Times    ${output}    === [ackCommand_takeImages] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

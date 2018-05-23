@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_SettingsApplied sender/logger tests.
-Force Tags    cpp    TSS-2673
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cSbibZXGvxmDLlIrOSUJMxeClGeslXWnPSQTfGPwJEQtrrMsRUIuHNDEktzLDLjeyrdpHmAPNsSSeBsQhYUtaqhUtJUxXfopaeFLUCcapnbfqykecaenlUsMxGGNyvRhENjhHmfCMhmSTsvWbAEimaabzoFGMgrzXPpgrhvBTgpKabrTRrnmMFlmvKfaTiGnVeUnxhdXeMPsrzIPXXWiTNivjmlXbXfUQAxeNUURPynnzyHSafZURLDIsIovQQcd -173640051
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ThEAGSUTAxKCLaBgETkGhmYssAqeXhYQPtFMhzVmEdoIcrCedOrVjMHbRPDAjsMEcJUSUbleODNyNXmGRDTFgrpGvhigigJAGkUZpeqhStkIWDDcZXFkkCBbuYFMzSxHeIybsbDwArqlvaWWvohQwXKcOxzFCFTDKRhZZCgDuqhKBcUHwAcmVJPKNaOlWrhVWyZdTHNhrJpuanyfoCbvSJDGESUIsQqXklAOBBBsEIUHnGkzTduXmzqfcacAenzU 857185981
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -173640051
+    ${output}=    Read Until    priority : 857185981
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : cSbibZXGvxmDLlIrOSUJMxeClGeslXWnPSQTfGPwJEQtrrMsRUIuHNDEktzLDLjeyrdpHmAPNsSSeBsQhYUtaqhUtJUxXfopaeFLUCcapnbfqykecaenlUsMxGGNyvRhENjhHmfCMhmSTsvWbAEimaabzoFGMgrzXPpgrhvBTgpKabrTRrnmMFlmvKfaTiGnVeUnxhdXeMPsrzIPXXWiTNivjmlXbXfUQAxeNUURPynnzyHSafZURLDIsIovQQcd
-    Should Contain    ${output}    priority : -173640051
+    Should Contain    ${output}    Settings : ThEAGSUTAxKCLaBgETkGhmYssAqeXhYQPtFMhzVmEdoIcrCedOrVjMHbRPDAjsMEcJUSUbleODNyNXmGRDTFgrpGvhigigJAGkUZpeqhStkIWDDcZXFkkCBbuYFMzSxHeIybsbDwArqlvaWWvohQwXKcOxzFCFTDKRhZZCgDuqhKBcUHwAcmVJPKNaOlWrhVWyZdTHNhrJpuanyfoCbvSJDGESUIsQqXklAOBBBsEIUHnGkzTduXmzqfcacAenzU
+    Should Contain    ${output}    priority : 857185981

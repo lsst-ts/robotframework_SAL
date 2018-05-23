@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Archiver_archiverEntityShutdown sender/logger tests.
-Force Tags    python    TSS-2673
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py tPzWewFSmzxYZEoICYfsfXnrQwuACyZfbjgPaAXYYNpipaXEpXjAFQKMUegsPLGFPafuytomqEzmTWdXLPihADsWsVxYMdrlJFPlYnxKRXUCYtSmsEcKPNhSyQtCQwCr 91.476 FuvKEKNkzgJkvKXawzOPRIHbDeuVMyProlCDtIYxmKYoiwkCLnWRyPxsnUVoetXikkGFENKXEaDTFBLfFBSkLLvulsjGsScvYLHGdxKQeGZznvHmIbXYKGiemOTqYLZTxGnIhFImBsgMUaXCVxQlmPDYcmhrWkOggPiMtNkFjCGOrCbyAZUmzEiaQLRtqLWLxuhTqfuFdzXGQTnzWziWFnlwMlFgtdzPifNPVDfoPILQuoUDIAzMNZzGvNBTfZBL -1008805683 2033690644
+    ${input}=    Write    python ${subSystem}_Event_${component}.py yiUOnluQmmVZIHvJfulACXOnfeLwngASXtRKZQGxRUDzbOsrXWSFLfZGRxuANijimzKpwvsWldwBtEfYBjvunqQRqoQfWpjjurIqMLrCTJlSCHmkSxIyRErbYvKDtDjm 0.3422 FipGqChJmFmdVVBwomhJWGXJNaRBlAdJLKdBVvdDtaCmSvQeWOnfScoYLemYqatTCfekSlpTQGPhXynYVhXiaGTuDZTeMOclWSKoccNEXiknPXcVMODuDQbmySNcxkFXyKejQzdpxlbYEiBlzwoKDrILyVbRdbZVUnluoTJkuzUImLMRRVUljHOthzgxmoGuqqGKtIRjBXsfaSwsDJoBKYClxwgRTKqAFcRjQOIiAYulIhXnwnYbqiVbkOMZfumQ -641402090 1776206265
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_archiverEntityShutdown writing a message containing :    1

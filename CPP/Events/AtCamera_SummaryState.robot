@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_SummaryState sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1823077393 -6491374
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2122664803 -377355259
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_SummaryState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -6491374
+    ${output}=    Read Until    priority : -377355259
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    SummaryStateValue : 1823077393
-    Should Contain    ${output}    priority : -6491374
+    Should Contain    ${output}    SummaryStateValue : 2122664803
+    Should Contain    ${output}    priority : -377355259

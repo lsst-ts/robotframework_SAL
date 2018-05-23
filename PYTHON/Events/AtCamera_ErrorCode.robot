@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_ErrorCode sender/logger tests.
-Force Tags    python    TSS-2675
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -118488575 -1890538758
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1421659940 1817653742
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_ErrorCode writing a message containing :    1

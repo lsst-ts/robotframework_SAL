@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_SettingVersions sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send NmPztJMLKPKfDkQhKPFTqoSQajSpgRKeSaDnqzJNGomWIUdJBEosomIojfJOfivmZmvDMuySuzqnjHbJEezYRQLtroLJfFdNrCwqnksHeIVORSxtmUfLlxzdiRXsQIhHgkFTRdakMkDTcdbimIohOtAMIYciDxYZfpJxvtWJFaNEvsXedrefRMSEVwFohGAeqtiHblOlYaPRaPmRiKQcVdjuwccOiDEYHioNMLUBhCQMCNriwsXWSNCVwYjenIZD 2008340709
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MLREjYFjVsNswyfcJIMllEGmQmgMocNJmYbsZAjSlZKjilvoyHddwAmCmLNGVgJcdNOBusXwQXGACdHbPkwjDrXTNJlmFZDrHKwkmwDUVqSHMBPsuganIPvgVHVeJfJFKRLiMAgTGAGadKZNaOOyjvZOGqNMWXDpFcdvKgaoDpQZzlmEHDqJKjkekVGIJLFqPwYLGFMtTPjPYhFJTrYkkojWukxFfZByOgKyDBmKaRwxbsUcFkoZKDhIGJsmlDuu 719892510
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_SettingVersions writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2008340709
+    ${output}=    Read Until    priority : 719892510
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : NmPztJMLKPKfDkQhKPFTqoSQajSpgRKeSaDnqzJNGomWIUdJBEosomIojfJOfivmZmvDMuySuzqnjHbJEezYRQLtroLJfFdNrCwqnksHeIVORSxtmUfLlxzdiRXsQIhHgkFTRdakMkDTcdbimIohOtAMIYciDxYZfpJxvtWJFaNEvsXedrefRMSEVwFohGAeqtiHblOlYaPRaPmRiKQcVdjuwccOiDEYHioNMLUBhCQMCNriwsXWSNCVwYjenIZD
-    Should Contain    ${output}    priority : 2008340709
+    Should Contain    ${output}    recommendedSettingVersion : MLREjYFjVsNswyfcJIMllEGmQmgMocNJmYbsZAjSlZKjilvoyHddwAmCmLNGVgJcdNOBusXwQXGACdHbPkwjDrXTNJlmFZDrHKwkmwDUVqSHMBPsuganIPvgVHVeJfJFKRLiMAgTGAGadKZNaOOyjvZOGqNMWXDpFcdvKgaoDpQZzlmEHDqJKjkekVGIJLFqPwYLGFMtTPjPYhFJTrYkkojWukxFfZByOgKyDBmKaRwxbsUcFkoZKDhIGJsmlDuu
+    Should Contain    ${output}    priority : 719892510

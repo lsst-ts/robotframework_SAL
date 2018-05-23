@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_shutterDetailedState sender/logger tests.
-Force Tags    python    TSS-2677
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -638144057 -470275505
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -610614539 -1683701623
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_shutterDetailedState writing a message containing :    1

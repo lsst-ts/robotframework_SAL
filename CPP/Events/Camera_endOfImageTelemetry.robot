@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endOfImageTelemetry sender/logger tests.
-Force Tags    cpp    TSS-2677
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WcNKtKANqNzruwSEVdtMmJNsBeOTGzuYjJobcrOupySIqLSdEsCoZWIyboCqJKYNTwCOwntLTytfVhlUMOplByPhQrSVIWabIeTZsKSbPRzxEMUqHiywEzBKvJkweNpdphadUQjCwcSqxnKPpbwiMZIejdbproAHUEWcbnZcqkwYOJoesRIVJelGpcBQRCvxSFrsoHuRsdxGbbAmtzxjDMWLOkbFlmkHMhcrsKDamUZkeoqJxIygJesFXiTIzALV dLHkDGuRviNpjlWsWqEDftzbkFCtXwcKcTBWWrtKFDPnTkmttkEPTsdrDKySzItFNFEDfhmmgbcOUKTCpJaNeguAXaeIpESPalRTPlZihIBESswZVamAUNxgMAZESgxmmAKLofXDQKSCSFqTrqhCsWqlfyKnqEhorfaCeIbcqWjzRWJQNrvKQnWRQXtDsXMnJrZwsgPUueeIirRfQbQzZNGIKDNElBhFSHcIqYAxYEdnQKcgmADkwsRIiuZULGQw -84433425 78.341 91.6517 -789721167
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pXagTFhQSgTRhVQUYtbYgRLYBqcWGxxwofBflPynWfJCVyBvrqtaNHFFRLAxwPRVakztAJCqhVAKXtbwlAuRPscPJcljChUgjZsWmNXwcfYnsUZsZlAjsyalJjROFuxwFuzIduYvxaSLASJenOnaWKOBknYnveDkRKjCnupVUOqrxshiOFOACfWnYpvldbAHbUwLRUPSKNwfQFtHpjejOyMdpjkKpWhtiOQACmfLlDDGwugtVAvcCuvkHkWBLZPC dKVIOhsbPBEolixOLKrLfSEsVeOWbxkWsYoQlFMKJsdYLLJZeZIWIGeuRBhpeJoeqsqVEjiAUiEppFQuBpbIBLtJTaPdBEKaQrhXRarAkHDTTgokMXPFKEAsHPakCRaGQBFfkepyGbkfWpOFypDCmcyjbiptdoOplWfiTviTyZyBbCgxzIQMZGdmsOQGDWzeaFLblzKkCXXZqpONbtsbffGWxolsLwEXdfvuBnywXLJNgmbnVJgqhxsnvLLGanXE 1374654345 17.0828 45.3183 -1749365878
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endOfImageTelemetry writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -789721167
+    ${output}=    Read Until    priority : -1749365878
     Log    ${output}
     Should Contain X Times    ${output}    === Event endOfImageTelemetry received =     1
-    Should Contain    ${output}    imageSequenceName : WcNKtKANqNzruwSEVdtMmJNsBeOTGzuYjJobcrOupySIqLSdEsCoZWIyboCqJKYNTwCOwntLTytfVhlUMOplByPhQrSVIWabIeTZsKSbPRzxEMUqHiywEzBKvJkweNpdphadUQjCwcSqxnKPpbwiMZIejdbproAHUEWcbnZcqkwYOJoesRIVJelGpcBQRCvxSFrsoHuRsdxGbbAmtzxjDMWLOkbFlmkHMhcrsKDamUZkeoqJxIygJesFXiTIzALV
-    Should Contain    ${output}    imageName : dLHkDGuRviNpjlWsWqEDftzbkFCtXwcKcTBWWrtKFDPnTkmttkEPTsdrDKySzItFNFEDfhmmgbcOUKTCpJaNeguAXaeIpESPalRTPlZihIBESswZVamAUNxgMAZESgxmmAKLofXDQKSCSFqTrqhCsWqlfyKnqEhorfaCeIbcqWjzRWJQNrvKQnWRQXtDsXMnJrZwsgPUueeIirRfQbQzZNGIKDNElBhFSHcIqYAxYEdnQKcgmADkwsRIiuZULGQw
-    Should Contain    ${output}    imageIndex : -84433425
-    Should Contain    ${output}    timeStamp : 78.341
-    Should Contain    ${output}    exposureTime : 91.6517
-    Should Contain    ${output}    priority : -789721167
+    Should Contain    ${output}    imageSequenceName : pXagTFhQSgTRhVQUYtbYgRLYBqcWGxxwofBflPynWfJCVyBvrqtaNHFFRLAxwPRVakztAJCqhVAKXtbwlAuRPscPJcljChUgjZsWmNXwcfYnsUZsZlAjsyalJjROFuxwFuzIduYvxaSLASJenOnaWKOBknYnveDkRKjCnupVUOqrxshiOFOACfWnYpvldbAHbUwLRUPSKNwfQFtHpjejOyMdpjkKpWhtiOQACmfLlDDGwugtVAvcCuvkHkWBLZPC
+    Should Contain    ${output}    imageName : dKVIOhsbPBEolixOLKrLfSEsVeOWbxkWsYoQlFMKJsdYLLJZeZIWIGeuRBhpeJoeqsqVEjiAUiEppFQuBpbIBLtJTaPdBEKaQrhXRarAkHDTTgokMXPFKEAsHPakCRaGQBFfkepyGbkfWpOFypDCmcyjbiptdoOplWfiTviTyZyBbCgxzIQMZGdmsOQGDWzeaFLblzKkCXXZqpONbtsbffGWxolsLwEXdfvuBnywXLJNgmbnVJgqhxsnvLLGanXE
+    Should Contain    ${output}    imageIndex : 1374654345
+    Should Contain    ${output}    timeStamp : 17.0828
+    Should Contain    ${output}    exposureTime : 45.3183
+    Should Contain    ${output}    priority : -1749365878

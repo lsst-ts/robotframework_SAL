@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_prepareToTakeImage sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 55094546
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1626755371
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_prepareToTakeImage writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 55094546
+    ${output}=    Read Until    priority : -1626755371
     Log    ${output}
     Should Contain X Times    ${output}    === Event prepareToTakeImage received =     1
-    Should Contain    ${output}    priority : 55094546
+    Should Contain    ${output}    priority : -1626755371

@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py TCIKBmwcLeiBdfIXknwpQvGsdxvEUeFLMfizTjzkuHZPvZMlcmMHXUZIczmCiIPFcrvweQyAlJtAKSlMahjgfOvWjgGvkjeTgKOlwcPUGgGwOiqUuCKSRpsgUbHSBgVjYPeEGrrKFEBwmLWGuwAuCfxgPAPtaVsALKOGKZYXwbYRcIgqTvByNFWbUVaIigbCOqtcjFbfhzetizMLZKyjeymGrsbcgMBZaPhJzgLwjtVApoIImpDmSyobwQDOEqwB 2044763336
+    ${input}=    Write    python ${subSystem}_Event_${component}.py FzXHqlFYzCSMolvalCNoNBMChEekwlKoWwebibSzGprfchlWyFoaomLjMOhQEkuBGxNBErFcfizoOcylvFsDWCJsOUysKZtmXOiVViVjDEJssYcoguqjsamBcnYhnEZWyzQJNWvcGIaFGdZiGTPREmUzeqHINlXQdqsxlhSZruUtJKXJvlnvYOBTZBRyFkkRyHHdCQagJmVETmitbMigejRSXbfqcIdILYMTsRVfBKeNkocPHWdjHwjmrbUreVFA -2136158352
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] promptprocessing::logevent_SettingsApplied writing a message containing :    1

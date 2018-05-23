@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_SettingsApplied sender/logger tests.
-Force Tags    cpp    TSS-2677
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send BVZMxyfBSXQhOxONVVWWBDOSCgiHJoATHyVmxqtFgWIkmxvnZrBKmRcQFadkrkWuufWBuNDwiHvpPPsjbJSJZUqLyAFVnVxVjhSImjcbpWLHdBeMQygvVCCLMgUeBJjiXLCckKLIVVlpbugWmNVYkpiXxJFYjfduqfPYTNeJqttLakQOVFeyKmnhLrkYrnIeqLWBDSZQcvMavNAkRlncamBMPoXZIoCdcBHeiFJTtoALYmHDZnFqBjIsKdwfeEQp -763580757
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MJdhptKlmLDmDXuJsPZiaPzOWNdNPPvSzOmDvvpEeLDnrLWiGySztJQxBcGEiaQbobPKJgrAZwoLUiIUjtIaTStQZdtGGzGIlHZgRByKfGHzaLgFrWJdhYXdiOtttGorLAPeoNcuQvxIjrPsxRRrppWiSQYSniGoRcLBUPTRwtSwTlJqhXUUGGLsEYLcDzNgZqMVIcFxGUQaKIPyqVswmWjFaTHkjsAGPMcqPLqwHsmoKagkZvIthtqlDWSSiPwc 1546152447
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -763580757
+    ${output}=    Read Until    priority : 1546152447
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : BVZMxyfBSXQhOxONVVWWBDOSCgiHJoATHyVmxqtFgWIkmxvnZrBKmRcQFadkrkWuufWBuNDwiHvpPPsjbJSJZUqLyAFVnVxVjhSImjcbpWLHdBeMQygvVCCLMgUeBJjiXLCckKLIVVlpbugWmNVYkpiXxJFYjfduqfPYTNeJqttLakQOVFeyKmnhLrkYrnIeqLWBDSZQcvMavNAkRlncamBMPoXZIoCdcBHeiFJTtoALYmHDZnFqBjIsKdwfeEQp
-    Should Contain    ${output}    priority : -763580757
+    Should Contain    ${output}    Settings : MJdhptKlmLDmDXuJsPZiaPzOWNdNPPvSzOmDvvpEeLDnrLWiGySztJQxBcGEiaQbobPKJgrAZwoLUiIUjtIaTStQZdtGGzGIlHZgRByKfGHzaLgFrWJdhYXdiOtttGorLAPeoNcuQvxIjrPsxRRrppWiSQYSniGoRcLBUPTRwtSwTlJqhXUUGGLsEYLcDzNgZqMVIcFxGUQaKIPyqVswmWjFaTHkjsAGPMcqPLqwHsmoKagkZvIthtqlDWSSiPwc
+    Should Contain    ${output}    priority : 1546152447

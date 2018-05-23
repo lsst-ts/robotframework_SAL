@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_imageReadinessDetailedState sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 934657029 -837885627
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -867871184 -88713203
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadinessDetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -837885627
+    ${output}=    Read Until    priority : -88713203
     Log    ${output}
     Should Contain X Times    ${output}    === Event imageReadinessDetailedState received =     1
-    Should Contain    ${output}    substate : 934657029
-    Should Contain    ${output}    priority : -837885627
+    Should Contain    ${output}    substate : -867871184
+    Should Contain    ${output}    priority : -88713203

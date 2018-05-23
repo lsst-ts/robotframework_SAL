@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_imageReadoutParameters sender/logger tests.
-Force Tags    python    TSS-2675
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py XHjLPQrkkDMxmynMxafXYPdWFdjILVOkuaWZPYnwVijXJrtQHkwEDaYiaRNgnvRIwxZsLspjAlGVGpdAJUSIIoKjDRrrnJwlsrpIfgtFToOupYonTlvJHyrGCUeVtMeSMJWiIiKbpeJJFeILbtuSIvPeDvLIKrgHDiTMafNjxKZMxTJOTmSLwcYSWDTmkHgHxuWUKbUSBnYDTPzmgBVjqJFXvqJAmkBRTCQnFmFyKwPyJDXBUMJGhkfXlZhZHGKw SXCWjgZjVeYjouwXkDNEFoOpUQMaoKARpISvgdYyRfvMaEbhnwlbKcFsMYIwRrggAmqZSzlPFMwjuQpAVrGYsaQANJsrorjwMiFxuqYERqLMAyuFgJrOKdlOzLIanUXzZeJAuBKZUwBcQUSkyGtVSJqvrhNcGRtwinoiVBMXEOSUkmQPpaAENcaqMHYFcNhCvhLGbJbKcgZwlUsaxhPdOCNkrFxcqgBvLEzUtLVwMpJoQmnoKNzDkaRjYyugSrkz 1195006509 1028568541 9250205 -1812711375 1402615375 -446111015 -2137224872 1902619938 1492222470 -258545022
+    ${input}=    Write    python ${subSystem}_Event_${component}.py culavVjGiZcqtdIyGykWjsdFgsMvVmoqVeEkOKsmZtbeZMQsBZbFWqFqKrhngXNmFpETRQXVSlRErmuGqjaTOZCjLYqTMpYdkRSLJXZRAizyPvGEWXUSLDlLcMjUmHeAhymcKaIWzIvtLstOlKOYQwsEPQnFWRAIuZftPmEIpouzuVEmQBbJYugrjVZvyKbgTjvSILZVVkbQBQxjpcqyNAVqdfbhdgSomGvfKTeXMwrtOIxlqmjslYkprqgGvHYx gDCqetySocIJTBDbOqTYinptnflMTMEZkQscdlDxvwtOolyAmtMLEMFkMVgmpMrVXYbiukwuFJfimSPgnYMeXXDSuhpibDBHbRtiXWjaiFoADuhgEqThLNOllBVQfllmLcrBoRQQlGZohJYGtpeEgZaSJKiOCOVdKwkyiKesuvGJdzDSJcattlPooECWfhrPfsHMmWeujjrjDmNKytPzCCdqTNxFCEKkUtdOOYQckmRdOqIzywlZrcRqMqPZlJxN -220043798 -280276839 -352012530 -185319957 -1820543219 -527238930 1697577098 -1771474536 1141270171 1099235253
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadoutParameters writing a message containing :    1

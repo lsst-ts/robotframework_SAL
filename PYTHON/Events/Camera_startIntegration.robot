@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_startIntegration sender/logger tests.
-Force Tags    python    TSS-2677
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py QZbRSvHpiJUmXzoEwsGmBBMgBBdZcUOfEOleyKPJlfJyjNwhrLqfntEgZFHmwyRSdwoqEnCtmNyvcyPnrAwpEMBFDDfgnjtzIHlOnSMvxMxfAquRDxcGXJbQloPNnrqhRqwxGUnlzpKaXSWqehcuNJObboohqEhuWjQwXBLSbBBSDgQLoHqXvNeMlAhNawWyZtdZgsuchgJlNsuYjPVrIbpxxBdZtNSUUsBMDthckOCieDbmisqKigKUmzJjlhfk DLtKEVNEmVdPrTVSlSVNRChtNTMfVmlAXzEZiteuUzHcjbiCDJFzsupmarKujQNWMyMzUDbcOhbCuIdWatjOeGmpIFzTfywYgQSCUKupTvZRYavlIkMAhTXznQtXClWtaKpXtufrjiTbrFtFaGqUaxhjMNkkujPHuPYHpAwbwsYkKpfwJniXApwEnykXZoARUKfTuTtWaAjTtMXMndyQwkhAgUVlRzJQwWZqCURcETHkzeTJhrcUQMpQeHYjGnkA -233886074 53.7185 23.2519 1318462442
+    ${input}=    Write    python ${subSystem}_Event_${component}.py CqQyEzTcEucfGlXBTKAzahGoYtWlfQrdZFvxPnWIgRArVBumZZAhZJcVRMfAIsGDMJaLdBJMlhMqwmyeEkuxmIoBqZEeniJrhkZWBbLefFBwOJTsbCnQuJEfRKzMBFduavfaSphYtiilCCKbUgyGdxMDzytDDskrmiAAUAykfikKpMNvSrShXgHFYMADxMSxoMKXDLYQjdjsPQXXSULCwCUMZFCWJnkxjWBDEkVAbwBCSECUQrKSsECdXfbfGKSO irJMDABZNwAcrCnOEhTWHHpSkfLTtPFPJdyWAicqeqktrgHGFoihQRgYKjxCbBiKvtFnhIhwlZhsOpvUFPXvUTYhJzsPdjceyaeChBzRUYEZScEcMhRgacPqiGqqxrkbSpUHMvLTySgAJYCVljLsvCoSOcUKSYDgLIcfEWcTNqhzTYxavhAPBtdUnrcXwUDVRIDplLUYgFmETjAuVWhUnCuWJjFKRtDzDqgCtwQFFEJsKBoEUoFGroKhAJZcwaVq 1844845304 72.7566 68.6145 421326995
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startIntegration writing a message containing :    1

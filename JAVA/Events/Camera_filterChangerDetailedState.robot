@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_filterChangerDetailedState sender/logger tests.
-Force Tags    java    TSS-2677
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

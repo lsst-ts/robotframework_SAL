@@ -26,7 +26,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/java/standalone
     Comment    Start Subscriber.
     ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_sub.jar ${subSystem}_${component}DataSubscriber
-    ${output}=    Read Until    [${component} Subscriber] Ready
+    ${output}=    Read Until    [${component} Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
     Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ 

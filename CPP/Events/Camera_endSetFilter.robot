@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_endSetFilter sender/logger tests.
-Force Tags    cpp    TSS-2677
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send GxkNMzlPakCnyYTnSiqpONiiYMndCoHGuwPidHINmnWqLhZfuThDvQjKBdQNxJpenIhYYVqXmdFbHtJrIsoikqDtvaurHZuFRfYSWgmvJssPRfQKgwVtMCqGZBjbZqJegtKzSdWBKdohZdhRtbupyzqWwLvYXRaeHgpRwUHoFNJMgZfKVuEmRJDuPLSpTelLoPosrigsqEcYGLrSZczyMSNQbddPJGcKtfepVjHvldGMGDbMBNTuYEVOtQMODPgE 1877274296
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send GaKayzXkojjDHZRnpgSxwyXFyGhZHkpvTEyNBQfyhKylPQDBJYoBBPgZXelwoFZxjcRatypFGtoDDIDFDRsYgWeOcwLVZehyOaWHwwxWUCFBNQGDnntXsozNrypRcFmoZsgDHpREAWmhTUFGPNAHoMpNgroYZScmNiVnxeRjizdwUuAwYKMABvjzMsickLmbiMINrHqKvCrxrdyxvEHspdkdUJzZGvAICjCwLqmQdbkLPtFygBENqaUrVsnxTjZt -77582266
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endSetFilter writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1877274296
+    ${output}=    Read Until    priority : -77582266
     Log    ${output}
     Should Contain X Times    ${output}    === Event endSetFilter received =     1
-    Should Contain    ${output}    filterName : GxkNMzlPakCnyYTnSiqpONiiYMndCoHGuwPidHINmnWqLhZfuThDvQjKBdQNxJpenIhYYVqXmdFbHtJrIsoikqDtvaurHZuFRfYSWgmvJssPRfQKgwVtMCqGZBjbZqJegtKzSdWBKdohZdhRtbupyzqWwLvYXRaeHgpRwUHoFNJMgZfKVuEmRJDuPLSpTelLoPosrigsqEcYGLrSZczyMSNQbddPJGcKtfepVjHvldGMGDbMBNTuYEVOtQMODPgE
-    Should Contain    ${output}    priority : 1877274296
+    Should Contain    ${output}    filterName : GaKayzXkojjDHZRnpgSxwyXFyGhZHkpvTEyNBQfyhKylPQDBJYoBBPgZXelwoFZxjcRatypFGtoDDIDFDRsYgWeOcwLVZehyOaWHwwxWUCFBNQGDnntXsozNrypRcFmoZsgDHpREAWmhTUFGPNAHoMpNgroYZScmNiVnxeRjizdwUuAwYKMABvjzMsickLmbiMINrHqKvCrxrdyxvEHspdkdUJzZGvAICjCwLqmQdbkLPtFygBENqaUrVsnxTjZt
+    Should Contain    ${output}    priority : -77582266

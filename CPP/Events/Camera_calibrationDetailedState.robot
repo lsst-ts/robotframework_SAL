@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_calibrationDetailedState sender/logger tests.
-Force Tags    cpp    TSS-2677
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 430613899 -1381355679
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1186588287 714446225
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_calibrationDetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1381355679
+    ${output}=    Read Until    priority : 714446225
     Log    ${output}
     Should Contain X Times    ${output}    === Event calibrationDetailedState received =     1
-    Should Contain    ${output}    substate : 430613899
-    Should Contain    ${output}    priority : -1381355679
+    Should Contain    ${output}    substate : 1186588287
+    Should Contain    ${output}    priority : 714446225

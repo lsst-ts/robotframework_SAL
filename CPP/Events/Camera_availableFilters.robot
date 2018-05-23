@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Camera_availableFilters sender/logger tests.
-Force Tags    cpp    TSS-2677
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WfibtPEFqEMxgDPuNkCdUDOrukLTpVPHjpBDIrNkkvvLenNPVrTmQPjqGxzVTFQzwrfOXTYmrZxcNBpklNNtOcyBviUaTOMxEFVMSTztrDxrDkhWcMpbDZlHtDwuabFnPRXfXXJEKertKwoGuuJUTlmAWqkNoABhTLETCjwJaEyYzqNgELwsssAXFYUmwShUZgzYEhmhMihINnJLrqItFJYqKfSNmqxIqMuWfxLzQZMmDXUWpHUkstoobKUIjWrM -18511448
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bEYhJXpibHaIripnfvcDAlJIPBJsYpYltFTYDWjEANNvmWORTwmMkddVDlMOTHANAtlomEOgBvHLDqqkdDdKDHlWUMzXTNCpKkPlfRPGQhjdIrCdwDCvJZRKdhgETodXCHmiCUXkDlmibadtNeELPPBokKnWmDlvhPVoEzfiQfacLFIZsaimvrRtzerBahCYwSoLzVaojoqEyATHfMkAlsZrlIFxNYomvxKTrwaTccwvWZkdgGNYrHfrfBNeMIFW 2098229027
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_availableFilters writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -18511448
+    ${output}=    Read Until    priority : 2098229027
     Log    ${output}
     Should Contain X Times    ${output}    === Event availableFilters received =     1
-    Should Contain    ${output}    filterNames : WfibtPEFqEMxgDPuNkCdUDOrukLTpVPHjpBDIrNkkvvLenNPVrTmQPjqGxzVTFQzwrfOXTYmrZxcNBpklNNtOcyBviUaTOMxEFVMSTztrDxrDkhWcMpbDZlHtDwuabFnPRXfXXJEKertKwoGuuJUTlmAWqkNoABhTLETCjwJaEyYzqNgELwsssAXFYUmwShUZgzYEhmhMihINnJLrqItFJYqKfSNmqxIqMuWfxLzQZMmDXUWpHUkstoobKUIjWrM
-    Should Contain    ${output}    priority : -18511448
+    Should Contain    ${output}    filterNames : bEYhJXpibHaIripnfvcDAlJIPBJsYpYltFTYDWjEANNvmWORTwmMkddVDlMOTHANAtlomEOgBvHLDqqkdDdKDHlWUMzXTNCpKkPlfRPGQhjdIrCdwDCvJZRKdhgETodXCHmiCUXkDlmibadtNeELPPBokKnWmDlvhPVoEzfiQfacLFIZsaimvrRtzerBahCYwSoLzVaojoqEyATHfMkAlsZrlIFxNYomvxKTrwaTccwvWZkdgGNYrHfrfBNeMIFW
+    Should Contain    ${output}    priority : 2098229027

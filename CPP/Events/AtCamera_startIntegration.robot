@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    AtCamera_startIntegration sender/logger tests.
-Force Tags    cpp    TSS-2675
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XVfwkixNMNMpALDcFuxeUsxLGjeOcfDExriLQXEJrhYEgfPUHUWNjGKlXaMbaFDyMWTsUimZlbBsnjKdkRYIIdcsCeUvHRElEqLqFUPROPnOkgLaibYkoMOokjrpsmSNTgLjRjGIGiPTuNNMkKjTodpdcRsdbrcbUIOQEODfPoypSNMGuapgSiLEsghbeGOemjrPRcFpmpfGPpBxgWDyLwFnoKSUssGyrwRtHYiExaKfUkcBjvedmfzczmtWJrPT -280000741 ZejSyxqfGMuELEEpIBbXmDUiIwTZpkeqrnApMoiSlDOoAHsPfWWCvZWinfGNdWhObHOPLbtjItNLOHLEofQZHsKFkQTSmQraAIZLWwyTiXnduuunguotrUXYLPYDenzVMSYfbguCpZEbnyWSLdayfpcijOJGwKkHzOJclealiIXkMfpApooZzhZtErVTzGvnjNYnysBVlWTjYSDtCCwGQixiQZtjzSjxxspdomylUgsRCNdFMxEdYbzjTaYJiKbc -61436760 70.1702 25.2474 -75953034
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hKUmkFAVWebhFwQIpbGBxVloPMunhLbxPoFzZckxbkWrDCuXeWfsjvmShTaDOLUmIZGDdjvQeKGuzwifHOULoMosxDsDYKdpPIxzCKsNcZRPNvbVLBJQudGEEMviymEhVYcSEYALAwqdldyHpMFXGEahVtngkKUCgVpvhKKtoTIyJaDPkhgKzvWUzJQGlqaiszJoJOkhUDxJXDvbzPXvuBuVsFHufaaPSvwGUFwhYWjYOiyImdKrhPmjVoadKvJp -1432151819 ujlFJmGASoueHQquBGQkGseQrKBNnspzywcpwBobtuLnltsApflszugZBGpLuJugZHLeZaXckCGbOvNmFRTGrzFIZSPJQZDOXSrtHyRvsPnJIdbKhvjSkzHBWliWbOOgKwUJpgxzmYJWNXYSWetBJOVTiYiRhvcaDubZChIHzZupXpfMkuREMyxJXLDhkKbsakOZjchghdDtBWiIbBfXVKbdMPZFvwCiWEPLVxBufzBzgITbTTGGqNNUoJFnUGCa 478490531 47.5122 17.8363 1635028093
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_startIntegration writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -75953034
+    ${output}=    Read Until    priority : 1635028093
     Log    ${output}
     Should Contain X Times    ${output}    === Event startIntegration received =     1
-    Should Contain    ${output}    imageSequenceName : XVfwkixNMNMpALDcFuxeUsxLGjeOcfDExriLQXEJrhYEgfPUHUWNjGKlXaMbaFDyMWTsUimZlbBsnjKdkRYIIdcsCeUvHRElEqLqFUPROPnOkgLaibYkoMOokjrpsmSNTgLjRjGIGiPTuNNMkKjTodpdcRsdbrcbUIOQEODfPoypSNMGuapgSiLEsghbeGOemjrPRcFpmpfGPpBxgWDyLwFnoKSUssGyrwRtHYiExaKfUkcBjvedmfzczmtWJrPT
-    Should Contain    ${output}    imagesInSequence : -280000741
-    Should Contain    ${output}    imageName : ZejSyxqfGMuELEEpIBbXmDUiIwTZpkeqrnApMoiSlDOoAHsPfWWCvZWinfGNdWhObHOPLbtjItNLOHLEofQZHsKFkQTSmQraAIZLWwyTiXnduuunguotrUXYLPYDenzVMSYfbguCpZEbnyWSLdayfpcijOJGwKkHzOJclealiIXkMfpApooZzhZtErVTzGvnjNYnysBVlWTjYSDtCCwGQixiQZtjzSjxxspdomylUgsRCNdFMxEdYbzjTaYJiKbc
-    Should Contain    ${output}    imageIndex : -61436760
-    Should Contain    ${output}    timeStamp : 70.1702
-    Should Contain    ${output}    exposureTime : 25.2474
-    Should Contain    ${output}    priority : -75953034
+    Should Contain    ${output}    imageSequenceName : hKUmkFAVWebhFwQIpbGBxVloPMunhLbxPoFzZckxbkWrDCuXeWfsjvmShTaDOLUmIZGDdjvQeKGuzwifHOULoMosxDsDYKdpPIxzCKsNcZRPNvbVLBJQudGEEMviymEhVYcSEYALAwqdldyHpMFXGEahVtngkKUCgVpvhKKtoTIyJaDPkhgKzvWUzJQGlqaiszJoJOkhUDxJXDvbzPXvuBuVsFHufaaPSvwGUFwhYWjYOiyImdKrhPmjVoadKvJp
+    Should Contain    ${output}    imagesInSequence : -1432151819
+    Should Contain    ${output}    imageName : ujlFJmGASoueHQquBGQkGseQrKBNnspzywcpwBobtuLnltsApflszugZBGpLuJugZHLeZaXckCGbOvNmFRTGrzFIZSPJQZDOXSrtHyRvsPnJIdbKhvjSkzHBWliWbOOgKwUJpgxzmYJWNXYSWetBJOVTiYiRhvcaDubZChIHzZupXpfMkuREMyxJXLDhkKbsakOZjchghdDtBWiIbBfXVKbdMPZFvwCiWEPLVxBufzBzgITbTTGGqNNUoJFnUGCa
+    Should Contain    ${output}    imageIndex : 478490531
+    Should Contain    ${output}    timeStamp : 47.5122
+    Should Contain    ${output}    exposureTime : 17.8363
+    Should Contain    ${output}    priority : 1635028093
