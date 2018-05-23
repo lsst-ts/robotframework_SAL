@@ -185,18 +185,6 @@ function checkIfSkipped() {
         skipped="TSS-2680"
     elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
         skipped="TSS-2679"
-	elif [[ ("$subsystem" == "camera") && ("$messageType" == "events") ]]; then
-		skipped="TSS-2677"
-    elif [[ ("$subsystem" == "promptProcessing") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2678"
-    elif [[ ("$subsystem" == "catchupArchiver") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2676"
-    elif [[ ("$subsystem" == "atcamera") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2675"
-    elif [[ ("$subsystem" == "atArchiver") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2674"
-    elif [[ ("$subsystem" == "archiver") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2673"
 	elif [[ ("$subsystem" == "tcsOfc") ]]; then
 		skipped="TSS-2625"
 	elif [[ ("$subsystem" == "tcsWEP") ]]; then
@@ -209,6 +197,8 @@ function checkIfSkipped() {
 		skipped="TSS-2617"
 	elif [[ ("$subsystem" == "vms") ]]; then
 		skipped="TSS-2618"
+	elif [[ ("$subsystem" == "atMonochromator") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
 	else
 		skipped=""
 	fi
