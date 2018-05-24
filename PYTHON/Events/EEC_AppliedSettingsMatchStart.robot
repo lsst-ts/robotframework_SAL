@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : appliedSettingsMatchStartIsTrue timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp appliedSettingsMatchStartIsTrue priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 40.7862 1360249932
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 2.1619 1 1914727169
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_AppliedSettingsMatchStart writing a message containing :    1

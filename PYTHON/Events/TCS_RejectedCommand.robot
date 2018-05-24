@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 61253 29308 72.0803 -709794135
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 48036 30582 68.1374 -1107151535
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_RejectedCommand writing a message containing :    1

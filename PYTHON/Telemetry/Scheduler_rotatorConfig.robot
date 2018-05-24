@@ -55,5 +55,6 @@ Read Subscriber
     Should Contain X Times    ${list}    maxspeed = 1.0    10
     Should Contain X Times    ${list}    accel = 1.0    10
     Should Contain X Times    ${list}    decel = 1.0    10
+    Should Contain X Times    ${list}    manual_rotator = 1    10
     Should Contain X Times    ${list}    followsky = 1    10
     Should Contain X Times    ${list}    resume_angle = 1    10

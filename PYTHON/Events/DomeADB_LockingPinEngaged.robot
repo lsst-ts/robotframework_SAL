@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1644266655
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 571034151
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_LockingPinEngaged writing a message containing :    1

@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : errorCode timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp errorCode priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -2121842958 2.6367 -1891380398
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 38.4327 -1522635719 2137313462
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_ErrorCode writing a message containing :    1

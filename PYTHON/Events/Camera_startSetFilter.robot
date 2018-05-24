@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : filterName priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -218491024
+    ${input}=    Write    python ${subSystem}_Event_${component}.py KfGgPuAkblUFPbEBxSZrjVLMFMqxeZdLDperbqVCBIbRiIxesCMaieqWioHXjFLmgeBAIqzgOfJAnIfefoUSLIRQbnCvXAqSzToCDYLrPuySdPYbLhmuvpHWCxEhOKTULtYUYuQZdOwoAonzPNKaRpTfqyUBYJHNlcBOTCHavhRzHsGyqlJulXhzZIbxLZNwVzQCHcFlfQaamsSsypnNUkAhZHvSgqAaIvezuhUicyvuWYoGRrxEnbvyPCOESvgh 542375687
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startSetFilter writing a message containing :    1

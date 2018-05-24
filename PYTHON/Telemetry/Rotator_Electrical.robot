@@ -49,6 +49,5 @@ Read Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
-    Should Contain X Times    ${list}    error(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
-    Should Contain X Times    ${list}    status(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
-    Should Contain X Times    ${list}    voltage(16) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]    10
+    Should Contain X Times    ${list}    CopleyStatusWordDrive(2) = [0, 1]    10
+    Should Contain X Times    ${list}    CopleyLatchingFaultStatus(2) = [0, 1]    10

@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 29.6146 26.6035 25.935 54.0457 5.7109 64.6747 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.1480239018 0.413096175677 0.102460258789 0.146263830325 0.991025510505 0.242160156755 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,20 +60,20 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 29.6146 26.6035 25.935 54.0457 5.7109 64.6747 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.1480239018 0.413096175677 0.102460258789 0.146263830325 0.991025510505 0.242160156755 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : actuators    1
-    Should Contain X Times    ${output}    property : position    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 29.6146    1
-    Should Contain X Times    ${output}    y : 26.6035    1
-    Should Contain X Times    ${output}    z : 25.935    1
-    Should Contain X Times    ${output}    u : 54.0457    1
-    Should Contain X Times    ${output}    v : 5.7109    1
-    Should Contain X Times    ${output}    w : 64.6747    1
+    Should Contain X Times    ${output}    x : 0.1480239018    1
+    Should Contain X Times    ${output}    y : 0.413096175677    1
+    Should Contain X Times    ${output}    z : 0.102460258789    1
+    Should Contain X Times    ${output}    u : 0.146263830325    1
+    Should Contain X Times    ${output}    v : 0.991025510505    1
+    Should Contain X Times    ${output}    w : 0.242160156755    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command offset issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -85,16 +85,16 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command offset received =
-    Should Contain    ${output}    device : actuators
-    Should Contain    ${output}    property : position
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 29.6146    1
-    Should Contain X Times    ${output}    y : 26.6035    1
-    Should Contain X Times    ${output}    z : 25.935    1
-    Should Contain X Times    ${output}    u : 54.0457    1
-    Should Contain X Times    ${output}    v : 5.7109    1
-    Should Contain X Times    ${output}    w : 64.6747    1
+    Should Contain X Times    ${output}    x : 0.1480239018    1
+    Should Contain X Times    ${output}    y : 0.413096175677    1
+    Should Contain X Times    ${output}    z : 0.102460258789    1
+    Should Contain X Times    ${output}    u : 0.146263830325    1
+    Should Contain X Times    ${output}    v : 0.991025510505    1
+    Should Contain X Times    ${output}    w : 0.242160156755    1
     Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_offset] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

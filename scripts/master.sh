@@ -1,1 +1,1 @@
-./CppComCon.sh* ; ./CppEvents.sh* ; ./CppPubSub.sh* ; ./CppState.sh* ; ./JavaPubSub.sh* ; ./JavaComCon.sh* ; ./JavaState.sh* ; ./JavaEvents.sh* ; ./PythonComCon.sh* ; ./PythonEvents.sh* ; ./PythonPubSub.sh* ; ./PythonState.sh*
+./CppComCon.sh* $1 ; ./CppEvents.sh* $1 ; ./CppPubSub.sh* $1 ; ./CppState.sh* $1 ; ./JavaPubSub.sh* $1 ; ./JavaComCon.sh* $1 ; ./JavaState.sh* $1 ; ./JavaEvents.sh* $1 ; ./PythonComCon.sh* $1 ; ./PythonEvents.sh* $1 ; ./PythonPubSub.sh* $1 ; ./PythonState.sh* $1

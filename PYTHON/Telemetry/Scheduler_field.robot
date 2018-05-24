@@ -52,7 +52,7 @@ Read Subscriber
     Should Contain X Times    ${list}    ID = 1    10
     Should Contain X Times    ${list}    fov = 1.0    10
     Should Contain X Times    ${list}    ra = 1.0    10
-    Should Contain X Times    ${list}    dec = 1.0    10
+    Should Contain X Times    ${list}    decl = 1.0    10
     Should Contain X Times    ${list}    gl = 1.0    10
     Should Contain X Times    ${list}    gb = 1.0    10
     Should Contain X Times    ${list}    el = 1.0    10

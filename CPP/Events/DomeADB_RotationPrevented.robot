@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RAlhECyHDgoaDTOJvujrSYGwjGiBIAVGBkpkFbqoaUnqJcDQQbHeomqhDGfynGdcyrDTRdCqLLwDxPCKDxpqxTFVOntoqhfIvOyGDhuOigIpHhFBOQoTRYbQCPPuLBKlZwpNhPDUwnTlebSlgeBSOodmqteliecYYwJAgywEIYPobgzfpXtwfbhHIYTJTkvsYuxEpaLEjctBnyXdeUslefqurmwQqGeAGRDyistOKXHKLQXZLayADnAnzRYZWCsjNvMOUDJriMRcAamLONfrkTNdXGeeJHVpjorVTFaXiaaUKEbJuxjMYGWzmclNAmFvOGYrDoJzQaDhhYqvIQgKHZCjaqexdhtGfXJGGIWAMlcjbXfzvobmsaEpmoswvqRNsgtTeQFIimGxnJaPRaDQGkgaaXENNpONIQBaVVsWyPASVASPmmjctLAdVuRKICjXMurdrHNTWSygDAtfifUBCYZLFPVitJHWkhZgEsxmiZZjRZGPTEGuOzFSmHKxJrPGBiPeepuEizqNIKYEvVHRkafGYJcbTXxfDdOGxLtcsbxqJhfCWLVyXJNUXxnpUSIboGlRyINtBvCYCvvwUZBvoWNvrYjNaCvQPgdlRgElcIhNehzPpbHoyWnrdMACmLjZESjepYOjWTndDgnXzNCjVBeZbnFmVLozOjGhlzECuVMKfmcYpuIgKcplANztHJNiHlRFgHISwsFJzgPiPDoSoEMZUhWwQDgfxWxfolDabpyVobmoZeDaTpekudLQoLvvWNzRuooDLEgkSAVWQoihkqNBYPrAfWIDqOubzRoSNUzrlbGgKXUTDcLLwFrOHTfPhmhqKgbRyUPzCwnJdgtGDfrdtPFYQuwdfvNYGrwAkeHJWJTyVHgUNhCOgcAFwNrQLmlyUIvSWwenWFPeTQYWvyOsSWGYwzCGfxiNsjashnmplBhNbCSafz 23122892
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ZYaMgaRoikKqYVOtNCTZ 316142396
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 23122892
+    ${output}=    Read Until    priority : 316142396
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationPrevented received =     1
-    Should Contain    ${output}    causeId : RAlhECyHDgoaDTOJvujrSYGwjGiBIAVGBkpkFbqoaUnqJcDQQbHeomqhDGfynGdcyrDTRdCqLLwDxPCKDxpqxTFVOntoqhfIvOyGDhuOigIpHhFBOQoTRYbQCPPuLBKlZwpNhPDUwnTlebSlgeBSOodmqteliecYYwJAgywEIYPobgzfpXtwfbhHIYTJTkvsYuxEpaLEjctBnyXdeUslefqurmwQqGeAGRDyistOKXHKLQXZLayADnAnzRYZWCsjNvMOUDJriMRcAamLONfrkTNdXGeeJHVpjorVTFaXiaaUKEbJuxjMYGWzmclNAmFvOGYrDoJzQaDhhYqvIQgKHZCjaqexdhtGfXJGGIWAMlcjbXfzvobmsaEpmoswvqRNsgtTeQFIimGxnJaPRaDQGkgaaXENNpONIQBaVVsWyPASVASPmmjctLAdVuRKICjXMurdrHNTWSygDAtfifUBCYZLFPVitJHWkhZgEsxmiZZjRZGPTEGuOzFSmHKxJrPGBiPeepuEizqNIKYEvVHRkafGYJcbTXxfDdOGxLtcsbxqJhfCWLVyXJNUXxnpUSIboGlRyINtBvCYCvvwUZBvoWNvrYjNaCvQPgdlRgElcIhNehzPpbHoyWnrdMACmLjZESjepYOjWTndDgnXzNCjVBeZbnFmVLozOjGhlzECuVMKfmcYpuIgKcplANztHJNiHlRFgHISwsFJzgPiPDoSoEMZUhWwQDgfxWxfolDabpyVobmoZeDaTpekudLQoLvvWNzRuooDLEgkSAVWQoihkqNBYPrAfWIDqOubzRoSNUzrlbGgKXUTDcLLwFrOHTfPhmhqKgbRyUPzCwnJdgtGDfrdtPFYQuwdfvNYGrwAkeHJWJTyVHgUNhCOgcAFwNrQLmlyUIvSWwenWFPeTQYWvyOsSWGYwzCGfxiNsjashnmplBhNbCSafz
-    Should Contain    ${output}    priority : 23122892
+    Should Contain    ${output}    causeId : ZYaMgaRoikKqYVOtNCTZ
+    Should Contain    ${output}    priority : 316142396

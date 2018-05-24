@@ -171,6 +171,7 @@ function readSubscriber {
 
 function createTestSuite {
 	subSystem=$1
+    messageType="telemetry"
 	file=$2
 	topicIndex=1
 	for topic in "${topicsArray[@]}"; do
@@ -181,7 +182,7 @@ function createTestSuite {
 		getTopicParameters $file $topicIndex
 
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -202,6 +203,7 @@ function createTestSuite {
 
 
 #  MAIN
+subSystem=$(getEntity $arg)
 if [ "$arg" == "all" ]; then
     for subsystem in "${subSystemArray[@]}"; do
         declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
@@ -215,18 +217,18 @@ if [ "$arg" == "all" ]; then
         done
     done
     echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-    declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$arg/*_Telemetry.xml)
-    subSystemUp=$(capitializeSubsystem $arg)
+elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
+    declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$subSystem/*_Telemetry.xml)
+    subSystemUp=$(capitializeSubsystem $subSystem)
     #  Delete all the test suites.  This is will expose deprecated topics.
     clearTestSuites $subSystemUp "PYTHON" "Telemetry"
 
     for file in "${filesArray[@]}"; do
-        getTopics $arg $file
+        getTopics $subSystem $file
 
-        createTestSuite $arg $file
+        createTestSuite $subSystem $file
     done
-    echo COMPLETED all test suites for the $arg.
+    echo COMPLETED all test suites for the $subSystem.
 else
     echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi

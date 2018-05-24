@@ -63,3 +63,5 @@ Read Subscriber
     Should Contain X Times    ${list}    ignore_airmass = 1    10
     Should Contain X Times    ${list}    ignore_clouds = 1    10
     Should Contain X Times    ${list}    ignore_seeing = 1    10
+    Should Contain X Times    ${list}    lookahead_window_size = 1    10
+    Should Contain X Times    ${list}    lookahead_bonus_weight = 1.0    10

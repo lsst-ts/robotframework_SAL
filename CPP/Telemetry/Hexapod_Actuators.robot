@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_Actuators communications tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2679
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -27,7 +27,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
     ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${output}=    Read Until    [Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
 

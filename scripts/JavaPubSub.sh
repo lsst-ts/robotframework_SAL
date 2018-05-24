@@ -79,7 +79,7 @@ function startSubscriber {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/java/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
     echo "    \${input}=    Write    java -cp \$SAL_HOME/lib/saj_\${subSystem}_types.jar:./classes:\$OSPL_HOME/jar/dcpssaj.jar:saj_\${subSystem}_\${component}_sub.jar \${subSystem}_\${component}DataSubscriber" >> $testSuite
-    echo "    \${output}=    Read Until    [\${component} Subscriber] Ready" >> $testSuite
+    echo "    \${output}=    Read Until    [\${component} Subscriber] Ready ..." >> $testSuite
     echo "    Log    \${output}" >> $testSuite
 	echo "    Should Contain    \${output}    [createTopic] : topicName \${subSystem}_\${component} type = \${subSystem}::\${component}">> $testSuite
 	if [ $subSystem == "hexapod" ]; then
@@ -106,8 +106,7 @@ function startPublisher {
     echo "    Should Contain    \${output}    [createTopic] : topicName \${subSystem}_\${component} type = \${subSystem}::\${component}">> $testSuite
     echo "    Should Contain    \${output}    [createwriter idx] : topic org.opensplice.dds.dcps.TopicImpl@ ">> $testSuite
     echo "    Should Contain    \${output}    writer = \${subSystem}.\${component}DataWriterImpl@">> $testSuite
-    echo "    Should Contain X Times    \${output}    [putSample \${component}] writing a message containing :    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Publisher] message sent    5" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -117,13 +116,13 @@ function readSubscriber {
     echo "    Switch Connection    Subscriber" >> $testSuite
     echo "    \${output}=    Read    delay=1s" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [getSample \${component} ] message received :    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    5" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ :    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Subscriber] samples    5" >> $testSuite
+    echo "    Should Contain X Times    \${output}    [\${component} Subscriber] message received :    5" >> $testSuite
 }
 
 function createTestSuite {
 	subSystem=$1
+    messageType="telemetry"
 	file=$2
 	index=1
 	for topic in "${topicsArray[@]}"; do
@@ -137,7 +136,7 @@ function createTestSuite {
 		getTopicItems $file $index
 
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite

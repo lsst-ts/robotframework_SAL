@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29462 jAqftwyRq 409572345
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -23362 SkDvJUMvgjLABLylCoWnbTEHjAaXRDMcYKtgPbeGyJgxTetxUpDQQWzazybzvkhiWUpZYtLGUUKZvUeqqgvsiiahhkNnqTXqKwLaVkjzYvhUQICnRJkxJCORjQvXImJPLJFUwExZUZxlQgfjeZNYVPwhkOWaWCAeUxizfOmxHTYhSQyzwUURCjbZHzUOphRBhFAfxgtMuyTElVvlsBwSxpeZOoOIzCrxEtoVJCjDHOnYqRWexcygeNFITfLwXWmJsBUA -1453323346
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementPrevented writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 409572345
+    ${output}=    Read Until    priority : -1453323346
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    louverID : 29462
-    Should Contain    ${output}    causeId : jAqftwyRq
-    Should Contain    ${output}    priority : 409572345
+    Should Contain    ${output}    louverID : -23362
+    Should Contain    ${output}    causeId : SkDvJUMvgjLABLylCoWnbTEHjAaXRDMcYKtgPbeGyJgxTetxUpDQQWzazybzvkhiWUpZYtLGUUKZvUeqqgvsiiahhkNnqTXqKwLaVkjzYvhUQICnRJkxJCORjQvXImJPLJFUwExZUZxlQgfjeZNYVPwhkOWaWCAeUxizfOmxHTYhSQyzwUURCjbZHzUOphRBhFAfxgtMuyTElVvlsBwSxpeZOoOIzCrxEtoVJCjDHOnYqRWexcygeNFITfLwXWmJsBUA
+    Should Contain    ${output}    priority : -1453323346

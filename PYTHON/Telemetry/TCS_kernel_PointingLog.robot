@@ -51,7 +51,7 @@ Read Subscriber
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    Aux(3) = [0.0, 1.0, 2.0]    10
     Should Contain X Times    ${list}    Casspa = 1.0    10
-    Should Contain X Times    ${list}    Dec = 1.0    10
+    Should Contain X Times    ${list}    Decl = 1.0    10
     Should Contain X Times    ${list}    Fl = 1.0    10
     Should Contain X Times    ${list}    Humid = 1.0    10
     Should Contain X Times    ${list}    Marked = 1    10

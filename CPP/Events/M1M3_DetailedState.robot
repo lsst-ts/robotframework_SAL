@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_DetailedState sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 45.8433 -1987840044 -1575466935
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 76.1451 1095460743 -1951989080
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_DetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1575466935
+    ${output}=    Read Until    priority : -1951989080
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    Timestamp : 45.8433
-    Should Contain    ${output}    DetailedState : -1987840044
-    Should Contain    ${output}    priority : -1575466935
+    Should Contain    ${output}    Timestamp : 76.1451
+    Should Contain    ${output}    DetailedState : 1095460743
+    Should Contain    ${output}    priority : -1951989080

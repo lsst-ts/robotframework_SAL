@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 75721313
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send vNRMEBMqkIeHmtoxolsKDJUJlMKVlWgZZOAnkftqMYfgQSFEnpxOUxCsdHnLbFWOGaqXKJlswOLAiwxtXWtJeFIaQoBOVlAcVTZJigrLhqDXiXCCaPwgaoDOTNcqkUbESRIqzcXCxEwqjsgyvUMLRirsTcosFgwqcsmjjraghsWFUhGfMstwphUpGDnUQLlABIcRhBLRpBDluGbHawRkLJQDLnWqEpPkdehXbWmhALQvrEsRCQYuEhHrMlmUvSDq -702558984
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startSetFilter writing a message containing :    1
@@ -57,7 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 75721313
+    ${output}=    Read Until    priority : -702558984
     Log    ${output}
     Should Contain X Times    ${output}    === Event startSetFilter received =     1
-    Should Contain    ${output}    priority : 75721313
+    Should Contain    ${output}    filterName : vNRMEBMqkIeHmtoxolsKDJUJlMKVlWgZZOAnkftqMYfgQSFEnpxOUxCsdHnLbFWOGaqXKJlswOLAiwxtXWtJeFIaQoBOVlAcVTZJigrLhqDXiXCCaPwgaoDOTNcqkUbESRIqzcXCxEwqjsgyvUMLRirsTcosFgwqcsmjjraghsWFUhGfMstwphUpGDnUQLlABIcRhBLRpBDluGbHawRkLJQDLnWqEpPkdehXbWmhALQvrEsRCQYuEhHrMlmUvSDq
+    Should Contain    ${output}    priority : -702558984

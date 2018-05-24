@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1403696579
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1195786510
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationEnabled writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1403696579
+    ${output}=    Read Until    priority : -1195786510
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationEnabled received =     1
-    Should Contain    ${output}    priority : -1403696579
+    Should Contain    ${output}    priority : -1195786510

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_Application communications tests.
-Force Tags    java    
+Force Tags    java    TSS-2679
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -45,14 +45,12 @@ Start Publisher
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
     Should Contain    ${output}    [createwriter idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
     Should Contain    ${output}    writer = ${subSystem}.${component}DataWriterImpl@
-    Should Contain X Times    ${output}    [putSample ${component}] writing a message containing :    5
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
+    Should Contain X Times    ${output}    [${component} Publisher] message sent    5
 
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    [getSample ${component} ] message received :    5
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
-    Should Contain X Times    ${output}    revCode \ :    5
+    Should Contain X Times    ${output}    [${component} Subscriber] samples    5
+    Should Contain X Times    ${output}    [${component} Subscriber] message received :    5

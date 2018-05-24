@@ -20,7 +20,7 @@ elif args.datatype == "double":
 	# ... str() and rstrip() to handle the case of XY.0, which SAL modifies to XY.
 	value=str(round(random.uniform(0,100),4)).rstrip('0').rstrip('.')
 elif args.datatype == "float":
-	value=random.uniform(0,1)
+	value='{:f}'.format(random.uniform(0,1)).rstrip('0').rstrip('.')
 elif args.datatype == "int":
 	value=random.randint(-32767,32767)
 elif args.datatype == "long":
@@ -38,4 +38,4 @@ elif args.datatype == "byte":
 else:
         value="test"
 
-print value
+print(value)

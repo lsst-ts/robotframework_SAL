@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xeaVIsasCNgAPpOujXMsDlCZjfYDvNczhcohbUJkdxuQoOptBuSgOtBpFsBfLbiYhYUvXaBmjeUkwHQOVDUNVYANjIMxngDaylofQhMokWfqnnFFjLTWuAomTGKCzBEqrnQkESmYtDRzfVeTFWypzWTNEWysTOTvbOYwTpXzxbHUjwveuCNjYGeitfQDRTMwgLlJyiKbkknEeYmmqgmGDgjqhIrSEydKjnyaXKZeajlqqEisGkoyZTDdKqPcsKSAUFAatzHLyDiSMUxRAdsDJABDUnPeCGVDqxfIgoluUJXknQQPyZyTukROnnfgHxNjQQpvvMVDPbIIzCseJgpvbJlmhOCQuQweoIKIfsCmWGBjioKsigniyGSHqfXzHVQXiwYpFjEuDYqiLQoDlOcfHgPYIuKhuiutSTYhVWtmehyiuaibwRSJyrNLlgjigiHeXjlzAJKqZDpMyEdUedwBLgmEiNXvqfdjvSIyRuSJkzyUBIuVMeFuoXhimwxSTZHkEObovCehOvzyMzmElbkyBdinXPLTsceZxiRClfFkBGMEWPYeZUIEwVAhyRceaOoRlMXaCbBxUxCklauybWfSHKGumtIpagqgHLylqRgKsjowRxpYHaIxVccOpRHMppKaShBcgZGObGScemfMWCVkVHLWoMlfpFlHySkvkmCCKNbBhTuVoTgbdDGIDwNFoRpRhce 365650766
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq 1098696627
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 365650766
+    ${output}=    Read Until    priority : 1098696627
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : xeaVIsasCNgAPpOujXMsDlCZjfYDvNczhcohbUJkdxuQoOptBuSgOtBpFsBfLbiYhYUvXaBmjeUkwHQOVDUNVYANjIMxngDaylofQhMokWfqnnFFjLTWuAomTGKCzBEqrnQkESmYtDRzfVeTFWypzWTNEWysTOTvbOYwTpXzxbHUjwveuCNjYGeitfQDRTMwgLlJyiKbkknEeYmmqgmGDgjqhIrSEydKjnyaXKZeajlqqEisGkoyZTDdKqPcsKSAUFAatzHLyDiSMUxRAdsDJABDUnPeCGVDqxfIgoluUJXknQQPyZyTukROnnfgHxNjQQpvvMVDPbIIzCseJgpvbJlmhOCQuQweoIKIfsCmWGBjioKsigniyGSHqfXzHVQXiwYpFjEuDYqiLQoDlOcfHgPYIuKhuiutSTYhVWtmehyiuaibwRSJyrNLlgjigiHeXjlzAJKqZDpMyEdUedwBLgmEiNXvqfdjvSIyRuSJkzyUBIuVMeFuoXhimwxSTZHkEObovCehOvzyMzmElbkyBdinXPLTsceZxiRClfFkBGMEWPYeZUIEwVAhyRceaOoRlMXaCbBxUxCklauybWfSHKGumtIpagqgHLylqRgKsjowRxpYHaIxVccOpRHMppKaShBcgZGObGScemfMWCVkVHLWoMlfpFlHySkvkmCCKNbBhTuVoTgbdDGIDwNFoRpRhce
-    Should Contain    ${output}    priority : 365650766
+    Should Contain    ${output}    response : wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq
+    Should Contain    ${output}    priority : 1098696627

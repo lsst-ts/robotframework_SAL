@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_ErrorCode sender/logger tests.
-Force Tags    cpp    
+Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 66.4183 -66939601 -307078862
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 99.664 -177906973 -401865259 1500267867
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -307078862
+    ${output}=    Read Until    priority : 1500267867
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    Timestamp : 66.4183
-    Should Contain    ${output}    ErrorCode : -66939601
-    Should Contain    ${output}    priority : -307078862
+    Should Contain    ${output}    Timestamp : 99.664
+    Should Contain    ${output}    ErrorCode : -177906973
+    Should Contain    ${output}    DetailedErrorCode : -401865259
+    Should Contain    ${output}    priority : 1500267867

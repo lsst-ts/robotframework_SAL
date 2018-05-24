@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_SummaryState sender/logger tests.
-Force Tags    python    
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 77.0827 1701834087 -762645848
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 90.8941 1494033816 2034490180
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_SummaryState writing a message containing :    1

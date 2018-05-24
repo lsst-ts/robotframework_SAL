@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TJpffOHbTUbGmtooDexSppxgRIBHzTSacnZcHpAPoFhBsJbvEYybVMyJtEXnlwkZszULYHNYZMJnzOmpbWNnBWEeMbCVGYLcWfyPKXNWVOdpJAAsuAjSgEPWLUClacrTsQgjeXNZDTfgHpwMzpbUQGdMGOtprcHlEmlLxTpmKCnLcgLZfioEVGfeewTZOpeQcgdPAgRURiywmzFHWuVybXQGzFQwPyPfvRMnexsJVnOQnCdKHksDsvUZxaTrJgLnykTfarnGIhSureOxyEeZxcEMiepfSiIAFDbwCozDxXYFcWjqmPddvncIlsCTrkvjSVIVIVjruvDlNKFlSBWyCdVYJNknVxSWmjFDnYzjiTzlbdUBzbaCRCqUMfdCdkgPcKHwHsftNclTVXzKHLHQvHaHDoQXmAOXVJUdTeSxFsvtImsMoxSZxaxyYIUcgkESyTalEmWQlkbIPXtQGGSPzchqzZTaatAZoMsnulBytaLDpOesWHdevHMeFeszTfKxroSWyuPTlZuprsglvYfebJWCfhegDluWRTJdSnnPVkDzmtVdzioBiXsevYzGWvbsJsXYVDYQaRpuvVpOAuQxArCYibJvKxLotYfoErbasXDFyPRJAHKQGwUlkaFpyIptCfAlOlqvfOPbxkJoFteBgaSGymDylDPHHJwssqxXp -1639521802
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UGGmrygyTtzeyMXlyVNjBdHbJdjlzdewBnjVkUsgF 1637273044
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1639521802
+    ${output}=    Read Until    priority : 1637273044
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : TJpffOHbTUbGmtooDexSppxgRIBHzTSacnZcHpAPoFhBsJbvEYybVMyJtEXnlwkZszULYHNYZMJnzOmpbWNnBWEeMbCVGYLcWfyPKXNWVOdpJAAsuAjSgEPWLUClacrTsQgjeXNZDTfgHpwMzpbUQGdMGOtprcHlEmlLxTpmKCnLcgLZfioEVGfeewTZOpeQcgdPAgRURiywmzFHWuVybXQGzFQwPyPfvRMnexsJVnOQnCdKHksDsvUZxaTrJgLnykTfarnGIhSureOxyEeZxcEMiepfSiIAFDbwCozDxXYFcWjqmPddvncIlsCTrkvjSVIVIVjruvDlNKFlSBWyCdVYJNknVxSWmjFDnYzjiTzlbdUBzbaCRCqUMfdCdkgPcKHwHsftNclTVXzKHLHQvHaHDoQXmAOXVJUdTeSxFsvtImsMoxSZxaxyYIUcgkESyTalEmWQlkbIPXtQGGSPzchqzZTaatAZoMsnulBytaLDpOesWHdevHMeFeszTfKxroSWyuPTlZuprsglvYfebJWCfhegDluWRTJdSnnPVkDzmtVdzioBiXsevYzGWvbsJsXYVDYQaRpuvVpOAuQxArCYibJvKxLotYfoErbasXDFyPRJAHKQGwUlkaFpyIptCfAlOlqvfOPbxkJoFteBgaSGymDylDPHHJwssqxXp
-    Should Contain    ${output}    priority : -1639521802
+    Should Contain    ${output}    errorCode : UGGmrygyTtzeyMXlyVNjBdHbJdjlzdewBnjVkUsgF
+    Should Contain    ${output}    priority : 1637273044

@@ -26,7 +26,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/java/standalone
     Comment    Start Subscriber.
     ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_sub.jar ${subSystem}_${component}DataSubscriber
-    ${output}=    Read Until    [${component} Subscriber] Ready
+    ${output}=    Read Until    [${component} Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
     Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
@@ -45,14 +45,12 @@ Start Publisher
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
     Should Contain    ${output}    [createwriter idx] : topic org.opensplice.dds.dcps.TopicImpl@ 
     Should Contain    ${output}    writer = ${subSystem}.${component}DataWriterImpl@
-    Should Contain X Times    ${output}    [putSample ${component}] writing a message containing :    5
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
+    Should Contain X Times    ${output}    [${component} Publisher] message sent    5
 
 Read Subscriber
     [Tags]    functional
     Switch Connection    Subscriber
     ${output}=    Read    delay=1s
     Log    ${output}
-    Should Contain X Times    ${output}    [getSample ${component} ] message received :    5
-    Should Contain X Times    ${output}    revCode \ : LSST TEST REVCODE    5
-    Should Contain X Times    ${output}    revCode \ :    5
+    Should Contain X Times    ${output}    [${component} Subscriber] samples    5
+    Should Contain X Times    ${output}    [${component} Subscriber] message received :    5

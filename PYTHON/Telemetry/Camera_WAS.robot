@@ -55,6 +55,6 @@ Read Subscriber
     Should Contain X Times    ${list}    Board_voltage(4) = [0.0, 1.0, 2.0, 3.0]    10
     Should Contain X Times    ${list}    CABAC_MUX(4) = [0, 1, 2, 3]    10
     Should Contain X Times    ${list}    CCD_ID = 1    10
-    Should Contain X Times    ${list}    CCD_temp = 1.0    10
+    Should Contain X Times    ${list}    CCD_temp = 1    10
     Should Contain X Times    ${list}    FPGACheckSum(2) = [0, 1]    10
     Should Contain X Times    ${list}    REB_ID = 1    10

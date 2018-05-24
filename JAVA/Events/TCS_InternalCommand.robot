@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    TCS_InternalCommand sender/logger tests.
-Force Tags    java    
+Force Tags    java    TSS-2724
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections

@@ -27,7 +27,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
     ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${output}=    Read Until    [Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
 
@@ -154,6 +154,7 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusion_bounds : 7    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusion_bounds : 8    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusion_bounds : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}field_revisit_limit : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_filters : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter_names : LSST    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_visits : 1    1
@@ -174,6 +175,15 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_grouped_visits : 7    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_grouped_visits : 8    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}num_grouped_visits : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_grouped_visits : 9    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}bright_limit : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}bright_limit : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}bright_limit : 3    1
@@ -222,6 +232,9 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_num_targets : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}accept_serendipity : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}accept_consecutive_visits : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}restart_lost_sequences : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}restart_complete_sequences : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}max_visits_goal : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass_bonus : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}hour_angle_bonus : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}hour_angle_max : 1    9

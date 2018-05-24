@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_Start commander/controller tests.
+Documentation    EEC_start commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    eec
-${component}    Start
+${component}    start
 ${timeout}    30s
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander LnGjfQxZTJJIFIRANzfKmNzWsDPJjgfsfjkgrHlkufrUNZdtmhEsPpxTXQpezflRRirwSRpvIFOiQowueJmeYljbjnwUmBOpIcSRKnqvBYdnkmUeCgXXqkWKYKacaPMCipqrHwdeHcZavTkhfMkRHHkagTfAaeyIZMQMwXPLMMyormDcbRKfYclyqYrkHoOkoikyIIcSYblZZpKVRHeEqcCctMCITigZCHNEJDWKZrhDMcMBWojCvomEMvSyLSVEKzhzlvbpwUGUCCqXSbUbGlAWvaRAQQQbNFlLspeAyakrTjXfZDHZYsBgmTVWevRuwQlGmPqUHRLOBnwWTsBFYEPxVKGYqiPRUNQtIkEmSPDEWvgyyvjRnkKoBSvcriHZJCJieJZtzoQfwkyfaIfGDifDutBvmwcUHVZrSqjgPLXpVUrdwvDcbkqEYdkanVcJfmzXjNNBXramLNEaaWTzxHArcyyLhItSBpoUddhoyKOXFxVPAuYvAbgylWJKdkAgyEldQmVfhpLTPlwdrqjpWCwOxtixwIogQMqBXUAhSjGseILahwzwGWktTTjYWYAfbHukNyOKLthBQsDBydhNMgTfOScMxkrTsTaVORrpnQFSZVFeyjntHwHeOrkSyyzNGBoFYszKlIiAfHsoHGaZefzfhCXmKhwbDSsSbIBTlyNUASJrTEzrgrqUTBepHVHrDBBahRCwlqTgbpjmULCcOAASRrXANIaVFzFaTsSHTolYLHZEikXuzorSWnqohqwZdlsNovemYIMMmQnSdlNngBohhobHLbGvbwNIayDBOHkfxLHqQPsYdvCgximFwxuuKdZwRjpzFLrAoStOFQXLFionlZgDexZceCFbBivtUcbytwcpWmKjAlYgtiLmesEzOthMZKovVNOLvVSSIKNZFZNvxuWVPVaHsBHdWFHjHjXiRWsJYkigpCNNLXIAVDtGTRtyDrgJlUmrWfvAkNzSdNCYdAVrgVJD
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander DTDHMvdbCteshaLUcIbOxUPtYoWqfnnytulmOdrlLaqtiFjSCzxkaGLJXEwLKIbiIZgjdAdatZoMnxOGIwqSBnblQOqjGdrJlvwFHGFMiflfBPMQpRezLJTSXufUlRYEIndutanWLhmkudlqrGiYgUSvJWSDyQQVLWiFZuqqpAOylJnCtPsvhOKwVXxKLVXafwHhFVZyWrgVlADCntUwTUsIlrtMnuGEuPIMOnhDHyyppknxMIewANCuWhPpXvxFsApYhKBxafOBwwEFPUjpULqTKzgskjLAuowvviikzbrmTEsftVoMCNXCzIJHZYTcsfDqTDOEuEONPXcNAmgynGauIVQyAZwEUUYkVrYZqZOHrmqkWacLliXWlDpKMKSveJjHhpkbBluZJjOGLiElzmIUNZLzzMMGjOAKTYZQCkpyMCDXgGaMaIgARduSAnCYjbXdPnOfHLuaremLnUfXgumAecAl
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander LnGjfQxZTJJIFIRANzfKmNzWsDPJjgfsfjkgrHlkufrUNZdtmhEsPpxTXQpezflRRirwSRpvIFOiQowueJmeYljbjnwUmBOpIcSRKnqvBYdnkmUeCgXXqkWKYKacaPMCipqrHwdeHcZavTkhfMkRHHkagTfAaeyIZMQMwXPLMMyormDcbRKfYclyqYrkHoOkoikyIIcSYblZZpKVRHeEqcCctMCITigZCHNEJDWKZrhDMcMBWojCvomEMvSyLSVEKzhzlvbpwUGUCCqXSbUbGlAWvaRAQQQbNFlLspeAyakrTjXfZDHZYsBgmTVWevRuwQlGmPqUHRLOBnwWTsBFYEPxVKGYqiPRUNQtIkEmSPDEWvgyyvjRnkKoBSvcriHZJCJieJZtzoQfwkyfaIfGDifDutBvmwcUHVZrSqjgPLXpVUrdwvDcbkqEYdkanVcJfmzXjNNBXramLNEaaWTzxHArcyyLhItSBpoUddhoyKOXFxVPAuYvAbgylWJKdkAgyEldQmVfhpLTPlwdrqjpWCwOxtixwIogQMqBXUAhSjGseILahwzwGWktTTjYWYAfbHukNyOKLthBQsDBydhNMgTfOScMxkrTsTaVORrpnQFSZVFeyjntHwHeOrkSyyzNGBoFYszKlIiAfHsoHGaZefzfhCXmKhwbDSsSbIBTlyNUASJrTEzrgrqUTBepHVHrDBBahRCwlqTgbpjmULCcOAASRrXANIaVFzFaTsSHTolYLHZEikXuzorSWnqohqwZdlsNovemYIMMmQnSdlNngBohhobHLbGvbwNIayDBOHkfxLHqQPsYdvCgximFwxuuKdZwRjpzFLrAoStOFQXLFionlZgDexZceCFbBivtUcbytwcpWmKjAlYgtiLmesEzOthMZKovVNOLvVSSIKNZFZNvxuWVPVaHsBHdWFHjHjXiRWsJYkigpCNNLXIAVDtGTRtyDrgJlUmrWfvAkNzSdNCYdAVrgVJD
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander DTDHMvdbCteshaLUcIbOxUPtYoWqfnnytulmOdrlLaqtiFjSCzxkaGLJXEwLKIbiIZgjdAdatZoMnxOGIwqSBnblQOqjGdrJlvwFHGFMiflfBPMQpRezLJTSXufUlRYEIndutanWLhmkudlqrGiYgUSvJWSDyQQVLWiFZuqqpAOylJnCtPsvhOKwVXxKLVXafwHhFVZyWrgVlADCntUwTUsIlrtMnuGEuPIMOnhDHyyppknxMIewANCuWhPpXvxFsApYhKBxafOBwwEFPUjpULqTKzgskjLAuowvviikzbrmTEsftVoMCNXCzIJHZYTcsfDqTDOEuEONPXcNAmgynGauIVQyAZwEUUYkVrYZqZOHrmqkWacLliXWlDpKMKSveJjHhpkbBluZJjOGLiElzmIUNZLzzMMGjOAKTYZQCkpyMCDXgGaMaIgARduSAnCYjbXdPnOfHLuaremLnUfXgumAecAl
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    configure : LnGjfQxZTJJIFIRANzfKmNzWsDPJjgfsfjkgrHlkufrUNZdtmhEsPpxTXQpezflRRirwSRpvIFOiQowueJmeYljbjnwUmBOpIcSRKnqvBYdnkmUeCgXXqkWKYKacaPMCipqrHwdeHcZavTkhfMkRHHkagTfAaeyIZMQMwXPLMMyormDcbRKfYclyqYrkHoOkoikyIIcSYblZZpKVRHeEqcCctMCITigZCHNEJDWKZrhDMcMBWojCvomEMvSyLSVEKzhzlvbpwUGUCCqXSbUbGlAWvaRAQQQbNFlLspeAyakrTjXfZDHZYsBgmTVWevRuwQlGmPqUHRLOBnwWTsBFYEPxVKGYqiPRUNQtIkEmSPDEWvgyyvjRnkKoBSvcriHZJCJieJZtzoQfwkyfaIfGDifDutBvmwcUHVZrSqjgPLXpVUrdwvDcbkqEYdkanVcJfmzXjNNBXramLNEaaWTzxHArcyyLhItSBpoUddhoyKOXFxVPAuYvAbgylWJKdkAgyEldQmVfhpLTPlwdrqjpWCwOxtixwIogQMqBXUAhSjGseILahwzwGWktTTjYWYAfbHukNyOKLthBQsDBydhNMgTfOScMxkrTsTaVORrpnQFSZVFeyjntHwHeOrkSyyzNGBoFYszKlIiAfHsoHGaZefzfhCXmKhwbDSsSbIBTlyNUASJrTEzrgrqUTBepHVHrDBBahRCwlqTgbpjmULCcOAASRrXANIaVFzFaTsSHTolYLHZEikXuzorSWnqohqwZdlsNovemYIMMmQnSdlNngBohhobHLbGvbwNIayDBOHkfxLHqQPsYdvCgximFwxuuKdZwRjpzFLrAoStOFQXLFionlZgDexZceCFbBivtUcbytwcpWmKjAlYgtiLmesEzOthMZKovVNOLvVSSIKNZFZNvxuWVPVaHsBHdWFHjHjXiRWsJYkigpCNNLXIAVDtGTRtyDrgJlUmrWfvAkNzSdNCYdAVrgVJD    1
-    Should Contain    ${output}    === command Start issued =
+    Should Contain X Times    ${output}    settingsToApply : DTDHMvdbCteshaLUcIbOxUPtYoWqfnnytulmOdrlLaqtiFjSCzxkaGLJXEwLKIbiIZgjdAdatZoMnxOGIwqSBnblQOqjGdrJlvwFHGFMiflfBPMQpRezLJTSXufUlRYEIndutanWLhmkudlqrGiYgUSvJWSDyQQVLWiFZuqqpAOylJnCtPsvhOKwVXxKLVXafwHhFVZyWrgVlADCntUwTUsIlrtMnuGEuPIMOnhDHyyppknxMIewANCuWhPpXvxFsApYhKBxafOBwwEFPUjpULqTKzgskjLAuowvviikzbrmTEsftVoMCNXCzIJHZYTcsfDqTDOEuEONPXcNAmgynGauIVQyAZwEUUYkVrYZqZOHrmqkWacLliXWlDpKMKSveJjHhpkbBluZJjOGLiElzmIUNZLzzMMGjOAKTYZQCkpyMCDXgGaMaIgARduSAnCYjbXdPnOfHLuaremLnUfXgumAecAl    1
+    Should Contain    ${output}    === command start issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,13 +78,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command Start received =
+    Should Contain    ${output}    === command start received =
     Should Contain    ${output}    device : 
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    configure : LnGjfQxZTJJIFIRANzfKmNzWsDPJjgfsfjkgrHlkufrUNZdtmhEsPpxTXQpezflRRirwSRpvIFOiQowueJmeYljbjnwUmBOpIcSRKnqvBYdnkmUeCgXXqkWKYKacaPMCipqrHwdeHcZavTkhfMkRHHkagTfAaeyIZMQMwXPLMMyormDcbRKfYclyqYrkHoOkoikyIIcSYblZZpKVRHeEqcCctMCITigZCHNEJDWKZrhDMcMBWojCvomEMvSyLSVEKzhzlvbpwUGUCCqXSbUbGlAWvaRAQQQbNFlLspeAyakrTjXfZDHZYsBgmTVWevRuwQlGmPqUHRLOBnwWTsBFYEPxVKGYqiPRUNQtIkEmSPDEWvgyyvjRnkKoBSvcriHZJCJieJZtzoQfwkyfaIfGDifDutBvmwcUHVZrSqjgPLXpVUrdwvDcbkqEYdkanVcJfmzXjNNBXramLNEaaWTzxHArcyyLhItSBpoUddhoyKOXFxVPAuYvAbgylWJKdkAgyEldQmVfhpLTPlwdrqjpWCwOxtixwIogQMqBXUAhSjGseILahwzwGWktTTjYWYAfbHukNyOKLthBQsDBydhNMgTfOScMxkrTsTaVORrpnQFSZVFeyjntHwHeOrkSyyzNGBoFYszKlIiAfHsoHGaZefzfhCXmKhwbDSsSbIBTlyNUASJrTEzrgrqUTBepHVHrDBBahRCwlqTgbpjmULCcOAASRrXANIaVFzFaTsSHTolYLHZEikXuzorSWnqohqwZdlsNovemYIMMmQnSdlNngBohhobHLbGvbwNIayDBOHkfxLHqQPsYdvCgximFwxuuKdZwRjpzFLrAoStOFQXLFionlZgDexZceCFbBivtUcbytwcpWmKjAlYgtiLmesEzOthMZKovVNOLvVSSIKNZFZNvxuWVPVaHsBHdWFHjHjXiRWsJYkigpCNNLXIAVDtGTRtyDrgJlUmrWfvAkNzSdNCYdAVrgVJD    1
-    Should Contain X Times    ${output}    === [ackCommand_Start] acknowledging a command with :    2
+    Should Contain X Times    ${output}    settingsToApply : DTDHMvdbCteshaLUcIbOxUPtYoWqfnnytulmOdrlLaqtiFjSCzxkaGLJXEwLKIbiIZgjdAdatZoMnxOGIwqSBnblQOqjGdrJlvwFHGFMiflfBPMQpRezLJTSXufUlRYEIndutanWLhmkudlqrGiYgUSvJWSDyQQVLWiFZuqqpAOylJnCtPsvhOKwVXxKLVXafwHhFVZyWrgVlADCntUwTUsIlrtMnuGEuPIMOnhDHyyppknxMIewANCuWhPpXvxFsApYhKBxafOBwwEFPUjpULqTKzgskjLAuowvviikzbrmTEsftVoMCNXCzIJHZYTcsfDqTDOEuEONPXcNAmgynGauIVQyAZwEUUYkVrYZqZOHrmqkWacLliXWlDpKMKSveJjHhpkbBluZJjOGLiElzmIUNZLzzMMGjOAKTYZQCkpyMCDXgGaMaIgARduSAnCYjbXdPnOfHLuaremLnUfXgumAecAl    1
+    Should Contain X Times    ${output}    === [ackCommand_start] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2

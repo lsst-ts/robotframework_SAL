@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Hexapod_interlock sender/logger tests.
-Force Tags    python    
+Force Tags    python    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : detail priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : detail timestamp priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py oOcIuSmTMFWQssRCIdYRXpsBUwObSbqoVvAVbIjQNehjMSnHBZLiPSMbwgmgUMTNOsHVeLRKzQndNQAcnvhgMDoHrmOPHudoaPZlAwjAcKvZqzphQGCkDIlVFSChatSfOnXqgzTJeYGktlIFxdxElrUfzwBODhBxLoYvnKxIvnZUKicwJruAFlBAGKZHqwDwkXSdBrTlezyeArYvnKtdkRGuPCmXiNMKueUocrkDBDBoQYfiHQpdjbWpgQjjgyVjYwyoenyJlqZNsKye 872472724
+    ${input}=    Write    python ${subSystem}_Event_${component}.py KieaByIqbiaZGggCJamHPGOzABxsUUzBAFkEnasdZqNZrQvIcFlltPniyRnzlFqXhTUeRQlrYeTOlIUpmUgYscCtQlYhBVhHXscapxpRpmsqgTVdIyqDiFGmcbmgPVrRUEJVitFFMLOBPdjsgTGdJXgGfLSBqHEZjrHxqPLGdoSdgvYrACQAHESiCRYKoDoYtrUOsGZPxmwmTjkVVlnHlgTmiNIqFdnNxSqKUKpwZkSXZhaoMpPCfZTSznYhhYfd 35.1676 1612916614
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1

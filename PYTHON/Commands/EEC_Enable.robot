@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_Enable commander/controller tests.
+Documentation    EEC_enable commander/controller tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    eec
-${component}    Enable
+${component}    enable
 ${timeout}    30s
 
 *** Test Cases ***
@@ -78,7 +78,7 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    enable = 1    1
-    Should Contain X Times    ${output}    === [ackCommand_Enable] acknowledging a command with :    1
+    Should Contain X Times    ${output}    === [ackCommand_enable] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    1

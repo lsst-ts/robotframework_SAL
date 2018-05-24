@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.7775 51.8531 60.0112
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.802452249349 0.103390498545 0.833144730229
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,17 +60,17 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.7775 51.8531 60.0112
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.802452249349 0.103390498545 0.833144730229
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
-    Should Contain X Times    ${output}    device : actuators    1
-    Should Contain X Times    ${output}    property : pivot    1
+    Should Contain X Times    ${output}    device :     1
+    Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 0.7775    1
-    Should Contain X Times    ${output}    y : 51.8531    1
-    Should Contain X Times    ${output}    z : 60.0112    1
+    Should Contain X Times    ${output}    x : 0.802452249349    1
+    Should Contain X Times    ${output}    y : 0.103390498545    1
+    Should Contain X Times    ${output}    z : 0.833144730229    1
     Should Contain    ${output}    === command pivot issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -81,13 +81,13 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain    ${output}    === command pivot received =
-    Should Contain    ${output}    device : actuators
-    Should Contain    ${output}    property : pivot
+    Should Contain    ${output}    device : 
+    Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 0.7775    1
-    Should Contain X Times    ${output}    y : 51.8531    1
-    Should Contain X Times    ${output}    z : 60.0112    1
+    Should Contain X Times    ${output}    x : 0.802452249349    1
+    Should Contain X Times    ${output}    y : 0.103390498545    1
+    Should Contain X Times    ${output}    z : 0.833144730229    1
     Should Contain X Times    ${output}    === [ackCommand_pivot] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -88,6 +88,10 @@ function capitializeSubsystem() {
         echo "EEC"
 	elif [ "$subSystem" == "headerservice" ]; then
         echo "HeaderService"
+	elif [ "$subSystem" == "atarchiver" ]; then
+        echo "AtArchiver"
+	elif [ "$subSystem" == "atmonochromator" ]; then
+        echo "AtMonochromator"
 	elif [ "$subSystem" == "atHeaderService" ]; then
         echo "AtHeaderService"
 	elif [ "$subSystem" == "tcsOfc" ]; then
@@ -178,18 +182,31 @@ function generateArgument() {
 function checkIfSkipped() {
 	subsystem=$1
 	topic=$2
+	messageType=$3
 	if [[ ("$subsystem" == "summitFacility") ]]; then
 		skipped="TSS-2622"
+    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "events") ]]; then
+        skipped="TSS-2680"
+    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
+        skipped="TSS-2679"
 	elif [[ ("$subsystem" == "tcsOfc") ]]; then
 		skipped="TSS-2625"
 	elif [[ ("$subsystem" == "tcsWEP") ]]; then
 		skipped="TSS-2626"
+	elif [[ ("$subsystem" == "promptprocessing") ]]; then
+		skipped="TSS-2633"
 	elif [[ ("$subsystem" == "calibrationElectrometer") ]]; then
 		skipped="TSS-2619"
 	elif [[ ("$subsystem" == "m1m3") ]]; then
 		skipped="TSS-2617"
 	elif [[ ("$subsystem" == "vms") ]]; then
 		skipped="TSS-2618"
+	elif [[ ("$subsystem" == "atMonochromator") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
+	elif [[ ("$subsystem" == "eec") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
+	elif [[ ("$subsystem" == "tcs") && ("$topic" == "InternalCommand") ]]; then
+		skipped="TSS-2724"
 	else
 		skipped=""
 	fi

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WzkEMVkvkGBJqkYNGIXJcbUFINRoYBbQJjDSBzINslcUUIdEkRvqIrrJtvuyQAGgiBiuHJhfXbIWcclrghpEqUXjKHgzQJTxzkHoiWmSlnUALrckKnxNVMbossuhUOXZIGVrMiAgUSbWEpzouThYiPRqabrMUuqgaxnIWojGGxFXLshErOBoicNYPwAXMRtlrIykOnEHDVYFwwqPnuKnnAlfjKYLthynLHVsJGtUbiboAdmEzbrJatLZoPvUoCZTjnEpzfHdWJLAZteeCprrxCyEKRNBjjPCbbuTnENhKzghkfyjKBivAwPrwSBNMdKqHMeqvJIZsVJTgoTQEmCljZVMbJePLWXMHXHMRQvpYmCxEJkZIZfjEguXzHvwMLSbeiSeqrxIUAPFfeBwVmyjqQQLIXqXYemYMQWQVAwxyojerxSLvtjjRGFCZkHjjKDVrIIlUmyTTMIsbUjvTPXWRCDltjphYlOfnscuLFENWxJpZdnDMzeboCgQEncjkZckmIgWtLNuYLjWGmFuGWUrIZGbGUkMvrhHRRAiBskyTCWPucxSymsvpRZctdKkqQvDdusHyyGJWhBNOGFyPvlXWWByBslZdSNUqaoGpkLlXdRkBVPgfYOiVwTgsimNkZBvcdpfbirgqvIdWqxjVRRfxgszdRFCbnOnHQGWAsXNefRdlFjyZhXWPLMwfwZOGNVUZSFJwDCSXnwPjQBQGHHHfIXLiOkWXgQVeHKVpMwBmiWIBmSjHnJiuRTWXtloNnmcXUBUaDeQcemNUiuFVLNxNrBkDWiCbingVLKrKbgcHkcEdjsedoIUDEMKuxxyCHVosyOUWKbWDuWzmIkYSDbkkOyyzJSmKteGkIaEiKruBeHrfAABofKXRkJTDKAhGlVbsVjRlvYDdqmapRjWFkIWaXLfzXZCBcLmlAGERhVpCMCRefoALHuDZUxbqRAnuL 800504549
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XKrDXFLEoLdKsaUbhphDZQNPgYHBwjWeuZMKRGDYLrGgZRGtihbudCFpZEiUAyAAOQBEqrxYFlsyyeVMdUTNghsXpUdKMcViHScJjTghuUPDdAdeAmqeyCujaDrrpIrySarGGcSEUGFsSqKgXPgOqPSdPPvDmifYYCiqCXQLHpGDOjrahmqBhSrksPvYiEafCikmSZiyfsLCzvAGggqOrRLzuxCBVXrcfcrwJmjpNlrsRjQDlkrqDlqCOSBLZjYWJougSAzwBpWAXTXPlgDQotpmwYdutnMKuCWxUqcYsFLHzCgiQXLlRMbjOLhFnBUzjzCHBZFyGuZzkrDqrCYuqwiCRnozSjJdKzNvaIbQMZvpGPnaCkUGHBePbuHjtAVQDYNLUFMaVwVrXaIYWVWCVxvfBO -1304042574
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 800504549
+    ${output}=    Read Until    priority : -1304042574
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : WzkEMVkvkGBJqkYNGIXJcbUFINRoYBbQJjDSBzINslcUUIdEkRvqIrrJtvuyQAGgiBiuHJhfXbIWcclrghpEqUXjKHgzQJTxzkHoiWmSlnUALrckKnxNVMbossuhUOXZIGVrMiAgUSbWEpzouThYiPRqabrMUuqgaxnIWojGGxFXLshErOBoicNYPwAXMRtlrIykOnEHDVYFwwqPnuKnnAlfjKYLthynLHVsJGtUbiboAdmEzbrJatLZoPvUoCZTjnEpzfHdWJLAZteeCprrxCyEKRNBjjPCbbuTnENhKzghkfyjKBivAwPrwSBNMdKqHMeqvJIZsVJTgoTQEmCljZVMbJePLWXMHXHMRQvpYmCxEJkZIZfjEguXzHvwMLSbeiSeqrxIUAPFfeBwVmyjqQQLIXqXYemYMQWQVAwxyojerxSLvtjjRGFCZkHjjKDVrIIlUmyTTMIsbUjvTPXWRCDltjphYlOfnscuLFENWxJpZdnDMzeboCgQEncjkZckmIgWtLNuYLjWGmFuGWUrIZGbGUkMvrhHRRAiBskyTCWPucxSymsvpRZctdKkqQvDdusHyyGJWhBNOGFyPvlXWWByBslZdSNUqaoGpkLlXdRkBVPgfYOiVwTgsimNkZBvcdpfbirgqvIdWqxjVRRfxgszdRFCbnOnHQGWAsXNefRdlFjyZhXWPLMwfwZOGNVUZSFJwDCSXnwPjQBQGHHHfIXLiOkWXgQVeHKVpMwBmiWIBmSjHnJiuRTWXtloNnmcXUBUaDeQcemNUiuFVLNxNrBkDWiCbingVLKrKbgcHkcEdjsedoIUDEMKuxxyCHVosyOUWKbWDuWzmIkYSDbkkOyyzJSmKteGkIaEiKruBeHrfAABofKXRkJTDKAhGlVbsVjRlvYDdqmapRjWFkIWaXLfzXZCBcLmlAGERhVpCMCRefoALHuDZUxbqRAnuL
-    Should Contain    ${output}    priority : 800504549
+    Should Contain    ${output}    errorCode : XKrDXFLEoLdKsaUbhphDZQNPgYHBwjWeuZMKRGDYLrGgZRGtihbudCFpZEiUAyAAOQBEqrxYFlsyyeVMdUTNghsXpUdKMcViHScJjTghuUPDdAdeAmqeyCujaDrrpIrySarGGcSEUGFsSqKgXPgOqPSdPPvDmifYYCiqCXQLHpGDOjrahmqBhSrksPvYiEafCikmSZiyfsLCzvAGggqOrRLzuxCBVXrcfcrwJmjpNlrsRjQDlkrqDlqCOSBLZjYWJougSAzwBpWAXTXPlgDQotpmwYdutnMKuCWxUqcYsFLHzCgiQXLlRMbjOLhFnBUzjzCHBZFyGuZzkrDqrCYuqwiCRnozSjJdKzNvaIbQMZvpGPnaCkUGHBePbuHjtAVQDYNLUFMaVwVrXaIYWVWCVxvfBO
+    Should Contain    ${output}    priority : -1304042574

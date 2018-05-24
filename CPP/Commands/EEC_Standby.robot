@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_Standby commander/controller tests.
+Documentation    EEC_standby commander/controller tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    eec
-${component}    Standby
+${component}    standby
 ${timeout}    30s
 
 *** Test Cases ***
@@ -69,7 +69,7 @@ Start Commander
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
     Should Contain X Times    ${output}    standby : 0    1
-    Should Contain    ${output}    === command Standby issued =
+    Should Contain    ${output}    === command standby issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,13 +78,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command Standby received =
+    Should Contain    ${output}    === command standby received =
     Should Contain    ${output}    device : 
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
     Should Contain X Times    ${output}    standby : 0    1
-    Should Contain X Times    ${output}    === [ackCommand_Standby] acknowledging a command with :    2
+    Should Contain X Times    ${output}    === [ackCommand_standby] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2

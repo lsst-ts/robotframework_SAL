@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : recommendedSettingsVersion timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp recommendedSettingsVersion priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py fsWrLuzeQJMJjePwlKKGPxMHoxQOGwqkTrpeNWczHXGvhkfqIQYFsjuJslUdhDMxBOXUbUOvsVtAizgNElnNoYzLFSprWZnZYRqImHHYHmOIvnLwNGXIwMonnVfckibTsCMgGnOJeyYDFwbwdmLaVAmJhcvPblSnikHqFMKNMzxmQCPEUGpeMXbgMcqkJbhGhxivbBjtrYuirTpayicasLulsTEdslPCqYSHJVlbjAYuoyTZAqeTiOroyODOxUWVFAFYdVygupWmoUbSUTjBgVNjJNEDNTnyrcpfcBHmYDnzqoPeXpwKIuxeBnOTjNNKTTLVxVFhsZpFQynQmfIEPxXpzAhzYbXIJkBYbUxRHHImjswefQZBQqbTFKNllKNLJXKGiArcRBGsaBzemkbsEszGHTGzeoIPlqurJlKGtMYiXctRKFwRcWkCwLxNeSzYvVTrhnnAASMYzfyxRlRWsHRSbBCktALLrtIPCWdiCUFLnwQJyObtuMILNNavakBArUAFlV 72.5404 -749241345
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 74.3667 lACkukbqJKaPzdSkvqosSCZffGrVtNLnkuPBCCVqXvTBLRnjszDhciSpxqDpQPQLXOAkqevZbwieNgULfvydaNagUXPUkHCaJZNcaRXdVOQtcgZGIGVvmzbvZHMpNtIGnzZEhzGbmxDHSrhwtIQxWYkpbgOMdzgKNOeYnrjUzWWPjDKNRhkUehCsQhBgjvfdBUtoFqjvhWvVQKfuMOEvyYFmpjASiPLOOosSyxojZBpTsCXXQzHzpOiDPPcEFlVVqmxNjcEKhCVFlFuUEsWAZAmyTMWqJjsfRaSStcdLHthjKjljWbqxRmYJTOWQHMnQAKvBtrPxAEcdSvHRSUUHMYvybNkSAxDxUinEfKpxMRRNTeAzQmbvvOmeeuoEiVJfyAgVmlJZHrFwuCWSkVqVQEhuQAQUEaAEzvOVWPbQskoOQWtBuqKDwBFsgLIBHSWJfmbAYUldvXafxFlHQqLBxlSXUwbPNFwqQkKwSnaAInpMtDfImgZpSZGahFByKMDmWTGnCBHmkxRCeotlCyyMBdSHrDLwpUIdMoSMqDNKXaaMmNYGWNTDVEBFpEbxVAixUGOLGllvwMwZsayIVpxEjqwkOXNPKuqjeJMyuWFWJurRzVQlZFoGFyPMIefztJNhwabhveJWbpdPdeZCvwVEYMwEJOcMZbGZdVyZBRrkiCzgIxsfdvknrUrXzfPkMdcldDhlcebJGlIjhWGjXUvqbPWzZwwSAbiQOT 4464652
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1

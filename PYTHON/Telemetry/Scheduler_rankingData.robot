@@ -52,7 +52,7 @@ Read Subscriber
     Should Contain X Times    ${list}    LST = 1.0    10
     Should Contain X Times    ${list}    MJD = 1.0    10
     Should Contain X Times    ${list}    date = 1.0    10
-    Should Contain X Times    ${list}    dec = 1.0    10
+    Should Contain X Times    ${list}    decl = 1.0    10
     Should Contain X Times    ${list}    exposureTime(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
     Should Contain X Times    ${list}    fieldId = 1    10
     Should Contain X Times    ${list}    filter = LSST    10

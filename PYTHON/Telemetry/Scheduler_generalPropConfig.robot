@@ -74,10 +74,12 @@ Read Subscriber
     Should Contain X Times    ${list}    exclusion_minimums(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
     Should Contain X Times    ${list}    exclusion_maximums(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
     Should Contain X Times    ${list}    exclusion_bounds(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
+    Should Contain X Times    ${list}    field_revisit_limit = 1    10
     Should Contain X Times    ${list}    num_filters = 1    10
     Should Contain X Times    ${list}    filter_names = LSST    10
     Should Contain X Times    ${list}    num_visits(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
     Should Contain X Times    ${list}    num_grouped_visits(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
+    Should Contain X Times    ${list}    max_grouped_visits(10) = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]    10
     Should Contain X Times    ${list}    bright_limit(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
     Should Contain X Times    ${list}    dark_limit(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
     Should Contain X Times    ${list}    max_seeing(10) = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]    10
@@ -86,6 +88,9 @@ Read Subscriber
     Should Contain X Times    ${list}    max_num_targets = 1    10
     Should Contain X Times    ${list}    accept_serendipity = 1    10
     Should Contain X Times    ${list}    accept_consecutive_visits = 1    10
+    Should Contain X Times    ${list}    restart_lost_sequences = 1    10
+    Should Contain X Times    ${list}    restart_complete_sequences = 1    10
+    Should Contain X Times    ${list}    max_visits_goal = 1    10
     Should Contain X Times    ${list}    airmass_bonus = 1.0    10
     Should Contain X Times    ${list}    hour_angle_bonus = 1.0    10
     Should Contain X Times    ${list}    hour_angle_max = 1.0    10

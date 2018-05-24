@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_ExitControl commander/controller tests.
+Documentation    EEC_exitControl commander/controller tests.
 Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    eec
-${component}    ExitControl
+${component}    exitControl
 ${timeout}    60s
 
 *** Test Cases ***

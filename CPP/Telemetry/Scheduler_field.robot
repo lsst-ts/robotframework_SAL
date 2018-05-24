@@ -27,7 +27,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
     ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${output}=    Read Until    [Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
 
@@ -52,7 +52,7 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ID : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}fov : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}dec : 1    9
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}decl : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}gl : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}gb : 1    9
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 1    9

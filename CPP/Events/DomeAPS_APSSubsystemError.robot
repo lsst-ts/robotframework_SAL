@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KuEXWQctrPHwaenZTTVAbhTImRvHbHimnROPzGGnniMvGqtwtIjNUPbJAAlwaLzeUtOwgSOQfQYNHhBEensyuDYmoTJesMeEOUdSdwFWarzCIRYBCzTDVueprsePAuVLlOXkxoXXqAOrousajZZGRGYwxLOcTiwFohbcsrFuvjtUwMUlspvdVaYqZgxnEmhkTUyRdvqPSrjtGsQNUFVzsMNhKMSuOndUBrqoZHGLqaornAaPorTgTUsHEoOQwzObpoMlLsMazpYcYAAnDPbYltcupmjaiafvBGECkBDRpGYInzCKeYDfFooACgSvBxsUSvPtELjFEOAcZZzQlIeqlnrKawZuuQVeJXBCCorIZhNYqlmZZnaEAUyHhCcyLcwpbRaIbqMriBgKdznybUutpoMcHpyGSPptrhRjeJkeJkcUnFDCFNxXZJkyFGvKwEPJfEVbQHMJUPaJGHaiUhJhUBpFVxVANFkffvUdPTtsCFcUNweEG 445760523
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send LtdBdEcGOTikgCKxJfiDmHlmoxoqtpxqvIwNsIFQyymMgBYFHRvtpvrruVEMbvrpGlNZSdDlunlMSBXOFGkkvRxYRYUhqtykQzfaYrlsjmvUtaxbkblXXPcUEGPLBsiIshXySWMcpethbAOUxRRYMHKzNAGDEUYUERBzsGTNXRlJWAuVHvFUAANuWIXOoxgxrURIjLADoyTQFSLLPmkGcsyEypKkibd -1081263224
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 445760523
+    ${output}=    Read Until    priority : -1081263224
     Log    ${output}
     Should Contain X Times    ${output}    === Event APSSubsystemError received =     1
-    Should Contain    ${output}    errorCode : KuEXWQctrPHwaenZTTVAbhTImRvHbHimnROPzGGnniMvGqtwtIjNUPbJAAlwaLzeUtOwgSOQfQYNHhBEensyuDYmoTJesMeEOUdSdwFWarzCIRYBCzTDVueprsePAuVLlOXkxoXXqAOrousajZZGRGYwxLOcTiwFohbcsrFuvjtUwMUlspvdVaYqZgxnEmhkTUyRdvqPSrjtGsQNUFVzsMNhKMSuOndUBrqoZHGLqaornAaPorTgTUsHEoOQwzObpoMlLsMazpYcYAAnDPbYltcupmjaiafvBGECkBDRpGYInzCKeYDfFooACgSvBxsUSvPtELjFEOAcZZzQlIeqlnrKawZuuQVeJXBCCorIZhNYqlmZZnaEAUyHhCcyLcwpbRaIbqMriBgKdznybUutpoMcHpyGSPptrhRjeJkeJkcUnFDCFNxXZJkyFGvKwEPJfEVbQHMJUPaJGHaiUhJhUBpFVxVANFkffvUdPTtsCFcUNweEG
-    Should Contain    ${output}    priority : 445760523
+    Should Contain    ${output}    errorCode : LtdBdEcGOTikgCKxJfiDmHlmoxoqtpxqvIwNsIFQyymMgBYFHRvtpvrruVEMbvrpGlNZSdDlunlMSBXOFGkkvRxYRYUhqtykQzfaYrlsjmvUtaxbkblXXPcUEGPLBsiIshXySWMcpethbAOUxRRYMHKzNAGDEUYUERBzsGTNXRlJWAuVHvFUAANuWIXOoxgxrURIjLADoyTQFSLLPmkGcsyEypKkibd
+    Should Contain    ${output}    priority : -1081263224

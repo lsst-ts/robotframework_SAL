@@ -229,6 +229,7 @@ function readController() {
 
 function createTestSuite() {
 	subSystem=$1
+    messageType="commands"
 	file=$2
 	topicIndex=1
 	# Get the Subsystem in the correct capitalization.
@@ -246,7 +247,7 @@ function createTestSuite() {
 		property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n $file )
 
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic)
+        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -294,6 +295,7 @@ function createTestSuite() {
 
 
 #  MAIN
+subSystem=$(getEntity $arg)
 if [ "$arg" == "all" ]; then
     for subsystem in "${subSystemArray[@]}"; do
         declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Commands.xml)
@@ -308,17 +310,17 @@ if [ "$arg" == "all" ]; then
         done
     done
     echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-    declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$arg/*_Commands.xml)
-    subSystemUp=$(capitializeSubsystem $arg)
+elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
+    declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$subSystem/*_Commands.xml)
+    subSystemUp=$(capitializeSubsystem $subSystem)
     #  Delete all the test suites.  This is will expose deprecated topics.
     clearTestSuites $subSystemUp "PYTHON" "Commands"
 
     for file in "${filesArray[@]}"; do
-        getTopics $arg $file
-        createTestSuite $arg $file
+        getTopics $subSystem $file
+        createTestSuite $subSystem $file
     done
-    echo COMPLETED all test suites for the $arg.
+    echo COMPLETED all test suites for the $subSystem.
 else
     echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi

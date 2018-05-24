@@ -99,7 +99,7 @@ function startSubscriber {
     echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_sub" >> $testSuite
-    echo "    \${output}=    Read Until    [Subscriber] Ready" >> $testSuite
+    echo "    \${output}=    Read Until    [Subscriber] Ready ..." >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \${output}    [Subscriber] Ready" >> $testSuite
     echo "" >> $testSuite
@@ -135,7 +135,7 @@ function readSubscriber {
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
         	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
-		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" )]]; then
+		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    9" >>$testSuite
 		else
 			for num in `seq 1 9`; do
@@ -147,6 +147,7 @@ function readSubscriber {
 
 function createTestSuite {
 	subSystem=$1
+    messageType="telemetry"
 	file=$2
 	topicIndex=1
 	for topic in "${topicsArray[@]}"; do
@@ -157,7 +158,7 @@ function createTestSuite {
 		getTopicParameters $file $topicIndex
 
 		#  Check if test suite should be skipped.
-		skipped=$(checkIfSkipped $subSystem $topic)
+		skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
 		echo Creating $testSuite
@@ -176,6 +177,7 @@ function createTestSuite {
 
 
 #  MAIN
+subSystem=$(getEntity $arg)
 if [ "$arg" == "all" ]; then
 	for subsystem in "${subSystemArray[@]}"; do
 		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
@@ -189,18 +191,18 @@ if [ "$arg" == "all" ]; then
 		done
 	done
 	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-	declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$arg/*_Telemetry.xml)
-	subSystemUp=$(capitializeSubsystem $arg)
+elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
+	declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$subSystem/*_Telemetry.xml)
+	subSystemUp=$(capitializeSubsystem $subSystem)
 	#  Delete all the test suites.  This is will expose deprecated topics.
 	clearTestSuites $subSystemUp "CPP" "Telemetry"
 
 	for file in "${filesArray[@]}"; do
-		getTopics $arg $file
+		getTopics $subSystem $file
 		
-		createTestSuite $arg $file
+		createTestSuite $subSystem $file
 	done
-	echo COMPLETED all test suites for the $arg.
+	echo COMPLETED all test suites for the $subSystem.
 else
 	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
 fi

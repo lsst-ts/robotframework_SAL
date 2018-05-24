@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    M1M3_MoveHardpointActuators commander/controller tests.
-Force Tags    python    
+Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test test test test test test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 266319944 36981288 -1271672173 1374775255 698074868 -2142511865
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py test test test test test test
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 266319944 36981288 -1271672173 1374775255 698074868 -2142511865
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    Steps : test    1
+    Should Contain X Times    ${output}    Steps : 266319944    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    Steps = test    1
+    Should Contain X Times    ${output}    Steps = 266319944    1
     Should Contain X Times    ${output}    === [ackCommand_MoveHardpointActuators] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

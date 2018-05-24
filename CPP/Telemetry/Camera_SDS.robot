@@ -27,7 +27,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/cpp/standalone
     Comment    Start Subscriber.
     ${input}=    Write    ./sacpp_${subSystem}_sub
-    ${output}=    Read Until    [Subscriber] Ready
+    ${output}=    Read Until    [Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [Subscriber] Ready
 
@@ -50,15 +50,15 @@ Read Subscriber
     Log    ${output}
     @{list}=    Split To Lines    ${output}    start=1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}REB_ID : 1    9
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameter : 9    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 1    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 2    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 3    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 4    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 5    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 6    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 7    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 8    1
+    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}Timing_parameters : 9    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 1    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 2    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}flag : 3    1

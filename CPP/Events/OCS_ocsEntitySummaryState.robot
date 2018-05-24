@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send uFnnOznqxgeNEAreyLNoJPqEBmHlblkJaUrAPCkCezpBHfwbghBFIBErzHaKvhpUEQZXmYaOIyuxuydSIgSQGDKRsZsIHoXBQRotkMFVpJzyecxNAWlFuSVXOPUgnqUD 53.9698 GqWhLVeJSZzZeRPgQAuWrPnaoqbwEhRqBollMHYJmHGAgOKJnAicQEYZPdhEqSbdZHbziqeyQNYEPdTOqtNNaJtTMEoGWiRAELIFEeVThnaWjRVuXiIxbHWbHpNWCeXzXSTwyeXgHhhAehiHCqBuTBiGmiaJuwgMnVmahNiBjedgTkvQvoLlttfoYZRjrkTyYVCQXwkDdziLpHLuIuytpbIVYeihjHUjFtGWqdMOnMINkGZKsGVzVOQuSbgggGUw -1751997985 ZPbiNpbVfZZeKmCZzVipRjlygYDEMwtPTsWrMDbxWdppprhDgrAQLYPLJHixriYibFJFBUdKwcFsboaaJcIPCGnwmSaEsdDlvGFhqcMYEtvKqIqvewQfLCNdJfAHCsGf FLPMmCCFwghTrWuqeUroDabEhncZGIHJUOutVWoSToIzIFNVjJIvkKLcDetmVIEKwUkLloPkdJOhBhgnAGYKwDaDRfIRvEwFElkLtGVTSLtOoLhJGbUnhfFGlzUkVzcy QFwoeYfLtiwsTpzgMdFbiioNzJqKFPrMNxHXjkvUwZmFYZHeDpvPexXDsbPseTwdLLzHUozOFicfFNWULwwTUKwbWjGIeInMDLFKVRrlQgnRYPExIctdtwseDmsmElql AJFpNrVlhNdyJvQREdtSxoWuxycaRFSQafvpinWjOnNpUiVHMVoMPqSnvfSWHBXpopgxZYVidmvRyqnIGTKpdJHNpylfWpgVBQtiLDjPxqrCahUcbKCVJjpXZktWoenN rqTlJgfKSMoGMlVODIGwkpFEyEtwgmXcCCXxhdXawbgBFLMMCzWKbxggALXNCtsqhHzreggvlvnKeZwqEwzdIjEbItVNtWecHnzARSDCydLLNgkIGVLyGmBdIUoNzpzU -189229228
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send FVYvjliaNyLSWuAPesLWBruPoUcAmtTdxLbuROOjhBekmuALnhabGzLgpOsSAPoKNnnrRUDAwJHEHxkhLAhiWpVfQHkwBheWsSqloCtKcKfOlotNhRxYWlexboeEdRUJ 9.5414 ktIzByahWVQYAPWMfSUeXFOJLjGPZcfhupSKrDYLfThvXCTqVNpirQEmGyIrvynTqIZbHTRUukZJHCceyOYJUsyCaNSBLXMopgdSTlFONWVnpXSiaWVjDMNtsPyiHLfjiQfbDJuEKNQzHpXGsbyvCamyGSQmrxaNmDZJPyOMMGzcegSrDcFCNApeCNyWnBpkxHaXEiPKgbVjywIChEvyXBOGYgIFhumuJOPbiQOwxDuUolRwthNlOYbVQjKylzai 12595563 csuvrvoQeyQxVhPaptOljSizdehyWDPfnSNYjclToNSYegUBHkMIuWvdMovQDhZRQWwgdYKDTOYNYNIaFhPfdhqmGNZDCIeDGrlYvGJUOworkdHJJXbbkXgkYhKmJSnn TgPbdMybFasUudFmIAEWGZYSKRopBQIhEfUdeXkvhYwzcpuGNnySMtBdkMqTtOfzyBbMTZrzicgbhoozmHtAvRexOAljrvWjvogGUFtJYPvRLCtMjLWrzQaWSYMTbVfK BYucErOysBuUatrlqiZdpeqooskmPJegtwsHxZHbwhmsmBDVSWYdzeCNhsdoRTBlMgLrLDCtQkuBietTzFGBirWWCYYoiZclGqJgXdtWhdzEhcqyqmopOLklkSHFfjZV yZMEByqsJoHxsbdxOBHjcUqqizczWXGdqkFAqKmXqqOCOJolfAKogRNjknsQwpVvSJpTlWdgedApLkOxZIFXQVbEPsFlKjnVSILYCKfPHihpPaKKSAXUtNrWNNDWysez FFgYiCSCionuFHQDPURhFLkcQgyzlhsmgcoykWmZfqBCUwBnNDkclmXtoJhSeBtyPBVhOqVaxbxaTeWmAXeCftrRINCZSamzmQihRgBqVqMYBpRBRPjeqfGOlnqGrzfT -2046521521
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntitySummaryState writing a message containing :    1
@@ -57,16 +57,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -189229228
+    ${output}=    Read Until    priority : -2046521521
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntitySummaryState received =     1
-    Should Contain    ${output}    Name : uFnnOznqxgeNEAreyLNoJPqEBmHlblkJaUrAPCkCezpBHfwbghBFIBErzHaKvhpUEQZXmYaOIyuxuydSIgSQGDKRsZsIHoXBQRotkMFVpJzyecxNAWlFuSVXOPUgnqUD
-    Should Contain    ${output}    Identifier : 53.9698
-    Should Contain    ${output}    Timestamp : GqWhLVeJSZzZeRPgQAuWrPnaoqbwEhRqBollMHYJmHGAgOKJnAicQEYZPdhEqSbdZHbziqeyQNYEPdTOqtNNaJtTMEoGWiRAELIFEeVThnaWjRVuXiIxbHWbHpNWCeXzXSTwyeXgHhhAehiHCqBuTBiGmiaJuwgMnVmahNiBjedgTkvQvoLlttfoYZRjrkTyYVCQXwkDdziLpHLuIuytpbIVYeihjHUjFtGWqdMOnMINkGZKsGVzVOQuSbgggGUw
-    Should Contain    ${output}    Address : -1751997985
-    Should Contain    ${output}    CurrentState : ZPbiNpbVfZZeKmCZzVipRjlygYDEMwtPTsWrMDbxWdppprhDgrAQLYPLJHixriYibFJFBUdKwcFsboaaJcIPCGnwmSaEsdDlvGFhqcMYEtvKqIqvewQfLCNdJfAHCsGf
-    Should Contain    ${output}    PreviousState : FLPMmCCFwghTrWuqeUroDabEhncZGIHJUOutVWoSToIzIFNVjJIvkKLcDetmVIEKwUkLloPkdJOhBhgnAGYKwDaDRfIRvEwFElkLtGVTSLtOoLhJGbUnhfFGlzUkVzcy
-    Should Contain    ${output}    Executing : QFwoeYfLtiwsTpzgMdFbiioNzJqKFPrMNxHXjkvUwZmFYZHeDpvPexXDsbPseTwdLLzHUozOFicfFNWULwwTUKwbWjGIeInMDLFKVRrlQgnRYPExIctdtwseDmsmElql
-    Should Contain    ${output}    CommandsAvailable : AJFpNrVlhNdyJvQREdtSxoWuxycaRFSQafvpinWjOnNpUiVHMVoMPqSnvfSWHBXpopgxZYVidmvRyqnIGTKpdJHNpylfWpgVBQtiLDjPxqrCahUcbKCVJjpXZktWoenN
-    Should Contain    ${output}    ConfigurationsAvailable : rqTlJgfKSMoGMlVODIGwkpFEyEtwgmXcCCXxhdXawbgBFLMMCzWKbxggALXNCtsqhHzreggvlvnKeZwqEwzdIjEbItVNtWecHnzARSDCydLLNgkIGVLyGmBdIUoNzpzU
-    Should Contain    ${output}    priority : -189229228
+    Should Contain    ${output}    Name : FVYvjliaNyLSWuAPesLWBruPoUcAmtTdxLbuROOjhBekmuALnhabGzLgpOsSAPoKNnnrRUDAwJHEHxkhLAhiWpVfQHkwBheWsSqloCtKcKfOlotNhRxYWlexboeEdRUJ
+    Should Contain    ${output}    Identifier : 9.5414
+    Should Contain    ${output}    Timestamp : ktIzByahWVQYAPWMfSUeXFOJLjGPZcfhupSKrDYLfThvXCTqVNpirQEmGyIrvynTqIZbHTRUukZJHCceyOYJUsyCaNSBLXMopgdSTlFONWVnpXSiaWVjDMNtsPyiHLfjiQfbDJuEKNQzHpXGsbyvCamyGSQmrxaNmDZJPyOMMGzcegSrDcFCNApeCNyWnBpkxHaXEiPKgbVjywIChEvyXBOGYgIFhumuJOPbiQOwxDuUolRwthNlOYbVQjKylzai
+    Should Contain    ${output}    Address : 12595563
+    Should Contain    ${output}    CurrentState : csuvrvoQeyQxVhPaptOljSizdehyWDPfnSNYjclToNSYegUBHkMIuWvdMovQDhZRQWwgdYKDTOYNYNIaFhPfdhqmGNZDCIeDGrlYvGJUOworkdHJJXbbkXgkYhKmJSnn
+    Should Contain    ${output}    PreviousState : TgPbdMybFasUudFmIAEWGZYSKRopBQIhEfUdeXkvhYwzcpuGNnySMtBdkMqTtOfzyBbMTZrzicgbhoozmHtAvRexOAljrvWjvogGUFtJYPvRLCtMjLWrzQaWSYMTbVfK
+    Should Contain    ${output}    Executing : BYucErOysBuUatrlqiZdpeqooskmPJegtwsHxZHbwhmsmBDVSWYdzeCNhsdoRTBlMgLrLDCtQkuBietTzFGBirWWCYYoiZclGqJgXdtWhdzEhcqyqmopOLklkSHFfjZV
+    Should Contain    ${output}    CommandsAvailable : yZMEByqsJoHxsbdxOBHjcUqqizczWXGdqkFAqKmXqqOCOJolfAKogRNjknsQwpVvSJpTlWdgedApLkOxZIFXQVbEPsFlKjnVSILYCKfPHihpPaKKSAXUtNrWNNDWysez
+    Should Contain    ${output}    ConfigurationsAvailable : FFgYiCSCionuFHQDPURhFLkcQgyzlhsmgcoykWmZfqBCUwBnNDkclmXtoJhSeBtyPBVhOqVaxbxaTeWmAXeCftrRINCZSamzmQihRgBqVqMYBpRBRPjeqfGOlnqGrzfT
+    Should Contain    ${output}    priority : -2046521521
