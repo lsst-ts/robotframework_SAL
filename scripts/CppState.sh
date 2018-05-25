@@ -166,6 +166,15 @@ function createTestSuite() {
 		#  Check to see if the TestSuite exists then, if it does, delete it.
 		clearTestSuite
 		
+		#  CSCs should now explicitly define their generic commands. 
+		#  ... The tranisition process is ongoing, so some do this, and some do not.
+		#  ... As such, skip this step for the CSCs that are doing this.
+		declare -a explicit=(atheaderservice atmonochromator eec headerservice)
+		csc=$( echo $subSystem |tr -s '[:upper:]' '[:lower:]' )
+		if [[ ${explicit[*]} =~ $csc ]]; then
+			continue
+		fi
+
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
