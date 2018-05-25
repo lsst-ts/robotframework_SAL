@@ -5,6 +5,21 @@
 #  email:  rbovill@lsst.org
 
 #  FUNCTIONS
+function generateTests() {
+	csc=$( echo "$arg" |tr '[:upper:]' '[:lower:]' )
+	if [ "$csc" == "all" ]; then
+    	for subsystem in "${subSystemArray[@]}"; do
+        	createTestSuite $subsystem
+    	done
+    	echo COMPLETED ALL test suites for ALL CSCs.
+	elif [[ ${subSystemArray[*]} =~ $csc ]]; then
+    	createTestSuite $csc
+    	echo COMPLETED all test suites for the $csc.
+	else
+    	echo USAGE - Argument must be one of: ALL or \[ ${subSystemArray[*]} \].
+	fi
+}
+
 function getTelemetryTopics() {
 	local subSystem=$(getEntity $1)
     local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
@@ -42,15 +57,17 @@ function clearTestSuites() {
 }
 
 function subsystemArray() {
-	# atcs calibrationElectrometer (TSS-2608, TSS-2606)
-	echo "archiver atArchiver atcamera atHeaderService atMonochromator atScheduler camera catchuparchiver dome domeADB domeAPS domeLouvers domeLWS domeMONCS domeTHCS eec efd headerService hexapod m1m3 m2ms MTMount ocs promptprocessing rotator scheduler sequencer summitFacility tcs tcsOfc tcsWEP vms"
+	# This function defines the list of CSCs, in all lowercase, for ease of string comparison.
+	## atcs calibrationelectrometer (TSS-2608, TSS-2606)
+	echo "archiver atarchiver atcamera atheaderservice atmonochromator atscheduler camera catchuparchiver dome domeadb domeaps domelouvers domelws domemoncs domethcs eec efd headerservice hexapod m1m3 m2ms mtmount ocs promptprocessing rotator scheduler sequencer summitfacility tcs tcsofc tcswep vms"
 }
 
 function stateArray() {
-	echo "enable disable standby start"
+	echo "enable disable standby start enterControl exitControl abort SetValue"
 }
 
 function capitializeSubsystem() {
+	# This function returns the CSC name in a pretty-print pattern used only for Test Suite naming.
     local subSystem=$1
 	if [ "$subSystem" == "m1m3" ]; then
         echo "M1M3"
@@ -107,6 +124,8 @@ function capitializeSubsystem() {
 }
 
 function getEntity() {
+	# This function returns the CSC is the defined capitalized convention.
+	# ... This corresponds to the folder and file names in ts_xml.
 	local entity=$1
 	if [ "$entity" == "all" ]; then
         echo "all"

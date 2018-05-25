@@ -16,7 +16,11 @@ declare -a subSystemArray=($(subsystemArray))
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
-#  FUNCTIONS
+#  Determine what tests to generate. Call _common.sh.generateTests()
+arg=$1
+generateTests $arg
+
+#  Local FUNCTIONS
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
@@ -174,36 +178,3 @@ function createTestSuite {
 	done
 	echo ""
 }
-
-
-#  MAIN
-subSystem=$(getEntity $arg)
-if [ "$arg" == "all" ]; then
-	for subsystem in "${subSystemArray[@]}"; do
-		declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
-		# Get the Subsystem in the correct capitalization.
-    	subSystemUp=$(capitializeSubsystem $subsystem)
-		#  Delete all the test suites.  This is will expose deprecated topics.
-		clearTestSuites $subsystem "CPP" "Telemetry"
-		for file in "${filesArray[@]}"; do
-			getTopics $subsystem $file
-			createTestSuite $subsystem $file
-		done
-	done
-	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
-	declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$subSystem/*_Telemetry.xml)
-	subSystemUp=$(capitializeSubsystem $subSystem)
-	#  Delete all the test suites.  This is will expose deprecated topics.
-	clearTestSuites $subSystemUp "CPP" "Telemetry"
-
-	for file in "${filesArray[@]}"; do
-		getTopics $subSystem $file
-		
-		createTestSuite $subSystem $file
-	done
-	echo COMPLETED all test suites for the $subSystem.
-else
-	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
-fi
-
