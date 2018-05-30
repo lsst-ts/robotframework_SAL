@@ -17,31 +17,35 @@ def GenerateTests(csc, language):
 				subprocess.check_call(["./CppPubSub.sh", csc])
 				subprocess.check_call(["./CppComCon.sh", csc])
 				subprocess.check_call(["./CppEvents.sh", csc])
-			if ('java' in language) or ('all' in language):
+			elif ('java' in language) or ('all' in language):
 				subprocess.check_call(["./JavaPubSub.sh", csc])
 				subprocess.check_call(["./JavaComCon.sh", csc])
 				subprocess.check_call(["./JavaEvents.sh", csc])
-			if ('python' in language) or ('all' in language):
+			elif ('python' in language) or ('all' in language):
 				subprocess.check_call(["./PythonPubSub.sh", csc])
 				subprocess.check_call(["./PythonComCon.sh", csc])
 				subprocess.check_call(["./PythonEvents.sh", csc])
-		print("COMPLETED ALL test suites for ALL CSCs.")
+			else:
+				complete=False
+		print("COMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
 	elif csc in csc_array:
 		if ('cpp' in language) or ('all' in language):
 			subprocess.check_call(["./CppPubSub.sh", csc])
 			subprocess.check_call(["./CppComCon.sh", csc])
 			subprocess.check_call(["./CppEvents.sh", csc])
-		if ('java' in language) or ('all' in language):
+		elif ('java' in language) or ('all' in language):
 			subprocess.check_call(["./JavaPubSub.sh", csc])
 			subprocess.check_call(["./JavaComCon.sh", csc])
 			subprocess.check_call(["./JavaEvents.sh", csc])
-		if ('python' in language) or ('all' in language):
+		elif ('python' in language) or ('all' in language):
 			subprocess.check_call(["./PythonPubSub.sh", csc])
 			subprocess.check_call(["./PythonComCon.sh", csc])
 			subprocess.check_call(["./PythonEvents.sh", csc])
-		print("COMPLETED all test suites for the " + csc)
+		else:
+			complete=False
+		print("COMPLETED all test suites for the " + csc) if complete else print("This was a " + str(language))
 	else:
-		print("Nope")
+		print("Something has gone very wrong. CSC: " + csc + ", Language(s): " + str(language))
 
 def DefineArguments():
 	"""Argument parser."""
@@ -54,6 +58,7 @@ def DefineArguments():
 		dest='csc',
 		type = str.lower,
 		required=False,
+		choices=['all', csc_array],
 		default='all',
 		help='''For which CSC do you want to generate tests? (Default is ALL)''')
 	parser.add_argument(
