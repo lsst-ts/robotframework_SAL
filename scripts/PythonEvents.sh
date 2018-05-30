@@ -245,8 +245,6 @@ function createTestSuite() {
 		startSender $device $property
 		# Create the Read Logger test case.
 		readLogger $device $property
-		# Indicate completion of the test suite.
-		echo Done with test suite.
     	# Move to next Topic.
 		(( topicIndex++ ))
 	done

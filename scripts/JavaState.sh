@@ -175,8 +175,6 @@ function createTestSuite() {
 		startCommander $device $property
 		# Create the Read Controller test case.
 		readController $device $property
-		# Indicate completion of the test suite.
-		echo Done with test suite.
     	# Move to next Topic.
 		(( stateIndex++ ))
 	done
