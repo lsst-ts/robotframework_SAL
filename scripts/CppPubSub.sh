@@ -11,14 +11,23 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/CPP/Telemetry
-arg=${1-all}
-declare -a subSystemArray=($(subsystemArray))
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
-arg=$1
-generateTests $arg
+function main() {
+	arg=$1
+
+	# Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+	subsystem=$(getEntity $arg)
+	file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Telemetry.xml)
+
+	# Delete all test associated test suites first, to catch any removed topics.
+	clearTestSuites $arg "CPP" "Telemetry" || exit 1
+
+	# Now generate the test suites.
+	createTestSuite $arg $file || exit 1
+}
 
 #  Local FUNCTIONS
 
@@ -65,8 +74,9 @@ function getParameterCount() {
 }
 
 function createSettings {
+	local subSystem=$1
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
+    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
@@ -154,9 +164,15 @@ function createTestSuite {
     messageType="telemetry"
 	file=$2
 	topicIndex=1
+
+	# Get the topics for the CSC.
+	getTopics $subSystem $file
+
+	# Generate the test suite for each topic.
+	echo Generating:
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
-		testSuite=$workDir/${subSystemUp}_${topic}.robot
+		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 		
 		#  Get EFDB EFDB_Topic telemetry parameters
 		getTopicParameters $file $topicIndex
@@ -165,16 +181,18 @@ function createTestSuite {
 		skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
-		echo Creating $testSuite
-		createSettings
+		echo $testSuite
+		createSettings $subSystem
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompPubSub
 		startSubscriber
 		startPublisher
 		readSubscriber $file $topicIndex
-		echo Done with test suite.
     	(( topicIndex++ ))
 	done
 	echo ""
 }
+
+#### Call the main() function ####
+main $1

@@ -13,11 +13,25 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 workDir=$HOME/trunk/robotframework_SAL/Java/Telemetry
 arg=${1-all}
 #arg="$(echo ${arg} |tr 'A-Z' 'a-z')"
-declare -a subSystemArray=($(subsystemArray))
 declare -a topicsArray=($EMPTY)
 declare -a itemsArray=($EMPTY)
 
-#  FUNCTIONS
+#  Determine what tests to generate. Call _common.sh.generateTests()
+function main() {
+    arg=$1
+        
+    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    subsystem=$(getEntity $arg)
+    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Telemetry.xml)
+        
+    # Delete all test associated test suites first, to catch any removed topics.
+    clearTestSuites $arg "JAVA" "Telemetry" || exit 1
+        
+    # Now generate the test suites.
+    createTestSuite $arg $file || exit 1
+}
+
+#  Local FUNCTIONS
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
@@ -42,8 +56,9 @@ function clearTestSuite {
 }
 
 function createSettings {
+    local subSystem=$1
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    ${subSystemUp}_${topic} communications tests." >> $testSuite
+    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
 	echo "Force Tags    java    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
@@ -125,12 +140,15 @@ function createTestSuite {
     messageType="telemetry"
 	file=$2
 	index=1
+
+    # Get the topics for the CSC.
+    getTopics $subSystem $file
+
+    # Generate the test suite for each topic.
+    echo Generating:
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
-		testSuite=$workDir/${subSystemUp}_${topic}.robot
-		
-		#  Test to see if the TestSuite exists then, if it does, delete it.
-		clearTestSuite
+		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 		
 		#  Get EFDB EFDB_Topic telemetry items
 		getTopicItems $file $index
@@ -139,8 +157,8 @@ function createTestSuite {
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
-		echo Creating $testSuite
-		createSettings
+		echo $testSuite
+		createSettings $subSystem
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompPubSub
@@ -154,30 +172,5 @@ function createTestSuite {
 }
 
 
-#  MAIN
-if [ "$arg" == "all" ]; then
-    for subsystem in "${subSystemArray[@]}"; do
-        declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subsystem}/*_Telemetry.xml)
-        # Get the Subsystem in the correct capitalization.
-        subSystemUp=$(capitializeSubsystem $subsystem)
-        #  Delete all the test suites.  This is will expose deprecated topics.
-        clearTestSuites $subSystemUp "JAVA" "Telemetry"
-        for file in "${filesArray[@]}"; do
-            getTopics $subsystem $file
-            createTestSuite $subsystem $file
-        done
-    done
-    echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $arg ]]; then
-    declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/$arg/*_Telemetry.xml)
-    subSystemUp=$(capitializeSubsystem $arg)
-    #  Delete all the test suites.  This is will expose deprecated topics.
-    clearTestSuites $subSystemUp "JAVA" "Telemetry"
-    for file in "${filesArray[@]}"; do
-        getTopics $arg $file
-        createTestSuite $arg $file
-    done
-    echo COMPLETED all test suites for the $arg.
-else
-    echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
-fi
+#### Call the main() function ####
+main $1
