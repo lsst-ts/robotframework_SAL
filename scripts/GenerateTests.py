@@ -11,6 +11,7 @@ csc_array = ["archiver", "atarchiver", "atcamera", "atheaderservice", "atmonochr
 
 def GenerateTests(csc, language):
 	"""Test Suite generator."""
+	complete=True
 	if  csc == "all":
 		for csc in csc_array:
 			if ('cpp' in language) or ('all' in language):
@@ -49,6 +50,7 @@ def GenerateTests(csc, language):
 
 def DefineArguments():
 	"""Argument parser."""
+	csc_list = csc_array + ["all"]
 	parser = argparse.ArgumentParser(
 		description='Determine which CSC and languages for which to generate tests.')
 	parser.add_argument(
@@ -58,7 +60,7 @@ def DefineArguments():
 		dest='csc',
 		type = str.lower,
 		required=False,
-		choices=['all', csc_array],
+		choices=str(csc_list)[1:-1],
 		default='all',
 		help='''For which CSC do you want to generate tests? (Default is ALL)''')
 	parser.add_argument(
