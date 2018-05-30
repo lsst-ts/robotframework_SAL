@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_EchoResponse sender/logger tests.
+Documentation    DomeLouvers_EchoResponse communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -20721 DPVzovUOfjmfLFxHEzcoNmnXaPiOotbQNFjaMXhAGSbRXkAqdormykmszpcbhnNPOrZvrJiEJOKUAohIHnFAzbBLZMrYVpGLuFNxDMadszeooxcPyvsadXSHKhZNIjYBMzBwuNBquayweptQUVihvXtqzrcpCljTvBwdfYyrnWMFVjbGpdmPzTynhQTQKLmGGZoZrzniHFYyTGVWkOebStadQaMhAgcEKbvbuiVykLqRrVhRrbsDvjGSsqGXyYIvsGKXJxGwLyaOcWFcfkZUWgMwrlxjWCtrmeQoPXzBhdqAlFIhodlMnoTCDRBxTNGDnCAdwHfWhFPgDOznLAoGskzzWjQZHUVNogDpMBEafwOrJynaZxXFgtaaPtycuUxQvoqeZeqixYNgNqCLTiURAvmssZZiVcDWWGOrYkOeNBDRUUWfDfiCzsZWjyrKbpCHBqUrsmqlEkQVpmlCWjWbesuMDgvBVFqxrqseAzSBVgJFCEIkKTTFHAokbSGuDSsnSpkVALKmxGIQiSByJfCxDxRatudmdIPpQIcLKdoyAVLpbuhUvqgImopBCQIwgunHqCnSgRiVLYnOyHOKoBxfNrqRLghjgGOfxCFabiMUvbuKmwiiATvFxCapxWeQCNlLWTEhtRhsfeTesTckBzqHzVpXdaNHEFPUumWbVGbaaWciPKXFeYOBnDHtgfPxyWUqDPxrDUXclrqbwayrykgxzUXRrsCivhrczRtzHSIribMsZYrVfrGHRakTUaSnRpSwkqAPStcVJNtwTJiIWbLkvuuZgT 1972147163
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -22418 npvJFTfwMwzYexmMgMfgtxPLNZypdFWRUeFWphtqijpQbrHEyzLwYOBvQolPMpNAjwFNDuyOYfmwxNFelVwMtoYMhQnBFemwiHgsmGqVNCnZaKRuaGHYAWLgmzhCJcgJGjVUOtOqzkuSQPzdzzxudmwzLiBCOaQrmmrnthyakgflGiDEPDxiGPXybJKInpXgGKcxhunKrDwrxBKCbOXkXIsyxMyCSeKrqPispmDTxaTFyApuAIGRdVaEYhCCBGwYzSimWBFXwnSfxAQnujjZkubcNzycAQkKPyzCUQkwZNtLdDeiMPbCwkCffIpBAzaFsuUzPYsBBYKDiAAPKLRoEDJaidmtvYUXtFZVHaxPsfXxMzxGkDXAVaFTPmqLtlXIXVOqAJRdNjOxhWnrCDlTDpWWFQhOhSzAknLDnCGxmFcSjuhakMnqOmSGQaXdKwLjJeeIbIbBtqFWqolrdjkUDEDEHpfAJQNuaVREpjjcPrzWcHKyAbXROLyDghahQlfSCQTCWvwKSunTPvbriGZOejugUZEpISDliklbnwlKOzRtAPMHdRXGNvloMoBkHmtuxxlFScVrJZPaVLKxIujcItwDOeOKyxNYIxgHktOkHZCwlqUXaiMdppIvewNuokrxlSDzWmpXL 1523278420
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_EchoResponse writing a message containing :    1

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    CatchupArchiver_catchuparchiverEntitySummaryState sender/logger tests.
+Documentation    CatchupArchiver_catchuparchiverEntitySummaryState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py AhOvUPRsKAdXKTockVtrPbkSBMfoolBAwMbDAdixzamPiHkREaOXUliQNoMLVlqCpbrqvICSQYWLGZFaObfYJoLKdJLWuyFxMMplmdRUKTYGREtvYesCtHkdBIpSzDqh 14.2926 nStFMOOZjDetGHHwowbsulVLKPGBkmjFzMFXxCCwtkSdnaRSToQoOntryaKadsCNljGZtqhqlFKZvpIVfZciIqJNbGlchSAUTiFBGbBgdlBawowZicpjpIemuSZQjrtCeajbcpQCJYZdKbvRnWeSXwKahdXedmketgFbRujLCBeDACcaejYxxXoCcMlMAiAEJbgOeHkVpBnCfcWEwAHbKRoOmYKBaPPXsaFbwyiQRAXLWzpRNPxDwlfdMxCRnGqK 1224209460 BsTDPHpLyaYqoBnyDirnUVoFwFTrryHgziliNuRySZgvdbXNqoluQpNtZnBIYtxbTaNsqBgQJSwCfMtXBSmaPoxEXmXssBszhTZqKqxVlEpigrYivrPEYchVHgtzThBT BxNkEZRJafEhGOBxHNzmRoFxGMdjtiUIGGgugZlHBrghRalWcGRNQyvrUwDVBKjeWGgxUbNFbjMsscBXawgPZmwmcyEwElspdcnqNRaHSgEzTxCQKaMdmLzwuXvbAHYY mfsqecMVEfsqpNNathXgYOfhdKAsHSSrLDWpWDnoKdNicLVIUzmHeKNRrTiVOmbjqKSWEkOtMQAjkvPrxtTIYyCbsFdghchoJSUGYZIfESTwFutmwhTyySOgtXiPpuEk fTgKMeFmvaOyKKCIgXBYgpVgZLfBpJEaFmiloitiyFdhESGiaNyDopobRwHWTCtZTRgFpgIZPjIgElNuKZuGaXmPNmOCEHkQkdqXzgtInSNTHvOcgFYmOHnvLTZFPFrz nJeqrCySOMWxrQcAwaLMkcKwaKOomsmQvfMtdtaZSQlCvcedXJnogCdgOHfDNstDDqIrZZhenyzlhMxbTZwTQuWJdvWuEFPNWaEDtQHCfNQzzzPpjhflSkorQkyaLwlE 1868958707
+    ${input}=    Write    python ${subSystem}_Event_${component}.py JvycvogTZGPwjvqyzXtmeAFWTgPNByWFuurNMYJjXDuzTAKKYeSpMJeZcovDOkiUQGmVuNaUzaTMPBGGgVTnLuICFREOKGxjCdxqXZPCQelaLLvIAmqyhnIIUCNzAfvA 18.5927 jtDMclCyIMhDzWdcpkIXrfIjEJRplCaOairLwmJcTjWQsmNqtcSBhWoqsrrtQAHMIueQfQDsZBMzptVZgatiMerWVBofyxtGnNbwXLJNacKWclaGzZQRmLcacEnYYulemlFnOnVvecYtsBnsfRVFAtSUpwOQLjJJiIJRRLDmcsltKupLXHuHWHlZsCFfltiLhorqdAFJJwKTJDGhfAmWePeGihcwIhtxTvGNubpRWiQcinxfjWmeIepBdRvUdjEj 861604629 alldUJGKWjFQjYZDsnAinhCKcHSgMPWQmrJZwrvPORrMuidtMrEWgTQTmPiTMunMmSgHoFsRrJmThtegrBFCIwOYtOgctVGVpBCzHijidFpRcnAJwStdBpMXVuErsbDw YErSwkuiLVTLdPPzYRRdQHKGgNhDSfsCuQbTJNefcQICuKUnXRYtFVgCuoWkdRvntMXNJVRrWpVMwhcgZROlDugRczrOKGREoRXyEntKoYGwwPiqbvMKqlpdSDopsGrS UwKxEhPzWOWgMHWVwggFOmaQGsEpSWAelHSxjTcFXJYmigeOfOZVSOvZrgEKDzFRVtKHnwsPqfgLRokqqAhERTNcDphtKqTHuVFAwKinQNlpRTXtmxxyFXnoGwxjuYTf XGixgbaewDrchQCcrxfFmBKEXIueTmborDPhIDeYCKjzTgwaQnvruWtFbXKPqlYVYXGfTETINuXpSObnThDFBMSPBmEFNOUIHIuVfksjkrVlCHukeEpYkSAFfuksjvHy ywyUuONKKYDlXXcwtgogzjPwjlJcHfgjGnBxxwhbBsYMWxNJjnKXJmgNkfDRbnbDtEScpKmjKQYmGHLEPfxtpQkjtEKBxZbOmdMTGCeQwqGxXlDLdPzWihdTmVBhVdiy -1316413012
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntitySummaryState writing a message containing :    1

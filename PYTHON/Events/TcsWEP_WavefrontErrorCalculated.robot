@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontErrorCalculated sender/logger tests.
+Documentation    TcsWEP_WavefrontErrorCalculated communications tests.
 Force Tags    python    TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : sensorID timestamp priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : sensorId timestamp priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py JtnsKrHCJIThGfPWyaUoKXtCDvkaWSvvsyobdusSPhkzhBLPRhsNIMqUOuCqDTCZuvKysrCnKmRFrWmrYMTYvepgkIrERWDfFKVbcUBxTDEJGlxyBinAmtcedGKBHCnDVtolDXeVNotQScgOHHPykRxiLyVFFxyTAqZoXsKCEIxJahBhILyUAWFaTEDmIKRouZswoIWdHAGmFLJbUJcDVlPHocsVEQlfRYmrVceSxIwfCPDgzniwVyOGDOOZlFkQPZWkvqWnskViavpRBRKVNxumpuQyUnqrQdcQhADPgNiNrbszqPIRukKyNXvjLulFHpGfQUdltDguCIJvFljBZAiHEmouOiKrLlueRkjTEOgIZCumGhNybpoXqBUpTCfnBthWIosrKnZfKdrVcUpRsDgSEBChRBYlfNNdkrWEdkysGkiYnGemWlsgFrOJamZVvnXYOWfqTdfwPilhaJGkdvlziD 25.4752 -1821866063
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -30595 78.1597 1676468114
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeTHCS_SubsystemError sender/logger tests.
+Documentation    DomeTHCS_SubsystemError communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py BNIivhxsJjThVqrjFySObEZWdjbKNCToHYHmQFhohDsgpcNpGJfhcHvGlqMdDnjvVCCnDKNBgHSqbZuxBxmgUrFUTAwsIdJDZxyRXRyWvSLfoscTqWWlhaPKHBSpwYkbdzgACzmOdahPmgQInzSzBPlCumNZNdGmVMcQoxDPivhvGYFznbidtfnUQRgnenIAjHFYZEwhPuswFMfqMmTrmbPmJspJRGEnUKeMylkWItvTZLsdEyYKQZUzVcHggljKmlixnXiZVNjLhdZLAuagvcYNIGPveSebcfaNRjMDlxBKVUisPhNnZxoI 1445995610
+    ${input}=    Write    python ${subSystem}_Event_${component}.py jMjONSVccLjAXnCsdbzpFUoUjTHbtXKxXNaXjqbAPytdNfLbCXsyokktRXsaSQtxrvrQkwYBborcSHepsadkKlanSAqELrbPWsNNaSZyATQuJtGgUtCRGpfBOTCyxhsLYpRsRwSOttyghGUDVKJrcFWVZXkmEpKtYzEmFDkbvgMkqyMBcYFXbUELjfsYQahBxkSgwzleFFrPIryVeHNCwJWjkXjDsqDBvDcWsJdroMrLOslqVlnmvijXLHbcZUNnJFBrAhKpnuzFGnEibjCxyoYVaqDxVpMnmKoRQWagbWajyFgMxLtYFywPGiZmHAFIdOjeoMZdDXXsevhoQhbClNnTKASuXSkDZKxeAULSrcVYomxYXJukDngdnuKTYesscmzEhzknVexwvJzEEliqFHvbleqptyDBSRKtdnjvkDXlIQGlDGjHdNCsdaoSUNIuGpTqvECATaSrVblwiwqeZAOzijlMtReYKgknnzkwIHEIOgiHPrcbySAckIWyjKElbvHTqie -1548216454
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1

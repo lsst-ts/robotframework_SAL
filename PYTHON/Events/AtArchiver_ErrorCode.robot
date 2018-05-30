@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtArchiver_ErrorCode sender/logger tests.
+Documentation    AtArchiver_ErrorCode communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -783165600 969771118
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -896023672 612533422
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_ErrorCode writing a message containing :    1

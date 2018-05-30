@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_calibrationDetailedState sender/logger tests.
+Documentation    AtCamera_calibrationDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1056265074 -1193241153
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -457870160 -1059532957
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_calibrationDetailedState writing a message containing :    1

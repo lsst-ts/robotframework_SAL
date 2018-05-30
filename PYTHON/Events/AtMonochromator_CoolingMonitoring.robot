@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_CoolingMonitoring sender/logger tests.
+Documentation    AtMonochromator_CoolingMonitoring communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.855958009028 0.358613212806 0.183621370373 -1528484081
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.031348 0.270846 0.35814 1983187758
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_CoolingMonitoring writing a message containing :    1

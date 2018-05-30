@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_ModbusResponse communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    ModbusResponse
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ResponseValid Address FunctionCode DataLength Data CRC priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 37.1165 0 13425 -7912 -701 19760 -10542 21255 26287 9266 -18652 19059 -8442 7135 -20456 -27455 6080 -16855 -5704 12864 -11500 28768 465 16823 -13708 12358 -3992 14359 -30147 21702 28609 -2353 -3380 9354 -30159 -10106 -30767 32666 30990 1040 2719 -25047 843 -9379 -21794 -22350 5674 8552 13134 22068 16714 29994 13894 -23886 -15123 -29021 -32121 -22015 -19217 4614 -30147 2298 -2219 -22027 6940 26233 12475 4793 -7606 22058 -13874 -3142 11555 -29917 -26592 -10930 16572 -5548 -11392 15904 16995 -6407 7326 -7061 -5356 -18516 6190 7264 22140 -5590 -16120 17365 31900 -22092 -371 -1997 24791 -730 26862 -27446 -26813 -20497 31866 6410 12522 -3933 -31966 26880 -6798 -3743 -4781 -9021 -17183 -10619 17505 23670 -22242 2791 -14984 31327 16196 16997 4236 -29552 14839 -3770 -7952 19313 25439 -16410 -23000 19584 1878 17447 -30313 25728 -8121 -18126 13816 4317 12765 21441 -1460 -13678 187 21983 -25770 -12922 10125 20440 26937 17101 -12757 -23223 6583 -19059 -32244 -30967 16895 -25728 -11931 30217 -13532 84 6837 17422 -15839 -14736 -10787 17688 -27842 28732 32722 4026 -32448 5727 12054 26377 2585 17517 -16368 31423 26067 -28881 -12140 25714 -31050 14567 -21323 -13434 26756 -15539 -22290 -25407 -9536 -21268 27436 30768 1374 28048 -22903 -9800 -12088 13214 25682 14444 8619 -16884 -13724 -31775 4530 -12667 -32498 7610 24756 -25009 -9963 -31798 -9911 920 25981 4918 -22874 10261 -4373 -26678 -14071 4726 -9733 -20472 -16314 16615 15926 19355 21876 30103 -25811 -13568 -10216 -741 24696 20721 -9507 -6821 -28456 -18787 936 17875 11229 7657 -2347 -5557 30022 -29743 24018 28630 29918 2596 1863571748
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ModbusResponse writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

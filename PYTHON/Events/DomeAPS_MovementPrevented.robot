@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_MovementPrevented sender/logger tests.
+Documentation    DomeAPS_MovementPrevented communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py PtCunZeOhhtZMJSxTQBzFHJsOQMxxMvMRYchRzFLyeKtAIttGdADJITqReVufjJLkaIvilekBQwmmkwZzViYwDQfRZmXInQoZPFprCcQmQJVOPThYdZRBRXZuTeLJieqfDNEZKtqyvxJVmspqgFmgtPWvuXpeYYwwMdDnJVGVfyoYwJSJRTMHBMrSRjZAgcgmCQYpmMtVWPdrsWBnIoDDpAtIDHhGaYtdXuikIwlpxpLCRXaiRFhYVjOByBDTJtgtLfTiomnnNPjuuifrFoHhcMwRYvFwDTJwFSZbRmTgbITAHyBFhEBtkqkpqQDmwUIwPnnyChvCmZiJLinwKqdPVaePIOFmGQtkwnxpMAzEDoDIFOHMZSWBuGCmTXqRQxyqWSIzStRlZzXNuoJfRtuqMKxUPqKwDrWsJDNMIDwwZnBbSHxDYwnEdMwyVZwuyXmeoVkfqHWgfwecBgXuYDlqZCGxISvTSqLhByVtamJopoobwUoLoFEjrseKEAiQXWKelkeytlYCTDsjWApPVWIXdQtJGQxZHNHmhkJUPbdcnByHHBpsvvlNQfqBnrfJbdRdNZXBuTDgKBolsrQrMjlNamfWAEciNVtSNaRkGoDHmdaOvvRxxqoHirArjrPyaZdSsWdecRSTyTCFoGoecQnbyDgMwOrRTsKvVWSPhIqROCQQZYdqZiUuJMbfbJrezLQiUGFOvGjZoJLlOXwNKwGtfHvyOivxNLzwcnIzVvvKywcIQQkbJinRCJOBANABrcsgAvbdTM -1427856598
+    ${input}=    Write    python ${subSystem}_Event_${component}.py UFJYAftLKYwyZAPvLREpXPsejjeDRYGeWoVRXFqdORERbrlcyvyXfxROHWrbdAgpzkIjoGKTCCkRVcdMMIiqUTqpjZYPFWFUswUIkzwuIhwwIhJOVWMhKBpYvBXJkvUzwsvubHkGxqdJqHJEShCJhgHteIfgQHOrbNwUcdlgtmWZVexsrvogFHXIGVYwDeznytlqtkrqOvuSiflHuopNdQHDizaFvHoIrjzvERUdBwLcVlwjICUnNSoPcdPNivsPElWGCmdIJXtVkuHNPOQ -989226357
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_MovementPrevented writing a message containing :    1

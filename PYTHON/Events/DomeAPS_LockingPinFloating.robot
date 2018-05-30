@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_LockingPinFloating sender/logger tests.
+Documentation    DomeAPS_LockingPinFloating communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -7042 1492141536
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 2127 -1169091501
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_LockingPinFloating writing a message containing :    1

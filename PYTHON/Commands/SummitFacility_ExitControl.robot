@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_ExitControl commander/controller tests.
+Documentation    SummitFacility_ExitControl communications tests.
 Force Tags    python    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

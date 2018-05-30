@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_SummaryState sender/logger tests.
+Documentation    EEC_SummaryState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 55.5708 1571648237 -1066457656
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 73.3353 256384931 -294556941
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SummaryState writing a message containing :    1

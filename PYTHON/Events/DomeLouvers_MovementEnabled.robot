@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_MovementEnabled sender/logger tests.
+Documentation    DomeLouvers_MovementEnabled communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 32030 1675530752
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 17561 620310440
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementEnabled writing a message containing :    1

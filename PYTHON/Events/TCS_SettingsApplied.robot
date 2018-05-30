@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_SettingsApplied sender/logger tests.
+Documentation    TCS_SettingsApplied communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py bbLrJVskSdcEEmaPKmTGstwHAqTCRxPfFhfzeeIJtEWTSKDlzawhaZACWnhvRxevpLCyZjmhCRxTRGoahwZgqNjrbwfHKaqFJlJudEOTYHffrJvegOlkDTASaWRBJHonNMGZPovLZHPGTKCqRjCjBMxFJHUNlfSXXRbIWtZmOSeoqHJCfEvNOGFlWfxzAeQuVYOKBOuzgmtCCEgFwQCFBnIRjNHjtOPVDJdFEazzCsSznSbihRZWOfolqwLxsMcSRHcRwuatXFXurpTtHDXazhKDOOxPknesgCnhdFwUziKaCDhRzCycjyyhjRCutvzfuuTfdSzdPqJqGXoCgMDTSrmGRvHYxqXBVXwrApilDwbaGsCKFTLplSRCVFAsCgARbCUnrrrKfWOQmHHaqqkXZAUAprrpeKZmtdgSetYSBpcllLOIlYEfUnHgApcuVyhEJWPPxGTFzblOoXcBqtiuXoohacnEMcjCpTwFHuraPcOLYsXZPVCXxibeBuvYMaxPbjsTWmiGCcAmQXcLKulHswJLsdrZYLuivsLxNgBasiEWGTOWxDRcDzInywRJWgyDKXxzruoAHVogxEDJixOsAUZTgBgvwZKaAvvBPbfqnFFOKUGzxPIiTLIArybCWbrLMaEYHbEcGMEmlXIQDSRqzCBdAlNpiiAREkEpQesVBrmRscHFaygDCgkOlYtviPtFfWDvVbBmEGxzxdHYKdusIjWzfEimKgRJHeyAMjYkVgUOLPKSjgXrHWuSCdAqSsgIGeoqqoypAKjlQmuOwsaSPCfEejvb 45.9706 273083085
+    ${input}=    Write    python ${subSystem}_Event_${component}.py apOzPDVCujlXCByTuHgjqiLPAlqwgoWeOoYPuwBinzaLorRkyjdBBzJvPJnWmjwMsVNCWrluxiUOodOtkoQpuTIXlUCxSJlQwYSZXScJNzEqjbQcArWLlpjLQZXuKxXsFHjDCBctgtfbMqzojyIiCFuizRWRFPCKQpkoiIuXYCBSBTPpFsporrNOTmsUBeoeVebkpdzuJaspZXBxUzDKcMFClpTYocbrgZQGsYaVdhbmcBsKmDIdbzOIOMQnzfzVaKRbwRZTYZQpNIXPkUBFAhfKLXsIxMXRoxteYWUnHHRxqYqgemWWwLjcmjjUmCsElxMOHrVvVeLTuBwPqimLLWPtyRXEXxYMwwvgmgInbCTUAqfMVztgIAVBxbZoZBzKoyjjhiYzybCvVkoQGEjRkEiOjKVabmRaqOZnCqirBsIhJWaOWThWCLActlSWtDAbYZVUpfvjaQmyGvSdjVtSVHryuVxlsnvsQsvyyuSNUAmAvCwJmRSayeIQwZorgDiVigHbmjAuckIkLTpxnkqrwMOcVBdffJGoHrVunxhqBjrFjEjRWHSxZybYLOiqJzkAxCgApgIHFMPIKeGxgbAdqiMHNiVDSsYoZoyIadRGKENwavbiWLTqljpNuaVOkOnNFMagKKKCoQhOKDxFSlVxVFMnQbkQLwHTYlfCFLsPMFBgKEbhFHtFXgPUrSTytvWYoPwCPiCRablkcZXewgxlzPDozzAYGqUVVdigDwwsniLEtAHOrIHYUDndaKhOpbKyrEdtTHGxgkhZGCqUdDmyYoRkxYvwytiDDQRfcmMhoVhiBatpQWLsXaXNuQHIrnYBtaNJWDUzZfcjubnULjKuYttBwAAEOcNrwDBlUFVvAuKRsfGHsODfehXVwmUCgFSESvElEobIPpMmbPKpLcBYdBvZGaklxlgjjSmbTORlPmYnvJQDHeWLTFMfZTbfsKusPqVZdWYXDBotkQPpRBUGj 83.0508 283733915
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1

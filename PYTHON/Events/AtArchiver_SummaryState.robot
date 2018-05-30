@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtArchiver_SummaryState sender/logger tests.
+Documentation    AtArchiver_SummaryState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -695173797 -1753999627
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 463959636 -425152811
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SummaryState writing a message containing :    1

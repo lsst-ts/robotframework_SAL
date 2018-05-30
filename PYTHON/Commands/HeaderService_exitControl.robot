@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_exitControl commander/controller tests.
+Documentation    HeaderService_exitControl communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

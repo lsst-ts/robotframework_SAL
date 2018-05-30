@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_RaiseM1M3 commander/controller tests.
+Documentation    M1M3_RaiseM1M3 communications tests.
 Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

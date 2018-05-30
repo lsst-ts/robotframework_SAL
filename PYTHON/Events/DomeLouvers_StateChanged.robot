@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_StateChanged sender/logger tests.
+Documentation    DomeLouvers_StateChanged communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 2438 553 -775496573
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -16328 19599 713199771
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_StateChanged writing a message containing :    1

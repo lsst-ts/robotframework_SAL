@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_offlineDetailedState sender/logger tests.
+Documentation    AtCamera_offlineDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1755276056 382667285
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 202570609 -27380025
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_offlineDetailedState writing a message containing :    1

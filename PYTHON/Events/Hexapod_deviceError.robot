@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_deviceError sender/logger tests.
+Documentation    Hexapod_deviceError communications tests.
 Force Tags    python    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py GxaUEljMqhSvrAXxGKEnKMZIVBdQqDhhddUDMjhwSWfjcAXtXkKdDmEbRTgcpUrcYTjRWzAggQnZYasNhckHxSnNyNyZfaYgNOQtRdZsHeMUaLBjBaKsriBbjPlPbMqiMCANdsKPKkILrSbdFVQTPlrFDsyEYLIsNKzjYgeAwkyKyvDarvtpujPlGLywdyKzEJGAqztlSZLuqAOrJmHmDldRGITpUReyBUTdzYOZooewJoYbGUzCTcVnNeVQgRRG 153648341 15.676 ueQPkGfsiisCXWlHpxlijixJQushRtLslGRpEUieEZfOpqTISdwZaWjCeaAGHWNOcnGxTQEWDUWGIkVdozHKBafZaPfaoPqOYdJnesaXZlYIFrwLTdkoyhHclUqNhivWTvrGLbdkodNjVsZcGozfSfCLYQyShFPVmKOxIuTfEofLXYxsxdMmRlPBAfpsGfNEeYKohKoPpSLvBAWvPHpEegzXelQkwBWrKfafInCrZAOXPaJfUvMImPlHUCguhIDf -1394064839
+    ${input}=    Write    python ${subSystem}_Event_${component}.py AhFwwnuPVHaXlTtwjsrmzZMKphhQAXuOwCiJXjbcLnFdtdOasGWTXxFXkaUfsvQWjZavBsHuCQvBAyxXkBulEOTJWTRBciaKIADCeqFWlyafJdTCocVTwpgymMmBfhAlHiJfIJyNPrhCqKkXKurKQwFXSkIyzGSRJkmHoKpdAhadxIWWkPNxLYAAhbjRQTvveprHdbkndHNsbhmMTmvZmGVoySGbGsPKqlydHiChZXsRBRnUmbjstCCuRGyXKoGh -661806902 87.1631 nNQpOERdKpAMCyhCKmyFCRekSmgSfFMABhwMPbmURudCfRMCrrtytioIzkZzuYrCtpelLNOxRsQGHPJCHKUyuFwYaYuCQcNhwXNAZblxthatLipJXDYBDzmCZTaCuNgQlmIdGearSEIEkNsoFGnvLBmTShWmBzwckSpwQXVPxhczgMSUlrnZCTnGLxoKfuwwHPmUEdxAuMjvRXhRvSnzXsDKWacYDBilkunFfAdCYldFuYqRgCCLBSOYoRNanlPD 1369014793
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_deviceError writing a message containing :    1

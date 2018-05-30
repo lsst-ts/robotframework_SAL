@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_BrakeEngaged sender/logger tests.
+Documentation    DomeAPS_BrakeEngaged communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -14995 602033969
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 3530 540110299
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_BrakeEngaged writing a message containing :    1

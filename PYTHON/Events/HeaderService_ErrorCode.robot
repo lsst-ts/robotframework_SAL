@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_ErrorCode sender/logger tests.
+Documentation    HeaderService_ErrorCode communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 4.0767 -443606830 -1654005462
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.1702 -1489427574 1132513734
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_ErrorCode writing a message containing :    1

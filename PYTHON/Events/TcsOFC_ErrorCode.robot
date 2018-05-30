@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsOFC_ErrorCode sender/logger tests.
+Documentation    TcsOFC_ErrorCode communications tests.
 Force Tags    python    TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp errorCode priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : errorCode priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 23.1621 -833996348 1716976998
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1654359491 -1854773643
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_ErrorCode writing a message containing :    1

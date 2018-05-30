@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_shutterDetailedState sender/logger tests.
+Documentation    AtCamera_shutterDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 230753300 -727660753
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -40402414 1951668337
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_shutterDetailedState writing a message containing :    1

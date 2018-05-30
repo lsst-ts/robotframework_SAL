@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_inPosition sender/logger tests.
+Documentation    Hexapod_inPosition communications tests.
 Force Tags    python    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 96.4451 -1539649939
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 13.6784 1531505060
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_inPosition writing a message containing :    1

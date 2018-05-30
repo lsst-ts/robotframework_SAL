@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsWEP_StateChanged sender/logger tests.
+Documentation    TcsWEP_StateChanged communications tests.
 Force Tags    python    TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -29,7 +29,7 @@ Start Sender - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Event_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : timestamp wepState priority
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : wepState timestamp priority
 
 Start Logger
     [Tags]    functional
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 24.4425 23426 275120092
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 14085 12.8867 -175100821
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_StateChanged writing a message containing :    1

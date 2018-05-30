@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_filterChangerDetailedState sender/logger tests.
+Documentation    Camera_filterChangerDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -620048566 1741929062
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 254775139 332180876
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_filterChangerDetailedState writing a message containing :    1

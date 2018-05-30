@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_imageReadinessDetailedState sender/logger tests.
+Documentation    AtCamera_imageReadinessDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1059467915 1752705978
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -407139984 1332764035
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadinessDetailedState writing a message containing :    1

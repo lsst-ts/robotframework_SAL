@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Sequencer_sequencerEntityShutdown sender/logger tests.
+Documentation    Sequencer_sequencerEntityShutdown communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py KpCpUnqVPFZcIxdpPKZPGCtzpAPCiqUvShbPmeBhtXGoDUQGRUUuOrUwnDBeLhoyMFJkokrSqgpbLKkmVAKIZnzXaontByPfPQONwvytijGLeyCJXUQNgkeQztuSqQUQ 8.2006 FcwGKeBHGofsvDEHGhzPuwtNaOBbUWytdgAljulXRzHJqnuxqAfsTbAeQrkLYTBrpySzgbvpHBqEvwzYNFOqEKpABanoveGPSepchlMKNqjKXbBSpyjNwmfaeBtMQuyyqbOKxyhOUeHQkLdWKOEURRyFgwprDmLUnXtTJwOvHNdDGugLLmXviyoexCMxRLlRSKFbrzDpZACxkFxFqjyqdmoqWLkuUeGGrHTfVsfZRDnBpwejutkinwZDCUwkvbjN -1823103765 1651570583
+    ${input}=    Write    python ${subSystem}_Event_${component}.py QZOVIHVuiLmOKXHdhEujSLSXzuPeuYIpLOCYfiagtTcNXDNFGMSPzNYDGnQxsTQKgZqclAKPaUIYJVXwUdFkSEIHOyPTRuBInfSwZpoSmKZBSBZfBoDYLSGHPmEyKpHc 24.2718 yPXwWOjLiMktbfLRuYPAelDvtQJSXVvDPrvIVLsGtFpjjUMgXoDvVeDyiojGRQrQtEYInjEvTUKYhOhFTtIwFoFwDpxfnhPlmHsmiEZinPKIMcqpWFRsqgGmIfpAhfHgORGjfPTaQlCTVqyodrGddKSqlaLGVkWCJfzhEEcratTKgWvzoPRFlbFZkscqNGKDLgVyXlsgPollxiZnNIkACAxawjlnQwvCHYprCfqLSsIKTKUhaGNBKBcPhOQTIeZM -1198576813 475448285
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerEntityShutdown writing a message containing :    1

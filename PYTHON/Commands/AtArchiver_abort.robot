@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtArchiver_abort commander/controller tests.
+Documentation    AtArchiver_abort communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

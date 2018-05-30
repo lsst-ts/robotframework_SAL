@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCS_ocsCurrentScript sender/logger tests.
+Documentation    OCS_ocsCurrentScript communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py ekiPRjAeZcfHpKizgTMXJQoepnZGBKlQzfnmEDPwJLHZsFpqvlqzpkglHaoqmoIHfgKQABwDGezlrKkvAzeIEGpIRwESbWSqxTzjyFngqPUvLeOoAfcefNmnSuKHgfevMCWZUyliosnfCNftPUUiLIcALupepDYueGESVzLzjOWXgXJsFhsmUrkCDnWrZIoODAQZJykPyyDEiTOTVrTnpSKeMgplNzohDcIKuDzHRAmLzvoyqQmkBUYkktPzZkDl 64.248 VWYjHrJMfMynDfAAUfzsWLUAwxVhFpyfVYKGGWglrfCKIOYOqgixfwYdfvTTqqqTMelPdZWPEBtwuhDsZuWxIHfOHnSdVvTTYjMOmpPHLShYTNaNKELUVsZilzBPbafnHOdZpnRRKtWPbiFDqjWHhQtpDzFGxcKinrKTRLlDcJeFabJcfhqzPaVnDOeYDHpEoHJxLJsrvDuzuJHEuztIAlUXwhlegCLMxVkieGeMDgBpLGkLaesonXCFjEMjEvtw -1851833427
+    ${input}=    Write    python ${subSystem}_Event_${component}.py YUpviNTgEXJIpFlfQPXMBjMCTWnyUHgBopgGXpElSWNiGJLatqSNKGTRGrcblpvDrtDxIzRDxJiDVAlMqWMpnIpxgybEpIZttosAMRKYlNRxISWjHlIJylOmAKtUBMaJueZoFWGLXGlleOyPOCxFsrnPdtBMJeifKLnUJSmUtLsqnHskgmAubuGkyimrDgQCAkNtSADDywSAGqZuMOxQAVybCLNHBJsQqLAeCoTrcvCBnynUMtHjffwtgOKclUxW 90.3611 iNQkHAFEaIVolNpQkoOGgyEcZqglktKBBxilPjTFVgFHjSPsypdidIQjgXzCsFPoXVoAUjelhnZKxhZHEhCzGMcidpxyOeBelTimFcRctrOxJkmlsmjPzAlQkSVeDqERjxBuONzcLVJmleraZhFJynigknIyGbvUaTImdcNqHoIESfeiqGZBKxPinZEMiKtAFFxhdTKBFCRnIUEMHlkBNKZOgqSbgHDJHiiZUiVYtVFeparthwqjVyNnXAfqelAg 101267776
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsCurrentScript writing a message containing :    1

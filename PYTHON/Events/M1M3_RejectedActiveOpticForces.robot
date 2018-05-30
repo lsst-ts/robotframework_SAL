@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_RejectedActiveOpticForces communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    RejectedActiveOpticForces
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ZForces Fz Mx My priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 82.1258 0.016335 0.442297 0.067507 0.20709 0.758677 0.178667 0.980881 0.698796 0.955297 0.124598 0.791944 0.704388 0.286382 0.068232 0.841244 0.181062 0.019398 0.752851 0.82737 0.960505 0.555704 0.498228 0.03172 0.61927 0.758007 0.115929 0.727658 0.189446 0.091312 0.446375 0.992733 0.475644 0.287903 0.847966 0.136273 0.368933 0.646916 0.352268 0.738089 0.087167 0.229854 0.129462 0.812647 0.972279 0.80704 0.787396 0.894662 0.430418 0.44716 0.204383 0.296474 0.611756 0.076531 0.247622 0.467975 0.171076 0.337169 0.538878 0.172885 0.23984 0.89041 0.198166 0.505216 0.077931 0.884656 0.87318 0.188767 0.767628 0.167888 0.279057 0.056169 0.365573 0.889412 0.107605 0.924484 0.882384 0.541671 0.874469 0.207568 0.261008 0.800636 0.418133 0.414028 0.666459 0.495778 0.364958 0.937703 0.42158 0.210917 0.636444 0.698787 0.142878 0.401425 0.307537 0.702533 0.357752 0.584842 0.153653 0.982944 0.367225 0.978546 0.616992 0.957928 0.648119 0.25817 0.017272 0.340891 0.970636 0.704675 0.703125 0.68776 0.261977 0.150179 0.059434 0.778833 0.998415 0.724009 0.173475 0.888071 0.402926 0.363548 0.690023 0.024728 0.774812 0.649623 0.721748 0.072401 0.256487 0.0829 0.417129 0.694955 0.690719 0.414157 0.550828 0.173496 0.102264 0.348165 0.542595 0.919346 0.765896 0.759422 0.627541 0.616521 0.315065 0.220983 0.041195 0.976783 0.101561 0.524682 0.264199 0.015553 0.030152 0.835342 0.840071 0.653407 0.069069 0.963385 0.012653 0.167874 -354851979
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_RejectedActiveOpticForces writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

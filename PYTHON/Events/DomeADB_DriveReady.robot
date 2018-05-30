@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_DriveReady sender/logger tests.
+Documentation    DomeADB_DriveReady communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -31325 -1141751794
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -11823 -112453580
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveReady writing a message containing :    1

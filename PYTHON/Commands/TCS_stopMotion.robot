@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_stopMotion commander/controller tests.
+Documentation    TCS_stopMotion communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

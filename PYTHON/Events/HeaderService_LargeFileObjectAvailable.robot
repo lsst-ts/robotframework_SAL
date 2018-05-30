@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_LargeFileObjectAvailable sender/logger tests.
+Documentation    HeaderService_LargeFileObjectAvailable communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py FefwPoyqkUjgYWIXKgrTtuavMfcXNbckbljXufEVntMkOBWZRGQeHNcdfnfJCFkudPebGaeNkjtbctjYRZMTpetUUwFajapsfSOVDebGvvhUDddztIMwGjbYvQHGGlHWwQFKJKwIqfXntBDCqsLsVfRpuYJSqOxXGMWpLnPKwsUxXSuWdlyfVjEbNidSNoyTOjJMHiXnerAzhXROseJghkSljdcmbrPtwApteeNUBacUTrSducoPzeMUzhdnmgXC iTlqhtJSVpfxVDfAiCDBOIDCSjgBHtkr 0.851194297195 mNmHgHeAqySfEQAdqdSsuJxaNDoLpPrE gELLzKuNbBmDsJpfSmGSyJXbpxcUdauX -1173766343 ezQhdiijVXXYecvewAtmBgApONVDfess 1856544626
+    ${input}=    Write    python ${subSystem}_Event_${component}.py xxbQNtRLxyIwCEqQcpLTOvSVXfJwjbgMKiJlmckLLtkhrKOBiBCbeypZpQwODrfuBkoTpcJitXGvPbYMxsEoWYkunSUnwYYorjnINJGSwtiBvEXIgEaNKWeTXckOoHhoCxoUlgcnOpNKGimDwfszkBenbDHPTffYNDCbUKEnuaVEWLCtIkliycPntoMyfpIkiwmVugQIsWrgzLhMttlSybwuqXEshJhUvsGtfXaeEozYwCDFFtAwzRjchxUnTNCf EEmLGnVbyxgvfnspOoNQpKUFyfcRffdp 0.623279 ZTBcLRxMRysHSTNskyRDvinxBHvgLesT xWKTLBwmScoFqsFZChhoWGMRQBOBsHei 845857890 GttjvBMcONwdzfkrqCPFBPPUPkAHOgQZ 1367095894
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_LargeFileObjectAvailable writing a message containing :    1

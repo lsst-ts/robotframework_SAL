@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_track commander/controller tests.
+Documentation    Rotator_track communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 33.2916 19.1173 43.4183
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.5857 85.6657 74.2243
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 33.2916 19.1173 43.4183
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.5857 85.6657 74.2243
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    angle : 33.2916    1
-    Should Contain X Times    ${output}    velocity : 19.1173    1
-    Should Contain X Times    ${output}    tai : 43.4183    1
+    Should Contain X Times    ${output}    angle : 0.5857    1
+    Should Contain X Times    ${output}    velocity : 85.6657    1
+    Should Contain X Times    ${output}    tai : 74.2243    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,9 +79,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    angle = 33.2916    1
-    Should Contain X Times    ${output}    velocity = 19.1173    1
-    Should Contain X Times    ${output}    tai = 43.4183    1
+    Should Contain X Times    ${output}    angle = 0.5857    1
+    Should Contain X Times    ${output}    velocity = 85.6657    1
+    Should Contain X Times    ${output}    tai = 74.2243    1
     Should Contain X Times    ${output}    === [ackCommand_track] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_interlock sender/logger tests.
+Documentation    Rotator_interlock communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py ptddkheEshTUUjoyChIIuXhpSCIKyDzYpyOXvYVbHHLSRWpPVTCWhGSIlhypCyZTmgxxfYQnqdQsOsGGvmoYluYHlLCBxfFWkYzkJyOhsOfwcHlHwpBSxfHdJClsdQYKuBnhZEZDtdqGLCUQHbRpLbZOOHiUPRJQMCXDXQbQqXbaNYQhccpedsnRkqGnNujFxeaXyEnQiiwACCdpaRclixPZCeMbdukzWeASycsrOxsGttoktPbAPgIFvpMxhfxh 59.7343 1541541477
+    ${input}=    Write    python ${subSystem}_Event_${component}.py RJUIZeyDObaHxthZztTgoChXYcdpQmomiwbdbDIpkFJSnYHUpjsZSvBjIghfBxKhlsHPieHaHAeLBcRFShyCmwuafyWztBnCGLlKJGBOITyIbEUwmsViAxPNIDVllKTifEjljdhbvMiFDHZgbmAONUfEhmNdBZTzKsWxsYtycFGqwaOPhUaYSwiuxatIqFJXZoAAjFPNTORktgoUttCFAybcBwOvhmrUGxafxBdrOdwPblOBAxEqFWhXoYIvPcWK 66.3536 1953980326
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1

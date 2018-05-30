@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_AppliedActiveOpticForces communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    AppliedActiveOpticForces
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ZForces Fz Mx My priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 11.8092 0.562093 0.152866 0.762228 0.471838 0.95822 0.408136 0.414742 0.500123 0.868753 0.965373 0.757725 0.089454 0.371076 0.598256 0.283951 0.473936 0.604874 0.319075 0.399154 0.176303 0.883958 0.257598 0.367749 0.743629 0.404075 0.141262 0.547443 0.512966 0.284495 0.679019 0.110509 0.99074 0.086146 0.72219 0.416988 0.979964 0.736049 0.359867 0.000166 0.092712 0.645357 0.00362 0.943361 0.357727 0.162689 0.660453 0.393147 0.647316 0.35549 0.985735 0.657679 0.212373 0.425565 0.896581 0.672074 0.824655 0.847329 0.869508 0.649346 0.640956 0.200178 0.150505 0.723349 0.049942 0.361865 0.377027 0.065887 0.465335 0.701797 0.445885 0.36969 0.324708 0.727823 0.249139 0.601634 0.22605 0.921851 0.468083 0.009949 0.106952 0.65453 0.368273 0.885416 0.808968 0.703073 0.862893 0.015013 0.291575 0.980942 0.702824 0.903792 0.588643 0.380772 0.162343 0.521771 0.582161 0.7442 0.9415 0.001336 0.45596 0.962185 0.662284 0.893497 0.132201 0.624281 0.78772 0.875333 0.5187 0.563396 0.038631 0.526473 0.058708 0.192804 0.18867 0.903663 0.664457 0.757183 0.957686 0.657764 0.712722 0.618003 0.741389 0.984225 0.26183 0.468855 0.157189 0.715443 0.347274 0.409492 0.603127 0.109596 0.141736 0.711646 0.726281 0.800427 0.072258 0.754576 0.648203 0.232446 0.127234 0.915121 0.658562 0.909203 0.683786 0.517783 0.027801 0.169605 0.045745 0.785013 0.542817 0.786364 0.813409 0.615236 0.677729 0.386485 0.393944 0.449745 0.038269 0.835968 1386491609
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AppliedActiveOpticForces writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

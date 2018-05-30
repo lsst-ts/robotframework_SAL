@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_mountWarning sender/logger tests.
+Documentation    MTMount_mountWarning communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1453896155 oucAbeNCjqhqpzzigyPJFmwtvUILyyguIpQyyAnVRzeQeZZnaGIizaslfApFbqEvLCJCNSEOvcKfJqOApPMZPWRpvikTPWmauCVMHxTExLBSMXnQaAAUBTrZLRzrvlJKzUDrJeePmgLzovlI -411230606
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 195477461 uVFZIOIXaQIXfjeCIhnqLDnSZHBOttrHDUtyPpoGhYUtgucRHSNrTnPEpxIXHtaeRWvcQeJiRAHSeCkHAQsZvbrbkEtYPlkFhJzJAEYCvhAPSqWFgltyQXoLELonayHWuKnxdZmbxdLQTaZAsXnQGWtkqtDkfBWsSnbOfBjZujNIBKeFkfgUbyxCRmTQshXsBxUvTnvHWyhfHOgueWKrGmrrNKGeMzrBKpuLPIOCUgMHiIWPDpwnjqlTUdUrURENbgpgTcRHGDDYfSZOFBGVJtgzONaiQKzOgEeRdbaSeLaANKxvhjijTmbbGTLRlBucqIyEaHKOVxBqQUTGWeFvbkHEIcLUlDSQbnhOIHjMrHvuSSYnRbvrUSIiMIKaigFnsOJpKpmzBsRfJXHDPlwYzfoGZgLRCjNRGZkqPwqPuuXgiPRodIHMCUoBqRmpZVMThuYzJmntpGnQLneOQauPmSXFhkKTPFrzVwNjMOYzpYkZcRMBpEXzkByzzuGSMLjypjLUwZtRZEkeBbhkrKjLOvQBgDDCPswZYTMzvdwXjeFPGcxwQgVehgjIVaAyKeqPBlrvsujOaGBAhoCoPzWBifQDkvNWjhuhIIsmbOBizpCYhsrffKNGIgCwysUMaaUGxyLQlCyQDobcDQYKSiTFWkDJoHVCckLIiBSoghzmBiiFfPcvTPHyrgCxyoiDmhLHVxpXvqmlOoEGzwqLLGeYTrRfDuRAJdFZQVLldKUfjjdbHRiDSgShCEBAqLbbbuhEhzqDAvwc -1008839386
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1

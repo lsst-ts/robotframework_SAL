@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_SettingsApplied sender/logger tests.
+Documentation    EEC_SettingsApplied communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 55.4898 mYdnKcQIeIZLPlsHiGRSvBpbyXWYVEdrVfYOMKwnXWxGoYqtcUGzAkPLHiVwUuRpGfsNLkNiACBVjSMLHqSTizzrsLHXOAkybechutFZhVVZAkOuobKNDgByNynMsJZLmxgmqFZixthtAAgPEJgnOjIjosSTpHOquaMCYmTGCWNayErRbfMCzlSosUsoUiAfRWJPJJVoLqiFvxCqdXCjxsdCLeAkiuEVMklrwdTYiqhKUNWEwEsMDfNOLYNvQYCWllFzeGZmaLUFBwGhMUbWqJaEpcEMYpaJxQAFzWzaHjjHNldicSMrEhzhjDkIJUHJCkAhsteDVnqgpYpMqyKcbXoCqLIiKBESbaxAHzyIHUgGnxpzoPnDDwWonXuNMGhDzRFLECtNiWfDOICcUzPWbAYxWHKCERuhrMADTJZOthpawSwYfPQOOwhCRDJtvzzKIYDzXMBwhdixwfLvgIIzyUmyLvCbGTgruoYqYliMRBJdMuXdzxBZJnGXdDJOVqxOuHHZIXpQJKAnaTOMijpaSjjjvjEdQNptuXgwAsSYltDXbCBnkMDrLLWsdcNnlwHCuNvihUzmRxzNlxdkiOQivqdhTdOoDuAsrGvxwAFJdtZRrgVJZhAAILsfCynUQunaVuulMoTClDReUjubBZtiCEHTdKBqbeVAtCZyUbaKRFlujKYAKGskDcQkzyygxlxUmALeBjqDdYyTxUiyJcdjUMnXcsUTysNNepEGCOXDgmmPreaYQuaAhQnylyyKCgmpJdARnOPDznuECELacUpjQDZfECNIJBgZgnKMgtRGKBDfWBlncBVhOZcczaIdhIvCZOFwYLAKuWPzIMSaAKqSGaZSeNCGIHeJClWbhbzydRNhgWTPRtSXgHNKZNhoMEuLRcdrxmjtB 1097304045
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 90.9404 RFAaEjyzXLQyrRLFLxmZyKjNqwEcOtSeZkZOCBYgOLprGrUCpoCELxwlOhAWIKNvMMmGapMWxzFHBNtiEWVVAmweLSjvSBlmsXVKgBdRxlHNMTKuBYjMGEnoQSDHUADBTMiOdMySNRrkxHHgJZbavoZyBwHaFowCcOSudSuyNtldOIcpuqMbfkdvScFhAjkvPBzLmgZThXcuVLIchGFewRVjfxYyvMUEFAdPBAEhQmSEYYkcbXMKrfwWxzJYDQUcrSMzWvkQttNlUDkBkXgfMSFyEIhOYLSRITnbGlMcXPAcIZoqRVclUTLkSeobhJowJvQPaWCXJgdqtRTilgobBmFmVTgPYqlAkZolEFkrfpUCCCjrNdPftyLWUMFJTwsnbdLfStVQsjOPfVOkRrsIOGKMPkgYPauDDkIdAUomeVlFACXNQXBOmcNvqgRiSruaauuQReWgZsravlVrmleSQcOboDBGkQiiAjMMCbvKGmStCZbltbRbHgsnSaglKmZHxVvugLXsGJTSTVaUrzrNhIIVLVsGFgerNNmwWMwBQRAjpcPWErfpnpPqZgXXNXnhcsUrGNBWuYBlYWtOWXOnadCfZVsgkjIeRZZapbMFzMUuRhhnzmNSoalyBfNmxjlnbLNRHVSpgCjfUzYUVNUOKmTIHUdFTTkAlMLuvDsiddIQdFQfHHhJGGeMJNbNVriFNMVYoOdafbtVRNcIKSRyfrkHMYrnzYMoYIewMAuawdIJqPLhgxdFOArCquWVWlqdWctsOxiJHtStfbNTkCJdPkmpyuXCTkla -1256181925
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1

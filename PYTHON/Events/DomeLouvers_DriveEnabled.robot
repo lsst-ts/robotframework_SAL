@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_DriveEnabled sender/logger tests.
+Documentation    DomeLouvers_DriveEnabled communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 6737 -2766 -514961327
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 200 -25798 1061291708
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveEnabled writing a message containing :    1

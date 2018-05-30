@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_exitControl commander/controller tests.
+Documentation    AtMonochromator_exitControl communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_AppliedAberrationForces communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    AppliedAberrationForces
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ZForces Fz Mx My priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 81.1332 0.958933 0.613671 0.176557 0.751666 0.879376 0.016238 0.514667 0.439392 0.431126 0.564347 0.340453 0.535184 0.958481 0.698981 0.945159 0.759003 0.904707 0.059941 0.930724 0.426371 0.674491 0.021567 0.654397 0.984267 0.650389 0.502792 0.708327 0.015749 0.146029 0.646192 0.71043 0.786694 0.768399 0.140608 0.711006 0.724862 0.910198 0.691638 0.933726 0.504017 0.604534 0.15095 0.253984 0.524182 0.62699 0.788198 0.134202 0.592281 0.229563 0.493739 0.258847 0.564044 0.063942 0.990816 0.655369 0.006173 0.486859 0.456095 0.448446 0.853813 0.069815 0.329511 0.941425 0.218427 0.801792 0.926007 0.185176 0.874438 0.015423 0.298491 0.709189 0.023753 0.517268 0.355662 0.236888 0.257464 0.54687 0.604793 0.515361 0.574703 0.19856 0.30163 0.682493 0.324495 0.310774 0.144123 0.583624 0.248801 0.790519 0.411374 0.492718 0.496727 0.988554 0.557828 0.343134 0.29778 0.488836 0.57342 0.516058 0.595808 0.685718 0.548926 0.129823 0.858717 0.88873 0.668505 0.200896 0.51091 0.297882 0.955583 0.482092 0.853686 0.420925 0.066093 0.658655 0.454875 0.063144 0.243519 0.320773 0.355167 0.003722 0.971642 0.466929 0.413847 0.257947 0.986836 0.969368 0.879126 0.268773 0.291075 0.864185 0.843965 0.392752 0.070283 0.44308 0.493814 0.092646 0.841173 0.373202 0.439659 0.853226 0.114391 0.298906 0.374807 0.420308 0.490075 0.709139 0.903927 0.176569 0.0151 0.402747 0.501574 0.033791 0.276858 0.827875 0.333682 0.533565 0.746212 0.939444 -753119515
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AppliedAberrationForces writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

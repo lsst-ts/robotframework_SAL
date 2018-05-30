@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_DriveOverTemp sender/logger tests.
+Documentation    DomeAPS_DriveOverTemp communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -584 -895036126
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -12546 355314769
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveOverTemp writing a message containing :    1

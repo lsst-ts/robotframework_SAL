@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_EchoResponse sender/logger tests.
+Documentation    DomeAPS_EchoResponse communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py MjNLHqhHAFSUIZebIjFfPuLrhXljNKPjqmaYMTQEnjSdlAvxEWSoHwGIwEZfpxnjeTrTDfxFkAmSDakKNkEyZjWOGleEqRgRMHLljhCDRwktWPYdjiRdGRyrrGWZWfOucymhyMjaYlzFjZCVgbekGYhXhYMnXgujdEWvZaRrAXlUkheYnAWlbVgDyDxOVHqlAtXLISeAeqvGpaoODsKOdnKaBvJEmOXoZYyKtwbWVNkrVvRXInpToIeFScPgBJiSedWhgovDfBChAOePEAKLgyJJVzwyaOrzvVgNxZcydYSXqkUkVXbmigWqlpEFIdAoMZOPqsxgpFojfoAbpNAFckNqMWTDNiWCAxXDNyOsUJGerBRlLECfYBGNgbfgaYPBkecXrtXaKthTKDyyHXvKWbfsDLYjEnSwlAWXEtlZpvvYjWDCLXWDKfoeCuhFMvtpPTTZGVlxlaqtAPahrQQIisYDbaIMWPpakwNkUAcCnhHUJGQpTTdHDFNFvfyBBAkvYVvypHBXTFeoYzMlzwLeTEIAVgoVK -1145349587
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ulCVPwkCBeLNxMGtwOGWovyBcHrsjcAmRGGZRzxyyWgBCsNjYntLqKmIsfZVUoeLAWUKdLabZzpedbrHBnAgrLAEkcUkrYdtOeGqczpWNQgtxKcBMjrUggBmxALfbvRLPyrNCkPLdMSxQFIfAexfgCvntKxoMTpdAaQpQpgSzTEmrRVQjNkZBBoGOMhSTFTEIzPksQSdSEjzznjzgIflEpFccpUEdGicTKejVihmyJIRDRVERkmuUYAqwAHQnEqmSXhniDCPdOMebtHtYfXSqUQCwIxOBSwezTRzGQpBotMYVjnkUOIYObuTidIyxqypCC 267268963
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_EchoResponse writing a message containing :    1

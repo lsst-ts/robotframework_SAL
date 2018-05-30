@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_startReadout sender/logger tests.
+Documentation    Camera_startReadout communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py czDuRcBgnnBKjHiJNlPIvEfkzVeyVFEyPSjSEJKwhyKMrBCqTjyMFFBXTjLkgYEIMXyvgxxWINLVsngCBiZgYoXcwcWBdaOmnMikkSBqztTDIRBohaHeEblBblKMogDQsBVCaXnSOAoAyomXYhnAAMkaRORnSpHANyjAXzPOAhnFztBmkpKJvZKWlKUlFXTBFRUzApDWkHKskuYGiLdNgodkCFznkIsQcdPjRgtYlhLkwivjCymEJjlrssPHmoIL SBoeWVxoeMNUGmnlsizYHRuIcvhOKgKMrmVDeCGtBfjQMmHRpaVGAKUUXFZhBrMIwRYsLMwpepynVWNKgXDlPYAiTSYERrDxjhSfmsonjifIiXJMACjDQvhOcuWVDMEugCimxqGDZsPCYdDpHsnTzWlhkoDuzcdeDbZlirDrfhShWXKXJrPCtCMAsPLOghtHDvnxsFOddXMDxxDLuTnIPkCVqEOiJIDKiJUohJMexKVPzBPmdOsonpdigBSUotAs 912097157 86.9389 3.9832 682830996
+    ${input}=    Write    python ${subSystem}_Event_${component}.py PkDufwWVWjBNiQAtaAlLAMVorNXKknjpcTKKrpIrFAvyUVRMUhqfnQbMTxzaetDtnHcyTqGHSYXyvNzWkMEgdXuDxBEMwkNFicSYQdswBIbPyiIzcwpPaHdgelqahFGVZwKfMkToOEuqtlSrOuJHEVWDOsKCsvWrjAKummohPjeMjgVMHSqgRYnbyAJysGAJhGhnekBACtSxcaLQisjPMyFFPtGrFSYNHTNdFHxIwbkBEihsYDXQxeQCIWjrqMZr qHQTFXUFNdYLmPUHbqCXniDyrLADjAraXjcYqVHUKLiuLhdRBAhnVBWyzGyjUaNsbeVxvyuCgiBhDfHfjnuVeSDSBRauSumyBzzORAUZSwdYPiJdqBeHfQUeOObKetxoPDhiLnjRsBMwzYLrUoJoLiNkhEfTXvBdoxrkACIiUATgLPRfGykpjsBDeaqUJqxEPbjEuGGMKrLvcsvZiVwjGTBLUbxhrFxfehnFTGxIMZyMDCgGmGUDBCfwludiFipi -1063320210 44.9967 58.5124 2073557231
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startReadout writing a message containing :    1

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeMONCS_StateChanged sender/logger tests.
+Documentation    DomeMONCS_StateChanged communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 19668 -226482150
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -24848 1441947573
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_StateChanged writing a message containing :    1

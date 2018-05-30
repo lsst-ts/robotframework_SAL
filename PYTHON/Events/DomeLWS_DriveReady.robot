@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_DriveReady sender/logger tests.
+Documentation    DomeLWS_DriveReady communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 12042 -682529623
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 19105 -870865817
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_DriveReady writing a message containing :    1

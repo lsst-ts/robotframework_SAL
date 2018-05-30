@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    CatchupArchiver_AppliedSettingsMatchStart sender/logger tests.
+Documentation    CatchupArchiver_AppliedSettingsMatchStart communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 961632102
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 -209088518
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_AppliedSettingsMatchStart writing a message containing :    1

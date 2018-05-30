@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_M2AssemblyInPosition sender/logger tests.
+Documentation    M2MS_M2AssemblyInPosition communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 2140326449
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 868407306
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2AssemblyInPosition writing a message containing :    1

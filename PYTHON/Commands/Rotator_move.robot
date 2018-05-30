@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_move commander/controller tests.
+Documentation    Rotator_move communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

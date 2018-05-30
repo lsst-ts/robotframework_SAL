@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_AppliedSettingsMatchStart sender/logger tests.
+Documentation    SummitFacility_AppliedSettingsMatchStart communications tests.
 Force Tags    python    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 59.9304 -975458403
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 8.9422 -1501438242
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_AppliedSettingsMatchStart writing a message containing :    1

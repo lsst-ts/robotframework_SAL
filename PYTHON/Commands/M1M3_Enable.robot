@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Enable commander/controller tests.
+Documentation    M1M3_Enable communications tests.
 Force Tags    python    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

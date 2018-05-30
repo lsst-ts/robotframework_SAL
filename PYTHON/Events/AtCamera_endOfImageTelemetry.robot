@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_endOfImageTelemetry sender/logger tests.
+Documentation    AtCamera_endOfImageTelemetry communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py TJqsJPSFJdUgqyKVNqXezKdOWCJGJYnPnWnfhFAWPnvLDxmchWFzbPsmILouaARbCBGsQkQawDQqNGQEpZgLOdFCwNrpfVTAUnBBrqfDXxTQCBFvBCQLoMnJNqRQEeiFGFtkogGcEGVNqtYdbemQfnIUuKJnwgHtaNkAHVccJHewIvDFinEhGRyeCqhJpcXFAHuEivlCcRqYgNCvGbinHDTElxyVptmHMHvdlUBumsloEtTWejoAOQrhKdNmxQRD 19609457 hffXKifTcIgAzigFtHGQquatOkZixUmMcXqGiSNlJVyAZuTfBzheJLJEIsIvPqMGrxspAUdLRFvQmgIcXqMrXrXPbPdXHgsHRafDwMNuyEOVlHZGObmcAuVeQbiFpgFSmTpiOcBQTwEFxDojSRBoiWSuOgdlPfESxvuVrjunpTCwoxaLfjQVarbHqpiteUVXhvFQzhfTnXXpeoeJNCtKWYvHyzAeOFrvsJpcDtUpWknNeDsnVpGwZXiRAfEtIwGr 824659139 26.5011 46.108 -795662240
+    ${input}=    Write    python ${subSystem}_Event_${component}.py dojMUNRWOjvpVwHlzXwfrQbSYqZMwRTqUsRcQdlbgVIZLeXCRwYvWxFizlAzkVZwFxYnAFPUvucFcJcgjARyjcuLsbRWXekiawnSalNfCydjOtllmcuaYWQqInLzrtDttrQxKeNwpBEbzZSrOCACEpNwBZjpzItENhyrcTjNOnmoCYudHzAxSixSZIpXixRvEOlfNztxwPPkTYzwaEXmZsLSmbuvSHxvpFIyDbuqyzljHouxybxrbPECwWrFttKx 87877619 JaYLxIpBSUFWChygAMKBiBacijSclfpAAXMMjpatOqxSZjgUJeZtcJiRuQCTKJrvOVyhAhlMjGoWdwhSMkUPDRUfjezYzqamuVUFKiMNVaptJcEstFmvKblMIgOwhjDrjNpVpzRJaFCKioipSttApRAXQUXKirLFgXNyLnaDxNDjsdvHfMHutZSVqzvzzBlGRrUqizGwzzvnBdtgHIsRQXnHVejYvnJMrRUqbPvYQRAPOxiIjkwRQqkcdJVcbkia 166148201 38.1988 21.4113 1391104580
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_endOfImageTelemetry writing a message containing :    1

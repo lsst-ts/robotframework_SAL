@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCS_ocsEntityShutdown sender/logger tests.
+Documentation    OCS_ocsEntityShutdown communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py AzFvvqnVDhQVBmztnArpgQBUdSLDASZGDeiUEOkKdTUljOYetxJaoukpTiXyubGdbxrSNYVseirMkUBVaTkvCZaDMSTalqAEnvgdNglBAKsOMWkAsJvPkbgsBIinxaqK 40.2675 pOlXNOxqBRXFMJniSIGhCihTInOwlAVZwAzJjUrmaCNlDiRkVJytLNbKAFBbOpjWjNqbTklhjybCJAzaiiIdYonTNjMKuvVGxzGLaaeaUPkauuKSSdqxnclrxSifoUYniwmhMQOCXwDVHStvcmRnenfeXxSxOcqDLFozoXJmPJoUEpiqvsVTyimJTpxPRnHjQkhtfDuyiEvUgbBNumvdPyXpEdubCPsvrLNYYwggQaHxPfnNKVHtMWvPIjcsnDnb 1386022606 -1983268896
+    ${input}=    Write    python ${subSystem}_Event_${component}.py sSyVryTrLNSGeYzZIcnvhkDfwSBHpJFfeCHwQMEIvnmGfGRubFmNKmtXdbxKIVNJOqsaiwmqYgxriINHSqTsHcijWXUWibcluQdMJtgiRJqhaQjULhUhbeBgLpKvcbXD 27.3082 filGshzjItgnQsnPrcLqffMUEmYiSflzHurbPTtrcPwbUTzEJWQCesoVowlMArNEvRXwckZaTSFwwqtJixHhrflQwVajPbMcdfHiZYjuOvLeLltfNTlbdRgUAnHKsHZsjKPVTqRqGTYVnmOlVrxDcfXLUZqNTTBOTIOVyLHAqRJEilpkwHUETNcmfnNQrhClRsacSlXlThCRjkWJhgAxwCmrIKmRBNqijJmkOCBFSgqBULDyZCesbGCTvSDeqQNQ 213149651 1926574417
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1

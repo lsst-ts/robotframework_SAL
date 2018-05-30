@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_ErrorCode sender/logger tests.
+Documentation    VMS_ErrorCode communications tests.
 Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 58.8841 227623588 1126280852 -335958566
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 22.7381 -1651695388 -1830631139 365612729
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_ErrorCode writing a message containing :    1

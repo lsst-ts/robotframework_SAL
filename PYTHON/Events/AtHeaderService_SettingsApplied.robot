@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtHeaderService_SettingsApplied sender/logger tests.
+Documentation    AtHeaderService_SettingsApplied communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 71.286 QENABgQhxWDFiJuQzGdvShEhjjxxsqNh 738661696
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 65.4026 YlmBBOwIqLWCmfODTKIqVNyXAuvtNTzE -1142226924
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_SettingsApplied writing a message containing :    1

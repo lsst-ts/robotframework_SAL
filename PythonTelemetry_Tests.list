@@ -141,6 +141,7 @@ PYTHON/Telemetry/TCS_kernel_TimeKeeper.robot
 PYTHON/Telemetry/TCS_kernel_TrackRefSys.robot
 PYTHON/Telemetry/TCS_kernel_TrackingTarget.robot
 PYTHON/Telemetry/TcsOFC_DegreeOfFreedom.robot
+PYTHON/Telemetry/TcsWEP_TargetSciSensorIdList.robot
 PYTHON/Telemetry/TcsWEP_WavefrontError.robot
 PYTHON/Telemetry/VMS_CameraRotator.robot
 PYTHON/Telemetry/VMS_M1M3.robot

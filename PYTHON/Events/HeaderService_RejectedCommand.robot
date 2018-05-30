@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_RejectedCommand sender/logger tests.
+Documentation    HeaderService_RejectedCommand communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 63183 36332 34.017 -1844879379
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 25008 28426 29.7766 304644188
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_RejectedCommand writing a message containing :    1

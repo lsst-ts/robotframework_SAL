@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_Standby commander/controller tests.
+Documentation    SummitFacility_Standby communications tests.
 Force Tags    python    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

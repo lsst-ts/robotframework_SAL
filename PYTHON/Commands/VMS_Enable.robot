@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_Enable commander/controller tests.
+Documentation    VMS_Enable communications tests.
 Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

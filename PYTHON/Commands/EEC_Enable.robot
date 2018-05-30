@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_enable commander/controller tests.
+Documentation    EEC_enable communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

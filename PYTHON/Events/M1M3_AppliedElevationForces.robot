@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_AppliedElevationForces communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    AppliedElevationForces
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp XForces YForces ZForces Fx Fy Fz Mx My Mz ForceMagnitude priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 36.5918 0.013055 0.151953 0.589073 0.902676 0.788209 0.474237 0.506239 0.037381 0.533407 0.133736 0.907708 0.221378 0.127767 0.977884 0.669817 0.859055 0.050734 0.65169 0.614125 0.476483 0.664105 0.760995 0.631181 0.400609 0.427054 0.651796 0.909842 0.857843 0.843616 0.727503 0.842637 0.026831 0.942413 0.516877 0.220868 0.894215 0.325055 0.174786 0.148202 0.111844 0.004565 0.362175 0.543225 0.190378 0.576242 0.081723 0.614902 0.66603 0.307415 0.115347 0.361098 0.359619 0.000256 0.27836 0.728397 0.126447 0.457208 0.237371 0.771246 0.086244 0.418042 0.228483 0.460337 0.825478 0.8529 0.51979 0.293814 0.267325 0.853296 0.849838 0.009117 0.24065 0.736528 0.88157 0.868624 0.891546 0.316254 0.701201 0.760438 0.647355 0.131675 0.718487 0.96785 0.695516 0.101772 0.194187 0.552229 0.283277 0.494685 0.478096 0.592464 0.93206 0.416809 0.153057 0.834359 0.740735 0.579159 0.791028 0.055151 0.127031 0.831503 0.760084 0.717821 0.94375 0.198359 0.593223 0.26827 0.713282 0.392511 0.880625 0.735601 0.328347 0.962137 0.992346 0.592277 0.997283 0.476116 0.366668 0.904902 0.217235 0.612428 0.234543 0.556392 0.68583 0.294273 0.346795 0.040059 0.030479 0.681318 0.909521 0.473829 0.075264 0.929379 0.015263 0.4437 0.942216 0.055068 0.021605 0.076012 0.463973 0.595704 0.834801 0.286058 0.230091 0.623452 0.355908 0.32592 0.647453 0.970519 0.317516 0.150209 0.025952 0.676534 0.347394 0.430995 0.71053 0.716704 0.691119 0.381346 0.655969 0.828905 0.732399 0.05643 0.713177 0.979564 0.610671 0.499512 0.470623 0.810208 0.494179 0.036232 0.209247 0.525615 0.932558 0.07839 0.298451 0.715583 0.273121 0.118468 0.756479 0.19713 0.371204 0.015892 0.759609 0.375364 0.939979 0.667058 0.093768 0.717993 0.181832 0.674668 0.53874 0.105142 0.464389 0.396412 0.889531 0.03755 0.65466 0.080747 0.243566 0.724038 0.662599 0.169272 0.886551 0.478414 0.424276 0.491139 0.458382 0.646164 0.692414 0.72329 0.045999 0.548468 0.757419 0.905206 0.306071 0.981237 0.615712 0.688834 0.830646 0.007146 0.675143 0.322831 0.179996 0.159241 0.60282 0.570565 0.242 0.616993 0.858456 0.0701 0.201155 0.793682 0.187288 0.165107 0.682872 0.811633 0.947828 0.246755 0.068696 0.440014 0.589153 0.416907 0.565034 0.922252 0.653097 0.899069 0.059594 0.277779 0.934137 0.69815 0.564189 0.050119 0.636257 0.194461 0.96153 0.142647 0.00691 0.328272 0.705966 0.199779 0.684603 0.9085 0.771318 0.213918 0.858428 0.773927 0.232266 0.872886 0.11236 0.501363 0.914453 0.253551 0.916216 0.042778 -2143022384
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AppliedElevationForces writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

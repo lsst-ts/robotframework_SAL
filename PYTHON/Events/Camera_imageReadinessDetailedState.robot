@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_imageReadinessDetailedState sender/logger tests.
+Documentation    Camera_imageReadinessDetailedState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 756275824 1809271169
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -557662876 -210965047
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_imageReadinessDetailedState writing a message containing :    1

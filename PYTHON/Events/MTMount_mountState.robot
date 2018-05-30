@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_mountState sender/logger tests.
+Documentation    MTMount_mountState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -1777555687 VfNWaoVTIjSRGxiovwQgpfRxjaWUhlAPQOOHXOkOJxjlTbMKYlYnhqkobJMDbOAAtqVuciRQJdlsiaFXOvmrqXAslZUvaTBqVvDdFxNQNZAYABSqhWnyDiFfqLVjIUlAdTUVJmRdgIpGilIskukdjihsfdAvVGligYvUDKmEZbEgytCcCzfulaKmomtcKFClnMItrLxlflknNOZtgEYeYmyWvXqpLaEKBGhQSubBPfwGRuyCsENciFhhiYIEVacINqWDVtWNWeijtuKWgWiHkqPYNhsWNTnPNXcKPIoYdXDpemxejNcSXdpLKPnPNYaaTVgKJBAIsLiGNaozwuRymBYLpgsSSEMrAfXonqWeeJyNSfgwgfxndgbydhJhnTjsKOfoDdddeAtGksCOHoCFQJFseuSPbQYCvKxiudysZLDbWziCFFghMYaFlTohyPFmXSsdmASlGfYWGskbLjolMqDPcHgiaHrNYmhpjkNwpnqPerlMdNcfupXpnIOYZhaChdjtwGEruGfARzuZybTiPenmtCTCJoUHMpwPXwEqiwjcJzNcQLHZSLRNnXeheOmdwlBRnZiDWOkLwrNPHqpYJHJXlXptnOlbOdZpLXSUvQmtiXUYjgowefiEyQYaqjPDuuGRfpmYufHvYIFCTZHdevhPVkCBCelbMfWPTRrolzJwFxNIfokRCcDtdvsPkxKIgDqOPjkctAZLYNprDqVJbJcaIzbukNPaXqHlGFfVmORGIHXNZbYlmiANlQjKpUArywuUwJGZMjmssVMsrkeADwvxoAOurYbOaWyqWIPeQs 463690090
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1710465462 KJwtuZdCgnfgAuGSXsRdvAinJtAokmTIFtbDiVRapgzcvZyfOXpkhMpGoHBlJplzxGAzrqHInkwypSGAbfuIExzbTJQTImoSgUcUgfxlRzXHPJccXlPvygycOkJLEPRGtwHIDKPRywFMQWgfmNDPbGUWSLzUUVyHGxoHHZNUwwVdZiTPlTUjwULShpZlvpyCcGZJuDajOeiwcnmnentMOeGvrWglugfsgzySuaymiJnxWmjJVdOiOqnWUnYVOhDIsgjKmvnmEVVryPPbahpYoLXaWiFkVXzFrNMQkOTppVRHbwyICtBhwhLPGPkAtSvQNLetamUlcNzhIlGbVimgNTAMKaXrjRbyvfTKFeeqyeWutbtdcTKeNllXCBLhSWQwkckpZdRetYAEoohIBEkfrKdmLwYRLsFEXhQZSEkpwMnrGBgbMSuxaKJIFaaWkWnMVAKTLjXAzOzujaxXYZwyzAyhdYNeQFEGlcUcnCclEWbMpbaliuzIEXcGeHtvqGBlzHiEbQNqnamtTvEyRblXPyKTdsgKFjWRCCulFfMsFkzaebbOPWNcCIeSjpNiTSPV -933380340
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1

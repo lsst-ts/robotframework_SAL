@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_RejectedCommand sender/logger tests.
+Documentation    AtMonochromator_RejectedCommand communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 59642 26647893 58.832 774289196
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 27168 253157436 62.3635 675724865
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_RejectedCommand writing a message containing :    1

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_tracking sender/logger tests.
+Documentation    Rotator_tracking communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 18.0706 -2032668185
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 46.5582 -560752638
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_tracking writing a message containing :    1

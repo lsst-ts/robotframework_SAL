@@ -133,6 +133,7 @@ PYTHON/Commands/Hexapod_configureLimits.robot
 PYTHON/Commands/Hexapod_configureTemperatureRawLUT.robot
 PYTHON/Commands/Hexapod_configureVelocity.robot
 PYTHON/Commands/Hexapod_move.robot
+PYTHON/Commands/Hexapod_moveLUT.robot
 PYTHON/Commands/Hexapod_offset.robot
 PYTHON/Commands/Hexapod_pivot.robot
 PYTHON/Commands/Hexapod_positionSet.robot
@@ -158,6 +159,7 @@ PYTHON/Commands/M1M3_EnableHardpointCorrections.robot
 PYTHON/Commands/M1M3_EnterEngineering.robot
 PYTHON/Commands/M1M3_ExitEngineering.robot
 PYTHON/Commands/M1M3_LowerM1M3.robot
+PYTHON/Commands/M1M3_ModbusTransmit.robot
 PYTHON/Commands/M1M3_MoveHardpointActuators.robot
 PYTHON/Commands/M1M3_PositionM1M3.robot
 PYTHON/Commands/M1M3_ProgramILC.robot
@@ -225,8 +227,6 @@ PYTHON/Commands/TCS_target.robot
 PYTHON/Commands/TCS_wfpCalculate.robot
 PYTHON/Commands/TCS_wfpSimulate.robot
 PYTHON/Commands/TcsOFC_ApplyForces.robot
-PYTHON/Commands/TcsOFC_OffsetCameraHexapod.robot
-PYTHON/Commands/TcsOFC_OffsetM2Hexapod.robot
 PYTHON/Commands/VMS_Disable.robot
 PYTHON/Commands/VMS_Enable.robot
 PYTHON/Commands/VMS_Shutdown.robot

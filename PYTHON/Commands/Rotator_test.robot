@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_test commander/controller tests.
+Documentation    Rotator_test communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1311852390 1474951700
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 793197728 490784872
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1311852390 1474951700
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 793197728 490784872
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    ivalue1 : 1311852390    1
-    Should Contain X Times    ${output}    ivalue2 : 1474951700    1
+    Should Contain X Times    ${output}    ivalue1 : 793197728    1
+    Should Contain X Times    ${output}    ivalue2 : 490784872    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    ivalue1 = 1311852390    1
-    Should Contain X Times    ${output}    ivalue2 = 1474951700    1
+    Should Contain X Times    ${output}    ivalue1 = 793197728    1
+    Should Contain X Times    ${output}    ivalue2 = 490784872    1
     Should Contain X Times    ${output}    === [ackCommand_test] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_LightIntensity sender/logger tests.
+Documentation    AtMonochromator_LightIntensity communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.496720686374 28.4217 -50409497
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0.478989 49.5129 -697285878
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_LightIntensity writing a message containing :    1

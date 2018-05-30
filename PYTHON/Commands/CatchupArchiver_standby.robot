@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    CatchupArchiver_standby commander/controller tests.
+Documentation    CatchupArchiver_standby communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

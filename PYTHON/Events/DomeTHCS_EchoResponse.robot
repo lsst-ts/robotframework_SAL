@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeTHCS_EchoResponse sender/logger tests.
+Documentation    DomeTHCS_EchoResponse communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py qXbbQmHaWJYvetZwfYOVStTEOmgiGIuXsdVyBZIUJZTWtZCcotkvEsOJkOwQVQJvnqDaQmagiooGzrqhLGIGjsTIzDSXHutnXtDnnxiYEfigLmdytPAsAncbhgbgzsaxUCQAWZxfiDEIrIPMfBETWhkXFqDqfCfhVfisyFtekcvJvowWBbHLXJWkykBaKYWwcZNakSiGKXDjHWWCQDuYonZdaokbfxCYNmRVZDQzsUzPMOLjFaqHhXTSMfBICBCwOPXlFHYvlskvjgBpqxkBiRnfGxOpOmoYtJDYlSEZbafcGkPufEpEAclpxxXrHEqThGUlIaGlUcPjWrjTdA -967108110
+    ${input}=    Write    python ${subSystem}_Event_${component}.py vVcEiMJSVdvtjXbwccKQpTDmmbnCXLEUHzVgEOGfZoVwdIHEodkJBkSxeNMiefmgchcWxPnqylXOguUKwoXjRVjsQpTowyYuFrWoibyyjhUmcNhIyYNIfjnYuahuPwkqNtCXPSWHaJYWQSEnuDdOaGrmWTJqRgLZYIDYmMEMOQwLqoULCsSyfTESCNSJRtLjQWdLDqKzWQKspuMprVBZbVqMySafToRrkoFtLCEgCNBvQJXVmJpknLqnabLeXYOvNIXLnucnfnHRIJGKhuxdMZDXsTNdYxLkMkdHwIGLsBtooDkczmmOyrSvXWQEiHwlarJeXviKiXPyTJmrEmDQLbIKUPCAmFFznSIEpgVGyVLBClBbJcJsadXavMiDEXBeeeHbQOhmswZtkbnJMxaSjWkIWhHiJNOTCzKchJrpAuAzeYEkrfjTrPVoFdaunEnEUtVEwuDTUDZoSdEfPqTwusxUsFAFcdBDpYZZSYgKbztmkqbRcJPpVERhOVYKcHdqtsKPARiwSjMLeMhYPJWMFDyrxItxnokwzeSReSreDYTLhvaeECRHQuevxcHmMwjGJzqgrjdDLUMifbYbPoOzLlSxeaGRUcYUIgNXhzGdmpYASEmNvwRnwJLyvqJxnIfQHtZVPAfEPYHCvqLBGnrtfBgkHxqqSKeIkaPJznETYuWwxyrfXxEaHIDMPwzNuNPzTxHbSVvVOyxGFHAeKHPHdppyNEaaReslVnJUNqHuPxzspaqeZFRUrXOrhTZxgmakMEGVTqEynawXbeHxzfxCIydjrsMeRrEPQxWPmVYTbdUjiZBxYUFFpsEsnrYDCzRqEmYsvEzdHBvnGoQuKdKnGvycBNvIwllHByYcBkRqXBgRhiJiLpOuaLzUANBHWwJhvtPmCutIqUEoCoB 954567361
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1

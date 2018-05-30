@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_EchoResponse sender/logger tests.
+Documentation    DomeADB_EchoResponse communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py TjMpEAOcDFqXPnvTNIMtTRRQNchiDsJsYFSlgbeZNFqFUIscGrhadwBxhAOSxTstDcjIwFIheqpHPUpEyqkpyttzTyeSgMDJQDFMoShWvIROrBizPtGRTlqdaALfUXRWqkXVhHtQOyyyiIHmjValODyCHxfotbBNVVkfYdFHCbXNBWFpSdxKEYqQEvCztxlTAVSNWkXLQQbNPVJDJTpvrpItLJrHBiELTZSqIQvyAXYVXoDJMxentkiMzWHvaGEuSSpxWtjibLxHAaygcnDDkFDzZgrjbBbGBBJdItFeJyMvJvDIAjgrFVUYkMNMMecEVaPTOQVJqEqMYVVuDQZidoRZwPiNnuOIuriszCNvOYdKRVTRGAoGtUwkYBPqTmqCAhQMqtTQReWYJkGLgcGqzMxYPUWlSPEAbmluFjbdrtldThLsqyCTRgomkGGuwRIiJrUryendocNcULWfdncFDPLaUbvFGmNzUKaiGNryRkSjrSZcAyNiPsgzVnupIKYYQguUozGbZPIGepJxOipRFRNQQzqJHSbeORevHmDCkgbuPPOqNZTYELdoSBuCtCMGDZlOiviYKdkWHgMXrjTEQORRIInLeymUFeKQKORzvNzbkrDklkYJGKbTNjMpjSalzOSVBfbFgGMNRrcqColymgfxrdDFPCtkJNTYWliWwfPKDEfFLntWLlyzxNQoEtxbfjkbtlrAmHGaqRGkynFZPKQLFrqfKEwpzVhxJbJfHWsTatZivrUTfSSueNSydgOpEgknlzDbghtEqGjOQMXfNSmg 1171213337
+    ${input}=    Write    python ${subSystem}_Event_${component}.py bjZwhvSPIyeffwtZNlhaVVYQWdcDrzJKfBjeDkfRqfnsJVXOzTnKDJEzYACjYjKUMQZhoIhZFIt 730961191
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_EchoResponse writing a message containing :    1

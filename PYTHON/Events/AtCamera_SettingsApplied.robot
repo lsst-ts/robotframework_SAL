@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_SettingsApplied sender/logger tests.
+Documentation    AtCamera_SettingsApplied communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py igAXtdfFVdnJSEkhUqkpZmZvsurezqoGGtDMiEldhOcivWfdlCdpYESWlxELgdHDVeZhVHgbLojKFmKuLeStawWkiAXsHtTIGAIXGWWUnatsbHgqURGbjASIgSlTucMLDRenJooHXJHavXjDONGhKynSfJVvBuVdRFxlDWIcifiMloIHBMOprzLZJUykxbwTMnjbcgdNXqCbOezzigjQDWzMxzhKiVHdHmPzgcSxLCnaFEeNLVXtOfYrgRqiCGVZ 1168750205
+    ${input}=    Write    python ${subSystem}_Event_${component}.py ZzKyaYZQXqbthgHDnjvNrDIDQDlJCwVzLmbLNUMVKBnyiPJFJkdQHwjUmolgwdABtZdkNYxarGidbIRKStQYoEViDxWYvvKPYNFlzWFktotFrKitQMVlosXNjHSSLzWXgKENKVwJDQgXCcruYCCOwEbYRNpEYZAbPIhsffjxkmVnFnpwtbnmqrGNDhiRWdrfiIsGFiXGdpwauhiTWtIKyufGiRRtpRIJluXMAbqjbksfAuODXASICORansFwLOmZ 1169166624
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_SettingsApplied writing a message containing :    1

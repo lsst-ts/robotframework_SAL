@@ -348,7 +348,9 @@ PYTHON/Events/TCS_TargetInPosition.robot
 PYTHON/Events/TCS_wfpDataReady.robot
 PYTHON/Events/TCS_zemaxError.robot
 PYTHON/Events/TcsOFC_ErrorCode.robot
+PYTHON/Events/TcsOFC_NoEnoughZernikeTerm.robot
 PYTHON/Events/TcsWEP_ErrorCode.robot
+PYTHON/Events/TcsWEP_NoEnoughWfsNum.robot
 PYTHON/Events/TcsWEP_StateChanged.robot
 PYTHON/Events/TcsWEP_WavefrontErrorCalculated.robot
 PYTHON/Events/VMS_AcquisitionRate.robot

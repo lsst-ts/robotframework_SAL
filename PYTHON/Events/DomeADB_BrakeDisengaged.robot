@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_BrakeDisengaged sender/logger tests.
+Documentation    DomeADB_BrakeDisengaged communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -5200 -1994781927
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 12403 1821463642
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_BrakeDisengaged writing a message containing :    1

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_SummaryState sender/logger tests.
+Documentation    HeaderService_SummaryState communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 86.326 -1142493663 311141997
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 16.4669 1290937872 1650521955
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_SummaryState writing a message containing :    1

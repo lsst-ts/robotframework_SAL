@@ -60,3 +60,65 @@ Read Logger
     ${output}=    Read Until    ${component} received
     Log    ${output}
     Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1
+*** Settings ***
+Documentation    M1M3_RejectedAberrationForces communications tests.
+Force Tags    python    TSS-2617
+Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+...    AND    Create Session    Sender    AND    Create Session    Logger
+Suite Teardown    Close All Connections
+Library    SSHLibrary
+Library    String
+Resource    ../../Global_Vars.robot
+Resource    ../../common.robot
+
+*** Variables ***
+${subSystem}    m1m3
+${component}    RejectedAberrationForces
+${timeout}    30s
+
+*** Test Cases ***
+Verify Component Sender and Logger
+    [Tags]    smoke
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_Event_${component}.py
+    File Should Exist    ${SALWorkDir}/${subSystem}/python/${subSystem}_EventLogger_${component}.py
+
+Start Sender - Verify Missing Inputs Error
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : Timestamp ZForces Fz Mx My priority
+
+Start Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Logger.
+    ${input}=    Write    python ${subSystem}_EventLogger_${component}.py
+    ${output}=    Read Until    logger ready
+    Log    ${output}
+    Should Contain    ${output}    ${subSystem}_${component} logger ready
+
+Start Sender
+    [Tags]    functional
+    Switch Connection    Sender
+    Comment    Move to working directory.
+    Write    cd ${SALWorkDir}/${subSystem}/python
+    Comment    Start Sender.
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 13.6942 0.031599 0.750157 0.761889 0.162102 0.825 0.749223 0.35788 0.56701 0.315288 0.340878 0.404196 0.092442 0.356298 0.703037 0.139951 0.715351 0.22151 0.912236 0.489502 0.423073 0.595654 0.27796 0.672574 0.871932 0.885018 0.624547 0.373054 0.378709 0.225683 0.918705 0.203069 0.428024 0.946174 0.713702 0.05518 0.38635 0.92264 0.015429 0.8239 0.425914 0.657824 0.042253 0.468199 0.392202 0.412776 0.932496 0.23054 0.446042 0.201489 0.358671 0.360592 0.270937 0.542472 0.743407 0.383063 0.860491 0.70222 0.802804 0.780421 0.66437 0.513461 0.321967 0.505809 0.015085 0.075503 0.940529 0.571734 0.110752 0.386613 0.330109 0.590476 0.27497 0.481114 0.58657 0.936252 0.987779 0.683459 0.760852 0.271153 0.854322 0.18592 0.376176 0.264804 0.293518 0.838544 0.641022 0.517528 0.284427 0.852534 0.324446 0.573077 0.989463 0.818689 0.504277 0.65747 0.337596 0.357769 0.926048 0.871897 0.617637 0.420602 0.73398 0.711868 0.615511 0.796003 0.015713 0.005325 0.039794 0.702686 0.684137 0.08314 0.85973 0.820084 0.621526 0.171575 0.26943 0.869601 0.093885 0.182675 0.36315 0.450399 0.682801 0.773415 0.841054 0.879616 0.979227 0.592834 0.538524 0.965472 0.826635 0.199551 0.75509 0.978742 0.654951 0.765501 0.492349 0.871323 0.997318 0.250913 0.138753 0.269054 0.645886 0.944296 0.714686 0.028663 0.832845 0.969926 0.980363 0.543989 0.662785 0.067505 0.049319 0.930852 0.2802 0.990725 0.088414 0.812255 0.009843 0.372313 1720970527
+    ${output}=    Read Until Prompt
+    Log    ${output}
+    Should Contain X Times    ${output}    === [putSample] m1m3::logevent_RejectedAberrationForces writing a message containing :    1
+    Should Contain    ${output}    revCode \ : LSST TEST REVCODE
+
+Read Logger
+    [Tags]    functional
+    Switch Connection    Logger
+    ${output}=    Read Until    ${component} received
+    Log    ${output}
+    Should Contain X Times    ${output}    Event ${subSystem} ${component} received     1

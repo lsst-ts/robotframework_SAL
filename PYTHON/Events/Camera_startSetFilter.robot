@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_startSetFilter sender/logger tests.
+Documentation    Camera_startSetFilter communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py KfGgPuAkblUFPbEBxSZrjVLMFMqxeZdLDperbqVCBIbRiIxesCMaieqWioHXjFLmgeBAIqzgOfJAnIfefoUSLIRQbnCvXAqSzToCDYLrPuySdPYbLhmuvpHWCxEhOKTULtYUYuQZdOwoAonzPNKaRpTfqyUBYJHNlcBOTCHavhRzHsGyqlJulXhzZIbxLZNwVzQCHcFlfQaamsSsypnNUkAhZHvSgqAaIvezuhUicyvuWYoGRrxEnbvyPCOESvgh 542375687
+    ${input}=    Write    python ${subSystem}_Event_${component}.py YBkmgDerKClINuZVNuowSSyQDnVXXUieqqPETbTbGYqdPhzlZhFCLbrbQumJoCKqzTazhnHbWjxTXzHjQCxFTXtZoeuidiuRGnDxmHfKuHumbdPLbevfZitVXNqwzvmvaRzYyJtmqwSoCHbZcEoeGiBaMzeOGwipNOMTmDUlODFQSfwcPXDpwLlZOKJwAKJowSEiaTKmPgdJfLphhOOiLHRnPTqTZbkHnzIUWKfwFmlDrBToDPCVoADuFctXvMgm 91592412
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startSetFilter writing a message containing :    1

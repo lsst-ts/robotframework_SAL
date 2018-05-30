@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_AppliedSettingsMatchStart sender/logger tests.
+Documentation    VMS_AppliedSettingsMatchStart communications tests.
 Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 42.4834 1 -1178518001
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 21.6096 1 -1417062083
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AppliedSettingsMatchStart writing a message containing :    1

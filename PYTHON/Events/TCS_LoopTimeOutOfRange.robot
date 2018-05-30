@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_LoopTimeOutOfRange sender/logger tests.
+Documentation    TCS_LoopTimeOutOfRange communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 1974492565
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 895218002
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_LoopTimeOutOfRange writing a message containing :    1

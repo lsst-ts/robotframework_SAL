@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_AcquisitionRate sender/logger tests.
+Documentation    VMS_AcquisitionRate communications tests.
 Force Tags    python    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 65.6146 41.5588 2035240383
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 62.81 9.4766 -964570292
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AcquisitionRate writing a message containing :    1
