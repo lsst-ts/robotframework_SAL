@@ -51,15 +51,9 @@ function clearTestSuites() {
 		echo "$files"
     	rm $HOME/trunk/robotframework_SAL/$language/$topic_type${subsystem}_*
 	else
-    	echo "Nothing to delete. Continuing."
+    	echo "Nothing to delete. Continuing..."
 	fi
 	echo ""
-}
-
-function subsystemArray() {
-	# This function defines the list of CSCs, in all lowercase, for ease of string comparison.
-	## atcs calibrationelectrometer (TSS-2608, TSS-2606)
-	echo "archiver atarchiver atcamera atheaderservice atmonochromator atscheduler camera catchuparchiver dome domeadb domeaps domelouvers domelws domemoncs domethcs eec efd headerservice hexapod m1m3 m2ms mtmount ocs promptprocessing rotator scheduler sequencer summitfacility tcs tcsofc tcswep vms"
 }
 
 function stateArray() {
@@ -68,7 +62,7 @@ function stateArray() {
 
 function capitializeSubsystem() {
 	# This function returns the CSC name in a pretty-print pattern used only for Test Suite naming.
-    local subSystem=$1
+    local subSystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
 	if [ "$subSystem" == "m1m3" ]; then
         echo "M1M3"
     elif [ "$subSystem" == "m2ms" ]; then
@@ -77,10 +71,16 @@ function capitializeSubsystem() {
         echo "OCS"
     elif [ "$subSystem" == "atcs" ]; then
         echo "ATCS"
+	elif [ "$subSystem" == "atarchiver" ]; then
+        echo "AtArchiver"
     elif [ "$subSystem" == "atcamera" ]; then
         echo "AtCamera"
-    elif [ "$subSystem" == "tcs" ]; then
-        echo "TCS"
+	elif [ "$subSystem" == "atheaderservice" ]; then
+        echo "AtHeaderService"
+	elif [ "$subSystem" == "atmonochromator" ]; then
+        echo "AtMonochromator"
+	elif [ "$subSystem" == "atscheduler" ]; then
+        echo "AtScheduler"
     elif [ "$subSystem" == "mtmount" ]; then
         echo "MTMount"
 	elif [ "$subSystem" == "domeadb" ]; then
@@ -105,15 +105,13 @@ function capitializeSubsystem() {
         echo "EEC"
 	elif [ "$subSystem" == "headerservice" ]; then
         echo "HeaderService"
-	elif [ "$subSystem" == "atarchiver" ]; then
-        echo "AtArchiver"
-	elif [ "$subSystem" == "atmonochromator" ]; then
-        echo "AtMonochromator"
-	elif [ "$subSystem" == "atHeaderService" ]; then
-        echo "AtHeaderService"
-	elif [ "$subSystem" == "tcsOfc" ]; then
+    elif [ "$subSystem" == "summitfacility" ]; then
+        echo "SummitFacility"
+    elif [ "$subSystem" == "tcs" ]; then
+        echo "TCS"
+	elif [ "$subSystem" == "tcsofc" ]; then
         echo "TcsOFC"
-	elif [ "$subSystem" == "tcsWEP" ]; then
+	elif [ "$subSystem" == "tcswep" ]; then
         echo "TcsWEP"
 	elif [ "$subSystem" == "vms" ]; then
         echo "VMS"
