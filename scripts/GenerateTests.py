@@ -13,29 +13,29 @@ def GenerateTests(csc, language):
 	"""Test Suite generator."""
 	if  csc == "all":
 		for csc in csc_array:
-			if (language=='cpp') or (language=='all'):
+			if ('cpp' in language) or ('all' in language):
 				subprocess.check_call(["./CppPubSub.sh", csc])
 				subprocess.check_call(["./CppComCon.sh", csc])
 				subprocess.check_call(["./CppEvents.sh", csc])
-			if (language=='java') or (language=='all'):
+			if ('java' in language) or ('all' in language):
 				subprocess.check_call(["./JavaPubSub.sh", csc])
 				subprocess.check_call(["./JavaComCon.sh", csc])
 				subprocess.check_call(["./JavaEvents.sh", csc])
-			if (language=='python') or (language=='all'):
+			if ('python' in language) or ('all' in language):
 				subprocess.check_call(["./PythonPubSub.sh", csc])
 				subprocess.check_call(["./PythonComCon.sh", csc])
 				subprocess.check_call(["./PythonEvents.sh", csc])
 		print("COMPLETED ALL test suites for ALL CSCs.")
 	elif csc in csc_array:
-		if (language=='cpp') or (language=='all'):
+		if ('cpp' in language) or ('all' in language):
 			subprocess.check_call(["./CppPubSub.sh", csc])
 			subprocess.check_call(["./CppComCon.sh", csc])
 			subprocess.check_call(["./CppEvents.sh", csc])
-		if (language=='java') or (language=='all'):
+		if ('java' in language) or ('all' in language):
 			subprocess.check_call(["./JavaPubSub.sh", csc])
 			subprocess.check_call(["./JavaComCon.sh", csc])
 			subprocess.check_call(["./JavaEvents.sh", csc])
-		if (language=='python') or (language=='all'):
+		if ('python' in language) or ('all' in language):
 			subprocess.check_call(["./PythonPubSub.sh", csc])
 			subprocess.check_call(["./PythonComCon.sh", csc])
 			subprocess.check_call(["./PythonEvents.sh", csc])
@@ -54,7 +54,6 @@ def DefineArguments():
 		dest='csc',
 		type = str.lower,
 		required=False,
-		nargs='+',
 		default='all',
 		help='''For which CSC do you want to generate tests? (Default is ALL)''')
 	parser.add_argument(
