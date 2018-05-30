@@ -10,6 +10,7 @@ import argparse
 csc_array = ["archiver", "atarchiver", "atcamera", "atheaderservice", "atmonochromator", "atscheduler", "camera", "catchuparchiver", "dome", "domeadb", "domeaps", "domelouvers", "domelws", "domemoncs", "domethcs", "eec", "efd", "headerservice", "hexapod", "m1m3", "m2ms", "mtmount", "ocs", "rotator", "scheduler", "sequencer", "summitfacility", "tcs", "tcsofc", "tcswep", "vms"]
 
 def GenerateTests(csc, language):
+	"""Test Suite generator."""
 	if  csc == "all":
 		for csc in csc_array:
 			if (language=='cpp') or (language=='all'):
@@ -42,7 +43,6 @@ def GenerateTests(csc, language):
 	else:
 		print("Nope")
 
-
 def DefineArguments():
 	"""Argument parser."""
 	parser = argparse.ArgumentParser(
@@ -54,6 +54,7 @@ def DefineArguments():
 		dest='csc',
 		type = str.lower,
 		required=False,
+		nargs='+',
 		default='all',
 		help='''For which CSC do you want to generate tests? (Default is ALL)''')
 	parser.add_argument(
@@ -63,14 +64,19 @@ def DefineArguments():
 		dest='language',
 		type = str.lower,
 		required=False,
-		choices=['cpp', 'python', 'java', 'all'],
+		nargs='+',
+		choices=['cpp', 'python', 'java', 'all', 'test'],
 		default='all',
 		help='''Do you want to generate the C++ (cpp), Python (python) or Java (java) tests? (Default is ALL)''')
 	args = parser.parse_args()
 	return args
 
+# Get the arguments.
 args = DefineArguments()
+
+# Change directory to that of this script. It assumes the other generator scripts are in the same location.
 working_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-print(working_dir)
 os.chdir(working_dir)
+
+# Now, generate the tests.
 GenerateTests(args.csc, args.language)
