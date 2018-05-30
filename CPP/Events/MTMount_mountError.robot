@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_mountError sender/logger tests.
+Documentation    MTMount_mountError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1708258112 xliVHiUPGsmTXgwaBHrEQllwVkBeGZEHMjslXRkrqhBTliwXIQLYrzstvJPZchVNnwtaZTOyOXdoHOkozoLUavoouOkIkmmaxIvMTwpHifnyoAiWErzkKTJYGYmAxVQVywWBKvYTfQFeUbXEUfEfHWKlZOqHgGVwbJLOzVdBhPVugILEFEqZubOYekrfEbAWtWVcvTBVuqTMcVsfXtMAKIphBKLfdMLEUrAWPElVmXvyTiKxyCozwCaopbRWTdGMNBvqPlPHhfSibzFEukpFtxJnWoVdmCFtbaAwRJvGNutElPYZrNqBlUJUtYDKSKXcDAwOyiWDjlHVrmALiSWNSzgRYwdHi 768344118
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -948138482 TFxIIWrNncmvecvUGZwXnecdLAbPvbTRWjVZFxORiDIeaDIcGPMQIHCnHhaZnssoxcijHZLUEIrivihrmDmrqzLfzcyZDgZDiaNhLuAMqfDSLwIeqYreerGFUSRWQOfucPYjDDLtIukQAUtNsWqfzKcVZfMiZhmCeyxnRFXOJkhJlLizpdQDosPARpPatKvYhEzPEAwIuZFoflCCZCSbWJPbFGkRLBsCBDUpjcncHXUXaFYBvMdiljLagmsptwFybSpycfvyzDUeDFPdRWaHyvkztZiGsdprWlNzwXKmdzWbjmknjFZygRzuelcdTSrRmrnfTFNZkcXCiLFo 1976094930
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 768344118
+    ${output}=    Read Until    priority : 1976094930
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountError received =     1
-    Should Contain    ${output}    id : -1708258112
-    Should Contain    ${output}    text : xliVHiUPGsmTXgwaBHrEQllwVkBeGZEHMjslXRkrqhBTliwXIQLYrzstvJPZchVNnwtaZTOyOXdoHOkozoLUavoouOkIkmmaxIvMTwpHifnyoAiWErzkKTJYGYmAxVQVywWBKvYTfQFeUbXEUfEfHWKlZOqHgGVwbJLOzVdBhPVugILEFEqZubOYekrfEbAWtWVcvTBVuqTMcVsfXtMAKIphBKLfdMLEUrAWPElVmXvyTiKxyCozwCaopbRWTdGMNBvqPlPHhfSibzFEukpFtxJnWoVdmCFtbaAwRJvGNutElPYZrNqBlUJUtYDKSKXcDAwOyiWDjlHVrmALiSWNSzgRYwdHi
-    Should Contain    ${output}    priority : 768344118
+    Should Contain    ${output}    id : -948138482
+    Should Contain    ${output}    text : TFxIIWrNncmvecvUGZwXnecdLAbPvbTRWjVZFxORiDIeaDIcGPMQIHCnHhaZnssoxcijHZLUEIrivihrmDmrqzLfzcyZDgZDiaNhLuAMqfDSLwIeqYreerGFUSRWQOfucPYjDDLtIukQAUtNsWqfzKcVZfMiZhmCeyxnRFXOJkhJlLizpdQDosPARpPatKvYhEzPEAwIuZFoflCCZCSbWJPbFGkRLBsCBDUpjcncHXUXaFYBvMdiljLagmsptwFybSpycfvyzDUeDFPdRWaHyvkztZiGsdprWlNzwXKmdzWbjmknjFZygRzuelcdTSrRmrnfTFNZkcXCiLFo
+    Should Contain    ${output}    priority : 1976094930

@@ -141,6 +141,7 @@ CPP/Telemetry/TCS_kernel_TimeKeeper.robot
 CPP/Telemetry/TCS_kernel_TrackRefSys.robot
 CPP/Telemetry/TCS_kernel_TrackingTarget.robot
 CPP/Telemetry/TcsOFC_DegreeOfFreedom.robot
+CPP/Telemetry/TcsWEP_TargetSciSensorIdList.robot
 CPP/Telemetry/TcsWEP_WavefrontError.robot
 CPP/Telemetry/VMS_CameraRotator.robot
 CPP/Telemetry/VMS_M1M3.robot

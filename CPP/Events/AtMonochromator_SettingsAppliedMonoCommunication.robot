@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_SettingsAppliedMonoCommunication sender/logger tests.
+Documentation    AtMonochromator_SettingsAppliedMonoCommunication communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ePOsGvTWYyETEoD 1398456843 0.792157148945 0.424800042959 0.807562103535 1678736643
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RIORXyphEWITAdt -1539243281 0.973564 0.089983 0.386627 352347490
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonoCommunication writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1678736643
+    ${output}=    Read Until    priority : 352347490
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsAppliedMonoCommunication received =     1
-    Should Contain    ${output}    IP : ePOsGvTWYyETEoD
-    Should Contain    ${output}    portRange : 1398456843
-    Should Contain    ${output}    readTimeout : 0.792157148945
-    Should Contain    ${output}    writeTimeout : 0.424800042959
-    Should Contain    ${output}    connectionTimeout : 0.807562103535
-    Should Contain    ${output}    priority : 1678736643
+    Should Contain    ${output}    IP : RIORXyphEWITAdt
+    Should Contain    ${output}    portRange : -1539243281
+    Should Contain    ${output}    readTimeout : 0.973564
+    Should Contain    ${output}    writeTimeout : 0.089983
+    Should Contain    ${output}    connectionTimeout : 0.386627
+    Should Contain    ${output}    priority : 352347490

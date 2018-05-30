@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_deviceError sender/logger tests.
+Documentation    Rotator_deviceError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 EkXkLJPCFJOjNVgENiAbsoTHdhnBVWxPMMsXqboRrvNDnUgbmGVqTKesizrposWRpHpgZajhHPoykhCgqzfXgkqcVTJnsmgSAeiDeIYPaSMvGQCwLsCxWcDkNbHCFjpgeQOXlVkqbscYPFKcpEliOxJhtbWAkzAMFzkzQvLVvrcfkQftOIMYLobFMtgKKXcSVARBleuZudSZGGbytEMCyoTKHFXRhXkSBXMFMfiKrSSlxMebzeSmcmRWZLzQiwKX 252031580 68.5637 1122373613
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 efzVbQeuHbiXBlBsRRoPTeKjYKBAOyWJflNBatWoJNzIHUjDMlbqETvBcpzjCivaTJDLJKVvvdyxFGBVFHBqiyAQswwAqtyiUgwdDBCubpcCBSzTbqCqRaTsMeWuPxlyVroOiiWtpNwttEtGMpmOjoOPgLTvZrSybKQyADBmiUuDAcQVbKsDOBhwbujVQOfsDbqMwcLaESGgmCaRDmFyzksXRpApUrxHDKaTbItTXWrdXrdzSdtrDhHqkGdWcfTL 913196215 94.5259 -1310221062
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1122373613
+    ${output}=    Read Until    priority : -1310221062
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
     Should Contain    ${output}    state : 0
-    Should Contain    ${output}    device : EkXkLJPCFJOjNVgENiAbsoTHdhnBVWxPMMsXqboRrvNDnUgbmGVqTKesizrposWRpHpgZajhHPoykhCgqzfXgkqcVTJnsmgSAeiDeIYPaSMvGQCwLsCxWcDkNbHCFjpgeQOXlVkqbscYPFKcpEliOxJhtbWAkzAMFzkzQvLVvrcfkQftOIMYLobFMtgKKXcSVARBleuZudSZGGbytEMCyoTKHFXRhXkSBXMFMfiKrSSlxMebzeSmcmRWZLzQiwKX
-    Should Contain    ${output}    severity : 252031580
-    Should Contain    ${output}    timestamp : 68.5637
-    Should Contain    ${output}    priority : 1122373613
+    Should Contain    ${output}    device : efzVbQeuHbiXBlBsRRoPTeKjYKBAOyWJflNBatWoJNzIHUjDMlbqETvBcpzjCivaTJDLJKVvvdyxFGBVFHBqiyAQswwAqtyiUgwdDBCubpcCBSzTbqCqRaTsMeWuPxlyVroOiiWtpNwttEtGMpmOjoOPgLTvZrSybKQyADBmiUuDAcQVbKsDOBhwbujVQOfsDbqMwcLaESGgmCaRDmFyzksXRpApUrxHDKaTbItTXWrdXrdzSdtrDhHqkGdWcfTL
+    Should Contain    ${output}    severity : 913196215
+    Should Contain    ${output}    timestamp : 94.5259
+    Should Contain    ${output}    priority : -1310221062

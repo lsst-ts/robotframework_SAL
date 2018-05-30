@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Archiver_standby commander/controller tests.
+Documentation    Archiver_standby communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

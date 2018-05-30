@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_startReadout sender/logger tests.
+Documentation    AtCamera_startReadout communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send CehGFUiDuJuEHAUrvXdhlzrnNPuHIMiGtLmltFqGBgGCVTtzpBWRiqluEMpdVrrLpTzRhkmlfmJZuSefcVPotLaWdKATBjlEBjjBftgidzxQCMWBRefcVdsFIuWrwaBqIYLfAfEowwGMolUjKlFWSTPEgpKOwSSIrVGYBANbMOlanAaalQVFwPGqrbIJioSUlLtDuwDIFvKkdlztcekqSearfEgZKVjraexncexWjfefyKtsEJFWFXbqbmPSbriw -1577719960 MPzQXRKPvMMMypYbDIhlnemlhOtMskpMudKsPYulbSKQTlbRBkVSgAvSWxoTPuzRzmcYHvHBtkayAosejeGICqeYvVEmCZHFbXXmXiuHVRGWajjDaFbYbuobJrNgPWKflrdIgrKcCOlMRVZAgdWHDGCPHTxWkngUbnVIOdgLXboNkCZzwiAmTkFNtUvrXxVzbdEbKfIzHeBbEfUWqiYNaWsOYQCtjXuKuXWsZQlxlZQhGjsZQbmELYooQeYqvDQs 1417888641 86.8319 18.0467 -181112218
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send fSprAXxCgzFnqZlZFAqGEcltzXLiQFOkKccTsZxYokPLXgYWvKAgVDrfJhQEpQOdqorAdAbUkYJgKTixeHCIbnIzvObOZaEJBEKZFwRErzOuBVLimVBXxtVloXuHhYyUbBymXFGJGwyoGiSQTSnzjxglkajHOYQpaDjjobVHBnIRCdVobcnxhCDOrOmdBMxssRjGyqnxIjWodmTAkKvidUtOjiXHjMGESngzYjUCfLlwbIhAlztEHwrOkaycfWXD 1428869482 vPDIUToPMrmQvzRvQNEQfOtAgXfvfZSnPIJHPGuSyPTvTVUeAcpdjpsklQBCyUPFluAHrYZudztvoJWuLxDwnOdMQzmCZIAZzZuCLkazhehRaEHFIPQRGrAZfFyILOHUxIajNiaIccUuIdVomUTYVSIuvItagmrtOraoQhDSLdylTBcqOQZEzJaOALBKgcVCgfuasUBhWdYVqfgTVUvRbIHIRCHIHdHZSpCDPewTcUwtNDLExFqBahlOJhovhYvO -526916483 61.0749 52.8461 -1884476396
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_startReadout writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -181112218
+    ${output}=    Read Until    priority : -1884476396
     Log    ${output}
     Should Contain X Times    ${output}    === Event startReadout received =     1
-    Should Contain    ${output}    imageSequenceName : CehGFUiDuJuEHAUrvXdhlzrnNPuHIMiGtLmltFqGBgGCVTtzpBWRiqluEMpdVrrLpTzRhkmlfmJZuSefcVPotLaWdKATBjlEBjjBftgidzxQCMWBRefcVdsFIuWrwaBqIYLfAfEowwGMolUjKlFWSTPEgpKOwSSIrVGYBANbMOlanAaalQVFwPGqrbIJioSUlLtDuwDIFvKkdlztcekqSearfEgZKVjraexncexWjfefyKtsEJFWFXbqbmPSbriw
-    Should Contain    ${output}    imagesInSequence : -1577719960
-    Should Contain    ${output}    imageName : MPzQXRKPvMMMypYbDIhlnemlhOtMskpMudKsPYulbSKQTlbRBkVSgAvSWxoTPuzRzmcYHvHBtkayAosejeGICqeYvVEmCZHFbXXmXiuHVRGWajjDaFbYbuobJrNgPWKflrdIgrKcCOlMRVZAgdWHDGCPHTxWkngUbnVIOdgLXboNkCZzwiAmTkFNtUvrXxVzbdEbKfIzHeBbEfUWqiYNaWsOYQCtjXuKuXWsZQlxlZQhGjsZQbmELYooQeYqvDQs
-    Should Contain    ${output}    imageIndex : 1417888641
-    Should Contain    ${output}    timeStamp : 86.8319
-    Should Contain    ${output}    exposureTime : 18.0467
-    Should Contain    ${output}    priority : -181112218
+    Should Contain    ${output}    imageSequenceName : fSprAXxCgzFnqZlZFAqGEcltzXLiQFOkKccTsZxYokPLXgYWvKAgVDrfJhQEpQOdqorAdAbUkYJgKTixeHCIbnIzvObOZaEJBEKZFwRErzOuBVLimVBXxtVloXuHhYyUbBymXFGJGwyoGiSQTSnzjxglkajHOYQpaDjjobVHBnIRCdVobcnxhCDOrOmdBMxssRjGyqnxIjWodmTAkKvidUtOjiXHjMGESngzYjUCfLlwbIhAlztEHwrOkaycfWXD
+    Should Contain    ${output}    imagesInSequence : 1428869482
+    Should Contain    ${output}    imageName : vPDIUToPMrmQvzRvQNEQfOtAgXfvfZSnPIJHPGuSyPTvTVUeAcpdjpsklQBCyUPFluAHrYZudztvoJWuLxDwnOdMQzmCZIAZzZuCLkazhehRaEHFIPQRGrAZfFyILOHUxIajNiaIccUuIdVomUTYVSIuvItagmrtOraoQhDSLdylTBcqOQZEzJaOALBKgcVCgfuasUBhWdYVqfgTVUvRbIHIRCHIHdHZSpCDPewTcUwtNDLExFqBahlOJhovhYvO
+    Should Contain    ${output}    imageIndex : -526916483
+    Should Contain    ${output}    timeStamp : 61.0749
+    Should Contain    ${output}    exposureTime : 52.8461
+    Should Contain    ${output}    priority : -1884476396

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_DriveEnabled sender/logger tests.
+Documentation    DomeAPS_DriveEnabled communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 17223 2069278826
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28894 444927983
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveEnabled writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2069278826
+    ${output}=    Read Until    priority : 444927983
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveEnabled received =     1
-    Should Contain    ${output}    driveId : 17223
-    Should Contain    ${output}    priority : 2069278826
+    Should Contain    ${output}    driveId : 28894
+    Should Contain    ${output}    priority : 444927983

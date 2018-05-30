@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_OffsetM2Hexapod commander/controller tests.
-Force Tags    cpp    TSS-2625
+Documentation    Hexapod_moveLUT communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections
@@ -10,8 +10,8 @@ Resource    ../../Global_Vars.robot
 Resource    ../../common.robot
 
 *** Variables ***
-${subSystem}    tcsOfc
-${component}    OffsetM2Hexapod
+${subSystem}    hexapod
+${component}    moveLUT
 ${timeout}    30s
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 26.0421 42.6369 66.1991 41.1179 60.141 84.1265 39.3332 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.594879 0.961442 0.972211
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 26.0421 42.6369 66.1991 41.1179 60.141 84.1265 39.3332 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.594879 0.961442 0.972211
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,10 +68,10 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    timestamp : 26.0421    1
-    Should Contain X Times    ${output}    offset : 42.6369    1
-    Should Contain X Times    ${output}    synchrony :     1
-    Should Contain    ${output}    === command OffsetM2Hexapod issued =
+    Should Contain X Times    ${output}    az : 0.594879    1
+    Should Contain X Times    ${output}    elev : 0.961442    1
+    Should Contain X Times    ${output}    temp : 0.972211    1
+    Should Contain    ${output}    === command moveLUT issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -80,15 +80,15 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain    ${output}    === command OffsetM2Hexapod received =
+    Should Contain    ${output}    === command moveLUT received =
     Should Contain    ${output}    device : 
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    timestamp : 26.0421    1
-    Should Contain X Times    ${output}    offset : 42.6369    1
-    Should Contain X Times    ${output}    synchrony :     1
-    Should Contain X Times    ${output}    === [ackCommand_OffsetM2Hexapod] acknowledging a command with :    2
+    Should Contain X Times    ${output}    az : 0.594879    1
+    Should Contain X Times    ${output}    elev : 0.961442    1
+    Should Contain X Times    ${output}    temp : 0.972211    1
+    Should Contain X Times    ${output}    === [ackCommand_moveLUT] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301
     Should Contain X Times    ${output}    error \ \ \ : 0    2

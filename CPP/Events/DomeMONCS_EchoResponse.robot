@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeMONCS_EchoResponse sender/logger tests.
+Documentation    DomeMONCS_EchoResponse communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YthMjNWusIsqRbhkHBrjyMdNLrcLwPeJLVAXWSBXcXQmcUJODBNJppaXXBmBGhJkprMKZqgKwigAGhCKlSjMfwzmuHAeoKUvIcsHCIxNDxUobTqhWckLgNTssRcMyjOJzAsnTarmrOiZBXyUvWcwgmbBzMoPmDVYuOAWuPwmOrPQIPuXYxQSJEpxVCSPWfCkurmNuOZRrqeDeagOJIAEMjrNeFGYJgZBwTIAAqnrYJijcWVbUObAXLCLFeELQgxBicNNxnWEONNuZgesbvRonsmBdzqenvIOiPbTFPhdsAnguApZPRYqDfaVdlnANpuJKQzVufjOGHqGygoWooGSxJFxNgdqpWmzZGGSYLeBbnETEIKpgvLwNPaEnheuDtFummBQUmKWgVJWHKDAKRNKBLLdYLRfboYjcZcQOVyjHvWBGlVueobx -2098752792
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hToYjCsIVPYgjJzjxMXSaKFHDqeOIDEMDEaqxZkaTYVLKVJcmCWdmlaouvtmIukgCsYVKRSFVzKLfvzYlWZsKhytYCEPXwmNgPKFMQrAVgbEiVFmAiNhQVrLjNQxzZULmVsEoDsOWXUyilgifCjvZXwdYXTTrPSLDqaXyOktpBYmhZllSNCOYJiNtQxYJoRqfalmJqcloMtUitvbKSnfnrLTBgeqIvHSsKPHUybMwgxVmnUzYFtsHiXfgvegRODVOssOCexzuWJgDMLuJNqWLCaFOZrjvdsuJiVcuTtGHBVNgqOIFKBUWZYVTwNVuwltmcxRXtIbRohEfvvKhEmNhmZWNimNGGgnNvKYHsWqPiEahKLztGUWRVsdhyWdYAhtTWlDDYEnraqDBnBcJJJPjzsKYLqzGdMYLjOVwaBESAYkhBUhNuMqAsYxFQKkENGxdOBMSFnuRXqftWnnqNnQKmnWEKoWdWZdKDrQNvsYbuBtHRKcAtVFhfytiAZxKExStoRAtpXsfkbCwjsjqYIlUzvvnOguAtTFpXzsfGiTAMMqHhuYmWMkonvwgxQRylXDesSOAYQqtmAfNKzciKCCJGUUJLFMBePaSdLrUEFTGElqRULPyJgGLKYsHwqNBquxOZjyzISyJPHpcVVBvjNSAihIulQVGffmwvLisolJBIsUUZYLWdoKYLTdltLwxskxfLSVwsWhnyotQlnMrVbEIsbYAZkcjRdufURXPszNCHmwRcDisxCdxnHhqsWNIolHrhnOCsCX -139511608
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2098752792
+    ${output}=    Read Until    priority : -139511608
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : YthMjNWusIsqRbhkHBrjyMdNLrcLwPeJLVAXWSBXcXQmcUJODBNJppaXXBmBGhJkprMKZqgKwigAGhCKlSjMfwzmuHAeoKUvIcsHCIxNDxUobTqhWckLgNTssRcMyjOJzAsnTarmrOiZBXyUvWcwgmbBzMoPmDVYuOAWuPwmOrPQIPuXYxQSJEpxVCSPWfCkurmNuOZRrqeDeagOJIAEMjrNeFGYJgZBwTIAAqnrYJijcWVbUObAXLCLFeELQgxBicNNxnWEONNuZgesbvRonsmBdzqenvIOiPbTFPhdsAnguApZPRYqDfaVdlnANpuJKQzVufjOGHqGygoWooGSxJFxNgdqpWmzZGGSYLeBbnETEIKpgvLwNPaEnheuDtFummBQUmKWgVJWHKDAKRNKBLLdYLRfboYjcZcQOVyjHvWBGlVueobx
-    Should Contain    ${output}    priority : -2098752792
+    Should Contain    ${output}    response : hToYjCsIVPYgjJzjxMXSaKFHDqeOIDEMDEaqxZkaTYVLKVJcmCWdmlaouvtmIukgCsYVKRSFVzKLfvzYlWZsKhytYCEPXwmNgPKFMQrAVgbEiVFmAiNhQVrLjNQxzZULmVsEoDsOWXUyilgifCjvZXwdYXTTrPSLDqaXyOktpBYmhZllSNCOYJiNtQxYJoRqfalmJqcloMtUitvbKSnfnrLTBgeqIvHSsKPHUybMwgxVmnUzYFtsHiXfgvegRODVOssOCexzuWJgDMLuJNqWLCaFOZrjvdsuJiVcuTtGHBVNgqOIFKBUWZYVTwNVuwltmcxRXtIbRohEfvvKhEmNhmZWNimNGGgnNvKYHsWqPiEahKLztGUWRVsdhyWdYAhtTWlDDYEnraqDBnBcJJJPjzsKYLqzGdMYLjOVwaBESAYkhBUhNuMqAsYxFQKkENGxdOBMSFnuRXqftWnnqNnQKmnWEKoWdWZdKDrQNvsYbuBtHRKcAtVFhfytiAZxKExStoRAtpXsfkbCwjsjqYIlUzvvnOguAtTFpXzsfGiTAMMqHhuYmWMkonvwgxQRylXDesSOAYQqtmAfNKzciKCCJGUUJLFMBePaSdLrUEFTGElqRULPyJgGLKYsHwqNBquxOZjyzISyJPHpcVVBvjNSAihIulQVGffmwvLisolJBIsUUZYLWdoKYLTdltLwxskxfLSVwsWhnyotQlnMrVbEIsbYAZkcjRdufURXPszNCHmwRcDisxCdxnHhqsWNIolHrhnOCsCX
+    Should Contain    ${output}    priority : -139511608

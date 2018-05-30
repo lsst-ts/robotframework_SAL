@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_EchoLWS commander/controller tests.
+Documentation    DomeLWS_EchoLWS communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

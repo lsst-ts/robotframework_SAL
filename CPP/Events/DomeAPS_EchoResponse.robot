@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_EchoResponse sender/logger tests.
+Documentation    DomeAPS_EchoResponse communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send sTPWZqRgdvupzayAKqNnYIWbVbVNsCVNTcVzrMnNRiiyhurYVSyYfaSSHYFsTHpeQytDhXtVmxydtVNWCNXdWqsorYotMIvhkrlGKRNNapxgqbzwKYLUjkPvTGpbmaojAtUOqmdzQhhBPeRJyTXbKoUEedgQFIbSmcvQyTKZexCKdDMtUtTXibxMwWSaleKGjtvHOuKhqPVmwXXPakEIrLAGXpRPDiqqpdKWvtSuTxdLvCeiXIgXBRYBi -2040205917
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DZIseeBqIsBekmWNVETvYRhCGTiFRurInvTvmQPuZqFqQtFiYRpTjFZmtmgJedfomguvEizKuonjwVkoJoUtZMRHlNWAnkqosZZgUNlldsrgFssnUuKunyIXqitdpxJoWooGvYxwLkhRAmLlKrkMINDOUjMPRZxSnYlTMNlzfvxdKPJhgHEEnqWTDxvZGeDqgQELeFjsKGVjglFFAQBlnFgjCZPOYOscdNDBLfRlbvgyylFiviolbTwQeUmCNVTznxvziPJjBjDPQctrWIdecdCAksLLTzEXRRHCMScGFKClXafALGeSpvZuFUsBbcNSHWXZBWYBHxvkLhpkfUVxOWnKMMnASqefmMucsaKkPfUEzGGFanyQHWwAgIdQpBCkExLlnPzLITIBdGCvNdZMwDjlmJVJCRIjuoLdKVxzLFYWMCjSRfCBZXHHKXGiGlVqblliQEvSfTBoXWUDXRHOuxohzkZsscknnqjMbHNKMAeyjAiiyEMQQnJyWwjKkpdFQFeWKLSkjBuPQqiprdQejItmPzOGwjjRYDIZKWCMyBGnCXXXDHnznOlNFDlMcLFnwCujZsqiinCseaZVdHXcKmBJpIkyZxIbtsRXKYxbXSwjhuEuAdFJnZKWRvOovRCNDepUOgFkZBHjeiptvTeMGisVewfyDZAAnSwixNLgCpbiWIMmYprjybwTwPxaTZuTJlOaaTiKVgAwdSGTZZEQEZDjWPoezKsqmOPsoGtpspDHIeBpAUDTsDPUiTyhxonIPgoqHdrrXKjJXnhHodDaKQoFVOpntQJPtJcVrCnmIKisWQYYXmgreQdYPELzQLOVNTzGeYmKhIwTQhjZFOBT 78142376
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2040205917
+    ${output}=    Read Until    priority : 78142376
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : sTPWZqRgdvupzayAKqNnYIWbVbVNsCVNTcVzrMnNRiiyhurYVSyYfaSSHYFsTHpeQytDhXtVmxydtVNWCNXdWqsorYotMIvhkrlGKRNNapxgqbzwKYLUjkPvTGpbmaojAtUOqmdzQhhBPeRJyTXbKoUEedgQFIbSmcvQyTKZexCKdDMtUtTXibxMwWSaleKGjtvHOuKhqPVmwXXPakEIrLAGXpRPDiqqpdKWvtSuTxdLvCeiXIgXBRYBi
-    Should Contain    ${output}    priority : -2040205917
+    Should Contain    ${output}    response : DZIseeBqIsBekmWNVETvYRhCGTiFRurInvTvmQPuZqFqQtFiYRpTjFZmtmgJedfomguvEizKuonjwVkoJoUtZMRHlNWAnkqosZZgUNlldsrgFssnUuKunyIXqitdpxJoWooGvYxwLkhRAmLlKrkMINDOUjMPRZxSnYlTMNlzfvxdKPJhgHEEnqWTDxvZGeDqgQELeFjsKGVjglFFAQBlnFgjCZPOYOscdNDBLfRlbvgyylFiviolbTwQeUmCNVTznxvziPJjBjDPQctrWIdecdCAksLLTzEXRRHCMScGFKClXafALGeSpvZuFUsBbcNSHWXZBWYBHxvkLhpkfUVxOWnKMMnASqefmMucsaKkPfUEzGGFanyQHWwAgIdQpBCkExLlnPzLITIBdGCvNdZMwDjlmJVJCRIjuoLdKVxzLFYWMCjSRfCBZXHHKXGiGlVqblliQEvSfTBoXWUDXRHOuxohzkZsscknnqjMbHNKMAeyjAiiyEMQQnJyWwjKkpdFQFeWKLSkjBuPQqiprdQejItmPzOGwjjRYDIZKWCMyBGnCXXXDHnznOlNFDlMcLFnwCujZsqiinCseaZVdHXcKmBJpIkyZxIbtsRXKYxbXSwjhuEuAdFJnZKWRvOovRCNDepUOgFkZBHjeiptvTeMGisVewfyDZAAnSwixNLgCpbiWIMmYprjybwTwPxaTZuTJlOaaTiKVgAwdSGTZZEQEZDjWPoezKsqmOPsoGtpspDHIeBpAUDTsDPUiTyhxonIPgoqHdrrXKjJXnhHodDaKQoFVOpntQJPtJcVrCnmIKisWQYYXmgreQdYPELzQLOVNTzGeYmKhIwTQhjZFOBT
+    Should Contain    ${output}    priority : 78142376

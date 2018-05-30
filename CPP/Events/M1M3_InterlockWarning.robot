@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_InterlockWarning sender/logger tests.
+Documentation    M1M3_InterlockWarning communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 49.1322 0 1 1 0 0 0 0 1 1780442213
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 70.3981 0 1 0 1 1 0 0 1 436866845
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_InterlockWarning writing a message containing :    1
@@ -57,16 +57,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1780442213
+    ${output}=    Read Until    priority : 436866845
     Log    ${output}
     Should Contain X Times    ${output}    === Event InterlockWarning received =     1
-    Should Contain    ${output}    Timestamp : 49.1322
+    Should Contain    ${output}    Timestamp : 70.3981
     Should Contain    ${output}    AnyWarning : 0
     Should Contain    ${output}    HeartbeatStateOutputMismatch : 1
-    Should Contain    ${output}    AuxPowerNetworksOff : 1
-    Should Contain    ${output}    ThermalEquipmentOff : 0
-    Should Contain    ${output}    AirSupplyOff : 0
+    Should Contain    ${output}    AuxPowerNetworksOff : 0
+    Should Contain    ${output}    ThermalEquipmentOff : 1
+    Should Contain    ${output}    AirSupplyOff : 1
     Should Contain    ${output}    TMAMotionStop : 0
     Should Contain    ${output}    GISHeartbeatLost : 0
     Should Contain    ${output}    CabinetDoorOpen : 1
-    Should Contain    ${output}    priority : 1780442213
+    Should Contain    ${output}    priority : 436866845

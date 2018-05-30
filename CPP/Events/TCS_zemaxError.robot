@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_zemaxError sender/logger tests.
+Documentation    TCS_zemaxError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send koonVWAQZxPbDiLaVnyWUQxAylyVhRAZwUXZqJyAYWDMxjoYMCSlEGfMzKQMMVMRuQlNMFzTQNNbcRouhEaRcqOJAFbAJzkTzwCumdzuvufjtHqsvGZJVcGnWIZgtplF -655285395
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JAdPfIOkBhZGIKPcZzqWrKMoAWSEejNMQpzSKkBcjGZhlsNVVPebqQtnrQLwFNLICMobRtMgRZURrkEeihpBsXbuQDvHOWmRYgHZZJJwynZPmVoTerxEvMsDHgbsSzSz -1022020474
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_zemaxError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -655285395
+    ${output}=    Read Until    priority : -1022020474
     Log    ${output}
     Should Contain X Times    ${output}    === Event zemaxError received =     1
-    Should Contain    ${output}    details : koonVWAQZxPbDiLaVnyWUQxAylyVhRAZwUXZqJyAYWDMxjoYMCSlEGfMzKQMMVMRuQlNMFzTQNNbcRouhEaRcqOJAFbAJzkTzwCumdzuvufjtHqsvGZJVcGnWIZgtplF
-    Should Contain    ${output}    priority : -655285395
+    Should Contain    ${output}    details : JAdPfIOkBhZGIKPcZzqWrKMoAWSEejNMQpzSKkBcjGZhlsNVVPebqQtnrQLwFNLICMobRtMgRZURrkEeihpBsXbuQDvHOWmRYgHZZJJwynZPmVoTerxEvMsDHgbsSzSz
+    Should Contain    ${output}    priority : -1022020474

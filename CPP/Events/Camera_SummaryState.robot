@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_SummaryState sender/logger tests.
+Documentation    Camera_SummaryState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1325260832 -2035239273
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -237923344 -852086178
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SummaryState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2035239273
+    ${output}=    Read Until    priority : -852086178
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    SummaryStateValue : 1325260832
-    Should Contain    ${output}    priority : -2035239273
+    Should Contain    ${output}    SummaryStateValue : -237923344
+    Should Contain    ${output}    priority : -852086178

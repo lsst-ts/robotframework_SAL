@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_startShutterClose sender/logger tests.
+Documentation    Camera_startShutterClose communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1654952939
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -671090849
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startShutterClose writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1654952939
+    ${output}=    Read Until    priority : -671090849
     Log    ${output}
     Should Contain X Times    ${output}    === Event startShutterClose received =     1
-    Should Contain    ${output}    priority : -1654952939
+    Should Contain    ${output}    priority : -671090849

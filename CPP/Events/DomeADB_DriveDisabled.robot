@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_DriveDisabled sender/logger tests.
+Documentation    DomeADB_DriveDisabled communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -15992 -1794819561
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -8573 1966959594
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveDisabled writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1794819561
+    ${output}=    Read Until    priority : 1966959594
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveDisabled received =     1
-    Should Contain    ${output}    driveId : -15992
-    Should Contain    ${output}    priority : -1794819561
+    Should Contain    ${output}    driveId : -8573
+    Should Contain    ${output}    priority : 1966959594

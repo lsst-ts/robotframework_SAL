@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_deviceError sender/logger tests.
+Documentation    Hexapod_deviceError communications tests.
 Force Tags    cpp    TSS-2680
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jlxpbazzPMtfHOcACMaVYaDbbAxwroLlNvPJcQafNLMvXIAdDoKuSKCDILBVowXhKAgpQYGEFxvZnRDuiEOlJxwjblDkAYnaZDGWCjnrQEkAJJZpwRaanTGJznDMuGddUWIyIWPYhBgIVGxplmUZpoeYLXtRHZfnvuUPbDjFeQIqHyqBgAQHmXeBNLHyGtPNvSjcGhYuFZRHKksmOkTyzxEBNVTcUFLbpFZlFzzNxfEmHNnEKnEVBDPLzmmzMshZ -1252993796 90.0317 HUsLDLFBatbtJdCvxrlMSqouqCIhvqwUNdXtEDApReqjEgOYfBbVmRvRsjjQYEChRCCECDzelmImWaTPszqfdbaTLeIuLBMHOqFVkarNbNJCbrQLeIBiPGCxzAVbdFeydrBeNdrIvqFtllIcORFStTBjaCLszQCTCQlJfwJKPVhTwMypUlOpgzLSarbpRBsWLdZswhsDCAwZygUuwAcozNepdLohXxusFhUJcBgiuhuCCdSZHRwLcJhJYerGoEKt 1848136358
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send PmoFRLaVSfVWInDtTrpntNfFCfEewMZsNsolEdGXSSGObZDAWDuMXgKQeOISDSwefSWbAfVfargbxBXjxpHzkSWpFYeYKztatoVMeqhbWnaizqjFzEJWZMOMxwfbtrrgiRMzuOArXrXWDpJOMmCtvJEaEMAnXgLOFwUGaQjnvnmgQAXdInKOrknVRCkQwPBdwVNsDPtBiOlFPSgmzrUwdYoHmKMbBqLMbhYSxhpEzwfeUfhbIPWkgJLqvECjnCIo -820255695 40.8517 XIRzyAVTTBjIXqLXgQSieLQxLihWlemDIdfpvXkOdYUuKPeliZQdUJLATZXnLfdtqoTIjPrMvrDxtpKXPNVWYFgrKkdYkBHdcrrhuLTroIprXzsyZTXFSREzEZyORcLqVQQDSGnnNXvefdgaBXgKXDBvEBrylSKIgtwbotaTwqcTkXxDDLjoBwQHNgkNPOexjyUwACVUnhndZxJktWlAQcYedIjZuUYlSWbqfQWtGfXWYyiymuRlMrfhhKPUnxKI -1602039788
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1848136358
+    ${output}=    Read Until    priority : -1602039788
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
-    Should Contain    ${output}    device : jlxpbazzPMtfHOcACMaVYaDbbAxwroLlNvPJcQafNLMvXIAdDoKuSKCDILBVowXhKAgpQYGEFxvZnRDuiEOlJxwjblDkAYnaZDGWCjnrQEkAJJZpwRaanTGJznDMuGddUWIyIWPYhBgIVGxplmUZpoeYLXtRHZfnvuUPbDjFeQIqHyqBgAQHmXeBNLHyGtPNvSjcGhYuFZRHKksmOkTyzxEBNVTcUFLbpFZlFzzNxfEmHNnEKnEVBDPLzmmzMshZ
-    Should Contain    ${output}    severity : -1252993796
-    Should Contain    ${output}    timestamp : 90.0317
-    Should Contain    ${output}    code : HUsLDLFBatbtJdCvxrlMSqouqCIhvqwUNdXtEDApReqjEgOYfBbVmRvRsjjQYEChRCCECDzelmImWaTPszqfdbaTLeIuLBMHOqFVkarNbNJCbrQLeIBiPGCxzAVbdFeydrBeNdrIvqFtllIcORFStTBjaCLszQCTCQlJfwJKPVhTwMypUlOpgzLSarbpRBsWLdZswhsDCAwZygUuwAcozNepdLohXxusFhUJcBgiuhuCCdSZHRwLcJhJYerGoEKt
-    Should Contain    ${output}    priority : 1848136358
+    Should Contain    ${output}    device : PmoFRLaVSfVWInDtTrpntNfFCfEewMZsNsolEdGXSSGObZDAWDuMXgKQeOISDSwefSWbAfVfargbxBXjxpHzkSWpFYeYKztatoVMeqhbWnaizqjFzEJWZMOMxwfbtrrgiRMzuOArXrXWDpJOMmCtvJEaEMAnXgLOFwUGaQjnvnmgQAXdInKOrknVRCkQwPBdwVNsDPtBiOlFPSgmzrUwdYoHmKMbBqLMbhYSxhpEzwfeUfhbIPWkgJLqvECjnCIo
+    Should Contain    ${output}    severity : -820255695
+    Should Contain    ${output}    timestamp : 40.8517
+    Should Contain    ${output}    code : XIRzyAVTTBjIXqLXgQSieLQxLihWlemDIdfpvXkOdYUuKPeliZQdUJLATZXnLfdtqoTIjPrMvrDxtpKXPNVWYFgrKkdYkBHdcrrhuLTroIprXzsyZTXFSREzEZyORcLqVQQDSGnnNXvefdgaBXgKXDBvEBrylSKIgtwbotaTwqcTkXxDDLjoBwQHNgkNPOexjyUwACVUnhndZxJktWlAQcYedIjZuUYlSWbqfQWtGfXWYyiymuRlMrfhhKPUnxKI
+    Should Contain    ${output}    priority : -1602039788

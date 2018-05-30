@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCS_ocsEntityShutdown sender/logger tests.
+Documentation    OCS_ocsEntityShutdown communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MYraDWDykayFErhILVOppHALEcVsxjSrHdFMXWekymtIimMVxNitOyNzgenfOxndalxfQFIdivljsWyHcCLXThRczpfAuQVueUKlzxIqGRYJwplGQXaYxDAWzSlccdNV 61.2421 vVRshpVNudmyGYGPgLyyHjjIWEYvuTEHwPlLbGoMShUTKaLDUKMdiwKVjHdhQXNPwayohRbLqpUWXRakeSIuZDZMpobiUWQxuOucCaZGCwqpGDCobIIRbNAlWtQxQktrsLZWXPlizqTOxMRrSVahhyTVvFbdQyaTgYLhauSvnouYuahHFlWNPtjzgiaYyAcZMlFAkUHMZAUBZLRczFsbvUEXKPhaaKoMhojGEcgNoUjlYsekWdzeyVPLrALJPdiJ 614232047 -217172079
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DGSwOlqoRyGJfnSGeIqkpCdDSbMyuiFzhEhptYgfzfIoCHxMBSqXNbREZskhtRCsusDUjZUTjlmYCvPChVBjKrjnQvdvyUorvdXJNWoWMLncMPPBENwYVoijYkKukYFk 93.2243 QcXXwJtfqfbUYmMwuuPPAvcArOQDdtOTDLgoOjzKhnhnqLxZlSnVNheqoIUnBdRNwncLLGdmWyaIiCLacIWMBABJPsCzUhXZgEUJapnxEQXDsODVwoqzuMVQpUHIkfJXBuqfRexrQZDrhTedxXPdvVROEDdgAigxIWVKEvblJasyArtFmKjsdKpBJfkwCStewLrfXkIvxyTodzIqALPauoLnYGkUabwrNrHLzDXikDFBXAaklesZjsiRTEBppHCb -241555346 -461130838
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsEntityShutdown writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -217172079
+    ${output}=    Read Until    priority : -461130838
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsEntityShutdown received =     1
-    Should Contain    ${output}    Name : MYraDWDykayFErhILVOppHALEcVsxjSrHdFMXWekymtIimMVxNitOyNzgenfOxndalxfQFIdivljsWyHcCLXThRczpfAuQVueUKlzxIqGRYJwplGQXaYxDAWzSlccdNV
-    Should Contain    ${output}    Identifier : 61.2421
-    Should Contain    ${output}    Timestamp : vVRshpVNudmyGYGPgLyyHjjIWEYvuTEHwPlLbGoMShUTKaLDUKMdiwKVjHdhQXNPwayohRbLqpUWXRakeSIuZDZMpobiUWQxuOucCaZGCwqpGDCobIIRbNAlWtQxQktrsLZWXPlizqTOxMRrSVahhyTVvFbdQyaTgYLhauSvnouYuahHFlWNPtjzgiaYyAcZMlFAkUHMZAUBZLRczFsbvUEXKPhaaKoMhojGEcgNoUjlYsekWdzeyVPLrALJPdiJ
-    Should Contain    ${output}    Address : 614232047
-    Should Contain    ${output}    priority : -217172079
+    Should Contain    ${output}    Name : DGSwOlqoRyGJfnSGeIqkpCdDSbMyuiFzhEhptYgfzfIoCHxMBSqXNbREZskhtRCsusDUjZUTjlmYCvPChVBjKrjnQvdvyUorvdXJNWoWMLncMPPBENwYVoijYkKukYFk
+    Should Contain    ${output}    Identifier : 93.2243
+    Should Contain    ${output}    Timestamp : QcXXwJtfqfbUYmMwuuPPAvcArOQDdtOTDLgoOjzKhnhnqLxZlSnVNheqoIUnBdRNwncLLGdmWyaIiCLacIWMBABJPsCzUhXZgEUJapnxEQXDsODVwoqzuMVQpUHIkfJXBuqfRexrQZDrhTedxXPdvVROEDdgAigxIWVKEvblJasyArtFmKjsdKpBJfkwCStewLrfXkIvxyTodzIqALPauoLnYGkUabwrNrHLzDXikDFBXAaklesZjsiRTEBppHCb
+    Should Contain    ${output}    Address : -241555346
+    Should Contain    ${output}    priority : -461130838

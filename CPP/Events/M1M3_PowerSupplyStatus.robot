@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_PowerSupplyStatus sender/logger tests.
+Documentation    M1M3_PowerSupplyStatus communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 7.0641 0 1 1 1 1 1 0 1 0 0 1 1 0 0 0 0 1 1 0 1 0 1 0 -591532676
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 60.8994 0 0 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0 1 0 1 1 0 0 818510949
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PowerSupplyStatus writing a message containing :    1
@@ -57,31 +57,31 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -591532676
+    ${output}=    Read Until    priority : 818510949
     Log    ${output}
     Should Contain X Times    ${output}    === Event PowerSupplyStatus received =     1
-    Should Contain    ${output}    Timestamp : 7.0641
+    Should Contain    ${output}    Timestamp : 60.8994
     Should Contain    ${output}    RCPMirrorCellUtility220VAC1Status : 0
-    Should Contain    ${output}    RCPCabinetUtility220VACStatus : 1
-    Should Contain    ${output}    RCPExternalEquipment220VACStatus : 1
-    Should Contain    ${output}    RCPMirrorCellUtility220VAC2Status : 1
-    Should Contain    ${output}    RCPMirrorCellUtility220VAC3Status : 1
+    Should Contain    ${output}    RCPCabinetUtility220VACStatus : 0
+    Should Contain    ${output}    RCPExternalEquipment220VACStatus : 0
+    Should Contain    ${output}    RCPMirrorCellUtility220VAC2Status : 0
+    Should Contain    ${output}    RCPMirrorCellUtility220VAC3Status : 0
     Should Contain    ${output}    PowerNetworkARedundancyControlStatus : 1
     Should Contain    ${output}    PowerNetworkBRedundancyControlStatus : 0
     Should Contain    ${output}    PowerNetworkCRedundancyControlStatus : 1
-    Should Contain    ${output}    PowerNetworkDRedundancyControlStatus : 0
-    Should Contain    ${output}    ControlsPowerNetworkRedundancyControlStatus : 0
-    Should Contain    ${output}    PowerNetworkAStatus : 1
+    Should Contain    ${output}    PowerNetworkDRedundancyControlStatus : 1
+    Should Contain    ${output}    ControlsPowerNetworkRedundancyControlStatus : 1
+    Should Contain    ${output}    PowerNetworkAStatus : 0
     Should Contain    ${output}    PowerNetworkARedundantStatus : 1
-    Should Contain    ${output}    PowerNetworkBStatus : 0
+    Should Contain    ${output}    PowerNetworkBStatus : 1
     Should Contain    ${output}    PowerNetworkBRedundantStatus : 0
     Should Contain    ${output}    PowerNetworkCStatus : 0
     Should Contain    ${output}    PowerNetworkCRedundantStatus : 0
-    Should Contain    ${output}    PowerNetworkDStatus : 1
+    Should Contain    ${output}    PowerNetworkDStatus : 0
     Should Contain    ${output}    PowerNetworkDRedundantStatus : 1
     Should Contain    ${output}    ControlsPowerNetworkStatus : 0
     Should Contain    ${output}    ControlsPowerNetworkRedundantStatus : 1
-    Should Contain    ${output}    LightPowerNetworkStatus : 0
-    Should Contain    ${output}    ExternalEquipmentPowerNetworkStatus : 1
+    Should Contain    ${output}    LightPowerNetworkStatus : 1
+    Should Contain    ${output}    ExternalEquipmentPowerNetworkStatus : 0
     Should Contain    ${output}    LaserTrackerPowerNetworkStatus : 0
-    Should Contain    ${output}    priority : -591532676
+    Should Contain    ${output}    priority : 818510949

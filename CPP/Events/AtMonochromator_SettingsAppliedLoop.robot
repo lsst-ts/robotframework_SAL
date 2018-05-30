@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_SettingsAppliedLoop sender/logger tests.
+Documentation    AtMonochromator_SettingsAppliedLoop communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 11.4223 1.8447 -911814293
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 92.3598 80.5334 271875544
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedLoop writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -911814293
+    ${output}=    Read Until    priority : 271875544
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsAppliedLoop received =     1
-    Should Contain    ${output}    period : 11.4223
-    Should Contain    ${output}    periodAllowedJitter : 1.8447
-    Should Contain    ${output}    priority : -911814293
+    Should Contain    ${output}    period : 92.3598
+    Should Contain    ${output}    periodAllowedJitter : 80.5334
+    Should Contain    ${output}    priority : 271875544

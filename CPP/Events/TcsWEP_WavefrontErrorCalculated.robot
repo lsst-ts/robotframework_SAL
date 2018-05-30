@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontErrorCalculated sender/logger tests.
+Documentation    TcsWEP_WavefrontErrorCalculated communications tests.
 Force Tags    cpp    TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MsHmuHoUDFdgKbMBfyQzhApbwdptDjIoxFcSgtpfFsVJqbRsGEibJGTlTKafPTBIuZmKJsTbkWKxYHHUdEGVYeTYKkAmqFOmaCQCvxYEzxBwNBqfwmiILjYHbgZAvlKXHmsTCtKwxbwZyvNqYlrzQRmxDmgAIHbXPpUUfLPXvDtHavVSxUcUpygTrWsVUHDhBabJukyPLRkmDyOFpSkmQjzTsZfXIcEHWiIwnxqjZgdEDNrsQRPUraHKxYnlKrIobIniOwMlTkdUfbeJiWGvYAwWYYeLQaDVmNNMlSVXcgylJNMisvjgNkATxXlxuncBOIujhxqjrNGCJHALVCWdtWZWcpwsHpMnomCPhyrKIDnauiAIDQABwRrzHpVCsJUOxhrtcFggWdlRgyMJHXnGsTkVvFPgCFXaWRFRRAFiKhrVMMcwDtZJPiltStLOyGHVySekGXeTrcuSHRXYcYABfmDeHUlaRvkqRKachfqavhongaEAUJGfYYKdflRDDHijLmNIfDEUkFXeZcQKjCSLUwpbnyKdARYcrTAYXMFBNnHIhIVwlWhXVunvoJPtYiVYPwyqYjXtTKSGAlewvPzbWGrjFjLeowvuESOrnSMmngCNcvxxwZqhGLavdIuntcvoEQocAxsXCmoaQHehKjQjvnjdOkwQOkqlOMUWSVdSWsngyChofxXWIHVwfmQpCPZzFnDZagvwkyJyCpTmrVAdNvmooNlYVRzpVPQpFrQkVPWSGPTTiSNxvlDiLwgJBKzZDFeuqAIQwyPhwuXyjLeRMRRBRUcGipVddbizpNqSsUHxvPwDlyQMvURLciewPXcdgHVTtWKsTfgqTrSxmpJhfqowRkvTAShEdWhcmBUWakRsJPVHKKylvPYSQBGVSowsuNElhGKkdrWOQKlgLHcTAXBUppYESuDCDEyTUz 42.7491 -1127289656
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -16170 69.7357 -850968267
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1127289656
+    ${output}=    Read Until    priority : -850968267
     Log    ${output}
     Should Contain X Times    ${output}    === Event WavefrontErrorCalculated received =     1
-    Should Contain    ${output}    sensorID : MsHmuHoUDFdgKbMBfyQzhApbwdptDjIoxFcSgtpfFsVJqbRsGEibJGTlTKafPTBIuZmKJsTbkWKxYHHUdEGVYeTYKkAmqFOmaCQCvxYEzxBwNBqfwmiILjYHbgZAvlKXHmsTCtKwxbwZyvNqYlrzQRmxDmgAIHbXPpUUfLPXvDtHavVSxUcUpygTrWsVUHDhBabJukyPLRkmDyOFpSkmQjzTsZfXIcEHWiIwnxqjZgdEDNrsQRPUraHKxYnlKrIobIniOwMlTkdUfbeJiWGvYAwWYYeLQaDVmNNMlSVXcgylJNMisvjgNkATxXlxuncBOIujhxqjrNGCJHALVCWdtWZWcpwsHpMnomCPhyrKIDnauiAIDQABwRrzHpVCsJUOxhrtcFggWdlRgyMJHXnGsTkVvFPgCFXaWRFRRAFiKhrVMMcwDtZJPiltStLOyGHVySekGXeTrcuSHRXYcYABfmDeHUlaRvkqRKachfqavhongaEAUJGfYYKdflRDDHijLmNIfDEUkFXeZcQKjCSLUwpbnyKdARYcrTAYXMFBNnHIhIVwlWhXVunvoJPtYiVYPwyqYjXtTKSGAlewvPzbWGrjFjLeowvuESOrnSMmngCNcvxxwZqhGLavdIuntcvoEQocAxsXCmoaQHehKjQjvnjdOkwQOkqlOMUWSVdSWsngyChofxXWIHVwfmQpCPZzFnDZagvwkyJyCpTmrVAdNvmooNlYVRzpVPQpFrQkVPWSGPTTiSNxvlDiLwgJBKzZDFeuqAIQwyPhwuXyjLeRMRRBRUcGipVddbizpNqSsUHxvPwDlyQMvURLciewPXcdgHVTtWKsTfgqTrSxmpJhfqowRkvTAShEdWhcmBUWakRsJPVHKKylvPYSQBGVSowsuNElhGKkdrWOQKlgLHcTAXBUppYESuDCDEyTUz
-    Should Contain    ${output}    timestamp : 42.7491
-    Should Contain    ${output}    priority : -1127289656
+    Should Contain    ${output}    sensorId : -16170
+    Should Contain    ${output}    timestamp : 69.7357
+    Should Contain    ${output}    priority : -850968267

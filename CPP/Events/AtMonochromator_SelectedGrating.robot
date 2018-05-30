@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_SelectedGrating sender/logger tests.
+Documentation    AtMonochromator_SelectedGrating communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 528397818 72.1363 -1782270698
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1499486194 67.0559 1795638842
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SelectedGrating writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1782270698
+    ${output}=    Read Until    priority : 1795638842
     Log    ${output}
     Should Contain X Times    ${output}    === Event SelectedGrating received =     1
-    Should Contain    ${output}    gratingType : 528397818
-    Should Contain    ${output}    timestamp : 72.1363
-    Should Contain    ${output}    priority : -1782270698
+    Should Contain    ${output}    gratingType : 1499486194
+    Should Contain    ${output}    timestamp : 67.0559
+    Should Contain    ${output}    priority : 1795638842

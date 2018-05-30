@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_standby commander/controller tests.
+Documentation    HeaderService_standby communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

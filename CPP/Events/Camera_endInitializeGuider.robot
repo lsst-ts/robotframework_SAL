@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_endInitializeGuider sender/logger tests.
+Documentation    Camera_endInitializeGuider communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1649807909
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1728572192
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endInitializeGuider writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1649807909
+    ${output}=    Read Until    priority : 1728572192
     Log    ${output}
     Should Contain X Times    ${output}    === Event endInitializeGuider received =     1
-    Should Contain    ${output}    priority : 1649807909
+    Should Contain    ${output}    priority : 1728572192

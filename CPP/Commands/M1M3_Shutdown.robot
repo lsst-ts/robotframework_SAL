@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_Shutdown commander/controller tests.
+Documentation    M1M3_Shutdown communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

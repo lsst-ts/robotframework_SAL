@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_DriveReady sender/logger tests.
+Documentation    DomeADB_DriveReady communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -13083 -1820898404
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -29433 231777079
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveReady writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1820898404
+    ${output}=    Read Until    priority : 231777079
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveReady received =     1
-    Should Contain    ${output}    driveId : -13083
-    Should Contain    ${output}    priority : -1820898404
+    Should Contain    ${output}    driveId : -29433
+    Should Contain    ${output}    priority : 231777079

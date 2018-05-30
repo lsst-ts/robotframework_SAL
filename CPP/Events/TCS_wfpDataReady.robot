@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_wfpDataReady sender/logger tests.
+Documentation    TCS_wfpDataReady communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send zbMzHcxAFuKytQUAZJdWFmswMHsEVGcHbIXfVAoeBOPgvuMTcsHOMueKriAlstrSltshsglZGgJgtobGRXmiTPDMBzKZCPpoRlkuVCKPdQfeHifScgqNCQVoAoIdpuMCTXJDUPTNfHLyWUkIfpemsjJXpbDJrBHSDusdEUNFUwvwqWhTkgByWVFPKeAJPrqnpbBNJuLtgAuoepqpSLGBvydoykwVSrYIdyqpwfihVwXLCRdsoNtBSWpFzgiWioaK wCmuvdXLMvvnMPltLLlpNJeEaraGKKMdAeCslFeltpbbEhMMGqfAxeuaoHGxZTRj -399487070
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hvkaZGGsaBjqTuyTmanqnAIlMeEmgSNhLxAJiLcVDGfLzOEoLjggqjQeUJHaEAcYfrSJDEJlyyOqQlEwlMZQSAnskckioUUBqXWOaEKGkyHHdBXrAuTVoWVkXVNlsKaGOCLerAcUmnkNQdEaUhUjAxtxHnSovbSVHjsxTGwgmECIEOJBCmmrgKTUWVvdwuHgTBYoDSDIhMiTbWqsIPrqpFQyPgtYQoBEMzuIhoyWWFwGYMZOlrjWdVkZRqBrLkCx vGYUBhqIMrWkxMJaXrbtCsyADKQTZuiUeXSprvushTiKCsDhVobklAvamwCqDqNe -1643342027
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_wfpDataReady writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -399487070
+    ${output}=    Read Until    priority : -1643342027
     Log    ${output}
     Should Contain X Times    ${output}    === Event wfpDataReady received =     1
-    Should Contain    ${output}    images_location_URI : zbMzHcxAFuKytQUAZJdWFmswMHsEVGcHbIXfVAoeBOPgvuMTcsHOMueKriAlstrSltshsglZGgJgtobGRXmiTPDMBzKZCPpoRlkuVCKPdQfeHifScgqNCQVoAoIdpuMCTXJDUPTNfHLyWUkIfpemsjJXpbDJrBHSDusdEUNFUwvwqWhTkgByWVFPKeAJPrqnpbBNJuLtgAuoepqpSLGBvydoykwVSrYIdyqpwfihVwXLCRdsoNtBSWpFzgiWioaK
-    Should Contain    ${output}    images_match_URI : wCmuvdXLMvvnMPltLLlpNJeEaraGKKMdAeCslFeltpbbEhMMGqfAxeuaoHGxZTRj
-    Should Contain    ${output}    priority : -399487070
+    Should Contain    ${output}    images_location_URI : hvkaZGGsaBjqTuyTmanqnAIlMeEmgSNhLxAJiLcVDGfLzOEoLjggqjQeUJHaEAcYfrSJDEJlyyOqQlEwlMZQSAnskckioUUBqXWOaEKGkyHHdBXrAuTVoWVkXVNlsKaGOCLerAcUmnkNQdEaUhUjAxtxHnSovbSVHjsxTGwgmECIEOJBCmmrgKTUWVvdwuHgTBYoDSDIhMiTbWqsIPrqpFQyPgtYQoBEMzuIhoyWWFwGYMZOlrjWdVkZRqBrLkCx
+    Should Contain    ${output}    images_match_URI : vGYUBhqIMrWkxMJaXrbtCsyADKQTZuiUeXSprvushTiKCsDhVobklAvamwCqDqNe
+    Should Contain    ${output}    priority : -1643342027

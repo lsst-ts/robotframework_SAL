@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_ILCWarning sender/logger tests.
+Documentation    M1M3_ILCWarning communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 28.1119 -287660608 1 0 1 1 0 1 1 0 0 0 -734027890
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 97.8395 -782731322 1 1 0 1 0 1 0 0 1 0 339194795
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ILCWarning writing a message containing :    1
@@ -57,19 +57,19 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -734027890
+    ${output}=    Read Until    priority : 339194795
     Log    ${output}
     Should Contain X Times    ${output}    === Event ILCWarning received =     1
-    Should Contain    ${output}    Timestamp : 28.1119
-    Should Contain    ${output}    ActuatorId : -287660608
+    Should Contain    ${output}    Timestamp : 97.8395
+    Should Contain    ${output}    ActuatorId : -782731322
     Should Contain    ${output}    AnyWarning : 1
-    Should Contain    ${output}    ResponseTimeout : 0
-    Should Contain    ${output}    InvalidCRC : 1
+    Should Contain    ${output}    ResponseTimeout : 1
+    Should Contain    ${output}    InvalidCRC : 0
     Should Contain    ${output}    IllegalFunction : 1
     Should Contain    ${output}    IllegalDataValue : 0
     Should Contain    ${output}    InvalidLength : 1
-    Should Contain    ${output}    UnknownSubnet : 1
+    Should Contain    ${output}    UnknownSubnet : 0
     Should Contain    ${output}    UnknownAddress : 0
-    Should Contain    ${output}    UnknownFunction : 0
+    Should Contain    ${output}    UnknownFunction : 1
     Should Contain    ${output}    UnknownProblem : 0
-    Should Contain    ${output}    priority : -734027890
+    Should Contain    ${output}    priority : 339194795

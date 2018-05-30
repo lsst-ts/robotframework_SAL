@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtArchiver_SettingVersions sender/logger tests.
+Documentation    AtArchiver_SettingVersions communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TgGFyILKrSgXaVYVvlJhetPoOfdkkcnxESoIVlWBCJjHGjKEKypQxGDjnECZJBubKLgLwolNxTiOzgrwUCzKUNwXjAadZLCnaVlNCyWFOnFqYomsYUEeLFsNXisaRzVeEsRvkhjxxhKbfcjVsMXOCidonAluMpoXjFaIMZPTmxlIFsiIlTAaBogcobuokeIYnOrHzgOJeLPNuIcOysgZsBOcqjjSMIOCCzwNtBknfGvAUBIFefUcHOBlhvoraxOg -1743921046
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TYHjBfRFaQJovojNFNqZbZpEHuaPAaTCoawdoqCXJufcNDiOOyHJHIDVpGdnqmEIpSoLQODQMUBbTOPwyvVBCSAIXpbRVOaqxlTzOWFXcQocMTFUPQyfeZMtLVQxRnEeCsoeRQDShPpbTLmQDhwgeMDIuFdMgPhXlPAaRxgTPpONQJIiTYVpaTQwZvdwBSutqQzEwxEUNTlNAKzsftdJrWygxaxjKIyVaKRFlcawWvyscHpGfAPfJLgqdVkRdOKb 627597458
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SettingVersions writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1743921046
+    ${output}=    Read Until    priority : 627597458
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : TgGFyILKrSgXaVYVvlJhetPoOfdkkcnxESoIVlWBCJjHGjKEKypQxGDjnECZJBubKLgLwolNxTiOzgrwUCzKUNwXjAadZLCnaVlNCyWFOnFqYomsYUEeLFsNXisaRzVeEsRvkhjxxhKbfcjVsMXOCidonAluMpoXjFaIMZPTmxlIFsiIlTAaBogcobuokeIYnOrHzgOJeLPNuIcOysgZsBOcqjjSMIOCCzwNtBknfGvAUBIFefUcHOBlhvoraxOg
-    Should Contain    ${output}    priority : -1743921046
+    Should Contain    ${output}    recommendedSettingVersion : TYHjBfRFaQJovojNFNqZbZpEHuaPAaTCoawdoqCXJufcNDiOOyHJHIDVpGdnqmEIpSoLQODQMUBbTOPwyvVBCSAIXpbRVOaqxlTzOWFXcQocMTFUPQyfeZMtLVQxRnEeCsoeRQDShPpbTLmQDhwgeMDIuFdMgPhXlPAaRxgTPpONQJIiTYVpaTQwZvdwBSutqQzEwxEUNTlNAKzsftdJrWygxaxjKIyVaKRFlcawWvyscHpGfAPfJLgqdVkRdOKb
+    Should Contain    ${output}    priority : 627597458

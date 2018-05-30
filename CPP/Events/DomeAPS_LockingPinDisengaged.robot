@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_LockingPinDisengaged sender/logger tests.
+Documentation    DomeAPS_LockingPinDisengaged communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -30756 -2104234534
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -17852 384168846
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_LockingPinDisengaged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2104234534
+    ${output}=    Read Until    priority : 384168846
     Log    ${output}
     Should Contain X Times    ${output}    === Event LockingPinDisengaged received =     1
-    Should Contain    ${output}    lockingPinID : -30756
-    Should Contain    ${output}    priority : -2104234534
+    Should Contain    ${output}    lockingPinID : -17852
+    Should Contain    ${output}    priority : 384168846

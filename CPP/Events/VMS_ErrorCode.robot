@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_ErrorCode sender/logger tests.
+Documentation    VMS_ErrorCode communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 72.5353 -1504464779 364950185 1482279638
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 4.5496 -1600751284 15827282 859491622
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_ErrorCode writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1482279638
+    ${output}=    Read Until    priority : 859491622
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    Timestamp : 72.5353
-    Should Contain    ${output}    ErrorCode : -1504464779
-    Should Contain    ${output}    DetailedErrorCode : 364950185
-    Should Contain    ${output}    priority : 1482279638
+    Should Contain    ${output}    Timestamp : 4.5496
+    Should Contain    ${output}    ErrorCode : -1600751284
+    Should Contain    ${output}    DetailedErrorCode : 15827282
+    Should Contain    ${output}    priority : 859491622

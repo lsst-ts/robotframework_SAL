@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_SettingVersions sender/logger tests.
+Documentation    EEC_SettingVersions communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16.8621 YtVBhdoQWqNsfoeOmmMQYmLeNADaFZuapCpZTuBqNswUWgAwtBtPNtslVEZVWpdbPxrccviaboKXvUbLjhyGEBaoCnXbXHlnupmYjjkBmfvTChOesYSRzUuneSZzboOhgyZxTeMuZeCQyfxnQICwzhfCudmzvHywqdLQQiVuNnuSCNLPyePjvDuXVsBBcfoJPnnqAbeImsaQyLScMCcECXKJukHiDgmnfVENNqZsmJWKhNEVCkFTxkUXeIOmmtIOCHvwagGxjnmAUXlIODGYjKcLGWpZsMKaCWdZwLCxInCjqAJLHOEsALJjTIItKuiLKHLFEvtVriIAUJTjsfuUDmdOREtvxbaMlevegsKWnnQrlEwnfTmlkwRapJfFPfuhmVnualDfYfxAyFiJSSqnalLgLKzjDIYXYgosOvNSkjNpGWjjayXzHZohueaytFhNCgQASgjuHtMRMcPPQxADXaJDPCEivSBFiJxStdTBjgxctYAWkmPOkCWRkzxexPxMUQdqdIKxUsMrGnQetCRJhfPBPPJdZmJihGaHjhGNnwwbrYkpoKqdlTyAgfDfbuNixAcLlJilnGPKJGsYTKVReQSFfprUSwkYqVjBBbesbJQofaqWJUxJfCJqhLMIBsDlgNDCXGJZYiOtwNXCeSdkvWTqZZspPnEWCLsxVbkdgLftZFmKezeSjOMjExNPlvfeQSzWGCqgTCSLFgQDVzvrxWgHjLUvBFLOyeHGZCczRCIoXQQNmawkUbYLqOtSIalchCAwTuoQMWlZCjXPLZRQWfoZHjJQItHPJyNUDwBLLgEpcmuxmGNRvtQKnMcsROOCjDCeDUtLnfPmDdagsbbBkTtWvIAdyBIFiMFhgFJVIAdmRRSprPuASJRpMLzegqHWBdtHpiusrKZuMsvEyeqFDLZIGAUprAIGhzscsULGyVnuwXJfENSbbFiPxCdQXvcErxRQhsWOLYDPWFobzIvHlNUiJkarTJKrcuMYoC 1014324939
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 47.4452 rlvlSNUAjGeHBcQyTpHAuiVBKqmBUIKrvdvVPXrCCYoiXZHoTtCvoqFAogwCzFVNZAJJQqZiJhSlwXsVwvdMFGjVSmYZvvIPHRxNLNYOgHbtAPZxCKiBVUztJnGBAaXswYeSmOdgAPpOkicDjUNqoZWpbqfXEAIQYKbZBvTzQBXTYjbNRwoufwhyGjxuhwNieANtdrTdskwkPKhapfPBBkrGHsHSgnqHLMoQugSmtDVmoTlLnkzydHCtgXgbpByZTqrDDqbKjAwBwehFghEbqydamPxjidwglrYlCbjmNNKWlZgKKDSVaibFAAypZqrsR 212148056
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1014324939
+    ${output}=    Read Until    priority : 212148056
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    timestamp : 16.8621
-    Should Contain    ${output}    recommendedSettingsVersion : YtVBhdoQWqNsfoeOmmMQYmLeNADaFZuapCpZTuBqNswUWgAwtBtPNtslVEZVWpdbPxrccviaboKXvUbLjhyGEBaoCnXbXHlnupmYjjkBmfvTChOesYSRzUuneSZzboOhgyZxTeMuZeCQyfxnQICwzhfCudmzvHywqdLQQiVuNnuSCNLPyePjvDuXVsBBcfoJPnnqAbeImsaQyLScMCcECXKJukHiDgmnfVENNqZsmJWKhNEVCkFTxkUXeIOmmtIOCHvwagGxjnmAUXlIODGYjKcLGWpZsMKaCWdZwLCxInCjqAJLHOEsALJjTIItKuiLKHLFEvtVriIAUJTjsfuUDmdOREtvxbaMlevegsKWnnQrlEwnfTmlkwRapJfFPfuhmVnualDfYfxAyFiJSSqnalLgLKzjDIYXYgosOvNSkjNpGWjjayXzHZohueaytFhNCgQASgjuHtMRMcPPQxADXaJDPCEivSBFiJxStdTBjgxctYAWkmPOkCWRkzxexPxMUQdqdIKxUsMrGnQetCRJhfPBPPJdZmJihGaHjhGNnwwbrYkpoKqdlTyAgfDfbuNixAcLlJilnGPKJGsYTKVReQSFfprUSwkYqVjBBbesbJQofaqWJUxJfCJqhLMIBsDlgNDCXGJZYiOtwNXCeSdkvWTqZZspPnEWCLsxVbkdgLftZFmKezeSjOMjExNPlvfeQSzWGCqgTCSLFgQDVzvrxWgHjLUvBFLOyeHGZCczRCIoXQQNmawkUbYLqOtSIalchCAwTuoQMWlZCjXPLZRQWfoZHjJQItHPJyNUDwBLLgEpcmuxmGNRvtQKnMcsROOCjDCeDUtLnfPmDdagsbbBkTtWvIAdyBIFiMFhgFJVIAdmRRSprPuASJRpMLzegqHWBdtHpiusrKZuMsvEyeqFDLZIGAUprAIGhzscsULGyVnuwXJfENSbbFiPxCdQXvcErxRQhsWOLYDPWFobzIvHlNUiJkarTJKrcuMYoC
-    Should Contain    ${output}    priority : 1014324939
+    Should Contain    ${output}    timestamp : 47.4452
+    Should Contain    ${output}    recommendedSettingsVersion : rlvlSNUAjGeHBcQyTpHAuiVBKqmBUIKrvdvVPXrCCYoiXZHoTtCvoqFAogwCzFVNZAJJQqZiJhSlwXsVwvdMFGjVSmYZvvIPHRxNLNYOgHbtAPZxCKiBVUztJnGBAaXswYeSmOdgAPpOkicDjUNqoZWpbqfXEAIQYKbZBvTzQBXTYjbNRwoufwhyGjxuhwNieANtdrTdskwkPKhapfPBBkrGHsHSgnqHLMoQugSmtDVmoTlLnkzydHCtgXgbpByZTqrDDqbKjAwBwehFghEbqydamPxjidwglrYlCbjmNNKWlZgKKDSVaibFAAypZqrsR
+    Should Contain    ${output}    priority : 212148056

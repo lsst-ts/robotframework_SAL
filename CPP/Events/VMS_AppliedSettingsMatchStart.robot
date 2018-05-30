@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_AppliedSettingsMatchStart sender/logger tests.
+Documentation    VMS_AppliedSettingsMatchStart communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 8.8984 1 -1488750125
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 19.3725 0 671237131
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AppliedSettingsMatchStart writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1488750125
+    ${output}=    Read Until    priority : 671237131
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    Timestamp : 8.8984
-    Should Contain    ${output}    AppliedSettingsMatchStart : 1
-    Should Contain    ${output}    priority : -1488750125
+    Should Contain    ${output}    Timestamp : 19.3725
+    Should Contain    ${output}    AppliedSettingsMatchStart : 0
+    Should Contain    ${output}    priority : 671237131

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_TranslateM1M3 commander/controller tests.
+Documentation    M1M3_TranslateM1M3 communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.935230930902 0.290982904473 0.186958167093 0.9052689547 0.918115883412 0.614982049827
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.334152 0.661597 0.244732 0.641636 0.618151 0.866012
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.935230930902 0.290982904473 0.186958167093 0.9052689547 0.918115883412 0.614982049827
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.334152 0.661597 0.244732 0.641636 0.618151 0.866012
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    XTranslation : 0.935230930902    1
-    Should Contain X Times    ${output}    YTranslation : 0.290982904473    1
-    Should Contain X Times    ${output}    ZTranslation : 0.186958167093    1
-    Should Contain X Times    ${output}    XRotation : 0.9052689547    1
-    Should Contain X Times    ${output}    YRotation : 0.918115883412    1
-    Should Contain X Times    ${output}    ZRotation : 0.614982049827    1
+    Should Contain X Times    ${output}    XTranslation : 0.334152    1
+    Should Contain X Times    ${output}    YTranslation : 0.661597    1
+    Should Contain X Times    ${output}    ZTranslation : 0.244732    1
+    Should Contain X Times    ${output}    XRotation : 0.641636    1
+    Should Contain X Times    ${output}    YRotation : 0.618151    1
+    Should Contain X Times    ${output}    ZRotation : 0.866012    1
     Should Contain    ${output}    === command TranslateM1M3 issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    XTranslation : 0.935230930902    1
-    Should Contain X Times    ${output}    YTranslation : 0.290982904473    1
-    Should Contain X Times    ${output}    ZTranslation : 0.186958167093    1
-    Should Contain X Times    ${output}    XRotation : 0.9052689547    1
-    Should Contain X Times    ${output}    YRotation : 0.918115883412    1
-    Should Contain X Times    ${output}    ZRotation : 0.614982049827    1
+    Should Contain X Times    ${output}    XTranslation : 0.334152    1
+    Should Contain X Times    ${output}    YTranslation : 0.661597    1
+    Should Contain X Times    ${output}    ZTranslation : 0.244732    1
+    Should Contain X Times    ${output}    XRotation : 0.641636    1
+    Should Contain X Times    ${output}    YRotation : 0.618151    1
+    Should Contain X Times    ${output}    ZRotation : 0.866012    1
     Should Contain X Times    ${output}    === [ackCommand_TranslateM1M3] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_MovementPrevented sender/logger tests.
+Documentation    DomeLWS_MovementPrevented communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ReMasaKtLTcpSvDVqcYOhiJhWzsYQYZXhbJxAHKJdQFXqMWSIRgEHoxiKPaBvaxUwZzTewGSskqqwTatidBjGRnVjCLxwxvMKNPdxhBobWIlsnyHfzMSbPuPOKHdQyEVkobtosjnFznrVFfbbPQLakfNKkltPuusFZpbQLCTVKVbcZKOqVqsKEZoFgkmQMVezbVIYGYZIhdJuSXjaIUZKxOtnZaBqHRgmjhTdWxJdshfrAGSiyGmQqTziJjsAcUfenkTbXxaETQJgnCqsfmqEJySMBvzJvONCtaoxnHmtYkAtSkHJFDGXfzlHCJlibkLhIDbsBJtKIZhbLBDJIQZJisCXPZkIIktkgKTFbBgFhnEfzgjPPiImGnYDpJoPfKKRZlEyUiATR -1236917318
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send lGcGCKZAplwSukmVDhfeleqPGykgYVOpnNbEDhdIrvaUNIjtzvnmoIciwgliceyCZSAtnbvOjrxDsTUcqgNXDHhlYgDTeEFdSaRDEdKNxsTOmOTVNpPExGCkCigfWCSOnAHiAHtxIvzstnewGWFaUWrvqUvMCAFInomOsADLmoRwkMGQhmdLTtkRNtQNOgdzILlsPqtxMWWOemZfTevemQJFmgZfxTgQWNNMfoAluPnSrkzAuHCQJPFZAvCJECIWxEsUCqXvOcWGMahcFOyUiylJTFWMiWHczMKdpoAKGjagmCNmHqZJHJziHRiQAHjVlSrwSuAeDOEmqiAtYpjtSBINnlrLDxCkDzzHtqradrQkPvNlBZqIGgtSprEgelsGSLMKhevgHTXAvHVfCOoXhxI 1180629014
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_MovementPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1236917318
+    ${output}=    Read Until    priority : 1180629014
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    causeId : ReMasaKtLTcpSvDVqcYOhiJhWzsYQYZXhbJxAHKJdQFXqMWSIRgEHoxiKPaBvaxUwZzTewGSskqqwTatidBjGRnVjCLxwxvMKNPdxhBobWIlsnyHfzMSbPuPOKHdQyEVkobtosjnFznrVFfbbPQLakfNKkltPuusFZpbQLCTVKVbcZKOqVqsKEZoFgkmQMVezbVIYGYZIhdJuSXjaIUZKxOtnZaBqHRgmjhTdWxJdshfrAGSiyGmQqTziJjsAcUfenkTbXxaETQJgnCqsfmqEJySMBvzJvONCtaoxnHmtYkAtSkHJFDGXfzlHCJlibkLhIDbsBJtKIZhbLBDJIQZJisCXPZkIIktkgKTFbBgFhnEfzgjPPiImGnYDpJoPfKKRZlEyUiATR
-    Should Contain    ${output}    priority : -1236917318
+    Should Contain    ${output}    causeId : lGcGCKZAplwSukmVDhfeleqPGykgYVOpnNbEDhdIrvaUNIjtzvnmoIciwgliceyCZSAtnbvOjrxDsTUcqgNXDHhlYgDTeEFdSaRDEdKNxsTOmOTVNpPExGCkCigfWCSOnAHiAHtxIvzstnewGWFaUWrvqUvMCAFInomOsADLmoRwkMGQhmdLTtkRNtQNOgdzILlsPqtxMWWOemZfTevemQJFmgZfxTgQWNNMfoAluPnSrkzAuHCQJPFZAvCJECIWxEsUCqXvOcWGMahcFOyUiylJTFWMiWHczMKdpoAKGjagmCNmHqZJHJziHRiQAHjVlSrwSuAeDOEmqiAtYpjtSBINnlrLDxCkDzzHtqradrQkPvNlBZqIGgtSprEgelsGSLMKhevgHTXAvHVfCOoXhxI
+    Should Contain    ${output}    priority : 1180629014

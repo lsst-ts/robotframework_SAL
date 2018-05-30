@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCS_ocsNextScript sender/logger tests.
+Documentation    OCS_ocsNextScript communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send pZBeDBvfXfJlNCDlQKXJjwMuJEfcNTBbWyyyywlwvkehZgPzyKlaTDkxLeqmQfATcDNLizXnIPjYQwVuxNFrYFMHqRfOsrIMGOyDcisQSsTymlzkleGiGOtouwstAQRadIypZASZdIgZzrydfUQRsNDoPTWxrwRutBuqmXaLHgeJAqJfacjYwoHoJsMagbiEniEjvnfpcqEogYOTlvENlynSiPeptOuHczLHaMxPFmMMPFZhAuWChdRlzwrsmKJX 79.5794 oggujfyIZoPJtESLmnRrddWOMbJxwNwQUKPghLwoJLHLjgYugDNEbpUdnhyFxNomlDzjbZwtmuDZxdwbEZPeyEuEgMTsYRWvSwZSPRZYwfrtasBfdFQYwvfrYBQYKublKtPVvIvUYTesbrJEXVuFNGNVaGVxxhPWJvLFxpnZgOpjeRoMdQhxqBvaDrKGnyFPCXCUtFmJmSRbWQSyemWGVLUPsFNYGzoRmnwNYQaAxOQQfgQVRWXltJOmBTkZtcxs -924919866
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send rqnHkUzfrEROIaadCPSDaXDZdfcNSBiiASGSguxosITDNqzVHYfNfFjFQfuwcGwoBFibNbtxCDXlMmWYEzNVkdDoYHqjlNzOiLNCpsQwDbfMHPBjVSkRaKBYvHKDYxoOrqirKHXjGmjEPhekzIDlDelUwBUYWPrwuieHYPqizmEKlYYHQmYHmJeqlzhpWZxPOlBrSuBqKnlNptPGiCkFGBoVRiZoGHLfNaXbLzWHHThQxXpSIMIyytMnNVOzeQiv 52.0385 kTFkMtVsugqOXXfzUuQaRFPBslqfJSOZOsFGKKSwPNvKIqcZLeBUNAzcoSuFMkiqCsAmUYGzhjJhVYgKSbgKZgQintbZqfpDcePgzpdGaOSxcERVkjsCxstMVEmWFMTyruapmPpRRWaOSTkrhMsNhYnueDjVUxJLskbLxWgWKzIPfgQasOlYECoulAhBRmVqMIVxVXIIxNhClFnUyaVsnQSOAHVptZItjbrQqaKCGqgNmeBaXtxuSgvYjwGnWjok 1213145475
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsNextScript writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -924919866
+    ${output}=    Read Until    priority : 1213145475
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsNextScript received =     1
-    Should Contain    ${output}    ocsScriptName : pZBeDBvfXfJlNCDlQKXJjwMuJEfcNTBbWyyyywlwvkehZgPzyKlaTDkxLeqmQfATcDNLizXnIPjYQwVuxNFrYFMHqRfOsrIMGOyDcisQSsTymlzkleGiGOtouwstAQRadIypZASZdIgZzrydfUQRsNDoPTWxrwRutBuqmXaLHgeJAqJfacjYwoHoJsMagbiEniEjvnfpcqEogYOTlvENlynSiPeptOuHczLHaMxPFmMMPFZhAuWChdRlzwrsmKJX
-    Should Contain    ${output}    ocsScriptIdentifier : 79.5794
-    Should Contain    ${output}    ocsScriptTimestamp : oggujfyIZoPJtESLmnRrddWOMbJxwNwQUKPghLwoJLHLjgYugDNEbpUdnhyFxNomlDzjbZwtmuDZxdwbEZPeyEuEgMTsYRWvSwZSPRZYwfrtasBfdFQYwvfrYBQYKublKtPVvIvUYTesbrJEXVuFNGNVaGVxxhPWJvLFxpnZgOpjeRoMdQhxqBvaDrKGnyFPCXCUtFmJmSRbWQSyemWGVLUPsFNYGzoRmnwNYQaAxOQQfgQVRWXltJOmBTkZtcxs
-    Should Contain    ${output}    priority : -924919866
+    Should Contain    ${output}    ocsScriptName : rqnHkUzfrEROIaadCPSDaXDZdfcNSBiiASGSguxosITDNqzVHYfNfFjFQfuwcGwoBFibNbtxCDXlMmWYEzNVkdDoYHqjlNzOiLNCpsQwDbfMHPBjVSkRaKBYvHKDYxoOrqirKHXjGmjEPhekzIDlDelUwBUYWPrwuieHYPqizmEKlYYHQmYHmJeqlzhpWZxPOlBrSuBqKnlNptPGiCkFGBoVRiZoGHLfNaXbLzWHHThQxXpSIMIyytMnNVOzeQiv
+    Should Contain    ${output}    ocsScriptIdentifier : 52.0385
+    Should Contain    ${output}    ocsScriptTimestamp : kTFkMtVsugqOXXfzUuQaRFPBslqfJSOZOsFGKKSwPNvKIqcZLeBUNAzcoSuFMkiqCsAmUYGzhjJhVYgKSbgKZgQintbZqfpDcePgzpdGaOSxcERVkjsCxstMVEmWFMTyruapmPpRRWaOSTkrhMsNhYnueDjVUxJLskbLxWgWKzIPfgQasOlYECoulAhBRmVqMIVxVXIIxNhClFnUyaVsnQSOAHVptZItjbrQqaKCGqgNmeBaXtxuSgvYjwGnWjok
+    Should Contain    ${output}    priority : 1213145475

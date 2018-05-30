@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_SettingsApplied sender/logger tests.
+Documentation    Camera_SettingsApplied communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MJdhptKlmLDmDXuJsPZiaPzOWNdNPPvSzOmDvvpEeLDnrLWiGySztJQxBcGEiaQbobPKJgrAZwoLUiIUjtIaTStQZdtGGzGIlHZgRByKfGHzaLgFrWJdhYXdiOtttGorLAPeoNcuQvxIjrPsxRRrppWiSQYSniGoRcLBUPTRwtSwTlJqhXUUGGLsEYLcDzNgZqMVIcFxGUQaKIPyqVswmWjFaTHkjsAGPMcqPLqwHsmoKagkZvIthtqlDWSSiPwc 1546152447
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mDMsyzzAFbqFrrEfkXdcnJCWyaYJLNigRvLEYMZhltpPPtBjnTTULaXvfvBjaUGdbKZfDionouEUmAQJcITJeZYHgtJhsGJWwhsBiQAePVjDNyAMhXLKBUttABqGGVTJtfQdVUlhAgWcWvhFVugUbeRMuhXCNhAhAfGYDDMRAoBYxyiGTbzYkmmjkBeggRzJpjKIUUMOGapIiFbcVPOLstctsQtOLglgTtbnovzFdfVEJQCuBHHTWiieytiGXqQj -1747503385
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1546152447
+    ${output}=    Read Until    priority : -1747503385
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : MJdhptKlmLDmDXuJsPZiaPzOWNdNPPvSzOmDvvpEeLDnrLWiGySztJQxBcGEiaQbobPKJgrAZwoLUiIUjtIaTStQZdtGGzGIlHZgRByKfGHzaLgFrWJdhYXdiOtttGorLAPeoNcuQvxIjrPsxRRrppWiSQYSniGoRcLBUPTRwtSwTlJqhXUUGGLsEYLcDzNgZqMVIcFxGUQaKIPyqVswmWjFaTHkjsAGPMcqPLqwHsmoKagkZvIthtqlDWSSiPwc
-    Should Contain    ${output}    priority : 1546152447
+    Should Contain    ${output}    Settings : mDMsyzzAFbqFrrEfkXdcnJCWyaYJLNigRvLEYMZhltpPPtBjnTTULaXvfvBjaUGdbKZfDionouEUmAQJcITJeZYHgtJhsGJWwhsBiQAePVjDNyAMhXLKBUttABqGGVTJtfQdVUlhAgWcWvhFVugUbeRMuhXCNhAhAfGYDDMRAoBYxyiGTbzYkmmjkBeggRzJpjKIUUMOGapIiFbcVPOLstctsQtOLglgTtbnovzFdfVEJQCuBHHTWiieytiGXqQj
+    Should Contain    ${output}    priority : -1747503385

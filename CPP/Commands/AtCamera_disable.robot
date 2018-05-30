@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_disable commander/controller tests.
+Documentation    AtCamera_disable communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

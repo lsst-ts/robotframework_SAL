@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_ApplyActiveOpticForcesByBendingModes commander/controller tests.
+Documentation    M1M3_ApplyActiveOpticForcesByBendingModes communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.991089862852 0.695710183566 0.759420140327 0.742331884993 0.790029888064 0.228801974249 0.695571162776 0.159762145313 0.757873906866 0.654043087062 0.198296826253 0.02354102359 0.853803985536 0.178222734017 0.440465961004 0.703878911779 0.261854409841 0.0901325243929 0.119983927369 0.982057329564 0.757122289352 0.309866912974
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.562469 0.498858 0.652773 0.114014 0.787 0.780634 0.620356 0.353068 0.994247 0.824436 0.75076 0.943298 0.675957 0.415333 0.762419 0.313346 0.553203 0.067401 0.809692 0.295509 0.542514 0.357415
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.991089862852 0.695710183566 0.759420140327 0.742331884993 0.790029888064 0.228801974249 0.695571162776 0.159762145313 0.757873906866 0.654043087062 0.198296826253 0.02354102359 0.853803985536 0.178222734017 0.440465961004 0.703878911779 0.261854409841 0.0901325243929 0.119983927369 0.982057329564 0.757122289352 0.309866912974
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.562469 0.498858 0.652773 0.114014 0.787 0.780634 0.620356 0.353068 0.994247 0.824436 0.75076 0.943298 0.675957 0.415333 0.762419 0.313346 0.553203 0.067401 0.809692 0.295509 0.542514 0.357415
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    Coefficients : 0.991089862852    1
+    Should Contain X Times    ${output}    Coefficients : 0.562469    1
     Should Contain    ${output}    === command ApplyActiveOpticForcesByBendingModes issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    Coefficients : 0.991089862852    1
+    Should Contain X Times    ${output}    Coefficients : 0.562469    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyActiveOpticForcesByBendingModes] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

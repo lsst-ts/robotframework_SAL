@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_Heartbeat sender/logger tests.
+Documentation    TCS_Heartbeat communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 1495789566
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -1140636065
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_Heartbeat writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1495789566
+    ${output}=    Read Until    priority : -1140636065
     Log    ${output}
     Should Contain X Times    ${output}    === Event Heartbeat received =     1
-    Should Contain    ${output}    Heartbeat : 1
-    Should Contain    ${output}    priority : 1495789566
+    Should Contain    ${output}    Heartbeat : 0
+    Should Contain    ${output}    priority : -1140636065

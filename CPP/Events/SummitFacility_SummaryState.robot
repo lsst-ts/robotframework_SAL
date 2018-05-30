@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_SummaryState sender/logger tests.
+Documentation    SummitFacility_SummaryState communications tests.
 Force Tags    cpp    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1226603093 21.5486 -596913595
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -733547405 8.0094 -1949862900
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_SummaryState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -596913595
+    ${output}=    Read Until    priority : -1949862900
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    summaryState : 1226603093
-    Should Contain    ${output}    timestamp : 21.5486
-    Should Contain    ${output}    priority : -596913595
+    Should Contain    ${output}    summaryState : -733547405
+    Should Contain    ${output}    timestamp : 8.0094
+    Should Contain    ${output}    priority : -1949862900

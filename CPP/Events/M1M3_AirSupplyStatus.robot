@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_AirSupplyStatus sender/logger tests.
+Documentation    M1M3_AirSupplyStatus communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 53.105 0 1 1 0 1095860297
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 62.1362 0 0 1 1 968142669
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AirSupplyStatus writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1095860297
+    ${output}=    Read Until    priority : 968142669
     Log    ${output}
     Should Contain X Times    ${output}    === Event AirSupplyStatus received =     1
-    Should Contain    ${output}    Timestamp : 53.105
+    Should Contain    ${output}    Timestamp : 62.1362
     Should Contain    ${output}    AirCommandedOn : 0
-    Should Contain    ${output}    AirCommandOutputOn : 1
+    Should Contain    ${output}    AirCommandOutputOn : 0
     Should Contain    ${output}    AirValveOpened : 1
-    Should Contain    ${output}    AirValveClosed : 0
-    Should Contain    ${output}    priority : 1095860297
+    Should Contain    ${output}    AirValveClosed : 1
+    Should Contain    ${output}    priority : 968142669

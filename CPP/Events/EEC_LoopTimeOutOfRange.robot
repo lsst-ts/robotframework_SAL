@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_LoopTimeOutOfRange sender/logger tests.
+Documentation    EEC_LoopTimeOutOfRange communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 325217987
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 2131158144
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 325217987
+    ${output}=    Read Until    priority : 2131158144
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
     Should Contain    ${output}    loopTimeOutOfRange : 1
-    Should Contain    ${output}    priority : 325217987
+    Should Contain    ${output}    priority : 2131158144

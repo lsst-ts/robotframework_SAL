@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeTHCS_SubsystemError sender/logger tests.
+Documentation    DomeTHCS_SubsystemError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UGGmrygyTtzeyMXlyVNjBdHbJdjlzdewBnjVkUsgF 1637273044
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XAmQAqShyizEGroQGKHxWJuUXBYsztzUboMWXhYABLXhvmAVXBxsRcZOGTeuOuOGYkEvikYunQstrpLVpPtuAbOjUyAbKLtFFXLNgxqbNHplTbKUycuZEiRZLwfNhhrcmKYsMkFhCemGchPJsSVywoIcnbYhKvXLaNhiGgYwXZZhGgxyvvpRrVWQjKZUJIBqCuiGdfEQzConUBkyykDYHPJsfMLGsRCLJrQnNlXLKXrluSarwnMCFtrtiglW -252328467
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1637273044
+    ${output}=    Read Until    priority : -252328467
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : UGGmrygyTtzeyMXlyVNjBdHbJdjlzdewBnjVkUsgF
-    Should Contain    ${output}    priority : 1637273044
+    Should Contain    ${output}    errorCode : XAmQAqShyizEGroQGKHxWJuUXBYsztzUboMWXhYABLXhvmAVXBxsRcZOGTeuOuOGYkEvikYunQstrpLVpPtuAbOjUyAbKLtFFXLNgxqbNHplTbKUycuZEiRZLwfNhhrcmKYsMkFhCemGchPJsSVywoIcnbYhKvXLaNhiGgYwXZZhGgxyvvpRrVWQjKZUJIBqCuiGdfEQzConUBkyykDYHPJsfMLGsRCLJrQnNlXLKXrluSarwnMCFtrtiglW
+    Should Contain    ${output}    priority : -252328467

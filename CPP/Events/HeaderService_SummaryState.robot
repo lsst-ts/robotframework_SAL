@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_SummaryState sender/logger tests.
+Documentation    HeaderService_SummaryState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 6.1291 -1860818385 181219698
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 64.2144 -938415052 -2063515045
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_SummaryState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 181219698
+    ${output}=    Read Until    priority : -2063515045
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    timestamp : 6.1291
-    Should Contain    ${output}    summaryState : -1860818385
-    Should Contain    ${output}    priority : 181219698
+    Should Contain    ${output}    timestamp : 64.2144
+    Should Contain    ${output}    summaryState : -938415052
+    Should Contain    ${output}    priority : -2063515045

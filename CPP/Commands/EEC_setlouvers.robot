@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_setlouvers commander/controller tests.
+Documentation    EEC_setlouvers communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8660 -4432 -13705 -15257 1376 -26730 32381 20215 -13122 6838 6974 1199 24599 -32263 -14427 -32228 11708 32277 3134 15866 -15531 -16993 -30140 -7488 -7323 22237 -9759 171 -31507 -25539 17520 2680 3318 4364 11833 -12470 21095 31405 28991 -20864 -23718 -16312 -27328 29688 -10315 3005 29745 -13263 17598 14099 -15100 -28632 13386 -16327 -21672 16348 -695 -3694 -14450 26940
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9729 -10277 -25048 11439 16766 25542 -20763 26975 -29550 -29275 6114 -32477 31115 9389 6612 -2307 6068 -12332 -29391 -20510 -15670 -32529 3185 -30708 -9562 -24788 -4185 19641 -32500 -22512 31899 -3275 -16753 20450 -27904 9630 25273 -7017 29789 29837 14808 -14931 28776 -16019 -20528 28208 22919 19852 -2025 -14025 -13215 -9971 3456 -21398 23264 94 -26105 28012 17846 16643
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8660 -4432 -13705 -15257 1376 -26730 32381 20215 -13122 6838 6974 1199 24599 -32263 -14427 -32228 11708 32277 3134 15866 -15531 -16993 -30140 -7488 -7323 22237 -9759 171 -31507 -25539 17520 2680 3318 4364 11833 -12470 21095 31405 28991 -20864 -23718 -16312 -27328 29688 -10315 3005 29745 -13263 17598 14099 -15100 -28632 13386 -16327 -21672 16348 -695 -3694 -14450 26940
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9729 -10277 -25048 11439 16766 25542 -20763 26975 -29550 -29275 6114 -32477 31115 9389 6612 -2307 6068 -12332 -29391 -20510 -15670 -32529 3185 -30708 -9562 -24788 -4185 19641 -32500 -22512 31899 -3275 -16753 20450 -27904 9630 25273 -7017 29789 29837 14808 -14931 28776 -16019 -20528 28208 22919 19852 -2025 -14025 -13215 -9971 3456 -21398 23264 94 -26105 28012 17846 16643
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    position : -8660    1
+    Should Contain X Times    ${output}    position : 9729    1
     Should Contain    ${output}    === command setlouvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    position : -8660    1
+    Should Contain X Times    ${output}    position : 9729    1
     Should Contain X Times    ${output}    === [ackCommand_setlouvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

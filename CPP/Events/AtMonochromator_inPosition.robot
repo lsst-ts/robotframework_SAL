@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_inPosition sender/logger tests.
+Documentation    AtMonochromator_inPosition communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 465598155 -539387696
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 -771639197 1752860504
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_inPosition writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -539387696
+    ${output}=    Read Until    priority : 1752860504
     Log    ${output}
     Should Contain X Times    ${output}    === Event inPosition received =     1
     Should Contain    ${output}    inPosition : 1
-    Should Contain    ${output}    device : 465598155
-    Should Contain    ${output}    priority : -539387696
+    Should Contain    ${output}    device : -771639197
+    Should Contain    ${output}    priority : 1752860504

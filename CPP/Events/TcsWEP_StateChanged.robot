@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsWEP_StateChanged sender/logger tests.
+Documentation    TcsWEP_StateChanged communications tests.
 Force Tags    cpp    TSS-2626
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 27.4058 -21981 -1034326706
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 24052 18.0986 -1890661315
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_StateChanged writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1034326706
+    ${output}=    Read Until    priority : -1890661315
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    timestamp : 27.4058
-    Should Contain    ${output}    wepState : -21981
-    Should Contain    ${output}    priority : -1034326706
+    Should Contain    ${output}    wepState : 24052
+    Should Contain    ${output}    timestamp : 18.0986
+    Should Contain    ${output}    priority : -1890661315

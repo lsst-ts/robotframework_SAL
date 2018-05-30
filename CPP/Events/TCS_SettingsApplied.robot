@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_SettingsApplied sender/logger tests.
+Documentation    TCS_SettingsApplied communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QNsczSvCOyEYkFNeuEkCKrEFtCOjXgbOAWijdNIcflKbcOiQvRDiyxTlmbGUYRPZhVgEakPmklAVpAxWjLQOsfHjXNAUuvhouvwDJxfljStAwITDhIAvFVInrfLMYIJQCJoKrZoNcOUmAslwkgbbSOvpWabBFOIhWdlZRrogUJzHBydhCFDwrpSUfHGjEWEnqFiwarroYHZjMErovCPkaRrMzZEqXuILeHatsKmqIRaeBRoJazBJPhGNOYbgkrJbmRepSDpwRIdkiPivvlltJUkSkYqjKLeNMMivHDiqzFoUOOmeBYaLMfswLoYKtrtVttYrtTMFlqMDOCXjtjRbUSjMyVMRgGTFxpXRkVGKucvVUQwhURtLzoLaqGohlnoopvlBJPKWesDsLmIuAHWElLPRounnZLZiYRvTbchQxLuWkrYSNMYLIdNBLwEybGScNAIDSCKgUZCUWrZuDJNtwlFDqNZcSAUKIVlIXapIrXVIPwdWXspLctKFQHLvVpZSxICSXcDRnuksFaLnLevmVYtMKmvIQkdtllwNibPCTCNDjysqokDIKxjanCDVXxZcqEsPMfmKUdRthezvNRFKfydClpogkkGNAZWifvANGXArhJjRHlVvDensTsRYXPxtzkRdaNkPLAFxLCzLPrmOItMBCSJaZpiGWutJOrVLsPEBsnldKlPVoGGHnyhHCXagVcdPPLdTJliPgQUKYqZjRvSZDajSZIIebHNarjhfGQLZQUhbsgaoryavBQQneRiNoFYdwtzLzLquKBlzkeYmPANaiVmhZQFzDUJrUTGUKwEJVFIEEqneabGoTSIydvFarmbRDovuuInoZctjwQtyqukUUcDnrBAuigGBJVmguMUBFbADFKtQkAqrVVwlSbyAORhKjjVQENnNboOmNQXTNuX 25.1793 1750366689
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UKeESGBzHSTicJaQpgAffOwYBPobeYqFzUrcUhNqzibIVmgbrysnEcVEbOQWlptvvEfnkCOciOSGOqwiImYoUUUzwFQfOUjNmgYmyzeuFKrhryMxBgkeqdpMYrFWYAgJbzMhBvIAXKMWLdXitouYdLAkGOQadrxZRnWBbtaDYORMKTVFyjFUbmJSwEkSNtgtlubsoWEMwCDOgtErVTSsNrkwswiEqEhhSKxSHQMHOShwcMejeNOwDlHUUakiqjJiUFWrnDmkrmNJFQJoeLgekgafyBazLFCIsYjYDUWDAvwFkQuZLHJTydapEIEZhwWZZbaXjZrhmphUtNfGRMbYtWkfDTFJXTWCVCwSuxxdmQVxSYRtsqcMHKJXikJJzqyWtOwyVruPQSvkWiuDWsZvYtNMeqGrBWGTbSvYFrzQKgBPGwLAqcWAsNgujUURNtAQbNsnMbBVGZWZOrDiltEWHayzeitWeEdVPRHGIegZZAsUhQGAQdAskSRqpxUsQxYVPGEsmAziKMMTcRKordmrzYHZuplLUhwxJXacybNXYVcPVvOWacSFtHpqQIOrzcorxpvlwjZJAmFGnjNuyVSwGWtkOcIszfPztquWAaToLgXkQbMmtfSBZMQSJcciLKmTpJKlTWTPLOqMNwwStfaMyFwztBgWWoEMtQSLuFWzNIzRVCIFpqVuprfDPrTWNOzQzLWiRaHwWIkkFhRfRwqlkmghzgqjnrRpmAnQkdUJAdxfVntaDblIyBKjyRpEzzwvkxlOClH 54.7383 1526623452
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1750366689
+    ${output}=    Read Until    priority : 1526623452
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : QNsczSvCOyEYkFNeuEkCKrEFtCOjXgbOAWijdNIcflKbcOiQvRDiyxTlmbGUYRPZhVgEakPmklAVpAxWjLQOsfHjXNAUuvhouvwDJxfljStAwITDhIAvFVInrfLMYIJQCJoKrZoNcOUmAslwkgbbSOvpWabBFOIhWdlZRrogUJzHBydhCFDwrpSUfHGjEWEnqFiwarroYHZjMErovCPkaRrMzZEqXuILeHatsKmqIRaeBRoJazBJPhGNOYbgkrJbmRepSDpwRIdkiPivvlltJUkSkYqjKLeNMMivHDiqzFoUOOmeBYaLMfswLoYKtrtVttYrtTMFlqMDOCXjtjRbUSjMyVMRgGTFxpXRkVGKucvVUQwhURtLzoLaqGohlnoopvlBJPKWesDsLmIuAHWElLPRounnZLZiYRvTbchQxLuWkrYSNMYLIdNBLwEybGScNAIDSCKgUZCUWrZuDJNtwlFDqNZcSAUKIVlIXapIrXVIPwdWXspLctKFQHLvVpZSxICSXcDRnuksFaLnLevmVYtMKmvIQkdtllwNibPCTCNDjysqokDIKxjanCDVXxZcqEsPMfmKUdRthezvNRFKfydClpogkkGNAZWifvANGXArhJjRHlVvDensTsRYXPxtzkRdaNkPLAFxLCzLPrmOItMBCSJaZpiGWutJOrVLsPEBsnldKlPVoGGHnyhHCXagVcdPPLdTJliPgQUKYqZjRvSZDajSZIIebHNarjhfGQLZQUhbsgaoryavBQQneRiNoFYdwtzLzLquKBlzkeYmPANaiVmhZQFzDUJrUTGUKwEJVFIEEqneabGoTSIydvFarmbRDovuuInoZctjwQtyqukUUcDnrBAuigGBJVmguMUBFbADFKtQkAqrVVwlSbyAORhKjjVQENnNboOmNQXTNuX
-    Should Contain    ${output}    timestamp : 25.1793
-    Should Contain    ${output}    priority : 1750366689
+    Should Contain    ${output}    settings : UKeESGBzHSTicJaQpgAffOwYBPobeYqFzUrcUhNqzibIVmgbrysnEcVEbOQWlptvvEfnkCOciOSGOqwiImYoUUUzwFQfOUjNmgYmyzeuFKrhryMxBgkeqdpMYrFWYAgJbzMhBvIAXKMWLdXitouYdLAkGOQadrxZRnWBbtaDYORMKTVFyjFUbmJSwEkSNtgtlubsoWEMwCDOgtErVTSsNrkwswiEqEhhSKxSHQMHOShwcMejeNOwDlHUUakiqjJiUFWrnDmkrmNJFQJoeLgekgafyBazLFCIsYjYDUWDAvwFkQuZLHJTydapEIEZhwWZZbaXjZrhmphUtNfGRMbYtWkfDTFJXTWCVCwSuxxdmQVxSYRtsqcMHKJXikJJzqyWtOwyVruPQSvkWiuDWsZvYtNMeqGrBWGTbSvYFrzQKgBPGwLAqcWAsNgujUURNtAQbNsnMbBVGZWZOrDiltEWHayzeitWeEdVPRHGIegZZAsUhQGAQdAskSRqpxUsQxYVPGEsmAziKMMTcRKordmrzYHZuplLUhwxJXacybNXYVcPVvOWacSFtHpqQIOrzcorxpvlwjZJAmFGnjNuyVSwGWtkOcIszfPztquWAaToLgXkQbMmtfSBZMQSJcciLKmTpJKlTWTPLOqMNwwStfaMyFwztBgWWoEMtQSLuFWzNIzRVCIFpqVuprfDPrTWNOzQzLWiRaHwWIkkFhRfRwqlkmghzgqjnrRpmAnQkdUJAdxfVntaDblIyBKjyRpEzzwvkxlOClH
+    Should Contain    ${output}    timestamp : 54.7383
+    Should Contain    ${output}    priority : 1526623452

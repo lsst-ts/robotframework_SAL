@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_AccelerometerWarning sender/logger tests.
+Documentation    M1M3_AccelerometerWarning communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 79.2441 0 0 1593079574
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 66.7751 0 1 -34072946
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AccelerometerWarning writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1593079574
+    ${output}=    Read Until    priority : -34072946
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerometerWarning received =     1
-    Should Contain    ${output}    Timestamp : 79.2441
+    Should Contain    ${output}    Timestamp : 66.7751
     Should Contain    ${output}    AnyWarning : 0
-    Should Contain    ${output}    ResponseTimeout : 0
-    Should Contain    ${output}    priority : 1593079574
+    Should Contain    ${output}    ResponseTimeout : 1
+    Should Contain    ${output}    priority : -34072946

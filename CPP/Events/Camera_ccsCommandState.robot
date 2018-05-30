@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_ccsCommandState sender/logger tests.
+Documentation    Camera_ccsCommandState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 144760844 1758884119
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1493916454 -817713737
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_ccsCommandState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1758884119
+    ${output}=    Read Until    priority : -817713737
     Log    ${output}
     Should Contain X Times    ${output}    === Event ccsCommandState received =     1
-    Should Contain    ${output}    substate : 144760844
-    Should Contain    ${output}    priority : 1758884119
+    Should Contain    ${output}    substate : -1493916454
+    Should Contain    ${output}    priority : -817713737

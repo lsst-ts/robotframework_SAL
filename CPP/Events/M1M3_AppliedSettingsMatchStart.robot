@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_AppliedSettingsMatchStart sender/logger tests.
+Documentation    M1M3_AppliedSettingsMatchStart communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 35.6101 1 2090074008
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 80.5121 1 -715576676
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_AppliedSettingsMatchStart writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2090074008
+    ${output}=    Read Until    priority : -715576676
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    Timestamp : 35.6101
+    Should Contain    ${output}    Timestamp : 80.5121
     Should Contain    ${output}    AppliedSettingsMatchStart : 1
-    Should Contain    ${output}    priority : 2090074008
+    Should Contain    ${output}    priority : -715576676

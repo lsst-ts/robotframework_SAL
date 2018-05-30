@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_interlock sender/logger tests.
+Documentation    Rotator_interlock communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UmUmFBFcHvqzIIoKRYltDVfdTSNqqxOiiogXbKpeuzHLzsedirGcHEUsXGMgMUIptrnqyHmOUUFkbZlJyVNTrFHvGuUpZQochHiKBjQKAMlJQlCPLLdExmqpIjNVaTMXSjScsrtluXXCUXDaMGVYUEkuzSEgXZMknlsDCELHlKowjUiSnKxtXVwoXbtZDpXRcGaWMZcAHVWQjPCbhlTxmBpbDWfEjcnZybxGxQdICiWUueKOpKtouAHakcMIRjpe 90.3704 230139753
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ijuiRDFtIfwmurTUIQBnOzvTpAYxOzvHSPDqkgvjWovptHxoBJFbTBuVvYmcaPSHbZvhXmOfjrWIZTqoXHmPslfpmGcWUsQQnyElyqAtINLrNNWzRDuKzxAsUlkMFQfIQfPPGQFlIPCVoODGLFYmQEihOUjWDxbVJkNbRPQFEyJWsrbxrUpndAUsAACfKqQKLdBoLMHlYhboqGAtoinxHjocbBHRqeNtvMdOqvphLmxfdEpiKQwfiqfpWLhhDXqL 50.5934 -718079097
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 230139753
+    ${output}=    Read Until    priority : -718079097
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : UmUmFBFcHvqzIIoKRYltDVfdTSNqqxOiiogXbKpeuzHLzsedirGcHEUsXGMgMUIptrnqyHmOUUFkbZlJyVNTrFHvGuUpZQochHiKBjQKAMlJQlCPLLdExmqpIjNVaTMXSjScsrtluXXCUXDaMGVYUEkuzSEgXZMknlsDCELHlKowjUiSnKxtXVwoXbtZDpXRcGaWMZcAHVWQjPCbhlTxmBpbDWfEjcnZybxGxQdICiWUueKOpKtouAHakcMIRjpe
-    Should Contain    ${output}    timestamp : 90.3704
-    Should Contain    ${output}    priority : 230139753
+    Should Contain    ${output}    detail : ijuiRDFtIfwmurTUIQBnOzvTpAYxOzvHSPDqkgvjWovptHxoBJFbTBuVvYmcaPSHbZvhXmOfjrWIZTqoXHmPslfpmGcWUsQQnyElyqAtINLrNNWzRDuKzxAsUlkMFQfIQfPPGQFlIPCVoODGLFYmQEihOUjWDxbVJkNbRPQFEyJWsrbxrUpndAUsAACfKqQKLdBoLMHlYhboqGAtoinxHjocbBHRqeNtvMdOqvphLmxfdEpiKQwfiqfpWLhhDXqL
+    Should Contain    ${output}    timestamp : 50.5934
+    Should Contain    ${output}    priority : -718079097

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_HardpointActuatorState sender/logger tests.
+Documentation    M1M3_HardpointActuatorState communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 24.8289 -7946 26028 -9864 -16859 -9086 1578 -24770 -30228 20100 -31897 -17125 -23320 994097924
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 10.9065 9219 11825 28563 163 -23502 12184 -13700 -23106 -14498 -14939 -14787 -20862 -2097817990
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorState writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 994097924
+    ${output}=    Read Until    priority : -2097817990
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointActuatorState received =     1
-    Should Contain    ${output}    Timestamp : 24.8289
-    Should Contain    ${output}    ILCState : -7946
-    Should Contain    ${output}    MotionState : 26028
-    Should Contain    ${output}    priority : -9864
+    Should Contain    ${output}    Timestamp : 10.9065
+    Should Contain    ${output}    ILCState : 9219
+    Should Contain    ${output}    MotionState : 11825
+    Should Contain    ${output}    priority : 28563

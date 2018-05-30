@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_DriveOverTemp sender/logger tests.
+Documentation    DomeAPS_DriveOverTemp communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 3848 2058411276
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 788 -1929889122
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_DriveOverTemp writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2058411276
+    ${output}=    Read Until    priority : -1929889122
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveOverTemp received =     1
-    Should Contain    ${output}    driveId : 3848
-    Should Contain    ${output}    priority : 2058411276
+    Should Contain    ${output}    driveId : 788
+    Should Contain    ${output}    priority : -1929889122

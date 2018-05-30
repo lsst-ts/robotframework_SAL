@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_FilterChangeInPosition sender/logger tests.
+Documentation    TCS_FilterChangeInPosition communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 365102102
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1893470676
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_FilterChangeInPosition writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 365102102
+    ${output}=    Read Until    priority : 1893470676
     Log    ${output}
     Should Contain X Times    ${output}    === Event FilterChangeInPosition received =     1
-    Should Contain    ${output}    FilterChangeInPosition : 1
-    Should Contain    ${output}    priority : 365102102
+    Should Contain    ${output}    FilterChangeInPosition : 0
+    Should Contain    ${output}    priority : 1893470676

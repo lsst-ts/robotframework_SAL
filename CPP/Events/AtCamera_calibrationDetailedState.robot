@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_calibrationDetailedState sender/logger tests.
+Documentation    AtCamera_calibrationDetailedState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1491073410 -1740500472
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 364609851 1566427519
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_calibrationDetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1740500472
+    ${output}=    Read Until    priority : 1566427519
     Log    ${output}
     Should Contain X Times    ${output}    === Event calibrationDetailedState received =     1
-    Should Contain    ${output}    substate : 1491073410
-    Should Contain    ${output}    priority : -1740500472
+    Should Contain    ${output}    substate : 364609851
+    Should Contain    ${output}    priority : 1566427519

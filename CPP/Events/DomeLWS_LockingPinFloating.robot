@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_LockingPinFloating sender/logger tests.
+Documentation    DomeLWS_LockingPinFloating communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 4734 -1744676529
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -6555 1574143388
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_LockingPinFloating writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1744676529
+    ${output}=    Read Until    priority : 1574143388
     Log    ${output}
     Should Contain X Times    ${output}    === Event LockingPinFloating received =     1
-    Should Contain    ${output}    lockingPinID : 4734
-    Should Contain    ${output}    priority : -1744676529
+    Should Contain    ${output}    lockingPinID : -6555
+    Should Contain    ${output}    priority : 1574143388

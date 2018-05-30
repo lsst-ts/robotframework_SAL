@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_ApplyOffsetForcesByMirrorForce commander/controller tests.
+Documentation    M1M3_ApplyOffsetForcesByMirrorForce communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.495874997782 0.323431534102 0.644635445484 0.761314992795 0.766837087984 0.922444566655
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.155814 0.753408 0.833074 0.727661 0.810566 0.569349
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.495874997782 0.323431534102 0.644635445484 0.761314992795 0.766837087984 0.922444566655
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.155814 0.753408 0.833074 0.727661 0.810566 0.569349
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    XForce : 0.495874997782    1
-    Should Contain X Times    ${output}    YForce : 0.323431534102    1
-    Should Contain X Times    ${output}    ZForce : 0.644635445484    1
-    Should Contain X Times    ${output}    XMoment : 0.761314992795    1
-    Should Contain X Times    ${output}    YMoment : 0.766837087984    1
-    Should Contain X Times    ${output}    ZMoment : 0.922444566655    1
+    Should Contain X Times    ${output}    XForce : 0.155814    1
+    Should Contain X Times    ${output}    YForce : 0.753408    1
+    Should Contain X Times    ${output}    ZForce : 0.833074    1
+    Should Contain X Times    ${output}    XMoment : 0.727661    1
+    Should Contain X Times    ${output}    YMoment : 0.810566    1
+    Should Contain X Times    ${output}    ZMoment : 0.569349    1
     Should Contain    ${output}    === command ApplyOffsetForcesByMirrorForce issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    XForce : 0.495874997782    1
-    Should Contain X Times    ${output}    YForce : 0.323431534102    1
-    Should Contain X Times    ${output}    ZForce : 0.644635445484    1
-    Should Contain X Times    ${output}    XMoment : 0.761314992795    1
-    Should Contain X Times    ${output}    YMoment : 0.766837087984    1
-    Should Contain X Times    ${output}    ZMoment : 0.922444566655    1
+    Should Contain X Times    ${output}    XForce : 0.155814    1
+    Should Contain X Times    ${output}    YForce : 0.753408    1
+    Should Contain X Times    ${output}    ZForce : 0.833074    1
+    Should Contain X Times    ${output}    XMoment : 0.727661    1
+    Should Contain X Times    ${output}    YMoment : 0.810566    1
+    Should Contain X Times    ${output}    ZMoment : 0.569349    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyOffsetForcesByMirrorForce] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

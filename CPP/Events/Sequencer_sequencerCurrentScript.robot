@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Sequencer_sequencerCurrentScript sender/logger tests.
+Documentation    Sequencer_sequencerCurrentScript communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cUqtwddqfyrKWZREMOGaFzZueUqiIOVWPuOVTsFQCQDKCytidrWcupBoSJAnMUHFSwGsAWTfJpKSLERKxrQKyCEhGSiEQSeRhWQuTGhpwJGdFliqzBiOfZdebyGONFKMJGaqaCBYeIPfVmIchMSafiHyMDBYCpGYnpbGUgixpGcXWwKaOrVsZiwMJFXAaPUCYXSQvjHWWZHseTHuuMqAWjpJIoRmJRQMJlRAQsVIXglRbwdDPSAyKUdSFPBEPueT 9.5078 SpEvFvDKOVFLeQilHNaOnmbtXOWmiGlNynHeBUfiRJPOqwiPUwjEQpvWLMvKUojOttPXwMYSUiLDzpcaZPpajrMZYdRjKdaXlTKYpdmaEcsXEZbZYmQJuMVMydXHTjbWWXwvFNkrlCjQlptkCHYWGbbokhfnmaudeAQQInuTkEBexhrBGSNqrmuFtOobndoRVRFSpucZSioBSSrMfjLOdTnlspspqqKGrqNgKHIUVOcQdurzYMvfavCBvIppBBOQ 928123306
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send PUqjPOIaLqgAVGkSIVPKucMInqozbSjhWyXBOyxeegitebMKGhcWWtwFHvDkjNLwXckWcnRIYUTDpUIOTztHxdjRGHEWjatWmivvljJCvDUczgYjPgYBPYOORHNqJGtNbZMSMtOMJoHIHdJUMJNdpOVKveYtbjPHOtzsKmtdivzrRQBYsHfxIqWMYbRrTVAjamuCYJOsyBHSEXzlwFLDyRygbCVEjLotVIforrQYqfwzFcnxlpQMtGtPfhDGQtgP 19.0988 MidjEVCYrdscsGBMdwqHnVJyEleooZAzCGDcRPTdOeZsXFSjvhzjTgqzrNrWRIrGWpVxfUXDcSIEwZhsgpLOwfOUWGPuBFnylNJRmXJGURYXNIBQLrwcRTGqUrDqWufjuIDvQmqdMMiaxoxVvVEAblkHAaHPJWZLKFuKQVrzNrfLteovZRNptJgXUXPCOjrLCxIOxaHZOflSbJWRqyuFDasAUXMdEOpZzrAZLnBKxNIiLeMYOROBtZxrRDgHGUTP 531777570
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCurrentScript writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 928123306
+    ${output}=    Read Until    priority : 531777570
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerCurrentScript received =     1
-    Should Contain    ${output}    sequencerScriptName : cUqtwddqfyrKWZREMOGaFzZueUqiIOVWPuOVTsFQCQDKCytidrWcupBoSJAnMUHFSwGsAWTfJpKSLERKxrQKyCEhGSiEQSeRhWQuTGhpwJGdFliqzBiOfZdebyGONFKMJGaqaCBYeIPfVmIchMSafiHyMDBYCpGYnpbGUgixpGcXWwKaOrVsZiwMJFXAaPUCYXSQvjHWWZHseTHuuMqAWjpJIoRmJRQMJlRAQsVIXglRbwdDPSAyKUdSFPBEPueT
-    Should Contain    ${output}    sequencerScriptIdentifier : 9.5078
-    Should Contain    ${output}    sequencerScriptTimestamp : SpEvFvDKOVFLeQilHNaOnmbtXOWmiGlNynHeBUfiRJPOqwiPUwjEQpvWLMvKUojOttPXwMYSUiLDzpcaZPpajrMZYdRjKdaXlTKYpdmaEcsXEZbZYmQJuMVMydXHTjbWWXwvFNkrlCjQlptkCHYWGbbokhfnmaudeAQQInuTkEBexhrBGSNqrmuFtOobndoRVRFSpucZSioBSSrMfjLOdTnlspspqqKGrqNgKHIUVOcQdurzYMvfavCBvIppBBOQ
-    Should Contain    ${output}    priority : 928123306
+    Should Contain    ${output}    sequencerScriptName : PUqjPOIaLqgAVGkSIVPKucMInqozbSjhWyXBOyxeegitebMKGhcWWtwFHvDkjNLwXckWcnRIYUTDpUIOTztHxdjRGHEWjatWmivvljJCvDUczgYjPgYBPYOORHNqJGtNbZMSMtOMJoHIHdJUMJNdpOVKveYtbjPHOtzsKmtdivzrRQBYsHfxIqWMYbRrTVAjamuCYJOsyBHSEXzlwFLDyRygbCVEjLotVIforrQYqfwzFcnxlpQMtGtPfhDGQtgP
+    Should Contain    ${output}    sequencerScriptIdentifier : 19.0988
+    Should Contain    ${output}    sequencerScriptTimestamp : MidjEVCYrdscsGBMdwqHnVJyEleooZAzCGDcRPTdOeZsXFSjvhzjTgqzrNrWRIrGWpVxfUXDcSIEwZhsgpLOwfOUWGPuBFnylNJRmXJGURYXNIBQLrwcRTGqUrDqWufjuIDvQmqdMMiaxoxVvVEAblkHAaHPJWZLKFuKQVrzNrfLteovZRNptJgXUXPCOjrLCxIOxaHZOflSbJWRqyuFDasAUXMdEOpZzrAZLnBKxNIiLeMYOROBtZxrRDgHGUTP
+    Should Contain    ${output}    priority : 531777570

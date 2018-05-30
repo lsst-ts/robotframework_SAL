@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_mountState sender/logger tests.
+Documentation    MTMount_mountState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1915532101 UKsFEPLcjdlRyDQdbZGEBKgkvMAwtjfJXUvAIQHORqpYIEVPfomOoMKFYNrUftRLacHQIWVSzrDStgLilzDlUzHOyXbeStDApyncwGppZqUPgjWRDPKnUSAEtgSPvrZxfevgTnEfYiMMSMPRjMCbMVIwOgMCxqYGHgIoohZGMcXeyXoyZpdHUqxqxCnStntAnWBSMmJQGTWGKpSifAbzrRfaLztQTDHWvbVmdweozEsmlmbuUpgTkNioHuHeLEBGJSbVyAXhhtbPBszxzxYVUZDjqvRcWggKcxuwsUWiIhEarkVvlppYBDDeTcuSajpVaEbMuzFjTaXpDyKEPEXDPtNsqUnyrxKpSUrSYhRdMlcSpjfYWZDyvmTszzJtnqxjfdPkBlTXoNBhHwvSnFekOMetUJkLwsoNJwWslYmZvOgWiyNxfgKuoJDPoGvAjzqYq -443512117
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1875354360 WPMKgjdlCwudHmBpjkOKWKDyHRormkPPkaMjEYKOPGjPjbVBrVepVJGHpJReIxfJzXawaJdNjERElOGVWrzRGlKTVPSQfdWEXnhPxiBxcqXBtsfazcHBbCKlZJwFRlapaBEqPNvpYugpvVnOszatVshgPEOBvytARLClArioRJhwGgnTiGGncHNsGqNpjorepbHgiUYLrbAEHOmrZoaGlnnskqbdGUzvSSsZEJKgTOTliHgHcxpVZpLlBhzCogtlBMkPrcROajZaIllPTxYOhbFKqTLVRnthTOaEFgRiFAydTIpkzBMHAWjWqjuOZeoHRMhEyeCKcgDPkZknMeNWbxUuUFAeBJLEOoBRQDSQHYtyDzPcTqqyjqtdSDKsCpPHkxohqoPsqOqEoLoZiYbkrdwyPmcAZypKNFbJNYPSRFXCuboPuAFNeBlsVdqQBnrBzEEPSVTnDBaGrJakrrdzxQMJgtlRhjpkZarQylQGmzPwAKLWRzFXWcIHXOIiLbCMjuPIOaeOMZvgtmUWSOuLqANQiHubnraIjbEmVElbbpoXYoyac 1566268018
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -443512117
+    ${output}=    Read Until    priority : 1566268018
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountState received =     1
-    Should Contain    ${output}    id : -1915532101
-    Should Contain    ${output}    text : UKsFEPLcjdlRyDQdbZGEBKgkvMAwtjfJXUvAIQHORqpYIEVPfomOoMKFYNrUftRLacHQIWVSzrDStgLilzDlUzHOyXbeStDApyncwGppZqUPgjWRDPKnUSAEtgSPvrZxfevgTnEfYiMMSMPRjMCbMVIwOgMCxqYGHgIoohZGMcXeyXoyZpdHUqxqxCnStntAnWBSMmJQGTWGKpSifAbzrRfaLztQTDHWvbVmdweozEsmlmbuUpgTkNioHuHeLEBGJSbVyAXhhtbPBszxzxYVUZDjqvRcWggKcxuwsUWiIhEarkVvlppYBDDeTcuSajpVaEbMuzFjTaXpDyKEPEXDPtNsqUnyrxKpSUrSYhRdMlcSpjfYWZDyvmTszzJtnqxjfdPkBlTXoNBhHwvSnFekOMetUJkLwsoNJwWslYmZvOgWiyNxfgKuoJDPoGvAjzqYq
-    Should Contain    ${output}    priority : -443512117
+    Should Contain    ${output}    id : 1875354360
+    Should Contain    ${output}    text : WPMKgjdlCwudHmBpjkOKWKDyHRormkPPkaMjEYKOPGjPjbVBrVepVJGHpJReIxfJzXawaJdNjERElOGVWrzRGlKTVPSQfdWEXnhPxiBxcqXBtsfazcHBbCKlZJwFRlapaBEqPNvpYugpvVnOszatVshgPEOBvytARLClArioRJhwGgnTiGGncHNsGqNpjorepbHgiUYLrbAEHOmrZoaGlnnskqbdGUzvSSsZEJKgTOTliHgHcxpVZpLlBhzCogtlBMkPrcROajZaIllPTxYOhbFKqTLVRnthTOaEFgRiFAydTIpkzBMHAWjWqjuOZeoHRMhEyeCKcgDPkZknMeNWbxUuUFAeBJLEOoBRQDSQHYtyDzPcTqqyjqtdSDKsCpPHkxohqoPsqOqEoLoZiYbkrdwyPmcAZypKNFbJNYPSRFXCuboPuAFNeBlsVdqQBnrBzEEPSVTnDBaGrJakrrdzxQMJgtlRhjpkZarQylQGmzPwAKLWRzFXWcIHXOIiLbCMjuPIOaeOMZvgtmUWSOuLqANQiHubnraIjbEmVElbbpoXYoyac
+    Should Contain    ${output}    priority : 1566268018

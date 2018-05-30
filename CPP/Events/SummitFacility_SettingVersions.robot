@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_SettingVersions sender/logger tests.
+Documentation    SummitFacility_SettingVersions communications tests.
 Force Tags    cpp    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send JSzuhhGbtEmxZIZOwTbcBhjMRZRJczQYFlTDVUthnfsCCNVnGuUhFWLCYGAdomsJvlNrlgNejMbgjLvMDfoDkkfSJqTKpZdsXlkVslvtXPmgSyhtwSLQeFNnEbsvhOPPAUoJUntbTFzfAspcssPJqBJslISrtaXjONuSTgnsJOvFOmcUyGuYyqzEoHlWtbwVnGblivWSizeGGixaDBQPzQImcWSwqCApKIqDzgOHzLegwXhPSXINraQvVgmGdClR NzGSoBJeRCpegxSFNRzYOdRfsKjykhJHSLPcpkTIADEMGelKTXswvplFuluesJNiAOjJIaGcvCgKSrcUWQEjgBgvMjqUFGBuDIciaGgSaSWONrxqvHlHWXiXFTAWNMlWczDOfEaRYQMgMqRTPddWmSTfysDNPGCSiCzNvtLqBsOFkBiMkUlKUarUyhRlVPVtPSKxWARQhPpOjbEKXgqxUCouxVyWbJklDgQMTqCFdZIatHMBnZFOFruCIREiQfQcpKcthQvrYCzThMGjbJUVoMzqhmbETLqwBQHnZontHASJkdiRWhLDHWYBLTUAtFORaxzMUnCBjIerYrcBbFPtRDbVcOPpmrEcWGqDZdxMYlNDTveaBJpzFdczYxmLxVEtNWpJvfMKXbBymaMxyDTklDZiDaidVvtXFXOdyWFwQihymbULZFsQSLnMbeuyOxZxmPGvgjSMXHaytBQxCDMICxdcNREyDybYEraYorotPPTkbXIyrGbOcxGz 19.7849 853283306
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send SbXDCylvAYEhWHSMgMSlWjWNxbBoHTaGKpRhJzEcCOnCFHerXeTkgmrKSIAJejUsqjJOAucvmJkgukIlXTXXkQvTKFuMeYDxfDxqKfEqaMEPGDkkVOgVEkhdqDFngjTciUdNuYGlTWPtYuOPbSqWtZoeXWexiAfLcWxXpLVLVXfSAywUsrYSmOvCQxRAIWWsNCzqzdzEPOHIGJeCYGZMhsMtJCmsrfvdWCpLjRSTDrlUEpahoLgAmMWRIKuzyanlracnWXUEZuECbBbVhbBMEpbbqWdJTZaKjMDgQnMbAogqCOtlQwYJfiinTFfXzSZRWiUQpFECAuDCGVXjTSUSIAZpUCvJVDBftNcvahddOTeNfiUiNiEBotPuAVRwmKblmVDzNRPCboiqohPqBsydrTNubTKbYqrTybGBzrpJpNHZEHRHMaHwRF vmyyibQeoKlBEdvpyknypgTOAfqiXrlsljfbjfQJEaXayLLhwHyMRdXownPvlGIoLLKTqwWCqwQUQcBZkdjCKnhqAXGSyNajuBMlWKjoscGlRGejBgGDJZAHtPqbBdxtzWejIRvWyAdcJgJSONtrJPihAVBOluzOPqpayCwIlvEdyFxjljizVomMolkhftacUMpHhtOQGqvrynVrmmxyLJkxaUkeDCyAaToOpFbcRdrzNfUNikSATGjDfsEAYEVMGptoOMaBiIqWPoqHeQTbduVpQIkLFTWGKRrxVpprcLtZcLmVemBRVLnueywLoCdJZHgjhvaJGAAvmtCwQsKzWXHVCdBoRSsNmzfGoxvjEWtYudtCubAiTDDUhcTyfAWfxATXGPkfeuUgddvrJoJdtGQWZCIsMHlTffaSsbUGAxPelUHZqdZaeVTrkdXtjEJMCSJItrUUYhkkmBJpWsLGjcRiWDzWbyJWrOjHkMwViIhQxyhkJgfhcgvqEfPoJgkBuDrITTPSnsBRGeIwNnlaZMYHufFNwmesSfeLLMlcmsWeBhTQXRVUPXBkWlxpPbhfoBKPEyXkLvXzDSOfbtqIFiXUUbjEznwQGRFDWdKOVwytgmTFCbemkHfPqXJTnOmgaEppaXpvVlUZQhSJRHUGHdtCRIFbHsurPHybzZmmAiCEVO 13.0109 -1973254081
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_SettingVersions writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 853283306
+    ${output}=    Read Until    priority : -1973254081
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsLabel : JSzuhhGbtEmxZIZOwTbcBhjMRZRJczQYFlTDVUthnfsCCNVnGuUhFWLCYGAdomsJvlNrlgNejMbgjLvMDfoDkkfSJqTKpZdsXlkVslvtXPmgSyhtwSLQeFNnEbsvhOPPAUoJUntbTFzfAspcssPJqBJslISrtaXjONuSTgnsJOvFOmcUyGuYyqzEoHlWtbwVnGblivWSizeGGixaDBQPzQImcWSwqCApKIqDzgOHzLegwXhPSXINraQvVgmGdClR
-    Should Contain    ${output}    recommendedSettingsVersion : NzGSoBJeRCpegxSFNRzYOdRfsKjykhJHSLPcpkTIADEMGelKTXswvplFuluesJNiAOjJIaGcvCgKSrcUWQEjgBgvMjqUFGBuDIciaGgSaSWONrxqvHlHWXiXFTAWNMlWczDOfEaRYQMgMqRTPddWmSTfysDNPGCSiCzNvtLqBsOFkBiMkUlKUarUyhRlVPVtPSKxWARQhPpOjbEKXgqxUCouxVyWbJklDgQMTqCFdZIatHMBnZFOFruCIREiQfQcpKcthQvrYCzThMGjbJUVoMzqhmbETLqwBQHnZontHASJkdiRWhLDHWYBLTUAtFORaxzMUnCBjIerYrcBbFPtRDbVcOPpmrEcWGqDZdxMYlNDTveaBJpzFdczYxmLxVEtNWpJvfMKXbBymaMxyDTklDZiDaidVvtXFXOdyWFwQihymbULZFsQSLnMbeuyOxZxmPGvgjSMXHaytBQxCDMICxdcNREyDybYEraYorotPPTkbXIyrGbOcxGz
-    Should Contain    ${output}    timestamp : 19.7849
-    Should Contain    ${output}    priority : 853283306
+    Should Contain    ${output}    recommendedSettingsLabel : SbXDCylvAYEhWHSMgMSlWjWNxbBoHTaGKpRhJzEcCOnCFHerXeTkgmrKSIAJejUsqjJOAucvmJkgukIlXTXXkQvTKFuMeYDxfDxqKfEqaMEPGDkkVOgVEkhdqDFngjTciUdNuYGlTWPtYuOPbSqWtZoeXWexiAfLcWxXpLVLVXfSAywUsrYSmOvCQxRAIWWsNCzqzdzEPOHIGJeCYGZMhsMtJCmsrfvdWCpLjRSTDrlUEpahoLgAmMWRIKuzyanlracnWXUEZuECbBbVhbBMEpbbqWdJTZaKjMDgQnMbAogqCOtlQwYJfiinTFfXzSZRWiUQpFECAuDCGVXjTSUSIAZpUCvJVDBftNcvahddOTeNfiUiNiEBotPuAVRwmKblmVDzNRPCboiqohPqBsydrTNubTKbYqrTybGBzrpJpNHZEHRHMaHwRF
+    Should Contain    ${output}    recommendedSettingsVersion : vmyyibQeoKlBEdvpyknypgTOAfqiXrlsljfbjfQJEaXayLLhwHyMRdXownPvlGIoLLKTqwWCqwQUQcBZkdjCKnhqAXGSyNajuBMlWKjoscGlRGejBgGDJZAHtPqbBdxtzWejIRvWyAdcJgJSONtrJPihAVBOluzOPqpayCwIlvEdyFxjljizVomMolkhftacUMpHhtOQGqvrynVrmmxyLJkxaUkeDCyAaToOpFbcRdrzNfUNikSATGjDfsEAYEVMGptoOMaBiIqWPoqHeQTbduVpQIkLFTWGKRrxVpprcLtZcLmVemBRVLnueywLoCdJZHgjhvaJGAAvmtCwQsKzWXHVCdBoRSsNmzfGoxvjEWtYudtCubAiTDDUhcTyfAWfxATXGPkfeuUgddvrJoJdtGQWZCIsMHlTffaSsbUGAxPelUHZqdZaeVTrkdXtjEJMCSJItrUUYhkkmBJpWsLGjcRiWDzWbyJWrOjHkMwViIhQxyhkJgfhcgvqEfPoJgkBuDrITTPSnsBRGeIwNnlaZMYHufFNwmesSfeLLMlcmsWeBhTQXRVUPXBkWlxpPbhfoBKPEyXkLvXzDSOfbtqIFiXUUbjEznwQGRFDWdKOVwytgmTFCbemkHfPqXJTnOmgaEppaXpvVlUZQhSJRHUGHdtCRIFbHsurPHybzZmmAiCEVO
+    Should Contain    ${output}    timestamp : 13.0109
+    Should Contain    ${output}    priority : -1973254081

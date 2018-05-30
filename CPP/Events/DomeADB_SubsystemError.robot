@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_SubsystemError sender/logger tests.
+Documentation    DomeADB_SubsystemError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mVNqsHHrshSUSOowrMwceRflODLwKTKCSADxwSXBakCIPaMRNGJwqnJaDUJzwDzXLPYUyIGSauvHQuRryYAEROqdqHpyUvBSATAmjWLitXTccwvvcwsPUZKasgvLzYvioKwWRJdePieBaQKIVmJkuZcGMrvcSyHTZnDnWLzTeXbyUkfEBZDBkJnubBWwxqGUFntGKUUTtozRuMqUdZijzvAhdGgACFixGAxcXwJwJrEwJOVMVZRXDoSXnoRZjySQcuioqsJxhcgfitIceYZyBnzPmjJThEoGnXvYTFszoRDzJWPJwuYwejvSvXaSOYscKFTmvFqvIeQJKANrUpxWCEDpeqOgGtmfTuMbdlzagQILGdKgcmpIiRsRFeWuGvaLbuZQoKPQdylGBUYQspxihKouxANjenZkebhetXspzOGNgcYWeaVuiVwcEoDBGZbKLWReibwYHKAAhSLoScXiNgZQgIIXwpCZPFapqPvWYhpaCFYgBDEGmHStVKJKWdgchryFxiGNkHSkOCUuRTRBCTknZiPwARkdynOfpiKvcVtFtormXvngEBuXrbGFlxhXsRBCrKFDKpVNroxjSPfwzHAGgCpwqYGCiAaXNuHnLAteGgsqFaIoZY 1711420215
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hbCEYyWybqKIHZkLisvsydbKiCUXtJRZyiYMGuDbnrmJycmMvAwkNJaDqmyAGhaaGVYbdKxXNoRbOSGJtURlXtFFWEBLfdCeWqPDxkIsSFAwgEJTayuDcaoXduOQqFSQzqxRkGSAvGkODnDnAdQWFsBNbAQXadoWMLyWBgPrdwiQwIihWTJQDARmVIRn 693687061
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1711420215
+    ${output}=    Read Until    priority : 693687061
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : mVNqsHHrshSUSOowrMwceRflODLwKTKCSADxwSXBakCIPaMRNGJwqnJaDUJzwDzXLPYUyIGSauvHQuRryYAEROqdqHpyUvBSATAmjWLitXTccwvvcwsPUZKasgvLzYvioKwWRJdePieBaQKIVmJkuZcGMrvcSyHTZnDnWLzTeXbyUkfEBZDBkJnubBWwxqGUFntGKUUTtozRuMqUdZijzvAhdGgACFixGAxcXwJwJrEwJOVMVZRXDoSXnoRZjySQcuioqsJxhcgfitIceYZyBnzPmjJThEoGnXvYTFszoRDzJWPJwuYwejvSvXaSOYscKFTmvFqvIeQJKANrUpxWCEDpeqOgGtmfTuMbdlzagQILGdKgcmpIiRsRFeWuGvaLbuZQoKPQdylGBUYQspxihKouxANjenZkebhetXspzOGNgcYWeaVuiVwcEoDBGZbKLWReibwYHKAAhSLoScXiNgZQgIIXwpCZPFapqPvWYhpaCFYgBDEGmHStVKJKWdgchryFxiGNkHSkOCUuRTRBCTknZiPwARkdynOfpiKvcVtFtormXvngEBuXrbGFlxhXsRBCrKFDKpVNroxjSPfwzHAGgCpwqYGCiAaXNuHnLAteGgsqFaIoZY
-    Should Contain    ${output}    priority : 1711420215
+    Should Contain    ${output}    errorCode : hbCEYyWybqKIHZkLisvsydbKiCUXtJRZyiYMGuDbnrmJycmMvAwkNJaDqmyAGhaaGVYbdKxXNoRbOSGJtURlXtFFWEBLfdCeWqPDxkIsSFAwgEJTayuDcaoXduOQqFSQzqxRkGSAvGkODnDnAdQWFsBNbAQXadoWMLyWBgPrdwiQwIihWTJQDARmVIRn
+    Should Contain    ${output}    priority : 693687061

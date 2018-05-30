@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_enterControl commander/controller tests.
+Documentation    AtMonochromator_enterControl communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

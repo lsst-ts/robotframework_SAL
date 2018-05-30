@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_shutterMotionProfile sender/logger tests.
+Documentation    AtCamera_shutterMotionProfile communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12.3178 1699640090
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 27.9405 -1699885313
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_shutterMotionProfile writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1699640090
+    ${output}=    Read Until    priority : -1699885313
     Log    ${output}
     Should Contain X Times    ${output}    === Event shutterMotionProfile received =     1
-    Should Contain    ${output}    measuredExposureTime : 12.3178
-    Should Contain    ${output}    priority : 1699640090
+    Should Contain    ${output}    measuredExposureTime : 27.9405
+    Should Contain    ${output}    priority : -1699885313

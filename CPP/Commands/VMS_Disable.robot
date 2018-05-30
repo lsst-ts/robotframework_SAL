@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_Disable commander/controller tests.
+Documentation    VMS_Disable communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

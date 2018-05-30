@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtHeaderService_ErrorCode sender/logger tests.
+Documentation    AtHeaderService_ErrorCode communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 23.1695 -769157811 -1255217097
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 38.7419 120480387 351949603
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_ErrorCode writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1255217097
+    ${output}=    Read Until    priority : 351949603
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    timestamp : 23.1695
-    Should Contain    ${output}    errorCode : -769157811
-    Should Contain    ${output}    priority : -1255217097
+    Should Contain    ${output}    timestamp : 38.7419
+    Should Contain    ${output}    errorCode : 120480387
+    Should Contain    ${output}    priority : 351949603

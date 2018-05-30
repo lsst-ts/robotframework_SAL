@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_nighttimefail sender/logger tests.
+Documentation    EEC_nighttimefail communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -25931 1378985503
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -16765 776785465
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_nighttimefail writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1378985503
+    ${output}=    Read Until    priority : 776785465
     Log    ${output}
     Should Contain X Times    ${output}    === Event nighttimefail received =     1
-    Should Contain    ${output}    status : -25931
-    Should Contain    ${output}    priority : 1378985503
+    Should Contain    ${output}    status : -16765
+    Should Contain    ${output}    priority : 776785465

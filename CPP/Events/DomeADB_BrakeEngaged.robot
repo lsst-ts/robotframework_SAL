@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_BrakeEngaged sender/logger tests.
+Documentation    DomeADB_BrakeEngaged communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12523 1052148915
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -32709 -1356843437
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_BrakeEngaged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1052148915
+    ${output}=    Read Until    priority : -1356843437
     Log    ${output}
     Should Contain X Times    ${output}    === Event BrakeEngaged received =     1
-    Should Contain    ${output}    brakeId : 12523
-    Should Contain    ${output}    priority : 1052148915
+    Should Contain    ${output}    brakeId : -32709
+    Should Contain    ${output}    priority : -1356843437

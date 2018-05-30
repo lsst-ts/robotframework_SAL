@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_MotionModeChanged sender/logger tests.
+Documentation    DomeADB_MotionModeChanged communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -32222 -1652860156
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -8979 -190313384
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_MotionModeChanged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1652860156
+    ${output}=    Read Until    priority : -190313384
     Log    ${output}
     Should Contain X Times    ${output}    === Event MotionModeChanged received =     1
-    Should Contain    ${output}    newMode : -32222
-    Should Contain    ${output}    priority : -1652860156
+    Should Contain    ${output}    newMode : -8979
+    Should Contain    ${output}    priority : -190313384

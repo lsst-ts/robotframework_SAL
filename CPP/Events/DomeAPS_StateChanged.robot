@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_StateChanged sender/logger tests.
+Documentation    DomeAPS_StateChanged communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -28795 -1232884196
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -24527 -1178566866
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_StateChanged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1232884196
+    ${output}=    Read Until    priority : -1178566866
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    newState : -28795
-    Should Contain    ${output}    priority : -1232884196
+    Should Contain    ${output}    newState : -24527
+    Should Contain    ${output}    priority : -1178566866

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_ForceActuatorForceWarning sender/logger tests.
+Documentation    M1M3_ForceActuatorForceWarning communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 78.4007 0 0 1 0 0 1 1 1 0 1 0 1 0 1 0 0 1 0 0 1 0 1 0 1 0 0 1 1 1 0 1 1 0 1 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 1 1 0 1 1 1 0 0 1 0 1 0 1 1 1 0 1 0 1 0 0 1 1 0 1 0 1 0 0 1 0 1 1 1 1 0 0 1 1 0 1 0 0 1 1 0 0 0 1 1 1 1 0 1 0 1 1 1 1 1 1 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 0 1 0 1 0 1 0 1 0 1 1 1 1 0 0 1 1 1 0 0 1 0 1 0 0 0 1 0 1 1 1 0 1 0 1 1 0 0 0 1 1 1 0 1 1 0 1 1 1 1 1 1 0 0 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 1 0 0 0 1 0 0 1 0 0 1 1 0 0 1 0 0 0 1 0 0 0 1 0 0 1 1 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 1 1 0 1 1 1 1 0 1 0 1 1 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 1 0 0 1 1 1 0 1 1 0 0 0 0 1 0 0 1 1 1 1 0 1 0 0 1 0 0 1 1 1 1 0 0 0 1 0 0 0 1 1 1 0 1 0 1 0 0 1 1 0 1 1 1 1 1 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 1 1 0 1 1 1 1 0 1 0 1 1 1 1 1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 1 0 1 1 1 0 0 1 1 1 0 1 0 1 0 1 1 0 0 0 0 1 0 0 1 0 1 0 1 1 0 1 1 0 1 1 0 1 1 1 1 1 0 0 1 0 1 0 1 0 1 0 1 1 1 1 0 1 0 0 1 1 1 1 0 0 0 0 0 1 1 0 1 1 1 1 1 1 1 0 1 1 1 0 0 0 1 0 0 1 1 1 0 1 1 1 0 0 1 1 0 1 0 0 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 0 0 0 1 0 1 1 0 0 1 0 0 0 1 1 1 0 1 0 1 1 0 1 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 0 1 0 1 1 1 0 1 0 1 1 0 0 1451126581
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 60.9715 0 0 1 1 1 1 0 0 0 1 1 1 0 1 1 0 0 1 1 0 1 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 1 0 0 1 0 0 0 1 0 0 0 1 1 0 0 1 1 1 0 1 1 0 1 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0 1 0 0 0 1 1 1 0 1 0 0 0 1 0 0 0 1 1 1 0 1 1 1 0 1 1 0 0 1 0 0 1 1 0 0 0 0 1 0 0 0 1 0 0 1 0 1 0 1 0 1 0 0 0 1 0 0 0 0 1 1 1 0 1 0 1 0 0 0 1 0 0 1 1 1 1 0 0 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 1 0 1 0 1 1 1 1 1 0 1 0 0 1 0 0 1 1 0 0 0 0 0 0 1 0 1 1 0 1 0 0 0 0 0 0 1 0 1 1 0 1 1 0 1 1 0 0 1 0 1 0 1 0 1 1 1 0 1 0 0 0 1 1 1 1 0 1 0 0 1 0 1 1 0 0 1 1 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 1 1 0 0 0 1 1 0 1 0 1 1 1 0 1 0 0 1 0 1 1 1 1 1 1 0 1 1 1 0 0 0 1 0 0 0 1 1 1 0 0 0 1 0 0 0 1 0 0 1 1 0 1 1 1 1 0 0 1 1 0 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 1 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0 1 0 1 1 0 1 1 1 1 0 0 0 1 1 1 0 1 0 0 1 1 1 0 1 0 0 0 1 0 0 1 1 1 1 0 1 0 1 1 1 0 0 0 0 1 0 1 0 1 1 0 1 1 0 0 1 0 1 0 1 0 1 0 1 0 0 0 0 0 1 1 1 0 1 0 1 0 1 1 1 1 0 1 0 1 1 1 0 0 1 0 0 1 1 0 0 1 1 0 1 1 0 1 1 0 0 1 0 1 0 1 0 0 1 1 1 1 1 0 0 0 1 0 1 0 0 0 1 0 1 0 1 0 1 1 1 0 1 1 1 0 1 1 1 1 0 0 0 1 1 1 0 0 0 0 0 1 0 1 1 0 0 0 1 1 1 1 0 0 0 1 1 0 1 1 1 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 1 1 0 1 0 1 1 1 0 0 0 1 0 0 1 1 1 1 1 0 0 1 1 0 1 0 0 0 0 0 1 0 0 1 1 0 0 1 0 1 0 1 1 1 0 1 0 0 1 0 0 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 0 0 -823268568
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ForceActuatorForceWarning writing a message containing :    1
@@ -57,17 +57,17 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1451126581
+    ${output}=    Read Until    priority : -823268568
     Log    ${output}
     Should Contain X Times    ${output}    === Event ForceActuatorForceWarning received =     1
-    Should Contain    ${output}    Timestamp : 78.4007
+    Should Contain    ${output}    Timestamp : 60.9715
     Should Contain    ${output}    AnyWarning : 0
     Should Contain    ${output}    AnyPrimaryAxisMeasuredForceWarning : 0
     Should Contain    ${output}    PrimaryAxisMeasuredForceWarning : 1
-    Should Contain    ${output}    AnySecondaryAxisMeasuredForceWarning : 0
-    Should Contain    ${output}    SecondaryAxisMeasuredForceWarning : 0
+    Should Contain    ${output}    AnySecondaryAxisMeasuredForceWarning : 1
+    Should Contain    ${output}    SecondaryAxisMeasuredForceWarning : 1
     Should Contain    ${output}    AnyPrimaryAxisFollowingErrorWarning : 1
-    Should Contain    ${output}    PrimaryAxisFollowingErrorWarning : 1
-    Should Contain    ${output}    AnySecondaryAxisFollowingErrorWarning : 1
+    Should Contain    ${output}    PrimaryAxisFollowingErrorWarning : 0
+    Should Contain    ${output}    AnySecondaryAxisFollowingErrorWarning : 0
     Should Contain    ${output}    SecondaryAxisFollowingErrorWarning : 0
     Should Contain    ${output}    priority : 1

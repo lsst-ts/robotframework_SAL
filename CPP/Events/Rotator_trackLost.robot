@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_trackLost sender/logger tests.
+Documentation    Rotator_trackLost communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 44.0199 239153507
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 22.4041 -133306911
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_trackLost writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 239153507
+    ${output}=    Read Until    priority : -133306911
     Log    ${output}
     Should Contain X Times    ${output}    === Event trackLost received =     1
-    Should Contain    ${output}    timestamp : 44.0199
-    Should Contain    ${output}    priority : 239153507
+    Should Contain    ${output}    timestamp : 22.4041
+    Should Contain    ${output}    priority : -133306911

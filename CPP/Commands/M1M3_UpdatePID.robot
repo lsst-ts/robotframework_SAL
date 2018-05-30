@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_UpdatePID commander/controller tests.
+Documentation    M1M3_UpdatePID communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1270 18.8633 32.9521 76.9461 29.8865 38.3715
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7855 49.2896 60.897 15.3412 46.1794 96.4885
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1270 18.8633 32.9521 76.9461 29.8865 38.3715
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 7855 49.2896 60.897 15.3412 46.1794 96.4885
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    PID : -1270    1
-    Should Contain X Times    ${output}    Timestep : 18.8633    1
-    Should Contain X Times    ${output}    P : 32.9521    1
-    Should Contain X Times    ${output}    I : 76.9461    1
-    Should Contain X Times    ${output}    D : 29.8865    1
-    Should Contain X Times    ${output}    N : 38.3715    1
+    Should Contain X Times    ${output}    PID : 7855    1
+    Should Contain X Times    ${output}    Timestep : 49.2896    1
+    Should Contain X Times    ${output}    P : 60.897    1
+    Should Contain X Times    ${output}    I : 15.3412    1
+    Should Contain X Times    ${output}    D : 46.1794    1
+    Should Contain X Times    ${output}    N : 96.4885    1
     Should Contain    ${output}    === command UpdatePID issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    PID : -1270    1
-    Should Contain X Times    ${output}    Timestep : 18.8633    1
-    Should Contain X Times    ${output}    P : 32.9521    1
-    Should Contain X Times    ${output}    I : 76.9461    1
-    Should Contain X Times    ${output}    D : 29.8865    1
-    Should Contain X Times    ${output}    N : 38.3715    1
+    Should Contain X Times    ${output}    PID : 7855    1
+    Should Contain X Times    ${output}    Timestep : 49.2896    1
+    Should Contain X Times    ${output}    P : 60.897    1
+    Should Contain X Times    ${output}    I : 15.3412    1
+    Should Contain X Times    ${output}    D : 46.1794    1
+    Should Contain X Times    ${output}    N : 96.4885    1
     Should Contain X Times    ${output}    === [ackCommand_UpdatePID] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

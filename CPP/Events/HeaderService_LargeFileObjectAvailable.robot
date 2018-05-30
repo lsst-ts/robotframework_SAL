@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_LargeFileObjectAvailable sender/logger tests.
+Documentation    HeaderService_LargeFileObjectAvailable communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jZxsttdoCkBubIZSbDPfzbFekSMVCbRwdAsmyDIXEcyfVezSqGhpXiJapeuDoUpFMxjnftCTFbHwFzgQNiOxzMqmpUZpSppmvdRwxeyvTINWpausvgYcSGThCClhyaFZyUgrHusDMDRIiIYhKXOolfoWqVrYhzWtiRyWLVwEOIkbTnkacVURVuUryeMvcjPgOHozofsZDxLmQLdbtlgytwzCjFLCfiBOmuFVxTMnXXcZZQhAlOspKAYNFwvRpEft DiQkDLNAnyBkYCTnoBDYlrqlzaTeGgpq 0.799509912692 NgPxevbdcQzWbjRbEipyWKOULzOrNnTj YSxCjdnlzczyCLjMUrHwGuIaGQayIuwt -1867073758 eRkMHMDnibhTzCKQGBEwXRXLsQSMTmFL -2028503256
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send alepoojsVoCFhAbnnMKdquSoQtexrIvBNvsTQnWSuchthmOsbaTJJPvXEwlaBvWiweeTvxapgjjHtoVrpGuINmicyGONawjzLcXovFBtEMjoGYItGXhbgjckzWxuNrIuMDwQsLqVpyATSudyHglsGwPjhcJFnTwevxIeXylhTVAxHRVWJIcPHqNChrxuLmOigTWALfldlthKpZsVTBkuJMqLAsWVPCJTrPukcWXWsqixzUjyBroHbGxMwFlLxvOW yRUHdbaILJpeZoUULCpKzujRmITlmncr 0.355687 YYzCKwIZRjEGNEqgTUqONoXAyPbFbkaR EJESNYWfyIwkJcgbpYPFQtyIYLYYMMGP -339211293 VNXYUKcCcUjHvxXDmlURhbNPShhonbzh 637916919
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_LargeFileObjectAvailable writing a message containing :    1
@@ -57,14 +57,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2028503256
+    ${output}=    Read Until    priority : 637916919
     Log    ${output}
     Should Contain X Times    ${output}    === Event LargeFileObjectAvailable received =     1
-    Should Contain    ${output}    URL : jZxsttdoCkBubIZSbDPfzbFekSMVCbRwdAsmyDIXEcyfVezSqGhpXiJapeuDoUpFMxjnftCTFbHwFzgQNiOxzMqmpUZpSppmvdRwxeyvTINWpausvgYcSGThCClhyaFZyUgrHusDMDRIiIYhKXOolfoWqVrYhzWtiRyWLVwEOIkbTnkacVURVuUryeMvcjPgOHozofsZDxLmQLdbtlgytwzCjFLCfiBOmuFVxTMnXXcZZQhAlOspKAYNFwvRpEft
-    Should Contain    ${output}    Generator : DiQkDLNAnyBkYCTnoBDYlrqlzaTeGgpq
-    Should Contain    ${output}    Version : 0.799509912692
-    Should Contain    ${output}    Checksum : NgPxevbdcQzWbjRbEipyWKOULzOrNnTj
-    Should Contain    ${output}    Mime_Type : YSxCjdnlzczyCLjMUrHwGuIaGQayIuwt
-    Should Contain    ${output}    Byte_Size : -1867073758
-    Should Contain    ${output}    ID : eRkMHMDnibhTzCKQGBEwXRXLsQSMTmFL
-    Should Contain    ${output}    priority : -2028503256
+    Should Contain    ${output}    URL : alepoojsVoCFhAbnnMKdquSoQtexrIvBNvsTQnWSuchthmOsbaTJJPvXEwlaBvWiweeTvxapgjjHtoVrpGuINmicyGONawjzLcXovFBtEMjoGYItGXhbgjckzWxuNrIuMDwQsLqVpyATSudyHglsGwPjhcJFnTwevxIeXylhTVAxHRVWJIcPHqNChrxuLmOigTWALfldlthKpZsVTBkuJMqLAsWVPCJTrPukcWXWsqixzUjyBroHbGxMwFlLxvOW
+    Should Contain    ${output}    Generator : yRUHdbaILJpeZoUULCpKzujRmITlmncr
+    Should Contain    ${output}    Version : 0.355687
+    Should Contain    ${output}    Checksum : YYzCKwIZRjEGNEqgTUqONoXAyPbFbkaR
+    Should Contain    ${output}    Mime_Type : EJESNYWfyIwkJcgbpYPFQtyIYLYYMMGP
+    Should Contain    ${output}    Byte_Size : -339211293
+    Should Contain    ${output}    ID : VNXYUKcCcUjHvxXDmlURhbNPShhonbzh
+    Should Contain    ${output}    priority : 637916919

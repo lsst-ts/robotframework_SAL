@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_MovementPrevented sender/logger tests.
+Documentation    DomeAPS_MovementPrevented communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jGXNOOmpfMzSlYdriroRqghVlofOPnSAMQaYFZWwovHodLsEChbQXmuMuKqadvLkPqToqVhInrgJWdAROMHOSihTvlbDKonZFKqMiXCNRLgWSJLahaniDkdTYLHsypCKuiGGvzAGSNmYfCsNPmCSxMMmQJMjbjDwvzEALeAnwWvhmuxEZkzNStxTBNExfhkzgYyprThkDiDWVRyFMyeIuRpVcHyeTJJTiBJRkIJjsOEmFiQvJuWUIwIadIGrUrtRDSojlAVEjyTICpsjrowCFqTeQwdwCBDQMxLfQCfwFNaLMudCDzZHRwDurnJcPPDLHRQNUMFsCjXNMawHBierYcekKPQXtikvUBKihsoQANkcVPkrSfVAvCYOBULxlTIYxfxaTyPedlCCxNTgDqMcXZClHPhXzmUhLxkYphvnRNzwRJcrRifnpyFCZWRzZGNGbWiIJpzHllrhmVDdDXErYCJuJNOBWJLoVbV -2108306757
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send lfLfSJaaFusSwrdBknYucHoPtdvPAmJAxFzwSTDdsbcAFkswpCeRPUjgykxhTTMJLWMAVrjZofEdbCTZshBAdXtuGuRKiEaiBcLRcPQCKggDrbYIllCpIncRmOrgfpJllipHLpxBUFjoLOIxHcfNnJMrOGXulaLRrFcUAbQfUlySHHURJffysaAeUMylYRzxyKTHBJnxgvfSichuGpjnJCrdruCTlvISGgJCMlPemjyYMEGDtzAkYhbjlcrkrYqXvMCdhNEotnEwkgzpyojXHeSHWsLLeSdcPdlLMUoIQbPSPVyoqlvZmFYALiACAJhpHvskyWStkcGiKwVmEbfsNfLwmLAxeBXdRIoXQcvChOiClwWGmassfQfcfVnuADpVIKSTxabhSFADSQOAeVeSaGVsZmJUnGKBYNWvJtGDnLNvAFVByFItetyUAyyPSybMkdnpgPBplWYrlLfdODjybmtSDjeZMfVNKeIUaxJWKCjbNdVFzwnsKbXDIncGDwTrsNRBapkjIcjEOTmPYWgeKreKXxbQKdomzPbHgJAvNdGStxqwCyTuWtWFeSUXEApjkUXavctFWbCIqOPmbVwVBSazLYsoqmfjRPfWjEVJUteAIiBcdOynuVZPVBKTinflIFEbFdssWHgxLLcszEyneiSGvMsNqQNnQLWuvYJLreXBODJiggGjrGBwBZyCWNHkKINfCZSCdgdIyhIZNGKhtVQCFLUkMyPAWDCykUXwrSfbnUOoddgOxhwUpUcCzbbMdeNcUaHGqLBhwOZUismDAyunYdjbNdHvpIlbzdKBZXszMrYrdKwIPJTzrDnbcCzrHICWOMbjiagYwPnJGYxaZHYyteIMEDidljIqGbEMRn -1552453774
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_MovementPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2108306757
+    ${output}=    Read Until    priority : -1552453774
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    causeId : jGXNOOmpfMzSlYdriroRqghVlofOPnSAMQaYFZWwovHodLsEChbQXmuMuKqadvLkPqToqVhInrgJWdAROMHOSihTvlbDKonZFKqMiXCNRLgWSJLahaniDkdTYLHsypCKuiGGvzAGSNmYfCsNPmCSxMMmQJMjbjDwvzEALeAnwWvhmuxEZkzNStxTBNExfhkzgYyprThkDiDWVRyFMyeIuRpVcHyeTJJTiBJRkIJjsOEmFiQvJuWUIwIadIGrUrtRDSojlAVEjyTICpsjrowCFqTeQwdwCBDQMxLfQCfwFNaLMudCDzZHRwDurnJcPPDLHRQNUMFsCjXNMawHBierYcekKPQXtikvUBKihsoQANkcVPkrSfVAvCYOBULxlTIYxfxaTyPedlCCxNTgDqMcXZClHPhXzmUhLxkYphvnRNzwRJcrRifnpyFCZWRzZGNGbWiIJpzHllrhmVDdDXErYCJuJNOBWJLoVbV
-    Should Contain    ${output}    priority : -2108306757
+    Should Contain    ${output}    causeId : lfLfSJaaFusSwrdBknYucHoPtdvPAmJAxFzwSTDdsbcAFkswpCeRPUjgykxhTTMJLWMAVrjZofEdbCTZshBAdXtuGuRKiEaiBcLRcPQCKggDrbYIllCpIncRmOrgfpJllipHLpxBUFjoLOIxHcfNnJMrOGXulaLRrFcUAbQfUlySHHURJffysaAeUMylYRzxyKTHBJnxgvfSichuGpjnJCrdruCTlvISGgJCMlPemjyYMEGDtzAkYhbjlcrkrYqXvMCdhNEotnEwkgzpyojXHeSHWsLLeSdcPdlLMUoIQbPSPVyoqlvZmFYALiACAJhpHvskyWStkcGiKwVmEbfsNfLwmLAxeBXdRIoXQcvChOiClwWGmassfQfcfVnuADpVIKSTxabhSFADSQOAeVeSaGVsZmJUnGKBYNWvJtGDnLNvAFVByFItetyUAyyPSybMkdnpgPBplWYrlLfdODjybmtSDjeZMfVNKeIUaxJWKCjbNdVFzwnsKbXDIncGDwTrsNRBapkjIcjEOTmPYWgeKreKXxbQKdomzPbHgJAvNdGStxqwCyTuWtWFeSUXEApjkUXavctFWbCIqOPmbVwVBSazLYsoqmfjRPfWjEVJUteAIiBcdOynuVZPVBKTinflIFEbFdssWHgxLLcszEyneiSGvMsNqQNnQLWuvYJLreXBODJiggGjrGBwBZyCWNHkKINfCZSCdgdIyhIZNGKhtVQCFLUkMyPAWDCykUXwrSfbnUOoddgOxhwUpUcCzbbMdeNcUaHGqLBhwOZUismDAyunYdjbNdHvpIlbzdKBZXszMrYrdKwIPJTzrDnbcCzrHICWOMbjiagYwPnJGYxaZHYyteIMEDidljIqGbEMRn
+    Should Contain    ${output}    priority : -1552453774

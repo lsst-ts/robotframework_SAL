@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_SummaryState sender/logger tests.
+Documentation    AtMonochromator_SummaryState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2012156748 788019934
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -829033245 -570246241
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SummaryState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 788019934
+    ${output}=    Read Until    priority : -570246241
     Log    ${output}
     Should Contain X Times    ${output}    === Event SummaryState received =     1
-    Should Contain    ${output}    summaryState : 2012156748
-    Should Contain    ${output}    priority : 788019934
+    Should Contain    ${output}    summaryState : -829033245
+    Should Contain    ${output}    priority : -570246241

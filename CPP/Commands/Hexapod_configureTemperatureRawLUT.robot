@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_configureTemperatureRawLUT commander/controller tests.
+Documentation    Hexapod_configureTemperatureRawLUT communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21434 32613 -16317 -25621 -9013 14164 16695 -14305 -21622 0.058325160982 0.437413388422 0.902348112873 0.35435061845 0.0261422251167 0.158024551225 0.932243241228 0.43358651216 0.975966713445 0.495038556148 0.815226906832 0.2175174933 0.413278758294 0.324263647745 0.717281922727 0.690200535844 0.543369762823 0.0318912719763 0.368595139011 0.740558446666 0.755974092396 0.666823269323 0.166776496564 0.828944059464 0.778044171573 0.120383256344 0.535959779651 0.287859182702 0.801214058909 0.385290440663 0.168078539519 0.994321201353 0.227137022623 0.140289309809 0.950061639124 0.818824280169 0.225899550852 0.579444289339 0.620441228884 0.574626454557 0.945805666329 0.928632221597 0.306465413595 0.953037982853 0.266904537726 0.230986578595 0.32966333634 0.0174464607372 0.806164484302 0.206934345515 0.90020312146 0.670090566046 0.0107201954984 0.90853277182
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8328 24075 -16199 -15503 -21419 8963 -22566 -16556 31864 0.315409 0.393259 0.372944 0.767335 0.619003 0.794114 0.123868 0.436752 0.348761 0.275476 0.375248 0.525941 0.268949 0.19406 0.744897 0.959292 0.892193 0.267929 0.048838 0.137017 0.7282 0.987294 0.252549 0.011913 0.653811 0.808454 0.951941 0.469097 0.468214 0.589254 0.387481 0.818307 0.670681 0.253181 0.986524 0.448086 0.107348 0.082473 0.630192 0.380363 0.379568 0.568709 0.050331 0.726662 0.035857 0.084041 0.099741 0.489329 0.905097 0.161174 0.394074 0.176289 0.641669 0.572929
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 21434 32613 -16317 -25621 -9013 14164 16695 -14305 -21622 0.058325160982 0.437413388422 0.902348112873 0.35435061845 0.0261422251167 0.158024551225 0.932243241228 0.43358651216 0.975966713445 0.495038556148 0.815226906832 0.2175174933 0.413278758294 0.324263647745 0.717281922727 0.690200535844 0.543369762823 0.0318912719763 0.368595139011 0.740558446666 0.755974092396 0.666823269323 0.166776496564 0.828944059464 0.778044171573 0.120383256344 0.535959779651 0.287859182702 0.801214058909 0.385290440663 0.168078539519 0.994321201353 0.227137022623 0.140289309809 0.950061639124 0.818824280169 0.225899550852 0.579444289339 0.620441228884 0.574626454557 0.945805666329 0.928632221597 0.306465413595 0.953037982853 0.266904537726 0.230986578595 0.32966333634 0.0174464607372 0.806164484302 0.206934345515 0.90020312146 0.670090566046 0.0107201954984 0.90853277182
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8328 24075 -16199 -15503 -21419 8963 -22566 -16556 31864 0.315409 0.393259 0.372944 0.767335 0.619003 0.794114 0.123868 0.436752 0.348761 0.275476 0.375248 0.525941 0.268949 0.19406 0.744897 0.959292 0.892193 0.267929 0.048838 0.137017 0.7282 0.987294 0.252549 0.011913 0.653811 0.808454 0.951941 0.469097 0.468214 0.589254 0.387481 0.818307 0.670681 0.253181 0.986524 0.448086 0.107348 0.082473 0.630192 0.380363 0.379568 0.568709 0.050331 0.726662 0.035857 0.084041 0.099741 0.489329 0.905097 0.161174 0.394074 0.176289 0.641669 0.572929
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    tempIndex : 21434    1
-    Should Contain X Times    ${output}    rx : 0.058325160982    1
-    Should Contain X Times    ${output}    ry : 0.495038556148    1
-    Should Contain X Times    ${output}    rz : 0.368595139011    1
-    Should Contain X Times    ${output}    tx : 0.287859182702    1
-    Should Contain X Times    ${output}    ty : 0.225899550852    1
-    Should Contain X Times    ${output}    tz : 0.230986578595    1
+    Should Contain X Times    ${output}    tempIndex : -8328    1
+    Should Contain X Times    ${output}    rx : 0.315409    1
+    Should Contain X Times    ${output}    ry : 0.275476    1
+    Should Contain X Times    ${output}    rz : 0.048838    1
+    Should Contain X Times    ${output}    tx : 0.469097    1
+    Should Contain X Times    ${output}    ty : 0.107348    1
+    Should Contain X Times    ${output}    tz : 0.084041    1
     Should Contain    ${output}    === command configureTemperatureRawLUT issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -89,13 +89,13 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    tempIndex : 21434    1
-    Should Contain X Times    ${output}    rx : 0.058325160982    1
-    Should Contain X Times    ${output}    ry : 0.495038556148    1
-    Should Contain X Times    ${output}    rz : 0.368595139011    1
-    Should Contain X Times    ${output}    tx : 0.287859182702    1
-    Should Contain X Times    ${output}    ty : 0.225899550852    1
-    Should Contain X Times    ${output}    tz : 0.230986578595    1
+    Should Contain X Times    ${output}    tempIndex : -8328    1
+    Should Contain X Times    ${output}    rx : 0.315409    1
+    Should Contain X Times    ${output}    ry : 0.275476    1
+    Should Contain X Times    ${output}    rz : 0.048838    1
+    Should Contain X Times    ${output}    tx : 0.469097    1
+    Should Contain X Times    ${output}    ty : 0.107348    1
+    Should Contain X Times    ${output}    tz : 0.084041    1
     Should Contain X Times    ${output}    === [ackCommand_configureTemperatureRawLUT] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

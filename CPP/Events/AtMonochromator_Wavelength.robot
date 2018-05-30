@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_Wavelength sender/logger tests.
+Documentation    AtMonochromator_Wavelength communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.0781243739966 89.6086 1842591103
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.504443 88.2137 -1496533198
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_Wavelength writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1842591103
+    ${output}=    Read Until    priority : -1496533198
     Log    ${output}
     Should Contain X Times    ${output}    === Event Wavelength received =     1
-    Should Contain    ${output}    wavelength : 0.0781243739966
-    Should Contain    ${output}    timestamp : 89.6086
-    Should Contain    ${output}    priority : 1842591103
+    Should Contain    ${output}    wavelength : 0.504443
+    Should Contain    ${output}    timestamp : 88.2137
+    Should Contain    ${output}    priority : -1496533198

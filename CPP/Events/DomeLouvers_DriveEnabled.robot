@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_DriveEnabled sender/logger tests.
+Documentation    DomeLouvers_DriveEnabled communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -11411 -16731 -712265915
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -18876 29501 -312571145
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveEnabled writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -712265915
+    ${output}=    Read Until    priority : -312571145
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveEnabled received =     1
-    Should Contain    ${output}    louverID : -11411
-    Should Contain    ${output}    driveId : -16731
-    Should Contain    ${output}    priority : -712265915
+    Should Contain    ${output}    louverID : -18876
+    Should Contain    ${output}    driveId : 29501
+    Should Contain    ${output}    priority : -312571145

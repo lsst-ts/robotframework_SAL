@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_disableCamWrap commander/controller tests.
+Documentation    MTMount_disableCamWrap communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

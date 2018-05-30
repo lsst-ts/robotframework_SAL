@@ -58,4 +58,3 @@ Read Subscriber
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}degreeOfFreedom : 7    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}degreeOfFreedom : 8    1
     Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}degreeOfFreedom : 9    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    9

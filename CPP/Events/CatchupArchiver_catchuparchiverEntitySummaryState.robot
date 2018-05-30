@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    CatchupArchiver_catchuparchiverEntitySummaryState sender/logger tests.
+Documentation    CatchupArchiver_catchuparchiverEntitySummaryState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VPpWLCRQeQRwJqPMgeIqVmfXWvCSlTCRFREnFRbtPzxFMssAiwriaKcycUHQgNDRJFLsUpCdVWCIJTAlzXgfAncNRLDdbXRCatSsJYzqPhMHWoelXXGaoQvaOgbELbox 92.3929 urXbeZyZHDYXePpZZoNCVxSMxaQIMPWqAOBafPxVMeDstmgJTxmJTveYFIzRfbCCTCPQVwnxvKFgodMtnrlaqBQHLhdMXPHMSBPDiFxYMGrfrtVtSNyYGEzcTuxjgmBlAsESpjcqAttBeWUtUWHZaCORsZZgrMTxPEdkcYTVxsHHgWaIFTmDgbUMqwyXLsgYwIIgGyiOLueDsedwHYnNcgVZsaVKSrSAVfHoGJuLzeKlXbhgyASiJNzWqVLjmFao -281853523 loygLcsaAJAcIweDbHJAKoluRjxURfQWOyINyVBNIizrIHhXMghClNZfxmBSjLOkvFkJnKLikdZMUmVHXvMNjrAzCpBnitbxDHjGEfVaKJmXlVlPBGPZLhibfEKPVGBu JkbZgTjIEmREZkKjGGpAXMprLnOskvRlorAIeQxnbDXPbDdHXIchOwyBCLYglEOzSjRbzYZLchXkzXuYtGLgxsHPnQOOtIYkyMrIKWERABJuSyFqIsofHNVjhazcIitr QBQGGlmhugkqbTQeiVzTIOEGluJYxftakpIBFApwCDNuBLQFRYONZRQqjWYfuEWRRLNSMUIXUZNTpQUWKVMXrzhkMJvEsjhGEsoIfMsBqdUSUcxJQZJcqNezOILSyRiX ulnwpEyEYwlhCCOyJElxMZJQDfVbQFOLktqjcCAijdYyPWFgPGrkdDDlpLnYYxBuoiXnzSuokQMNgHgBhkYjsQqmeOFHoJepcgkzpHIzgmrDwhpmtYBDUlOsIkaRQOVs uEthFOZkXVtqZZHuwuwOcTbincKDOlBXMXjtByeZgexKZlAVUDuvgZdtJzcrdNyYgEoQWUUOBmRsRBlwsIbKiECOLcOADFpaYscFMTDgkGUAieZtRTWrVWhyjInmrmya 1652667714
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mSdRahlKgGPJRlMfExZExSQcJETVSZSQMWqjiQQRkNHBWGbfZrZChRUFzPdAUkEvMOEBfTgkowsBnZvYhvfxuArlPKUEAsdpsXXCHdZGTVBHZkmHQLockFaqDOJuHzZS 75.7425 PtQSHOLHccgXxAnEagxQkQUBkhRPzDgbRNYUZHeQtEmpvKJufNAkiNdwbWBCqlJVftMdVffWRxgcLyGppoQePVutfXTuaFpkmmDrZcPzHCvVeUiBwUwkVwQrUBjERLRQiMzdqZMbwvmXvdtvXoYMdqfzskQEwGwoTBNhqTJxXIwnJEJhepqoUQfLawSjVlFkhmPvHJOPVFwShMpRQzELNbayKwYedAvoezdFBfDWmegfQLcqITyJiSeNMuckJPRL -1430285212 kXoQFyCdPeToqbYDhxCvCcDHmWfYGUIZpBEphJJgGioVkMJLoTHxfYSvEGQVysEhKCIOUEhFICIXRTBzBLdXsgsDlbkpbwWsMLyYOfdyrRgRRvncjUIxxJekIDftqwHs bEbONBxNnuJRoOUBqCgwMsDTDDrgeQFhILRaRBQcdBfmOcBqwCVtdgyDCiAvSTsVYivAVXmcOBHJyCEMSvuHyIfQUiwEqHafgrpbPmJseaHwRHYqsaFOMGIoyrqHeQFq mDPXJHTUCGzliTmPbKzjGAZFOvUAOJYNlwAqOQKvIIDgABuCkwXZUlcYLuWFAHUQpgmUpAQUKBcTmuAJmjFNbkusSFEVpKaJhCwbDaPdmUtFakmoWOwppnVZFMJYunyc NqEweFOyFvTxUxASiZYSGZKcdKztaRrkVlNJLqpUsZSHKLOazMamDUepZAcbmkKLlooOAAcbYlyKtPJKCZmijOEFfIQiNSSwNTxlTxpBWOOdLfwLmnwlTUQgFiDomRAR AKxinTdHBRGlvkBvitnsnNHdSczlPXYSByqrnaZubkgqhtDzaijmRfRGEGChRhhkdmGJBXmgDKeBhOymEoewYGWjTmIwzNKuZuubfDexxVxeyQpzRDEUIxKNgEzFDsQg 897689619
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntitySummaryState writing a message containing :    1
@@ -57,16 +57,16 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1652667714
+    ${output}=    Read Until    priority : 897689619
     Log    ${output}
     Should Contain X Times    ${output}    === Event catchuparchiverEntitySummaryState received =     1
-    Should Contain    ${output}    Name : VPpWLCRQeQRwJqPMgeIqVmfXWvCSlTCRFREnFRbtPzxFMssAiwriaKcycUHQgNDRJFLsUpCdVWCIJTAlzXgfAncNRLDdbXRCatSsJYzqPhMHWoelXXGaoQvaOgbELbox
-    Should Contain    ${output}    Identifier : 92.3929
-    Should Contain    ${output}    Timestamp : urXbeZyZHDYXePpZZoNCVxSMxaQIMPWqAOBafPxVMeDstmgJTxmJTveYFIzRfbCCTCPQVwnxvKFgodMtnrlaqBQHLhdMXPHMSBPDiFxYMGrfrtVtSNyYGEzcTuxjgmBlAsESpjcqAttBeWUtUWHZaCORsZZgrMTxPEdkcYTVxsHHgWaIFTmDgbUMqwyXLsgYwIIgGyiOLueDsedwHYnNcgVZsaVKSrSAVfHoGJuLzeKlXbhgyASiJNzWqVLjmFao
-    Should Contain    ${output}    Address : -281853523
-    Should Contain    ${output}    CurrentState : loygLcsaAJAcIweDbHJAKoluRjxURfQWOyINyVBNIizrIHhXMghClNZfxmBSjLOkvFkJnKLikdZMUmVHXvMNjrAzCpBnitbxDHjGEfVaKJmXlVlPBGPZLhibfEKPVGBu
-    Should Contain    ${output}    PreviousState : JkbZgTjIEmREZkKjGGpAXMprLnOskvRlorAIeQxnbDXPbDdHXIchOwyBCLYglEOzSjRbzYZLchXkzXuYtGLgxsHPnQOOtIYkyMrIKWERABJuSyFqIsofHNVjhazcIitr
-    Should Contain    ${output}    Executing : QBQGGlmhugkqbTQeiVzTIOEGluJYxftakpIBFApwCDNuBLQFRYONZRQqjWYfuEWRRLNSMUIXUZNTpQUWKVMXrzhkMJvEsjhGEsoIfMsBqdUSUcxJQZJcqNezOILSyRiX
-    Should Contain    ${output}    CommandsAvailable : ulnwpEyEYwlhCCOyJElxMZJQDfVbQFOLktqjcCAijdYyPWFgPGrkdDDlpLnYYxBuoiXnzSuokQMNgHgBhkYjsQqmeOFHoJepcgkzpHIzgmrDwhpmtYBDUlOsIkaRQOVs
-    Should Contain    ${output}    ConfigurationsAvailable : uEthFOZkXVtqZZHuwuwOcTbincKDOlBXMXjtByeZgexKZlAVUDuvgZdtJzcrdNyYgEoQWUUOBmRsRBlwsIbKiECOLcOADFpaYscFMTDgkGUAieZtRTWrVWhyjInmrmya
-    Should Contain    ${output}    priority : 1652667714
+    Should Contain    ${output}    Name : mSdRahlKgGPJRlMfExZExSQcJETVSZSQMWqjiQQRkNHBWGbfZrZChRUFzPdAUkEvMOEBfTgkowsBnZvYhvfxuArlPKUEAsdpsXXCHdZGTVBHZkmHQLockFaqDOJuHzZS
+    Should Contain    ${output}    Identifier : 75.7425
+    Should Contain    ${output}    Timestamp : PtQSHOLHccgXxAnEagxQkQUBkhRPzDgbRNYUZHeQtEmpvKJufNAkiNdwbWBCqlJVftMdVffWRxgcLyGppoQePVutfXTuaFpkmmDrZcPzHCvVeUiBwUwkVwQrUBjERLRQiMzdqZMbwvmXvdtvXoYMdqfzskQEwGwoTBNhqTJxXIwnJEJhepqoUQfLawSjVlFkhmPvHJOPVFwShMpRQzELNbayKwYedAvoezdFBfDWmegfQLcqITyJiSeNMuckJPRL
+    Should Contain    ${output}    Address : -1430285212
+    Should Contain    ${output}    CurrentState : kXoQFyCdPeToqbYDhxCvCcDHmWfYGUIZpBEphJJgGioVkMJLoTHxfYSvEGQVysEhKCIOUEhFICIXRTBzBLdXsgsDlbkpbwWsMLyYOfdyrRgRRvncjUIxxJekIDftqwHs
+    Should Contain    ${output}    PreviousState : bEbONBxNnuJRoOUBqCgwMsDTDDrgeQFhILRaRBQcdBfmOcBqwCVtdgyDCiAvSTsVYivAVXmcOBHJyCEMSvuHyIfQUiwEqHafgrpbPmJseaHwRHYqsaFOMGIoyrqHeQFq
+    Should Contain    ${output}    Executing : mDPXJHTUCGzliTmPbKzjGAZFOvUAOJYNlwAqOQKvIIDgABuCkwXZUlcYLuWFAHUQpgmUpAQUKBcTmuAJmjFNbkusSFEVpKaJhCwbDaPdmUtFakmoWOwppnVZFMJYunyc
+    Should Contain    ${output}    CommandsAvailable : NqEweFOyFvTxUxASiZYSGZKcdKztaRrkVlNJLqpUsZSHKLOazMamDUepZAcbmkKLlooOAAcbYlyKtPJKCZmijOEFfIQiNSSwNTxlTxpBWOOdLfwLmnwlTUQgFiDomRAR
+    Should Contain    ${output}    ConfigurationsAvailable : AKxinTdHBRGlvkBvitnsnNHdSczlPXYSByqrnaZubkgqhtDzaijmRfRGEGChRhhkdmGJBXmgDKeBhOymEoewYGWjTmIwzNKuZuubfDexxVxeyQpzRDEUIxKNgEzFDsQg
+    Should Contain    ${output}    priority : 897689619

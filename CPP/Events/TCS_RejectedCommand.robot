@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_RejectedCommand sender/logger tests.
+Documentation    TCS_RejectedCommand communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12317 64156 31.2669 1057349223
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 52863 11974 81.7439 1456439736
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_RejectedCommand writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1057349223
+    ${output}=    Read Until    priority : 1456439736
     Log    ${output}
     Should Contain X Times    ${output}    === Event RejectedCommand received =     1
-    Should Contain    ${output}    CommandValue : 12317
-    Should Contain    ${output}    detailedState : 64156
-    Should Contain    ${output}    timestamp : 31.2669
-    Should Contain    ${output}    priority : 1057349223
+    Should Contain    ${output}    CommandValue : 52863
+    Should Contain    ${output}    detailedState : 11974
+    Should Contain    ${output}    timestamp : 81.7439
+    Should Contain    ${output}    priority : 1456439736

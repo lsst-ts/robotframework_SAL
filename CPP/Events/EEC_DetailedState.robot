@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_DetailedState sender/logger tests.
+Documentation    EEC_DetailedState communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 7398 1985641727
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 40457 -567440707
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_DetailedState writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1985641727
+    ${output}=    Read Until    priority : -567440707
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    detailedState : 7398
-    Should Contain    ${output}    priority : 1985641727
+    Should Contain    ${output}    detailedState : 40457
+    Should Contain    ${output}    priority : -567440707

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_startReadout sender/logger tests.
+Documentation    Camera_startReadout communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RJnTFhPzuHMrOezIvVvtvMGuUgIHJHmbksFmsxNfTjaMXiwegpbAQyCDSAQBoIIyTnWBsPshzJXvnSiFWRMtbsJUaRWLKwaYuEhmAHvApzfXuLZLAavOTZInYWzXMudIIxwajUldnsVFyzTLKWCJcbzrRUQhkpmZJDTuHKSXhPfBHzjtjYblBXQmbrRQJJAZQvMLzHPtVdePXPnzVwrBkxKpLgnhbQcRzGxvEXeQfUQrcohcaNKqNVRzgTTqdKzd fgsVmyEzhAAVdtWWovtDHpqNAFNLvmWELGDbQaAPpxtqgENZdWfHKrvuaUuAJTCBroIuwsXNzgDSxMelSHgsIvkYkmrSPBlELTzVrixoEEeJmfCQtXVEYgrdbQJvIYNXGhYMkICdDQWzWIOCzzClznNFauClKELXAajOKseuWVCowuRoACSwxgDNlGFYNLRZkgTZcnKEhHvAEKjErLTyqxAuScjJHubbhwULpTGbNQRaBEpyItvZVcbbVeNkrfEV 690501471 95.1125 83.1863 1418128776
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AuhfcvoncEJnyURdlJBuSHPEfIQOmpqNbaOqAhKaCFhqTlvkMnACjRgQYqiuONODNCxHzQiEPKfuBhFurCkCSUNLFLbmOuebNrRBssMfhaqOkJahRSdvkTSvVbHuxFtzKyWpVrKyIxfQNbUSWWQeWMOjizwrLBwHElTvJeMpsTtjnBKXkZhyJVfrxxMISzHEnymYJUvIjmWCCnriXHHjyCuadSgpwoJqLMjVlHVxzNLuJgkiGaiTEZntEOUhwizU NzMViqkpQKugjAfxCgTztGluKPZaVzgAOYGKeBPXibRpoNdaNcMwkVHLNTJrtjVXflmAMotuACCRjRbkSrNPxHaDVxqWQJogBXFwUaHLPZiMXAlZNVdLeQdshnMPtPqPyScFtFvJIqzQXhTWrGRInjcpfktbUyxEIywPdHnZeNdCvjWJzlLoQjlnmFCcVGZKAIlNAOxDGcwmHIEbYAldGZtluSgDVEOYphUxbuTNSuQSIwssiUGshHkjsnuyOvWL 1558444824 47.6288 36.5079 -584613989
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startReadout writing a message containing :    1
@@ -57,12 +57,12 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1418128776
+    ${output}=    Read Until    priority : -584613989
     Log    ${output}
     Should Contain X Times    ${output}    === Event startReadout received =     1
-    Should Contain    ${output}    imageSequenceName : RJnTFhPzuHMrOezIvVvtvMGuUgIHJHmbksFmsxNfTjaMXiwegpbAQyCDSAQBoIIyTnWBsPshzJXvnSiFWRMtbsJUaRWLKwaYuEhmAHvApzfXuLZLAavOTZInYWzXMudIIxwajUldnsVFyzTLKWCJcbzrRUQhkpmZJDTuHKSXhPfBHzjtjYblBXQmbrRQJJAZQvMLzHPtVdePXPnzVwrBkxKpLgnhbQcRzGxvEXeQfUQrcohcaNKqNVRzgTTqdKzd
-    Should Contain    ${output}    imageName : fgsVmyEzhAAVdtWWovtDHpqNAFNLvmWELGDbQaAPpxtqgENZdWfHKrvuaUuAJTCBroIuwsXNzgDSxMelSHgsIvkYkmrSPBlELTzVrixoEEeJmfCQtXVEYgrdbQJvIYNXGhYMkICdDQWzWIOCzzClznNFauClKELXAajOKseuWVCowuRoACSwxgDNlGFYNLRZkgTZcnKEhHvAEKjErLTyqxAuScjJHubbhwULpTGbNQRaBEpyItvZVcbbVeNkrfEV
-    Should Contain    ${output}    imageIndex : 690501471
-    Should Contain    ${output}    timeStamp : 95.1125
-    Should Contain    ${output}    exposureTime : 83.1863
-    Should Contain    ${output}    priority : 1418128776
+    Should Contain    ${output}    imageSequenceName : AuhfcvoncEJnyURdlJBuSHPEfIQOmpqNbaOqAhKaCFhqTlvkMnACjRgQYqiuONODNCxHzQiEPKfuBhFurCkCSUNLFLbmOuebNrRBssMfhaqOkJahRSdvkTSvVbHuxFtzKyWpVrKyIxfQNbUSWWQeWMOjizwrLBwHElTvJeMpsTtjnBKXkZhyJVfrxxMISzHEnymYJUvIjmWCCnriXHHjyCuadSgpwoJqLMjVlHVxzNLuJgkiGaiTEZntEOUhwizU
+    Should Contain    ${output}    imageName : NzMViqkpQKugjAfxCgTztGluKPZaVzgAOYGKeBPXibRpoNdaNcMwkVHLNTJrtjVXflmAMotuACCRjRbkSrNPxHaDVxqWQJogBXFwUaHLPZiMXAlZNVdLeQdshnMPtPqPyScFtFvJIqzQXhTWrGRInjcpfktbUyxEIywPdHnZeNdCvjWJzlLoQjlnmFCcVGZKAIlNAOxDGcwmHIEbYAldGZtluSgDVEOYphUxbuTNSuQSIwssiUGshHkjsnuyOvWL
+    Should Contain    ${output}    imageIndex : 1558444824
+    Should Contain    ${output}    timeStamp : 47.6288
+    Should Contain    ${output}    exposureTime : 36.5079
+    Should Contain    ${output}    priority : -584613989

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS_TargetInPosition sender/logger tests.
+Documentation    TCS_TargetInPosition communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 1073280473
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 980338794
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_TargetInPosition writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1073280473
+    ${output}=    Read Until    priority : 980338794
     Log    ${output}
     Should Contain X Times    ${output}    === Event TargetInPosition received =     1
     Should Contain    ${output}    TargetInPosition : 1
-    Should Contain    ${output}    priority : 1073280473
+    Should Contain    ${output}    priority : 980338794

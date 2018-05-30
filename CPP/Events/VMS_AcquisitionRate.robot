@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_AcquisitionRate sender/logger tests.
+Documentation    VMS_AcquisitionRate communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 68.6133 49.02 2104393986
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 98.1741 14.0451 1907123427
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_AcquisitionRate writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 2104393986
+    ${output}=    Read Until    priority : 1907123427
     Log    ${output}
     Should Contain X Times    ${output}    === Event AcquisitionRate received =     1
-    Should Contain    ${output}    Timestamp : 68.6133
-    Should Contain    ${output}    RateInHz : 49.02
-    Should Contain    ${output}    priority : 2104393986
+    Should Contain    ${output}    Timestamp : 98.1741
+    Should Contain    ${output}    RateInHz : 14.0451
+    Should Contain    ${output}    priority : 1907123427

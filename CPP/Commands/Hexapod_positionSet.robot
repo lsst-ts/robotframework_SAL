@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_positionSet commander/controller tests.
+Documentation    Hexapod_positionSet communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.990676675881 0.331105578473 0.596082768196 0.0112246280354 0.0741844402837 0.433798028857 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.582 0.555876 0.588561 0.025917 0.487018 0.205511 0
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.990676675881 0.331105578473 0.596082768196 0.0112246280354 0.0741844402837 0.433798028857 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.582 0.555876 0.588561 0.025917 0.487018 0.205511 0
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 0.990676675881    1
-    Should Contain X Times    ${output}    y : 0.331105578473    1
-    Should Contain X Times    ${output}    z : 0.596082768196    1
-    Should Contain X Times    ${output}    u : 0.0112246280354    1
-    Should Contain X Times    ${output}    v : 0.0741844402837    1
-    Should Contain X Times    ${output}    w : 0.433798028857    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 0.582    1
+    Should Contain X Times    ${output}    y : 0.555876    1
+    Should Contain X Times    ${output}    z : 0.588561    1
+    Should Contain X Times    ${output}    u : 0.025917    1
+    Should Contain X Times    ${output}    v : 0.487018    1
+    Should Contain X Times    ${output}    w : 0.205511    1
+    Should Contain X Times    ${output}    sync : 0    1
     Should Contain    ${output}    === command positionSet issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -89,13 +89,13 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 0.990676675881    1
-    Should Contain X Times    ${output}    y : 0.331105578473    1
-    Should Contain X Times    ${output}    z : 0.596082768196    1
-    Should Contain X Times    ${output}    u : 0.0112246280354    1
-    Should Contain X Times    ${output}    v : 0.0741844402837    1
-    Should Contain X Times    ${output}    w : 0.433798028857    1
-    Should Contain X Times    ${output}    sync : 1    1
+    Should Contain X Times    ${output}    x : 0.582    1
+    Should Contain X Times    ${output}    y : 0.555876    1
+    Should Contain X Times    ${output}    z : 0.588561    1
+    Should Contain X Times    ${output}    u : 0.025917    1
+    Should Contain X Times    ${output}    v : 0.487018    1
+    Should Contain X Times    ${output}    w : 0.205511    1
+    Should Contain X Times    ${output}    sync : 0    1
     Should Contain X Times    ${output}    === [ackCommand_positionSet] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

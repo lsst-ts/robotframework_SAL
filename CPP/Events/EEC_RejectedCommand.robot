@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_RejectedCommand sender/logger tests.
+Documentation    EEC_RejectedCommand communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 61664 20261 0.255 1087605924
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 16122 43903 9.8944 -1444442117
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_RejectedCommand writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1087605924
+    ${output}=    Read Until    priority : -1444442117
     Log    ${output}
     Should Contain X Times    ${output}    === Event RejectedCommand received =     1
-    Should Contain    ${output}    commandValue : 61664
-    Should Contain    ${output}    detailedState : 20261
-    Should Contain    ${output}    timestamp : 0.255
-    Should Contain    ${output}    priority : 1087605924
+    Should Contain    ${output}    commandValue : 16122
+    Should Contain    ${output}    detailedState : 43903
+    Should Contain    ${output}    timestamp : 9.8944
+    Should Contain    ${output}    priority : -1444442117

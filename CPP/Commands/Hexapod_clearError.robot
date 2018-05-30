@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_clearError commander/controller tests.
+Documentation    Hexapod_clearError communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

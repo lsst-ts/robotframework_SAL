@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtHeaderService_RejectedCommand sender/logger tests.
+Documentation    AtHeaderService_RejectedCommand communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 59622 65055 29.9451 1614898566
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 41323 32248 79.5734 -1592723783
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_RejectedCommand writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1614898566
+    ${output}=    Read Until    priority : -1592723783
     Log    ${output}
     Should Contain X Times    ${output}    === Event RejectedCommand received =     1
-    Should Contain    ${output}    commandValue : 59622
-    Should Contain    ${output}    detailedState : 65055
-    Should Contain    ${output}    timestamp : 29.9451
-    Should Contain    ${output}    priority : 1614898566
+    Should Contain    ${output}    commandValue : 41323
+    Should Contain    ${output}    detailedState : 32248
+    Should Contain    ${output}    timestamp : 79.5734
+    Should Contain    ${output}    priority : -1592723783

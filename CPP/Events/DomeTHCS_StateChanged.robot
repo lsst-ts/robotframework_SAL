@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeTHCS_StateChanged sender/logger tests.
+Documentation    DomeTHCS_StateChanged communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 31119 -1809437058
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 27546 221007379
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_StateChanged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1809437058
+    ${output}=    Read Until    priority : 221007379
     Log    ${output}
     Should Contain X Times    ${output}    === Event StateChanged received =     1
-    Should Contain    ${output}    newState : 31119
-    Should Contain    ${output}    priority : -1809437058
+    Should Contain    ${output}    newState : 27546
+    Should Contain    ${output}    priority : 221007379

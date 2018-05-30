@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_AccelerationLimitReached sender/logger tests.
+Documentation    DomeLWS_AccelerationLimitReached communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -1457474132
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -678381770
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_AccelerationLimitReached writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1457474132
+    ${output}=    Read Until    priority : -678381770
     Log    ${output}
     Should Contain X Times    ${output}    === Event AccelerationLimitReached received =     1
-    Should Contain    ${output}    priority : -1457474132
+    Should Contain    ${output}    priority : -678381770

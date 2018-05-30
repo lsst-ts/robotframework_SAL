@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_LoopTimeOutOfRange sender/logger tests.
+Documentation    AtMonochromator_LoopTimeOutOfRange communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 -1621330535
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -2128138607
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1621330535
+    ${output}=    Read Until    priority : -2128138607
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
-    Should Contain    ${output}    loopTimeOutOfRange : 1
-    Should Contain    ${output}    priority : -1621330535
+    Should Contain    ${output}    loopTimeOutOfRange : 0
+    Should Contain    ${output}    priority : -2128138607

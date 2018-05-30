@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_SettingVersions sender/logger tests.
+Documentation    AtMonochromator_SettingVersions communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send xUKZcDOIVaVORTHpaxuRTqIvUUSQRYhdAScgchGPODfieRktoGjoTlWasbmHElGuVxQSzAZXWClDGoHLNBROCYqXGLjnBsfrjthUgeMmBIuxYQQWxblfFfDCSPRtxXdzgkYYctNnlWjsnTNQPnAJrlNYUpTUZBWBWfxZGigowjSicwEdrmBZhaiBWHViLKbPzASXsSGozEINiFmoKxccRsEzEvaRiNKmsippRPhlrLgxQZBmnzDkQhrzDhCLydGl sIWCxJoazqgcagKLUxtKSCTKPJAnpIYqMiMIQcPfgrZLBBjcFyoIrqrQpkNtJAfuWfHRWNcdYkQtUWZZKMqjTWmvyWLzaBIGpvBVPlGTCjqoPrXGquTlfyikItXKTuDHBNgaPXNmMeoXbYREdvRBEJcfQZdLmCEBlQVsZakLotYEkNLgQVythIrbzcbtKIoAWoXrdmJkYAXuaGauOLprCiWigtNORAWSeNscXJpZOYLeOEYEglRmobmOdvDRXLSp -2008799964
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send jsUMqzLqmVTRthjeaytWAiUqCgArWhljeWLSAWSMpitDwuWMSIvrcYaMFaqkeKJcXtiaUetpwHFJAVMupVPpmmZvetKnZErIueYxpAfChhuabwYliwwLZthXZKIucIhzZtFReJvOoSlzHZQzCKOftiEaEGgpwdveSuASqZXtjJnrAhXFJvPGxcPPOhlnNvjoLNncfQaoFVyDDgqBTEoMhJaNALgHEWJRbdNVdWTjNThTHxBmonMRQDiwRuDGVVrn KqPhGkOZzGYyHhxZAKZbQTcEAhbxhDOVQyDgxNlLirDUXRWOWnuoeseAmbsHEcaqTenUabZDLhLyiCqJIGvZHzJGUhHIrbgtnTEpVchpOkKlrxDzfoOEYwIJkXggPqVITIBYyPwEOUrzAYMdHHaFxAXsPafwFazUbHsFaNuAwsgUyqDdgKlXnOALUWIXuPOyNlIgTTnDKTHshomEcsDVFHFQlcTCtcrArzqvkYOhkJgUOczXTeXYxInjUoMjqTHG 867028858
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2008799964
+    ${output}=    Read Until    priority : 867028858
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingsVersion : xUKZcDOIVaVORTHpaxuRTqIvUUSQRYhdAScgchGPODfieRktoGjoTlWasbmHElGuVxQSzAZXWClDGoHLNBROCYqXGLjnBsfrjthUgeMmBIuxYQQWxblfFfDCSPRtxXdzgkYYctNnlWjsnTNQPnAJrlNYUpTUZBWBWfxZGigowjSicwEdrmBZhaiBWHViLKbPzASXsSGozEINiFmoKxccRsEzEvaRiNKmsippRPhlrLgxQZBmnzDkQhrzDhCLydGl
-    Should Contain    ${output}    recommendedSettingsLabels : sIWCxJoazqgcagKLUxtKSCTKPJAnpIYqMiMIQcPfgrZLBBjcFyoIrqrQpkNtJAfuWfHRWNcdYkQtUWZZKMqjTWmvyWLzaBIGpvBVPlGTCjqoPrXGquTlfyikItXKTuDHBNgaPXNmMeoXbYREdvRBEJcfQZdLmCEBlQVsZakLotYEkNLgQVythIrbzcbtKIoAWoXrdmJkYAXuaGauOLprCiWigtNORAWSeNscXJpZOYLeOEYEglRmobmOdvDRXLSp
-    Should Contain    ${output}    priority : -2008799964
+    Should Contain    ${output}    recommendedSettingsVersion : jsUMqzLqmVTRthjeaytWAiUqCgArWhljeWLSAWSMpitDwuWMSIvrcYaMFaqkeKJcXtiaUetpwHFJAVMupVPpmmZvetKnZErIueYxpAfChhuabwYliwwLZthXZKIucIhzZtFReJvOoSlzHZQzCKOftiEaEGgpwdveSuASqZXtjJnrAhXFJvPGxcPPOhlnNvjoLNncfQaoFVyDDgqBTEoMhJaNALgHEWJRbdNVdWTjNThTHxBmonMRQDiwRuDGVVrn
+    Should Contain    ${output}    recommendedSettingsLabels : KqPhGkOZzGYyHhxZAKZbQTcEAhbxhDOVQyDgxNlLirDUXRWOWnuoeseAmbsHEcaqTenUabZDLhLyiCqJIGvZHzJGUhHIrbgtnTEpVchpOkKlrxDzfoOEYwIJkXggPqVITIBYyPwEOUrzAYMdHHaFxAXsPafwFazUbHsFaNuAwsgUyqDdgKlXnOALUWIXuPOyNlIgTTnDKTHshomEcsDVFHFQlcTCtcrArzqvkYOhkJgUOczXTeXYxInjUoMjqTHG
+    Should Contain    ${output}    priority : 867028858

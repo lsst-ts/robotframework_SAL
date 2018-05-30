@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_RotationPrevented sender/logger tests.
+Documentation    DomeADB_RotationPrevented communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ZYaMgaRoikKqYVOtNCTZ 316142396
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XigKHaDyOPhgWqJFzCoIIKPhZXjdLIycbbTemAJKNTGMJuYdCjgindYglsUjnMjhsNFoFSLAXjSbbLHrGMKcpSLSQRIbddodOOZjosbVomIrfVYeQvYKsbrsWmCtNcXHnBrCuJAExXasBDrLSjGSclsJkjcgJAfkGbPpSFYmRXqhhMNQBDqczkqBXxGYgQpejYWoEdXNjHRxModsHAmnrzctxBqKqIbsrFAjxwvyOrBnZaPZOCqCPwRIvyndKSpHIwVUDPkzBHuFgGdeqpndFaBzAlxWjqdhElWhKUGAzwePjXPQdZdpmruvvTcrjuFodoTTOWjeyHgYRfTUwiqqvxmbybzeSvbwknPyjbpItbxyfrfAfAJUlmIvLwNBOKxVUQLU 698737135
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 316142396
+    ${output}=    Read Until    priority : 698737135
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationPrevented received =     1
-    Should Contain    ${output}    causeId : ZYaMgaRoikKqYVOtNCTZ
-    Should Contain    ${output}    priority : 316142396
+    Should Contain    ${output}    causeId : XigKHaDyOPhgWqJFzCoIIKPhZXjdLIycbbTemAJKNTGMJuYdCjgindYglsUjnMjhsNFoFSLAXjSbbLHrGMKcpSLSQRIbddodOOZjosbVomIrfVYeQvYKsbrsWmCtNcXHnBrCuJAExXasBDrLSjGSclsJkjcgJAfkGbPpSFYmRXqhhMNQBDqczkqBXxGYgQpejYWoEdXNjHRxModsHAmnrzctxBqKqIbsrFAjxwvyOrBnZaPZOCqCPwRIvyndKSpHIwVUDPkzBHuFgGdeqpndFaBzAlxWjqdhElWhKUGAzwePjXPQdZdpmruvvTcrjuFodoTTOWjeyHgYRfTUwiqqvxmbybzeSvbwknPyjbpItbxyfrfAfAJUlmIvLwNBOKxVUQLU
+    Should Contain    ${output}    priority : 698737135

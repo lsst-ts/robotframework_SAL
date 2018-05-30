@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeMONCS_Interlock sender/logger tests.
+Documentation    DomeMONCS_Interlock communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send MufbuMOVhknfdtZvzIDhcMrqPeVgfxXEogNiKEUTyQZLTKejlvKEjXXYoBsPLKZpYmMXOhNODfRtmBzsUsPImqLyUzJiYmCxMtVLhdRELXIkPwjXRBfhGLIQSzFIGWrPHiqtWDiXlYfVlQopeXTIEBut -762501130
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send nOvWuaFcnpOfrQasuRcDgtynUevGHWSBONPKsstfYOoaPWnbpOQEUnNjwhNmWlWgPMZIltqWGYaCGjuThVvOqbpFRYKmsVdwBTnxtjsZOGZmKMWZXAawywLwbicojEYdUwZXpmbUqxTzQBJiRkwjUmCeLfVzURWcMXrMfHzpPzRKCtSGpuJVwkaYRonJwUYgjmEuedvxqyVChpCloXeybcctrYOZxsNmfjcuRfpqfkzhiEAPmLlGVueqjLTddhpcMSpvSNOAFbpFaVoygRqhOuqOfRiGsgZNgpZWRTEiKJXcqdPfeaXrhPbqOlafPbBhbuHqnnhjibiQViTYddHcTCclmsrwCSqxiScPseiEYFRYEQQwqMqVZRjPhWxfQroVKxxWAzWRpBSWwcwROiJFOkLByzIyfNgSMqQiGKwRCZBUabXcwPEMOMpneSkQMSvhdwnUtwrIgLlhVykAoXlyXpVLHpTjTAYsVSLrfdbNHoWXAbZDFsyqwMRAnZEKdXXjfPgPLThTiZIrFUqkPBEokaTWlubShmFcKPMqSzlXwbgwfvVzDLuUqElfcJJomKTeCIeIEwAjizSNSudUdlKoNKpAPQRVNuTnRCEjxUKUGoKaxLSRjEwIewIEdwQseRWQgHUvNlFjKHyVqaWmUIafQjhGLJpBSkEQgOnIuuxZEMXZROUQSwuMrRDeOWxyqHCPncnnrFXYAuLiSLGGdHuCzdXwqysgIzQeEUJOKmetboXCEYuVsiVMiUNBCfTqVufzibsSjNoZGpjXBqWMHBcEkVKszdYpQlrheoALZwYjwrmGwNgJVoPyyqjwloJXNDiUavsKHgidLYNDDxrFAuyIjkJYwyLzkipFAPDoJcZqwKvXLggcoaTiECpbKWZTOVMAWizRFOiCQvNSVRCleJyVMSWHfiUYtlsqDPlFSZbBzNTynVMODriaAvNxJeHIPWPpGXOuVqnawxShVKloEqWpdICGzkhVgjws -194681371
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -762501130
+    ${output}=    Read Until    priority : -194681371
     Log    ${output}
     Should Contain X Times    ${output}    === Event Interlock received =     1
-    Should Contain    ${output}    detail : MufbuMOVhknfdtZvzIDhcMrqPeVgfxXEogNiKEUTyQZLTKejlvKEjXXYoBsPLKZpYmMXOhNODfRtmBzsUsPImqLyUzJiYmCxMtVLhdRELXIkPwjXRBfhGLIQSzFIGWrPHiqtWDiXlYfVlQopeXTIEBut
-    Should Contain    ${output}    priority : -762501130
+    Should Contain    ${output}    detail : nOvWuaFcnpOfrQasuRcDgtynUevGHWSBONPKsstfYOoaPWnbpOQEUnNjwhNmWlWgPMZIltqWGYaCGjuThVvOqbpFRYKmsVdwBTnxtjsZOGZmKMWZXAawywLwbicojEYdUwZXpmbUqxTzQBJiRkwjUmCeLfVzURWcMXrMfHzpPzRKCtSGpuJVwkaYRonJwUYgjmEuedvxqyVChpCloXeybcctrYOZxsNmfjcuRfpqfkzhiEAPmLlGVueqjLTddhpcMSpvSNOAFbpFaVoygRqhOuqOfRiGsgZNgpZWRTEiKJXcqdPfeaXrhPbqOlafPbBhbuHqnnhjibiQViTYddHcTCclmsrwCSqxiScPseiEYFRYEQQwqMqVZRjPhWxfQroVKxxWAzWRpBSWwcwROiJFOkLByzIyfNgSMqQiGKwRCZBUabXcwPEMOMpneSkQMSvhdwnUtwrIgLlhVykAoXlyXpVLHpTjTAYsVSLrfdbNHoWXAbZDFsyqwMRAnZEKdXXjfPgPLThTiZIrFUqkPBEokaTWlubShmFcKPMqSzlXwbgwfvVzDLuUqElfcJJomKTeCIeIEwAjizSNSudUdlKoNKpAPQRVNuTnRCEjxUKUGoKaxLSRjEwIewIEdwQseRWQgHUvNlFjKHyVqaWmUIafQjhGLJpBSkEQgOnIuuxZEMXZROUQSwuMrRDeOWxyqHCPncnnrFXYAuLiSLGGdHuCzdXwqysgIzQeEUJOKmetboXCEYuVsiVMiUNBCfTqVufzibsSjNoZGpjXBqWMHBcEkVKszdYpQlrheoALZwYjwrmGwNgJVoPyyqjwloJXNDiUavsKHgidLYNDDxrFAuyIjkJYwyLzkipFAPDoJcZqwKvXLggcoaTiECpbKWZTOVMAWizRFOiCQvNSVRCleJyVMSWHfiUYtlsqDPlFSZbBzNTynVMODriaAvNxJeHIPWPpGXOuVqnawxShVKloEqWpdICGzkhVgjws
+    Should Contain    ${output}    priority : -194681371

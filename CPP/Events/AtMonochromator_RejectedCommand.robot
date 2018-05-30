@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtMonochromator_RejectedCommand sender/logger tests.
+Documentation    AtMonochromator_RejectedCommand communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 35791 1478573845 97.265 -769169657
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 60336 -1141948599 53.9294 1365611766
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_RejectedCommand writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -769169657
+    ${output}=    Read Until    priority : 1365611766
     Log    ${output}
     Should Contain X Times    ${output}    === Event RejectedCommand received =     1
-    Should Contain    ${output}    commandValue : 35791
-    Should Contain    ${output}    detailedState : 1478573845
-    Should Contain    ${output}    timestamp : 97.265
-    Should Contain    ${output}    priority : -769169657
+    Should Contain    ${output}    commandValue : 60336
+    Should Contain    ${output}    detailedState : -1141948599
+    Should Contain    ${output}    timestamp : 53.9294
+    Should Contain    ${output}    priority : 1365611766

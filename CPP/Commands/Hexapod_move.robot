@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_move commander/controller tests.
+Documentation    Hexapod_move communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

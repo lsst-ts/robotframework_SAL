@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtHeaderService_LoopTimeOutOfRange sender/logger tests.
+Documentation    AtHeaderService_LoopTimeOutOfRange communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 1806234418
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 505707543
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1806234418
+    ${output}=    Read Until    priority : 505707543
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
     Should Contain    ${output}    loopTimeOutOfRange : 0
-    Should Contain    ${output}    priority : 1806234418
+    Should Contain    ${output}    priority : 505707543

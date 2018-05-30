@@ -348,7 +348,9 @@ CPP/Events/TCS_TargetInPosition.robot
 CPP/Events/TCS_wfpDataReady.robot
 CPP/Events/TCS_zemaxError.robot
 CPP/Events/TcsOFC_ErrorCode.robot
+CPP/Events/TcsOFC_NoEnoughZernikeTerm.robot
 CPP/Events/TcsWEP_ErrorCode.robot
+CPP/Events/TcsWEP_NoEnoughWfsNum.robot
 CPP/Events/TcsWEP_StateChanged.robot
 CPP/Events/TcsWEP_WavefrontErrorCalculated.robot
 CPP/Events/VMS_AcquisitionRate.robot

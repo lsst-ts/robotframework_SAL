@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    SummitFacility_EnterControl commander/controller tests.
+Documentation    SummitFacility_EnterControl communications tests.
 Force Tags    cpp    TSS-2622
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLouvers_MovementPrevented sender/logger tests.
+Documentation    DomeLouvers_MovementPrevented communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -23362 SkDvJUMvgjLABLylCoWnbTEHjAaXRDMcYKtgPbeGyJgxTetxUpDQQWzazybzvkhiWUpZYtLGUUKZvUeqqgvsiiahhkNnqTXqKwLaVkjzYvhUQICnRJkxJCORjQvXImJPLJFUwExZUZxlQgfjeZNYVPwhkOWaWCAeUxizfOmxHTYhSQyzwUURCjbZHzUOphRBhFAfxgtMuyTElVvlsBwSxpeZOoOIzCrxEtoVJCjDHOnYqRWexcygeNFITfLwXWmJsBUA -1453323346
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 14653 GGebrbwUoYVGruQIGQEOshxREsUVQfBZDHEdFSJCAmAnmIvxGqGfWjYJzcjoxJGsiWKBIXacLrovzNVrQQGSZFZVUCBDUrNzFPapBwKcpALBAcKrNIojogrbtRqihqLqVLuIqVorncBJvIaVOsdRahxBXVeeybcPcIgDySZWxcEWijcxCpYJuFLlLpphoseGzNJlEDUQivhLvFdmTSqJQUSlHOUXkoTaxLZiXScKNNzNzywWgOzBHJMiTbYXorJcRMWPJBCqrJbIuYtZFmxqLxqDYkFCOcEXtdVFhaEynqnURJNGCgasaYHebTGyZcuHRnwmNpgFHdvuHVIQubjzUwBkpkFXxUFQGBoHIZljHHmeuMZwxGGDLJXtSuwENhUMCILYsGQkYCPSORGndOceVfaWDKxmuPVHfxrdiecaXveKktHIJtyTfCGXBkWjRCZpIJviFqBCJTxMJQpFsTkyamUmdUWwLPQUTCTZYCPqJESsPPOAdPiFdsasgcztThsJVVfuzDCNDLVITmQHSIBNWEywcRbCNoVsCQEYSCHtbcKrvplqHoGbMeAfYHfrVMWDstaoxtRSrPyjkSfxzsflkAPAvBfgMoSkjfCsxkYZdxkoAZyapvzQYMfaiicBrnhKNDqnvQoIOyeqSEVcwmzGZejHZPmktzGKdTvIuSugOCfllojddaWuYVqLIrrfIdlwVIhwaHYTxvDtlTYbxqeKEFnIQLrXWiCkTKaZsOTEHGyQOdLoGeoifQkTIDHAowWEiiuKbEGrU -1704646104
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_MovementPrevented writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1453323346
+    ${output}=    Read Until    priority : -1704646104
     Log    ${output}
     Should Contain X Times    ${output}    === Event MovementPrevented received =     1
-    Should Contain    ${output}    louverID : -23362
-    Should Contain    ${output}    causeId : SkDvJUMvgjLABLylCoWnbTEHjAaXRDMcYKtgPbeGyJgxTetxUpDQQWzazybzvkhiWUpZYtLGUUKZvUeqqgvsiiahhkNnqTXqKwLaVkjzYvhUQICnRJkxJCORjQvXImJPLJFUwExZUZxlQgfjeZNYVPwhkOWaWCAeUxizfOmxHTYhSQyzwUURCjbZHzUOphRBhFAfxgtMuyTElVvlsBwSxpeZOoOIzCrxEtoVJCjDHOnYqRWexcygeNFITfLwXWmJsBUA
-    Should Contain    ${output}    priority : -1453323346
+    Should Contain    ${output}    louverID : 14653
+    Should Contain    ${output}    causeId : GGebrbwUoYVGruQIGQEOshxREsUVQfBZDHEdFSJCAmAnmIvxGqGfWjYJzcjoxJGsiWKBIXacLrovzNVrQQGSZFZVUCBDUrNzFPapBwKcpALBAcKrNIojogrbtRqihqLqVLuIqVorncBJvIaVOsdRahxBXVeeybcPcIgDySZWxcEWijcxCpYJuFLlLpphoseGzNJlEDUQivhLvFdmTSqJQUSlHOUXkoTaxLZiXScKNNzNzywWgOzBHJMiTbYXorJcRMWPJBCqrJbIuYtZFmxqLxqDYkFCOcEXtdVFhaEynqnURJNGCgasaYHebTGyZcuHRnwmNpgFHdvuHVIQubjzUwBkpkFXxUFQGBoHIZljHHmeuMZwxGGDLJXtSuwENhUMCILYsGQkYCPSORGndOceVfaWDKxmuPVHfxrdiecaXveKktHIJtyTfCGXBkWjRCZpIJviFqBCJTxMJQpFsTkyamUmdUWwLPQUTCTZYCPqJESsPPOAdPiFdsasgcztThsJVVfuzDCNDLVITmQHSIBNWEywcRbCNoVsCQEYSCHtbcKrvplqHoGbMeAfYHfrVMWDstaoxtRSrPyjkSfxzsflkAPAvBfgMoSkjfCsxkYZdxkoAZyapvzQYMfaiicBrnhKNDqnvQoIOyeqSEVcwmzGZejHZPmktzGKdTvIuSugOCfllojddaWuYVqLIrrfIdlwVIhwaHYTxvDtlTYbxqeKEFnIQLrXWiCkTKaZsOTEHGyQOdLoGeoifQkTIDHAowWEiiuKbEGrU
+    Should Contain    ${output}    priority : -1704646104

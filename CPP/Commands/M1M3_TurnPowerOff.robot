@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_TurnPowerOff commander/controller tests.
+Documentation    M1M3_TurnPowerOff communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 0 1 1 0 0 0 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 0 1 1 0 0 1 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 0 1 1 0 0 0 1
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 1 0 1 1 0 0 1 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -74,7 +74,7 @@ Start Commander
     Should Contain X Times    ${output}    TurnPowerNetworkDOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff : 0    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff : 1    1
     Should Contain    ${output}    === command TurnPowerOff issued =
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -96,7 +96,7 @@ Read Controller
     Should Contain X Times    ${output}    TurnPowerNetworkDOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff : 0    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff : 1    1
     Should Contain X Times    ${output}    === [ackCommand_TurnPowerOff] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_test commander/controller tests.
+Documentation    Hexapod_test communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1916990943 -1941350029
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -654742846 -1940592191
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -1916990943 -1941350029
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -654742846 -1940592191
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    ivalue1 : -1916990943    1
-    Should Contain X Times    ${output}    ivalue2 : -1941350029    1
+    Should Contain X Times    ${output}    ivalue1 : -654742846    1
+    Should Contain X Times    ${output}    ivalue2 : -1940592191    1
     Should Contain    ${output}    === command test issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    ivalue1 : -1916990943    1
-    Should Contain X Times    ${output}    ivalue2 : -1941350029    1
+    Should Contain X Times    ${output}    ivalue1 : -654742846    1
+    Should Contain X Times    ${output}    ivalue2 : -1940592191    1
     Should Contain X Times    ${output}    === [ackCommand_test] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtCamera_ErrorCode sender/logger tests.
+Documentation    AtCamera_ErrorCode communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1032133076 -1738880059
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -2001764349 -1532219041
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_ErrorCode writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1738880059
+    ${output}=    Read Until    priority : -1532219041
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : 1032133076
-    Should Contain    ${output}    priority : -1738880059
+    Should Contain    ${output}    errorCode : -2001764349
+    Should Contain    ${output}    priority : -1532219041

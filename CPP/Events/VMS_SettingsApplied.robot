@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_SettingsApplied sender/logger tests.
+Documentation    VMS_SettingsApplied communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 56.7975 wYhrvAvRVXIyqDoybxwUmgvRJFhFMPyBQdhNwnmfgNkgYPPBxvuLFvWfrJzktooFWVnZFgQLsulkOXtCoKctjFBetMFVbcfoqNgAxWWnzPSpilOtFrawpNSpBDAWvmyDEJkiJBkKUbLhQrXXhWconuzorZfjakoVxMejXObQbfSMBJfYoomeBbADabewQPciCnArqmhmxbABolTSbTDdcPbaYcSkHAJuqEuNbOVXlpHqGttWwHqvYVXKpqXrztGf -74596586
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 89.3127 JITZTHRRorzqocnMToTFAdnoSapgmqxXSzKialXQZtjXvLVwQHgLISPnOnVcerIwDdBVZENrXGMvhiaDoYkycFnMNamBoBjfLSNdAEpXRUGdRFrfDfqyEshPyKjScwKVpLGMOCYquXqyTFewUeRNquTVItpGZlIfMuQAuNANqiBcrlvLwdELIpkHQRjZEBLGDPITabQZmTVgDZSxxCqqkiJudqmEzIKINmQCTZjGoKOshEBEiEDkslqyzzykmXXc 1455780332
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -74596586
+    ${output}=    Read Until    priority : 1455780332
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Timestamp : 56.7975
-    Should Contain    ${output}    Settings : wYhrvAvRVXIyqDoybxwUmgvRJFhFMPyBQdhNwnmfgNkgYPPBxvuLFvWfrJzktooFWVnZFgQLsulkOXtCoKctjFBetMFVbcfoqNgAxWWnzPSpilOtFrawpNSpBDAWvmyDEJkiJBkKUbLhQrXXhWconuzorZfjakoVxMejXObQbfSMBJfYoomeBbADabewQPciCnArqmhmxbABolTSbTDdcPbaYcSkHAJuqEuNbOVXlpHqGttWwHqvYVXKpqXrztGf
-    Should Contain    ${output}    priority : -74596586
+    Should Contain    ${output}    Timestamp : 89.3127
+    Should Contain    ${output}    Settings : JITZTHRRorzqocnMToTFAdnoSapgmqxXSzKialXQZtjXvLVwQHgLISPnOnVcerIwDdBVZENrXGMvhiaDoYkycFnMNamBoBjfLSNdAEpXRUGdRFrfDfqyEshPyKjScwKVpLGMOCYquXqyTFewUeRNquTVItpGZlIfMuQAuNANqiBcrlvLwdELIpkHQRjZEBLGDPITabQZmTVgDZSxxCqqkiJudqmEzIKINmQCTZjGoKOshEBEiEDkslqyzzykmXXc
+    Should Contain    ${output}    priority : 1455780332

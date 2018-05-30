@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Camera_endTakeImage sender/logger tests.
+Documentation    Camera_endTakeImage communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 207683812
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 244838003
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endTakeImage writing a message containing :    1
@@ -57,7 +57,7 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 207683812
+    ${output}=    Read Until    priority : 244838003
     Log    ${output}
     Should Contain X Times    ${output}    === Event endTakeImage received =     1
-    Should Contain    ${output}    priority : 207683812
+    Should Contain    ${output}    priority : 244838003

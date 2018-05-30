@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_AppliedSettingsMatchStart sender/logger tests.
+Documentation    EEC_AppliedSettingsMatchStart communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 84.5544 1 1259859502
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 59.493 1 943730621
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_AppliedSettingsMatchStart writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1259859502
+    ${output}=    Read Until    priority : 943730621
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    timestamp : 84.5544
+    Should Contain    ${output}    timestamp : 59.493
     Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 1
-    Should Contain    ${output}    priority : 1259859502
+    Should Contain    ${output}    priority : 943730621

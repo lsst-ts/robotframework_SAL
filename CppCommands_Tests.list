@@ -133,6 +133,7 @@ CPP/Commands/Hexapod_configureLimits.robot
 CPP/Commands/Hexapod_configureTemperatureRawLUT.robot
 CPP/Commands/Hexapod_configureVelocity.robot
 CPP/Commands/Hexapod_move.robot
+CPP/Commands/Hexapod_moveLUT.robot
 CPP/Commands/Hexapod_offset.robot
 CPP/Commands/Hexapod_pivot.robot
 CPP/Commands/Hexapod_positionSet.robot
@@ -158,6 +159,7 @@ CPP/Commands/M1M3_EnableHardpointCorrections.robot
 CPP/Commands/M1M3_EnterEngineering.robot
 CPP/Commands/M1M3_ExitEngineering.robot
 CPP/Commands/M1M3_LowerM1M3.robot
+CPP/Commands/M1M3_ModbusTransmit.robot
 CPP/Commands/M1M3_MoveHardpointActuators.robot
 CPP/Commands/M1M3_PositionM1M3.robot
 CPP/Commands/M1M3_ProgramILC.robot
@@ -225,8 +227,6 @@ CPP/Commands/TCS_target.robot
 CPP/Commands/TCS_wfpCalculate.robot
 CPP/Commands/TCS_wfpSimulate.robot
 CPP/Commands/TcsOFC_ApplyForces.robot
-CPP/Commands/TcsOFC_OffsetCameraHexapod.robot
-CPP/Commands/TcsOFC_OffsetM2Hexapod.robot
 CPP/Commands/VMS_Disable.robot
 CPP/Commands/VMS_Enable.robot
 CPP/Commands/VMS_Shutdown.robot

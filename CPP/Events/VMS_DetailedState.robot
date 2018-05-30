@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    VMS_DetailedState sender/logger tests.
+Documentation    VMS_DetailedState communications tests.
 Force Tags    cpp    TSS-2618
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 36.1865 -734348901 -2093964311
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 67.5653 -512720288 -355725268
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] vms::logevent_DetailedState writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -2093964311
+    ${output}=    Read Until    priority : -355725268
     Log    ${output}
     Should Contain X Times    ${output}    === Event DetailedState received =     1
-    Should Contain    ${output}    Timestamp : 36.1865
-    Should Contain    ${output}    DetailedState : -734348901
-    Should Contain    ${output}    priority : -2093964311
+    Should Contain    ${output}    Timestamp : 67.5653
+    Should Contain    ${output}    DetailedState : -512720288
+    Should Contain    ${output}    priority : -355725268

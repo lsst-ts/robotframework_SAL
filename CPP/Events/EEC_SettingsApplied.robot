@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EEC_SettingsApplied sender/logger tests.
+Documentation    EEC_SettingsApplied communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12.2798 fyEhlDZyIAwnqkZUnFuyPiXjtZooJVXUjllFuMDQFcrnjOIzhscQDRjrFCQKWKBADdqVSTkfLsgEaoqugsyFjfwaimoRoiOkUtGGLxSVbmKsXIDJPavogEhYeEWgwaqCLbbPEyXWpEAQZTonHpGKuceEhrXDbPnHjfQGxOsXEKJeRgIYyPqCvazRFTpDeITWhOOEm -780912522
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 51.8456 bPkJusqtOpCfpCcbDiybZOHHqpFyCPtRFpyrUybhJtRcuyAGMlgCZklzroRIOEhwahRueoRgRjlgCwpFwlQQBqxKHNllMRVKjaxXvBEfCanbwJodCWXhhUiOxcvoKCYVCPSWIFQvLcLbJmMKEVqgxkkzIVhzYdVjJmBTXXhBmXxwOQuqVhmcsXlSzDERrDUQQlHRqOzgcyTQqdpDFjZcRQXZieWRWKnGMqhAHYdkHjGdfrOvAVryVnvFqAlMjBzcIeDEudmBeYGTvgWLYwcZSTzeYWYipsilkKHyfTEQrhpaNvuOrLuKFMkKdHwUwHuwnYNZPgpUbgoLtFpsmqKsohLOQOPhQTQHevJlgBDAQmYFWBDWwzNJbPoRFBIIGvRweFsScoarnqxzWmdrKGEyJOhLlKlrRuqmnUSClLLjehQIWll 1868910053
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -780912522
+    ${output}=    Read Until    priority : 1868910053
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    timestamp : 12.2798
-    Should Contain    ${output}    settings : fyEhlDZyIAwnqkZUnFuyPiXjtZooJVXUjllFuMDQFcrnjOIzhscQDRjrFCQKWKBADdqVSTkfLsgEaoqugsyFjfwaimoRoiOkUtGGLxSVbmKsXIDJPavogEhYeEWgwaqCLbbPEyXWpEAQZTonHpGKuceEhrXDbPnHjfQGxOsXEKJeRgIYyPqCvazRFTpDeITWhOOEm
-    Should Contain    ${output}    priority : -780912522
+    Should Contain    ${output}    timestamp : 51.8456
+    Should Contain    ${output}    settings : bPkJusqtOpCfpCcbDiybZOHHqpFyCPtRFpyrUybhJtRcuyAGMlgCZklzroRIOEhwahRueoRgRjlgCwpFwlQQBqxKHNllMRVKjaxXvBEfCanbwJodCWXhhUiOxcvoKCYVCPSWIFQvLcLbJmMKEVqgxkkzIVhzYdVjJmBTXXhBmXxwOQuqVhmcsXlSzDERrDUQQlHRqOzgcyTQqdpDFjZcRQXZieWRWKnGMqhAHYdkHjGdfrOvAVryVnvFqAlMjBzcIeDEudmBeYGTvgWLYwcZSTzeYWYipsilkKHyfTEQrhpaNvuOrLuKFMkKdHwUwHuwnYNZPgpUbgoLtFpsmqKsohLOQOPhQTQHevJlgBDAQmYFWBDWwzNJbPoRFBIIGvRweFsScoarnqxzWmdrKGEyJOhLlKlrRuqmnUSClLLjehQIWll
+    Should Contain    ${output}    priority : 1868910053

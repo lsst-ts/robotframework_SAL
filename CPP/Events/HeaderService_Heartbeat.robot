@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    HeaderService_Heartbeat sender/logger tests.
+Documentation    HeaderService_Heartbeat communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -1305881316
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 -1549423736
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] headerService::logevent_Heartbeat writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1305881316
+    ${output}=    Read Until    priority : -1549423736
     Log    ${output}
     Should Contain X Times    ${output}    === Event Heartbeat received =     1
     Should Contain    ${output}    heartbeat : 0
-    Should Contain    ${output}    priority : -1305881316
+    Should Contain    ${output}    priority : -1549423736

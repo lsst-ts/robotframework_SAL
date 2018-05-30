@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTMount_mountWarning sender/logger tests.
+Documentation    MTMount_mountWarning communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -744966 RgoWFCtBqjsLVZB 979523601
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1626816507 ipoMCIAmOBDafAPQUUfmggfEbRNnkVLpznHgzXNiSVOBWjnaOpYWzVbICKKAEKedLzWoynzWOYjvNBjkUwhdTPqHrkQFzbnaGeLdrrEoaVwufkFHNrtBlRZSCHHVbLpILHFamkHOtvRmXRogjULGWeYAJDSevYKXbYHkhdViEAQHqpAcZvzEHusycAwwpWJQXGdrbhKjSVxafxmugKlqkbJvgZoUITzLKbhXPduvTEZvdJnWUbTxxlemeFoRhufnHOsbfpAJeYCdBjhzrYTfNDfMhBVMCPIYntKbvBcfZvjEmdoSoZnlXAnIwfqBCubhJwzYrOKOIkkxbkeTXFPNMuqdqQMruZgHvecPKeFHUYtxnQMR 545964191
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountWarning writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 979523601
+    ${output}=    Read Until    priority : 545964191
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountWarning received =     1
-    Should Contain    ${output}    id : -744966
-    Should Contain    ${output}    text : RgoWFCtBqjsLVZB
-    Should Contain    ${output}    priority : 979523601
+    Should Contain    ${output}    id : 1626816507
+    Should Contain    ${output}    text : ipoMCIAmOBDafAPQUUfmggfEbRNnkVLpznHgzXNiSVOBWjnaOpYWzVbICKKAEKedLzWoynzWOYjvNBjkUwhdTPqHrkQFzbnaGeLdrrEoaVwufkFHNrtBlRZSCHHVbLpILHFamkHOtvRmXRogjULGWeYAJDSevYKXbYHkhdViEAQHqpAcZvzEHusycAwwpWJQXGdrbhKjSVxafxmugKlqkbJvgZoUITzLKbhXPduvTEZvdJnWUbTxxlemeFoRhufnHOsbfpAJeYCdBjhzrYTfNDfMhBVMCPIYntKbvBcfZvjEmdoSoZnlXAnIwfqBCubhJwzYrOKOIkkxbkeTXFPNMuqdqQMruZgHvecPKeFHUYtxnQMR
+    Should Contain    ${output}    priority : 545964191

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeTHCS_EchoResponse sender/logger tests.
+Documentation    DomeTHCS_EchoResponse communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq 1098696627
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send wlghPtnvrOVTZeKxzKywEYHiAthZBlbcLfJjJBYhTMLfiMdocyipwbmxpsEJwFPIPwWYpToGNzfTMyZSaHjScwalhOmKdtwROvCepMSHfFCDYJFgUUKumnWjcHnoNHlRHUmZHQoReUKpoMzaMbRpcDtBgRlFlVjYBjmVOatesHICAKALZBtXeaaEKrVtFhufwppRBCMWSHgPORkSJxoIBNFAMIUPWPafkHJIjClxgnVhzVYncUEVMIiMuLfqGwKkNfcsvccKzOTgqBcbEspKYLcTAoALTCEYyNrLZTKvfPGHCEnydeRuBJvArSTezelwDfNEEKOJWCElUUpdekGDOxnoznvbiaKrSJlHtDEJIBedfsZDWduZpODwJAzGQvLckgSLdqtewboMpQoOHWfDqTOTLeARRCseKYZucuCWNJAdZZAdYDQVKcJqGjNceUJtygnhbANNmlVSflJohXmsVvFVXFaqqtFXyRWIYEPLOERBAhEUPSEjgfVTMcevRDTvPIERJYqCKhdooALAzLnrulHAWTXflLLcULoUzcWURxFTXlCqDHOEYzauTIRMAg 205987553
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeTHCS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1098696627
+    ${output}=    Read Until    priority : 205987553
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : wMYrncFdvzxQvwnpoftIbnPQfsIEQZffmZqOMJiRNMttBssSUQDqlWfAsFYxQxsTsLq
-    Should Contain    ${output}    priority : 1098696627
+    Should Contain    ${output}    response : wlghPtnvrOVTZeKxzKywEYHiAthZBlbcLfJjJBYhTMLfiMdocyipwbmxpsEJwFPIPwWYpToGNzfTMyZSaHjScwalhOmKdtwROvCepMSHfFCDYJFgUUKumnWjcHnoNHlRHUmZHQoReUKpoMzaMbRpcDtBgRlFlVjYBjmVOatesHICAKALZBtXeaaEKrVtFhufwppRBCMWSHgPORkSJxoIBNFAMIUPWPafkHJIjClxgnVhzVYncUEVMIiMuLfqGwKkNfcsvccKzOTgqBcbEspKYLcTAoALTCEYyNrLZTKvfPGHCEnydeRuBJvArSTezelwDfNEEKOJWCElUUpdekGDOxnoznvbiaKrSJlHtDEJIBedfsZDWduZpODwJAzGQvLckgSLdqtewboMpQoOHWfDqTOTLeARRCseKYZucuCWNJAdZZAdYDQVKcJqGjNceUJtygnhbANNmlVSflJohXmsVvFVXFaqqtFXyRWIYEPLOERBAhEUPSEjgfVTMcevRDTvPIERJYqCKhdooALAzLnrulHAWTXflLLcULoUzcWURxFTXlCqDHOEYzauTIRMAg
+    Should Contain    ${output}    priority : 205987553

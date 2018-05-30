@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TcsOFC_ApplyForces commander/controller tests.
+Documentation    TcsOFC_ApplyForces communications tests.
 Force Tags    cpp    TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 96.4515 91.4008 19.9948 61.2536 50.0129 10.3835 3.205 47.4963 69.9816 64.1763 40.5711 99.5032 63.7931 14.927 93.8192 66.0895 86.9811 63.1752 58.9981 56.3798 63.9999 32.4728 81.0703 87.5845 0.3039 46.9184 44.1026 11.6866 62.956 38.4728 78.7232 60.4724 78.3838 31.7061 82.6324 21.9793 63.8215 17.1047 4.7099 72.1899 29.3378 73.7875 65.5499 82.8715 64.7872 46.246 13.7656 89.3682 8.2967 77.1602 77.48 86.9035 63.4757 79.0054 63.6709 39.9978 96.1341 80.9905 49.0116 72.6581 90.3897 86.4429 24.6014 46.4097 55.1741 10.1962 25.0157 70.9973 40.0091 97.1485 98.5828 47.8349
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 39.1905 88.5691 26.4682 4.9584 59.1669 61.5234 37.2179 48.1922 25.0598 99.2955 66.0761 40.2852 79.1255 99.7427 21.0248 66.694 40.3315 88.0158 41.4354 24.2293 67.103 97.5045 37.586 70.3569 7.4547 90.4999 1.8246 89.8176 29.4353 96.6858 82.7913 46.7563 93.79 75.2764 55.0118 14.7128 60.5442 17.4285 40.0381 55.5659 41.0285 25.4225 66.743 36.5192 44.8058 63.0314 87.9625 79.6863 59.4037 46.757 69.6986 63.5929 33.72 98.3695 2.4 96.3963 17.4767 33.9812 66.8428 6.4872 7.1659 5.7853 41.0634 33.2772 95.4226 64.5934 88.0733 3.6689 68.3497 88.8271 57.8103 26.0553
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 96.4515 91.4008 19.9948 61.2536 50.0129 10.3835 3.205 47.4963 69.9816 64.1763 40.5711 99.5032 63.7931 14.927 93.8192 66.0895 86.9811 63.1752 58.9981 56.3798 63.9999 32.4728 81.0703 87.5845 0.3039 46.9184 44.1026 11.6866 62.956 38.4728 78.7232 60.4724 78.3838 31.7061 82.6324 21.9793 63.8215 17.1047 4.7099 72.1899 29.3378 73.7875 65.5499 82.8715 64.7872 46.246 13.7656 89.3682 8.2967 77.1602 77.48 86.9035 63.4757 79.0054 63.6709 39.9978 96.1341 80.9905 49.0116 72.6581 90.3897 86.4429 24.6014 46.4097 55.1741 10.1962 25.0157 70.9973 40.0091 97.1485 98.5828 47.8349
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 39.1905 88.5691 26.4682 4.9584 59.1669 61.5234 37.2179 48.1922 25.0598 99.2955 66.0761 40.2852 79.1255 99.7427 21.0248 66.694 40.3315 88.0158 41.4354 24.2293 67.103 97.5045 37.586 70.3569 7.4547 90.4999 1.8246 89.8176 29.4353 96.6858 82.7913 46.7563 93.79 75.2764 55.0118 14.7128 60.5442 17.4285 40.0381 55.5659 41.0285 25.4225 66.743 36.5192 44.8058 63.0314 87.9625 79.6863 59.4037 46.757 69.6986 63.5929 33.72 98.3695 2.4 96.3963 17.4767 33.9812 66.8428 6.4872 7.1659 5.7853 41.0634 33.2772 95.4226 64.5934 88.0733 3.6689 68.3497 88.8271 57.8103 26.0553
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    forceSetpoint : 96.4515    1
+    Should Contain X Times    ${output}    forceSetpoint : 39.1905    1
     Should Contain    ${output}    === command ApplyForces issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    forceSetpoint : 96.4515    1
+    Should Contain X Times    ${output}    forceSetpoint : 39.1905    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForces] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

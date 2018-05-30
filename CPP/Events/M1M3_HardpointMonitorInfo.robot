@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M1M3_HardpointMonitorInfo sender/logger tests.
+Documentation    M1M3_HardpointMonitorInfo communications tests.
 Force Tags    cpp    TSS-2617
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 52.1273 28871 -29050 26406 12628 21944 29454 -28149 -16476 28481 23307 -7166 18387 25770 -19825 -17817 -23732 -11986 127 test test test test test test -14475 -13684 7160 -23934 21544 -24246 -29185 -24282 9123 19140 13643 -8717 -20865 -5098 16424 -26047 3773 17503 1859 -17079 8452 15475 -26734 -12518 test test test test test test -28622 -2910 -6001 16058 14529 25734 -6876 32212 -16835 2549 -4817 -27040 -14679 -2499 -32091 1097 20272 -5339 -378988506
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.5957 -27109 13803 5855 -14859 -28057 22387 -18193 24184 -12414 -30294 -1049 1906 -8475 -13666 29605 -21845 -30525 20701 test test test test test test -18462 -27809 -15445 8603 -15410 -2995 17428 -8831 5210 -20754 -14626 -7072 -28942 3269 5222 20819 -31066 27024 -20725 28587 -9189 -13492 -30419 -23818 test test test test test test -8909 -8215 -14713 -26598 10560 23848 20828 -2597 14605 16989 -27610 -11185 -25772 -5850 4097 5911 6983 21076 1178150169
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointMonitorInfo writing a message containing :    1
@@ -57,20 +57,20 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -378988506
+    ${output}=    Read Until    priority : 1178150169
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointMonitorInfo received =     1
-    Should Contain    ${output}    Timestamp : 52.1273
-    Should Contain    ${output}    ReferenceId : 28871
-    Should Contain    ${output}    ModbusSubnet : -29050
-    Should Contain    ${output}    ModbusAddress : 26406
-    Should Contain    ${output}    ILCUniqueId : 12628
-    Should Contain    ${output}    ILCApplicationType : 21944
-    Should Contain    ${output}    NetworkNodeType : 29454
-    Should Contain    ${output}    MajorRevision : -28149
-    Should Contain    ${output}    MinorRevision : -16476
-    Should Contain    ${output}    MezzanineUniqueId : 28481
-    Should Contain    ${output}    MezzanineFirmwareType : 23307
-    Should Contain    ${output}    MezzanineMajorRevision : -7166
-    Should Contain    ${output}    MezzanineMinorRevision : 18387
-    Should Contain    ${output}    priority : 25770
+    Should Contain    ${output}    Timestamp : 0.5957
+    Should Contain    ${output}    ReferenceId : -27109
+    Should Contain    ${output}    ModbusSubnet : 13803
+    Should Contain    ${output}    ModbusAddress : 5855
+    Should Contain    ${output}    ILCUniqueId : -14859
+    Should Contain    ${output}    ILCApplicationType : -28057
+    Should Contain    ${output}    NetworkNodeType : 22387
+    Should Contain    ${output}    MajorRevision : -18193
+    Should Contain    ${output}    MinorRevision : 24184
+    Should Contain    ${output}    MezzanineUniqueId : -12414
+    Should Contain    ${output}    MezzanineFirmwareType : -30294
+    Should Contain    ${output}    MezzanineMajorRevision : -1049
+    Should Contain    ${output}    MezzanineMinorRevision : 1906
+    Should Contain    ${output}    priority : -8475
