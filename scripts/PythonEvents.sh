@@ -11,18 +11,31 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/PYTHON/Events
-arg=${1-all}
-arg="$(echo ${arg} |tr 'A-Z' 'a-z')"
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=($(subsystemArray)) # The scheduler does not currently publish events.
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
 
-#  FUNCTIONS
+#  Determine what tests to generate. Call _common.sh.generateTests()
+function main() {
+    arg=$1
+
+    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    subsystem=$(getEntity $arg)
+    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Events.xml)
+
+    # Delete all test associated test suites first, to catch any removed topics.
+    clearTestSuites $arg "PYTHON" "Events" || exit 1
+
+    # Now generate the test suites.
+    createTestSuite $arg $file || exit 1
+}
+
+#  Local FUNCTIONS
+
 # Get EFDB_Topics from Telemetry XML.
 function getTopics() {
 	subSystem=$(getEntity $1)
@@ -74,8 +87,9 @@ function getParameterCount() {
 }
 
 function createSettings() {
+    local subSystem=$1
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    ${subSystemUp}_${topic} sender/logger tests." >> $testSuite
+    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    python    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
@@ -176,13 +190,17 @@ function createTestSuite() {
     messageType="events"
 	file=$2
 	topicIndex=1
-	# Get the Subsystem in the correct capitalization.
-    subSystemUp=$( capitializeSubsystem $subSystem )
+
+    # Get the topics for the CSC.
+    getTopics $subSystem $file
+
+    # Generate the test suite for each topic.
+    echo Generating:
 	for topic in "${topicsArray[@]}"; do
 		device=$EMPTY
 		property=$EMPTY
 		#  Define test suite name
-		testSuite=$workDir/${subSystemUp}_${topic}.robot
+		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 		
 		#  Get EFDB_Topic elements
 		getTopicParameters $file $topicIndex
@@ -193,8 +211,8 @@ function createTestSuite() {
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
-		echo Creating $testSuite
-		createSettings
+		echo $testSuite
+		createSettings $subSystem
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompSenderLogger
@@ -235,33 +253,5 @@ function createTestSuite() {
     echo ""
 }
 
-
-#  MAIN
-subSystem=$(getEntity $arg)
-if [ "$arg" == "all" ]; then
-    for subSystem in "${subSystemArray[@]}"; do
-        declare -a filesArray=($HOME/trunk/ts_xml/sal_interfaces/${subSystem}/*_Events.xml)
-        # Get the Subsystem in the correct capitalization.
-        subSystemUp=$(capitializeSubsystem $subSystem)
-        # Delete all the test suites.  This is will expose deprecated topics.
-        clearTestSuites $subSystemUp "PYTHON" "Events"
-        for file in "${filesArray[@]}"; do
-            getTopics $subSystem $file
-            createTestSuite $subSystem $file
-        done
-    done
-    echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
-    declare -a filesArray=(~/trunk/ts_xml/sal_interfaces/$subSystem/*_Events.xml)
-    subSystemUp=$(capitializeSubsystem $subSystem)
-    #  Delete all the test suites.  This is will expose deprecated topics.
-    clearTestSuites $subSystemUp "PYTHON" "Events"
-
-    for file in "${filesArray[@]}"; do
-        getTopics $subSystem $file
-        createTestSuite $subSystem $file
-    done
-    echo COMPLETED all test suites for the $subSystem.
-else
-    echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
-fi
+#### Call the main() function ####
+main $1
