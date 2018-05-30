@@ -165,7 +165,7 @@ function createTestSuite {
 		startSubscriber
 		startPublisher
 		readSubscriber
-		echo Done with test suite.
+
     	(( index++ ))
 	done
     echo ""

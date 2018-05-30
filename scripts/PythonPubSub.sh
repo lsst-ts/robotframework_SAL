@@ -213,8 +213,6 @@ function createTestSuite {
 		startPublisher
 		readSubscriber $file $topicIndex
 
-		#  Done with topic test suite.
-		echo Done with test suite.
     	(( topicIndex++ ))
 	done
 	echo ""
