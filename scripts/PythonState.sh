@@ -10,27 +10,44 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/PYTHON/StateMachine
-arg=${1-all}
-arg="$(echo ${arg} |tr 'A-Z' 'a-z')"
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
 value=$EMPTY
-declare -a subSystemArray=($(subsystemArray))
 declare -a statesArray=($(stateArray))
 
-#  FUNCTIONS
-# Get the subsystem variable in the correct format.
-function clearTestSuite() {
-    if [ -f $testSuite ]; then
-        echo $testSuite exists.  Deleting it before creating a new one.
-        rm -rf $testSuite
+#  Determine what tests to generate. Call _common.sh.generateTests()
+function main() {
+    arg=$(echo $1 |tr '[:upper:]' '[:lower:]')
+
+    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    subsystem=$(getEntity $arg)
+    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Telemetry.xml)
+    
+    # Delete all test associated test suites first, to catch any removed topics.
+    clearTestSuites $arg "PYTHON" "StateMachine" || exit 1
+    
+    #  CSCs should now explicitly define their generic commands. 
+    #  ... The tranisition process is ongoing, so some do this, and some do not.
+    #  ... As such, skip this step for the CSCs that are doing this.
+	array=$(stateMachineSkipped)
+    if [[ ${array[@]} =~ $arg ]]; then
+        echo "The $(capitializeSubsystem $subsystem) explicitly defines the generic commands and events"
+        echo "Skipping StateMachine tests."
+        echo ""
+        exit 0
     fi
+    
+    # Now generate the test suites.
+    createTestSuite $arg $file || exit 1
 }
 
+#  Local FUNCTIONS
+
 function createSettings() {
+    local subSystem=$1
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    ${subSystemUp} State Machine tests." >> $testSuite
+    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    python    $skipped" >> $testSuite
 	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
 	echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
@@ -150,6 +167,9 @@ function createTestSuite() {
 	subSystem=$1
     messageType="state"
 	stateIndex=1
+
+	# Generate the test suite for each topic.
+    echo Generating:
 	for state in "${statesArray[@]}"; do
 		if [ "$state" == "start" ]; then
 			parameterType="configuration"
@@ -158,17 +178,14 @@ function createTestSuite() {
 		fi
 		property=$EMPTY
 		#  Define test suite name
-		testSuite=$workDir/${subSystemUp}_${state}.robot
-		
-		#  Check to see if the TestSuite exists then, if it does, delete it.
-		clearTestSuite
+		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${state}.robot
 		
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
-		echo Creating $testSuite
-		createSettings
+		echo $testSuite
+		createSettings $subSystem
 		createVariables $subSystem
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompCommanderController
@@ -187,23 +204,5 @@ function createTestSuite() {
     echo ""
 }
 
-
-#  MAIN
-subSystem=$(getEntity $arg)
-if [ "$arg" == "all" ]; then
-	for subsystem in "${subSystemArray[@]}"; do
-		# Get the Subsystem in the correct capitalization.
-        subSystemUp=$(capitializeSubsystem $subsystem)
-		subSystem=$(getEntity $subsystem)
-		createTestSuite $subSystem
-	done
-	echo COMPLETED ALL test suites for ALL subsystems.
-elif [[ ${subSystemArray[*]} =~ $subSystem ]]; then
-	# Get the Subsystem in the correct capitalization.
-    subSystemUp=$(capitializeSubsystem $subSystem)
-	createTestSuite $subSystem
-	echo COMPLETED all test suites for the $subSystem.
-else
-	echo USAGE - Argument must be one of: ${subSystemArray[*]} OR all.
-fi
-
+#### Call the main() function ####
+main $1
