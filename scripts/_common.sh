@@ -61,7 +61,7 @@ function stateMachineSkipped() {
 }
 
 function stateArray() {
-	echo "enable disable standby start enterControl exitControl abort SetValue"
+	echo "enable disable standby start stop enterControl exitControl abort SetValue"
 }
 
 function capitializeSubsystem() {
