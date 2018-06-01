@@ -16,14 +16,17 @@ def GenerateTests(csc, language):
 		for csc in csc_array:
 			if ('cpp' in language) or ('all' in language):
 				subprocess.check_call(["./CppPubSub.sh", csc])
+				subprocess.check_call(["./CppState.sh", csc])
 				subprocess.check_call(["./CppComCon.sh", csc])
 				subprocess.check_call(["./CppEvents.sh", csc])
 			elif ('java' in language) or ('all' in language):
 				subprocess.check_call(["./JavaPubSub.sh", csc])
+				subprocess.check_call(["./JavaState.sh", csc])
 				subprocess.check_call(["./JavaComCon.sh", csc])
 				subprocess.check_call(["./JavaEvents.sh", csc])
 			elif ('python' in language) or ('all' in language):
 				subprocess.check_call(["./PythonPubSub.sh", csc])
+				subprocess.check_call(["./PythonState.sh", csc])
 				subprocess.check_call(["./PythonComCon.sh", csc])
 				subprocess.check_call(["./PythonEvents.sh", csc])
 			else:
@@ -32,14 +35,17 @@ def GenerateTests(csc, language):
 	elif csc in csc_array:
 		if ('cpp' in language) or ('all' in language):
 			subprocess.check_call(["./CppPubSub.sh", csc])
+			subprocess.check_call(["./CppState.sh", csc])
 			subprocess.check_call(["./CppComCon.sh", csc])
 			subprocess.check_call(["./CppEvents.sh", csc])
 		elif ('java' in language) or ('all' in language):
 			subprocess.check_call(["./JavaPubSub.sh", csc])
+			subprocess.check_call(["./JavaState.sh", csc])
 			subprocess.check_call(["./JavaComCon.sh", csc])
 			subprocess.check_call(["./JavaEvents.sh", csc])
 		elif ('python' in language) or ('all' in language):
 			subprocess.check_call(["./PythonPubSub.sh", csc])
+			subprocess.check_call(["./PythonState.sh", csc])
 			subprocess.check_call(["./PythonComCon.sh", csc])
 			subprocess.check_call(["./PythonEvents.sh", csc])
 		else:
