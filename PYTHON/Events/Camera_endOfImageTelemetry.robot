@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py tQLXViNNKatpPWlbYbZixnIthLDcvrbkEqwewjgENlrrFBfiZzTbyWrUgcYfWJSdwCZmZymrVRQKhDyxMHzGlVfYNJOvKZyTPPVHeKhrrttudhWTMMnBixXZNBxgGxoJKBqTjXUwIHyvOOVfagLsggdMvUmrapaelAIwEGmhudyysJBmMsTTeTwMJAxEVhAPoyYVmeTSmtZBkAleXVJPdCppWonhalhOspOWQGhLJMyMxcVQQjpjMFZhRKYfBeOh rZhoXvMAgBvBcEDYnESJEaXSVULiXTWwuBVjZrXCBLhCMbcZuzrsWLXOUymMtDTekzKVkGAHKVjwlDmuTYyrFlOdbYcfXDhcSxOamfCrbWsdzpLTGHVUvhClCAhLybdDhOVAKqMNwpwswAfeecheGFSZhevrHQnYoSDtSWGkkKypmhHKnVXlpfoEDEwuJoGnsTXVPvvMBewdqhwDtXJzjKZfDLVnRnYiLXCIhUZzhBWaNKikTHDDphPXIgNIUrOP 522372246 24.189 19.1591 610696096
+    ${input}=    Write    python ${subSystem}_Event_${component}.py OrYhfDfnKjxKkqUJaOcUNdyFvDiTcCqRcPrEqHjfSqoBWYzeJOstRkOAJsmyJbxtVBKhVhaystdoPHUsUcArjSvsCDzzTAKcbuoDDXqMzbmpNTqdQqlNYbfoNIOZIgGYujoQfPxBLoxAvrcVbOEVhyjrXaCiLrKmBOMKdHSheDOcYJGlDeVqEmGIGURMhstyFgdpTGAQcFRwchwbbMElVufonIdznDksAGVejsdMmCPnwgvxtBZrBacWccvBMAZF ICxJGDLiDWFSLloQYMwIaFuVErNXvPxvQnnFAuKbTiGovIrgsUNOjlGWpTHpMtmrrRJcEejOQqcjowZRBQSWEcIVlMQwQmjNqqjnDkFZimxKpMNlpmACQYfTVaWsaYBftNYBwIopdMDVTvLTCPqHeAWKFYMtOOAjiyaIXVDsbOskAeyKYXLEICmJExAFPreETclJMMZZwomGjYaTuSVESzmPdJIyFIBuKjxdQXXxTkDdwnXNhFrBnymKhdSTHrlI -9152895 44.2991 57.5942 -1641347392
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_endOfImageTelemetry writing a message containing :    1

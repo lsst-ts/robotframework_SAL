@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py yWNvtuXjZYcZrukoBWFCCYuHqITsmaTycxwsmCcVBCzCgTQfXrKiQKRfMwsxIlDbgtvhCMdgJaQSddzKrZGInXoWDfliUGMspqhUYKBeTldMWoVsaNvGhYcGKCWxiHPsgHxoUaSTzUJRVCNiTceWEfmvNNxfNFAiKAuKByDdfXmxKiymWBSXItFTqbidWtHPqMOIkjZFdrUaRtkNwNmmfMQMBCMzjaNMdXtZNKVCatVEiYIMyxQKMawxUZTGlHDhOYUNKdwLzRxyAFieiaWJhWJhrfEqkKJtcESALVjnjRMaYWifomRSUXdFVaqwjMnLGYrwqnHQEPDLlWAImzRlcRKMUNQdRAnyHypKdaAwMzygWasOitclJdbZVnlOMzLtwPBZSXKETiUhAYcnXDnKpHLdzwVbimPDMpLULxBjxfmenemFvDJPkSdVAWxMYCBecdRWqUpFGarVAwLMOMfnrPzoXBVZldvWDedrBAhOQXWbFGVlIdMrWVFjIUTFjfYvXLQrbBwAoFmWtSamKjxnLbzRLmglzeBuuOILqAoCvsVjkNDpXJeYaEMFRQYaGVRXccjMfNJwPbuAprbuuyMXhvmLNyAlIedkAucUAwIEQczbadBgQCHarSYjgONLVzLcsZPRKeQUQgpPMBDSBQjAecLKtZfDfFBXrsRwHvcMNsYNqZjuVrigpVJwcHVjVgfTfMLyrtEXWItHjYPjV -2109204974
+    ${input}=    Write    python ${subSystem}_Event_${component}.py g -978435275
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_Interlock writing a message containing :    1

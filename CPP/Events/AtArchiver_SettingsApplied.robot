@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send KORWVrdEAHWFWMtakZVDGXfXMlRqSTiYutxWGlFNgoWgcbdFXzvjewUTJvUirxPzQvClPofMeROZabrovcvjLLTILDyiiibIqPdETlcoADjUbXNYsdCbtMtDagEXtircoqRGaleogewYmRGIhOAhzmAXPSXMsfJljQxcYzRWmzTLvhtqoXeDlVhFAhzLeDwpFxIDUVcbpnXJgHkyJRMIAqLCoUOUchVQPKDlvqPYRnZZXqUKvMplqELIYqeAORNy -888577937
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send lQauwddTEJAziKrDOpwaDsUTFhRuOJGhCjOdiGZPMFgeUkLRkodWISikCIbWgYIwitFiDGnwrJlgWZxIsARZJtlVGemTDlZzoxDBbPegzIYyAWXOhaplYNPcTdvCSlSsZXLBKfKgUCEjxOfsASTIgoYNuPdPebqyVNgqjVnmUdavNdXNuLWNACSfNlCUtQuXKmQZiqnVZCLgfSncPkvzlplcSfWQYdJfkKAXIjpUdPcquAwiFBRXCOYvPbWUCtMy 1455576495
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -888577937
+    ${output}=    Read Until    priority : 1455576495
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : KORWVrdEAHWFWMtakZVDGXfXMlRqSTiYutxWGlFNgoWgcbdFXzvjewUTJvUirxPzQvClPofMeROZabrovcvjLLTILDyiiibIqPdETlcoADjUbXNYsdCbtMtDagEXtircoqRGaleogewYmRGIhOAhzmAXPSXMsfJljQxcYzRWmzTLvhtqoXeDlVhFAhzLeDwpFxIDUVcbpnXJgHkyJRMIAqLCoUOUchVQPKDlvqPYRnZZXqUKvMplqELIYqeAORNy
-    Should Contain    ${output}    priority : -888577937
+    Should Contain    ${output}    Settings : lQauwddTEJAziKrDOpwaDsUTFhRuOJGhCjOdiGZPMFgeUkLRkodWISikCIbWgYIwitFiDGnwrJlgWZxIsARZJtlVGemTDlZzoxDBbPegzIYyAWXOhaplYNPcTdvCSlSsZXLBKfKgUCEjxOfsASTIgoYNuPdPebqyVNgqjVnmUdavNdXNuLWNACSfNlCUtQuXKmQZiqnVZCLgfSncPkvzlplcSfWQYdJfkKAXIjpUdPcquAwiFBRXCOYvPbWUCtMy
+    Should Contain    ${output}    priority : 1455576495

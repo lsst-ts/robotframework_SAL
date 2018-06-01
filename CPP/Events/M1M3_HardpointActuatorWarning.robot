@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 24.0298 1 0 0 0 0 0 1 0 1 1 0 1 1 1 0 1 1 1 1 0 1 0 0 1 1 0 0 1 0 0 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 1 1 1 0 0 0 1 0 0 1 1 0 0 1 1 0 0 1 0 1 0 1 0 1 1 0 0 1 1 1 1 1 1 0 1 1 1 0 1 0 1 0 1 0 0 0 0 1 0 0 1 1 0 0 1 1 1 1 1 0 1 0 1 1 0 0 1 1 0 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1 1 1 1 1 1 0 1 0 1 0 0 0 0 1 1 0 1 0 0 1 0 0 1 -1108048633
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 55.5883 1 0 1 0 0 1 1 0 0 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 1 0 1 1 1 1 1 0 1 1 1 1 1 0 1 1 0 1 0 1 0 0 0 1 0 1 1 1 0 0 0 1 1 0 0 0 1 1 1 1 1 1 0 0 0 1 1 1 0 0 0 0 1 1 0 0 1 1 1 1 0 0 0 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 1 0 0 1 1 0 1 1 1 0 1 1 1 0 0 1 1 1 1 957811063
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_HardpointActuatorWarning writing a message containing :    1
@@ -57,55 +57,55 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1108048633
+    ${output}=    Read Until    priority : 957811063
     Log    ${output}
     Should Contain X Times    ${output}    === Event HardpointActuatorWarning received =     1
-    Should Contain    ${output}    Timestamp : 24.0298
+    Should Contain    ${output}    Timestamp : 55.5883
     Should Contain    ${output}    AnyWarning : 1
     Should Contain    ${output}    AnyMajorFault : 0
-    Should Contain    ${output}    MajorFault : 0
+    Should Contain    ${output}    MajorFault : 1
     Should Contain    ${output}    AnyMinorFault : 0
     Should Contain    ${output}    MinorFault : 0
-    Should Contain    ${output}    AnyFaultOverride : 0
+    Should Contain    ${output}    AnyFaultOverride : 1
     Should Contain    ${output}    FaultOverride : 1
     Should Contain    ${output}    AnyMainCalibrationError : 0
-    Should Contain    ${output}    MainCalibrationError : 1
-    Should Contain    ${output}    AnyBackupCalibrationError : 1
+    Should Contain    ${output}    MainCalibrationError : 0
+    Should Contain    ${output}    AnyBackupCalibrationError : 0
     Should Contain    ${output}    BackupCalibrationError : 0
     Should Contain    ${output}    AnyLimitSwitch1Operated : 1
     Should Contain    ${output}    LimitSwitch1Operated : 1
-    Should Contain    ${output}    AnyLimitSwitch2Operated : 1
+    Should Contain    ${output}    AnyLimitSwitch2Operated : 0
     Should Contain    ${output}    LimitSwitch2Operated : 0
     Should Contain    ${output}    AnyUniqueIdCRCError : 1
-    Should Contain    ${output}    UniqueIdCRCError : 1
-    Should Contain    ${output}    AnyApplicationTypeMismatch : 1
+    Should Contain    ${output}    UniqueIdCRCError : 0
+    Should Contain    ${output}    AnyApplicationTypeMismatch : 0
     Should Contain    ${output}    ApplicationTypeMismatch : 1
     Should Contain    ${output}    AnyApplicationMissing : 0
     Should Contain    ${output}    ApplicationMissing : 1
     Should Contain    ${output}    AnyApplicationCRCMismatch : 0
     Should Contain    ${output}    ApplicationCRCMismatch : 0
-    Should Contain    ${output}    AnyOneWireMissing : 1
+    Should Contain    ${output}    AnyOneWireMissing : 0
     Should Contain    ${output}    OneWireMissing : 1
     Should Contain    ${output}    AnyOneWire1Mismatch : 0
     Should Contain    ${output}    OneWire1Mismatch : 0
-    Should Contain    ${output}    AnyOneWire2Mismatch : 1
-    Should Contain    ${output}    OneWire2Mismatch : 0
+    Should Contain    ${output}    AnyOneWire2Mismatch : 0
+    Should Contain    ${output}    OneWire2Mismatch : 1
     Should Contain    ${output}    AnyWatchdogReset : 0
-    Should Contain    ${output}    WatchdogReset : 0
-    Should Contain    ${output}    AnyBrownOut : 0
+    Should Contain    ${output}    WatchdogReset : 1
+    Should Contain    ${output}    AnyBrownOut : 1
     Should Contain    ${output}    BrownOut : 0
-    Should Contain    ${output}    AnyEventTrapReset : 1
+    Should Contain    ${output}    AnyEventTrapReset : 0
     Should Contain    ${output}    EventTrapReset : 0
     Should Contain    ${output}    AnyMotorDriverFault : 0
-    Should Contain    ${output}    MotorDriverFault : 1
-    Should Contain    ${output}    AnySSRPowerFault : 1
+    Should Contain    ${output}    MotorDriverFault : 0
+    Should Contain    ${output}    AnySSRPowerFault : 0
     Should Contain    ${output}    SSRPowerFault : 1
     Should Contain    ${output}    AnyAuxPowerFault : 1
     Should Contain    ${output}    AuxPowerFault : 1
     Should Contain    ${output}    AnySMCPowerFault : 0
-    Should Contain    ${output}    SMCPowerFault : 1
-    Should Contain    ${output}    AnyILCFault : 1
-    Should Contain    ${output}    ILCFault : 1
-    Should Contain    ${output}    AnyBroadcastCounterWarning : 1
-    Should Contain    ${output}    BroadcastCounterWarning : 1
+    Should Contain    ${output}    SMCPowerFault : 0
+    Should Contain    ${output}    AnyILCFault : 0
+    Should Contain    ${output}    ILCFault : 0
+    Should Contain    ${output}    AnyBroadcastCounterWarning : 0
+    Should Contain    ${output}    BroadcastCounterWarning : 0
     Should Contain    ${output}    priority : 1

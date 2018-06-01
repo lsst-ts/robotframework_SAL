@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 efzVbQeuHbiXBlBsRRoPTeKjYKBAOyWJflNBatWoJNzIHUjDMlbqETvBcpzjCivaTJDLJKVvvdyxFGBVFHBqiyAQswwAqtyiUgwdDBCubpcCBSzTbqCqRaTsMeWuPxlyVroOiiWtpNwttEtGMpmOjoOPgLTvZrSybKQyADBmiUuDAcQVbKsDOBhwbujVQOfsDbqMwcLaESGgmCaRDmFyzksXRpApUrxHDKaTbItTXWrdXrdzSdtrDhHqkGdWcfTL 913196215 94.5259 -1310221062
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 YNfJbvzAoxWFJhwxNpLSBbQYyGxSiyJqXkPZBhXGsxPwAfoJvdWuJqjulDUUjWfNFZOjNXzbjlHDoVCNByTziywbgtidoKwZxyWXHjpfciNcrgbyqoqvrekvLmNLlboeyIYKswmohSNmenyBOUPjeWQDRAghlbXXbEeGVjkGvtswFdkrUAaPrxtQRaCXGZUngvnzDTdykhVmzcMKGEFGUCxlUyXTUwwxnakdqkiEOSvpNEcxpDwbkVmOWafRYqrk -784950736 93.7259 -968840685
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1310221062
+    ${output}=    Read Until    priority : -968840685
     Log    ${output}
     Should Contain X Times    ${output}    === Event deviceError received =     1
-    Should Contain    ${output}    state : 0
-    Should Contain    ${output}    device : efzVbQeuHbiXBlBsRRoPTeKjYKBAOyWJflNBatWoJNzIHUjDMlbqETvBcpzjCivaTJDLJKVvvdyxFGBVFHBqiyAQswwAqtyiUgwdDBCubpcCBSzTbqCqRaTsMeWuPxlyVroOiiWtpNwttEtGMpmOjoOPgLTvZrSybKQyADBmiUuDAcQVbKsDOBhwbujVQOfsDbqMwcLaESGgmCaRDmFyzksXRpApUrxHDKaTbItTXWrdXrdzSdtrDhHqkGdWcfTL
-    Should Contain    ${output}    severity : 913196215
-    Should Contain    ${output}    timestamp : 94.5259
-    Should Contain    ${output}    priority : -1310221062
+    Should Contain    ${output}    state : 1
+    Should Contain    ${output}    device : YNfJbvzAoxWFJhwxNpLSBbQYyGxSiyJqXkPZBhXGsxPwAfoJvdWuJqjulDUUjWfNFZOjNXzbjlHDoVCNByTziywbgtidoKwZxyWXHjpfciNcrgbyqoqvrekvLmNLlboeyIYKswmohSNmenyBOUPjeWQDRAghlbXXbEeGVjkGvtswFdkrUAaPrxtQRaCXGZUngvnzDTdykhVmzcMKGEFGUCxlUyXTUwwxnakdqkiEOSvpNEcxpDwbkVmOWafRYqrk
+    Should Contain    ${output}    severity : -784950736
+    Should Contain    ${output}    timestamp : 93.7259
+    Should Contain    ${output}    priority : -968840685

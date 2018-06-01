@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8328 24075 -16199 -15503 -21419 8963 -22566 -16556 31864 0.315409 0.393259 0.372944 0.767335 0.619003 0.794114 0.123868 0.436752 0.348761 0.275476 0.375248 0.525941 0.268949 0.19406 0.744897 0.959292 0.892193 0.267929 0.048838 0.137017 0.7282 0.987294 0.252549 0.011913 0.653811 0.808454 0.951941 0.469097 0.468214 0.589254 0.387481 0.818307 0.670681 0.253181 0.986524 0.448086 0.107348 0.082473 0.630192 0.380363 0.379568 0.568709 0.050331 0.726662 0.035857 0.084041 0.099741 0.489329 0.905097 0.161174 0.394074 0.176289 0.641669 0.572929
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -10778 6974 20205 27302 20359 18425 15398 8955 -22588 0.656294 0.172665 0.153273 0.618899 0.473208 0.91648 0.93115 0.511652 0.54647 0.711353 0.243507 0.834732 0.400144 0.159272 0.523894 0.24069 0.988523 0.541314 0.443558 0.005301 0.740847 0.626367 0.642181 0.071141 0.146287 0.584311 0.223192 0.075174 0.030477 0.157906 0.699483 0.228641 0.40131 0.619293 0.425899 0.28725 0.253869 0.390075 0.399459 0.686128 0.306762 0.09415 0.02224 0.106592 0.188387 0.019288 0.42148 0.384103 0.218263 0.038305 0.136679 0.694405 0.103102 0.875956
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -8328 24075 -16199 -15503 -21419 8963 -22566 -16556 31864 0.315409 0.393259 0.372944 0.767335 0.619003 0.794114 0.123868 0.436752 0.348761 0.275476 0.375248 0.525941 0.268949 0.19406 0.744897 0.959292 0.892193 0.267929 0.048838 0.137017 0.7282 0.987294 0.252549 0.011913 0.653811 0.808454 0.951941 0.469097 0.468214 0.589254 0.387481 0.818307 0.670681 0.253181 0.986524 0.448086 0.107348 0.082473 0.630192 0.380363 0.379568 0.568709 0.050331 0.726662 0.035857 0.084041 0.099741 0.489329 0.905097 0.161174 0.394074 0.176289 0.641669 0.572929
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -10778 6974 20205 27302 20359 18425 15398 8955 -22588 0.656294 0.172665 0.153273 0.618899 0.473208 0.91648 0.93115 0.511652 0.54647 0.711353 0.243507 0.834732 0.400144 0.159272 0.523894 0.24069 0.988523 0.541314 0.443558 0.005301 0.740847 0.626367 0.642181 0.071141 0.146287 0.584311 0.223192 0.075174 0.030477 0.157906 0.699483 0.228641 0.40131 0.619293 0.425899 0.28725 0.253869 0.390075 0.399459 0.686128 0.306762 0.09415 0.02224 0.106592 0.188387 0.019288 0.42148 0.384103 0.218263 0.038305 0.136679 0.694405 0.103102 0.875956
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    tempIndex : -8328    1
-    Should Contain X Times    ${output}    rx : 0.315409    1
-    Should Contain X Times    ${output}    ry : 0.275476    1
-    Should Contain X Times    ${output}    rz : 0.048838    1
-    Should Contain X Times    ${output}    tx : 0.469097    1
-    Should Contain X Times    ${output}    ty : 0.107348    1
-    Should Contain X Times    ${output}    tz : 0.084041    1
+    Should Contain X Times    ${output}    tempIndex : -10778    1
+    Should Contain X Times    ${output}    rx : 0.656294    1
+    Should Contain X Times    ${output}    ry : 0.711353    1
+    Should Contain X Times    ${output}    rz : 0.443558    1
+    Should Contain X Times    ${output}    tx : 0.075174    1
+    Should Contain X Times    ${output}    ty : 0.253869    1
+    Should Contain X Times    ${output}    tz : 0.019288    1
     Should Contain    ${output}    === command configureTemperatureRawLUT issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -89,13 +89,13 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    tempIndex : -8328    1
-    Should Contain X Times    ${output}    rx : 0.315409    1
-    Should Contain X Times    ${output}    ry : 0.275476    1
-    Should Contain X Times    ${output}    rz : 0.048838    1
-    Should Contain X Times    ${output}    tx : 0.469097    1
-    Should Contain X Times    ${output}    ty : 0.107348    1
-    Should Contain X Times    ${output}    tz : 0.084041    1
+    Should Contain X Times    ${output}    tempIndex : -10778    1
+    Should Contain X Times    ${output}    rx : 0.656294    1
+    Should Contain X Times    ${output}    ry : 0.711353    1
+    Should Contain X Times    ${output}    rz : 0.443558    1
+    Should Contain X Times    ${output}    tx : 0.075174    1
+    Should Contain X Times    ${output}    ty : 0.253869    1
+    Should Contain X Times    ${output}    tz : 0.019288    1
     Should Contain X Times    ${output}    === [ackCommand_configureTemperatureRawLUT] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

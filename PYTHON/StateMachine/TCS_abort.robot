@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    TCS State Machine tests.
+Documentation    TCS_ communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -983774585 -1501006944
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1871759048 -1167067846
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_ErrorCode writing a message containing :    1

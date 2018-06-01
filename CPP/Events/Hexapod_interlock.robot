@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send gISSCNDLRhqERHUeirfLBUXBMvlOmIfkyjfoXJVvsUcSxkifMmiQXRxGLMwrzvzRDTzwilnNvZGfAYTKbfUNABCmiMOMcBJndAderQgEVSkzdaNwUwJpWxqKRZnOmEXKRdDaznwwqlbEmgboiWcMgkiplAdAVFGYcmghyNAFyLqjXhEBzmTArspgnEisRrnadJDqttZvLLumxsOoaMrrCShWmEYUHyMsVrXtPfyVWzAzjJXKehsmMBeudicjdSEr 48.1386 640814095
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AWWEDezINaEikUsrBBbEeRlbTRNEyfTwiLbylXYbfYRRuXqvHaYFdXguGZJZjXCqudClVgnYazhfKtdjtiiITvSuEWycXIyoIkaKnmilEPTsiQHskpCDYfLwNPmGLubsNGEpfTvLIigRczNtbUlbmxIBSjfmJDeTWdyyvBWNbxeZqZHlhnTFmnYxNlKJxEOjDYYqYIUMbTUJTEuVHbknugyqgDoTaFaIVpsWHrbCAbDaHBrORBWepJwGHKkgQEKl 52.3537 214508685
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] hexapod::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 640814095
+    ${output}=    Read Until    priority : 214508685
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : gISSCNDLRhqERHUeirfLBUXBMvlOmIfkyjfoXJVvsUcSxkifMmiQXRxGLMwrzvzRDTzwilnNvZGfAYTKbfUNABCmiMOMcBJndAderQgEVSkzdaNwUwJpWxqKRZnOmEXKRdDaznwwqlbEmgboiWcMgkiplAdAVFGYcmghyNAFyLqjXhEBzmTArspgnEisRrnadJDqttZvLLumxsOoaMrrCShWmEYUHyMsVrXtPfyVWzAzjJXKehsmMBeudicjdSEr
-    Should Contain    ${output}    timestamp : 48.1386
-    Should Contain    ${output}    priority : 640814095
+    Should Contain    ${output}    detail : AWWEDezINaEikUsrBBbEeRlbTRNEyfTwiLbylXYbfYRRuXqvHaYFdXguGZJZjXCqudClVgnYazhfKtdjtiiITvSuEWycXIyoIkaKnmilEPTsiQHskpCDYfLwNPmGLubsNGEpfTvLIigRczNtbUlbmxIBSjfmJDeTWdyyvBWNbxeZqZHlhnTFmnYxNlKJxEOjDYYqYIUMbTUJTEuVHbknugyqgDoTaFaIVpsWHrbCAbDaHBrORBWepJwGHKkgQEKl
+    Should Contain    ${output}    timestamp : 52.3537
+    Should Contain    ${output}    priority : 214508685

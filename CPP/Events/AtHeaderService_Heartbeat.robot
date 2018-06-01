@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 616258801
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 -289817988
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_Heartbeat writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 616258801
+    ${output}=    Read Until    priority : -289817988
     Log    ${output}
     Should Contain X Times    ${output}    === Event Heartbeat received =     1
     Should Contain    ${output}    heartbeat : 1
-    Should Contain    ${output}    priority : 616258801
+    Should Contain    ${output}    priority : -289817988

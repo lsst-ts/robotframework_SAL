@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send LqbpXwnrrWJZkhnPgeNFcxoZTqXFSFljiCSlmOTNWPuTXjSWXhDLTGZFeNiejdYNGeZODwpJMSnMjWFfHjCjBWynZmJpOaQVqMiSKYdDPLwUUUYhhPxxoTzpGOswhlXilHmrwvHKzoMmkXoyIeQtcvtnnuSjHiPMWaKWfOXybRIMYjrCqPPWFlYipAfpdBMRZOuvDRjZoMHlMWDaUxukdUAYhrRbFfUbTyOtCmWREkpjxlHmRqpDILPSLWcpvPEZ sDQSBxHxDVtziVBZRmLXexdklXgejGLjFpymfFbkDamwbdXoPqZfggEfCEjpyQSSTPPuaTtqJNtPgGZfAXxlqCocjzhJUbagFsEQzRMhfnWQuDFWulmyuMMFvFjszSEmOTQjFgSEqQRMusRWKbxoRVIJSYKFWVeEwEwkczbEDmrGMSwlGWsDbNgxNUJbKqMDOLiTffDuFpCoeJUFkcvoeLLMIdSSYecdXxvIkqebNIvAuxZZAanQjQDSVlIyCGOb 2137615121 -719690131 -276450668 -1106562398 931242500 1672662173 -277607564 -1958924531 486412988 -1563134297
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VSyesYXCCcXeezJEfZJABtYbNbWklJgfKiVWQgLGAzrdHVpHwzFXwPoNbGwRSyQudtwUUoZmBeooybvaVdLFJNwQJdnRArFbEKuALcFInvSgpCGNdivNyncIqUeIoMRJqcxfrkYSpdGdqdbZvliXunfQImzLLAEUMKIVkxYjGVupUKKTlKfHgDhrLfhEaLQgfpAYCnahRxzVWuAiGhjrFDFLlhjGRvzsyNBYqIpqElgkuUlAkmiWEwotyaMuavKs WiwPSEAThjvewPXKfFByoTGStZODBTMcQvNLNaJvwdyOSQBWZhodjAlhlYQYYnwFXhBsCKTlFKUrEirIikVKtetMgsCcwHbDFQKcpcSQXPoCgwLIUJZfEUDJQGDlegdZvSuSCsTvFkTcGSdASJHmEeydsGWshuCFimQqTLXxxXrDWQSEWwUllSVnocpeEfCcEytJqbuvSxDkqdoEtqwjFTgKeJLXCIuBdMEVtgVHxJNkrTGEaoERQEdkkKokAQFt -1669678587 -367086083 -515881726 -1580826518 1633131571 56694818 318304861 -1235212735 -2056595189 -20504466
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_imageReadoutParameters writing a message containing :    1
@@ -57,18 +57,18 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1563134297
+    ${output}=    Read Until    priority : -20504466
     Log    ${output}
     Should Contain X Times    ${output}    === Event imageReadoutParameters received =     1
-    Should Contain    ${output}    imageName : LqbpXwnrrWJZkhnPgeNFcxoZTqXFSFljiCSlmOTNWPuTXjSWXhDLTGZFeNiejdYNGeZODwpJMSnMjWFfHjCjBWynZmJpOaQVqMiSKYdDPLwUUUYhhPxxoTzpGOswhlXilHmrwvHKzoMmkXoyIeQtcvtnnuSjHiPMWaKWfOXybRIMYjrCqPPWFlYipAfpdBMRZOuvDRjZoMHlMWDaUxukdUAYhrRbFfUbTyOtCmWREkpjxlHmRqpDILPSLWcpvPEZ
-    Should Contain    ${output}    ccdNames : sDQSBxHxDVtziVBZRmLXexdklXgejGLjFpymfFbkDamwbdXoPqZfggEfCEjpyQSSTPPuaTtqJNtPgGZfAXxlqCocjzhJUbagFsEQzRMhfnWQuDFWulmyuMMFvFjszSEmOTQjFgSEqQRMusRWKbxoRVIJSYKFWVeEwEwkczbEDmrGMSwlGWsDbNgxNUJbKqMDOLiTffDuFpCoeJUFkcvoeLLMIdSSYecdXxvIkqebNIvAuxZZAanQjQDSVlIyCGOb
-    Should Contain    ${output}    ccdType : 2137615121
-    Should Contain    ${output}    overRows : -719690131
-    Should Contain    ${output}    overCols : -276450668
-    Should Contain    ${output}    readRows : -1106562398
-    Should Contain    ${output}    readCols : 931242500
-    Should Contain    ${output}    readCols2 : 1672662173
-    Should Contain    ${output}    preCols : -277607564
-    Should Contain    ${output}    preRows : -1958924531
-    Should Contain    ${output}    postCols : 486412988
-    Should Contain    ${output}    priority : -1563134297
+    Should Contain    ${output}    imageName : VSyesYXCCcXeezJEfZJABtYbNbWklJgfKiVWQgLGAzrdHVpHwzFXwPoNbGwRSyQudtwUUoZmBeooybvaVdLFJNwQJdnRArFbEKuALcFInvSgpCGNdivNyncIqUeIoMRJqcxfrkYSpdGdqdbZvliXunfQImzLLAEUMKIVkxYjGVupUKKTlKfHgDhrLfhEaLQgfpAYCnahRxzVWuAiGhjrFDFLlhjGRvzsyNBYqIpqElgkuUlAkmiWEwotyaMuavKs
+    Should Contain    ${output}    ccdNames : WiwPSEAThjvewPXKfFByoTGStZODBTMcQvNLNaJvwdyOSQBWZhodjAlhlYQYYnwFXhBsCKTlFKUrEirIikVKtetMgsCcwHbDFQKcpcSQXPoCgwLIUJZfEUDJQGDlegdZvSuSCsTvFkTcGSdASJHmEeydsGWshuCFimQqTLXxxXrDWQSEWwUllSVnocpeEfCcEytJqbuvSxDkqdoEtqwjFTgKeJLXCIuBdMEVtgVHxJNkrTGEaoERQEdkkKokAQFt
+    Should Contain    ${output}    ccdType : -1669678587
+    Should Contain    ${output}    overRows : -367086083
+    Should Contain    ${output}    overCols : -515881726
+    Should Contain    ${output}    readRows : -1580826518
+    Should Contain    ${output}    readCols : 1633131571
+    Should Contain    ${output}    readCols2 : 56694818
+    Should Contain    ${output}    preCols : 318304861
+    Should Contain    ${output}    preRows : -1235212735
+    Should Contain    ${output}    postCols : -2056595189
+    Should Contain    ${output}    priority : -20504466

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send nvMGlSfeyVIfwFonwYNeFgXsOnMazrVqdslnffMMgmgOCGTChnUvxNxuYKNWclOmjPHZPtzFLoAQVBfVyBoKGLwytmvoNtjXpHVFZQcGrWxFOTexKZVSrOmPTPKRcxfLgYLcOWXviuHlGLZfoMGCFLLHDCwvKIvaCAUbQZHwLLCyieuucQBaGPAOvESISAirgfEzgrbsJkoRLXJVUaOLeZxWgaoCrNYLdIaIZuyyEPXBXcLDuxOYbimUsZoooZnrzDJdYsCPxmJqLUOXUDFdYmOTgXBEwyCgMFbduhjXkeXnTknxfvxfVZvNfMJskqFGQkeMvpnDWXMevvjdifSBrUpDGAnfJLylGRZekWtmBCSrMjRevHlMlqWQaVYKtPVKFVJRfMYMNbFRQstKIrsvjrIokCObrINXPuXNSJyGHPABnmdGWZCEMFscpsXRQQQeqzyoeWiWuxqh 1843812380
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send sdPoSavSXklJekyPSEkQswGHUwpuVnaXZJGLpJIiUBkACYZzBoOPonLpMVRHEseEHurslvfNRGKqEoOzchmHznTOvJlgnkKBYoqcJbszdnjceNjGLEZoehwcgVSlJCxdYotsNh -615427347
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_APSSubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1843812380
+    ${output}=    Read Until    priority : -615427347
     Log    ${output}
     Should Contain X Times    ${output}    === Event APSSubsystemError received =     1
-    Should Contain    ${output}    errorCode : nvMGlSfeyVIfwFonwYNeFgXsOnMazrVqdslnffMMgmgOCGTChnUvxNxuYKNWclOmjPHZPtzFLoAQVBfVyBoKGLwytmvoNtjXpHVFZQcGrWxFOTexKZVSrOmPTPKRcxfLgYLcOWXviuHlGLZfoMGCFLLHDCwvKIvaCAUbQZHwLLCyieuucQBaGPAOvESISAirgfEzgrbsJkoRLXJVUaOLeZxWgaoCrNYLdIaIZuyyEPXBXcLDuxOYbimUsZoooZnrzDJdYsCPxmJqLUOXUDFdYmOTgXBEwyCgMFbduhjXkeXnTknxfvxfVZvNfMJskqFGQkeMvpnDWXMevvjdifSBrUpDGAnfJLylGRZekWtmBCSrMjRevHlMlqWQaVYKtPVKFVJRfMYMNbFRQstKIrsvjrIokCObrINXPuXNSJyGHPABnmdGWZCEMFscpsXRQQQeqzyoeWiWuxqh
-    Should Contain    ${output}    priority : 1843812380
+    Should Contain    ${output}    errorCode : sdPoSavSXklJekyPSEkQswGHUwpuVnaXZJGLpJIiUBkACYZzBoOPonLpMVRHEseEHurslvfNRGKqEoOzchmHznTOvJlgnkKBYoqcJbszdnjceNjGLEZoehwcgVSlJCxdYotsNh
+    Should Contain    ${output}    priority : -615427347

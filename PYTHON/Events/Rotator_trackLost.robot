@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 21.9159 -781061343
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 15.0673 -856588687
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_trackLost writing a message containing :    1

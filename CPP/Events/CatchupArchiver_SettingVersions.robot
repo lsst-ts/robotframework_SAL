@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send uyRNXSCrRQjNWoiwGpEXbsHdedzuxibZYClDWgBKszdjcOlMsJudHOBosGrJJFafWRWyWWkHHBHZCuMaIkibhGABHSZqFzizZoZGWAWroBrITglzlQSQrZZZOxNlDtGCCBXZeISUDSUtghAzVYtlfmITlRVsARfPamAySXixlGdYOPdbdpDdBpICXTOEDSmrHMLidarvIBBtjxUnACZPPhosgSpdrVkygDKhVqXAYeWnticnrmKmZjgXmzfZZPFj -685069135
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send YsbVpSBEfwhGivttPyqUZClytWDzYFPolDcGwgjXtghkIUsOVDUhenRpZiQmKkSVlAMwkvomBSNMZmbuUfmsbnroUUgMQDaVeaPLYNevgSPdqWBcLiaYwowFmFnTKlIPEELgxlRcleSUItpxYhdpoInFPRAeUFZpgClKrsMBpxKhcEOflFkLUOqxGgMxImEZmOEcSOgFDirnXurOfvPqpKVAvRzOVJIsZDyMChfGftPkKBPVkbsxEhZyTGqcIFik 170886119
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingVersions writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -685069135
+    ${output}=    Read Until    priority : 170886119
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : uyRNXSCrRQjNWoiwGpEXbsHdedzuxibZYClDWgBKszdjcOlMsJudHOBosGrJJFafWRWyWWkHHBHZCuMaIkibhGABHSZqFzizZoZGWAWroBrITglzlQSQrZZZOxNlDtGCCBXZeISUDSUtghAzVYtlfmITlRVsARfPamAySXixlGdYOPdbdpDdBpICXTOEDSmrHMLidarvIBBtjxUnACZPPhosgSpdrVkygDKhVqXAYeWnticnrmKmZjgXmzfZZPFj
-    Should Contain    ${output}    priority : -685069135
+    Should Contain    ${output}    recommendedSettingVersion : YsbVpSBEfwhGivttPyqUZClytWDzYFPolDcGwgjXtghkIUsOVDUhenRpZiQmKkSVlAMwkvomBSNMZmbuUfmsbnroUUgMQDaVeaPLYNevgSPdqWBcLiaYwowFmFnTKlIPEELgxlRcleSUItpxYhdpoInFPRAeUFZpgClKrsMBpxKhcEOflFkLUOqxGgMxImEZmOEcSOgFDirnXurOfvPqpKVAvRzOVJIsZDyMChfGftPkKBPVkbsxEhZyTGqcIFik
+    Should Contain    ${output}    priority : 170886119

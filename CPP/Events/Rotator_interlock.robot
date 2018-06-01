@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ijuiRDFtIfwmurTUIQBnOzvTpAYxOzvHSPDqkgvjWovptHxoBJFbTBuVvYmcaPSHbZvhXmOfjrWIZTqoXHmPslfpmGcWUsQQnyElyqAtINLrNNWzRDuKzxAsUlkMFQfIQfPPGQFlIPCVoODGLFYmQEihOUjWDxbVJkNbRPQFEyJWsrbxrUpndAUsAACfKqQKLdBoLMHlYhboqGAtoinxHjocbBHRqeNtvMdOqvphLmxfdEpiKQwfiqfpWLhhDXqL 50.5934 -718079097
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send bqNiWaOYYXoiUkGcLCoQbhghqtQyeMBrPxlCRFPHDjbgIifeQtCSvislLzIQLATBCQbMzbyaCFwQResxXordYTRyhXhJAUQsCCUkXyvsPkvyHRtHqKMuasvsMMvHIHyXSkGxkfwzwYHatFrgiBqeVaDpYyKRvXUJuWaIPRVnejdztVotMBQTciSoHpqIfIchqBancRDHyBlcKrZxJeaHHxmYJnbAyjxlzJnQJxeIeJkstgNNMVolJojfEwiSKcfF 37.2715 436415078
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_interlock writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -718079097
+    ${output}=    Read Until    priority : 436415078
     Log    ${output}
     Should Contain X Times    ${output}    === Event interlock received =     1
-    Should Contain    ${output}    detail : ijuiRDFtIfwmurTUIQBnOzvTpAYxOzvHSPDqkgvjWovptHxoBJFbTBuVvYmcaPSHbZvhXmOfjrWIZTqoXHmPslfpmGcWUsQQnyElyqAtINLrNNWzRDuKzxAsUlkMFQfIQfPPGQFlIPCVoODGLFYmQEihOUjWDxbVJkNbRPQFEyJWsrbxrUpndAUsAACfKqQKLdBoLMHlYhboqGAtoinxHjocbBHRqeNtvMdOqvphLmxfdEpiKQwfiqfpWLhhDXqL
-    Should Contain    ${output}    timestamp : 50.5934
-    Should Contain    ${output}    priority : -718079097
+    Should Contain    ${output}    detail : bqNiWaOYYXoiUkGcLCoQbhghqtQyeMBrPxlCRFPHDjbgIifeQtCSvislLzIQLATBCQbMzbyaCFwQResxXordYTRyhXhJAUQsCCUkXyvsPkvyHRtHqKMuasvsMMvHIHyXSkGxkfwzwYHatFrgiBqeVaDpYyKRvXUJuWaIPRVnejdztVotMBQTciSoHpqIfIchqBancRDHyBlcKrZxJeaHHxmYJnbAyjxlzJnQJxeIeJkstgNNMVolJojfEwiSKcfF
+    Should Contain    ${output}    timestamp : 37.2715
+    Should Contain    ${output}    priority : 436415078

@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 gOmTVPLGmSRpflMVfPoJYKxsjGMciNjWpNKCfeSyDXOuGyckQNIXCKHjuYAWFlFQJBRcbVddjlJNjEnMLaIITjzhtitEhFTsTLWcXDWenipjhcwhTciPDCMXCyQDFHyPBpFeVkCtqRwNLSiCTNudOowgZoEoDJRDCMcakudSyYSSgPOJIvdFFqvxTucnWiOmWqnvPweYEAjNQGkjoYbtcKCMvqtHvjnZTSdOWqIweAtsfhBRDkseRkQSeRLEkXVu -301925358 92.0299 2090943212
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 ZLqsTogRWUfTrFJLWYQKpsUkBlzbirLkvQzJoHvojIvBygfgjHaYHqnyiBUSoTNlVXZrWEZbWvopAnBdOCduhoWkAuEGIXavvnGTSJlMZMFNeaUBhmjkkXsJfWoLvXdyENZymdAaRuIbYiaOIMRzEQcesQYyvRHtFAwubXeaXcBqaOtOMmEdMDxshdlGstrTDbLbRxCzFPfCsCuAOidXcVfSQHMAuylKRLLxwLcGzcLENsMJdWHOcnIczxylpEhA 166773805 70.0987 -1002439406
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] rotator::logevent_deviceError writing a message containing :    1

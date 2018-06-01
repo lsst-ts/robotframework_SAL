@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0 0 0 1 0 0 1 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0 1 1 1 1 0 1 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0 0 0 1 0 0 1 1
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0 1 1 1 1 0 1 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -69,10 +69,10 @@ Start Commander
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
     Should Contain X Times    ${output}    TurnPowerNetworkAOff : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkBOff : 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkCOff : 0    1
+    Should Contain X Times    ${output}    TurnPowerNetworkBOff : 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkCOff : 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkDOff : 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff : 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff : 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff : 1    1
@@ -85,10 +85,10 @@ Read Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
     Should Contain X Times    ${output}    TurnPowerNetworkAOff = 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkBOff = 0    1
-    Should Contain X Times    ${output}    TurnPowerNetworkCOff = 0    1
+    Should Contain X Times    ${output}    TurnPowerNetworkBOff = 1    1
+    Should Contain X Times    ${output}    TurnPowerNetworkCOff = 1    1
     Should Contain X Times    ${output}    TurnPowerNetworkDOff = 1    1
-    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff = 0    1
+    Should Contain X Times    ${output}    TurnAuxPowerNetworkAOff = 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkBOff = 0    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkCOff = 1    1
     Should Contain X Times    ${output}    TurnAuxPowerNetworkDOff = 1    1

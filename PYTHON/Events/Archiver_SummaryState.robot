@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 770065701 1255833180
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -1836359310 -1855907978
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SummaryState writing a message containing :    1

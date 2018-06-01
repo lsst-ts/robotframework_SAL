@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 87.7484 1 0 0 0 1 0 1 1 1 951695643
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 29.1943 0 1 1 1 0 1 1 1 1 -600077622
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_InclinometerSensorWarning writing a message containing :    1
@@ -57,17 +57,17 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 951695643
+    ${output}=    Read Until    priority : -600077622
     Log    ${output}
     Should Contain X Times    ${output}    === Event InclinometerSensorWarning received =     1
-    Should Contain    ${output}    Timestamp : 87.7484
-    Should Contain    ${output}    AnyWarning : 1
-    Should Contain    ${output}    SensorReportsIllegalFunction : 0
-    Should Contain    ${output}    SensorReportsIllegalDataAddress : 0
-    Should Contain    ${output}    ResponseTimeout : 0
-    Should Contain    ${output}    InvalidCRC : 1
-    Should Contain    ${output}    InvalidLength : 0
+    Should Contain    ${output}    Timestamp : 29.1943
+    Should Contain    ${output}    AnyWarning : 0
+    Should Contain    ${output}    SensorReportsIllegalFunction : 1
+    Should Contain    ${output}    SensorReportsIllegalDataAddress : 1
+    Should Contain    ${output}    ResponseTimeout : 1
+    Should Contain    ${output}    InvalidCRC : 0
+    Should Contain    ${output}    InvalidLength : 1
     Should Contain    ${output}    UnknownAddress : 1
     Should Contain    ${output}    UnknownFunction : 1
     Should Contain    ${output}    UnknownProblem : 1
-    Should Contain    ${output}    priority : 951695643
+    Should Contain    ${output}    priority : -600077622

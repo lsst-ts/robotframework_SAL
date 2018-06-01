@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.155814 0.753408 0.833074 0.727661 0.810566 0.569349
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.390977 0.269813 0.81191 0.362188 0.316888 0.555305
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.155814 0.753408 0.833074 0.727661 0.810566 0.569349
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.390977 0.269813 0.81191 0.362188 0.316888 0.555305
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    XForce : 0.155814    1
-    Should Contain X Times    ${output}    YForce : 0.753408    1
-    Should Contain X Times    ${output}    ZForce : 0.833074    1
-    Should Contain X Times    ${output}    XMoment : 0.727661    1
-    Should Contain X Times    ${output}    YMoment : 0.810566    1
-    Should Contain X Times    ${output}    ZMoment : 0.569349    1
+    Should Contain X Times    ${output}    XForce : 0.390977    1
+    Should Contain X Times    ${output}    YForce : 0.269813    1
+    Should Contain X Times    ${output}    ZForce : 0.81191    1
+    Should Contain X Times    ${output}    XMoment : 0.362188    1
+    Should Contain X Times    ${output}    YMoment : 0.316888    1
+    Should Contain X Times    ${output}    ZMoment : 0.555305    1
     Should Contain    ${output}    === command ApplyOffsetForcesByMirrorForce issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    XForce : 0.155814    1
-    Should Contain X Times    ${output}    YForce : 0.753408    1
-    Should Contain X Times    ${output}    ZForce : 0.833074    1
-    Should Contain X Times    ${output}    XMoment : 0.727661    1
-    Should Contain X Times    ${output}    YMoment : 0.810566    1
-    Should Contain X Times    ${output}    ZMoment : 0.569349    1
+    Should Contain X Times    ${output}    XForce : 0.390977    1
+    Should Contain X Times    ${output}    YForce : 0.269813    1
+    Should Contain X Times    ${output}    ZForce : 0.81191    1
+    Should Contain X Times    ${output}    XMoment : 0.362188    1
+    Should Contain X Times    ${output}    YMoment : 0.316888    1
+    Should Contain X Times    ${output}    ZMoment : 0.555305    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyOffsetForcesByMirrorForce] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

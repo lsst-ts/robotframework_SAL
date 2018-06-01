@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -4272 1657677825
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20692 165350314
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -4272 1657677825
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 20692 165350314
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    axialActuatorID : -4272    1
-    Should Contain X Times    ${output}    relativeStepsToMove : 1657677825    1
+    Should Contain X Times    ${output}    axialActuatorID : 20692    1
+    Should Contain X Times    ${output}    relativeStepsToMove : 165350314    1
     Should Contain    ${output}    === command MoveAxialActuator issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -84,8 +84,8 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    axialActuatorID : -4272    1
-    Should Contain X Times    ${output}    relativeStepsToMove : 1657677825    1
+    Should Contain X Times    ${output}    axialActuatorID : 20692    1
+    Should Contain X Times    ${output}    relativeStepsToMove : 165350314    1
     Should Contain X Times    ${output}    === [ackCommand_MoveAxialActuator] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

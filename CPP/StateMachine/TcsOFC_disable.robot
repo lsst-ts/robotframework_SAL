@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC State Machine tests.
-Force Tags    cpp    TSS-2625
+Documentation    TcsOFC_ communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

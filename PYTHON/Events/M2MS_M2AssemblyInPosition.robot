@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 0 868407306
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 1 146229182
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m2ms::logevent_M2AssemblyInPosition writing a message containing :    1

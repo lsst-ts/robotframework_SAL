@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 54.2796 1244872024
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 85.2093 -1955017519
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_NoEnoughWfsNum writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1244872024
+    ${output}=    Read Until    priority : -1955017519
     Log    ${output}
     Should Contain X Times    ${output}    === Event NoEnoughWfsNum received =     1
-    Should Contain    ${output}    timestamp : 54.2796
-    Should Contain    ${output}    priority : 1244872024
+    Should Contain    ${output}    timestamp : 85.2093
+    Should Contain    ${output}    priority : -1955017519

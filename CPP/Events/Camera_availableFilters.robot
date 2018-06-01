@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send dPUctHQjkowUJeuWRTyxTxBYfMITaBRtsXrrDfmJvzLXGDYOrHOKOBhwojRwMQYeNeehmNgqaRYiHkwuSucIxQfODsvljPjNGsYhtaKSazGZdQslPqKeouISwawhrnpcfDCnnhqdEIOWJsYRLjNVyLBoLURgNUusPYAsYzLEBLpkojLaJhzPbaSWpAdbwuLmnHialmujJkwRGpJBViGBWKDiAkAnEGFFOzTJmGRvhbCPsQSsRkaCAApcmqDclgdm -423721479
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send WYqnjIHJVGNYICmDPrwclqacQcKqygdQqggtNIAHVyGaoFYePaRrEHuxNyKhAoWiapZqSQzeGIYYIeNwlrdsezKrrffVWcUWvZcPmLMBEvJFACtnynXIvatWTnGGsPOPRmZaBtfXUUPilussbCmCkqoOIWdkozYpBPnZLzUoKuSGGQrRJvpDIxawcmRRAcCIvNgjFqPFuWUGQrodpIZBWpbafFgBjLbjoCeyenMWTQMKmRGgCzcFkNsasctRGvWW 1560916775
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_availableFilters writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -423721479
+    ${output}=    Read Until    priority : 1560916775
     Log    ${output}
     Should Contain X Times    ${output}    === Event availableFilters received =     1
-    Should Contain    ${output}    filterNames : dPUctHQjkowUJeuWRTyxTxBYfMITaBRtsXrrDfmJvzLXGDYOrHOKOBhwojRwMQYeNeehmNgqaRYiHkwuSucIxQfODsvljPjNGsYhtaKSazGZdQslPqKeouISwawhrnpcfDCnnhqdEIOWJsYRLjNVyLBoLURgNUusPYAsYzLEBLpkojLaJhzPbaSWpAdbwuLmnHialmujJkwRGpJBViGBWKDiAkAnEGFFOzTJmGRvhbCPsQSsRkaCAApcmqDclgdm
-    Should Contain    ${output}    priority : -423721479
+    Should Contain    ${output}    filterNames : WYqnjIHJVGNYICmDPrwclqacQcKqygdQqggtNIAHVyGaoFYePaRrEHuxNyKhAoWiapZqSQzeGIYYIeNwlrdsezKrrffVWcUWvZcPmLMBEvJFACtnynXIvatWTnGGsPOPRmZaBtfXUUPilussbCmCkqoOIWdkozYpBPnZLzUoKuSGGQrRJvpDIxawcmRRAcCIvNgjFqPFuWUGQrodpIZBWpbafFgBjLbjoCeyenMWTQMKmRGgCzcFkNsasctRGvWW
+    Should Contain    ${output}    priority : 1560916775

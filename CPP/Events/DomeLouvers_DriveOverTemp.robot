@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -30166 28833 997599488
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -2345 -21856 291263088
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveOverTemp writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 997599488
+    ${output}=    Read Until    priority : 291263088
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveOverTemp received =     1
-    Should Contain    ${output}    louverID : -30166
-    Should Contain    ${output}    driveId : 28833
-    Should Contain    ${output}    priority : 997599488
+    Should Contain    ${output}    louverID : -2345
+    Should Contain    ${output}    driveId : -21856
+    Should Contain    ${output}    priority : 291263088

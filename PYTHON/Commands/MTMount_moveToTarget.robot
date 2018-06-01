@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 6.3069 13.8217 SQmlUcbyTgWhBTELBmubxrukxZPwFPVzRTVigmjHYkNkbIgwGEUTChIDlTTSSxXEgMVDrWHHMxyvlqysHLcdHAGaqxjirZqeEkmurpIDCJITAfSDBeoikXsFvPvYrzbJjBQLPAsqwqoTSlbmQFSXvZPkUFejNKOSHYDhQELiJGYwYSBAPbVFBBdlvZYvxEQzLIhHvxQyPWhNjyVrTnpvPkjqUytQNZjLACDTcviIwdKEvYKRdOvkNyAUzSVVvifSbDVBaeQQvZGSacrnxJGRLmJSlsGtUMtyrZVwzweWtivagbnuzeKZzghMiqSTDUALVvWpvwfkqYmNNvEPaAGaGhpAziiODSpsGidDJguurqpmBuqCrrgtnfkTksRkEoEOtavTdlrnjUdbFvWBYeNqeGGpugVgwZLRklRvqIbfYyNJeuMAeYMmeLDVbJMUiTWNteUOfNeVayveecCcplotxTcEBHIDevElEHzzEDWznpcbkQICGAEwoFXAhxJqujyIKgtFQxxXXknxifeQtXAjopsTFwgbtQLobfEavMyQMbJNVLdGSLXuZVgRtbIJlqxiVEIWfZKcfrBJCbjKaDFcFurQtLXxsBnfNRpudLDSJetbVuevOIyATXobEmaIYabjmKYfKdcdecgRfkKvpxSNxEcnwqqoaFIsHSOWTaMttmbaZGMobKANeFDtlpRNRyKulaqNIYYrwvVGPQOqpCCBRInotSFhqNbvocwGEsvxEgQlJMnoRUwYzQjkTROgdoFJVEbNFEcnmPFwzNQmUyJLRitgbvCXCKTcjvXjJMXNWnxmMSPtIJJOHeNzvpwOpgWTVrijraltUcmG
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.5786 59.8501 wjDEepmsdkaInNJShkPDHFrWdRDwERSkkMzkfZXWOycLWaVCLyRHuGaIbLaYYHvvrTtDpjOjMdYdSwFfGAuXFEtPcQQsKBrvvVERMHYZrhxyxqhFJeheQaRkURsFQBlnBgNAYMJYohAdFwhPdqYnGBMUUioCFAYdWuSSMnniNZheQvAdGMmCkPpAysXTHQcCLSUpFFtlGKkhyCNTYCHnecKUpKCVuRcaNcihtXljCwEyLzbHfftiXxcESxSyBTpjWxHVmUSIOcixENRtdUUMajIJuxwlJIzlOByeIVCnrqioTUkJjRjuNFykiqwoAIKCbslEVvGAbGVdfdJVYOcnVvGmGCG
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 6.3069 13.8217 SQmlUcbyTgWhBTELBmubxrukxZPwFPVzRTVigmjHYkNkbIgwGEUTChIDlTTSSxXEgMVDrWHHMxyvlqysHLcdHAGaqxjirZqeEkmurpIDCJITAfSDBeoikXsFvPvYrzbJjBQLPAsqwqoTSlbmQFSXvZPkUFejNKOSHYDhQELiJGYwYSBAPbVFBBdlvZYvxEQzLIhHvxQyPWhNjyVrTnpvPkjqUytQNZjLACDTcviIwdKEvYKRdOvkNyAUzSVVvifSbDVBaeQQvZGSacrnxJGRLmJSlsGtUMtyrZVwzweWtivagbnuzeKZzghMiqSTDUALVvWpvwfkqYmNNvEPaAGaGhpAziiODSpsGidDJguurqpmBuqCrrgtnfkTksRkEoEOtavTdlrnjUdbFvWBYeNqeGGpugVgwZLRklRvqIbfYyNJeuMAeYMmeLDVbJMUiTWNteUOfNeVayveecCcplotxTcEBHIDevElEHzzEDWznpcbkQICGAEwoFXAhxJqujyIKgtFQxxXXknxifeQtXAjopsTFwgbtQLobfEavMyQMbJNVLdGSLXuZVgRtbIJlqxiVEIWfZKcfrBJCbjKaDFcFurQtLXxsBnfNRpudLDSJetbVuevOIyATXobEmaIYabjmKYfKdcdecgRfkKvpxSNxEcnwqqoaFIsHSOWTaMttmbaZGMobKANeFDtlpRNRyKulaqNIYYrwvVGPQOqpCCBRInotSFhqNbvocwGEsvxEgQlJMnoRUwYzQjkTROgdoFJVEbNFEcnmPFwzNQmUyJLRitgbvCXCKTcjvXjJMXNWnxmMSPtIJJOHeNzvpwOpgWTVrijraltUcmG
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 29.5786 59.8501 wjDEepmsdkaInNJShkPDHFrWdRDwERSkkMzkfZXWOycLWaVCLyRHuGaIbLaYYHvvrTtDpjOjMdYdSwFfGAuXFEtPcQQsKBrvvVERMHYZrhxyxqhFJeheQaRkURsFQBlnBgNAYMJYohAdFwhPdqYnGBMUUioCFAYdWuSSMnniNZheQvAdGMmCkPpAysXTHQcCLSUpFFtlGKkhyCNTYCHnecKUpKCVuRcaNcihtXljCwEyLzbHfftiXxcESxSyBTpjWxHVmUSIOcixENRtdUUMajIJuxwlJIzlOByeIVCnrqioTUkJjRjuNFykiqwoAIKCbslEVvGAbGVdfdJVYOcnVvGmGCG
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    az_angle : 6.3069    1
-    Should Contain X Times    ${output}    el_angle : 13.8217    1
-    Should Contain X Times    ${output}    cablewrap_orientation : SQmlUcbyTgWhBTELBmubxrukxZPwFPVzRTVigmjHYkNkbIgwGEUTChIDlTTSSxXEgMVDrWHHMxyvlqysHLcdHAGaqxjirZqeEkmurpIDCJITAfSDBeoikXsFvPvYrzbJjBQLPAsqwqoTSlbmQFSXvZPkUFejNKOSHYDhQELiJGYwYSBAPbVFBBdlvZYvxEQzLIhHvxQyPWhNjyVrTnpvPkjqUytQNZjLACDTcviIwdKEvYKRdOvkNyAUzSVVvifSbDVBaeQQvZGSacrnxJGRLmJSlsGtUMtyrZVwzweWtivagbnuzeKZzghMiqSTDUALVvWpvwfkqYmNNvEPaAGaGhpAziiODSpsGidDJguurqpmBuqCrrgtnfkTksRkEoEOtavTdlrnjUdbFvWBYeNqeGGpugVgwZLRklRvqIbfYyNJeuMAeYMmeLDVbJMUiTWNteUOfNeVayveecCcplotxTcEBHIDevElEHzzEDWznpcbkQICGAEwoFXAhxJqujyIKgtFQxxXXknxifeQtXAjopsTFwgbtQLobfEavMyQMbJNVLdGSLXuZVgRtbIJlqxiVEIWfZKcfrBJCbjKaDFcFurQtLXxsBnfNRpudLDSJetbVuevOIyATXobEmaIYabjmKYfKdcdecgRfkKvpxSNxEcnwqqoaFIsHSOWTaMttmbaZGMobKANeFDtlpRNRyKulaqNIYYrwvVGPQOqpCCBRInotSFhqNbvocwGEsvxEgQlJMnoRUwYzQjkTROgdoFJVEbNFEcnmPFwzNQmUyJLRitgbvCXCKTcjvXjJMXNWnxmMSPtIJJOHeNzvpwOpgWTVrijraltUcmG    1
+    Should Contain X Times    ${output}    az_angle : 29.5786    1
+    Should Contain X Times    ${output}    el_angle : 59.8501    1
+    Should Contain X Times    ${output}    cablewrap_orientation : wjDEepmsdkaInNJShkPDHFrWdRDwERSkkMzkfZXWOycLWaVCLyRHuGaIbLaYYHvvrTtDpjOjMdYdSwFfGAuXFEtPcQQsKBrvvVERMHYZrhxyxqhFJeheQaRkURsFQBlnBgNAYMJYohAdFwhPdqYnGBMUUioCFAYdWuSSMnniNZheQvAdGMmCkPpAysXTHQcCLSUpFFtlGKkhyCNTYCHnecKUpKCVuRcaNcihtXljCwEyLzbHfftiXxcESxSyBTpjWxHVmUSIOcixENRtdUUMajIJuxwlJIzlOByeIVCnrqioTUkJjRjuNFykiqwoAIKCbslEVvGAbGVdfdJVYOcnVvGmGCG    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -79,9 +79,9 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    az_angle = 6.3069    1
-    Should Contain X Times    ${output}    el_angle = 13.8217    1
-    Should Contain X Times    ${output}    cablewrap_orientation = SQmlUcbyTgWhBTELBmubxrukxZPwFPVzRTVigmjHYkNkbIgwGEUTChIDlTTSSxXEgMVDrWHHMxyvlqysHLcdHAGaqxjirZqeEkmurpIDCJITAfSDBeoikXsFvPvYrzbJjBQLPAsqwqoTSlbmQFSXvZPkUFejNKOSHYDhQELiJGYwYSBAPbVFBBdlvZYvxEQzLIhHvxQyPWhNjyVrTnpvPkjqUytQNZjLACDTcviIwdKEvYKRdOvkNyAUzSVVvifSbDVBaeQQvZGSacrnxJGRLmJSlsGtUMtyrZVwzweWtivagbnuzeKZzghMiqSTDUALVvWpvwfkqYmNNvEPaAGaGhpAziiODSpsGidDJguurqpmBuqCrrgtnfkTksRkEoEOtavTdlrnjUdbFvWBYeNqeGGpugVgwZLRklRvqIbfYyNJeuMAeYMmeLDVbJMUiTWNteUOfNeVayveecCcplotxTcEBHIDevElEHzzEDWznpcbkQICGAEwoFXAhxJqujyIKgtFQxxXXknxifeQtXAjopsTFwgbtQLobfEavMyQMbJNVLdGSLXuZVgRtbIJlqxiVEIWfZKcfrBJCbjKaDFcFurQtLXxsBnfNRpudLDSJetbVuevOIyATXobEmaIYabjmKYfKdcdecgRfkKvpxSNxEcnwqqoaFIsHSOWTaMttmbaZGMobKANeFDtlpRNRyKulaqNIYYrwvVGPQOqpCCBRInotSFhqNbvocwGEsvxEgQlJMnoRUwYzQjkTROgdoFJVEbNFEcnmPFwzNQmUyJLRitgbvCXCKTcjvXjJMXNWnxmMSPtIJJOHeNzvpwOpgWTVrijraltUcmG    1
+    Should Contain X Times    ${output}    az_angle = 29.5786    1
+    Should Contain X Times    ${output}    el_angle = 59.8501    1
+    Should Contain X Times    ${output}    cablewrap_orientation = wjDEepmsdkaInNJShkPDHFrWdRDwERSkkMzkfZXWOycLWaVCLyRHuGaIbLaYYHvvrTtDpjOjMdYdSwFfGAuXFEtPcQQsKBrvvVERMHYZrhxyxqhFJeheQaRkURsFQBlnBgNAYMJYohAdFwhPdqYnGBMUUioCFAYdWuSSMnniNZheQvAdGMmCkPpAysXTHQcCLSUpFFtlGKkhyCNTYCHnecKUpKCVuRcaNcihtXljCwEyLzbHfftiXxcESxSyBTpjWxHVmUSIOcixENRtdUUMajIJuxwlJIzlOByeIVCnrqioTUkJjRjuNFykiqwoAIKCbslEVvGAbGVdfdJVYOcnVvGmGCG    1
     Should Contain X Times    ${output}    === [ackCommand_moveToTarget] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

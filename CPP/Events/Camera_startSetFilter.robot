@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send eulPkpzpkUtbxixnzvGwrCaoWSYSxuRLuGzIYWbLYAKYcHPbvWaONNZRzJqEdqnkihaACvvfXDRmpjPVxaWMxsPyNiNrKwrSztkDjpvgCZpVpgoAcsguDkNOmwHZdoqAFkQinXTVcUXRKejDLgOryNTtclYEaiEJYmSSrtGQIZdtnrDpuNXHxVAgsfNjIzjSUfEDmsIvcyqoUeKMVIUjSaMZoUXiZuWjsFiXQtOalwaatmFmpGhNftmZnNJfIeog 1503290121
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send rtLCEstAIexJpSwJYMFspwCNGgvDvGSbhxPeaodVZtTrWSrxQVqidEmkBDJguwKePzoTVpNktGmqTMELwuzOEtskCVBYMcfXdYtRAAHYdfTIQqNoxuOmdshzeoPZhdfEdsDCrhTEAHaGswdDFUQiczVpzspNajbewMRlErFilqIkVHNKaDqZvqEVFUfLBEHcDulDSvxoKKQlvMOhwmTxjcukVDQNEizTLwsyJiKKMXnnZtGCLIcZcuJHOGESlJTV 49822917
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_startSetFilter writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1503290121
+    ${output}=    Read Until    priority : 49822917
     Log    ${output}
     Should Contain X Times    ${output}    === Event startSetFilter received =     1
-    Should Contain    ${output}    filterName : eulPkpzpkUtbxixnzvGwrCaoWSYSxuRLuGzIYWbLYAKYcHPbvWaONNZRzJqEdqnkihaACvvfXDRmpjPVxaWMxsPyNiNrKwrSztkDjpvgCZpVpgoAcsguDkNOmwHZdoqAFkQinXTVcUXRKejDLgOryNTtclYEaiEJYmSSrtGQIZdtnrDpuNXHxVAgsfNjIzjSUfEDmsIvcyqoUeKMVIUjSaMZoUXiZuWjsFiXQtOalwaatmFmpGhNftmZnNJfIeog
-    Should Contain    ${output}    priority : 1503290121
+    Should Contain    ${output}    filterName : rtLCEstAIexJpSwJYMFspwCNGgvDvGSbhxPeaodVZtTrWSrxQVqidEmkBDJguwKePzoTVpNktGmqTMELwuzOEtskCVBYMcfXdYtRAAHYdfTIQqNoxuOmdshzeoPZhdfEdsDCrhTEAHaGswdDFUQiczVpzspNajbewMRlErFilqIkVHNKaDqZvqEVFUfLBEHcDulDSvxoKKQlvMOhwmTxjcukVDQNEizTLwsyJiKKMXnnZtGCLIcZcuJHOGESlJTV
+    Should Contain    ${output}    priority : 49822917

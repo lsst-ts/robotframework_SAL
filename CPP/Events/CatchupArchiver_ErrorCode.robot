@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -777142320 -1101163085
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -131515605 465540068
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_ErrorCode writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1101163085
+    ${output}=    Read Until    priority : 465540068
     Log    ${output}
     Should Contain X Times    ${output}    === Event ErrorCode received =     1
-    Should Contain    ${output}    errorCode : -777142320
-    Should Contain    ${output}    priority : -1101163085
+    Should Contain    ${output}    errorCode : -131515605
+    Should Contain    ${output}    priority : 465540068

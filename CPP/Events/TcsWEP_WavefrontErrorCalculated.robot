@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -16170 69.7357 -850968267
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -19140 72.483 1696822483
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -850968267
+    ${output}=    Read Until    priority : 1696822483
     Log    ${output}
     Should Contain X Times    ${output}    === Event WavefrontErrorCalculated received =     1
-    Should Contain    ${output}    sensorId : -16170
-    Should Contain    ${output}    timestamp : 69.7357
-    Should Contain    ${output}    priority : -850968267
+    Should Contain    ${output}    sensorId : -19140
+    Should Contain    ${output}    timestamp : 72.483
+    Should Contain    ${output}    priority : 1696822483

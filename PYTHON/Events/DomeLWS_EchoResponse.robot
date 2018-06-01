@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py xqKTbZDUSEuoEtFoaAQpCXEEsdACwMesctuayfdxSRVHywMdrtisvXdQiPqBaNJdxanLHtwmSSsBnANkSlFEuLKXEgEBujfWeBHhifbcNVxAOYbebumGcPArLFhiqJqsaVRLihLFRjasaSQuBLnnqwVXyFjnCWDMe -2090043699
+    ${input}=    Write    python ${subSystem}_Event_${component}.py fkybSyxHudaZeECcgTSpazrkBEDGSoSyisdTPCTecdQtapRTDJyHehRljjIVnQHihDNPkxXLKyxwYmqhXREjzpOlbzMwMXUaDuPcDOqzxrGOeHIDMOfPhBSpPrBSQPZWzogqNtBDyCmNifXRqRlLnXzWnTgYDzycfNKeKqkBgTkuvFtsawTXbnqtnxAnuKWzsSXtXduqKJXkViXOmeVRvWgJebwzLsFtJchiOVoetFIoiccNNrySUWWORuqxxsLXakrlhruSQiCIZNDrwkhSVkJhdxixGqGcmQBTtHSukOwAkJVaenuvmCkmKwBgeGPveajCJztAVoCWBjvRZofVSeFOVpNgmSviFqHVCAtgedawtzhrzHKSwYYzHPIrTjcumCNiaVxovLSOfpcNQZLjpNydaeElKYCxo 1506880074
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLWS::logevent_EchoResponse writing a message containing :    1

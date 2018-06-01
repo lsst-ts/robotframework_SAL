@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1584038853 0.822409
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -320661936 0.823106
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1584038853 0.822409
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py -320661936 0.823106
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,8 +68,8 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    slit : 1584038853    1
-    Should Contain X Times    ${output}    slitWidth : 0.822409    1
+    Should Contain X Times    ${output}    slit : -320661936    1
+    Should Contain X Times    ${output}    slitWidth : 0.823106    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -78,8 +78,8 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    slit = 1584038853    1
-    Should Contain X Times    ${output}    slitWidth = 0.822409    1
+    Should Contain X Times    ${output}    slit = -320661936    1
+    Should Contain X Times    ${output}    slitWidth = 0.823106    1
     Should Contain X Times    ${output}    === [ackCommand_ChangeSlitWidth] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

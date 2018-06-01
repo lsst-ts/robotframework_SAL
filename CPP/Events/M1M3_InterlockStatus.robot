@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1.0296 1 0 -1781405495
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 12.6677 1 1 996143207
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_InterlockStatus writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1781405495
+    ${output}=    Read Until    priority : 996143207
     Log    ${output}
     Should Contain X Times    ${output}    === Event InterlockStatus received =     1
-    Should Contain    ${output}    Timestamp : 1.0296
+    Should Contain    ${output}    Timestamp : 12.6677
     Should Contain    ${output}    HeartbeatCommandedState : 1
-    Should Contain    ${output}    HeartbeatOutputState : 0
-    Should Contain    ${output}    priority : -1781405495
+    Should Contain    ${output}    HeartbeatOutputState : 1
+    Should Contain    ${output}    priority : 996143207

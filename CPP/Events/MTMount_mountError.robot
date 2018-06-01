@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -948138482 TFxIIWrNncmvecvUGZwXnecdLAbPvbTRWjVZFxORiDIeaDIcGPMQIHCnHhaZnssoxcijHZLUEIrivihrmDmrqzLfzcyZDgZDiaNhLuAMqfDSLwIeqYreerGFUSRWQOfucPYjDDLtIukQAUtNsWqfzKcVZfMiZhmCeyxnRFXOJkhJlLizpdQDosPARpPatKvYhEzPEAwIuZFoflCCZCSbWJPbFGkRLBsCBDUpjcncHXUXaFYBvMdiljLagmsptwFybSpycfvyzDUeDFPdRWaHyvkztZiGsdprWlNzwXKmdzWbjmknjFZygRzuelcdTSrRmrnfTFNZkcXCiLFo 1976094930
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 2136549880 HvmyglIjdMGaFoqkhQlkpCrgyndednTvkqkMV -2048942976
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] MTMount::logevent_mountError writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1976094930
+    ${output}=    Read Until    priority : -2048942976
     Log    ${output}
     Should Contain X Times    ${output}    === Event mountError received =     1
-    Should Contain    ${output}    id : -948138482
-    Should Contain    ${output}    text : TFxIIWrNncmvecvUGZwXnecdLAbPvbTRWjVZFxORiDIeaDIcGPMQIHCnHhaZnssoxcijHZLUEIrivihrmDmrqzLfzcyZDgZDiaNhLuAMqfDSLwIeqYreerGFUSRWQOfucPYjDDLtIukQAUtNsWqfzKcVZfMiZhmCeyxnRFXOJkhJlLizpdQDosPARpPatKvYhEzPEAwIuZFoflCCZCSbWJPbFGkRLBsCBDUpjcncHXUXaFYBvMdiljLagmsptwFybSpycfvyzDUeDFPdRWaHyvkztZiGsdprWlNzwXKmdzWbjmknjFZygRzuelcdTSrRmrnfTFNZkcXCiLFo
-    Should Contain    ${output}    priority : 1976094930
+    Should Contain    ${output}    id : 2136549880
+    Should Contain    ${output}    text : HvmyglIjdMGaFoqkhQlkpCrgyndednTvkqkMV
+    Should Contain    ${output}    priority : -2048942976

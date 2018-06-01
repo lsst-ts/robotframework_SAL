@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.2489 24.8458 80.3272 47.0083 71.1528 MrgoWMXRaAsKEKIjmwAUaNjntJzcdYEHLkhTZOUhcPvWJQkMIKzTNrPrucrXKUoSKJekfDMPRPHedfJYdYjoUttGubutceODcRnDDzBAOeQkXeUmfGFWYDwSjhMvAlheTEWYZriSfZZUfDVRdIsgFXeCOSmVunNhIUbzznshPrpvOdmRnFRkkoNmQXjDxbzIQnoIqwqOmJgxTpXVdrZnyejriEhwCTGxAZaJkezkVdLfTPErS
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 16.293 28.4437 4.1589 89.0962 45.1837 ADUrxZDLgNHAcECIhlSFLwUQtwPTGUcAclXNqfTQMkoHICbAZBOdV
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.2489 24.8458 80.3272 47.0083 71.1528 MrgoWMXRaAsKEKIjmwAUaNjntJzcdYEHLkhTZOUhcPvWJQkMIKzTNrPrucrXKUoSKJekfDMPRPHedfJYdYjoUttGubutceODcRnDDzBAOeQkXeUmfGFWYDwSjhMvAlheTEWYZriSfZZUfDVRdIsgFXeCOSmVunNhIUbzznshPrpvOdmRnFRkkoNmQXjDxbzIQnoIqwqOmJgxTpXVdrZnyejriEhwCTGxAZaJkezkVdLfTPErS
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 16.293 28.4437 4.1589 89.0962 45.1837 ADUrxZDLgNHAcECIhlSFLwUQtwPTGUcAclXNqfTQMkoHICbAZBOdV
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property : position    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    az_angle : 59.2489    1
-    Should Contain X Times    ${output}    az_velocity : 24.8458    1
-    Should Contain X Times    ${output}    el_angle : 80.3272    1
-    Should Contain X Times    ${output}    el_velocity : 47.0083    1
-    Should Contain X Times    ${output}    time : 71.1528    1
-    Should Contain X Times    ${output}    cablewrap_orientation : MrgoWMXRaAsKEKIjmwAUaNjntJzcdYEHLkhTZOUhcPvWJQkMIKzTNrPrucrXKUoSKJekfDMPRPHedfJYdYjoUttGubutceODcRnDDzBAOeQkXeUmfGFWYDwSjhMvAlheTEWYZriSfZZUfDVRdIsgFXeCOSmVunNhIUbzznshPrpvOdmRnFRkkoNmQXjDxbzIQnoIqwqOmJgxTpXVdrZnyejriEhwCTGxAZaJkezkVdLfTPErS    1
+    Should Contain X Times    ${output}    az_angle : 16.293    1
+    Should Contain X Times    ${output}    az_velocity : 28.4437    1
+    Should Contain X Times    ${output}    el_angle : 4.1589    1
+    Should Contain X Times    ${output}    el_velocity : 89.0962    1
+    Should Contain X Times    ${output}    time : 45.1837    1
+    Should Contain X Times    ${output}    cablewrap_orientation : ADUrxZDLgNHAcECIhlSFLwUQtwPTGUcAclXNqfTQMkoHICbAZBOdV    1
     Should Contain    ${output}    === command trackTarget issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : position
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    az_angle : 59.2489    1
-    Should Contain X Times    ${output}    az_velocity : 24.8458    1
-    Should Contain X Times    ${output}    el_angle : 80.3272    1
-    Should Contain X Times    ${output}    el_velocity : 47.0083    1
-    Should Contain X Times    ${output}    time : 71.1528    1
-    Should Contain X Times    ${output}    cablewrap_orientation : MrgoWMXRaAsKEKIjmwAUaNjntJzcdYEHLkhTZOUhcPvWJQkMIKzTNrPrucrXKUoSKJekfDMPRPHedfJYdYjoUttGubutceODcRnDDzBAOeQkXeUmfGFWYDwSjhMvAlheTEWYZriSfZZUfDVRdIsgFXeCOSmVunNhIUbzznshPrpvOdmRnFRkkoNmQXjDxbzIQnoIqwqOmJgxTpXVdrZnyejriEhwCTGxAZaJkezkVdLfTPErS    1
+    Should Contain X Times    ${output}    az_angle : 16.293    1
+    Should Contain X Times    ${output}    az_velocity : 28.4437    1
+    Should Contain X Times    ${output}    el_angle : 4.1589    1
+    Should Contain X Times    ${output}    el_velocity : 89.0962    1
+    Should Contain X Times    ${output}    time : 45.1837    1
+    Should Contain X Times    ${output}    cablewrap_orientation : ADUrxZDLgNHAcECIhlSFLwUQtwPTGUcAclXNqfTQMkoHICbAZBOdV    1
     Should Contain X Times    ${output}    === [ackCommand_trackTarget] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

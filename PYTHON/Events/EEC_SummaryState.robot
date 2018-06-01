@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 73.3353 256384931 -294556941
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 63.7917 1534346757 1785941404
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SummaryState writing a message containing :    1

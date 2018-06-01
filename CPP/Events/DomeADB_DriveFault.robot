@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -7545 jbmETJmBMipImJkYymkfhEPGKUKgdQEfNuuZHRAuljUAIzgPTwtazYRUpmNHtFSTQPgCzPeHOGuvssKmBpZIqrXihImitzlVesUlrsnGDcEdhMptygGlkBLXYRkpmABWaoFVGVecTzLjCEUyCrjFanJieELFbnkwTObGZGpicXdnLiuLIiGGlKphRsXTHdtqHkvKilchVGveScjWxLmjkqCIgFkwJllqKVruJlcsHKxIxmwGuLSpgfLslxJfKzLwVvrUHSufpAcWaxeCStvWLlCNkqQGkZFxiBPxJHKVrZJDdyeUAYzfaKpJZbOvQkWTKcfsIFeyYROPecPCGjFDVNsPARjhgmWxlshTxoUgatEyrjlvjAMLMmOKlOtTcHuVtIZIbHAExpoyvFNEQTWICjOqxzATioDplkXFWBWZSFEgVtJPFakZmJfKXyQDpCguJPXposKcEHZnQZsRpwYsnTJNwKswEeKmRDwjyhLWKzijfvpSgvdygyUVSLwyEoPmJVRpmcrsBTAxOaNPqxkxGgodbSlGTsYqSWdYsgZKNhpKXJyGakfDTxKgbENyMKdIdpebQW 6474055
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 21231 tFyMdnQVeUFJJCcxtEOHsEJVBKfCvUcvvcVfLubgvmrFMbvPWqDOmAZlxnUkStdufFsRxeXWwXhdQHIPdWATgbTjqBrujdnloHosbPeNeOKDaKumAvCzXKuENZPKfWwgahnblUwGVttpayUVmbiTdbJKEDIkKpAQajIDluftBPkkoXdjibxLwyuXlTq -122131671
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_DriveFault writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 6474055
+    ${output}=    Read Until    priority : -122131671
     Log    ${output}
     Should Contain X Times    ${output}    === Event DriveFault received =     1
-    Should Contain    ${output}    driveId : -7545
-    Should Contain    ${output}    errorCode : jbmETJmBMipImJkYymkfhEPGKUKgdQEfNuuZHRAuljUAIzgPTwtazYRUpmNHtFSTQPgCzPeHOGuvssKmBpZIqrXihImitzlVesUlrsnGDcEdhMptygGlkBLXYRkpmABWaoFVGVecTzLjCEUyCrjFanJieELFbnkwTObGZGpicXdnLiuLIiGGlKphRsXTHdtqHkvKilchVGveScjWxLmjkqCIgFkwJllqKVruJlcsHKxIxmwGuLSpgfLslxJfKzLwVvrUHSufpAcWaxeCStvWLlCNkqQGkZFxiBPxJHKVrZJDdyeUAYzfaKpJZbOvQkWTKcfsIFeyYROPecPCGjFDVNsPARjhgmWxlshTxoUgatEyrjlvjAMLMmOKlOtTcHuVtIZIbHAExpoyvFNEQTWICjOqxzATioDplkXFWBWZSFEgVtJPFakZmJfKXyQDpCguJPXposKcEHZnQZsRpwYsnTJNwKswEeKmRDwjyhLWKzijfvpSgvdygyUVSLwyEoPmJVRpmcrsBTAxOaNPqxkxGgodbSlGTsYqSWdYsgZKNhpKXJyGakfDTxKgbENyMKdIdpebQW
-    Should Contain    ${output}    priority : 6474055
+    Should Contain    ${output}    driveId : 21231
+    Should Contain    ${output}    errorCode : tFyMdnQVeUFJJCcxtEOHsEJVBKfCvUcvvcVfLubgvmrFMbvPWqDOmAZlxnUkStdufFsRxeXWwXhdQHIPdWATgbTjqBrujdnloHosbPeNeOKDaKumAvCzXKuENZPKfWwgahnblUwGVttpayUVmbiTdbJKEDIkKpAQajIDluftBPkkoXdjibxLwyuXlTq
+    Should Contain    ${output}    priority : -122131671

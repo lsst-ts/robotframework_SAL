@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1752 -14722 -16509 15160 31867 15109 30249 -25673 1140 0.76996 0.574565 0.163647 0.765089 0.137813 0.792089 0.826613 0.641298 0.10976 0.121268 0.356908 0.185782 0.510244 0.957811 0.61728 0.431669 0.437497 0.359043 0.477296 0.192741 0.878717 0.066677 0.272284 0.538875 0.832606 0.26952 0.865973 0.078095 0.886788 0.860987 0.80649 0.953415 0.548209 0.705804 0.056068 0.689337 0.536683 0.661484 0.945769 0.877886 0.041122 0.431744 0.478307 0.254867 0.640864 0.466118 0.817144 0.286201 0.485521 0.436673 0.350136 0.060824 0.749917 0.118264
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 14635 4403 -14685 15037 24498 -22943 8434 -26988 -28660 0.072111 0.030202 0.004938 0.731153 0.103079 0.929286 0.900256 0.683471 0.853428 0.428293 0.697688 0.667821 0.712693 0.972225 0.750134 0.200727 0.579802 0.746106 0.632471 0.47485 0.656484 0.921129 0.446565 0.417439 0.037193 0.792135 0.265531 0.468911 0.571785 0.794147 0.006676 0.384982 0.132227 0.243615 0.828924 0.912572 0.146887 0.664875 0.308364 0.988701 0.365124 0.84642 0.375658 0.209811 0.870698 0.95833 0.027407 0.124048 0.442879 0.801668 0.988762 0.799956 0.18516 0.998076
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 1752 -14722 -16509 15160 31867 15109 30249 -25673 1140 0.76996 0.574565 0.163647 0.765089 0.137813 0.792089 0.826613 0.641298 0.10976 0.121268 0.356908 0.185782 0.510244 0.957811 0.61728 0.431669 0.437497 0.359043 0.477296 0.192741 0.878717 0.066677 0.272284 0.538875 0.832606 0.26952 0.865973 0.078095 0.886788 0.860987 0.80649 0.953415 0.548209 0.705804 0.056068 0.689337 0.536683 0.661484 0.945769 0.877886 0.041122 0.431744 0.478307 0.254867 0.640864 0.466118 0.817144 0.286201 0.485521 0.436673 0.350136 0.060824 0.749917 0.118264
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 14635 4403 -14685 15037 24498 -22943 8434 -26988 -28660 0.072111 0.030202 0.004938 0.731153 0.103079 0.929286 0.900256 0.683471 0.853428 0.428293 0.697688 0.667821 0.712693 0.972225 0.750134 0.200727 0.579802 0.746106 0.632471 0.47485 0.656484 0.921129 0.446565 0.417439 0.037193 0.792135 0.265531 0.468911 0.571785 0.794147 0.006676 0.384982 0.132227 0.243615 0.828924 0.912572 0.146887 0.664875 0.308364 0.988701 0.365124 0.84642 0.375658 0.209811 0.870698 0.95833 0.027407 0.124048 0.442879 0.801668 0.988762 0.799956 0.18516 0.998076
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    tempIndex : 1752    1
-    Should Contain X Times    ${output}    rx : 0.76996    1
-    Should Contain X Times    ${output}    ry : 0.121268    1
-    Should Contain X Times    ${output}    rz : 0.477296    1
-    Should Contain X Times    ${output}    tx : 0.078095    1
-    Should Contain X Times    ${output}    ty : 0.536683    1
-    Should Contain X Times    ${output}    tz : 0.466118    1
+    Should Contain X Times    ${output}    tempIndex : 14635    1
+    Should Contain X Times    ${output}    rx : 0.072111    1
+    Should Contain X Times    ${output}    ry : 0.428293    1
+    Should Contain X Times    ${output}    rz : 0.632471    1
+    Should Contain X Times    ${output}    tx : 0.468911    1
+    Should Contain X Times    ${output}    ty : 0.146887    1
+    Should Contain X Times    ${output}    tz : 0.95833    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -83,13 +83,13 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    tempIndex = 1752    1
-    Should Contain X Times    ${output}    rx = 0.76996    1
-    Should Contain X Times    ${output}    ry = 0.121268    1
-    Should Contain X Times    ${output}    rz = 0.477296    1
-    Should Contain X Times    ${output}    tx = 0.078095    1
-    Should Contain X Times    ${output}    ty = 0.536683    1
-    Should Contain X Times    ${output}    tz = 0.466118    1
+    Should Contain X Times    ${output}    tempIndex = 14635    1
+    Should Contain X Times    ${output}    rx = 0.072111    1
+    Should Contain X Times    ${output}    ry = 0.428293    1
+    Should Contain X Times    ${output}    rz = 0.632471    1
+    Should Contain X Times    ${output}    tx = 0.468911    1
+    Should Contain X Times    ${output}    ty = 0.146887    1
+    Should Contain X Times    ${output}    tz = 0.95833    1
     Should Contain X Times    ${output}    === [ackCommand_configureTemperatureRawLUT] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 505707543
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 424146778
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atHeaderService::logevent_LoopTimeOutOfRange writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 505707543
+    ${output}=    Read Until    priority : 424146778
     Log    ${output}
     Should Contain X Times    ${output}    === Event LoopTimeOutOfRange received =     1
-    Should Contain    ${output}    loopTimeOutOfRange : 0
-    Should Contain    ${output}    priority : 505707543
+    Should Contain    ${output}    loopTimeOutOfRange : 1
+    Should Contain    ${output}    priority : 424146778

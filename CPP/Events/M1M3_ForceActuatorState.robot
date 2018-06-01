@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 87.7457 -8782 -29492 12894 -3125 -12282 -30241 -20511 -32646 1412 5467 24179 -7830 -3245 28280 -22647 -2434 -23619 22020 20941 -1817 9737 9117 -23071 -7955 -31520 -17408 29687 20893 -32417 -26363 29884 14922 17830 19572 -10499 -28559 157 -18254 -23048 24770 -5572 -9078 13256 -27725 -4176 12270 13403 -21724 -2263 28132 -29614 -31114 1240 -12372 20203 -6031 12069 -24221 1920 -26613 -8180 -27682 -25792 18162 11063 2626 2622 16945 -28839 7776 9738 11938 12679 -2317 19920 -21595 -1410 -7022 -25035 -325 -2551 168 5157 17395 -6074 -20011 -12737 -28967 28403 -29612 -24978 4439 -9901 -3528 -2095 22009 -25676 27957 19024 -31692 27842 4718 -4451 27022 15287 23131 10776 -29037 -28789 19771 -6852 -14179 28469 -14053 15066 -22590 -27415 23783 17453 9331 -15144 -23342 -8936 3918 -10613 -20853 -24200 26160 -4879 -15453 -24171 28972 30308 -19314 -11695 -24348 30026 -29299 31561 11608 8806 23067 18830 6364 -30228 1212 30370 -28026 4831 -17763 -14737 19968 21312 -10481 25989 25346 1 1 0 1 1 0 0 1 0 0 0 0.508937 -1823714600
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 6.4898 -11332 -14453 -29648 2443 6488 -27643 29370 24988 -312 21488 32141 -25879 29583 29234 -26935 -17909 -32084 -8274 8210 -454 -9989 20272 -1717 -29848 -26581 32586 13526 -21800 10944 8568 -2012 -27794 32511 -32281 5059 1863 -17402 -18410 -28801 14678 -29245 31738 -31988 7954 7864 3235 29492 -17743 -789 -9487 -27743 -22068 28473 -25700 -26173 20742 -17549 -10887 10323 -23238 -21939 27571 19694 -11626 -17145 -20881 -25904 -27877 5526 -10288 -10110 19408 -22824 1018 6216 19444 -22018 21925 2479 11957 23416 29597 22605 -22044 13559 -17418 -284 15723 5500 21178 -16984 975 -12931 -7028 -20947 -3157 4604 18314 -22509 21364 32294 19969 19828 5830 -781 -27038 28389 -18994 -7645 30354 -10524 1481 -23556 19450 1202 19600 -15943 1985 -29900 -20209 -28174 29304 16705 -14885 26600 27520 13643 31336 -25447 -17170 -2518 -17808 4298 5750 -28658 32307 -7232 -26348 -31538 3616 4404 -8257 24483 -19805 11432 -20751 1462 10010 23712 28281 5993 -29 -4483 32630 9038 -2885 1 0 1 0 1 0 1 1 1 0 0 0.533939 153153135
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_ForceActuatorState writing a message containing :    1
@@ -57,21 +57,21 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1823714600
+    ${output}=    Read Until    priority : 153153135
     Log    ${output}
     Should Contain X Times    ${output}    === Event ForceActuatorState received =     1
-    Should Contain    ${output}    Timestamp : 87.7457
-    Should Contain    ${output}    ILCState : -8782
-    Should Contain    ${output}    SlewFlag : -29492
-    Should Contain    ${output}    StaticForcesApplied : 12894
-    Should Contain    ${output}    ElevationForcesApplied : -3125
-    Should Contain    ${output}    AzimuthForcesApplied : -12282
-    Should Contain    ${output}    ThermalForcesApplied : -30241
-    Should Contain    ${output}    OffsetForcesApplied : -20511
-    Should Contain    ${output}    AccelerationForcesApplied : -32646
-    Should Contain    ${output}    VelocityForcesApplied : 1412
-    Should Contain    ${output}    ActiveOpticForcesApplied : 5467
-    Should Contain    ${output}    AberrationForcesApplied : 24179
-    Should Contain    ${output}    BalanceForcesApplied : -7830
-    Should Contain    ${output}    SupportPercentage : -3245
-    Should Contain    ${output}    priority : 28280
+    Should Contain    ${output}    Timestamp : 6.4898
+    Should Contain    ${output}    ILCState : -11332
+    Should Contain    ${output}    SlewFlag : -14453
+    Should Contain    ${output}    StaticForcesApplied : -29648
+    Should Contain    ${output}    ElevationForcesApplied : 2443
+    Should Contain    ${output}    AzimuthForcesApplied : 6488
+    Should Contain    ${output}    ThermalForcesApplied : -27643
+    Should Contain    ${output}    OffsetForcesApplied : 29370
+    Should Contain    ${output}    AccelerationForcesApplied : 24988
+    Should Contain    ${output}    VelocityForcesApplied : -312
+    Should Contain    ${output}    ActiveOpticForcesApplied : 21488
+    Should Contain    ${output}    AberrationForcesApplied : 32141
+    Should Contain    ${output}    BalanceForcesApplied : -25879
+    Should Contain    ${output}    SupportPercentage : 29583
+    Should Contain    ${output}    priority : 29234

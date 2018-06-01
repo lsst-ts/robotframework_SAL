@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0 37.7862 182620800
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 1 47.4637 -1950164421
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] summitFacility::logevent_AppliedSettingsMatchStart writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 182620800
+    ${output}=    Read Until    priority : -1950164421
     Log    ${output}
     Should Contain X Times    ${output}    === Event AppliedSettingsMatchStart received =     1
-    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 0
-    Should Contain    ${output}    timestamp : 37.7862
-    Should Contain    ${output}    priority : 182620800
+    Should Contain    ${output}    appliedSettingsMatchStartIsTrue : 1
+    Should Contain    ${output}    timestamp : 47.4637
+    Should Contain    ${output}    priority : -1950164421

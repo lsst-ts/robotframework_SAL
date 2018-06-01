@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send eglvcUYpAsXLikRxeYSBpgGSrbIgsomIBnNpdnDPtiSVBqWzxSCRfADWpTWqqqWljrzDcMKGlYYWCpLmhexCdCqVkzoTVWQjCxivfChzmGhepfwzADIqehYFbKSQPghhpBgIEaGVXPcvNsqggKLQEemDFZAmroWOxjpiSonaBhspzCfBtxkBRiGOoVhtdUqRbJojaxcVVGWPUJDTcnQexJbkERSyVcVahiHIIPHdGbWxTVZBnYbPLByPoJSVPSwe 674875817 7.7262 TZUtsOJyRVTuhsFIKlpAygzcRNcnAAujMMWdfJFWMtJyNYjpMccCcNVKyDUuZbYZPFknghNuDwSVakzcVLNIHXZbrMvyNOsKXTixsOdRUgWvuZpWfBPoDuHTVVeefZRyNPiKOhKBhEOOdWklbniIOUsGSSUZAxUSBNivlxRZQCyxaljjKXhDdZHpIQLIzsklKTxkspjqNCGsRdYaPFLFBBTVhgnWAZDLKPIjysqSnuvOaMpIbhfUCOyYBazfiXQk NBiZqVBBMgWrhDoaODfaIZKdPknMWySPOWyTjSWtPpfUSXisWXUPUwnxwkHbZfNcthKmpXVFpzSpkayvLxFbLbfirpweexQkMpdEnNYWqkjJuNrOFsrYZCYAkrCnjqlLwTLTSUVmNWXlvyzMdYxrxkyDczttYAYxzEruBmkqUALWSphpeAUaRRWwXQKneISKmBhbiWKAyOHckMacarxUMlyloYUwgnJAhuYMTlfUwwHcrwlWorUrFCMcvjuxNfYW 450787371 55425575
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send IAOyaYjIscxVNrjQeKgHvlPIxxlooiyeQtXYZBPwJZOZDSYVnHWdclOdvohkMXVHrndYFIdSFNWRoMVXhFucuuswGqxgRMJSRSpvPfkypWyptaRQgMtBSidGjCmckSBiiCMTGnLUmlSSqJMCCzLdljMJdffdwXNWFlHeiGWdPpDRqtjmlqTMYSQVXzNYmSpdmMduBuUgrKyOwzDtLrUGymonQnkLDRJXoTCRaJIlDYLzvmHGBjyqFZYIPNLpdhzf -655692894 23.2056 tpOZMqEjLYUZiCohhDozYUYrlxTLDqlFmwJjWMzyxGOzgghGCYylFixvhnRLKYLkykSbElqhrNSHgLXyfgDvWVOZuInaCTurVuqaZlfQegEvgIYmRsycJFwgCiGVeAVcVmSbRNdHVjkxsblsjjsVvENKOMHOOZSecPVWyDmahwDZFQOMHMTfBCQDANqQbXOEcLnqkbJWtliXRMBOcXXPVsflWsbBsAvMzxGOmpwKKCSIeBUSDzhqmCVbExlNdxrf WXIziYhZbAUbDiTxWOcKSvyGsuAWnkIxmbKpnFzgxgecSqQzcHAkJYyYLbTnirYcZZzbyYYJciEhFkUbUngVEkwEskWUqHZnsVxHxpBXpFmoDRaYnZkeMQXRKHezABdgqigkBMWXQQSVzVjnljEePKVEcIMqChbsfxjVQZIxbZNpFosCwOgxfTETTMkYkymLBzSGGFzuJuFGLlyIRqieeAAbOJHNcWoDDIppOIhvHhrvQIgqwuYPzwocnWbwlIaz 674560911 -845908853
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] sequencer::logevent_sequencerCommandIssued writing a message containing :    1
@@ -57,13 +57,13 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 55425575
+    ${output}=    Read Until    priority : -845908853
     Log    ${output}
     Should Contain X Times    ${output}    === Event sequencerCommandIssued received =     1
-    Should Contain    ${output}    CommandSource : eglvcUYpAsXLikRxeYSBpgGSrbIgsomIBnNpdnDPtiSVBqWzxSCRfADWpTWqqqWljrzDcMKGlYYWCpLmhexCdCqVkzoTVWQjCxivfChzmGhepfwzADIqehYFbKSQPghhpBgIEaGVXPcvNsqggKLQEemDFZAmroWOxjpiSonaBhspzCfBtxkBRiGOoVhtdUqRbJojaxcVVGWPUJDTcnQexJbkERSyVcVahiHIIPHdGbWxTVZBnYbPLByPoJSVPSwe
-    Should Contain    ${output}    SequenceNumber : 674875817
-    Should Contain    ${output}    Identifier : 7.7262
-    Should Contain    ${output}    Timestamp : TZUtsOJyRVTuhsFIKlpAygzcRNcnAAujMMWdfJFWMtJyNYjpMccCcNVKyDUuZbYZPFknghNuDwSVakzcVLNIHXZbrMvyNOsKXTixsOdRUgWvuZpWfBPoDuHTVVeefZRyNPiKOhKBhEOOdWklbniIOUsGSSUZAxUSBNivlxRZQCyxaljjKXhDdZHpIQLIzsklKTxkspjqNCGsRdYaPFLFBBTVhgnWAZDLKPIjysqSnuvOaMpIbhfUCOyYBazfiXQk
-    Should Contain    ${output}    CommandSent : NBiZqVBBMgWrhDoaODfaIZKdPknMWySPOWyTjSWtPpfUSXisWXUPUwnxwkHbZfNcthKmpXVFpzSpkayvLxFbLbfirpweexQkMpdEnNYWqkjJuNrOFsrYZCYAkrCnjqlLwTLTSUVmNWXlvyzMdYxrxkyDczttYAYxzEruBmkqUALWSphpeAUaRRWwXQKneISKmBhbiWKAyOHckMacarxUMlyloYUwgnJAhuYMTlfUwwHcrwlWorUrFCMcvjuxNfYW
-    Should Contain    ${output}    ReturnValue : 450787371
-    Should Contain    ${output}    priority : 55425575
+    Should Contain    ${output}    CommandSource : IAOyaYjIscxVNrjQeKgHvlPIxxlooiyeQtXYZBPwJZOZDSYVnHWdclOdvohkMXVHrndYFIdSFNWRoMVXhFucuuswGqxgRMJSRSpvPfkypWyptaRQgMtBSidGjCmckSBiiCMTGnLUmlSSqJMCCzLdljMJdffdwXNWFlHeiGWdPpDRqtjmlqTMYSQVXzNYmSpdmMduBuUgrKyOwzDtLrUGymonQnkLDRJXoTCRaJIlDYLzvmHGBjyqFZYIPNLpdhzf
+    Should Contain    ${output}    SequenceNumber : -655692894
+    Should Contain    ${output}    Identifier : 23.2056
+    Should Contain    ${output}    Timestamp : tpOZMqEjLYUZiCohhDozYUYrlxTLDqlFmwJjWMzyxGOzgghGCYylFixvhnRLKYLkykSbElqhrNSHgLXyfgDvWVOZuInaCTurVuqaZlfQegEvgIYmRsycJFwgCiGVeAVcVmSbRNdHVjkxsblsjjsVvENKOMHOOZSecPVWyDmahwDZFQOMHMTfBCQDANqQbXOEcLnqkbJWtliXRMBOcXXPVsflWsbBsAvMzxGOmpwKKCSIeBUSDzhqmCVbExlNdxrf
+    Should Contain    ${output}    CommandSent : WXIziYhZbAUbDiTxWOcKSvyGsuAWnkIxmbKpnFzgxgecSqQzcHAkJYyYLbTnirYcZZzbyYYJciEhFkUbUngVEkwEskWUqHZnsVxHxpBXpFmoDRaYnZkeMQXRKHezABdgqigkBMWXQQSVzVjnljEePKVEcIMqChbsfxjVQZIxbZNpFosCwOgxfTETTMkYkymLBzSGGFzuJuFGLlyIRqieeAAbOJHNcWoDDIppOIhvHhrvQIgqwuYPzwocnWbwlIaz
+    Should Contain    ${output}    ReturnValue : 674560911
+    Should Contain    ${output}    priority : -845908853

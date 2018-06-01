@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 80.1629 2.3637 83.1831 74.0544 12.5294 52.9825 91.5435 77.4044 79.6494 14.2749 44.807 65.6694 53.735 51.0823 41.1649 72.9168 59.3692 55.0977 90.781 62.1153 51.5846 71.772 43.9355 46.4361 16.7042 81.3953 42.7987 29.2588 65.626 81.2203 3.1575 43.0729 13.9339 95.7728 96.8652 63.3054 91.2203 69.1234 49.7694 7.3879 60.3597 77.4691 38.7234 89.7687 9.9888 21.2143 5.573 97.8746 20.3644 20.3582 93.4023 45.7526 76.2782 54.0971 39.4165 40.1172 83.0054 28.4658 83.164 54.1414 61.0019 -468327778
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 63.2966 27.775 65.0435 32.886 7.7705 44.2272 31.9994 0.8865 89.6029 29.125 21.1552 91.6896 16.673 11.2852 18.9788 69.4438 0.7953 77.2109 98.675 68.9072 75.3349 80.3003 90.239 47.936 13.4281 0.4713 98.4099 95.7782 98.8208 1.3641 29.0979 8.6648 92.0372 28.008 0.8048 19.1061 10.1554 7.1842 19.4566 63.7514 6.9881 65.1702 76.7942 44.8662 78.5361 21.3619 97.5212 24.3713 78.6749 94.3514 14.9078 96.3794 79.9305 68.3895 87.6368 92.6957 81.8512 61.9009 84.4607 81.8961 96.4768 -913158637
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] m1m3::logevent_PIDInfo writing a message containing :    1
@@ -57,18 +57,18 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -468327778
+    ${output}=    Read Until    priority : -913158637
     Log    ${output}
     Should Contain X Times    ${output}    === Event PIDInfo received =     1
-    Should Contain    ${output}    Timestamp : 80.1629
-    Should Contain    ${output}    Timestep : 2.3637
-    Should Contain    ${output}    P : 83.1831
-    Should Contain    ${output}    I : 74.0544
-    Should Contain    ${output}    D : 12.5294
-    Should Contain    ${output}    N : 52.9825
-    Should Contain    ${output}    CalculatedA : 91.5435
-    Should Contain    ${output}    CalculatedB : 77.4044
-    Should Contain    ${output}    CalculatedC : 79.6494
-    Should Contain    ${output}    CalculatedD : 14.2749
-    Should Contain    ${output}    CalculatedE : 44.807
-    Should Contain    ${output}    priority : 65.6694
+    Should Contain    ${output}    Timestamp : 63.2966
+    Should Contain    ${output}    Timestep : 27.775
+    Should Contain    ${output}    P : 65.0435
+    Should Contain    ${output}    I : 32.886
+    Should Contain    ${output}    D : 7.7705
+    Should Contain    ${output}    N : 44.2272
+    Should Contain    ${output}    CalculatedA : 31.9994
+    Should Contain    ${output}    CalculatedB : 0.8865
+    Should Contain    ${output}    CalculatedC : 89.6029
+    Should Contain    ${output}    CalculatedD : 29.125
+    Should Contain    ${output}    CalculatedE : 21.1552
+    Should Contain    ${output}    priority : 91.6896

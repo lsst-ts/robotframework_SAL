@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator State Machine tests.
+Documentation    Rotator_ communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

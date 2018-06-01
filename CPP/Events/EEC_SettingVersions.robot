@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 47.4452 rlvlSNUAjGeHBcQyTpHAuiVBKqmBUIKrvdvVPXrCCYoiXZHoTtCvoqFAogwCzFVNZAJJQqZiJhSlwXsVwvdMFGjVSmYZvvIPHRxNLNYOgHbtAPZxCKiBVUztJnGBAaXswYeSmOdgAPpOkicDjUNqoZWpbqfXEAIQYKbZBvTzQBXTYjbNRwoufwhyGjxuhwNieANtdrTdskwkPKhapfPBBkrGHsHSgnqHLMoQugSmtDVmoTlLnkzydHCtgXgbpByZTqrDDqbKjAwBwehFghEbqydamPxjidwglrYlCbjmNNKWlZgKKDSVaibFAAypZqrsR 212148056
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 37.3829 LKpuiXPtTppxnPDbWnFZqQgRlBPBacmXyLvGaIjiAshzoBtsGMIPNjdkiettFXGjYKXYPrxfeQOkmsTayFzcHLdVsajSdvabXEgCGpesbxqabsGEkYxVzRMJmgtFgzqqBJzHptJquUODlJwkYrFjkEUaMHTEbxAgNxBmaXAnyDAWQXBgjiTnjjfFNDsWYALZQxOnyRfDOJvhIOKqplguZajzGJRsaxFGPTsqIPDQWwHVDnRPgacgvWrBgoZwXGfRDbhgYDQtZXMMCOcIYKKeFDUYWAeMlHkTNXvZrMhuaclphHPUArEqPImWADSCnUQIjDApChbsjvpyVDgKVGKfyJgehGnHpkJRBYOPtlHyeznDXQKZpqisqCLrIMFwcMiqiRtEZmJPoTtNyBulmYELJxtiPyXTaqEXjsYmjjNkJcLPKhXEh -1765305777
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] eec::logevent_SettingVersions writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 212148056
+    ${output}=    Read Until    priority : -1765305777
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    timestamp : 47.4452
-    Should Contain    ${output}    recommendedSettingsVersion : rlvlSNUAjGeHBcQyTpHAuiVBKqmBUIKrvdvVPXrCCYoiXZHoTtCvoqFAogwCzFVNZAJJQqZiJhSlwXsVwvdMFGjVSmYZvvIPHRxNLNYOgHbtAPZxCKiBVUztJnGBAaXswYeSmOdgAPpOkicDjUNqoZWpbqfXEAIQYKbZBvTzQBXTYjbNRwoufwhyGjxuhwNieANtdrTdskwkPKhapfPBBkrGHsHSgnqHLMoQugSmtDVmoTlLnkzydHCtgXgbpByZTqrDDqbKjAwBwehFghEbqydamPxjidwglrYlCbjmNNKWlZgKKDSVaibFAAypZqrsR
-    Should Contain    ${output}    priority : 212148056
+    Should Contain    ${output}    timestamp : 37.3829
+    Should Contain    ${output}    recommendedSettingsVersion : LKpuiXPtTppxnPDbWnFZqQgRlBPBacmXyLvGaIjiAshzoBtsGMIPNjdkiettFXGjYKXYPrxfeQOkmsTayFzcHLdVsajSdvabXEgCGpesbxqabsGEkYxVzRMJmgtFgzqqBJzHptJquUODlJwkYrFjkEUaMHTEbxAgNxBmaXAnyDAWQXBgjiTnjjfFNDsWYALZQxOnyRfDOJvhIOKqplguZajzGJRsaxFGPTsqIPDQWwHVDnRPgacgvWrBgoZwXGfRDbhgYDQtZXMMCOcIYKKeFDUYWAeMlHkTNXvZrMhuaclphHPUArEqPImWADSCnUQIjDApChbsjvpyVDgKVGKfyJgehGnHpkJRBYOPtlHyeznDXQKZpqisqCLrIMFwcMiqiRtEZmJPoTtNyBulmYELJxtiPyXTaqEXjsYmjjNkJcLPKhXEh
+    Should Contain    ${output}    priority : -1765305777

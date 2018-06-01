@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.79403 0.293143 0.088102 0.321374 0.838247 0.869829
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.602009 0.509868 0.743112 0.335693 0.640324 0.707262
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.79403 0.293143 0.088102 0.321374 0.838247 0.869829
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.602009 0.509868 0.743112 0.335693 0.640324 0.707262
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,12 +68,12 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xymax : 0.79403    1
-    Should Contain X Times    ${output}    zmin : 0.293143    1
-    Should Contain X Times    ${output}    zmax : 0.088102    1
-    Should Contain X Times    ${output}    uvmax : 0.321374    1
-    Should Contain X Times    ${output}    wmin : 0.838247    1
-    Should Contain X Times    ${output}    wmax : 0.869829    1
+    Should Contain X Times    ${output}    xymax : 0.602009    1
+    Should Contain X Times    ${output}    zmin : 0.509868    1
+    Should Contain X Times    ${output}    zmax : 0.743112    1
+    Should Contain X Times    ${output}    uvmax : 0.335693    1
+    Should Contain X Times    ${output}    wmin : 0.640324    1
+    Should Contain X Times    ${output}    wmax : 0.707262    1
     Should Contain    ${output}    === command configureLimits issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -88,12 +88,12 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xymax : 0.79403    1
-    Should Contain X Times    ${output}    zmin : 0.293143    1
-    Should Contain X Times    ${output}    zmax : 0.088102    1
-    Should Contain X Times    ${output}    uvmax : 0.321374    1
-    Should Contain X Times    ${output}    wmin : 0.838247    1
-    Should Contain X Times    ${output}    wmax : 0.869829    1
+    Should Contain X Times    ${output}    xymax : 0.602009    1
+    Should Contain X Times    ${output}    zmin : 0.509868    1
+    Should Contain X Times    ${output}    zmax : 0.743112    1
+    Should Contain X Times    ${output}    uvmax : 0.335693    1
+    Should Contain X Times    ${output}    wmin : 0.640324    1
+    Should Contain X Times    ${output}    wmax : 0.707262    1
     Should Contain X Times    ${output}    === [ackCommand_configureLimits] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

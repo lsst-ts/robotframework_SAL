@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.562469 0.498858 0.652773 0.114014 0.787 0.780634 0.620356 0.353068 0.994247 0.824436 0.75076 0.943298 0.675957 0.415333 0.762419 0.313346 0.553203 0.067401 0.809692 0.295509 0.542514 0.357415
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.156643 0.124449 0.581649 0.436443 0.436472 0.193446 0.282045 0.248165 0.510425 0.493845 0.978117 0.073249 0.185803 0.402598 0.675592 0.742776 0.033234 0.697369 0.503981 0.84784 0.015813 0.070266
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.562469 0.498858 0.652773 0.114014 0.787 0.780634 0.620356 0.353068 0.994247 0.824436 0.75076 0.943298 0.675957 0.415333 0.762419 0.313346 0.553203 0.067401 0.809692 0.295509 0.542514 0.357415
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.156643 0.124449 0.581649 0.436443 0.436472 0.193446 0.282045 0.248165 0.510425 0.493845 0.978117 0.073249 0.185803 0.402598 0.675592 0.742776 0.033234 0.697369 0.503981 0.84784 0.015813 0.070266
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    Coefficients : 0.562469    1
+    Should Contain X Times    ${output}    Coefficients : 0.156643    1
     Should Contain    ${output}    === command ApplyActiveOpticForcesByBendingModes issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    Coefficients : 0.562469    1
+    Should Contain X Times    ${output}    Coefficients : 0.156643    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyActiveOpticForcesByBendingModes] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

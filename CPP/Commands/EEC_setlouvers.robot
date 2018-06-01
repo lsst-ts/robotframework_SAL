@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9729 -10277 -25048 11439 16766 25542 -20763 26975 -29550 -29275 6114 -32477 31115 9389 6612 -2307 6068 -12332 -29391 -20510 -15670 -32529 3185 -30708 -9562 -24788 -4185 19641 -32500 -22512 31899 -3275 -16753 20450 -27904 9630 25273 -7017 29789 29837 14808 -14931 28776 -16019 -20528 28208 22919 19852 -2025 -14025 -13215 -9971 3456 -21398 23264 94 -26105 28012 17846 16643
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -18681 17675 702 -28857 -24834 30979 25221 29302 16058 -31701 10600 -1308 14778 25166 10947 -4243 32441 -10580 12220 18772 -5110 -2274 -17776 -29675 -14872 29967 -23712 -11425 4034 -20300 -9805 -18931 -27485 -20893 24675 23628 -23963 29994 -19949 -13788 -24562 21482 28613 -27418 9585 7147 32093 28576 -16078 -17408 -24910 25297 -11085 -17957 -2076 25056 -8280 3813 -21546 -23170
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 9729 -10277 -25048 11439 16766 25542 -20763 26975 -29550 -29275 6114 -32477 31115 9389 6612 -2307 6068 -12332 -29391 -20510 -15670 -32529 3185 -30708 -9562 -24788 -4185 19641 -32500 -22512 31899 -3275 -16753 20450 -27904 9630 25273 -7017 29789 29837 14808 -14931 28776 -16019 -20528 28208 22919 19852 -2025 -14025 -13215 -9971 3456 -21398 23264 94 -26105 28012 17846 16643
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander -18681 17675 702 -28857 -24834 30979 25221 29302 16058 -31701 10600 -1308 14778 25166 10947 -4243 32441 -10580 12220 18772 -5110 -2274 -17776 -29675 -14872 29967 -23712 -11425 4034 -20300 -9805 -18931 -27485 -20893 24675 23628 -23963 29994 -19949 -13788 -24562 21482 28613 -27418 9585 7147 32093 28576 -16078 -17408 -24910 25297 -11085 -17957 -2076 25056 -8280 3813 -21546 -23170
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    position : 9729    1
+    Should Contain X Times    ${output}    position : -18681    1
     Should Contain    ${output}    === command setlouvers issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    position : 9729    1
+    Should Contain X Times    ${output}    position : -18681    1
     Should Contain X Times    ${output}    === [ackCommand_setlouvers] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

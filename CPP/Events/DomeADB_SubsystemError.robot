@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send hbCEYyWybqKIHZkLisvsydbKiCUXtJRZyiYMGuDbnrmJycmMvAwkNJaDqmyAGhaaGVYbdKxXNoRbOSGJtURlXtFFWEBLfdCeWqPDxkIsSFAwgEJTayuDcaoXduOQqFSQzqxRkGSAvGkODnDnAdQWFsBNbAQXadoWMLyWBgPrdwiQwIihWTJQDARmVIRn 693687061
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QRfRSQYQtHTpPPZhtIaXQBHEnOFHkRVnoAVCbhyIKSCBBzoAuoHoVdLZKdNweaThjfRmWCOuOTRRrwECCLNnjsCaPwPIJsZqCWGvxYehlVegYDkhTJLMPyfQhmssLpmnVrPQfNDeIWUDDIronbiKNnhCMglAlgHrRcuApnsMyjkATwXNUrdAWRHPZQkVlafuxtCqTUeAOLYdZRzgApIMQMDGjxLHMQuzehuWkIybZzwlnNLqMNljcxAecvEduDNvtHpNoXBWUgiWpilxssfnyXmUnFcFhIZeyOhFyCZrFAlX 1290203262
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 693687061
+    ${output}=    Read Until    priority : 1290203262
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : hbCEYyWybqKIHZkLisvsydbKiCUXtJRZyiYMGuDbnrmJycmMvAwkNJaDqmyAGhaaGVYbdKxXNoRbOSGJtURlXtFFWEBLfdCeWqPDxkIsSFAwgEJTayuDcaoXduOQqFSQzqxRkGSAvGkODnDnAdQWFsBNbAQXadoWMLyWBgPrdwiQwIihWTJQDARmVIRn
-    Should Contain    ${output}    priority : 693687061
+    Should Contain    ${output}    errorCode : QRfRSQYQtHTpPPZhtIaXQBHEnOFHkRVnoAVCbhyIKSCBBzoAuoHoVdLZKdNweaThjfRmWCOuOTRRrwECCLNnjsCaPwPIJsZqCWGvxYehlVegYDkhTJLMPyfQhmssLpmnVrPQfNDeIWUDDIronbiKNnhCMglAlgHrRcuApnsMyjkATwXNUrdAWRHPZQkVlafuxtCqTUeAOLYdZRzgApIMQMDGjxLHMQuzehuWkIybZzwlnNLqMNljcxAecvEduDNvtHpNoXBWUgiWpilxssfnyXmUnFcFhIZeyOhFyCZrFAlX
+    Should Contain    ${output}    priority : 1290203262

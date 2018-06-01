@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.5501 26.6003 81.9684
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.7398 93.0159 38.6757
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 86.5501 26.6003 81.9684
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 59.7398 93.0159 38.6757
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,9 +68,9 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    xTilt : 86.5501    1
-    Should Contain X Times    ${output}    yTilt : 26.6003    1
-    Should Contain X Times    ${output}    piston : 81.9684    1
+    Should Contain X Times    ${output}    xTilt : 59.7398    1
+    Should Contain X Times    ${output}    yTilt : 93.0159    1
+    Should Contain X Times    ${output}    piston : 38.6757    1
     Should Contain    ${output}    === command PositionMirror issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -85,9 +85,9 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    xTilt : 86.5501    1
-    Should Contain X Times    ${output}    yTilt : 26.6003    1
-    Should Contain X Times    ${output}    piston : 81.9684    1
+    Should Contain X Times    ${output}    xTilt : 59.7398    1
+    Should Contain X Times    ${output}    yTilt : 93.0159    1
+    Should Contain X Times    ${output}    piston : 38.6757    1
     Should Contain X Times    ${output}    === [ackCommand_PositionMirror] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

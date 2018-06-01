@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 42.4851 57.4213 43.5132 48.4252 61.8591 78.8128 12.4584 56.1516 3.0998 14.2684 37.8504 97.7806 19.3195 39.7714 12.6034
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 52.6745 35.6889 22.9707 3.5663 20.0271 89.747 18.8903 97.01 29.0646 59.2034 96.0173 59.886 71.6566 44.4713 33.7101
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 42.4851 57.4213 43.5132 48.4252 61.8591 78.8128 12.4584 56.1516 3.0998 14.2684 37.8504 97.7806 19.3195 39.7714 12.6034
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 52.6745 35.6889 22.9707 3.5663 20.0271 89.747 18.8903 97.01 29.0646 59.2034 96.0173 59.886 71.6566 44.4713 33.7101
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    parameters : 42.4851    1
+    Should Contain X Times    ${output}    parameters : 52.6745    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    parameters = 42.4851    1
+    Should Contain X Times    ${output}    parameters = 52.6745    1
     Should Contain X Times    ${output}    === [ackCommand_sethvac] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

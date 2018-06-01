@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 62.5087 850440698
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 39.6577 -1644255243
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_NoEnoughZernikeTerm writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 850440698
+    ${output}=    Read Until    priority : -1644255243
     Log    ${output}
     Should Contain X Times    ${output}    === Event NoEnoughZernikeTerm received =     1
-    Should Contain    ${output}    timestamp : 62.5087
-    Should Contain    ${output}    priority : 850440698
+    Should Contain    ${output}    timestamp : 39.6577
+    Should Contain    ${output}    priority : -1644255243

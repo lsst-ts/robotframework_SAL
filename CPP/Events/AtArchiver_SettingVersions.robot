@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send TYHjBfRFaQJovojNFNqZbZpEHuaPAaTCoawdoqCXJufcNDiOOyHJHIDVpGdnqmEIpSoLQODQMUBbTOPwyvVBCSAIXpbRVOaqxlTzOWFXcQocMTFUPQyfeZMtLVQxRnEeCsoeRQDShPpbTLmQDhwgeMDIuFdMgPhXlPAaRxgTPpONQJIiTYVpaTQwZvdwBSutqQzEwxEUNTlNAKzsftdJrWygxaxjKIyVaKRFlcawWvyscHpGfAPfJLgqdVkRdOKb 627597458
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RfAFcPxNaFdKkXNXMiFNgExyYlDJtKXSIEsZbGKraiLrkAeLYSpBaupbzIthbiWSbWeUNQLFeFDRQIHNjSqcXFZfDgUHQVZcwAfgIGuCwIbiswfCxeEKmDnELQGUFEJKUXmSmgvEDOyHYuzUlfidhgmzTGVVDNQjMyWkLxjDGTigdFCFhmqVcKuehDnHDqjsOShAjZEvCuRrEiIVuhBNHLfeaGVeYTVnNrABOEAjXVejuGDDXbhHoUpADVgOGYOD -1909270749
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_SettingVersions writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 627597458
+    ${output}=    Read Until    priority : -1909270749
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : TYHjBfRFaQJovojNFNqZbZpEHuaPAaTCoawdoqCXJufcNDiOOyHJHIDVpGdnqmEIpSoLQODQMUBbTOPwyvVBCSAIXpbRVOaqxlTzOWFXcQocMTFUPQyfeZMtLVQxRnEeCsoeRQDShPpbTLmQDhwgeMDIuFdMgPhXlPAaRxgTPpONQJIiTYVpaTQwZvdwBSutqQzEwxEUNTlNAKzsftdJrWygxaxjKIyVaKRFlcawWvyscHpGfAPfJLgqdVkRdOKb
-    Should Contain    ${output}    priority : 627597458
+    Should Contain    ${output}    recommendedSettingVersion : RfAFcPxNaFdKkXNXMiFNgExyYlDJtKXSIEsZbGKraiLrkAeLYSpBaupbzIthbiWSbWeUNQLFeFDRQIHNjSqcXFZfDgUHQVZcwAfgIGuCwIbiswfCxeEKmDnELQGUFEJKUXmSmgvEDOyHYuzUlfidhgmzTGVVDNQjMyWkLxjDGTigdFCFhmqVcKuehDnHDqjsOShAjZEvCuRrEiIVuhBNHLfeaGVeYTVnNrABOEAjXVejuGDDXbhHoUpADVgOGYOD
+    Should Contain    ${output}    priority : -1909270749

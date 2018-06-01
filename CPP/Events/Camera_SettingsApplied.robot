@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mDMsyzzAFbqFrrEfkXdcnJCWyaYJLNigRvLEYMZhltpPPtBjnTTULaXvfvBjaUGdbKZfDionouEUmAQJcITJeZYHgtJhsGJWwhsBiQAePVjDNyAMhXLKBUttABqGGVTJtfQdVUlhAgWcWvhFVugUbeRMuhXCNhAhAfGYDDMRAoBYxyiGTbzYkmmjkBeggRzJpjKIUUMOGapIiFbcVPOLstctsQtOLglgTtbnovzFdfVEJQCuBHHTWiieytiGXqQj -1747503385
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send oZFoBElFjpAWpGTXNYpjgeiWbIDbadNGDsWxkRBeDpRLFFAeLzcTsJNhmPTdlcbxCWvRQOOOltrADKMhNlyNDibyMclzjKpALpKvInLJiBjsEYxhGVCVVCrCVoQZMxEzgfDzqEodNxKFkruAfNozpeRhRGOgoEvSHONmLaKrmaRiiugqTFBbKUHVofbkzQKhpPXmfwIsMDstmPjMlIByLlpCmkonYdICvHzLhnuXkbTLIbEBxDVIYudPpYmGwbcv 2105302739
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] camera::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1747503385
+    ${output}=    Read Until    priority : 2105302739
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : mDMsyzzAFbqFrrEfkXdcnJCWyaYJLNigRvLEYMZhltpPPtBjnTTULaXvfvBjaUGdbKZfDionouEUmAQJcITJeZYHgtJhsGJWwhsBiQAePVjDNyAMhXLKBUttABqGGVTJtfQdVUlhAgWcWvhFVugUbeRMuhXCNhAhAfGYDDMRAoBYxyiGTbzYkmmjkBeggRzJpjKIUUMOGapIiFbcVPOLstctsQtOLglgTtbnovzFdfVEJQCuBHHTWiieytiGXqQj
-    Should Contain    ${output}    priority : -1747503385
+    Should Contain    ${output}    Settings : oZFoBElFjpAWpGTXNYpjgeiWbIDbadNGDsWxkRBeDpRLFFAeLzcTsJNhmPTdlcbxCWvRQOOOltrADKMhNlyNDibyMclzjKpALpKvInLJiBjsEYxhGVCVVCrCVoQZMxEzgfDzqEodNxKFkruAfNozpeRhRGOgoEvSHONmLaKrmaRiiugqTFBbKUHVofbkzQKhpPXmfwIsMDstmPjMlIByLlpCmkonYdICvHzLhnuXkbTLIbEBxDVIYudPpYmGwbcv
+    Should Contain    ${output}    priority : 2105302739

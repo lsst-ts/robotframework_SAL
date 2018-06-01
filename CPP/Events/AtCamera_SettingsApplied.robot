@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send yZywpZsCmIoKlnvLkofkbmVrDqJeHBYsvZNUgyXfwuZfhxbFXnArQVXgxRNqKwqcjeylbRbfXljLBiIPoathyBLieWUqiWdRHMqZoCPzRgSujOAQPflgakDrPyKMLdGTDOJSiAbMOcaQJBcDPpOQkIKOJmDKUWhIBgWBKrwoRLXiZZCDXVbKgbjCHlOGBwxfUUQEKSPjOLVKtIExLXUcgDSYkUmkOaTKzwbjhzfwbcieNCgQrBGkhhQPWiQzsRZw -530272345
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send AHByBEfAsOTBzkFeQEHnkhXbWbmideakmYrSAAclRvQqqRdsXHbirZMHSroPtUBpmdPzZbgzrBsVQIkNJXIMUkzZLqluDvDSIzzeLzhIVUzNeysiLucxJLjPdbcZrCeYcMTHmAizxcNbEDFQHERqDXJkPscaiKPiVXhFMzWNnsXSkmQwtIrdbSzeZUrsctYOXgeXexNhoGVjeyCYJWqLwOEOFtjqYXngDGDjKSNwowfoBOqmDxyakVXoSksIUjCf -648280647
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atcamera::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -530272345
+    ${output}=    Read Until    priority : -648280647
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : yZywpZsCmIoKlnvLkofkbmVrDqJeHBYsvZNUgyXfwuZfhxbFXnArQVXgxRNqKwqcjeylbRbfXljLBiIPoathyBLieWUqiWdRHMqZoCPzRgSujOAQPflgakDrPyKMLdGTDOJSiAbMOcaQJBcDPpOQkIKOJmDKUWhIBgWBKrwoRLXiZZCDXVbKgbjCHlOGBwxfUUQEKSPjOLVKtIExLXUcgDSYkUmkOaTKzwbjhzfwbcieNCgQrBGkhhQPWiQzsRZw
-    Should Contain    ${output}    priority : -530272345
+    Should Contain    ${output}    Settings : AHByBEfAsOTBzkFeQEHnkhXbWbmideakmYrSAAclRvQqqRdsXHbirZMHSroPtUBpmdPzZbgzrBsVQIkNJXIMUkzZLqluDvDSIzzeLzhIVUzNeysiLucxJLjPdbcZrCeYcMTHmAizxcNbEDFQHERqDXJkPscaiKPiVXhFMzWNnsXSkmQwtIrdbSzeZUrsctYOXgeXexNhoGVjeyCYJWqLwOEOFtjqYXngDGDjKSNwowfoBOqmDxyakVXoSksIUjCf
+    Should Contain    ${output}    priority : -648280647

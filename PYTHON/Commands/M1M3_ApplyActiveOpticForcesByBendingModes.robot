@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.856967 0.203792 0.480308 0.38671 0.112293 0.119551 0.43783 0.292882 0.51671 0.84212 0.921585 0.227289 0.55193 0.424252 0.751331 0.992208 0.44174 0.697725 0.276738 0.144303 0.007413 0.219859
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.758927 0.852534 0.256723 0.875176 0.399527 0.767708 0.171424 0.099231 0.837717 0.344746 0.636957 0.193107 0.214708 0.678898 0.608993 0.447154 0.738915 0.254765 0.022438 0.888898 0.065736 0.568768
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Commander.
-    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.856967 0.203792 0.480308 0.38671 0.112293 0.119551 0.43783 0.292882 0.51671 0.84212 0.921585 0.227289 0.55193 0.424252 0.751331 0.992208 0.44174 0.697725 0.276738 0.144303 0.007413 0.219859
+    ${input}=    Write    python ${subSystem}_Commander_${component}.py 0.758927 0.852534 0.256723 0.875176 0.399527 0.767708 0.171424 0.099231 0.837717 0.344746 0.636957 0.193107 0.214708 0.678898 0.608993 0.447154 0.738915 0.254765 0.022438 0.888898 0.065736 0.568768
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    Coefficients : 0.856967    1
+    Should Contain X Times    ${output}    Coefficients : 0.758927    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    Coefficients(22) = [0.856967, 0.203792, 0.480308, 0.38671, 0.112293, 0.119551, 0.43783, 0.292882, 0.51671, 0.84212, 0.921585, 0.227289, 0.55193, 0.424252, 0.751331, 0.992208, 0.44174, 0.697725, 0.276738, 0.144303, 0.007413, 0.219859]    1
+    Should Contain X Times    ${output}    Coefficients(22) = [0.758927, 0.852534, 0.256723, 0.875176, 0.399527, 0.767708, 0.171424, 0.099231, 0.837717, 0.344746, 0.636957, 0.193107, 0.214708, 0.678898, 0.608993, 0.447154, 0.738915, 0.254765, 0.022438, 0.888898, 0.065736, 0.568768]    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyActiveOpticForcesByBendingModes] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

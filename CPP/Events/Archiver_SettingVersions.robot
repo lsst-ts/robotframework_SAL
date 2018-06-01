@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VyrlyDGTVhdQfzVfMHxJOlMUmElkfPyBZHIqkhzLVNfdeAHiFxnXytvJTBkwRXhmPKLPjbLkwXgsJIRigLsUnHWyGGZEahTboWpFnHkrEVkdyfWSPupRFQeutAOrkyXBlyagYmcxqYMiJyFDzWeCfYflamfzAuIiZbIhmszMIdFMbdabpLDvxJQacnpHeuCNjEUGQHUnoLKKWEsmsmMrjYtYAQwKIsyoXYrxcUbHAjCEHKSDbXeKiAtLNMqAjbmb 1503195503
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send ywZAmJofDYKtSLvVFKTigFwXvArAjqlHyOkuEKqlYDSDFaySQxraNmuDrNIJtsZHvDgMzcTcEkkOJtJOYyBljWxcCQKxMoIcfVRkSNNKvFhSXcaCstnWSoUaXoqwPcvlbpkMGUflMZTtzgFIHKyeCjrLPXjZEUIBNDgTvHpyIYTBbOzvjtfSOeBRizdqORRUkhsllQNYJlUDhgQqbdhzVYauyLRtxBcUItPIhXEHbIUKKJHquyHpfVWhsWBiMerM 865340966
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingVersions writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1503195503
+    ${output}=    Read Until    priority : 865340966
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingVersions received =     1
-    Should Contain    ${output}    recommendedSettingVersion : VyrlyDGTVhdQfzVfMHxJOlMUmElkfPyBZHIqkhzLVNfdeAHiFxnXytvJTBkwRXhmPKLPjbLkwXgsJIRigLsUnHWyGGZEahTboWpFnHkrEVkdyfWSPupRFQeutAOrkyXBlyagYmcxqYMiJyFDzWeCfYflamfzAuIiZbIhmszMIdFMbdabpLDvxJQacnpHeuCNjEUGQHUnoLKKWEsmsmMrjYtYAQwKIsyoXYrxcUbHAjCEHKSDbXeKiAtLNMqAjbmb
-    Should Contain    ${output}    priority : 1503195503
+    Should Contain    ${output}    recommendedSettingVersion : ywZAmJofDYKtSLvVFKTigFwXvArAjqlHyOkuEKqlYDSDFaySQxraNmuDrNIJtsZHvDgMzcTcEkkOJtJOYyBljWxcCQKxMoIcfVRkSNNKvFhSXcaCstnWSoUaXoqwPcvlbpkMGUflMZTtzgFIHKyeCjrLPXjZEUIBNDgTvHpyIYTBbOzvjtfSOeBRizdqORRUkhsllQNYJlUDhgQqbdhzVYauyLRtxBcUItPIhXEHbIUKKJHquyHpfVWhsWBiMerM
+    Should Contain    ${output}    priority : 865340966

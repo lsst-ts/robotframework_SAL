@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UKeESGBzHSTicJaQpgAffOwYBPobeYqFzUrcUhNqzibIVmgbrysnEcVEbOQWlptvvEfnkCOciOSGOqwiImYoUUUzwFQfOUjNmgYmyzeuFKrhryMxBgkeqdpMYrFWYAgJbzMhBvIAXKMWLdXitouYdLAkGOQadrxZRnWBbtaDYORMKTVFyjFUbmJSwEkSNtgtlubsoWEMwCDOgtErVTSsNrkwswiEqEhhSKxSHQMHOShwcMejeNOwDlHUUakiqjJiUFWrnDmkrmNJFQJoeLgekgafyBazLFCIsYjYDUWDAvwFkQuZLHJTydapEIEZhwWZZbaXjZrhmphUtNfGRMbYtWkfDTFJXTWCVCwSuxxdmQVxSYRtsqcMHKJXikJJzqyWtOwyVruPQSvkWiuDWsZvYtNMeqGrBWGTbSvYFrzQKgBPGwLAqcWAsNgujUURNtAQbNsnMbBVGZWZOrDiltEWHayzeitWeEdVPRHGIegZZAsUhQGAQdAskSRqpxUsQxYVPGEsmAziKMMTcRKordmrzYHZuplLUhwxJXacybNXYVcPVvOWacSFtHpqQIOrzcorxpvlwjZJAmFGnjNuyVSwGWtkOcIszfPztquWAaToLgXkQbMmtfSBZMQSJcciLKmTpJKlTWTPLOqMNwwStfaMyFwztBgWWoEMtQSLuFWzNIzRVCIFpqVuprfDPrTWNOzQzLWiRaHwWIkkFhRfRwqlkmghzgqjnrRpmAnQkdUJAdxfVntaDblIyBKjyRpEzzwvkxlOClH 54.7383 1526623452
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send URAevBfQmRbBfCjTPxqTWwxKiuevXuurhHamnBqsByCvlVgKOomoIybovNYaMTunvjajImxciLjPfSNcTVeMehzSZbRDGtSUVSXOMBUeMIUzvEUZiuKKZRWwZYacoklETHGRsIdskkvIrFJuuXEMyThvXKMXINCbpyAVbonisYYRQYveaMWHxjwKmHhlsiPJqNKPWJRQNWSgmyrBUSWiSUaWoqdYHAvAQUWNbDRjhbbcxBErcAgrijzDBpNkQjFYWvdWJuePUGWYrgVzqeKHtYgZFZQeqvSfyAIsMIRROvKvMFlqeHTbttzjkWcYbjOYqNYbOXZjFcXctADgkXtDkLAWhvusrmMLgWbdRzhwJAdOtHwjaHjiSGtvupimRAIIyiLRojjSfOEaSQzDZfDzJVeEtVkSvcZRrJQEbXRPIPPzDRSyoQpVeszydVsJShXDHxmNRkFnxFiSkkdhVKcaZksllugfVibDRikpvBGTLAoROuCJKqEjtrfRUJloPZEysIPbbhHwPyKeSBDYZzthQvOKrgxYQFcaADZyQallKKJyiwvuHMyWGWULkiXdZQEaClhKDTjWzyyHaSQstznTgBmkeEcKXXGMlVFKOBYscvMQRKeEEeodzoyOJssifMLUcyPBNzDyNultYFdvCjBIEAnWZjCxMQFtZmuOqiSnwPZrOHaRrRDyHnHJeJnIFhPfozjaThYNqllioHslmciZJZMJdHYoCNfwNpfZVolttoxrywBNnhxrAACxgVsCuyhhZjrNUcgTAQJbaaLQidtEkoSeoLFElJwqadCpQzqaRjXCoQrlvABXqDaeoYOBFdDiOJuuWwNDcnRYwsmmOyNnZIALZQTkuBmUEWhmolfoGohmkG 89.3834 -243705590
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] tcs::logevent_SettingsApplied writing a message containing :    1
@@ -57,9 +57,9 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1526623452
+    ${output}=    Read Until    priority : -243705590
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    settings : UKeESGBzHSTicJaQpgAffOwYBPobeYqFzUrcUhNqzibIVmgbrysnEcVEbOQWlptvvEfnkCOciOSGOqwiImYoUUUzwFQfOUjNmgYmyzeuFKrhryMxBgkeqdpMYrFWYAgJbzMhBvIAXKMWLdXitouYdLAkGOQadrxZRnWBbtaDYORMKTVFyjFUbmJSwEkSNtgtlubsoWEMwCDOgtErVTSsNrkwswiEqEhhSKxSHQMHOShwcMejeNOwDlHUUakiqjJiUFWrnDmkrmNJFQJoeLgekgafyBazLFCIsYjYDUWDAvwFkQuZLHJTydapEIEZhwWZZbaXjZrhmphUtNfGRMbYtWkfDTFJXTWCVCwSuxxdmQVxSYRtsqcMHKJXikJJzqyWtOwyVruPQSvkWiuDWsZvYtNMeqGrBWGTbSvYFrzQKgBPGwLAqcWAsNgujUURNtAQbNsnMbBVGZWZOrDiltEWHayzeitWeEdVPRHGIegZZAsUhQGAQdAskSRqpxUsQxYVPGEsmAziKMMTcRKordmrzYHZuplLUhwxJXacybNXYVcPVvOWacSFtHpqQIOrzcorxpvlwjZJAmFGnjNuyVSwGWtkOcIszfPztquWAaToLgXkQbMmtfSBZMQSJcciLKmTpJKlTWTPLOqMNwwStfaMyFwztBgWWoEMtQSLuFWzNIzRVCIFpqVuprfDPrTWNOzQzLWiRaHwWIkkFhRfRwqlkmghzgqjnrRpmAnQkdUJAdxfVntaDblIyBKjyRpEzzwvkxlOClH
-    Should Contain    ${output}    timestamp : 54.7383
-    Should Contain    ${output}    priority : 1526623452
+    Should Contain    ${output}    settings : URAevBfQmRbBfCjTPxqTWwxKiuevXuurhHamnBqsByCvlVgKOomoIybovNYaMTunvjajImxciLjPfSNcTVeMehzSZbRDGtSUVSXOMBUeMIUzvEUZiuKKZRWwZYacoklETHGRsIdskkvIrFJuuXEMyThvXKMXINCbpyAVbonisYYRQYveaMWHxjwKmHhlsiPJqNKPWJRQNWSgmyrBUSWiSUaWoqdYHAvAQUWNbDRjhbbcxBErcAgrijzDBpNkQjFYWvdWJuePUGWYrgVzqeKHtYgZFZQeqvSfyAIsMIRROvKvMFlqeHTbttzjkWcYbjOYqNYbOXZjFcXctADgkXtDkLAWhvusrmMLgWbdRzhwJAdOtHwjaHjiSGtvupimRAIIyiLRojjSfOEaSQzDZfDzJVeEtVkSvcZRrJQEbXRPIPPzDRSyoQpVeszydVsJShXDHxmNRkFnxFiSkkdhVKcaZksllugfVibDRikpvBGTLAoROuCJKqEjtrfRUJloPZEysIPbbhHwPyKeSBDYZzthQvOKrgxYQFcaADZyQallKKJyiwvuHMyWGWULkiXdZQEaClhKDTjWzyyHaSQstznTgBmkeEcKXXGMlVFKOBYscvMQRKeEEeodzoyOJssifMLUcyPBNzDyNultYFdvCjBIEAnWZjCxMQFtZmuOqiSnwPZrOHaRrRDyHnHJeJnIFhPfozjaThYNqllioHslmciZJZMJdHYoCNfwNpfZVolttoxrywBNnhxrAACxgVsCuyhhZjrNUcgTAQJbaaLQidtEkoSeoLFElJwqadCpQzqaRjXCoQrlvABXqDaeoYOBFdDiOJuuWwNDcnRYwsmmOyNnZIALZQTkuBmUEWhmolfoGohmkG
+    Should Contain    ${output}    timestamp : 89.3834
+    Should Contain    ${output}    priority : -243705590

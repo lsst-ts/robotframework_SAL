@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.0753 38.6702 36.4352 52.5425 51.6383 11.4708 95.9634 31.7311 5.4707 88.1639 42.234 65.1392 45.0447 92.8543 76.5945 21.3225 20.2021 72.635 40.1529 99.1664 23.4745 70.7102 67.0066 83.3011 14.0751 63.4715 60.7135 69.0504 88.2303 78.9555 40.5765 45.5938 93.2111 8.2979 74.5141 32.5971 97.4041 35.957 13.8957 25.7136 74.3793 10.542 58.332 80.3809 47.8415 44.6451 69.0976 83.3931 78.8924 41.1916 92.7792 52.5527 48.738 66.2231 71.4359 21.4023 65.1701 1.4774 18.9745 29.0995 20.3511 31.1128 34.8775 6.415 17.6988 25.2166 99.1603 41.4779 86.6758 68.6699 52.305 2.8183
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 29.639 41.4097 99.6606 55.2075 60.4517 43.4708 93.2878 72.8626 52.7563 99.8466 62.4637 50.6 18.2669 58.079 34.5559 48.7753 58.3168 27.6203 24.3091 3.5436 94.4167 35.3412 67.6825 69.8888 82.7238 4.8309 44.5536 80.8895 17.856 32.933 29.834 3.8416 21.805 17.1252 80.6243 51.8488 23.1882 1.6207 2.94 45.9982 10.9549 13.1563 21.2916 68.3562 48.556 65.6578 23.1932 47.1132 27.5236 81.3833 16.599 34.9584 67.4548 60.9026 25.4566 99.1327 4.8832 54.0288 66.8217 62.5778 56.8174 99.6742 72.9999 91.0697 55.9594 56.9354 15.5373 83.334 92.2913 9.7253 20.2248 48.5925
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 38.0753 38.6702 36.4352 52.5425 51.6383 11.4708 95.9634 31.7311 5.4707 88.1639 42.234 65.1392 45.0447 92.8543 76.5945 21.3225 20.2021 72.635 40.1529 99.1664 23.4745 70.7102 67.0066 83.3011 14.0751 63.4715 60.7135 69.0504 88.2303 78.9555 40.5765 45.5938 93.2111 8.2979 74.5141 32.5971 97.4041 35.957 13.8957 25.7136 74.3793 10.542 58.332 80.3809 47.8415 44.6451 69.0976 83.3931 78.8924 41.1916 92.7792 52.5527 48.738 66.2231 71.4359 21.4023 65.1701 1.4774 18.9745 29.0995 20.3511 31.1128 34.8775 6.415 17.6988 25.2166 99.1603 41.4779 86.6758 68.6699 52.305 2.8183
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 29.639 41.4097 99.6606 55.2075 60.4517 43.4708 93.2878 72.8626 52.7563 99.8466 62.4637 50.6 18.2669 58.079 34.5559 48.7753 58.3168 27.6203 24.3091 3.5436 94.4167 35.3412 67.6825 69.8888 82.7238 4.8309 44.5536 80.8895 17.856 32.933 29.834 3.8416 21.805 17.1252 80.6243 51.8488 23.1882 1.6207 2.94 45.9982 10.9549 13.1563 21.2916 68.3562 48.556 65.6578 23.1932 47.1132 27.5236 81.3833 16.599 34.9584 67.4548 60.9026 25.4566 99.1327 4.8832 54.0288 66.8217 62.5778 56.8174 99.6742 72.9999 91.0697 55.9594 56.9354 15.5373 83.334 92.2913 9.7253 20.2248 48.5925
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property : actuators    1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    forceSetPoint : 38.0753    1
+    Should Contain X Times    ${output}    forceSetPoint : 29.639    1
     Should Contain    ${output}    === command ApplyForce issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property : actuators
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    forceSetPoint : 38.0753    1
+    Should Contain X Times    ${output}    forceSetPoint : 29.639    1
     Should Contain X Times    ${output}    === [ackCommand_ApplyForce] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

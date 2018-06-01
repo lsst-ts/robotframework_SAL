@@ -37,7 +37,7 @@ Start Commander - Verify Timeout without Controller
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.582 0.555876 0.588561 0.025917 0.487018 0.205511 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.324166 0.133414 0.128177 0.638617 0.338126 0.903378 1
     ${output}=    Read Until Prompt
     Log    ${output}
     ${CmdComplete}=    Get Line    ${output}    -2
@@ -60,7 +60,7 @@ Start Commander
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Commander.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.582 0.555876 0.588561 0.025917 0.487018 0.205511 0
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_commander 0.324166 0.133414 0.128177 0.638617 0.338126 0.903378 1
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [issueCommand_${component}] writing a command containing :    1
@@ -68,13 +68,13 @@ Start Commander
     Should Contain X Times    ${output}    property :     1
     Should Contain X Times    ${output}    action :     1
     Should Contain X Times    ${output}    value :     1
-    Should Contain X Times    ${output}    x : 0.582    1
-    Should Contain X Times    ${output}    y : 0.555876    1
-    Should Contain X Times    ${output}    z : 0.588561    1
-    Should Contain X Times    ${output}    u : 0.025917    1
-    Should Contain X Times    ${output}    v : 0.487018    1
-    Should Contain X Times    ${output}    w : 0.205511    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 0.324166    1
+    Should Contain X Times    ${output}    y : 0.133414    1
+    Should Contain X Times    ${output}    z : 0.128177    1
+    Should Contain X Times    ${output}    u : 0.638617    1
+    Should Contain X Times    ${output}    v : 0.338126    1
+    Should Contain X Times    ${output}    w : 0.903378    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain    ${output}    === command positionSet issued =
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
@@ -89,13 +89,13 @@ Read Controller
     Should Contain    ${output}    property : 
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain X Times    ${output}    x : 0.582    1
-    Should Contain X Times    ${output}    y : 0.555876    1
-    Should Contain X Times    ${output}    z : 0.588561    1
-    Should Contain X Times    ${output}    u : 0.025917    1
-    Should Contain X Times    ${output}    v : 0.487018    1
-    Should Contain X Times    ${output}    w : 0.205511    1
-    Should Contain X Times    ${output}    sync : 0    1
+    Should Contain X Times    ${output}    x : 0.324166    1
+    Should Contain X Times    ${output}    y : 0.133414    1
+    Should Contain X Times    ${output}    z : 0.128177    1
+    Should Contain X Times    ${output}    u : 0.638617    1
+    Should Contain X Times    ${output}    v : 0.338126    1
+    Should Contain X Times    ${output}    w : 0.903378    1
+    Should Contain X Times    ${output}    sync : 1    1
     Should Contain X Times    ${output}    === [ackCommand_positionSet] acknowledging a command with :    2
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 301

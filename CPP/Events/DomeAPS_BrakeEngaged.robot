@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -31489 24644887
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 22515 1926033705
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_BrakeEngaged writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 24644887
+    ${output}=    Read Until    priority : 1926033705
     Log    ${output}
     Should Contain X Times    ${output}    === Event BrakeEngaged received =     1
-    Should Contain    ${output}    brakeId : -31489
-    Should Contain    ${output}    priority : 24644887
+    Should Contain    ${output}    brakeId : 22515
+    Should Contain    ${output}    priority : 1926033705

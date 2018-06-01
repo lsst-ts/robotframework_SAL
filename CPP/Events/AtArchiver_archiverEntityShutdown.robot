@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cmjQvWiQXGqtwekCJNPistrnLJNEqwyWNsfGWkFYfgyPGcgipBNezMbbbYHCIvjATMpRykLFBHNQTdPubSfDHREtFoXahqjvvBpoKNFoYealWEPunnHawnjEPffDQugE 98.3546 AbtUJuyLobUdgtsTcFvbxYRBrQkOwShwBKaPzsvxWGUJQFmTWUrznFHlsMHACeRnvEsuRfCCzTUvCUetPciZXmfhKhStnfFAqBhuVUwpecXfTsnetGPqpiGSQzSLykXVRmllCCnzqupuZnaxQPXOmBiegXdLRNHdKlZUnVQQectjagXoZqUqtJVuaSWggDfsBGFlrYmypXQEqcrarjuljwgsrkwXpQWnWIRuFygCjHjvagfsGxWfFFIpqBTajFpG -1977069343 -1485244025
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send UKeciIUeVauFQFwYQUNptaambsptEVmhmzlyIUIulfiWcRFOkbYpjWmEoVTjfCYNycPekiHuGbqDIALlUwfXAvemUCkREobJFLDsxhNNHNiKZwqFBeeeOrSVBealzuCT 81.9159 LXxzvEygbhPVpKyREAkdAEejnvbSUuMtvnLKprfyRvooiELfLWSRjFTQwFnCUCLgVPWptWUMtPQaIQeUyGRLjKqhTmViiJynubaJbFmZVAXLMEYRdNyhZaKjJiRHMWbbugNszfitTGoqXSRkfrhzCUVfLLDQQlCLMVRzDzcUIWNBUMPlFBPTdHRRkpmKndiSJifhuTkFWKFliVjypbCkhzakfJAgZjfyLZrlPAUblfSAdkdGFNIwxlUsIiJrWlLe 282841841 -263608984
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atArchiver::logevent_archiverEntityShutdown writing a message containing :    1
@@ -57,11 +57,11 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1485244025
+    ${output}=    Read Until    priority : -263608984
     Log    ${output}
     Should Contain X Times    ${output}    === Event archiverEntityShutdown received =     1
-    Should Contain    ${output}    Name : cmjQvWiQXGqtwekCJNPistrnLJNEqwyWNsfGWkFYfgyPGcgipBNezMbbbYHCIvjATMpRykLFBHNQTdPubSfDHREtFoXahqjvvBpoKNFoYealWEPunnHawnjEPffDQugE
-    Should Contain    ${output}    Identifier : 98.3546
-    Should Contain    ${output}    Timestamp : AbtUJuyLobUdgtsTcFvbxYRBrQkOwShwBKaPzsvxWGUJQFmTWUrznFHlsMHACeRnvEsuRfCCzTUvCUetPciZXmfhKhStnfFAqBhuVUwpecXfTsnetGPqpiGSQzSLykXVRmllCCnzqupuZnaxQPXOmBiegXdLRNHdKlZUnVQQectjagXoZqUqtJVuaSWggDfsBGFlrYmypXQEqcrarjuljwgsrkwXpQWnWIRuFygCjHjvagfsGxWfFFIpqBTajFpG
-    Should Contain    ${output}    Address : -1977069343
-    Should Contain    ${output}    priority : -1485244025
+    Should Contain    ${output}    Name : UKeciIUeVauFQFwYQUNptaambsptEVmhmzlyIUIulfiWcRFOkbYpjWmEoVTjfCYNycPekiHuGbqDIALlUwfXAvemUCkREobJFLDsxhNNHNiKZwqFBeeeOrSVBealzuCT
+    Should Contain    ${output}    Identifier : 81.9159
+    Should Contain    ${output}    Timestamp : LXxzvEygbhPVpKyREAkdAEejnvbSUuMtvnLKprfyRvooiELfLWSRjFTQwFnCUCLgVPWptWUMtPQaIQeUyGRLjKqhTmViiJynubaJbFmZVAXLMEYRdNyhZaKjJiRHMWbbugNszfitTGoqXSRkfrhzCUVfLLDQQlCLMVRzDzcUIWNBUMPlFBPTdHRRkpmKndiSJifhuTkFWKFliVjypbCkhzakfJAgZjfyLZrlPAUblfSAdkdGFNIwxlUsIiJrWlLe
+    Should Contain    ${output}    Address : 282841841
+    Should Contain    ${output}    priority : -263608984

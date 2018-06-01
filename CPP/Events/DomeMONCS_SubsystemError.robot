@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send eHPAdEvOIiSydbGLNhBgYHSEtPFgJclncKhTrZwedrApHRgWPiidEbeHoEARonWSPsCUrkXTDKSaTzaDPsOTZrGMUpBjYDxBfDgWXZJmpWcOdRgsJwcWKrePsuiLskPtGluiNVhAXmqSzsyTeAaKSzXlbkfGjhTnPQeAXpSDFTYgneWjXVhulwJIROkrLCGRgBRYbevbaqGmUrEIyYCmjVvsXhjiArWYabvzAHLEbZwkKIElfdLppjUMsvjcFALJrPIFSypMmgaIbfxRgbVDFCWjtkqsriMvxbgGFDctQqpIRhkmaueArjwrHANkPjnmbtKSurbrPmfmhIoDCGIzDxiTgbWyEzERwwwRxdkNChdCcjJAeZWIvhbJwQOespJb -143695978
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mmRQGkJxxCoJplWptqOmvkiybGYOHgfVXHRRoOlqXCQPKFUHdttYzafSwYlIgFXmipHlNCHyqMCSLUXKRevaoPnmUMuctYrpJbWNFRbcxDfDDYldKYWjMPBZIHSreKcGUdrBYQiFwpJVNTBoaNPiiIjRJqWclJWGprJYaYyUeZQFtDNUgJMPYnQcnAbSvRAXtoHEJknKWMkhaZrpFIneXYbyngWbY 1650767443
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeMONCS::logevent_SubsystemError writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -143695978
+    ${output}=    Read Until    priority : 1650767443
     Log    ${output}
     Should Contain X Times    ${output}    === Event SubsystemError received =     1
-    Should Contain    ${output}    errorCode : eHPAdEvOIiSydbGLNhBgYHSEtPFgJclncKhTrZwedrApHRgWPiidEbeHoEARonWSPsCUrkXTDKSaTzaDPsOTZrGMUpBjYDxBfDgWXZJmpWcOdRgsJwcWKrePsuiLskPtGluiNVhAXmqSzsyTeAaKSzXlbkfGjhTnPQeAXpSDFTYgneWjXVhulwJIROkrLCGRgBRYbevbaqGmUrEIyYCmjVvsXhjiArWYabvzAHLEbZwkKIElfdLppjUMsvjcFALJrPIFSypMmgaIbfxRgbVDFCWjtkqsriMvxbgGFDctQqpIRhkmaueArjwrHANkPjnmbtKSurbrPmfmhIoDCGIzDxiTgbWyEzERwwwRxdkNChdCcjJAeZWIvhbJwQOespJb
-    Should Contain    ${output}    priority : -143695978
+    Should Contain    ${output}    errorCode : mmRQGkJxxCoJplWptqOmvkiybGYOHgfVXHRRoOlqXCQPKFUHdttYzafSwYlIgFXmipHlNCHyqMCSLUXKRevaoPnmUMuctYrpJbWNFRbcxDfDDYldKYWjMPBZIHSreKcGUdrBYQiFwpJVNTBoaNPiiIjRJqWclJWGprJYaYyUeZQFtDNUgJMPYnQcnAbSvRAXtoHEJknKWMkhaZrpFIneXYbyngWbY
+    Should Contain    ${output}    priority : 1650767443

@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send QGMKSsSGqYNKRkmaXvVpqTFcRzEDheMtIctoFWBzDMVJjXJATRxPJjxiwrelnICGiYvTVSbrezLVzpbaWNlkeExdXhgFgxAvLMsryJummmzRQInTXCSEmYVDgeOQxAJWnIWhqWyNgwiIUYHKQqEMQjEnVJIHfAQIrOkPWNyUpIDXkbRrfpQmzyuuYlHgvtcyoULhWWYlReTCCzImiIVLopLAkfZChtLWrAnBQgPoFedBvehVTJyLdDqxrxCGDQpY 1513657466
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send cdiCvobsAypdbrrwPgUCsweDxggQMBxYVOIkMitFATyfpxuXjoQGsXwWapEtNRuRrAyvaKplJnxNDoEGVnGBxCFeXZkqfvCRaiWZXTcQnYFbHYKiJxXFWxKpDuQZjdTUNwEtFpPDwXoTYSWXUJerVCnfvgcAsxkoVOAuaXNuMsvpJunJuRjNjkPQwCEvCXoEdrZtcEMjzOtTxKXkxDMSYLXyPuCECcHKAKIhMWMaAbYzXZpXJATAbbMdUPNUaVol 1123235460
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1513657466
+    ${output}=    Read Until    priority : 1123235460
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : QGMKSsSGqYNKRkmaXvVpqTFcRzEDheMtIctoFWBzDMVJjXJATRxPJjxiwrelnICGiYvTVSbrezLVzpbaWNlkeExdXhgFgxAvLMsryJummmzRQInTXCSEmYVDgeOQxAJWnIWhqWyNgwiIUYHKQqEMQjEnVJIHfAQIrOkPWNyUpIDXkbRrfpQmzyuuYlHgvtcyoULhWWYlReTCCzImiIVLopLAkfZChtLWrAnBQgPoFedBvehVTJyLdDqxrxCGDQpY
-    Should Contain    ${output}    priority : 1513657466
+    Should Contain    ${output}    Settings : cdiCvobsAypdbrrwPgUCsweDxggQMBxYVOIkMitFATyfpxuXjoQGsXwWapEtNRuRrAyvaKplJnxNDoEGVnGBxCFeXZkqfvCRaiWZXTcQnYFbHYKiJxXFWxKpDuQZjdTUNwEtFpPDwXoTYSWXUJerVCnfvgcAsxkoVOAuaXNuMsvpJunJuRjNjkPQwCEvCXoEdrZtcEMjzOtTxKXkxDMSYLXyPuCECcHKAKIhMWMaAbYzXZpXJATAbbMdUPNUaVol
+    Should Contain    ${output}    priority : 1123235460

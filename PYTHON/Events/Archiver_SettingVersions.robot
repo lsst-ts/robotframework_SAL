@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py suzTrmSJgtubxyHoPCtfIaRgnFQfvaJaVEEFwVqjhRMFlQEDifAEPWGhjKyLDBXzWfYrhxQupVrUpMzJjeMXGnLzSVvePVxKWmHUpcHwffHhoPHNQSTQhQMHkeCxQYaSEhKrRpbfjnnozZGEsXLKJVLbZHpXtqtdbKnNmxDmKkjYbYqBaotBJBNXZJdeEOCtAiryMrHSpBwMYjGlsPprwdCNlzDgJdIAJSCagIpxAAlTNiLFfSjePgnpZvRgYGBH -586624656
+    ${input}=    Write    python ${subSystem}_Event_${component}.py WjBYsfLLRZIfjMGeoSUYTzWZfUJPiwiapjvvxKwGSvPERsMnzoTonFedIrjaAMjcgGEIAXOWcwdMvKiMmMXSCgThDHJNXseuCmdPTYueCOAQrVVGnlYyTcQaPdAUERapYUcckrnBfBQkcefBwRtVmYCZGVVgPPOCsTejCQCShxkHfdhtQGYYcZKrvhxZVsbrZSPyshFtVVkUqHjagMjrieKARchPITjhXqlxHttpsuyrnnxXbibIhLKuEIYTwdyb -1138510881
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] archiver::logevent_SettingVersions writing a message containing :    1

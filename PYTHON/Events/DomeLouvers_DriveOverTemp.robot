@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py -8967 2445 -536519378
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -17806 -27421 -1426016487
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeLouvers::logevent_DriveOverTemp writing a message containing :    1

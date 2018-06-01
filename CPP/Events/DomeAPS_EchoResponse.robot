@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send DZIseeBqIsBekmWNVETvYRhCGTiFRurInvTvmQPuZqFqQtFiYRpTjFZmtmgJedfomguvEizKuonjwVkoJoUtZMRHlNWAnkqosZZgUNlldsrgFssnUuKunyIXqitdpxJoWooGvYxwLkhRAmLlKrkMINDOUjMPRZxSnYlTMNlzfvxdKPJhgHEEnqWTDxvZGeDqgQELeFjsKGVjglFFAQBlnFgjCZPOYOscdNDBLfRlbvgyylFiviolbTwQeUmCNVTznxvziPJjBjDPQctrWIdecdCAksLLTzEXRRHCMScGFKClXafALGeSpvZuFUsBbcNSHWXZBWYBHxvkLhpkfUVxOWnKMMnASqefmMucsaKkPfUEzGGFanyQHWwAgIdQpBCkExLlnPzLITIBdGCvNdZMwDjlmJVJCRIjuoLdKVxzLFYWMCjSRfCBZXHHKXGiGlVqblliQEvSfTBoXWUDXRHOuxohzkZsscknnqjMbHNKMAeyjAiiyEMQQnJyWwjKkpdFQFeWKLSkjBuPQqiprdQejItmPzOGwjjRYDIZKWCMyBGnCXXXDHnznOlNFDlMcLFnwCujZsqiinCseaZVdHXcKmBJpIkyZxIbtsRXKYxbXSwjhuEuAdFJnZKWRvOovRCNDepUOgFkZBHjeiptvTeMGisVewfyDZAAnSwixNLgCpbiWIMmYprjybwTwPxaTZuTJlOaaTiKVgAwdSGTZZEQEZDjWPoezKsqmOPsoGtpspDHIeBpAUDTsDPUiTyhxonIPgoqHdrrXKjJXnhHodDaKQoFVOpntQJPtJcVrCnmIKisWQYYXmgreQdYPELzQLOVNTzGeYmKhIwTQhjZFOBT 78142376
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send aneqozmCZrFXwerEdGfIhIvNQqhWdtZiAJqivPdbGKdOuiIRxEqcEdHzJstVVTvWKIiWQAyfrEcDSGuxWAnoZxJCQoIcUUgGlDWYbUklTwBvPMultxVJTDyXudkDtebVMnxsAmSVKLvZhjygTXKBGCzCkZGhCluQOkyUuTijVSQmcOAuuSFXdSKZTHEogYGhkgXUJFMJEOxIwndcKiUJANrAcILJfaDvivRwcuOlFthsmxaEOzZyeVPFJOYbcbdjOpwltQOlRWYsUOSnnvFLVGBLbIirmdOocMhXGMcbgyZpUBwnOMpalLPBjEHRHaXNXKGOdPrTWmnebFEHaIzDdXjTjGBnjNRubHizakIfbZaQmwwjwcheaOTXuAEiIPENcnhQhCFxefYqCZjyaAAInCIaGDZJWAjHRmWWEXeDxbkvIHRkCGqThghMXXCnjTQXZPLMCBtkRQmUTLxrszXLLtcYyuDsPqIwuCmPyqIUoJDfrOygFzuzuhFylytMwumLCegUmFnbtmiJef 2143213351
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeAPS::logevent_EchoResponse writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 78142376
+    ${output}=    Read Until    priority : 2143213351
     Log    ${output}
     Should Contain X Times    ${output}    === Event EchoResponse received =     1
-    Should Contain    ${output}    response : DZIseeBqIsBekmWNVETvYRhCGTiFRurInvTvmQPuZqFqQtFiYRpTjFZmtmgJedfomguvEizKuonjwVkoJoUtZMRHlNWAnkqosZZgUNlldsrgFssnUuKunyIXqitdpxJoWooGvYxwLkhRAmLlKrkMINDOUjMPRZxSnYlTMNlzfvxdKPJhgHEEnqWTDxvZGeDqgQELeFjsKGVjglFFAQBlnFgjCZPOYOscdNDBLfRlbvgyylFiviolbTwQeUmCNVTznxvziPJjBjDPQctrWIdecdCAksLLTzEXRRHCMScGFKClXafALGeSpvZuFUsBbcNSHWXZBWYBHxvkLhpkfUVxOWnKMMnASqefmMucsaKkPfUEzGGFanyQHWwAgIdQpBCkExLlnPzLITIBdGCvNdZMwDjlmJVJCRIjuoLdKVxzLFYWMCjSRfCBZXHHKXGiGlVqblliQEvSfTBoXWUDXRHOuxohzkZsscknnqjMbHNKMAeyjAiiyEMQQnJyWwjKkpdFQFeWKLSkjBuPQqiprdQejItmPzOGwjjRYDIZKWCMyBGnCXXXDHnznOlNFDlMcLFnwCujZsqiinCseaZVdHXcKmBJpIkyZxIbtsRXKYxbXSwjhuEuAdFJnZKWRvOovRCNDepUOgFkZBHjeiptvTeMGisVewfyDZAAnSwixNLgCpbiWIMmYprjybwTwPxaTZuTJlOaaTiKVgAwdSGTZZEQEZDjWPoezKsqmOPsoGtpspDHIeBpAUDTsDPUiTyhxonIPgoqHdrrXKjJXnhHodDaKQoFVOpntQJPtJcVrCnmIKisWQYYXmgreQdYPELzQLOVNTzGeYmKhIwTQhjZFOBT
-    Should Contain    ${output}    priority : 78142376
+    Should Contain    ${output}    response : aneqozmCZrFXwerEdGfIhIvNQqhWdtZiAJqivPdbGKdOuiIRxEqcEdHzJstVVTvWKIiWQAyfrEcDSGuxWAnoZxJCQoIcUUgGlDWYbUklTwBvPMultxVJTDyXudkDtebVMnxsAmSVKLvZhjygTXKBGCzCkZGhCluQOkyUuTijVSQmcOAuuSFXdSKZTHEogYGhkgXUJFMJEOxIwndcKiUJANrAcILJfaDvivRwcuOlFthsmxaEOzZyeVPFJOYbcbdjOpwltQOlRWYsUOSnnvFLVGBLbIirmdOocMhXGMcbgyZpUBwnOMpalLPBjEHRHaXNXKGOdPrTWmnebFEHaIzDdXjTjGBnjNRubHizakIfbZaQmwwjwcheaOTXuAEiIPENcnhQhCFxefYqCZjyaAAInCIaGDZJWAjHRmWWEXeDxbkvIHRkCGqThghMXXCnjTQXZPLMCBtkRQmUTLxrszXLLtcYyuDsPqIwuCmPyqIUoJDfrOygFzuzuhFylytMwumLCegUmFnbtmiJef
+    Should Contain    ${output}    priority : 2143213351

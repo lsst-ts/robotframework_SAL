@@ -48,7 +48,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py XmjAcprukHlpKITassWBacTyQQffaMtBgDBjbjcmQAFSWyczKDRKpmerZRCUYsbRopFuAmSbTohFaVoklBXcdmyYnXxjQapdUVeURXHMhSrXmzvDLovyFTXfuBrDMENl 32.8925 zjssrPIWNSpqsONeNluJlrWsiypOOZADLPSRvHuLzKZuFLYFVlWXuiDrLJiHZgHJYoXMERminpamKTbpFFZBQhyDaLrHVOYCiRvENwZFEcbPLhqIOxKuJjsEKQKGcbDrkFsLaIGrEGsgNfPWhzCdGtXLyNjDATFCngjrTMqWCefoIpygAUeRZkyvglHZrebTwrARnHehRGYOEBcqPqmmKdMhwDkIQJZiATmaKHXFmsezcVbAnMhiWpVcUdXwbQGw -1918571407 1503736198
+    ${input}=    Write    python ${subSystem}_Event_${component}.py TEDbPudYYkgfljVozLQaLBSQFwaJRwTGyvJZhYksfNPQQSeyooARtaHaXTQSXZEPAOvhgkArDskXEeVXLBlHFRJDhZnMBUEPtFHhPNTgfDqlymEBOkXlvwUiUXScCXEX 39.5793 EVbOSdkNkrGFgsOmQXNTrWaBJHcyykHTmXmrmnroqqaADsBQpobZiAVGUKsyloOytSWRdmHFbwGeEnXPGVxMEBuEfuNOTwMegjIIVHbRZbyeDLveagNoyHodoNAcYPmvCVREWVllElIZvduKDKcLmpOPmSnnFgGlKqlUlGGfcERZTqpfvneUNNhcTjinrMLopsIJhQSptRxIsLMNfLpkycJWPuniTiRIEjcapzxxvzdzMdpdSflttKByYEWzwOhk -1052287434 -1100067278
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_catchuparchiverEntityStartup writing a message containing :    1

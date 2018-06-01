@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send XigKHaDyOPhgWqJFzCoIIKPhZXjdLIycbbTemAJKNTGMJuYdCjgindYglsUjnMjhsNFoFSLAXjSbbLHrGMKcpSLSQRIbddodOOZjosbVomIrfVYeQvYKsbrsWmCtNcXHnBrCuJAExXasBDrLSjGSclsJkjcgJAfkGbPpSFYmRXqhhMNQBDqczkqBXxGYgQpejYWoEdXNjHRxModsHAmnrzctxBqKqIbsrFAjxwvyOrBnZaPZOCqCPwRIvyndKSpHIwVUDPkzBHuFgGdeqpndFaBzAlxWjqdhElWhKUGAzwePjXPQdZdpmruvvTcrjuFodoTTOWjeyHgYRfTUwiqqvxmbybzeSvbwknPyjbpItbxyfrfAfAJUlmIvLwNBOKxVUQLU 698737135
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send EGAcUCUuKyMmCMLywTcsASXJPYFEISisGOfUmtairLfYCSfHetpFjOxoshBPDtOyItQnJPTxxYyHqKdCvRNMoXwwwXoqMjEPTdWPjDYtKyaTpoMmyuvlycbralYzDLWCLvvRyCPBMOndtdENaPylvQVwbJsUxMYLUhjTutUiSFNXfiXwYsKeQUiqEnDNEipvYNikCBrRTJTMbJynnworJylKjquuQhyZlqItyWoRsiAqKTqNTpFcCOjnHxiiSnIdJoLURZUNBjmAxirFLcuHhnSqPznedobnGiOHSuneUmGohMHewYbZfDNMlXhtDfeALFCFOijmnKRzNmKmfJEQNHQEASSFcFXPLFFTukkQGXCCudzejHTITyJVfUshHJVBeoAT -317385823
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] domeADB::logevent_RotationPrevented writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 698737135
+    ${output}=    Read Until    priority : -317385823
     Log    ${output}
     Should Contain X Times    ${output}    === Event RotationPrevented received =     1
-    Should Contain    ${output}    causeId : XigKHaDyOPhgWqJFzCoIIKPhZXjdLIycbbTemAJKNTGMJuYdCjgindYglsUjnMjhsNFoFSLAXjSbbLHrGMKcpSLSQRIbddodOOZjosbVomIrfVYeQvYKsbrsWmCtNcXHnBrCuJAExXasBDrLSjGSclsJkjcgJAfkGbPpSFYmRXqhhMNQBDqczkqBXxGYgQpejYWoEdXNjHRxModsHAmnrzctxBqKqIbsrFAjxwvyOrBnZaPZOCqCPwRIvyndKSpHIwVUDPkzBHuFgGdeqpndFaBzAlxWjqdhElWhKUGAzwePjXPQdZdpmruvvTcrjuFodoTTOWjeyHgYRfTUwiqqvxmbybzeSvbwknPyjbpItbxyfrfAfAJUlmIvLwNBOKxVUQLU
-    Should Contain    ${output}    priority : 698737135
+    Should Contain    ${output}    causeId : EGAcUCUuKyMmCMLywTcsASXJPYFEISisGOfUmtairLfYCSfHetpFjOxoshBPDtOyItQnJPTxxYyHqKdCvRNMoXwwwXoqMjEPTdWPjDYtKyaTpoMmyuvlycbralYzDLWCLvvRyCPBMOndtdENaPylvQVwbJsUxMYLUhjTutUiSFNXfiXwYsKeQUiqEnDNEipvYNikCBrRTJTMbJynnworJylKjquuQhyZlqItyWoRsiAqKTqNTpFcCOjnHxiiSnIdJoLURZUNBjmAxirFLcuHhnSqPznedobnGiOHSuneUmGohMHewYbZfDNMlXhtDfeALFCFOijmnKRzNmKmfJEQNHQEASSFcFXPLFFTukkQGXCCudzejHTITyJVfUshHJVBeoAT
+    Should Contain    ${output}    priority : -317385823

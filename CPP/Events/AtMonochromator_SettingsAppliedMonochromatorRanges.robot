@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.843367 0.54699 0.219257 0.150495 0.963806 0.732138 0.950129 -1519005586
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 0.136736 0.488992 0.622103 0.72588 0.893262 0.195864 0.918656 -1965852797
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] atMonochromator::logevent_SettingsAppliedMonochromatorRanges writing a message containing :    1
@@ -57,14 +57,14 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1519005586
+    ${output}=    Read Until    priority : -1965852797
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsAppliedMonochromatorRanges received =     1
-    Should Contain    ${output}    wavelengthGR1 : 0.843367
-    Should Contain    ${output}    wavelenlengthGR1_GR2 : 0.54699
-    Should Contain    ${output}    wavelenlengthGR2 : 0.219257
-    Should Contain    ${output}    minSlitWidth : 0.150495
-    Should Contain    ${output}    maxSlitWidth : 0.963806
-    Should Contain    ${output}    minWavelength : 0.732138
-    Should Contain    ${output}    maxWavelength : 0.950129
-    Should Contain    ${output}    priority : -1519005586
+    Should Contain    ${output}    wavelengthGR1 : 0.136736
+    Should Contain    ${output}    wavelenlengthGR1_GR2 : 0.488992
+    Should Contain    ${output}    wavelenlengthGR2 : 0.622103
+    Should Contain    ${output}    minSlitWidth : 0.72588
+    Should Contain    ${output}    maxSlitWidth : 0.893262
+    Should Contain    ${output}    minWavelength : 0.195864
+    Should Contain    ${output}    maxWavelength : 0.918656
+    Should Contain    ${output}    priority : -1965852797

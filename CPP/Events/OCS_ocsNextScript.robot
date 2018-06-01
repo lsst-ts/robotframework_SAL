@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send rqnHkUzfrEROIaadCPSDaXDZdfcNSBiiASGSguxosITDNqzVHYfNfFjFQfuwcGwoBFibNbtxCDXlMmWYEzNVkdDoYHqjlNzOiLNCpsQwDbfMHPBjVSkRaKBYvHKDYxoOrqirKHXjGmjEPhekzIDlDelUwBUYWPrwuieHYPqizmEKlYYHQmYHmJeqlzhpWZxPOlBrSuBqKnlNptPGiCkFGBoVRiZoGHLfNaXbLzWHHThQxXpSIMIyytMnNVOzeQiv 52.0385 kTFkMtVsugqOXXfzUuQaRFPBslqfJSOZOsFGKKSwPNvKIqcZLeBUNAzcoSuFMkiqCsAmUYGzhjJhVYgKSbgKZgQintbZqfpDcePgzpdGaOSxcERVkjsCxstMVEmWFMTyruapmPpRRWaOSTkrhMsNhYnueDjVUxJLskbLxWgWKzIPfgQasOlYECoulAhBRmVqMIVxVXIIxNhClFnUyaVsnQSOAHVptZItjbrQqaKCGqgNmeBaXtxuSgvYjwGnWjok 1213145475
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send VSDEYSDtgfITTzYWXrYyisNMiMSNnHbLLYXRDrkwkFYLRRPLvWpBQTEWRFaCRHdAbVLIQCbNmaHqrzbSvDsYAbjVtVRqzBLenOEZIoyTRRxcMUVKWpWsPTZnEhNgHTUWOIzOkXAWuTKyEceqHWzdzJaZzztarbfSeErnnnIjfcsdEubJoOFhFdBLOJwkfZLXeTZnaIYCzaKMgRbwBncscRFIAJEtHhUIJmKkCyAMmkSdzfGrYZTPAymAwWXHYiFo 68.1077 QzvxVAoTDoVgWhBpEmVCUyGKZRlFJisPkWxuqQfYKEhQmkDFwQLeOHbtwRchQXSCzGcBAUQRPXXYrUKUuHdMsDtLBDGCeYcKOnvCoYhyEVfTzLMeukstkCAWuktzpqSnjXUbCEtaFsCwZQPqfhUQMFFRSloIlLUJwXbXqHQFZKrGWfhQhSMeibJgjVinmUPIIeDqEsshKUdSzJBjpCZxqRJgoNfHlEVYLElKiRZJLSiFnLXagEKltmNhrqAuWnmi -1994064488
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] ocs::logevent_ocsNextScript writing a message containing :    1
@@ -57,10 +57,10 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1213145475
+    ${output}=    Read Until    priority : -1994064488
     Log    ${output}
     Should Contain X Times    ${output}    === Event ocsNextScript received =     1
-    Should Contain    ${output}    ocsScriptName : rqnHkUzfrEROIaadCPSDaXDZdfcNSBiiASGSguxosITDNqzVHYfNfFjFQfuwcGwoBFibNbtxCDXlMmWYEzNVkdDoYHqjlNzOiLNCpsQwDbfMHPBjVSkRaKBYvHKDYxoOrqirKHXjGmjEPhekzIDlDelUwBUYWPrwuieHYPqizmEKlYYHQmYHmJeqlzhpWZxPOlBrSuBqKnlNptPGiCkFGBoVRiZoGHLfNaXbLzWHHThQxXpSIMIyytMnNVOzeQiv
-    Should Contain    ${output}    ocsScriptIdentifier : 52.0385
-    Should Contain    ${output}    ocsScriptTimestamp : kTFkMtVsugqOXXfzUuQaRFPBslqfJSOZOsFGKKSwPNvKIqcZLeBUNAzcoSuFMkiqCsAmUYGzhjJhVYgKSbgKZgQintbZqfpDcePgzpdGaOSxcERVkjsCxstMVEmWFMTyruapmPpRRWaOSTkrhMsNhYnueDjVUxJLskbLxWgWKzIPfgQasOlYECoulAhBRmVqMIVxVXIIxNhClFnUyaVsnQSOAHVptZItjbrQqaKCGqgNmeBaXtxuSgvYjwGnWjok
-    Should Contain    ${output}    priority : 1213145475
+    Should Contain    ${output}    ocsScriptName : VSDEYSDtgfITTzYWXrYyisNMiMSNnHbLLYXRDrkwkFYLRRPLvWpBQTEWRFaCRHdAbVLIQCbNmaHqrzbSvDsYAbjVtVRqzBLenOEZIoyTRRxcMUVKWpWsPTZnEhNgHTUWOIzOkXAWuTKyEceqHWzdzJaZzztarbfSeErnnnIjfcsdEubJoOFhFdBLOJwkfZLXeTZnaIYCzaKMgRbwBncscRFIAJEtHhUIJmKkCyAMmkSdzfGrYZTPAymAwWXHYiFo
+    Should Contain    ${output}    ocsScriptIdentifier : 68.1077
+    Should Contain    ${output}    ocsScriptTimestamp : QzvxVAoTDoVgWhBpEmVCUyGKZRlFJisPkWxuqQfYKEhQmkDFwQLeOHbtwRchQXSCzGcBAUQRPXXYrUKUuHdMsDtLBDGCeYcKOnvCoYhyEVfTzLMeukstkCAWuktzpqSnjXUbCEtaFsCwZQPqfhUQMFFRSloIlLUJwXbXqHQFZKrGWfhQhSMeibJgjVinmUPIIeDqEsshKUdSzJBjpCZxqRJgoNfHlEVYLElKiRZJLSiFnLXagEKltmNhrqAuWnmi
+    Should Contain    ${output}    priority : -1994064488

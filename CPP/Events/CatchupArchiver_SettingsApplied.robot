@@ -47,7 +47,7 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send RuAtmaqpYUYBBbbCoXHoQUMLhqWdzStqEyAiXxpVaWePfVciAxLjwVADTEvCbXfBCxVlsqYnzRcmegeODTvwXAFPzoweIkBUqIEmyGtVnZSYgTfXnYKrdzgJorUmSSNuVjILKisGaVaHsgKvntFjoaVxasYMqwCWShfqPtgJhKZYhuIHRpsXdFJHFGaTmyKRsWeUqpzeMLrnJDPJTcMlZUrdnBOSLwfUgQZIyldDofUEIodveWcsAhJwnNbgqSpc 287713509
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send mqaqZkIkVAeppZZbeDjYbBVbyADXbuhdntGihhkBTkcDWuOCCHknrOCQvIHyZFwsMNMNbsvMkiRgPbnnqXehQHFyKSkdqXPIjRlQIgxZbSJGAoWMAtawMnpnhkrcyjpaLvPDDQUQnUdfnmgVwLbMjkLHFtgSXdtIfwklabmRQTVICtQjzkOykzHrSnOjTcCvUpPGNQWyDIhkWGyEsuxkplvAoaRvANnnMGZkqVXFDsStSOLRkwVNOIXdUecbltQe 324554520
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain X Times    ${output}    === [putSample] catchuparchiver::logevent_SettingsApplied writing a message containing :    1
@@ -57,8 +57,8 @@ Start Sender
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 287713509
+    ${output}=    Read Until    priority : 324554520
     Log    ${output}
     Should Contain X Times    ${output}    === Event SettingsApplied received =     1
-    Should Contain    ${output}    Settings : RuAtmaqpYUYBBbbCoXHoQUMLhqWdzStqEyAiXxpVaWePfVciAxLjwVADTEvCbXfBCxVlsqYnzRcmegeODTvwXAFPzoweIkBUqIEmyGtVnZSYgTfXnYKrdzgJorUmSSNuVjILKisGaVaHsgKvntFjoaVxasYMqwCWShfqPtgJhKZYhuIHRpsXdFJHFGaTmyKRsWeUqpzeMLrnJDPJTcMlZUrdnBOSLwfUgQZIyldDofUEIodveWcsAhJwnNbgqSpc
-    Should Contain    ${output}    priority : 287713509
+    Should Contain    ${output}    Settings : mqaqZkIkVAeppZZbeDjYbBVbyADXbuhdntGihhkBTkcDWuOCCHknrOCQvIHyZFwsMNMNbsvMkiRgPbnnqXehQHFyKSkdqXPIjRlQIgxZbSJGAoWMAtawMnpnhkrcyjpaLvPDDQUQnUdfnmgVwLbMjkLHFtgSXdtIfwklabmRQTVICtQjzkOykzHrSnOjTcCvUpPGNQWyDIhkWGyEsuxkplvAoaRvANnnMGZkqVXFDsStSOLRkwVNOIXdUecbltQe
+    Should Contain    ${output}    priority : 324554520
