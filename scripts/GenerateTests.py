@@ -19,17 +19,17 @@ def GenerateTests(csc, language):
 				subprocess.check_call(["./CppState.sh", csc])
 				subprocess.check_call(["./CppComCon.sh", csc])
 				subprocess.check_call(["./CppEvents.sh", csc])
-			elif ('java' in language) or ('all' in language):
+			if ('java' in language) or ('all' in language):
 				subprocess.check_call(["./JavaPubSub.sh", csc])
 				subprocess.check_call(["./JavaState.sh", csc])
 				subprocess.check_call(["./JavaComCon.sh", csc])
 				subprocess.check_call(["./JavaEvents.sh", csc])
-			elif ('python' in language) or ('all' in language):
+			if ('python' in language) or ('all' in language):
 				subprocess.check_call(["./PythonPubSub.sh", csc])
 				subprocess.check_call(["./PythonState.sh", csc])
 				subprocess.check_call(["./PythonComCon.sh", csc])
 				subprocess.check_call(["./PythonEvents.sh", csc])
-			else:
+			if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
 				complete=False
 		print("COMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
 	elif csc in csc_array:
@@ -38,17 +38,17 @@ def GenerateTests(csc, language):
 			subprocess.check_call(["./CppState.sh", csc])
 			subprocess.check_call(["./CppComCon.sh", csc])
 			subprocess.check_call(["./CppEvents.sh", csc])
-		elif ('java' in language) or ('all' in language):
+		if ('java' in language) or ('all' in language):
 			subprocess.check_call(["./JavaPubSub.sh", csc])
 			subprocess.check_call(["./JavaState.sh", csc])
 			subprocess.check_call(["./JavaComCon.sh", csc])
 			subprocess.check_call(["./JavaEvents.sh", csc])
-		elif ('python' in language) or ('all' in language):
+		if ('python' in language) or ('all' in language):
 			subprocess.check_call(["./PythonPubSub.sh", csc])
 			subprocess.check_call(["./PythonState.sh", csc])
 			subprocess.check_call(["./PythonComCon.sh", csc])
 			subprocess.check_call(["./PythonEvents.sh", csc])
-		else:
+		if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
 			complete=False
 		print("COMPLETED all test suites for the " + csc) if complete else print("This was a " + str(language))
 	else:
