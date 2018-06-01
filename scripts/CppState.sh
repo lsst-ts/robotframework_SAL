@@ -174,7 +174,6 @@ function createTestSuite() {
 
 	# Generate the test suite for each topic.
     echo Generating:
-	echo ${statesArray[@]}
 	for state in "${statesArray[@]}"; do
 		if [ "$state" == "start" ]; then
 			parameterType="configuration"
