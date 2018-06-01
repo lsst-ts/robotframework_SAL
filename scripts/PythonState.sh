@@ -30,13 +30,15 @@ function main() {
     #  CSCs should now explicitly define their generic commands. 
     #  ... The tranisition process is ongoing, so some do this, and some do not.
     #  ... As such, skip this step for the CSCs that are doing this.
-	array=$(stateMachineSkipped)
-    if [[ ${array[@]} =~ $arg ]]; then
-        echo "The $(capitializeSubsystem $subsystem) explicitly defines the generic commands and events"
-        echo "Skipping StateMachine tests."
-        echo ""
-        exit 0
-    fi
+	declare -a array=($(stateMachineSkipped))
+    for item in "${array[@]}"; do 
+        if [[ "$item" == "$arg" ]]; then
+            echo "The $(capitializeSubsystem $subsystem) explicitly defines the generic commands and events"
+            echo "Skipping StateMachine tests."
+            echo ""
+            exit 0
+        fi
+    done
     
     # Now generate the test suites.
     createTestSuite $arg $file || exit 1
