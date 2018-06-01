@@ -56,6 +56,10 @@ function clearTestSuites() {
 	echo ""
 }
 
+function stateMachineSkipped() {
+	echo "archiver atarchiver atheaderservice atmonochromator atcamera atcs calibrationelectrometer camera catchuparchiver eec headerservice m1m3 promptprocessing sedspectrometer summitfacility vms"
+}
+
 function stateArray() {
 	echo "enable disable standby start enterControl exitControl abort SetValue"
 }
