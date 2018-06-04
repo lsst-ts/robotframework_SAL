@@ -48,6 +48,7 @@ function main() {
 
 function createSettings() {
     local subSystem=$1
+    local topic=$2
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    python    $skipped" >> $testSuite
@@ -63,6 +64,7 @@ function createSettings() {
 
 function createVariables() {
 	local subSystem=$(getEntity $1)
+    local state=$2
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $state" >> $testSuite
@@ -183,12 +185,12 @@ function createTestSuite() {
 		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${state}.robot
 		
         #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic $messageType)
+        skipped=$(checkIfSkipped $subSystem $state $messageType)
 
 		#  Create test suite.
 		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
+		createSettings $subSystem $state
+		createVariables $subSystem $state
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompCommanderController
 		startCommanderInputs
