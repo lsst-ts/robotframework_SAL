@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    AtScheduler_ communications tests.
+Documentation    AtScheduler_disable communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

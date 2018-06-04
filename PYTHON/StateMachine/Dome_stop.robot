@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Dome_ communications tests.
+Documentation    Dome_stop communications tests.
 Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
