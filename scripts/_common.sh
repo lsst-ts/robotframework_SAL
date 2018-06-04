@@ -201,32 +201,32 @@ function generateArgument() {
 }
 
 function checkIfSkipped() {
-	subsystem=$1
-	topic=$2
-	messageType=$3
-	if [[ ("$subsystem" == "summitFacility") ]]; then
+	subsystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
+	topic=$(echo $2 |tr '[:upper:]' '[:lower:]')
+	messageType=$(echo $3 |tr '[:upper:]' '[:lower:]')
+	if [[ ("$subsystem" == "summitfacility") ]]; then
 		skipped="TSS-2622"
     elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "events") ]]; then
         skipped="TSS-2680"
     elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
         skipped="TSS-2679"
-	elif [[ ("$subsystem" == "tcsOfc") ]]; then
+	elif [[ ("$subsystem" == "tcsofc") ]]; then
 		skipped="TSS-2625"
-	elif [[ ("$subsystem" == "tcsWEP") ]]; then
+	elif [[ ("$subsystem" == "tcswep") ]]; then
 		skipped="TSS-2626"
 	elif [[ ("$subsystem" == "promptprocessing") ]]; then
 		skipped="TSS-2633"
-	elif [[ ("$subsystem" == "calibrationElectrometer") ]]; then
+	elif [[ ("$subsystem" == "calibrationelectrometer") ]]; then
 		skipped="TSS-2619"
 	elif [[ ("$subsystem" == "m1m3") ]]; then
 		skipped="TSS-2617"
 	elif [[ ("$subsystem" == "vms") ]]; then
 		skipped="TSS-2618"
-	elif [[ ("$subsystem" == "atMonochromator") && ("$topic" == "InternalCommand") ]]; then
+	elif [[ ("$subsystem" == "atmonochromator") && ("$topic" == "internalcommand") ]]; then
 		skipped="TSS-2724"
-	elif [[ ("$subsystem" == "eec") && ("$topic" == "InternalCommand") ]]; then
+	elif [[ ("$subsystem" == "eec") && ("$topic" == "internalcommand") ]]; then
 		skipped="TSS-2724"
-	elif [[ ("$subsystem" == "tcs") && ("$topic" == "InternalCommand") ]]; then
+	elif [[ ("$subsystem" == "tcs") && ("$topic" == "internalcommand") ]]; then
 		skipped="TSS-2724"
 	else
 		skipped=""
