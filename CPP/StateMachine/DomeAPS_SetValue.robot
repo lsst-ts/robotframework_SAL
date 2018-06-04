@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeAPS_ communications tests.
+Documentation    DomeAPS_SetValue communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

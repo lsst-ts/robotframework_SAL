@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    M2MS_ communications tests.
+Documentation    M2MS_exitControl communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

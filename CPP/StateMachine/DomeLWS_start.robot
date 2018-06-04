@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeLWS_ communications tests.
+Documentation    DomeLWS_start communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

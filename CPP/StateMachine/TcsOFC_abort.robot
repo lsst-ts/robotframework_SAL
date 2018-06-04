@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_ communications tests.
-Force Tags    cpp    
+Documentation    TcsOFC_abort communications tests.
+Force Tags    cpp    TSS-2625
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
 Suite Teardown    Close All Connections

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    DomeADB_ communications tests.
+Documentation    DomeADB_enable communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller

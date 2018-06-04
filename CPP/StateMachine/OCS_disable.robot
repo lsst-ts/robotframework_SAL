@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCS_ communications tests.
+Documentation    OCS_disable communications tests.
 Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Commander    AND    Create Session    Controller
