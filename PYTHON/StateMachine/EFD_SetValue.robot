@@ -29,7 +29,7 @@ Start Commander - Verify Missing Inputs Error
     ${input}=    Write    python ${subSystem}_Commander_${component}.py 
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}   ERROR : Invalid or missing arguments : state
+    Should Contain    ${output}   ERROR : Invalid or missing arguments : json_parameters
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -68,7 +68,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    state : 1    1
+    Should Contain X Times    ${output}    json_parameters : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -77,7 +77,7 @@ Read Controller
     Switch Connection    Controller
     ${output}=    Read Until    result \ \ : Done : OK
     Log    ${output}
-    Should Contain X Times    ${output}    state = 1    1
+    Should Contain X Times    ${output}    json_parameters = 1    1
     Should Contain X Times    ${output}    === [ackCommand_SetValue] acknowledging a command with :    1
     Should Contain    ${output}    seqNum   :
     Should Contain    ${output}    ack      : 303

@@ -30,7 +30,7 @@ Start Commander - Verify Missing Inputs Error
     ${output}=    Read Until Prompt
     Log    ${output}
     Should Contain    ${output}    Usage : \ input parameters...
-    Should Contain    ${output}    state;
+    Should Contain    ${output}    json_parameters;
 
 Start Commander - Verify Timeout without Controller
     [Tags]    functional
@@ -69,7 +69,7 @@ Start Commander
     Should Contain X Times    ${output}    property :    1
     Should Contain X Times    ${output}    action :    1
     Should Contain X Times    ${output}    value :    1
-    Should Contain X Times    ${output}    state : 1    1
+    Should Contain X Times    ${output}    json_parameters : 1    1
     ${CmdComplete}=    Get Line    ${output}    -2
     Should Match Regexp    ${CmdComplete}    (=== \\[waitForCompletion_${component}\\] command )[0-9]+( completed ok :)
 
@@ -83,7 +83,7 @@ Read Controller
     Should Contain    ${output}    property :
     Should Contain    ${output}    action : 
     Should Contain    ${output}    value : 
-    Should Contain    ${output}    state : 1
+    Should Contain    ${output}    json_parameters : 1
     Should Contain    ${output}    ack      : 301
     Should Contain    ${output}    result   : Ack : OK
     Should Contain    ${output}    ack      : 303

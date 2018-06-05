@@ -182,6 +182,8 @@ function createTestSuite() {
 	for state in "${statesArray[@]}"; do
 		if [ "$state" == "start" ]; then
 			parameterType="configuration"
+		elif [ "${state}" == "SetValue" ]; then
+			parameterType="json_parameters"
 		else
 			parameterType="state"
 		fi
