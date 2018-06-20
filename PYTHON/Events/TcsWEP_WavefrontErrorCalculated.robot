@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontErrorCalculated communications tests.
-Force Tags    python    TSS-2626
+Documentation    TcsWEP_wavefrontErrorCalculated communications tests.
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsWEP
-${component}    WavefrontErrorCalculated
+${component}    wavefrontErrorCalculated
 ${timeout}    30s
 
 *** Test Cases ***
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 7702 77.375 1190220242
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 11162 28.3622 523035950
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_wavefrontErrorCalculated writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

@@ -57,7 +57,7 @@ function clearTestSuites() {
 }
 
 function stateMachineSkipped() {
-	echo "archiver atarchiver atheaderservice atmonochromator atcamera atcs calibrationelectrometer camera catchuparchiver eec headerservice m1m3 promptprocessing sedspectrometer summitfacility vms"
+	echo "archiver atarchiver atheaderservice atmonochromator atcamera atcs calibrationelectrometer camera catchuparchiver eec headerservice m1m3 promptprocessing sedspectrometer summitfacility tcsofc tcswep vms"
 }
 
 function stateArray() {
@@ -210,10 +210,6 @@ function checkIfSkipped() {
         skipped="TSS-2680"
     elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
         skipped="TSS-2679"
-	elif [[ ("$subsystem" == "tcsofc") ]]; then
-		skipped="TSS-2625"
-	elif [[ ("$subsystem" == "tcswep") ]]; then
-		skipped="TSS-2626"
 	elif [[ ("$subsystem" == "promptprocessing") ]]; then
 		skipped="TSS-2633"
 	elif [[ ("$subsystem" == "calibrationelectrometer") ]]; then

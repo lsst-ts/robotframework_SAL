@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsWEP_NoEnoughWfsNum communications tests.
-Force Tags    cpp    TSS-2626
+Documentation    TcsWEP_noEnoughWfsNum communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsWEP
-${component}    NoEnoughWfsNum
+${component}    noEnoughWfsNum
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,18 +47,18 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 85.2093 -1955017519
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 74.2028 -1693415259
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_NoEnoughWfsNum writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_noEnoughWfsNum writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event NoEnoughWfsNum generated =
+    Should Contain    ${output}    === Event noEnoughWfsNum generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1955017519
+    ${output}=    Read Until    priority : -1693415259
     Log    ${output}
-    Should Contain X Times    ${output}    === Event NoEnoughWfsNum received =     1
-    Should Contain    ${output}    timestamp : 85.2093
-    Should Contain    ${output}    priority : -1955017519
+    Should Contain X Times    ${output}    === Event noEnoughWfsNum received =     1
+    Should Contain    ${output}    timestamp : 74.2028
+    Should Contain    ${output}    priority : -1693415259

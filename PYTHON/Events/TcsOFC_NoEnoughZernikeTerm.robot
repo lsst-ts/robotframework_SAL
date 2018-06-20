@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_NoEnoughZernikeTerm communications tests.
-Force Tags    python    TSS-2625
+Documentation    TcsOFC_noEnoughZernikeTerm communications tests.
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsOfc
-${component}    NoEnoughZernikeTerm
+${component}    noEnoughZernikeTerm
 ${timeout}    30s
 
 *** Test Cases ***
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 80.2708 -1697179866
+    ${input}=    Write    python ${subSystem}_Event_${component}.py 63.6011 -1790904014
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_NoEnoughZernikeTerm writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_noEnoughZernikeTerm writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

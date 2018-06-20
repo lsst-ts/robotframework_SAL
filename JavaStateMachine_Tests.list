@@ -191,14 +191,6 @@ JAVA/StateMachine/TCS_exitControl.robot
 JAVA/StateMachine/TCS_standby.robot
 JAVA/StateMachine/TCS_start.robot
 JAVA/StateMachine/TCS_stop.robot
-JAVA/StateMachine/TcsOFC_disable.robot
-JAVA/StateMachine/TcsOFC_enable.robot
-JAVA/StateMachine/TcsOFC_standby.robot
-JAVA/StateMachine/TcsOFC_start.robot
-JAVA/StateMachine/TcsWEP_disable.robot
-JAVA/StateMachine/TcsWEP_enable.robot
-JAVA/StateMachine/TcsWEP_standby.robot
-JAVA/StateMachine/TcsWEP_start.robot
 JAVA/StateMachine/VMS_disable.robot
 JAVA/StateMachine/VMS_enable.robot
 JAVA/StateMachine/VMS_standby.robot

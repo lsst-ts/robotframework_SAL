@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_ErrorCode sender/logger tests.
-Force Tags    java    TSS-2625
+Documentation    TcsOFC_errorCode communications tests.
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsOfc
-${component}    ErrorCode
+${component}    errorCode
 ${timeout}    30s
 
 *** Test Cases ***
@@ -38,7 +38,7 @@ Start Sender
     ${input}=    Write    mvn -Dtest=${subSystem}Event_${component}Test test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample logevent_ErrorCode] writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample logevent_errorCode] writing a message containing :    1
     Should Contain    ${output}    revCode \ :
 
 Read Logger
@@ -46,5 +46,5 @@ Read Logger
     Switch Connection    Logger
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    Running ${subSystem}EventLogger_ErrorCodeTest
+    Should Contain    ${output}    Running ${subSystem}EventLogger_errorCodeTest
     Should Not Contain    ${output}    [ERROR]

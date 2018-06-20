@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontError communications tests.
-Force Tags    cpp    TSS-2626
+Documentation    TcsWEP_wavefrontError communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsWEP
-${component}    WavefrontError
+${component}    wavefrontError
 ${timeout}    30s
 
 *** Test Cases ***

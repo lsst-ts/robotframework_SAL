@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_NoEnoughZernikeTerm communications tests.
-Force Tags    cpp    TSS-2625
+Documentation    TcsOFC_noEnoughZernikeTerm communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsOfc
-${component}    NoEnoughZernikeTerm
+${component}    noEnoughZernikeTerm
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,18 +47,18 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 39.6577 -1644255243
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 36.9641 -945614965
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_NoEnoughZernikeTerm writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_noEnoughZernikeTerm writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event NoEnoughZernikeTerm generated =
+    Should Contain    ${output}    === Event noEnoughZernikeTerm generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : -1644255243
+    ${output}=    Read Until    priority : -945614965
     Log    ${output}
-    Should Contain X Times    ${output}    === Event NoEnoughZernikeTerm received =     1
-    Should Contain    ${output}    timestamp : 39.6577
-    Should Contain    ${output}    priority : -1644255243
+    Should Contain X Times    ${output}    === Event noEnoughZernikeTerm received =     1
+    Should Contain    ${output}    timestamp : 36.9641
+    Should Contain    ${output}    priority : -945614965

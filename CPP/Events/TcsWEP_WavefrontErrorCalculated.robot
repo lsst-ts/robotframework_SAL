@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontErrorCalculated communications tests.
-Force Tags    cpp    TSS-2626
+Documentation    TcsWEP_wavefrontErrorCalculated communications tests.
+Force Tags    cpp    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsWEP
-${component}    WavefrontErrorCalculated
+${component}    wavefrontErrorCalculated
 ${timeout}    30s
 
 *** Test Cases ***
@@ -47,19 +47,19 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/cpp/src
     Comment    Start Sender.
-    ${input}=    Write    ./sacpp_${subSystem}_${component}_send -19140 72.483 1696822483
+    ${input}=    Write    ./sacpp_${subSystem}_${component}_send 7626 25.9373 -433667161
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_WavefrontErrorCalculated writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsWEP::logevent_wavefrontErrorCalculated writing a message containing :    1
     Should Contain    ${output}    revCode \ :
-    Should Contain    ${output}    === Event WavefrontErrorCalculated generated =
+    Should Contain    ${output}    === Event wavefrontErrorCalculated generated =
 
 Read Logger
     [Tags]    functional
     Switch Connection    Logger
-    ${output}=    Read Until    priority : 1696822483
+    ${output}=    Read Until    priority : -433667161
     Log    ${output}
-    Should Contain X Times    ${output}    === Event WavefrontErrorCalculated received =     1
-    Should Contain    ${output}    sensorId : -19140
-    Should Contain    ${output}    timestamp : 72.483
-    Should Contain    ${output}    priority : 1696822483
+    Should Contain X Times    ${output}    === Event wavefrontErrorCalculated received =     1
+    Should Contain    ${output}    sensorId : 7626
+    Should Contain    ${output}    timestamp : 25.9373
+    Should Contain    ${output}    priority : -433667161

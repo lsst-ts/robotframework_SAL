@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_DegreeOfFreedom communications tests.
-Force Tags    java    TSS-2625
+Documentation    TcsOFC_degreeOfFreedom communications tests.
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Publisher    AND    Create Session    Subscriber
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsOfc
-${component}    DegreeOfFreedom
+${component}    degreeOfFreedom
 ${timeout}    30s
 
 *** Test Cases ***
@@ -26,7 +26,7 @@ Start Subscriber
     Write    cd ${SALWorkDir}/${subSystem}_${component}/java/standalone
     Comment    Start Subscriber.
     ${input}=    Write    java -cp $SAL_HOME/lib/saj_${subSystem}_types.jar:./classes:$OSPL_HOME/jar/dcpssaj.jar:saj_${subSystem}_${component}_sub.jar ${subSystem}_${component}DataSubscriber
-    ${output}=    Read Until    [${component} Subscriber] Ready
+    ${output}=    Read Until    [${component} Subscriber] Ready ...
     Log    ${output}
     Should Contain    ${output}    [createTopic] : topicName ${subSystem}_${component} type = ${subSystem}::${component}
     Should Contain    ${output}    [createreader idx] : topic org.opensplice.dds.dcps.TopicImpl@ 

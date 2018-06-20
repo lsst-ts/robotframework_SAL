@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsOFC_ErrorCode communications tests.
-Force Tags    python    TSS-2625
+Documentation    TcsOFC_errorCode communications tests.
+Force Tags    python    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -11,7 +11,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsOfc
-${component}    ErrorCode
+${component}    errorCode
 ${timeout}    30s
 
 *** Test Cases ***
@@ -48,10 +48,10 @@ Start Sender
     Comment    Move to working directory.
     Write    cd ${SALWorkDir}/${subSystem}/python
     Comment    Start Sender.
-    ${input}=    Write    python ${subSystem}_Event_${component}.py 1956631667 1362606374
+    ${input}=    Write    python ${subSystem}_Event_${component}.py -959608663 461651898
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_ErrorCode writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample] tcsOfc::logevent_errorCode writing a message containing :    1
     Should Contain    ${output}    revCode \ : LSST TEST REVCODE
 
 Read Logger

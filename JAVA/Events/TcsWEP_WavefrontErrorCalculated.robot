@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    TcsWEP_WavefrontErrorCalculated sender/logger tests.
-Force Tags    java    TSS-2626
+Documentation    TcsWEP_wavefrontErrorCalculated communications tests.
+Force Tags    java    
 Suite Setup    Run Keywords    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 ...    AND    Create Session    Sender    AND    Create Session    Logger
 Suite Teardown    Close All Connections
@@ -10,7 +10,7 @@ Resource    ../../common.robot
 
 *** Variables ***
 ${subSystem}    tcsWEP
-${component}    WavefrontErrorCalculated
+${component}    wavefrontErrorCalculated
 ${timeout}    30s
 
 *** Test Cases ***
@@ -38,7 +38,7 @@ Start Sender
     ${input}=    Write    mvn -Dtest=${subSystem}Event_${component}Test test
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain X Times    ${output}    === [putSample logevent_WavefrontErrorCalculated] writing a message containing :    1
+    Should Contain X Times    ${output}    === [putSample logevent_wavefrontErrorCalculated] writing a message containing :    1
     Should Contain    ${output}    revCode \ :
 
 Read Logger
@@ -46,5 +46,5 @@ Read Logger
     Switch Connection    Logger
     ${output}=    Read Until Prompt
     Log    ${output}
-    Should Contain    ${output}    Running ${subSystem}EventLogger_WavefrontErrorCalculatedTest
+    Should Contain    ${output}    Running ${subSystem}EventLogger_wavefrontErrorCalculatedTest
     Should Not Contain    ${output}    [ERROR]
