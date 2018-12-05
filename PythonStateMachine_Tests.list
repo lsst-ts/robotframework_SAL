@@ -4,7 +4,6 @@
 --output PythonStateMachine
 
 # List of test suites
-PYTHON/StateMachine/AOCLC_StateMachine.robot
 PYTHON/StateMachine/ATAOS_StateMachine.robot
 PYTHON/StateMachine/ATArchiver_StateMachine.robot
 PYTHON/StateMachine/ATBuilding_StateMachine.robot
@@ -49,17 +48,7 @@ PYTHON/StateMachine/FiberSpectrograph_StateMachine.robot
 PYTHON/StateMachine/HVAC_StateMachine.robot
 PYTHON/StateMachine/Hexapod_StateMachine.robot
 PYTHON/StateMachine/IOTA_StateMachine.robot
-PYTHON/StateMachine/LOVE_StateMachine.robot
 PYTHON/StateMachine/LinearStage_StateMachine.robot
-PYTHON/StateMachine/M2MS_SetValue.robot
-PYTHON/StateMachine/M2MS_abort.robot
-PYTHON/StateMachine/M2MS_disable.robot
-PYTHON/StateMachine/M2MS_enable.robot
-PYTHON/StateMachine/M2MS_enterControl.robot
-PYTHON/StateMachine/M2MS_exitControl.robot
-PYTHON/StateMachine/M2MS_standby.robot
-PYTHON/StateMachine/M2MS_start.robot
-PYTHON/StateMachine/M2MS_stop.robot
 PYTHON/StateMachine/MTArchiver_StateMachine.robot
 PYTHON/StateMachine/MTCalCS_StateMachine.robot
 PYTHON/StateMachine/MTCamera_StateMachine.robot
@@ -83,14 +72,5 @@ PYTHON/StateMachine/Scheduler_StateMachine.robot
 PYTHON/StateMachine/ScriptQueue_StateMachine.robot
 PYTHON/StateMachine/Sequencer_StateMachine.robot
 PYTHON/StateMachine/SummitFacility_StateMachine.robot
-PYTHON/StateMachine/TCS_SetValue.robot
-PYTHON/StateMachine/TCS_abort.robot
-PYTHON/StateMachine/TCS_disable.robot
-PYTHON/StateMachine/TCS_enable.robot
-PYTHON/StateMachine/TCS_enterControl.robot
-PYTHON/StateMachine/TCS_exitControl.robot
-PYTHON/StateMachine/TCS_standby.robot
-PYTHON/StateMachine/TCS_start.robot
-PYTHON/StateMachine/TCS_stop.robot
 PYTHON/StateMachine/Test_StateMachine.robot
 PYTHON/StateMachine/TunableLaser_StateMachine.robot
