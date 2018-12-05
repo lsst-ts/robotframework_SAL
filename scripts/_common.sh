@@ -41,7 +41,7 @@ function getEventTopics() {
 function clearTestSuites() {
 	# Get the terms into the correct capitalization.
 	local slash="/"
-	local subsystem=$(capitializeSubsystem $1)
+	local subsystem=$1
 	local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
 	if [ -n "$3" ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}; else local topic_type=""; fi #Topic type is capitalized 
 	echo "==================================== ${subsystem} ${language} ${topic_type} tests ===================================="
@@ -56,122 +56,20 @@ function clearTestSuites() {
 	echo ""
 }
 
-function stateMachineSkipped() {
-	echo "archiver atarchiver atheaderservice atmonochromator atcamera atcs calibrationelectrometer camera catchuparchiver eec headerservice m1m3 promptprocessing sedspectrometer summitfacility tcsofc tcswep vms"
-}
-
 function stateArray() {
 	echo "enable disable standby start stop enterControl exitControl abort SetValue"
 }
 
 function capitializeSubsystem() {
 	# This function returns the CSC name in a pretty-print pattern used only for Test Suite naming.
-    local subSystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
-	if [ "$subSystem" == "m1m3" ]; then
-        echo "M1M3"
-    elif [ "$subSystem" == "m2ms" ]; then
-        echo "M2MS"
-    elif [ "$subSystem" == "ocs" ]; then
-        echo "OCS"
-    elif [ "$subSystem" == "atcs" ]; then
-        echo "ATCS"
-	elif [ "$subSystem" == "atarchiver" ]; then
-        echo "AtArchiver"
-    elif [ "$subSystem" == "atcamera" ]; then
-        echo "AtCamera"
-	elif [ "$subSystem" == "atheaderservice" ]; then
-        echo "AtHeaderService"
-	elif [ "$subSystem" == "atmonochromator" ]; then
-        echo "AtMonochromator"
-	elif [ "$subSystem" == "atscheduler" ]; then
-        echo "AtScheduler"
-    elif [ "$subSystem" == "mtmount" ]; then
-        echo "MTMount"
-	elif [ "$subSystem" == "domeadb" ]; then
-        echo "DomeADB"
-    elif [ "$subSystem" == "domeaps" ]; then
-        echo "DomeAPS"
-    elif [ "$subSystem" == "domelws" ]; then
-        echo "DomeLWS"
-    elif [ "$subSystem" == "domelouvers" ]; then
-        echo "DomeLouvers"
-    elif [ "$subSystem" == "domemoncs" ]; then
-        echo "DomeMONCS"
-    elif [ "$subSystem" == "domethcs" ]; then
-        echo "DomeTHCS"
-	elif [ "$subSystem" == "catchuparchiver" ]; then
-        echo "CatchupArchiver"
-	elif [ "$subSystem" == "promptprocessing" ]; then
-        echo "PromptProcessing"
-	elif [ "$subSystem" == "efd" ]; then
-        echo "EFD"
-	elif [ "$subSystem" == "eec" ]; then
-        echo "EEC"
-	elif [ "$subSystem" == "headerservice" ]; then
-        echo "HeaderService"
-    elif [ "$subSystem" == "summitfacility" ]; then
-        echo "SummitFacility"
-    elif [ "$subSystem" == "tcs" ]; then
-        echo "TCS"
-	elif [ "$subSystem" == "tcsofc" ]; then
-        echo "TcsOFC"
-	elif [ "$subSystem" == "tcswep" ]; then
-        echo "TcsWEP"
-	elif [ "$subSystem" == "vms" ]; then
-        echo "VMS"
-    else
-        local var="$(tr '[:lower:]' '[:upper:]' <<< ${subSystem:0:1})${subSystem:1}"
-		echo $var
-    fi
+	echo $1
 }
 
 function getEntity() {
 	# This function returns the CSC is the defined capitalized convention.
 	# ... This corresponds to the folder and file names in ts_xml.
 	local entity=$1
-	if [ "$entity" == "all" ]; then
-        echo "all"
-	elif [ "$entity" == "atarchiver" ]; then
-		echo "atArchiver"
-	elif [ "$entity" == "atheaderservice" ]; then
-		echo "atHeaderService"
-	elif [ "$entity" == "headerservice" ]; then
-		echo "headerService"
-	elif [ "$entity" == "atmonochromator" ]; then
-		echo "atMonochromator"
-	elif [ "$entity" == "atscheduler" ]; then
-		echo "atScheduler"
-	elif [ "$entity" == "atwhitelight" ]; then
-        echo "atWhiteLight"
-	elif [ "$entity" == "summitfacility" ]; then
-		echo "summitFacility"
-	elif [ "$entity" == "calibrationelectrometer" ]; then
-		echo "calibrationElectrometer"
-	elif [ "$entity" == "promptprocessing" ]; then
-		echo "promptprocessing"
-	elif [ "$entity" == "mtmount" ]; then
-        echo "MTMount"
-    elif [ "$entity" == "domeadb" ]; then
-        echo "domeADB"
-    elif [ "$entity" == "domeaps" ]; then
-		echo "domeAPS"
-    elif [ "$entity" == "domelws" ]; then
-		echo "domeLWS"
-    elif [ "$entity" == "domelouvers" ]; then
-		echo "domeLouvers"
-    elif [ "$entity" == "domemoncs" ]; then
-		echo "domeMONCS"
-    elif [ "$entity" == "domethcs" ]; then
-		echo "domeTHCS"
-	elif [ "$entity" == "headerservice" ]; then
-		echo "headerService"
-	elif [ "$entity" == "tcsofc" ]; then
-		echo "tcsOfc"
-	elif [ "$entity" == "tcswep" ]; then
-		echo "tcsWEP"
-	else
-		echo "$entity"
-	fi
+	echo "$entity"
 }
 
 function randomString() {

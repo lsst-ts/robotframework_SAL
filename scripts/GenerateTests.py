@@ -5,9 +5,8 @@ import os
 import inspect
 import argparse
 
-# This array defines the list of CSCs, in all lowercase, for ease of string comparison.
-## atcs calibrationelectrometer promptprocessing (TSS-2608, TSS-2606, TSS-2633)
-csc_array = ["archiver", "atarchiver", "atcamera", "atheaderservice", "atmonochromator", "atscheduler", "camera", "catchuparchiver", "dome", "domeadb", "domeaps", "domelouvers", "domelws", "domemoncs", "domethcs", "eec", "efd", "headerservice", "hexapod", "m1m3", "m2ms", "mtmount", "ocs", "rotator", "scheduler", "sequencer", "summitfacility", "tcs", "tcsofc", "tcswep", "vms"]
+# This array defines the list of current CSCs.
+csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCalCS', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATEEC', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATSpectrograph', 'ATTCS', 'ATThermoelectricCooler', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'DIMM', 'Dome', 'DomeADB', 'DomeAPS', 'DomeLouvers', 'DomeLWS', 'DomeMONCS', 'DomeTHCS', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'FiberSpectrograph', 'IOTA', 'Hexapod', 'HVAC', 'LinearStage', 'MTArchiver', 'MTCalCS', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM2', 'MTMount', 'MTOFC', 'MTTCS', 'MTWEP', 'MTVMS', 'OCS', 'PointingComponent', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'Sequencer', 'SummitFacility', 'Test', 'TunableLaser']
 
 def GenerateTests(csc, language):
 	"""Test Suite generator."""
@@ -15,39 +14,39 @@ def GenerateTests(csc, language):
 	if  csc == "all":
 		for csc in csc_array:
 			if ('cpp' in language) or ('all' in language):
-				subprocess.check_call(["./CppPubSub.sh", csc])
+				#subprocess.check_call(["./CppPubSub.sh", csc])
 				subprocess.check_call(["./CppState.sh", csc])
-				subprocess.check_call(["./CppComCon.sh", csc])
-				subprocess.check_call(["./CppEvents.sh", csc])
+				#subprocess.check_call(["./CppComCon.sh", csc])
+				#subprocess.check_call(["./CppEvents.sh", csc])
 			if ('java' in language) or ('all' in language):
-				subprocess.check_call(["./JavaPubSub.sh", csc])
+				#subprocess.check_call(["./JavaPubSub.sh", csc])
 				subprocess.check_call(["./JavaState.sh", csc])
-				subprocess.check_call(["./JavaComCon.sh", csc])
-				subprocess.check_call(["./JavaEvents.sh", csc])
+				#subprocess.check_call(["./JavaComCon.sh", csc])
+				#subprocess.check_call(["./JavaEvents.sh", csc])
 			if ('python' in language) or ('all' in language):
-				subprocess.check_call(["./PythonPubSub.sh", csc])
+				#subprocess.check_call(["./PythonPubSub.sh", csc])
 				subprocess.check_call(["./PythonState.sh", csc])
-				subprocess.check_call(["./PythonComCon.sh", csc])
-				subprocess.check_call(["./PythonEvents.sh", csc])
+				#subprocess.check_call(["./PythonComCon.sh", csc])
+				#subprocess.check_call(["./PythonEvents.sh", csc])
 			if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
 				complete=False
 		print("COMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
 	elif csc in csc_array:
 		if ('cpp' in language) or ('all' in language):
-			subprocess.check_call(["./CppPubSub.sh", csc])
+			#subprocess.check_call(["./CppPubSub.sh", csc])
 			subprocess.check_call(["./CppState.sh", csc])
-			subprocess.check_call(["./CppComCon.sh", csc])
-			subprocess.check_call(["./CppEvents.sh", csc])
+			#subprocess.check_call(["./CppComCon.sh", csc])
+			#subprocess.check_call(["./CppEvents.sh", csc])
 		if ('java' in language) or ('all' in language):
-			subprocess.check_call(["./JavaPubSub.sh", csc])
+			#subprocess.check_call(["./JavaPubSub.sh", csc])
 			subprocess.check_call(["./JavaState.sh", csc])
-			subprocess.check_call(["./JavaComCon.sh", csc])
-			subprocess.check_call(["./JavaEvents.sh", csc])
+			#subprocess.check_call(["./JavaComCon.sh", csc])
+			#subprocess.check_call(["./JavaEvents.sh", csc])
 		if ('python' in language) or ('all' in language):
-			subprocess.check_call(["./PythonPubSub.sh", csc])
+			#subprocess.check_call(["./PythonPubSub.sh", csc])
 			subprocess.check_call(["./PythonState.sh", csc])
-			subprocess.check_call(["./PythonComCon.sh", csc])
-			subprocess.check_call(["./PythonEvents.sh", csc])
+			#subprocess.check_call(["./PythonComCon.sh", csc])
+			#subprocess.check_call(["./PythonEvents.sh", csc])
 		if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
 			complete=False
 		print("COMPLETED all test suites for the " + csc) if complete else print("This was a " + str(language))
