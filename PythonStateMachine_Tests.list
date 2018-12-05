@@ -21,15 +21,6 @@ PYTHON/StateMachine/ATSpectrograph_StateMachine.robot
 PYTHON/StateMachine/ATTCS_StateMachine.robot
 PYTHON/StateMachine/ATThermoelectricCooler_StateMachine.robot
 PYTHON/StateMachine/ATWhiteLight_StateMachine.robot
-PYTHON/StateMachine/AtScheduler_SetValue.robot
-PYTHON/StateMachine/AtScheduler_abort.robot
-PYTHON/StateMachine/AtScheduler_disable.robot
-PYTHON/StateMachine/AtScheduler_enable.robot
-PYTHON/StateMachine/AtScheduler_enterControl.robot
-PYTHON/StateMachine/AtScheduler_exitControl.robot
-PYTHON/StateMachine/AtScheduler_standby.robot
-PYTHON/StateMachine/AtScheduler_start.robot
-PYTHON/StateMachine/AtScheduler_stop.robot
 PYTHON/StateMachine/CBP_StateMachine.robot
 PYTHON/StateMachine/CatchupArchiver_StateMachine.robot
 PYTHON/StateMachine/DIMM_StateMachine.robot
