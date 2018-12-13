@@ -20,7 +20,7 @@ declare -a statesArray=($(stateArray))
 function main() {
     arg=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    # Get the XML definition file.
     file=($HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml)
     
     # Delete all test associated test suites first, to catch any removed topics.
@@ -49,7 +49,7 @@ function createSettings() {
 }
 
 function createVariables() {
-	local subSystem=$(getEntity $1)
+	local subSystem=$1
     local state=$2
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
