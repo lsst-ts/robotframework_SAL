@@ -1,0 +1,12 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name Pathfinder
+--output Pathfinder
+
+# List of test suites
+CPP/StateMachine/ATArchiver_StateMachine.robot
+CPP/StateMachine/ATCamera_StateMachine.robot
+CPP/StateMachine/ATHeaderService_StateMachine.robot
+CPP/StateMachine/ATMonochromator_StateMachine.robot
+CPP/StateMachine/Electrometer_StateMachine.robot
+CPP/StateMachine/FiberSpectrograph_StateMachine.robot

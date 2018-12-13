@@ -1,0 +1,67 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CppGenericEvents
+--output CppGenericEvents
+
+# List of test suites
+CPP/GenericEvents/ATAOS_GenericEvents.robot
+CPP/GenericEvents/ATArchiver_GenericEvents.robot
+CPP/GenericEvents/ATBuilding_GenericEvents.robot
+CPP/GenericEvents/ATCalCS_GenericEvents.robot
+CPP/GenericEvents/ATCamera_GenericEvents.robot
+CPP/GenericEvents/ATDomeTrajectory_GenericEvents.robot
+CPP/GenericEvents/ATDome_GenericEvents.robot
+CPP/GenericEvents/ATEEC_GenericEvents.robot
+CPP/GenericEvents/ATHeaderService_GenericEvents.robot
+CPP/GenericEvents/ATHexapod_GenericEvents.robot
+CPP/GenericEvents/ATMCS_GenericEvents.robot
+CPP/GenericEvents/ATMonochromator_GenericEvents.robot
+CPP/GenericEvents/ATPneumatics_GenericEvents.robot
+CPP/GenericEvents/ATSpectrograph_GenericEvents.robot
+CPP/GenericEvents/ATTCS_GenericEvents.robot
+CPP/GenericEvents/ATThermoelectricCooler_GenericEvents.robot
+CPP/GenericEvents/ATWhiteLight_GenericEvents.robot
+CPP/GenericEvents/CBP_GenericEvents.robot
+CPP/GenericEvents/CatchupArchiver_GenericEvents.robot
+CPP/GenericEvents/DIMM_GenericEvents.robot
+CPP/GenericEvents/DomeADB_GenericEvents.robot
+CPP/GenericEvents/DomeAPS_GenericEvents.robot
+CPP/GenericEvents/DomeLWS_GenericEvents.robot
+CPP/GenericEvents/DomeLouvers_GenericEvents.robot
+CPP/GenericEvents/DomeMONCS_GenericEvents.robot
+CPP/GenericEvents/DomeTHCS_GenericEvents.robot
+CPP/GenericEvents/Dome_GenericEvents.robot
+CPP/GenericEvents/EAS_GenericEvents.robot
+CPP/GenericEvents/EFDTransformationServer_GenericEvents.robot
+CPP/GenericEvents/EFD_GenericEvents.robot
+CPP/GenericEvents/Electrometer_GenericEvents.robot
+CPP/GenericEvents/FiberSpectrograph_GenericEvents.robot
+CPP/GenericEvents/HVAC_GenericEvents.robot
+CPP/GenericEvents/Hexapod_GenericEvents.robot
+CPP/GenericEvents/IOTA_GenericEvents.robot
+CPP/GenericEvents/LinearStage_GenericEvents.robot
+CPP/GenericEvents/MTArchiver_GenericEvents.robot
+CPP/GenericEvents/MTCalCS_GenericEvents.robot
+CPP/GenericEvents/MTCamera_GenericEvents.robot
+CPP/GenericEvents/MTDomeTrajectory_GenericEvents.robot
+CPP/GenericEvents/MTEEC_GenericEvents.robot
+CPP/GenericEvents/MTGuider_GenericEvents.robot
+CPP/GenericEvents/MTHeaderService_GenericEvents.robot
+CPP/GenericEvents/MTLaserTracker_GenericEvents.robot
+CPP/GenericEvents/MTM1M3_GenericEvents.robot
+CPP/GenericEvents/MTM2_GenericEvents.robot
+CPP/GenericEvents/MTMount_GenericEvents.robot
+CPP/GenericEvents/MTOFC_GenericEvents.robot
+CPP/GenericEvents/MTTCS_GenericEvents.robot
+CPP/GenericEvents/MTVMS_GenericEvents.robot
+CPP/GenericEvents/MTWEP_GenericEvents.robot
+CPP/GenericEvents/OCS_GenericEvents.robot
+CPP/GenericEvents/PointingComponent_GenericEvents.robot
+CPP/GenericEvents/PromptProcessing_GenericEvents.robot
+CPP/GenericEvents/Rotator_GenericEvents.robot
+CPP/GenericEvents/Scheduler_GenericEvents.robot
+CPP/GenericEvents/ScriptQueue_GenericEvents.robot
+CPP/GenericEvents/Sequencer_GenericEvents.robot
+CPP/GenericEvents/SummitFacility_GenericEvents.robot
+CPP/GenericEvents/Test_GenericEvents.robot
+CPP/GenericEvents/TunableLaser_GenericEvents.robot

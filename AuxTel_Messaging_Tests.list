@@ -1,0 +1,67 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name PythonGenericEvents
+--output PythonGenericEvents
+
+# List of test suites
+PYTHON/GenericEvents/ATAOS_GenericEvents.robot
+PYTHON/GenericEvents/ATArchiver_GenericEvents.robot
+PYTHON/GenericEvents/ATBuilding_GenericEvents.robot
+PYTHON/GenericEvents/ATCalCS_GenericEvents.robot
+PYTHON/GenericEvents/ATCamera_GenericEvents.robot
+PYTHON/GenericEvents/ATDomeTrajectory_GenericEvents.robot
+PYTHON/GenericEvents/ATDome_GenericEvents.robot
+PYTHON/GenericEvents/ATEEC_GenericEvents.robot
+PYTHON/GenericEvents/ATHeaderService_GenericEvents.robot
+PYTHON/GenericEvents/ATHexapod_GenericEvents.robot
+PYTHON/GenericEvents/ATMCS_GenericEvents.robot
+PYTHON/GenericEvents/ATMonochromator_GenericEvents.robot
+PYTHON/GenericEvents/ATPneumatics_GenericEvents.robot
+PYTHON/GenericEvents/ATSpectrograph_GenericEvents.robot
+PYTHON/GenericEvents/ATTCS_GenericEvents.robot
+PYTHON/GenericEvents/ATThermoelectricCooler_GenericEvents.robot
+PYTHON/GenericEvents/ATWhiteLight_GenericEvents.robot
+PYTHON/GenericEvents/CBP_GenericEvents.robot
+PYTHON/GenericEvents/CatchupArchiver_GenericEvents.robot
+PYTHON/GenericEvents/DIMM_GenericEvents.robot
+PYTHON/GenericEvents/DomeADB_GenericEvents.robot
+PYTHON/GenericEvents/DomeAPS_GenericEvents.robot
+PYTHON/GenericEvents/DomeLWS_GenericEvents.robot
+PYTHON/GenericEvents/DomeLouvers_GenericEvents.robot
+PYTHON/GenericEvents/DomeMONCS_GenericEvents.robot
+PYTHON/GenericEvents/DomeTHCS_GenericEvents.robot
+PYTHON/GenericEvents/Dome_GenericEvents.robot
+PYTHON/GenericEvents/EAS_GenericEvents.robot
+PYTHON/GenericEvents/EFDTransformationServer_GenericEvents.robot
+PYTHON/GenericEvents/EFD_GenericEvents.robot
+PYTHON/GenericEvents/Electrometer_GenericEvents.robot
+PYTHON/GenericEvents/FiberSpectrograph_GenericEvents.robot
+PYTHON/GenericEvents/HVAC_GenericEvents.robot
+PYTHON/GenericEvents/Hexapod_GenericEvents.robot
+PYTHON/GenericEvents/IOTA_GenericEvents.robot
+PYTHON/GenericEvents/LinearStage_GenericEvents.robot
+PYTHON/GenericEvents/MTArchiver_GenericEvents.robot
+PYTHON/GenericEvents/MTCalCS_GenericEvents.robot
+PYTHON/GenericEvents/MTCamera_GenericEvents.robot
+PYTHON/GenericEvents/MTDomeTrajectory_GenericEvents.robot
+PYTHON/GenericEvents/MTEEC_GenericEvents.robot
+PYTHON/GenericEvents/MTGuider_GenericEvents.robot
+PYTHON/GenericEvents/MTHeaderService_GenericEvents.robot
+PYTHON/GenericEvents/MTLaserTracker_GenericEvents.robot
+PYTHON/GenericEvents/MTM1M3_GenericEvents.robot
+PYTHON/GenericEvents/MTM2_GenericEvents.robot
+PYTHON/GenericEvents/MTMount_GenericEvents.robot
+PYTHON/GenericEvents/MTOFC_GenericEvents.robot
+PYTHON/GenericEvents/MTTCS_GenericEvents.robot
+PYTHON/GenericEvents/MTVMS_GenericEvents.robot
+PYTHON/GenericEvents/MTWEP_GenericEvents.robot
+PYTHON/GenericEvents/OCS_GenericEvents.robot
+PYTHON/GenericEvents/PointingComponent_GenericEvents.robot
+PYTHON/GenericEvents/PromptProcessing_GenericEvents.robot
+PYTHON/GenericEvents/Rotator_GenericEvents.robot
+PYTHON/GenericEvents/Scheduler_GenericEvents.robot
+PYTHON/GenericEvents/ScriptQueue_GenericEvents.robot
+PYTHON/GenericEvents/Sequencer_GenericEvents.robot
+PYTHON/GenericEvents/SummitFacility_GenericEvents.robot
+PYTHON/GenericEvents/Test_GenericEvents.robot
+PYTHON/GenericEvents/TunableLaser_GenericEvents.robot
