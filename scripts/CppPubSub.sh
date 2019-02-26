@@ -10,7 +10,8 @@
 source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/CPP/Telemetry
+workDir=$HOME/trunk/robotframework_SAL/Separate/CPP/Telemetry
+workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
@@ -75,21 +76,25 @@ function getParameterCount() {
 
 function createSettings {
 	local subSystem=$1
+	local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
+	echo $topic
+	local testSuite=$3
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
+    echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
     echo "Force Tags    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
-    echo "Resource    ../../Global_Vars.robot" >> $testSuite
-    echo "Resource    ../../common.robot" >> $testSuite
+    echo "Resource    \${CURDIR}\${/}Global_Vars.robot" >> $testSuite
+    echo "Resource    \${CURDIR}\${/}common.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
 function createVariables {
-	local subSystem=$(getEntity $1)
+	local subSystem=$1
+	local testSuite=$2
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -98,6 +103,7 @@ function createVariables {
 }
 
 function verifyCompPubSub {
+	local testSuite=$1
     echo "Verify Component Publisher and Subscriber" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_pub" >> $testSuite
@@ -106,6 +112,7 @@ function verifyCompPubSub {
 }
 
 function startSubscriber {
+	local testSuite=$1
     echo "Start Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
@@ -120,6 +127,7 @@ function startSubscriber {
 }
 
 function startPublisher {
+	local testSuite=$1
     echo "Start Publisher" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Publisher" >> $testSuite
@@ -137,6 +145,7 @@ function startPublisher {
 function readSubscriber {
 	file=$1
 	topicIndex=$2
+	local testSuite=$3
 	echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
@@ -168,8 +177,21 @@ function createTestSuite {
 	# Get the topics for the CSC.
 	getTopics $subSystem $file
 
+	# Generate the test suite for each message type.
+	echo ============== Generating Combined messaging test suite ==============
+	testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+	echo $testSuiteCombined
+	createSettings $subSystem $messageType $testSuiteCombined
+	createVariables $subSystem $testSuiteCombined
+	echo "*** Test Cases ***" >> $testSuiteCombined
+	verifyCompPubSub $testSuiteCombined
+    startSubscriber $testSuiteCombined
+    startPublisher $testSuiteCombined
+    readSubscriber $file $topicIndex $testSuiteCombined
+	echo Generation complete
+	echo ""
 	# Generate the test suite for each topic.
-	echo Generating:
+	echo ============== Generating Separate messaging test suites ==============
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
 		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
@@ -182,15 +204,16 @@ function createTestSuite {
 
 		#  Create test suite.
 		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
+		createSettings $subSystem $topic $testSuite
+		createVariables $subSystem $testSuite
 		echo "*** Test Cases ***" >> $testSuite
-        verifyCompPubSub
-		startSubscriber
-		startPublisher
-		readSubscriber $file $topicIndex
+        verifyCompPubSub $testSuite
+		startSubscriber $testSuite
+		startPublisher $testSuite
+		readSubscriber $file $topicIndex $testSuite
     	(( topicIndex++ ))
 	done
+	echo Generation complete
 	echo ""
 }
 
