@@ -188,15 +188,17 @@ function readSubscriber_params {
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-		if [[ ( "$parameterType" == "byte" ) ]]; then
+		if [[ ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
 			#echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter :    10" >>$testSuite
-		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
-			#echo "$parameter $parameterType Count 1"
-        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
+            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
+		elif [[ ( "$parameterType" == "boolean" ) ]]; then
+			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			#echo "$parameter $parameterType String or Char"
 			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    10" >>$testSuite
+		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
+			#echo "$parameter $parameterType Count 1"
+        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		else
 			#echo "$parameter $parameterType Else"
 			for num in `seq 1 9`; do
