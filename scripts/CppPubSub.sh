@@ -77,24 +77,23 @@ function getParameterCount() {
 function createSettings {
 	local subSystem=$1
 	local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
-	echo $topic
 	local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
     echo "Force Tags    cpp    $skipped" >> $testSuite
-    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-    echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
-    echo "Suite Teardown    Close All Connections" >> $testSuite
-    echo "Library    SSHLibrary" >> $testSuite
+    echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
+	echo "Suite Teardown    Terminate All Processes" >> $testSuite
+    echo "Library    OperatingSystem" >> $testSuite
+    echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
-    echo "Resource    \${CURDIR}\${/}Global_Vars.robot" >> $testSuite
-    echo "Resource    \${CURDIR}\${/}common.robot" >> $testSuite
+    echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
 function createVariables {
 	local subSystem=$1
 	local testSuite=$2
+	local topic=$3
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -106,8 +105,13 @@ function verifyCompPubSub {
 	local testSuite=$1
     echo "Verify Component Publisher and Subscriber" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_pub" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub" >> $testSuite
+	if [ $topic ]; then
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_pub" >> $testSuite
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub" >> $testSuite
+	else
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_publisher" >> $testSuite
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber" >> $testSuite
+	fi
     echo "" >> $testSuite
 }
 
@@ -115,14 +119,14 @@ function startSubscriber {
 	local testSuite=$1
     echo "Start Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Subscriber" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_sub" >> $testSuite
-    echo "    \${output}=    Read Until    [Subscriber] Ready ..." >> $testSuite
+    if [ $topic ]; then
+    	echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub    alias=Subscriber" >> $testSuite
+	else
+		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=Subscriber" >> $testSuite
+	fi
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    [Subscriber] Ready" >> $testSuite
+    echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -130,15 +134,26 @@ function startPublisher {
 	local testSuite=$1
     echo "Start Publisher" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Publisher" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone" >> $testSuite
     echo "    Comment    Start Publisher." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_pub" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    [putSample] \${subSystem}::\${component} writing a message containing :    9" >> $testSuite
-    echo "    Should Contain X Times    \${output}    revCode \ : LSST TEST REVCODE    9" >> $testSuite
+	if [ $topic ]; then
+    	echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_pub" >> $testSuite
+	else
+		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_publisher" >> $testSuite
+    fi
+    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+	if [ $topic ]; then
+    	echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component} writing a message containing :    10" >> $testSuite
+    	echo "    Should Contain X Times    \${output.stdout}    revCode \ : LSST TEST REVCODE    10" >> $testSuite
+	else
+		for item in "${topicsArray[@]}"; do
+			echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+			echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
+			echo "    @{words}=    Split String    \${line}" >> $testSuite
+			echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+			echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::${item}_\${revcode} writing a message containing :    10" >> $testSuite
+			echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    10" >> $testSuite
+		done
+	fi
     echo "" >> $testSuite
 }
 
@@ -148,19 +163,42 @@ function readSubscriber {
 	local testSuite=$3
 	echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Subscriber" >> $testSuite
-    echo "    \${output}=    Read    delay=1s" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-	echo "    @{list}=    Split To Lines    \${output}    start=1" >> $testSuite
+    echo "    Switch Process    Subscriber" >> $testSuite
+    echo "    \${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate" >> $testSuite
+    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+	echo "    Should Contain    \${output.stdout}    \${subSystem} subscriber Ready" >> $testSuite
+	echo "    @{list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
+	if [ $topic ]; then
+		readSubscriber_params $file $topicIndex $testSuite
+	else
+		itemIndex=1
+		for item in "${topicsArray[@]}"; do
+			getTopicParameters $file $itemIndex
+			readSubscriber_params $file $itemIndex $testSuite
+			(( itemIndex++ ))
+		done
+    fi
+}
+
+function readSubscriber_params {
+	file=$1
+    topicIndex=$2
+    local testSuite=$3
     for parameter in "${parametersArray[@]}"; do
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
-        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
+		if [[ ( "$parameterType" == "byte" ) ]]; then
+			#echo "$parameter $parameterType Byte"
+            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter :    10" >>$testSuite
+		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
+			#echo "$parameter $parameterType Count 1"
+        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    9" >>$testSuite
+			#echo "$parameter $parameterType String or Char"
+			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    10" >>$testSuite
 		else
+			#echo "$parameter $parameterType Else"
 			for num in `seq 1 9`; do
 				echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
 			done
@@ -182,7 +220,7 @@ function createTestSuite {
 	testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
 	echo $testSuiteCombined
 	createSettings $subSystem $messageType $testSuiteCombined
-	createVariables $subSystem $testSuiteCombined
+	createVariables $subSystem $testSuiteCombined "all"
 	echo "*** Test Cases ***" >> $testSuiteCombined
 	verifyCompPubSub $testSuiteCombined
     startSubscriber $testSuiteCombined
@@ -192,11 +230,12 @@ function createTestSuite {
 	echo ""
 	# Generate the test suite for each topic.
 	echo ============== Generating Separate messaging test suites ==============
+	topicIndex=1
 	for topic in "${topicsArray[@]}"; do
 		#  Define test suite name
 		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 		
-		#  Get EFDB EFDB_Topic telemetry parameters
+		#  Get EFDB_Topic Telemetry parameters
 		getTopicParameters $file $topicIndex
 
 		#  Check if test suite should be skipped.
