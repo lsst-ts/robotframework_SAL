@@ -11,7 +11,7 @@ source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
 workDir=$HOME/trunk/robotframework_SAL/Separate/CPP/Telemetry
-workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP
+workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP/Telemetry
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
@@ -181,24 +181,29 @@ function readSubscriber {
 }
 
 function readSubscriber_params {
-	file=$1
-    topicIndex=$2
+	local file=$1
+    local topicIndex=$2
     local testSuite=$3
     for parameter in "${parametersArray[@]}"; do
+		if [ $topic ]; then
+			n=1
+		else
+			n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
+		fi
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 		if [[ ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
 			#echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
+            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    $(( 10 * $n ))" >>$testSuite
 		elif [[ ( "$parameterType" == "boolean" ) ]]; then
-			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
+			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    $(( 10 * $n ))" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			#echo "$parameter $parameterType String or Char"
-			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    10" >>$testSuite
+			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    $(( 10 * $n ))" >>$testSuite
 		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
 			#echo "$parameter $parameterType Count 1"
-        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
+        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    $(( 10 * $n ))" >>$testSuite
 		else
 			#echo "$parameter $parameterType Else"
 			for num in `seq 1 9`; do
