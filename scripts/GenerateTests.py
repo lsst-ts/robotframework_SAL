@@ -6,7 +6,7 @@ import inspect
 import argparse
 
 # This array defines the list of current CSCs.
-csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCalCS', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATEEC', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATSpectrograph', 'ATTCS', 'ATThermoelectricCooler', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'DIMM', 'Dome', 'DomeADB', 'DomeAPS', 'DomeLouvers', 'DomeLWS', 'DomeMONCS', 'DomeTHCS', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'FiberSpectrograph', 'IOTA', 'Hexapod', 'HVAC', 'LinearStage', 'MTArchiver', 'MTCalCS', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM2', 'MTMount', 'MTOFC', 'MTTCS', 'MTWEP', 'MTVMS', 'OCS', 'PointingComponent', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'Sequencer', 'SummitFacility', 'Test', 'TunableLaser']
+csc_array = ['AOCLC', 'ATAOS', 'ATArchiver', 'ATBuilding', 'ATCalCS', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATEEC', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATSpectrograph', 'ATTCS', 'ATThermoelectricCooler', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'DIMM', 'Dome', 'DomeADB', 'DomeAPS', 'DomeLouvers', 'DomeLWS', 'DomeMONCS', 'DomeTHCS', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'Environment', 'FiberSpectrograph', 'IOTA', 'Hexapod', 'HVAC', 'LinearStage', 'LOVE', 'MTArchiver', 'MTCalCS', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTOFC', 'MTTCS', 'MTWEP', 'MTVMS', 'OCS', 'PointingComponent', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'Sequencer', 'SummitFacility', 'Test', 'TunableLaser']
 
 def GenerateTests(csc, language):
 	"""Test Suite generator."""
@@ -14,8 +14,8 @@ def GenerateTests(csc, language):
 	if  csc == "all":
 		for csc in csc_array:
 			if ('cpp' in language) or ('all' in language):
-				#subprocess.check_call(["./CppPubSub.sh", csc])
-				subprocess.check_call(["./CppState.sh", csc])
+				subprocess.check_call(["./CppPubSub.sh", csc])
+				#subprocess.check_call(["./CppState.sh", csc])
 				#subprocess.check_call(["./CppComCon.sh", csc])
 				#subprocess.check_call(["./CppEvents.sh", csc])
 			if ('java' in language) or ('all' in language):
@@ -90,4 +90,5 @@ working_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 os.chdir(working_dir)
 
 # Now, generate the tests.
-GenerateTests(args.csc, args.language)
+if __name__ == "__main__":
+	GenerateTests(args.csc, args.language)
