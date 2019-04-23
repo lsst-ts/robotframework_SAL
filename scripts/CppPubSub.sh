@@ -171,7 +171,7 @@ function readSubscriber {
     echo "    Switch Process    Subscriber" >> $testSuite
     echo "    \${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-	echo "    Should Contain    \${output.stdout}    === [Subscriber] Ready ..." >> $testSuite
+	echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
 	if [ $topic ]; then
 		readSubscriber_params $file $topic $topicIndex $testSuite
@@ -205,7 +205,7 @@ function readSubscriber_params {
 		if [[ ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
 			#echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
-		elif [[ ( "$parameterType" == "boolean" ) ]]; then
+		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
 			echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			#echo "$parameter $parameterType String or Char"
