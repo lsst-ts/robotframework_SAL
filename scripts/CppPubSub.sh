@@ -84,6 +84,7 @@ function createSettings {
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
 	echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
+    echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
@@ -142,8 +143,12 @@ function startPublisher {
     fi
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
 	if [ $topic ]; then
-    	echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component} writing a message containing :    10" >> $testSuite
-    	echo "    Should Contain X Times    \${output.stdout}    revCode \ : LSST TEST REVCODE    10" >> $testSuite
+		echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+		echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
+		echo "    @{words}=    Split String    \${line}" >> $testSuite
+		echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+    	echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component}_\${revcode} writing a message containing :    9" >> $testSuite
+    	echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    9" >> $testSuite
 	else
 		for item in "${topicsArray[@]}"; do
 			echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
@@ -166,15 +171,18 @@ function readSubscriber {
     echo "    Switch Process    Subscriber" >> $testSuite
     echo "    \${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-	echo "    Should Contain    \${output.stdout}    \${subSystem} subscriber Ready" >> $testSuite
-	echo "    @{list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
+	echo "    Should Contain    \${output.stdout}    === [Subscriber] Ready ..." >> $testSuite
+	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
 	if [ $topic ]; then
-		readSubscriber_params $file $topicIndex $testSuite
+		readSubscriber_params $file $topic $topicIndex $testSuite
 	else
 		itemIndex=1
 		for item in "${topicsArray[@]}"; do
+			echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+			echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+			echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
 			getTopicParameters $file $itemIndex
-			readSubscriber_params $file $itemIndex $testSuite
+			readSubscriber_params $file $item $itemIndex $testSuite
 			(( itemIndex++ ))
 		done
     fi
@@ -182,32 +190,33 @@ function readSubscriber {
 
 function readSubscriber_params {
 	local file=$1
-    local topicIndex=$2
-    local testSuite=$3
+    local topic=$2
+    local topicIndex=$3
+    local testSuite=$4
     for parameter in "${parametersArray[@]}"; do
-		if [ $topic ]; then
-			n=1
-		else
-			n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
-		fi
+		#if [ $topic ]; then
+			#n=1
+		#else
+			#n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
+		#fi
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
 		if [[ ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
 			#echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    $(( 10 * $n ))" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
 		elif [[ ( "$parameterType" == "boolean" ) ]]; then
-			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    $(( 10 * $n ))" >>$testSuite
+			echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
 			#echo "$parameter $parameterType String or Char"
-			echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    $(( 10 * $n ))" >>$testSuite
+			echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    10" >>$testSuite
 		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
 			#echo "$parameter $parameterType Count 1"
-        	echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    $(( 10 * $n ))" >>$testSuite
+        	echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
 		else
 			#echo "$parameter $parameterType Else"
-			for num in `seq 1 9`; do
-				echo "    Should Contain X Times    \${list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
+			for num in `seq 0 9`; do
+				echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
 			done
 		fi
     done
@@ -251,7 +260,7 @@ function createTestSuite {
 		#  Create test suite.
 		echo $testSuite
 		createSettings $subSystem $topic $testSuite
-		createVariables $subSystem $testSuite
+		createVariables $subSystem $testSuite $topic
 		echo "*** Test Cases ***" >> $testSuite
         verifyCompPubSub $testSuite
 		startSubscriber $testSuite
