@@ -155,8 +155,10 @@ function startPublisher {
 			echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
 			echo "    @{words}=    Split String    \${line}" >> $testSuite
 			echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+			echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} start of topic ===" >> $testSuite
 			echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::${item}_\${revcode} writing a message containing :    10" >> $testSuite
 			echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    10" >> $testSuite
+			echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} end of topic ===" >> $testSuite
 		done
 	fi
     echo "" >> $testSuite
