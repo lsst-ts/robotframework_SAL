@@ -202,7 +202,7 @@ function readSubscriber_params {
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-		if [[ ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
+		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
 			#echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
 		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
