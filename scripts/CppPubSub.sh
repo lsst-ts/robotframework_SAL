@@ -202,7 +202,7 @@ function readSubscriber_params {
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-		if [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" ) ]]; then
+		if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
 			#echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
 		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
@@ -213,6 +213,10 @@ function readSubscriber_params {
 		elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
 			#echo "$parameter $parameterType Count 1"
         	echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
+		elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
+			for num in `seq 0 9`; do
+                echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x0${num}    1" >>$testSuite
+            done
 		else
 			#echo "$parameter $parameterType Else"
 			for num in `seq 0 9`; do
