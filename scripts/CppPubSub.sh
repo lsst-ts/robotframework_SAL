@@ -128,6 +128,10 @@ function startSubscriber {
 	fi
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
+    echo "    \${object}=    Get Process Object    Subscriber" >> $testSuite
+	echo "    Log    \${object.stdout.peek()}" >> $testSuite
+	echo "    \${string}=    Convert To String    \${object.stdout.peek()}" >> $testSuite
+	echo "    Should Contain    \${string}    ===== ${subSystem} subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
 }
 

@@ -26,6 +26,10 @@ Start Subscriber
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber
     Log    ${output}
     Should Contain    "${output}"   "1"
+    ${object}=    Get Process Object    Subscriber
+    Log    ${object.stdout.peek()}
+    ${string}=    Convert To String    ${object.stdout.peek()}
+    Should Contain    ${string}    ===== ATAOS subscribers ready =====
 
 Start Publisher
     [Tags]    functional

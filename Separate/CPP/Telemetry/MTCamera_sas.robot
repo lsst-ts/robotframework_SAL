@@ -26,6 +26,10 @@ Start Subscriber
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub    alias=Subscriber
     Log    ${output}
     Should Contain    "${output}"   "1"
+    ${object}=    Get Process Object    Subscriber
+    Log    ${object.stdout.peek()}
+    ${string}=    Convert To String    ${object.stdout.peek()}
+    Should Contain    ${string}    ===== MTCamera subscribers ready =====
 
 Start Publisher
     [Tags]    functional
