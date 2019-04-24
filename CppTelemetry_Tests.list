@@ -140,15 +140,15 @@ CPP/Telemetry/TCS_kernel_Target.robot
 CPP/Telemetry/TCS_kernel_TimeKeeper.robot
 CPP/Telemetry/TCS_kernel_TrackRefSys.robot
 CPP/Telemetry/TCS_kernel_TrackingTarget.robot
-CPP/Telemetry/TcsOFC_degreeOfFreedom.robot
+CPP/Telemetry/TcsOFC_DegreeOfFreedom.robot
 CPP/Telemetry/TcsOFC_loopTimeMs.robot
 CPP/Telemetry/TcsOFC_timestamp.robot
+CPP/Telemetry/TcsWEP_WavefrontError.robot
 CPP/Telemetry/TcsWEP_comcamTargetWfsList.robot
 CPP/Telemetry/TcsWEP_famTargetWfsList.robot
 CPP/Telemetry/TcsWEP_loopTimeMs.robot
 CPP/Telemetry/TcsWEP_normalTargetWfsList.robot
 CPP/Telemetry/TcsWEP_timestamp.robot
-CPP/Telemetry/TcsWEP_wavefrontError.robot
 CPP/Telemetry/VMS_CameraRotator.robot
 CPP/Telemetry/VMS_M1M3.robot
 CPP/Telemetry/VMS_M2.robot
