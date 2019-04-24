@@ -4,13 +4,14 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    HVAC
-${component}    
+${component}    lowerAHUStatus
 ${timeout}    30s
 
 *** Test Cases ***
@@ -31,32 +32,36 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : LSST TEST REVCODE    10
+    Comment    ======= Verify ${subSystem}_whiteRoomAHU test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lowerAHUStatus
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component}_${revcode} writing a message containing :    9
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    9
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}workStatus : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureSetpoint : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}coldValveOpeningStatus : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}damperState : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}returnTemperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}injectionTemperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}antiFreezeTemperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}outsideTemperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterAlarmStatus : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}generalAlarmStatus : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOnCommand : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}workloadSetpoint : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}winterSetpoint : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}fanSetpointMin : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}fanSetpointMax : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}differentialPressure : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmsReset : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    10
+    Should Contain    ${output.stdout}    ===== HVAC subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}workStatus : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureSetpoint : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coldValveOpeningStatus : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}damperState : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperature : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}returnTemperature : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}injectionTemperature : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}antiFreezeTemperature : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outsideTemperature : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterAlarmStatus : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generalAlarmStatus : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOnCommand : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}workloadSetpoint : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}winterSetpoint : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fanSetpointMin : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fanSetpointMax : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}differentialPressure : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmsReset : 1    10
+    Should Contain X Times    ${lowerAHUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    10

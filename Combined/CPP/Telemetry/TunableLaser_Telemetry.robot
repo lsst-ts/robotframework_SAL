@@ -4,6 +4,7 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
@@ -35,21 +36,37 @@ Start Publisher
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_temperature
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === TunableLaser_temperature start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::temperature_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === TunableLaser_temperature end of topic ===
     Comment    ======= Verify ${subSystem}_wavelength test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wavelength
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === TunableLaser_wavelength start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::wavelength_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === TunableLaser_wavelength end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    10
+    Should Contain    ${output.stdout}    ===== TunableLaser subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${temperature_start}=    Get Index From List    ${full_list}    === TunableLaser_temperature start of topic ===
+    ${temperature_end}=    Get Index From List    ${full_list}    === TunableLaser_temperature end of topic ===
+    ${temperature_list}=    Get Slice From List    ${full_list}    start=${temperature_start}    end=${temperature_end}
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tk6_temperature : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tk6_temperature_2 : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ldco48bp_temperature : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ldco48bp_temperature_2 : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ldco48bp_temperature_3 : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m_ldco48_temperature : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m_ldco48_temperature_2 : 1    10
+    ${wavelength_start}=    Get Index From List    ${full_list}    === TunableLaser_wavelength start of topic ===
+    ${wavelength_end}=    Get Index From List    ${full_list}    === TunableLaser_wavelength end of topic ===
+    ${wavelength_list}=    Get Slice From List    ${full_list}    start=${wavelength_start}    end=${wavelength_end}
+    Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    10

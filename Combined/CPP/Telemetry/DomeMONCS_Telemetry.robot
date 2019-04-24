@@ -4,6 +4,7 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
@@ -35,22 +36,28 @@ Start Publisher
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_status
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === DomeMONCS_status start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::status_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === DomeMONCS_status end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 1    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 2    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 3    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 4    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 5    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 6    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 7    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 8    1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 9    1
+    Should Contain    ${output.stdout}    ===== DomeMONCS subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${status_start}=    Get Index From List    ${full_list}    === DomeMONCS_status start of topic ===
+    ${status_end}=    Get Index From List    ${full_list}    === DomeMONCS_status end of topic ===
+    ${status_list}=    Get Slice From List    ${full_list}    start=${status_start}    end=${status_end}
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 0    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 1    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 2    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 3    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 4    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 5    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 6    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 7    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 8    1
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 9    1

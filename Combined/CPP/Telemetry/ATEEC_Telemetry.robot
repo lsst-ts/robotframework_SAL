@@ -4,6 +4,7 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
@@ -35,7 +36,7 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
+    Should Contain    ${output.stdout}    ===== ATEEC subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1

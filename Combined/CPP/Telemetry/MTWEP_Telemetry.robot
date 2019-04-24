@@ -4,6 +4,7 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
@@ -35,21 +36,31 @@ Start Publisher
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timestamp
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === MTWEP_timestamp start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTWEP_timestamp end of topic ===
     Comment    ======= Verify ${subSystem}_loopTimeMs test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loopTimeMs
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === MTWEP_loopTimeMs start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loopTimeMs_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTWEP_loopTimeMs end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTimeMs : 1    10
+    Should Contain    ${output.stdout}    ===== MTWEP subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${timestamp_start}=    Get Index From List    ${full_list}    === MTWEP_timestamp start of topic ===
+    ${timestamp_end}=    Get Index From List    ${full_list}    === MTWEP_timestamp end of topic ===
+    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end}
+    Should Contain X Times    ${timestamp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    ${loopTimeMs_start}=    Get Index From List    ${full_list}    === MTWEP_loopTimeMs start of topic ===
+    ${loopTimeMs_end}=    Get Index From List    ${full_list}    === MTWEP_loopTimeMs end of topic ===
+    ${loopTimeMs_list}=    Get Slice From List    ${full_list}    start=${loopTimeMs_start}    end=${loopTimeMs_end}
+    Should Contain X Times    ${loopTimeMs_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTimeMs : 1    10

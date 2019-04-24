@@ -4,6 +4,7 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
@@ -35,35 +36,55 @@ Start Publisher
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_m1AirPressure
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATPneumatics_m1AirPressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::m1AirPressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATPneumatics_m1AirPressure end of topic ===
     Comment    ======= Verify ${subSystem}_m2AirPressure test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_m2AirPressure
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATPneumatics_m2AirPressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::m2AirPressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATPneumatics_m2AirPressure end of topic ===
     Comment    ======= Verify ${subSystem}_mainAirSourcePressure test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mainAirSourcePressure
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATPneumatics_mainAirSourcePressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mainAirSourcePressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATPneumatics_mainAirSourcePressure end of topic ===
     Comment    ======= Verify ${subSystem}_loadCell test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loadCell
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATPneumatics_loadCell start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loadCell_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATPneumatics_loadCell end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLoad : 1    10
+    Should Contain    ${output.stdout}    ===== ATPneumatics subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${m1AirPressure_start}=    Get Index From List    ${full_list}    === ATPneumatics_m1AirPressure start of topic ===
+    ${m1AirPressure_end}=    Get Index From List    ${full_list}    === ATPneumatics_m1AirPressure end of topic ===
+    ${m1AirPressure_list}=    Get Slice From List    ${full_list}    start=${m1AirPressure_start}    end=${m1AirPressure_end}
+    Should Contain X Times    ${m1AirPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
+    ${m2AirPressure_start}=    Get Index From List    ${full_list}    === ATPneumatics_m2AirPressure start of topic ===
+    ${m2AirPressure_end}=    Get Index From List    ${full_list}    === ATPneumatics_m2AirPressure end of topic ===
+    ${m2AirPressure_list}=    Get Slice From List    ${full_list}    start=${m2AirPressure_start}    end=${m2AirPressure_end}
+    Should Contain X Times    ${m2AirPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
+    ${mainAirSourcePressure_start}=    Get Index From List    ${full_list}    === ATPneumatics_mainAirSourcePressure start of topic ===
+    ${mainAirSourcePressure_end}=    Get Index From List    ${full_list}    === ATPneumatics_mainAirSourcePressure end of topic ===
+    ${mainAirSourcePressure_list}=    Get Slice From List    ${full_list}    start=${mainAirSourcePressure_start}    end=${mainAirSourcePressure_end}
+    Should Contain X Times    ${mainAirSourcePressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    10
+    ${loadCell_start}=    Get Index From List    ${full_list}    === ATPneumatics_loadCell start of topic ===
+    ${loadCell_end}=    Get Index From List    ${full_list}    === ATPneumatics_loadCell end of topic ===
+    ${loadCell_list}=    Get Slice From List    ${full_list}    start=${loadCell_start}    end=${loadCell_end}
+    Should Contain X Times    ${loadCell_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLoad : 1    10

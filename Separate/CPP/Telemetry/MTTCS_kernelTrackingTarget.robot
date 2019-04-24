@@ -4,13 +4,14 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    MTTCS
-${component}    
+${component}    kernelTrackingTarget
 ${timeout}    30s
 
 *** Test Cases ***
@@ -31,18 +32,22 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : LSST TEST REVCODE    10
+    Comment    ======= Verify ${subSystem}_timestamp test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_kernelTrackingTarget
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component}_${revcode} writing a message containing :    9
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    9
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionX : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionY : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}t0 : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityX : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityY : 1    10
+    Should Contain    ${output.stdout}    ===== MTTCS subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    Should Contain X Times    ${kernelTrackingTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionX : 1    10
+    Should Contain X Times    ${kernelTrackingTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionY : 1    10
+    Should Contain X Times    ${kernelTrackingTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}t0 : 1    10
+    Should Contain X Times    ${kernelTrackingTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityX : 1    10
+    Should Contain X Times    ${kernelTrackingTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityY : 1    10

@@ -4,13 +4,14 @@ Force Tags    cpp
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
+Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    ATMCS
-${component}    
+${component}    mountEncoders
 ${timeout}    30s
 
 *** Test Cases ***
@@ -31,30 +32,34 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : LSST TEST REVCODE    10
+    Comment    ======= Verify ${subSystem}_mountMotorEncoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mountEncoders
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::${component}_${revcode} writing a message containing :    9
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    9
 
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ${subSystem} subscriber Ready
-    @{list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1CalculatedAngle : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2CalculatedAngle : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder1Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder2Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder3Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder1Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder2Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder3Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder1Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder2Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder3Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder1Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder2Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder3Raw : 1    10
-    Should Contain X Times    ${list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    10
+    Should Contain    ${output.stdout}    ===== ATMCS subscribers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1CalculatedAngle : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2CalculatedAngle : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder1Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder2Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationEncoder3Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder1Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder2Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoder3Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder1Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder2Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder3Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder1Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder2Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder3Raw : 1    10
+    Should Contain X Times    ${mountEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    10
