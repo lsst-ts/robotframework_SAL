@@ -171,7 +171,7 @@ function readSubscriber {
 	echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Process    Subscriber" >> $testSuite
-    echo "    \${output}=    Wait For Process    Subscriber    timeout=10    on_timeout=terminate" >> $testSuite
+    echo "    \${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
 	echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
