@@ -1,0 +1,7 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CombinedCppTelemetry
+--output CombinedCppTelemetry
+
+# List of test suites
+CPP/Telemetry/Telemetry
