@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    PointingComponent
 ${component}    prospectiveTimesToLimits
-${timeout}    30s
+${timeout}    15s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -26,10 +26,10 @@ Start Subscriber
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_sub    alias=Subscriber
     Log    ${output}
     Should Contain    "${output}"   "1"
-    ${object}=    Get Process Object    Subscriber
-    Log    ${object.stdout.peek()}
-    ${string}=    Convert To String    ${object.stdout.peek()}
-    Should Contain    ${string}    ===== PointingComponent subscribers ready =====
+    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
+    Should Contain    ${output}    ===== PointingComponent subscribers ready =====
+    Sleep    6s
 
 Start Publisher
     [Tags]    functional
@@ -46,7 +46,7 @@ Start Publisher
 Read Subscriber
     [Tags]    functional
     Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate
+    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== PointingComponent subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
