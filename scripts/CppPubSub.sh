@@ -98,7 +98,7 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    30s" >> $testSuite
+    echo "\${timeout}    15s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -124,14 +124,14 @@ function startSubscriber {
     if [ $topic ]; then
     	echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub    alias=Subscriber" >> $testSuite
 	else
-		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=Subscriber" >> $testSuite
+		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=Subscriber    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
 	fi
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
-    echo "    \${object}=    Get Process Object    Subscriber" >> $testSuite
-	echo "    Log    \${object.stdout.peek()}" >> $testSuite
-	echo "    \${string}=    Convert To String    \${object.stdout.peek()}" >> $testSuite
-	echo "    Should Contain    \${string}    ===== ${subSystem} subscribers ready =====" >> $testSuite
+    echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+	echo "    Should Contain    \${output}    ===== ${subSystem} subscribers ready =====" >> $testSuite
+    echo "    Sleep    6s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -175,7 +175,7 @@ function readSubscriber {
 	echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Process    Subscriber" >> $testSuite
-    echo "    \${output}=    Wait For Process    Subscriber    timeout=30    on_timeout=terminate" >> $testSuite
+    echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
 	echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
