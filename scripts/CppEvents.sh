@@ -42,6 +42,12 @@ function getTopics() {
 	file=$2
 	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
 	topicsArray=($output)
+	# If CSC uses the Generic Events, add those.
+	generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
+	if [ "$generics" == "yes" ]; then
+		gen_events=$( xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 )
+		topicsArray+=($gen_events)
+	fi
 }
 
 function getTopicParameters() {
@@ -174,9 +180,9 @@ function startSender() {
             echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
-    		echo "    Should Contain X Times    \${output}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
-    		echo "    Should Contain    \${output}    revCode \ : \${revcode}    10" >>$testSuite
-			echo "    Should Contain    \${output}    === \${subSystem}_${item} end of topic ===" >> $testSuite
+    		echo "    Should Contain X Times    \${output.stdout}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
+    		echo "    Should Contain    \${output.stdout}    revCode \ : \${revcode}    10" >>$testSuite
+			echo "    Should Contain    \${output.stdout}    === \${subSystem}_${item} end of topic ===" >> $testSuite
 		done
 	fi
 	#for parameter in "${parametersArray[@]}"; do
@@ -187,7 +193,6 @@ function startSender() {
 }
 
 function readLogger() {
-	i=0
 	#device=$1
 	#property=$2
 	local file=$1
@@ -211,16 +216,10 @@ function readLogger() {
             echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
             getTopicParameters $file $itemIndex
             readLogger_params $file $item $itemIndex $testSuite
-			echo "    Should Contain X Times    \${output.stdout}    priority : 1    1" >> $testSuite
+			echo "    Should Contain X Times    \${${item}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
             (( itemIndex++ ))
         done
     fi
-    echo "    Log    \${output.stdout}" >> $testSuite
-    echo "    Should Contain X Times    \${output.stdout}    === Event ${topic} received =     1" >> $testSuite
-    for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain    \${output.stdout}    $parameter : ${argumentsArray[$i]}" >>$testSuite
-		(( i++ ))
-    done
 }
 
 function readLogger_params() {
