@@ -118,8 +118,13 @@ function verifyCompSenderLogger() {
     local testSuite=$1
     echo "Verify Component Sender and Logger" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log" >> $testSuite
+	if [ $topic ]; then
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send" >> $testSuite
+    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log" >> $testSuite
+	else
+		echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_sender" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger" >> $testSuite
+    fi
     echo "" >> $testSuite
 }
 
@@ -149,16 +154,31 @@ function startSender() {
     local testSuite=$1
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Sender" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === [putSample] ${subSystem}::logevent_${topic} writing a message containing :    1" >> $testSuite
-    echo "    Should Contain    \${output}    revCode \ :" >>$testSuite
-	echo "    Should Contain    \${output}    === Event ${topic} generated =" >> $testSuite
+	if [ $topic ]; then
+		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}" >> $testSuite
+	else
+		 echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_sender" >> $testSuite
+    fi
+    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+	if [ $topic ]; then
+		echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
+        echo "    @{words}=    Split String    \${line}" >> $testSuite
+        echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+        echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    10" >> $testSuite
+    	echo "    Should Contain X Times    \${output.stdout}    revCode  : \${revcode}    10" >> $testSuite
+	else
+		for item in "${topicsArray[@]}"; do
+			echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
+            echo "    @{words}=    Split String    \${line}" >> $testSuite
+            echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+    		echo "    Should Contain X Times    \${output}    === [putSample] \${subSystem}::logevent_${topic} writing a message containing :    1" >> $testSuite
+    		echo "    Should Contain    \${output}    revCode \ : \${revcode}    10" >>$testSuite
+			echo "    Should Contain    \${output}    === \${subSystem}_${item} end of topic ===" >> $testSuite
+		done
+	fi
 	#for parameter in "${parametersArray[@]}"; do
         #echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
 		#(( i++ ))
