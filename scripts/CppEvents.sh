@@ -163,7 +163,7 @@ function startSender() {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
 	if [ $topic ]; then
 		echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
-        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
         echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    10" >> $testSuite
@@ -171,10 +171,10 @@ function startSender() {
 	else
 		for item in "${topicsArray[@]}"; do
 			echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
-            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
-    		echo "    Should Contain X Times    \${output}    === [putSample] \${subSystem}::logevent_${topic} writing a message containing :    1" >> $testSuite
+    		echo "    Should Contain X Times    \${output}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
     		echo "    Should Contain    \${output}    revCode \ : \${revcode}    10" >>$testSuite
 			echo "    Should Contain    \${output}    === \${subSystem}_${item} end of topic ===" >> $testSuite
 		done
@@ -196,12 +196,63 @@ function readLogger() {
     echo "Read Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Process    Logger" >> $testSuite
-    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
+    echo "    \${output}=    Wait For Process    handle=Logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+	echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+	echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
+	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
+	if [ $topic ]; then
+		readLogger_params $file $topic $topicIndex $testSuite
+		echo "    Should Contain    \${output.stdout}    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
+	else
+		itemIndex=1
+		for item in "${topicsArray[@]}"; do
+            echo "    \${${item}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${item} start of topic ===" >> $testSuite
+            echo "    \${${item}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${item} end of topic ===" >> $testSuite
+            echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
+            getTopicParameters $file $itemIndex
+            readLogger_params $file $item $itemIndex $testSuite
+			echo "    Should Contain X Times    \${output.stdout}    priority : 1    1" >> $testSuite
+            (( itemIndex++ ))
+        done
+    fi
+    echo "    Log    \${output.stdout}" >> $testSuite
+    echo "    Should Contain X Times    \${output.stdout}    === Event ${topic} received =     1" >> $testSuite
     for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
+        echo "    Should Contain    \${output.stdout}    $parameter : ${argumentsArray[$i]}" >>$testSuite
 		(( i++ ))
+    done
+}
+
+function readLogger_params() {
+	local file=$1
+    local topic=$2
+    local topicIndex=$3
+    local testSuite=$4
+    for parameter in "${parametersArray[@]}"; do
+		parameterIndex=$(getParameterIndex $parameter)
+        parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
+        parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+        if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
+            #echo "$parameter $parameterType Byte"
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
+        elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
+        elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
+            #echo "$parameter $parameterType String or Char"
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    1" >>$testSuite
+        elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
+            #echo "$parameter $parameterType Count 1"
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
+        elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
+            for num in `seq 0 9`; do
+                echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x0${num}    1" >>$testSuite
+            done
+        else
+            #echo "$parameter $parameterType Else"
+            for num in `seq 0 9`; do
+                echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
+            done
+        fi
     done
 }
 
