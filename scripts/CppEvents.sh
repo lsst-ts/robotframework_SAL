@@ -9,7 +9,8 @@
 source $HOME/trunk/robotframework_SAL/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/CPP/Events
+workDir=$HOME/trunk/robotframework_SAL/Separate/CPP/Events
+workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP/Events
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -87,20 +88,25 @@ function getParameterCount() {
 
 function createSettings() {
     local subSystem=$1
+    local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
+    local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    cpp    $skipped" >> $testSuite
-	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
-    echo "Suite Teardown    Close All Connections" >> $testSuite
-    echo "Library    SSHLibrary" >> $testSuite
-    echo "Resource    ../../Global_Vars.robot" >> $testSuite
-    echo "Resource    ../../common.robot" >> $testSuite
+	echo "Suite Setup    Log Many    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "Suite Teardown    Terminate All Processes" >> $testSuite
+    echo "Library    OperatingSystem" >> $testSuite
+    echo "Library    Collections" >> $testSuite
+    echo "Library    Process" >> $testSuite
+    echo "Library    String" >> $testSuite
+    echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
 	echo "" >> $testSuite
 }
 
 function createVariables() {
-	subSystem=$(getEntity $1)
+	local subSystem=$1
+    local testSuite=$2
+    local topic=$3
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -109,6 +115,7 @@ function createVariables() {
 }
 
 function verifyCompSenderLogger() {
+    local testSuite=$1
     echo "Verify Component Sender and Logger" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send" >> $testSuite
@@ -116,39 +123,30 @@ function verifyCompSenderLogger() {
     echo "" >> $testSuite
 }
 
-function startSenderInputs() {
-    parameter=$EMPTY
-    echo "Start Sender - Verify Missing Inputs Error" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Sender" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
-    echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send $parameter" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
-    echo "" >> $testSuite
-}
-
 function startLogger() {
+    local testSuite=$1
     echo "Start Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Logger" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_log" >> $testSuite
-    echo "    \${output}=    Read Until    logger ready =" >> $testSuite
+	if [ $topic ]; then
+		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone//sacpp_\${subSystem}_\${component}_log" >> $testSuite
+	else
+		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
+	fi
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    Event \${component} logger ready" >> $testSuite
+    echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
+	echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+	echo "    Should Contain    \${output}    ===== \${subSystem} all loggers ready =====" >> $testSuite
+	echo "    Sleep    6s" >> $testSuite
     echo "" >> $testSuite
 }
 
 function startSender() {
 	i=0
-	device=$1
-	property=$2
+	#local device=$1
+	#local property=$2
+    local testSuite=$1
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Sender" >> $testSuite
@@ -170,12 +168,14 @@ function startSender() {
 
 function readLogger() {
 	i=0
-	device=$1
-	property=$2
+	#device=$1
+	#property=$2
+	local file=$1
+    local topicIndex=$2
+    local testSuite=$3
     echo "Read Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Logger" >> $testSuite
-	# TSS-682
+    echo "    Switch Process    Logger" >> $testSuite
     echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === Event ${topic} received =     1" >> $testSuite
@@ -195,13 +195,27 @@ function createTestSuite() {
     getTopics $subSystem $file
 
     # Generate the test suite for each topic.
-    echo Generating:
+    echo ============== Generating Combined messaging test suite ==============
+	testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+    echo $testSuiteCombined
+    createSettings $subSystem $messageType $testSuiteCombined
+    createVariables $subSystem $testSuiteCombined "all"
+    echo "*** Test Cases ***" >> $testSuiteCombined
+    verifyCompSenderLogger $testSuiteCombined
+    startLogger $testSuiteCombined
+    startSender $testSuiteCombined
+    readLogger $file $topicIndex $testSuiteCombined
+    echo Generation complete
+    echo ""
+    # Generate the test suite for each topic.
+    echo ============== Generating Separate messaging test suites ==============
+	topicIndex=1
 	for topic in "${topicsArray[@]}"; do
 		device=$EMPTY
 		property=$EMPTY
 		#  Define test suite name
 		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
+
 		#  Get EFDB_Topic elements
 		getTopicParameters $file $topicIndex
 		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
@@ -212,12 +226,11 @@ function createTestSuite() {
 
 		#  Create test suite.
 		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
+		createSettings $subSystem $topic $testSuite
+		createVariables $subSystem $testSuite $topic
 		echo "*** Test Cases ***" >> $testSuite
-        verifyCompSenderLogger
-		startSenderInputs
-		startLogger
+        verifyCompSenderLogger $testSuite
+		startLogger $testSuite
 
 		# Get the arguments to the sender.
 		unset argumentsArray
@@ -239,9 +252,9 @@ function createTestSuite() {
 		priority=$(python random_value.py long)
 		argumentsArray=("${argumentsArray[@]}" "$priority")
 		# Create the Start Sender test case.
-		startSender $device $property
+		startSender $testSuite $device $property
 		# Create the Read Logger test case.
-		readLogger $device $property
+		readLogger $file $topicIndex $testSuite $device $property
     	# Move to next Topic.
 		(( topicIndex++ ))
 	done
