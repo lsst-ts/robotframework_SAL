@@ -18,6 +18,7 @@ value=$EMPTY
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
+declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
@@ -45,17 +46,17 @@ function getTopics() {
 	# If CSC uses the Generic Events, add those.
 	generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
 	if [ "$generics" == "yes" ]; then
-		gen_events=$( xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 )
-		topicsArray+=($gen_events)
+		topicsArray+=(${generic_events[@]})
 	fi
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
+	local file=$1
+	local index=$2
 	unset parametersArray
 	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
+	echo ${parametersArray[@]}
 }
 
 function getParameterIndex() {
@@ -211,6 +212,9 @@ function readLogger() {
 	else
 		itemIndex=1
 		for item in "${topicsArray[@]}"; do
+			for generic in "${generic_events[@]}"; do
+					[[ $generic == "$item" ]] && file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml 
+			done
             echo "    \${${item}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${item} start of topic ===" >> $testSuite
             echo "    \${${item}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${item} end of topic ===" >> $testSuite
             echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
