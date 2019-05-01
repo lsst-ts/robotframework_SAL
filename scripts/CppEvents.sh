@@ -125,10 +125,15 @@ function createVariables() {
 	local subSystem=$1
     local testSuite=$2
     local topic=$3
+	if [ "$topic" == "all" ]; then
+		timeout="30s"
+	else
+		timeout="3s"
+	fi
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    30s" >> $testSuite
+    echo "\${timeout}    $timeout" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -189,8 +194,8 @@ function startSender() {
         echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
         echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
-        echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    10" >> $testSuite
-    	echo "    Should Contain X Times    \${output.stdout}    revCode  : \${revcode}    10" >> $testSuite
+        echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    1" >> $testSuite
+    	echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    1" >> $testSuite
 	else
 		for item in "${topicsArray[@]}"; do
 			echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
@@ -218,22 +223,22 @@ function readLogger() {
 	echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
 	if [ $topic ]; then
-		 echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
+		echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
+		echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
 		readLogger_params $file $topic $topicIndex $testSuite
-		echo "    Should Contain    \${output.stdout}    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
 	else
 		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
 		itemIndex=1
-		for item in "${topicsArray[@]}"; do
+		for topic in "${topicsArray[@]}"; do
 			for generic in "${generic_events[@]}"; do
-					[[ $generic == "$item" ]] && file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml 
+					[[ $generic == "$topic" ]] && file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml 
 			done
-            echo "    \${${item}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${item} start of topic ===" >> $testSuite
-            echo "    \${${item}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${item} end of topic ===" >> $testSuite
-            echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
-            getTopicParameters $file $item
-            readLogger_params $file $item $itemIndex $testSuite
-			echo "    Should Contain X Times    \${${item}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
+            echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} start of topic ===" >> $testSuite
+            echo "    \${${topic}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} end of topic ===" >> $testSuite
+            echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${${topic}_end}" >> $testSuite
+            getTopicParameters $file $topic
+            readLogger_params $file $topic $itemIndex $testSuite
+			echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
             (( itemIndex++ ))
         done
     fi
