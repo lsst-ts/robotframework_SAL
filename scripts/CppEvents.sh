@@ -152,15 +152,20 @@ function startLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
 	if [ $topic ]; then
-		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone//sacpp_\${subSystem}_\${component}_log" >> $testSuite
+		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
+    	echo "    Log    \${output}" >> $testSuite
+    	echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
+		echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+		echo "    Should Contain    \${output}    === Event \${component} logger ready =" >> $testSuite
 	else
 		echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
+    	echo "    Log    \${output}" >> $testSuite
+    	echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
+		echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+		echo "    Should Contain    \${output}    ===== \${subSystem} all loggers ready =====" >> $testSuite
 	fi
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-	echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-    echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-	echo "    Should Contain    \${output}    ===== \${subSystem} all loggers ready =====" >> $testSuite
 	echo "    Sleep    6s" >> $testSuite
     echo "" >> $testSuite
 }
@@ -174,7 +179,7 @@ function startSender() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
 	if [ $topic ]; then
-		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_\${component}_send ${argumentsArray[*]}" >> $testSuite
+		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send     ${argumentsArray[*]}" >> $testSuite
 	else
 		 echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_sender" >> $testSuite
     fi
@@ -211,12 +216,13 @@ function readLogger() {
     echo "    Switch Process    Logger" >> $testSuite
     echo "    \${output}=    Wait For Process    handle=Logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
 	echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-	echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
 	if [ $topic ]; then
+		 echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
 		readLogger_params $file $topic $topicIndex $testSuite
 		echo "    Should Contain    \${output.stdout}    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
 	else
+		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
 		itemIndex=1
 		for item in "${topicsArray[@]}"; do
 			for generic in "${generic_events[@]}"; do
@@ -320,7 +326,6 @@ function createTestSuite() {
 		# Get the arguments to the sender.
 		unset argumentsArray
 		# Determine the parameter type and create a test value, accordingly.
-		echo $file
         for parameter in "${parametersArray[@]}"; do
             parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $file $topic $parameterIndex)
