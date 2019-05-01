@@ -179,7 +179,7 @@ function startSender() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
 	if [ $topic ]; then
-		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send     ${argumentsArray[*]}" >> $testSuite
+		echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send     $( printf '%b    ' ${argumentsArray[@]} )" >> $testSuite
 	else
 		 echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_sender" >> $testSuite
     fi
