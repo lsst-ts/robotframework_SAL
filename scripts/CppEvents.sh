@@ -59,7 +59,6 @@ function getTopicParameters() {
 	unset parametersArray
 	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
-	echo ${parametersArray[@]}
 }
 
 function getParameterIndex() {
@@ -90,7 +89,7 @@ function getParameterIDLSize() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic'x/..]/item[$itemIndex]/IDL_Size" -v . -n $file )
+    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
     echo $parameterIDLSize
 }
 
@@ -198,10 +197,6 @@ function startSender() {
 			echo "    Should Contain    \${output.stdout}    === \${subSystem}_${item} end of topic ===" >> $testSuite
 		done
 	fi
-	#for parameter in "${parametersArray[@]}"; do
-        #echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
-		#(( i++ ))
-    #done
     echo "" >> $testSuite
 }
 
@@ -247,7 +242,7 @@ function readLogger_params() {
 		parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topic $parameterIndex)"
         parameterCount=$(getParameterCount $file $topic $parameterIndex)
-		echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
+		#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
@@ -325,11 +320,12 @@ function createTestSuite() {
 		# Get the arguments to the sender.
 		unset argumentsArray
 		# Determine the parameter type and create a test value, accordingly.
+		echo $file
         for parameter in "${parametersArray[@]}"; do
             parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $file $topic $parameterIndex)
             parameterCount=$(getParameterCount $file $topic $parameterIndex)
-			parameterIDLSize=$(getParameterIDLSize $subSystem $topic $parameterIndex)
+			parameterIDLSize=$(getParameterIDLSize $file $topic $parameterIndex)
 			#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
 			for i in $(seq 1 $parameterCount); do
                 testValue=$(generateArgument "$parameterType" $parameterIDLSize)
