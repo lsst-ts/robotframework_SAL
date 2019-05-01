@@ -52,11 +52,13 @@ function getTopics() {
 
 function getTopicParameters() {
 	local file=$1
-	local index=$2
+	local topic=$2
+	for generic in "${generic_events[@]}"; do
+		[[ $generic == "$topic" ]] && local subSystem=SALGeneric
+    done
 	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
+	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
-	echo ${parametersArray[@]}
 }
 
 function getParameterIndex() {
@@ -218,7 +220,7 @@ function readLogger() {
             echo "    \${${item}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${item} start of topic ===" >> $testSuite
             echo "    \${${item}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${item} end of topic ===" >> $testSuite
             echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
-            getTopicParameters $file $itemIndex
+            getTopicParameters $file $item
             readLogger_params $file $item $itemIndex $testSuite
 			echo "    Should Contain X Times    \${${item}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
             (( itemIndex++ ))
@@ -252,9 +254,7 @@ function readLogger_params() {
             done
         else
             #echo "$parameter $parameterType Else"
-            for num in `seq 0 9`; do
-                echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : $num    1" >>$testSuite
-            done
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         fi
     done
 }
@@ -279,7 +279,7 @@ function createTestSuite() {
     startLogger $testSuiteCombined
     startSender $testSuiteCombined
     readLogger $file $topicIndex $testSuiteCombined
-    echo Generation complete
+    echo ==== Combined test generation complete ====
     echo ""
     # Generate the test suite for each topic.
     echo ============== Generating Separate messaging test suites ==============
@@ -290,8 +290,13 @@ function createTestSuite() {
 		#  Define test suite name
 		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 
+		#  Get correct topic source (SAlGenerics or Subsystem XML)
+		for generic in "${generic_events[@]}"; do
+        	[[ $generic == "$topic" ]] && local file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml
+    	done
+
 		#  Get EFDB_Topic elements
-		getTopicParameters $file $topicIndex
+		getTopicParameters $file $topic
 		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
 		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
 
@@ -332,6 +337,7 @@ function createTestSuite() {
     	# Move to next Topic.
 		(( topicIndex++ ))
 	done
+	echo ==== Separate test generation complete ====
 	echo ""
 }
 
