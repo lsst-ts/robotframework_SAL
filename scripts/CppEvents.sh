@@ -59,6 +59,7 @@ function getTopicParameters() {
 	unset parametersArray
 	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
+	echo ${parametersArray[@]}
 }
 
 function getParameterIndex() {
@@ -72,26 +73,35 @@ function getParameterIndex() {
 }
 
 function getParameterType() {
-	file=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
+	local file=$1
+	local topic=$2
+	local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+	for generic in "${generic_events[@]}"; do
+        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
+    done
+	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
 	echo $parameterType
 }
 
 function getParameterIDLSize() {
-    subSystem=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Size" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
+    local file=$1
+    local topic=$2
+    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+	for generic in "${generic_events[@]}"; do
+        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
+    done
+    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic'x/..]/item[$itemIndex]/IDL_Size" -v . -n $file )
     echo $parameterIDLSize
 }
 
 function getParameterCount() {
-    file=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/Count" -v . -n $file )
+    local file=$1
+    local topic=$2
+    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+	for generic in "${generic_events[@]}"; do
+        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
+    done
+    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
 }
 
@@ -235,8 +245,9 @@ function readLogger_params() {
     local testSuite=$4
     for parameter in "${parametersArray[@]}"; do
 		parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
-        parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+        parameterType="$(getParameterType $file $topic $parameterIndex)"
+        parameterCount=$(getParameterCount $file $topic $parameterIndex)
+		echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
@@ -316,9 +327,9 @@ function createTestSuite() {
 		# Determine the parameter type and create a test value, accordingly.
         for parameter in "${parametersArray[@]}"; do
             parameterIndex=$(getParameterIndex $parameter)
-            parameterType=$(getParameterType $file $topicIndex $parameterIndex)
-            parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-			parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
+            parameterType=$(getParameterType $file $topic $parameterIndex)
+            parameterCount=$(getParameterCount $file $topic $parameterIndex)
+			parameterIDLSize=$(getParameterIDLSize $subSystem $topic $parameterIndex)
 			#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
 			for i in $(seq 1 $parameterCount); do
                 testValue=$(generateArgument "$parameterType" $parameterIDLSize)
