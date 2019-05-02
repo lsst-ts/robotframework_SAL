@@ -211,11 +211,11 @@ function startSender() {
 }
 
 function readLogger() {
-	#device=$1
-	#property=$2
 	local file=$1
     local topicIndex=$2
     local testSuite=$3
+	#local device=$4
+	#local property=$5
     echo "Read Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Process    Logger" >> $testSuite
@@ -224,7 +224,7 @@ function readLogger() {
 	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
 	if [ $topic ]; then
 		echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
-		echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
+		echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : ${argumentsArray[${#argumentsArray[@]}-1]}    1" >> $testSuite
 		readLogger_params $file $topic $topicIndex $testSuite
 	else
 		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
@@ -254,6 +254,9 @@ function readLogger_params() {
         parameterType="$(getParameterType $file $topic $parameterIndex)"
         parameterCount=$(getParameterCount $file $topic $parameterIndex)
 		#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
+		if [[ $testSuite == *"$topic"* ]]; then
+			topic="full"
+		fi
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
