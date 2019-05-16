@@ -64,20 +64,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_whiteLightStatus_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ${subSystem}_whiteLightStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerWarning test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_chillerWarning
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_chillerWarning_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_chillerWarning end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerTempReached test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_chillerTempReached
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_chillerTempReached_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_chillerTempReached end of topic ===
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -160,18 +146,6 @@ Read Logger
     Should Contain X Times    ${whiteLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 1    1
     Should Contain X Times    ${whiteLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acceptingCommands : 1    1
     Should Contain X Times    ${whiteLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${chillerWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_chillerWarning start of topic ===
-    ${chillerWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_chillerWarning end of topic ===
-    ${chillerWarning_list}=    Get Slice From List    ${full_list}    start=${chillerWarning_start}    end=${chillerWarning_end}
-    Should Contain X Times    ${chillerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}warning : 1    1
-    Should Contain X Times    ${chillerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${chillerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${chillerTempReached_start}=    Get Index From List    ${full_list}    === ${subSystem}_chillerTempReached start of topic ===
-    ${chillerTempReached_end}=    Get Index From List    ${full_list}    === ${subSystem}_chillerTempReached end of topic ===
-    ${chillerTempReached_list}=    Get Slice From List    ${full_list}    start=${chillerTempReached_start}    end=${chillerTempReached_end}
-    Should Contain X Times    ${chillerTempReached_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inTemperature : 1    1
-    Should Contain X Times    ${chillerTempReached_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${chillerTempReached_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}

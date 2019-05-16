@@ -68,54 +68,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulbWattHours_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATWhiteLight_bulbWattHours end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerFansSpeed test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerFansSpeed
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerFansSpeed start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerFansSpeed_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerFansSpeed end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerUpTime test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerUpTime
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerUpTime start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerUpTime_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerUpTime end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerTempSensors test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerTempSensors
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTempSensors start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerTempSensors_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTempSensors end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerProcessFlow test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerProcessFlow
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerProcessFlow start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerProcessFlow_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerProcessFlow end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerTECBankCurrent test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerTECBankCurrent
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTECBankCurrent start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerTECBankCurrent_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTECBankCurrent end of topic ===
-    Comment    ======= Verify ${subSystem}_chillerTEDriveLevel test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerTEDriveLevel
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTEDriveLevel start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chillerTEDriveLevel_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_chillerTEDriveLevel end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -140,40 +92,3 @@ Read Subscriber
     ${bulbWattHours_end}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbWattHours end of topic ===
     ${bulbWattHours_list}=    Get Slice From List    ${full_list}    start=${bulbWattHours_start}    end=${bulbWattHours_end}
     Should Contain X Times    ${bulbWattHours_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bulbHours : 1    10
-    ${chillerFansSpeed_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerFansSpeed start of topic ===
-    ${chillerFansSpeed_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerFansSpeed end of topic ===
-    ${chillerFansSpeed_list}=    Get Slice From List    ${full_list}    start=${chillerFansSpeed_start}    end=${chillerFansSpeed_end}
-    Should Contain X Times    ${chillerFansSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan1Speed : 1    10
-    Should Contain X Times    ${chillerFansSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan2Speed : 1    10
-    Should Contain X Times    ${chillerFansSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan3Speed : 1    10
-    Should Contain X Times    ${chillerFansSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan4Speed : 1    10
-    Should Contain X Times    ${chillerFansSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${chillerUpTime_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerUpTime start of topic ===
-    ${chillerUpTime_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerUpTime end of topic ===
-    ${chillerUpTime_list}=    Get Slice From List    ${full_list}    start=${chillerUpTime_start}    end=${chillerUpTime_end}
-    Should Contain X Times    ${chillerUpTime_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upTime : 1    10
-    Should Contain X Times    ${chillerUpTime_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${chillerTempSensors_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTempSensors start of topic ===
-    ${chillerTempSensors_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTempSensors end of topic ===
-    ${chillerTempSensors_list}=    Get Slice From List    ${full_list}    start=${chillerTempSensors_start}    end=${chillerTempSensors_end}
-    Should Contain X Times    ${chillerTempSensors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    10
-    Should Contain X Times    ${chillerTempSensors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}supplyTemperature : 1    10
-    Should Contain X Times    ${chillerTempSensors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}returnTemperature : 1    10
-    Should Contain X Times    ${chillerTempSensors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperature : 1    10
-    Should Contain X Times    ${chillerTempSensors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${chillerProcessFlow_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerProcessFlow start of topic ===
-    ${chillerProcessFlow_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerProcessFlow end of topic ===
-    ${chillerProcessFlow_list}=    Get Slice From List    ${full_list}    start=${chillerProcessFlow_start}    end=${chillerProcessFlow_end}
-    Should Contain X Times    ${chillerProcessFlow_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flow : 1    10
-    Should Contain X Times    ${chillerProcessFlow_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${chillerTECBankCurrent_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTECBankCurrent start of topic ===
-    ${chillerTECBankCurrent_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTECBankCurrent end of topic ===
-    ${chillerTECBankCurrent_list}=    Get Slice From List    ${full_list}    start=${chillerTECBankCurrent_start}    end=${chillerTECBankCurrent_end}
-    Should Contain X Times    ${chillerTECBankCurrent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bank1Current : 1    10
-    Should Contain X Times    ${chillerTECBankCurrent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bank2Current : 1    10
-    Should Contain X Times    ${chillerTECBankCurrent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${chillerTEDriveLevel_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTEDriveLevel start of topic ===
-    ${chillerTEDriveLevel_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerTEDriveLevel end of topic ===
-    ${chillerTEDriveLevel_list}=    Get Slice From List    ${full_list}    start=${chillerTEDriveLevel_start}    end=${chillerTEDriveLevel_end}
-    Should Contain X Times    ${chillerTEDriveLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}chillerTEDriveLevel : 1    10
-    Should Contain X Times    ${chillerTEDriveLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
