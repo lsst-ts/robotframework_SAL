@@ -15,9 +15,9 @@ def GenerateTests(csc, language):
 		for csc in csc_array:
 			if ('cpp' in language) or ('all' in language):
 				subprocess.check_call(["./CppPubSub.sh", csc])
+				subprocess.check_call(["./CppEvents.sh", csc])
 				#subprocess.check_call(["./CppState.sh", csc])
 				#subprocess.check_call(["./CppComCon.sh", csc])
-				#subprocess.check_call(["./CppEvents.sh", csc])
 			if ('java' in language) or ('all' in language):
 				#subprocess.check_call(["./JavaPubSub.sh", csc])
 				subprocess.check_call(["./JavaState.sh", csc])
