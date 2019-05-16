@@ -41,7 +41,7 @@ function main() {
 function getTopics() {
 	subSystem=$(getEntity $1)
 	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
+	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
 	topicsArray=($output)
 	# If CSC uses the Generic Events, add those.
 	generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
@@ -126,7 +126,7 @@ function createVariables() {
     local testSuite=$2
     local topic=$3
 	if [ "$topic" == "all" ]; then
-		timeout="30s"
+		timeout="45s"
 	else
 		timeout="3s"
 	fi
@@ -257,7 +257,10 @@ function readLogger_params() {
 		if [[ $testSuite == *"$topic"* ]]; then
 			topic="full"
 		fi
-        if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
+        if [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
+            #echo "$parameter $parameterType Byte"
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x00    1" >>$testSuite
+        elif [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
@@ -268,10 +271,8 @@ function readLogger_params() {
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
             #echo "$parameter $parameterType Count 1"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
-        elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
-            for num in `seq 0 9`; do
-                echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x0${num}    1" >>$testSuite
-            done
+	elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "boolean" ) ||  ( "$parameterType" == "float" ) || ( "$parameterType" == "double" ) || ( "$parameterType" == *"short"* ) || ( "$parameterType" == *"int"* ) || ( "$parameterType" == *"long"* )) ]]; then
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
         else
             #echo "$parameter $parameterType Else"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
@@ -303,62 +304,62 @@ function createTestSuite() {
     echo ""
     # Generate the test suite for each topic.
     echo ============== Generating Separate messaging test suites ==============
-	topicIndex=1
-	for topic in "${topicsArray[@]}"; do
-		device=$EMPTY
-		property=$EMPTY
-		#  Define test suite name
-		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+	#topicIndex=1
+	#for topic in "${topicsArray[@]}"; do
+		#device=$EMPTY
+		#property=$EMPTY
+		##  Define test suite name
+		#testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 
-		#  Get correct topic source (SAlGenerics or Subsystem XML)
-		for generic in "${generic_events[@]}"; do
-        	[[ $generic == "$topic" ]] && local file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml
-    	done
+		##  Get correct topic source (SAlGenerics or Subsystem XML)
+		#for generic in "${generic_events[@]}"; do
+        	#[[ $generic == "$topic" ]] && local file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml
+    	#done
 
-		#  Get EFDB_Topic elements
-		getTopicParameters $file $topic
-		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
-		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
+		##  Get EFDB_Topic elements
+		#getTopicParameters $file $topic
+		#device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
+		#property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
 
-        #  Check if test suite should be skipped.
-        skipped=$(checkIfSkipped $subSystem $topic $messageType)
+        ##  Check if test suite should be skipped.
+        #skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
-		#  Create test suite.
-		echo $testSuite
-		createSettings $subSystem $topic $testSuite
-		createVariables $subSystem $testSuite $topic
-		echo "*** Test Cases ***" >> $testSuite
-        verifyCompSenderLogger $testSuite
-		startLogger $testSuite
+		##  Create test suite.
+		#echo $testSuite
+		#createSettings $subSystem $topic $testSuite
+		#createVariables $subSystem $testSuite $topic
+		#echo "*** Test Cases ***" >> $testSuite
+        #verifyCompSenderLogger $testSuite
+		#startLogger $testSuite
 
-		# Get the arguments to the sender.
-		unset argumentsArray
-		# Determine the parameter type and create a test value, accordingly.
-        for parameter in "${parametersArray[@]}"; do
-            parameterIndex=$(getParameterIndex $parameter)
-            parameterType=$(getParameterType $file $topic $parameterIndex)
-            parameterCount=$(getParameterCount $file $topic $parameterIndex)
-			parameterIDLSize=$(getParameterIDLSize $file $topic $parameterIndex)
-			#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
-			for i in $(seq 1 $parameterCount); do
-                testValue=$(generateArgument "$parameterType" $parameterIDLSize)
-                argumentsArray+=( $testValue )
-            done
-		done
-		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
-		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-		parametersArray=("${parametersArray[@]}" "priority")
-		priority=$(python random_value.py long)
-		argumentsArray=("${argumentsArray[@]}" "$priority")
-		# Create the Start Sender test case.
-		startSender $testSuite $device $property
-		# Create the Read Logger test case.
-		readLogger $file $topicIndex $testSuite $device $property
-    	# Move to next Topic.
-		(( topicIndex++ ))
-	done
-	echo ==== Separate test generation complete ====
-	echo ""
+		## Get the arguments to the sender.
+		#unset argumentsArray
+		## Determine the parameter type and create a test value, accordingly.
+        #for parameter in "${parametersArray[@]}"; do
+            #parameterIndex=$(getParameterIndex $parameter)
+            #parameterType=$(getParameterType $file $topic $parameterIndex)
+            #parameterCount=$(getParameterCount $file $topic $parameterIndex)
+			#parameterIDLSize=$(getParameterIDLSize $file $topic $parameterIndex)
+			##echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
+			#for i in $(seq 1 $parameterCount); do
+                #testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+                #argumentsArray+=( $testValue )
+            #done
+		#done
+		## The Event priority is a required argument to ALL senders, but is not in the XML definitions.
+		## ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
+		#parametersArray=("${parametersArray[@]}" "priority")
+		#priority=$(python random_value.py long)
+		#argumentsArray=("${argumentsArray[@]}" "$priority")
+		## Create the Start Sender test case.
+		#startSender $testSuite $device $property
+		## Create the Read Logger test case.
+		#readLogger $file $topicIndex $testSuite $device $property
+    	## Move to next Topic.
+		#(( topicIndex++ ))
+	#done
+	#echo ==== Separate test generation complete ====
+	#echo ""
 }
 
 #### Call the main() function ####
