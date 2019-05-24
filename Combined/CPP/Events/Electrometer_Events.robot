@@ -178,9 +178,9 @@ Read Logger
     ${digitalFilterChange_start}=    Get Index From List    ${full_list}    === ${subSystem}_digitalFilterChange start of topic ===
     ${digitalFilterChange_end}=    Get Index From List    ${full_list}    === ${subSystem}_digitalFilterChange end of topic ===
     ${digitalFilterChange_list}=    Get Slice From List    ${full_list}    start=${digitalFilterChange_start}    end=${digitalFilterChange_end}
+    Should Contain X Times    ${digitalFilterChange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activateFilter : 1    1
     Should Contain X Times    ${digitalFilterChange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activateMedianFilter : 1    1
     Should Contain X Times    ${digitalFilterChange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activateAverageFilter : 1    1
-    Should Contain X Times    ${digitalFilterChange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activateFilter : 1    1
     Should Contain X Times    ${digitalFilterChange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===

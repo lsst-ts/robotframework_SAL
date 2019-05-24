@@ -36,7 +36,7 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_bulbWattHours test messages =======
+    Comment    ======= Verify ${subSystem}_chillerTEDriveLevel test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulbHours
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
