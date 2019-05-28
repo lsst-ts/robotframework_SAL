@@ -17,6 +17,7 @@ Combined/CPP/Telemetry/ATHexapod_Telemetry.robot
 Combined/CPP/Telemetry/ATMCS_Telemetry.robot
 Combined/CPP/Telemetry/ATMonochromator_Telemetry.robot
 Combined/CPP/Telemetry/ATPneumatics_Telemetry.robot
+Combined/CPP/Telemetry/ATPtg_Telemetry.robot
 Combined/CPP/Telemetry/ATSpectrograph_Telemetry.robot
 Combined/CPP/Telemetry/ATTCS_Telemetry.robot
 Combined/CPP/Telemetry/ATThermoelectricCooler_Telemetry.robot
@@ -37,6 +38,7 @@ Combined/CPP/Telemetry/EFD_Telemetry.robot
 Combined/CPP/Telemetry/Electrometer_Telemetry.robot
 Combined/CPP/Telemetry/Environment_Telemetry.robot
 Combined/CPP/Telemetry/FiberSpectrograph_Telemetry.robot
+Combined/CPP/Telemetry/GenericCamera_Telemetry.robot
 Combined/CPP/Telemetry/HVAC_Telemetry.robot
 Combined/CPP/Telemetry/Hexapod_Telemetry.robot
 Combined/CPP/Telemetry/IOTA_Telemetry.robot
@@ -54,6 +56,7 @@ Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
 Combined/CPP/Telemetry/MTM2_Telemetry.robot
 Combined/CPP/Telemetry/MTMount_Telemetry.robot
 Combined/CPP/Telemetry/MTOFC_Telemetry.robot
+Combined/CPP/Telemetry/MTPtg_Telemetry.robot
 Combined/CPP/Telemetry/MTTCS_Telemetry.robot
 Combined/CPP/Telemetry/MTVMS_Telemetry.robot
 Combined/CPP/Telemetry/MTWEP_Telemetry.robot
