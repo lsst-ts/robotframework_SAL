@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATWhiteLight Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    cpp    DM-19913
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

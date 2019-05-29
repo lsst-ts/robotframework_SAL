@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATWhiteLight_Events communications tests.
-Force Tags    cpp    
+Force Tags    cpp    DM-19913
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
