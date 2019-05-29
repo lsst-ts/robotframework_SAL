@@ -55,11 +55,9 @@ Combined/CPP/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
 Combined/CPP/Telemetry/MTM2_Telemetry.robot
 Combined/CPP/Telemetry/MTMount_Telemetry.robot
-Combined/CPP/Telemetry/MTOFC_Telemetry.robot
 Combined/CPP/Telemetry/MTPtg_Telemetry.robot
 Combined/CPP/Telemetry/MTTCS_Telemetry.robot
 Combined/CPP/Telemetry/MTVMS_Telemetry.robot
-Combined/CPP/Telemetry/MTWEP_Telemetry.robot
 Combined/CPP/Telemetry/OCS_Telemetry.robot
 Combined/CPP/Telemetry/PointingComponent_Telemetry.robot
 Combined/CPP/Telemetry/PromptProcessing_Telemetry.robot

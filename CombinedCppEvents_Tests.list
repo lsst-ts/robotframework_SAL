@@ -55,11 +55,9 @@ Combined/CPP/Events/MTM1M3TS_Events.robot
 Combined/CPP/Events/MTM1M3_Events.robot
 Combined/CPP/Events/MTM2_Events.robot
 Combined/CPP/Events/MTMount_Events.robot
-Combined/CPP/Events/MTOFC_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
 Combined/CPP/Events/MTTCS_Events.robot
 Combined/CPP/Events/MTVMS_Events.robot
-Combined/CPP/Events/MTWEP_Events.robot
 Combined/CPP/Events/OCS_Events.robot
 Combined/CPP/Events/PointingComponent_Events.robot
 Combined/CPP/Events/PromptProcessing_Events.robot
