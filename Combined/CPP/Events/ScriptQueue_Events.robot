@@ -50,6 +50,13 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_availableScripts_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ${subSystem}_availableScripts end of topic ===
+    Comment    ======= Verify ${subSystem}_configSchema test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configSchema
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configSchema_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ${subSystem}_configSchema end of topic ===
     Comment    ======= Verify ${subSystem}_script test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_script
     @{words}=    Split String    ${line}
@@ -139,6 +146,13 @@ Read Logger
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : LSST    1
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : LSST    1
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${configSchema_start}=    Get Index From List    ${full_list}    === ${subSystem}_configSchema start of topic ===
+    ${configSchema_end}=    Get Index From List    ${full_list}    === ${subSystem}_configSchema end of topic ===
+    ${configSchema_list}=    Get Slice From List    ${full_list}    start=${configSchema_start}    end=${configSchema_end}
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}isStandard : 1    1
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : LSST    1
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configSchema : LSST    1
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${script_start}=    Get Index From List    ${full_list}    === ${subSystem}_script start of topic ===
     ${script_end}=    Get Index From List    ${full_list}    === ${subSystem}_script end of topic ===
     ${script_list}=    Get Slice From List    ${full_list}    start=${script_start}    end=${script_end}

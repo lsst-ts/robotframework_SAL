@@ -36,7 +36,7 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}_${component}/cpp/standalone/sacpp_${subSystem}_pub
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_wrebPower test messages =======
+    Comment    ======= Verify ${subSystem}_vacuum test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wreb
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
@@ -62,7 +62,6 @@ Read Subscriber
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0U : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0L : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdTemp0 : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rtdTemp : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_I : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaPS_V : 1    10

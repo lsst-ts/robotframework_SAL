@@ -68,6 +68,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::wrebPower_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATCamera_wrebPower end of topic ===
+    Comment    ======= Verify ${subSystem}_vacuum test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_vacuum start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_vacuum end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -96,7 +104,6 @@ Read Subscriber
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0U : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0L : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdTemp0 : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rtdTemp : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_I : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaPS_V : 1    10
@@ -142,3 +149,10 @@ Read Subscriber
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heater_I : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hvbias_V : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hvbias_I : 1    10
+    ${vacuum_start}=    Get Index From List    ${full_list}    === ATCamera_vacuum start of topic ===
+    ${vacuum_end}=    Get Index From List    ${full_list}    === ATCamera_vacuum end of topic ===
+    ${vacuum_list}=    Get Slice From List    ${full_list}    start=${vacuum_start}    end=${vacuum_end}
+    Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempCCD : 1    10
+    Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempColdPlate : 1    10
+    Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempCryoHead : 1    10
+    Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuum : 1    10

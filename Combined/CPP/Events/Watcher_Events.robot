@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATHeaderService_Events communications tests.
+Documentation    Watcher_Events communications tests.
 Force Tags    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATHeaderService
+${subSystem}    Watcher
 ${component}    all
 ${timeout}    45s
 
@@ -36,13 +36,6 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_offlineDetailedState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_offlineDetailedState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_offlineDetailedState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_offlineDetailedState end of topic ===
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -50,27 +43,13 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_heartbeat_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ${subSystem}_heartbeat end of topic ===
-    Comment    ======= Verify ${subSystem}_rejectedCommand test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedCommand
+    Comment    ======= Verify ${subSystem}_alarm test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_alarm
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedCommand_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_alarm_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_rejectedCommand end of topic ===
-    Comment    ======= Verify ${subSystem}_largeFileObjectAvailable test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_largeFileObjectAvailable
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_largeFileObjectAvailable_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_largeFileObjectAvailable end of topic ===
-    Comment    ======= Verify ${subSystem}_settingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsApplied
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsApplied_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_settingsApplied end of topic ===
+    Should Contain    ${output.stdout}    === ${subSystem}_alarm end of topic ===
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -128,39 +107,31 @@ Read Logger
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${offlineDetailedState_start}=    Get Index From List    ${full_list}    === ${subSystem}_offlineDetailedState start of topic ===
-    ${offlineDetailedState_end}=    Get Index From List    ${full_list}    === ${subSystem}_offlineDetailedState end of topic ===
-    ${offlineDetailedState_list}=    Get Slice From List    ${full_list}    start=${offlineDetailedState_start}    end=${offlineDetailedState_end}
-    Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${rejectedCommand_start}=    Get Index From List    ${full_list}    === ${subSystem}_rejectedCommand start of topic ===
-    ${rejectedCommand_end}=    Get Index From List    ${full_list}    === ${subSystem}_rejectedCommand end of topic ===
-    ${rejectedCommand_list}=    Get Slice From List    ${full_list}    start=${rejectedCommand_start}    end=${rejectedCommand_end}
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandValue : 1    1
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === ${subSystem}_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === ${subSystem}_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end}
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied end of topic ===
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end}
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${alarm_start}=    Get Index From List    ${full_list}    === ${subSystem}_alarm start of topic ===
+    ${alarm_end}=    Get Index From List    ${full_list}    === ${subSystem}_alarm end of topic ===
+    ${alarm_list}=    Get Slice From List    ${full_list}    start=${alarm_start}    end=${alarm_end}
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}severity : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxSeverity : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledged : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledgedBy : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabled : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalated : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalateTo : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityOldest : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityNewest : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampMaxSeverity : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcknowledged : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAutoUnacknowledge : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAutoAcknowledge : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampEscalate : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}
