@@ -69,3 +69,4 @@ Combined/CPP/Events/Sequencer_Events.robot
 Combined/CPP/Events/SummitFacility_Events.robot
 Combined/CPP/Events/Test_Events.robot
 Combined/CPP/Events/TunableLaser_Events.robot
+Combined/CPP/Events/Watcher_Events.robot
