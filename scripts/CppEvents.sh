@@ -303,7 +303,7 @@ function createTestSuite() {
     echo ==== Combined test generation complete ====
     echo ""
     # Generate the test suite for each topic.
-    echo ============== Generating Separate messaging test suites ==============
+    #echo ============== Generating Separate messaging test suites ==============
 	#topicIndex=1
 	#for topic in "${topicsArray[@]}"; do
 		#device=$EMPTY
