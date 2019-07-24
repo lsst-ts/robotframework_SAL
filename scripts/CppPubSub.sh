@@ -255,29 +255,29 @@ function createTestSuite {
 	echo Generation complete
 	echo ""
 	# Generate the test suite for each topic.
-	echo ============== Generating Separate messaging test suites ==============
-	topicIndex=1
-	for topic in "${topicsArray[@]}"; do
-		#  Define test suite name
-		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+	#echo ============== Generating Separate messaging test suites ==============
+	#topicIndex=1
+	#for topic in "${topicsArray[@]}"; do
+		##  Define test suite name
+		#testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
 		
 		#  Get EFDB_Topic Telemetry parameters
-		getTopicParameters $file $topicIndex
+		#getTopicParameters $file $topicIndex
 
 		#  Check if test suite should be skipped.
-		skipped=$(checkIfSkipped $subSystem $topic $messageType)
+		#skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
 		#  Create test suite.
-		echo $testSuite
-		createSettings $subSystem $topic $testSuite
-		createVariables $subSystem $testSuite $topic
-		echo "*** Test Cases ***" >> $testSuite
-        verifyCompPubSub $testSuite
-		startSubscriber $testSuite
-		startPublisher $testSuite
-		readSubscriber $file $topicIndex $testSuite
-    	(( topicIndex++ ))
-	done
+		#echo $testSuite
+		#createSettings $subSystem $topic $testSuite
+		#createVariables $subSystem $testSuite $topic
+		#echo "*** Test Cases ***" >> $testSuite
+        #verifyCompPubSub $testSuite
+		#startSubscriber $testSuite
+		#startPublisher $testSuite
+		#readSubscriber $file $topicIndex $testSuite
+    	#(( topicIndex++ ))
+	#done
 	echo Generation complete
 	echo ""
 }
