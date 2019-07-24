@@ -25,12 +25,6 @@ Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
 Combined/CPP/Events/DIMM_Events.robot
-Combined/CPP/Events/DomeADB_Events.robot
-Combined/CPP/Events/DomeAPS_Events.robot
-Combined/CPP/Events/DomeLWS_Events.robot
-Combined/CPP/Events/DomeLouvers_Events.robot
-Combined/CPP/Events/DomeMONCS_Events.robot
-Combined/CPP/Events/DomeTHCS_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
 Combined/CPP/Events/EFDTransformationServer_Events.robot

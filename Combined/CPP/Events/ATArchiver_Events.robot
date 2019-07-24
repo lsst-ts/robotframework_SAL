@@ -36,27 +36,6 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_archiverEntityStartup test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_archiverEntityStartup
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_archiverEntityStartup_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_archiverEntityStartup end of topic ===
-    Comment    ======= Verify ${subSystem}_archiverEntitySummaryState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_archiverEntitySummaryState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_archiverEntitySummaryState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_archiverEntitySummaryState end of topic ===
-    Comment    ======= Verify ${subSystem}_archiverEntityShutdown test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_archiverEntityShutdown
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_archiverEntityShutdown_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_archiverEntityShutdown end of topic ===
     Comment    ======= Verify ${subSystem}_settingsApplied test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsApplied
     @{words}=    Split String    ${line}
@@ -128,35 +107,6 @@ Read Logger
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${archiverEntityStartup_start}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntityStartup start of topic ===
-    ${archiverEntityStartup_end}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntityStartup end of topic ===
-    ${archiverEntityStartup_list}=    Get Slice From List    ${full_list}    start=${archiverEntityStartup_start}    end=${archiverEntityStartup_end}
-    Should Contain X Times    ${archiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${archiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${archiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${archiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${archiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${archiverEntitySummaryState_start}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntitySummaryState start of topic ===
-    ${archiverEntitySummaryState_end}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntitySummaryState end of topic ===
-    ${archiverEntitySummaryState_list}=    Get Slice From List    ${full_list}    start=${archiverEntitySummaryState_start}    end=${archiverEntitySummaryState_end}
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : LSST    1
-    Should Contain X Times    ${archiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${archiverEntityShutdown_start}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntityShutdown start of topic ===
-    ${archiverEntityShutdown_end}=    Get Index From List    ${full_list}    === ${subSystem}_archiverEntityShutdown end of topic ===
-    ${archiverEntityShutdown_list}=    Get Slice From List    ${full_list}    start=${archiverEntityShutdown_start}    end=${archiverEntityShutdown_end}
-    Should Contain X Times    ${archiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${archiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${archiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${archiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${archiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingsApplied_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied start of topic ===
     ${settingsApplied_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied end of topic ===
     ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end}

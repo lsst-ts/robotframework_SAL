@@ -25,12 +25,6 @@ Combined/CPP/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/CPP/Telemetry/CBP_Telemetry.robot
 Combined/CPP/Telemetry/CatchupArchiver_Telemetry.robot
 Combined/CPP/Telemetry/DIMM_Telemetry.robot
-Combined/CPP/Telemetry/DomeADB_Telemetry.robot
-Combined/CPP/Telemetry/DomeAPS_Telemetry.robot
-Combined/CPP/Telemetry/DomeLWS_Telemetry.robot
-Combined/CPP/Telemetry/DomeLouvers_Telemetry.robot
-Combined/CPP/Telemetry/DomeMONCS_Telemetry.robot
-Combined/CPP/Telemetry/DomeTHCS_Telemetry.robot
 Combined/CPP/Telemetry/Dome_Telemetry.robot
 Combined/CPP/Telemetry/EAS_Telemetry.robot
 Combined/CPP/Telemetry/EFDTransformationServer_Telemetry.robot

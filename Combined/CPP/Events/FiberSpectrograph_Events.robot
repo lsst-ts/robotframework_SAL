@@ -50,13 +50,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_detailedState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ${subSystem}_detailedState end of topic ===
-    Comment    ======= Verify ${subSystem}_measuredSpectrum test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_measuredSpectrum
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_measuredSpectrum_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_measuredSpectrum end of topic ===
     Comment    ======= Verify ${subSystem}_timeout test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_timeout
     @{words}=    Split String    ${line}
@@ -71,20 +64,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedCommand_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ${subSystem}_rejectedCommand end of topic ===
-    Comment    ======= Verify ${subSystem}_loopTimeOutOfRange test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_loopTimeOutOfRange
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_loopTimeOutOfRange_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_loopTimeOutOfRange end of topic ===
-    Comment    ======= Verify ${subSystem}_internalCommand test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_internalCommand
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_internalCommand_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ${subSystem}_internalCommand end of topic ===
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -165,15 +144,6 @@ Read Logger
     ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${measuredSpectrum_start}=    Get Index From List    ${full_list}    === ${subSystem}_measuredSpectrum start of topic ===
-    ${measuredSpectrum_end}=    Get Index From List    ${full_list}    === ${subSystem}_measuredSpectrum end of topic ===
-    ${measuredSpectrum_list}=    Get Slice From List    ${full_list}    start=${measuredSpectrum_start}    end=${measuredSpectrum_end}
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 0    1
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}intensity : 0    1
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}integrationTime : 1    1
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    1
-    Should Contain X Times    ${measuredSpectrum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${timeout_start}=    Get Index From List    ${full_list}    === ${subSystem}_timeout start of topic ===
     ${timeout_end}=    Get Index From List    ${full_list}    === ${subSystem}_timeout end of topic ===
     ${timeout_list}=    Get Slice From List    ${full_list}    start=${timeout_start}    end=${timeout_end}
@@ -186,16 +156,6 @@ Read Logger
     Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${loopTimeOutOfRange_start}=    Get Index From List    ${full_list}    === ${subSystem}_loopTimeOutOfRange start of topic ===
-    ${loopTimeOutOfRange_end}=    Get Index From List    ${full_list}    === ${subSystem}_loopTimeOutOfRange end of topic ===
-    ${loopTimeOutOfRange_list}=    Get Slice From List    ${full_list}    start=${loopTimeOutOfRange_start}    end=${loopTimeOutOfRange_end}
-    Should Contain X Times    ${loopTimeOutOfRange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTimeOutOfRange : 1    1
-    Should Contain X Times    ${loopTimeOutOfRange_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${internalCommand_start}=    Get Index From List    ${full_list}    === ${subSystem}_internalCommand start of topic ===
-    ${internalCommand_end}=    Get Index From List    ${full_list}    === ${subSystem}_internalCommand end of topic ===
-    ${internalCommand_list}=    Get Slice From List    ${full_list}    start=${internalCommand_start}    end=${internalCommand_end}
-    Should Contain X Times    ${internalCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandObject : \x00    1
-    Should Contain X Times    ${internalCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
