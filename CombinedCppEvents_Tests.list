@@ -25,6 +25,7 @@ Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
 Combined/CPP/Events/DIMM_Events.robot
+Combined/CPP/Events/DSM_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
 Combined/CPP/Events/EFDTransformationServer_Events.robot
