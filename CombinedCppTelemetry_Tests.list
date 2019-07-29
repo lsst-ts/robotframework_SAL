@@ -7,11 +7,9 @@
 Combined/CPP/Telemetry/ATAOS_Telemetry.robot
 Combined/CPP/Telemetry/ATArchiver_Telemetry.robot
 Combined/CPP/Telemetry/ATBuilding_Telemetry.robot
-Combined/CPP/Telemetry/ATCalCS_Telemetry.robot
 Combined/CPP/Telemetry/ATCamera_Telemetry.robot
 Combined/CPP/Telemetry/ATDomeTrajectory_Telemetry.robot
 Combined/CPP/Telemetry/ATDome_Telemetry.robot
-Combined/CPP/Telemetry/ATEEC_Telemetry.robot
 Combined/CPP/Telemetry/ATHeaderService_Telemetry.robot
 Combined/CPP/Telemetry/ATHexapod_Telemetry.robot
 Combined/CPP/Telemetry/ATMCS_Telemetry.robot
@@ -25,7 +23,6 @@ Combined/CPP/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/CPP/Telemetry/CBP_Telemetry.robot
 Combined/CPP/Telemetry/CatchupArchiver_Telemetry.robot
 Combined/CPP/Telemetry/DIMM_Telemetry.robot
-Combined/CPP/Telemetry/DSM_Telemetry.robot
 Combined/CPP/Telemetry/Dome_Telemetry.robot
 Combined/CPP/Telemetry/EAS_Telemetry.robot
 Combined/CPP/Telemetry/EFDTransformationServer_Telemetry.robot
@@ -39,7 +36,6 @@ Combined/CPP/Telemetry/Hexapod_Telemetry.robot
 Combined/CPP/Telemetry/IOTA_Telemetry.robot
 Combined/CPP/Telemetry/LinearStage_Telemetry.robot
 Combined/CPP/Telemetry/MTArchiver_Telemetry.robot
-Combined/CPP/Telemetry/MTCalCS_Telemetry.robot
 Combined/CPP/Telemetry/MTCamera_Telemetry.robot
 Combined/CPP/Telemetry/MTDomeTrajectory_Telemetry.robot
 Combined/CPP/Telemetry/MTEEC_Telemetry.robot
@@ -60,7 +56,6 @@ Combined/CPP/Telemetry/Rotator_Telemetry.robot
 Combined/CPP/Telemetry/Scheduler_Telemetry.robot
 Combined/CPP/Telemetry/ScriptQueue_Telemetry.robot
 Combined/CPP/Telemetry/Script_Telemetry.robot
-Combined/CPP/Telemetry/Sequencer_Telemetry.robot
 Combined/CPP/Telemetry/SummitFacility_Telemetry.robot
 Combined/CPP/Telemetry/Test_Telemetry.robot
 Combined/CPP/Telemetry/TunableLaser_Telemetry.robot
