@@ -18,7 +18,6 @@ Combined/CPP/Telemetry/ATPneumatics_Telemetry.robot
 Combined/CPP/Telemetry/ATPtg_Telemetry.robot
 Combined/CPP/Telemetry/ATSpectrograph_Telemetry.robot
 Combined/CPP/Telemetry/ATTCS_Telemetry.robot
-Combined/CPP/Telemetry/ATThermoelectricCooler_Telemetry.robot
 Combined/CPP/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/CPP/Telemetry/CBP_Telemetry.robot
 Combined/CPP/Telemetry/CatchupArchiver_Telemetry.robot

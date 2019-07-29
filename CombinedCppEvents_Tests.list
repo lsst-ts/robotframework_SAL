@@ -18,7 +18,6 @@ Combined/CPP/Events/ATPneumatics_Events.robot
 Combined/CPP/Events/ATPtg_Events.robot
 Combined/CPP/Events/ATSpectrograph_Events.robot
 Combined/CPP/Events/ATTCS_Events.robot
-Combined/CPP/Events/ATThermoelectricCooler_Events.robot
 Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
