@@ -41,7 +41,7 @@ function main() {
 function getTopics() {
 	subSystem=$(getEntity $1)
 	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
+	output=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
 	topicsArray=($output)
 	# If CSC uses the Generic Events, add those.
 	generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
@@ -57,7 +57,7 @@ function getTopicParameters() {
 		[[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
 	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
+	output=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
 }
 
@@ -78,7 +78,7 @@ function getParameterType() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
+	parameterType=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
 	echo $parameterType
 }
 
@@ -89,7 +89,7 @@ function getParameterIDLSize() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
+    parameterIDLSize=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
     echo $parameterIDLSize
 }
 
@@ -100,7 +100,7 @@ function getParameterCount() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
+    parameterCount=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
 }
 

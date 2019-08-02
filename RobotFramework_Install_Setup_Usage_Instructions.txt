@@ -124,8 +124,13 @@ echo "=== Clearing previous test results. ==="
 rm -r $HOME/Reports/SAL_RegressionTests
 
 # Move to trunk/robotframework_SAL to run the tests.
+<<<<<<< HEAD
 echo "cd $ROBOTFRAMEWORK_SAL_DIR"
 cd $ROBOTFRAMEWORK_SAL_DIR
+=======
+echo "cd $ROBOT_FRAMEWORK_REPO_DIR"
+cd $ROBOT_FRAMEWORK_REPO_DIR
+>>>>>>> modifying path to use a sourced environment variable rather than hardcoded
 
 # Run the tests.
 echo "=== Running the regression. ==="
@@ -163,7 +168,7 @@ rebot --name SAL_Regression -o regression_output.xml -l regression_log.html -r r
 
 Sample command line to run individual automated test suites
 ===========================================================
-Navigate to $ROBOTFRAMEWORK_SAL_DIR (location of robotframework_SAL from checked out git repo).
+Navigate to $ROBOTFRAMEWORK_SAL_DIR (location of robotframework_SAL from checked out git repo)
 > robot -A /path/to/SAL_Vars.txt SALGEN/Archiver_salgenerator.robot
 
 Sample command line to run a block of test suites
