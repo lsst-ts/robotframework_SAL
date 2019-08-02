@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$HOME/trunk/robotframework_SAL/PythonCommands_Tests.list
+argfile=$ROBOT_FRAMEWORK_REPO_DIR/PythonCommands_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -26,4 +26,4 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $HOME/trunk/robotframework_SAL/PYTHON/Commands |sed 's/^/PYTHON\/Commands\//' >> $argfile
+ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Commands |sed 's/^/PYTHON\/Commands\//' >> $argfile

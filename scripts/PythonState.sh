@@ -6,10 +6,10 @@
 #  email:  rbovill@lsst.org
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOT_FRAMEWORK_REPO_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/PYTHON/StateMachine
+workDir=$ROBOT_FRAMEWORK_REPO_DIR/PYTHON/StateMachine
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -21,7 +21,7 @@ function main() {
     arg=$1
 
     # Get the XML definition file.
-    file=($HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml)
+    file=($TS_XML_REPO_DIR/sal_interfaces/SALGenerics.xml)
     
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "PYTHON" "StateMachine" || exit 1
@@ -178,7 +178,7 @@ function createTestSuite() {
 
 	# Check if CSC uses the Generic topics (most do, but a few do not).
     # ... If not, skip this CSC.
-    output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
+    output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_REPO_DIR/sal_interfaces/SALSubsystems.xml )
     if [ "$output" == "no" ]; then
         echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
     fi

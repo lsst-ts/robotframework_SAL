@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$HOME/trunk/robotframework_SAL/CppEvents_Tests.list
+argfile=$ROBOT_FRAMEWORK_REPO_DIR/CppEvents_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -26,10 +26,10 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $HOME/trunk/robotframework_SAL/CPP/Events |sed 's/^/CPP\/Events\//' >> $argfile
+ls -1 $ROBOT_FRAMEWORK_REPO_DIR/CPP/Events |sed 's/^/CPP\/Events\//' >> $argfile
 
 # Define Combined interface testig filename
-argfile=$HOME/trunk/robotframework_SAL/CombinedCppEvents_Tests.list
+argfile=$ROBOT_FRAMEWORK_REPO_DIR/CombinedCppEvents_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -49,4 +49,4 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $HOME/trunk/robotframework_SAL/Combined/CPP/Events |sed 's/^/Combined\/CPP\/Events\//' >> $argfile
+ls -1 $ROBOT_FRAMEWORK_REPO_DIR/Combined/CPP/Events |sed 's/^/Combined\/CPP\/Events\//' >> $argfile

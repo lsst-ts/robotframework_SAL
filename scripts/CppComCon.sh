@@ -7,10 +7,10 @@
 
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOT_FRAMEWORK_REPO_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/CPP/Commands
+workDir=$ROBOT_FRAMEWORK_REPO_DIR/CPP/Commands
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -25,7 +25,7 @@ function main() {
 
     # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
     subsystem=$(getEntity $arg)
-    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Commands.xml)
+    file=($TS_XML_REPO_DIR/sal_interfaces/$subsystem/*_Commands.xml)
 
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "CPP" "Commands" || exit 1
@@ -66,7 +66,7 @@ function getParameterType() {
 	subSystem=$1
 	index=$2
 	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
+	parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $TS_XML_REPO_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
 	echo $parameterType
 }
 
@@ -74,7 +74,7 @@ function getParameterIDLSize() {
     subSystem=$1
     index=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterIDLSize=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Size" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
+    parameterIDLSize=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Size" -v . -n $TS_XML_REPO_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
     echo $parameterIDLSize
 }
 
@@ -82,7 +82,7 @@ function getParameterCount() {
     subSystem=$1
     index=$2
     itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
+    parameterCount=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/Count" -v . -n $TS_XML_REPO_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
     echo $parameterCount
 }
 

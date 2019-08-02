@@ -6,11 +6,11 @@
 #  email:  rbovill@lsst.org
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOT_FRAMEWORK_REPO_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/Separate/CPP/Events
-workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP/Events
+workDir=$ROBOT_FRAMEWORK_REPO_DIR/Separate/CPP/Events
+workDirCombined=$ROBOT_FRAMEWORK_REPO_DIR/Combined/CPP/Events
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -18,7 +18,7 @@ value=$EMPTY
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
-declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
+declare -a generic_events=($(xmlstarlet sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_REPO_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
@@ -26,7 +26,7 @@ function main() {
 
     # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
     subsystem=$(getEntity $arg)
-    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Events.xml)
+    file=($TS_XML_REPO_DIR/sal_interfaces/$subsystem/*_Events.xml)
 
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "CPP" "Events" || exit 1
@@ -41,10 +41,10 @@ function main() {
 function getTopics() {
 	subSystem=$(getEntity $1)
 	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
+	output=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
 	topicsArray=($output)
 	# If CSC uses the Generic Events, add those.
-	generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
+	generics=$( xmlstarlet sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_REPO_DIR/sal_interfaces/SALSubsystems.xml )
 	if [ "$generics" == "yes" ]; then
 		topicsArray+=(${generic_events[@]})
 	fi
@@ -57,7 +57,7 @@ function getTopicParameters() {
 		[[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
 	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
+	output=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
 	parametersArray=($output)
 }
 
@@ -78,7 +78,7 @@ function getParameterType() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
+	parameterType=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
 	echo $parameterType
 }
 
@@ -89,7 +89,7 @@ function getParameterIDLSize() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
+    parameterIDLSize=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
     echo $parameterIDLSize
 }
 
@@ -100,7 +100,7 @@ function getParameterCount() {
 	for generic in "${generic_events[@]}"; do
         [[ $generic == "$topic" ]] && local subSystem=SALGeneric
     done
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
+    parameterCount=$( xmlstarlet sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
     echo $parameterCount
 }
 
@@ -231,7 +231,7 @@ function readLogger() {
 		itemIndex=1
 		for topic in "${topicsArray[@]}"; do
 			for generic in "${generic_events[@]}"; do
-					[[ $generic == "$topic" ]] && file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml 
+					[[ $generic == "$topic" ]] && file=$TS_XML_REPO_DIR/sal_interfaces/SALGenerics.xml 
 			done
             echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} start of topic ===" >> $testSuite
             echo "    \${${topic}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} end of topic ===" >> $testSuite
@@ -313,7 +313,7 @@ function createTestSuite() {
 
 		##  Get correct topic source (SAlGenerics or Subsystem XML)
 		#for generic in "${generic_events[@]}"; do
-        	#[[ $generic == "$topic" ]] && local file=$HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml
+        	#[[ $generic == "$topic" ]] && local file=$TS_XML_REPO_DIR/sal_interfaces/SALGenerics.xml
     	#done
 
 		##  Get EFDB_Topic elements
