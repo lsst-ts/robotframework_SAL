@@ -124,8 +124,8 @@ echo "=== Clearing previous test results. ==="
 rm -r $HOME/Reports/SAL_RegressionTests
 
 # Move to trunk/robotframework_SAL to run the tests.
-echo "cd $ROBOT_FRAMEWORK_REPO_DIR"
-cd $ROBOT_FRAMEWORK_REPO_DIR
+echo "cd $ROBOTFRAMEWORK_SAL_DIR"
+cd $ROBOTFRAMEWORK_SAL_DIR
 
 # Run the tests.
 echo "=== Running the regression. ==="
@@ -163,12 +163,12 @@ rebot --name SAL_Regression -o regression_output.xml -l regression_log.html -r r
 
 Sample command line to run individual automated test suites
 ===========================================================
-Navigate to $ROBOT_FRAMEWORK_REPO_DIR (location of robotframework_SAL from checked out git repo).
+Navigate to $ROBOTFRAMEWORK_SAL_DIR (location of robotframework_SAL from checked out git repo).
 > robot -A /path/to/SAL_Vars.txt SALGEN/Archiver_salgenerator.robot
 
 Sample command line to run a block of test suites
 =================================================
-Navigate to $ROBOT_FRAMEWORK_REPO_DIR (location of robotframework_SAL from checked out git repo).
+Navigate to $ROBOTFRAMEWORK_SAL_DIR (location of robotframework_SAL from checked out git repo).
 > robot -A /path/to/SAL_Vars.txt -A PythonTelemetry_Tests.list
 
 Sample command line to run the full Regression

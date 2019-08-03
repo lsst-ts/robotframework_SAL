@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$ROBOT_FRAMEWORK_REPO_DIR/JavaTelemetry_Tests.list
+argfile=$ROBOTFRAMEWORK_SAL_DIR/JavaTelemetry_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -26,4 +26,4 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $ROBOT_FRAMEWORK_REPO_DIR/JAVA/Telemetry |sed 's/^/JAVA\/Telemetry\//' >> $argfile
+ls -1 $ROBOTFRAMEWORK_SAL_DIR/JAVA/Telemetry |sed 's/^/JAVA\/Telemetry\//' >> $argfile

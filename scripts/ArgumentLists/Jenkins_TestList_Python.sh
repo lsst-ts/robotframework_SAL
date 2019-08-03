@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$ROBOT_FRAMEWORK_REPO_DIR/Jenkins_Python.list
+argfile=$ROBOTFRAMEWORK_SAL_DIR/Jenkins_Python.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -28,18 +28,18 @@ echo "" >> $argfile
 
 # Find test suites and add them to the argument file.
 echo "# PYTHON Publish/Subscribe Telemetry test suites" >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Telemetry/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Telemetry\//' >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Telemetry/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Telemetry\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Telemetry/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Telemetry\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Telemetry/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Telemetry\//' >> $argfile
 echo "" >> $argfile
 echo "# PYTHON State Machine test suites" >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/StateMachine/Camera_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/StateMachine/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/StateMachine/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/StateMachine/Camera_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/StateMachine/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/StateMachine/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/StateMachine\//' >> $argfile
 echo "" >> $argfile
 echo "# PYTHON Commander/Controller test suites" >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Commands/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Commands\//' >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Commands/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Commands\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Commands/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Commands\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Commands/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Commands\//' >> $argfile
 echo "" >> $argfile
 echo "# PYTHON Event Sender/Logger test suites" >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Events/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Events\//' >> $argfile
-basename `ls -1 $ROBOT_FRAMEWORK_REPO_DIR/PYTHON/Events/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Events\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Events/M2MS_*` |sed 's/^/rbtsal\/PYTHON\/Events\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/PYTHON/Events/MTMount_*` |sed 's/^/rbtsal\/PYTHON\/Events\//' >> $argfile
