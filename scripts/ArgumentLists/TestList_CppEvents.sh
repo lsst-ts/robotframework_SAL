@@ -6,11 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-<<<<<<< HEAD
 argfile=$ROBOTFRAMEWORK_SAL_DIR/CppEvents_Tests.list
-=======
-argfile=$ROBOT_FRAMEWORK_REPO_DIR/CppEvents_Tests.list
->>>>>>> modifying path to use a sourced environment variable rather than hardcoded
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null

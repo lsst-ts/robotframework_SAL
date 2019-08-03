@@ -125,12 +125,17 @@ rm -r $HOME/Reports/SAL_RegressionTests
 
 # Move to trunk/robotframework_SAL to run the tests.
 <<<<<<< HEAD
+<<<<<<< HEAD
 echo "cd $ROBOTFRAMEWORK_SAL_DIR"
 cd $ROBOTFRAMEWORK_SAL_DIR
 =======
 echo "cd $ROBOT_FRAMEWORK_REPO_DIR"
 cd $ROBOT_FRAMEWORK_REPO_DIR
 >>>>>>> modifying path to use a sourced environment variable rather than hardcoded
+=======
+echo "cd $ROBOTFRAMEWORK_SAL_DIR"
+cd $ROBOTFRAMEWORK_SAL_DIR
+>>>>>>> moving the path environment and aliases to readme requiring user to set within .bashrc
 
 # Run the tests.
 echo "=== Running the regression. ==="
