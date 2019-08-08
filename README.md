@@ -8,4 +8,4 @@ To be able to run the scripts you need to set two environment variables.
 
 ROBOTFRAMEWORK_SAL_DIR - to the location of this repository. For example you would need to run "export /home/user/robotframework_SAL"
 
-TS_XML_DIR - to the location of the ts_xml repository. For example you would need to run "export /home/user/ts_xml"
+TS_XML_DIR - to the location location of the ts_xml repository. For example you would need to run "export /home/user/ts_xml"
