@@ -2,7 +2,7 @@
 Documentation    ATAOS_Events communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
-Suite Teardown    Close All Connections
+Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections
 Library    Process
@@ -30,11 +30,11 @@ Start Logger
     Log    ${output}
     Should Contain    "${output}"    "1"
     Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
-    
     Set Test Variable    ${loggersReadyTextFound}    "FALSE"
     :FOR    ${i}    IN RANGE    30
     \    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
-    \    Run Keyword If     'ATAOS all loggers ready' in $output    Set Test Variable    ${loggersReadyTextFound}    "TRUE"
+    \    Run Keyword If    'ATAOS all loggers ready' in $output    Set Test Variable    ${loggersReadyTextFound}    "TRUE"
     \    Exit For Loop If     'ATAOS all loggers ready' in $output
     \    Sleep    3s
     Should Be True    ${loggersReadyTextFound} == "TRUE"
+

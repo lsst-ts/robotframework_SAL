@@ -95,7 +95,7 @@ function createSettings() {
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    java    $skipped" >> $testSuite
 	echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-    echo "Suite Teardown    Close All Connections" >> $testSuite
+    echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
@@ -169,10 +169,14 @@ function startLogger() {
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    999999" >> $testSuite
+    
+    echo "    Set Test Variable    \${loggersReadyTextFound}    \"FALSE\"" >> $testSuite
+    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     echo "    \\    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    \\    Run Keyword If    'ATAOS all loggers ready' in \$output    Set Test Variable    \${loggersReadyTextFound}    \"TRUE\"" >> $testSuite
     echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$output" >> $testSuite
     echo "    \\    Sleep    3s" >> $testSuite
+    echo "    Should Be True    \${loggersReadyTextFound} == \"TRUE\"" >> $testSuite
     echo "" >> $testSuite
 }
 
