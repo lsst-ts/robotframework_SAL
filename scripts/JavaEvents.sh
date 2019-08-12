@@ -169,15 +169,11 @@ function startLogger() {
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-    echo "    :FOR    \${i} IN RANGE    30" >> $testSuite
+    echo "    :FOR    \${i}    IN RANGE    999999" >> $testSuite
     echo "    \\    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
     echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$output" >> $testSuite
-    echo "    \\    Sleep    1s" >> testSuite
-    echo ""
-
-
+    echo "    \\    Sleep    3s" >> $testSuite
     echo "" >> $testSuite
-
 }
 
 function startSender() {
