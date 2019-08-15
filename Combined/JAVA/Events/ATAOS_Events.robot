@@ -24,17 +24,23 @@ Verify Component Sender and Logger
 
 Start Logger
     [Tags]    functional
-    Comment    Start Logger.
-    Comment    Start the EventLogger test.
-    ${output}=    Start Process    mvn    -Dtest\=${subSystem}EventLogger_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=logger    stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-    Log    ${output}
-    Should Contain    "${output}"    "1"
-    Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
-    Set Test Variable    ${loggersReadyTextFound}    "FALSE"
-    :FOR    ${i}    IN RANGE    30
-    \    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
-    \    Run Keyword If    'ATAOS all loggers ready' in $output    Set Test Variable    ${loggersReadyTextFound}    "TRUE"
-    \    Exit For Loop If     'ATAOS all loggers ready' in $output
-    \    Sleep    3s
-    Should Be True    ${loggersReadyTextFound} == "TRUE"
+    Comment    Executing Combined Java Event Logger Program.
+    ${loggerOutput}=    Start Process    mvn    -Dtest\=${subSystem}EventLogger_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=logger    stdout=${EXECDIR}${/}stdoutLogger.txt    stderr=${EXECDIR}${/}stderrLogger.txt
+    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}stdoutLogger.txt
 
+Start Sender
+    [Tags]    functional
+    Comment    Sender Program waiting for Logger program to be Ready.
+    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
+    :FOR    ${i}    IN RANGE    30
+    \    Exit For Loop If     'ATAOS all loggers ready' in $loggerOutput
+    \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
+    \    Sleep    3s
+    Comment    Executing Combined Java Event Logger Program.
+    ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
+    :FOR    ${i}    IN RANGE    30
+    \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
+    \    Run Keyword If    'BUILD SUCCESS' in $loggerOutput    Set Test Variable    ${loggerCompletionTextFound}    "TRUE"
+    \    Exit For Loop If     'BUILD SUCCESS' in $loggerOutput
+    \    Sleep    3s
+    Should Be True    ${loggerCompletionTextFound} == "TRUE"

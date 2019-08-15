@@ -131,80 +131,51 @@ function verifyCompSenderLogger() {
     echo "" >> $testSuite
 }
 
-function startSenderInputs() {
-    parameter=$EMPTY
-    echo "Start Sender - Verify Missing Inputs Error" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Sender" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
-    echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_\${component}_send $parameter" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}   Usage :  input parameters..." >> $testSuite
-    echo "" >> $testSuite
-}
-
-function startLogger() {
-    # echo "Start Logger" >> $testSuite
-    # echo "    [Tags]    functional" >> $testSuite
-    # echo "    Switch Connection    Logger" >> $testSuite
-    # echo "    Comment    Move to working directory." >> $testSuite
-    # echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
-    # echo "    Comment    Start the EventLogger test." >> $testSuite
-    # echo "    \${input}=    Write    mvn -Dtest=\${subSystem}EventLogger_\${component}Test test" >> $testSuite
-    # #echo "    \${output}=    Read Until    Scanning for projects..." >> $testSuite
-    # echo "" >> $testSuite
+function startJavaCombinedLoggerProcess() {
+    # Starts the Java Combined Sender program in the background. Verifies that 
+    # the process is executing. Since "Start Process" is being used, the 
+    # startJavaCombinedSenderProcess function creates a robot test that will 
+    # wait for text indicating that the logger is ready to appear or timeout. 
+    # This is necessary otherwise the robot program will close before any of the 
+    # processes have time to complete and communicate with each other which is 
+    # what these robot files are testing.
 
     local subSystem=$1
-    local testSuite=$2
-    local topic=$3
+    local topic=$2
+    local testSuite=$3
 
     echo "Start Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Comment    Start Logger." >> $testSuite
-    echo "    Comment    Start the EventLogger test." >> $testSuite
-    echo "    \${output}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite    
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-    echo "    Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-    
-    echo "    Set Test Variable    \${loggersReadyTextFound}    \"FALSE\"" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-    echo "    \\    Run Keyword If    'ATAOS all loggers ready' in \$output    Set Test Variable    \${loggersReadyTextFound}    \"TRUE\"" >> $testSuite
-    echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$output" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
-    echo "    Should Be True    \${loggersReadyTextFound} == \"TRUE\"" >> $testSuite
+    echo "    Comment    Executing Combined Java Event Logger Program." >> $testSuite
+    echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
+    echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "" >> $testSuite
 }
 
-function startSender() {
-	local testSuite=$1
+function startJavaCombinedSenderProcess() {
+    # Wait for the Logger program to be ready. It will know by a specific text
+    # that the program generates. 
+
+    local subSystem=$1
+    local topic=$2
+    local testSuite=$3
+
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Sender" >> $testSuite
-    echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}" >> $testSuite
-    echo "    Comment    Run the Event test." >> $testSuite
-    echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Event_all test" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >> $testSuite
-    echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === [putSample logevent_${topic}] writing a message containing :    1" >> $testSuite
-    echo "    Should Contain    \${output}    revCode \ :" >>$testSuite
-    echo "" >> $testSuite
-}
-
-function readLogger() {
-	local testSuite=$1
-    echo "Read Logger" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Connection    Logger" >> $testSuite
-    echo "    \${output}=    Read Until Prompt" >>$testSuite
-    echo "    Log    \${output}" >> $testSuite
-	echo "    Should Contain    \${output}    Running \${subSystem}EventLogger_${topic}Test" >> $testSuite
-	echo "    Should Not Contain    \${output}    [ERROR]" >> $testSuite
+    echo "    Comment    Sender Program waiting for Logger program to be Ready." >> $testSuite
+    echo "    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
+    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "    \\    Sleep    3s" >> $testSuite
+    echo "    Comment    Executing Combined Java Event Logger Program." >> $testSuite
+    echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
+    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
+    echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
+    echo "    \\    Sleep    3s" >> $testSuite
+    echo "    Should Be True    \${loggerCompletionTextFound} == \"TRUE\"" >> $testSuite
 }
 
 function createTestSuite() {
@@ -224,78 +195,14 @@ function createTestSuite() {
     createVariables $subSystem $testSuiteCombined "all"
     echo "*** Test Cases ***" >> $testSuiteCombined
     verifyCompSenderLogger $testSuiteCombined
-    startLogger $subSystem $testSuiteCombined
-    startSender $subSystem $testSuiteCombined
-    readLogger $file $topicIndex $testSuiteCombined
+
+    startJavaCombinedLoggerProcess $subSystem $messageType $testSuiteCombined
+    startJavaCombinedSenderProcess $subSystem $messageType $testSuiteCombined
+    #readLogger $file $topicIndex $testSuiteCombined    
+
     echo ==== Combined test generation complete ====
     echo ""
- #    echo Generating:
-	# for topic in "${topicsArray[@]}"; do
-	# 	device=$EMPTY
-	# 	property=$EMPTY
-	# 	#  Define test suite name
-	# 	testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
-	# 	#  Get EFDB_Topic elements
-	# 	getTopicParameters $file $topicIndex
-	# 	device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
-	# 	property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
-
- #        #  Check if test suite should be skipped.
- #        skipped=$(checkIfSkipped $subSystem $topic $messageType)
-
-	# 	#  Create test suite.
-	# 	echo $testSuite
-	# 	createSettings $subSystem
-	# 	createVariables $subSystem
-	# 	echo "*** Test Cases ***" >> $testSuite
- #        verifyCompSenderLogger
-	# 	#startSenderInputs
-	# 	startLogger
-
-	# 	# Get the arguments to the sender.
-	# 	unset argumentsArray
-	# 	# Determine the parameter type and create a test value, accordingly.
- #        #for parameter in "${parametersArray[@]}"; do
- #            #parameterIndex=$(getParameterIndex $parameter)
- #            #parameterType=$(getParameterType $file $topicIndex $parameterIndex)
- #            #parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-	# 		#parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
-	# 		#echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
-	# 		#for i in $(seq 1 $parameterCount); do
- #                #testValue=$(generateArgument "$parameterType" $parameterIDLSize)
- #                #argumentsArray+=( $testValue )
- #            #done
-	# 	#done
-	# 	# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
-	# 	# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-	# 	#parametersArray=("${parametersArray[@]}" "priority")
-	# 	#priority=$(python random_value.py long)
-	# 	#argumentsArray=("${argumentsArray[@]}" "$priority")
-	# 	# Create the Start Sender test case.
-	# 	startSender $device $property
-	# 	# Create the Read Logger test case.
-	# 	readLogger $device $property
- #    	# Move to next Topic.
-	# 	(( topicIndex++ ))
-	# done
-	# echo ""
 }
 
 #### Call the main() function ####
 main $1
-
-
-# Start Logger
-#     ${output}=    Start Process    mvn    -Dtest\=ATAOSEventLogger_all.java    test    cwd=/home/aheyer/tsrepos/ts_sal/test/maven/ATAOS_3.10.0/    alias=Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-#     Log    ${output}
-#     Should Contain    "${output}"    "1"
-#     Wait Until Keyword Succeeds    200    1s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
-#     Log    Doing setup    console=${True}
-#     :FOR    ${i}    IN RANGE    999999
-#     \    
-#     \    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
-#     \    Log    fdsafdsa setup    console=${True}
-#     \    Log    Doing sfdsafdsfp    console=${True}
-#     \    Exit For Loop If    '${subSystem} all loggers ready' in $output
-#     \    
