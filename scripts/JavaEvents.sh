@@ -88,9 +88,11 @@ function getParameterCount() {
 }
 
 function createSettings() {
+    
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
+
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    java    $skipped" >> $testSuite
@@ -105,9 +107,11 @@ function createSettings() {
 }
 
 function createVariables() {
-	local subSystem=$1
+
+    local subSystem=$1
     local testSuite=$2
     local topic=$3
+
     if [ "$topic" == "all" ]; then
         timeout="45s"
     else
@@ -146,7 +150,7 @@ function startJavaCombinedLoggerProcess() {
 
     echo "Start Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Comment    Executing Combined Java Event Logger Program." >> $testSuite
+    echo "    Comment    Executing Combined Java Logger Program." >> $testSuite
     echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "" >> $testSuite
@@ -162,19 +166,22 @@ function startJavaCombinedSenderProcess() {
 
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Comment    Sender Program waiting for Logger program to be Ready." >> $testSuite
+    
+    echo "    Comment    Sender program waiting for Logger program to be Ready." >> $testSuite
     echo "    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
     echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    \\    Sleep    3s" >> $testSuite
-    echo "    Comment    Executing Combined Java Event Logger Program." >> $testSuite
+    
+    echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
     echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
     echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
     echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
     echo "    \\    Sleep    3s" >> $testSuite
+    
     echo "    Should Be True    \${loggerCompletionTextFound} == \"TRUE\"" >> $testSuite
 }
 

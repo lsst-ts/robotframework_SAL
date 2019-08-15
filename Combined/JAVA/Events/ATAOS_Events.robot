@@ -24,7 +24,7 @@ Verify Component Sender and Logger
 
 Start Logger
     [Tags]    functional
-    Comment    Executing Combined Java Event Logger Program.
+    Comment    Executing Combined Java Logger Program.
     ${loggerOutput}=    Start Process    mvn    -Dtest\=${subSystem}EventLogger_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=logger    stdout=${EXECDIR}${/}stdoutLogger.txt    stderr=${EXECDIR}${/}stderrLogger.txt
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}stdoutLogger.txt
 
@@ -36,7 +36,7 @@ Start Sender
     \    Exit For Loop If     'ATAOS all loggers ready' in $loggerOutput
     \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
     \    Sleep    3s
-    Comment    Executing Combined Java Event Logger Program.
+    Comment    Executing Combined Java Sender Program.
     ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
     :FOR    ${i}    IN RANGE    30
     \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
