@@ -3,7 +3,7 @@
 report_dir=$HOME/Reports/SAL_AuxTel
 vars_dir=$HOME/bin
 salgen_dir=$HOME/trunk/robotframework_salgenerator
-salmessage_dir=$HOME/trunk/robotframework_SAL
+salmessage_dir=$ROBOTFRAMEWORK_SAL_DIR
 
 # Clean out results directory.
 echo "=== Clearing previous test results. ==="

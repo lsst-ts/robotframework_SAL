@@ -22,19 +22,19 @@ function generateTests() {
 
 function getTelemetryTopics() {
 	local subSystem=$(getEntity $1)
-    local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
+    local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
     echo $output
 }
 
 function getCommandTopics() {
 	local subSystem=$1
-    local output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_command_//" )
+    local output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_command_//" )
     echo $output
 }
 
 function getEventTopics() {
 	local subSystem=$1
-    local output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
+    local output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
     echo $output
 }
 
@@ -45,8 +45,8 @@ function clearTestSuites() {
 	local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
 	if [ -n "$3" ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}; else local topic_type=""; fi #Topic type is capitalized 
 	echo "==================================== ${subsystem} ${language} ${topic_type} tests ===================================="
-	#files=$(ls -1 $HOME/trunk/robotframework_SAL/Separate/$language/$topic_type/${subsystem}_* ; ls -1 $HOME/trunk/robotframework_SAL/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
-	files=$(ls -1 $HOME/trunk/robotframework_SAL/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+	#files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Separate/$language/$topic_type/${subsystem}_* ; ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+	files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
     if [ $? -eq 0 ]; then
     	echo "Deleting:"
 		echo "$files"

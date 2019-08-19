@@ -7,10 +7,10 @@
 
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/PYTHON/Commands
+workDir=$ROBOTFRAMEWORK_SAL_DIR/PYTHON/Commands
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -25,7 +25,7 @@ function main() {
 
     # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
     subsystem=$(getEntity $arg)
-    file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Commands.xml)
+    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Commands.xml)
 
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "PYTHON" "Commands" || exit 1

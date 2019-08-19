@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$HOME/trunk/robotframework_SAL/Jenkins_Java.list
+argfile=$ROBOTFRAMEWORK_SAL_DIR/Jenkins_Java.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -28,14 +28,14 @@ echo "" >> $argfile
 
 # Find test suites and add them to the argument file.
 echo "# JAVA Publish/Subscribe Telemetry test suites" >> $argfile
-basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Telemetry/Camera_*` |sed 's/^/rbtsal\/JAVA\/Telemetry\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/JAVA/Telemetry/Camera_*` |sed 's/^/rbtsal\/JAVA\/Telemetry\//' >> $argfile
 echo "" >> $argfile
 echo "# JAVA State Machine test suites" >> $argfile
-basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/StateMachine/Camera_*` |sed 's/^/rbtsal\/JAVA\/StateMachine\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/JAVA/StateMachine/Camera_*` |sed 's/^/rbtsal\/JAVA\/StateMachine\//' >> $argfile
 echo "" >> $argfile
 echo "# JAVA Commander/Controller test suites" >> $argfile
-basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Commands/Camera_*` |sed 's/^/rbtsal\/JAVA\/Commands\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/JAVA/Commands/Camera_*` |sed 's/^/rbtsal\/JAVA\/Commands\//' >> $argfile
 echo "" >> $argfile
 echo "# JAVA Event Sender/Logger test suites" >> $argfile
-basename `ls -1 $HOME/trunk/robotframework_SAL/JAVA/Events/Camera_*` |sed 's/^/rbtsal\/JAVA\/Events\//' >> $argfile
+basename `ls -1 $ROBOTFRAMEWORK_SAL_DIR/JAVA/Events/Camera_*` |sed 's/^/rbtsal\/JAVA\/Events\//' >> $argfile
 

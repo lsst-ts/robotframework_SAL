@@ -1,4 +1,4 @@
-for SCRIPT in $HOME/trunk/robotframework_SAL/scripts/ArgumentLists/TestList*
+for SCRIPT in $ROBOTFRAMEWORK_SAL_DIR/scripts/ArgumentLists/TestList*
 do
 	if [ -f $SCRIPT -a -x $SCRIPT ]; then
 		$SCRIPT

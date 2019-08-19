@@ -7,10 +7,10 @@
 
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/CPP/GenericEvents
+workDir=$ROBOTFRAMEWORK_SAL_DIR/CPP/GenericEvents
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -24,7 +24,7 @@ function main() {
     arg=$1
 
     # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    file=($HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml)
+    file=($TS_XML_DIR/sal_interfaces/SALGenerics.xml)
 
     # Delete all associated test suites first, to catch any removed topics.
     clearTestSuites $arg "CPP" "GenericEvents" || exit 1
@@ -192,7 +192,7 @@ function createTestSuite() {
 
 	# Check if CSC uses the Generic topics (most do, but a few do not).
 	# ... If not, skip this CSC.
-	output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
+	output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
 	if [ "$output" == "no" ]; then
 		echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
 	fi

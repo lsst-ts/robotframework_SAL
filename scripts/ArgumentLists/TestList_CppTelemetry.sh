@@ -6,7 +6,7 @@
 #  email:  rbovill@lsst.org
 
 # Define filename
-argfile=$HOME/trunk/robotframework_SAL/CppTelemetry_Tests.list
+argfile=$ROBOTFRAMEWORK_SAL_DIR/CppTelemetry_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -26,10 +26,10 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $HOME/trunk/robotframework_SAL/CPP/Telemetry |sed 's/^/CPP\/Telemetry\//' >> $argfile
+ls -1 $ROBOTFRAMEWORK_SAL_DIR/CPP/Telemetry |sed 's/^/CPP\/Telemetry\//' >> $argfile
 
 # Define Combined interface testig filename
-argfile=$HOME/trunk/robotframework_SAL/CombinedCppTelemetry_Tests.list
+argfile=$ROBOTFRAMEWORK_SAL_DIR/CombinedCppTelemetry_Tests.list
 
 # Find and remove old argument file.
 ls $argfile 1>/dev/null
@@ -49,5 +49,5 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $HOME/trunk/robotframework_SAL/Combined/CPP/Telemetry |sed 's/^/Combined\/CPP\/Telemetry\//' >> $argfile
+ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Telemetry |sed 's/^/Combined\/CPP\/Telemetry\//' >> $argfile
 

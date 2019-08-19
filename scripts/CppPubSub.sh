@@ -7,11 +7,11 @@
 
 
 # Source common functions
-source $HOME/trunk/robotframework_SAL/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$HOME/trunk/robotframework_SAL/Separate/CPP/Telemetry
-workDirCombined=$HOME/trunk/robotframework_SAL/Combined/CPP/Telemetry
+workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Telemetry
+workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Telemetry
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
@@ -21,7 +21,7 @@ function main() {
 
 	# Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
 	subsystem=$(getEntity $arg)
-	file=($HOME/trunk/ts_xml/sal_interfaces/$subsystem/*_Telemetry.xml)
+	file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
 
 	# Delete all test associated test suites first, to catch any removed topics.
 	clearTestSuites $arg "CPP" "Telemetry" || exit 1
