@@ -91,7 +91,7 @@ function createSettings() {
 
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
-    local testSuite=$3
+    local testSuite=$3  
 
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
@@ -108,29 +108,32 @@ function createSettings() {
 
 function createVariables() {
 
-        local subSystem=$1
-        local testSuite=$2
-        local topic=$3
+    local subSystem=$1
+    local topic=$2
+    local testSuite=$3
 
-        if [ "$topic" == "all" ]; then
-            timeout="45s"
-        else
-            timeout="3s"
-        fi
-        echo "*** Variables ***" >> $testSuite
-        echo "\${subSystem}    $subSystem" >> $testSuite
-        echo "\${component}    $topic" >> $testSuite
-        echo "\${timeout}    30s" >> $testSuite
-        echo "" >> $testSuite
+    if [ "$topic" == "all" ]; then
+        timeout="45s"
+    else
+        timeout="3s"
+    fi
+    echo "*** Variables ***" >> $testSuite
+    echo "\${subSystem}    $subSystem" >> $testSuite
+    echo "\${component}    $topic" >> $testSuite
+    echo "\${timeout}    30s" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function verifyCompCommanderController() {
+
+    local testSuite=$1
+    
     echo "Verify Component Commander and Controller" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Commander_\${component}Test.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Controller_\${component}Test.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Commander_\${component}Test.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Controller_\${component}Test.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Commander_all.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Controller_all.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Commander_all.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Controller_all.java" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -141,12 +144,41 @@ function startJavaCombinedControllerProcess() {
     local topic=$2
     local testSuite=$3
 
-    echo "Start Logger" >> $testSuite
+    echo "Start Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Logger Program." >> $testSuite
     echo "    \${controllerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Controller_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=controller    stdout=\${EXECDIR}\${/}stdoutController.txt    stderr=\${EXECDIR}\${/}stderrController.txt" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutController.txt" >> $testSuite
     echo "" >> $testSuite
+}
+
+function startJavaCombinedCommanderProcess() {
+    # Wait for the Controller program to be ready. It will know by a specific text
+    # that the program generates. 
+
+    local subSystem=$1
+    local topic=$2
+    local testSuite=$3
+
+    echo "Start Commander" >> $testSuite
+    echo "    [Tags]    functional" >> $testSuite
+    
+    echo "    Comment    Commander program waiting for Controller program to be Ready." >> $testSuite
+    echo "    \${controllerOutput}=    Get File    \${EXECDIR}\${/}stdoutController.txt" >> $testSuite
+    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "    \\    Exit For Loop If     '${subSystem} all controllers ready' in \$controllerOutput" >> $testSuite
+    echo "    \\    \${controllerOutput}=    Get File    \${EXECDIR}\${/}stdoutController.txt" >> $testSuite
+    echo "    \\    Sleep    3s" >> $testSuite
+    
+    echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
+    echo "    \${commanderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Commander_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=commander    stdout=\${EXECDIR}\${/}stdoutCommander.txt    stderr=\${EXECDIR}\${/}stderrCommander.txt" >> $testSuite    
+    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "    \\    \${controllerOutput}=    Get File    \${EXECDIR}\${/}stdoutController.txt" >> $testSuite
+    echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$controllerOutput    Set Test Variable    \${controllerCompletionTextFound}    \"TRUE\"" >> $testSuite
+    echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$controllerOutput" >> $testSuite
+    echo "    \\    Sleep    3s" >> $testSuite
+    
+    echo "    Should Be True    \${controllerCompletionTextFound} == \"TRUE\"" >> $testSuite
 }
 
 function startCommanderTimeout() {
@@ -230,11 +262,12 @@ function createTestSuite() {
     echo $testSuiteCombined
 
     createSettings $subSystem $messageType $testSuiteCombined
-    createVariables $subSystem $testSuiteCombdined "all"
+    createVariables $subSystem  "all" $testSuiteCombined
     echo "*** Test Cases ***" >> $testSuiteCombined
     verifyCompCommanderController $testSuiteCombined
 
     startJavaCombinedControllerProcess $subSystem $messageType $testSuiteCombined
+    startJavaCombinedCommanderProcess $subSystem $messageType $testSuiteCombined
 
     # echo Generating:
 	# for topic in "${topicsArray[@]}"; do
