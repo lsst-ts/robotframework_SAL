@@ -238,18 +238,22 @@ Read Logger
     ${endLiveView_start}=    Get Index From List    ${full_list}    === ${subSystem}_endLiveView start of topic ===
     ${endLiveView_end}=    Get Index From List    ${full_list}    === ${subSystem}_endLiveView end of topic ===
     ${endLiveView_list}=    Get Slice From List    ${full_list}    start=${endLiveView_start}    end=${endLiveView_end}
+    Should Contain X Times    ${endLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startTakeImage_start}=    Get Index From List    ${full_list}    === ${subSystem}_startTakeImage start of topic ===
     ${startTakeImage_end}=    Get Index From List    ${full_list}    === ${subSystem}_startTakeImage end of topic ===
     ${startTakeImage_list}=    Get Slice From List    ${full_list}    start=${startTakeImage_start}    end=${startTakeImage_end}
+    Should Contain X Times    ${startTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startShutterOpen_start}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterOpen start of topic ===
     ${startShutterOpen_end}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterOpen end of topic ===
     ${startShutterOpen_list}=    Get Slice From List    ${full_list}    start=${startShutterOpen_start}    end=${startShutterOpen_end}
+    Should Contain X Times    ${startShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endShutterOpen_start}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterOpen start of topic ===
     ${endShutterOpen_end}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterOpen end of topic ===
     ${endShutterOpen_list}=    Get Slice From List    ${full_list}    start=${endShutterOpen_start}    end=${endShutterOpen_end}
+    Should Contain X Times    ${endShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startIntegration_start}=    Get Index From List    ${full_list}    === ${subSystem}_startIntegration start of topic ===
     ${startIntegration_end}=    Get Index From List    ${full_list}    === ${subSystem}_startIntegration end of topic ===
@@ -264,14 +268,17 @@ Read Logger
     ${endIntegration_start}=    Get Index From List    ${full_list}    === ${subSystem}_endIntegration start of topic ===
     ${endIntegration_end}=    Get Index From List    ${full_list}    === ${subSystem}_endIntegration end of topic ===
     ${endIntegration_list}=    Get Slice From List    ${full_list}    start=${endIntegration_start}    end=${endIntegration_end}
+    Should Contain X Times    ${endIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startShutterClose_start}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterClose start of topic ===
     ${startShutterClose_end}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterClose end of topic ===
     ${startShutterClose_list}=    Get Slice From List    ${full_list}    start=${startShutterClose_start}    end=${startShutterClose_end}
+    Should Contain X Times    ${startShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endShutterClose_start}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterClose start of topic ===
     ${endShutterClose_end}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterClose end of topic ===
     ${endShutterClose_list}=    Get Slice From List    ${full_list}    start=${endShutterClose_start}    end=${endShutterClose_end}
+    Should Contain X Times    ${endShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startReadout_start}=    Get Index From List    ${full_list}    === ${subSystem}_startReadout start of topic ===
     ${startReadout_end}=    Get Index From List    ${full_list}    === ${subSystem}_startReadout end of topic ===
@@ -296,6 +303,7 @@ Read Logger
     ${endTakeImage_start}=    Get Index From List    ${full_list}    === ${subSystem}_endTakeImage start of topic ===
     ${endTakeImage_end}=    Get Index From List    ${full_list}    === ${subSystem}_endTakeImage end of topic ===
     ${endTakeImage_list}=    Get Slice From List    ${full_list}    start=${endTakeImage_start}    end=${endTakeImage_end}
+    Should Contain X Times    ${endTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===

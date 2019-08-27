@@ -44,14 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Scheduler_timestamp end of topic ===
-    Comment    ======= Verify ${subSystem}_loopTimeMs test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loopTimeMs
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === Scheduler_loopTimeMs start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loopTimeMs_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Scheduler_loopTimeMs end of topic ===
     Comment    ======= Verify ${subSystem}_nightSummary test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nightSummary
     @{words}=    Split String    ${line}
@@ -288,15 +280,10 @@ Read Subscriber
     ${timestamp_end}=    Get Index From List    ${full_list}    === Scheduler_timestamp end of topic ===
     ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end}
     Should Contain X Times    ${timestamp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${loopTimeMs_start}=    Get Index From List    ${full_list}    === Scheduler_loopTimeMs start of topic ===
-    ${loopTimeMs_end}=    Get Index From List    ${full_list}    === Scheduler_loopTimeMs end of topic ===
-    ${loopTimeMs_list}=    Get Slice From List    ${full_list}    start=${loopTimeMs_start}    end=${loopTimeMs_end}
-    Should Contain X Times    ${loopTimeMs_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTimeMs : 1    10
     ${nightSummary_start}=    Get Index From List    ${full_list}    === Scheduler_nightSummary start of topic ===
     ${nightSummary_end}=    Get Index From List    ${full_list}    === Scheduler_nightSummary end of topic ===
     ${nightSummary_list}=    Get Slice From List    ${full_list}    start=${nightSummary_start}    end=${nightSummary_end}
     Should Contain X Times    ${nightSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalVisits : 1    10
-    Should Contain X Times    ${nightSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${predictedSchedule_start}=    Get Index From List    ${full_list}    === Scheduler_predictedSchedule start of topic ===
     ${predictedSchedule_end}=    Get Index From List    ${full_list}    === Scheduler_predictedSchedule end of topic ===
     ${predictedSchedule_list}=    Get Slice From List    ${full_list}    start=${predictedSchedule_start}    end=${predictedSchedule_end}
@@ -319,22 +306,8 @@ Read Subscriber
     ${driverConfig_start}=    Get Index From List    ${full_list}    === Scheduler_driverConfig start of topic ===
     ${driverConfig_end}=    Get Index From List    ${full_list}    === Scheduler_driverConfig end of topic ===
     ${driverConfig_list}=    Get Slice From List    ${full_list}    start=${driverConfig_start}    end=${driverConfig_end}
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coaddValues : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeBalancing : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timecostTimeMax : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timecostTimeRef : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timecostCostRef : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timecostWeight : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filtercostWeight : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propboostWeight : 1    10
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nightBoundary : 1    10
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}newMoonPhaseThreshold : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreSkyBrightness : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreAirmass : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreClouds : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreSeeing : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lookaheadWindowSize : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lookaheadBonusWeight : 1    10
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupType : LSST    10
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupDatabase : LSST    10
     ${obsSiteConfig_start}=    Get Index From List    ${full_list}    === Scheduler_obsSiteConfig start of topic ===
@@ -392,10 +365,6 @@ Read Subscriber
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterTime : 1    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMountTime : 1    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterChangeTime : 1    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMaxChangesBurstNum : 1    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMaxChangesBurstTime : 1    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMaxChangesAvgNum : 1    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMaxChangesAvgTime : 1    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : LSST    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPos : LSST    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterRemovable : LSST    10

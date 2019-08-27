@@ -116,21 +116,23 @@ Read Logger
     ${alarm_end}=    Get Index From List    ${full_list}    === ${subSystem}_alarm end of topic ===
     ${alarm_list}=    Get Slice From List    ${full_list}    start=${alarm_start}    end=${alarm_end}
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : LSST    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}severity : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : LSST    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxSeverity : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledged : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledgedBy : LSST    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabled : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalated : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalateTo : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mutedSeverity : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mutedBy : LSST    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityOldest : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityNewest : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampMaxSeverity : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcknowledged : 1    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAutoUnacknowledge : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAutoAcknowledge : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAutoUnacknowledge : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampEscalate : 1    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampUnmute : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===

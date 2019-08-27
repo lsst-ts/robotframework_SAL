@@ -52,22 +52,22 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loopTime_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATWhiteLight_loopTime end of topic ===
-    Comment    ======= Verify ${subSystem}_bulbHours test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulbHours
+    Comment    ======= Verify ${subSystem}_bulbhour test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulbhour
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_bulbHours start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulbHours_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === ATWhiteLight_bulbhour start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulbhour_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_bulbHours end of topic ===
-    Comment    ======= Verify ${subSystem}_bulbWattHours test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulbWattHours
+    Should Contain    ${output.stdout}    === ATWhiteLight_bulbhour end of topic ===
+    Comment    ======= Verify ${subSystem}_bulbWatthour test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulbWatthour
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATWhiteLight_bulbWattHours start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulbWattHours_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === ATWhiteLight_bulbWatthour start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulbWatthour_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATWhiteLight_bulbWattHours end of topic ===
+    Should Contain    ${output.stdout}    === ATWhiteLight_bulbWatthour end of topic ===
     Comment    ======= Verify ${subSystem}_chillerFansSpeed test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chillerFansSpeed
     @{words}=    Split String    ${line}
@@ -132,14 +132,14 @@ Read Subscriber
     ${loopTime_end}=    Get Index From List    ${full_list}    === ATWhiteLight_loopTime end of topic ===
     ${loopTime_list}=    Get Slice From List    ${full_list}    start=${loopTime_start}    end=${loopTime_end}
     Should Contain X Times    ${loopTime_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTime : 1    10
-    ${bulbHours_start}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbHours start of topic ===
-    ${bulbHours_end}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbHours end of topic ===
-    ${bulbHours_list}=    Get Slice From List    ${full_list}    start=${bulbHours_start}    end=${bulbHours_end}
-    Should Contain X Times    ${bulbHours_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bulbHours : 1    10
-    ${bulbWattHours_start}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbWattHours start of topic ===
-    ${bulbWattHours_end}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbWattHours end of topic ===
-    ${bulbWattHours_list}=    Get Slice From List    ${full_list}    start=${bulbWattHours_start}    end=${bulbWattHours_end}
-    Should Contain X Times    ${bulbWattHours_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bulbHours : 1    10
+    ${bulbhour_start}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbhour start of topic ===
+    ${bulbhour_end}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbhour end of topic ===
+    ${bulbhour_list}=    Get Slice From List    ${full_list}    start=${bulbhour_start}    end=${bulbhour_end}
+    Should Contain X Times    ${bulbhour_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bulbhour : 1    10
+    ${bulbWatthour_start}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbWatthour start of topic ===
+    ${bulbWatthour_end}=    Get Index From List    ${full_list}    === ATWhiteLight_bulbWatthour end of topic ===
+    ${bulbWatthour_list}=    Get Slice From List    ${full_list}    start=${bulbWatthour_start}    end=${bulbWatthour_end}
+    Should Contain X Times    ${bulbWatthour_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bulbhour : 1    10
     ${chillerFansSpeed_start}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerFansSpeed start of topic ===
     ${chillerFansSpeed_end}=    Get Index From List    ${full_list}    === ATWhiteLight_chillerFansSpeed end of topic ===
     ${chillerFansSpeed_list}=    Get Slice From List    ${full_list}    start=${chillerFansSpeed_start}    end=${chillerFansSpeed_end}

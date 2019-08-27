@@ -44,14 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === SummitFacility_timestamp end of topic ===
-    Comment    ======= Verify ${subSystem}_loopTime test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loopTime
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === SummitFacility_loopTime start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loopTime_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === SummitFacility_loopTime end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -64,7 +56,3 @@ Read Subscriber
     ${timestamp_end}=    Get Index From List    ${full_list}    === SummitFacility_timestamp end of topic ===
     ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end}
     Should Contain X Times    ${timestamp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${loopTime_start}=    Get Index From List    ${full_list}    === SummitFacility_loopTime start of topic ===
-    ${loopTime_end}=    Get Index From List    ${full_list}    === SummitFacility_loopTime end of topic ===
-    ${loopTime_list}=    Get Slice From List    ${full_list}    start=${loopTime_start}    end=${loopTime_end}
-    Should Contain X Times    ${loopTime_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loopTime : 1    10

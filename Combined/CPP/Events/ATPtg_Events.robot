@@ -347,6 +347,7 @@ Read Logger
     ${mountGuideMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_mountGuideMode start of topic ===
     ${mountGuideMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_mountGuideMode end of topic ===
     ${mountGuideMode_list}=    Get Slice From List    ${full_list}    start=${mountGuideMode_start}    end=${mountGuideMode_end}
+    Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azWrapWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_azWrapWarning start of topic ===
     ${azWrapWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_azWrapWarning end of topic ===
@@ -376,6 +377,8 @@ Read Logger
     ${axesTrackMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_axesTrackMode start of topic ===
     ${axesTrackMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_axesTrackMode end of topic ===
     ${axesTrackMode_list}=    Get Slice From List    ${full_list}    start=${axesTrackMode_start}    end=${axesTrackMode_end}
+    Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
     Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${objectSetWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_objectSetWarning start of topic ===
     ${objectSetWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_objectSetWarning end of topic ===
