@@ -290,7 +290,7 @@ function createTestSuite() {
     getTopics $subSystem $file
 
     # Generate the test suite for each topic.
-    echo ============== Generating Combined messaging test suite ==============
+    echo Generating test suite:
 	testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
     echo $testSuiteCombined
     createSettings $subSystem $messageType $testSuiteCombined

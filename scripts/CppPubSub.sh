@@ -242,7 +242,7 @@ function createTestSuite {
 	getTopics $subSystem $file
 
 	# Generate the test suite for each message type.
-	echo ============== Generating Combined messaging test suite ==============
+	echo Generating test suite:
 	testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
 	echo $testSuiteCombined
 	createSettings $subSystem $messageType $testSuiteCombined
@@ -252,7 +252,7 @@ function createTestSuite {
     startSubscriber $testSuiteCombined
     startPublisher $testSuiteCombined
     readSubscriber $file $topicIndex $testSuiteCombined
-	echo Generation complete
+	echo ==== Combined Telemetry test generation complete ====
 	echo ""
 	# Generate the test suite for each topic.
 	#echo ============== Generating Separate messaging test suites ==============
@@ -278,8 +278,8 @@ function createTestSuite {
 		#readSubscriber $file $topicIndex $testSuite
     	#(( topicIndex++ ))
 	#done
-	echo Generation complete
-	echo ""
+	#echo Generation complete
+	#echo ""
 }
 
 #### Call the main() function ####
