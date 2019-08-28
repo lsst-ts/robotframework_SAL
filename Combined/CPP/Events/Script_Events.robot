@@ -98,40 +98,48 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
+    ${heartbeat_end}=    Evaluate    ${end}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${checkpoints_start}=    Get Index From List    ${full_list}    === ${subSystem}_checkpoints start of topic ===
-    ${checkpoints_end}=    Get Index From List    ${full_list}    === ${subSystem}_checkpoints end of topic ===
+    ${checkpoints_start}=    Get Index From List    ${full_list}    === Event checkpoints received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${checkpoints_start}
+    ${checkpoints_end}=    Evaluate    ${end}+${1}
     ${checkpoints_list}=    Get Slice From List    ${full_list}    start=${checkpoints_start}    end=${checkpoints_end}
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pause : LSST    1
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stop : LSST    1
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logLevel_start}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
+    ${logLevel_end}=    Evaluate    ${end}+${1}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logMessage_start}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
+    ${logMessage_end}=    Evaluate    ${end}+${1}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${description_start}=    Get Index From List    ${full_list}    === ${subSystem}_description start of topic ===
-    ${description_end}=    Get Index From List    ${full_list}    === ${subSystem}_description end of topic ===
+    ${description_start}=    Get Index From List    ${full_list}    === Event description received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${description_start}
+    ${description_end}=    Evaluate    ${end}+${1}
     ${description_list}=    Get Slice From List    ${full_list}    start=${description_start}    end=${description_end}
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${metadata_start}=    Get Index From List    ${full_list}    === ${subSystem}_metadata start of topic ===
-    ${metadata_end}=    Get Index From List    ${full_list}    === ${subSystem}_metadata end of topic ===
+    ${metadata_start}=    Get Index From List    ${full_list}    === Event metadata received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${metadata_start}
+    ${metadata_end}=    Evaluate    ${end}+${1}
     ${metadata_list}=    Get Slice From List    ${full_list}    start=${metadata_start}    end=${metadata_end}
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${state_start}=    Get Index From List    ${full_list}    === ${subSystem}_state start of topic ===
-    ${state_end}=    Get Index From List    ${full_list}    === ${subSystem}_state end of topic ===
+    ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${state_start}
+    ${state_end}=    Evaluate    ${end}+${1}
     ${state_list}=    Get Slice From List    ${full_list}    start=${state_start}    end=${state_end}
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

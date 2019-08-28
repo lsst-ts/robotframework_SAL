@@ -226,60 +226,71 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
+    ${heartbeat_end}=    Evaluate    ${end}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${cameraInfo_start}=    Get Index From List    ${full_list}    === ${subSystem}_cameraInfo start of topic ===
-    ${cameraInfo_end}=    Get Index From List    ${full_list}    === ${subSystem}_cameraInfo end of topic ===
+    ${cameraInfo_start}=    Get Index From List    ${full_list}    === Event cameraInfo received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraInfo_start}
+    ${cameraInfo_end}=    Evaluate    ${end}+${1}
     ${cameraInfo_list}=    Get Slice From List    ${full_list}    start=${cameraInfo_start}    end=${cameraInfo_end}
     Should Contain X Times    ${cameraInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraMakeAndModel : LSST    1
     Should Contain X Times    ${cameraInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${cameraSpecificProperty_start}=    Get Index From List    ${full_list}    === ${subSystem}_cameraSpecificProperty start of topic ===
-    ${cameraSpecificProperty_end}=    Get Index From List    ${full_list}    === ${subSystem}_cameraSpecificProperty end of topic ===
+    ${cameraSpecificProperty_start}=    Get Index From List    ${full_list}    === Event cameraSpecificProperty received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraSpecificProperty_start}
+    ${cameraSpecificProperty_end}=    Evaluate    ${end}+${1}
     ${cameraSpecificProperty_list}=    Get Slice From List    ${full_list}    start=${cameraSpecificProperty_start}    end=${cameraSpecificProperty_end}
     Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyName : LSST    1
     Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyValue : LSST    1
     Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${roi_start}=    Get Index From List    ${full_list}    === ${subSystem}_roi start of topic ===
-    ${roi_end}=    Get Index From List    ${full_list}    === ${subSystem}_roi end of topic ===
+    ${roi_start}=    Get Index From List    ${full_list}    === Event roi received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${roi_start}
+    ${roi_end}=    Evaluate    ${end}+${1}
     ${roi_list}=    Get Slice From List    ${full_list}    start=${roi_start}    end=${roi_end}
     Should Contain X Times    ${roi_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topPixel : 1    1
     Should Contain X Times    ${roi_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leftPixel : 1    1
     Should Contain X Times    ${roi_list}    ${SPACE}${SPACE}${SPACE}${SPACE}width : 1    1
     Should Contain X Times    ${roi_list}    ${SPACE}${SPACE}${SPACE}${SPACE}height : 1    1
     Should Contain X Times    ${roi_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startLiveView_start}=    Get Index From List    ${full_list}    === ${subSystem}_startLiveView start of topic ===
-    ${startLiveView_end}=    Get Index From List    ${full_list}    === ${subSystem}_startLiveView end of topic ===
+    ${startLiveView_start}=    Get Index From List    ${full_list}    === Event startLiveView received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startLiveView_start}
+    ${startLiveView_end}=    Evaluate    ${end}+${1}
     ${startLiveView_list}=    Get Slice From List    ${full_list}    start=${startLiveView_start}    end=${startLiveView_end}
     Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : LSST    1
     Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endLiveView_start}=    Get Index From List    ${full_list}    === ${subSystem}_endLiveView start of topic ===
-    ${endLiveView_end}=    Get Index From List    ${full_list}    === ${subSystem}_endLiveView end of topic ===
+    ${endLiveView_start}=    Get Index From List    ${full_list}    === Event endLiveView received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endLiveView_start}
+    ${endLiveView_end}=    Evaluate    ${end}+${1}
     ${endLiveView_list}=    Get Slice From List    ${full_list}    start=${endLiveView_start}    end=${endLiveView_end}
     Should Contain X Times    ${endLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startTakeImage_start}=    Get Index From List    ${full_list}    === ${subSystem}_startTakeImage start of topic ===
-    ${startTakeImage_end}=    Get Index From List    ${full_list}    === ${subSystem}_startTakeImage end of topic ===
+    ${startTakeImage_start}=    Get Index From List    ${full_list}    === Event startTakeImage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startTakeImage_start}
+    ${startTakeImage_end}=    Evaluate    ${end}+${1}
     ${startTakeImage_list}=    Get Slice From List    ${full_list}    start=${startTakeImage_start}    end=${startTakeImage_end}
     Should Contain X Times    ${startTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startShutterOpen_start}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterOpen start of topic ===
-    ${startShutterOpen_end}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterOpen end of topic ===
+    ${startShutterOpen_start}=    Get Index From List    ${full_list}    === Event startShutterOpen received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startShutterOpen_start}
+    ${startShutterOpen_end}=    Evaluate    ${end}+${1}
     ${startShutterOpen_list}=    Get Slice From List    ${full_list}    start=${startShutterOpen_start}    end=${startShutterOpen_end}
     Should Contain X Times    ${startShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endShutterOpen_start}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterOpen start of topic ===
-    ${endShutterOpen_end}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterOpen end of topic ===
+    ${endShutterOpen_start}=    Get Index From List    ${full_list}    === Event endShutterOpen received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endShutterOpen_start}
+    ${endShutterOpen_end}=    Evaluate    ${end}+${1}
     ${endShutterOpen_list}=    Get Slice From List    ${full_list}    start=${endShutterOpen_start}    end=${endShutterOpen_end}
     Should Contain X Times    ${endShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endShutterOpen_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startIntegration_start}=    Get Index From List    ${full_list}    === ${subSystem}_startIntegration start of topic ===
-    ${startIntegration_end}=    Get Index From List    ${full_list}    === ${subSystem}_startIntegration end of topic ===
+    ${startIntegration_start}=    Get Index From List    ${full_list}    === Event startIntegration received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startIntegration_start}
+    ${startIntegration_end}=    Evaluate    ${end}+${1}
     ${startIntegration_list}=    Get Slice From List    ${full_list}    start=${startIntegration_start}    end=${startIntegration_end}
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -288,23 +299,27 @@ Read Logger
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endIntegration_start}=    Get Index From List    ${full_list}    === ${subSystem}_endIntegration start of topic ===
-    ${endIntegration_end}=    Get Index From List    ${full_list}    === ${subSystem}_endIntegration end of topic ===
+    ${endIntegration_start}=    Get Index From List    ${full_list}    === Event endIntegration received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endIntegration_start}
+    ${endIntegration_end}=    Evaluate    ${end}+${1}
     ${endIntegration_list}=    Get Slice From List    ${full_list}    start=${endIntegration_start}    end=${endIntegration_end}
     Should Contain X Times    ${endIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startShutterClose_start}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterClose start of topic ===
-    ${startShutterClose_end}=    Get Index From List    ${full_list}    === ${subSystem}_startShutterClose end of topic ===
+    ${startShutterClose_start}=    Get Index From List    ${full_list}    === Event startShutterClose received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startShutterClose_start}
+    ${startShutterClose_end}=    Evaluate    ${end}+${1}
     ${startShutterClose_list}=    Get Slice From List    ${full_list}    start=${startShutterClose_start}    end=${startShutterClose_end}
     Should Contain X Times    ${startShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${startShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endShutterClose_start}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterClose start of topic ===
-    ${endShutterClose_end}=    Get Index From List    ${full_list}    === ${subSystem}_endShutterClose end of topic ===
+    ${endShutterClose_start}=    Get Index From List    ${full_list}    === Event endShutterClose received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endShutterClose_start}
+    ${endShutterClose_end}=    Evaluate    ${end}+${1}
     ${endShutterClose_list}=    Get Slice From List    ${full_list}    start=${endShutterClose_start}    end=${endShutterClose_end}
     Should Contain X Times    ${endShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${startReadout_start}=    Get Index From List    ${full_list}    === ${subSystem}_startReadout start of topic ===
-    ${startReadout_end}=    Get Index From List    ${full_list}    === ${subSystem}_startReadout end of topic ===
+    ${startReadout_start}=    Get Index From List    ${full_list}    === Event startReadout received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startReadout_start}
+    ${startReadout_end}=    Evaluate    ${end}+${1}
     ${startReadout_list}=    Get Slice From List    ${full_list}    start=${startReadout_start}    end=${startReadout_end}
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -313,8 +328,9 @@ Read Logger
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endReadout_start}=    Get Index From List    ${full_list}    === ${subSystem}_endReadout start of topic ===
-    ${endReadout_end}=    Get Index From List    ${full_list}    === ${subSystem}_endReadout end of topic ===
+    ${endReadout_start}=    Get Index From List    ${full_list}    === Event endReadout received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endReadout_start}
+    ${endReadout_end}=    Evaluate    ${end}+${1}
     ${endReadout_list}=    Get Slice From List    ${full_list}    start=${endReadout_start}    end=${endReadout_end}
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -323,49 +339,57 @@ Read Logger
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${endTakeImage_start}=    Get Index From List    ${full_list}    === ${subSystem}_endTakeImage start of topic ===
-    ${endTakeImage_end}=    Get Index From List    ${full_list}    === ${subSystem}_endTakeImage end of topic ===
+    ${endTakeImage_start}=    Get Index From List    ${full_list}    === Event endTakeImage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endTakeImage_start}
+    ${endTakeImage_end}=    Evaluate    ${end}+${1}
     ${endTakeImage_list}=    Get Slice From List    ${full_list}    start=${endTakeImage_start}    end=${endTakeImage_end}
     Should Contain X Times    ${endTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${endTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===
+    ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
+    ${settingVersions_end}=    Evaluate    ${end}+${1}
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsVersion : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsLabels : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsUrl : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${errorCode_start}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${errorCode_start}
+    ${errorCode_end}=    Evaluate    ${end}+${1}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${summaryState_start}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${summaryState_start}
+    ${summaryState_end}=    Evaluate    ${end}+${1}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart end of topic ===
+    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Event appliedSettingsMatchStart received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedSettingsMatchStart_start}
+    ${appliedSettingsMatchStart_end}=    Evaluate    ${end}+${1}
     ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end}
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}appliedSettingsMatchStartIsTrue : 1    1
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logLevel_start}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
+    ${logLevel_end}=    Evaluate    ${end}+${1}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logMessage_start}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
+    ${logMessage_end}=    Evaluate    ${end}+${1}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${simulationMode_start}
+    ${simulationMode_end}=    Evaluate    ${end}+${1}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -186,10 +186,12 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${oCSEntitySummaryState_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntitySummaryState start of topic ===
-    ${oCSEntitySummaryState_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntitySummaryState end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${oCSEntitySummaryState_start}=    Get Index From List    ${full_list}    === Event oCSEntitySummaryState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSEntitySummaryState_start}
+    ${oCSEntitySummaryState_end}=    Evaluate    ${end}+${1}
     ${oCSEntitySummaryState_list}=    Get Slice From List    ${full_list}    start=${oCSEntitySummaryState_start}    end=${oCSEntitySummaryState_end}
     Should Contain X Times    ${oCSEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
     Should Contain X Times    ${oCSEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
@@ -201,24 +203,27 @@ Read Logger
     Should Contain X Times    ${oCSEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : LSST    1
     Should Contain X Times    ${oCSEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : LSST    1
     Should Contain X Times    ${oCSEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSEntityStartup_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntityStartup start of topic ===
-    ${oCSEntityStartup_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntityStartup end of topic ===
+    ${oCSEntityStartup_start}=    Get Index From List    ${full_list}    === Event oCSEntityStartup received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSEntityStartup_start}
+    ${oCSEntityStartup_end}=    Evaluate    ${end}+${1}
     ${oCSEntityStartup_list}=    Get Slice From List    ${full_list}    start=${oCSEntityStartup_start}    end=${oCSEntityStartup_end}
     Should Contain X Times    ${oCSEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
     Should Contain X Times    ${oCSEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
     Should Contain X Times    ${oCSEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
     Should Contain X Times    ${oCSEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${oCSEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSEntityShutdown_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntityShutdown start of topic ===
-    ${oCSEntityShutdown_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSEntityShutdown end of topic ===
+    ${oCSEntityShutdown_start}=    Get Index From List    ${full_list}    === Event oCSEntityShutdown received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSEntityShutdown_start}
+    ${oCSEntityShutdown_end}=    Evaluate    ${end}+${1}
     ${oCSEntityShutdown_list}=    Get Slice From List    ${full_list}    start=${oCSEntityShutdown_start}    end=${oCSEntityShutdown_end}
     Should Contain X Times    ${oCSEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
     Should Contain X Times    ${oCSEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
     Should Contain X Times    ${oCSEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
     Should Contain X Times    ${oCSEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${oCSEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSCommandIssued_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCommandIssued start of topic ===
-    ${oCSCommandIssued_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCommandIssued end of topic ===
+    ${oCSCommandIssued_start}=    Get Index From List    ${full_list}    === Event oCSCommandIssued received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSCommandIssued_start}
+    ${oCSCommandIssued_end}=    Evaluate    ${end}+${1}
     ${oCSCommandIssued_list}=    Get Slice From List    ${full_list}    start=${oCSCommandIssued_start}    end=${oCSCommandIssued_end}
     Should Contain X Times    ${oCSCommandIssued_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandSource : LSST    1
     Should Contain X Times    ${oCSCommandIssued_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequenceNumber : 1    1
@@ -227,8 +232,9 @@ Read Logger
     Should Contain X Times    ${oCSCommandIssued_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandSent : LSST    1
     Should Contain X Times    ${oCSCommandIssued_list}    ${SPACE}${SPACE}${SPACE}${SPACE}returnValue : 1    1
     Should Contain X Times    ${oCSCommandIssued_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSCommandStatus_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCommandStatus start of topic ===
-    ${oCSCommandStatus_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCommandStatus end of topic ===
+    ${oCSCommandStatus_start}=    Get Index From List    ${full_list}    === Event oCSCommandStatus received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSCommandStatus_start}
+    ${oCSCommandStatus_end}=    Evaluate    ${end}+${1}
     ${oCSCommandStatus_list}=    Get Slice From List    ${full_list}    start=${oCSCommandStatus_start}    end=${oCSCommandStatus_end}
     Should Contain X Times    ${oCSCommandStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandSource : LSST    1
     Should Contain X Times    ${oCSCommandStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequenceNumber : 1    1
@@ -238,29 +244,33 @@ Read Logger
     Should Contain X Times    ${oCSCommandStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusValue : 1    1
     Should Contain X Times    ${oCSCommandStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : LSST    1
     Should Contain X Times    ${oCSCommandStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSCurrentScript_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCurrentScript start of topic ===
-    ${oCSCurrentScript_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSCurrentScript end of topic ===
+    ${oCSCurrentScript_start}=    Get Index From List    ${full_list}    === Event oCSCurrentScript received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSCurrentScript_start}
+    ${oCSCurrentScript_end}=    Evaluate    ${end}+${1}
     ${oCSCurrentScript_list}=    Get Slice From List    ${full_list}    start=${oCSCurrentScript_start}    end=${oCSCurrentScript_end}
     Should Contain X Times    ${oCSCurrentScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSCurrentScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
     Should Contain X Times    ${oCSCurrentScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptTimestamp : LSST    1
     Should Contain X Times    ${oCSCurrentScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSNextScript_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSNextScript start of topic ===
-    ${oCSNextScript_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSNextScript end of topic ===
+    ${oCSNextScript_start}=    Get Index From List    ${full_list}    === Event oCSNextScript received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSNextScript_start}
+    ${oCSNextScript_end}=    Evaluate    ${end}+${1}
     ${oCSNextScript_list}=    Get Slice From List    ${full_list}    start=${oCSNextScript_start}    end=${oCSNextScript_end}
     Should Contain X Times    ${oCSNextScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSNextScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
     Should Contain X Times    ${oCSNextScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptTimestamp : LSST    1
     Should Contain X Times    ${oCSNextScript_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSScriptStart_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptStart start of topic ===
-    ${oCSScriptStart_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptStart end of topic ===
+    ${oCSScriptStart_start}=    Get Index From List    ${full_list}    === Event oCSScriptStart received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSScriptStart_start}
+    ${oCSScriptStart_end}=    Evaluate    ${end}+${1}
     ${oCSScriptStart_list}=    Get Slice From List    ${full_list}    start=${oCSScriptStart_start}    end=${oCSScriptStart_end}
     Should Contain X Times    ${oCSScriptStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSScriptStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
     Should Contain X Times    ${oCSScriptStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptTimestamp : LSST    1
     Should Contain X Times    ${oCSScriptStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSScriptEnd_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptEnd start of topic ===
-    ${oCSScriptEnd_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptEnd end of topic ===
+    ${oCSScriptEnd_start}=    Get Index From List    ${full_list}    === Event oCSScriptEnd received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSScriptEnd_start}
+    ${oCSScriptEnd_end}=    Evaluate    ${end}+${1}
     ${oCSScriptEnd_list}=    Get Slice From List    ${full_list}    start=${oCSScriptEnd_start}    end=${oCSScriptEnd_end}
     Should Contain X Times    ${oCSScriptEnd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSScriptEnd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
@@ -268,8 +278,9 @@ Read Logger
     Should Contain X Times    ${oCSScriptEnd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptStatusCode : 1    1
     Should Contain X Times    ${oCSScriptEnd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptStatusText : LSST    1
     Should Contain X Times    ${oCSScriptEnd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSScriptError_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptError start of topic ===
-    ${oCSScriptError_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptError end of topic ===
+    ${oCSScriptError_start}=    Get Index From List    ${full_list}    === Event oCSScriptError received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSScriptError_start}
+    ${oCSScriptError_end}=    Evaluate    ${end}+${1}
     ${oCSScriptError_list}=    Get Slice From List    ${full_list}    start=${oCSScriptError_start}    end=${oCSScriptError_end}
     Should Contain X Times    ${oCSScriptError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSScriptError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
@@ -278,52 +289,60 @@ Read Logger
     Should Contain X Times    ${oCSScriptError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptErrorCode : 1    1
     Should Contain X Times    ${oCSScriptError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptErrorText : LSST    1
     Should Contain X Times    ${oCSScriptError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oCSScriptEntititesInUse_start}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptEntititesInUse start of topic ===
-    ${oCSScriptEntititesInUse_end}=    Get Index From List    ${full_list}    === ${subSystem}_oCSScriptEntititesInUse end of topic ===
+    ${oCSScriptEntititesInUse_start}=    Get Index From List    ${full_list}    === Event oCSScriptEntititesInUse received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oCSScriptEntititesInUse_start}
+    ${oCSScriptEntititesInUse_end}=    Evaluate    ${end}+${1}
     ${oCSScriptEntititesInUse_list}=    Get Slice From List    ${full_list}    start=${oCSScriptEntititesInUse_start}    end=${oCSScriptEntititesInUse_end}
     Should Contain X Times    ${oCSScriptEntititesInUse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptName : LSST    1
     Should Contain X Times    ${oCSScriptEntititesInUse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptIdentifier : 1    1
     Should Contain X Times    ${oCSScriptEntititesInUse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSScriptTimestamp : LSST    1
     Should Contain X Times    ${oCSScriptEntititesInUse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oCSEntititesList : LSST    1
     Should Contain X Times    ${oCSScriptEntititesInUse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===
+    ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
+    ${settingVersions_end}=    Evaluate    ${end}+${1}
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsVersion : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsLabels : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsUrl : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${errorCode_start}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${errorCode_start}
+    ${errorCode_end}=    Evaluate    ${end}+${1}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${summaryState_start}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${summaryState_start}
+    ${summaryState_end}=    Evaluate    ${end}+${1}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart end of topic ===
+    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Event appliedSettingsMatchStart received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedSettingsMatchStart_start}
+    ${appliedSettingsMatchStart_end}=    Evaluate    ${end}+${1}
     ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end}
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}appliedSettingsMatchStartIsTrue : 1    1
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logLevel_start}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
+    ${logLevel_end}=    Evaluate    ${end}+${1}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logMessage_start}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
+    ${logMessage_end}=    Evaluate    ${end}+${1}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${simulationMode_start}
+    ${simulationMode_end}=    Evaluate    ${end}+${1}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

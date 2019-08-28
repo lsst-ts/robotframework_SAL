@@ -362,93 +362,111 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
-    ${focusNameSelected_start}=    Get Index From List    ${full_list}    === ${subSystem}_focusNameSelected start of topic ===
-    ${focusNameSelected_end}=    Get Index From List    ${full_list}    === ${subSystem}_focusNameSelected end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${focusNameSelected_start}=    Get Index From List    ${full_list}    === Event focusNameSelected received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focusNameSelected_start}
+    ${focusNameSelected_end}=    Evaluate    ${end}+${1}
     ${focusNameSelected_list}=    Get Slice From List    ${full_list}    start=${focusNameSelected_start}    end=${focusNameSelected_end}
     Should Contain X Times    ${focusNameSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
     Should Contain X Times    ${focusNameSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingsApplied end of topic ===
+    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Event settingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsApplied_start}
+    ${settingsApplied_end}=    Evaluate    ${end}+${1}
     ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end}
     Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : 1    1
     Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${sunProximityWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_sunProximityWarning start of topic ===
-    ${sunProximityWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_sunProximityWarning end of topic ===
+    ${sunProximityWarning_start}=    Get Index From List    ${full_list}    === Event sunProximityWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${sunProximityWarning_start}
+    ${sunProximityWarning_end}=    Evaluate    ${end}+${1}
     ${sunProximityWarning_list}=    Get Slice From List    ${full_list}    start=${sunProximityWarning_start}    end=${sunProximityWarning_end}
     Should Contain X Times    ${sunProximityWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${sunProximityWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${detailedState_start}=    Get Index From List    ${full_list}    === ${subSystem}_detailedState start of topic ===
-    ${detailedState_end}=    Get Index From List    ${full_list}    === ${subSystem}_detailedState end of topic ===
+    ${detailedState_start}=    Get Index From List    ${full_list}    === Event detailedState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${detailedState_start}
+    ${detailedState_end}=    Evaluate    ${end}+${1}
     ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mountGuideMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_mountGuideMode start of topic ===
-    ${mountGuideMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_mountGuideMode end of topic ===
+    ${mountGuideMode_start}=    Get Index From List    ${full_list}    === Event mountGuideMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mountGuideMode_start}
+    ${mountGuideMode_end}=    Evaluate    ${end}+${1}
     ${mountGuideMode_list}=    Get Slice From List    ${full_list}    start=${mountGuideMode_start}    end=${mountGuideMode_end}
     Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${azWrapWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_azWrapWarning start of topic ===
-    ${azWrapWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_azWrapWarning end of topic ===
+    ${azWrapWarning_start}=    Get Index From List    ${full_list}    === Event azWrapWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azWrapWarning_start}
+    ${azWrapWarning_end}=    Evaluate    ${end}+${1}
     ${azWrapWarning_list}=    Get Slice From List    ${full_list}    start=${azWrapWarning_start}    end=${azWrapWarning_end}
     Should Contain X Times    ${azWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${azWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${wavelength_start}=    Get Index From List    ${full_list}    === ${subSystem}_wavelength start of topic ===
-    ${wavelength_end}=    Get Index From List    ${full_list}    === ${subSystem}_wavelength end of topic ===
+    ${wavelength_start}=    Get Index From List    ${full_list}    === Event wavelength received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${wavelength_start}
+    ${wavelength_end}=    Evaluate    ${end}+${1}
     ${wavelength_list}=    Get Slice From List    ${full_list}    start=${wavelength_start}    end=${wavelength_end}
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    1
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionEl_start}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionEl start of topic ===
-    ${inPositionEl_end}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionEl end of topic ===
+    ${inPositionEl_start}=    Get Index From List    ${full_list}    === Event inPositionEl received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionEl_start}
+    ${inPositionEl_end}=    Evaluate    ${end}+${1}
     ${inPositionEl_list}=    Get Slice From List    ${full_list}    start=${inPositionEl_start}    end=${inPositionEl_end}
     Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inBlindSpot_start}=    Get Index From List    ${full_list}    === ${subSystem}_inBlindSpot start of topic ===
-    ${inBlindSpot_end}=    Get Index From List    ${full_list}    === ${subSystem}_inBlindSpot end of topic ===
+    ${inBlindSpot_start}=    Get Index From List    ${full_list}    === Event inBlindSpot received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inBlindSpot_start}
+    ${inBlindSpot_end}=    Evaluate    ${end}+${1}
     ${inBlindSpot_list}=    Get Slice From List    ${full_list}    start=${inBlindSpot_start}    end=${inBlindSpot_end}
     Should Contain X Times    ${inBlindSpot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inBlindSpot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${blindSpotWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_blindSpotWarning start of topic ===
-    ${blindSpotWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_blindSpotWarning end of topic ===
+    ${blindSpotWarning_start}=    Get Index From List    ${full_list}    === Event blindSpotWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${blindSpotWarning_start}
+    ${blindSpotWarning_end}=    Evaluate    ${end}+${1}
     ${blindSpotWarning_list}=    Get Slice From List    ${full_list}    start=${blindSpotWarning_start}    end=${blindSpotWarning_end}
     Should Contain X Times    ${blindSpotWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${blindSpotWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${axesTrackMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_axesTrackMode start of topic ===
-    ${axesTrackMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_axesTrackMode end of topic ===
+    ${axesTrackMode_start}=    Get Index From List    ${full_list}    === Event axesTrackMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${axesTrackMode_start}
+    ${axesTrackMode_end}=    Evaluate    ${end}+${1}
     ${axesTrackMode_list}=    Get Slice From List    ${full_list}    start=${axesTrackMode_start}    end=${axesTrackMode_end}
     Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
     Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${objectSetWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_objectSetWarning start of topic ===
-    ${objectSetWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_objectSetWarning end of topic ===
+    ${objectSetWarning_start}=    Get Index From List    ${full_list}    === Event objectSetWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${objectSetWarning_start}
+    ${objectSetWarning_end}=    Evaluate    ${end}+${1}
     ${objectSetWarning_list}=    Get Slice From List    ${full_list}    start=${objectSetWarning_start}    end=${objectSetWarning_end}
     Should Contain X Times    ${objectSetWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${objectSetWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${pointingModel_start}=    Get Index From List    ${full_list}    === ${subSystem}_pointingModel start of topic ===
-    ${pointingModel_end}=    Get Index From List    ${full_list}    === ${subSystem}_pointingModel end of topic ===
+    ${pointingModel_start}=    Get Index From List    ${full_list}    === Event pointingModel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointingModel_start}
+    ${pointingModel_end}=    Evaluate    ${end}+${1}
     ${pointingModel_list}=    Get Slice From List    ${full_list}    start=${pointingModel_start}    end=${pointingModel_end}
     Should Contain X Times    ${pointingModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${pointingModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingModelTermNames : LSST    1
     Should Contain X Times    ${pointingModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingModelTermValues : LSST    1
     Should Contain X Times    ${pointingModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${airmassWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_airmassWarning start of topic ===
-    ${airmassWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_airmassWarning end of topic ===
+    ${airmassWarning_start}=    Get Index From List    ${full_list}    === Event airmassWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${airmassWarning_start}
+    ${airmassWarning_end}=    Evaluate    ${end}+${1}
     ${airmassWarning_list}=    Get Slice From List    ${full_list}    start=${airmassWarning_start}    end=${airmassWarning_end}
     Should Contain X Times    ${airmassWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${airmassWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${weatherDataInvalid_start}=    Get Index From List    ${full_list}    === ${subSystem}_weatherDataInvalid start of topic ===
-    ${weatherDataInvalid_end}=    Get Index From List    ${full_list}    === ${subSystem}_weatherDataInvalid end of topic ===
+    ${weatherDataInvalid_start}=    Get Index From List    ${full_list}    === Event weatherDataInvalid received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${weatherDataInvalid_start}
+    ${weatherDataInvalid_end}=    Evaluate    ${end}+${1}
     ${weatherDataInvalid_list}=    Get Slice From List    ${full_list}    start=${weatherDataInvalid_start}    end=${weatherDataInvalid_end}
     Should Contain X Times    ${weatherDataInvalid_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${weatherDataInvalid_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${focusNameInconsistentWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_focusNameInconsistentWarning start of topic ===
-    ${focusNameInconsistentWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_focusNameInconsistentWarning end of topic ===
+    ${focusNameInconsistentWarning_start}=    Get Index From List    ${full_list}    === Event focusNameInconsistentWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focusNameInconsistentWarning_start}
+    ${focusNameInconsistentWarning_end}=    Evaluate    ${end}+${1}
     ${focusNameInconsistentWarning_list}=    Get Slice From List    ${full_list}    start=${focusNameInconsistentWarning_start}    end=${focusNameInconsistentWarning_end}
     Should Contain X Times    ${focusNameInconsistentWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${focusNameInconsistentWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${currentTarget_start}=    Get Index From List    ${full_list}    === ${subSystem}_currentTarget start of topic ===
-    ${currentTarget_end}=    Get Index From List    ${full_list}    === ${subSystem}_currentTarget end of topic ===
+    ${currentTarget_start}=    Get Index From List    ${full_list}    === Event currentTarget received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${currentTarget_start}
+    ${currentTarget_end}=    Evaluate    ${end}+${1}
     ${currentTarget_list}=    Get Slice From List    ${full_list}    start=${currentTarget_start}    end=${currentTarget_end}
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetType : 1    1
@@ -476,25 +494,29 @@ Read Logger
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${iersOutOfDate_start}=    Get Index From List    ${full_list}    === ${subSystem}_iersOutOfDate start of topic ===
-    ${iersOutOfDate_end}=    Get Index From List    ${full_list}    === ${subSystem}_iersOutOfDate end of topic ===
+    ${iersOutOfDate_start}=    Get Index From List    ${full_list}    === Event iersOutOfDate received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${iersOutOfDate_start}
+    ${iersOutOfDate_end}=    Evaluate    ${end}+${1}
     ${iersOutOfDate_list}=    Get Slice From List    ${full_list}    start=${iersOutOfDate_start}    end=${iersOutOfDate_end}
     Should Contain X Times    ${iersOutOfDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${iersOutOfDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${weatherDataApplied_start}=    Get Index From List    ${full_list}    === ${subSystem}_weatherDataApplied start of topic ===
-    ${weatherDataApplied_end}=    Get Index From List    ${full_list}    === ${subSystem}_weatherDataApplied end of topic ===
+    ${weatherDataApplied_start}=    Get Index From List    ${full_list}    === Event weatherDataApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${weatherDataApplied_start}
+    ${weatherDataApplied_end}=    Evaluate    ${end}+${1}
     ${weatherDataApplied_list}=    Get Slice From List    ${full_list}    start=${weatherDataApplied_start}    end=${weatherDataApplied_end}
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambient_temp : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}humidity : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${currentDebugLevel_start}=    Get Index From List    ${full_list}    === ${subSystem}_currentDebugLevel start of topic ===
-    ${currentDebugLevel_end}=    Get Index From List    ${full_list}    === ${subSystem}_currentDebugLevel end of topic ===
+    ${currentDebugLevel_start}=    Get Index From List    ${full_list}    === Event currentDebugLevel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${currentDebugLevel_start}
+    ${currentDebugLevel_end}=    Evaluate    ${end}+${1}
     ${currentDebugLevel_list}=    Get Slice From List    ${full_list}    start=${currentDebugLevel_start}    end=${currentDebugLevel_end}
     Should Contain X Times    ${currentDebugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentLevel : 1    1
     Should Contain X Times    ${currentDebugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${nextTarget_start}=    Get Index From List    ${full_list}    === ${subSystem}_nextTarget start of topic ===
-    ${nextTarget_end}=    Get Index From List    ${full_list}    === ${subSystem}_nextTarget end of topic ===
+    ${nextTarget_start}=    Get Index From List    ${full_list}    === Event nextTarget received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextTarget_start}
+    ${nextTarget_end}=    Evaluate    ${end}+${1}
     ${nextTarget_list}=    Get Slice From List    ${full_list}    start=${nextTarget_start}    end=${nextTarget_end}
     Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetType : 1    1
@@ -522,46 +544,54 @@ Read Logger
     Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
     Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
     Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mountDataWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_mountDataWarning start of topic ===
-    ${mountDataWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_mountDataWarning end of topic ===
+    ${mountDataWarning_start}=    Get Index From List    ${full_list}    === Event mountDataWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mountDataWarning_start}
+    ${mountDataWarning_end}=    Evaluate    ${end}+${1}
     ${mountDataWarning_list}=    Get Slice From List    ${full_list}    start=${mountDataWarning_start}    end=${mountDataWarning_end}
     Should Contain X Times    ${mountDataWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${mountDataWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${accessMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_accessMode start of topic ===
-    ${accessMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_accessMode end of topic ===
+    ${accessMode_start}=    Get Index From List    ${full_list}    === Event accessMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${accessMode_start}
+    ${accessMode_end}=    Evaluate    ${end}+${1}
     ${accessMode_list}=    Get Slice From List    ${full_list}    start=${accessMode_start}    end=${accessMode_end}
     Should Contain X Times    ${accessMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${accessMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${rotWrapWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_rotWrapWarning start of topic ===
-    ${rotWrapWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_rotWrapWarning end of topic ===
+    ${rotWrapWarning_start}=    Get Index From List    ${full_list}    === Event rotWrapWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rotWrapWarning_start}
+    ${rotWrapWarning_end}=    Evaluate    ${end}+${1}
     ${rotWrapWarning_list}=    Get Slice From List    ${full_list}    start=${rotWrapWarning_start}    end=${rotWrapWarning_end}
     Should Contain X Times    ${rotWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${rotWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPosition_start}=    Get Index From List    ${full_list}    === ${subSystem}_inPosition start of topic ===
-    ${inPosition_end}=    Get Index From List    ${full_list}    === ${subSystem}_inPosition end of topic ===
+    ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPosition_start}
+    ${inPosition_end}=    Evaluate    ${end}+${1}
     ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${inPosition_end}
     Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionRot_start}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionRot start of topic ===
-    ${inPositionRot_end}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionRot end of topic ===
+    ${inPositionRot_start}=    Get Index From List    ${full_list}    === Event inPositionRot received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionRot_start}
+    ${inPositionRot_end}=    Evaluate    ${end}+${1}
     ${inPositionRot_list}=    Get Slice From List    ${full_list}    start=${inPositionRot_start}    end=${inPositionRot_end}
     Should Contain X Times    ${inPositionRot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inPositionRot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionAz_start}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionAz start of topic ===
-    ${inPositionAz_end}=    Get Index From List    ${full_list}    === ${subSystem}_inPositionAz end of topic ===
+    ${inPositionAz_start}=    Get Index From List    ${full_list}    === Event inPositionAz received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionAz_start}
+    ${inPositionAz_end}=    Evaluate    ${end}+${1}
     ${inPositionAz_list}=    Get Slice From List    ${full_list}    start=${inPositionAz_start}    end=${inPositionAz_end}
     Should Contain X Times    ${inPositionAz_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inPositionAz_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${iers_start}=    Get Index From List    ${full_list}    === ${subSystem}_iers start of topic ===
-    ${iers_end}=    Get Index From List    ${full_list}    === ${subSystem}_iers end of topic ===
+    ${iers_start}=    Get Index From List    ${full_list}    === Event iers received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${iers_start}
+    ${iers_end}=    Evaluate    ${end}+${1}
     ${iers_list}=    Get Slice From List    ${full_list}    start=${iers_start}    end=${iers_end}
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dut1 : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}poleX : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}poleY : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${prospectiveTarget_start}=    Get Index From List    ${full_list}    === ${subSystem}_prospectiveTarget start of topic ===
-    ${prospectiveTarget_end}=    Get Index From List    ${full_list}    === ${subSystem}_prospectiveTarget end of topic ===
+    ${prospectiveTarget_start}=    Get Index From List    ${full_list}    === Event prospectiveTarget received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${prospectiveTarget_start}
+    ${prospectiveTarget_end}=    Evaluate    ${end}+${1}
     ${prospectiveTarget_list}=    Get Slice From List    ${full_list}    start=${prospectiveTarget_start}    end=${prospectiveTarget_end}
     Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetType : 1    1
@@ -589,64 +619,75 @@ Read Logger
     Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
     Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
     Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${moonProximityWarning_start}=    Get Index From List    ${full_list}    === ${subSystem}_moonProximityWarning start of topic ===
-    ${moonProximityWarning_end}=    Get Index From List    ${full_list}    === ${subSystem}_moonProximityWarning end of topic ===
+    ${moonProximityWarning_start}=    Get Index From List    ${full_list}    === Event moonProximityWarning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${moonProximityWarning_start}
+    ${moonProximityWarning_end}=    Evaluate    ${end}+${1}
     ${moonProximityWarning_list}=    Get Slice From List    ${full_list}    start=${moonProximityWarning_start}    end=${moonProximityWarning_end}
     Should Contain X Times    ${moonProximityWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${moonProximityWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${trackPosting_start}=    Get Index From List    ${full_list}    === ${subSystem}_trackPosting start of topic ===
-    ${trackPosting_end}=    Get Index From List    ${full_list}    === ${subSystem}_trackPosting end of topic ===
+    ${trackPosting_start}=    Get Index From List    ${full_list}    === Event trackPosting received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${trackPosting_start}
+    ${trackPosting_end}=    Evaluate    ${end}+${1}
     ${trackPosting_list}=    Get Slice From List    ${full_list}    start=${trackPosting_start}    end=${trackPosting_end}
     Should Contain X Times    ${trackPosting_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 1    1
     Should Contain X Times    ${trackPosting_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${ptgAzCurrentWrap_start}=    Get Index From List    ${full_list}    === ${subSystem}_ptgAzCurrentWrap start of topic ===
-    ${ptgAzCurrentWrap_end}=    Get Index From List    ${full_list}    === ${subSystem}_ptgAzCurrentWrap end of topic ===
+    ${ptgAzCurrentWrap_start}=    Get Index From List    ${full_list}    === Event ptgAzCurrentWrap received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${ptgAzCurrentWrap_start}
+    ${ptgAzCurrentWrap_end}=    Evaluate    ${end}+${1}
     ${ptgAzCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${ptgAzCurrentWrap_start}    end=${ptgAzCurrentWrap_end}
     Should Contain X Times    ${ptgAzCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentWrap : 1    1
     Should Contain X Times    ${ptgAzCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${ptgRotCurrentWrap_start}=    Get Index From List    ${full_list}    === ${subSystem}_ptgRotCurrentWrap start of topic ===
-    ${ptgRotCurrentWrap_end}=    Get Index From List    ${full_list}    === ${subSystem}_ptgRotCurrentWrap end of topic ===
+    ${ptgRotCurrentWrap_start}=    Get Index From List    ${full_list}    === Event ptgRotCurrentWrap received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${ptgRotCurrentWrap_start}
+    ${ptgRotCurrentWrap_end}=    Evaluate    ${end}+${1}
     ${ptgRotCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${ptgRotCurrentWrap_start}    end=${ptgRotCurrentWrap_end}
     Should Contain X Times    ${ptgRotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentWrap : 1    1
     Should Contain X Times    ${ptgRotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_settingVersions end of topic ===
+    ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
+    ${settingVersions_end}=    Evaluate    ${end}+${1}
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsVersion : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsLabels : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsUrl : LSST    1
     Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${errorCode_start}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === ${subSystem}_errorCode end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${errorCode_start}
+    ${errorCode_end}=    Evaluate    ${end}+${1}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${summaryState_start}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === ${subSystem}_summaryState end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${summaryState_start}
+    ${summaryState_end}=    Evaluate    ${end}+${1}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === ${subSystem}_appliedSettingsMatchStart end of topic ===
+    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Event appliedSettingsMatchStart received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedSettingsMatchStart_start}
+    ${appliedSettingsMatchStart_end}=    Evaluate    ${end}+${1}
     ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end}
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}appliedSettingsMatchStartIsTrue : 1    1
     Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logLevel_start}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === ${subSystem}_logLevel end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
+    ${logLevel_end}=    Evaluate    ${end}+${1}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logMessage_start}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
+    ${logMessage_end}=    Evaluate    ${end}+${1}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === ${subSystem}_simulationMode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${simulationMode_start}
+    ${simulationMode_end}=    Evaluate    ${end}+${1}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -222,20 +222,22 @@ function readLogger() {
     echo "    Switch Process    Logger" >> $testSuite
     echo "    \${output}=    Wait For Process    handle=Logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
 	echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
+	echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=0" >> $testSuite
+	echo "    Log Many    @{full_list}" >> $testSuite
 	if [ $topic ]; then
 		echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
 		echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : ${argumentsArray[${#argumentsArray[@]}-1]}    1" >> $testSuite
 		readLogger_params $file $topic $topicIndex $testSuite
 	else
-		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
+		echo "    Should Contain    \${output.stdout}    === \${subSystem} loggers ready" >> $testSuite
 		itemIndex=1
 		for topic in "${topicsArray[@]}"; do
 			for generic in "${generic_events[@]}"; do
 					[[ $generic == "$topic" ]] && file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
 			done
-            echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} start of topic ===" >> $testSuite
-            echo "    \${${topic}_end}=    Get Index From List    \${full_list}    === \${subSystem}_${topic} end of topic ===" >> $testSuite
+            echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === Event ${topic} received =\${SPACE}" >> $testSuite
+            echo "    \${end}=    Get Index From List    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    start=\${${topic}_start}" >> $testSuite
+            echo "    \${${topic}_end}=    Evaluate    \${end}+\${1}" >> $testSuite
             echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${${topic}_end}" >> $testSuite
             getTopicParameters $file $topic
             readLogger_params $file $topic $itemIndex $testSuite
