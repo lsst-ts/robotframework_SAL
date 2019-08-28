@@ -169,7 +169,7 @@ function startLogger() {
     	echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
 		echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
     	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-		echo "    Should Contain    \${output}    ===== \${subSystem} all loggers ready =====" >> $testSuite
+		echo "    Should Contain    \${output}    === \${subSystem} loggers ready" >> $testSuite
 	fi
 	echo "    Sleep    6s" >> $testSuite
     echo "" >> $testSuite
@@ -202,9 +202,10 @@ function startSender() {
             echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+    		echo "    Should Contain X Times    \${output.stdout}    === Event ${item} iseq = 0    1" >> $testSuite
     		echo "    Should Contain X Times    \${output.stdout}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
     		echo "    Should Contain    \${output.stdout}    revCode \ : \${revcode}    10" >>$testSuite
-			echo "    Should Contain    \${output.stdout}    === \${subSystem}_${item} end of topic ===" >> $testSuite
+			echo "    Should Contain    \${output.stdout}    === Event ${item} generated =" >> $testSuite
 		done
 	fi
     echo "" >> $testSuite
