@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATAOS_Telemetry communications tests.
+Documentation    ATBuilding_Telemetry communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATAOS
+${subSystem}    ATBuilding
 ${component}    all
 ${timeout}    90s
 
@@ -49,11 +49,17 @@ Read Subscriber
     Switch Process    Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== ATAOS all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== ATBuilding all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${timestamp_start}=    Get Index From List    ${full_list}    === ATAOS_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === ATAOS_timestamp end of topic ===
+    ${timestamp_start}=    Get Index From List    ${full_list}    === ATBuilding_timestamp start of topic ===
+    ${timestamp_end}=    Get Index From List    ${full_list}    === ATBuilding_timestamp end of topic ===
     ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
     Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp end of topic ===
+    Should Contain    ${timestamp_list}    === ATBuilding_timestamp start of topic ===
+    Should Contain    ${timestamp_list}    === ATBuilding_timestamp end of topic ===
+    ${loopTime_start}=    Get Index From List    ${full_list}    === ATBuilding_loopTime start of topic ===
+    ${loopTime_end}=    Get Index From List    ${full_list}    === ATBuilding_loopTime end of topic ===
+    ${loopTime_list}=    Get Slice From List    ${full_list}    start=${loopTime_start}    end=${loopTime_end + 1}
+    Log Many    ${loopTime_list}
+    Should Contain    ${loopTime_list}    === ATBuilding_loopTime start of topic ===
+    Should Contain    ${loopTime_list}    === ATBuilding_loopTime end of topic ===

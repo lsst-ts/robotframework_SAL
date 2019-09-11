@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATAOS_Telemetry communications tests.
+Documentation    HVAC_Telemetry communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATAOS
+${subSystem}    HVAC
 ${component}    all
 ${timeout}    90s
 
@@ -49,11 +49,23 @@ Read Subscriber
     Switch Process    Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== ATAOS all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== HVAC all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${timestamp_start}=    Get Index From List    ${full_list}    === ATAOS_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === ATAOS_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
-    Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp end of topic ===
+    ${lowerAHUStatus_start}=    Get Index From List    ${full_list}    === HVAC_lowerAHUStatus start of topic ===
+    ${lowerAHUStatus_end}=    Get Index From List    ${full_list}    === HVAC_lowerAHUStatus end of topic ===
+    ${lowerAHUStatus_list}=    Get Slice From List    ${full_list}    start=${lowerAHUStatus_start}    end=${lowerAHUStatus_end + 1}
+    Log Many    ${lowerAHUStatus_list}
+    Should Contain    ${lowerAHUStatus_list}    === HVAC_lowerAHUStatus start of topic ===
+    Should Contain    ${lowerAHUStatus_list}    === HVAC_lowerAHUStatus end of topic ===
+    ${lowerChillerStatus_start}=    Get Index From List    ${full_list}    === HVAC_lowerChillerStatus start of topic ===
+    ${lowerChillerStatus_end}=    Get Index From List    ${full_list}    === HVAC_lowerChillerStatus end of topic ===
+    ${lowerChillerStatus_list}=    Get Slice From List    ${full_list}    start=${lowerChillerStatus_start}    end=${lowerChillerStatus_end + 1}
+    Log Many    ${lowerChillerStatus_list}
+    Should Contain    ${lowerChillerStatus_list}    === HVAC_lowerChillerStatus start of topic ===
+    Should Contain    ${lowerChillerStatus_list}    === HVAC_lowerChillerStatus end of topic ===
+    ${whiteRoomAHU_start}=    Get Index From List    ${full_list}    === HVAC_whiteRoomAHU start of topic ===
+    ${whiteRoomAHU_end}=    Get Index From List    ${full_list}    === HVAC_whiteRoomAHU end of topic ===
+    ${whiteRoomAHU_list}=    Get Slice From List    ${full_list}    start=${whiteRoomAHU_start}    end=${whiteRoomAHU_end + 1}
+    Log Many    ${whiteRoomAHU_list}
+    Should Contain    ${whiteRoomAHU_list}    === HVAC_whiteRoomAHU start of topic ===
+    Should Contain    ${whiteRoomAHU_list}    === HVAC_whiteRoomAHU end of topic ===

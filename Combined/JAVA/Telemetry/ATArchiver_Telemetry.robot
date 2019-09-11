@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATAOS_Telemetry communications tests.
+Documentation    ATArchiver_Telemetry communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATAOS
+${subSystem}    ATArchiver
 ${component}    all
 ${timeout}    90s
 
@@ -49,11 +49,11 @@ Read Subscriber
     Switch Process    Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== ATAOS all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== ATArchiver all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${timestamp_start}=    Get Index From List    ${full_list}    === ATAOS_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === ATAOS_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
-    Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp end of topic ===
+    ${sequencerHeartbeat_start}=    Get Index From List    ${full_list}    === ATArchiver_sequencerHeartbeat start of topic ===
+    ${sequencerHeartbeat_end}=    Get Index From List    ${full_list}    === ATArchiver_sequencerHeartbeat end of topic ===
+    ${sequencerHeartbeat_list}=    Get Slice From List    ${full_list}    start=${sequencerHeartbeat_start}    end=${sequencerHeartbeat_end + 1}
+    Log Many    ${sequencerHeartbeat_list}
+    Should Contain    ${sequencerHeartbeat_list}    === ATArchiver_sequencerHeartbeat start of topic ===
+    Should Contain    ${sequencerHeartbeat_list}    === ATArchiver_sequencerHeartbeat end of topic ===

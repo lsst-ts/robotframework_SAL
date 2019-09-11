@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATAOS_Telemetry communications tests.
+Documentation    Rotator_Telemetry communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATAOS
+${subSystem}    Rotator
 ${component}    all
 ${timeout}    90s
 
@@ -49,11 +49,23 @@ Read Subscriber
     Switch Process    Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== ATAOS all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== Rotator all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${timestamp_start}=    Get Index From List    ${full_list}    === ATAOS_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === ATAOS_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
-    Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === ATAOS_timestamp end of topic ===
+    ${Electrical_start}=    Get Index From List    ${full_list}    === Rotator_Electrical start of topic ===
+    ${Electrical_end}=    Get Index From List    ${full_list}    === Rotator_Electrical end of topic ===
+    ${Electrical_list}=    Get Slice From List    ${full_list}    start=${Electrical_start}    end=${Electrical_end + 1}
+    Log Many    ${Electrical_list}
+    Should Contain    ${Electrical_list}    === Rotator_Electrical start of topic ===
+    Should Contain    ${Electrical_list}    === Rotator_Electrical end of topic ===
+    ${Application_start}=    Get Index From List    ${full_list}    === Rotator_Application start of topic ===
+    ${Application_end}=    Get Index From List    ${full_list}    === Rotator_Application end of topic ===
+    ${Application_list}=    Get Slice From List    ${full_list}    start=${Application_start}    end=${Application_end + 1}
+    Log Many    ${Application_list}
+    Should Contain    ${Application_list}    === Rotator_Application start of topic ===
+    Should Contain    ${Application_list}    === Rotator_Application end of topic ===
+    ${Motors_start}=    Get Index From List    ${full_list}    === Rotator_Motors start of topic ===
+    ${Motors_end}=    Get Index From List    ${full_list}    === Rotator_Motors end of topic ===
+    ${Motors_list}=    Get Slice From List    ${full_list}    start=${Motors_start}    end=${Motors_end + 1}
+    Log Many    ${Motors_list}
+    Should Contain    ${Motors_list}    === Rotator_Motors start of topic ===
+    Should Contain    ${Motors_list}    === Rotator_Motors end of topic ===
