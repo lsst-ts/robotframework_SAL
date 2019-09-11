@@ -1,1 +1,7 @@
 *.swp
+stdout.txt
+stderr.txt
+stderrPublisher.txt
+stderrSubscriber.txt
+stdoutPublisher.txt
+stdoutSubscriber.txt
