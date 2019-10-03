@@ -105,3 +105,9 @@ Read Subscriber
     Log Many    ${nextTimesToLimits_list}
     Should Contain    ${nextTimesToLimits_list}    === MTPtg_nextTimesToLimits start of topic ===
     Should Contain    ${nextTimesToLimits_list}    === MTPtg_nextTimesToLimits end of topic ===
+    ${skyEnvironment_start}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment start of topic ===
+    ${skyEnvironment_end}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment end of topic ===
+    ${skyEnvironment_list}=    Get Slice From List    ${full_list}    start=${skyEnvironment_start}    end=${skyEnvironment_end + 1}
+    Log Many    ${skyEnvironment_list}
+    Should Contain    ${skyEnvironment_list}    === MTPtg_skyEnvironment start of topic ===
+    Should Contain    ${skyEnvironment_list}    === MTPtg_skyEnvironment end of topic ===

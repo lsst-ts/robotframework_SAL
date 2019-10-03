@@ -51,15 +51,9 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== FiberSpectrograph all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${spectTemperature_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_spectTemperature start of topic ===
-    ${spectTemperature_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_spectTemperature end of topic ===
-    ${spectTemperature_list}=    Get Slice From List    ${full_list}    start=${spectTemperature_start}    end=${spectTemperature_end + 1}
-    Log Many    ${spectTemperature_list}
-    Should Contain    ${spectTemperature_list}    === FiberSpectrograph_spectTemperature start of topic ===
-    Should Contain    ${spectTemperature_list}    === FiberSpectrograph_spectTemperature end of topic ===
-    ${timestamp_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
-    Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === FiberSpectrograph_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === FiberSpectrograph_timestamp end of topic ===
+    ${temperature_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature start of topic ===
+    ${temperature_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature end of topic ===
+    ${temperature_list}=    Get Slice From List    ${full_list}    start=${temperature_start}    end=${temperature_end + 1}
+    Log Many    ${temperature_list}
+    Should Contain    ${temperature_list}    === FiberSpectrograph_temperature start of topic ===
+    Should Contain    ${temperature_list}    === FiberSpectrograph_temperature end of topic ===

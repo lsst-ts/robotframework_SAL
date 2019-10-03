@@ -108,6 +108,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nextTimesToLimits_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATPtg_nextTimesToLimits end of topic ===
+    Comment    ======= Verify ${subSystem}_skyEnvironment test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_skyEnvironment
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === ATPtg_skyEnvironment start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::skyEnvironment_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATPtg_skyEnvironment end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -234,3 +242,24 @@ Read Subscriber
     Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToUnobservable : 1    10
     Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpot : 1    10
     Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpotExit : 1    10
+    ${skyEnvironment_start}=    Get Index From List    ${full_list}    === ATPtg_skyEnvironment start of topic ===
+    ${skyEnvironment_end}=    Get Index From List    ${full_list}    === ATPtg_skyEnvironment end of topic ===
+    ${skyEnvironment_list}=    Get Slice From List    ${full_list}    start=${skyEnvironment_start}    end=${skyEnvironment_end}
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunsetTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToSunset : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightEndTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToTwilightEnd : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightBeginTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToTwilightBegin : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunriseTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToSunrise : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonriseTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToMoonrise : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonsetTime : LSST    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToMoonset : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonPhase : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunAltitude : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonAltitude : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunTargetDistance : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonTargetDistance : 1    10

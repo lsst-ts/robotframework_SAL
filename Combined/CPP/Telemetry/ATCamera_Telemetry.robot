@@ -156,3 +156,4 @@ Read Subscriber
     Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempColdPlate : 1    10
     Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempCryoHead : 1    10
     Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuum : 1    10
+    Should Contain X Times    ${vacuum_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tempCCDSetPoint : 1    10
