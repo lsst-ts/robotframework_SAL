@@ -36,22 +36,14 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_spectTemperature test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_spectTemperature
+    Comment    ======= Verify ${subSystem}_temperature test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_temperature
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === FiberSpectrograph_spectTemperature start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::spectTemperature_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === FiberSpectrograph_temperature start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::temperature_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === FiberSpectrograph_spectTemperature end of topic ===
-    Comment    ======= Verify ${subSystem}_timestamp test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timestamp
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === FiberSpectrograph_timestamp start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === FiberSpectrograph_timestamp end of topic ===
+    Should Contain    ${output.stdout}    === FiberSpectrograph_temperature end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -60,12 +52,8 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== FiberSpectrograph subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${spectTemperature_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_spectTemperature start of topic ===
-    ${spectTemperature_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_spectTemperature end of topic ===
-    ${spectTemperature_list}=    Get Slice From List    ${full_list}    start=${spectTemperature_start}    end=${spectTemperature_end}
-    Should Contain X Times    ${spectTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    10
-    Should Contain X Times    ${spectTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${timestamp_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end}
-    Should Contain X Times    ${timestamp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    ${temperature_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature start of topic ===
+    ${temperature_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature end of topic ===
+    ${temperature_list}=    Get Slice From List    ${full_list}    start=${temperature_start}    end=${temperature_end}
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    10
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    10
