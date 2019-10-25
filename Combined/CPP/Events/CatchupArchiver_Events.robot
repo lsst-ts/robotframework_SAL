@@ -147,7 +147,7 @@ Read Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
+    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
     ${catchuparchiverEntityStartup_start}=    Get Index From List    ${full_list}    === ${subSystem}_catchuparchiverEntityStartup start of topic ===
     ${catchuparchiverEntityStartup_end}=    Get Index From List    ${full_list}    === ${subSystem}_catchuparchiverEntityStartup end of topic ===
     ${catchuparchiverEntityStartup_list}=    Get Slice From List    ${full_list}    start=${catchuparchiverEntityStartup_start}    end=${catchuparchiverEntityStartup_end}

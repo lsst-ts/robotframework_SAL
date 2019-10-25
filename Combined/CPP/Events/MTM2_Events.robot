@@ -131,7 +131,7 @@ Read Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
+    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
     ${m2FaultState_start}=    Get Index From List    ${full_list}    === ${subSystem}_m2FaultState start of topic ===
     ${m2FaultState_end}=    Get Index From List    ${full_list}    === ${subSystem}_m2FaultState end of topic ===
     ${m2FaultState_list}=    Get Slice From List    ${full_list}    start=${m2FaultState_start}    end=${m2FaultState_end}

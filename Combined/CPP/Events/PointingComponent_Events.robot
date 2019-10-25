@@ -123,7 +123,7 @@ Read Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
+    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
     ${toBeDeleted_start}=    Get Index From List    ${full_list}    === ${subSystem}_toBeDeleted start of topic ===
     ${toBeDeleted_end}=    Get Index From List    ${full_list}    === ${subSystem}_toBeDeleted end of topic ===
     ${toBeDeleted_list}=    Get Slice From List    ${full_list}    start=${toBeDeleted_start}    end=${toBeDeleted_end}

@@ -228,7 +228,7 @@ function readLogger() {
 		echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : ${argumentsArray[${#argumentsArray[@]}-1]}    1" >> $testSuite
 		readLogger_params $file $topic $topicIndex $testSuite
 	else
-		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all loggers ready =====" >> $testSuite
+		echo "    Should Contain    \${output.stdout}    ===== \${subSystem} loggers ready" >> $testSuite
 		itemIndex=1
 		for topic in "${topicsArray[@]}"; do
 			for generic in "${generic_events[@]}"; do
