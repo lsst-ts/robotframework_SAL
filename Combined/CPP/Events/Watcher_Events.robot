@@ -123,7 +123,7 @@ Read Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} all loggers ready =====
+    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
     ${alarm_start}=    Get Index From List    ${full_list}    === ${subSystem}_alarm start of topic ===
     ${alarm_end}=    Get Index From List    ${full_list}    === ${subSystem}_alarm end of topic ===
     ${alarm_list}=    Get Slice From List    ${full_list}    start=${alarm_start}    end=${alarm_end}

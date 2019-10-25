@@ -22,6 +22,7 @@ Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
 Combined/CPP/Events/DIMM_Events.robot
+Combined/CPP/Events/DSM_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
 Combined/CPP/Events/EFDTransformationServer_Events.robot
@@ -33,7 +34,9 @@ Combined/CPP/Events/GenericCamera_Events.robot
 Combined/CPP/Events/HVAC_Events.robot
 Combined/CPP/Events/Hexapod_Events.robot
 Combined/CPP/Events/IOTA_Events.robot
+Combined/CPP/Events/LOVE_Events.robot
 Combined/CPP/Events/LinearStage_Events.robot
+Combined/CPP/Events/MTAOS_Events.robot
 Combined/CPP/Events/MTArchiver_Events.robot
 Combined/CPP/Events/MTCamera_Events.robot
 Combined/CPP/Events/MTDomeTrajectory_Events.robot

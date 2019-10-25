@@ -22,6 +22,7 @@ Combined/JAVA/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/JAVA/Telemetry/CBP_Telemetry.robot
 Combined/JAVA/Telemetry/CatchupArchiver_Telemetry.robot
 Combined/JAVA/Telemetry/DIMM_Telemetry.robot
+Combined/JAVA/Telemetry/DSM_Telemetry.robot
 Combined/JAVA/Telemetry/Dome_Telemetry.robot
 Combined/JAVA/Telemetry/EAS_Telemetry.robot
 Combined/JAVA/Telemetry/EFDTransformationServer_Telemetry.robot
@@ -33,7 +34,9 @@ Combined/JAVA/Telemetry/GenericCamera_Telemetry.robot
 Combined/JAVA/Telemetry/HVAC_Telemetry.robot
 Combined/JAVA/Telemetry/Hexapod_Telemetry.robot
 Combined/JAVA/Telemetry/IOTA_Telemetry.robot
+Combined/JAVA/Telemetry/LOVE_Telemetry.robot
 Combined/JAVA/Telemetry/LinearStage_Telemetry.robot
+Combined/JAVA/Telemetry/MTAOS_Telemetry.robot
 Combined/JAVA/Telemetry/MTArchiver_Telemetry.robot
 Combined/JAVA/Telemetry/MTCamera_Telemetry.robot
 Combined/JAVA/Telemetry/MTDomeTrajectory_Telemetry.robot
