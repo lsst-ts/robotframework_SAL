@@ -140,15 +140,15 @@ JAVA/Telemetry/TCS_kernel_Target.robot
 JAVA/Telemetry/TCS_kernel_TimeKeeper.robot
 JAVA/Telemetry/TCS_kernel_TrackRefSys.robot
 JAVA/Telemetry/TCS_kernel_TrackingTarget.robot
-JAVA/Telemetry/TcsOFC_degreeOfFreedom.robot
+JAVA/Telemetry/TcsOFC_DegreeOfFreedom.robot
 JAVA/Telemetry/TcsOFC_loopTimeMs.robot
 JAVA/Telemetry/TcsOFC_timestamp.robot
+JAVA/Telemetry/TcsWEP_WavefrontError.robot
 JAVA/Telemetry/TcsWEP_comcamTargetWfsList.robot
 JAVA/Telemetry/TcsWEP_famTargetWfsList.robot
 JAVA/Telemetry/TcsWEP_loopTimeMs.robot
 JAVA/Telemetry/TcsWEP_normalTargetWfsList.robot
 JAVA/Telemetry/TcsWEP_timestamp.robot
-JAVA/Telemetry/TcsWEP_wavefrontError.robot
 JAVA/Telemetry/VMS_CameraRotator.robot
 JAVA/Telemetry/VMS_M1M3.robot
 JAVA/Telemetry/VMS_M2.robot
