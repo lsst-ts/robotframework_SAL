@@ -411,8 +411,9 @@ Read Logger
     ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${atMountState_start}=    Get Index From List    ${full_list}    === ${subSystem}_atMountState start of topic ===
-    ${atMountState_end}=    Get Index From List    ${full_list}    === ${subSystem}_atMountState end of topic ===
+    ${atMountState_start}=    Get Index From List    ${full_list}    === Event atMountState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${atMountState_start}
+    ${atMountState_end}=    Evaluate    ${end}+${1}
     ${atMountState_list}=    Get Slice From List    ${full_list}    start=${atMountState_start}    end=${atMountState_end}
     Should Contain X Times    ${atMountState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${atMountState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
@@ -428,14 +429,16 @@ Read Logger
     ${m3PortSelected_list}=    Get Slice From List    ${full_list}    start=${m3PortSelected_start}    end=${m3PortSelected_end}
     Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selected : 1    1
     Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${positionLimits_start}=    Get Index From List    ${full_list}    === ${subSystem}_positionLimits start of topic ===
-    ${positionLimits_end}=    Get Index From List    ${full_list}    === ${subSystem}_positionLimits end of topic ===
+    ${positionLimits_start}=    Get Index From List    ${full_list}    === Event positionLimits received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${positionLimits_start}
+    ${positionLimits_end}=    Evaluate    ${end}+${1}
     ${positionLimits_list}=    Get Slice From List    ${full_list}    start=${positionLimits_start}    end=${positionLimits_end}
     Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimum : 0    1
     Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maximum : 0    1
     Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${target_start}=    Get Index From List    ${full_list}    === ${subSystem}_target start of topic ===
-    ${target_end}=    Get Index From List    ${full_list}    === ${subSystem}_target end of topic ===
+    ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
+    ${target_end}=    Evaluate    ${end}+${1}
     ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${target_end}
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
@@ -680,8 +683,9 @@ Read Logger
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions start of topic ===
-    ${softwareVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions end of topic ===
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
+    ${softwareVersions_end}=    Evaluate    ${end}+${1}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : LSST    1
@@ -689,8 +693,9 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
+    ${heartbeat_end}=    Evaluate    ${end}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

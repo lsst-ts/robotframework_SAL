@@ -178,24 +178,28 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
-    ${controllerState_start}=    Get Index From List    ${full_list}    === ${subSystem}_controllerState start of topic ===
-    ${controllerState_end}=    Get Index From List    ${full_list}    === ${subSystem}_controllerState end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${controllerState_start}=    Get Index From List    ${full_list}    === Event controllerState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${controllerState_start}
+    ${controllerState_end}=    Evaluate    ${end}+${1}
     ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${controllerState_end}
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}controllerState : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offlineSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applicationStatus : 0    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${connected_start}=    Get Index From List    ${full_list}    === ${subSystem}_connected start of topic ===
-    ${connected_end}=    Get Index From List    ${full_list}    === ${subSystem}_connected end of topic ===
+    ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${connected_start}
+    ${connected_end}=    Evaluate    ${end}+${1}
     ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${connected_end}
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : 1    1
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telemetry : 1    1
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${interlock_start}=    Get Index From List    ${full_list}    === ${subSystem}_interlock start of topic ===
-    ${interlock_end}=    Get Index From List    ${full_list}    === ${subSystem}_interlock end of topic ===
+    ${interlock_start}=    Get Index From List    ${full_list}    === Event interlock received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${interlock_start}
+    ${interlock_end}=    Evaluate    ${end}+${1}
     ${interlock_list}=    Get Slice From List    ${full_list}    start=${interlock_start}    end=${interlock_end}
     Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detail : LSST    1
     Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
@@ -325,8 +329,9 @@ Read Logger
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions start of topic ===
-    ${softwareVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions end of topic ===
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
+    ${softwareVersions_end}=    Evaluate    ${end}+${1}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : LSST    1
@@ -334,8 +339,9 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
+    ${heartbeat_end}=    Evaluate    ${end}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -154,10 +154,12 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
-    ${availableScripts_start}=    Get Index From List    ${full_list}    === ${subSystem}_availableScripts start of topic ===
-    ${availableScripts_end}=    Get Index From List    ${full_list}    === ${subSystem}_availableScripts end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${availableScripts_start}=    Get Index From List    ${full_list}    === Event availableScripts received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${availableScripts_start}
+    ${availableScripts_end}=    Evaluate    ${end}+${1}
     ${availableScripts_list}=    Get Slice From List    ${full_list}    start=${availableScripts_start}    end=${availableScripts_end}
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : LSST    1
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : LSST    1
@@ -253,8 +255,9 @@ Read Logger
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions start of topic ===
-    ${softwareVersions_end}=    Get Index From List    ${full_list}    === ${subSystem}_softwareVersions end of topic ===
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
+    ${softwareVersions_end}=    Evaluate    ${end}+${1}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : LSST    1
@@ -262,8 +265,9 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : LSST    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ${subSystem}_heartbeat end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
+    ${heartbeat_end}=    Evaluate    ${end}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
     Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

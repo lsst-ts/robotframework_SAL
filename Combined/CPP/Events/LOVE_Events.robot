@@ -58,16 +58,19 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
-    ${logMessage_start}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === ${subSystem}_logMessage end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
+    ${logMessage_end}=    Evaluate    ${end}+${1}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${observingLog_start}=    Get Index From List    ${full_list}    === ${subSystem}_observingLog start of topic ===
-    ${observingLog_end}=    Get Index From List    ${full_list}    === ${subSystem}_observingLog end of topic ===
+    ${observingLog_start}=    Get Index From List    ${full_list}    === Event observingLog received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${observingLog_start}
+    ${observingLog_end}=    Evaluate    ${end}+${1}
     ${observingLog_list}=    Get Slice From List    ${full_list}    start=${observingLog_start}    end=${observingLog_end}
     Should Contain X Times    ${observingLog_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

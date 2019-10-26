@@ -30,7 +30,7 @@ Start Logger
 
 Start Sender
     [Tags]    functional
-    Comment    Sender Program waiting for Logger program to be Ready.
+    Comment    Sender program waiting for Logger program to be Ready.
     ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
     :FOR    ${i}    IN RANGE    30
     \    Exit For Loop If     'ATAOS all loggers ready' in $loggerOutput

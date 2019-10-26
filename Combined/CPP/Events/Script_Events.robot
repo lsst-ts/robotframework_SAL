@@ -90,10 +90,12 @@ Read Logger
     Switch Process    Logger
     ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    Should Contain    ${output.stdout}    ===== ${subSystem} loggers ready
-    ${checkpoints_start}=    Get Index From List    ${full_list}    === ${subSystem}_checkpoints start of topic ===
-    ${checkpoints_end}=    Get Index From List    ${full_list}    === ${subSystem}_checkpoints end of topic ===
+    @{full_list}=    Split To Lines    ${output.stdout}    start=0
+    Log Many    @{full_list}
+    Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${checkpoints_start}=    Get Index From List    ${full_list}    === Event checkpoints received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${checkpoints_start}
+    ${checkpoints_end}=    Evaluate    ${end}+${1}
     ${checkpoints_list}=    Get Slice From List    ${full_list}    start=${checkpoints_start}    end=${checkpoints_end}
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pause : LSST    1
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stop : LSST    1
