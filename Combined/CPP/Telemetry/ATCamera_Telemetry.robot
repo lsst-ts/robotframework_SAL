@@ -36,14 +36,6 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_heartbeat test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_heartbeat
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATCamera_heartbeat start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::heartbeat_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATCamera_heartbeat end of topic ===
     Comment    ======= Verify ${subSystem}_wreb test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wreb
     @{words}=    Split String    ${line}
@@ -84,17 +76,9 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATCamera subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    10
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    10
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
     ${wreb_list}=    Get Slice From List    ${full_list}    start=${wreb_start}    end=${wreb_end}
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ckPSH_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ckPOV : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ogoV : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp1 : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp2 : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp3 : 1    10
@@ -104,24 +88,27 @@ Read Subscriber
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0U : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atemp0L : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdTemp0 : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digPS_I : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaPS_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaPS_I : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHPS_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHPS_I : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odPS_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odPS_I : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}htrPS_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}htrPS_I : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digV : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digI : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaV : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaI : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHV : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHI : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkLV : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odV : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odI : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}power : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sckU_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sckL_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rgU_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rgL_V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cks0V : 1    10
-    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rg0V : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pClkU : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pClkL : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sClkU : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sClkL : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rgU : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rgL : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pClk0 : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sClk0 : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rg0 : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}od0V : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}og0V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rd0V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gd0V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}od0I : 1    10
@@ -145,10 +132,14 @@ Read Subscriber
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}od_I : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dphi_V : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dphi_I : 1    10
-    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heater_V : 1    10
-    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heater_I : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hvbias_V : 1    10
     Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hvbias_I : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan_V : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fan_I : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otm_V : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otm_I : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aux_V : 1    10
+    Should Contain X Times    ${wrebPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aux_I : 1    10
     ${vacuum_start}=    Get Index From List    ${full_list}    === ATCamera_vacuum start of topic ===
     ${vacuum_end}=    Get Index From List    ${full_list}    === ATCamera_vacuum end of topic ===
     ${vacuum_list}=    Get Slice From List    ${full_list}    start=${vacuum_start}    end=${vacuum_end}

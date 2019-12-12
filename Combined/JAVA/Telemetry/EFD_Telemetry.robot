@@ -51,9 +51,9 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== EFD all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${Summary_start}=    Get Index From List    ${full_list}    === EFD_Summary start of topic ===
-    ${Summary_end}=    Get Index From List    ${full_list}    === EFD_Summary end of topic ===
-    ${Summary_list}=    Get Slice From List    ${full_list}    start=${Summary_start}    end=${Summary_end + 1}
-    Log Many    ${Summary_list}
-    Should Contain    ${Summary_list}    === EFD_Summary start of topic ===
-    Should Contain    ${Summary_list}    === EFD_Summary end of topic ===
+    ${summary_start}=    Get Index From List    ${full_list}    === EFD_summary start of topic ===
+    ${summary_end}=    Get Index From List    ${full_list}    === EFD_summary end of topic ===
+    ${summary_list}=    Get Slice From List    ${full_list}    start=${summary_start}    end=${summary_end + 1}
+    Log Many    ${summary_list}
+    Should Contain    ${summary_list}    === EFD_summary start of topic ===
+    Should Contain    ${summary_list}    === EFD_summary end of topic ===

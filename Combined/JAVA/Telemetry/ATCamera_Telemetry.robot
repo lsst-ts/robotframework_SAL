@@ -51,12 +51,6 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATCamera all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === ATCamera_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === ATCamera_heartbeat end of topic ===
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
     ${wreb_list}=    Get Slice From List    ${full_list}    start=${wreb_start}    end=${wreb_end + 1}

@@ -36,14 +36,14 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_Summary test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_Summary
+    Comment    ======= Verify ${subSystem}_summary test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_summary
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === EFD_Summary start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::Summary_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === EFD_summary start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::summary_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === EFD_Summary end of topic ===
+    Should Contain    ${output.stdout}    === EFD_summary end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -52,7 +52,7 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== EFD subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${Summary_start}=    Get Index From List    ${full_list}    === EFD_Summary start of topic ===
-    ${Summary_end}=    Get Index From List    ${full_list}    === EFD_Summary end of topic ===
-    ${Summary_list}=    Get Slice From List    ${full_list}    start=${Summary_start}    end=${Summary_end}
-    Should Contain X Times    ${Summary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}size : 1    10
+    ${summary_start}=    Get Index From List    ${full_list}    === EFD_summary start of topic ===
+    ${summary_end}=    Get Index From List    ${full_list}    === EFD_summary end of topic ===
+    ${summary_list}=    Get Slice From List    ${full_list}    start=${summary_start}    end=${summary_end}
+    Should Contain X Times    ${summary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}size : 1    10

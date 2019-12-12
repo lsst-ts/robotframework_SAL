@@ -36,14 +36,14 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_settingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsApplied
+    Comment    ======= Verify ${subSystem}_dependenciesVersions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_dependenciesVersions
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event settingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsApplied_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event dependenciesVersions iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_dependenciesVersions_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event settingsApplied generated =
+    Should Contain    ${output.stdout}    === Event dependenciesVersions generated =
     Comment    ======= Verify ${subSystem}_target test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_target
     @{words}=    Split String    ${line}
@@ -149,19 +149,19 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Event settingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsApplied_start}
-    ${settingsApplied_end}=    Evaluate    ${end}+${1}
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end}
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scheduler : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cloudModel : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}downtimeModel : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seeingModel : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skybrightnessModel : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryModel : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryLocation : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${dependenciesVersions_start}=    Get Index From List    ${full_list}    === Event dependenciesVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${dependenciesVersions_start}
+    ${dependenciesVersions_end}=    Evaluate    ${end}+${1}
+    ${dependenciesVersions_list}=    Get Slice From List    ${full_list}    start=${dependenciesVersions_start}    end=${dependenciesVersions_end}
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scheduler : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cloudModel : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}downtimeModel : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seeingModel : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skybrightnessModel : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryModel : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryLocation : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
     ${target_end}=    Evaluate    ${end}+${1}

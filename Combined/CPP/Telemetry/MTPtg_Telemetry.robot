@@ -131,6 +131,9 @@ Read Subscriber
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAz : LSST    10
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandEl : LSST    10
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRot : LSST    10
+    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAzVelocity : 1    10
+    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandElVelocity : 1    10
+    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRotVelocity : 1    10
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ha : LSST    10
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parAngle : 1    10
     Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass : 1    10
@@ -143,6 +146,9 @@ Read Subscriber
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAz : LSST    10
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandEl : LSST    10
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRot : LSST    10
+    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAzVelocity : 1    10
+    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandElVelocity : 1    10
+    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRotVelocity : 1    10
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ha : LSST    10
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parAngle : 1    10
     Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass : 1    10
@@ -165,6 +171,9 @@ Read Subscriber
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAz : LSST    10
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandEl : LSST    10
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRot : LSST    10
+    Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAzVelocity : 1    10
+    Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandElVelocity : 1    10
+    Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRotVelocity : 1    10
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ha : LSST    10
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parAngle : 1    10
     Should Contain X Times    ${currentTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass : 1    10

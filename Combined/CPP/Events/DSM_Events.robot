@@ -36,14 +36,14 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_settingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsApplied
+    Comment    ======= Verify ${subSystem}_settingsAppliedSetup test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsAppliedSetup
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event settingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsApplied_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event settingsAppliedSetup iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsAppliedSetup_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event settingsApplied generated =
+    Should Contain    ${output.stdout}    === Event settingsAppliedSetup generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -125,13 +125,13 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Event settingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsApplied_start}
-    ${settingsApplied_end}=    Evaluate    ${end}+${1}
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end}
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telemetryDirectory : LSST    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}simulationLoopTime : 1    1
-    Should Contain X Times    ${settingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${settingsAppliedSetup_start}=    Get Index From List    ${full_list}    === Event settingsAppliedSetup received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedSetup_start}
+    ${settingsAppliedSetup_end}=    Evaluate    ${end}+${1}
+    ${settingsAppliedSetup_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedSetup_start}    end=${settingsAppliedSetup_end}
+    Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telemetryDirectory : LSST    1
+    Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}simulationLoopTime : 1    1
+    Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

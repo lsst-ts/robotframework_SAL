@@ -36,17 +36,17 @@ function main() {
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	subSystem=$(getEntity $1)
+    subSystem=$(getEntity $1)
     file=$2
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
-	topicsArray=($output)
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
+    topicsArray=($output)
 }
 
 function getTopicParameters {
-	file=$1
-	index=$2
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $file )
-	itemsArray=($output)
+    file=$1
+    index=$2
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $file )
+    itemsArray=($output)
 }
 
 function clearTestSuite {
@@ -89,9 +89,9 @@ function verifyCompPubSub {
     local testSuite=$1
     echo "Verify Component Publisher and Subscriber" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
-	if [ $topic ]; then
-    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_pub.jar" >> $testSuite
-    	echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_sub.jar" >> $testSuite
+    if [ $topic ]; then
+        echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_pub.jar" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_sub.jar" >> $testSuite
     else
         echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Publisher_all.java" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Subscriber_all.java" >> $testSuite
@@ -114,7 +114,7 @@ function startJavaCombinedSubscriberProcess {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Subscriber Program." >> $testSuite
     echo "    \${subscriberOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=Subscriber    stdout=\${EXECDIR}\${/}stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}stderrSubscriber.txt" >> $testSuite    
-	echo "    Log    \${subscriberOutput}" >> $testSuite
+    echo "    Log    \${subscriberOutput}" >> $testSuite
     echo "    Should Contain    \"\${subscriberOutput}\"   \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
@@ -123,7 +123,7 @@ function startJavaCombinedSubscriberProcess {
     echo "    \\    Exit For Loop If     '\${subSystem} all subscribers ready' in \$subscriberOutput" >> $testSuite
     echo "    \\    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}stdoutSubscriber.txt" >> $testSuite
     echo "    \\    Sleep    3s" >> $testSuite
-	echo "    Log    \${subscriberOutput}" >> $testSuite
+    echo "    Log    \${subscriberOutput}" >> $testSuite
     echo "    Should Contain    \${subscriberOutput}    ===== \${subSystem} all subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
 }
@@ -155,71 +155,75 @@ function readSubscriber {
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Process    Subscriber" >> $testSuite
-	echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+    echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem all subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=34" >> $testSuite
-	itemIndex=1
+    itemIndex=1
     for item in "${topicsArray[@]}"; do
-		echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
-		echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-		echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end + 1}" >> $testSuite
-		echo "    Log Many    \${${item}_list}" >> $testSuite
-		echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
-		echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-		#echo "    Should Contain    \${${item}_list}    === [$item Subscriber] samples" >> $testSuite
+        echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end + 1}" >> $testSuite
+        echo "    Log Many    \${${item}_list}" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        #echo "    Should Contain    \${${item}_list}    === [$item Subscriber] samples" >> $testSuite
         #echo "    Should Contain    \${${item}_list}    === [$item Subscriber] message received :1" >> $testSuite
-		#getTopicParameters $file $itemIndex
-		#readSubscriber_params $file $item $itemIndex $testSuite
-		(( itemIndex++ ))
-	done
+        #getTopicParameters $file $itemIndex
+        #readSubscriber_params $file $item $itemIndex $testSuite
+        (( itemIndex++ ))
+    done
 }
 
 function createTestSuite {
-	subSystem=$1
+    subSystem=$1
     messageType="telemetry"
-	file=$2
-	index=1
+    file=$2
+    index=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file
 
-    # Generate the test suite for each topic.
-    echo ============== Generating Combined messaging test suite ==============
-    testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
-    echo $testSuiteCombined
-    createSettings $subSystem $messageType $testSuiteCombined
-    createVariables $subSystem $testSuiteCombined "all"
+    if [ ${#topicsArray[@]} -eq 0 ]; then
+        echo Skipping: $subSystem has no telemetry.
+    else
+        # Generate the test suite for each topic.
+        echo ============== Generating Combined messaging test suite ==============
+        testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+        echo $testSuiteCombined
+        createSettings $subSystem $messageType $testSuiteCombined
+        createVariables $subSystem $testSuiteCombined "all"
 
-    echo "*** Test Cases ***" >> $testSuiteCombined
-    verifyCompPubSub $testSuiteCombined
-    startJavaCombinedSubscriberProcess $subSystem $messageType $testSuiteCombined
-    startJavaCombinedPublisherProcess $subSystem $messageType $testSuiteCombined
-	readSubscriber $testSuiteCombined
+        echo "*** Test Cases ***" >> $testSuiteCombined
+        verifyCompPubSub $testSuiteCombined
+        startJavaCombinedSubscriberProcess $subSystem $messageType $testSuiteCombined
+        startJavaCombinedPublisherProcess $subSystem $messageType $testSuiteCombined
+    readSubscriber $testSuiteCombined
+    fi
 
  #    echo Generating:
-	# for topic in "${topicsArray[@]}"; do
-	# 	#  Define test suite name
-	# 	testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
-	# 	#  Get EFDB EFDB_Topic telemetry items
-	# 	getTopicItems $file $index
+    # for topic in "${topicsArray[@]}"; do
+    #     #  Define test suite name
+    #     testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        
+    #     #  Get EFDB EFDB_Topic telemetry items
+    #     getTopicItems $file $index
 
  #        #  Check if test suite should be skipped.
  #        skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
-	# 	#  Create test suite.
-	# 	echo $testSuite
-	# 	createSettings $subSystem
-	# 	createVariables $subSystem
-	# 	echo "*** Test Cases ***" >> $testSuite
+    #     #  Create test suite.
+    #     echo $testSuite
+    #     createSettings $subSystem
+    #     createVariables $subSystem
+    #     echo "*** Test Cases ***" >> $testSuite
  #        verifyCompPubSub
-	# 	startSubscriber
-	# 	startPublisher
-	# 	readSubscriber
+    #     startSubscriber
+    #     startPublisher
+    #     readSubscriber
 
- #    	(( index++ ))
-	# done
+ #        (( index++ ))
+    # done
  #    echo ""
 }
 

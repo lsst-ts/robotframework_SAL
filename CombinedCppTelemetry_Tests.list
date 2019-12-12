@@ -57,7 +57,6 @@ Combined/CPP/Telemetry/PromptProcessing_Telemetry.robot
 Combined/CPP/Telemetry/Rotator_Telemetry.robot
 Combined/CPP/Telemetry/Scheduler_Telemetry.robot
 Combined/CPP/Telemetry/ScriptQueue_Telemetry.robot
-Combined/CPP/Telemetry/Script_Telemetry.robot
 Combined/CPP/Telemetry/SummitFacility_Telemetry.robot
 Combined/CPP/Telemetry/Test_Telemetry.robot
 Combined/CPP/Telemetry/TunableLaser_Telemetry.robot
