@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    FiberSpectrograph_Events communications tests.
+Documentation    CCHeaderService_Events communications tests.
 Force Tags    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    FiberSpectrograph
+${subSystem}    CCHeaderService
 ${component}    all
 ${timeout}    45s
 
@@ -44,22 +44,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_largeFileObjectAvailable_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event largeFileObjectAvailable generated =
-    Comment    ======= Verify ${subSystem}_exposureState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_exposureState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event exposureState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_exposureState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event exposureState generated =
-    Comment    ======= Verify ${subSystem}_deviceInfo test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deviceInfo
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event deviceInfo iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_deviceInfo_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event deviceInfo generated =
 
 Read Logger
     [Tags]    functional
@@ -76,23 +60,8 @@ Read Logger
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : LSST    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : LSST    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : LSST    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${exposureState_start}=    Get Index From List    ${full_list}    === Event exposureState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${exposureState_start}
-    ${exposureState_end}=    Evaluate    ${end}+${1}
-    ${exposureState_list}=    Get Slice From List    ${full_list}    start=${exposureState_start}    end=${exposureState_end}
-    Should Contain X Times    ${exposureState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 1    1
-    Should Contain X Times    ${exposureState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${deviceInfo_start}=    Get Index From List    ${full_list}    === Event deviceInfo received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${deviceInfo_start}
-    ${deviceInfo_end}=    Evaluate    ${end}+${1}
-    ${deviceInfo_list}=    Get Slice From List    ${full_list}    start=${deviceInfo_start}    end=${deviceInfo_end}
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}npixels : 1    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fpgaVersion : LSST    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : LSST    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}libraryVersion : LSST    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -36,102 +36,22 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_mtArchiverEntityShutdown test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mtArchiverEntityShutdown
+    Comment    ======= Verify ${subSystem}_imageRetrievalForArchiving test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageRetrievalForArchiving
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mtArchiverEntityShutdown iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mtArchiverEntityShutdown_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event imageRetrievalForArchiving iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageRetrievalForArchiving_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mtArchiverEntityShutdown generated =
-    Comment    ======= Verify ${subSystem}_mtArchiverEntityStartup test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mtArchiverEntityStartup
+    Should Contain    ${output.stdout}    === Event imageRetrievalForArchiving generated =
+    Comment    ======= Verify ${subSystem}_imageInOODS test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageInOODS
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mtArchiverEntityStartup iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mtArchiverEntityStartup_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event imageInOODS iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageInOODS_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mtArchiverEntityStartup generated =
-    Comment    ======= Verify ${subSystem}_mtArchiverEntitySummaryState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mtArchiverEntitySummaryState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mtArchiverEntitySummaryState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mtArchiverEntitySummaryState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mtArchiverEntitySummaryState generated =
-    Comment    ======= Verify ${subSystem}_settingVersions test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event settingVersions iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingVersions_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event settingVersions generated =
-    Comment    ======= Verify ${subSystem}_errorCode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_errorCode
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event errorCode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_errorCode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event errorCode generated =
-    Comment    ======= Verify ${subSystem}_summaryState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_summaryState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event summaryState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_summaryState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event summaryState generated =
-    Comment    ======= Verify ${subSystem}_appliedSettingsMatchStart test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_appliedSettingsMatchStart
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event appliedSettingsMatchStart iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_appliedSettingsMatchStart_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event appliedSettingsMatchStart generated =
-    Comment    ======= Verify ${subSystem}_logLevel test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_logLevel
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event logLevel iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_logLevel_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event logLevel generated =
-    Comment    ======= Verify ${subSystem}_logMessage test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_logMessage
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event logMessage iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_logMessage_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event logMessage generated =
-    Comment    ======= Verify ${subSystem}_simulationMode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_simulationMode
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event simulationMode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_simulationMode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event simulationMode generated =
-    Comment    ======= Verify ${subSystem}_softwareVersions test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_softwareVersions
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event softwareVersions iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersions_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event softwareVersions generated =
-    Comment    ======= Verify ${subSystem}_heartbeat test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event heartbeat iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_heartbeat_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event heartbeat generated =
+    Should Contain    ${output.stdout}    === Event imageInOODS generated =
 
 Read Logger
     [Tags]    functional
@@ -141,99 +61,23 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${mtArchiverEntityShutdown_start}=    Get Index From List    ${full_list}    === Event mtArchiverEntityShutdown received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mtArchiverEntityShutdown_start}
-    ${mtArchiverEntityShutdown_end}=    Evaluate    ${end}+${1}
-    ${mtArchiverEntityShutdown_list}=    Get Slice From List    ${full_list}    start=${mtArchiverEntityShutdown_start}    end=${mtArchiverEntityShutdown_end}
-    Should Contain X Times    ${mtArchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${mtArchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${mtArchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${mtArchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${mtArchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mtArchiverEntityStartup_start}=    Get Index From List    ${full_list}    === Event mtArchiverEntityStartup received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mtArchiverEntityStartup_start}
-    ${mtArchiverEntityStartup_end}=    Evaluate    ${end}+${1}
-    ${mtArchiverEntityStartup_list}=    Get Slice From List    ${full_list}    start=${mtArchiverEntityStartup_start}    end=${mtArchiverEntityStartup_end}
-    Should Contain X Times    ${mtArchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${mtArchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${mtArchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${mtArchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${mtArchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mtArchiverEntitySummaryState_start}=    Get Index From List    ${full_list}    === Event mtArchiverEntitySummaryState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mtArchiverEntitySummaryState_start}
-    ${mtArchiverEntitySummaryState_end}=    Evaluate    ${end}+${1}
-    ${mtArchiverEntitySummaryState_list}=    Get Slice From List    ${full_list}    start=${mtArchiverEntitySummaryState_start}    end=${mtArchiverEntitySummaryState_end}
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : LSST    1
-    Should Contain X Times    ${mtArchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
-    ${settingVersions_end}=    Evaluate    ${end}+${1}
-    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end}
-    Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsVersion : LSST    1
-    Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}recommendedSettingsLabels : LSST    1
-    Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsUrl : LSST    1
-    Should Contain X Times    ${settingVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${errorCode_start}
-    ${errorCode_end}=    Evaluate    ${end}+${1}
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end}
-    Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
-    Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : LSST    1
-    Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
-    Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${summaryState_start}
-    ${summaryState_end}=    Evaluate    ${end}+${1}
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
-    Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
-    Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Event appliedSettingsMatchStart received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedSettingsMatchStart_start}
-    ${appliedSettingsMatchStart_end}=    Evaluate    ${end}+${1}
-    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end}
-    Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}appliedSettingsMatchStartIsTrue : 1    1
-    Should Contain X Times    ${appliedSettingsMatchStart_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
-    ${logLevel_end}=    Evaluate    ${end}+${1}
-    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
-    Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
-    Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
-    ${logMessage_end}=    Evaluate    ${end}+${1}
-    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
-    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
-    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : LSST    1
-    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : LSST    1
-    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${simulationMode_start}
-    ${simulationMode_end}=    Evaluate    ${end}+${1}
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
-    Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
-    Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
-    ${softwareVersions_end}=    Evaluate    ${end}+${1}
-    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : LSST    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : LSST    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openSpliceVersion : LSST    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : LSST    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : LSST    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
-    ${heartbeat_end}=    Evaluate    ${end}+${1}
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageRetrievalForArchiving_start}=    Get Index From List    ${full_list}    === Event imageRetrievalForArchiving received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageRetrievalForArchiving_start}
+    ${imageRetrievalForArchiving_end}=    Evaluate    ${end}+${1}
+    ${imageRetrievalForArchiving_list}=    Get Slice From List    ${full_list}    start=${imageRetrievalForArchiving_start}    end=${imageRetrievalForArchiving_end}
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusCode : 1    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageInOODS_start}=    Get Index From List    ${full_list}    === Event imageInOODS received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageInOODS_start}
+    ${imageInOODS_end}=    Evaluate    ${end}+${1}
+    ${imageInOODS_list}=    Get Slice From List    ${full_list}    start=${imageInOODS_start}    end=${imageInOODS_end}
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusCode : 1    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

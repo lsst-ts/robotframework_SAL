@@ -51,24 +51,24 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTVMS all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${M1M3_start}=    Get Index From List    ${full_list}    === MTVMS_M1M3 start of topic ===
-    ${M1M3_end}=    Get Index From List    ${full_list}    === MTVMS_M1M3 end of topic ===
-    ${M1M3_list}=    Get Slice From List    ${full_list}    start=${M1M3_start}    end=${M1M3_end + 1}
-    Log Many    ${M1M3_list}
-    Should Contain    ${M1M3_list}    === MTVMS_M1M3 start of topic ===
-    Should Contain    ${M1M3_list}    === MTVMS_M1M3 end of topic ===
-    ${TMA_start}=    Get Index From List    ${full_list}    === MTVMS_TMA start of topic ===
-    ${TMA_end}=    Get Index From List    ${full_list}    === MTVMS_TMA end of topic ===
-    ${TMA_list}=    Get Slice From List    ${full_list}    start=${TMA_start}    end=${TMA_end + 1}
-    Log Many    ${TMA_list}
-    Should Contain    ${TMA_list}    === MTVMS_TMA start of topic ===
-    Should Contain    ${TMA_list}    === MTVMS_TMA end of topic ===
-    ${M2_start}=    Get Index From List    ${full_list}    === MTVMS_M2 start of topic ===
-    ${M2_end}=    Get Index From List    ${full_list}    === MTVMS_M2 end of topic ===
-    ${M2_list}=    Get Slice From List    ${full_list}    start=${M2_start}    end=${M2_end + 1}
-    Log Many    ${M2_list}
-    Should Contain    ${M2_list}    === MTVMS_M2 start of topic ===
-    Should Contain    ${M2_list}    === MTVMS_M2 end of topic ===
+    ${m1m3_start}=    Get Index From List    ${full_list}    === MTVMS_m1m3 start of topic ===
+    ${m1m3_end}=    Get Index From List    ${full_list}    === MTVMS_m1m3 end of topic ===
+    ${m1m3_list}=    Get Slice From List    ${full_list}    start=${m1m3_start}    end=${m1m3_end + 1}
+    Log Many    ${m1m3_list}
+    Should Contain    ${m1m3_list}    === MTVMS_m1m3 start of topic ===
+    Should Contain    ${m1m3_list}    === MTVMS_m1m3 end of topic ===
+    ${tma_start}=    Get Index From List    ${full_list}    === MTVMS_tma start of topic ===
+    ${tma_end}=    Get Index From List    ${full_list}    === MTVMS_tma end of topic ===
+    ${tma_list}=    Get Slice From List    ${full_list}    start=${tma_start}    end=${tma_end + 1}
+    Log Many    ${tma_list}
+    Should Contain    ${tma_list}    === MTVMS_tma start of topic ===
+    Should Contain    ${tma_list}    === MTVMS_tma end of topic ===
+    ${m2_start}=    Get Index From List    ${full_list}    === MTVMS_m2 start of topic ===
+    ${m2_end}=    Get Index From List    ${full_list}    === MTVMS_m2 end of topic ===
+    ${m2_list}=    Get Slice From List    ${full_list}    start=${m2_start}    end=${m2_end + 1}
+    Log Many    ${m2_list}
+    Should Contain    ${m2_list}    === MTVMS_m2 start of topic ===
+    Should Contain    ${m2_list}    === MTVMS_m2 end of topic ===
     ${cameraRotator_start}=    Get Index From List    ${full_list}    === MTVMS_cameraRotator start of topic ===
     ${cameraRotator_end}=    Get Index From List    ${full_list}    === MTVMS_cameraRotator end of topic ===
     ${cameraRotator_list}=    Get Slice From List    ${full_list}    start=${cameraRotator_start}    end=${cameraRotator_end + 1}
