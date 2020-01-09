@@ -100,7 +100,6 @@ Read Subscriber
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x07    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x08    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x09    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}char0 : LSST    10
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 2    1

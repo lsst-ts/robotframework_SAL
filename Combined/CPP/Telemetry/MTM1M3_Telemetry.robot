@@ -438,16 +438,16 @@ Read Subscriber
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 7    1
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 8    1
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 9    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 0    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 1    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 2    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 3    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 4    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 5    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 6    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 7    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 8    1
-    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurement : 9    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 0    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 1    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 2    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 3    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 4    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 5    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 6    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 7    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 8    1
+    Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measurementValue : 9    1
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 0    1
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 1    1
     Should Contain X Times    ${pidData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 2    1

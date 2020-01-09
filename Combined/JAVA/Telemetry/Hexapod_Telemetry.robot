@@ -51,21 +51,21 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== Hexapod all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${Actuators_start}=    Get Index From List    ${full_list}    === Hexapod_Actuators start of topic ===
-    ${Actuators_end}=    Get Index From List    ${full_list}    === Hexapod_Actuators end of topic ===
-    ${Actuators_list}=    Get Slice From List    ${full_list}    start=${Actuators_start}    end=${Actuators_end + 1}
-    Log Many    ${Actuators_list}
-    Should Contain    ${Actuators_list}    === Hexapod_Actuators start of topic ===
-    Should Contain    ${Actuators_list}    === Hexapod_Actuators end of topic ===
-    ${Application_start}=    Get Index From List    ${full_list}    === Hexapod_Application start of topic ===
-    ${Application_end}=    Get Index From List    ${full_list}    === Hexapod_Application end of topic ===
-    ${Application_list}=    Get Slice From List    ${full_list}    start=${Application_start}    end=${Application_end + 1}
-    Log Many    ${Application_list}
-    Should Contain    ${Application_list}    === Hexapod_Application start of topic ===
-    Should Contain    ${Application_list}    === Hexapod_Application end of topic ===
-    ${Electrical_start}=    Get Index From List    ${full_list}    === Hexapod_Electrical start of topic ===
-    ${Electrical_end}=    Get Index From List    ${full_list}    === Hexapod_Electrical end of topic ===
-    ${Electrical_list}=    Get Slice From List    ${full_list}    start=${Electrical_start}    end=${Electrical_end + 1}
-    Log Many    ${Electrical_list}
-    Should Contain    ${Electrical_list}    === Hexapod_Electrical start of topic ===
-    Should Contain    ${Electrical_list}    === Hexapod_Electrical end of topic ===
+    ${actuators_start}=    Get Index From List    ${full_list}    === Hexapod_actuators start of topic ===
+    ${actuators_end}=    Get Index From List    ${full_list}    === Hexapod_actuators end of topic ===
+    ${actuators_list}=    Get Slice From List    ${full_list}    start=${actuators_start}    end=${actuators_end + 1}
+    Log Many    ${actuators_list}
+    Should Contain    ${actuators_list}    === Hexapod_actuators start of topic ===
+    Should Contain    ${actuators_list}    === Hexapod_actuators end of topic ===
+    ${application_start}=    Get Index From List    ${full_list}    === Hexapod_application start of topic ===
+    ${application_end}=    Get Index From List    ${full_list}    === Hexapod_application end of topic ===
+    ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end + 1}
+    Log Many    ${application_list}
+    Should Contain    ${application_list}    === Hexapod_application start of topic ===
+    Should Contain    ${application_list}    === Hexapod_application end of topic ===
+    ${electrical_start}=    Get Index From List    ${full_list}    === Hexapod_electrical start of topic ===
+    ${electrical_end}=    Get Index From List    ${full_list}    === Hexapod_electrical end of topic ===
+    ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end + 1}
+    Log Many    ${electrical_list}
+    Should Contain    ${electrical_list}    === Hexapod_electrical start of topic ===
+    Should Contain    ${electrical_list}    === Hexapod_electrical end of topic ===

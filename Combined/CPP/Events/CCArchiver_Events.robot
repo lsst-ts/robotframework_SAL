@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATArchiver_Events communications tests.
+Documentation    CCArchiver_Events communications tests.
 Force Tags    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATArchiver
+${subSystem}    CCArchiver
 ${component}    all
 ${timeout}    45s
 

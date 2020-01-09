@@ -69,6 +69,11 @@ Read Subscriber
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampLastMeasurement : 1    10
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rmsX : 1    10
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rmsY : 1    10
+    Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidX : 1    10
+    Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidY : 1    10
+    Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux : 1    10
+    Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxADC : 1    10
+    Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fwhm : 1    10
     ${configuration_start}=    Get Index From List    ${full_list}    === DSM_configuration start of topic ===
     ${configuration_end}=    Get Index From List    ${full_list}    === DSM_configuration end of topic ===
     ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${configuration_end}

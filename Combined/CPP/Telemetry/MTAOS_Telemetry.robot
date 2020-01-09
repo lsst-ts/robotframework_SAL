@@ -64,9 +64,9 @@ Read Subscriber
     ${wepDuration_end}=    Get Index From List    ${full_list}    === MTAOS_wepDuration end of topic ===
     ${wepDuration_list}=    Get Slice From List    ${full_list}    start=${wepDuration_start}    end=${wepDuration_end}
     Should Contain X Times    ${wepDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${wepDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    10
+    Should Contain X Times    ${wepDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calcTime : 1    10
     ${ofcDuration_start}=    Get Index From List    ${full_list}    === MTAOS_ofcDuration start of topic ===
     ${ofcDuration_end}=    Get Index From List    ${full_list}    === MTAOS_ofcDuration end of topic ===
     ${ofcDuration_list}=    Get Slice From List    ${full_list}    start=${ofcDuration_start}    end=${ofcDuration_end}
     Should Contain X Times    ${ofcDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${ofcDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    10
+    Should Contain X Times    ${ofcDuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calcTime : 1    10

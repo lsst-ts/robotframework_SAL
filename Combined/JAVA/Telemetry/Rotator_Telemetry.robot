@@ -51,21 +51,21 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== Rotator all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${Electrical_start}=    Get Index From List    ${full_list}    === Rotator_Electrical start of topic ===
-    ${Electrical_end}=    Get Index From List    ${full_list}    === Rotator_Electrical end of topic ===
-    ${Electrical_list}=    Get Slice From List    ${full_list}    start=${Electrical_start}    end=${Electrical_end + 1}
-    Log Many    ${Electrical_list}
-    Should Contain    ${Electrical_list}    === Rotator_Electrical start of topic ===
-    Should Contain    ${Electrical_list}    === Rotator_Electrical end of topic ===
     ${Application_start}=    Get Index From List    ${full_list}    === Rotator_Application start of topic ===
     ${Application_end}=    Get Index From List    ${full_list}    === Rotator_Application end of topic ===
     ${Application_list}=    Get Slice From List    ${full_list}    start=${Application_start}    end=${Application_end + 1}
     Log Many    ${Application_list}
     Should Contain    ${Application_list}    === Rotator_Application start of topic ===
     Should Contain    ${Application_list}    === Rotator_Application end of topic ===
-    ${Motors_start}=    Get Index From List    ${full_list}    === Rotator_Motors start of topic ===
-    ${Motors_end}=    Get Index From List    ${full_list}    === Rotator_Motors end of topic ===
-    ${Motors_list}=    Get Slice From List    ${full_list}    start=${Motors_start}    end=${Motors_end + 1}
-    Log Many    ${Motors_list}
-    Should Contain    ${Motors_list}    === Rotator_Motors start of topic ===
-    Should Contain    ${Motors_list}    === Rotator_Motors end of topic ===
+    ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
+    ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
+    ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end + 1}
+    Log Many    ${electrical_list}
+    Should Contain    ${electrical_list}    === Rotator_electrical start of topic ===
+    Should Contain    ${electrical_list}    === Rotator_electrical end of topic ===
+    ${motors_start}=    Get Index From List    ${full_list}    === Rotator_motors start of topic ===
+    ${motors_end}=    Get Index From List    ${full_list}    === Rotator_motors end of topic ===
+    ${motors_list}=    Get Slice From List    ${full_list}    start=${motors_start}    end=${motors_end + 1}
+    Log Many    ${motors_list}
+    Should Contain    ${motors_list}    === Rotator_motors start of topic ===
+    Should Contain    ${motors_list}    === Rotator_motors end of topic ===

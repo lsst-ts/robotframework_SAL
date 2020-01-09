@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    ATCamera_Events communications tests.
+Documentation    CCCamera_Events communications tests.
 Force Tags    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    ATCamera
+${subSystem}    CCCamera
 ${component}    all
 ${timeout}    45s
 
@@ -68,6 +68,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageReadinessDetailedState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event imageReadinessDetailedState generated =
+    Comment    ======= Verify ${subSystem}_startSetFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startSetFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event startSetFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startSetFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event startSetFilter generated =
+    Comment    ======= Verify ${subSystem}_startUnloadFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startUnloadFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event startUnloadFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startUnloadFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event startUnloadFilter generated =
     Comment    ======= Verify ${subSystem}_notReadyToTakeImage test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_notReadyToTakeImage
     @{words}=    Split String    ${line}
@@ -84,6 +100,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startShutterClose_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event startShutterClose generated =
+    Comment    ======= Verify ${subSystem}_endInitializeGuider test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endInitializeGuider
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endInitializeGuider iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endInitializeGuider_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endInitializeGuider generated =
     Comment    ======= Verify ${subSystem}_endShutterClose test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endShutterClose
     @{words}=    Split String    ${line}
@@ -100,6 +124,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endOfImageTelemetry_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event endOfImageTelemetry generated =
+    Comment    ======= Verify ${subSystem}_endUnloadFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endUnloadFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endUnloadFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endUnloadFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endUnloadFilter generated =
     Comment    ======= Verify ${subSystem}_calibrationDetailedState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_calibrationDetailedState
     @{words}=    Split String    ${line}
@@ -108,6 +140,30 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_calibrationDetailedState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event calibrationDetailedState generated =
+    Comment    ======= Verify ${subSystem}_endRotateCarousel test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endRotateCarousel
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endRotateCarousel iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endRotateCarousel_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endRotateCarousel generated =
+    Comment    ======= Verify ${subSystem}_startLoadFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startLoadFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event startLoadFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startLoadFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event startLoadFilter generated =
+    Comment    ======= Verify ${subSystem}_filterChangerDetailedState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_filterChangerDetailedState
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event filterChangerDetailedState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_filterChangerDetailedState_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event filterChangerDetailedState generated =
     Comment    ======= Verify ${subSystem}_shutterDetailedState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_shutterDetailedState
     @{words}=    Split String    ${line}
@@ -140,6 +196,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_prepareToTakeImage_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event prepareToTakeImage generated =
+    Comment    ======= Verify ${subSystem}_ccsConfigured test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_ccsConfigured
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event ccsConfigured iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_ccsConfigured_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event ccsConfigured generated =
+    Comment    ======= Verify ${subSystem}_endLoadFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endLoadFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endLoadFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endLoadFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endLoadFilter generated =
     Comment    ======= Verify ${subSystem}_endShutterOpen test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endShutterOpen
     @{words}=    Split String    ${line}
@@ -156,6 +228,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startIntegration_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event startIntegration generated =
+    Comment    ======= Verify ${subSystem}_endInitializeImage test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endInitializeImage
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endInitializeImage iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endInitializeImage_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endInitializeImage generated =
+    Comment    ======= Verify ${subSystem}_endSetFilter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_endSetFilter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event endSetFilter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_endSetFilter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event endSetFilter generated =
     Comment    ======= Verify ${subSystem}_startShutterOpen test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startShutterOpen
     @{words}=    Split String    ${line}
@@ -172,6 +260,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_raftsDetailedState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event raftsDetailedState generated =
+    Comment    ======= Verify ${subSystem}_availableFilters test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_availableFilters
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event availableFilters iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_availableFilters_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event availableFilters generated =
     Comment    ======= Verify ${subSystem}_startReadout test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startReadout
     @{words}=    Split String    ${line}
@@ -180,14 +276,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startReadout_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event startReadout generated =
-    Comment    ======= Verify ${subSystem}_shutterMotionProfile test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_shutterMotionProfile
+    Comment    ======= Verify ${subSystem}_startRotateCarousel test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_startRotateCarousel
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event shutterMotionProfile iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_shutterMotionProfile_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event startRotateCarousel iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_startRotateCarousel_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event shutterMotionProfile generated =
+    Should Contain    ${output.stdout}    === Event startRotateCarousel generated =
     Comment    ======= Verify ${subSystem}_imageReadoutParameters test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageReadoutParameters
     @{words}=    Split String    ${line}
@@ -196,38 +292,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageReadoutParameters_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event imageReadoutParameters generated =
-    Comment    ======= Verify ${subSystem}_settingsAppliedLegacy test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsAppliedLegacy
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event settingsAppliedLegacy iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsAppliedLegacy_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event settingsAppliedLegacy generated =
-    Comment    ======= Verify ${subSystem}_bonnShutterSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_bonnShutterSettingsApplied
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event bonnShutterSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_bonnShutterSettingsApplied_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event bonnShutterSettingsApplied generated =
-    Comment    ======= Verify ${subSystem}_wrebSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_wrebSettingsApplied
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event wrebSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_wrebSettingsApplied_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event wrebSettingsApplied generated =
-    Comment    ======= Verify ${subSystem}_softwareVersionsSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_softwareVersionsSettingsApplied
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event softwareVersionsSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersionsSettingsApplied_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event softwareVersionsSettingsApplied generated =
 
 Read Logger
     [Tags]    functional
@@ -271,6 +335,17 @@ Read Logger
     ${imageReadinessDetailedState_list}=    Get Slice From List    ${full_list}    start=${imageReadinessDetailedState_start}    end=${imageReadinessDetailedState_end}
     Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
     Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${startSetFilter_start}=    Get Index From List    ${full_list}    === Event startSetFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startSetFilter_start}
+    ${startSetFilter_end}=    Evaluate    ${end}+${1}
+    ${startSetFilter_list}=    Get Slice From List    ${full_list}    start=${startSetFilter_start}    end=${startSetFilter_end}
+    Should Contain X Times    ${startSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterName : LSST    1
+    Should Contain X Times    ${startSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${startUnloadFilter_start}=    Get Index From List    ${full_list}    === Event startUnloadFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startUnloadFilter_start}
+    ${startUnloadFilter_end}=    Evaluate    ${end}+${1}
+    ${startUnloadFilter_list}=    Get Slice From List    ${full_list}    start=${startUnloadFilter_start}    end=${startUnloadFilter_end}
+    Should Contain X Times    ${startUnloadFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${notReadyToTakeImage_start}=    Get Index From List    ${full_list}    === Event notReadyToTakeImage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${notReadyToTakeImage_start}
     ${notReadyToTakeImage_end}=    Evaluate    ${end}+${1}
@@ -281,6 +356,11 @@ Read Logger
     ${startShutterClose_end}=    Evaluate    ${end}+${1}
     ${startShutterClose_list}=    Get Slice From List    ${full_list}    start=${startShutterClose_start}    end=${startShutterClose_end}
     Should Contain X Times    ${startShutterClose_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endInitializeGuider_start}=    Get Index From List    ${full_list}    === Event endInitializeGuider received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endInitializeGuider_start}
+    ${endInitializeGuider_end}=    Evaluate    ${end}+${1}
+    ${endInitializeGuider_list}=    Get Slice From List    ${full_list}    start=${endInitializeGuider_start}    end=${endInitializeGuider_end}
+    Should Contain X Times    ${endInitializeGuider_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endShutterClose_start}=    Get Index From List    ${full_list}    === Event endShutterClose received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endShutterClose_start}
     ${endShutterClose_end}=    Evaluate    ${end}+${1}
@@ -307,12 +387,33 @@ Read Logger
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}darkTime : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endUnloadFilter_start}=    Get Index From List    ${full_list}    === Event endUnloadFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endUnloadFilter_start}
+    ${endUnloadFilter_end}=    Evaluate    ${end}+${1}
+    ${endUnloadFilter_list}=    Get Slice From List    ${full_list}    start=${endUnloadFilter_start}    end=${endUnloadFilter_end}
+    Should Contain X Times    ${endUnloadFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${calibrationDetailedState_start}=    Get Index From List    ${full_list}    === Event calibrationDetailedState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${calibrationDetailedState_start}
     ${calibrationDetailedState_end}=    Evaluate    ${end}+${1}
     ${calibrationDetailedState_list}=    Get Slice From List    ${full_list}    start=${calibrationDetailedState_start}    end=${calibrationDetailedState_end}
     Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
     Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endRotateCarousel_start}=    Get Index From List    ${full_list}    === Event endRotateCarousel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endRotateCarousel_start}
+    ${endRotateCarousel_end}=    Evaluate    ${end}+${1}
+    ${endRotateCarousel_list}=    Get Slice From List    ${full_list}    start=${endRotateCarousel_start}    end=${endRotateCarousel_end}
+    Should Contain X Times    ${endRotateCarousel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${startLoadFilter_start}=    Get Index From List    ${full_list}    === Event startLoadFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startLoadFilter_start}
+    ${startLoadFilter_end}=    Evaluate    ${end}+${1}
+    ${startLoadFilter_list}=    Get Slice From List    ${full_list}    start=${startLoadFilter_start}    end=${startLoadFilter_end}
+    Should Contain X Times    ${startLoadFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${filterChangerDetailedState_start}=    Get Index From List    ${full_list}    === Event filterChangerDetailedState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${filterChangerDetailedState_start}
+    ${filterChangerDetailedState_end}=    Evaluate    ${end}+${1}
+    ${filterChangerDetailedState_list}=    Get Slice From List    ${full_list}    start=${filterChangerDetailedState_start}    end=${filterChangerDetailedState_end}
+    Should Contain X Times    ${filterChangerDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
+    Should Contain X Times    ${filterChangerDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${shutterDetailedState_start}=    Get Index From List    ${full_list}    === Event shutterDetailedState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterDetailedState_start}
     ${shutterDetailedState_end}=    Evaluate    ${end}+${1}
@@ -335,6 +436,16 @@ Read Logger
     ${prepareToTakeImage_end}=    Evaluate    ${end}+${1}
     ${prepareToTakeImage_list}=    Get Slice From List    ${full_list}    start=${prepareToTakeImage_start}    end=${prepareToTakeImage_end}
     Should Contain X Times    ${prepareToTakeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${ccsConfigured_start}=    Get Index From List    ${full_list}    === Event ccsConfigured received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${ccsConfigured_start}
+    ${ccsConfigured_end}=    Evaluate    ${end}+${1}
+    ${ccsConfigured_list}=    Get Slice From List    ${full_list}    start=${ccsConfigured_start}    end=${ccsConfigured_end}
+    Should Contain X Times    ${ccsConfigured_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endLoadFilter_start}=    Get Index From List    ${full_list}    === Event endLoadFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endLoadFilter_start}
+    ${endLoadFilter_end}=    Evaluate    ${end}+${1}
+    ${endLoadFilter_list}=    Get Slice From List    ${full_list}    start=${endLoadFilter_start}    end=${endLoadFilter_end}
+    Should Contain X Times    ${endLoadFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endShutterOpen_start}=    Get Index From List    ${full_list}    === Event endShutterOpen received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endShutterOpen_start}
     ${endShutterOpen_end}=    Evaluate    ${end}+${1}
@@ -356,6 +467,17 @@ Read Logger
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endInitializeImage_start}=    Get Index From List    ${full_list}    === Event endInitializeImage received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endInitializeImage_start}
+    ${endInitializeImage_end}=    Evaluate    ${end}+${1}
+    ${endInitializeImage_list}=    Get Slice From List    ${full_list}    start=${endInitializeImage_start}    end=${endInitializeImage_end}
+    Should Contain X Times    ${endInitializeImage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${endSetFilter_start}=    Get Index From List    ${full_list}    === Event endSetFilter received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endSetFilter_start}
+    ${endSetFilter_end}=    Evaluate    ${end}+${1}
+    ${endSetFilter_list}=    Get Slice From List    ${full_list}    start=${endSetFilter_start}    end=${endSetFilter_end}
+    Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterName : LSST    1
+    Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startShutterOpen_start}=    Get Index From List    ${full_list}    === Event startShutterOpen received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startShutterOpen_start}
     ${startShutterOpen_end}=    Evaluate    ${end}+${1}
@@ -367,6 +489,12 @@ Read Logger
     ${raftsDetailedState_list}=    Get Slice From List    ${full_list}    start=${raftsDetailedState_start}    end=${raftsDetailedState_end}
     Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
     Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${availableFilters_start}=    Get Index From List    ${full_list}    === Event availableFilters received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${availableFilters_start}
+    ${availableFilters_end}=    Evaluate    ${end}+${1}
+    ${availableFilters_list}=    Get Slice From List    ${full_list}    start=${availableFilters_start}    end=${availableFilters_end}
+    Should Contain X Times    ${availableFilters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : LSST    1
+    Should Contain X Times    ${availableFilters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startReadout_start}=    Get Index From List    ${full_list}    === Event startReadout received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startReadout_start}
     ${startReadout_end}=    Evaluate    ${end}+${1}
@@ -384,119 +512,24 @@ Read Logger
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampStartOfReadout : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${shutterMotionProfile_start}=    Get Index From List    ${full_list}    === Event shutterMotionProfile received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterMotionProfile_start}
-    ${shutterMotionProfile_end}=    Evaluate    ${end}+${1}
-    ${shutterMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterMotionProfile_start}    end=${shutterMotionProfile_end}
-    Should Contain X Times    ${shutterMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredExposureTime : 1    1
-    Should Contain X Times    ${shutterMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${startRotateCarousel_start}=    Get Index From List    ${full_list}    === Event startRotateCarousel received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startRotateCarousel_start}
+    ${startRotateCarousel_end}=    Evaluate    ${end}+${1}
+    ${startRotateCarousel_list}=    Get Slice From List    ${full_list}    start=${startRotateCarousel_start}    end=${startRotateCarousel_end}
+    Should Contain X Times    ${startRotateCarousel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${imageReadoutParameters_start}=    Get Index From List    ${full_list}    === Event imageReadoutParameters received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageReadoutParameters_start}
     ${imageReadoutParameters_end}=    Evaluate    ${end}+${1}
     ${imageReadoutParameters_list}=    Get Slice From List    ${full_list}    start=${imageReadoutParameters_start}    end=${imageReadoutParameters_end}
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdNames : LSST    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overRows : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overCols : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readRows : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols2 : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preCols : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preRows : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}postCols : 1    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overRows : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overCols : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readRows : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols2 : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preCols : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preRows : 0    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}postCols : 0    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingsAppliedLegacy_start}=    Get Index From List    ${full_list}    === Event settingsAppliedLegacy received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedLegacy_start}
-    ${settingsAppliedLegacy_end}=    Evaluate    ${end}+${1}
-    ${settingsAppliedLegacy_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedLegacy_start}    end=${settingsAppliedLegacy_end}
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : LSST    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebSettingsVersion : LSST    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterSettingsVersion : LSST    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${bonnShutterSettingsApplied_start}=    Get Index From List    ${full_list}    === Event bonnShutterSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${bonnShutterSettingsApplied_start}
-    ${bonnShutterSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${bonnShutterSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonnShutterSettingsApplied_start}    end=${bonnShutterSettingsApplied_end}
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startA : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startB : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}travelDistance : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startVelocity : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acceleration : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxVelocity : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threshold : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterVersion : LSST    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : LSST    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${wrebSettingsApplied_start}=    Get Index From List    ${full_list}    === Event wrebSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${wrebSettingsApplied_start}
-    ${wrebSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${wrebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${wrebSettingsApplied_start}    end=${wrebSettingsApplied_end}
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerKey : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerChecksum : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqVersion : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_af1 : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_clamp : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_gain : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_rc : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_tm : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_af1 : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_clamp : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_gain : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_rc : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_tm : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_csGate : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_csGateP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gd : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_od : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_og : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rd : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_csGate : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManufacturer : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSerialNumber : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdName : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebName : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersionsSettingsApplied_start}=    Get Index From List    ${full_list}    === Event softwareVersionsSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersionsSettingsApplied_start}
-    ${softwareVersionsSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${softwareVersionsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${softwareVersionsSettingsApplied_start}    end=${softwareVersionsSettingsApplied_end}
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mcmVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ocsbridgeVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebPowerVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pduVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuumVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebFirmwareVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
