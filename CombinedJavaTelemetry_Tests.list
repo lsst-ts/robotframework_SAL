@@ -5,7 +5,6 @@
 
 # List of test suites
 Combined/JAVA/Telemetry/ATAOS_Telemetry.robot
-Combined/JAVA/Telemetry/ATArchiver_Telemetry.robot
 Combined/JAVA/Telemetry/ATBuilding_Telemetry.robot
 Combined/JAVA/Telemetry/ATCamera_Telemetry.robot
 Combined/JAVA/Telemetry/ATDome_Telemetry.robot
@@ -18,6 +17,7 @@ Combined/JAVA/Telemetry/ATSpectrograph_Telemetry.robot
 Combined/JAVA/Telemetry/ATTCS_Telemetry.robot
 Combined/JAVA/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/JAVA/Telemetry/CBP_Telemetry.robot
+Combined/JAVA/Telemetry/CCCamera_Telemetry.robot
 Combined/JAVA/Telemetry/CatchupArchiver_Telemetry.robot
 Combined/JAVA/Telemetry/DIMM_Telemetry.robot
 Combined/JAVA/Telemetry/DSM_Telemetry.robot
@@ -33,7 +33,6 @@ Combined/JAVA/Telemetry/Hexapod_Telemetry.robot
 Combined/JAVA/Telemetry/IOTA_Telemetry.robot
 Combined/JAVA/Telemetry/LinearStage_Telemetry.robot
 Combined/JAVA/Telemetry/MTAOS_Telemetry.robot
-Combined/JAVA/Telemetry/MTArchiver_Telemetry.robot
 Combined/JAVA/Telemetry/MTCamera_Telemetry.robot
 Combined/JAVA/Telemetry/MTDomeTrajectory_Telemetry.robot
 Combined/JAVA/Telemetry/MTGuider_Telemetry.robot
@@ -45,7 +44,6 @@ Combined/JAVA/Telemetry/MTMount_Telemetry.robot
 Combined/JAVA/Telemetry/MTPtg_Telemetry.robot
 Combined/JAVA/Telemetry/MTTCS_Telemetry.robot
 Combined/JAVA/Telemetry/MTVMS_Telemetry.robot
-Combined/JAVA/Telemetry/OCS_Telemetry.robot
 Combined/JAVA/Telemetry/PointingComponent_Telemetry.robot
 Combined/JAVA/Telemetry/PromptProcessing_Telemetry.robot
 Combined/JAVA/Telemetry/Rotator_Telemetry.robot

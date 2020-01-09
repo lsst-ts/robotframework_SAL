@@ -20,6 +20,9 @@ Combined/CPP/Events/ATSpectrograph_Events.robot
 Combined/CPP/Events/ATTCS_Events.robot
 Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
+Combined/CPP/Events/CCArchiver_Events.robot
+Combined/CPP/Events/CCCamera_Events.robot
+Combined/CPP/Events/CCHeaderService_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
 Combined/CPP/Events/DIMM_Events.robot
 Combined/CPP/Events/DSM_Events.robot
