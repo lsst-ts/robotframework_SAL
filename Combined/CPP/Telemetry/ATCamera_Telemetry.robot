@@ -112,6 +112,7 @@ Read Subscriber
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rd0V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gd0V : 1    10
     Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}od0I : 1    10
+    Should Contain X Times    ${wreb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hvbiasSwitch : 1    10
     ${bonnShutter_start}=    Get Index From List    ${full_list}    === ATCamera_bonnShutter start of topic ===
     ${bonnShutter_end}=    Get Index From List    ${full_list}    === ATCamera_bonnShutter end of topic ===
     ${bonnShutter_list}=    Get Slice From List    ${full_list}    start=${bonnShutter_start}    end=${bonnShutter_end}

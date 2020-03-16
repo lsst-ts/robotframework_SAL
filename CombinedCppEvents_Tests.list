@@ -17,7 +17,6 @@ Combined/CPP/Events/ATMonochromator_Events.robot
 Combined/CPP/Events/ATPneumatics_Events.robot
 Combined/CPP/Events/ATPtg_Events.robot
 Combined/CPP/Events/ATSpectrograph_Events.robot
-Combined/CPP/Events/ATTCS_Events.robot
 Combined/CPP/Events/ATWhiteLight_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CCArchiver_Events.robot
@@ -29,7 +28,6 @@ Combined/CPP/Events/DSM_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
 Combined/CPP/Events/EFDTransformationServer_Events.robot
-Combined/CPP/Events/EFD_Events.robot
 Combined/CPP/Events/Electrometer_Events.robot
 Combined/CPP/Events/Environment_Events.robot
 Combined/CPP/Events/FiberSpectrograph_Events.robot
@@ -44,18 +42,14 @@ Combined/CPP/Events/MTArchiver_Events.robot
 Combined/CPP/Events/MTCamera_Events.robot
 Combined/CPP/Events/MTDomeTrajectory_Events.robot
 Combined/CPP/Events/MTEEC_Events.robot
-Combined/CPP/Events/MTGuider_Events.robot
 Combined/CPP/Events/MTHeaderService_Events.robot
-Combined/CPP/Events/MTLaserTracker_Events.robot
 Combined/CPP/Events/MTM1M3TS_Events.robot
 Combined/CPP/Events/MTM1M3_Events.robot
 Combined/CPP/Events/MTM2_Events.robot
 Combined/CPP/Events/MTMount_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
-Combined/CPP/Events/MTTCS_Events.robot
 Combined/CPP/Events/MTVMS_Events.robot
-Combined/CPP/Events/OCS_Events.robot
-Combined/CPP/Events/PointingComponent_Events.robot
+Combined/CPP/Events/NewMTMount_Events.robot
 Combined/CPP/Events/PromptProcessing_Events.robot
 Combined/CPP/Events/Rotator_Events.robot
 Combined/CPP/Events/Scheduler_Events.robot

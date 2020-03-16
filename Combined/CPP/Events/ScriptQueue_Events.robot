@@ -52,6 +52,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configSchema_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event configSchema generated =
+    Comment    ======= Verify ${subSystem}_nextVisit test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_nextVisit
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event nextVisit iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_nextVisit_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event nextVisit generated =
+    Comment    ======= Verify ${subSystem}_nextVisitCanceled test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_nextVisitCanceled
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event nextVisitCanceled iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_nextVisitCanceled_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event nextVisitCanceled generated =
     Comment    ======= Verify ${subSystem}_script test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_script
     @{words}=    Split String    ${line}
@@ -100,6 +116,29 @@ Read Logger
     Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : LSST    1
     Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configSchema : LSST    1
     Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${nextVisit_start}=    Get Index From List    ${full_list}    === Event nextVisit received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextVisit_start}
+    ${nextVisit_end}=    Evaluate    ${end}+${1}
+    ${nextVisit_list}=    Get Slice From List    ${full_list}    start=${nextVisit_start}    end=${nextVisit_end}
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salIndex : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coordinateSystem : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotationSystem : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraAngle : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filters : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dome : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nimages : 1    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${nextVisitCanceled_start}=    Get Index From List    ${full_list}    === Event nextVisitCanceled received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextVisitCanceled_start}
+    ${nextVisitCanceled_end}=    Evaluate    ${end}+${1}
+    ${nextVisitCanceled_list}=    Get Slice From List    ${full_list}    start=${nextVisitCanceled_start}    end=${nextVisitCanceled_end}
+    Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salIndex : 1    1
+    Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
+    Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${script_start}=    Get Index From List    ${full_list}    === Event script received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${script_start}
     ${script_end}=    Evaluate    ${end}+${1}

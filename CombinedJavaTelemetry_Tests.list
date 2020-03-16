@@ -14,7 +14,6 @@ Combined/JAVA/Telemetry/ATMonochromator_Telemetry.robot
 Combined/JAVA/Telemetry/ATPneumatics_Telemetry.robot
 Combined/JAVA/Telemetry/ATPtg_Telemetry.robot
 Combined/JAVA/Telemetry/ATSpectrograph_Telemetry.robot
-Combined/JAVA/Telemetry/ATTCS_Telemetry.robot
 Combined/JAVA/Telemetry/ATWhiteLight_Telemetry.robot
 Combined/JAVA/Telemetry/CBP_Telemetry.robot
 Combined/JAVA/Telemetry/CCCamera_Telemetry.robot
@@ -24,7 +23,6 @@ Combined/JAVA/Telemetry/DSM_Telemetry.robot
 Combined/JAVA/Telemetry/Dome_Telemetry.robot
 Combined/JAVA/Telemetry/EAS_Telemetry.robot
 Combined/JAVA/Telemetry/EFDTransformationServer_Telemetry.robot
-Combined/JAVA/Telemetry/EFD_Telemetry.robot
 Combined/JAVA/Telemetry/Environment_Telemetry.robot
 Combined/JAVA/Telemetry/FiberSpectrograph_Telemetry.robot
 Combined/JAVA/Telemetry/GenericCamera_Telemetry.robot
@@ -35,16 +33,12 @@ Combined/JAVA/Telemetry/LinearStage_Telemetry.robot
 Combined/JAVA/Telemetry/MTAOS_Telemetry.robot
 Combined/JAVA/Telemetry/MTCamera_Telemetry.robot
 Combined/JAVA/Telemetry/MTDomeTrajectory_Telemetry.robot
-Combined/JAVA/Telemetry/MTGuider_Telemetry.robot
-Combined/JAVA/Telemetry/MTLaserTracker_Telemetry.robot
 Combined/JAVA/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/JAVA/Telemetry/MTM1M3_Telemetry.robot
 Combined/JAVA/Telemetry/MTM2_Telemetry.robot
 Combined/JAVA/Telemetry/MTMount_Telemetry.robot
 Combined/JAVA/Telemetry/MTPtg_Telemetry.robot
-Combined/JAVA/Telemetry/MTTCS_Telemetry.robot
 Combined/JAVA/Telemetry/MTVMS_Telemetry.robot
-Combined/JAVA/Telemetry/PointingComponent_Telemetry.robot
 Combined/JAVA/Telemetry/PromptProcessing_Telemetry.robot
 Combined/JAVA/Telemetry/Rotator_Telemetry.robot
 Combined/JAVA/Telemetry/Scheduler_Telemetry.robot
