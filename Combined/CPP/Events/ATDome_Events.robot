@@ -108,6 +108,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_allAxesInPosition_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event allAxesInPosition generated =
+    Comment    ======= Verify ${subSystem}_doorEncoderExtremes test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_doorEncoderExtremes
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event doorEncoderExtremes iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_doorEncoderExtremes_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event doorEncoderExtremes generated =
+    Comment    ======= Verify ${subSystem}_lastAzimuthGoTo test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_lastAzimuthGoTo
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event lastAzimuthGoTo iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_lastAzimuthGoTo_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event lastAzimuthGoTo generated =
     Comment    ======= Verify ${subSystem}_emergencyStop test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_emergencyStop
     @{words}=    Split String    ${line}
@@ -205,6 +221,21 @@ Read Logger
     ${allAxesInPosition_list}=    Get Slice From List    ${full_list}    start=${allAxesInPosition_start}    end=${allAxesInPosition_end}
     Should Contain X Times    ${allAxesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     Should Contain X Times    ${allAxesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${doorEncoderExtremes_start}=    Get Index From List    ${full_list}    === Event doorEncoderExtremes received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${doorEncoderExtremes_start}
+    ${doorEncoderExtremes_end}=    Evaluate    ${end}+${1}
+    ${doorEncoderExtremes_list}=    Get Slice From List    ${full_list}    start=${doorEncoderExtremes_start}    end=${doorEncoderExtremes_end}
+    Should Contain X Times    ${doorEncoderExtremes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainClosed : 1    1
+    Should Contain X Times    ${doorEncoderExtremes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainOpened : 1    1
+    Should Contain X Times    ${doorEncoderExtremes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dropoutClosed : 1    1
+    Should Contain X Times    ${doorEncoderExtremes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dropoutOpened : 1    1
+    Should Contain X Times    ${doorEncoderExtremes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${lastAzimuthGoTo_start}=    Get Index From List    ${full_list}    === Event lastAzimuthGoTo received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${lastAzimuthGoTo_start}
+    ${lastAzimuthGoTo_end}=    Evaluate    ${end}+${1}
+    ${lastAzimuthGoTo_list}=    Get Slice From List    ${full_list}    start=${lastAzimuthGoTo_start}    end=${lastAzimuthGoTo_end}
+    Should Contain X Times    ${lastAzimuthGoTo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
+    Should Contain X Times    ${lastAzimuthGoTo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${emergencyStop_start}=    Get Index From List    ${full_list}    === Event emergencyStop received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${emergencyStop_start}
     ${emergencyStop_end}=    Evaluate    ${end}+${1}
@@ -227,8 +258,13 @@ Read Logger
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}homeAzimuth : 1    1
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}highSpeedDistance : 1    1
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}watchdogTimer : 1    1
+    Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dropoutTimer : 1    1
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reversalDelay : 1    1
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoShutdownEnabled : 1    1
+    Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coast : 1    1
+    Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderCountsPer360 : 1    1
+    Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthMoveTimeout : 1    1
+    Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}doorMoveTimeout : 1    1
     Should Contain X Times    ${settingsAppliedDomeController_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingsAppliedDomeTcp_start}=    Get Index From List    ${full_list}    === Event settingsAppliedDomeTcp received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedDomeTcp_start}

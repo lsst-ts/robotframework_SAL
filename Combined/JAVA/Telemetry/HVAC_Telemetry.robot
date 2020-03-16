@@ -51,21 +51,57 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== HVAC all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=34
-    ${lowerAHUStatus_start}=    Get Index From List    ${full_list}    === HVAC_lowerAHUStatus start of topic ===
-    ${lowerAHUStatus_end}=    Get Index From List    ${full_list}    === HVAC_lowerAHUStatus end of topic ===
-    ${lowerAHUStatus_list}=    Get Slice From List    ${full_list}    start=${lowerAHUStatus_start}    end=${lowerAHUStatus_end + 1}
-    Log Many    ${lowerAHUStatus_list}
-    Should Contain    ${lowerAHUStatus_list}    === HVAC_lowerAHUStatus start of topic ===
-    Should Contain    ${lowerAHUStatus_list}    === HVAC_lowerAHUStatus end of topic ===
-    ${lowerChillerStatus_start}=    Get Index From List    ${full_list}    === HVAC_lowerChillerStatus start of topic ===
-    ${lowerChillerStatus_end}=    Get Index From List    ${full_list}    === HVAC_lowerChillerStatus end of topic ===
-    ${lowerChillerStatus_list}=    Get Slice From List    ${full_list}    start=${lowerChillerStatus_start}    end=${lowerChillerStatus_end + 1}
-    Log Many    ${lowerChillerStatus_list}
-    Should Contain    ${lowerChillerStatus_list}    === HVAC_lowerChillerStatus start of topic ===
-    Should Contain    ${lowerChillerStatus_list}    === HVAC_lowerChillerStatus end of topic ===
-    ${whiteRoomAHU_start}=    Get Index From List    ${full_list}    === HVAC_whiteRoomAHU start of topic ===
-    ${whiteRoomAHU_end}=    Get Index From List    ${full_list}    === HVAC_whiteRoomAHU end of topic ===
-    ${whiteRoomAHU_list}=    Get Slice From List    ${full_list}    start=${whiteRoomAHU_start}    end=${whiteRoomAHU_end + 1}
-    Log Many    ${whiteRoomAHU_list}
-    Should Contain    ${whiteRoomAHU_list}    === HVAC_whiteRoomAHU start of topic ===
-    Should Contain    ${whiteRoomAHU_list}    === HVAC_whiteRoomAHU end of topic ===
+    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas start of topic ===
+    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas end of topic ===
+    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_start}    end=${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_end + 1}
+    Log Many    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_list}
+    Should Contain    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas start of topic ===
+    Should Contain    ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas end of topic ===
+    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblTccGuionP5GuionPir start of topic ===
+    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblTccGuionP5GuionPir end of topic ===
+    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_start}    end=${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_end + 1}
+    Log Many    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_list}
+    Should Contain    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_list}    === HVAC_lsstBarraoblPiso05BarraoblTccGuionP5GuionPir start of topic ===
+    Should Contain    ${lsstBarraoblPiso05BarraoblTccGuionP5GuionPir_list}    === HVAC_lsstBarraoblPiso05BarraoblTccGuionP5GuionPir end of topic ===
+    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblTccGuionP4GuionVex start of topic ===
+    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblTccGuionP4GuionVex end of topic ===
+    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_start}    end=${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_end + 1}
+    Log Many    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_list}
+    Should Contain    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_list}    === HVAC_lsstBarraoblPiso04BarraoblTccGuionP4GuionVex start of topic ===
+    Should Contain    ${lsstBarraoblPiso04BarraoblTccGuionP4GuionVex_list}    === HVAC_lsstBarraoblPiso04BarraoblTccGuionP4GuionVex end of topic ===
+    ${lsstBarraoblPiso01BarraoblChiller01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblChiller01 start of topic ===
+    ${lsstBarraoblPiso01BarraoblChiller01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblChiller01 end of topic ===
+    ${lsstBarraoblPiso01BarraoblChiller01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso01BarraoblChiller01_start}    end=${lsstBarraoblPiso01BarraoblChiller01_end + 1}
+    Log Many    ${lsstBarraoblPiso01BarraoblChiller01_list}
+    Should Contain    ${lsstBarraoblPiso01BarraoblChiller01_list}    === HVAC_lsstBarraoblPiso01BarraoblChiller01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso01BarraoblChiller01_list}    === HVAC_lsstBarraoblPiso01BarraoblChiller01 end of topic ===
+    ${lsstBarraoblPiso02BarraoblCrack01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso02BarraoblCrack01 start of topic ===
+    ${lsstBarraoblPiso02BarraoblCrack01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso02BarraoblCrack01 end of topic ===
+    ${lsstBarraoblPiso02BarraoblCrack01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso02BarraoblCrack01_start}    end=${lsstBarraoblPiso02BarraoblCrack01_end + 1}
+    Log Many    ${lsstBarraoblPiso02BarraoblCrack01_list}
+    Should Contain    ${lsstBarraoblPiso02BarraoblCrack01_list}    === HVAC_lsstBarraoblPiso02BarraoblCrack01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso02BarraoblCrack01_list}    === HVAC_lsstBarraoblPiso02BarraoblCrack01 end of topic ===
+    ${lsstBarraoblPiso02BarraoblFancoil01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 start of topic ===
+    ${lsstBarraoblPiso02BarraoblFancoil01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
+    ${lsstBarraoblPiso02BarraoblFancoil01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso02BarraoblFancoil01_start}    end=${lsstBarraoblPiso02BarraoblFancoil01_end + 1}
+    Log Many    ${lsstBarraoblPiso02BarraoblFancoil01_list}
+    Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end + 1}
+    Log Many    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end + 1}
+    Log Many    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}
+    Should Contain    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
+    Should Contain    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia start of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia end of topic ===
+    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_end + 1}
+    Log Many    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_list}
+    Should Contain    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia start of topic ===
+    Should Contain    ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSlimpia end of topic ===

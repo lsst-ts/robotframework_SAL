@@ -58,3 +58,4 @@ Read Subscriber
     Should Contain X Times    ${position_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dropoutDoorOpeningPercentage : 1    10
     Should Contain X Times    ${position_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainDoorOpeningPercentage : 1    10
     Should Contain X Times    ${position_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthPosition : 1    10
+    Should Contain X Times    ${position_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthEncoderPosition : 1    10

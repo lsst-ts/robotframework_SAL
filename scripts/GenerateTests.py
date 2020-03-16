@@ -6,7 +6,7 @@ import inspect
 import argparse
 
 # This array defines the list of current CSCs.
-csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATTCS', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'CCArchiver', 'CCCamera', 'CCHeaderService', 'DIMM', 'Dome', 'DSM', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'Environment', 'FiberSpectrograph', 'GenericCamera', 'Hexapod', 'HVAC', 'IOTA', 'LinearStage', 'LOVE', 'MTAOS', 'MTArchiver', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTPtg', 'MTTCS', 'MTVMS', 'PointingComponent', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher']
+csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'CCArchiver', 'CCCamera', 'CCHeaderService', 'DIMM', 'Dome', 'DSM', 'EAS', 'EFDTransformationServer', 'Electrometer', 'Environment', 'FiberSpectrograph', 'GenericCamera', 'Hexapod', 'HVAC', 'IOTA', 'LinearStage', 'LOVE', 'MTAOS', 'MTArchiver', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTHeaderService', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'NewMTMount', 'MTMount', 'MTPtg', 'MTVMS', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher']
 
 def GenerateTests(csc, language):
 	"""Test Suite generator."""
@@ -24,8 +24,9 @@ def GenerateTests(csc, language):
 				#subprocess.check_call(["./JavaComCon.sh", csc])
 				#subprocess.check_call(["./JavaEvents.sh", csc])
 			if ('python' in language) or ('all' in language):
+                                print("No python tests, yet.")
 				#subprocess.check_call(["./PythonPubSub.sh", csc])
-				subprocess.check_call(["./PythonState.sh", csc])
+				#subprocess.check_call(["./PythonState.sh", csc])
 				#subprocess.check_call(["./PythonComCon.sh", csc])
 				#subprocess.check_call(["./PythonEvents.sh", csc])
 			if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):

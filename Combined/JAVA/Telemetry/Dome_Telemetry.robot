@@ -57,39 +57,39 @@ Read Subscriber
     Log Many    ${summary_list}
     Should Contain    ${summary_list}    === Dome_summary start of topic ===
     Should Contain    ${summary_list}    === Dome_summary end of topic ===
-    ${DomeADB_status_start}=    Get Index From List    ${full_list}    === Dome_DomeADB_status start of topic ===
-    ${DomeADB_status_end}=    Get Index From List    ${full_list}    === Dome_DomeADB_status end of topic ===
-    ${DomeADB_status_list}=    Get Slice From List    ${full_list}    start=${DomeADB_status_start}    end=${DomeADB_status_end + 1}
-    Log Many    ${DomeADB_status_list}
-    Should Contain    ${DomeADB_status_list}    === Dome_DomeADB_status start of topic ===
-    Should Contain    ${DomeADB_status_list}    === Dome_DomeADB_status end of topic ===
-    ${DomeAPS_status_start}=    Get Index From List    ${full_list}    === Dome_DomeAPS_status start of topic ===
-    ${DomeAPS_status_end}=    Get Index From List    ${full_list}    === Dome_DomeAPS_status end of topic ===
-    ${DomeAPS_status_list}=    Get Slice From List    ${full_list}    start=${DomeAPS_status_start}    end=${DomeAPS_status_end + 1}
-    Log Many    ${DomeAPS_status_list}
-    Should Contain    ${DomeAPS_status_list}    === Dome_DomeAPS_status start of topic ===
-    Should Contain    ${DomeAPS_status_list}    === Dome_DomeAPS_status end of topic ===
-    ${DomeLouvers_status_start}=    Get Index From List    ${full_list}    === Dome_DomeLouvers_status start of topic ===
-    ${DomeLouvers_status_end}=    Get Index From List    ${full_list}    === Dome_DomeLouvers_status end of topic ===
-    ${DomeLouvers_status_list}=    Get Slice From List    ${full_list}    start=${DomeLouvers_status_start}    end=${DomeLouvers_status_end + 1}
-    Log Many    ${DomeLouvers_status_list}
-    Should Contain    ${DomeLouvers_status_list}    === Dome_DomeLouvers_status start of topic ===
-    Should Contain    ${DomeLouvers_status_list}    === Dome_DomeLouvers_status end of topic ===
-    ${DomeLWS_status_start}=    Get Index From List    ${full_list}    === Dome_DomeLWS_status start of topic ===
-    ${DomeLWS_status_end}=    Get Index From List    ${full_list}    === Dome_DomeLWS_status end of topic ===
-    ${DomeLWS_status_list}=    Get Slice From List    ${full_list}    start=${DomeLWS_status_start}    end=${DomeLWS_status_end + 1}
-    Log Many    ${DomeLWS_status_list}
-    Should Contain    ${DomeLWS_status_list}    === Dome_DomeLWS_status start of topic ===
-    Should Contain    ${DomeLWS_status_list}    === Dome_DomeLWS_status end of topic ===
-    ${DomeMONCS_status_start}=    Get Index From List    ${full_list}    === Dome_DomeMONCS_status start of topic ===
-    ${DomeMONCS_status_end}=    Get Index From List    ${full_list}    === Dome_DomeMONCS_status end of topic ===
-    ${DomeMONCS_status_list}=    Get Slice From List    ${full_list}    start=${DomeMONCS_status_start}    end=${DomeMONCS_status_end + 1}
-    Log Many    ${DomeMONCS_status_list}
-    Should Contain    ${DomeMONCS_status_list}    === Dome_DomeMONCS_status start of topic ===
-    Should Contain    ${DomeMONCS_status_list}    === Dome_DomeMONCS_status end of topic ===
-    ${DomeTHCS_status_start}=    Get Index From List    ${full_list}    === Dome_DomeTHCS_status start of topic ===
-    ${DomeTHCS_status_end}=    Get Index From List    ${full_list}    === Dome_DomeTHCS_status end of topic ===
-    ${DomeTHCS_status_list}=    Get Slice From List    ${full_list}    start=${DomeTHCS_status_start}    end=${DomeTHCS_status_end + 1}
-    Log Many    ${DomeTHCS_status_list}
-    Should Contain    ${DomeTHCS_status_list}    === Dome_DomeTHCS_status start of topic ===
-    Should Contain    ${DomeTHCS_status_list}    === Dome_DomeTHCS_status end of topic ===
+    ${domeADB_status_start}=    Get Index From List    ${full_list}    === Dome_domeADB_status start of topic ===
+    ${domeADB_status_end}=    Get Index From List    ${full_list}    === Dome_domeADB_status end of topic ===
+    ${domeADB_status_list}=    Get Slice From List    ${full_list}    start=${domeADB_status_start}    end=${domeADB_status_end + 1}
+    Log Many    ${domeADB_status_list}
+    Should Contain    ${domeADB_status_list}    === Dome_domeADB_status start of topic ===
+    Should Contain    ${domeADB_status_list}    === Dome_domeADB_status end of topic ===
+    ${domeAPS_status_start}=    Get Index From List    ${full_list}    === Dome_domeAPS_status start of topic ===
+    ${domeAPS_status_end}=    Get Index From List    ${full_list}    === Dome_domeAPS_status end of topic ===
+    ${domeAPS_status_list}=    Get Slice From List    ${full_list}    start=${domeAPS_status_start}    end=${domeAPS_status_end + 1}
+    Log Many    ${domeAPS_status_list}
+    Should Contain    ${domeAPS_status_list}    === Dome_domeAPS_status start of topic ===
+    Should Contain    ${domeAPS_status_list}    === Dome_domeAPS_status end of topic ===
+    ${domeLouvers_status_start}=    Get Index From List    ${full_list}    === Dome_domeLouvers_status start of topic ===
+    ${domeLouvers_status_end}=    Get Index From List    ${full_list}    === Dome_domeLouvers_status end of topic ===
+    ${domeLouvers_status_list}=    Get Slice From List    ${full_list}    start=${domeLouvers_status_start}    end=${domeLouvers_status_end + 1}
+    Log Many    ${domeLouvers_status_list}
+    Should Contain    ${domeLouvers_status_list}    === Dome_domeLouvers_status start of topic ===
+    Should Contain    ${domeLouvers_status_list}    === Dome_domeLouvers_status end of topic ===
+    ${domeLWS_status_start}=    Get Index From List    ${full_list}    === Dome_domeLWS_status start of topic ===
+    ${domeLWS_status_end}=    Get Index From List    ${full_list}    === Dome_domeLWS_status end of topic ===
+    ${domeLWS_status_list}=    Get Slice From List    ${full_list}    start=${domeLWS_status_start}    end=${domeLWS_status_end + 1}
+    Log Many    ${domeLWS_status_list}
+    Should Contain    ${domeLWS_status_list}    === Dome_domeLWS_status start of topic ===
+    Should Contain    ${domeLWS_status_list}    === Dome_domeLWS_status end of topic ===
+    ${domeMONCS_status_start}=    Get Index From List    ${full_list}    === Dome_domeMONCS_status start of topic ===
+    ${domeMONCS_status_end}=    Get Index From List    ${full_list}    === Dome_domeMONCS_status end of topic ===
+    ${domeMONCS_status_list}=    Get Slice From List    ${full_list}    start=${domeMONCS_status_start}    end=${domeMONCS_status_end + 1}
+    Log Many    ${domeMONCS_status_list}
+    Should Contain    ${domeMONCS_status_list}    === Dome_domeMONCS_status start of topic ===
+    Should Contain    ${domeMONCS_status_list}    === Dome_domeMONCS_status end of topic ===
+    ${domeTHCS_status_start}=    Get Index From List    ${full_list}    === Dome_domeTHCS_status start of topic ===
+    ${domeTHCS_status_end}=    Get Index From List    ${full_list}    === Dome_domeTHCS_status end of topic ===
+    ${domeTHCS_status_list}=    Get Slice From List    ${full_list}    start=${domeTHCS_status_start}    end=${domeTHCS_status_end + 1}
+    Log Many    ${domeTHCS_status_list}
+    Should Contain    ${domeTHCS_status_list}    === Dome_domeTHCS_status start of topic ===
+    Should Contain    ${domeTHCS_status_list}    === Dome_domeTHCS_status end of topic ===

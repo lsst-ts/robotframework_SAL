@@ -124,6 +124,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focusCorrectionCompleted_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event focusCorrectionCompleted generated =
+    Comment    ======= Verify ${subSystem}_correctionOffsets test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_correctionOffsets
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event correctionOffsets iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_correctionOffsets_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event correctionOffsets generated =
 
 Read Logger
     [Tags]    functional
@@ -229,3 +237,16 @@ Read Logger
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${correctionOffsets_start}=    Get Index From List    ${full_list}    === Event correctionOffsets received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${correctionOffsets_start}
+    ${correctionOffsets_end}=    Evaluate    ${end}+${1}
+    ${correctionOffsets_list}=    Get Slice From List    ${full_list}    start=${correctionOffsets_start}    end=${correctionOffsets_end}
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}z : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}u : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}v : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}w : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m1 : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m2 : 1    1
+    Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
