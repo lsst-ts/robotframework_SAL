@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    CatchupArchiver
 ${component}    all
-${timeout}    90s
+${timeout}    600s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber

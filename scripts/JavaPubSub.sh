@@ -81,7 +81,7 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    90s" >> $testSuite
+    echo "\${timeout}    600s" >> $testSuite
     echo "" >> $testSuite
 }
 
