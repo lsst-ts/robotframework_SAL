@@ -158,7 +158,7 @@ function readSubscriber {
     echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem all subscribers ready =====" >> $testSuite
-    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=34" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
     itemIndex=1
     for item in "${topicsArray[@]}"; do
         echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
