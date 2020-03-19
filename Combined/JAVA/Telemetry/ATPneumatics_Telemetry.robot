@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATPneumatics all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${m1AirPressure_start}=    Get Index From List    ${full_list}    === ATPneumatics_m1AirPressure start of topic ===
     ${m1AirPressure_end}=    Get Index From List    ${full_list}    === ATPneumatics_m1AirPressure end of topic ===
     ${m1AirPressure_list}=    Get Slice From List    ${full_list}    start=${m1AirPressure_start}    end=${m1AirPressure_end + 1}

@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTAOS all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${wepDuration_start}=    Get Index From List    ${full_list}    === MTAOS_wepDuration start of topic ===
     ${wepDuration_end}=    Get Index From List    ${full_list}    === MTAOS_wepDuration end of topic ===
     ${wepDuration_list}=    Get Slice From List    ${full_list}    start=${wepDuration_start}    end=${wepDuration_end + 1}

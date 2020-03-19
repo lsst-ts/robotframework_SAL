@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== CatchupArchiver all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${sequencerHeartbeat_start}=    Get Index From List    ${full_list}    === CatchupArchiver_sequencerHeartbeat start of topic ===
     ${sequencerHeartbeat_end}=    Get Index From List    ${full_list}    === CatchupArchiver_sequencerHeartbeat end of topic ===
     ${sequencerHeartbeat_list}=    Get Slice From List    ${full_list}    start=${sequencerHeartbeat_start}    end=${sequencerHeartbeat_end + 1}

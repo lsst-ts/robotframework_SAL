@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATHexapod all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${positionStatus_start}=    Get Index From List    ${full_list}    === ATHexapod_positionStatus start of topic ===
     ${positionStatus_end}=    Get Index From List    ${full_list}    === ATHexapod_positionStatus end of topic ===
     ${positionStatus_list}=    Get Slice From List    ${full_list}    start=${positionStatus_start}    end=${positionStatus_end + 1}

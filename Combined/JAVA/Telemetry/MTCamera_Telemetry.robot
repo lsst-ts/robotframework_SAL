@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTCamera all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${shutter_start}=    Get Index From List    ${full_list}    === MTCamera_shutter start of topic ===
     ${shutter_end}=    Get Index From List    ${full_list}    === MTCamera_shutter end of topic ===
     ${shutter_list}=    Get Slice From List    ${full_list}    start=${shutter_start}    end=${shutter_end + 1}

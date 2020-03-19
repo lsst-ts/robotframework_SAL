@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== DSM all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${domeSeeing_start}=    Get Index From List    ${full_list}    === DSM_domeSeeing start of topic ===
     ${domeSeeing_end}=    Get Index From List    ${full_list}    === DSM_domeSeeing end of topic ===
     ${domeSeeing_list}=    Get Slice From List    ${full_list}    start=${domeSeeing_start}    end=${domeSeeing_end + 1}

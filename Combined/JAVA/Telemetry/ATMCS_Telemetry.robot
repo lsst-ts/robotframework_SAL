@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATMCS all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${trajectory_start}=    Get Index From List    ${full_list}    === ATMCS_trajectory start of topic ===
     ${trajectory_end}=    Get Index From List    ${full_list}    === ATMCS_trajectory end of topic ===
     ${trajectory_list}=    Get Slice From List    ${full_list}    start=${trajectory_start}    end=${trajectory_end + 1}

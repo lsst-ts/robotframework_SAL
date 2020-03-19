@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTM2 all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${mirrorPositionMeasured_start}=    Get Index From List    ${full_list}    === MTM2_mirrorPositionMeasured start of topic ===
     ${mirrorPositionMeasured_end}=    Get Index From List    ${full_list}    === MTM2_mirrorPositionMeasured end of topic ===
     ${mirrorPositionMeasured_list}=    Get Slice From List    ${full_list}    start=${mirrorPositionMeasured_start}    end=${mirrorPositionMeasured_end + 1}

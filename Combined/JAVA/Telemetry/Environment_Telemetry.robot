@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== Environment all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${weather_start}=    Get Index From List    ${full_list}    === Environment_weather start of topic ===
     ${weather_end}=    Get Index From List    ${full_list}    === Environment_weather end of topic ===
     ${weather_list}=    Get Slice From List    ${full_list}    start=${weather_start}    end=${weather_end + 1}

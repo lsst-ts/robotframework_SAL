@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATPtg all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${prospectiveTargetStatus_start}=    Get Index From List    ${full_list}    === ATPtg_prospectiveTargetStatus start of topic ===
     ${prospectiveTargetStatus_end}=    Get Index From List    ${full_list}    === ATPtg_prospectiveTargetStatus end of topic ===
     ${prospectiveTargetStatus_list}=    Get Slice From List    ${full_list}    start=${prospectiveTargetStatus_start}    end=${prospectiveTargetStatus_end + 1}
