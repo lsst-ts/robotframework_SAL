@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATDome all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${position_start}=    Get Index From List    ${full_list}    === ATDome_position start of topic ===
     ${position_end}=    Get Index From List    ${full_list}    === ATDome_position end of topic ===
     ${position_list}=    Get Slice From List    ${full_list}    start=${position_start}    end=${position_end + 1}

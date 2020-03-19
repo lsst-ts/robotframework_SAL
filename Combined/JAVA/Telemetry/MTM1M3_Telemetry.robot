@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTM1M3 all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${forceActuatorData_start}=    Get Index From List    ${full_list}    === MTM1M3_forceActuatorData start of topic ===
     ${forceActuatorData_end}=    Get Index From List    ${full_list}    === MTM1M3_forceActuatorData end of topic ===
     ${forceActuatorData_list}=    Get Slice From List    ${full_list}    start=${forceActuatorData_start}    end=${forceActuatorData_end + 1}

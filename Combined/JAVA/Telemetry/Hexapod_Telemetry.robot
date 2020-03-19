@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== Hexapod all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${actuators_start}=    Get Index From List    ${full_list}    === Hexapod_actuators start of topic ===
     ${actuators_end}=    Get Index From List    ${full_list}    === Hexapod_actuators end of topic ===
     ${actuators_list}=    Get Slice From List    ${full_list}    start=${actuators_start}    end=${actuators_end + 1}

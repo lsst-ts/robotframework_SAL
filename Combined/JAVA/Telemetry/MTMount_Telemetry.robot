@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTMount all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${Camera_Cable_Wrap_start}=    Get Index From List    ${full_list}    === MTMount_Camera_Cable_Wrap start of topic ===
     ${Camera_Cable_Wrap_end}=    Get Index From List    ${full_list}    === MTMount_Camera_Cable_Wrap end of topic ===
     ${Camera_Cable_Wrap_list}=    Get Slice From List    ${full_list}    start=${Camera_Cable_Wrap_start}    end=${Camera_Cable_Wrap_end + 1}

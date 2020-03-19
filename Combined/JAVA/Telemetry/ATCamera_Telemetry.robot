@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATCamera all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
     ${wreb_list}=    Get Slice From List    ${full_list}    start=${wreb_start}    end=${wreb_end + 1}

@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== CBP all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${status_start}=    Get Index From List    ${full_list}    === CBP_status start of topic ===
     ${status_end}=    Get Index From List    ${full_list}    === CBP_status end of topic ===
     ${status_list}=    Get Slice From List    ${full_list}    start=${status_start}    end=${status_end + 1}

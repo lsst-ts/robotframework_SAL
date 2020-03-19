@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTVMS all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${m1m3_start}=    Get Index From List    ${full_list}    === MTVMS_m1m3 start of topic ===
     ${m1m3_end}=    Get Index From List    ${full_list}    === MTVMS_m1m3 end of topic ===
     ${m1m3_list}=    Get Slice From List    ${full_list}    start=${m1m3_start}    end=${m1m3_end + 1}

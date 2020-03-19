@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== FiberSpectrograph all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${temperature_start}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature start of topic ===
     ${temperature_end}=    Get Index From List    ${full_list}    === FiberSpectrograph_temperature end of topic ===
     ${temperature_list}=    Get Slice From List    ${full_list}    start=${temperature_start}    end=${temperature_end + 1}

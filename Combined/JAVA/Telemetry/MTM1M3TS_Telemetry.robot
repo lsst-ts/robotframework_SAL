@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTM1M3TS all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${thermalData_start}=    Get Index From List    ${full_list}    === MTM1M3TS_thermalData start of topic ===
     ${thermalData_end}=    Get Index From List    ${full_list}    === MTM1M3TS_thermalData end of topic ===
     ${thermalData_list}=    Get Slice From List    ${full_list}    start=${thermalData_start}    end=${thermalData_end + 1}

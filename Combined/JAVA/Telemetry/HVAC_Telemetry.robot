@@ -50,7 +50,7 @@ Read Subscriber
     ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== HVAC all subscribers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=34
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas start of topic ===
     ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas end of topic ===
     ${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_start}    end=${lsstBarraoblPiso01BarraoblTccGuionP1GuionSalaGuionMaquinas_end + 1}
@@ -87,12 +87,12 @@ Read Subscriber
     Log Many    ${lsstBarraoblPiso02BarraoblFancoil01_list}
     Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 start of topic ===
     Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end + 1}
-    Log Many    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}
-    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
-    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end + 1}
+    Log Many    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end + 1}
