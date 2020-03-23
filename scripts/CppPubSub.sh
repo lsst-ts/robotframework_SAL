@@ -129,9 +129,10 @@ function startSubscriber {
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+	echo "    Comment    Sleep for 6s to allow DDS time to register all the topics." >> $testSuite
+    echo "    Sleep    6s" >> $testSuite
     echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
     echo "    Should Contain    \${output}    ===== ${subSystem} subscribers ready =====" >> $testSuite
-    echo "    Sleep    6s" >> $testSuite
     echo "" >> $testSuite
 }
 

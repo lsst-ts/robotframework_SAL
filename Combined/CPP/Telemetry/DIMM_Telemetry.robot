@@ -27,9 +27,10 @@ Start Subscriber
     Log    ${output}
     Should Contain    "${output}"   "1"
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Comment    Sleep for 6s to allow DDS time to register all the topics.
+    Sleep    6s
     ${output}=    Get File    ${EXECDIR}${/}stdout.txt
     Should Contain    ${output}    ===== DIMM subscribers ready =====
-    Sleep    6s
 
 Start Publisher
     [Tags]    functional

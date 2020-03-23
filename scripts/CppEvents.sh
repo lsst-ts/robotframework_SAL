@@ -161,6 +161,8 @@ function startLogger() {
     	echo "    Log    \${output}" >> $testSuite
     	echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
 		echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+		echo "    Comment    Wait 3s to allow full output to be written to file." >> $testSuite
+		echo "    Sleep    3s" >> $testSuite
     	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
 		echo "    Should Contain    \${output}    === Event \${component} logger ready =" >> $testSuite
 	else
@@ -168,6 +170,8 @@ function startLogger() {
     	echo "    Log    \${output}" >> $testSuite
     	echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
 		echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+		echo "    Comment    Wait 3s to allow full output to be written to file." >> $testSuite
+		echo "    Sleep    3s" >> $testSuite
     	echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
 		echo "    Should Contain    \${output}    === \${subSystem} loggers ready" >> $testSuite
 	fi

@@ -27,6 +27,8 @@ Start Logger
     Log    ${output}
     Should Contain    "${output}"    "1"
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Comment    Wait 3s to allow full output to be written to file.
+    Sleep    3s
     ${output}=    Get File    ${EXECDIR}${/}stdout.txt
     Should Contain    ${output}    === ${subSystem} loggers ready
     Sleep    6s
