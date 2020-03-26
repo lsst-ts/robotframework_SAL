@@ -23,13 +23,13 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber    stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-    Log    ${output}
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
+    Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    "${output}"   "1"
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
-    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
+    ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== ATPneumatics subscribers ready =====
 
 Start Publisher
