@@ -23,9 +23,8 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Executing Combined Java Subscriber Program.
-    ${output}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
-    Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    "${subscriberOutput}"   "1"
+    ${output}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
+    Should Contain    "${output}"   "1"
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     Comment    Wait for Subscriber program to be ready.
     ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
@@ -39,15 +38,15 @@ Start Subscriber
 Start Publisher
     [Tags]    functional
     Comment    Executing Combined Java Publisher Program.
-    ${output}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
+    ${output}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${publisherOutput.stdout}    ===== ${subSystem} all publishers ready =====
-    Should Contain    ${publisherOutput.stdout}    [INFO] BUILD SUCCESS
+    Should Contain    ${output.stdout}    ===== ${subSystem} all publishers ready =====
+    Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
 
 Read Subscriber
     [Tags]    functional
-    Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Subscriber
+    ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== TunableLaser all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29

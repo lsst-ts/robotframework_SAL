@@ -113,9 +113,8 @@ function startJavaCombinedSubscriberProcess {
     echo "Start Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Subscriber Program." >> $testSuite
-    echo "    \${output}=    Start Process    mvn    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
-    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-    echo "    Should Contain    \"\${subscriberOutput}\"   \"1\"" >> $testSuite
+    echo "    \${output}=    Start Process    mvn    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
+    echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
     echo "    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
@@ -137,10 +136,10 @@ function startJavaCombinedPublisherProcess {
     echo "Start Publisher" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Publisher Program." >> $testSuite
-    echo "    \${output}=    Run Process    mvn    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
+    echo "    \${output}=    Run Process    mvn    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=\${subSystem}_Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-    echo "    Should Contain    \${publisherOutput.stdout}    ===== \${subSystem} all publishers ready =====" >> $testSuite
-    echo "    Should Contain    \${publisherOutput.stdout}    [INFO] BUILD SUCCESS" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all publishers ready =====" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite
     #echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     #echo "    \\    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}stdoutSubscriber.txt" >> $testSuite
     #echo "    \\    Run Keyword If    'message received :200' in \$subscriberOutput    Set Test Variable    \${publisherCompletionTextFound}    \"TRUE\"" >> $testSuite
@@ -154,8 +153,8 @@ function readSubscriber {
     local testSuite=$1
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Process    Subscriber" >> $testSuite
-    echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+    echo "    Switch Process    \${subSystem}_Subscriber" >> $testSuite
+    echo "    \${output}=    Wait For Process    \${subSystem}_Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem all subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
