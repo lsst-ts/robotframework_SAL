@@ -84,14 +84,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso02BarraoblFancoil01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
-    Comment    ======= Verify ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01
+    Comment    ======= Verify ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
+    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
     Comment    ======= Verify ${subSystem}_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca
     @{words}=    Split String    ${line}
@@ -237,25 +237,25 @@ Read Subscriber
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointHeatingNight : 1    10
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMin : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMax : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setPointVentImpulsion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAnticongelante : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaInyeccion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaRetorno : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaGeneral : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaFiltro : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoFuncionamiento : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoDamper : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resetAlarma : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAmbienteAmperExterior : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoValvula : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}caudalVentiladorImpulsion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMin : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMax : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setPointVentImpulsion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAnticongelante : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaInyeccion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaRetorno : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaGeneral : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaFiltro : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoFuncionamiento : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoDamper : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resetAlarma : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAmbienteAmperExterior : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoValvula : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}caudalVentiladorImpulsion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}
