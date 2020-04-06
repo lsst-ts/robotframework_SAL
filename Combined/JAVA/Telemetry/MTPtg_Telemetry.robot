@@ -13,17 +13,18 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 ${subSystem}    MTPtg
 ${component}    all
 ${timeout}    600s
+${maven}        ${SALVersion}_${XML_Version}${MavenVersion}
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Publisher_all.java
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${SALVersion}/src/test/java/${subSystem}Subscriber_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${maven}/src/test/java/${subSystem}Publisher_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_${maven}/src/test/java/${subSystem}Subscriber_all.java
 
 Start Subscriber
     [Tags]    functional
     Comment    Executing Combined Java Subscriber Program.
-    ${output}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
+    ${output}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${maven}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
     Should Contain    "${output}"   "1"
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     Comment    Wait for Subscriber program to be ready.
@@ -38,7 +39,7 @@ Start Subscriber
 Start Publisher
     [Tags]    functional
     Comment    Executing Combined Java Publisher Program.
-    ${output}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
+    ${output}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${maven}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all publishers ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
@@ -50,18 +51,6 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTPtg all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${prospectiveTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTargetStatus start of topic ===
-    ${prospectiveTargetStatus_end}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTargetStatus end of topic ===
-    ${prospectiveTargetStatus_list}=    Get Slice From List    ${full_list}    start=${prospectiveTargetStatus_start}    end=${prospectiveTargetStatus_end + 1}
-    Log Many    ${prospectiveTargetStatus_list}
-    Should Contain    ${prospectiveTargetStatus_list}    === MTPtg_prospectiveTargetStatus start of topic ===
-    Should Contain    ${prospectiveTargetStatus_list}    === MTPtg_prospectiveTargetStatus end of topic ===
-    ${nextTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_nextTargetStatus start of topic ===
-    ${nextTargetStatus_end}=    Get Index From List    ${full_list}    === MTPtg_nextTargetStatus end of topic ===
-    ${nextTargetStatus_list}=    Get Slice From List    ${full_list}    start=${nextTargetStatus_start}    end=${nextTargetStatus_end + 1}
-    Log Many    ${nextTargetStatus_list}
-    Should Contain    ${nextTargetStatus_list}    === MTPtg_nextTargetStatus start of topic ===
-    Should Contain    ${nextTargetStatus_list}    === MTPtg_nextTargetStatus end of topic ===
     ${currentTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_currentTimesToLimits start of topic ===
     ${currentTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_currentTimesToLimits end of topic ===
     ${currentTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${currentTimesToLimits_start}    end=${currentTimesToLimits_end + 1}
@@ -80,12 +69,6 @@ Read Subscriber
     Log Many    ${guidingAndOffsets_list}
     Should Contain    ${guidingAndOffsets_list}    === MTPtg_guidingAndOffsets start of topic ===
     Should Contain    ${guidingAndOffsets_list}    === MTPtg_guidingAndOffsets end of topic ===
-    ${prospectiveTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTimesToLimits start of topic ===
-    ${prospectiveTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTimesToLimits end of topic ===
-    ${prospectiveTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${prospectiveTimesToLimits_start}    end=${prospectiveTimesToLimits_end + 1}
-    Log Many    ${prospectiveTimesToLimits_list}
-    Should Contain    ${prospectiveTimesToLimits_list}    === MTPtg_prospectiveTimesToLimits start of topic ===
-    Should Contain    ${prospectiveTimesToLimits_list}    === MTPtg_prospectiveTimesToLimits end of topic ===
     ${timeAndDate_start}=    Get Index From List    ${full_list}    === MTPtg_timeAndDate start of topic ===
     ${timeAndDate_end}=    Get Index From List    ${full_list}    === MTPtg_timeAndDate end of topic ===
     ${timeAndDate_list}=    Get Slice From List    ${full_list}    start=${timeAndDate_start}    end=${timeAndDate_end + 1}
@@ -98,15 +81,21 @@ Read Subscriber
     Log Many    ${mountStatus_list}
     Should Contain    ${mountStatus_list}    === MTPtg_mountStatus start of topic ===
     Should Contain    ${mountStatus_list}    === MTPtg_mountStatus end of topic ===
-    ${nextTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_nextTimesToLimits start of topic ===
-    ${nextTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_nextTimesToLimits end of topic ===
-    ${nextTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${nextTimesToLimits_start}    end=${nextTimesToLimits_end + 1}
-    Log Many    ${nextTimesToLimits_list}
-    Should Contain    ${nextTimesToLimits_list}    === MTPtg_nextTimesToLimits start of topic ===
-    Should Contain    ${nextTimesToLimits_list}    === MTPtg_nextTimesToLimits end of topic ===
     ${skyEnvironment_start}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment start of topic ===
     ${skyEnvironment_end}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment end of topic ===
     ${skyEnvironment_list}=    Get Slice From List    ${full_list}    start=${skyEnvironment_start}    end=${skyEnvironment_end + 1}
     Log Many    ${skyEnvironment_list}
     Should Contain    ${skyEnvironment_list}    === MTPtg_skyEnvironment start of topic ===
     Should Contain    ${skyEnvironment_list}    === MTPtg_skyEnvironment end of topic ===
+    ${namedAzEl_start}=    Get Index From List    ${full_list}    === MTPtg_namedAzEl start of topic ===
+    ${namedAzEl_end}=    Get Index From List    ${full_list}    === MTPtg_namedAzEl end of topic ===
+    ${namedAzEl_list}=    Get Slice From List    ${full_list}    start=${namedAzEl_start}    end=${namedAzEl_end + 1}
+    Log Many    ${namedAzEl_list}
+    Should Contain    ${namedAzEl_list}    === MTPtg_namedAzEl start of topic ===
+    Should Contain    ${namedAzEl_list}    === MTPtg_namedAzEl end of topic ===
+    ${mount_positions_start}=    Get Index From List    ${full_list}    === MTPtg_mount_positions start of topic ===
+    ${mount_positions_end}=    Get Index From List    ${full_list}    === MTPtg_mount_positions end of topic ===
+    ${mount_positions_list}=    Get Slice From List    ${full_list}    start=${mount_positions_start}    end=${mount_positions_end + 1}
+    Log Many    ${mount_positions_list}
+    Should Contain    ${mount_positions_list}    === MTPtg_mount_positions start of topic ===
+    Should Contain    ${mount_positions_list}    === MTPtg_mount_positions end of topic ===
