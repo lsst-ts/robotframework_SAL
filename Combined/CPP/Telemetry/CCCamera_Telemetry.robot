@@ -23,13 +23,12 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber    stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-    Log    ${output}
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Contain    "${output}"   "1"
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
-    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
+    ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== CCCamera subscribers ready =====
 
 Start Publisher
@@ -160,8 +159,8 @@ Start Publisher
 
 Read Subscriber
     [Tags]    functional
-    Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Subscriber
+    ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== CCCamera subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
@@ -330,7 +329,7 @@ Read Subscriber
     ${vacuum_Cold2_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2 start of topic ===
     ${vacuum_Cold2_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2 end of topic ===
     ${vacuum_Cold2_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_start}    end=${vacuum_Cold2_end}
-    Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp : 1    10
+    Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rejectTemperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoOnTemperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    10

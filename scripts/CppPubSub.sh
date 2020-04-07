@@ -122,16 +122,15 @@ function startSubscriber {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Start Subscriber." >> $testSuite
     if [ $topic ]; then
-        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub    alias=Subscriber" >> $testSuite
+        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}_\${component}/cpp/standalone/sacpp_\${subSystem}_sub    alias=\${subSystem}_Subscriber" >> $testSuite
     else
-        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=Subscriber    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
+        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdout.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderr.txt" >> $testSuite
     fi
-    echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
-    echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdout.txt" >> $testSuite
 	echo "    Comment    Sleep for 6s to allow DDS time to register all the topics." >> $testSuite
     echo "    Sleep    6s" >> $testSuite
-    echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    \${output}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdout.txt" >> $testSuite
     echo "    Should Contain    \${output}    ===== ${subSystem} subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
 }
@@ -175,8 +174,8 @@ function readSubscriber {
     local testSuite=$3
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    echo "    Switch Process    Subscriber" >> $testSuite
-    echo "    \${output}=    Wait For Process    Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+    echo "    Switch Process    \${subSystem}_Subscriber" >> $testSuite
+    echo "    \${output}=    Wait For Process    \${subSystem}_Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite

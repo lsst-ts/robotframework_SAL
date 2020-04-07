@@ -23,13 +23,12 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber    stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-    Log    ${output}
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Contain    "${output}"   "1"
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
-    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
+    ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== HVAC subscribers ready =====
 
 Start Publisher
@@ -85,14 +84,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso02BarraoblFancoil01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
-    Comment    ======= Verify ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01
+    Comment    ======= Verify ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
+    Should Contain    ${output.stdout}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
     Comment    ======= Verify ${subSystem}_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca
     @{words}=    Split String    ${line}
@@ -112,8 +111,8 @@ Start Publisher
 
 Read Subscriber
     [Tags]    functional
-    Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Subscriber
+    ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== HVAC subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
@@ -238,25 +237,25 @@ Read Subscriber
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointHeatingNight : 1    10
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
     Should Contain X Times    ${lsstBarraoblPiso02BarraoblFancoil01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMin : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMax : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setPointVentImpulsion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAnticongelante : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaInyeccion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaRetorno : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaGeneral : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaFiltro : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoFuncionamiento : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoDamper : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resetAlarma : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAmbienteAmperExterior : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoValvula : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}caudalVentiladorImpulsion : 1    10
-    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTrabajo : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMin : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointVentiladorMax : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setPointVentImpulsion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAnticongelante : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaInyeccion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaRetorno : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaGeneral : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alarmaFiltro : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoFuncionamiento : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoDamper : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resetAlarma : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperaturaAmbienteAmperExterior : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}estadoValvula : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}caudalVentiladorImpulsion : 1    10
+    Should Contain X Times    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    ${SPACE}${SPACE}${SPACE}${SPACE}comandoEncendido : 1    10
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}

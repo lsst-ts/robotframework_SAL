@@ -23,13 +23,12 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=Subscriber    stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
-    Log    ${output}
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Contain    "${output}"   "1"
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
+    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
-    ${output}=    Get File    ${EXECDIR}${/}stdout.txt
+    ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== MTPtg subscribers ready =====
 
 Start Publisher
@@ -37,22 +36,6 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_prospectiveTargetStatus test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_prospectiveTargetStatus
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === MTPtg_prospectiveTargetStatus start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::prospectiveTargetStatus_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTPtg_prospectiveTargetStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_nextTargetStatus test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nextTargetStatus
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === MTPtg_nextTargetStatus start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nextTargetStatus_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTPtg_nextTargetStatus end of topic ===
     Comment    ======= Verify ${subSystem}_currentTimesToLimits test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_currentTimesToLimits
     @{words}=    Split String    ${line}
@@ -77,14 +60,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::guidingAndOffsets_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_guidingAndOffsets end of topic ===
-    Comment    ======= Verify ${subSystem}_prospectiveTimesToLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_prospectiveTimesToLimits
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === MTPtg_prospectiveTimesToLimits start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::prospectiveTimesToLimits_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTPtg_prospectiveTimesToLimits end of topic ===
     Comment    ======= Verify ${subSystem}_timeAndDate test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timeAndDate
     @{words}=    Split String    ${line}
@@ -101,14 +76,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mountStatus_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_mountStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_nextTimesToLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nextTimesToLimits
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === MTPtg_nextTimesToLimits start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nextTimesToLimits_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTPtg_nextTimesToLimits end of topic ===
     Comment    ======= Verify ${subSystem}_skyEnvironment test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_skyEnvironment
     @{words}=    Split String    ${line}
@@ -117,44 +84,30 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::skyEnvironment_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_skyEnvironment end of topic ===
+    Comment    ======= Verify ${subSystem}_namedAzEl test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_namedAzEl
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === MTPtg_namedAzEl start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::namedAzEl_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTPtg_namedAzEl end of topic ===
+    Comment    ======= Verify ${subSystem}_mount_positions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mount_positions
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain    ${output.stdout}    === MTPtg_mount_positions start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mount_positions_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTPtg_mount_positions end of topic ===
 
 Read Subscriber
     [Tags]    functional
-    Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Subscriber
+    ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTPtg subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${prospectiveTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTargetStatus start of topic ===
-    ${prospectiveTargetStatus_end}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTargetStatus end of topic ===
-    ${prospectiveTargetStatus_list}=    Get Slice From List    ${full_list}    start=${prospectiveTargetStatus_start}    end=${prospectiveTargetStatus_end}
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAz : LSST    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandEl : LSST    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRot : LSST    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAzVelocity : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandElVelocity : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRotVelocity : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ha : LSST    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parAngle : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass : 1    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRaString : LSST    10
-    Should Contain X Times    ${prospectiveTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandDecString : LSST    10
-    ${nextTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_nextTargetStatus start of topic ===
-    ${nextTargetStatus_end}=    Get Index From List    ${full_list}    === MTPtg_nextTargetStatus end of topic ===
-    ${nextTargetStatus_list}=    Get Slice From List    ${full_list}    start=${nextTargetStatus_start}    end=${nextTargetStatus_end}
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAz : LSST    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandEl : LSST    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRot : LSST    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAzVelocity : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandElVelocity : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRotVelocity : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ha : LSST    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parAngle : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airmass : 1    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandRaString : LSST    10
-    Should Contain X Times    ${nextTargetStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandDecString : LSST    10
     ${currentTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_currentTimesToLimits start of topic ===
     ${currentTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_currentTimesToLimits end of topic ===
     ${currentTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${currentTimesToLimits_start}    end=${currentTimesToLimits_end}
@@ -165,6 +118,7 @@ Read Subscriber
     Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToUnobservable : 1    10
     Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpot : 1    10
     Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpotExit : 1    10
+    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToElHighLimit : 1    10
     ${currentTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_currentTargetStatus start of topic ===
     ${currentTargetStatus_end}=    Get Index From List    ${full_list}    === MTPtg_currentTargetStatus end of topic ===
     ${currentTargetStatus_list}=    Get Slice From List    ${full_list}    start=${currentTargetStatus_start}    end=${currentTargetStatus_end}
@@ -203,16 +157,6 @@ Read Subscriber
     Should Contain X Times    ${guidingAndOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginUserDY : 1    10
     Should Contain X Times    ${guidingAndOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginHandsetDX : 1    10
     Should Contain X Times    ${guidingAndOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginHandsetDY : 1    10
-    ${prospectiveTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTimesToLimits start of topic ===
-    ${prospectiveTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_prospectiveTimesToLimits end of topic ===
-    ${prospectiveTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${prospectiveTimesToLimits_start}    end=${prospectiveTimesToLimits_end}
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToAzlim : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToRotlim : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToObservable : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToUnobservable : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpot : 1    10
-    Should Contain X Times    ${prospectiveTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpotExit : 1    10
     ${timeAndDate_start}=    Get Index From List    ${full_list}    === MTPtg_timeAndDate start of topic ===
     ${timeAndDate_end}=    Get Index From List    ${full_list}    === MTPtg_timeAndDate end of topic ===
     ${timeAndDate_list}=    Get Slice From List    ${full_list}    start=${timeAndDate_start}    end=${timeAndDate_end}
@@ -242,16 +186,6 @@ Read Subscriber
     Should Contain X Times    ${mountStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mountRotString : LSST    10
     Should Contain X Times    ${mountStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mountRotIAA : 1    10
     Should Contain X Times    ${mountStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mountRotIPA : 1    10
-    ${nextTimesToLimits_start}=    Get Index From List    ${full_list}    === MTPtg_nextTimesToLimits start of topic ===
-    ${nextTimesToLimits_end}=    Get Index From List    ${full_list}    === MTPtg_nextTimesToLimits end of topic ===
-    ${nextTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${nextTimesToLimits_start}    end=${nextTimesToLimits_end}
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToAzlim : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToRotlim : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToObservable : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToUnobservable : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpot : 1    10
-    Should Contain X Times    ${nextTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpotExit : 1    10
     ${skyEnvironment_start}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment start of topic ===
     ${skyEnvironment_end}=    Get Index From List    ${full_list}    === MTPtg_skyEnvironment end of topic ===
     ${skyEnvironment_list}=    Get Slice From List    ${full_list}    start=${skyEnvironment_start}    end=${skyEnvironment_end}
@@ -273,3 +207,54 @@ Read Subscriber
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonAltitude : 1    10
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunTargetDistance : 1    10
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonTargetDistance : 1    10
+    ${namedAzEl_start}=    Get Index From List    ${full_list}    === MTPtg_namedAzEl start of topic ===
+    ${namedAzEl_end}=    Get Index From List    ${full_list}    === MTPtg_namedAzEl end of topic ===
+    ${namedAzEl_list}=    Get Slice From List    ${full_list}    start=${namedAzEl_start}    end=${namedAzEl_end}
+    Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}names : LSST    10
+    Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azPositions : LSST    10
+    Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elPositions : LSST    10
+    Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPositions : LSST    10
+    ${mount_positions_start}=    Get Index From List    ${full_list}    === MTPtg_mount_positions start of topic ===
+    ${mount_positions_end}=    Get Index From List    ${full_list}    === MTPtg_mount_positions end of topic ===
+    ${mount_positions_list}=    Get Slice From List    ${full_list}    start=${mount_positions_start}    end=${mount_positions_end}
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cRIO_timestamp : 1    10
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 0    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 1    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 2    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 3    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 4    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 5    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 6    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 7    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 8    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 9    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 0    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 1    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 2    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 3    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 4    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 5    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 6    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 7    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 8    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 9    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 0    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 2    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 3    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 4    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 5    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 6    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 7    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 8    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 9    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 0    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 2    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 3    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 4    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 5    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 6    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 7    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 8    1
+    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 9    1

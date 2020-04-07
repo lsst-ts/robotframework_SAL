@@ -23,15 +23,14 @@ Verify Component Publisher and Subscriber
 Start Subscriber
     [Tags]    functional
     Comment    Executing Combined Java Subscriber Program.
-    ${subscriberOutput}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=Subscriber    stdout=${EXECDIR}${/}stdoutSubscriber.txt    stderr=${EXECDIR}${/}stderrSubscriber.txt
-    Log    ${subscriberOutput}
-    Should Contain    "${subscriberOutput}"   "1"
-    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}stdoutSubscriber.txt
+    ${output}=    Start Process    mvn    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
+    Should Contain    "${output}"   "1"
+    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     Comment    Wait for Subscriber program to be ready.
-    ${subscriberOutput}=    Get File    ${EXECDIR}${/}stdoutSubscriber.txt
+    ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     :FOR    ${i}    IN RANGE    30
     \    Exit For Loop If     '${subSystem} all subscribers ready' in $subscriberOutput
-    \    ${subscriberOutput}=    Get File    ${EXECDIR}${/}stdoutSubscriber.txt
+    \    ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     \    Sleep    3s
     Log    ${subscriberOutput}
     Should Contain    ${subscriberOutput}    ===== ${subSystem} all subscribers ready =====
@@ -39,15 +38,15 @@ Start Subscriber
 Start Publisher
     [Tags]    functional
     Comment    Executing Combined Java Publisher Program.
-    ${publisherOutput}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=Publisher    stdout=${EXECDIR}${/}stdoutPublisher.txt    stderr=${EXECDIR}${/}stderrPublisher.txt
-    Log    ${publisherOutput.stdout}
-    Should Contain    ${publisherOutput.stdout}    ===== ${subSystem} all publishers ready =====
-    Should Contain    ${publisherOutput.stdout}    [INFO] BUILD SUCCESS
+    ${output}=    Run Process    mvn    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_${SALVersion}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
+    Log Many    ${output.stdout}    ${output.stderr}
+    Should Contain    ${output.stdout}    ===== ${subSystem} all publishers ready =====
+    Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
 
 Read Subscriber
     [Tags]    functional
-    Switch Process    Subscriber
-    ${output}=    Wait For Process    Subscriber    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Subscriber
+    ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== HVAC all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
@@ -87,12 +86,12 @@ Read Subscriber
     Log Many    ${lsstBarraoblPiso02BarraoblFancoil01_list}
     Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 start of topic ===
     Should Contain    ${lsstBarraoblPiso02BarraoblFancoil01_list}    === HVAC_lsstBarraoblPiso02BarraoblFancoil01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
-    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_end + 1}
-    Log Many    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}
-    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 start of topic ===
-    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
+    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_start}    end=${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_end + 1}
+    Log Many    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 start of topic ===
+    Should Contain    ${lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01_list}    === HVAC_lsstBarraoblPiso05BarraoblManejadoraBarraoblLower_01 end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca start of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end}=    Get Index From List    ${full_list}    === HVAC_lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca end of topic ===
     ${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_list}=    Get Slice From List    ${full_list}    start=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_start}    end=${lsstBarraoblPiso04BarraoblManejadoraBarraoblSblanca_end + 1}

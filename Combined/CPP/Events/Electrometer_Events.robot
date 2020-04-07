@@ -23,7 +23,7 @@ Verify Component Sender and Logger
 Start Logger
     [Tags]    functional
     Comment    Start Logger.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
     Should Contain    "${output}"    "1"
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
@@ -121,8 +121,8 @@ Start Sender
 
 Read Logger
     [Tags]    functional
-    Switch Process    Logger
-    ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Logger
+    ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}

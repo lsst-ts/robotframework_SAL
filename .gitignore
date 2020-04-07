@@ -1,7 +1,9 @@
 *.swp
-stdout.txt
-stderr.txt
-stderrPublisher.txt
-stderrSubscriber.txt
-stdoutPublisher.txt
-stdoutSubscriber.txt
+ospl-error.log
+ospl-info.log
+*stdout.txt
+*stderr.txt
+*stderrPublisher.txt
+*stderrSubscriber.txt
+*stdoutPublisher.txt
+*stdoutSubscriber.txt
