@@ -82,7 +82,7 @@ function createVariables {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    600s" >> $testSuite
-    echo "\${maven}        \${SALVersion}_\${XML_Version}\${MavenVersion}" >> $testSuite
+    echo "\${maven}        \${SALVersion}_\${XMLVersion}\${MavenVersion}" >> $testSuite
     echo "" >> $testSuite
 }
 

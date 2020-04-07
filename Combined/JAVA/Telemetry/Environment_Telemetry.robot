@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 ${subSystem}    Environment
 ${component}    all
 ${timeout}    600s
-${maven}        ${SALVersion}_${XML_Version}${MavenVersion}
+${maven}        ${SALVersion}_${XMLVersion}${MavenVersion}
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
