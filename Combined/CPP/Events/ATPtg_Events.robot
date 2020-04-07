@@ -23,7 +23,7 @@ Verify Component Sender and Logger
 Start Logger
     [Tags]    functional
     Comment    Start Logger.
-    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
+    ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
     Should Contain    "${output}"    "1"
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
@@ -190,14 +190,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_currentDebugLevel_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event currentDebugLevel generated =
-    Comment    ======= Verify ${subSystem}_nextTarget test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_nextTarget
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event nextTarget iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_nextTarget_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event nextTarget generated =
     Comment    ======= Verify ${subSystem}_mountDataWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mountDataWarning
     @{words}=    Split String    ${line}
@@ -254,14 +246,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_iers_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event iers generated =
-    Comment    ======= Verify ${subSystem}_prospectiveTarget test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_prospectiveTarget
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event prospectiveTarget iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_prospectiveTarget_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event prospectiveTarget generated =
     Comment    ======= Verify ${subSystem}_moonProximityWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_moonProximityWarning
     @{words}=    Split String    ${line}
@@ -305,8 +289,8 @@ Start Sender
 
 Read Logger
     [Tags]    functional
-    Switch Process    Logger
-    ${output}=    Wait For Process    handle=Logger    timeout=${timeout}    on_timeout=terminate
+    Switch Process    ${subSystem}_Logger
+    ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
@@ -454,36 +438,6 @@ Read Logger
     ${currentDebugLevel_list}=    Get Slice From List    ${full_list}    start=${currentDebugLevel_start}    end=${currentDebugLevel_end}
     Should Contain X Times    ${currentDebugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentLevel : 1    1
     Should Contain X Times    ${currentDebugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${nextTarget_start}=    Get Index From List    ${full_list}    === Event nextTarget received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextTarget_start}
-    ${nextTarget_end}=    Evaluate    ${end}+${1}
-    ${nextTarget_list}=    Get Slice From List    ${full_list}    start=${nextTarget_start}    end=${nextTarget_end}
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetType : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : LSST    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile : LSST    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raString : LSST    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decString : LSST    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}difftrackRA : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}difftrackDec : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}properMotionRA : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}properMotionDec : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radvel : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotFrame : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
-    Should Contain X Times    ${nextTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${mountDataWarning_start}=    Get Index From List    ${full_list}    === Event mountDataWarning received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mountDataWarning_start}
     ${mountDataWarning_end}=    Evaluate    ${end}+${1}
@@ -529,36 +483,6 @@ Read Logger
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}poleX : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}poleY : 1    1
     Should Contain X Times    ${iers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${prospectiveTarget_start}=    Get Index From List    ${full_list}    === Event prospectiveTarget received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${prospectiveTarget_start}
-    ${prospectiveTarget_end}=    Evaluate    ${end}+${1}
-    ${prospectiveTarget_list}=    Get Slice From List    ${full_list}    start=${prospectiveTarget_start}    end=${prospectiveTarget_end}
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetType : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : LSST    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile : LSST    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raString : LSST    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decString : LSST    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}difftrackRA : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}difftrackDec : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}properMotionRA : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}properMotionDec : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radvel : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotFrame : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
-    Should Contain X Times    ${prospectiveTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${moonProximityWarning_start}=    Get Index From List    ${full_list}    === Event moonProximityWarning received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${moonProximityWarning_start}
     ${moonProximityWarning_end}=    Evaluate    ${end}+${1}

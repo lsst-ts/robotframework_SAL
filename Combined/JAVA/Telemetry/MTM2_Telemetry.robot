@@ -56,93 +56,75 @@ Read Subscriber
     Log Many    ${mirrorPositionMeasured_list}
     Should Contain    ${mirrorPositionMeasured_list}    === MTM2_mirrorPositionMeasured start of topic ===
     Should Contain    ${mirrorPositionMeasured_list}    === MTM2_mirrorPositionMeasured end of topic ===
-    ${axialForcesMeasured_start}=    Get Index From List    ${full_list}    === MTM2_axialForcesMeasured start of topic ===
-    ${axialForcesMeasured_end}=    Get Index From List    ${full_list}    === MTM2_axialForcesMeasured end of topic ===
-    ${axialForcesMeasured_list}=    Get Slice From List    ${full_list}    start=${axialForcesMeasured_start}    end=${axialForcesMeasured_end + 1}
-    Log Many    ${axialForcesMeasured_list}
-    Should Contain    ${axialForcesMeasured_list}    === MTM2_axialForcesMeasured start of topic ===
-    Should Contain    ${axialForcesMeasured_list}    === MTM2_axialForcesMeasured end of topic ===
-    ${tangentForcesMeasured_start}=    Get Index From List    ${full_list}    === MTM2_tangentForcesMeasured start of topic ===
-    ${tangentForcesMeasured_end}=    Get Index From List    ${full_list}    === MTM2_tangentForcesMeasured end of topic ===
-    ${tangentForcesMeasured_list}=    Get Slice From List    ${full_list}    start=${tangentForcesMeasured_start}    end=${tangentForcesMeasured_end + 1}
-    Log Many    ${tangentForcesMeasured_list}
-    Should Contain    ${tangentForcesMeasured_list}    === MTM2_tangentForcesMeasured start of topic ===
-    Should Contain    ${tangentForcesMeasured_list}    === MTM2_tangentForcesMeasured end of topic ===
-    ${zenithAngleMeasured_start}=    Get Index From List    ${full_list}    === MTM2_zenithAngleMeasured start of topic ===
-    ${zenithAngleMeasured_end}=    Get Index From List    ${full_list}    === MTM2_zenithAngleMeasured end of topic ===
-    ${zenithAngleMeasured_list}=    Get Slice From List    ${full_list}    start=${zenithAngleMeasured_start}    end=${zenithAngleMeasured_end + 1}
-    Log Many    ${zenithAngleMeasured_list}
-    Should Contain    ${zenithAngleMeasured_list}    === MTM2_zenithAngleMeasured start of topic ===
-    Should Contain    ${zenithAngleMeasured_list}    === MTM2_zenithAngleMeasured end of topic ===
-    ${axialActuatorAbsolutePositionSteps_start}=    Get Index From List    ${full_list}    === MTM2_axialActuatorAbsolutePositionSteps start of topic ===
-    ${axialActuatorAbsolutePositionSteps_end}=    Get Index From List    ${full_list}    === MTM2_axialActuatorAbsolutePositionSteps end of topic ===
-    ${axialActuatorAbsolutePositionSteps_list}=    Get Slice From List    ${full_list}    start=${axialActuatorAbsolutePositionSteps_start}    end=${axialActuatorAbsolutePositionSteps_end + 1}
-    Log Many    ${axialActuatorAbsolutePositionSteps_list}
-    Should Contain    ${axialActuatorAbsolutePositionSteps_list}    === MTM2_axialActuatorAbsolutePositionSteps start of topic ===
-    Should Contain    ${axialActuatorAbsolutePositionSteps_list}    === MTM2_axialActuatorAbsolutePositionSteps end of topic ===
-    ${tangentActuatorAbsolutePositionSteps_start}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorAbsolutePositionSteps start of topic ===
-    ${tangentActuatorAbsolutePositionSteps_end}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorAbsolutePositionSteps end of topic ===
-    ${tangentActuatorAbsolutePositionSteps_list}=    Get Slice From List    ${full_list}    start=${tangentActuatorAbsolutePositionSteps_start}    end=${tangentActuatorAbsolutePositionSteps_end + 1}
-    Log Many    ${tangentActuatorAbsolutePositionSteps_list}
-    Should Contain    ${tangentActuatorAbsolutePositionSteps_list}    === MTM2_tangentActuatorAbsolutePositionSteps start of topic ===
-    Should Contain    ${tangentActuatorAbsolutePositionSteps_list}    === MTM2_tangentActuatorAbsolutePositionSteps end of topic ===
-    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_start}=    Get Index From List    ${full_list}    === MTM2_axialActuatorPositionAbsoluteEncoderPositionMeasured start of topic ===
-    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_end}=    Get Index From List    ${full_list}    === MTM2_axialActuatorPositionAbsoluteEncoderPositionMeasured end of topic ===
-    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_list}=    Get Slice From List    ${full_list}    start=${axialActuatorPositionAbsoluteEncoderPositionMeasured_start}    end=${axialActuatorPositionAbsoluteEncoderPositionMeasured_end + 1}
-    Log Many    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_list}
-    Should Contain    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_list}    === MTM2_axialActuatorPositionAbsoluteEncoderPositionMeasured start of topic ===
-    Should Contain    ${axialActuatorPositionAbsoluteEncoderPositionMeasured_list}    === MTM2_axialActuatorPositionAbsoluteEncoderPositionMeasured end of topic ===
-    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_start}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorPositionAbsoluteEncoderPositionMeasured start of topic ===
-    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_end}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorPositionAbsoluteEncoderPositionMeasured end of topic ===
-    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_list}=    Get Slice From List    ${full_list}    start=${tangentActuatorPositionAbsoluteEncoderPositionMeasured_start}    end=${tangentActuatorPositionAbsoluteEncoderPositionMeasured_end + 1}
-    Log Many    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_list}
-    Should Contain    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_list}    === MTM2_tangentActuatorPositionAbsoluteEncoderPositionMeasured start of topic ===
-    Should Contain    ${tangentActuatorPositionAbsoluteEncoderPositionMeasured_list}    === MTM2_tangentActuatorPositionAbsoluteEncoderPositionMeasured end of topic ===
-    ${powerStatus_start}=    Get Index From List    ${full_list}    === MTM2_powerStatus start of topic ===
-    ${powerStatus_end}=    Get Index From List    ${full_list}    === MTM2_powerStatus end of topic ===
-    ${powerStatus_list}=    Get Slice From List    ${full_list}    start=${powerStatus_start}    end=${powerStatus_end + 1}
-    Log Many    ${powerStatus_list}
-    Should Contain    ${powerStatus_list}    === MTM2_powerStatus start of topic ===
-    Should Contain    ${powerStatus_list}    === MTM2_powerStatus end of topic ===
+    ${axialForceData_start}=    Get Index From List    ${full_list}    === MTM2_axialForceData start of topic ===
+    ${axialForceData_end}=    Get Index From List    ${full_list}    === MTM2_axialForceData end of topic ===
+    ${axialForceData_list}=    Get Slice From List    ${full_list}    start=${axialForceData_start}    end=${axialForceData_end + 1}
+    Log Many    ${axialForceData_list}
+    Should Contain    ${axialForceData_list}    === MTM2_axialForceData start of topic ===
+    Should Contain    ${axialForceData_list}    === MTM2_axialForceData end of topic ===
+    ${tangentForceData_start}=    Get Index From List    ${full_list}    === MTM2_tangentForceData start of topic ===
+    ${tangentForceData_end}=    Get Index From List    ${full_list}    === MTM2_tangentForceData end of topic ===
+    ${tangentForceData_list}=    Get Slice From List    ${full_list}    start=${tangentForceData_start}    end=${tangentForceData_end + 1}
+    Log Many    ${tangentForceData_list}
+    Should Contain    ${tangentForceData_list}    === MTM2_tangentForceData start of topic ===
+    Should Contain    ${tangentForceData_list}    === MTM2_tangentForceData end of topic ===
     ${temperaturesMeasured_start}=    Get Index From List    ${full_list}    === MTM2_temperaturesMeasured start of topic ===
     ${temperaturesMeasured_end}=    Get Index From List    ${full_list}    === MTM2_temperaturesMeasured end of topic ===
     ${temperaturesMeasured_list}=    Get Slice From List    ${full_list}    start=${temperaturesMeasured_start}    end=${temperaturesMeasured_end + 1}
     Log Many    ${temperaturesMeasured_list}
     Should Contain    ${temperaturesMeasured_list}    === MTM2_temperaturesMeasured start of topic ===
     Should Contain    ${temperaturesMeasured_list}    === MTM2_temperaturesMeasured end of topic ===
-    ${rawDisplacement_start}=    Get Index From List    ${full_list}    === MTM2_rawDisplacement start of topic ===
-    ${rawDisplacement_end}=    Get Index From List    ${full_list}    === MTM2_rawDisplacement end of topic ===
-    ${rawDisplacement_list}=    Get Slice From List    ${full_list}    start=${rawDisplacement_start}    end=${rawDisplacement_end + 1}
-    Log Many    ${rawDisplacement_list}
-    Should Contain    ${rawDisplacement_list}    === MTM2_rawDisplacement start of topic ===
-    Should Contain    ${rawDisplacement_list}    === MTM2_rawDisplacement end of topic ===
-    ${stepVectorUpdate_start}=    Get Index From List    ${full_list}    === MTM2_stepVectorUpdate start of topic ===
-    ${stepVectorUpdate_end}=    Get Index From List    ${full_list}    === MTM2_stepVectorUpdate end of topic ===
-    ${stepVectorUpdate_list}=    Get Slice From List    ${full_list}    start=${stepVectorUpdate_start}    end=${stepVectorUpdate_end + 1}
-    Log Many    ${stepVectorUpdate_list}
-    Should Contain    ${stepVectorUpdate_list}    === MTM2_stepVectorUpdate start of topic ===
-    Should Contain    ${stepVectorUpdate_list}    === MTM2_stepVectorUpdate end of topic ===
-    ${targetForces_start}=    Get Index From List    ${full_list}    === MTM2_targetForces start of topic ===
-    ${targetForces_end}=    Get Index From List    ${full_list}    === MTM2_targetForces end of topic ===
-    ${targetForces_list}=    Get Slice From List    ${full_list}    start=${targetForces_start}    end=${targetForces_end + 1}
-    Log Many    ${targetForces_list}
-    Should Contain    ${targetForces_list}    === MTM2_targetForces start of topic ===
-    Should Contain    ${targetForces_list}    === MTM2_targetForces end of topic ===
-    ${systemStatus_start}=    Get Index From List    ${full_list}    === MTM2_systemStatus start of topic ===
-    ${systemStatus_end}=    Get Index From List    ${full_list}    === MTM2_systemStatus end of topic ===
-    ${systemStatus_list}=    Get Slice From List    ${full_list}    start=${systemStatus_start}    end=${systemStatus_end + 1}
-    Log Many    ${systemStatus_list}
-    Should Contain    ${systemStatus_list}    === MTM2_systemStatus start of topic ===
-    Should Contain    ${systemStatus_list}    === MTM2_systemStatus end of topic ===
-    ${rawTelemetry_start}=    Get Index From List    ${full_list}    === MTM2_rawTelemetry start of topic ===
-    ${rawTelemetry_end}=    Get Index From List    ${full_list}    === MTM2_rawTelemetry end of topic ===
-    ${rawTelemetry_list}=    Get Slice From List    ${full_list}    start=${rawTelemetry_start}    end=${rawTelemetry_end + 1}
-    Log Many    ${rawTelemetry_list}
-    Should Contain    ${rawTelemetry_list}    === MTM2_rawTelemetry start of topic ===
-    Should Contain    ${rawTelemetry_list}    === MTM2_rawTelemetry end of topic ===
-    ${actuatorLimitSwitches_start}=    Get Index From List    ${full_list}    === MTM2_actuatorLimitSwitches start of topic ===
-    ${actuatorLimitSwitches_end}=    Get Index From List    ${full_list}    === MTM2_actuatorLimitSwitches end of topic ===
-    ${actuatorLimitSwitches_list}=    Get Slice From List    ${full_list}    start=${actuatorLimitSwitches_start}    end=${actuatorLimitSwitches_end + 1}
-    Log Many    ${actuatorLimitSwitches_list}
-    Should Contain    ${actuatorLimitSwitches_list}    === MTM2_actuatorLimitSwitches start of topic ===
-    Should Contain    ${actuatorLimitSwitches_list}    === MTM2_actuatorLimitSwitches end of topic ===
+    ${zenithAngleData_start}=    Get Index From List    ${full_list}    === MTM2_zenithAngleData start of topic ===
+    ${zenithAngleData_end}=    Get Index From List    ${full_list}    === MTM2_zenithAngleData end of topic ===
+    ${zenithAngleData_list}=    Get Slice From List    ${full_list}    start=${zenithAngleData_start}    end=${zenithAngleData_end + 1}
+    Log Many    ${zenithAngleData_list}
+    Should Contain    ${zenithAngleData_list}    === MTM2_zenithAngleData start of topic ===
+    Should Contain    ${zenithAngleData_list}    === MTM2_zenithAngleData end of topic ===
+    ${axialActuatorSteps_start}=    Get Index From List    ${full_list}    === MTM2_axialActuatorSteps start of topic ===
+    ${axialActuatorSteps_end}=    Get Index From List    ${full_list}    === MTM2_axialActuatorSteps end of topic ===
+    ${axialActuatorSteps_list}=    Get Slice From List    ${full_list}    start=${axialActuatorSteps_start}    end=${axialActuatorSteps_end + 1}
+    Log Many    ${axialActuatorSteps_list}
+    Should Contain    ${axialActuatorSteps_list}    === MTM2_axialActuatorSteps start of topic ===
+    Should Contain    ${axialActuatorSteps_list}    === MTM2_axialActuatorSteps end of topic ===
+    ${tangentActuatorSteps_start}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorSteps start of topic ===
+    ${tangentActuatorSteps_end}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorSteps end of topic ===
+    ${tangentActuatorSteps_list}=    Get Slice From List    ${full_list}    start=${tangentActuatorSteps_start}    end=${tangentActuatorSteps_end + 1}
+    Log Many    ${tangentActuatorSteps_list}
+    Should Contain    ${tangentActuatorSteps_list}    === MTM2_tangentActuatorSteps start of topic ===
+    Should Contain    ${tangentActuatorSteps_list}    === MTM2_tangentActuatorSteps end of topic ===
+    ${axialEncoderPositions_start}=    Get Index From List    ${full_list}    === MTM2_axialEncoderPositions start of topic ===
+    ${axialEncoderPositions_end}=    Get Index From List    ${full_list}    === MTM2_axialEncoderPositions end of topic ===
+    ${axialEncoderPositions_list}=    Get Slice From List    ${full_list}    start=${axialEncoderPositions_start}    end=${axialEncoderPositions_end + 1}
+    Log Many    ${axialEncoderPositions_list}
+    Should Contain    ${axialEncoderPositions_list}    === MTM2_axialEncoderPositions start of topic ===
+    Should Contain    ${axialEncoderPositions_list}    === MTM2_axialEncoderPositions end of topic ===
+    ${tangentEncoderPositions_start}=    Get Index From List    ${full_list}    === MTM2_tangentEncoderPositions start of topic ===
+    ${tangentEncoderPositions_end}=    Get Index From List    ${full_list}    === MTM2_tangentEncoderPositions end of topic ===
+    ${tangentEncoderPositions_list}=    Get Slice From List    ${full_list}    start=${tangentEncoderPositions_start}    end=${tangentEncoderPositions_end + 1}
+    Log Many    ${tangentEncoderPositions_list}
+    Should Contain    ${tangentEncoderPositions_list}    === MTM2_tangentEncoderPositions start of topic ===
+    Should Contain    ${tangentEncoderPositions_list}    === MTM2_tangentEncoderPositions end of topic ===
+    ${ilcData_start}=    Get Index From List    ${full_list}    === MTM2_ilcData start of topic ===
+    ${ilcData_end}=    Get Index From List    ${full_list}    === MTM2_ilcData end of topic ===
+    ${ilcData_list}=    Get Slice From List    ${full_list}    start=${ilcData_start}    end=${ilcData_end + 1}
+    Log Many    ${ilcData_list}
+    Should Contain    ${ilcData_list}    === MTM2_ilcData start of topic ===
+    Should Contain    ${ilcData_list}    === MTM2_ilcData end of topic ===
+    ${displacementSensors_start}=    Get Index From List    ${full_list}    === MTM2_displacementSensors start of topic ===
+    ${displacementSensors_end}=    Get Index From List    ${full_list}    === MTM2_displacementSensors end of topic ===
+    ${displacementSensors_list}=    Get Slice From List    ${full_list}    start=${displacementSensors_start}    end=${displacementSensors_end + 1}
+    Log Many    ${displacementSensors_list}
+    Should Contain    ${displacementSensors_list}    === MTM2_displacementSensors start of topic ===
+    Should Contain    ${displacementSensors_list}    === MTM2_displacementSensors end of topic ===
+    ${netForcesTotal_start}=    Get Index From List    ${full_list}    === MTM2_netForcesTotal start of topic ===
+    ${netForcesTotal_end}=    Get Index From List    ${full_list}    === MTM2_netForcesTotal end of topic ===
+    ${netForcesTotal_list}=    Get Slice From List    ${full_list}    start=${netForcesTotal_start}    end=${netForcesTotal_end + 1}
+    Log Many    ${netForcesTotal_list}
+    Should Contain    ${netForcesTotal_list}    === MTM2_netForcesTotal start of topic ===
+    Should Contain    ${netForcesTotal_list}    === MTM2_netForcesTotal end of topic ===
+    ${netMomentsTotal_start}=    Get Index From List    ${full_list}    === MTM2_netMomentsTotal start of topic ===
+    ${netMomentsTotal_end}=    Get Index From List    ${full_list}    === MTM2_netMomentsTotal end of topic ===
+    ${netMomentsTotal_list}=    Get Slice From List    ${full_list}    start=${netMomentsTotal_start}    end=${netMomentsTotal_end + 1}
+    Log Many    ${netMomentsTotal_list}
+    Should Contain    ${netMomentsTotal_list}    === MTM2_netMomentsTotal start of topic ===
+    Should Contain    ${netMomentsTotal_list}    === MTM2_netMomentsTotal end of topic ===

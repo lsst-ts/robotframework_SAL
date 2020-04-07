@@ -329,7 +329,7 @@ Read Subscriber
     ${vacuum_Cold2_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2 start of topic ===
     ${vacuum_Cold2_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2 end of topic ===
     ${vacuum_Cold2_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_start}    end=${vacuum_Cold2_end}
-    Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp : 1    10
+    Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rejectTemperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoOnTemperature : 1    10
     Should Contain X Times    ${vacuum_Cold2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    10
