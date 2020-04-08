@@ -121,6 +121,7 @@ function createVariables() {
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
+    echo "\${maven}        \${SALVersion}_\${XMLVersion}\${MavenVersion}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -130,8 +131,8 @@ function verifyCompSenderLogger() {
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Event_\${component}.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}EventLogger_\${component}.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}Event_\${component}.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/src/test/java/\${subSystem}EventLogger_\${component}.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${maven}/src/test/java/\${subSystem}Event_\${component}.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}_\${maven}/src/test/java/\${subSystem}EventLogger_\${component}.java" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -151,7 +152,7 @@ function startJavaCombinedLoggerProcess() {
     echo "Start Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Logger Program." >> $testSuite
-    echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
+    echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${maven}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "" >> $testSuite
 }
@@ -175,7 +176,7 @@ function startJavaCombinedSenderProcess() {
     echo "    \\    Sleep    3s" >> $testSuite
     
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
-    echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
+    echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${maven}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
     echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
