@@ -36,14 +36,6 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_currentTimesToLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_currentTimesToLimits
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain    ${output.stdout}    === ATPtg_currentTimesToLimits start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::currentTimesToLimits_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATPtg_currentTimesToLimits end of topic ===
     Comment    ======= Verify ${subSystem}_currentTargetStatus test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_currentTargetStatus
     @{words}=    Split String    ${line}
@@ -108,17 +100,6 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATPtg subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${currentTimesToLimits_start}=    Get Index From List    ${full_list}    === ATPtg_currentTimesToLimits start of topic ===
-    ${currentTimesToLimits_end}=    Get Index From List    ${full_list}    === ATPtg_currentTimesToLimits end of topic ===
-    ${currentTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${currentTimesToLimits_start}    end=${currentTimesToLimits_end}
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToAzlim : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToRotlim : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToObservable : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToUnobservable : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpot : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToBlindSpotExit : 1    10
-    Should Contain X Times    ${currentTimesToLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToElHighLimit : 1    10
     ${currentTargetStatus_start}=    Get Index From List    ${full_list}    === ATPtg_currentTargetStatus start of topic ===
     ${currentTargetStatus_end}=    Get Index From List    ${full_list}    === ATPtg_currentTargetStatus end of topic ===
     ${currentTargetStatus_list}=    Get Slice From List    ${full_list}    start=${currentTargetStatus_start}    end=${currentTargetStatus_end}
@@ -160,7 +141,7 @@ Read Subscriber
     ${timeAndDate_start}=    Get Index From List    ${full_list}    === ATPtg_timeAndDate start of topic ===
     ${timeAndDate_end}=    Get Index From List    ${full_list}    === ATPtg_timeAndDate end of topic ===
     ${timeAndDate_list}=    Get Slice From List    ${full_list}    start=${timeAndDate_start}    end=${timeAndDate_end}
-    Should Contain X Times    ${timeAndDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 1    10
+    Should Contain X Times    ${timeAndDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${timeAndDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}utc : LSST    10
     Should Contain X Times    ${timeAndDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lst : LSST    10
     Should Contain X Times    ${timeAndDate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jd : 1    10
@@ -190,18 +171,12 @@ Read Subscriber
     ${skyEnvironment_end}=    Get Index From List    ${full_list}    === ATPtg_skyEnvironment end of topic ===
     ${skyEnvironment_list}=    Get Slice From List    ${full_list}    start=${skyEnvironment_start}    end=${skyEnvironment_end}
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunsetTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToSunset : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightEndTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToTwilightEnd : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightBeginTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToTwilightBegin : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunriseTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToSunrise : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonriseTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToMoonrise : 1    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonsetTime : LSST    10
-    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeToMoonset : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunsetTime : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightEndTime : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightBeginTime : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunriseTime : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonriseTime : 1    10
+    Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonsetTime : 1    10
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonPhase : 1    10
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunAltitude : 1    10
     Should Contain X Times    ${skyEnvironment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moonAltitude : 1    10

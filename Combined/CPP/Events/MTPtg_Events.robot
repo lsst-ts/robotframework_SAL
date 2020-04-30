@@ -94,22 +94,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPositionEl_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event inPositionEl generated =
-    Comment    ======= Verify ${subSystem}_inBlindSpot test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inBlindSpot
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inBlindSpot iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inBlindSpot_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inBlindSpot generated =
-    Comment    ======= Verify ${subSystem}_blindSpotWarning test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_blindSpotWarning
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event blindSpotWarning iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_blindSpotWarning_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event blindSpotWarning generated =
     Comment    ======= Verify ${subSystem}_axesTrackMode test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_axesTrackMode
     @{words}=    Split String    ${line}
@@ -286,6 +270,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elLimitWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elLimitWarning generated =
+    Comment    ======= Verify ${subSystem}_pointing_file test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_pointing_file
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event pointing_file iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointing_file_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event pointing_file generated =
+    Comment    ======= Verify ${subSystem}_timesOfLimits test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_timesOfLimits
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event timesOfLimits iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_timesOfLimits_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event timesOfLimits generated =
 
 Read Logger
     [Tags]    functional
@@ -337,18 +337,6 @@ Read Logger
     ${inPositionEl_list}=    Get Slice From List    ${full_list}    start=${inPositionEl_start}    end=${inPositionEl_end}
     Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
     Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inBlindSpot_start}=    Get Index From List    ${full_list}    === Event inBlindSpot received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inBlindSpot_start}
-    ${inBlindSpot_end}=    Evaluate    ${end}+${1}
-    ${inBlindSpot_list}=    Get Slice From List    ${full_list}    start=${inBlindSpot_start}    end=${inBlindSpot_end}
-    Should Contain X Times    ${inBlindSpot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${inBlindSpot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${blindSpotWarning_start}=    Get Index From List    ${full_list}    === Event blindSpotWarning received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${blindSpotWarning_start}
-    ${blindSpotWarning_end}=    Evaluate    ${end}+${1}
-    ${blindSpotWarning_list}=    Get Slice From List    ${full_list}    start=${blindSpotWarning_start}    end=${blindSpotWarning_end}
-    Should Contain X Times    ${blindSpotWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
-    Should Contain X Times    ${blindSpotWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${axesTrackMode_start}=    Get Index From List    ${full_list}    === Event axesTrackMode received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${axesTrackMode_start}
     ${axesTrackMode_end}=    Evaluate    ${end}+${1}
@@ -513,3 +501,22 @@ Read Logger
     ${elLimitWarning_list}=    Get Slice From List    ${full_list}    start=${elLimitWarning_start}    end=${elLimitWarning_end}
     Should Contain X Times    ${elLimitWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${elLimitWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${pointing_file_start}=    Get Index From List    ${full_list}    === Event pointing_file received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointing_file_start}
+    ${pointing_file_end}=    Evaluate    ${end}+${1}
+    ${pointing_file_list}=    Get Slice From List    ${full_list}    start=${pointing_file_start}    end=${pointing_file_end}
+    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}file_is_open : 1    1
+    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}file_path : LSST    1
+    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${timesOfLimits_start}=    Get Index From List    ${full_list}    === Event timesOfLimits received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${timesOfLimits_start}
+    ${timesOfLimits_end}=    Evaluate    ${end}+${1}
+    ${timesOfLimits_list}=    Get Slice From List    ${full_list}    start=${timesOfLimits_start}    end=${timesOfLimits_end}
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeAzLim : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeRotLim : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeElHighLimit : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeElLowLimit : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeUnobservable : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

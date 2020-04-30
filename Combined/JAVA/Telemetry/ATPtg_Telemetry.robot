@@ -51,12 +51,6 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATPtg all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${currentTimesToLimits_start}=    Get Index From List    ${full_list}    === ATPtg_currentTimesToLimits start of topic ===
-    ${currentTimesToLimits_end}=    Get Index From List    ${full_list}    === ATPtg_currentTimesToLimits end of topic ===
-    ${currentTimesToLimits_list}=    Get Slice From List    ${full_list}    start=${currentTimesToLimits_start}    end=${currentTimesToLimits_end + 1}
-    Log Many    ${currentTimesToLimits_list}
-    Should Contain    ${currentTimesToLimits_list}    === ATPtg_currentTimesToLimits start of topic ===
-    Should Contain    ${currentTimesToLimits_list}    === ATPtg_currentTimesToLimits end of topic ===
     ${currentTargetStatus_start}=    Get Index From List    ${full_list}    === ATPtg_currentTargetStatus start of topic ===
     ${currentTargetStatus_end}=    Get Index From List    ${full_list}    === ATPtg_currentTargetStatus end of topic ===
     ${currentTargetStatus_list}=    Get Slice From List    ${full_list}    start=${currentTargetStatus_start}    end=${currentTargetStatus_end + 1}
