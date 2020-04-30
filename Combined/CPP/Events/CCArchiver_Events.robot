@@ -69,6 +69,8 @@ Read Logger
     ${imageRetrievalForArchiving_list}=    Get Slice From List    ${full_list}    start=${imageRetrievalForArchiving_start}    end=${imageRetrievalForArchiving_end}
     Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : LSST    1
     Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft : LSST    1
+    Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : LSST    1
     Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : LSST    1
     Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusCode : 1    1
     Should Contain X Times    ${imageRetrievalForArchiving_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : LSST    1
@@ -79,6 +81,8 @@ Read Logger
     ${imageInOODS_list}=    Get Slice From List    ${full_list}    start=${imageInOODS_start}    end=${imageInOODS_end}
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : LSST    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : LSST    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : LSST    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusCode : 1    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : LSST    1
