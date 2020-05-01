@@ -14,6 +14,7 @@ Combined/CPP/Events/ATHeaderService_Events.robot
 Combined/CPP/Events/ATHexapod_Events.robot
 Combined/CPP/Events/ATMCS_Events.robot
 Combined/CPP/Events/ATMonochromator_Events.robot
+Combined/CPP/Events/ATOODS_Events.robot
 Combined/CPP/Events/ATPneumatics_Events.robot
 Combined/CPP/Events/ATPtg_Events.robot
 Combined/CPP/Events/ATSpectrograph_Events.robot
@@ -22,6 +23,7 @@ Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CCArchiver_Events.robot
 Combined/CPP/Events/CCCamera_Events.robot
 Combined/CPP/Events/CCHeaderService_Events.robot
+Combined/CPP/Events/CCOODS_Events.robot
 Combined/CPP/Events/CatchupArchiver_Events.robot
 Combined/CPP/Events/DIMM_Events.robot
 Combined/CPP/Events/DSM_Events.robot
