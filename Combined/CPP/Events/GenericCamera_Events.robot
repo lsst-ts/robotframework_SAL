@@ -171,14 +171,14 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraInfo_start}
     ${cameraInfo_end}=    Evaluate    ${end}+${1}
     ${cameraInfo_list}=    Get Slice From List    ${full_list}    start=${cameraInfo_start}    end=${cameraInfo_end}
-    Should Contain X Times    ${cameraInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraMakeAndModel : LSST    1
+    Should Contain X Times    ${cameraInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraMakeAndModel : RO    1
     Should Contain X Times    ${cameraInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${cameraSpecificProperty_start}=    Get Index From List    ${full_list}    === Event cameraSpecificProperty received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraSpecificProperty_start}
     ${cameraSpecificProperty_end}=    Evaluate    ${end}+${1}
     ${cameraSpecificProperty_list}=    Get Slice From List    ${full_list}    start=${cameraSpecificProperty_start}    end=${cameraSpecificProperty_end}
-    Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyName : LSST    1
-    Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyValue : LSST    1
+    Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyName : RO    1
+    Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propertyValue : RO    1
     Should Contain X Times    ${cameraSpecificProperty_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${roi_start}=    Get Index From List    ${full_list}    === Event roi received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${roi_start}
@@ -193,7 +193,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startLiveView_start}
     ${startLiveView_end}=    Evaluate    ${end}+${1}
     ${startLiveView_list}=    Get Slice From List    ${full_list}    start=${startLiveView_start}    end=${startLiveView_end}
-    Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : LSST    1
+    Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : RO    1
     Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${startLiveView_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endLiveView_start}=    Get Index From List    ${full_list}    === Event endLiveView received =${SPACE}
@@ -224,9 +224,9 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startIntegration_start}
     ${startIntegration_end}=    Evaluate    ${end}+${1}
     ${startIntegration_list}=    Get Slice From List    ${full_list}    start=${startIntegration_start}    end=${startIntegration_end}
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
@@ -253,9 +253,9 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startReadout_start}
     ${startReadout_end}=    Evaluate    ${end}+${1}
     ${startReadout_list}=    Get Slice From List    ${full_list}    start=${startReadout_start}    end=${startReadout_end}
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
@@ -264,9 +264,9 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endReadout_start}
     ${endReadout_end}=    Evaluate    ${end}+${1}
     ${endReadout_list}=    Get Slice From List    ${full_list}    start=${endReadout_start}    end=${endReadout_end}
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : LSST    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSequenceName : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStamp : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1

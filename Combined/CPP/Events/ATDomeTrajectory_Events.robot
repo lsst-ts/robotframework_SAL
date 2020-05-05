@@ -59,6 +59,6 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${algorithm_start}
     ${algorithm_end}=    Evaluate    ${end}+${1}
     ${algorithm_list}=    Get Slice From List    ${full_list}    start=${algorithm_start}    end=${algorithm_end}
-    Should Contain X Times    ${algorithm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}algorithmName : LSST    1
-    Should Contain X Times    ${algorithm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}algorithmConfig : LSST    1
+    Should Contain X Times    ${algorithm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}algorithmName : RO    1
+    Should Contain X Times    ${algorithm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}algorithmConfig : RO    1
     Should Contain X Times    ${algorithm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

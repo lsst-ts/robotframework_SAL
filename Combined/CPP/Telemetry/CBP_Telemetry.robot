@@ -104,7 +104,7 @@ Read Subscriber
     ${mask_start}=    Get Index From List    ${full_list}    === CBP_mask start of topic ===
     ${mask_end}=    Get Index From List    ${full_list}    === CBP_mask end of topic ===
     ${mask_list}=    Get Slice From List    ${full_list}    start=${mask_start}    end=${mask_end}
-    Should Contain X Times    ${mask_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : LSST    10
+    Should Contain X Times    ${mask_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : RO    10
     Should Contain X Times    ${mask_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask_rotation : 1    10
     ${azimuth_start}=    Get Index From List    ${full_list}    === CBP_azimuth start of topic ===
     ${azimuth_end}=    Get Index From List    ${full_list}    === CBP_azimuth end of topic ===

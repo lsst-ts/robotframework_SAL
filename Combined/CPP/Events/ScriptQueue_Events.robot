@@ -107,39 +107,39 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${availableScripts_start}
     ${availableScripts_end}=    Evaluate    ${end}+${1}
     ${availableScripts_list}=    Get Slice From List    ${full_list}    start=${availableScripts_start}    end=${availableScripts_end}
-    Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : LSST    1
-    Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : LSST    1
+    Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : RO    1
+    Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : RO    1
     Should Contain X Times    ${availableScripts_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${configSchema_start}=    Get Index From List    ${full_list}    === Event configSchema received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${configSchema_start}
     ${configSchema_end}=    Evaluate    ${end}+${1}
     ${configSchema_list}=    Get Slice From List    ${full_list}    start=${configSchema_start}    end=${configSchema_end}
     Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}isStandard : 1    1
-    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : LSST    1
-    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configSchema : LSST    1
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : RO    1
+    Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configSchema : RO    1
     Should Contain X Times    ${configSchema_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nextVisit_start}=    Get Index From List    ${full_list}    === Event nextVisit received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextVisit_start}
     ${nextVisit_end}=    Evaluate    ${end}+${1}
     ${nextVisit_list}=    Get Slice From List    ${full_list}    start=${nextVisit_start}    end=${nextVisit_end}
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salIndex : 1    1
-    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coordinateSystem : 1    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotationSystem : 1    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraAngle : 1    1
-    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filters : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filters : RO    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dome : 1    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nimages : 1    1
-    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : LSST    1
+    Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : RO    1
     Should Contain X Times    ${nextVisit_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nextVisitCanceled_start}=    Get Index From List    ${full_list}    === Event nextVisitCanceled received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nextVisitCanceled_start}
     ${nextVisitCanceled_end}=    Evaluate    ${end}+${1}
     ${nextVisitCanceled_list}=    Get Slice From List    ${full_list}    start=${nextVisitCanceled_start}    end=${nextVisitCanceled_end}
     Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salIndex : 1    1
-    Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
+    Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${nextVisitCanceled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${script_start}=    Get Index From List    ${full_list}    === Event script received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${script_start}
@@ -148,7 +148,7 @@ Read Logger
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cmdId : 1    1
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salIndex : 1    1
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}isStandard : 1    1
-    Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : LSST    1
+    Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}path : RO    1
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampProcessStart : 1    1
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampConfigureStart : 1    1
     Should Contain X Times    ${script_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampConfigureEnd : 1    1
@@ -173,6 +173,6 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rootDirectories_start}
     ${rootDirectories_end}=    Evaluate    ${end}+${1}
     ${rootDirectories_list}=    Get Slice From List    ${full_list}    start=${rootDirectories_start}    end=${rootDirectories_end}
-    Should Contain X Times    ${rootDirectories_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : LSST    1
-    Should Contain X Times    ${rootDirectories_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : LSST    1
+    Should Contain X Times    ${rootDirectories_list}    ${SPACE}${SPACE}${SPACE}${SPACE}standard : RO    1
+    Should Contain X Times    ${rootDirectories_list}    ${SPACE}${SPACE}${SPACE}${SPACE}external : RO    1
     Should Contain X Times    ${rootDirectories_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

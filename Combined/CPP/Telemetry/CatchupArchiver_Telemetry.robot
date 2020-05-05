@@ -55,6 +55,6 @@ Read Subscriber
     ${sequencerHeartbeat_start}=    Get Index From List    ${full_list}    === CatchupArchiver_sequencerHeartbeat start of topic ===
     ${sequencerHeartbeat_end}=    Get Index From List    ${full_list}    === CatchupArchiver_sequencerHeartbeat end of topic ===
     ${sequencerHeartbeat_list}=    Get Slice From List    ${full_list}    start=${sequencerHeartbeat_start}    end=${sequencerHeartbeat_end}
-    Should Contain X Times    ${sequencerHeartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    10
+    Should Contain X Times    ${sequencerHeartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    10
     Should Contain X Times    ${sequencerHeartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    10
-    Should Contain X Times    ${sequencerHeartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    10
+    Should Contain X Times    ${sequencerHeartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    10

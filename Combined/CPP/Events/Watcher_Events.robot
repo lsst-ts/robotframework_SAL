@@ -59,16 +59,16 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${alarm_start}
     ${alarm_end}=    Evaluate    ${end}+${1}
     ${alarm_list}=    Get Slice From List    ${full_list}    start=${alarm_start}    end=${alarm_end}
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}severity : 1    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxSeverity : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledged : 1    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledgedBy : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acknowledgedBy : RO    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalated : 1    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalateTo : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}escalateTo : RO    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mutedSeverity : 1    1
-    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mutedBy : LSST    1
+    Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mutedBy : RO    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityOldest : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampSeverityNewest : 1    1
     Should Contain X Times    ${alarm_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampMaxSeverity : 1    1

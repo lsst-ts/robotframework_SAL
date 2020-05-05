@@ -75,31 +75,31 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${catchuparchiverEntityStartup_start}
     ${catchuparchiverEntityStartup_end}=    Evaluate    ${end}+${1}
     ${catchuparchiverEntityStartup_list}=    Get Slice From List    ${full_list}    start=${catchuparchiverEntityStartup_start}    end=${catchuparchiverEntityStartup_end}
-    Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${catchuparchiverEntityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${catchuparchiverEntitySummaryState_start}=    Get Index From List    ${full_list}    === Event catchuparchiverEntitySummaryState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${catchuparchiverEntitySummaryState_start}
     ${catchuparchiverEntitySummaryState_end}=    Evaluate    ${end}+${1}
     ${catchuparchiverEntitySummaryState_list}=    Get Slice From List    ${full_list}    start=${catchuparchiverEntitySummaryState_start}    end=${catchuparchiverEntitySummaryState_end}
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : LSST    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : LSST    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : LSST    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : LSST    1
-    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : LSST    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : RO    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : RO    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : RO    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : RO    1
+    Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : RO    1
     Should Contain X Times    ${catchuparchiverEntitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${catchuparchiverEntityShutdown_start}=    Get Index From List    ${full_list}    === Event catchuparchiverEntityShutdown received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${catchuparchiverEntityShutdown_start}
     ${catchuparchiverEntityShutdown_end}=    Evaluate    ${end}+${1}
     ${catchuparchiverEntityShutdown_list}=    Get Slice From List    ${full_list}    start=${catchuparchiverEntityShutdown_start}    end=${catchuparchiverEntityShutdown_end}
-    Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${catchuparchiverEntityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

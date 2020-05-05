@@ -189,8 +189,8 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedCommand_start}
     ${rejectedCommand_end}=    Evaluate    ${end}+${1}
     ${rejectedCommand_list}=    Get Slice From List    ${full_list}    start=${rejectedCommand_start}    end=${rejectedCommand_end}
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : LSST    1
-    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : LSST    1
+    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : RO    1
+    Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : RO    1
     Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${rejectedCommand_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${timeout_start}=    Get Index From List    ${full_list}    === Event timeout received =${SPACE}
@@ -210,14 +210,14 @@ Read Logger
     ${reportedFilterPosition_end}=    Evaluate    ${end}+${1}
     ${reportedFilterPosition_list}=    Get Slice From List    ${full_list}    start=${reportedFilterPosition_start}    end=${reportedFilterPosition_end}
     Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
-    Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${reportedDisperserPosition_start}=    Get Index From List    ${full_list}    === Event reportedDisperserPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${reportedDisperserPosition_start}
     ${reportedDisperserPosition_end}=    Evaluate    ${end}+${1}
     ${reportedDisperserPosition_list}=    Get Slice From List    ${full_list}    start=${reportedDisperserPosition_start}    end=${reportedDisperserPosition_end}
     Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
-    Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${disperserInPosition_start}=    Get Index From List    ${full_list}    === Event disperserInPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${disperserInPosition_start}
@@ -259,12 +259,12 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedValues_start}
     ${settingsAppliedValues_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedValues_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedValues_start}    end=${settingsAppliedValues_end}
-    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}host : LSST    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}host : RO    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}linearStageMinPos : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}linearStageMaxPos : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}linearStageSpeed : 1    1
-    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : LSST    1
-    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gratingNames : LSST    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : RO    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gratingNames : RO    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instrumentPort : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -152,20 +152,20 @@ Read Logger
     ${intensity_end}=    Evaluate    ${end}+${1}
     ${intensity_list}=    Get Slice From List    ${full_list}    start=${intensity_start}    end=${intensity_end}
     Should Contain X Times    ${intensity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}intensity : 1    1
-    Should Contain X Times    ${intensity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unit : LSST    1
+    Should Contain X Times    ${intensity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unit : RO    1
     Should Contain X Times    ${intensity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${intensity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === Event largeFileObjectAvailable received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${largeFileObjectAvailable_start}
     ${largeFileObjectAvailable_end}=    Evaluate    ${end}+${1}
     ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end}
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${measureRange_start}=    Get Index From List    ${full_list}    === Event measureRange received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${measureRange_start}
@@ -194,13 +194,13 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedSerConf_start}
     ${settingsAppliedSerConf_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedSerConf_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedSerConf_start}    end=${settingsAppliedSerConf_end}
-    Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}visaResource : LSST    1
+    Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}visaResource : RO    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}baudRate : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parity : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataBits : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stopBits : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout : 1    1
-    Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}termChar : LSST    1
+    Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}termChar : RO    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xonxoff : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dsrdtr : 1    1
     Should Contain X Times    ${settingsAppliedSerConf_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bytesToRead : 1    1
@@ -210,5 +210,5 @@ Read Logger
     ${deviceErrorCode_end}=    Evaluate    ${end}+${1}
     ${deviceErrorCode_list}=    Get Slice From List    ${full_list}    start=${deviceErrorCode_start}    end=${deviceErrorCode_end}
     Should Contain X Times    ${deviceErrorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
-    Should Contain X Times    ${deviceErrorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : LSST    1
+    Should Contain X Times    ${deviceErrorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${deviceErrorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

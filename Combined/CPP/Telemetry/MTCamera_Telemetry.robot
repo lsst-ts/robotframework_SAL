@@ -226,7 +226,7 @@ Read Subscriber
     Should Contain X Times    ${shutter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openProfile : 7    1
     Should Contain X Times    ${shutter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openProfile : 8    1
     Should Contain X Times    ${shutter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openProfile : 9    1
-    Should Contain X Times    ${shutter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}profileFunction : LSST    10
+    Should Contain X Times    ${shutter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}profileFunction : RO    10
     ${prot_start}=    Get Index From List    ${full_list}    === MTCamera_prot start of topic ===
     ${prot_end}=    Get Index From List    ${full_list}    === MTCamera_prot end of topic ===
     ${prot_list}=    Get Slice From List    ${full_list}    start=${prot_start}    end=${prot_end}

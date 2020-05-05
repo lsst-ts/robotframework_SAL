@@ -79,10 +79,10 @@ Read Subscriber
     ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${configuration_end}
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dsmIndex : 1    10
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampConfigStart : 1    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionCode : LSST    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionConfig : LSST    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiConfigFile : LSST    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraName : LSST    10
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionCode : RO    10
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionConfig : RO    10
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiConfigFile : RO    10
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraName : RO    10
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraFps : 1    10
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataBufferSize : 1    10
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataAcquisitionTime : 1    10

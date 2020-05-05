@@ -954,8 +954,8 @@ Read Logger
     ${commandRejectionWarning_end}=    Evaluate    ${end}+${1}
     ${commandRejectionWarning_list}=    Get Slice From List    ${full_list}    start=${commandRejectionWarning_start}    end=${commandRejectionWarning_end}
     Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : LSST    1
-    Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : LSST    1
+    Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : RO    1
+    Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${pidInfo_start}=    Get Index From List    ${full_list}    === Event pidInfo received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pidInfo_start}

@@ -211,7 +211,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedMonoCommunication_start}
     ${settingsAppliedMonoCommunication_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedMonoCommunication_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedMonoCommunication_start}    end=${settingsAppliedMonoCommunication_end}
-    Should Contain X Times    ${settingsAppliedMonoCommunication_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : LSST    1
+    Should Contain X Times    ${settingsAppliedMonoCommunication_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : RO    1
     Should Contain X Times    ${settingsAppliedMonoCommunication_list}    ${SPACE}${SPACE}${SPACE}${SPACE}portRange : 1    1
     Should Contain X Times    ${settingsAppliedMonoCommunication_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readTimeout : 1    1
     Should Contain X Times    ${settingsAppliedMonoCommunication_list}    ${SPACE}${SPACE}${SPACE}${SPACE}writeTimeout : 1    1

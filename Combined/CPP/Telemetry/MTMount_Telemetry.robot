@@ -303,7 +303,7 @@ Read Subscriber
     ${Auxliary_Cabinet_Azimuth_start}=    Get Index From List    ${full_list}    === MTMount_Auxliary_Cabinet_Azimuth start of topic ===
     ${Auxliary_Cabinet_Azimuth_end}=    Get Index From List    ${full_list}    === MTMount_Auxliary_Cabinet_Azimuth end of topic ===
     ${Auxliary_Cabinet_Azimuth_list}=    Get Slice From List    ${full_list}    start=${Auxliary_Cabinet_Azimuth_start}    end=${Auxliary_Cabinet_Azimuth_end}
-    Should Contain X Times    ${Auxliary_Cabinet_Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Auxiliar_Azimuth_Cabinet_Status : LSST    10
+    Should Contain X Times    ${Auxliary_Cabinet_Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Auxiliar_Azimuth_Cabinet_Status : RO    10
     Should Contain X Times    ${Auxliary_Cabinet_Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Auxiliar_Azimuth_Cabinet_External_Temperature : 1    10
     Should Contain X Times    ${Auxliary_Cabinet_Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Auxiliar_Azimuth_Cabinet_Internal_Temperature_1 : 1    10
     Should Contain X Times    ${Auxliary_Cabinet_Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Auxiliar_Azimuth_Cabinet_Internal_Temperature_2 : 1    10
@@ -317,9 +317,9 @@ Read Subscriber
     ${Azimuth_Cable_Wrap_start}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Cable_Wrap start of topic ===
     ${Azimuth_Cable_Wrap_end}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Cable_Wrap end of topic ===
     ${Azimuth_Cable_Wrap_list}=    Get Slice From List    ${full_list}    start=${Azimuth_Cable_Wrap_start}    end=${Azimuth_Cable_Wrap_end}
-    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status : LSST    10
-    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status_Drive_2 : LSST    10
+    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status : RO    10
+    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Status_Drive_2 : RO    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Current_Drive_1 : 1    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Current_Drive_2 : 1    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_AngleDif_Actual : 1    10
@@ -327,12 +327,12 @@ Read Subscriber
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Angle_Setpoint : 1    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Positive_Power_Off_switch : 1    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Negative_Power_Off_switch : 1    10
-    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Interlocks : LSST    10
+    Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ACW_Interlocks : RO    10
     Should Contain X Times    ${Azimuth_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Azimuth_start}=    Get Index From List    ${full_list}    === MTMount_Azimuth start of topic ===
     ${Azimuth_end}=    Get Index From List    ${full_list}    === MTMount_Azimuth end of topic ===
     ${Azimuth_list}=    Get Slice From List    ${full_list}    start=${Azimuth_start}    end=${Azimuth_end}
-    Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status : LSST    10
+    Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status : RO    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Angle_Actual : 1    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Angle_Set : 1    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Aceleration_Actual : 1    10
@@ -347,27 +347,27 @@ Read Subscriber
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Negative_Directional_limit_switch : 1    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Positive_Adjustable_Software_limit : 1    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Negative_Adjustable_Software_limit : 1    10
-    Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Interlocks : LSST    10
+    Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Interlocks : RO    10
     Should Contain X Times    ${Azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Azimuth_Drives_start}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Drives start of topic ===
     ${Azimuth_Drives_end}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Drives end of topic ===
     ${Azimuth_Drives_list}=    Get Slice From List    ${full_list}    start=${Azimuth_Drives_start}    end=${Azimuth_Drives_end}
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_2 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_3 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_4 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_5 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_6 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_7 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_8 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_9 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_10 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_11 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_12 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_13 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_14 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_15 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_16 : LSST    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_2 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_3 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_4 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_5 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_6 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_7 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_8 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_9 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_10 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_11 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_12 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_13 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_14 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_15 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Status_Drive_16 : RO    10
     Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Current_Drive_1 : 1    10
     Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Current_Drive_2 : 1    10
     Should Contain X Times    ${Azimuth_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Current_Drive_3 : 1    10
@@ -388,10 +388,10 @@ Read Subscriber
     ${Azimuth_Drives_Thermal_start}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Drives_Thermal start of topic ===
     ${Azimuth_Drives_Thermal_end}=    Get Index From List    ${full_list}    === MTMount_Azimuth_Drives_Thermal end of topic ===
     ${Azimuth_Drives_Thermal_list}=    Get Slice From List    ${full_list}    start=${Azimuth_Drives_Thermal_start}    end=${Azimuth_Drives_Thermal_end}
-    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_1 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_2 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_3 : LSST    10
-    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_4 : LSST    10
+    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_1 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_2 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_3 : RO    10
+    Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Thermal_Status_Group_4 : RO    10
     Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Surface_Temperature_Motor_1 : 1    10
     Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Surface_Temperature_Motor_2 : 1    10
     Should Contain X Times    ${Azimuth_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Azimuth_Surface_Temperature_Motor_3 : 1    10
@@ -432,40 +432,40 @@ Read Subscriber
     ${OSS_start}=    Get Index From List    ${full_list}    === MTMount_OSS start of topic ===
     ${OSS_end}=    Get Index From List    ${full_list}    === MTMount_OSS end of topic ===
     ${OSS_list}=    Get Slice From List    ${full_list}    start=${OSS_start}    end=${OSS_end}
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_Status : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5802 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5801 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5303 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5302 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5301 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5011 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_pump_5004 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_Filter_7 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_centre_pump_5012 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_centre_valve_5001 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_heater_HET_5001 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_left_pump_5011 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_left_valve_5000 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_right_pump_5013 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_right_valve_5002 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_bridge_pump_running_unit_1 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_bridge_pump_running_unit_2 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_cooler_running_unit_1 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_cooler_running_unit_2 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Filter_5 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Filter_6 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_pump_5001 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_valve_5201 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_centre_valve_5009 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_1 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_2 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_3 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_4 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_left_valve_5008 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5001 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5002 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5003 : LSST    10
-    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_right_valve_5010 : LSST    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_Status : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5802 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5801 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5303 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5302 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5301 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_valve_5011 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_pump_5004 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_Status_Filter_7 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_centre_pump_5012 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_centre_valve_5001 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_heater_HET_5001 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_left_pump_5011 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_left_valve_5000 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_right_pump_5013 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Bottom_right_valve_5002 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_bridge_pump_running_unit_1 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_bridge_pump_running_unit_2 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_cooler_running_unit_1 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_cooler_running_unit_2 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Filter_5 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_Filter_6 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_pump_5001 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_valve_5201 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_centre_valve_5009 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_1 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_2 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_3 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_Filter_4 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_left_valve_5008 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5001 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5002 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_pump_5003 : RO    10
+    Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_MP_Status_right_valve_5010 : RO    10
     Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_CPM_5007 : 1    10
     Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_CPM_5008 : 1    10
     Should Contain X Times    ${OSS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}OSS_A_CPM_5021 : 1    10
@@ -672,8 +672,8 @@ Read Subscriber
     ${Main_Power_Supply_start}=    Get Index From List    ${full_list}    === MTMount_Main_Power_Supply start of topic ===
     ${Main_Power_Supply_end}=    Get Index From List    ${full_list}    === MTMount_Main_Power_Supply end of topic ===
     ${Main_Power_Supply_list}=    Get Slice From List    ${full_list}    start=${Main_Power_Supply_start}    end=${Main_Power_Supply_end}
-    Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Status : LSST    10
-    Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Thermal_Status : LSST    10
+    Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Status : RO    10
+    Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Thermal_Status : RO    10
     Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_DC_Voltage : 1    10
     Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Line_Voltage : 1    10
     Should Contain X Times    ${Main_Power_Supply_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Power_Supply_Current : 1    10
@@ -693,10 +693,10 @@ Read Subscriber
     ${Balancing_Drives_start}=    Get Index From List    ${full_list}    === MTMount_Balancing_Drives start of topic ===
     ${Balancing_Drives_end}=    Get Index From List    ${full_list}    === MTMount_Balancing_Drives end of topic ===
     ${Balancing_Drives_list}=    Get Slice From List    ${full_list}    start=${Balancing_Drives_start}    end=${Balancing_Drives_end}
-    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_2 : LSST    10
-    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_3 : LSST    10
-    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_4 : LSST    10
+    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_2 : RO    10
+    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_3 : RO    10
+    Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status_Drive_4 : RO    10
     Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Current_Drive_1 : 1    10
     Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Current_Drive_2 : 1    10
     Should Contain X Times    ${Balancing_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Current_Drive_3 : 1    10
@@ -709,7 +709,7 @@ Read Subscriber
     ${Balancing_start}=    Get Index From List    ${full_list}    === MTMount_Balancing start of topic ===
     ${Balancing_end}=    Get Index From List    ${full_list}    === MTMount_Balancing end of topic ===
     ${Balancing_list}=    Get Slice From List    ${full_list}    start=${Balancing_start}    end=${Balancing_end}
-    Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status : LSST    10
+    Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Status : RO    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Actual_Position_Drive_1 : 1    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Actual_Position_Drive_2 : 1    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Actual_Position_Drive_3 : 1    10
@@ -722,12 +722,12 @@ Read Subscriber
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Negative_Limit_Switch_Drive_2 : 1    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Negative_Limit_Switch_Drive_3 : 1    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Negative_Limit_Switch_Drive_4 : 1    10
-    Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Interlocks : LSST    10
+    Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Balancing_Interlocks : RO    10
     Should Contain X Times    ${Balancing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Elevation_start}=    Get Index From List    ${full_list}    === MTMount_Elevation start of topic ===
     ${Elevation_end}=    Get Index From List    ${full_list}    === MTMount_Elevation end of topic ===
     ${Elevation_list}=    Get Slice From List    ${full_list}    start=${Elevation_start}    end=${Elevation_end}
-    Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status : LSST    10
+    Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status : RO    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Angle_Actual : 1    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Angle_Set : 1    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Aceleration_Actual : 1    10
@@ -744,23 +744,23 @@ Read Subscriber
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Negative_Adjustable_Software_limit : 1    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Positive_Operational_Directional_limit_switch : 1    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Negative_Operational_Directional_limit_switch : 1    10
-    Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Interlocks : LSST    10
+    Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Interlocks : RO    10
     Should Contain X Times    ${Elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Elevation_Drives_start}=    Get Index From List    ${full_list}    === MTMount_Elevation_Drives start of topic ===
     ${Elevation_Drives_end}=    Get Index From List    ${full_list}    === MTMount_Elevation_Drives end of topic ===
     ${Elevation_Drives_list}=    Get Slice From List    ${full_list}    start=${Elevation_Drives_start}    end=${Elevation_Drives_end}
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_2 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_3 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_4 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_5 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_6 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_7 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_8 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_9 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_10 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_11 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_12 : LSST    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_2 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_3 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_4 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_5 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_6 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_7 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_8 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_9 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_10 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_11 : RO    10
+    Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Status_Drive_12 : RO    10
     Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Current_Drive_1 : 1    10
     Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Current_Drive_2 : 1    10
     Should Contain X Times    ${Elevation_Drives_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Current_Drive_3 : 1    10
@@ -777,8 +777,8 @@ Read Subscriber
     ${Locking_Pins_start}=    Get Index From List    ${full_list}    === MTMount_Locking_Pins start of topic ===
     ${Locking_Pins_end}=    Get Index From List    ${full_list}    === MTMount_Locking_Pins end of topic ===
     ${Locking_Pins_list}=    Get Slice From List    ${full_list}    start=${Locking_Pins_start}    end=${Locking_Pins_end}
-    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Status_Drive_2 : LSST    10
+    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Status_Drive_2 : RO    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Position_Drive_1 : 1    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Position_Drive_2 : 1    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Current_Drive_1 : 1    10
@@ -797,14 +797,14 @@ Read Subscriber
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Locking_Pin_2_Inserted : 1    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Locking_Pin_1_Test : 1    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Locking_Pin_2_Test : 1    10
-    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Interlocks : LSST    10
+    Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}LP_Interlocks : RO    10
     Should Contain X Times    ${Locking_Pins_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Camera_Cable_Wrap_start}=    Get Index From List    ${full_list}    === MTMount_Camera_Cable_Wrap start of topic ===
     ${Camera_Cable_Wrap_end}=    Get Index From List    ${full_list}    === MTMount_Camera_Cable_Wrap end of topic ===
     ${Camera_Cable_Wrap_list}=    Get Slice From List    ${full_list}    start=${Camera_Cable_Wrap_start}    end=${Camera_Cable_Wrap_end}
-    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status : LSST    10
-    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status_Drive_2 : LSST    10
+    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status : RO    10
+    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Status_Drive_2 : RO    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CameraRotatorPosition : 1    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Angle_1 : 1    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Angle_2 : 1    10
@@ -815,14 +815,14 @@ Read Subscriber
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Current_2 : 1    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Positive_Directional_limit_switch : 1    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Negative_Directional_limit_switch : 1    10
-    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Interlocks : LSST    10
+    Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}CCW_Interlocks : RO    10
     Should Contain X Times    ${Camera_Cable_Wrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Deployable_Platforms_start}=    Get Index From List    ${full_list}    === MTMount_Deployable_Platforms start of topic ===
     ${Deployable_Platforms_end}=    Get Index From List    ${full_list}    === MTMount_Deployable_Platforms end of topic ===
     ${Deployable_Platforms_list}=    Get Slice From List    ${full_list}    start=${Deployable_Platforms_start}    end=${Deployable_Platforms_end}
-    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status : LSST    10
-    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status_Drive_1 : LSST    10
-    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status_Drive_2 : LSST    10
+    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status : RO    10
+    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status_Drive_1 : RO    10
+    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Status_Drive_2 : RO    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Current_Drive_2 : 1    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Current_Drive_1 : 1    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Position_Set_Section_1 : 1    10
@@ -841,13 +841,13 @@ Read Subscriber
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Platform_2_Extension_1_Retracted_Limit_Switch : 1    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Platform_2_Extension_2_Locked_Limit_Switch : 1    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Platform_2_Extension_2_Retracted_Limit_Switch : 1    10
-    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Interlocks : LSST    10
+    Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}DP_Interlocks : RO    10
     Should Contain X Times    ${Deployable_Platforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Elevation_Drives_Thermal_start}=    Get Index From List    ${full_list}    === MTMount_Elevation_Drives_Thermal start of topic ===
     ${Elevation_Drives_Thermal_end}=    Get Index From List    ${full_list}    === MTMount_Elevation_Drives_Thermal end of topic ===
     ${Elevation_Drives_Thermal_list}=    Get Slice From List    ${full_list}    start=${Elevation_Drives_Thermal_start}    end=${Elevation_Drives_Thermal_end}
-    Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Thermal_Status_Group_1 : LSST    10
-    Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Thermal_Status_Group_2 : LSST    10
+    Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Thermal_Status_Group_1 : RO    10
+    Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Thermal_Status_Group_2 : RO    10
     Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Surface_Temperature_Motor_1 : 1    10
     Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Surface_Temperature_Motor_2 : 1    10
     Should Contain X Times    ${Elevation_Drives_Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Elevation_Surface_Temperature_Motor_3 : 1    10
@@ -878,11 +878,11 @@ Read Subscriber
     ${Mirror_Cover_start}=    Get Index From List    ${full_list}    === MTMount_Mirror_Cover start of topic ===
     ${Mirror_Cover_end}=    Get Index From List    ${full_list}    === MTMount_Mirror_Cover end of topic ===
     ${Mirror_Cover_list}=    Get Slice From List    ${full_list}    start=${Mirror_Cover_start}    end=${Mirror_Cover_end}
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_1_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_2_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_3_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_4_Status : LSST    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_1_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_2_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_3_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_4_Status : RO    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_1_Current : 1    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_2_Current : 1    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_3_Current : 1    10
@@ -899,12 +899,12 @@ Read Subscriber
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_2_Retracted_Limit_Switch : 1    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_3_Retracted_Limit_Switch : 1    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_4_Retracted_Limit_Switch : 1    10
-    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_Interlocks : LSST    10
+    Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCover_Interlocks : RO    10
     Should Contain X Times    ${Mirror_Cover_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Mount_Control_Main_Cabinet_start}=    Get Index From List    ${full_list}    === MTMount_Mount_Control_Main_Cabinet start of topic ===
     ${Mount_Control_Main_Cabinet_end}=    Get Index From List    ${full_list}    === MTMount_Mount_Control_Main_Cabinet end of topic ===
     ${Mount_Control_Main_Cabinet_list}=    Get Slice From List    ${full_list}    start=${Mount_Control_Main_Cabinet_start}    end=${Mount_Control_Main_Cabinet_end}
-    Should Contain X Times    ${Mount_Control_Main_Cabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Main_Cabinet_Status : LSST    10
+    Should Contain X Times    ${Mount_Control_Main_Cabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Main_Cabinet_Status : RO    10
     Should Contain X Times    ${Mount_Control_Main_Cabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Main_Cabinet_External_Temperature : 1    10
     Should Contain X Times    ${Mount_Control_Main_Cabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Main_Cabinet_Internal_Temperature_1 : 1    10
     Should Contain X Times    ${Mount_Control_Main_Cabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Main_Cabinet_Internal_Temperature_2 : 1    10
@@ -914,30 +914,30 @@ Read Subscriber
     ${Top_End_Chiller_start}=    Get Index From List    ${full_list}    === MTMount_Top_End_Chiller start of topic ===
     ${Top_End_Chiller_end}=    Get Index From List    ${full_list}    === MTMount_Top_End_Chiller end of topic ===
     ${Top_End_Chiller_list}=    Get Slice From List    ${full_list}    start=${Top_End_Chiller_start}    end=${Top_End_Chiller_end}
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_1 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_2 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_1 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_2 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_3 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_4 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_5 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_6 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_1 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_2 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_3 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_4 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_5 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_6 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_1_Valve : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_2_Valve : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_11 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_12 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_13 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_14 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_31 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_32 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_33 : LSST    10
-    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_34 : LSST    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_1 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_2 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_1 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_2 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_3 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_4 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_5 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Cabinet_6 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_1 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_2 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_3 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_4 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_5 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Fan_Status_Cabinet_6 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_1_Valve : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Chiller_2_Valve : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_11 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_12 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_13 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_14 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_31 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_32 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_33 : RO    10
+    Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Status_Fan_34 : RO    10
     Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Temperature_Area_1 : 1    10
     Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Temperature_Area_2 : 1    10
     Should Contain X Times    ${Top_End_Chiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}TEC_Temperature_Area_3 : 1    10
@@ -974,10 +974,10 @@ Read Subscriber
     ${Mirror_Cover_Locks_start}=    Get Index From List    ${full_list}    === MTMount_Mirror_Cover_Locks start of topic ===
     ${Mirror_Cover_Locks_end}=    Get Index From List    ${full_list}    === MTMount_Mirror_Cover_Locks end of topic ===
     ${Mirror_Cover_Locks_list}=    Get Slice From List    ${full_list}    start=${Mirror_Cover_Locks_start}    end=${Mirror_Cover_Locks_end}
-    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_1_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_2_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_3_Status : LSST    10
-    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_4_Status : LSST    10
+    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_1_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_2_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_3_Status : RO    10
+    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_4_Status : RO    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_1_Actual_Position : 1    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_2_Actual_Position : 1    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_3_Actual_Position : 1    10
@@ -994,7 +994,7 @@ Read Subscriber
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_2_Locked_Limit_Switch : 1    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_1_Locked_Limit_Switch : 1    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_4_Locked_Limit_Switch : 1    10
-    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_Interlocks : LSST    10
+    Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}MirrorCoverLock_Interlocks : RO    10
     Should Contain X Times    ${Mirror_Cover_Locks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Main_Power_Supply_Cabinet_start}=    Get Index From List    ${full_list}    === MTMount_Main_Power_Supply_Cabinet start of topic ===
     ${Main_Power_Supply_Cabinet_end}=    Get Index From List    ${full_list}    === MTMount_Main_Power_Supply_Cabinet end of topic ===
@@ -1006,9 +1006,9 @@ Read Subscriber
     ${Auxiliary_Boxes_start}=    Get Index From List    ${full_list}    === MTMount_Auxiliary_Boxes start of topic ===
     ${Auxiliary_Boxes_end}=    Get Index From List    ${full_list}    === MTMount_Auxiliary_Boxes end of topic ===
     ${Auxiliary_Boxes_list}=    Get Slice From List    ${full_list}    start=${Auxiliary_Boxes_start}    end=${Auxiliary_Boxes_end}
-    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_AZ_PD_CBT_0001 : LSST    10
-    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_EL_PD_CBT_0001 : LSST    10
-    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_EL_PD_CBT_0002 : LSST    10
+    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_AZ_PD_CBT_0001 : RO    10
+    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_EL_PD_CBT_0001 : RO    10
+    Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Status_TMA_EL_PD_CBT_0002 : RO    10
     Should Contain X Times    ${Auxiliary_Boxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${Compressed_Air_start}=    Get Index From List    ${full_list}    === MTMount_Compressed_Air start of topic ===
     ${Compressed_Air_end}=    Get Index From List    ${full_list}    === MTMount_Compressed_Air end of topic ===
