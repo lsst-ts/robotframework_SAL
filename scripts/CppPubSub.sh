@@ -215,7 +215,7 @@ function readSubscriber_params {
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
         elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
             #echo "$parameter $parameterType String or Char"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : LSST    10" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : RO    10" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
             #echo "$parameter $parameterType Count 1"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite

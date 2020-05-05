@@ -65,7 +65,7 @@ Read Subscriber
     ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end}
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x01    10
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}char0 : LSST    10
+    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}char0 : RO    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 1    10
@@ -76,7 +76,7 @@ Read Subscriber
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    10
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : LSST    10
+    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    10
     ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
     ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
     ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end}
