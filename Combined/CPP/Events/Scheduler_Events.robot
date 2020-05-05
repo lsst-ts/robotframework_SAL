@@ -83,14 +83,14 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${dependenciesVersions_start}
     ${dependenciesVersions_end}=    Evaluate    ${end}+${1}
     ${dependenciesVersions_list}=    Get Slice From List    ${full_list}    start=${dependenciesVersions_start}    end=${dependenciesVersions_end}
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scheduler : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cloudModel : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}downtimeModel : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seeingModel : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skybrightnessModel : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryModel : LSST    1
-    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryLocation : LSST    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scheduler : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cloudModel : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}downtimeModel : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seeingModel : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skybrightnessModel : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryModel : RO    1
+    Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryLocation : RO    1
     Should Contain X Times    ${dependenciesVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
@@ -102,7 +102,7 @@ Read Logger
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decl : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skyAngle : 1    1
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : LSST    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : RO    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numExposures : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTimes : 0    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewTime : 1    1
@@ -129,7 +129,7 @@ Read Logger
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunAlt : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunAz : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}solarElong : 1    1
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}note : LSST    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}note : RO    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${invalidateTarget_start}=    Get Index From List    ${full_list}    === Event invalidateTarget received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${invalidateTarget_start}
@@ -142,6 +142,6 @@ Read Logger
     ${needFilterSwap_end}=    Evaluate    ${end}+${1}
     ${needFilterSwap_list}=    Get Slice From List    ${full_list}    start=${needFilterSwap_start}    end=${needFilterSwap_end}
     Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}needSwap : 1    1
-    Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToMount : LSST    1
-    Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToUnmount : LSST    1
+    Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToMount : RO    1
+    Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToUnmount : RO    1
     Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

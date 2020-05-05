@@ -123,7 +123,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${interlock_start}
     ${interlock_end}=    Evaluate    ${end}+${1}
     ${interlock_list}=    Get Slice From List    ${full_list}    start=${interlock_start}    end=${interlock_end}
-    Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detail : LSST    1
+    Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detail : RO    1
     Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${actuatorInPosition_start}=    Get Index From List    ${full_list}    === Event actuatorInPosition received =${SPACE}

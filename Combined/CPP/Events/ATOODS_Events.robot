@@ -59,11 +59,11 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageInOODS_start}
     ${imageInOODS_end}=    Evaluate    ${end}+${1}
     ${imageInOODS_list}=    Get Slice From List    ${full_list}    start=${imageInOODS_start}    end=${imageInOODS_end}
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : LSST    1
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : LSST    1
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft : LSST    1
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : LSST    1
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}camera : RO    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft : RO    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : RO    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}archiverName : RO    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}statusCode : 1    1
-    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : LSST    1
+    Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : RO    1
     Should Contain X Times    ${imageInOODS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

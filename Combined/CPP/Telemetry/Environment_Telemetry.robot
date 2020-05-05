@@ -155,12 +155,12 @@ Read Subscriber
     Should Contain X Times    ${windDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min2M : 1    10
     Should Contain X Times    ${windDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg10M : 1    10
     Should Contain X Times    ${windDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max10M : 1    10
-    Should Contain X Times    ${windDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${windDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${windGustDirection_start}=    Get Index From List    ${full_list}    === Environment_windGustDirection start of topic ===
     ${windGustDirection_end}=    Get Index From List    ${full_list}    === Environment_windGustDirection end of topic ===
     ${windGustDirection_list}=    Get Slice From List    ${full_list}    start=${windGustDirection_start}    end=${windGustDirection_end}
     Should Contain X Times    ${windGustDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value10M : 1    10
-    Should Contain X Times    ${windGustDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${windGustDirection_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${windSpeed_start}=    Get Index From List    ${full_list}    === Environment_windSpeed start of topic ===
     ${windSpeed_end}=    Get Index From List    ${full_list}    === Environment_windSpeed end of topic ===
     ${windSpeed_list}=    Get Slice From List    ${full_list}    start=${windSpeed_start}    end=${windSpeed_end}
@@ -170,7 +170,7 @@ Read Subscriber
     Should Contain X Times    ${windSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min2M : 1    10
     Should Contain X Times    ${windSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg10M : 1    10
     Should Contain X Times    ${windSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max10M : 1    10
-    Should Contain X Times    ${windSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${windSpeed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${airTemperature_start}=    Get Index From List    ${full_list}    === Environment_airTemperature start of topic ===
     ${airTemperature_end}=    Get Index From List    ${full_list}    === Environment_airTemperature end of topic ===
     ${airTemperature_list}=    Get Slice From List    ${full_list}    start=${airTemperature_start}    end=${airTemperature_end}
@@ -178,7 +178,7 @@ Read Subscriber
     Should Contain X Times    ${airTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg1M : 1    10
     Should Contain X Times    ${airTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max24H : 1    10
     Should Contain X Times    ${airTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min24H : 1    10
-    Should Contain X Times    ${airTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${airTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${relativeHumidity_start}=    Get Index From List    ${full_list}    === Environment_relativeHumidity start of topic ===
     ${relativeHumidity_end}=    Get Index From List    ${full_list}    === Environment_relativeHumidity end of topic ===
     ${relativeHumidity_list}=    Get Slice From List    ${full_list}    start=${relativeHumidity_start}    end=${relativeHumidity_end}
@@ -186,12 +186,12 @@ Read Subscriber
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg1M : 1    10
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max24H : 1    10
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min24H : 1    10
-    Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${dewPoint_start}=    Get Index From List    ${full_list}    === Environment_dewPoint start of topic ===
     ${dewPoint_end}=    Get Index From List    ${full_list}    === Environment_dewPoint end of topic ===
     ${dewPoint_list}=    Get Slice From List    ${full_list}    start=${dewPoint_start}    end=${dewPoint_end}
     Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg1M : 1    10
-    Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${snowDepth_start}=    Get Index From List    ${full_list}    === Environment_snowDepth start of topic ===
     ${snowDepth_end}=    Get Index From List    ${full_list}    === Environment_snowDepth end of topic ===
     ${snowDepth_list}=    Get Slice From List    ${full_list}    start=${snowDepth_start}    end=${snowDepth_end}
@@ -199,7 +199,7 @@ Read Subscriber
     Should Contain X Times    ${snowDepth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max24H : 1    10
     Should Contain X Times    ${snowDepth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min24H : 1    10
     Should Contain X Times    ${snowDepth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg24H : 1    10
-    Should Contain X Times    ${snowDepth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${snowDepth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${solarNetRadiation_start}=    Get Index From List    ${full_list}    === Environment_solarNetRadiation start of topic ===
     ${solarNetRadiation_end}=    Get Index From List    ${full_list}    === Environment_solarNetRadiation end of topic ===
     ${solarNetRadiation_list}=    Get Slice From List    ${full_list}    start=${solarNetRadiation_start}    end=${solarNetRadiation_end}
@@ -207,21 +207,21 @@ Read Subscriber
     Should Contain X Times    ${solarNetRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max24H : 1    10
     Should Contain X Times    ${solarNetRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min24H : 1    10
     Should Contain X Times    ${solarNetRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg24H : 1    10
-    Should Contain X Times    ${solarNetRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${solarNetRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${airPressure_start}=    Get Index From List    ${full_list}    === Environment_airPressure start of topic ===
     ${airPressure_end}=    Get Index From List    ${full_list}    === Environment_airPressure end of topic ===
     ${airPressure_list}=    Get Slice From List    ${full_list}    start=${airPressure_start}    end=${airPressure_end}
     Should Contain X Times    ${airPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}paAvg1M : 1    10
     Should Contain X Times    ${airPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}patrValue3H : 1    10
     Should Contain X Times    ${airPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pateValue3H : 1    10
-    Should Contain X Times    ${airPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${airPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${precipitation_start}=    Get Index From List    ${full_list}    === Environment_precipitation start of topic ===
     ${precipitation_end}=    Get Index From List    ${full_list}    === Environment_precipitation end of topic ===
     ${precipitation_list}=    Get Slice From List    ${full_list}    start=${precipitation_start}    end=${precipitation_end}
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prSum1M : 1    10
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prSum1H : 1    10
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prfSum1M : 1    10
-    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${soilTemperature_start}=    Get Index From List    ${full_list}    === Environment_soilTemperature start of topic ===
     ${soilTemperature_end}=    Get Index From List    ${full_list}    === Environment_soilTemperature end of topic ===
     ${soilTemperature_list}=    Get Slice From List    ${full_list}    start=${soilTemperature_start}    end=${soilTemperature_end}
@@ -229,4 +229,4 @@ Read Subscriber
     Should Contain X Times    ${soilTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}avg1M : 1    10
     Should Contain X Times    ${soilTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max24H : 1    10
     Should Contain X Times    ${soilTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min24H : 1    10
-    Should Contain X Times    ${soilTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : LSST    10
+    Should Contain X Times    ${soilTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10

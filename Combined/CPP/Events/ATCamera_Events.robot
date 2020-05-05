@@ -250,16 +250,16 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endReadout_start}
     ${endReadout_end}=    Evaluate    ${end}+${1}
     ${endReadout_list}=    Get Slice From List    ${full_list}    start=${endReadout_start}    end=${endReadout_end}
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : LSST    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : LSST    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : LSST    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : LSST    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : LSST    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : LSST    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : RO    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
@@ -296,20 +296,20 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endOfImageTelemetry_start}
     ${endOfImageTelemetry_end}=    Evaluate    ${end}+${1}
     ${endOfImageTelemetry_list}=    Get Slice From List    ${full_list}    start=${endOfImageTelemetry_start}    end=${endOfImageTelemetry_end}
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : LSST    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : LSST    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : LSST    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : LSST    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : LSST    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : LSST    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : RO    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageTag : LSST    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageTag : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampDateObs : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampDateEnd : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
@@ -354,16 +354,16 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startIntegration_start}
     ${startIntegration_end}=    Evaluate    ${end}+${1}
     ${startIntegration_list}=    Get Slice From List    ${full_list}    start=${startIntegration_start}    end=${startIntegration_end}
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : LSST    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : LSST    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : LSST    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : LSST    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : LSST    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : LSST    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : RO    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
@@ -384,16 +384,16 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startReadout_start}
     ${startReadout_end}=    Evaluate    ${end}+${1}
     ${startReadout_list}=    Get Slice From List    ${full_list}    start=${startReadout_start}    end=${startReadout_end}
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : LSST    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : LSST    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : LSST    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : LSST    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : LSST    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : LSST    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : LSST    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageSource : RO    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
@@ -409,11 +409,11 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageReadoutParameters_start}
     ${imageReadoutParameters_end}=    Evaluate    ${end}+${1}
     ${imageReadoutParameters_list}=    Get Slice From List    ${full_list}    start=${imageReadoutParameters_start}    end=${imageReadoutParameters_end}
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : LSST    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdNames : LSST    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftBay : LSST    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSlot : LSST    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdNames : RO    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftBay : RO    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSlot : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overRows : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overCols : 1    1
@@ -424,17 +424,17 @@ Read Logger
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preRows : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}postCols : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underCols : 1    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqFolder : LSST    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqAnnotation : LSST    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqFolder : RO    1
+    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqAnnotation : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingsAppliedLegacy_start}=    Get Index From List    ${full_list}    === Event settingsAppliedLegacy received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedLegacy_start}
     ${settingsAppliedLegacy_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedLegacy_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedLegacy_start}    end=${settingsAppliedLegacy_end}
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : LSST    1
+    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : RO    1
     Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebSettingsVersion : LSST    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterSettingsVersion : LSST    1
+    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebSettingsVersion : RO    1
+    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterSettingsVersion : RO    1
     Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${bonnShutterSettingsApplied_start}=    Get Index From List    ${full_list}    === Event bonnShutterSettingsApplied received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${bonnShutterSettingsApplied_start}
@@ -448,15 +448,15 @@ Read Logger
     Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acceleration : 1    1
     Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxVelocity : 1    1
     Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threshold : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterVersion : LSST    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : LSST    1
+    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterVersion : RO    1
+    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : RO    1
     Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${wrebSettingsApplied_start}=    Get Index From List    ${full_list}    === Event wrebSettingsApplied received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${wrebSettingsApplied_start}
     ${wrebSettingsApplied_end}=    Evaluate    ${end}+${1}
     ${wrebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${wrebSettingsApplied_start}    end=${wrebSettingsApplied_end}
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerKey : LSST    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerKey : RO    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerChecksum : 1    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqVersion : 1    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : 1    1
@@ -500,23 +500,23 @@ Read Logger
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLow : 1    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowP : 1    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManufacturer : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSerialNumber : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdName : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebName : LSST    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : LSST    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManufacturer : RO    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : RO    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSerialNumber : RO    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdName : RO    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebName : RO    1
+    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : RO    1
     Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${softwareVersionsSettingsApplied_start}=    Get Index From List    ${full_list}    === Event softwareVersionsSettingsApplied received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersionsSettingsApplied_start}
     ${softwareVersionsSettingsApplied_end}=    Evaluate    ${end}+${1}
     ${softwareVersionsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${softwareVersionsSettingsApplied_start}    end=${softwareVersionsSettingsApplied_end}
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mcmVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ocsbridgeVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebPowerVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pduVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuumVersion : LSST    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebFirmwareVersion : LSST    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mcmVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ocsbridgeVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebPowerVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pduVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuumVersion : RO    1
+    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebFirmwareVersion : RO    1
     Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

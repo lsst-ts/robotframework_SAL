@@ -272,7 +272,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedDomeTcp_start}
     ${settingsAppliedDomeTcp_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedDomeTcp_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedDomeTcp_start}    end=${settingsAppliedDomeTcp_end}
-    Should Contain X Times    ${settingsAppliedDomeTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}host : LSST    1
+    Should Contain X Times    ${settingsAppliedDomeTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}host : RO    1
     Should Contain X Times    ${settingsAppliedDomeTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${settingsAppliedDomeTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readTimeout : 1    1
     Should Contain X Times    ${settingsAppliedDomeTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connectionTimeout : 1    1

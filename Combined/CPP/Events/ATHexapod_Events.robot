@@ -164,7 +164,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedTcp_start}
     ${settingsAppliedTcp_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedTcp_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedTcp_start}    end=${settingsAppliedTcp_end}
-    Should Contain X Times    ${settingsAppliedTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : LSST    1
+    Should Contain X Times    ${settingsAppliedTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ip : RO    1
     Should Contain X Times    ${settingsAppliedTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${settingsAppliedTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readTimeout : 1    1
     Should Contain X Times    ${settingsAppliedTcp_list}    ${SPACE}${SPACE}${SPACE}${SPACE}writeTimeout : 1    1

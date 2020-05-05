@@ -75,13 +75,13 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${largeFileObjectAvailable_start}
     ${largeFileObjectAvailable_end}=    Evaluate    ${end}+${1}
     ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end}
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : LSST    1
-    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : LSST    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${exposureState_start}=    Get Index From List    ${full_list}    === Event exposureState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${exposureState_start}
@@ -94,7 +94,7 @@ Read Logger
     ${deviceInfo_end}=    Evaluate    ${end}+${1}
     ${deviceInfo_list}=    Get Slice From List    ${full_list}    start=${deviceInfo_start}    end=${deviceInfo_end}
     Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}npixels : 1    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fpgaVersion : LSST    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : LSST    1
-    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}libraryVersion : LSST    1
+    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fpgaVersion : RO    1
+    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : RO    1
+    Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}libraryVersion : RO    1
     Should Contain X Times    ${deviceInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -75,31 +75,31 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${entitySummaryState_start}
     ${entitySummaryState_end}=    Evaluate    ${end}+${1}
     ${entitySummaryState_list}=    Get Slice From List    ${full_list}    start=${entitySummaryState_start}    end=${entitySummaryState_end}
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : LSST    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : LSST    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : LSST    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : LSST    1
-    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : LSST    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentState : RO    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}previousState : RO    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executing : RO    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandsAvailable : RO    1
+    Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationsAvailable : RO    1
     Should Contain X Times    ${entitySummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${entityStartup_start}=    Get Index From List    ${full_list}    === Event entityStartup received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${entityStartup_start}
     ${entityStartup_end}=    Evaluate    ${end}+${1}
     ${entityStartup_list}=    Get Slice From List    ${full_list}    start=${entityStartup_start}    end=${entityStartup_end}
-    Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${entityStartup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${entityShutdown_start}=    Get Index From List    ${full_list}    === Event entityShutdown received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${entityShutdown_start}
     ${entityShutdown_end}=    Evaluate    ${end}+${1}
     ${entityShutdown_list}=    Get Slice From List    ${full_list}    start=${entityShutdown_start}    end=${entityShutdown_end}
-    Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    1
+    Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identifier : 1    1
-    Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : LSST    1
+    Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : RO    1
     Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
     Should Contain X Times    ${entityShutdown_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

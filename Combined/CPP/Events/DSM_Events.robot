@@ -59,6 +59,6 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedSetup_start}
     ${settingsAppliedSetup_end}=    Evaluate    ${end}+${1}
     ${settingsAppliedSetup_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedSetup_start}    end=${settingsAppliedSetup_end}
-    Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telemetryDirectory : LSST    1
+    Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telemetryDirectory : RO    1
     Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}simulationLoopTime : 1    1
     Should Contain X Times    ${settingsAppliedSetup_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

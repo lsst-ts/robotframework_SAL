@@ -291,14 +291,14 @@ Read Subscriber
     Should Contain X Times    ${predictedSchedule_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decl : 1    10
     Should Contain X Times    ${predictedSchedule_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skyAngle : 1    10
     Should Contain X Times    ${predictedSchedule_list}    ${SPACE}${SPACE}${SPACE}${SPACE}visitTime : 1    10
-    Should Contain X Times    ${predictedSchedule_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : LSST    10
+    Should Contain X Times    ${predictedSchedule_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : RO    10
     ${surveyTopology_start}=    Get Index From List    ${full_list}    === Scheduler_surveyTopology start of topic ===
     ${surveyTopology_end}=    Get Index From List    ${full_list}    === Scheduler_surveyTopology end of topic ===
     ${surveyTopology_list}=    Get Slice From List    ${full_list}    start=${surveyTopology_start}    end=${surveyTopology_end}
     Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numGeneralProps : 1    10
-    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generalPropos : LSST    10
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generalPropos : RO    10
     Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSeqProps : 1    10
-    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencePropos : LSST    10
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencePropos : RO    10
     ${schedulerConfig_start}=    Get Index From List    ${full_list}    === Scheduler_schedulerConfig start of topic ===
     ${schedulerConfig_end}=    Get Index From List    ${full_list}    === Scheduler_schedulerConfig end of topic ===
     ${schedulerConfig_list}=    Get Slice From List    ${full_list}    start=${schedulerConfig_start}    end=${schedulerConfig_end}
@@ -308,12 +308,12 @@ Read Subscriber
     ${driverConfig_list}=    Get Slice From List    ${full_list}    start=${driverConfig_start}    end=${driverConfig_end}
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nightBoundary : 1    10
     Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}newMoonPhaseThreshold : 1    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupType : LSST    10
-    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupDatabase : LSST    10
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupType : RO    10
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupDatabase : RO    10
     ${obsSiteConfig_start}=    Get Index From List    ${full_list}    === Scheduler_obsSiteConfig start of topic ===
     ${obsSiteConfig_end}=    Get Index From List    ${full_list}    === Scheduler_obsSiteConfig end of topic ===
     ${obsSiteConfig_list}=    Get Slice From List    ${full_list}    start=${obsSiteConfig_start}    end=${obsSiteConfig_end}
-    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    10
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    10
     Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latitude : 1    10
     Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longitude : 1    10
     Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}height : 1    10
@@ -365,29 +365,29 @@ Read Subscriber
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterTime : 1    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMountTime : 1    10
     Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterChangeTime : 1    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : LSST    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPos : LSST    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterRemovable : LSST    10
-    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterUnmounted : LSST    10
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : RO    10
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPos : RO    10
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterRemovable : RO    10
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterUnmounted : RO    10
     ${slewConfig_start}=    Get Index From List    ${full_list}    === Scheduler_slewConfig start of topic ===
     ${slewConfig_end}=    Get Index From List    ${full_list}    === Scheduler_slewConfig end of topic ===
     ${slewConfig_list}=    Get Slice From List    ${full_list}    start=${slewConfig_start}    end=${slewConfig_end}
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomalt : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomaz : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomazSettle : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelalt : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelaz : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsOpenLoop : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsClosedLoop : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelSettle : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelRot : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqFilter : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqExposures : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqReadout : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqAdc : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqInsOptics : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderPos : LSST    10
-    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderAdq : LSST    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomalt : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomaz : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomazSettle : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelalt : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelaz : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsOpenLoop : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsClosedLoop : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelSettle : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelRot : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqFilter : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqExposures : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqReadout : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqAdc : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqInsOptics : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderPos : RO    10
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderAdq : RO    10
     ${opticsLoopCorrConfig_start}=    Get Index From List    ${full_list}    === Scheduler_opticsLoopCorrConfig start of topic ===
     ${opticsLoopCorrConfig_end}=    Get Index From List    ${full_list}    === Scheduler_opticsLoopCorrConfig end of topic ===
     ${opticsLoopCorrConfig_list}=    Get Slice From List    ${full_list}    start=${opticsLoopCorrConfig_start}    end=${opticsLoopCorrConfig_end}
@@ -420,11 +420,11 @@ Read Subscriber
     Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeRotator : 1    10
     Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAltitude : 1    10
     Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAzimuth : 1    10
-    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : LSST    10
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : RO    10
     ${generalPropConfig_start}=    Get Index From List    ${full_list}    === Scheduler_generalPropConfig start of topic ===
     ${generalPropConfig_end}=    Get Index From List    ${full_list}    === Scheduler_generalPropConfig end of topic ===
     ${generalPropConfig_list}=    Get Slice From List    ${full_list}    start=${generalPropConfig_start}    end=${generalPropConfig_end}
-    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    10
+    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propId : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightBoundary : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deltaLst : 1    10
@@ -434,7 +434,7 @@ Read Subscriber
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minDistanceMoon : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}excludePlanets : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numRegionSelections : 1    10
-    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionTypes : LSST    10
+    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionTypes : RO    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionMinimums : 0    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionMinimums : 1    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionMinimums : 2    1
@@ -465,7 +465,7 @@ Read Subscriber
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionBounds : 7    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionBounds : 8    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionBounds : 9    1
-    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionCombiners : LSST    10
+    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}regionCombiners : RO    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numTimeRanges : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeRangeStarts : 0    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeRangeStarts : 1    1
@@ -508,7 +508,7 @@ Read Subscriber
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selectionMappings : 8    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selectionMappings : 9    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numExclusionSelections : 1    10
-    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionTypes : LSST    10
+    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionTypes : RO    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionMinimums : 0    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionMinimums : 1    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionMinimums : 2    1
@@ -541,7 +541,7 @@ Read Subscriber
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exclusionBounds : 9    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fieldRevisitLimit : 1    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numFilters : 1    10
-    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : LSST    10
+    Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : RO    10
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numVisits : 0    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numVisits : 1    1
     Should Contain X Times    ${generalPropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numVisits : 2    1
@@ -640,7 +640,7 @@ Read Subscriber
     ${sequencePropConfig_start}=    Get Index From List    ${full_list}    === Scheduler_sequencePropConfig start of topic ===
     ${sequencePropConfig_end}=    Get Index From List    ${full_list}    === Scheduler_sequencePropConfig end of topic ===
     ${sequencePropConfig_list}=    Get Slice From List    ${full_list}    start=${sequencePropConfig_start}    end=${sequencePropConfig_end}
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}propId : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}twilightBoundary : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deltaLst : 1    10
@@ -661,7 +661,7 @@ Read Subscriber
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userRegionIds : 8    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userRegionIds : 9    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequences : 1    10
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceNames : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceNames : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 0    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 1    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 2    1
@@ -672,7 +672,7 @@ Read Subscriber
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 7    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 8    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilters : 9    1
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceFilters : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceFilters : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilterVisits : 0    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilterVisits : 1    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSubSequenceFilterVisits : 2    1
@@ -754,9 +754,9 @@ Read Subscriber
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceTimeWeights : 8    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subSequenceTimeWeights : 9    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numMasterSubSequences : 1    10
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}masterSubSequenceNames : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}masterSubSequenceNames : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numNestedSubSequences : 1    10
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceNames : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceNames : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numMasterSubSequenceEvents : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numMasterSubSequenceMaxMissed : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}masterSubSequenceTimeIntervals : 1    10
@@ -765,7 +765,7 @@ Read Subscriber
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}masterSubSequenceTimeWindowEnds : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}masterSubSequenceTimeWeights : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numNestedSubSequenceFilters : 1    10
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceFilters : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceFilters : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numNestedSubSequenceFilterVisits : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numNestedSubSequenceEvents : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numNestedSubSequenceMaxMissed : 1    10
@@ -775,7 +775,7 @@ Read Subscriber
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceTimeWindowEnds : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nestedSubSequenceTimeWights : 1    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numFilters : 1    10
-    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : LSST    10
+    Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : RO    10
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brightLimit : 0    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brightLimit : 1    1
     Should Contain X Times    ${sequencePropConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brightLimit : 2    1
@@ -852,9 +852,9 @@ Read Subscriber
     Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeRotator : 1    10
     Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAltitude : 1    10
     Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAzimuth : 1    10
-    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : LSST    10
-    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : LSST    10
-    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterUnmounted : LSST    10
+    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : RO    10
+    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : RO    10
+    Should Contain X Times    ${observatoryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterUnmounted : RO    10
     ${observation_start}=    Get Index From List    ${full_list}    === Scheduler_observation start of topic ===
     ${observation_end}=    Get Index From List    ${full_list}    === Scheduler_observation end of topic ===
     ${observation_list}=    Get Slice From List    ${full_list}    start=${observation_start}    end=${observation_end}
@@ -866,7 +866,7 @@ Read Subscriber
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetId : 1    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fieldId : 1    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : 1    10
-    Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : LSST    10
+    Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : RO    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numProposals : 1    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposalIds : 0    1
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}proposalIds : 1    1
@@ -914,7 +914,7 @@ Read Subscriber
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sunDec : 1    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}solarElong : 1    10
     Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewTime : 1    10
-    Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}note : LSST    10
+    Should Contain X Times    ${observation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}note : RO    10
     ${interestedProposal_start}=    Get Index From List    ${full_list}    === Scheduler_interestedProposal start of topic ===
     ${interestedProposal_end}=    Get Index From List    ${full_list}    === Scheduler_interestedProposal end of topic ===
     ${interestedProposal_list}=    Get Slice From List    ${full_list}    start=${interestedProposal_start}    end=${interestedProposal_end}
@@ -1011,7 +1011,7 @@ Read Subscriber
     Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}skyBrightnress : 1    10
     Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scale : 1    10
     Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zero : 1    10
-    Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : LSST    10
+    Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : RO    10
     Should Contain X Times    ${skyBrightness_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${photometricQuality_start}=    Get Index From List    ${full_list}    === Scheduler_photometricQuality start of topic ===
     ${photometricQuality_end}=    Get Index From List    ${full_list}    === Scheduler_photometricQuality end of topic ===
