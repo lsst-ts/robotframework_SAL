@@ -211,6 +211,8 @@ Read Logger
     ${reportedFilterPosition_list}=    Get Slice From List    ${full_list}    start=${reportedFilterPosition_start}    end=${reportedFilterPosition_end}
     Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
+    Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centralWavelength : 1    1
+    Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focusOffset : 1    1
     Should Contain X Times    ${reportedFilterPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${reportedDisperserPosition_start}=    Get Index From List    ${full_list}    === Event reportedDisperserPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${reportedDisperserPosition_start}
@@ -218,6 +220,7 @@ Read Logger
     ${reportedDisperserPosition_list}=    Get Slice From List    ${full_list}    start=${reportedDisperserPosition_start}    end=${reportedDisperserPosition_end}
     Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
+    Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focusOffset : 1    1
     Should Contain X Times    ${reportedDisperserPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${disperserInPosition_start}=    Get Index From List    ${full_list}    === Event disperserInPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${disperserInPosition_start}
@@ -265,6 +268,9 @@ Read Logger
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}linearStageMaxPos : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}linearStageSpeed : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterNames : RO    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterCentralWavelengths : RO    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterFocusOffsets : RO    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gratingNames : RO    1
+    Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gratingFocusOffsets : RO    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instrumentPort : 1    1
     Should Contain X Times    ${settingsAppliedValues_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
