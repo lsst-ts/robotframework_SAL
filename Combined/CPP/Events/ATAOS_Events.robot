@@ -54,14 +54,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_correctionEnabled_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event correctionEnabled generated =
-    Comment    ======= Verify ${subSystem}_newFocusValue test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_newFocusValue
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
-    Should Contain X Times    ${output.stdout}    === Event newFocusValue iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_newFocusValue_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event newFocusValue generated =
     Comment    ======= Verify ${subSystem}_m1CorrectionStarted test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_m1CorrectionStarted
     @{words}=    Split String    ${line}
@@ -126,6 +118,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focusCorrectionCompleted_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event focusCorrectionCompleted generated =
+    Comment    ======= Verify ${subSystem}_atspectrographCorrectionStarted test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_atspectrographCorrectionStarted
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event atspectrographCorrectionStarted iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_atspectrographCorrectionStarted_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event atspectrographCorrectionStarted generated =
+    Comment    ======= Verify ${subSystem}_atspectrographCorrectionCompleted test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_atspectrographCorrectionCompleted
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event atspectrographCorrectionCompleted iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_atspectrographCorrectionCompleted_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event atspectrographCorrectionCompleted generated =
     Comment    ======= Verify ${subSystem}_correctionOffsets test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_correctionOffsets
     @{words}=    Split String    ${line}
@@ -134,6 +142,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_correctionOffsets_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event correctionOffsets generated =
+    Comment    ======= Verify ${subSystem}_focusOffsetSummary test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focusOffsetSummary
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focusOffsetSummary iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focusOffsetSummary_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focusOffsetSummary generated =
+    Comment    ======= Verify ${subSystem}_pointingOffsetSummary test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_pointingOffsetSummary
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event pointingOffsetSummary iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointingOffsetSummary_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event pointingOffsetSummary generated =
 
 Read Logger
     [Tags]    functional
@@ -157,14 +181,9 @@ Read Logger
     Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m2 : 1    1
     Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hexapod : 1    1
     Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
+    Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atspectrograph : 1    1
     Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moveWhileExposing : 1    1
     Should Contain X Times    ${correctionEnabled_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${newFocusValue_start}=    Get Index From List    ${full_list}    === Event newFocusValue received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${newFocusValue_start}
-    ${newFocusValue_end}=    Evaluate    ${end}+${1}
-    ${newFocusValue_list}=    Get Slice From List    ${full_list}    start=${newFocusValue_start}    end=${newFocusValue_end}
-    Should Contain X Times    ${newFocusValue_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
-    Should Contain X Times    ${newFocusValue_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m1CorrectionStarted_start}=    Get Index From List    ${full_list}    === Event m1CorrectionStarted received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m1CorrectionStarted_start}
     ${m1CorrectionStarted_end}=    Evaluate    ${end}+${1}
@@ -239,6 +258,20 @@ Read Logger
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
     Should Contain X Times    ${focusCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${atspectrographCorrectionStarted_start}=    Get Index From List    ${full_list}    === Event atspectrographCorrectionStarted received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${atspectrographCorrectionStarted_start}
+    ${atspectrographCorrectionStarted_end}=    Evaluate    ${end}+${1}
+    ${atspectrographCorrectionStarted_list}=    Get Slice From List    ${full_list}    start=${atspectrographCorrectionStarted_start}    end=${atspectrographCorrectionStarted_end}
+    Should Contain X Times    ${atspectrographCorrectionStarted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focusOffset : 1    1
+    Should Contain X Times    ${atspectrographCorrectionStarted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOffsets : 0    1
+    Should Contain X Times    ${atspectrographCorrectionStarted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${atspectrographCorrectionCompleted_start}=    Get Index From List    ${full_list}    === Event atspectrographCorrectionCompleted received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${atspectrographCorrectionCompleted_start}
+    ${atspectrographCorrectionCompleted_end}=    Evaluate    ${end}+${1}
+    ${atspectrographCorrectionCompleted_list}=    Get Slice From List    ${full_list}    start=${atspectrographCorrectionCompleted_start}    end=${atspectrographCorrectionCompleted_end}
+    Should Contain X Times    ${atspectrographCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focusOffset : 1    1
+    Should Contain X Times    ${atspectrographCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOffsets : 0    1
+    Should Contain X Times    ${atspectrographCorrectionCompleted_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${correctionOffsets_start}=    Get Index From List    ${full_list}    === Event correctionOffsets received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${correctionOffsets_start}
     ${correctionOffsets_end}=    Evaluate    ${end}+${1}
@@ -252,3 +285,21 @@ Read Logger
     Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m1 : 1    1
     Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m2 : 1    1
     Should Contain X Times    ${correctionOffsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focusOffsetSummary_start}=    Get Index From List    ${full_list}    === Event focusOffsetSummary received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focusOffsetSummary_start}
+    ${focusOffsetSummary_end}=    Evaluate    ${end}+${1}
+    ${focusOffsetSummary_list}=    Get Slice From List    ${full_list}    start=${focusOffsetSummary_start}    end=${focusOffsetSummary_end}
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}total : 1    1
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userApplied : 1    1
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : 1    1
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disperser : 1    1
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    1
+    Should Contain X Times    ${focusOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${pointingOffsetSummary_start}=    Get Index From List    ${full_list}    === Event pointingOffsetSummary received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointingOffsetSummary_start}
+    ${pointingOffsetSummary_end}=    Evaluate    ${end}+${1}
+    ${pointingOffsetSummary_list}=    Get Slice From List    ${full_list}    start=${pointingOffsetSummary_start}    end=${pointingOffsetSummary_end}
+    Should Contain X Times    ${pointingOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}total : 0    1
+    Should Contain X Times    ${pointingOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filter : 0    1
+    Should Contain X Times    ${pointingOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disperser : 0    1
+    Should Contain X Times    ${pointingOffsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

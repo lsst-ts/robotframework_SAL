@@ -310,6 +310,38 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneHardwareIdSettingsApplied_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event focalPlaneHardwareIdSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRaftTempControlStatusSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRaftTempControlStatusSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRaftTempControlStatusSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRaftTempControlStatusSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneRaftTempControlStatusSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRaftTempControlSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRaftTempControlSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRaftTempControlSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRaftTempControlSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneRaftTempControlSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneDAQSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneDAQSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneDAQSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneDAQSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneDAQSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneSequencerSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneSequencerSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneSequencerSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneSequencerSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneSequencerSettingsApplied generated =
 
 Read Logger
     [Tags]    functional
@@ -595,9 +627,65 @@ Read Logger
     ${focalPlaneHardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneHardwareIdSettingsApplied_start}    end=${focalPlaneHardwareIdSettingsApplied_end}
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebLocation : RO    1
-    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : RO    1
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebLSSTName : RO    1
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLocation : RO    1
-    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLSSTNum : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLSSTName : RO    1
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManSerNum : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLSSTName : RO    1
     Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRaftTempControlStatusSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}
+    ${focalPlaneRaftTempControlStatusSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}    end=${focalPlaneRaftTempControlStatusSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_active : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRaftTempControlSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRaftTempControlSettingsApplied_start}
+    ${focalPlaneRaftTempControlSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlSettingsApplied_start}    end=${focalPlaneRaftTempControlSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_awGain : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_basePower : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_gain : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_maxInput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_maxOutput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_minInput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_minOutput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_rebs : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_setTemp : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_smoothTime : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_tempChans : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_timeConst : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_tolerance : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneDAQSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneDAQSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneDAQSettingsApplied_start}
+    ${focalPlaneDAQSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneDAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneDAQSettingsApplied_start}    end=${focalPlaneDAQSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_daqFolder : RO    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_emulatedDAQ : 1    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneSequencerSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneSequencerSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneSequencerSettingsApplied_start}
+    ${focalPlaneSequencerSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneSequencerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneSequencerSettingsApplied_start}    end=${focalPlaneSequencerSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_metaDataRegisters : RO    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_overCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_overRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_postCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_postRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_preCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_preRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_readCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_readCols2 : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_readRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_scanMode : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_sequencer : RO    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_underCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
