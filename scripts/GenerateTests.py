@@ -20,9 +20,9 @@ def GenerateTests(csc, language):
 				#subprocess.check_call(["./CppComCon.sh", csc])
 			if ('java' in language) or ('all' in language):
 				subprocess.check_call(["./JavaPubSub.sh", csc])
+				subprocess.check_call(["./JavaEvents.sh", csc])
 				#subprocess.check_call(["./JavaState.sh", csc])
 				#subprocess.check_call(["./JavaComCon.sh", csc])
-				#subprocess.check_call(["./JavaEvents.sh", csc])
 			if ('python' in language) or ('all' in language):
                                 print("No python tests, yet.")
 				#subprocess.check_call(["./PythonPubSub.sh", csc])
