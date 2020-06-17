@@ -15,6 +15,7 @@ Combined/CPP/Telemetry/ATPneumatics_Telemetry.robot
 Combined/CPP/Telemetry/ATPtg_Telemetry.robot
 Combined/CPP/Telemetry/ATSpectrograph_Telemetry.robot
 Combined/CPP/Telemetry/ATWhiteLight_Telemetry.robot
+Combined/CPP/Telemetry/AdamSensors_Telemetry.robot
 Combined/CPP/Telemetry/CBP_Telemetry.robot
 Combined/CPP/Telemetry/CCCamera_Telemetry.robot
 Combined/CPP/Telemetry/CatchupArchiver_Telemetry.robot
@@ -32,7 +33,6 @@ Combined/CPP/Telemetry/IOTA_Telemetry.robot
 Combined/CPP/Telemetry/LinearStage_Telemetry.robot
 Combined/CPP/Telemetry/MTAOS_Telemetry.robot
 Combined/CPP/Telemetry/MTCamera_Telemetry.robot
-Combined/CPP/Telemetry/MTDomeTrajectory_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
 Combined/CPP/Telemetry/MTM2_Telemetry.robot
