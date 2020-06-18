@@ -32,7 +32,6 @@ Combined/JAVA/Telemetry/IOTA_Telemetry.robot
 Combined/JAVA/Telemetry/LinearStage_Telemetry.robot
 Combined/JAVA/Telemetry/MTAOS_Telemetry.robot
 Combined/JAVA/Telemetry/MTCamera_Telemetry.robot
-Combined/JAVA/Telemetry/MTDomeTrajectory_Telemetry.robot
 Combined/JAVA/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/JAVA/Telemetry/MTM1M3_Telemetry.robot
 Combined/JAVA/Telemetry/MTM2_Telemetry.robot

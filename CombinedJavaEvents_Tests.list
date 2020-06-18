@@ -14,12 +14,17 @@ Combined/JAVA/Events/ATHeaderService_Events.robot
 Combined/JAVA/Events/ATHexapod_Events.robot
 Combined/JAVA/Events/ATMCS_Events.robot
 Combined/JAVA/Events/ATMonochromator_Events.robot
+Combined/JAVA/Events/ATOODS_Events.robot
 Combined/JAVA/Events/ATPneumatics_Events.robot
 Combined/JAVA/Events/ATPtg_Events.robot
 Combined/JAVA/Events/ATSpectrograph_Events.robot
 Combined/JAVA/Events/ATTCS_Events.robot
 Combined/JAVA/Events/ATWhiteLight_Events.robot
 Combined/JAVA/Events/CBP_Events.robot
+Combined/JAVA/Events/CCArchiver_Events.robot
+Combined/JAVA/Events/CCCamera_Events.robot
+Combined/JAVA/Events/CCHeaderService_Events.robot
+Combined/JAVA/Events/CCOODS_Events.robot
 Combined/JAVA/Events/CatchupArchiver_Events.robot
 Combined/JAVA/Events/DIMM_Events.robot
 Combined/JAVA/Events/DSM_Events.robot
@@ -51,6 +56,7 @@ Combined/JAVA/Events/MTMount_Events.robot
 Combined/JAVA/Events/MTPtg_Events.robot
 Combined/JAVA/Events/MTTCS_Events.robot
 Combined/JAVA/Events/MTVMS_Events.robot
+Combined/JAVA/Events/NewMTMount_Events.robot
 Combined/JAVA/Events/OCS_Events.robot
 Combined/JAVA/Events/PointingComponent_Events.robot
 Combined/JAVA/Events/PromptProcessing_Events.robot
