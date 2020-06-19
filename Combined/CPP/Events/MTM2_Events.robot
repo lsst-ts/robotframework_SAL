@@ -94,6 +94,30 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_hardpointList_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event hardpointList generated =
+    Comment    ======= Verify ${subSystem}_forceBalanceSystemStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceBalanceSystemStatus
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event forceBalanceSystemStatus iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceBalanceSystemStatus_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event forceBalanceSystemStatus generated =
+    Comment    ======= Verify ${subSystem}_inclinationTelemetrySource test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inclinationTelemetrySource
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event inclinationTelemetrySource iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inclinationTelemetrySource_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event inclinationTelemetrySource generated =
+    Comment    ======= Verify ${subSystem}_temperatureOffset test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_temperatureOffset
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event temperatureOffset iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_temperatureOffset_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event temperatureOffset generated =
 
 Read Logger
     [Tags]    functional
@@ -145,3 +169,23 @@ Read Logger
     ${hardpointList_list}=    Get Slice From List    ${full_list}    start=${hardpointList_start}    end=${hardpointList_end}
     Should Contain X Times    ${hardpointList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuators : 0    1
     Should Contain X Times    ${hardpointList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${forceBalanceSystemStatus_start}=    Get Index From List    ${full_list}    === Event forceBalanceSystemStatus received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${forceBalanceSystemStatus_start}
+    ${forceBalanceSystemStatus_end}=    Evaluate    ${end}+${1}
+    ${forceBalanceSystemStatus_list}=    Get Slice From List    ${full_list}    start=${forceBalanceSystemStatus_start}    end=${forceBalanceSystemStatus_end}
+    Should Contain X Times    ${forceBalanceSystemStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 1    1
+    Should Contain X Times    ${forceBalanceSystemStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${inclinationTelemetrySource_start}=    Get Index From List    ${full_list}    === Event inclinationTelemetrySource received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inclinationTelemetrySource_start}
+    ${inclinationTelemetrySource_end}=    Evaluate    ${end}+${1}
+    ${inclinationTelemetrySource_list}=    Get Slice From List    ${full_list}    start=${inclinationTelemetrySource_start}    end=${inclinationTelemetrySource_end}
+    Should Contain X Times    ${inclinationTelemetrySource_list}    ${SPACE}${SPACE}${SPACE}${SPACE}source : 1    1
+    Should Contain X Times    ${inclinationTelemetrySource_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${temperatureOffset_start}=    Get Index From List    ${full_list}    === Event temperatureOffset received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${temperatureOffset_start}
+    ${temperatureOffset_end}=    Evaluate    ${end}+${1}
+    ${temperatureOffset_list}=    Get Slice From List    ${full_list}    start=${temperatureOffset_start}    end=${temperatureOffset_end}
+    Should Contain X Times    ${temperatureOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ring : 0    1
+    Should Contain X Times    ${temperatureOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}intake : 0    1
+    Should Contain X Times    ${temperatureOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exhaust : 0    1
+    Should Contain X Times    ${temperatureOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

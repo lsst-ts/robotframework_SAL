@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTM1M3_Events communications tests.
+Documentation    ATOODS_Events communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    MTM1M3
+${subSystem}    ATOODS
 ${component}    all
 ${timeout}    30s
 
@@ -33,7 +33,7 @@ Start Sender
     Comment    Sender program waiting for Logger program to be Ready.
     ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
     :FOR    ${i}    IN RANGE    30
-    \    Exit For Loop If     'MTM1M3 all loggers ready' in $loggerOutput
+    \    Exit For Loop If     'ATOODS all loggers ready' in $loggerOutput
     \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
     \    Sleep    3s
     Comment    Executing Combined Java Sender Program.

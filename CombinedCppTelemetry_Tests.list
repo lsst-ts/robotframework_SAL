@@ -32,7 +32,6 @@ Combined/CPP/Telemetry/IOTA_Telemetry.robot
 Combined/CPP/Telemetry/LinearStage_Telemetry.robot
 Combined/CPP/Telemetry/MTAOS_Telemetry.robot
 Combined/CPP/Telemetry/MTCamera_Telemetry.robot
-Combined/CPP/Telemetry/MTDomeTrajectory_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
 Combined/CPP/Telemetry/MTM2_Telemetry.robot
