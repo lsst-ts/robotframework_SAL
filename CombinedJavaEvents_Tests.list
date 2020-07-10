@@ -21,6 +21,7 @@ Combined/JAVA/Events/ATSpectrograph_Events.robot
 Combined/JAVA/Events/ATTCS_Events.robot
 Combined/JAVA/Events/ATWhiteLight_Events.robot
 Combined/JAVA/Events/AdamSensors_Events.robot
+Combined/JAVA/Events/Authorize_Events.robot
 Combined/JAVA/Events/CBP_Events.robot
 Combined/JAVA/Events/CCArchiver_Events.robot
 Combined/JAVA/Events/CCCamera_Events.robot

@@ -342,6 +342,46 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneSequencerSettingsApplied_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event focalPlaneSequencerSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_shutterBladeMotionProfile test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_shutterBladeMotionProfile
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event shutterBladeMotionProfile iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_shutterBladeMotionProfile_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event shutterBladeMotionProfile generated =
+    Comment    ======= Verify ${subSystem}_imageStored test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageStored
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event imageStored iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageStored_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event imageStored generated =
+    Comment    ======= Verify ${subSystem}_fitsFilesWritten test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_fitsFilesWritten
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event fitsFilesWritten iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_fitsFilesWritten_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event fitsFilesWritten generated =
+    Comment    ======= Verify ${subSystem}_fileCommandExecution test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_fileCommandExecution
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event fileCommandExecution iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_fileCommandExecution_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event fileCommandExecution generated =
+    Comment    ======= Verify ${subSystem}_imageVisualization test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageVisualization
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    @{words}[2]
+    Should Contain X Times    ${output.stdout}    === Event imageVisualization iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageVisualization_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event imageVisualization generated =
 
 Read Logger
     [Tags]    functional
@@ -374,7 +414,7 @@ Read Logger
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}requestedExposureTime : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampEndOfReadout : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endTakeImage_start}=    Get Index From List    ${full_list}    === Event endTakeImage received =${SPACE}
@@ -394,6 +434,7 @@ Read Logger
     ${startSetFilter_end}=    Evaluate    ${end}+${1}
     ${startSetFilter_list}=    Get Slice From List    ${full_list}    start=${startSetFilter_start}    end=${startSetFilter_end}
     Should Contain X Times    ${startSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterName : RO    1
+    Should Contain X Times    ${startSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterType : RO    1
     Should Contain X Times    ${startSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startUnloadFilter_start}=    Get Index From List    ${full_list}    === Event startUnloadFilter received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startUnloadFilter_start}
@@ -440,7 +481,7 @@ Read Logger
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageTag : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampDateObs : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampDateEnd : 1    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredShutterOpenTime : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}darkTime : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endUnloadFilter_start}=    Get Index From List    ${full_list}    === Event endUnloadFilter received =${SPACE}
@@ -539,6 +580,9 @@ Read Logger
     ${endSetFilter_end}=    Evaluate    ${end}+${1}
     ${endSetFilter_list}=    Get Slice From List    ${full_list}    start=${endSetFilter_start}    end=${endSetFilter_end}
     Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterName : RO    1
+    Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterType : RO    1
+    Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterSlot : 1    1
+    Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : 1    1
     Should Contain X Times    ${endSetFilter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startShutterOpen_start}=    Get Index From List    ${full_list}    === Event startShutterOpen received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startShutterOpen_start}
@@ -689,3 +733,59 @@ Read Logger
     Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_sequencer : RO    1
     Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerconfig_underCols : 1    1
     Should Contain X Times    ${focalPlaneSequencerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === Event shutterBladeMotionProfile received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterBladeMotionProfile_start}
+    ${shutterBladeMotionProfile_end}=    Evaluate    ${end}+${1}
+    ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end}
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blade : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}direction : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampStart : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetDuration : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}endPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualDuration : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorCount : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampHallSensor : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorID : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorPosition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorTransition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderCount : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampEncoder : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderPosition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageStored_start}=    Get Index From List    ${full_list}    === Event imageStored received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageStored_start}
+    ${imageStored_end}=    Evaluate    ${end}+${1}
+    ${imageStored_list}=    Get Slice From List    ${full_list}    start=${imageStored_start}    end=${imageStored_end}
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampImageStored : 1    1
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${fitsFilesWritten_start}=    Get Index From List    ${full_list}    === Event fitsFilesWritten received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${fitsFilesWritten_start}
+    ${fitsFilesWritten_end}=    Evaluate    ${end}+${1}
+    ${fitsFilesWritten_list}=    Get Slice From List    ${full_list}    start=${fitsFilesWritten_start}    end=${fitsFilesWritten_end}
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampFilesWritten : 1    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rootFileName : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}relativeFileNames : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fileNode : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${fileCommandExecution_start}=    Get Index From List    ${full_list}    === Event fileCommandExecution received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${fileCommandExecution_start}
+    ${fileCommandExecution_end}=    Evaluate    ${end}+${1}
+    ${fileCommandExecution_list}=    Get Slice From List    ${full_list}    start=${fileCommandExecution_start}    end=${fileCommandExecution_end}
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampCommandComplete : 1    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : RO    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rc : 1    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageVisualization_start}=    Get Index From List    ${full_list}    === Event imageVisualization received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageVisualization_start}
+    ${imageVisualization_end}=    Evaluate    ${end}+${1}
+    ${imageVisualization_list}=    Get Slice From List    ${full_list}    start=${imageVisualization_start}    end=${imageVisualization_end}
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampVisualizationAvailable : 1    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}thumbnail : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
