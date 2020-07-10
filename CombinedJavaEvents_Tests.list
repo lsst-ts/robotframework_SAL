@@ -20,6 +20,8 @@ Combined/JAVA/Events/ATPtg_Events.robot
 Combined/JAVA/Events/ATSpectrograph_Events.robot
 Combined/JAVA/Events/ATTCS_Events.robot
 Combined/JAVA/Events/ATWhiteLight_Events.robot
+Combined/JAVA/Events/AdamSensors_Events.robot
+Combined/JAVA/Events/Authorize_Events.robot
 Combined/JAVA/Events/CBP_Events.robot
 Combined/JAVA/Events/CCArchiver_Events.robot
 Combined/JAVA/Events/CCCamera_Events.robot
@@ -30,8 +32,6 @@ Combined/JAVA/Events/DIMM_Events.robot
 Combined/JAVA/Events/DSM_Events.robot
 Combined/JAVA/Events/Dome_Events.robot
 Combined/JAVA/Events/EAS_Events.robot
-Combined/JAVA/Events/EFDTransformationServer_Events.robot
-Combined/JAVA/Events/EFD_Events.robot
 Combined/JAVA/Events/Electrometer_Events.robot
 Combined/JAVA/Events/Environment_Events.robot
 Combined/JAVA/Events/FiberSpectrograph_Events.robot

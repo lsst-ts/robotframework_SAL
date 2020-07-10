@@ -266,26 +266,26 @@ Read Subscriber
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lutTemperature : 7    1
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lutTemperature : 8    1
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lutTemperature : 9    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 0    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 1    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 2    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 3    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 4    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 5    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 6    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 7    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 8    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesApplied : 9    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 0    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 1    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 2    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 3    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 4    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 5    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 6    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 7    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 8    1
-    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forcesMeasured : 9    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 0    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 1    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 2    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 3    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 4    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 5    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 6    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 7    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 8    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applied : 9    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 0    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 1    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 2    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 3    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 4    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 5    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 6    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 7    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 8    1
+    Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measured : 9    1
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointCorrection : 0    1
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointCorrection : 1    1
     Should Contain X Times    ${tangentForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointCorrection : 2    1
@@ -338,55 +338,55 @@ Read Subscriber
     ${axialActuatorSteps_start}=    Get Index From List    ${full_list}    === MTM2_axialActuatorSteps start of topic ===
     ${axialActuatorSteps_end}=    Get Index From List    ${full_list}    === MTM2_axialActuatorSteps end of topic ===
     ${axialActuatorSteps_list}=    Get Slice From List    ${full_list}    start=${axialActuatorSteps_start}    end=${axialActuatorSteps_end}
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 0    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 1    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 2    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 3    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 4    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 5    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 6    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 7    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 8    1
-    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialActuatorSteps : 9    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 0    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 1    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 2    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 3    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 4    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 5    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 6    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 7    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 8    1
+    Should Contain X Times    ${axialActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 9    1
     ${tangentActuatorSteps_start}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorSteps start of topic ===
     ${tangentActuatorSteps_end}=    Get Index From List    ${full_list}    === MTM2_tangentActuatorSteps end of topic ===
     ${tangentActuatorSteps_list}=    Get Slice From List    ${full_list}    start=${tangentActuatorSteps_start}    end=${tangentActuatorSteps_end}
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 0    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 1    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 2    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 3    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 4    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 5    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 6    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 7    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 8    1
-    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentActuatorSteps : 9    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 0    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 1    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 2    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 3    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 4    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 5    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 6    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 7    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 8    1
+    Should Contain X Times    ${tangentActuatorSteps_list}    ${SPACE}${SPACE}${SPACE}${SPACE}steps : 9    1
     ${axialEncoderPositions_start}=    Get Index From List    ${full_list}    === MTM2_axialEncoderPositions start of topic ===
     ${axialEncoderPositions_end}=    Get Index From List    ${full_list}    === MTM2_axialEncoderPositions end of topic ===
     ${axialEncoderPositions_list}=    Get Slice From List    ${full_list}    start=${axialEncoderPositions_start}    end=${axialEncoderPositions_end}
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 0    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 1    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 2    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 3    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 4    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 5    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 6    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 7    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 8    1
-    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axialEncoderPositions : 9    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 2    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 3    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 4    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 5    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 6    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 7    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 8    1
+    Should Contain X Times    ${axialEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 9    1
     ${tangentEncoderPositions_start}=    Get Index From List    ${full_list}    === MTM2_tangentEncoderPositions start of topic ===
     ${tangentEncoderPositions_end}=    Get Index From List    ${full_list}    === MTM2_tangentEncoderPositions end of topic ===
     ${tangentEncoderPositions_list}=    Get Slice From List    ${full_list}    start=${tangentEncoderPositions_start}    end=${tangentEncoderPositions_end}
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 0    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 1    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 2    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 3    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 4    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 5    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 6    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 7    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 8    1
-    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tangentEncoderPositions : 9    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 2    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 3    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 4    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 5    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 6    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 7    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 8    1
+    Should Contain X Times    ${tangentEncoderPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 9    1
     ${ilcData_start}=    Get Index From List    ${full_list}    === MTM2_ilcData start of topic ===
     ${ilcData_end}=    Get Index From List    ${full_list}    === MTM2_ilcData end of topic ===
     ${ilcData_list}=    Get Slice From List    ${full_list}    start=${ilcData_start}    end=${ilcData_end}

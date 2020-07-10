@@ -19,6 +19,8 @@ Combined/CPP/Events/ATPneumatics_Events.robot
 Combined/CPP/Events/ATPtg_Events.robot
 Combined/CPP/Events/ATSpectrograph_Events.robot
 Combined/CPP/Events/ATWhiteLight_Events.robot
+Combined/CPP/Events/AdamSensors_Events.robot
+Combined/CPP/Events/Authorize_Events.robot
 Combined/CPP/Events/CBP_Events.robot
 Combined/CPP/Events/CCArchiver_Events.robot
 Combined/CPP/Events/CCCamera_Events.robot
@@ -29,7 +31,6 @@ Combined/CPP/Events/DIMM_Events.robot
 Combined/CPP/Events/DSM_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
-Combined/CPP/Events/EFDTransformationServer_Events.robot
 Combined/CPP/Events/Electrometer_Events.robot
 Combined/CPP/Events/Environment_Events.robot
 Combined/CPP/Events/FiberSpectrograph_Events.robot

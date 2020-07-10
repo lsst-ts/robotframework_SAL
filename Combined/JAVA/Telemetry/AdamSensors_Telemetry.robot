@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    EFDTransformationServer_Telemetry communications tests.
+Documentation    AdamSensors_Telemetry communications tests.
 Force Tags    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    EFDTransformationServer
+${subSystem}    AdamSensors
 ${component}    all
 ${timeout}    600s
 
@@ -48,17 +48,17 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== EFDTransformationServer all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== AdamSensors all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${timestamp_start}=    Get Index From List    ${full_list}    === EFDTransformationServer_timestamp start of topic ===
-    ${timestamp_end}=    Get Index From List    ${full_list}    === EFDTransformationServer_timestamp end of topic ===
-    ${timestamp_list}=    Get Slice From List    ${full_list}    start=${timestamp_start}    end=${timestamp_end + 1}
-    Log Many    ${timestamp_list}
-    Should Contain    ${timestamp_list}    === EFDTransformationServer_timestamp start of topic ===
-    Should Contain    ${timestamp_list}    === EFDTransformationServer_timestamp end of topic ===
-    ${loopTime_start}=    Get Index From List    ${full_list}    === EFDTransformationServer_loopTime start of topic ===
-    ${loopTime_end}=    Get Index From List    ${full_list}    === EFDTransformationServer_loopTime end of topic ===
-    ${loopTime_list}=    Get Slice From List    ${full_list}    start=${loopTime_start}    end=${loopTime_end + 1}
-    Log Many    ${loopTime_list}
-    Should Contain    ${loopTime_list}    === EFDTransformationServer_loopTime start of topic ===
-    Should Contain    ${loopTime_list}    === EFDTransformationServer_loopTime end of topic ===
+    ${temperature_start}=    Get Index From List    ${full_list}    === AdamSensors_temperature start of topic ===
+    ${temperature_end}=    Get Index From List    ${full_list}    === AdamSensors_temperature end of topic ===
+    ${temperature_list}=    Get Slice From List    ${full_list}    start=${temperature_start}    end=${temperature_end + 1}
+    Log Many    ${temperature_list}
+    Should Contain    ${temperature_list}    === AdamSensors_temperature start of topic ===
+    Should Contain    ${temperature_list}    === AdamSensors_temperature end of topic ===
+    ${pressure_start}=    Get Index From List    ${full_list}    === AdamSensors_pressure start of topic ===
+    ${pressure_end}=    Get Index From List    ${full_list}    === AdamSensors_pressure end of topic ===
+    ${pressure_list}=    Get Slice From List    ${full_list}    start=${pressure_start}    end=${pressure_end + 1}
+    Log Many    ${pressure_list}
+    Should Contain    ${pressure_list}    === AdamSensors_pressure start of topic ===
+    Should Contain    ${pressure_list}    === AdamSensors_pressure end of topic ===
