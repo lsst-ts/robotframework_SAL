@@ -31,8 +31,6 @@ Combined/JAVA/Events/DIMM_Events.robot
 Combined/JAVA/Events/DSM_Events.robot
 Combined/JAVA/Events/Dome_Events.robot
 Combined/JAVA/Events/EAS_Events.robot
-Combined/JAVA/Events/EFDTransformationServer_Events.robot
-Combined/JAVA/Events/EFD_Events.robot
 Combined/JAVA/Events/Electrometer_Events.robot
 Combined/JAVA/Events/Environment_Events.robot
 Combined/JAVA/Events/FiberSpectrograph_Events.robot

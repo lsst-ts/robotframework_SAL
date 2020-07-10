@@ -30,7 +30,6 @@ Combined/CPP/Events/DIMM_Events.robot
 Combined/CPP/Events/DSM_Events.robot
 Combined/CPP/Events/Dome_Events.robot
 Combined/CPP/Events/EAS_Events.robot
-Combined/CPP/Events/EFDTransformationServer_Events.robot
 Combined/CPP/Events/Electrometer_Events.robot
 Combined/CPP/Events/Environment_Events.robot
 Combined/CPP/Events/FiberSpectrograph_Events.robot

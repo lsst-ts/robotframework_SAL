@@ -23,7 +23,6 @@ Combined/JAVA/Telemetry/DIMM_Telemetry.robot
 Combined/JAVA/Telemetry/DSM_Telemetry.robot
 Combined/JAVA/Telemetry/Dome_Telemetry.robot
 Combined/JAVA/Telemetry/EAS_Telemetry.robot
-Combined/JAVA/Telemetry/EFDTransformationServer_Telemetry.robot
 Combined/JAVA/Telemetry/Environment_Telemetry.robot
 Combined/JAVA/Telemetry/FiberSpectrograph_Telemetry.robot
 Combined/JAVA/Telemetry/GenericCamera_Telemetry.robot
