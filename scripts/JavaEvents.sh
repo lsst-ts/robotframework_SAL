@@ -96,14 +96,14 @@ function createSettings() {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    java    $skipped" >> $testSuite
-	echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
@@ -166,14 +166,12 @@ function startJavaCombinedSenderProcess() {
 
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    
     echo "    Comment    Sender program waiting for Logger program to be Ready." >> $testSuite
     echo "    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
     echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
     echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "    \\    Sleep    3s" >> $testSuite
-    
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
     echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
     echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
@@ -186,10 +184,10 @@ function startJavaCombinedSenderProcess() {
 }
 
 function createTestSuite() {
-	subSystem=$1
+    subSystem=$1
     messageType="events"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file

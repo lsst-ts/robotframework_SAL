@@ -63,7 +63,7 @@ function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
     echo "Force Tags    java    $skipped" >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${MavenVersion}    \${timeout}" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite

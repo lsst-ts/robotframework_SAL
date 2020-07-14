@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    TunableLaser_Telemetry communications tests.
 Force Tags    java    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
+Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections

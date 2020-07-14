@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    ATHeaderService_Events communications tests.
 Force Tags    java    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${timeout}
+Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections
