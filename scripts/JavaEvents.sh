@@ -39,36 +39,36 @@ function main() {
 
 # Get EFDB_Topics from Events XML.
 function getTopics() {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
-	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
-	parametersArray=($output)
+    file=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
+    parametersArray=($output)
 }
 
 function getParameterIndex() {
-	value=$1
-	for i in "${!parametersArray[@]}"; do
-		if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-			parameterIndex="${i}";
-		fi
-	done
-	echo $parameterIndex
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
 }
 
 function getParameterType() {
-	file=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-	echo $parameterType
+    file=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
+    echo $parameterType
 }
 
 function getParameterIDLSize() {
@@ -95,7 +95,7 @@ function createSettings() {
 
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    java    $skipped" >> $testSuite
+    echo "Force Tags    messaging    java    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite

@@ -80,7 +80,7 @@ function createSettings {
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
-    echo "Force Tags    cpp    $skipped" >> $testSuite
+    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite

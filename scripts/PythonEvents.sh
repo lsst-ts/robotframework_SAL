@@ -38,36 +38,36 @@ function main() {
 
 # Get EFDB_Topics from Telemetry XML.
 function getTopics() {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
-	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
-	parametersArray=($output)
+    file=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
+    parametersArray=($output)
 }
 
 function getParameterIndex() {
-	value=$1
-	for i in "${!parametersArray[@]}"; do
-		if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-			parameterIndex="${i}";
-		fi
-	done
-	echo $parameterIndex
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
 }
 
 function getParameterType() {
-	file=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-	echo $parameterType
+    file=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
+    echo $parameterType
 }
 
 function getParameterIDLSize() {
@@ -90,19 +90,19 @@ function createSettings() {
     local subSystem=$1
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    python    $skipped" >> $testSuite
-	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
+    echo "Force Tags    messaging    python    $skipped" >> $testSuite
+    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
     echo "Resource    ../../common.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
-	subSystem=$(getEntity $1)
+    subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -129,11 +129,11 @@ function startSenderInputs() {
     echo "    \${input}=    Write    python \${subSystem}_Event_\${component}.py $parameter" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	if [ ${#parametersArray[@]} -eq 0 ]; then
-		echo "    Should Contain    \${output}   ERROR : Invalid or missing arguments : priority" >> $testSuite
-	else
-		echo "    Should Contain    \${output}   ERROR : Invalid or missing arguments : ${parametersArray[@]} priority" >> $testSuite
-	fi
+    if [ ${#parametersArray[@]} -eq 0 ]; then
+        echo "    Should Contain    \${output}   ERROR : Invalid or missing arguments : priority" >> $testSuite
+    else
+        echo "    Should Contain    \${output}   ERROR : Invalid or missing arguments : ${parametersArray[@]} priority" >> $testSuite
+    fi
     echo "" >> $testSuite
 }
 
@@ -152,9 +152,9 @@ function startLogger() {
 }
 
 function startSender() {
-	i=0
-	device=$1
-	property=$2
+    i=0
+    device=$1
+    property=$2
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Sender" >> $testSuite
@@ -170,9 +170,9 @@ function startSender() {
 }
 
 function readLogger() {
-	i=0
-	device=$1
-	property=$2
+    i=0
+    device=$1
+    property=$2
     echo "Read Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
@@ -181,73 +181,73 @@ function readLogger() {
     echo "    Should Contain X Times    \${output}    Event \${subSystem} \${component} received     1" >> $testSuite
     #for parameter in "${parametersArray[@]}"; do
         #echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
-		#(( i++ ))
+        #(( i++ ))
     #done
 }
 
 function createTestSuite() {
-	subSystem=$1
+    subSystem=$1
     messageType="events"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file
 
     # Generate the test suite for each topic.
     echo Generating:
-	for topic in "${topicsArray[@]}"; do
-		device=$EMPTY
-		property=$EMPTY
-		#  Define test suite name
-		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
-		#  Get EFDB_Topic elements
-		getTopicParameters $file $topicIndex
-		device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
-		property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
+    for topic in "${topicsArray[@]}"; do
+        device=$EMPTY
+        property=$EMPTY
+        #  Define test suite name
+        testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        
+        #  Get EFDB_Topic elements
+        getTopicParameters $file $topicIndex
+        device=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
+        property=$( xml sel -t -m "//SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
 
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
-		#  Create test suite.
-		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
-		echo "*** Test Cases ***" >> $testSuite
+        #  Create test suite.
+        echo $testSuite
+        createSettings $subSystem
+        createVariables $subSystem
+        echo "*** Test Cases ***" >> $testSuite
         verifyCompSenderLogger
-		startSenderInputs
+        startSenderInputs
 
-		# Get the arguments to the sender.
-		unset argumentsArray
-		# Determine the parameter type and create a test value, accordingly.
-		for parameter in "${parametersArray[@]}"; do
+        # Get the arguments to the sender.
+        unset argumentsArray
+        # Determine the parameter type and create a test value, accordingly.
+        for parameter in "${parametersArray[@]}"; do
             parameterIndex=$(getParameterIndex $parameter)
             parameterType=$(getParameterType $file $topicIndex $parameterIndex)
             parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
             parameterIDLSize=$(getParameterIDLSize $file $topicIndex $parameterIndex)
             #echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
-			for i in $(seq 1 $parameterCount); do
-            	testValue=$(generateArgument "$parameterType" $parameterIDLSize)
-            	argumentsArray+=( $testValue )
-			done
-		done
-		# The Event priority is a required argument to ALL senders, but is not in the XML definitions.
-		# ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
-		parametersArray=("${parametersArray[@]}" "priority")
-		priority=$(python random_value.py long)
-		argumentsArray=("${argumentsArray[@]}" "$priority")
+            for i in $(seq 1 $parameterCount); do
+                testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+                argumentsArray+=( $testValue )
+            done
+        done
+        # The Event priority is a required argument to ALL senders, but is not in the XML definitions.
+        # ... As such, manually add this argument as the first element in argumentsArray and parametersArray.
+        parametersArray=("${parametersArray[@]}" "priority")
+        priority=$(python random_value.py long)
+        argumentsArray=("${argumentsArray[@]}" "$priority")
         # Create the Sender Timeout test case.
-		#startSenderTimeout
+        #startSenderTimeout
         # Create the Start Logger test case.
-		startLogger
-		# Create the Start Sender test case.
-		startSender $device $property
-		# Create the Read Logger test case.
-		readLogger $device $property
-    	# Move to next Topic.
-		(( topicIndex++ ))
-	done
+        startLogger
+        # Create the Start Sender test case.
+        startSender $device $property
+        # Create the Read Logger test case.
+        readLogger $device $property
+        # Move to next Topic.
+        (( topicIndex++ ))
+    done
     echo ""
 }
 

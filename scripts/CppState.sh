@@ -35,23 +35,23 @@ function main() {
 
 function createSettings() {
     local subSystem=$1
-	local topic=$2
+    local topic=$2
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    cpp    $skipped" >> $testSuite
-	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
+    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
+    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
+    echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
     echo "Resource    ../../common.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
-	local subSystem=$1
-	local state=$2
+    local subSystem=$1
+    local state=$2
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${timeout}    30s" >> $testSuite
@@ -59,7 +59,7 @@ function createVariables() {
 }
 
 function verifyCommanderController() {
-	state=$1
+    state=$1
     echo "Verify $state Commander and Controller" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${state}_commander" >> $testSuite
@@ -84,7 +84,7 @@ function CommanderInputs() {
 }
 
 function startCommanderTimeout() {
-	echo "Start Commander - Verify Timeout without Controller" >> $testSuite
+    echo "Start Commander - Verify Timeout without Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
@@ -93,13 +93,13 @@ function startCommanderTimeout() {
     echo "    \${input}=    Write    ./sacpp_\${subSystem}_${state}_commander 0" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_${state}\\\] command )[0-9]+( timed out :)" >>$testSuite
     echo "" >> $testSuite
 }
 
 function startController() {
-	state=$1
+    state=$1
     echo "Start $state Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Controller" >> $testSuite
@@ -114,11 +114,11 @@ function startController() {
 }
 
 function startCommander() {
-	i=0
-	n=0
-	state=$1
-	device=$2
-	property=$3
+    i=0
+    n=0
+    state=$1
+    device=$2
+    property=$3
     echo "Start $state Commander" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
@@ -134,15 +134,15 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     echo "    Should Contain X Times    \${output}    itemValue :    1" >> $testSuite    #$value TSS-861
     echo "    Should Contain X Times    \${output}    $parameterType : 1    1" >>$testSuite
-	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_${state}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite
 }
 
 function readController() {
-	state=$1
-	device=$2
-	property=$3
+    state=$1
+    device=$2
+    property=$3
     echo "Read $state Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Controller" >> $testSuite
@@ -160,7 +160,7 @@ function readController() {
     echo "    Should Contain    \${output}    result   : Done : OK" >>$testSuite
     echo "    Should Contain X Times    \${output}    seqNum \ \ :    2" >>$testSuite
     echo "    Should Contain X Times    \${output}    error \ \ \ : 0    2" >> $testSuite
-	echo "    Should Contain X Times    \${output}    === [ackCommand_${state}] acknowledging a command with :    2" >> $testSuite
+    echo "    Should Contain X Times    \${output}    === [ackCommand_${state}] acknowledging a command with :    2" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -177,50 +177,50 @@ function terminateController() {
 }
 
 function createTestSuite() {
-	subSystem=$(getEntity $1)
-	messageType="state"
-	stateIndex=1
+    subSystem=$(getEntity $1)
+    messageType="state"
+    stateIndex=1
 
-	# Check if CSC uses the Generic topics (most do, but a few do not).
-	# ... If not, skip this CSC.
-	output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-	if [ "$output" == "no" ]; then
-		echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
-	fi
+    # Check if CSC uses the Generic topics (most do, but a few do not).
+    # ... If not, skip this CSC.
+    output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+    if [ "$output" == "no" ]; then
+        echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
+    fi
 
-	# Generate the test suite for each topic.
-	testSuite=$workDir/$(capitializeSubsystem $subSystem)_StateMachine.robot
+    # Generate the test suite for each topic.
+    testSuite=$workDir/$(capitializeSubsystem $subSystem)_StateMachine.robot
     echo Generating $testSuite:
-	#  Create test suite.
-	createSettings $subSystem
-	createVariables $subSystem
-	echo "*** Test Cases ***" >> $testSuite
-	for state in "start" "enable" "disable" "standby" "exitControl"; do
-		if [ "$state" == "start" ]; then
-			parameterType="settingsToApply"
-		elif [ "${state}" == "SetValue" ]; then
-			parameterType="json_parameters"
-		else
-			parameterType="value"
-		fi
-		property=$EMPTY
-		#  Define test suite name
-		
+    #  Create test suite.
+    createSettings $subSystem
+    createVariables $subSystem
+    echo "*** Test Cases ***" >> $testSuite
+    for state in "start" "enable" "disable" "standby" "exitControl"; do
+        if [ "$state" == "start" ]; then
+            parameterType="settingsToApply"
+        elif [ "${state}" == "SetValue" ]; then
+            parameterType="json_parameters"
+        else
+            parameterType="value"
+        fi
+        property=$EMPTY
+        #  Define test suite name
+        
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $state $messageType)
 
         verifyCommanderController $state
-		# Create the Start Controller test case.
-		startController $state
-		# Create the Start Commander test case.
-		startCommander $state $device $property
-		# Create the Read Controller test case.
-		readController $state $device $property
+        # Create the Start Controller test case.
+        startController $state
+        # Create the Start Commander test case.
+        startCommander $state $device $property
+        # Create the Read Controller test case.
+        readController $state $device $property
         # Kill the Controller process.
         terminateController $state
-    	# Move to next Topic.
-		(( stateIndex++ ))
-	done
+        # Move to next Topic.
+        (( stateIndex++ ))
+    done
     echo ""
 }
 

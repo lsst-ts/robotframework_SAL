@@ -35,10 +35,10 @@ function main() {
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
@@ -76,22 +76,22 @@ function getParameterCount() {
 }
 
 function createSettings {
-	local subSystem=$1
+    local subSystem=$1
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    python    $skipped" >> $testSuite
-	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
+    echo "Force Tags    messaging    python    $skipped" >> $testSuite
+    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "...    AND    Create Session    Publisher    AND    Create Session    Subscriber" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
     echo "Resource    ../../common.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables {
-	subSystem=$(getEntity $1)
+    subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -137,7 +137,7 @@ function startPublisher {
 }
 
 function find_Format_TestValue {
-	parameterType=$1
+    parameterType=$1
     if [[ ( "$parameterType" == "float" ) || ( "$parameterType" == "double" ) ]]; then
         format="01"
         value="1.0"
@@ -152,13 +152,13 @@ function find_Format_TestValue {
         value="LSST"
     else
         format=""
-		value="0"
+        value="0"
     fi
 }
 
 function readSubscriber {
-	file=$1
-	topicIndex=$2
+    file=$1
+    topicIndex=$2
     echo "Read Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Subscriber" >> $testSuite
@@ -169,53 +169,53 @@ function readSubscriber {
         parameterIndex=$(getParameterIndex $parameter)
         parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
         parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-		find_Format_TestValue "$parameterType"
-		if [[ ( "$parameterCount" == "1" ) || ( "$parameterType" == "string" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter = $value    10" >>$testSuite
-		elif [[ ( $parameterCount -gt 2000 ) && ( "$parameterType" != "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
-		elif [[ (( "$parameterCount" > "1" )) && ( "$parameterType" == "char" ) ]]; then
-			echo "    Should Contain X Times    \${list}    $parameter = LSST    10" >>$testSuite
-		else
-        	echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
-		fi
+        find_Format_TestValue "$parameterType"
+        if [[ ( "$parameterCount" == "1" ) || ( "$parameterType" == "string" ) ]]; then
+            echo "    Should Contain X Times    \${list}    $parameter = $value    10" >>$testSuite
+        elif [[ ( $parameterCount -gt 2000 ) && ( "$parameterType" != "char" ) ]]; then
+            echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
+        elif [[ (( "$parameterCount" > "1" )) && ( "$parameterType" == "char" ) ]]; then
+            echo "    Should Contain X Times    \${list}    $parameter = LSST    10" >>$testSuite
+        else
+            echo "    Should Contain X Times    \${list}    $parameter($parameterCount) = [$(seq -f %1.${format}f -s ', ' 0 $(($parameterCount - 1)) |sed 's/..$//')]    10" >>$testSuite
+        fi
     done
 }
 
 function createTestSuite {
-	subSystem=$1
+    subSystem=$1
     messageType="telemetry"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file
 
     # Generate the test suite for each topic.
     echo Generating:
-	for topic in "${topicsArray[@]}"; do
-		#  Define test suite name
-		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
-		#  Get EFDB EFDB_Topic telemetry items
-		getTopicParameters $file $topicIndex
+    for topic in "${topicsArray[@]}"; do
+        #  Define test suite name
+        testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        
+        #  Get EFDB EFDB_Topic telemetry items
+        getTopicParameters $file $topicIndex
 
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
-		#  Create test suite.
-		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
-		echo "*** Test Cases ***" >> $testSuite
+        #  Create test suite.
+        echo $testSuite
+        createSettings $subSystem
+        createVariables $subSystem
+        echo "*** Test Cases ***" >> $testSuite
         verifyCompPubSub
-		startSubscriber
-		startPublisher
-		readSubscriber $file $topicIndex
+        startSubscriber
+        startPublisher
+        readSubscriber $file $topicIndex
 
-    	(( topicIndex++ ))
-	done
-	echo ""
+        (( topicIndex++ ))
+    done
+    echo ""
 }
 
 

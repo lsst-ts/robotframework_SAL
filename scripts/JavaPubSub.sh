@@ -62,7 +62,7 @@ function createSettings {
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    java    $skipped" >> $testSuite
+    echo "Force Tags    messaging    java    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
