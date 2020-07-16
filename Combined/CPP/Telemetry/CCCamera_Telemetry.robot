@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CCCamera Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

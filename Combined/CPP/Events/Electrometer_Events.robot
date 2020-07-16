@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Electrometer_Events communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

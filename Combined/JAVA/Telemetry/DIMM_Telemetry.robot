@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    DIMM_Telemetry communications tests.
-Force Tags    java    
+Force Tags    messaging    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
