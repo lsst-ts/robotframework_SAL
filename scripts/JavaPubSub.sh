@@ -29,7 +29,11 @@ function main() {
     clearTestSuites $arg "JAVA" "Telemetry" || exit 1
         
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    if [ "$arg" == "MTM1M3" ]; then
+        echo "$arg is skipped for Java messaging tests."
+    else
+        createTestSuite $arg $file || exit 1
+    fi
 }
 
 #  Local FUNCTIONS
