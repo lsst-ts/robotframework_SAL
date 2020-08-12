@@ -42,7 +42,6 @@ Combined/JAVA/Events/IOTA_Events.robot
 Combined/JAVA/Events/LOVE_Events.robot
 Combined/JAVA/Events/LinearStage_Events.robot
 Combined/JAVA/Events/MTAOS_Events.robot
-Combined/JAVA/Events/MTArchiver_Events.robot
 Combined/JAVA/Events/MTCamera_Events.robot
 Combined/JAVA/Events/MTDomeTrajectory_Events.robot
 Combined/JAVA/Events/MTEEC_Events.robot
