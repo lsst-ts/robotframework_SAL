@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_positionStatus test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_positionStatus
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATHexapod_positionStatus start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::positionStatus_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

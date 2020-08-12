@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea01P01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea01P01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea01P01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea01P01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vin01P01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vin01P01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vin01P01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vin01P01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vec01P01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vec01P01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vec01P01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vec01P01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_bombaAguaFriaP01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bombaAguaFriaP01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_bombaAguaFriaP01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bombaAguaFriaP01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -71,7 +71,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_valvulaP01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_valvulaP01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_valvulaP01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::valvulaP01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -79,7 +79,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_temperatuaAmbienteP01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_temperatuaAmbienteP01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_temperatuaAmbienteP01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::temperatuaAmbienteP01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -87,7 +87,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea01P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea01P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea01P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea01P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -95,7 +95,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea08P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea08P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea08P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea08P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -103,7 +103,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea09P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea09P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea09P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea09P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -111,7 +111,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea10P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea10P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea10P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea10P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -119,7 +119,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea11P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea11P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea11P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea11P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -127,7 +127,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea12P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea12P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea12P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea12P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -135,7 +135,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea13P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea13P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea13P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea13P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -143,7 +143,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea14P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea14P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea14P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea14P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -151,7 +151,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea15P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea15P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea15P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea15P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -159,7 +159,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea16P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea16P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea16P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea16P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -167,7 +167,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea17P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea17P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea17P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea17P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -175,7 +175,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea03P04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea03P04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea03P04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea03P04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -183,7 +183,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vea04P04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vea04P04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vea04P04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vea04P04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -191,7 +191,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vex03P04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vex03P04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vex03P04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vex03P04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -199,7 +199,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vex04P04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vex04P04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_vex04P04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vex04P04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -207,7 +207,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_damperLowerP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_damperLowerP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_damperLowerP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::damperLowerP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -215,7 +215,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_zonaCargaP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_zonaCargaP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_zonaCargaP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::zonaCargaP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -223,7 +223,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_chiller01P01 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_chiller01P01
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_chiller01P01 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::chiller01P01_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -231,7 +231,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_crack01P02 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_crack01P02
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_crack01P02 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::crack01P02_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -239,7 +239,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_fancoil01P02 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_fancoil01P02
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_fancoil01P02 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::fancoil01P02_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -247,7 +247,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_manejadoraLower01P05 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_manejadoraLower01P05
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_manejadoraLower01P05 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::manejadoraLower01P05_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -255,7 +255,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_manejadoraSblancaP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_manejadoraSblancaP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_manejadoraSblancaP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::manejadoraSblancaP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -263,7 +263,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_manejadraSblancaP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_manejadraSblancaP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_manejadraSblancaP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::manejadraSblancaP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -271,7 +271,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_manejadoraSlimpiaP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_manejadoraSlimpiaP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_manejadoraSlimpiaP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::manejadoraSlimpiaP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -279,7 +279,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_manejadoraZzzP04 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_manejadoraZzzP04
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === HVAC_manejadoraZzzP04 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::manejadoraZzzP04_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

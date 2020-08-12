@@ -32,15 +32,17 @@ Start Sender
     [Tags]    functional
     Comment    Sender program waiting for Logger program to be Ready.
     ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
-    :FOR    ${i}    IN RANGE    30
-    \    Exit For Loop If     'Hexapod all loggers ready' in $loggerOutput
-    \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
-    \    Sleep    3s
+    FOR    ${i}    IN RANGE    30
+        Exit For Loop If     'Hexapod all loggers ready' in $loggerOutput
+        ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
+        Sleep    3s
+    END
     Comment    Executing Combined Java Sender Program.
     ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
-    :FOR    ${i}    IN RANGE    30
-    \    ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
-    \    Run Keyword If    'BUILD SUCCESS' in $loggerOutput    Set Test Variable    ${loggerCompletionTextFound}    "TRUE"
-    \    Exit For Loop If     'BUILD SUCCESS' in $loggerOutput
-    \    Sleep    3s
+    FOR    ${i}    IN RANGE    30
+        ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
+        Run Keyword If    'BUILD SUCCESS' in $loggerOutput    Set Test Variable    ${loggerCompletionTextFound}    "TRUE"
+        Exit For Loop If     'BUILD SUCCESS' in $loggerOutput
+        Sleep    3s
+    END
     Should Be True    ${loggerCompletionTextFound} == "TRUE"

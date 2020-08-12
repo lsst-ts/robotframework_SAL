@@ -28,10 +28,11 @@ Start Subscriber
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     Comment    Wait for Subscriber program to be ready.
     ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
-    :FOR    ${i}    IN RANGE    30
-    \    Exit For Loop If     '${subSystem} all subscribers ready' in $subscriberOutput
-    \    ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
-    \    Sleep    3s
+    FOR    ${i}    IN RANGE    30
+        Exit For Loop If     '${subSystem} all subscribers ready' in $subscriberOutput
+        ${subscriberOutput}=    Get File    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
+        Sleep    3s
+    END
     Log    ${subscriberOutput}
     Should Contain    ${subscriberOutput}    ===== ${subSystem} all subscribers ready =====
 
