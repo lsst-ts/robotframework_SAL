@@ -41,7 +41,7 @@ Start Sender
     Comment    ======= Verify ${subSystem}_scalars test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_scalars
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event scalars iseq = 0    1
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_scalars_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
@@ -49,7 +49,7 @@ Start Sender
     Comment    ======= Verify ${subSystem}_arrays test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_arrays
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event arrays iseq = 0    1
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_arrays_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10

@@ -168,18 +168,19 @@ function startJavaCombinedSenderProcess() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Sender program waiting for Logger program to be Ready." >> $testSuite
     echo "    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
-    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
+    echo "        \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
     echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
-    echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
-    
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "        Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
+    echo "        Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Should Be True    \${loggerCompletionTextFound} == \"TRUE\"" >> $testSuite
 }
 

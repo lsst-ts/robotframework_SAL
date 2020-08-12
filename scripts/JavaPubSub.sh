@@ -122,10 +122,11 @@ function startJavaCombinedSubscriberProcess {
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
     echo "    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    Exit For Loop If     '\${subSystem} all subscribers ready' in \$subscriberOutput" >> $testSuite
-    echo "    \\    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        Exit For Loop If     '\${subSystem} all subscribers ready' in \$subscriberOutput" >> $testSuite
+    echo "        \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Log    \${subscriberOutput}" >> $testSuite
     echo "    Should Contain    \${subscriberOutput}    ===== \${subSystem} all subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
