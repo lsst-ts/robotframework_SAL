@@ -57,6 +57,12 @@ Read Subscriber
     Log Many    ${Application_list}
     Should Contain    ${Application_list}    === Rotator_Application start of topic ===
     Should Contain    ${Application_list}    === Rotator_Application end of topic ===
+    ${rotation_start}=    Get Index From List    ${full_list}    === Rotator_rotation start of topic ===
+    ${rotation_end}=    Get Index From List    ${full_list}    === Rotator_rotation end of topic ===
+    ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end + 1}
+    Log Many    ${rotation_list}
+    Should Contain    ${rotation_list}    === Rotator_rotation start of topic ===
+    Should Contain    ${rotation_list}    === Rotator_rotation end of topic ===
     ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
     ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end + 1}

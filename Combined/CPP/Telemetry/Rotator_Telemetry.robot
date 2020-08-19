@@ -44,6 +44,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::Application_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Rotator_Application end of topic ===
+    Comment    ======= Verify ${subSystem}_rotation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rotation
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === Rotator_rotation start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rotation_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Rotator_rotation end of topic ===
     Comment    ======= Verify ${subSystem}_electrical test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_electrical
     @{words}=    Split String    ${line}
@@ -74,6 +82,16 @@ Read Subscriber
     Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Demand : 1    10
     Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Position : 1    10
     Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Error : 1    10
+    ${rotation_start}=    Get Index From List    ${full_list}    === Rotator_rotation start of topic ===
+    ${rotation_end}=    Get Index From List    ${full_list}    === Rotator_rotation end of topic ===
+    ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end}
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandAcceleration : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityA : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityB : 1    10
     ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
     ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end}

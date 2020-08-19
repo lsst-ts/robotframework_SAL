@@ -147,6 +147,7 @@ Read Logger
     ${tracking_list}=    Get Slice From List    ${full_list}    start=${tracking_start}    end=${tracking_end}
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracking : 1    1
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lost : 1    1
+    Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}noNewCommand : 1    1
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPosition_start}
