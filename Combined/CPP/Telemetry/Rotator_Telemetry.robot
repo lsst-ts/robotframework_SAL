@@ -92,6 +92,7 @@ Read Subscriber
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityA : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityB : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
     ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end}
