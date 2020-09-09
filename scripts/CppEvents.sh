@@ -117,6 +117,7 @@ function createSettings() {
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
+    echo "Resource    \${EXECDIR}\${/}common.robot" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
     echo "" >> $testSuite
 }
@@ -160,22 +161,15 @@ function startLogger() {
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=\${subSystem}_Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-        echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Comment    Wait 3s to allow full output to be written to file." >> $testSuite
-        echo "    Sleep    3s" >> $testSuite
-        echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Should Contain    \${output}    === Event \${component} logger ready =" >> $testSuite
+        echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === Event \${component} logger ready =" >> $testSuite
     else
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=\${subSystem}_Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-        echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Comment    Wait to allow full output to be written to file." >> $testSuite
-        echo "    Sleep    5s" >> $testSuite
-        echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Should Contain    \${output}    === \${subSystem} loggers ready" >> $testSuite
+        echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
     fi
-    echo "    Sleep    6s" >> $testSuite
+    echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
     echo "" >> $testSuite
 }
 

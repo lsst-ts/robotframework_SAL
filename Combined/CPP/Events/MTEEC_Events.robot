@@ -7,6 +7,7 @@ Library    OperatingSystem
 Library    Collections
 Library    Process
 Library    String
+Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
@@ -26,12 +27,9 @@ Start Logger
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
     Should Contain    "${output}"    "1"
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}stdout.txt
-    Comment    Wait to allow full output to be written to file.
-    Sleep    5s
+    Wait Until Keyword Succeeds    60s    5s    File Should Contain    ${EXECDIR}${/}stdout.txt    === ${subSystem} loggers ready
     ${output}=    Get File    ${EXECDIR}${/}stdout.txt
-    Should Contain    ${output}    === ${subSystem} loggers ready
-    Sleep    6s
+    Log    ${output}
 
 Start Sender
     [Tags]    functional
