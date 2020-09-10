@@ -127,7 +127,7 @@ function createVariables() {
     local testSuite=$2
     local topic=$3
     if [ "$topic" == "all" ]; then
-        timeout="45s"
+        timeout="90s"
     else
         timeout="3s"
     fi
@@ -166,7 +166,7 @@ function startLogger() {
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=\${subSystem}_Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-        echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
+        echo "    Wait Until Keyword Succeeds    90s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
     fi
     echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
