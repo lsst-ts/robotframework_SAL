@@ -44,8 +44,11 @@ function getTopics() {
     output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
     topicsArray=($output)
     # If CSC uses the Generic Events, add those.
-    generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-    if [ "$generics" == "yes" ]; then
+    generics=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+    if [ "$generics" == "" ]; then
+        echo "ERROR: The Generics field should not be empty."
+        exit 1
+    elif [ "$generics" == "yes" ]; then
         topicsArray+=(${generic_events[@]})
     fi
 }
