@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ATOODS
 ${component}    all
-${timeout}    90s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Sender and Logger
