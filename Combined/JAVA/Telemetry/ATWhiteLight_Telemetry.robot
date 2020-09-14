@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ATWhiteLight
 ${component}    all
-${timeout}    600s
+${timeout}    400s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber

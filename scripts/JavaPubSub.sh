@@ -85,7 +85,14 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    600s" >> $testSuite
+    if [[ "$subSystem" =~ ^(HVAC|MTM2|Scheduler)$ ]]; then
+        timeout="900s"
+    elif [[ "$subSystem" == "MTMount" ]]; then
+        timeout="1500s"
+    else
+        timeout="400s"
+    fi
+    echo "\${timeout}    $timeout" >> $testSuite
     echo "" >> $testSuite
 }
 
