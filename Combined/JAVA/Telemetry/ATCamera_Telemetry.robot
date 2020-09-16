@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ATCamera
 ${component}    all
-${timeout}    400s
+${timeout}    900s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
