@@ -130,7 +130,7 @@ function createVariables() {
     local testSuite=$2
     local topic=$3
     if [ "$topic" == "all" ]; then
-        timeout="120s"
+        timeout="180s"
     else
         timeout="3s"
     fi

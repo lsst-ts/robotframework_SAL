@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    EAS
 ${component}    all
-${timeout}    120s
+${timeout}    180s
 
 *** Test Cases ***
 Verify Component Sender and Logger
