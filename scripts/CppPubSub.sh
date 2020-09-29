@@ -80,7 +80,7 @@ function createSettings {
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
-    echo "Force Tags    cpp    $skipped" >> $testSuite
+    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
@@ -150,7 +150,7 @@ function startPublisher {
         echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
         echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
-        echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+        echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component}_\${revcode} writing a message containing :    9" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    9" >> $testSuite
     else
@@ -158,7 +158,7 @@ function startPublisher {
             echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
             echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
-            echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+            echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
             echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} start of topic ===" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::${item}_\${revcode} writing a message containing :    10" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    10" >> $testSuite

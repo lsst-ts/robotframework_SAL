@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTCamera Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_shutter test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_shutter
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_shutter start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::shutter_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_prot test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_prot
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_prot start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::prot_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_filter test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_filter
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_filter start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::filter_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_heartbeat
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_heartbeat start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::heartbeat_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -71,7 +71,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_was test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_was
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_was start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::was_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -79,7 +79,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_ccs test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_ccs
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_ccs start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::ccs_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -87,7 +87,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_clusterEncoder test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_clusterEncoder
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_clusterEncoder start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::clusterEncoder_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -95,7 +95,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_cyro test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cyro
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_cyro start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cyro_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -103,7 +103,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_purge test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_purge
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_purge start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::purge_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -111,7 +111,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_wds test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wds
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_wds start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::wds_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -119,7 +119,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_gds test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_gds
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_gds start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::gds_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -127,7 +127,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_sds test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_sds
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_sds start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::sds_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -135,7 +135,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_gas test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_gas
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_gas start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::gas_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -143,7 +143,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_pcms test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_pcms
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_pcms start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::pcms_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -151,7 +151,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_sas test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_sas
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_sas start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::sas_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -159,7 +159,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_cold test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cold
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTCamera_cold start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cold_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

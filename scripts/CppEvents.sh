@@ -44,8 +44,11 @@ function getTopics() {
     output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
     topicsArray=($output)
     # If CSC uses the Generic Events, add those.
-    generics=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-    if [ "$generics" == "yes" ]; then
+    generics=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+    if [ "$generics" == "" ]; then
+        echo "ERROR: The Generics field should not be empty."
+        exit 1
+    elif [ "$generics" == "yes" ]; then
         topicsArray+=(${generic_events[@]})
     fi
 }
@@ -110,13 +113,14 @@ function createSettings() {
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    cpp    $skipped" >> $testSuite
+    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
+    echo "Resource    \${EXECDIR}\${/}common.robot" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
     echo "" >> $testSuite
 }
@@ -126,7 +130,7 @@ function createVariables() {
     local testSuite=$2
     local topic=$3
     if [ "$topic" == "all" ]; then
-        timeout="45s"
+        timeout="180s"
     else
         timeout="3s"
     fi
@@ -160,22 +164,15 @@ function startLogger() {
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=\${subSystem}_Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-        echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Comment    Wait 3s to allow full output to be written to file." >> $testSuite
-        echo "    Sleep    3s" >> $testSuite
-        echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Should Contain    \${output}    === Event \${component} logger ready =" >> $testSuite
+        echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === Event \${component} logger ready =" >> $testSuite
     else
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=\${subSystem}_Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
-        echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Comment    Wait 3s to allow full output to be written to file." >> $testSuite
-        echo "    Sleep    3s" >> $testSuite
-        echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
-        echo "    Should Contain    \${output}    === \${subSystem} loggers ready" >> $testSuite
+        echo "    Wait Until Keyword Succeeds    90s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
     fi
-    echo "    Sleep    6s" >> $testSuite
+    echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
+    echo "    Log    \${output}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -197,7 +194,7 @@ function startSender() {
         echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
         echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
-        echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+        echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    1" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    1" >> $testSuite
     else
@@ -205,7 +202,7 @@ function startSender() {
             echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
             echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
-            echo "    \${revcode}=    Set Variable    @{words}[2]" >> $testSuite
+            echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    === Event ${item} iseq = 0    1" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
             echo "    Should Contain    \${output.stdout}    revCode \ : \${revcode}    10" >>$testSuite

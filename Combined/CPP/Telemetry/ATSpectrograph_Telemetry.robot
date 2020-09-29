@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATSpectrograph Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_timestamp test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timestamp
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATSpectrograph_timestamp start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_loopTime test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loopTime
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATSpectrograph_loopTime start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loopTime_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

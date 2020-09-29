@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATPneumatics Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_m1AirPressure test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_m1AirPressure
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATPneumatics_m1AirPressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::m1AirPressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_m2AirPressure test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_m2AirPressure
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATPneumatics_m2AirPressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::m2AirPressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_mainAirSourcePressure test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mainAirSourcePressure
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATPneumatics_mainAirSourcePressure start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mainAirSourcePressure_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_loadCell test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_loadCell
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATPneumatics_loadCell start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::loadCell_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

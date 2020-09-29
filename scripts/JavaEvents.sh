@@ -39,36 +39,36 @@ function main() {
 
 # Get EFDB_Topics from Events XML.
 function getTopics() {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
-	unset parametersArray
-	output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
-	parametersArray=($output)
+    file=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
+    parametersArray=($output)
 }
 
 function getParameterIndex() {
-	value=$1
-	for i in "${!parametersArray[@]}"; do
-		if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-			parameterIndex="${i}";
-		fi
-	done
-	echo $parameterIndex
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
 }
 
 function getParameterType() {
-	file=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-	echo $parameterType
+    file=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
+    echo $parameterType
 }
 
 function getParameterIDLSize() {
@@ -95,15 +95,15 @@ function createSettings() {
 
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    java    $skipped" >> $testSuite
-	echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "Force Tags    messaging    java    $skipped" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
@@ -130,8 +130,8 @@ function verifyCompSenderLogger() {
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Event_\${component}.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}EventLogger_\${component}.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${MavenVersion}/src/test/java/\${subSystem}Event_\${component}.java" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${MavenVersion}/src/test/java/\${subSystem}EventLogger_\${component}.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Event_\${component}.java" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}EventLogger_\${component}.java" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -151,7 +151,7 @@ function startJavaCombinedLoggerProcess() {
     echo "Start Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Logger Program." >> $testSuite
-    echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${MavenVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
+    echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "" >> $testSuite
 }
@@ -166,30 +166,29 @@ function startJavaCombinedSenderProcess() {
 
     echo "Start Sender" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
-    
     echo "    Comment    Sender program waiting for Logger program to be Ready." >> $testSuite
     echo "    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
-    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
-    
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        Exit For Loop If     '${subSystem} all loggers ready' in \$loggerOutput" >> $testSuite
+    echo "        \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
-    echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "    \\    Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
-    echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
-    
+    echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
+    echo "        Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
+    echo "        Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Should Be True    \${loggerCompletionTextFound} == \"TRUE\"" >> $testSuite
 }
 
 function createTestSuite() {
-	subSystem=$1
+    subSystem=$1
     messageType="events"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file

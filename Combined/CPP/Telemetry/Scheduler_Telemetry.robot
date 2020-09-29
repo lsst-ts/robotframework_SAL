@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Scheduler Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_timestamp test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timestamp
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_timestamp start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timestamp_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_nightSummary test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nightSummary
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_nightSummary start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nightSummary_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_predictedSchedule test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_predictedSchedule
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_predictedSchedule start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::predictedSchedule_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_surveyTopology test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_surveyTopology
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_surveyTopology start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::surveyTopology_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -71,7 +71,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_schedulerConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_schedulerConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_schedulerConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::schedulerConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -79,7 +79,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_driverConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_driverConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_driverConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::driverConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -87,7 +87,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_obsSiteConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_obsSiteConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_obsSiteConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::obsSiteConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -95,7 +95,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_telescopeConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_telescopeConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_telescopeConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::telescopeConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -103,7 +103,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_rotatorConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rotatorConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_rotatorConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rotatorConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -111,7 +111,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_domeConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_domeConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_domeConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::domeConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -119,7 +119,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_cameraConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cameraConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_cameraConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cameraConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -127,7 +127,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_slewConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_slewConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_slewConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::slewConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -135,7 +135,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_opticsLoopCorrConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_opticsLoopCorrConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_opticsLoopCorrConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::opticsLoopCorrConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -143,7 +143,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_parkConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_parkConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_parkConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::parkConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -151,7 +151,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_generalPropConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_generalPropConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_generalPropConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::generalPropConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -159,7 +159,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_sequencePropConfig test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_sequencePropConfig
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_sequencePropConfig start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::sequencePropConfig_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -167,7 +167,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_observatoryState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_observatoryState
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_observatoryState start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::observatoryState_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -175,7 +175,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_observation test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_observation
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_observation start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::observation_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -183,7 +183,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_interestedProposal test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_interestedProposal
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_interestedProposal start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::interestedProposal_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -191,7 +191,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_timeHandler test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timeHandler
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_timeHandler start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timeHandler_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -199,7 +199,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_bulkCloud test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bulkCloud
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_bulkCloud start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bulkCloud_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -207,7 +207,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_cloudMap test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cloudMap
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_cloudMap start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cloudMap_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -215,7 +215,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_seeing test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_seeing
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_seeing start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::seeing_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -223,7 +223,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_wind test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wind
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_wind start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::wind_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -231,7 +231,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_temperature test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_temperature
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_temperature start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::temperature_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -239,7 +239,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_skyBrightness test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_skyBrightness
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_skyBrightness start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::skyBrightness_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -247,7 +247,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_photometricQuality test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_photometricQuality
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_photometricQuality start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::photometricQuality_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -255,7 +255,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_avoidanceRegions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_avoidanceRegions
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_avoidanceRegions start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::avoidanceRegions_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -263,7 +263,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_downtime test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_downtime
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === Scheduler_downtime start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::downtime_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

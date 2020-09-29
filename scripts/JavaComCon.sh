@@ -39,36 +39,36 @@ function main() {
 
 # Get EFDB_Topics from Command XML.
 function getTopics() {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |cut -d"_" -f 3 )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |cut -d"_" -f 3 )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
-	unset parametersArray
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item/EFDB_Name" -v . -n ${file} )
-	parametersArray=($output)
+    file=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item/EFDB_Name" -v . -n ${file} )
+    parametersArray=($output)
 }
 
 function getParameterIndex() {
-	value=$1
-	for i in "${!parametersArray[@]}"; do
-		if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-			parameterIndex="${i}";
-		fi
-	done
-	echo $parameterIndex
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
 }
 
 function getParameterType() {
-	subSystem=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
-	echo $parameterType
+    subSystem=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml )
+    echo $parameterType
 }
 
 function getParameterIDLSize() {
@@ -95,15 +95,15 @@ function createSettings() {
 
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    java    $skipped" >> $testSuite
-	echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "Force Tags    messaging    java    $skipped" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
@@ -182,7 +182,7 @@ function startJavaCombinedCommanderProcess() {
 }
 
 function startCommanderTimeout() {
-	echo "Start Commander - Verify Timeout without Controller" >> $testSuite
+    echo "Start Commander - Verify Timeout without Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
@@ -191,7 +191,7 @@ function startCommanderTimeout() {
     echo "    \${input}=    Write    mvn -Dtest=\${subSystem}Commander_\${component}Test test" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	echo "    \${CmdComplete}=    Get Line    \${output}    -16" >>$testSuite
+    echo "    \${CmdComplete}=    Get Line    \${output}    -16" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( timed out)" >>$testSuite
     echo "" >> $testSuite
 }
@@ -208,10 +208,10 @@ function startController() {
     echo "" >> $testSuite
 }
 function startCommander() {
-	i=0
-	n=0
-	device=$1
-	property=$2
+    i=0
+    n=0
+    device=$1
+    property=$2
     echo "Start Commander" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
@@ -228,10 +228,10 @@ function startCommander() {
 }
 
 function readController() {
-	i=0
-	n=0
-	device=$1
-	property=$2
+    i=0
+    n=0
+    device=$1
+    property=$2
     echo "Read Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Controller" >> $testSuite
@@ -248,10 +248,10 @@ function readController() {
 }
 
 function createTestSuite() {
-	subSystem=$1
+    subSystem=$1
     messageType="commands"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file
@@ -270,60 +270,60 @@ function createTestSuite() {
     startJavaCombinedCommanderProcess $subSystem $messageType $testSuiteCombined
 
     # echo Generating:
-	# for topic in "${topicsArray[@]}"; do
-	# 	device=$EMPTY
-	# 	property=$EMPTY
-	# 	#  Define test suite name
-	# 	testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+    # for topic in "${topicsArray[@]}"; do
+    #     device=$EMPTY
+    #     property=$EMPTY
+    #     #  Define test suite name
+    #     testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
     #
-	# 	#  Get EFDB_Topic elements
-	# 	getTopicParameters $file $topicIndex
-	# 	device=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Device" -v . -n ${file} )
-	# 	property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n ${file} )
+    #     #  Get EFDB_Topic elements
+    #     getTopicParameters $file $topicIndex
+    #     device=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Device" -v . -n ${file} )
+    #     property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n ${file} )
     #
     #     #  Check if test suite should be skipped.
     #     skipped=$(checkIfSkipped $subSystem $topic $messageType)
     #
-	# 	#  Create test suite.
-	# 	echo $testSuite
-	# 	createSettings $subSystem
-	# 	createVariables $subSystem
-	# 	echo "*** Test Cases ***" >> $testSuite
+    #     #  Create test suite.
+    #     echo $testSuite
+    #     createSettings $subSystem
+    #     createVariables $subSystem
+    #     echo "*** Test Cases ***" >> $testSuite
     #     verifyCompCommanderController
-	# 	#startCommanderInputs
+    #     #startCommanderInputs
     #
-	# 	# Get the arguments to the commander.
-	# 	unset argumentsArray
-	# 	# If the Topic has no parameters (items), just send a string.
-	# 	if [ ! ${parametersArray[0]} ]; then
-	# 		testValue=$(python random_value.py "state")
-	# 		argumentsArray+=($testValue)
-	# 	# Otherwise, determine the parameter type and create a test value, accordingly.
-	# 	else
-	# 		for parameter in "${parametersArray[@]}"; do
-  	# 			parameterIndex=$(getParameterIndex $parameter)
-	# 			parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
-	# 			parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
-	# 			parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
-	# 			#echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
-	# 			for i in $(seq 1 $parameterCount); do
-	# 				testValue=$(generateArgument "$parameterType" $parameterIDLSize)
-	# 				argumentsArray+=( $testValue )
-	# 			done
-	# 		done
-	# 	fi
-	# 	# Create the Commander Timeout test case.
-	# 	startCommanderTimeout
-	# 	# Create the Start Controller test case.
-	# 	startController
-	# 	# Create the Start Commander test case.
-	# 	startCommander $device $property
-	# 	# Create the Read Controller test case.
-	# 	readController $device $property
-    # 	# Move to next Topic.
-	# 	(( topicIndex++ ))
-	# done
-	echo ""
+    #     # Get the arguments to the commander.
+    #     unset argumentsArray
+    #     # If the Topic has no parameters (items), just send a string.
+    #     if [ ! ${parametersArray[0]} ]; then
+    #         testValue=$(python random_value.py "state")
+    #         argumentsArray+=($testValue)
+    #     # Otherwise, determine the parameter type and create a test value, accordingly.
+    #     else
+    #         for parameter in "${parametersArray[@]}"; do
+      #             parameterIndex=$(getParameterIndex $parameter)
+    #             parameterType=$(getParameterType $subSystem $topicIndex $parameterIndex)
+    #             parameterCount=$(getParameterCount $subSystem $topicIndex $parameterIndex)
+    #             parameterIDLSize=$(getParameterIDLSize $subSystem $topicIndex $parameterIndex)
+    #             #echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
+    #             for i in $(seq 1 $parameterCount); do
+    #                 testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+    #                 argumentsArray+=( $testValue )
+    #             done
+    #         done
+    #     fi
+    #     # Create the Commander Timeout test case.
+    #     startCommanderTimeout
+    #     # Create the Start Controller test case.
+    #     startController
+    #     # Create the Start Commander test case.
+    #     startCommander $device $property
+    #     # Create the Read Controller test case.
+    #     readController $device $property
+    #     # Move to next Topic.
+    #     (( topicIndex++ ))
+    # done
+    echo ""
 }
 
 #### Call the main() function ####

@@ -38,36 +38,36 @@ function main() {
 
 # Get EFDB_Topics from Telemetry XML.
 function getTopics() {
-	subSystem=$(getEntity $1)
-	file=$2
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-	topicsArray=($output)
+    subSystem=$(getEntity $1)
+    file=$2
+    output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
+    topicsArray=($output)
 }
 
 function getTopicParameters() {
-	file=$1
-	index=$2
-	unset parametersArray
-	output=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item/EFDB_Name" -v . -n $file )
-	parametersArray=($output)
+    file=$1
+    index=$2
+    unset parametersArray
+    output=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item/EFDB_Name" -v . -n $file )
+    parametersArray=($output)
 }
 
 function getParameterIndex() {
-	value=$1
-	for i in "${!parametersArray[@]}"; do
-		if [[ "${parametersArray[$i]}" == "$value" ]]; then
-			parameterIndex="${i}";
-		fi
-	done
-	echo $parameterIndex
+    value=$1
+    for i in "${!parametersArray[@]}"; do
+        if [[ "${parametersArray[$i]}" == "$value" ]]; then
+            parameterIndex="${i}";
+        fi
+    done
+    echo $parameterIndex
 }
 
 function getParameterType() {
-	file=$1
-	index=$2
-	itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-	parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-	echo $parameterType
+    file=$1
+    index=$2
+    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
+    parameterType=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
+    echo $parameterType
 }
 
 function getParameterIDLSize() {
@@ -90,19 +90,19 @@ function createSettings() {
     local subSystem=$1
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    python    $skipped" >> $testSuite
-	echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
-	echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
+    echo "Force Tags    messaging    python    $skipped" >> $testSuite
+    echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${component}    \${timeout}" >> $testSuite
+    echo "...    AND    Create Session    Commander    AND    Create Session    Controller" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
     echo "Library    SSHLibrary" >> $testSuite
     echo "Library    String" >> $testSuite
     echo "Resource    ../../Global_Vars.robot" >> $testSuite
     echo "Resource    ../../common.robot" >> $testSuite
-	echo "" >> $testSuite
+    echo "" >> $testSuite
 }
 
 function createVariables() {
-	subSystem=$(getEntity $1)
+    subSystem=$(getEntity $1)
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
@@ -134,7 +134,7 @@ function startCommanderInputs() {
 }
 
 function startCommanderTimeout() {
-	echo "Start Commander - Verify Timeout without Controller" >> $testSuite
+    echo "Start Commander - Verify Timeout without Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
@@ -143,7 +143,7 @@ function startCommanderTimeout() {
     echo "    \${input}=    Write    python \${subSystem}_Commander_\${component}.py ${argumentsArray[*]}" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( timed out :)" >>$testSuite
     echo "" >> $testSuite
 }
@@ -162,12 +162,12 @@ function startController() {
 }
 
 function startCommander() {
-	file=$1
-	topicIndex=$2
-	i=0
-	n=0
-	device=$3
-	property=$4
+    file=$1
+    topicIndex=$2
+    i=0
+    n=0
+    device=$3
+    property=$4
     echo "Start Commander" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Commander" >> $testSuite
@@ -182,30 +182,30 @@ function startCommander() {
     echo "    Should Contain X Times    \${output}    property :    1" >> $testSuite    #$property TSS-861
     echo "    Should Contain X Times    \${output}    action :    1" >> $testSuite    #$action TSS-861
     echo "    Should Contain X Times    \${output}    value :    1" >> $testSuite    #$value TSS-861
-	if [ ! ${parametersArray[0]} ]; then
-		echo "    Should Contain X Times    \${output}    state : ${argumentsArray[0]}    1" >>$testSuite
-	else
-		for parameter in "${parametersArray[@]}"; do
-			parameterIndex=$(getParameterIndex $parameter)
-        	parameterType=$(getParameterType $file $topicIndex $parameterIndex)
-        	parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-        	if [ $i -gt 0 ];then n=$i*$(getParameterCount $file $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
-        	echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
-			(( i++ ))
-    	done
-	fi
-	echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
+    if [ ! ${parametersArray[0]} ]; then
+        echo "    Should Contain X Times    \${output}    state : ${argumentsArray[0]}    1" >>$testSuite
+    else
+        for parameter in "${parametersArray[@]}"; do
+            parameterIndex=$(getParameterIndex $parameter)
+            parameterType=$(getParameterType $file $topicIndex $parameterIndex)
+            parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+            if [ $i -gt 0 ];then n=$i*$(getParameterCount $file $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+            echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$n]}    1" >>$testSuite
+            (( i++ ))
+        done
+    fi
+    echo "    \${CmdComplete}=    Get Line    \${output}    -2" >>$testSuite
     echo "    Should Match Regexp    \${CmdComplete}    (=== \\\[waitForCompletion_\${component}\\\] command )[0-9]+( completed ok :)" >>$testSuite
     echo "" >> $testSuite
 }
 
 function readController() {
-	file=$1
-	topicIndex=$2
-	i=0
-	n=0
-	device=$3
-	property=$4
+    file=$1
+    topicIndex=$2
+    i=0
+    n=0
+    device=$3
+    property=$4
     echo "Read Controller" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Controller" >> $testSuite
@@ -218,22 +218,22 @@ function readController() {
     if [ ! ${parametersArray[0]} ]; then
         echo "    Should Contain X Times    \${output}    state = ${argumentsArray[0]}    1" >>$testSuite
     else
-    	for parameter in "${parametersArray[@]}"; do
-			parameterIndex=$(getParameterIndex $parameter)
-       		parameterType=$(getParameterType $file $topicIndex $parameterIndex)
-       		parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-			if [ $i -gt 0 ];then n=$i*$(getParameterCount $file $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
-			if [[ ( $parameterCount -gt 15 ) ]]; then
-				string=$( IFS=$','; echo "${argumentsArray[*]:$n:$parameterCount}" |sed "s/,/, /g" )
-           		echo "    Should Contain X Times    \${output}    $parameter($parameterCount) = [$string]    1" >>$testSuite
-			else
-       			echo "    Should Contain X Times    \${output}    $parameter = ${argumentsArray[$n]}    1" >>$testSuite
-			fi
-			(( i++ ))
-    	done
-	fi
-	echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    1" >> $testSuite
-	echo "    Should Contain    \${output}    seqNum   :" >> $testSuite
+        for parameter in "${parametersArray[@]}"; do
+            parameterIndex=$(getParameterIndex $parameter)
+               parameterType=$(getParameterType $file $topicIndex $parameterIndex)
+               parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+            if [ $i -gt 0 ];then n=$i*$(getParameterCount $file $topicIndex $(($i - 1)));fi # n is the FIRST element in the sub-array (array of arguments associated with a parameter).
+            if [[ ( $parameterCount -gt 15 ) ]]; then
+                string=$( IFS=$','; echo "${argumentsArray[*]:$n:$parameterCount}" |sed "s/,/, /g" )
+                   echo "    Should Contain X Times    \${output}    $parameter($parameterCount) = [$string]    1" >>$testSuite
+            else
+                   echo "    Should Contain X Times    \${output}    $parameter = ${argumentsArray[$n]}    1" >>$testSuite
+            fi
+            (( i++ ))
+        done
+    fi
+    echo "    Should Contain X Times    \${output}    === [ackCommand_${topic}] acknowledging a command with :    1" >> $testSuite
+    echo "    Should Contain    \${output}    seqNum   :" >> $testSuite
     echo "    Should Contain    \${output}    ack      : 301" >> $testSuite
     echo "    Should Contain X Times    \${output}    error \ \ \ : 0    1" >> $testSuite
     echo "    Should Contain    \${output}    result   : Ack : OK" >> $testSuite
@@ -242,69 +242,69 @@ function readController() {
 }
 
 function createTestSuite() {
-	subSystem=$1
+    subSystem=$1
     messageType="commands"
-	file=$2
-	topicIndex=1
+    file=$2
+    topicIndex=1
 
     # Get the topics for the CSC.
     getTopics $subSystem $file
 
     # Generate the test suite for each topic.
     echo Generating:
-	for topic in "${topicsArray[@]}"; do
-		device=$EMPTY
-		property=$EMPTY
-		#  Define test suite name
-		testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
-		
-		#  Get EFDB_Topic elements
-		getTopicParameters $file $topicIndex
-		device=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Device" -v . -n $file )
-		property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n $file )
+    for topic in "${topicsArray[@]}"; do
+        device=$EMPTY
+        property=$EMPTY
+        #  Define test suite name
+        testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        
+        #  Get EFDB_Topic elements
+        getTopicParameters $file $topicIndex
+        device=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Device" -v . -n $file )
+        property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n $file )
 
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $topic $messageType)
 
-		#  Create test suite.
-		echo $testSuite
-		createSettings $subSystem
-		createVariables $subSystem
-		echo "*** Test Cases ***" >> $testSuite
+        #  Create test suite.
+        echo $testSuite
+        createSettings $subSystem
+        createVariables $subSystem
+        echo "*** Test Cases ***" >> $testSuite
         verifyCompCommanderController
-		startCommanderInputs
+        startCommanderInputs
 
-		# Get the arguments to the commander.
-		unset argumentsArray
-		# If the Topic has no parameters (items), just send a string.
-		if [ ! ${parametersArray[0]} ]; then
-			testValue=$(python random_value.py "state")
-			argumentsArray+=($testValue)
-		# Otherwise, determine the parameter type and create a test value, accordingly.
-		else
-			for parameter in "${parametersArray[@]}"; do
-  				parameterIndex=$(getParameterIndex $parameter)
-				parameterType=$(getParameterType $file $topicIndex $parameterIndex)
-				parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
-        		parameterIDLSize=$(getParameterIDLSize $file $topicIndex $parameterIndex)
-				#echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
-				for i in $(seq 1 $parameterCount); do
-					testValue=$(generateArgument "$parameterType" $parameterIDLSize)
+        # Get the arguments to the commander.
+        unset argumentsArray
+        # If the Topic has no parameters (items), just send a string.
+        if [ ! ${parametersArray[0]} ]; then
+            testValue=$(python random_value.py "state")
+            argumentsArray+=($testValue)
+        # Otherwise, determine the parameter type and create a test value, accordingly.
+        else
+            for parameter in "${parametersArray[@]}"; do
+                parameterIndex=$(getParameterIndex $parameter)
+                parameterType=$(getParameterType $file $topicIndex $parameterIndex)
+                parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+                parameterIDLSize=$(getParameterIDLSize $file $topicIndex $parameterIndex)
+                #echo $parameter $parameterIndex $parameterType $parameterCount $parameterIDLSize
+                for i in $(seq 1 $parameterCount); do
+                    testValue=$(generateArgument "$parameterType" $parameterIDLSize)
                     argumentsArray+=( $testValue )
-				done
-			done
-		fi
-		# Create the Commander Timeout test case.
-		startCommanderTimeout
-		# Create the Start Controller test case.
-		startController
-		# Create the Start Commander test case.
-		startCommander $file $topicIndex $device $property
-		# Create the Read Controller test case.
-		readController $file $topicIndex $device $property
-    	# Move to next Topic.
-		(( topicIndex++ ))
-	done
+                done
+            done
+        fi
+        # Create the Commander Timeout test case.
+        startCommanderTimeout
+        # Create the Start Controller test case.
+        startController
+        # Create the Start Commander test case.
+        startCommander $file $topicIndex $device $property
+        # Create the Read Controller test case.
+        readController $file $topicIndex $device $property
+        # Move to next Topic.
+        (( topicIndex++ ))
+    done
     echo ""
 }
 

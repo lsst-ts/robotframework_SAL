@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CBP Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_status test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_status
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_status start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::status_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_mask test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mask
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_mask start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mask_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_azimuth test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_azimuth
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_azimuth start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuth_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_altitude test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_altitude
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_altitude start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::altitude_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -71,7 +71,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_focus test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_focus
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_focus start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::focus_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -79,7 +79,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_parked test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_parked
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CBP_parked start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::parked_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10

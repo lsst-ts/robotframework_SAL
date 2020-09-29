@@ -41,7 +41,6 @@ Combined/CPP/Events/IOTA_Events.robot
 Combined/CPP/Events/LOVE_Events.robot
 Combined/CPP/Events/LinearStage_Events.robot
 Combined/CPP/Events/MTAOS_Events.robot
-Combined/CPP/Events/MTArchiver_Events.robot
 Combined/CPP/Events/MTCamera_Events.robot
 Combined/CPP/Events/MTDomeTrajectory_Events.robot
 Combined/CPP/Events/MTEEC_Events.robot

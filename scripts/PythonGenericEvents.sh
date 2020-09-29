@@ -89,7 +89,7 @@ function createSettings() {
     local subSystem=$1
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystem}_${event} communications tests." >> $testSuite
-    echo "Force Tags    python    $skipped" >> $testSuite
+    echo "Force Tags    messaging    python    $skipped" >> $testSuite
     echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
     echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -108,7 +108,7 @@ function createVariables() {
 }
 
 function verifyCompSenderLogger() {
-	event=$1
+    event=$1
     echo "Verify $event Sender and Logger" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Event_${event}.py" >> $testSuite
@@ -117,7 +117,7 @@ function verifyCompSenderLogger() {
 }
 
 function startLogger() {
-	event=$1
+    event=$1
     echo "Start $event Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
@@ -133,7 +133,7 @@ function startLogger() {
 
 function startSender() {
     i=0
-	event=$1
+    event=$1
     device=$2
     property=$3
     echo "Start $event Sender" >> $testSuite
@@ -156,7 +156,7 @@ function startSender() {
 
 function readLogger() {
     i=0
-	event=$1
+    event=$1
     device=$2
     property=$3
     echo "Read $event Logger" >> $testSuite
@@ -185,35 +185,35 @@ function terminateController() {
 }
 
 function createTestSuite() {
-	subSystem=$1
-	messageType="events"
-	topicIndex=1
+    subSystem=$1
+    messageType="events"
+    topicIndex=1
 
-	# Check if CSC uses the Generic topics (most do, but a few do not).
-	# ... If not, skip this CSC.
-	output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-	if [ "$output" == "no" ]; then
-		echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
-	fi
+    # Check if CSC uses the Generic topics (most do, but a few do not).
+    # ... If not, skip this CSC.
+    output=$( xml sel -t -m "//SALSubsystems/Subsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+    if [ "$output" == "no" ]; then
+        echo "The $subSystem CSC does not use the Generic topics. Exiting."; exit 0
+    fi
 
-	# Generate the test suite for each topic.
-	testSuite=$workDir/${subSystem}_GenericEvents.robot
+    # Generate the test suite for each topic.
+    testSuite=$workDir/${subSystem}_GenericEvents.robot
     echo Generating $testSuite:
-	#  Create test suite.
-	createSettings $subSystem
-	createVariables $subSystem
-	echo "*** Test Cases ***" >> $testSuite
-	for event in "settingVersions" "errorCode" "summaryState" "appliedSettingsMatchStart"; do
-		
+    #  Create test suite.
+    createSettings $subSystem
+    createVariables $subSystem
+    echo "*** Test Cases ***" >> $testSuite
+    for event in "settingVersions" "errorCode" "summaryState" "appliedSettingsMatchStart"; do
+        
         #  Check if test suite should be skipped.
         skipped=$(checkIfSkipped $subSystem $event $messageType)
 
-		#  Get EFDB_Topic elements
+        #  Get EFDB_Topic elements
         getTopicParameters $file $topicIndex
         device=$( xml sel -t -m "//SALObjects/SALEventSet/SALEvent[$topicIndex]/Device" -v . -n $file )
         property=$( xml sel -t -m "//SALObjects/SALEventSet/SALEvent[$topicIndex]/Property" -v . -n $file )
-		
-		# Get the arguments to the sender.
+        
+        # Get the arguments to the sender.
         unset argumentsArray
         # Determine the parameter type and create a test value, accordingly.
         for parameter in "${parametersArray[@]}"; do
@@ -234,17 +234,17 @@ function createTestSuite() {
         argumentsArray=("${argumentsArray[@]}" "$priority")
 
         verifyCompSenderLogger $event
-		# Create the Start Controller test case.
-		startLogger $event
-		# Create the Start Sender test case.
+        # Create the Start Controller test case.
+        startLogger $event
+        # Create the Start Sender test case.
         startSender $event $device $property
         # Create the Read Logger test case.
         readLogger $event $device $property
         # Kill the Controller process.
         terminateController $event
-    	# Move to next Topic.
-		(( topicIndex++ ))
-	done
+        # Move to next Topic.
+        (( topicIndex++ ))
+    done
     echo ""
 }
 

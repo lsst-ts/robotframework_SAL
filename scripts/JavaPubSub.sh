@@ -29,7 +29,11 @@ function main() {
     clearTestSuites $arg "JAVA" "Telemetry" || exit 1
         
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    if [ "$arg" == "MTM1M3" ]; then
+        echo "$arg is skipped for Java messaging tests."
+    else
+        createTestSuite $arg $file || exit 1
+    fi
 }
 
 #  Local FUNCTIONS
@@ -62,8 +66,8 @@ function createSettings {
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
-    echo "Force Tags    java    $skipped" >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${MavenVersion}    \${timeout}" >> $testSuite
+    echo "Force Tags    messaging    java    $skipped" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
@@ -81,7 +85,14 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    600s" >> $testSuite
+    if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTCamera|MTM2|Scheduler)$ ]]; then
+        timeout="900s"
+    elif [[ "$subSystem" =~ ^(HVAC|MTMount)$ ]]; then
+        timeout="1500s"
+    else
+        timeout="400s"
+    fi
+    echo "\${timeout}    $timeout" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -93,8 +104,8 @@ function verifyCompPubSub {
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_pub.jar" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_sub.jar" >> $testSuite
     else
-        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${SALVersion}_\${XMLVersion}\${MavenVersion}/src/test/java/\${subSystem}Publisher_all.java" >> $testSuite
-        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${SALVersion}_\${XMLVersion}\${MavenVersion}/src/test/java/\${subSystem}Subscriber_all.java" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Publisher_all.java" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Subscriber_all.java" >> $testSuite
     fi
     echo "" >> $testSuite
 }
@@ -113,15 +124,16 @@ function startJavaCombinedSubscriberProcess {
     echo "Start Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Subscriber Program." >> $testSuite
-    echo "    \${output}=    Start Process    mvn    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}_\${XMLVersion}\${MavenVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
+    echo "    \${output}=    Start Process    mvn    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
     echo "    Should Contain    \"\${output}\"   \"1\"" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
     echo "    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
-    echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "    \\    Exit For Loop If     '\${subSystem} all subscribers ready' in \$subscriberOutput" >> $testSuite
-    echo "    \\    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
-    echo "    \\    Sleep    3s" >> $testSuite
+    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
+    echo "        Exit For Loop If     '\${subSystem} all subscribers ready' in \$subscriberOutput" >> $testSuite
+    echo "        \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
+    echo "        Sleep    3s" >> $testSuite
+    echo "    END" >> $testSuite
     echo "    Log    \${subscriberOutput}" >> $testSuite
     echo "    Should Contain    \${subscriberOutput}    ===== \${subSystem} all subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
@@ -136,7 +148,7 @@ function startJavaCombinedPublisherProcess {
     echo "Start Publisher" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Publisher Program." >> $testSuite
-    echo "    \${output}=    Run Process    mvn    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}_\${SALVersion}_\${XMLVersion}\${MavenVersion}/    alias=\${subSystem}_Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
+    echo "    \${output}=    Run Process    mvn    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=\${subSystem}_Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all publishers ready =====" >> $testSuite
     echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CCCamera Telemetry communications tests.
-Force Tags    cpp    
+Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -39,7 +39,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_filterChanger test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_filterChanger
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_filterChanger start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::filterChanger_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -47,7 +47,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_bonnShutter test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_bonnShutter
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_bonnShutter start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::bonnShutter_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -55,7 +55,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_rebpower_R22 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rebpower_R22
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_rebpower_R22 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rebpower_R22_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -63,7 +63,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_rebpower_RebPS test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rebpower_RebPS
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_rebpower_RebPS start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rebpower_RebPS_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -71,7 +71,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_VQMonitor test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_VQMonitor
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_VQMonitor start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_VQMonitor_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -79,7 +79,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_IonPumps test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_IonPumps
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_IonPumps start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_IonPumps_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -87,7 +87,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_Turbo test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_Turbo
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_Turbo start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_Turbo_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -95,7 +95,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_Cryo test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_Cryo
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_Cryo start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_Cryo_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -103,7 +103,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_Cold2 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_Cold2
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_Cold2 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_Cold2_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -111,7 +111,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_vacuum_Cold1 test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_vacuum_Cold1
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_vacuum_Cold1 start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::vacuum_Cold1_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -119,7 +119,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_quadbox_PDU_24VC test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_quadbox_PDU_24VC
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_quadbox_PDU_24VC start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::quadbox_PDU_24VC_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -127,7 +127,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_quadbox_PDU_24VD test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_quadbox_PDU_24VD
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_quadbox_PDU_24VD start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::quadbox_PDU_24VD_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -135,7 +135,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_quadbox_BFR test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_quadbox_BFR
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_quadbox_BFR start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::quadbox_BFR_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -143,7 +143,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_quadbox_PDU_5V test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_quadbox_PDU_5V
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_quadbox_PDU_5V start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::quadbox_PDU_5V_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
@@ -151,7 +151,7 @@ Start Publisher
     Comment    ======= Verify ${subSystem}_quadbox_PDU_48V test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_quadbox_PDU_48V
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    @{words}[2]
+    ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === CCCamera_quadbox_PDU_48V start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::quadbox_PDU_48V_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
