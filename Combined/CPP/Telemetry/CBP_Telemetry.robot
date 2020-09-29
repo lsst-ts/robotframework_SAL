@@ -60,14 +60,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuth_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === CBP_azimuth end of topic ===
-    Comment    ======= Verify ${subSystem}_altitude test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_altitude
+    Comment    ======= Verify ${subSystem}_elevation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_elevation
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === CBP_altitude start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::altitude_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === CBP_elevation start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::elevation_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === CBP_altitude end of topic ===
+    Should Contain    ${output.stdout}    === CBP_elevation end of topic ===
     Comment    ======= Verify ${subSystem}_focus test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_focus
     @{words}=    Split String    ${line}
@@ -97,7 +97,7 @@ Read Subscriber
     ${status_list}=    Get Slice From List    ${full_list}    start=${status_start}    end=${status_end}
     Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}panic : 1    10
     Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    10
-    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude : 1    10
+    Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    10
     Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 1    10
     Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask_rotation : 1    10
     Should Contain X Times    ${status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    10
@@ -110,10 +110,10 @@ Read Subscriber
     ${azimuth_end}=    Get Index From List    ${full_list}    === CBP_azimuth end of topic ===
     ${azimuth_list}=    Get Slice From List    ${full_list}    start=${azimuth_start}    end=${azimuth_end}
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    10
-    ${altitude_start}=    Get Index From List    ${full_list}    === CBP_altitude start of topic ===
-    ${altitude_end}=    Get Index From List    ${full_list}    === CBP_altitude end of topic ===
-    ${altitude_list}=    Get Slice From List    ${full_list}    start=${altitude_start}    end=${altitude_end}
-    Should Contain X Times    ${altitude_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude : 1    10
+    ${elevation_start}=    Get Index From List    ${full_list}    === CBP_elevation start of topic ===
+    ${elevation_end}=    Get Index From List    ${full_list}    === CBP_elevation end of topic ===
+    ${elevation_list}=    Get Slice From List    ${full_list}    start=${elevation_start}    end=${elevation_end}
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    10
     ${focus_start}=    Get Index From List    ${full_list}    === CBP_focus start of topic ===
     ${focus_end}=    Get Index From List    ${full_list}    === CBP_focus end of topic ===
     ${focus_list}=    Get Slice From List    ${full_list}    start=${focus_start}    end=${focus_end}
