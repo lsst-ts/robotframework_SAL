@@ -28,11 +28,15 @@ function main() {
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "JAVA" "Telemetry" || exit 1
         
+    # Get the RuntimeLanguages list
+    rtlang=($(getRuntimeLanguages $subsystem))
+
     # Now generate the test suites.
-    if [ "$arg" == "MTM1M3" ]; then
-        echo "$arg is skipped for Java messaging tests."
-    else
+    if [[ "$rtlang" =~ "java" ]]; then
         createTestSuite $arg $file || exit 1
+    else
+        echo Skipping: $subsystem has no Java usage.
+        return 0
     fi
 }
 
