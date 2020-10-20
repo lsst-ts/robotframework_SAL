@@ -69,12 +69,12 @@ Read Subscriber
     Log Many    ${azimuth_list}
     Should Contain    ${azimuth_list}    === CBP_azimuth start of topic ===
     Should Contain    ${azimuth_list}    === CBP_azimuth end of topic ===
-    ${altitude_start}=    Get Index From List    ${full_list}    === CBP_altitude start of topic ===
-    ${altitude_end}=    Get Index From List    ${full_list}    === CBP_altitude end of topic ===
-    ${altitude_list}=    Get Slice From List    ${full_list}    start=${altitude_start}    end=${altitude_end + 1}
-    Log Many    ${altitude_list}
-    Should Contain    ${altitude_list}    === CBP_altitude start of topic ===
-    Should Contain    ${altitude_list}    === CBP_altitude end of topic ===
+    ${elevation_start}=    Get Index From List    ${full_list}    === CBP_elevation start of topic ===
+    ${elevation_end}=    Get Index From List    ${full_list}    === CBP_elevation end of topic ===
+    ${elevation_list}=    Get Slice From List    ${full_list}    start=${elevation_start}    end=${elevation_end + 1}
+    Log Many    ${elevation_list}
+    Should Contain    ${elevation_list}    === CBP_elevation start of topic ===
+    Should Contain    ${elevation_list}    === CBP_elevation end of topic ===
     ${focus_start}=    Get Index From List    ${full_list}    === CBP_focus start of topic ===
     ${focus_end}=    Get Index From List    ${full_list}    === CBP_focus end of topic ===
     ${focus_list}=    Get Slice From List    ${full_list}    start=${focus_start}    end=${focus_end + 1}

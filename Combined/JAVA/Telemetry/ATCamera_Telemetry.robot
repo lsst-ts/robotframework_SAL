@@ -51,6 +51,36 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATCamera all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store start of topic ===
+    ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store end of topic ===
+    ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
+    Log Many    ${daq_monitor_Store_list}
+    Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store start of topic ===
+    Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store end of topic ===
+    ${fp_Reb_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb start of topic ===
+    ${fp_Reb_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb end of topic ===
+    ${fp_Reb_list}=    Get Slice From List    ${full_list}    start=${fp_Reb_start}    end=${fp_Reb_end + 1}
+    Log Many    ${fp_Reb_list}
+    Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb start of topic ===
+    Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb end of topic ===
+    ${fp_Ccd_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd start of topic ===
+    ${fp_Ccd_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd end of topic ===
+    ${fp_Ccd_list}=    Get Slice From List    ${full_list}    start=${fp_Ccd_start}    end=${fp_Ccd_end + 1}
+    Log Many    ${fp_Ccd_list}
+    Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd start of topic ===
+    Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd end of topic ===
+    ${fp_Segment_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment start of topic ===
+    ${fp_Segment_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment end of topic ===
+    ${fp_Segment_list}=    Get Slice From List    ${full_list}    start=${fp_Segment_start}    end=${fp_Segment_end + 1}
+    Log Many    ${fp_Segment_list}
+    Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment start of topic ===
+    Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment end of topic ===
+    ${fp_RebTotalPower_start}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower start of topic ===
+    ${fp_RebTotalPower_end}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower end of topic ===
+    ${fp_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${fp_RebTotalPower_start}    end=${fp_RebTotalPower_end + 1}
+    Log Many    ${fp_RebTotalPower_list}
+    Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower start of topic ===
+    Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower end of topic ===
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
     ${wreb_list}=    Get Slice From List    ${full_list}    start=${wreb_start}    end=${wreb_end + 1}

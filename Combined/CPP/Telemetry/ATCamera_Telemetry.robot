@@ -36,6 +36,46 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_daq_monitor_Store test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_daq_monitor_Store
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_daq_monitor_Store start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::daq_monitor_Store_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_daq_monitor_Store end of topic ===
+    Comment    ======= Verify ${subSystem}_fp_Reb test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_fp_Reb
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_fp_Reb start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::fp_Reb_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_fp_Reb end of topic ===
+    Comment    ======= Verify ${subSystem}_fp_Ccd test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_fp_Ccd
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_fp_Ccd start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::fp_Ccd_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_fp_Ccd end of topic ===
+    Comment    ======= Verify ${subSystem}_fp_Segment test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_fp_Segment
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_fp_Segment start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::fp_Segment_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_fp_Segment end of topic ===
+    Comment    ======= Verify ${subSystem}_fp_RebTotalPower test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_fp_RebTotalPower
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ATCamera_fp_RebTotalPower start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::fp_RebTotalPower_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ATCamera_fp_RebTotalPower end of topic ===
     Comment    ======= Verify ${subSystem}_wreb test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_wreb
     @{words}=    Split String    ${line}
@@ -76,6 +116,86 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ATCamera subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store start of topic ===
+    ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store end of topic ===
+    ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end}
+    Should Contain X Times    ${daq_monitor_Store_list}    ${SPACE}${SPACE}${SPACE}${SPACE}capacity : 1    10
+    Should Contain X Times    ${daq_monitor_Store_list}    ${SPACE}${SPACE}${SPACE}${SPACE}freeSpace : 1    10
+    Should Contain X Times    ${daq_monitor_Store_list}    ${SPACE}${SPACE}${SPACE}${SPACE}freeFraction : 1    10
+    ${fp_Reb_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb start of topic ===
+    ${fp_Reb_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb end of topic ===
+    ${fp_Reb_list}=    Get Slice From List    ${full_list}    start=${fp_Reb_start}    end=${fp_Reb_end}
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaI : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anaV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicl_Temp0 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicl_Temp1 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicl_Temp2 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicu_Temp0 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicu_Temp1 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspicu_Temp2 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHI : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkHV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkLI : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkLV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digI : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}digV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}htrV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}htrW : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hVBiasSwitch : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oDI : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oDV : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pClkL : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pClkU : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}power : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ref05V : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ref125V : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ref15V : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ref25V : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}refN12 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}refP12 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rGL : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rGU : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rTDTemp : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sClkL : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sClkU : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp1 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp10 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp2 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp3 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp4 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp5 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp6 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp7 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp8 : 1    10
+    Should Contain X Times    ${fp_Reb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp9 : 1    10
+    ${fp_Ccd_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd start of topic ===
+    ${fp_Ccd_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd end of topic ===
+    ${fp_Ccd_list}=    Get Slice From List    ${full_list}    start=${fp_Ccd_start}    end=${fp_Ccd_end}
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gDV : 1    10
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oDV : 1    10
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oGV : 1    10
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rDV : 1    10
+    Should Contain X Times    ${fp_Ccd_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temp : 1    10
+    ${fp_Segment_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment start of topic ===
+    ${fp_Segment_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment end of topic ===
+    ${fp_Segment_list}=    Get Slice From List    ${full_list}    start=${fp_Segment_start}    end=${fp_Segment_end}
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 0    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 1    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 2    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 3    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 4    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 5    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 6    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 7    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 8    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 9    1
+    Should Contain X Times    ${fp_Segment_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${fp_RebTotalPower_start}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower start of topic ===
+    ${fp_RebTotalPower_end}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower end of topic ===
+    ${fp_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${fp_RebTotalPower_start}    end=${fp_RebTotalPower_end}
+    Should Contain X Times    ${fp_RebTotalPower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebTotalPower : 1    10
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
     ${wreb_list}=    Get Slice From List    ${full_list}    start=${wreb_start}    end=${wreb_end}

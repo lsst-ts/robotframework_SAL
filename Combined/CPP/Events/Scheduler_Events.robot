@@ -36,6 +36,22 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_detailedState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_detailedState
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event detailedState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_detailedState_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event detailedState generated =
+    Comment    ======= Verify ${subSystem}_surveyTopology test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_surveyTopology
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event surveyTopology iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_surveyTopology_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event surveyTopology generated =
     Comment    ======= Verify ${subSystem}_dependenciesVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_dependenciesVersions
     @{words}=    Split String    ${line}
@@ -68,6 +84,86 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_needFilterSwap_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event needFilterSwap generated =
+    Comment    ======= Verify ${subSystem}_schedulerConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_schedulerConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event schedulerConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_schedulerConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event schedulerConfig generated =
+    Comment    ======= Verify ${subSystem}_driverConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_driverConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event driverConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_driverConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event driverConfig generated =
+    Comment    ======= Verify ${subSystem}_obsSiteConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_obsSiteConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event obsSiteConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_obsSiteConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event obsSiteConfig generated =
+    Comment    ======= Verify ${subSystem}_telescopeConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_telescopeConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event telescopeConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_telescopeConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event telescopeConfig generated =
+    Comment    ======= Verify ${subSystem}_rotatorConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rotatorConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event rotatorConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rotatorConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event rotatorConfig generated =
+    Comment    ======= Verify ${subSystem}_domeConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_domeConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event domeConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_domeConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event domeConfig generated =
+    Comment    ======= Verify ${subSystem}_cameraConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event cameraConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event cameraConfig generated =
+    Comment    ======= Verify ${subSystem}_slewConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_slewConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event slewConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_slewConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event slewConfig generated =
+    Comment    ======= Verify ${subSystem}_opticsLoopCorrConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_opticsLoopCorrConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event opticsLoopCorrConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_opticsLoopCorrConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event opticsLoopCorrConfig generated =
+    Comment    ======= Verify ${subSystem}_parkConfig test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_parkConfig
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event parkConfig iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_parkConfig_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event parkConfig generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -165,6 +261,21 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${detailedState_start}=    Get Index From List    ${full_list}    === Event detailedState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${detailedState_start}
+    ${detailedState_end}=    Evaluate    ${end}+${1}
+    ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
+    Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
+    Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${surveyTopology_start}=    Get Index From List    ${full_list}    === Event surveyTopology received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${surveyTopology_start}
+    ${surveyTopology_end}=    Evaluate    ${end}+${1}
+    ${surveyTopology_list}=    Get Slice From List    ${full_list}    start=${surveyTopology_start}    end=${surveyTopology_end}
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numGeneralProps : 1    1
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generalPropos : RO    1
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numSeqProps : 1    1
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencePropos : RO    1
+    Should Contain X Times    ${surveyTopology_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${dependenciesVersions_start}=    Get Index From List    ${full_list}    === Event dependenciesVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${dependenciesVersions_start}
     ${dependenciesVersions_end}=    Evaluate    ${end}+${1}
@@ -231,6 +342,127 @@ Read Logger
     Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToMount : RO    1
     Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterToUnmount : RO    1
     Should Contain X Times    ${needFilterSwap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${schedulerConfig_start}=    Get Index From List    ${full_list}    === Event schedulerConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${schedulerConfig_start}
+    ${schedulerConfig_end}=    Evaluate    ${end}+${1}
+    ${schedulerConfig_list}=    Get Slice From List    ${full_list}    start=${schedulerConfig_start}    end=${schedulerConfig_end}
+    Should Contain X Times    ${schedulerConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}surveyDuration : 1    1
+    Should Contain X Times    ${schedulerConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${driverConfig_start}=    Get Index From List    ${full_list}    === Event driverConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${driverConfig_start}
+    ${driverConfig_end}=    Evaluate    ${end}+${1}
+    ${driverConfig_list}=    Get Slice From List    ${full_list}    start=${driverConfig_start}    end=${driverConfig_end}
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nightBoundary : 1    1
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}newMoonPhaseThreshold : 1    1
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupType : RO    1
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startupDatabase : RO    1
+    Should Contain X Times    ${driverConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${obsSiteConfig_start}=    Get Index From List    ${full_list}    === Event obsSiteConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${obsSiteConfig_start}
+    ${obsSiteConfig_end}=    Evaluate    ${end}+${1}
+    ${obsSiteConfig_list}=    Get Slice From List    ${full_list}    start=${obsSiteConfig_start}    end=${obsSiteConfig_end}
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}observatoryName : RO    1
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latitude : 1    1
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longitude : 1    1
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}height : 1    1
+    Should Contain X Times    ${obsSiteConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${telescopeConfig_start}=    Get Index From List    ${full_list}    === Event telescopeConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${telescopeConfig_start}
+    ${telescopeConfig_end}=    Evaluate    ${end}+${1}
+    ${telescopeConfig_list}=    Get Slice From List    ${full_list}    start=${telescopeConfig_start}    end=${telescopeConfig_end}
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeMinpos : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeMaxpos : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthMinpos : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthMaxpos : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeMaxspeed : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeAccel : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeDecel : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthMaxspeed : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthAccel : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDecel : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settleTime : 1    1
+    Should Contain X Times    ${telescopeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rotatorConfig_start}=    Get Index From List    ${full_list}    === Event rotatorConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rotatorConfig_start}
+    ${rotatorConfig_end}=    Evaluate    ${end}+${1}
+    ${rotatorConfig_list}=    Get Slice From List    ${full_list}    start=${rotatorConfig_start}    end=${rotatorConfig_end}
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionMin : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionMax : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFilterChange : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}speedMax : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accel : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decel : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}manualRotator : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followSky : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resumeAngle : 1    1
+    Should Contain X Times    ${rotatorConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${domeConfig_start}=    Get Index From List    ${full_list}    === Event domeConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${domeConfig_start}
+    ${domeConfig_end}=    Evaluate    ${end}+${1}
+    ${domeConfig_list}=    Get Slice From List    ${full_list}    start=${domeConfig_start}    end=${domeConfig_end}
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeMaxspeed : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeAccel : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeDecel : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitudeFreerange : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthMaxspeed : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthAccel : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDecel : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthFreerange : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settleTime : 1    1
+    Should Contain X Times    ${domeConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${cameraConfig_start}=    Get Index From List    ${full_list}    === Event cameraConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraConfig_start}
+    ${cameraConfig_end}=    Evaluate    ${end}+${1}
+    ${cameraConfig_list}=    Get Slice From List    ${full_list}    start=${cameraConfig_start}    end=${cameraConfig_end}
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readoutTime : 1    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterTime : 1    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMountTime : 1    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterChangeTime : 1    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterMounted : RO    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPos : RO    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterRemovable : RO    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterUnmounted : RO    1
+    Should Contain X Times    ${cameraConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${slewConfig_start}=    Get Index From List    ${full_list}    === Event slewConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${slewConfig_start}
+    ${slewConfig_end}=    Evaluate    ${end}+${1}
+    ${slewConfig_list}=    Get Slice From List    ${full_list}    start=${slewConfig_start}    end=${slewConfig_end}
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomalt : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomaz : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqDomazSettle : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelalt : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelaz : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsOpenLoop : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelOpticsClosedLoop : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelSettle : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqTelRot : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqFilter : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqExposures : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqReadout : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqAdc : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqInsOptics : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderPos : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}prereqGuiderAdq : RO    1
+    Should Contain X Times    ${slewConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${opticsLoopCorrConfig_start}=    Get Index From List    ${full_list}    === Event opticsLoopCorrConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${opticsLoopCorrConfig_start}
+    ${opticsLoopCorrConfig_end}=    Evaluate    ${end}+${1}
+    ${opticsLoopCorrConfig_list}=    Get Slice From List    ${full_list}    start=${opticsLoopCorrConfig_start}    end=${opticsLoopCorrConfig_end}
+    Should Contain X Times    ${opticsLoopCorrConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telOpticsOlSlope : 1    1
+    Should Contain X Times    ${opticsLoopCorrConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telOpticsClAltLimit : 0    1
+    Should Contain X Times    ${opticsLoopCorrConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telOpticsClDelay : 0    1
+    Should Contain X Times    ${opticsLoopCorrConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${parkConfig_start}=    Get Index From List    ${full_list}    === Event parkConfig received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${parkConfig_start}
+    ${parkConfig_end}=    Evaluate    ${end}+${1}
+    ${parkConfig_list}=    Get Slice From List    ${full_list}    start=${parkConfig_start}    end=${parkConfig_end}
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeAltitude : 1    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeAzimuth : 1    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeRotator : 1    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAltitude : 1    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}domeAzimuth : 1    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filterPosition : RO    1
+    Should Contain X Times    ${parkConfig_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}
