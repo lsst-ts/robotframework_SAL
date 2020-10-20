@@ -36,6 +36,22 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_target test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_target
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event target iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_target_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event target generated =
+    Comment    ======= Verify ${subSystem}_inPosition test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPosition
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event inPosition iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPosition_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event inPosition generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -133,6 +149,26 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
+    ${target_end}=    Evaluate    ${end}+${1}
+    ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${target_end}
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : RO    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask_rotation : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPosition_start}
+    ${inPosition_end}=    Evaluate    ${end}+${1}
+    ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${inPosition_end}
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 1    1
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask_rotation : 1    1
+    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

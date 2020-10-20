@@ -51,99 +51,219 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTCamera all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${shutter_start}=    Get Index From List    ${full_list}    === MTCamera_shutter start of topic ===
-    ${shutter_end}=    Get Index From List    ${full_list}    === MTCamera_shutter end of topic ===
-    ${shutter_list}=    Get Slice From List    ${full_list}    start=${shutter_start}    end=${shutter_end + 1}
-    Log Many    ${shutter_list}
-    Should Contain    ${shutter_list}    === MTCamera_shutter start of topic ===
-    Should Contain    ${shutter_list}    === MTCamera_shutter end of topic ===
-    ${prot_start}=    Get Index From List    ${full_list}    === MTCamera_prot start of topic ===
-    ${prot_end}=    Get Index From List    ${full_list}    === MTCamera_prot end of topic ===
-    ${prot_list}=    Get Slice From List    ${full_list}    start=${prot_start}    end=${prot_end + 1}
-    Log Many    ${prot_list}
-    Should Contain    ${prot_list}    === MTCamera_prot start of topic ===
-    Should Contain    ${prot_list}    === MTCamera_prot end of topic ===
-    ${filter_start}=    Get Index From List    ${full_list}    === MTCamera_filter start of topic ===
-    ${filter_end}=    Get Index From List    ${full_list}    === MTCamera_filter end of topic ===
-    ${filter_list}=    Get Slice From List    ${full_list}    start=${filter_start}    end=${filter_end + 1}
-    Log Many    ${filter_list}
-    Should Contain    ${filter_list}    === MTCamera_filter start of topic ===
-    Should Contain    ${filter_list}    === MTCamera_filter end of topic ===
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === MTCamera_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === MTCamera_heartbeat end of topic ===
-    ${was_start}=    Get Index From List    ${full_list}    === MTCamera_was start of topic ===
-    ${was_end}=    Get Index From List    ${full_list}    === MTCamera_was end of topic ===
-    ${was_list}=    Get Slice From List    ${full_list}    start=${was_start}    end=${was_end + 1}
-    Log Many    ${was_list}
-    Should Contain    ${was_list}    === MTCamera_was start of topic ===
-    Should Contain    ${was_list}    === MTCamera_was end of topic ===
-    ${ccs_start}=    Get Index From List    ${full_list}    === MTCamera_ccs start of topic ===
-    ${ccs_end}=    Get Index From List    ${full_list}    === MTCamera_ccs end of topic ===
-    ${ccs_list}=    Get Slice From List    ${full_list}    start=${ccs_start}    end=${ccs_end + 1}
-    Log Many    ${ccs_list}
-    Should Contain    ${ccs_list}    === MTCamera_ccs start of topic ===
-    Should Contain    ${ccs_list}    === MTCamera_ccs end of topic ===
-    ${clusterEncoder_start}=    Get Index From List    ${full_list}    === MTCamera_clusterEncoder start of topic ===
-    ${clusterEncoder_end}=    Get Index From List    ${full_list}    === MTCamera_clusterEncoder end of topic ===
-    ${clusterEncoder_list}=    Get Slice From List    ${full_list}    start=${clusterEncoder_start}    end=${clusterEncoder_end + 1}
-    Log Many    ${clusterEncoder_list}
-    Should Contain    ${clusterEncoder_list}    === MTCamera_clusterEncoder start of topic ===
-    Should Contain    ${clusterEncoder_list}    === MTCamera_clusterEncoder end of topic ===
-    ${cyro_start}=    Get Index From List    ${full_list}    === MTCamera_cyro start of topic ===
-    ${cyro_end}=    Get Index From List    ${full_list}    === MTCamera_cyro end of topic ===
-    ${cyro_list}=    Get Slice From List    ${full_list}    start=${cyro_start}    end=${cyro_end + 1}
-    Log Many    ${cyro_list}
-    Should Contain    ${cyro_list}    === MTCamera_cyro start of topic ===
-    Should Contain    ${cyro_list}    === MTCamera_cyro end of topic ===
-    ${purge_start}=    Get Index From List    ${full_list}    === MTCamera_purge start of topic ===
-    ${purge_end}=    Get Index From List    ${full_list}    === MTCamera_purge end of topic ===
-    ${purge_list}=    Get Slice From List    ${full_list}    start=${purge_start}    end=${purge_end + 1}
-    Log Many    ${purge_list}
-    Should Contain    ${purge_list}    === MTCamera_purge start of topic ===
-    Should Contain    ${purge_list}    === MTCamera_purge end of topic ===
-    ${wds_start}=    Get Index From List    ${full_list}    === MTCamera_wds start of topic ===
-    ${wds_end}=    Get Index From List    ${full_list}    === MTCamera_wds end of topic ===
-    ${wds_list}=    Get Slice From List    ${full_list}    start=${wds_start}    end=${wds_end + 1}
-    Log Many    ${wds_list}
-    Should Contain    ${wds_list}    === MTCamera_wds start of topic ===
-    Should Contain    ${wds_list}    === MTCamera_wds end of topic ===
-    ${gds_start}=    Get Index From List    ${full_list}    === MTCamera_gds start of topic ===
-    ${gds_end}=    Get Index From List    ${full_list}    === MTCamera_gds end of topic ===
-    ${gds_list}=    Get Slice From List    ${full_list}    start=${gds_start}    end=${gds_end + 1}
-    Log Many    ${gds_list}
-    Should Contain    ${gds_list}    === MTCamera_gds start of topic ===
-    Should Contain    ${gds_list}    === MTCamera_gds end of topic ===
-    ${sds_start}=    Get Index From List    ${full_list}    === MTCamera_sds start of topic ===
-    ${sds_end}=    Get Index From List    ${full_list}    === MTCamera_sds end of topic ===
-    ${sds_list}=    Get Slice From List    ${full_list}    start=${sds_start}    end=${sds_end + 1}
-    Log Many    ${sds_list}
-    Should Contain    ${sds_list}    === MTCamera_sds start of topic ===
-    Should Contain    ${sds_list}    === MTCamera_sds end of topic ===
-    ${gas_start}=    Get Index From List    ${full_list}    === MTCamera_gas start of topic ===
-    ${gas_end}=    Get Index From List    ${full_list}    === MTCamera_gas end of topic ===
-    ${gas_list}=    Get Slice From List    ${full_list}    start=${gas_start}    end=${gas_end + 1}
-    Log Many    ${gas_list}
-    Should Contain    ${gas_list}    === MTCamera_gas start of topic ===
-    Should Contain    ${gas_list}    === MTCamera_gas end of topic ===
-    ${pcms_start}=    Get Index From List    ${full_list}    === MTCamera_pcms start of topic ===
-    ${pcms_end}=    Get Index From List    ${full_list}    === MTCamera_pcms end of topic ===
-    ${pcms_list}=    Get Slice From List    ${full_list}    start=${pcms_start}    end=${pcms_end + 1}
-    Log Many    ${pcms_list}
-    Should Contain    ${pcms_list}    === MTCamera_pcms start of topic ===
-    Should Contain    ${pcms_list}    === MTCamera_pcms end of topic ===
-    ${sas_start}=    Get Index From List    ${full_list}    === MTCamera_sas start of topic ===
-    ${sas_end}=    Get Index From List    ${full_list}    === MTCamera_sas end of topic ===
-    ${sas_list}=    Get Slice From List    ${full_list}    start=${sas_start}    end=${sas_end + 1}
-    Log Many    ${sas_list}
-    Should Contain    ${sas_list}    === MTCamera_sas start of topic ===
-    Should Contain    ${sas_list}    === MTCamera_sas end of topic ===
-    ${cold_start}=    Get Index From List    ${full_list}    === MTCamera_cold start of topic ===
-    ${cold_end}=    Get Index From List    ${full_list}    === MTCamera_cold end of topic ===
-    ${cold_list}=    Get Slice From List    ${full_list}    start=${cold_start}    end=${cold_end + 1}
-    Log Many    ${cold_list}
-    Should Contain    ${cold_list}    === MTCamera_cold start of topic ===
-    Should Contain    ${cold_list}    === MTCamera_cold end of topic ===
+    ${quadbox_BFR_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR start of topic ===
+    ${quadbox_BFR_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR end of topic ===
+    ${quadbox_BFR_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_start}    end=${quadbox_BFR_end + 1}
+    Log Many    ${quadbox_BFR_list}
+    Should Contain    ${quadbox_BFR_list}    === MTCamera_quadbox_BFR start of topic ===
+    Should Contain    ${quadbox_BFR_list}    === MTCamera_quadbox_BFR end of topic ===
+    ${quadbox_PDU_5V_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V start of topic ===
+    ${quadbox_PDU_5V_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V end of topic ===
+    ${quadbox_PDU_5V_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_start}    end=${quadbox_PDU_5V_end + 1}
+    Log Many    ${quadbox_PDU_5V_list}
+    Should Contain    ${quadbox_PDU_5V_list}    === MTCamera_quadbox_PDU_5V start of topic ===
+    Should Contain    ${quadbox_PDU_5V_list}    === MTCamera_quadbox_PDU_5V end of topic ===
+    ${quadbox_PDU_24VC_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC start of topic ===
+    ${quadbox_PDU_24VC_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC end of topic ===
+    ${quadbox_PDU_24VC_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_start}    end=${quadbox_PDU_24VC_end + 1}
+    Log Many    ${quadbox_PDU_24VC_list}
+    Should Contain    ${quadbox_PDU_24VC_list}    === MTCamera_quadbox_PDU_24VC start of topic ===
+    Should Contain    ${quadbox_PDU_24VC_list}    === MTCamera_quadbox_PDU_24VC end of topic ===
+    ${quadbox_PDU_24VD_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD start of topic ===
+    ${quadbox_PDU_24VD_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD end of topic ===
+    ${quadbox_PDU_24VD_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_start}    end=${quadbox_PDU_24VD_end + 1}
+    Log Many    ${quadbox_PDU_24VD_list}
+    Should Contain    ${quadbox_PDU_24VD_list}    === MTCamera_quadbox_PDU_24VD start of topic ===
+    Should Contain    ${quadbox_PDU_24VD_list}    === MTCamera_quadbox_PDU_24VD end of topic ===
+    ${quadbox_PDU_48V_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V start of topic ===
+    ${quadbox_PDU_48V_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V end of topic ===
+    ${quadbox_PDU_48V_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_start}    end=${quadbox_PDU_48V_end + 1}
+    Log Many    ${quadbox_PDU_48V_list}
+    Should Contain    ${quadbox_PDU_48V_list}    === MTCamera_quadbox_PDU_48V start of topic ===
+    Should Contain    ${quadbox_PDU_48V_list}    === MTCamera_quadbox_PDU_48V end of topic ===
+    ${quadbox_REB_Bulk_PS_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS start of topic ===
+    ${quadbox_REB_Bulk_PS_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS end of topic ===
+    ${quadbox_REB_Bulk_PS_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_start}    end=${quadbox_REB_Bulk_PS_end + 1}
+    Log Many    ${quadbox_REB_Bulk_PS_list}
+    Should Contain    ${quadbox_REB_Bulk_PS_list}    === MTCamera_quadbox_REB_Bulk_PS start of topic ===
+    Should Contain    ${quadbox_REB_Bulk_PS_list}    === MTCamera_quadbox_REB_Bulk_PS end of topic ===
+    ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps start of topic ===
+    ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps end of topic ===
+    ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
+    Log Many    ${rebpower_Rebps_list}
+    Should Contain    ${rebpower_Rebps_list}    === MTCamera_rebpower_Rebps start of topic ===
+    Should Contain    ${rebpower_Rebps_list}    === MTCamera_rebpower_Rebps end of topic ===
+    ${rebpower_Reb_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb start of topic ===
+    ${rebpower_Reb_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb end of topic ===
+    ${rebpower_Reb_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_start}    end=${rebpower_Reb_end + 1}
+    Log Many    ${rebpower_Reb_list}
+    Should Contain    ${rebpower_Reb_list}    === MTCamera_rebpower_Reb start of topic ===
+    Should Contain    ${rebpower_Reb_list}    === MTCamera_rebpower_Reb end of topic ===
+    ${hex_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1 start of topic ===
+    ${hex_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1 end of topic ===
+    ${hex_Cold1_list}=    Get Slice From List    ${full_list}    start=${hex_Cold1_start}    end=${hex_Cold1_end + 1}
+    Log Many    ${hex_Cold1_list}
+    Should Contain    ${hex_Cold1_list}    === MTCamera_hex_Cold1 start of topic ===
+    Should Contain    ${hex_Cold1_list}    === MTCamera_hex_Cold1 end of topic ===
+    ${hex_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2 start of topic ===
+    ${hex_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2 end of topic ===
+    ${hex_Cold2_list}=    Get Slice From List    ${full_list}    start=${hex_Cold2_start}    end=${hex_Cold2_end + 1}
+    Log Many    ${hex_Cold2_list}
+    Should Contain    ${hex_Cold2_list}    === MTCamera_hex_Cold2 start of topic ===
+    Should Contain    ${hex_Cold2_list}    === MTCamera_hex_Cold2 end of topic ===
+    ${hex_Cryo5_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5 start of topic ===
+    ${hex_Cryo5_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5 end of topic ===
+    ${hex_Cryo5_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo5_start}    end=${hex_Cryo5_end + 1}
+    Log Many    ${hex_Cryo5_list}
+    Should Contain    ${hex_Cryo5_list}    === MTCamera_hex_Cryo5 start of topic ===
+    Should Contain    ${hex_Cryo5_list}    === MTCamera_hex_Cryo5 end of topic ===
+    ${hex_Cryo6_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6 start of topic ===
+    ${hex_Cryo6_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6 end of topic ===
+    ${hex_Cryo6_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo6_start}    end=${hex_Cryo6_end + 1}
+    Log Many    ${hex_Cryo6_list}
+    Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 start of topic ===
+    Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 end of topic ===
+    ${hex_Cryo4_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4 start of topic ===
+    ${hex_Cryo4_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4 end of topic ===
+    ${hex_Cryo4_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo4_start}    end=${hex_Cryo4_end + 1}
+    Log Many    ${hex_Cryo4_list}
+    Should Contain    ${hex_Cryo4_list}    === MTCamera_hex_Cryo4 start of topic ===
+    Should Contain    ${hex_Cryo4_list}    === MTCamera_hex_Cryo4 end of topic ===
+    ${hex_Cryo3_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3 start of topic ===
+    ${hex_Cryo3_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3 end of topic ===
+    ${hex_Cryo3_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo3_start}    end=${hex_Cryo3_end + 1}
+    Log Many    ${hex_Cryo3_list}
+    Should Contain    ${hex_Cryo3_list}    === MTCamera_hex_Cryo3 start of topic ===
+    Should Contain    ${hex_Cryo3_list}    === MTCamera_hex_Cryo3 end of topic ===
+    ${hex_Cryo2_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2 start of topic ===
+    ${hex_Cryo2_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2 end of topic ===
+    ${hex_Cryo2_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo2_start}    end=${hex_Cryo2_end + 1}
+    Log Many    ${hex_Cryo2_list}
+    Should Contain    ${hex_Cryo2_list}    === MTCamera_hex_Cryo2 start of topic ===
+    Should Contain    ${hex_Cryo2_list}    === MTCamera_hex_Cryo2 end of topic ===
+    ${hex_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1 start of topic ===
+    ${hex_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1 end of topic ===
+    ${hex_Cryo1_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo1_start}    end=${hex_Cryo1_end + 1}
+    Log Many    ${hex_Cryo1_list}
+    Should Contain    ${hex_Cryo1_list}    === MTCamera_hex_Cryo1 start of topic ===
+    Should Contain    ${hex_Cryo1_list}    === MTCamera_hex_Cryo1 end of topic ===
+    ${refrig_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 start of topic ===
+    ${refrig_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 end of topic ===
+    ${refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_start}    end=${refrig_Cold1_end + 1}
+    Log Many    ${refrig_Cold1_list}
+    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 start of topic ===
+    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 end of topic ===
+    ${refrig_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 start of topic ===
+    ${refrig_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 end of topic ===
+    ${refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_start}    end=${refrig_Cold2_end + 1}
+    Log Many    ${refrig_Cold2_list}
+    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 start of topic ===
+    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 end of topic ===
+    ${refrig_Cryo5_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5 start of topic ===
+    ${refrig_Cryo5_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5 end of topic ===
+    ${refrig_Cryo5_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_start}    end=${refrig_Cryo5_end + 1}
+    Log Many    ${refrig_Cryo5_list}
+    Should Contain    ${refrig_Cryo5_list}    === MTCamera_refrig_Cryo5 start of topic ===
+    Should Contain    ${refrig_Cryo5_list}    === MTCamera_refrig_Cryo5 end of topic ===
+    ${refrig_Cryo6_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6 start of topic ===
+    ${refrig_Cryo6_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6 end of topic ===
+    ${refrig_Cryo6_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_start}    end=${refrig_Cryo6_end + 1}
+    Log Many    ${refrig_Cryo6_list}
+    Should Contain    ${refrig_Cryo6_list}    === MTCamera_refrig_Cryo6 start of topic ===
+    Should Contain    ${refrig_Cryo6_list}    === MTCamera_refrig_Cryo6 end of topic ===
+    ${refrig_Cryo4_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4 start of topic ===
+    ${refrig_Cryo4_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4 end of topic ===
+    ${refrig_Cryo4_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_start}    end=${refrig_Cryo4_end + 1}
+    Log Many    ${refrig_Cryo4_list}
+    Should Contain    ${refrig_Cryo4_list}    === MTCamera_refrig_Cryo4 start of topic ===
+    Should Contain    ${refrig_Cryo4_list}    === MTCamera_refrig_Cryo4 end of topic ===
+    ${refrig_Cryo3_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3 start of topic ===
+    ${refrig_Cryo3_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3 end of topic ===
+    ${refrig_Cryo3_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_start}    end=${refrig_Cryo3_end + 1}
+    Log Many    ${refrig_Cryo3_list}
+    Should Contain    ${refrig_Cryo3_list}    === MTCamera_refrig_Cryo3 start of topic ===
+    Should Contain    ${refrig_Cryo3_list}    === MTCamera_refrig_Cryo3 end of topic ===
+    ${refrig_Cryo2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2 start of topic ===
+    ${refrig_Cryo2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2 end of topic ===
+    ${refrig_Cryo2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_start}    end=${refrig_Cryo2_end + 1}
+    Log Many    ${refrig_Cryo2_list}
+    Should Contain    ${refrig_Cryo2_list}    === MTCamera_refrig_Cryo2 start of topic ===
+    Should Contain    ${refrig_Cryo2_list}    === MTCamera_refrig_Cryo2 end of topic ===
+    ${refrig_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 start of topic ===
+    ${refrig_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 end of topic ===
+    ${refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_start}    end=${refrig_Cryo1_end + 1}
+    Log Many    ${refrig_Cryo1_list}
+    Should Contain    ${refrig_Cryo1_list}    === MTCamera_refrig_Cryo1 start of topic ===
+    Should Contain    ${refrig_Cryo1_list}    === MTCamera_refrig_Cryo1 end of topic ===
+    ${vacuum_IonPumps_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumps start of topic ===
+    ${vacuum_IonPumps_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumps end of topic ===
+    ${vacuum_IonPumps_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumps_start}    end=${vacuum_IonPumps_end + 1}
+    Log Many    ${vacuum_IonPumps_list}
+    Should Contain    ${vacuum_IonPumps_list}    === MTCamera_vacuum_IonPumps start of topic ===
+    Should Contain    ${vacuum_IonPumps_list}    === MTCamera_vacuum_IonPumps end of topic ===
+    ${vacuum_TurboPump_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPump start of topic ===
+    ${vacuum_TurboPump_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPump end of topic ===
+    ${vacuum_TurboPump_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPump_start}    end=${vacuum_TurboPump_end + 1}
+    Log Many    ${vacuum_TurboPump_list}
+    Should Contain    ${vacuum_TurboPump_list}    === MTCamera_vacuum_TurboPump start of topic ===
+    Should Contain    ${vacuum_TurboPump_list}    === MTCamera_vacuum_TurboPump end of topic ===
+    ${vacuum_CryoVacGauge_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGauge start of topic ===
+    ${vacuum_CryoVacGauge_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGauge end of topic ===
+    ${vacuum_CryoVacGauge_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVacGauge_start}    end=${vacuum_CryoVacGauge_end + 1}
+    Log Many    ${vacuum_CryoVacGauge_list}
+    Should Contain    ${vacuum_CryoVacGauge_list}    === MTCamera_vacuum_CryoVacGauge start of topic ===
+    Should Contain    ${vacuum_CryoVacGauge_list}    === MTCamera_vacuum_CryoVacGauge end of topic ===
+    ${vacuum_TurboVacGauge_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGauge start of topic ===
+    ${vacuum_TurboVacGauge_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGauge end of topic ===
+    ${vacuum_TurboVacGauge_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVacGauge_start}    end=${vacuum_TurboVacGauge_end + 1}
+    Log Many    ${vacuum_TurboVacGauge_list}
+    Should Contain    ${vacuum_TurboVacGauge_list}    === MTCamera_vacuum_TurboVacGauge start of topic ===
+    Should Contain    ${vacuum_TurboVacGauge_list}    === MTCamera_vacuum_TurboVacGauge end of topic ===
+    ${vacuum_ForelineVacGauge_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGauge start of topic ===
+    ${vacuum_ForelineVacGauge_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGauge end of topic ===
+    ${vacuum_ForelineVacGauge_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVacGauge_start}    end=${vacuum_ForelineVacGauge_end + 1}
+    Log Many    ${vacuum_ForelineVacGauge_list}
+    Should Contain    ${vacuum_ForelineVacGauge_list}    === MTCamera_vacuum_ForelineVacGauge start of topic ===
+    Should Contain    ${vacuum_ForelineVacGauge_list}    === MTCamera_vacuum_ForelineVacGauge end of topic ===
+    ${vacuum_Hex1VacGauge_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGauge start of topic ===
+    ${vacuum_Hex1VacGauge_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGauge end of topic ===
+    ${vacuum_Hex1VacGauge_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1VacGauge_start}    end=${vacuum_Hex1VacGauge_end + 1}
+    Log Many    ${vacuum_Hex1VacGauge_list}
+    Should Contain    ${vacuum_Hex1VacGauge_list}    === MTCamera_vacuum_Hex1VacGauge start of topic ===
+    Should Contain    ${vacuum_Hex1VacGauge_list}    === MTCamera_vacuum_Hex1VacGauge end of topic ===
+    ${vacuum_Hex2VacGauge_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGauge start of topic ===
+    ${vacuum_Hex2VacGauge_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGauge end of topic ===
+    ${vacuum_Hex2VacGauge_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2VacGauge_start}    end=${vacuum_Hex2VacGauge_end + 1}
+    Log Many    ${vacuum_Hex2VacGauge_list}
+    Should Contain    ${vacuum_Hex2VacGauge_list}    === MTCamera_vacuum_Hex2VacGauge start of topic ===
+    Should Contain    ${vacuum_Hex2VacGauge_list}    === MTCamera_vacuum_Hex2VacGauge end of topic ===
+    ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store start of topic ===
+    ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store end of topic ===
+    ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
+    Log Many    ${daq_monitor_Store_list}
+    Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store start of topic ===
+    Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store end of topic ===
+    ${focal_plane_Reb_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb start of topic ===
+    ${focal_plane_Reb_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb end of topic ===
+    ${focal_plane_Reb_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_start}    end=${focal_plane_Reb_end + 1}
+    Log Many    ${focal_plane_Reb_list}
+    Should Contain    ${focal_plane_Reb_list}    === MTCamera_focal_plane_Reb start of topic ===
+    Should Contain    ${focal_plane_Reb_list}    === MTCamera_focal_plane_Reb end of topic ===
+    ${focal_plane_Ccd_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd start of topic ===
+    ${focal_plane_Ccd_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd end of topic ===
+    ${focal_plane_Ccd_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_start}    end=${focal_plane_Ccd_end + 1}
+    Log Many    ${focal_plane_Ccd_list}
+    Should Contain    ${focal_plane_Ccd_list}    === MTCamera_focal_plane_Ccd start of topic ===
+    Should Contain    ${focal_plane_Ccd_list}    === MTCamera_focal_plane_Ccd end of topic ===
+    ${focal_plane_Segment_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment start of topic ===
+    ${focal_plane_Segment_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment end of topic ===
+    ${focal_plane_Segment_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_start}    end=${focal_plane_Segment_end + 1}
+    Log Many    ${focal_plane_Segment_list}
+    Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment start of topic ===
+    Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
+    ${focal_plane_RebTotalPower_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower start of topic ===
+    ${focal_plane_RebTotalPower_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower end of topic ===
+    ${focal_plane_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebTotalPower_start}    end=${focal_plane_RebTotalPower_end + 1}
+    Log Many    ${focal_plane_RebTotalPower_list}
+    Should Contain    ${focal_plane_RebTotalPower_list}    === MTCamera_focal_plane_RebTotalPower start of topic ===
+    Should Contain    ${focal_plane_RebTotalPower_list}    === MTCamera_focal_plane_RebTotalPower end of topic ===

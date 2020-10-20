@@ -196,38 +196,134 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageReadoutParameters_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event imageReadoutParameters generated =
-    Comment    ======= Verify ${subSystem}_settingsAppliedLegacy test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingsAppliedLegacy
+    Comment    ======= Verify ${subSystem}_focalPlaneSummaryInfo test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneSummaryInfo
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event settingsAppliedLegacy iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_settingsAppliedLegacy_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneSummaryInfo iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneSummaryInfo_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event settingsAppliedLegacy generated =
-    Comment    ======= Verify ${subSystem}_bonnShutterSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_bonnShutterSettingsApplied
+    Should Contain    ${output.stdout}    === Event focalPlaneSummaryInfo generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneHardwareIdSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneHardwareIdSettingsApplied
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event bonnShutterSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_bonnShutterSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneHardwareIdSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneHardwareIdSettingsApplied_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event bonnShutterSettingsApplied generated =
-    Comment    ======= Verify ${subSystem}_wrebSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_wrebSettingsApplied
+    Should Contain    ${output.stdout}    === Event focalPlaneHardwareIdSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRaftTempControlStatusSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRaftTempControlStatusSettingsApplied
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event wrebSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_wrebSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRaftTempControlStatusSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRaftTempControlStatusSettingsApplied_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event wrebSettingsApplied generated =
-    Comment    ======= Verify ${subSystem}_softwareVersionsSettingsApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_softwareVersionsSettingsApplied
+    Should Contain    ${output.stdout}    === Event focalPlaneRaftTempControlStatusSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRaftTempControlSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRaftTempControlSettingsApplied
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event softwareVersionsSettingsApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersionsSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRaftTempControlSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRaftTempControlSettingsApplied_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event softwareVersionsSettingsApplied generated =
+    Should Contain    ${output.stdout}    === Event focalPlaneRaftTempControlSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneDAQSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneDAQSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneDAQSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneDAQSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneDAQSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneSequencerConfigSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneSequencerConfigSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneSequencerConfigSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneSequencerConfigSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneSequencerConfigSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRebRaftsSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRebRaftsSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRebRaftsSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRebRaftsSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneRebRaftsSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_focalPlaneRebRaftsPowerSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_focalPlaneRebRaftsPowerSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event focalPlaneRebRaftsPowerSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_focalPlaneRebRaftsPowerSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event focalPlaneRebRaftsPowerSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_daq_monitorSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_daq_monitorSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event daq_monitorSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_daq_monitorSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event daq_monitorSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_daq_monitor_StatsSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_daq_monitor_StatsSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event daq_monitor_StatsSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_daq_monitor_StatsSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event daq_monitor_StatsSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_daq_monitor_StoreSettingsApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_daq_monitor_StoreSettingsApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event daq_monitor_StoreSettingsApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_daq_monitor_StoreSettingsApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event daq_monitor_StoreSettingsApplied generated =
+    Comment    ======= Verify ${subSystem}_shutterBladeMotionProfile test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_shutterBladeMotionProfile
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event shutterBladeMotionProfile iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_shutterBladeMotionProfile_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event shutterBladeMotionProfile generated =
+    Comment    ======= Verify ${subSystem}_imageStored test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageStored
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event imageStored iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageStored_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event imageStored generated =
+    Comment    ======= Verify ${subSystem}_fitsFilesWritten test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_fitsFilesWritten
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event fitsFilesWritten iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_fitsFilesWritten_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event fitsFilesWritten generated =
+    Comment    ======= Verify ${subSystem}_fileCommandExecution test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_fileCommandExecution
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event fileCommandExecution iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_fileCommandExecution_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event fileCommandExecution generated =
+    Comment    ======= Verify ${subSystem}_imageVisualization test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_imageVisualization
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event imageVisualization iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_imageVisualization_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event imageVisualization generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -330,14 +426,12 @@ Read Logger
     ${offlineDetailedState_end}=    Evaluate    ${end}+${1}
     ${offlineDetailedState_list}=    Get Slice From List    ${full_list}    start=${offlineDetailedState_start}    end=${offlineDetailedState_end}
     Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transitionTimestamp : 1    1
+    Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${offlineDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endReadout_start}=    Get Index From List    ${full_list}    === Event endReadout received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endReadout_start}
     ${endReadout_end}=    Evaluate    ${end}+${1}
     ${endReadout_list}=    Get Slice From List    ${full_list}    start=${endReadout_start}    end=${endReadout_end}
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -347,9 +441,9 @@ Read Logger
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcquisitionStart : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}requestedExposureTime : 1    1
-    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampEndOfReadout : 1    1
+    Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampEndOfReadout : 1    1
     Should Contain X Times    ${endReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${endTakeImage_start}=    Get Index From List    ${full_list}    === Event endTakeImage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endTakeImage_start}
@@ -361,7 +455,7 @@ Read Logger
     ${imageReadinessDetailedState_end}=    Evaluate    ${end}+${1}
     ${imageReadinessDetailedState_list}=    Get Slice From List    ${full_list}    start=${imageReadinessDetailedState_start}    end=${imageReadinessDetailedState_end}
     Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transitionTimestamp : 1    1
+    Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${imageReadinessDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${notReadyToTakeImage_start}=    Get Index From List    ${full_list}    === Event notReadyToTakeImage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${notReadyToTakeImage_start}
@@ -382,8 +476,6 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${endOfImageTelemetry_start}
     ${endOfImageTelemetry_end}=    Evaluate    ${end}+${1}
     ${endOfImageTelemetry_list}=    Get Slice From List    ${full_list}    start=${endOfImageTelemetry_start}    end=${endOfImageTelemetry_end}
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -393,7 +485,7 @@ Read Logger
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
-    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
+    Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcquisitionStart : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageTag : RO    1
     Should Contain X Times    ${endOfImageTelemetry_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampDateObs : 1    1
@@ -406,14 +498,14 @@ Read Logger
     ${calibrationDetailedState_end}=    Evaluate    ${end}+${1}
     ${calibrationDetailedState_list}=    Get Slice From List    ${full_list}    start=${calibrationDetailedState_start}    end=${calibrationDetailedState_end}
     Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transitionTimestamp : 1    1
+    Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${calibrationDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${shutterDetailedState_start}=    Get Index From List    ${full_list}    === Event shutterDetailedState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterDetailedState_start}
     ${shutterDetailedState_end}=    Evaluate    ${end}+${1}
     ${shutterDetailedState_list}=    Get Slice From List    ${full_list}    start=${shutterDetailedState_start}    end=${shutterDetailedState_end}
     Should Contain X Times    ${shutterDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${shutterDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transitionTimestamp : 1    1
+    Should Contain X Times    ${shutterDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${shutterDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${readyToTakeImage_start}=    Get Index From List    ${full_list}    === Event readyToTakeImage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${readyToTakeImage_start}
@@ -425,6 +517,7 @@ Read Logger
     ${ccsCommandState_end}=    Evaluate    ${end}+${1}
     ${ccsCommandState_list}=    Get Slice From List    ${full_list}    start=${ccsCommandState_start}    end=${ccsCommandState_end}
     Should Contain X Times    ${ccsCommandState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
+    Should Contain X Times    ${ccsCommandState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${ccsCommandState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${prepareToTakeImage_start}=    Get Index From List    ${full_list}    === Event prepareToTakeImage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${prepareToTakeImage_start}
@@ -440,8 +533,6 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startIntegration_start}
     ${startIntegration_end}=    Evaluate    ${end}+${1}
     ${startIntegration_list}=    Get Slice From List    ${full_list}    start=${startIntegration_start}    end=${startIntegration_end}
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -451,7 +542,7 @@ Read Logger
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
-    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
+    Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcquisitionStart : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
     Should Contain X Times    ${startIntegration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startShutterOpen_start}=    Get Index From List    ${full_list}    === Event startShutterOpen received =${SPACE}
@@ -464,14 +555,12 @@ Read Logger
     ${raftsDetailedState_end}=    Evaluate    ${end}+${1}
     ${raftsDetailedState_list}=    Get Slice From List    ${full_list}    start=${raftsDetailedState_start}    end=${raftsDetailedState_end}
     Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}substate : 1    1
-    Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transitionTimestamp : 1    1
+    Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampTransition : 1    1
     Should Contain X Times    ${raftsDetailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${startReadout_start}=    Get Index From List    ${full_list}    === Event startReadout received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${startReadout_start}
     ${startReadout_end}=    Evaluate    ${end}+${1}
     ${startReadout_list}=    Get Slice From List    ${full_list}    start=${startReadout_start}    end=${startReadout_end}
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageType : RO    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalKeys : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}additionalValues : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imagesInSequence : 1    1
@@ -481,9 +570,9 @@ Read Logger
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageController : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageDate : RO    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageNumber : 1    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampAcquisitionStart : 1    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampAcquisitionStart : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exposureTime : 1    1
-    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeStampStartOfReadout : 1    1
+    Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampStartOfReadout : 1    1
     Should Contain X Times    ${startReadout_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${shutterMotionProfile_start}=    Get Index From List    ${full_list}    === Event shutterMotionProfile received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterMotionProfile_start}
@@ -496,7 +585,6 @@ Read Logger
     ${imageReadoutParameters_end}=    Evaluate    ${end}+${1}
     ${imageReadoutParameters_list}=    Get Slice From List    ${full_list}    start=${imageReadoutParameters_start}    end=${imageReadoutParameters_end}
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
-    Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageIndex : 1    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLocation : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftBay : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSlot : RO    1
@@ -513,99 +601,329 @@ Read Logger
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqFolder : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqAnnotation : RO    1
     Should Contain X Times    ${imageReadoutParameters_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${settingsAppliedLegacy_start}=    Get Index From List    ${full_list}    === Event settingsAppliedLegacy received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingsAppliedLegacy_start}
-    ${settingsAppliedLegacy_end}=    Evaluate    ${end}+${1}
-    ${settingsAppliedLegacy_list}=    Get Slice From List    ${full_list}    start=${settingsAppliedLegacy_start}    end=${settingsAppliedLegacy_end}
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : RO    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebSettingsVersion : RO    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterSettingsVersion : RO    1
-    Should Contain X Times    ${settingsAppliedLegacy_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${bonnShutterSettingsApplied_start}=    Get Index From List    ${full_list}    === Event bonnShutterSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${bonnShutterSettingsApplied_start}
-    ${bonnShutterSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${bonnShutterSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonnShutterSettingsApplied_start}    end=${bonnShutterSettingsApplied_end}
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startA : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startB : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}travelDistance : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startVelocity : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acceleration : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxVelocity : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threshold : 1    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shutterVersion : RO    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : RO    1
-    Should Contain X Times    ${bonnShutterSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${wrebSettingsApplied_start}=    Get Index From List    ${full_list}    === Event wrebSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${wrebSettingsApplied_start}
-    ${wrebSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${wrebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${wrebSettingsApplied_start}    end=${wrebSettingsApplied_end}
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerKey : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerChecksum : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqVersion : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_af1 : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_clamp : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_gain : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_rc : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic0_tm : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_af1 : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_clamp : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_gain : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_rc : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aspic1_tm : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_csGate : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_csGateP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gd : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_od : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_og : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rd : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_csGate : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHigh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLow : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowP : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowSh : 1    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManufacturer : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSerialNumber : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdName : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebName : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : RO    1
-    Should Contain X Times    ${wrebSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${softwareVersionsSettingsApplied_start}=    Get Index From List    ${full_list}    === Event softwareVersionsSettingsApplied received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersionsSettingsApplied_start}
-    ${softwareVersionsSettingsApplied_end}=    Evaluate    ${end}+${1}
-    ${softwareVersionsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${softwareVersionsSettingsApplied_start}    end=${softwareVersionsSettingsApplied_end}
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mcmVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ocsbridgeVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebPowerVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pduVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bonnShutterVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vacuumVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrebFirmwareVersion : RO    1
-    Should Contain X Times    ${softwareVersionsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneSummaryInfo_start}=    Get Index From List    ${full_list}    === Event focalPlaneSummaryInfo received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneSummaryInfo_start}
+    ${focalPlaneSummaryInfo_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneSummaryInfo_list}=    Get Slice From List    ${full_list}    start=${focalPlaneSummaryInfo_start}    end=${focalPlaneSummaryInfo_end}
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLocation : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftBay : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdSlot : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebSerialNumber : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManSerNum : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManufacturer : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdType : 1    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdTempSetPoint : 1    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerKey : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerChecksum : RO    1
+    Should Contain X Times    ${focalPlaneSummaryInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneHardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneHardwareIdSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneHardwareIdSettingsApplied_start}
+    ${focalPlaneHardwareIdSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneHardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneHardwareIdSettingsApplied_start}    end=${focalPlaneHardwareIdSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebLocation : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rebLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLocation : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ccdManSerNum : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLSSTName : RO    1
+    Should Contain X Times    ${focalPlaneHardwareIdSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRaftTempControlStatusSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}
+    ${focalPlaneRaftTempControlStatusSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}    end=${focalPlaneRaftTempControlStatusSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_active : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRaftTempControlSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRaftTempControlSettingsApplied_start}
+    ${focalPlaneRaftTempControlSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlSettingsApplied_start}    end=${focalPlaneRaftTempControlSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raftLocation : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_awGain : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_basePower : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_gain : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_maxInput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_maxOutput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_minInput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_minOutput : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_rebs : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_setTemp : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_smoothTime : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_tempChans : RO    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_timeConst : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raft_TempControl_tolerance : 1    1
+    Should Contain X Times    ${focalPlaneRaftTempControlSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneDAQSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneDAQSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneDAQSettingsApplied_start}
+    ${focalPlaneDAQSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneDAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneDAQSettingsApplied_start}    end=${focalPlaneDAQSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqFolder : RO    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqPartition : RO    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emulatedDAQ : 1    1
+    Should Contain X Times    ${focalPlaneDAQSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneSequencerConfigSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneSequencerConfigSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneSequencerConfigSettingsApplied_start}
+    ${focalPlaneSequencerConfigSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneSequencerConfigSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneSequencerConfigSettingsApplied_start}    end=${focalPlaneSequencerConfigSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clearCountParameter : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clearMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}idleFlushMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}integrateMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}metaDataRegisters : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}postCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}postRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}preRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pseudoReadMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readCols2 : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readRows : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rowShiftForwardMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rowShiftReverseMain : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scanMode : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencer : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sequencerChecksums : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shiftCountParameter : RO    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transparentMode : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underCols : 1    1
+    Should Contain X Times    ${focalPlaneSequencerConfigSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRebRaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRebRaftsSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRebRaftsSettingsApplied_start}
+    ${focalPlaneRebRaftsSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRebRaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsSettingsApplied_start}    end=${focalPlaneRebRaftsSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_csGateP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_csGateP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_odP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_csGateP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_odP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowP : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disableRTDHardwareCheck : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serialNum : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${focalPlaneRebRaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === Event focalPlaneRebRaftsPowerSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${focalPlaneRebRaftsPowerSettingsApplied_start}
+    ${focalPlaneRebRaftsPowerSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${focalPlaneRebRaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsPowerSettingsApplied_start}    end=${focalPlaneRebRaftsPowerSettingsApplied_end}
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_gdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odIMax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_odZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_ogZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias0_rdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_gdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_odCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_odIMax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_odTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_odZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_ogZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias1_rdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_gdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_odCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_odIMax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_odTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_odZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_ogZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdTestVolts : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias2_rdZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkhiAmin : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkhiQmax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkliAmin : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clkliQmax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_clkhIMax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_clklIMax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkHighZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_pclkLowZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgHighZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_rgLowZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkHighZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowCal : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowTestV : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowValueErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dac_sclkLowZeroErr : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxDelta : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxStep : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minTol : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nPowerOnPub : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odiAmin : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odiQmax : 1    1
+    Should Contain X Times    ${focalPlaneRebRaftsPowerSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${daq_monitorSettingsApplied_start}=    Get Index From List    ${full_list}    === Event daq_monitorSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${daq_monitorSettingsApplied_start}
+    ${daq_monitorSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${daq_monitorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitorSettingsApplied_start}    end=${daq_monitorSettingsApplied_end}
+    Should Contain X Times    ${daq_monitorSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${daq_monitorSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqPartition : RO    1
+    Should Contain X Times    ${daq_monitorSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${daq_monitor_StatsSettingsApplied_start}=    Get Index From List    ${full_list}    === Event daq_monitor_StatsSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${daq_monitor_StatsSettingsApplied_start}
+    ${daq_monitor_StatsSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${daq_monitor_StatsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StatsSettingsApplied_start}    end=${daq_monitor_StatsSettingsApplied_end}
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enablePeriodicPublication : 1    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minDiffAlertWarning : 1    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minDiffLogWarning : 1    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumDriverChecks : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumDriverStats : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumFirmwareChecks : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumFirmwareStats : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumRdsChecks : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumRdsStats : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumRmsChecks : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sumRmsStats : RO    1
+    Should Contain X Times    ${daq_monitor_StatsSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${daq_monitor_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === Event daq_monitor_StoreSettingsApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${daq_monitor_StoreSettingsApplied_start}
+    ${daq_monitor_StoreSettingsApplied_end}=    Evaluate    ${end}+${1}
+    ${daq_monitor_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreSettingsApplied_start}    end=${daq_monitor_StoreSettingsApplied_end}
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}daqFolder : RO    1
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enableAutoPurge : 1    1
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}purgeTarget : 1    1
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}purgeThreshold : 1    1
+    Should Contain X Times    ${daq_monitor_StoreSettingsApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === Event shutterBladeMotionProfile received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${shutterBladeMotionProfile_start}
+    ${shutterBladeMotionProfile_end}=    Evaluate    ${end}+${1}
+    ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end}
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blade : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}direction : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampStart : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetDuration : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}endPosition : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualDuration : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorCount : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampHallSensor : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorID : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorPosition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hallSensorTransition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderCount : 1    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampEncoder : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderPosition : 0    1
+    Should Contain X Times    ${shutterBladeMotionProfile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageStored_start}=    Get Index From List    ${full_list}    === Event imageStored received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageStored_start}
+    ${imageStored_end}=    Evaluate    ${end}+${1}
+    ${imageStored_list}=    Get Slice From List    ${full_list}    start=${imageStored_start}    end=${imageStored_end}
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampImageStored : 1    1
+    Should Contain X Times    ${imageStored_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${fitsFilesWritten_start}=    Get Index From List    ${full_list}    === Event fitsFilesWritten received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${fitsFilesWritten_start}
+    ${fitsFilesWritten_end}=    Evaluate    ${end}+${1}
+    ${fitsFilesWritten_list}=    Get Slice From List    ${full_list}    start=${fitsFilesWritten_start}    end=${fitsFilesWritten_end}
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampFilesWritten : 1    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rootFileName : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}relativeFileNames : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fileNode : RO    1
+    Should Contain X Times    ${fitsFilesWritten_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${fileCommandExecution_start}=    Get Index From List    ${full_list}    === Event fileCommandExecution received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${fileCommandExecution_start}
+    ${fileCommandExecution_end}=    Evaluate    ${end}+${1}
+    ${fileCommandExecution_list}=    Get Slice From List    ${full_list}    start=${fileCommandExecution_start}    end=${fileCommandExecution_end}
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampCommandComplete : 1    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : RO    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rc : 1    1
+    Should Contain X Times    ${fileCommandExecution_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${imageVisualization_start}=    Get Index From List    ${full_list}    === Event imageVisualization received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${imageVisualization_start}
+    ${imageVisualization_end}=    Evaluate    ${end}+${1}
+    ${imageVisualization_list}=    Get Slice From List    ${full_list}    start=${imageVisualization_start}    end=${imageVisualization_end}
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}imageName : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampVisualizationAvailable : 1    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}thumbnail : RO    1
+    Should Contain X Times    ${imageVisualization_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

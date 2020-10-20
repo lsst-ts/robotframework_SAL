@@ -63,18 +63,18 @@ Read Subscriber
     Log Many    ${bonnShutter_list}
     Should Contain    ${bonnShutter_list}    === CCCamera_bonnShutter start of topic ===
     Should Contain    ${bonnShutter_list}    === CCCamera_bonnShutter end of topic ===
-    ${rebpower_R22_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_R22 start of topic ===
-    ${rebpower_R22_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_R22 end of topic ===
-    ${rebpower_R22_list}=    Get Slice From List    ${full_list}    start=${rebpower_R22_start}    end=${rebpower_R22_end + 1}
-    Log Many    ${rebpower_R22_list}
-    Should Contain    ${rebpower_R22_list}    === CCCamera_rebpower_R22 start of topic ===
-    Should Contain    ${rebpower_R22_list}    === CCCamera_rebpower_R22 end of topic ===
-    ${rebpower_RebPS_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebPS start of topic ===
-    ${rebpower_RebPS_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebPS end of topic ===
-    ${rebpower_RebPS_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebPS_start}    end=${rebpower_RebPS_end + 1}
-    Log Many    ${rebpower_RebPS_list}
-    Should Contain    ${rebpower_RebPS_list}    === CCCamera_rebpower_RebPS start of topic ===
-    Should Contain    ${rebpower_RebPS_list}    === CCCamera_rebpower_RebPS end of topic ===
+    ${rebpower_Reb_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb start of topic ===
+    ${rebpower_Reb_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb end of topic ===
+    ${rebpower_Reb_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_start}    end=${rebpower_Reb_end + 1}
+    Log Many    ${rebpower_Reb_list}
+    Should Contain    ${rebpower_Reb_list}    === CCCamera_rebpower_Reb start of topic ===
+    Should Contain    ${rebpower_Reb_list}    === CCCamera_rebpower_Reb end of topic ===
+    ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps start of topic ===
+    ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps end of topic ===
+    ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
+    Log Many    ${rebpower_Rebps_list}
+    Should Contain    ${rebpower_Rebps_list}    === CCCamera_rebpower_Rebps start of topic ===
+    Should Contain    ${rebpower_Rebps_list}    === CCCamera_rebpower_Rebps end of topic ===
     ${vacuum_VQMonitor_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor start of topic ===
     ${vacuum_VQMonitor_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor end of topic ===
     ${vacuum_VQMonitor_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_start}    end=${vacuum_VQMonitor_end + 1}
@@ -105,6 +105,12 @@ Read Subscriber
     Log Many    ${vacuum_Cold2_list}
     Should Contain    ${vacuum_Cold2_list}    === CCCamera_vacuum_Cold2 start of topic ===
     Should Contain    ${vacuum_Cold2_list}    === CCCamera_vacuum_Cold2 end of topic ===
+    ${vacuum_Rtds_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds start of topic ===
+    ${vacuum_Rtds_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds end of topic ===
+    ${vacuum_Rtds_list}=    Get Slice From List    ${full_list}    start=${vacuum_Rtds_start}    end=${vacuum_Rtds_end + 1}
+    Log Many    ${vacuum_Rtds_list}
+    Should Contain    ${vacuum_Rtds_list}    === CCCamera_vacuum_Rtds start of topic ===
+    Should Contain    ${vacuum_Rtds_list}    === CCCamera_vacuum_Rtds end of topic ===
     ${vacuum_Cold1_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1 start of topic ===
     ${vacuum_Cold1_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1 end of topic ===
     ${vacuum_Cold1_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold1_start}    end=${vacuum_Cold1_end + 1}
@@ -141,3 +147,33 @@ Read Subscriber
     Log Many    ${quadbox_PDU_48V_list}
     Should Contain    ${quadbox_PDU_48V_list}    === CCCamera_quadbox_PDU_48V start of topic ===
     Should Contain    ${quadbox_PDU_48V_list}    === CCCamera_quadbox_PDU_48V end of topic ===
+    ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store start of topic ===
+    ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store end of topic ===
+    ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
+    Log Many    ${daq_monitor_Store_list}
+    Should Contain    ${daq_monitor_Store_list}    === CCCamera_daq_monitor_Store start of topic ===
+    Should Contain    ${daq_monitor_Store_list}    === CCCamera_daq_monitor_Store end of topic ===
+    ${fp_Reb_start}=    Get Index From List    ${full_list}    === CCCamera_fp_Reb start of topic ===
+    ${fp_Reb_end}=    Get Index From List    ${full_list}    === CCCamera_fp_Reb end of topic ===
+    ${fp_Reb_list}=    Get Slice From List    ${full_list}    start=${fp_Reb_start}    end=${fp_Reb_end + 1}
+    Log Many    ${fp_Reb_list}
+    Should Contain    ${fp_Reb_list}    === CCCamera_fp_Reb start of topic ===
+    Should Contain    ${fp_Reb_list}    === CCCamera_fp_Reb end of topic ===
+    ${fp_Ccd_start}=    Get Index From List    ${full_list}    === CCCamera_fp_Ccd start of topic ===
+    ${fp_Ccd_end}=    Get Index From List    ${full_list}    === CCCamera_fp_Ccd end of topic ===
+    ${fp_Ccd_list}=    Get Slice From List    ${full_list}    start=${fp_Ccd_start}    end=${fp_Ccd_end + 1}
+    Log Many    ${fp_Ccd_list}
+    Should Contain    ${fp_Ccd_list}    === CCCamera_fp_Ccd start of topic ===
+    Should Contain    ${fp_Ccd_list}    === CCCamera_fp_Ccd end of topic ===
+    ${fp_Segment_start}=    Get Index From List    ${full_list}    === CCCamera_fp_Segment start of topic ===
+    ${fp_Segment_end}=    Get Index From List    ${full_list}    === CCCamera_fp_Segment end of topic ===
+    ${fp_Segment_list}=    Get Slice From List    ${full_list}    start=${fp_Segment_start}    end=${fp_Segment_end + 1}
+    Log Many    ${fp_Segment_list}
+    Should Contain    ${fp_Segment_list}    === CCCamera_fp_Segment start of topic ===
+    Should Contain    ${fp_Segment_list}    === CCCamera_fp_Segment end of topic ===
+    ${fp_RebTotalPower_start}=    Get Index From List    ${full_list}    === CCCamera_fp_RebTotalPower start of topic ===
+    ${fp_RebTotalPower_end}=    Get Index From List    ${full_list}    === CCCamera_fp_RebTotalPower end of topic ===
+    ${fp_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${fp_RebTotalPower_start}    end=${fp_RebTotalPower_end + 1}
+    Log Many    ${fp_RebTotalPower_list}
+    Should Contain    ${fp_RebTotalPower_list}    === CCCamera_fp_RebTotalPower start of topic ===
+    Should Contain    ${fp_RebTotalPower_list}    === CCCamera_fp_RebTotalPower end of topic ===
