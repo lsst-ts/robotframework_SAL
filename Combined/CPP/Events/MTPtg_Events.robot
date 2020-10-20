@@ -284,6 +284,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_timesOfLimits_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event timesOfLimits generated =
+    Comment    ======= Verify ${subSystem}_validatedTarget test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_validatedTarget
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event validatedTarget iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_validatedTarget_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event validatedTarget generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -606,6 +614,16 @@ Read Logger
     Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeUnobservable : 1    1
     Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
     Should Contain X Times    ${timesOfLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${validatedTarget_start}=    Get Index From List    ${full_list}    === Event validatedTarget received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${validatedTarget_start}
+    ${validatedTarget_end}=    Evaluate    ${end}+${1}
+    ${validatedTarget_list}=    Get Slice From List    ${full_list}    start=${validatedTarget_start}    end=${validatedTarget_end}
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}isValid : 1    1
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 1    1
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 1    1
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rot : 1    1
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}
