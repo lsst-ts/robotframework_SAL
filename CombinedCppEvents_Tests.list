@@ -52,6 +52,7 @@ Combined/CPP/Events/MTMount_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
 Combined/CPP/Events/MTVMS_Events.robot
 Combined/CPP/Events/NewMTMount_Events.robot
+Combined/CPP/Events/OCPS_Events.robot
 Combined/CPP/Events/PromptProcessing_Events.robot
 Combined/CPP/Events/Rotator_Events.robot
 Combined/CPP/Events/Scheduler_Events.robot

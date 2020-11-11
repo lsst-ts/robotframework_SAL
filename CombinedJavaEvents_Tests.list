@@ -56,6 +56,7 @@ Combined/JAVA/Events/MTPtg_Events.robot
 Combined/JAVA/Events/MTTCS_Events.robot
 Combined/JAVA/Events/MTVMS_Events.robot
 Combined/JAVA/Events/NewMTMount_Events.robot
+Combined/JAVA/Events/OCPS_Events.robot
 Combined/JAVA/Events/OCS_Events.robot
 Combined/JAVA/Events/PointingComponent_Events.robot
 Combined/JAVA/Events/PromptProcessing_Events.robot
