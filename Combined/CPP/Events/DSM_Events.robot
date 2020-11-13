@@ -36,6 +36,14 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_configuration test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configuration
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event configuration iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configuration_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event configuration generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -133,6 +141,20 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${configuration_start}=    Get Index From List    ${full_list}    === Event configuration received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${configuration_start}
+    ${configuration_end}=    Evaluate    ${end}+${1}
+    ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${configuration_end}
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dsmIndex : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampConfigStart : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionCode : RO    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionConfig : RO    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiConfigFile : RO    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraName : RO    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraFps : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataBufferSize : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataAcquisitionTime : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

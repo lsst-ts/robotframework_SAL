@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Environment_Events communications tests.
+Documentation    WeatherStation_Events communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Environment
+${subSystem}    WeatherStation
 ${component}    all
 ${timeout}    180s
 

@@ -57,9 +57,3 @@ Read Subscriber
     Log Many    ${domeSeeing_list}
     Should Contain    ${domeSeeing_list}    === DSM_domeSeeing start of topic ===
     Should Contain    ${domeSeeing_list}    === DSM_domeSeeing end of topic ===
-    ${configuration_start}=    Get Index From List    ${full_list}    === DSM_configuration start of topic ===
-    ${configuration_end}=    Get Index From List    ${full_list}    === DSM_configuration end of topic ===
-    ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${configuration_end + 1}
-    Log Many    ${configuration_list}
-    Should Contain    ${configuration_list}    === DSM_configuration start of topic ===
-    Should Contain    ${configuration_list}    === DSM_configuration end of topic ===

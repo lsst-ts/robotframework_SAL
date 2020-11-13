@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod_Events communications tests.
+Documentation    MTHexapod_Events communications tests.
 Force Tags    messaging    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Hexapod
+${subSystem}    MTHexapod
 ${component}    all
 ${timeout}    30s
 
@@ -33,7 +33,7 @@ Start Sender
     Comment    Sender program waiting for Logger program to be Ready.
     ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
     FOR    ${i}    IN RANGE    30
-        Exit For Loop If     'Hexapod all loggers ready' in $loggerOutput
+        Exit For Loop If     'MTHexapod all loggers ready' in $loggerOutput
         ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
         Sleep    3s
     END

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator_Telemetry communications tests.
+Documentation    MTHexapod_Telemetry communications tests.
 Force Tags    messaging    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Rotator
+${subSystem}    MTHexapod
 ${component}    all
 ${timeout}    400s
 
@@ -49,29 +49,23 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== Rotator all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== MTHexapod all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${Application_start}=    Get Index From List    ${full_list}    === Rotator_Application start of topic ===
-    ${Application_end}=    Get Index From List    ${full_list}    === Rotator_Application end of topic ===
-    ${Application_list}=    Get Slice From List    ${full_list}    start=${Application_start}    end=${Application_end + 1}
-    Log Many    ${Application_list}
-    Should Contain    ${Application_list}    === Rotator_Application start of topic ===
-    Should Contain    ${Application_list}    === Rotator_Application end of topic ===
-    ${rotation_start}=    Get Index From List    ${full_list}    === Rotator_rotation start of topic ===
-    ${rotation_end}=    Get Index From List    ${full_list}    === Rotator_rotation end of topic ===
-    ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end + 1}
-    Log Many    ${rotation_list}
-    Should Contain    ${rotation_list}    === Rotator_rotation start of topic ===
-    Should Contain    ${rotation_list}    === Rotator_rotation end of topic ===
-    ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
-    ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
+    ${actuators_start}=    Get Index From List    ${full_list}    === MTHexapod_actuators start of topic ===
+    ${actuators_end}=    Get Index From List    ${full_list}    === MTHexapod_actuators end of topic ===
+    ${actuators_list}=    Get Slice From List    ${full_list}    start=${actuators_start}    end=${actuators_end + 1}
+    Log Many    ${actuators_list}
+    Should Contain    ${actuators_list}    === MTHexapod_actuators start of topic ===
+    Should Contain    ${actuators_list}    === MTHexapod_actuators end of topic ===
+    ${application_start}=    Get Index From List    ${full_list}    === MTHexapod_application start of topic ===
+    ${application_end}=    Get Index From List    ${full_list}    === MTHexapod_application end of topic ===
+    ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end + 1}
+    Log Many    ${application_list}
+    Should Contain    ${application_list}    === MTHexapod_application start of topic ===
+    Should Contain    ${application_list}    === MTHexapod_application end of topic ===
+    ${electrical_start}=    Get Index From List    ${full_list}    === MTHexapod_electrical start of topic ===
+    ${electrical_end}=    Get Index From List    ${full_list}    === MTHexapod_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end + 1}
     Log Many    ${electrical_list}
-    Should Contain    ${electrical_list}    === Rotator_electrical start of topic ===
-    Should Contain    ${electrical_list}    === Rotator_electrical end of topic ===
-    ${motors_start}=    Get Index From List    ${full_list}    === Rotator_motors start of topic ===
-    ${motors_end}=    Get Index From List    ${full_list}    === Rotator_motors end of topic ===
-    ${motors_list}=    Get Slice From List    ${full_list}    start=${motors_start}    end=${motors_end + 1}
-    Log Many    ${motors_list}
-    Should Contain    ${motors_list}    === Rotator_motors start of topic ===
-    Should Contain    ${motors_list}    === Rotator_motors end of topic ===
+    Should Contain    ${electrical_list}    === MTHexapod_electrical start of topic ===
+    Should Contain    ${electrical_list}    === MTHexapod_electrical end of topic ===

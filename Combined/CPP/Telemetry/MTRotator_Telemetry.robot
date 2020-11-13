@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Rotator Telemetry communications tests.
+Documentation    MTRotator Telemetry communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Rotator
+${subSystem}    MTRotator
 ${component}    all
 ${timeout}    15s
 
@@ -29,61 +29,61 @@ Start Subscriber
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
     ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
-    Should Contain    ${output}    ===== Rotator subscribers ready =====
+    Should Contain    ${output}    ===== MTRotator subscribers ready =====
 
 Start Publisher
     [Tags]    functional
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_Application test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_Application
+    Comment    ======= Verify ${subSystem}_application test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_application
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Rotator_Application start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::Application_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTRotator_application start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::application_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Rotator_Application end of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_application end of topic ===
     Comment    ======= Verify ${subSystem}_rotation test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rotation
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Rotator_rotation start of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_rotation start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rotation_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Rotator_rotation end of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_rotation end of topic ===
     Comment    ======= Verify ${subSystem}_electrical test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_electrical
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Rotator_electrical start of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_electrical start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::electrical_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Rotator_electrical end of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_electrical end of topic ===
     Comment    ======= Verify ${subSystem}_motors test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_motors
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Rotator_motors start of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_motors start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::motors_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Rotator_motors end of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_motors end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== Rotator subscribers ready =====
+    Should Contain    ${output.stdout}    ===== MTRotator subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${Application_start}=    Get Index From List    ${full_list}    === Rotator_Application start of topic ===
-    ${Application_end}=    Get Index From List    ${full_list}    === Rotator_Application end of topic ===
-    ${Application_list}=    Get Slice From List    ${full_list}    start=${Application_start}    end=${Application_end}
-    Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Demand : 1    10
-    Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Position : 1    10
-    Should Contain X Times    ${Application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}Error : 1    10
-    ${rotation_start}=    Get Index From List    ${full_list}    === Rotator_rotation start of topic ===
-    ${rotation_end}=    Get Index From List    ${full_list}    === Rotator_rotation end of topic ===
+    ${application_start}=    Get Index From List    ${full_list}    === MTRotator_application start of topic ===
+    ${application_end}=    Get Index From List    ${full_list}    === MTRotator_application end of topic ===
+    ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end}
+    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demand : 1    10
+    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    10
+    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 1    10
+    ${rotation_start}=    Get Index From List    ${full_list}    === MTRotator_rotation start of topic ===
+    ${rotation_end}=    Get Index From List    ${full_list}    === MTRotator_rotation end of topic ===
     ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end}
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
@@ -93,8 +93,8 @@ Read Subscriber
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityA : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityB : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${electrical_start}=    Get Index From List    ${full_list}    === Rotator_electrical start of topic ===
-    ${electrical_end}=    Get Index From List    ${full_list}    === Rotator_electrical end of topic ===
+    ${electrical_start}=    Get Index From List    ${full_list}    === MTRotator_electrical start of topic ===
+    ${electrical_end}=    Get Index From List    ${full_list}    === MTRotator_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end}
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyStatusWordDrive : 0    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyStatusWordDrive : 1    1
@@ -116,8 +116,8 @@ Read Subscriber
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 7    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 8    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 9    1
-    ${motors_start}=    Get Index From List    ${full_list}    === Rotator_motors start of topic ===
-    ${motors_end}=    Get Index From List    ${full_list}    === Rotator_motors end of topic ===
+    ${motors_start}=    Get Index From List    ${full_list}    === MTRotator_motors start of topic ===
+    ${motors_end}=    Get Index From List    ${full_list}    === MTRotator_motors end of topic ===
     ${motors_list}=    Get Slice From List    ${full_list}    start=${motors_start}    end=${motors_end}
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 0    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 1    1

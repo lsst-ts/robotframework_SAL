@@ -109,11 +109,11 @@ CPP/Commands/Dome_Park.robot
 CPP/Commands/Dome_SetLouvers.robot
 CPP/Commands/Dome_StopShutter.robot
 CPP/Commands/EEC_Disable.robot
+CPP/Commands/EEC_Enable.robot
 CPP/Commands/EEC_ExitControl.robot
 CPP/Commands/EEC_Standby.robot
 CPP/Commands/EEC_Start.robot
 CPP/Commands/EEC_daytimemode.robot
-CPP/Commands/EEC_enable.robot
 CPP/Commands/EEC_engineeringmode.robot
 CPP/Commands/EEC_nighttimemode.robot
 CPP/Commands/EEC_operatormode.robot
