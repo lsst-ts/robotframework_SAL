@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Dome_Telemetry communications tests.
+Documentation    MTDome_Telemetry communications tests.
 Force Tags    messaging    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Dome
+${subSystem}    MTDome
 ${component}    all
 ${timeout}    400s
 
@@ -49,41 +49,41 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== Dome all subscribers ready =====
+    Should Contain    ${output.stdout}    ===== MTDome all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${azimuth_start}=    Get Index From List    ${full_list}    === Dome_azimuth start of topic ===
-    ${azimuth_end}=    Get Index From List    ${full_list}    === Dome_azimuth end of topic ===
+    ${azimuth_start}=    Get Index From List    ${full_list}    === MTDome_azimuth start of topic ===
+    ${azimuth_end}=    Get Index From List    ${full_list}    === MTDome_azimuth end of topic ===
     ${azimuth_list}=    Get Slice From List    ${full_list}    start=${azimuth_start}    end=${azimuth_end + 1}
     Log Many    ${azimuth_list}
-    Should Contain    ${azimuth_list}    === Dome_azimuth start of topic ===
-    Should Contain    ${azimuth_list}    === Dome_azimuth end of topic ===
-    ${lightWindScreen_start}=    Get Index From List    ${full_list}    === Dome_lightWindScreen start of topic ===
-    ${lightWindScreen_end}=    Get Index From List    ${full_list}    === Dome_lightWindScreen end of topic ===
+    Should Contain    ${azimuth_list}    === MTDome_azimuth start of topic ===
+    Should Contain    ${azimuth_list}    === MTDome_azimuth end of topic ===
+    ${lightWindScreen_start}=    Get Index From List    ${full_list}    === MTDome_lightWindScreen start of topic ===
+    ${lightWindScreen_end}=    Get Index From List    ${full_list}    === MTDome_lightWindScreen end of topic ===
     ${lightWindScreen_list}=    Get Slice From List    ${full_list}    start=${lightWindScreen_start}    end=${lightWindScreen_end + 1}
     Log Many    ${lightWindScreen_list}
-    Should Contain    ${lightWindScreen_list}    === Dome_lightWindScreen start of topic ===
-    Should Contain    ${lightWindScreen_list}    === Dome_lightWindScreen end of topic ===
-    ${apertureShutter_start}=    Get Index From List    ${full_list}    === Dome_apertureShutter start of topic ===
-    ${apertureShutter_end}=    Get Index From List    ${full_list}    === Dome_apertureShutter end of topic ===
+    Should Contain    ${lightWindScreen_list}    === MTDome_lightWindScreen start of topic ===
+    Should Contain    ${lightWindScreen_list}    === MTDome_lightWindScreen end of topic ===
+    ${apertureShutter_start}=    Get Index From List    ${full_list}    === MTDome_apertureShutter start of topic ===
+    ${apertureShutter_end}=    Get Index From List    ${full_list}    === MTDome_apertureShutter end of topic ===
     ${apertureShutter_list}=    Get Slice From List    ${full_list}    start=${apertureShutter_start}    end=${apertureShutter_end + 1}
     Log Many    ${apertureShutter_list}
-    Should Contain    ${apertureShutter_list}    === Dome_apertureShutter start of topic ===
-    Should Contain    ${apertureShutter_list}    === Dome_apertureShutter end of topic ===
-    ${louvers_start}=    Get Index From List    ${full_list}    === Dome_louvers start of topic ===
-    ${louvers_end}=    Get Index From List    ${full_list}    === Dome_louvers end of topic ===
+    Should Contain    ${apertureShutter_list}    === MTDome_apertureShutter start of topic ===
+    Should Contain    ${apertureShutter_list}    === MTDome_apertureShutter end of topic ===
+    ${louvers_start}=    Get Index From List    ${full_list}    === MTDome_louvers start of topic ===
+    ${louvers_end}=    Get Index From List    ${full_list}    === MTDome_louvers end of topic ===
     ${louvers_list}=    Get Slice From List    ${full_list}    start=${louvers_start}    end=${louvers_end + 1}
     Log Many    ${louvers_list}
-    Should Contain    ${louvers_list}    === Dome_louvers start of topic ===
-    Should Contain    ${louvers_list}    === Dome_louvers end of topic ===
-    ${interlocks_start}=    Get Index From List    ${full_list}    === Dome_interlocks start of topic ===
-    ${interlocks_end}=    Get Index From List    ${full_list}    === Dome_interlocks end of topic ===
+    Should Contain    ${louvers_list}    === MTDome_louvers start of topic ===
+    Should Contain    ${louvers_list}    === MTDome_louvers end of topic ===
+    ${interlocks_start}=    Get Index From List    ${full_list}    === MTDome_interlocks start of topic ===
+    ${interlocks_end}=    Get Index From List    ${full_list}    === MTDome_interlocks end of topic ===
     ${interlocks_list}=    Get Slice From List    ${full_list}    start=${interlocks_start}    end=${interlocks_end + 1}
     Log Many    ${interlocks_list}
-    Should Contain    ${interlocks_list}    === Dome_interlocks start of topic ===
-    Should Contain    ${interlocks_list}    === Dome_interlocks end of topic ===
-    ${thermal_start}=    Get Index From List    ${full_list}    === Dome_thermal start of topic ===
-    ${thermal_end}=    Get Index From List    ${full_list}    === Dome_thermal end of topic ===
+    Should Contain    ${interlocks_list}    === MTDome_interlocks start of topic ===
+    Should Contain    ${interlocks_list}    === MTDome_interlocks end of topic ===
+    ${thermal_start}=    Get Index From List    ${full_list}    === MTDome_thermal start of topic ===
+    ${thermal_end}=    Get Index From List    ${full_list}    === MTDome_thermal end of topic ===
     ${thermal_list}=    Get Slice From List    ${full_list}    start=${thermal_start}    end=${thermal_end + 1}
     Log Many    ${thermal_list}
-    Should Contain    ${thermal_list}    === Dome_thermal start of topic ===
-    Should Contain    ${thermal_list}    === Dome_thermal end of topic ===
+    Should Contain    ${thermal_list}    === MTDome_thermal start of topic ===
+    Should Contain    ${thermal_list}    === MTDome_thermal end of topic ===

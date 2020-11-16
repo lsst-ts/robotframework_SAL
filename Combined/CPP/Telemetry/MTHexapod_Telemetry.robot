@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Hexapod Telemetry communications tests.
+Documentation    MTHexapod Telemetry communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
@@ -10,7 +10,7 @@ Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Hexapod
+${subSystem}    MTHexapod
 ${component}    all
 ${timeout}    15s
 
@@ -29,7 +29,7 @@ Start Subscriber
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
     ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
-    Should Contain    ${output}    ===== Hexapod subscribers ready =====
+    Should Contain    ${output}    ===== MTHexapod subscribers ready =====
 
 Start Publisher
     [Tags]    functional
@@ -40,36 +40,36 @@ Start Publisher
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_actuators
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Hexapod_actuators start of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_actuators start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::actuators_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Hexapod_actuators end of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_actuators end of topic ===
     Comment    ======= Verify ${subSystem}_application test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_application
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Hexapod_application start of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_application start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::application_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Hexapod_application end of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_application end of topic ===
     Comment    ======= Verify ${subSystem}_electrical test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_electrical
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === Hexapod_electrical start of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_electrical start of topic ===
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::electrical_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Hexapod_electrical end of topic ===
+    Should Contain    ${output.stdout}    === MTHexapod_electrical end of topic ===
 
 Read Subscriber
     [Tags]    functional
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    ===== Hexapod subscribers ready =====
+    Should Contain    ${output.stdout}    ===== MTHexapod subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${actuators_start}=    Get Index From List    ${full_list}    === Hexapod_actuators start of topic ===
-    ${actuators_end}=    Get Index From List    ${full_list}    === Hexapod_actuators end of topic ===
+    ${actuators_start}=    Get Index From List    ${full_list}    === MTHexapod_actuators start of topic ===
+    ${actuators_end}=    Get Index From List    ${full_list}    === MTHexapod_actuators end of topic ===
     ${actuators_list}=    Get Slice From List    ${full_list}    start=${actuators_start}    end=${actuators_end}
     Should Contain X Times    ${actuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 0    1
     Should Contain X Times    ${actuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 1    1
@@ -91,8 +91,8 @@ Read Subscriber
     Should Contain X Times    ${actuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 7    1
     Should Contain X Times    ${actuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 8    1
     Should Contain X Times    ${actuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 9    1
-    ${application_start}=    Get Index From List    ${full_list}    === Hexapod_application start of topic ===
-    ${application_end}=    Get Index From List    ${full_list}    === Hexapod_application end of topic ===
+    ${application_start}=    Get Index From List    ${full_list}    === MTHexapod_application start of topic ===
+    ${application_end}=    Get Index From List    ${full_list}    === MTHexapod_application end of topic ===
     ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end}
     Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demand : 0    1
     Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demand : 1    1
@@ -124,8 +124,8 @@ Read Subscriber
     Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 7    1
     Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 8    1
     Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 9    1
-    ${electrical_start}=    Get Index From List    ${full_list}    === Hexapod_electrical start of topic ===
-    ${electrical_end}=    Get Index From List    ${full_list}    === Hexapod_electrical end of topic ===
+    ${electrical_start}=    Get Index From List    ${full_list}    === MTHexapod_electrical start of topic ===
+    ${electrical_end}=    Get Index From List    ${full_list}    === MTHexapod_electrical end of topic ===
     ${electrical_list}=    Get Slice From List    ${full_list}    start=${electrical_start}    end=${electrical_end}
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyStatusWordDrive : 0    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyStatusWordDrive : 1    1

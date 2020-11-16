@@ -44,14 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::domeSeeing_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === DSM_domeSeeing end of topic ===
-    Comment    ======= Verify ${subSystem}_configuration test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_configuration
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === DSM_configuration start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::configuration_${revcode} writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === DSM_configuration end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -74,15 +66,3 @@ Read Subscriber
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux : 1    10
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxADC : 1    10
     Should Contain X Times    ${domeSeeing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fwhm : 1    10
-    ${configuration_start}=    Get Index From List    ${full_list}    === DSM_configuration start of topic ===
-    ${configuration_end}=    Get Index From List    ${full_list}    === DSM_configuration end of topic ===
-    ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${configuration_end}
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dsmIndex : 1    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestampConfigStart : 1    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionCode : RO    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiVersionConfig : RO    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uiConfigFile : RO    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraName : RO    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cameraFps : 1    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataBufferSize : 1    10
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataAcquisitionTime : 1    10

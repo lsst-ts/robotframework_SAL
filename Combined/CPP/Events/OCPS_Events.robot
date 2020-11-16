@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Environment_Events communications tests.
+Documentation    OCPS_Events communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Environment
+${subSystem}    OCPS
 ${component}    all
 ${timeout}    180s
 
@@ -36,6 +36,14 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_job_result test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_job_result
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event job_result iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_job_result_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event job_result generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -133,6 +141,14 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${job_result_start}=    Get Index From List    ${full_list}    === Event job_result received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${job_result_start}
+    ${job_result_end}=    Evaluate    ${end}+${1}
+    ${job_result_list}=    Get Slice From List    ${full_list}    start=${job_result_start}    end=${job_result_end}
+    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}job_id : RO    1
+    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exit_code : 1    1
+    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result : RO    1
+    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}
