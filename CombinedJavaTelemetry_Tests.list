@@ -4,42 +4,6 @@
 --output CombinedJavaTelemetry
 
 # List of test suites
-Combined/JAVA/Telemetry/ATAOS_Telemetry.robot
-Combined/JAVA/Telemetry/ATBuilding_Telemetry.robot
 Combined/JAVA/Telemetry/ATCamera_Telemetry.robot
-Combined/JAVA/Telemetry/ATDome_Telemetry.robot
-Combined/JAVA/Telemetry/ATHexapod_Telemetry.robot
-Combined/JAVA/Telemetry/ATMCS_Telemetry.robot
-Combined/JAVA/Telemetry/ATMonochromator_Telemetry.robot
-Combined/JAVA/Telemetry/ATPneumatics_Telemetry.robot
-Combined/JAVA/Telemetry/ATPtg_Telemetry.robot
-Combined/JAVA/Telemetry/ATSpectrograph_Telemetry.robot
-Combined/JAVA/Telemetry/ATWhiteLight_Telemetry.robot
-Combined/JAVA/Telemetry/AdamSensors_Telemetry.robot
-Combined/JAVA/Telemetry/CBP_Telemetry.robot
 Combined/JAVA/Telemetry/CCCamera_Telemetry.robot
-Combined/JAVA/Telemetry/CatchupArchiver_Telemetry.robot
-Combined/JAVA/Telemetry/DIMM_Telemetry.robot
-Combined/JAVA/Telemetry/DSM_Telemetry.robot
-Combined/JAVA/Telemetry/EAS_Telemetry.robot
-Combined/JAVA/Telemetry/FiberSpectrograph_Telemetry.robot
-Combined/JAVA/Telemetry/GenericCamera_Telemetry.robot
-Combined/JAVA/Telemetry/HVAC_Telemetry.robot
-Combined/JAVA/Telemetry/IOTA_Telemetry.robot
-Combined/JAVA/Telemetry/LinearStage_Telemetry.robot
-Combined/JAVA/Telemetry/MTAOS_Telemetry.robot
 Combined/JAVA/Telemetry/MTCamera_Telemetry.robot
-Combined/JAVA/Telemetry/MTDome_Telemetry.robot
-Combined/JAVA/Telemetry/MTHexapod_Telemetry.robot
-Combined/JAVA/Telemetry/MTM1M3TS_Telemetry.robot
-Combined/JAVA/Telemetry/MTM2_Telemetry.robot
-Combined/JAVA/Telemetry/MTMount_Telemetry.robot
-Combined/JAVA/Telemetry/MTPtg_Telemetry.robot
-Combined/JAVA/Telemetry/MTRotator_Telemetry.robot
-Combined/JAVA/Telemetry/MTVMS_Telemetry.robot
-Combined/JAVA/Telemetry/PromptProcessing_Telemetry.robot
-Combined/JAVA/Telemetry/Scheduler_Telemetry.robot
-Combined/JAVA/Telemetry/SummitFacility_Telemetry.robot
-Combined/JAVA/Telemetry/Test_Telemetry.robot
-Combined/JAVA/Telemetry/TunableLaser_Telemetry.robot
-Combined/JAVA/Telemetry/WeatherStation_Telemetry.robot

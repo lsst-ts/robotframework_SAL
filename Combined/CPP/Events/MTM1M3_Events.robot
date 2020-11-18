@@ -300,94 +300,94 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceActuatorWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceActuatorWarning generated =
-    Comment    ======= Verify ${subSystem}_preclippedStaticForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedStaticForces
+    Comment    ======= Verify ${subSystem}_rejectedStaticForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedStaticForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedStaticForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedStaticForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedStaticForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedStaticForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedStaticForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedElevationForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedElevationForces
+    Should Contain    ${output.stdout}    === Event rejectedStaticForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedElevationForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedElevationForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedElevationForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedElevationForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedElevationForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedElevationForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedElevationForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedAzimuthForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedAzimuthForces
+    Should Contain    ${output.stdout}    === Event rejectedElevationForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedAzimuthForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedAzimuthForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedAzimuthForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedAzimuthForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedAzimuthForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedAzimuthForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedAzimuthForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedThermalForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedThermalForces
+    Should Contain    ${output.stdout}    === Event rejectedAzimuthForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedThermalForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedThermalForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedThermalForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedThermalForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedThermalForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedThermalForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedThermalForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedActiveOpticForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedActiveOpticForces
+    Should Contain    ${output.stdout}    === Event rejectedThermalForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedActiveOpticForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedActiveOpticForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedActiveOpticForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedActiveOpticForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedActiveOpticForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedActiveOpticForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedActiveOpticForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedAberrationForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedAberrationForces
+    Should Contain    ${output.stdout}    === Event rejectedActiveOpticForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedAberrationForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedAberrationForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedAberrationForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedAberrationForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedAberrationForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedAberrationForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedAberrationForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedBalanceForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedBalanceForces
+    Should Contain    ${output.stdout}    === Event rejectedAberrationForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedBalanceForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedBalanceForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedBalanceForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedBalanceForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedBalanceForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedBalanceForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedBalanceForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedVelocityForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedVelocityForces
+    Should Contain    ${output.stdout}    === Event rejectedBalanceForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedVelocityForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedVelocityForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedVelocityForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedVelocityForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedVelocityForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedVelocityForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedVelocityForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedAccelerationForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedAccelerationForces
+    Should Contain    ${output.stdout}    === Event rejectedVelocityForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedAccelerationForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedAccelerationForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedAccelerationForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedAccelerationForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedAccelerationForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedAccelerationForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedAccelerationForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedOffsetForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedOffsetForces
+    Should Contain    ${output.stdout}    === Event rejectedAccelerationForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedOffsetForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedOffsetForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedOffsetForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedOffsetForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedOffsetForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedOffsetForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedOffsetForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedForces
+    Should Contain    ${output.stdout}    === Event rejectedOffsetForces generated =
+    Comment    ======= Verify ${subSystem}_rejectedForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedForces generated =
+    Should Contain    ${output.stdout}    === Event rejectedForces generated =
     Comment    ======= Verify ${subSystem}_appliedElevationForces test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_appliedElevationForces
     @{words}=    Split String    ${line}
@@ -436,14 +436,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_appliedForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event appliedForces generated =
-    Comment    ======= Verify ${subSystem}_preclippedCylinderForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_preclippedCylinderForces
+    Comment    ======= Verify ${subSystem}_rejectedCylinderForces test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rejectedCylinderForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event preclippedCylinderForces iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_preclippedCylinderForces_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event rejectedCylinderForces iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rejectedCylinderForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event preclippedCylinderForces generated =
+    Should Contain    ${output.stdout}    === Event rejectedCylinderForces generated =
     Comment    ======= Verify ${subSystem}_appliedCylinderForces test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_appliedCylinderForces
     @{words}=    Split String    ${line}
@@ -1263,170 +1263,170 @@ Read Logger
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyBroadcastCounterWarning : 1    1
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}broadcastCounterWarning : 0    1
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedStaticForces_start}=    Get Index From List    ${full_list}    === Event preclippedStaticForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedStaticForces_start}
-    ${preclippedStaticForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedStaticForces_list}=    Get Slice From List    ${full_list}    start=${preclippedStaticForces_start}    end=${preclippedStaticForces_end}
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedElevationForces_start}=    Get Index From List    ${full_list}    === Event preclippedElevationForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedElevationForces_start}
-    ${preclippedElevationForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedElevationForces_list}=    Get Slice From List    ${full_list}    start=${preclippedElevationForces_start}    end=${preclippedElevationForces_end}
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedAzimuthForces_start}=    Get Index From List    ${full_list}    === Event preclippedAzimuthForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedAzimuthForces_start}
-    ${preclippedAzimuthForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedAzimuthForces_list}=    Get Slice From List    ${full_list}    start=${preclippedAzimuthForces_start}    end=${preclippedAzimuthForces_end}
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedThermalForces_start}=    Get Index From List    ${full_list}    === Event preclippedThermalForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedThermalForces_start}
-    ${preclippedThermalForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedThermalForces_list}=    Get Slice From List    ${full_list}    start=${preclippedThermalForces_start}    end=${preclippedThermalForces_end}
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedActiveOpticForces_start}=    Get Index From List    ${full_list}    === Event preclippedActiveOpticForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedActiveOpticForces_start}
-    ${preclippedActiveOpticForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedActiveOpticForces_list}=    Get Slice From List    ${full_list}    start=${preclippedActiveOpticForces_start}    end=${preclippedActiveOpticForces_end}
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedAberrationForces_start}=    Get Index From List    ${full_list}    === Event preclippedAberrationForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedAberrationForces_start}
-    ${preclippedAberrationForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedAberrationForces_list}=    Get Slice From List    ${full_list}    start=${preclippedAberrationForces_start}    end=${preclippedAberrationForces_end}
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedBalanceForces_start}=    Get Index From List    ${full_list}    === Event preclippedBalanceForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedBalanceForces_start}
-    ${preclippedBalanceForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedBalanceForces_list}=    Get Slice From List    ${full_list}    start=${preclippedBalanceForces_start}    end=${preclippedBalanceForces_end}
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedVelocityForces_start}=    Get Index From List    ${full_list}    === Event preclippedVelocityForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedVelocityForces_start}
-    ${preclippedVelocityForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedVelocityForces_list}=    Get Slice From List    ${full_list}    start=${preclippedVelocityForces_start}    end=${preclippedVelocityForces_end}
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedAccelerationForces_start}=    Get Index From List    ${full_list}    === Event preclippedAccelerationForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedAccelerationForces_start}
-    ${preclippedAccelerationForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedAccelerationForces_list}=    Get Slice From List    ${full_list}    start=${preclippedAccelerationForces_start}    end=${preclippedAccelerationForces_end}
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedOffsetForces_start}=    Get Index From List    ${full_list}    === Event preclippedOffsetForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedOffsetForces_start}
-    ${preclippedOffsetForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedOffsetForces_list}=    Get Slice From List    ${full_list}    start=${preclippedOffsetForces_start}    end=${preclippedOffsetForces_end}
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedForces_start}=    Get Index From List    ${full_list}    === Event preclippedForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedForces_start}
-    ${preclippedForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedForces_list}=    Get Slice From List    ${full_list}    start=${preclippedForces_start}    end=${preclippedForces_end}
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
-    Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedStaticForces_start}=    Get Index From List    ${full_list}    === Event rejectedStaticForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedStaticForces_start}
+    ${rejectedStaticForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedStaticForces_list}=    Get Slice From List    ${full_list}    start=${rejectedStaticForces_start}    end=${rejectedStaticForces_end}
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedElevationForces_start}=    Get Index From List    ${full_list}    === Event rejectedElevationForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedElevationForces_start}
+    ${rejectedElevationForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedElevationForces_list}=    Get Slice From List    ${full_list}    start=${rejectedElevationForces_start}    end=${rejectedElevationForces_end}
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedAzimuthForces_start}=    Get Index From List    ${full_list}    === Event rejectedAzimuthForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedAzimuthForces_start}
+    ${rejectedAzimuthForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedAzimuthForces_list}=    Get Slice From List    ${full_list}    start=${rejectedAzimuthForces_start}    end=${rejectedAzimuthForces_end}
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedThermalForces_start}=    Get Index From List    ${full_list}    === Event rejectedThermalForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedThermalForces_start}
+    ${rejectedThermalForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedThermalForces_list}=    Get Slice From List    ${full_list}    start=${rejectedThermalForces_start}    end=${rejectedThermalForces_end}
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedActiveOpticForces_start}=    Get Index From List    ${full_list}    === Event rejectedActiveOpticForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedActiveOpticForces_start}
+    ${rejectedActiveOpticForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedActiveOpticForces_list}=    Get Slice From List    ${full_list}    start=${rejectedActiveOpticForces_start}    end=${rejectedActiveOpticForces_end}
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedAberrationForces_start}=    Get Index From List    ${full_list}    === Event rejectedAberrationForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedAberrationForces_start}
+    ${rejectedAberrationForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedAberrationForces_list}=    Get Slice From List    ${full_list}    start=${rejectedAberrationForces_start}    end=${rejectedAberrationForces_end}
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedAberrationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedBalanceForces_start}=    Get Index From List    ${full_list}    === Event rejectedBalanceForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedBalanceForces_start}
+    ${rejectedBalanceForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedBalanceForces_list}=    Get Slice From List    ${full_list}    start=${rejectedBalanceForces_start}    end=${rejectedBalanceForces_end}
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedVelocityForces_start}=    Get Index From List    ${full_list}    === Event rejectedVelocityForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedVelocityForces_start}
+    ${rejectedVelocityForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedVelocityForces_list}=    Get Slice From List    ${full_list}    start=${rejectedVelocityForces_start}    end=${rejectedVelocityForces_end}
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedAccelerationForces_start}=    Get Index From List    ${full_list}    === Event rejectedAccelerationForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedAccelerationForces_start}
+    ${rejectedAccelerationForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedAccelerationForces_list}=    Get Slice From List    ${full_list}    start=${rejectedAccelerationForces_start}    end=${rejectedAccelerationForces_end}
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedOffsetForces_start}=    Get Index From List    ${full_list}    === Event rejectedOffsetForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedOffsetForces_start}
+    ${rejectedOffsetForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedOffsetForces_list}=    Get Slice From List    ${full_list}    start=${rejectedOffsetForces_start}    end=${rejectedOffsetForces_end}
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedForces_start}=    Get Index From List    ${full_list}    === Event rejectedForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedForces_start}
+    ${rejectedForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedForces_list}=    Get Slice From List    ${full_list}    start=${rejectedForces_start}    end=${rejectedForces_end}
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForces : 0    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fx : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fy : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fz : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
+    Should Contain X Times    ${rejectedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${appliedElevationForces_start}=    Get Index From List    ${full_list}    === Event appliedElevationForces received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedElevationForces_start}
     ${appliedElevationForces_end}=    Evaluate    ${end}+${1}
@@ -1523,14 +1523,14 @@ Read Logger
     Should Contain X Times    ${appliedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${appliedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     Should Contain X Times    ${appliedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${preclippedCylinderForces_start}=    Get Index From List    ${full_list}    === Event preclippedCylinderForces received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${preclippedCylinderForces_start}
-    ${preclippedCylinderForces_end}=    Evaluate    ${end}+${1}
-    ${preclippedCylinderForces_list}=    Get Slice From List    ${full_list}    start=${preclippedCylinderForces_start}    end=${preclippedCylinderForces_end}
-    Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForces : 0    1
-    Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderForces : 0    1
-    Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${rejectedCylinderForces_start}=    Get Index From List    ${full_list}    === Event rejectedCylinderForces received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rejectedCylinderForces_start}
+    ${rejectedCylinderForces_end}=    Evaluate    ${end}+${1}
+    ${rejectedCylinderForces_list}=    Get Slice From List    ${full_list}    start=${rejectedCylinderForces_start}    end=${rejectedCylinderForces_end}
+    Should Contain X Times    ${rejectedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${rejectedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForces : 0    1
+    Should Contain X Times    ${rejectedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderForces : 0    1
+    Should Contain X Times    ${rejectedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${appliedCylinderForces_start}=    Get Index From List    ${full_list}    === Event appliedCylinderForces received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${appliedCylinderForces_start}
     ${appliedCylinderForces_end}=    Evaluate    ${end}+${1}
