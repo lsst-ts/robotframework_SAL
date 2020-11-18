@@ -32,7 +32,12 @@ function main() {
     clearTestSuites $arg "JAVA" "Events" || exit 1
 
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    if [[ "$rtlang" =~ "java" ]]; then
+        createTestSuite $arg $file || exit 1
+    else
+        echo Skipping: $subsystem has no Java usage.
+        return 0
+    fi
 }
 
 #  Local FUNCTIONS
