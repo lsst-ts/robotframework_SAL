@@ -26,8 +26,16 @@ function main() {
     # Delete all test associated test suites first, to catch any removed topics.
     clearTestSuites $arg "CPP" "Telemetry" || exit 1
 
+    # Get the RuntimeLanguages list
+    rtlang=($(getRuntimeLanguages $subsystem))
+
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    if [[ "$rtlang" =~ "cpp" ]]; then
+        createTestSuite $arg $file || exit 1
+    else
+        echo Skipping: $subsystem has no C++ usage.
+        return 0
+    fi
 }
 
 #  Local FUNCTIONS
