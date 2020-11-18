@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    OCPS_Events communications tests.
+Documentation    NewMTMount_Events communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    OCPS
+${subSystem}    NewMTMount
 ${component}    all
 ${timeout}    180s
 
@@ -36,14 +36,62 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_job_result test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_job_result
+    Comment    ======= Verify ${subSystem}_axesInPosition test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_axesInPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event job_result iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_job_result_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event axesInPosition iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_axesInPosition_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event job_result generated =
+    Should Contain    ${output.stdout}    === Event axesInPosition generated =
+    Comment    ======= Verify ${subSystem}_axesState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_axesState
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event axesState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_axesState_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event axesState generated =
+    Comment    ======= Verify ${subSystem}_cameraCableWrapState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapState
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event cameraCableWrapState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapState_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event cameraCableWrapState generated =
+    Comment    ======= Verify ${subSystem}_connected test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_connected
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event connected iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_connected_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event connected generated =
+    Comment    ======= Verify ${subSystem}_error test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_error
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event error iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_error_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event error generated =
+    Comment    ======= Verify ${subSystem}_target test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_target
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event target iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_target_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event target generated =
+    Comment    ======= Verify ${subSystem}_warning test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_warning
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event warning iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_warning_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event warning generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -141,14 +189,65 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${job_result_start}=    Get Index From List    ${full_list}    === Event job_result received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${job_result_start}
-    ${job_result_end}=    Evaluate    ${end}+${1}
-    ${job_result_list}=    Get Slice From List    ${full_list}    start=${job_result_start}    end=${job_result_end}
-    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}job_id : RO    1
-    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exit_code : 1    1
-    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result : RO    1
-    Should Contain X Times    ${job_result_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${axesInPosition_start}=    Get Index From List    ${full_list}    === Event axesInPosition received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${axesInPosition_start}
+    ${axesInPosition_end}=    Evaluate    ${end}+${1}
+    ${axesInPosition_list}=    Get Slice From List    ${full_list}    start=${axesInPosition_start}    end=${axesInPosition_end}
+    Should Contain X Times    ${axesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${axesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${axesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${axesState_start}=    Get Index From List    ${full_list}    === Event axesState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${axesState_start}
+    ${axesState_end}=    Evaluate    ${end}+${1}
+    ${axesState_list}=    Get Slice From List    ${full_list}    start=${axesState_start}    end=${axesState_end}
+    Should Contain X Times    ${axesState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${axesState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${axesState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${cameraCableWrapState_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraCableWrapState_start}
+    ${cameraCableWrapState_end}=    Evaluate    ${end}+${1}
+    ${cameraCableWrapState_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapState_start}    end=${cameraCableWrapState_end}
+    Should Contain X Times    ${cameraCableWrapState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
+    Should Contain X Times    ${cameraCableWrapState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${connected_start}
+    ${connected_end}=    Evaluate    ${end}+${1}
+    ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${connected_end}
+    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : 1    1
+    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}replies : 1    1
+    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${error_start}=    Get Index From List    ${full_list}    === Event error received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${error_start}
+    ${error_end}=    Evaluate    ${end}+${1}
+    ${error_list}=    Get Slice From List    ${full_list}    start=${error_start}    end=${error_end}
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latched : 1    1
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}code : 1    1
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}text : RO    1
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : 1    1
+    Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
+    ${target_end}=    Evaluate    ${end}+${1}
+    ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${target_end}
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
+    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${warning_start}=    Get Index From List    ${full_list}    === Event warning received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${warning_start}
+    ${warning_end}=    Evaluate    ${end}+${1}
+    ${warning_list}=    Get Slice From List    ${full_list}    start=${warning_start}    end=${warning_end}
+    Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
+    Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}code : 1    1
+    Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}text : RO    1
+    Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : 1    1
+    Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

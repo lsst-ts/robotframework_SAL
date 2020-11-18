@@ -4,7 +4,11 @@
 --output CombinedCppTelemetry
 
 # List of test suites
+Combined/CPP/Telemetry/ATMCS_Telemetry.robot
 Combined/CPP/Telemetry/ATPtg_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
+Combined/CPP/Telemetry/MTMount_Telemetry.robot
 Combined/CPP/Telemetry/MTPtg_Telemetry.robot
+Combined/CPP/Telemetry/MTRotator_Telemetry.robot
 Combined/CPP/Telemetry/Test_Telemetry.robot
+Combined/CPP/Telemetry/WeatherStation_Telemetry.robot
