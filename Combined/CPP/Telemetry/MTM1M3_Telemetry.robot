@@ -84,6 +84,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::imsData_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_imsData end of topic ===
+    Comment    ======= Verify ${subSystem}_forceActuatorPressure test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_forceActuatorPressure
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === MTM1M3_forceActuatorPressure start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::forceActuatorPressure_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTM1M3_forceActuatorPressure end of topic ===
     Comment    ======= Verify ${subSystem}_gyroData test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_gyroData
     @{words}=    Split String    ${line}
@@ -311,6 +319,59 @@ Read Subscriber
     Should Contain X Times    ${imsData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 1    10
     Should Contain X Times    ${imsData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 1    10
     Should Contain X Times    ${imsData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 1    10
+    ${forceActuatorPressure_start}=    Get Index From List    ${full_list}    === MTM1M3_forceActuatorPressure start of topic ===
+    ${forceActuatorPressure_end}=    Get Index From List    ${full_list}    === MTM1M3_forceActuatorPressure end of topic ===
+    ${forceActuatorPressure_list}=    Get Slice From List    ${full_list}    start=${forceActuatorPressure_start}    end=${forceActuatorPressure_end}
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 0    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 1    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 2    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 3    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 4    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 5    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 6    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 7    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 8    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamps : 9    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 0    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 1    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 2    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 3    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 4    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 5    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 6    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 7    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 8    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPushPressures : 9    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 0    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 1    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 2    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 3    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 4    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 5    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 6    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 7    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 8    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderPullPressures : 9    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 0    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 1    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 2    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 3    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 4    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 5    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 6    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 7    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 8    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPushPressures : 9    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 0    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 1    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 2    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 3    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 4    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 5    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 6    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 7    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 8    1
+    Should Contain X Times    ${forceActuatorPressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderPullPressures : 9    1
     ${gyroData_start}=    Get Index From List    ${full_list}    === MTM1M3_gyroData start of topic ===
     ${gyroData_end}=    Get Index From List    ${full_list}    === MTM1M3_gyroData end of topic ===
     ${gyroData_list}=    Get Slice From List    ${full_list}    start=${gyroData_start}    end=${gyroData_end}
