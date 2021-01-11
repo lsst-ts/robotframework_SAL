@@ -28,14 +28,14 @@ function main() {
     subsystem=$(getEntity $arg)
     file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Events.xml)
 
-    # Delete all test associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "JAVA" "Events" || exit 1
-
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
+        # Delete all test associated test suites first, to catch any removed topics.
+        clearTestSuites $arg "JAVA" "Events" || exit 1
+        # Create test suite.
         createTestSuite $arg $file || exit 1
     else
-        echo Skipping: $subsystem has no Java usage.
+        echo Skipping: $subsystem has no Java Event topics.
         return 0
     fi
 }
