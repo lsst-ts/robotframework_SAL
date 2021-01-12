@@ -23,11 +23,20 @@ function main() {
     subsystem=$(getEntity $arg)
     file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
 
-    # Delete all test associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "CPP" "Telemetry" || exit 1
+
+    # Get the RuntimeLanguages list
+    rtlang=($(getRuntimeLanguages $subsystem))
 
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    if [[ "$rtlang" =~ "cpp" ]]; then
+        # Delete all test associated test suites first, to catch any removed topics.
+        clearTestSuites $arg "CPP" "Telemetry" || exit 1
+        # Create test suite.
+        createTestSuite $arg $file || exit 1
+    else
+        echo Skipping: $subsystem has no C++ Telemetry topics.
+        return 0
+    fi
 }
 
 #  Local FUNCTIONS

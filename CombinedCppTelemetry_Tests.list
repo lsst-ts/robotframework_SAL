@@ -4,43 +4,11 @@
 --output CombinedCppTelemetry
 
 # List of test suites
-Combined/CPP/Telemetry/ATAOS_Telemetry.robot
-Combined/CPP/Telemetry/ATBuilding_Telemetry.robot
-Combined/CPP/Telemetry/ATCamera_Telemetry.robot
-Combined/CPP/Telemetry/ATDome_Telemetry.robot
-Combined/CPP/Telemetry/ATHexapod_Telemetry.robot
 Combined/CPP/Telemetry/ATMCS_Telemetry.robot
-Combined/CPP/Telemetry/ATMonochromator_Telemetry.robot
-Combined/CPP/Telemetry/ATPneumatics_Telemetry.robot
 Combined/CPP/Telemetry/ATPtg_Telemetry.robot
-Combined/CPP/Telemetry/ATSpectrograph_Telemetry.robot
-Combined/CPP/Telemetry/ATWhiteLight_Telemetry.robot
-Combined/CPP/Telemetry/AdamSensors_Telemetry.robot
-Combined/CPP/Telemetry/CBP_Telemetry.robot
-Combined/CPP/Telemetry/CCCamera_Telemetry.robot
-Combined/CPP/Telemetry/CatchupArchiver_Telemetry.robot
-Combined/CPP/Telemetry/DIMM_Telemetry.robot
-Combined/CPP/Telemetry/DSM_Telemetry.robot
-Combined/CPP/Telemetry/EAS_Telemetry.robot
-Combined/CPP/Telemetry/FiberSpectrograph_Telemetry.robot
-Combined/CPP/Telemetry/GenericCamera_Telemetry.robot
-Combined/CPP/Telemetry/HVAC_Telemetry.robot
-Combined/CPP/Telemetry/IOTA_Telemetry.robot
-Combined/CPP/Telemetry/LinearStage_Telemetry.robot
-Combined/CPP/Telemetry/MTAOS_Telemetry.robot
-Combined/CPP/Telemetry/MTCamera_Telemetry.robot
-Combined/CPP/Telemetry/MTDome_Telemetry.robot
-Combined/CPP/Telemetry/MTHexapod_Telemetry.robot
-Combined/CPP/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/CPP/Telemetry/MTM1M3_Telemetry.robot
-Combined/CPP/Telemetry/MTM2_Telemetry.robot
 Combined/CPP/Telemetry/MTMount_Telemetry.robot
 Combined/CPP/Telemetry/MTPtg_Telemetry.robot
 Combined/CPP/Telemetry/MTRotator_Telemetry.robot
-Combined/CPP/Telemetry/MTVMS_Telemetry.robot
-Combined/CPP/Telemetry/PromptProcessing_Telemetry.robot
-Combined/CPP/Telemetry/Scheduler_Telemetry.robot
-Combined/CPP/Telemetry/SummitFacility_Telemetry.robot
 Combined/CPP/Telemetry/Test_Telemetry.robot
-Combined/CPP/Telemetry/TunableLaser_Telemetry.robot
 Combined/CPP/Telemetry/WeatherStation_Telemetry.robot

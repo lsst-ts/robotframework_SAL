@@ -25,14 +25,19 @@ function main() {
     subsystem=$(getEntity $arg)
     file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
         
-    # Delete all test associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "JAVA" "Telemetry" || exit 1
         
+    # Get the RuntimeLanguages list
+    rtlang=($(getRuntimeLanguages $subsystem))
+
     # Now generate the test suites.
-    if [ "$arg" == "MTM1M3" ]; then
-        echo "$arg is skipped for Java messaging tests."
-    else
+    if [[ "$rtlang" =~ "java" ]]; then
+        # Delete all test associated test suites first, to catch any removed topics.
+        clearTestSuites $arg "JAVA" "Telemetry" || exit 1
+        # Create test suite.
         createTestSuite $arg $file || exit 1
+    else
+        echo Skipping: $subsystem has no Java Telemetry topics.
+        return 0
     fi
 }
 
@@ -85,9 +90,9 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTCamera|MTM2|Scheduler)$ ]]; then
+    if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTM2|Scheduler)$ ]]; then
         timeout="900s"
-    elif [[ "$subSystem" =~ ^(HVAC|MTMount)$ ]]; then
+    elif [[ "$subSystem" =~ ^(HVAC|MTCamera|MTMount)$ ]]; then
         timeout="1500s"
     else
         timeout="400s"
