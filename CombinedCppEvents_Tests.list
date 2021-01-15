@@ -10,7 +10,6 @@ Combined/CPP/Events/MTM1M3_Events.robot
 Combined/CPP/Events/MTMount_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
 Combined/CPP/Events/MTRotator_Events.robot
-Combined/CPP/Events/NewMTMount_Events.robot
 Combined/CPP/Events/Script_Events.robot
 Combined/CPP/Events/Test_Events.robot
 Combined/CPP/Events/WeatherStation_Events.robot
