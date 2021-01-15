@@ -28,6 +28,9 @@ function main() {
     subsystem=$(getEntity $arg)
     file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Events.xml)
 
+    # Get the RuntimeLanguages list
+    rtlang=($(getRuntimeLanguages $subsystem))
+
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
