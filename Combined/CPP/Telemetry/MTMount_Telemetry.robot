@@ -87,12 +87,12 @@ Read Subscriber
     ${azimuth_start}=    Get Index From List    ${full_list}    === MTMount_azimuth start of topic ===
     ${azimuth_end}=    Get Index From List    ${full_list}    === MTMount_azimuth end of topic ===
     ${azimuth_list}=    Get Slice From List    ${full_list}    start=${azimuth_start}    end=${azimuth_end}
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleActual : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleSet : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityActual : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocitySet : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationActual : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torqueActual : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
+    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorque : 1    10
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${azimuthDrives_start}=    Get Index From List    ${full_list}    === MTMount_azimuthDrives start of topic ===
     ${azimuthDrives_end}=    Get Index From List    ${full_list}    === MTMount_azimuthDrives end of topic ===
@@ -111,21 +111,19 @@ Read Subscriber
     ${cameraCableWrap_start}=    Get Index From List    ${full_list}    === MTMount_cameraCableWrap start of topic ===
     ${cameraCableWrap_end}=    Get Index From List    ${full_list}    === MTMount_cameraCableWrap end of topic ===
     ${cameraCableWrap_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrap_start}    end=${cameraCableWrap_end}
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleActual : 1    10
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleSet : 1    10
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityActual : 1    10
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocitySet : 1    10
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationActual : 1    10
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${elevation_start}=    Get Index From List    ${full_list}    === MTMount_elevation start of topic ===
     ${elevation_end}=    Get Index From List    ${full_list}    === MTMount_elevation end of topic ===
     ${elevation_list}=    Get Slice From List    ${full_list}    start=${elevation_start}    end=${elevation_end}
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleActual : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angleSet : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityActual : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocitySet : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationActual : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torqueActual : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
+    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorque : 1    10
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${elevationDrives_start}=    Get Index From List    ${full_list}    === MTMount_elevationDrives start of topic ===
     ${elevationDrives_end}=    Get Index From List    ${full_list}    === MTMount_elevationDrives end of topic ===
