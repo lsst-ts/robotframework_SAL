@@ -84,14 +84,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::namedAzEl_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_namedAzEl end of topic ===
-    Comment    ======= Verify ${subSystem}_mount_positions test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mount_positions
+    Comment    ======= Verify ${subSystem}_mountPosition test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mountPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === MTPtg_mount_positions start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mount_positions_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTPtg_mountPosition start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mountPosition_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTPtg_mount_positions end of topic ===
+    Should Contain    ${output.stdout}    === MTPtg_mountPosition end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -187,47 +187,11 @@ Read Subscriber
     Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azPositions : RO    10
     Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elPositions : RO    10
     Should Contain X Times    ${namedAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPositions : RO    10
-    ${mount_positions_start}=    Get Index From List    ${full_list}    === MTPtg_mount_positions start of topic ===
-    ${mount_positions_end}=    Get Index From List    ${full_list}    === MTPtg_mount_positions end of topic ===
-    ${mount_positions_list}=    Get Slice From List    ${full_list}    start=${mount_positions_start}    end=${mount_positions_end}
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cRIO_timestamp : 1    10
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 0    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 1    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 2    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 3    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 4    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 5    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 6    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 7    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 8    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthCalculatedAngle : 9    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 0    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 1    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 2    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 3    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 4    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 5    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 6    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 7    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 8    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationCalculatedAngle : 9    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 0    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 2    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 3    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 4    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 5    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 6    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 7    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 8    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 9    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 0    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 2    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 3    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 4    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 5    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 6    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 7    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 8    1
-    Should Contain X Times    ${mount_positions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 9    1
+    ${mountPosition_start}=    Get Index From List    ${full_list}    === MTPtg_mountPosition start of topic ===
+    ${mountPosition_end}=    Get Index From List    ${full_list}    === MTPtg_mountPosition end of topic ===
+    ${mountPosition_list}=    Get Slice From List    ${full_list}    start=${mountPosition_start}    end=${mountPosition_end}
+    Should Contain X Times    ${mountPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${mountPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthActualPosition : 1    10
+    Should Contain X Times    ${mountPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationActualPosition : 1    10
+    Should Contain X Times    ${mountPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    10
+    Should Contain X Times    ${mountPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    10
