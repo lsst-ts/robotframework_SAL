@@ -268,14 +268,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elLimitWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elLimitWarning generated =
-    Comment    ======= Verify ${subSystem}_pointing_file test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_pointing_file
+    Comment    ======= Verify ${subSystem}_pointingFile test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_pointingFile
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event pointing_file iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointing_file_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event pointingFile iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointingFile_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event pointing_file generated =
+    Should Contain    ${output.stdout}    === Event pointingFile generated =
     Comment    ======= Verify ${subSystem}_timesOfLimits test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_timesOfLimits
     @{words}=    Split String    ${line}
@@ -495,7 +495,9 @@ Read Logger
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radvel : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
-    Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotFrame : 1    1
+    Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotAngle : 1    1
+    Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotStartFrame : 1    1
+    Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotTrackFrame : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raHours : 1    1
     Should Contain X Times    ${currentTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}decDegs : 1    1
@@ -510,7 +512,7 @@ Read Logger
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${weatherDataApplied_start}
     ${weatherDataApplied_end}=    Evaluate    ${end}+${1}
     ${weatherDataApplied_list}=    Get Slice From List    ${full_list}    start=${weatherDataApplied_start}    end=${weatherDataApplied_end}
-    Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambient_temp : 1    1
+    Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemp : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}humidity : 1    1
     Should Contain X Times    ${weatherDataApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
@@ -595,13 +597,13 @@ Read Logger
     ${elLimitWarning_list}=    Get Slice From List    ${full_list}    start=${elLimitWarning_start}    end=${elLimitWarning_end}
     Should Contain X Times    ${elLimitWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${elLimitWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${pointing_file_start}=    Get Index From List    ${full_list}    === Event pointing_file received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointing_file_start}
-    ${pointing_file_end}=    Evaluate    ${end}+${1}
-    ${pointing_file_list}=    Get Slice From List    ${full_list}    start=${pointing_file_start}    end=${pointing_file_end}
-    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}file_is_open : 1    1
-    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}file_path : RO    1
-    Should Contain X Times    ${pointing_file_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${pointingFile_start}=    Get Index From List    ${full_list}    === Event pointingFile received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointingFile_start}
+    ${pointingFile_end}=    Evaluate    ${end}+${1}
+    ${pointingFile_list}=    Get Slice From List    ${full_list}    start=${pointingFile_start}    end=${pointingFile_end}
+    Should Contain X Times    ${pointingFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fileIsOpen : 1    1
+    Should Contain X Times    ${pointingFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filePath : RO    1
+    Should Contain X Times    ${pointingFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${timesOfLimits_start}=    Get Index From List    ${full_list}    === Event timesOfLimits received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${timesOfLimits_start}
     ${timesOfLimits_end}=    Evaluate    ${end}+${1}
