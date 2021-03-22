@@ -36,14 +36,14 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_application test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_application
+    Comment    ======= Verify ${subSystem}_ccwFollowingError test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_ccwFollowingError
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === MTRotator_application start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::application_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTRotator_ccwFollowingError start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::ccwFollowingError_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTRotator_application end of topic ===
+    Should Contain    ${output.stdout}    === MTRotator_ccwFollowingError end of topic ===
     Comment    ======= Verify ${subSystem}_rotation test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rotation
     @{words}=    Split String    ${line}
@@ -76,12 +76,12 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTRotator subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
-    ${application_start}=    Get Index From List    ${full_list}    === MTRotator_application start of topic ===
-    ${application_end}=    Get Index From List    ${full_list}    === MTRotator_application end of topic ===
-    ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end}
-    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demand : 1    10
-    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    10
-    Should Contain X Times    ${application_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error : 1    10
+    ${ccwFollowingError_start}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError start of topic ===
+    ${ccwFollowingError_end}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError end of topic ===
+    ${ccwFollowingError_list}=    Get Slice From List    ${full_list}    start=${ccwFollowingError_start}    end=${ccwFollowingError_end}
+    Should Contain X Times    ${ccwFollowingError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionError : 1    10
+    Should Contain X Times    ${ccwFollowingError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityError : 1    10
+    Should Contain X Times    ${ccwFollowingError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${rotation_start}=    Get Index From List    ${full_list}    === MTRotator_rotation start of topic ===
     ${rotation_end}=    Get Index From List    ${full_list}    === MTRotator_rotation end of topic ===
     ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end}
