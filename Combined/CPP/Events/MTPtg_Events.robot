@@ -292,6 +292,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_validatedTarget_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event validatedTarget generated =
+    Comment    ======= Verify ${subSystem}_offsetSummary test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_offsetSummary
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event offsetSummary iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_offsetSummary_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event offsetSummary generated =
+    Comment    ======= Verify ${subSystem}_pointData test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_pointData
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event pointData iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointData_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event pointData generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -626,6 +642,38 @@ Read Logger
     Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rot : 1    1
     Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
     Should Contain X Times    ${validatedTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${offsetSummary_start}=    Get Index From List    ${full_list}    === Event offsetSummary received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${offsetSummary_start}
+    ${offsetSummary_end}=    Evaluate    ${end}+${1}
+    ${offsetSummary_list}=    Get Slice From List    ${full_list}    start=${offsetSummary_start}    end=${offsetSummary_end}
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iaa : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userOffsetRA : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userOffsetDec : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}handsetOffsetRA : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}handsetOffsetDec : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userCollOffsetCA : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userCollOffsetCE : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}handsetCollOffsetCA : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}handsetCollOffsetCE : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginX : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginY : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginUserDX : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginUserDY : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginHandsetDX : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingOriginHandsetDY : 1    1
+    Should Contain X Times    ${offsetSummary_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${pointData_start}=    Get Index From List    ${full_list}    === Event pointData received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${pointData_start}
+    ${pointData_end}=    Evaluate    ${end}+${1}
+    ${pointData_list}=    Get Slice From List    ${full_list}    start=${pointData_start}    end=${pointData_end}
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expectedAzimuth : 1    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expectedElevation : 1    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredAzimuth : 1    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredElevation : 1    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredRotator : 1    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filePath : RO    1
+    Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}

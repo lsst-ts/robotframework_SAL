@@ -6,6 +6,7 @@
 # List of test suites
 Combined/CPP/Events/ATMCS_Events.robot
 Combined/CPP/Events/ATPtg_Events.robot
+Combined/CPP/Events/Guider_Events.robot
 Combined/CPP/Events/MTM1M3_Events.robot
 Combined/CPP/Events/MTMount_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
