@@ -51,12 +51,12 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTRotator all subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${application_start}=    Get Index From List    ${full_list}    === MTRotator_application start of topic ===
-    ${application_end}=    Get Index From List    ${full_list}    === MTRotator_application end of topic ===
-    ${application_list}=    Get Slice From List    ${full_list}    start=${application_start}    end=${application_end + 1}
-    Log Many    ${application_list}
-    Should Contain    ${application_list}    === MTRotator_application start of topic ===
-    Should Contain    ${application_list}    === MTRotator_application end of topic ===
+    ${ccwFollowingError_start}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError start of topic ===
+    ${ccwFollowingError_end}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError end of topic ===
+    ${ccwFollowingError_list}=    Get Slice From List    ${full_list}    start=${ccwFollowingError_start}    end=${ccwFollowingError_end + 1}
+    Log Many    ${ccwFollowingError_list}
+    Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError start of topic ===
+    Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError end of topic ===
     ${rotation_start}=    Get Index From List    ${full_list}    === MTRotator_rotation start of topic ===
     ${rotation_end}=    Get Index From List    ${full_list}    === MTRotator_rotation end of topic ===
     ${rotation_list}=    Get Slice From List    ${full_list}    start=${rotation_start}    end=${rotation_end + 1}
