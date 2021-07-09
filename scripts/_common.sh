@@ -106,32 +106,18 @@ function generateArgument() {
 }
 
 function checkIfSkipped() {
-	subsystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
-	topic=$(echo $2 |tr '[:upper:]' '[:lower:]')
-	messageType=$(echo $3 |tr '[:upper:]' '[:lower:]')
-	if [[ ("$subsystem" == "summitfacility") ]]; then
-		skipped="TSS-2622"
-    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "events") ]]; then
-        skipped="TSS-2680"
-    elif [[ ("$subsystem" == "hexapod") && ("$messageType" == "telemetry") ]]; then
-        skipped="TSS-2679"
-	elif [[ ("$subsystem" == "promptprocessing") ]]; then
-		skipped="TSS-2633"
-	elif [[ ("$subsystem" == "calibrationelectrometer") ]]; then
-		skipped="TSS-2619"
-	elif [[ ("$subsystem" == "m1m3") ]]; then
-		skipped="TSS-2617"
-	elif [[ ("$subsystem" == "vms") ]]; then
-		skipped="TSS-2618"
-	elif [[ ("$subsystem" == "atmonochromator") && ("$topic" == "internalcommand") ]]; then
-		skipped="TSS-2724"
-	elif [[ ("$subsystem" == "eec") && ("$topic" == "internalcommand") ]]; then
-		skipped="TSS-2724"
-	elif [[ ("$subsystem" == "tcs") && ("$topic" == "internalcommand") ]]; then
-		skipped="TSS-2724"
-	else
-		skipped=""
-	fi
-	echo $skipped
+    subsystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
+    topic=$(echo $2 |tr '[:upper:]' '[:lower:]')
+    messageType=$(echo $3 |tr '[:upper:]' '[:lower:]')
+    if [[ ("$subsystem" == "atmonochromator") && ("$topic" == "internalcommand") ]]; then
+        skipped="TSS-2724"
+    elif [[ ("$subsystem" == "eec") && ("$topic" == "internalcommand") ]]; then
+        skipped="TSS-2724"
+    elif [[ ("$subsystem" == "tcs") && ("$topic" == "internalcommand") ]]; then
+        skipped="TSS-2724"
+    else
+        skipped=""
+    fi
+    echo $skipped
 }
 
