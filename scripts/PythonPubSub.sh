@@ -18,24 +18,23 @@ declare -a unique_types=($EMPTY)
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
         
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
         
     # Delete all test associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "PYTHON" "Telemetry" || exit 1
+    clearTestSuites $subSystem "PYTHON" "Telemetry" || exit 1
         
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    createTestSuite $subSystem $file || exit 1
 }
 
 #  Local FUNCTIONS
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     file=$2
     output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
     topicsArray=($output)
@@ -91,7 +90,7 @@ function createSettings {
 }
 
 function createVariables {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite

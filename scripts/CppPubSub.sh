@@ -17,24 +17,23 @@ declare -a parametersArray=($EMPTY)
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
 
 
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "CPP" "Telemetry" || exit 1
+        clearTestSuites $subSystem "CPP" "Telemetry" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no C++ Telemetry topics.
+        echo Skipping: $subSystem has no C++ Telemetry topics.
         return 0
     fi
 }
@@ -43,7 +42,7 @@ function main() {
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     file=$2
     output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//g" )
     topicsArray=($output)

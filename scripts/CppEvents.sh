@@ -22,24 +22,23 @@ declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EF
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Events.xml)
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Events.xml)
 
 
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "CPP" "Events" || exit 1
+        clearTestSuites $subSystem "CPP" "Events" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no C++ Event topics.
+        echo Skipping: $subSystem has no C++ Event topics.
         return 0
     fi
 }
@@ -48,7 +47,7 @@ function main() {
 
 # Get EFDB_Topics from Events XML.
 function getTopics() {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     file=$2
     output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
     topicsArray=($output)

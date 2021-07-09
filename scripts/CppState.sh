@@ -19,16 +19,16 @@ declare -a statesArray=($(stateArray))
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    # Get the XML definition file.
     file=($TS_XML_DIR/sal_interfaces/SALGenerics.xml)
 
     # Delete all tests associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "CPP" "StateMachine" || exit 1
+    clearTestSuites $subSystem "CPP" "StateMachine" || exit 1
 
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    createTestSuite $subSystem $file || exit 1
 }
 
 #  Local FUNCTIONS
@@ -177,7 +177,7 @@ function terminateController() {
 }
 
 function createTestSuite() {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     messageType="state"
     stateIndex=1
 
