@@ -19,10 +19,9 @@ declare -a itemsArray=($EMPTY)
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
         
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
+    # Get the XML definition file.
     file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
         
         
@@ -32,11 +31,11 @@ function main() {
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "JAVA" "Telemetry" || exit 1
+        clearTestSuites $subSystem "JAVA" "Telemetry" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no Java Telemetry topics.
+        echo Skipping: $subSystem has no Java Telemetry topics.
         return 0
     fi
 }
@@ -45,7 +44,7 @@ function main() {
 
 #  Get EFDB_Topics from Telemetry XML.
 function getTopics {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     file=$2
     output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
     topicsArray=($output)
@@ -86,7 +85,7 @@ function createVariables {
     local subSystem=$1
     local testSuite=$2
     local topic=$3
-    local subSystem=$(getEntity $1)
+    local subSystem=$1
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
