@@ -4,12 +4,55 @@
 #  author: Rob Bovill
 #  email:  rbovill@lsst.org
 
-#  FUNCTIONS
+
+###  FUNCTIONS  ###
+
+
 function getRuntimeLanguages() {
     local subsystem=$1
     local output=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subsystem']/RuntimeLanguages" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
     echo $output | tr '[:upper:]' '[:lower:]'
 }
+
+
+function getTopics() {
+    local subSystem=$1
+    local file=$2
+    local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1} #Topic type is capitalized 
+    local lower_topic=$(echo $topic_type |tr '[:upper:]' '[:lower:]')
+    local generics=""
+    if [[ $topic_type == "Telemetry" ]]; then
+        keep_num=2
+    elif [[ $topic_type == "Events" ]]; then
+        topic_type="Event"
+        lower_topic="logevent"
+        keep_num=3
+    else
+        keep_num=3
+    fi
+    output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f $keep_num |tr '\r\n' ' ' |awk '{$1=$1};1')
+    #output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f $keep_num- )
+    topics=$output
+
+    # If CSC uses the Generic Commands or Events, add those.
+    if [[ $topic_type == "Command" || $topic_type == "Event" ]]; then
+        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+        if [[ $generics_field == "yes" ]]; then
+            local generics=$( xml sel -t -m "//SALObjects/SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |sed "s/SALGeneric_${lower_topic}_//" |tr '\r\n' ' ' )
+        elif [[ $generics_field == "no" ]]; then
+            local generics=()
+        else
+            local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v Generics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+            for topic in ${array[@]}; do
+                if [[ "$topic" == *"${lower_topic}_"* ]]; then
+                    generics+=$(echo "$topic " |sed "s/${lower_topic}_//g")
+                fi
+            done
+        fi
+    fi
+    echo "$topics $generics"
+}
+
 
 function generateTests() {
     csc=$( echo "$arg" |tr '[:upper:]' '[:lower:]' )
@@ -24,25 +67,7 @@ function generateTests() {
     else
         echo USAGE - Argument must be one of: ALL or \[ ${subSystemArray[*]} \].
     fi
-}
 
-function getTelemetryTopics() {
-    local subSystem=$1
-    local output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Telemetry.xml |sed "s/${subSystem}_//" )
-    echo $output
-}
-
-function getCommandTopics() {
-    local subSystem=$1
-    local output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Commands.xml |sed "s/${subSystem}_command_//" )
-    echo $output
-}
-
-function getEventTopics() {
-    local subSystem=$1
-    local output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Events.xml |sed "s/${subSystem}_logevent_//" )
-    echo $output
-}
 
 function clearTestSuites() {
     # Get the terms into the correct capitalization.
