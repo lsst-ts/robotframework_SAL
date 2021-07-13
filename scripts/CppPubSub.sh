@@ -40,34 +40,7 @@ function main() {
     fi
 }
 
-#  Local FUNCTIONS
-
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    subSystem=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterType=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterCount() {
-    subSystem=$1
-    topicIndex=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
+### Local FUNCTIONS ###
 
 function createSettings {
     local subSystem=$1
@@ -200,9 +173,10 @@ function readSubscriber_params {
         #else
             #n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
         #fi
-        parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
-        parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+        parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
+        parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Telemetry")"
+        parameterCount=$(getParameterCount $subSystem $file $topic $parameterIndex "Telemetry")
+        #echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
