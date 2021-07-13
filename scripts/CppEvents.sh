@@ -45,50 +45,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterIDLSize() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
-    echo $parameterIDLSize
-}
-
-function getParameterCount() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
-
 function createSettings() {
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
@@ -240,10 +196,10 @@ function readLogger_params() {
     local topicIndex=$3
     local testSuite=$4
     for parameter in "${parametersArray[@]}"; do
-        parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $file $topic $parameterIndex)"
-        parameterCount=$(getParameterCount $file $topic $parameterIndex)
-        #echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
+        parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
+        parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Events")"
+        parameterCount=$(getParameterCount $subSystem $file $topic $parameterIndex "Events")
+        #echo -e "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ $testSuite == *"$topic"* ]]; then
             topic="full"
         fi
@@ -330,7 +286,7 @@ function createTestSuite() {
             #parameterIndex=$(getParameterIndex $parameter)
             #parameterType=$(getParameterType $file $topic $parameterIndex)
             #parameterCount=$(getParameterCount $file $topic $parameterIndex)
-            #parameterIDLSize=$(getParameterIDLSize $file $topic $parameterIndex)
+            #parameterIDLSize=$(getParameterSize $file $topic $parameterIndex)
             ##echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
             #for i in $(seq 1 $parameterCount); do
                 #testValue=$(generateArgument "$parameterType" $parameterIDLSize)
