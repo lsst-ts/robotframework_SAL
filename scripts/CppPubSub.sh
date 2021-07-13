@@ -8,6 +8,8 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
+
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Telemetry
@@ -40,21 +42,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-#  Get EFDB_Topics from Telemetry XML.
-function getTopics {
-    subSystem=$1
-    file=$2
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//g" )
-    topicsArray=($output)
-}
-
-function getTopicParameters() {
-    file=$1
-    index=$2
-    unset parametersArray
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n ${file} )
-    parametersArray=($output)
-}
 
 function getParameterIndex() {
     value=$1
@@ -195,7 +182,7 @@ function readSubscriber {
             echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
             echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
             echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
-            getTopicParameters $file $itemIndex
+            parametersArray=($(getTopicParameters $subSystem $file $item "Telemetry"))
             readSubscriber_params $file $item $itemIndex $testSuite
             (( itemIndex++ ))
         done
@@ -247,7 +234,7 @@ function createTestSuite {
     topicIndex=1
 
     # Get the topics for the CSC.
-    getTopics $subSystem $file
+    topicsArray=($(getTopics $subSystem $file $messageType))
 
     if [ ${#topicsArray[@]} -eq 0 ]; then
         echo Skipping: $subSystem has no telemetry.
