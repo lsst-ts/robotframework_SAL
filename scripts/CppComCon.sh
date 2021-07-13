@@ -8,6 +8,7 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/CPP/Commands
@@ -41,14 +42,6 @@ function getTopics() {
     file=$2
     output=$( xml sel -t -m "//SALCommandSet/SALCommand/EFDB_Topic" -v . -n ${file} |cut -d"_" -f 3 )
     topicsArray=($output)
-}
-
-function getTopicParameters() {
-    file=$1
-    index=$2
-    unset parametersArray
-    output=$( xml sel -t -m "//SALCommandSet/SALCommand[$index]/item/EFDB_Name" -v . -n ${file} )
-    parametersArray=($output)
 }
 
 function getParameterIndex() {
@@ -245,7 +238,7 @@ function createTestSuite() {
         testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
         
         #  Get EFDB_Topic elements
-        getTopicParameters $file $topicIndex
+        parametersArray=($(getTopicParameters $file $topicIndex))
         device=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Device" -v . -n ${file} )
         property=$( xml sel -t -m "//SALCommandSet/SALCommand[$topicIndex]/Property" -v . -n ${file} )
 

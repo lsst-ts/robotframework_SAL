@@ -30,8 +30,7 @@ function getTopics() {
     else
         keep_num=3
     fi
-    output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f $keep_num |tr '\r\n' ' ' |awk '{$1=$1};1')
-    #output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f $keep_num- )
+    output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ' ' |awk '{$1=$1};1')
     topics=$output
 
     # If CSC uses the Generic Commands or Events, add those.

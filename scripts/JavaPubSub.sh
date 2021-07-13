@@ -42,27 +42,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-#  Get EFDB_Topics from Telemetry XML.
-function getTopics {
-    subSystem=$1
-    file=$2
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n $file |sed "s/${subSystem}_//g" )
-    topicsArray=($output)
-}
-
-function getTopicParameters {
-    file=$1
-    index=$2
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n $file )
-    itemsArray=($output)
-}
-
-function clearTestSuite {
-    if [ -f $testSuite ]; then
-        echo $testSuite exists.  Deleting it before creating a new one.
-        rm -rf $testSuite
-    fi
-}
 
 function createSettings {
     local subSystem=$1

@@ -7,6 +7,7 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/JAVA/Events
@@ -18,7 +19,6 @@ value=$EMPTY
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
-declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
@@ -44,55 +44,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-# Get EFDB_Topics from Events XML.
-function getTopics() {
-    subSystem=$1
-    file=$2
-    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-    topicsArray=($output)
-}
-
-function getTopicParameters() {
-    file=$1
-    index=$2
-    unset parametersArray
-    output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
-    parametersArray=($output)
-}
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    file=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterIDLSize() {
-    subSystem=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Size" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
-    echo $parameterIDLSize
-}
-
-function getParameterCount() {
-    file=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
 
 function createSettings() {
     
