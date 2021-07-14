@@ -44,7 +44,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-
 function createSettings() {
     
     local subSystem=$1

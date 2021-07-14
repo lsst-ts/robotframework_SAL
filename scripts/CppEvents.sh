@@ -199,7 +199,7 @@ function readLogger_params() {
         parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
         parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Events")"
         parameterCount=$(getParameterCount $subSystem $file $topic $parameterIndex "Events")
-        #echo -e "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
+        #echo "topic: $topic parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ $testSuite == *"$topic"* ]]; then
             topic="full"
         fi

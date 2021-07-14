@@ -42,7 +42,6 @@ function main() {
 
 #  Local FUNCTIONS
 
-
 function createSettings {
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
