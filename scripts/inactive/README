@@ -1,0 +1,8 @@
+The test-suite generators in this folder correspond to tests that are 
+currenly not working in the SAL.  The work to create the Combined messaging
+test programs is on-going, and these have not yet been completed.  
+
+They will need a significant overhaul when they are ready to be
+re-activated; many of the functions now reside in libraries, for example.  
+However, without the ability to run the test-suites to see if they 
+work, there isn't any point to begin the updates.
