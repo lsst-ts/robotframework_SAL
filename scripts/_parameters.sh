@@ -1,12 +1,17 @@
 #!/bin/bash
-#  Bash library to define functions that will 
-#  generate test data for Command and Events
-#  test programs.
+#  Bash library that defines all the 
+#  parameter-related the functions.  Parameters
+#  are the arguments to the Command and Event
+#  test programs.  The publishers transmit the 
+#  parameters to the subscribers.
 #
 #  author: Rob Bovill
 #  email:  rbovill@lsst.org
 
 ###  Variables ###
+##
+## Arrays that contain all the Generic Commands and Events.
+##
 declare -a generic_commands=($(xml sel -t -m "//SALObjects/SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
@@ -14,6 +19,8 @@ declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EF
 ###  FUNCTIONS  ###
 
 function getTopicParameters() {
+    ## Returns all the parameters (<items>) for the given topic.
+    ##
     local subSystem=$1
     local file=$2
     local topic=$3
@@ -33,6 +40,8 @@ function getTopicParameters() {
 
 
 function getParameterIndex() {
+    ## Returns the index value for the given parameter.
+    ##
     value=$1
     shift
     array=("$@")
@@ -46,6 +55,8 @@ function getParameterIndex() {
 
 
 function getParameterType() {
+    ## Returns the data-type (<IDL_Type>) for the given parameter.
+    ##
     local subSystem=$1
     local file=$2
     local topic=$3
@@ -71,6 +82,8 @@ function getParameterType() {
 
 
 function getParameterCount() {
+    ## Returns the count (<Count>) for the given parameter.
+    ##
     local subSystem=$1
     local file=$2
     local topic=$3

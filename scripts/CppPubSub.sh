@@ -17,7 +17,7 @@ workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Telemetry
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
     subSystem=$1
 
@@ -47,7 +47,7 @@ function createSettings {
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
+    echo "Documentation    $subSystem ${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -215,7 +215,7 @@ function createTestSuite {
     else
         # Generate the test suite for each message type.
         echo Generating test suite:
-        testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+        testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
         echo $testSuiteCombined
         createSettings $subSystem $messageType $testSuiteCombined
         createVariables $subSystem $testSuiteCombined "all"
@@ -232,7 +232,7 @@ function createTestSuite {
     #topicIndex=1
     #for topic in "${topicsArray[@]}"; do
     ##  Define test suite name
-    #testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+    #testSuite=$workDir/${subSystem}_${topic}.robot
         
     #  Get EFDB_Topic Telemetry parameters
     #getTopicParameters $file $topicIndex

@@ -20,7 +20,7 @@ declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
     subSystem=$1
 
@@ -51,7 +51,7 @@ function createSettings() {
     local testSuite=$3
 
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
+    echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    java    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -152,7 +152,7 @@ function createTestSuite() {
 
     # Generate the test suite for each topic.
     echo ============== Generating Combined messaging test suite ==============
-    testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
     echo $testSuiteCombined
     createSettings $subSystem $messageType $testSuiteCombined
     createVariables $subSystem $testSuiteCombined "all"
