@@ -20,7 +20,7 @@ declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
     subSystem=$1
 
@@ -50,7 +50,7 @@ function createSettings() {
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
+    echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -238,7 +238,7 @@ function createTestSuite() {
 
     # Generate the test suite for each topic.
     echo Generating test suite:
-    testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
     echo $testSuiteCombined
     createSettings $subSystem $messageType $testSuiteCombined
     createVariables $subSystem $testSuiteCombined "all"
@@ -256,7 +256,7 @@ function createTestSuite() {
         #device=$EMPTY
         #property=$EMPTY
         ##  Define test suite name
-        #testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        #testSuite=$workDir/${subSystem}_${topic}.robot
 
         ##  Get correct topic source (SAlGenerics or Subsystem XML)
         #for generic in "${generic_events[@]}"; do
