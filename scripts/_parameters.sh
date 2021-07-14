@@ -76,9 +76,6 @@ function getParameterCount() {
     local topic=$3
     local index=$(($4 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
     local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${5:0:1})${5:1} #Topic type is capitalized 
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
     if [[ $topic_type == "Telemetry" ]]; then
         topic_complete=$topic
     elif [[ $topic_type == "Events" ]]; then
@@ -88,10 +85,11 @@ function getParameterCount() {
         topic_type="Command"
         topic_complete="command_${topic}"
     fi
-    if [[ ${generic_events[@]} =~ $topic ]]; then
+    if [[ ${generic_events[@]} =~ "${topic}<" ]]; then
         local subSystem=SALGeneric
         local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
     fi
+    #echo "xml sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count\" -v . -n $file"
     count=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count" -v . -n $file )
     echo $count
 }
