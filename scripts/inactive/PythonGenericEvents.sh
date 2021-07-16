@@ -10,7 +10,7 @@
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
 
 #  Define variables to be used in script
-workDir=$ROBOTFRAMEWORK_SAL_DIR/CPP/GenericEvents
+workDir=$ROBOTFRAMEWORK_SAL_DIR/PYTHON/GenericEvents
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -21,23 +21,23 @@ declare -a argumentsArray=($EMPTY)
 
 #  Determine what tests to generate. Call _common.sh.generateTests()
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
+    # Get the XML definition file.
     file=($TS_XML_DIR/sal_interfaces/SALGenerics.xml)
 
     # Delete all associated test suites first, to catch any removed topics.
-    clearTestSuites $arg "CPP" "GenericEvents" || exit 1
+    clearTestSuites $subSystem "PYTHON" "GenericEvents" || exit 1
 
     # Now generate the test suites.
-    createTestSuite $arg $file || exit 1
+    createTestSuite $subSystem $file || exit 1
 }
 
 #  Local FUNCTIONS
 
 # Get EFDB_Topics from Events XML.
 function getTopics() {
-    subSystem=$(getEntity $1)
+    subSystem=$1
     file=$2
     output=$( xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
     topicsArray=($output)
@@ -89,7 +89,7 @@ function createSettings() {
     local subSystem=$1
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystem}_${event} communications tests." >> $testSuite
-    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
+    echo "Force Tags    messaging    python    $skipped" >> $testSuite
     echo "Suite Setup    Run Keywords    Log Many    \${Host}    \${subSystem}    \${timeout}" >> $testSuite
     echo "...    AND    Create Session    Sender    AND    Create Session    Logger" >> $testSuite
     echo "Suite Teardown    Close All Connections" >> $testSuite
@@ -111,8 +111,8 @@ function verifyCompSenderLogger() {
     event=$1
     echo "Verify $event Sender and Logger" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${event}_send" >> $testSuite
-    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_${event}_log" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_Event_${event}.py" >> $testSuite
+    echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/python/\${subSystem}_EventLogger_${event}.py" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -122,12 +122,12 @@ function startLogger() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/\${subSystem}/python" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_${event}_log" >> $testSuite
-    echo "    \${output}=    Read Until    logger ready =" >> $testSuite
+    echo "    \${input}=    Write    python \${subSystem}_EventLogger_${event}.py" >> $testSuite
+    echo "    \${output}=    Read Until    logger ready" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain    \${output}    Event ${event} logger ready" >> $testSuite
+    echo "    Should Contain    \${output}    \${subSystem}_${event} logger ready" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -140,14 +140,13 @@ function startSender() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Sender" >> $testSuite
     echo "    Comment    Move to working directory." >> $testSuite
-    echo "    Write    cd \${SALWorkDir}/\${subSystem}/cpp/src" >> $testSuite
+    echo "    Write    cd \${SALWorkDir}/\${subSystem}/python" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
-    echo "    \${input}=    Write    ./sacpp_\${subSystem}_${event}_send ${argumentsArray[*]}" >> $testSuite
+    echo "    \${input}=    Write    python \${subSystem}_Event_${event}.py ${argumentsArray[*]}" >> $testSuite
     echo "    \${output}=    Read Until Prompt" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
     echo "    Should Contain X Times    \${output}    === [putSample] ${subSystem}::logevent_${event}_    1" >> $testSuite
     echo "    Should Contain    \${output}    revCode \ :" >>$testSuite
-    echo "    Should Contain    \${output}    === Event ${event} generated =" >> $testSuite
     #for parameter in "${parametersArray[@]}"; do
         #echo "    Should Contain X Times    \${output}    $parameter : ${argumentsArray[$i]}    1" >>$testSuite
         #(( i++ ))
@@ -163,13 +162,13 @@ function readLogger() {
     echo "Read $event Logger" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Switch Connection    Logger" >> $testSuite
-    echo "    \${output}=    Read Until    priority : ${argumentsArray[${#argumentsArray[@]}-1]}" >> $testSuite
+    echo "    \${output}=    Read Until    ${event} received" >> $testSuite
     echo "    Log    \${output}" >> $testSuite
-    echo "    Should Contain X Times    \${output}    === Event ${event} received =     1" >> $testSuite
-    for parameter in "${parametersArray[@]}"; do
-        echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
-        (( i++ ))
-    done
+    echo "    Should Contain X Times    \${output}    Event \${subSystem} ${event} received     1" >> $testSuite
+    #for parameter in "${parametersArray[@]}"; do
+        #echo "    Should Contain    \${output}    $parameter : ${argumentsArray[$i]}" >>$testSuite
+        #(( i++ ))
+    #done
     echo "" >> $testSuite
 }
 

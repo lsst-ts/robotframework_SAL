@@ -7,6 +7,7 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/JAVA/Events
@@ -18,82 +19,30 @@ value=$EMPTY
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
-declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Events.xml)
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Events.xml)
 
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "JAVA" "Events" || exit 1
+        clearTestSuites $subSystem "JAVA" "Events" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no Java Event topics.
+        echo Skipping: $subSystem has no Java Event topics.
         return 0
     fi
 }
 
 #  Local FUNCTIONS
-
-# Get EFDB_Topics from Events XML.
-function getTopics() {
-    subSystem=$(getEntity $1)
-    file=$2
-    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3 )
-    topicsArray=($output)
-}
-
-function getTopicParameters() {
-    file=$1
-    index=$2
-    unset parametersArray
-    output=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item/EFDB_Name" -v . -n $file )
-    parametersArray=($output)
-}
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    file=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterIDLSize() {
-    subSystem=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/IDL_Size" -v . -n $TS_XML_DIR/sal_interfaces/${subSystem}/${subSystem}_Events.xml )
-    echo $parameterIDLSize
-}
-
-function getParameterCount() {
-    file=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent[$index]/item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
 
 function createSettings() {
     
@@ -102,7 +51,7 @@ function createSettings() {
     local testSuite=$3
 
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
+    echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    java    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -203,7 +152,7 @@ function createTestSuite() {
 
     # Generate the test suite for each topic.
     echo ============== Generating Combined messaging test suite ==============
-    testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
     echo $testSuiteCombined
     createSettings $subSystem $messageType $testSuiteCombined
     createVariables $subSystem $testSuiteCombined "all"

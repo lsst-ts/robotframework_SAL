@@ -7,6 +7,7 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Events
@@ -18,110 +19,38 @@ value=$EMPTY
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 declare -a argumentsArray=($EMPTY)
-declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Events.xml)
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Events.xml)
 
 
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "CPP" "Events" || exit 1
+        clearTestSuites $subSystem "CPP" "Events" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no C++ Event topics.
+        echo Skipping: $subSystem has no C++ Event topics.
         return 0
     fi
 }
 
 #  Local FUNCTIONS
 
-# Get EFDB_Topics from Events XML.
-function getTopics() {
-    subSystem=$(getEntity $1)
-    file=$2
-    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic" -v . -n $file |cut -d"_" -f 3- )
-    topicsArray=($output)
-    # If CSC uses the Generic Events, add those.
-    generics=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-    if [ "$generics" == "" ]; then
-        echo "ERROR: The Generics field should not be empty."
-        exit 1
-    elif [ "$generics" == "yes" ]; then
-        topicsArray+=(${generic_events[@]})
-    fi
-}
-
-function getTopicParameters() {
-    local file=$1
-    local topic=$2
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    unset parametersArray
-    output=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item/EFDB_Name" -v . -n $file )
-    parametersArray=($output)
-}
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterType=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterIDLSize() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterIDLSize=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/IDL_Size" -v . -n $file )
-    echo $parameterIDLSize
-}
-
-function getParameterCount() {
-    local file=$1
-    local topic=$2
-    local itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    for generic in "${generic_events[@]}"; do
-        [[ $generic == "$topic" ]] && local subSystem=SALGeneric
-    done
-    parameterCount=$( xml sel -t -m "//SALEventSet/SALEvent/EFDB_Topic[text()='${subSystem}_logevent_$topic']/../item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
-
 function createSettings() {
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem)_${topic} communications tests." >> $testSuite
+    echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${subSystem}    \${component}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -243,13 +172,17 @@ function readLogger() {
         itemIndex=1
         for topic in "${topicsArray[@]}"; do
             for generic in "${generic_events[@]}"; do
-                    [[ $generic == "$topic" ]] && file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+                [[ $generic == "$topic" ]] && file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
             done
             echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === Event ${topic} received =\${SPACE}" >> $testSuite
             echo "    \${end}=    Get Index From List    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    start=\${${topic}_start}" >> $testSuite
             echo "    \${${topic}_end}=    Evaluate    \${end}+\${1}" >> $testSuite
             echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${${topic}_end}" >> $testSuite
-            getTopicParameters $file $topic
+            unset parametersArray
+            for generic in "${generic_events[@]}"; do
+                [[ $generic == "$topic" ]] && local subSystem=SALGeneric  && local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+            done
+            parametersArray=($(getTopicParameters $subSystem $file $topic "Events"))
             readLogger_params $file $topic $itemIndex $testSuite
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
             (( itemIndex++ ))
@@ -263,10 +196,10 @@ function readLogger_params() {
     local topicIndex=$3
     local testSuite=$4
     for parameter in "${parametersArray[@]}"; do
-        parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $file $topic $parameterIndex)"
-        parameterCount=$(getParameterCount $file $topic $parameterIndex)
-        #echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
+        parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
+        parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Events")"
+        parameterCount=$(getParameterCount $subSystem $file $topic $parameterIndex "Events")
+        #echo "topic: $topic parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ $testSuite == *"$topic"* ]]; then
             topic="full"
         fi
@@ -300,11 +233,12 @@ function createTestSuite() {
     topicIndex=1
 
     # Get the topics for the CSC.
-    getTopics $subSystem $file
+    topicsArray=($(getTopics $subSystem $file $messageType))
+    #echo Topics to test: ${topicsArray[@]}
 
     # Generate the test suite for each topic.
     echo Generating test suite:
-    testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
     echo $testSuiteCombined
     createSettings $subSystem $messageType $testSuiteCombined
     createVariables $subSystem $testSuiteCombined "all"
@@ -322,7 +256,7 @@ function createTestSuite() {
         #device=$EMPTY
         #property=$EMPTY
         ##  Define test suite name
-        #testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+        #testSuite=$workDir/${subSystem}_${topic}.robot
 
         ##  Get correct topic source (SAlGenerics or Subsystem XML)
         #for generic in "${generic_events[@]}"; do
@@ -352,7 +286,7 @@ function createTestSuite() {
             #parameterIndex=$(getParameterIndex $parameter)
             #parameterType=$(getParameterType $file $topic $parameterIndex)
             #parameterCount=$(getParameterCount $file $topic $parameterIndex)
-            #parameterIDLSize=$(getParameterIDLSize $file $topic $parameterIndex)
+            #parameterIDLSize=$(getParameterSize $file $topic $parameterIndex)
             ##echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "parameterIDLSize:"$parameterIDLSize
             #for i in $(seq 1 $parameterCount); do
                 #testValue=$(generateArgument "$parameterType" $parameterIDLSize)
