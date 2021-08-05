@@ -468,6 +468,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceActuatorBumpTestStatus_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceActuatorBumpTestStatus generated =
+    Comment    ======= Verify ${subSystem}_enabledForceActuators test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_enabledForceActuators
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event enabledForceActuators iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_enabledForceActuators_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event enabledForceActuators generated =
     Comment    ======= Verify ${subSystem}_settingVersions test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_settingVersions
     @{words}=    Split String    ${line}
@@ -1562,6 +1570,13 @@ Read Logger
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTestTimestamps : 0    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTest : 0    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${enabledForceActuators_start}=    Get Index From List    ${full_list}    === Event enabledForceActuators received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${enabledForceActuators_start}
+    ${enabledForceActuators_end}=    Evaluate    ${end}+${1}
+    ${enabledForceActuators_list}=    Get Slice From List    ${full_list}    start=${enabledForceActuators_start}    end=${enabledForceActuators_end}
+    Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceActuatorEnabled : 0    1
+    Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${settingVersions_start}=    Get Index From List    ${full_list}    === Event settingVersions received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${settingVersions_start}
     ${settingVersions_end}=    Evaluate    ${end}+${1}
