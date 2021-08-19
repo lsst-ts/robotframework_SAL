@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    Test
 ${component}    all
-${timeout}    30s
+${timeout}    45s
 
 *** Test Cases ***
 Verify Component Sender and Logger
@@ -39,10 +39,198 @@ Start Sender
     END
     Comment    Executing Combined Java Sender Program.
     ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
-    FOR    ${i}    IN RANGE    30
-        ${loggerOutput}=    Get File    ${EXECDIR}${/}stdoutLogger.txt
-        Run Keyword If    'BUILD SUCCESS' in $loggerOutput    Set Test Variable    ${loggerCompletionTextFound}    "TRUE"
-        Exit For Loop If     'BUILD SUCCESS' in $loggerOutput
-        Sleep    3s
-    END
-    Should Be True    ${loggerCompletionTextFound} == "TRUE"
+    ${output}=    Wait For Process    sender    timeout=${timeout}    on_timeout=terminate
+    Log Many    ${output.stdout}    ${output.stderr}
+    Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
+    Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
+    ${scalars_end}=    Get Index From List    ${full_list}    === Test_scalars end of topic ===
+    ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end + 1}
+    Log Many    ${scalars_list}
+    Should Contain    ${scalars_list}    === Test_scalars start of topic ===
+    Should Contain    ${scalars_list}    === Test_scalars end of topic ===
+    Should Contain    ${scalars_list}    === [putSample logevent_scalars] writing a message containing :
+    ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
+    ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
+    ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end + 1}
+    Log Many    ${arrays_list}
+    Should Contain    ${arrays_list}    === Test_arrays start of topic ===
+    Should Contain    ${arrays_list}    === Test_arrays end of topic ===
+    Should Contain    ${arrays_list}    === [putSample logevent_arrays] writing a message containing :
+    ${settingVersions_start}=    Get Index From List    ${full_list}    === Test_settingVersions start of topic ===
+    ${settingVersions_end}=    Get Index From List    ${full_list}    === Test_settingVersions end of topic ===
+    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
+    Log Many    ${settingVersions_list}
+    Should Contain    ${settingVersions_list}    === Test_settingVersions start of topic ===
+    Should Contain    ${settingVersions_list}    === Test_settingVersions end of topic ===
+    Should Contain    ${settingVersions_list}    === [putSample logevent_settingVersions] writing a message containing :
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
+    Should Contain    ${errorCode_list}    === [putSample logevent_errorCode] writing a message containing :
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
+    Should Contain    ${summaryState_list}    === [putSample logevent_summaryState] writing a message containing :
+    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart start of topic ===
+    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart end of topic ===
+    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
+    Log Many    ${appliedSettingsMatchStart_list}
+    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart start of topic ===
+    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart end of topic ===
+    Should Contain    ${appliedSettingsMatchStart_list}    === [putSample logevent_appliedSettingsMatchStart] writing a message containing :
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Test_logLevel start of topic ===
+    ${logLevel_end}=    Get Index From List    ${full_list}    === Test_logLevel end of topic ===
+    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
+    Log Many    ${logLevel_list}
+    Should Contain    ${logLevel_list}    === Test_logLevel start of topic ===
+    Should Contain    ${logLevel_list}    === Test_logLevel end of topic ===
+    Should Contain    ${logLevel_list}    === [putSample logevent_logLevel] writing a message containing :
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Test_logMessage start of topic ===
+    ${logMessage_end}=    Get Index From List    ${full_list}    === Test_logMessage end of topic ===
+    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
+    Log Many    ${logMessage_list}
+    Should Contain    ${logMessage_list}    === Test_logMessage start of topic ===
+    Should Contain    ${logMessage_list}    === Test_logMessage end of topic ===
+    Should Contain    ${logMessage_list}    === [putSample logevent_logMessage] writing a message containing :
+    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Test_settingsApplied start of topic ===
+    ${settingsApplied_end}=    Get Index From List    ${full_list}    === Test_settingsApplied end of topic ===
+    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
+    Log Many    ${settingsApplied_list}
+    Should Contain    ${settingsApplied_list}    === Test_settingsApplied start of topic ===
+    Should Contain    ${settingsApplied_list}    === Test_settingsApplied end of topic ===
+    Should Contain    ${settingsApplied_list}    === [putSample logevent_settingsApplied] writing a message containing :
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
+    Should Contain    ${simulationMode_list}    === [putSample logevent_simulationMode] writing a message containing :
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Test_softwareVersions start of topic ===
+    ${softwareVersions_end}=    Get Index From List    ${full_list}    === Test_softwareVersions end of topic ===
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
+    Log Many    ${softwareVersions_list}
+    Should Contain    ${softwareVersions_list}    === Test_softwareVersions start of topic ===
+    Should Contain    ${softwareVersions_list}    === Test_softwareVersions end of topic ===
+    Should Contain    ${softwareVersions_list}    === [putSample logevent_softwareVersions] writing a message containing :
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
+    Should Contain    ${heartbeat_list}    === [putSample logevent_heartbeat] writing a message containing :
+    ${authList_start}=    Get Index From List    ${full_list}    === Test_authList start of topic ===
+    ${authList_end}=    Get Index From List    ${full_list}    === Test_authList end of topic ===
+    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
+    Log Many    ${authList_list}
+    Should Contain    ${authList_list}    === Test_authList start of topic ===
+    Should Contain    ${authList_list}    === Test_authList end of topic ===
+    Should Contain    ${authList_list}    === [putSample logevent_authList] writing a message containing :
+
+Read Subscriber
+    [Tags]    functional
+    Switch Process    logger
+    ${output}=    Wait For Process    logger    timeout=${timeout}    on_timeout=terminate
+    Log Many    ${output.stdout}    ${output.stderr}
+    Should Contain    ${output.stdout}    ===== Test all loggers ready =====
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
+    ${scalars_end}=    Get Index From List    ${full_list}    === Test_scalars end of topic ===
+    ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end + 1}
+    Log Many    ${scalars_list}
+    Should Contain    ${scalars_list}    === Test_scalars start of topic ===
+    Should Contain    ${scalars_list}    === Test_scalars end of topic ===
+    Should Contain    ${scalars_list}    === [getSample logevent_scalars ] message received :0
+    ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
+    ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
+    ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end + 1}
+    Log Many    ${arrays_list}
+    Should Contain    ${arrays_list}    === Test_arrays start of topic ===
+    Should Contain    ${arrays_list}    === Test_arrays end of topic ===
+    Should Contain    ${arrays_list}    === [getSample logevent_arrays ] message received :0
+    ${settingVersions_start}=    Get Index From List    ${full_list}    === Test_settingVersions start of topic ===
+    ${settingVersions_end}=    Get Index From List    ${full_list}    === Test_settingVersions end of topic ===
+    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
+    Log Many    ${settingVersions_list}
+    Should Contain    ${settingVersions_list}    === Test_settingVersions start of topic ===
+    Should Contain    ${settingVersions_list}    === Test_settingVersions end of topic ===
+    Should Contain    ${settingVersions_list}    === [getSample logevent_settingVersions ] message received :0
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
+    Should Contain    ${errorCode_list}    === [getSample logevent_errorCode ] message received :0
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
+    Should Contain    ${summaryState_list}    === [getSample logevent_summaryState ] message received :0
+    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart start of topic ===
+    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart end of topic ===
+    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
+    Log Many    ${appliedSettingsMatchStart_list}
+    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart start of topic ===
+    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart end of topic ===
+    Should Contain    ${appliedSettingsMatchStart_list}    === [getSample logevent_appliedSettingsMatchStart ] message received :0
+    ${logLevel_start}=    Get Index From List    ${full_list}    === Test_logLevel start of topic ===
+    ${logLevel_end}=    Get Index From List    ${full_list}    === Test_logLevel end of topic ===
+    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
+    Log Many    ${logLevel_list}
+    Should Contain    ${logLevel_list}    === Test_logLevel start of topic ===
+    Should Contain    ${logLevel_list}    === Test_logLevel end of topic ===
+    Should Contain    ${logLevel_list}    === [getSample logevent_logLevel ] message received :0
+    ${logMessage_start}=    Get Index From List    ${full_list}    === Test_logMessage start of topic ===
+    ${logMessage_end}=    Get Index From List    ${full_list}    === Test_logMessage end of topic ===
+    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
+    Log Many    ${logMessage_list}
+    Should Contain    ${logMessage_list}    === Test_logMessage start of topic ===
+    Should Contain    ${logMessage_list}    === Test_logMessage end of topic ===
+    Should Contain    ${logMessage_list}    === [getSample logevent_logMessage ] message received :0
+    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Test_settingsApplied start of topic ===
+    ${settingsApplied_end}=    Get Index From List    ${full_list}    === Test_settingsApplied end of topic ===
+    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
+    Log Many    ${settingsApplied_list}
+    Should Contain    ${settingsApplied_list}    === Test_settingsApplied start of topic ===
+    Should Contain    ${settingsApplied_list}    === Test_settingsApplied end of topic ===
+    Should Contain    ${settingsApplied_list}    === [getSample logevent_settingsApplied ] message received :0
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
+    Should Contain    ${simulationMode_list}    === [getSample logevent_simulationMode ] message received :0
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Test_softwareVersions start of topic ===
+    ${softwareVersions_end}=    Get Index From List    ${full_list}    === Test_softwareVersions end of topic ===
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
+    Log Many    ${softwareVersions_list}
+    Should Contain    ${softwareVersions_list}    === Test_softwareVersions start of topic ===
+    Should Contain    ${softwareVersions_list}    === Test_softwareVersions end of topic ===
+    Should Contain    ${softwareVersions_list}    === [getSample logevent_softwareVersions ] message received :0
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
+    Should Contain    ${heartbeat_list}    === [getSample logevent_heartbeat ] message received :0
+    ${authList_start}=    Get Index From List    ${full_list}    === Test_authList start of topic ===
+    ${authList_end}=    Get Index From List    ${full_list}    === Test_authList end of topic ===
+    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
+    Log Many    ${authList_list}
+    Should Contain    ${authList_list}    === Test_authList start of topic ===
+    Should Contain    ${authList_list}    === Test_authList end of topic ===
+    Should Contain    ${authList_list}    === [getSample logevent_authList ] message received :0
