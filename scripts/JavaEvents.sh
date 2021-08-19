@@ -77,7 +77,7 @@ function createVariables() {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    30s" >> $testSuite
+    echo "\${timeout}    ${timeout}" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -132,14 +132,46 @@ function startJavaCombinedSenderProcess() {
     echo "    END" >> $testSuite
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
     echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
-    echo "    FOR    \${i}    IN RANGE    30" >> $testSuite
-    echo "        \${loggerOutput}=    Get File    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
-    echo "        Run Keyword If    'BUILD SUCCESS' in \$loggerOutput    Set Test Variable    \${loggerCompletionTextFound}    \"TRUE\"" >> $testSuite
-    echo "        Exit For Loop If     'BUILD SUCCESS' in \$loggerOutput" >> $testSuite
-    echo "        Sleep    3s" >> $testSuite
-    echo "    END" >> $testSuite
-    echo "    Should Be True    \${loggerCompletionTextFound} == \"TRUE\"" >> $testSuite
+    echo "    \${output}=    Wait For Process    sender    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all events ready =====" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
+    for item in "${topicsArray[@]}"; do
+        echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end + 1}" >> $testSuite
+        echo "    Log Many    \${${item}_list}" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === [putSample logevent_${item}] writing a message containing :" >> $testSuite
+    done
+    echo "" >> $testSuite
 }
+
+
+function readLogger() {
+    # Read the Logger output stream and verify the messages are working.
+
+    local testSuite=$1
+    echo "Read Subscriber" >> $testSuite
+    echo "    [Tags]    functional" >> $testSuite
+    echo "    Switch Process    logger" >> $testSuite
+    echo "    \${output}=    Wait For Process    logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
+    echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    ===== $subSystem all loggers ready =====" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
+    for item in "${topicsArray[@]}"; do
+        echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end + 1}" >> $testSuite
+        echo "    Log Many    \${${item}_list}" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === [getSample logevent_$item ] message received :0" >> $testSuite
+    done
+}
+
 
 function createTestSuite() {
     subSystem=$1
@@ -148,7 +180,8 @@ function createTestSuite() {
     topicIndex=1
 
     # Get the topics for the CSC.
-    getTopics $subSystem $file
+    topicsArray=($(getTopics $subSystem $file $messageType))
+    echo "Event Topics: ${topicsArray[@]}"
 
     # Generate the test suite for each topic.
     echo ============== Generating Combined messaging test suite ==============
@@ -161,10 +194,10 @@ function createTestSuite() {
 
     startJavaCombinedLoggerProcess $subSystem $messageType $testSuiteCombined
     startJavaCombinedSenderProcess $subSystem $messageType $testSuiteCombined
-    #readLogger $file $topicIndex $testSuiteCombined    
+    readLogger $testSuiteCombined    
 
-    echo ==== Combined test generation complete ====
-    echo ""
+    echo ==== Combined Events test generation complete ====
+    echo -e "\n\n"
 }
 
 #### Call the main() function ####
