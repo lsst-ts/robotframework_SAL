@@ -22,11 +22,12 @@ function main() {
     subSystem=$1
         
     # Get the XML definition file.
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
         
         
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
+    echo $rtlang
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
@@ -134,12 +135,17 @@ function startJavaCombinedPublisherProcess {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all publishers ready =====" >> $testSuite
     echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite
-    #echo "    :FOR    \${i}    IN RANGE    30" >> $testSuite
-    #echo "    \\    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}stdoutSubscriber.txt" >> $testSuite
-    #echo "    \\    Run Keyword If    'message received :200' in \$subscriberOutput    Set Test Variable    \${publisherCompletionTextFound}    \"TRUE\"" >> $testSuite
-    #echo "    \\    Exit For Loop If     'BUILD SUCCESS' in \$subscriberOutput" >> $testSuite
-    #echo "    \\    Sleep    3s" >> $testSuite
-    #echo "    Should Be True    \${publisherCompletionTextFound} == \"TRUE\"" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
+    for item in "${topicsArray[@]}"; do
+        echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end + 1}" >> $testSuite
+        echo "    Log Many    \${${item}_list}" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === [putSample ${item}] writing a message containing :" >> $testSuite
+        echo "    Should Contain    \${${item}_list}    === [${item}] message sent 200" >> $testSuite
+    done
     echo "" >> $testSuite
 }
 
@@ -152,7 +158,6 @@ function readSubscriber {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem all subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
-    itemIndex=1
     for item in "${topicsArray[@]}"; do
         echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
@@ -160,11 +165,9 @@ function readSubscriber {
         echo "    Log Many    \${${item}_list}" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-        #echo "    Should Contain    \${${item}_list}    === [$item Subscriber] samples" >> $testSuite
-        #echo "    Should Contain    \${${item}_list}    === [$item Subscriber] message received :1" >> $testSuite
-        #getTopicParameters $file $itemIndex
-        #readSubscriber_params $file $item $itemIndex $testSuite
-        (( itemIndex++ ))
+        echo "    Should Contain    \${${item}_list}    === [getSample ${item} ] message received :0" >> $testSuite
+        echo "    Run Keyword And Ignore Error    Should Contain    \${${item}_list}    === [${item} Subscriber] message received :10" >> $testSuite
+        echo "    Run Keyword And Ignore Error    Should Contain    \${${item}_list}    === [${item} Subscriber] message received :200" >> $testSuite
     done
 }
 
@@ -175,7 +178,8 @@ function createTestSuite {
     index=1
 
     # Get the topics for the CSC.
-    getTopics $subSystem $file
+    topicsArray=($(getTopics $subSystem $file $messageType))
+    echo "Telemetry Topics: ${topicsArray[@]}"
 
     if [ ${#topicsArray[@]} -eq 0 ]; then
         echo Skipping: $subSystem has no telemetry.
@@ -191,7 +195,10 @@ function createTestSuite {
         verifyCompPubSub $testSuiteCombined
         startJavaCombinedSubscriberProcess $subSystem $messageType $testSuiteCombined
         startJavaCombinedPublisherProcess $subSystem $messageType $testSuiteCombined
-    readSubscriber $testSuiteCombined
+        readSubscriber $testSuiteCombined
+        
+        echo ==== Combined Telemetry test generation complete ====
+        echo -e "\n\n"
     fi
 
  #    echo Generating:
