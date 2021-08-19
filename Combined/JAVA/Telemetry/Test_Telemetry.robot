@@ -43,6 +43,23 @@ Start Publisher
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all publishers ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
+    ${scalars_end}=    Get Index From List    ${full_list}    === Test_scalars end of topic ===
+    ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end + 1}
+    Log Many    ${scalars_list}
+    Should Contain    ${scalars_list}    === Test_scalars start of topic ===
+    Should Contain    ${scalars_list}    === Test_scalars end of topic ===
+    Should Contain    ${scalars_list}    === [putSample scalars] writing a message containing :
+    Should Contain    ${scalars_list}    === [scalars] message sent 200
+    ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
+    ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
+    ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end + 1}
+    Log Many    ${arrays_list}
+    Should Contain    ${arrays_list}    === Test_arrays start of topic ===
+    Should Contain    ${arrays_list}    === Test_arrays end of topic ===
+    Should Contain    ${arrays_list}    === [putSample arrays] writing a message containing :
+    Should Contain    ${arrays_list}    === [arrays] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -57,9 +74,15 @@ Read Subscriber
     Log Many    ${scalars_list}
     Should Contain    ${scalars_list}    === Test_scalars start of topic ===
     Should Contain    ${scalars_list}    === Test_scalars end of topic ===
+    Should Contain    ${scalars_list}    === [getSample scalars ] message received :0
+    Run Keyword And Ignore Error    Should Contain    ${scalars_list}    === [scalars Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${scalars_list}    === [scalars Subscriber] message received :200
     ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
     ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
     ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end + 1}
     Log Many    ${arrays_list}
     Should Contain    ${arrays_list}    === Test_arrays start of topic ===
     Should Contain    ${arrays_list}    === Test_arrays end of topic ===
+    Should Contain    ${arrays_list}    === [getSample arrays ] message received :0
+    Run Keyword And Ignore Error    Should Contain    ${arrays_list}    === [arrays Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${arrays_list}    === [arrays Subscriber] message received :200
