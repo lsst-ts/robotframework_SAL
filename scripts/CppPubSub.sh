@@ -24,7 +24,6 @@ function main() {
     # Get the XML definition file.
     file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
 
-
     # Get the RuntimeLanguages list
     rtlang=($(getRuntimeLanguages $subSystem))
 
@@ -211,10 +210,12 @@ function createTestSuite {
     topicsArray=($(getTopics $subSystem $file $messageType))
 
     if [ ${#topicsArray[@]} -eq 0 ]; then
-        echo Skipping: $subSystem has no telemetry.
+        echo Skipping: $subSystem has no Telemetry.
     else
         # Generate the test suite for each message type.
-        echo Generating test suite:
+        echo ==== Generating Combined messaging test suite ====
+        echo "RuntimeLanguages: $rtlang"
+        echo "C++ Telemetry Topics: ${topicsArray[@]}"
         testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
         echo $testSuiteCombined
         createSettings $subSystem $messageType $testSuiteCombined
@@ -224,7 +225,7 @@ function createTestSuite {
         startSubscriber $testSuiteCombined
         startPublisher $testSuiteCombined
         readSubscriber $file $topicIndex $testSuiteCombined
-        echo ==== Combined Telemetry test generation complete ====
+        echo ============== Combined Telemetry test generation complete ==============
         echo ""
     fi
     # Generate the test suite for each topic.

@@ -24,10 +24,8 @@ function main() {
     # Get the XML definition file.
     file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
         
-        
     # Get the RuntimeLanguages list
     rtlang=($(getRuntimeLanguages $subSystem))
-    echo $rtlang
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "java" ]]; then
@@ -36,7 +34,7 @@ function main() {
         # Create test suite.
         createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subSystem has no Java Telemetry topics.
+        echo Skipped: $subSystem has no Java Telemetry topics.
         return 0
     fi
 }
@@ -179,13 +177,14 @@ function createTestSuite {
 
     # Get the topics for the CSC.
     topicsArray=($(getTopics $subSystem $file $messageType))
-    echo "Telemetry Topics: ${topicsArray[@]}"
 
     if [ ${#topicsArray[@]} -eq 0 ]; then
-        echo Skipping: $subSystem has no telemetry.
+        echo Skipping: $subSystem has no Telemetry.
     else
         # Generate the test suite for each topic.
-        echo ============== Generating Combined messaging test suite ==============
+        echo "RuntimeLanguages: $rtlang"
+        echo "Java Telemetry Topics: ${topicsArray[@]}"
+        echo ==== Generating Combined messaging test suite ====
         testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
         echo $testSuiteCombined
         createSettings $subSystem $messageType $testSuiteCombined
@@ -197,8 +196,8 @@ function createTestSuite {
         startJavaCombinedPublisherProcess $subSystem $messageType $testSuiteCombined
         readSubscriber $testSuiteCombined
         
-        echo ==== Combined Telemetry test generation complete ====
-        echo -e "\n\n"
+        echo ============== Combined Telemetry test generation complete ==============
+        echo ""
     fi
 
  #    echo Generating:
@@ -224,7 +223,6 @@ function createTestSuite {
 
  #        (( index++ ))
     # done
- #    echo ""
 }
 
 #### Call the main() function ####

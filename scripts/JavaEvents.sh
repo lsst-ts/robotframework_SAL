@@ -37,7 +37,7 @@ function main() {
         # Create test suite.
         createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subSystem has no Java Event topics.
+        echo Skipped: $subSystem has no Java Event topics.
         return 0
     fi
 }
@@ -181,23 +181,28 @@ function createTestSuite() {
 
     # Get the topics for the CSC.
     topicsArray=($(getTopics $subSystem $file $messageType))
-    echo "Event Topics: ${topicsArray[@]}"
 
-    # Generate the test suite for each topic.
-    echo ============== Generating Combined messaging test suite ==============
-    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
-    echo $testSuiteCombined
-    createSettings $subSystem $messageType $testSuiteCombined
-    createVariables $subSystem $testSuiteCombined "all"
-    echo "*** Test Cases ***" >> $testSuiteCombined
-    verifyCompSenderLogger $testSuiteCombined
+    if [ ${#topicsArray[@]} -eq 0 ]; then
+        echo Skipping: $subSystem has no Events.
+    else
+        # Generate the test suite for each topic.
+        echo ==== Generating Combined messaging test suite ====
+        echo "RuntimeLanguages: $rtlang"
+        echo "Java Event Topics: ${topicsArray[@]}"
+        testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+        echo $testSuiteCombined
+        createSettings $subSystem $messageType $testSuiteCombined
+        createVariables $subSystem $testSuiteCombined "all"
+        echo "*** Test Cases ***" >> $testSuiteCombined
+        verifyCompSenderLogger $testSuiteCombined
 
-    startJavaCombinedLoggerProcess $subSystem $messageType $testSuiteCombined
-    startJavaCombinedSenderProcess $subSystem $messageType $testSuiteCombined
-    readLogger $testSuiteCombined    
+        startJavaCombinedLoggerProcess $subSystem $messageType $testSuiteCombined
+        startJavaCombinedSenderProcess $subSystem $messageType $testSuiteCombined
+        readLogger $testSuiteCombined    
 
-    echo ==== Combined Events test generation complete ====
-    echo -e "\n\n"
+        echo ============== Combined Events test generation complete ==============
+        echo ""
+    fi
 }
 
 #### Call the main() function ####
