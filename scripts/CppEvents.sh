@@ -234,21 +234,26 @@ function createTestSuite() {
 
     # Get the topics for the CSC.
     topicsArray=($(getTopics $subSystem $file $messageType))
-    #echo Topics to test: ${topicsArray[@]}
 
-    # Generate the test suite for each topic.
-    echo Generating test suite:
-    testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
-    echo $testSuiteCombined
-    createSettings $subSystem $messageType $testSuiteCombined
-    createVariables $subSystem $testSuiteCombined "all"
-    echo "*** Test Cases ***" >> $testSuiteCombined
-    verifyCompSenderLogger $testSuiteCombined
-    startLogger $testSuiteCombined
-    startSender $testSuiteCombined
-    readLogger $file $topicIndex $testSuiteCombined
-    echo ==== Combined test generation complete ====
-    echo ""
+    if [ ${#topicsArray[@]} -eq 0 ]; then
+        echo Skipping: $subSystem has no Events.
+    else
+        # Generate the test suite for each topic.
+        echo ==== Generating Combined messaging test suite ====
+        echo "RuntimeLanguages: $rtlang"
+        echo "C++ Events Topics: ${topicsArray[@]}"
+        testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+        echo $testSuiteCombined
+        createSettings $subSystem $messageType $testSuiteCombined
+        createVariables $subSystem $testSuiteCombined "all"
+        echo "*** Test Cases ***" >> $testSuiteCombined
+        verifyCompSenderLogger $testSuiteCombined
+        startLogger $testSuiteCombined
+        startSender $testSuiteCombined
+        readLogger $file $topicIndex $testSuiteCombined
+        echo ============== Combined test generation complete ==============
+        echo ""
+    fi
     # Generate the test suite for each topic.
     #echo ============== Generating Separate messaging test suites ==============
     #topicIndex=1

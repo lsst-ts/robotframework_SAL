@@ -11,6 +11,7 @@ csc_array = ['AdamSensors', 'ATAOS', 'ATArchiver', 'ATBuilding', 'ATCamera', 'AT
 def GenerateTests(csc, language):
     """Test Suite generator."""
     complete=True
+    print("Starting test suite generation...\n")
     if  csc == "all":
         for csc in csc_array:
             if ('cpp' in language) or ('all' in language):
@@ -31,7 +32,7 @@ def GenerateTests(csc, language):
                 #subprocess.check_call(["./PythonEvents.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
                 complete=False
-        print("COMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
+        print("\nCOMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
     elif csc in csc_array:
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call(["./CppPubSub.sh", csc])
@@ -51,7 +52,7 @@ def GenerateTests(csc, language):
                 #subprocess.check_call(["./PythonEvents.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
                 complete=False
-            print("COMPLETED all test suites for the " + csc) if complete else print("This was a " + str(language))
+            print("\nCOMPLETED all test suites for the " + csc + " CSC") if complete else print("This was a " + str(language))
     else:
         print("Something has gone very wrong. CSC: " + csc + ", Language(s): " + str(language))
 
