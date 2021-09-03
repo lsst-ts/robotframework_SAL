@@ -17,6 +17,7 @@ def GenerateTests(csc, language):
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call(["./CppPubSub.sh", csc])
                 subprocess.check_call(["./CppEvents.sh", csc])
+                subprocess.check_call(["./CppAuthlist.sh", csc])
                 #subprocess.check_call(["./CppState.sh", csc])
                 #subprocess.check_call(["./CppComCon.sh", csc])
             if ('java' in language) or ('all' in language):
