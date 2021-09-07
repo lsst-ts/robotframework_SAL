@@ -23,6 +23,7 @@ def GenerateTests(csc, language):
             if ('java' in language) or ('all' in language):
                 subprocess.check_call(["./JavaPubSub.sh", csc])
                 subprocess.check_call(["./JavaEvents.sh", csc])
+                subprocess.check_call(["./JavaAuthlist.sh", csc])
                 #subprocess.check_call(["./JavaState.sh", csc])
                 #subprocess.check_call(["./JavaComCon.sh", csc])
             if ('python' in language) or ('all' in language):
@@ -38,11 +39,13 @@ def GenerateTests(csc, language):
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call(["./CppPubSub.sh", csc])
                 subprocess.check_call(["./CppEvents.sh", csc])
+                subprocess.check_call(["./CppAuthlist.sh", csc])
                 #subprocess.check_call(["./CppState.sh", csc])
                 #subprocess.check_call(["./CppComCon.sh", csc])
             if ('java' in language) or ('all' in language):
                 subprocess.check_call(["./JavaPubSub.sh", csc])
                 subprocess.check_call(["./JavaEvents.sh", csc])
+                subprocess.check_call(["./JavaAuthlist.sh", csc])
                 #subprocess.check_call(["./JavaState.sh", csc])
                 #subprocess.check_call(["./JavaComCon.sh", csc])
             if ('python' in language) or ('all' in language):
