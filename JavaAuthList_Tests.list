@@ -1,0 +1,14 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name JavaAuthList
+--output JavaAuthList
+
+# List of test suites
+AuthList/JAVA/ATCamera_AuthList.robot
+AuthList/JAVA/ATHeaderService_AuthList.robot
+AuthList/JAVA/CCCamera_AuthList.robot
+AuthList/JAVA/CCHeaderService_AuthList.robot
+AuthList/JAVA/GCHeaderService_AuthList.robot
+AuthList/JAVA/MTCamera_AuthList.robot
+AuthList/JAVA/MTHeaderService_AuthList.robot
+AuthList/JAVA/MTRotator_AuthList.robot

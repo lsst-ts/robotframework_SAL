@@ -4,12 +4,12 @@
 --output CppAuthList
 
 # List of test suites
-CPP/AuthList/ATMCS_AuthList.robot
-CPP/AuthList/ATPtg_AuthList.robot
-CPP/AuthList/Guider_AuthList.robot
-CPP/AuthList/MTM1M3_AuthList.robot
-CPP/AuthList/MTMount_AuthList.robot
-CPP/AuthList/MTPtg_AuthList.robot
-CPP/AuthList/MTRotator_AuthList.robot
-CPP/AuthList/Script_AuthList.robot
-CPP/AuthList/WeatherStation_AuthList.robot
+AuthList/CPP/ATMCS_AuthList.robot
+AuthList/CPP/ATPtg_AuthList.robot
+AuthList/CPP/Guider_AuthList.robot
+AuthList/CPP/MTM1M3_AuthList.robot
+AuthList/CPP/MTMount_AuthList.robot
+AuthList/CPP/MTPtg_AuthList.robot
+AuthList/CPP/MTRotator_AuthList.robot
+AuthList/CPP/Script_AuthList.robot
+AuthList/CPP/WeatherStation_AuthList.robot
