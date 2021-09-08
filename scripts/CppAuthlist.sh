@@ -310,6 +310,7 @@ function verifyEighthTest {
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}nonAuthorizedCSCs : MTM1M3,MTM2,Test    2" >> $testSuite
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}identity\${SPACE}\${SPACE}\${SPACE}\${SPACE}: ${identity}    1" >> $testSuite
     echo "    Should Match Regexp    \${test_output}[-1]    === \\\[waitForCompletion_setLogLevel\\\] command [0-9]{10,} Not permitted by authList" >> $testSuite
+    echo "    Sleep    10s    Allow DDS threads to finish" >> $testSuite
     echo "" >> $testSuite
 }
 

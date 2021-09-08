@@ -302,6 +302,7 @@ function verifyEighthTest {
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}nonAuthorizedCSCs : MTM1M3,MTM2,Test    1" >> $testSuite
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}identity : ${identity}    1" >> $testSuite
     echo "    Should Contain Match    \${test_output}    *waitForCompletion_setLogLevel* command * Not permitted by authList*" >> $testSuite
+    echo "    Sleep    10s    Allow DDS threads to finish" >> $testSuite
     echo "" >> $testSuite
 }
 

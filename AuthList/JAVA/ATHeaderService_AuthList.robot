@@ -196,4 +196,5 @@ Verify Eighth AuthList Test
     Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : MTM1M3,MTM2,Test    1
     Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : MTM2    1
     Should Contain Match    ${test_output}    *waitForCompletion_setLogLevel* command * Not permitted by authList*
+    Sleep    10s    Allow DDS threads to finish
 
