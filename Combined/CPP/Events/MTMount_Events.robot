@@ -36,150 +36,6 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_availableSettings test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_availableSettings
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event availableSettings iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_availableSettings_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event availableSettings generated =
-    Comment    ======= Verify ${subSystem}_azimuthSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event azimuthSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event azimuthSystemState generated =
-    Comment    ======= Verify ${subSystem}_elevationSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event elevationSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event elevationSystemState generated =
-    Comment    ======= Verify ${subSystem}_cameraCableWrapSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event cameraCableWrapSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event cameraCableWrapSystemState generated =
-    Comment    ======= Verify ${subSystem}_balanceSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_balanceSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event balanceSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_balanceSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event balanceSystemState generated =
-    Comment    ======= Verify ${subSystem}_mirrorCoversSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoversSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mirrorCoversSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mirrorCoversSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mirrorCoversSystemState generated =
-    Comment    ======= Verify ${subSystem}_mirrorCoverLocksSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoverLocksSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mirrorCoverLocksSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mirrorCoverLocksSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mirrorCoverLocksSystemState generated =
-    Comment    ======= Verify ${subSystem}_azimuthCableWrapSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthCableWrapSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event azimuthCableWrapSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthCableWrapSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event azimuthCableWrapSystemState generated =
-    Comment    ======= Verify ${subSystem}_lockingPinsSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_lockingPinsSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event lockingPinsSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_lockingPinsSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event lockingPinsSystemState generated =
-    Comment    ======= Verify ${subSystem}_deployablePlatformsSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformsSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event deployablePlatformsSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_deployablePlatformsSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event deployablePlatformsSystemState generated =
-    Comment    ======= Verify ${subSystem}_oilSupplySystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_oilSupplySystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event oilSupplySystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_oilSupplySystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event oilSupplySystemState generated =
-    Comment    ======= Verify ${subSystem}_azimuthDrivesThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthDrivesThermalSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event azimuthDrivesThermalSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthDrivesThermalSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event azimuthDrivesThermalSystemState generated =
-    Comment    ======= Verify ${subSystem}_elevationDrivesThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationDrivesThermalSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event elevationDrivesThermalSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationDrivesThermalSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event elevationDrivesThermalSystemState generated =
-    Comment    ======= Verify ${subSystem}_az0101CabinetThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_az0101CabinetThermalSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event az0101CabinetThermalSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_az0101CabinetThermalSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event az0101CabinetThermalSystemState generated =
-    Comment    ======= Verify ${subSystem}_modbusTemperatureControllersSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_modbusTemperatureControllersSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event modbusTemperatureControllersSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_modbusTemperatureControllersSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event modbusTemperatureControllersSystemState generated =
-    Comment    ======= Verify ${subSystem}_mainCabinetSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mainCabinetSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mainCabinetSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mainCabinetSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mainCabinetSystemState generated =
-    Comment    ======= Verify ${subSystem}_mainAxesPowerSupplySystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mainAxesPowerSupplySystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mainAxesPowerSupplySystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mainAxesPowerSupplySystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mainAxesPowerSupplySystemState generated =
-    Comment    ======= Verify ${subSystem}_topEndChillerSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_topEndChillerSystemState
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event topEndChillerSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_topEndChillerSystemState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event topEndChillerSystemState generated =
     Comment    ======= Verify ${subSystem}_elevationInPosition test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationInPosition
     @{words}=    Split String    ${line}
@@ -252,6 +108,30 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapLimits_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapLimits generated =
+    Comment    ======= Verify ${subSystem}_elevationLimitPositions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationLimitPositions
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event elevationLimitPositions iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationLimitPositions_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event elevationLimitPositions generated =
+    Comment    ======= Verify ${subSystem}_azimuthLimitPositions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthLimitPositions
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event azimuthLimitPositions iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthLimitPositions_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event azimuthLimitPositions generated =
+    Comment    ======= Verify ${subSystem}_cameraCableWrapLimitPositions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapLimitPositions
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event cameraCableWrapLimitPositions iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapLimitPositions_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event cameraCableWrapLimitPositions generated =
     Comment    ======= Verify ${subSystem}_azimuthToppleBlock test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthToppleBlock
     @{words}=    Split String    ${line}
@@ -292,14 +172,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_connected_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event connected generated =
-    Comment    ======= Verify ${subSystem}_deployablePlatformsMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformsMotionState
+    Comment    ======= Verify ${subSystem}_deployablePlatformMotionState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event deployablePlatformsMotionState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_deployablePlatformsMotionState_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event deployablePlatformMotionState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_deployablePlatformMotionState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event deployablePlatformsMotionState generated =
+    Should Contain    ${output.stdout}    === Event deployablePlatformMotionState generated =
     Comment    ======= Verify ${subSystem}_elevationLockingPinMotionState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationLockingPinMotionState
     @{words}=    Split String    ${line}
@@ -453,149 +333,6 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${availableSettings_start}=    Get Index From List    ${full_list}    === Event availableSettings received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${availableSettings_start}
-    ${availableSettings_end}=    Evaluate    ${end}+${1}
-    ${availableSettings_list}=    Get Slice From List    ${full_list}    start=${availableSettings_start}    end=${availableSettings_end}
-    Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}names : RO    1
-    Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}descriptions : RO    1
-    Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}createdDates : RO    1
-    Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}modifiedDates : RO    1
-    Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${azimuthSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthSystemState_start}
-    ${azimuthSystemState_end}=    Evaluate    ${end}+${1}
-    ${azimuthSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthSystemState_start}    end=${azimuthSystemState_end}
-    Should Contain X Times    ${azimuthSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${azimuthSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${azimuthSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${elevationSystemState_start}=    Get Index From List    ${full_list}    === Event elevationSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationSystemState_start}
-    ${elevationSystemState_end}=    Evaluate    ${end}+${1}
-    ${elevationSystemState_list}=    Get Slice From List    ${full_list}    start=${elevationSystemState_start}    end=${elevationSystemState_end}
-    Should Contain X Times    ${elevationSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${elevationSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${elevationSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${cameraCableWrapSystemState_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraCableWrapSystemState_start}
-    ${cameraCableWrapSystemState_end}=    Evaluate    ${end}+${1}
-    ${cameraCableWrapSystemState_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapSystemState_start}    end=${cameraCableWrapSystemState_end}
-    Should Contain X Times    ${cameraCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${cameraCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${cameraCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${balanceSystemState_start}=    Get Index From List    ${full_list}    === Event balanceSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${balanceSystemState_start}
-    ${balanceSystemState_end}=    Evaluate    ${end}+${1}
-    ${balanceSystemState_list}=    Get Slice From List    ${full_list}    start=${balanceSystemState_start}    end=${balanceSystemState_end}
-    Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mirrorCoversSystemState_start}=    Get Index From List    ${full_list}    === Event mirrorCoversSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mirrorCoversSystemState_start}
-    ${mirrorCoversSystemState_end}=    Evaluate    ${end}+${1}
-    ${mirrorCoversSystemState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoversSystemState_start}    end=${mirrorCoversSystemState_end}
-    Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mirrorCoverLocksSystemState_start}=    Get Index From List    ${full_list}    === Event mirrorCoverLocksSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mirrorCoverLocksSystemState_start}
-    ${mirrorCoverLocksSystemState_end}=    Evaluate    ${end}+${1}
-    ${mirrorCoverLocksSystemState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocksSystemState_start}    end=${mirrorCoverLocksSystemState_end}
-    Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${azimuthCableWrapSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthCableWrapSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthCableWrapSystemState_start}
-    ${azimuthCableWrapSystemState_end}=    Evaluate    ${end}+${1}
-    ${azimuthCableWrapSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthCableWrapSystemState_start}    end=${azimuthCableWrapSystemState_end}
-    Should Contain X Times    ${azimuthCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${azimuthCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${azimuthCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${lockingPinsSystemState_start}=    Get Index From List    ${full_list}    === Event lockingPinsSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${lockingPinsSystemState_start}
-    ${lockingPinsSystemState_end}=    Evaluate    ${end}+${1}
-    ${lockingPinsSystemState_list}=    Get Slice From List    ${full_list}    start=${lockingPinsSystemState_start}    end=${lockingPinsSystemState_end}
-    Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${deployablePlatformsSystemState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformsSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${deployablePlatformsSystemState_start}
-    ${deployablePlatformsSystemState_end}=    Evaluate    ${end}+${1}
-    ${deployablePlatformsSystemState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsSystemState_start}    end=${deployablePlatformsSystemState_end}
-    Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
-    Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${oilSupplySystemState_start}=    Get Index From List    ${full_list}    === Event oilSupplySystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${oilSupplySystemState_start}
-    ${oilSupplySystemState_end}=    Evaluate    ${end}+${1}
-    ${oilSupplySystemState_list}=    Get Slice From List    ${full_list}    start=${oilSupplySystemState_start}    end=${oilSupplySystemState_end}
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coolingPowerState : 1    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilPowerState : 1    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainPumpPowerState : 1    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${azimuthDrivesThermalSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthDrivesThermalSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthDrivesThermalSystemState_start}
-    ${azimuthDrivesThermalSystemState_end}=    Evaluate    ${end}+${1}
-    ${azimuthDrivesThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthDrivesThermalSystemState_start}    end=${azimuthDrivesThermalSystemState_end}
-    Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
-    Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${elevationDrivesThermalSystemState_start}=    Get Index From List    ${full_list}    === Event elevationDrivesThermalSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationDrivesThermalSystemState_start}
-    ${elevationDrivesThermalSystemState_end}=    Evaluate    ${end}+${1}
-    ${elevationDrivesThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${elevationDrivesThermalSystemState_start}    end=${elevationDrivesThermalSystemState_end}
-    Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
-    Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${az0101CabinetThermalSystemState_start}=    Get Index From List    ${full_list}    === Event az0101CabinetThermalSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${az0101CabinetThermalSystemState_start}
-    ${az0101CabinetThermalSystemState_end}=    Evaluate    ${end}+${1}
-    ${az0101CabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${az0101CabinetThermalSystemState_start}    end=${az0101CabinetThermalSystemState_end}
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${modbusTemperatureControllersSystemState_start}=    Get Index From List    ${full_list}    === Event modbusTemperatureControllersSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${modbusTemperatureControllersSystemState_start}
-    ${modbusTemperatureControllersSystemState_end}=    Evaluate    ${end}+${1}
-    ${modbusTemperatureControllersSystemState_list}=    Get Slice From List    ${full_list}    start=${modbusTemperatureControllersSystemState_start}    end=${modbusTemperatureControllersSystemState_end}
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mainCabinetSystemState_start}=    Get Index From List    ${full_list}    === Event mainCabinetSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mainCabinetSystemState_start}
-    ${mainCabinetSystemState_end}=    Evaluate    ${end}+${1}
-    ${mainCabinetSystemState_list}=    Get Slice From List    ${full_list}    start=${mainCabinetSystemState_start}    end=${mainCabinetSystemState_end}
-    Should Contain X Times    ${mainCabinetSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${mainCabinetSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mainAxesPowerSupplySystemState_start}=    Get Index From List    ${full_list}    === Event mainAxesPowerSupplySystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mainAxesPowerSupplySystemState_start}
-    ${mainAxesPowerSupplySystemState_end}=    Evaluate    ${end}+${1}
-    ${mainAxesPowerSupplySystemState_list}=    Get Slice From List    ${full_list}    start=${mainAxesPowerSupplySystemState_start}    end=${mainAxesPowerSupplySystemState_end}
-    Should Contain X Times    ${mainAxesPowerSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${mainAxesPowerSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${topEndChillerSystemState_start}=    Get Index From List    ${full_list}    === Event topEndChillerSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${topEndChillerSystemState_start}
-    ${topEndChillerSystemState_end}=    Evaluate    ${end}+${1}
-    ${topEndChillerSystemState_list}=    Get Slice From List    ${full_list}    start=${topEndChillerSystemState_start}    end=${topEndChillerSystemState_end}
-    Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
-    Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
-    Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationInPosition_start}=    Get Index From List    ${full_list}    === Event elevationInPosition received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationInPosition_start}
     ${elevationInPosition_end}=    Evaluate    ${end}+${1}
@@ -650,6 +387,27 @@ Read Logger
     ${cameraCableWrapLimits_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapLimits_start}    end=${cameraCableWrapLimits_end}
     Should Contain X Times    ${cameraCableWrapLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limits : 1    1
     Should Contain X Times    ${cameraCableWrapLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${elevationLimitPositions_start}=    Get Index From List    ${full_list}    === Event elevationLimitPositions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationLimitPositions_start}
+    ${elevationLimitPositions_end}=    Evaluate    ${end}+${1}
+    ${elevationLimitPositions_list}=    Get Slice From List    ${full_list}    start=${elevationLimitPositions_start}    end=${elevationLimitPositions_end}
+    Should Contain X Times    ${elevationLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min : 1    1
+    Should Contain X Times    ${elevationLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max : 1    1
+    Should Contain X Times    ${elevationLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${azimuthLimitPositions_start}=    Get Index From List    ${full_list}    === Event azimuthLimitPositions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthLimitPositions_start}
+    ${azimuthLimitPositions_end}=    Evaluate    ${end}+${1}
+    ${azimuthLimitPositions_list}=    Get Slice From List    ${full_list}    start=${azimuthLimitPositions_start}    end=${azimuthLimitPositions_end}
+    Should Contain X Times    ${azimuthLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min : 1    1
+    Should Contain X Times    ${azimuthLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max : 1    1
+    Should Contain X Times    ${azimuthLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${cameraCableWrapLimitPositions_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapLimitPositions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraCableWrapLimitPositions_start}
+    ${cameraCableWrapLimitPositions_end}=    Evaluate    ${end}+${1}
+    ${cameraCableWrapLimitPositions_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapLimitPositions_start}    end=${cameraCableWrapLimitPositions_end}
+    Should Contain X Times    ${cameraCableWrapLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}min : 1    1
+    Should Contain X Times    ${cameraCableWrapLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}max : 1    1
+    Should Contain X Times    ${cameraCableWrapLimitPositions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthToppleBlock_start}=    Get Index From List    ${full_list}    === Event azimuthToppleBlock received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthToppleBlock_start}
     ${azimuthToppleBlock_end}=    Evaluate    ${end}+${1}
@@ -684,13 +442,13 @@ Read Logger
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : 1    1
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}replies : 1    1
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${deployablePlatformsMotionState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformsMotionState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${deployablePlatformsMotionState_start}
-    ${deployablePlatformsMotionState_end}=    Evaluate    ${end}+${1}
-    ${deployablePlatformsMotionState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsMotionState_start}    end=${deployablePlatformsMotionState_end}
-    Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
-    Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementState : 0    1
-    Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${deployablePlatformMotionState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformMotionState received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${deployablePlatformMotionState_start}
+    ${deployablePlatformMotionState_end}=    Evaluate    ${end}+${1}
+    ${deployablePlatformMotionState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformMotionState_start}    end=${deployablePlatformMotionState_end}
+    Should Contain X Times    ${deployablePlatformMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
+    Should Contain X Times    ${deployablePlatformMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementState : 0    1
+    Should Contain X Times    ${deployablePlatformMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationLockingPinMotionState_start}=    Get Index From List    ${full_list}    === Event elevationLockingPinMotionState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationLockingPinMotionState_start}
     ${elevationLockingPinMotionState_end}=    Evaluate    ${end}+${1}

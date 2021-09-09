@@ -55,7 +55,7 @@ Verify First AuthList Test
     Should Contain    ${test_output}    === [issueCommand] setLogLevel writing a command
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK
-    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : MTRotator    3
+    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : ${subSystem}    3
     Should Contain Match    ${test_output}    *waitForCompletion_setLogLevel* command * completed ok*
 
 Verify Second AuthList Test
@@ -179,8 +179,8 @@ Verify Seventh AuthList Test
 Verify Eighth AuthList Test
     [Tags]    functional
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM2
-    ${start}=    Get Index From List    ${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM2
+    Should Contain    ${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=MTM1M3
+    ${start}=    Get Index From List    ${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=MTM1M3
     ${end}=    Get Index From List    ${full_list}    =====================================================================    start=${start}
     ${test_output}=    Get Slice From List    ${full_list}    start=${start}    end=${end}
     Log    ${test_output}
@@ -193,8 +193,8 @@ Verify Eighth AuthList Test
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: OK
     Should Contain    ${test_output}    === [putSample logevent_authList] writing a message containing :
     Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}authorizedUsers : user@host,user2@other    1
-    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : MTM1M3,MTM2,Test    1
-    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : MTM2    1
+    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : MTM1M3,Test    1
+    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : MTM1M3    1
     Should Contain Match    ${test_output}    *waitForCompletion_setLogLevel* command * Not permitted by authList*
     Sleep    10s    Allow DDS threads to finish
 
