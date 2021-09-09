@@ -26,4 +26,4 @@ echo "" >> $argfile
 echo "# List of test suites" >> $argfile
 
 # Find test suites and add them to the argument file.
-ls -1 $ROBOTFRAMEWORK_SAL_DIR/AuthList/JAVA |sed 's/^/AuthList\/JAVA\//' >> $argfile
+ls -r -1 $ROBOTFRAMEWORK_SAL_DIR/AuthList/JAVA |sed 's/^/AuthList\/JAVA\//' >> $argfile
