@@ -281,12 +281,16 @@ function verifySeventhTest {
 
 function verifyEighthTest {
     local testSuite=$1
-    local identity="MTM2"
+    if [[ "$subSystem" == "MTM1M3" ]]; then
+        local identity="MTRotator"
+    else
+        local identity="MTM1M3"
+    fi
     echo "Verify Eighth AuthList Test" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-    echo "    Should Contain    \${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM2" >> $testSuite
-    echo "    \${start}=    Get Index From List    \${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM2" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=${identity}" >> $testSuite
+    echo "    \${start}=    Get Index From List    \${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=${identity}" >> $testSuite
     echo "    \${end}=    Get Index From List    \${full_list}    =====================================================================    start=\${start}" >> $testSuite
     echo "    \${test_output}=    Get Slice From List    \${full_list}    start=\${start}    end=\${end}" >> $testSuite
     echo "    Log    \${test_output}" >> $testSuite
