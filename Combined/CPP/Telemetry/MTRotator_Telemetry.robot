@@ -92,6 +92,7 @@ Read Subscriber
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityA : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}debugActualVelocityB : 1    10
+    Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}odometer : 1    10
     Should Contain X Times    ${rotation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${electrical_start}=    Get Index From List    ${full_list}    === MTRotator_electrical start of topic ===
     ${electrical_end}=    Get Index From List    ${full_list}    === MTRotator_electrical end of topic ===
@@ -139,3 +140,13 @@ Read Subscriber
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 7    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 8    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 9    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 0    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 1    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 2    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 3    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 4    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 5    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 6    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 7    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 8    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 9    1

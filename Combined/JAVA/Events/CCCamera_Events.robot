@@ -275,125 +275,69 @@ Start Sender
     Should Contain    ${focalPlaneSummaryInfo_list}    === CCCamera_focalPlaneSummaryInfo start of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === CCCamera_focalPlaneSummaryInfo end of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === [putSample logevent_focalPlaneSummaryInfo] writing a message containing :
-    ${fcsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcsSettingsApplied start of topic ===
-    ${fcsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcsSettingsApplied end of topic ===
-    ${fcsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcsSettingsApplied_start}    end=${fcsSettingsApplied_end + 1}
-    Log Many    ${fcsSettingsApplied_list}
-    Should Contain    ${fcsSettingsApplied_list}    === CCCamera_fcsSettingsApplied start of topic ===
-    Should Contain    ${fcsSettingsApplied_list}    === CCCamera_fcsSettingsApplied end of topic ===
-    Should Contain    ${fcsSettingsApplied_list}    === [putSample logevent_fcsSettingsApplied] writing a message containing :
-    ${fcs_LinearEncoderSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoderSettingsApplied start of topic ===
-    ${fcs_LinearEncoderSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoderSettingsApplied end of topic ===
-    ${fcs_LinearEncoderSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_LinearEncoderSettingsApplied_start}    end=${fcs_LinearEncoderSettingsApplied_end + 1}
-    Log Many    ${fcs_LinearEncoderSettingsApplied_list}
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === CCCamera_fcs_LinearEncoderSettingsApplied start of topic ===
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === CCCamera_fcs_LinearEncoderSettingsApplied end of topic ===
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === [putSample logevent_fcs_LinearEncoderSettingsApplied] writing a message containing :
-    ${fcs_LinearEncoder_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied start of topic ===
-    ${fcs_LinearEncoder_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied end of topic ===
-    ${fcs_LinearEncoder_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_LinearEncoder_LimitsSettingsApplied_start}    end=${fcs_LinearEncoder_LimitsSettingsApplied_end + 1}
-    Log Many    ${fcs_LinearEncoder_LimitsSettingsApplied_list}
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied start of topic ===
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied end of topic ===
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === [putSample logevent_fcs_LinearEncoder_LimitsSettingsApplied] writing a message containing :
-    ${fcs_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied start of topic ===
-    ${fcs_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied end of topic ===
-    ${fcs_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_PeriodicTasksSettingsApplied_start}    end=${fcs_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${fcs_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === [putSample logevent_fcs_PeriodicTasksSettingsApplied] writing a message containing :
-    ${fcs_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${fcs_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${fcs_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_PeriodicTasks_timersSettingsApplied_start}    end=${fcs_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${fcs_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_fcs_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${fcs_StepperMotorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotorSettingsApplied start of topic ===
-    ${fcs_StepperMotorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotorSettingsApplied end of topic ===
-    ${fcs_StepperMotorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotorSettingsApplied_start}    end=${fcs_StepperMotorSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotorSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === CCCamera_fcs_StepperMotorSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === CCCamera_fcs_StepperMotorSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === [putSample logevent_fcs_StepperMotorSettingsApplied] writing a message containing :
-    ${fcs_StepperMotor_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied start of topic ===
-    ${fcs_StepperMotor_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied end of topic ===
-    ${fcs_StepperMotor_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotor_LimitsSettingsApplied_start}    end=${fcs_StepperMotor_LimitsSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotor_LimitsSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === [putSample logevent_fcs_StepperMotor_LimitsSettingsApplied] writing a message containing :
-    ${fcs_StepperMotor_MotorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied start of topic ===
-    ${fcs_StepperMotor_MotorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied end of topic ===
-    ${fcs_StepperMotor_MotorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotor_MotorSettingsApplied_start}    end=${fcs_StepperMotor_MotorSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotor_MotorSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === [putSample logevent_fcs_StepperMotor_MotorSettingsApplied] writing a message containing :
-    ${bonn_shutter_Device_GeneralSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied start of topic ===
-    ${bonn_shutter_Device_GeneralSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied end of topic ===
-    ${bonn_shutter_Device_GeneralSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_GeneralSettingsApplied_start}    end=${bonn_shutter_Device_GeneralSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_Device_GeneralSettingsApplied_list}
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === [putSample logevent_bonn_shutter_Device_GeneralSettingsApplied] writing a message containing :
-    ${bonn_shutter_Device_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied start of topic ===
-    ${bonn_shutter_Device_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied end of topic ===
-    ${bonn_shutter_Device_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_LimitsSettingsApplied_start}    end=${bonn_shutter_Device_LimitsSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_Device_LimitsSettingsApplied_list}
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === [putSample logevent_bonn_shutter_Device_LimitsSettingsApplied] writing a message containing :
-    ${bonn_shutter_GeneralSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied start of topic ===
-    ${bonn_shutter_GeneralSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied end of topic ===
-    ${bonn_shutter_GeneralSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_GeneralSettingsApplied_start}    end=${bonn_shutter_GeneralSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_GeneralSettingsApplied_list}
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === [putSample logevent_bonn_shutter_GeneralSettingsApplied] writing a message containing :
-    ${bonn_shutter_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied start of topic ===
-    ${bonn_shutter_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied end of topic ===
-    ${bonn_shutter_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasksSettingsApplied_start}    end=${bonn_shutter_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === [putSample logevent_bonn_shutter_PeriodicTasksSettingsApplied] writing a message containing :
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_timersSettingsApplied_start}    end=${bonn_shutter_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_bonn_shutter_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${daq_monitor_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
-    ${daq_monitor_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
-    ${daq_monitor_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksSettingsApplied_start}    end=${daq_monitor_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === [putSample logevent_daq_monitor_PeriodicTasksSettingsApplied] writing a message containing :
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersSettingsApplied_start}    end=${daq_monitor_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_daq_monitor_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${daq_monitor_Stats_StatisticsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
-    ${daq_monitor_Stats_StatisticsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
-    ${daq_monitor_Stats_StatisticsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_StatisticsSettingsApplied_start}    end=${daq_monitor_Stats_StatisticsSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Stats_StatisticsSettingsApplied_list}
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === [putSample logevent_daq_monitor_Stats_StatisticsSettingsApplied] writing a message containing :
-    ${daq_monitor_Stats_buildSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
-    ${daq_monitor_Stats_buildSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
-    ${daq_monitor_Stats_buildSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildSettingsApplied_start}    end=${daq_monitor_Stats_buildSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Stats_buildSettingsApplied_list}
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === [putSample logevent_daq_monitor_Stats_buildSettingsApplied] writing a message containing :
+    ${focalPlaneHardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied start of topic ===
+    ${focalPlaneHardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied end of topic ===
+    ${focalPlaneHardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneHardwareIdSettingsApplied_start}    end=${focalPlaneHardwareIdSettingsApplied_end + 1}
+    Log Many    ${focalPlaneHardwareIdSettingsApplied_list}
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === [putSample logevent_focalPlaneHardwareIdSettingsApplied] writing a message containing :
+    ${focalPlaneRaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied start of topic ===
+    ${focalPlaneRaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied end of topic ===
+    ${focalPlaneRaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}    end=${focalPlaneRaftTempControlStatusSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRaftTempControlStatusSettingsApplied_list}
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === [putSample logevent_focalPlaneRaftTempControlStatusSettingsApplied] writing a message containing :
+    ${focalPlaneRaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied start of topic ===
+    ${focalPlaneRaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied end of topic ===
+    ${focalPlaneRaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlSettingsApplied_start}    end=${focalPlaneRaftTempControlSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRaftTempControlSettingsApplied_list}
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === [putSample logevent_focalPlaneRaftTempControlSettingsApplied] writing a message containing :
+    ${focalPlaneDAQSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneDAQSettingsApplied start of topic ===
+    ${focalPlaneDAQSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneDAQSettingsApplied end of topic ===
+    ${focalPlaneDAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneDAQSettingsApplied_start}    end=${focalPlaneDAQSettingsApplied_end + 1}
+    Log Many    ${focalPlaneDAQSettingsApplied_list}
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === CCCamera_focalPlaneDAQSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === CCCamera_focalPlaneDAQSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === [putSample logevent_focalPlaneDAQSettingsApplied] writing a message containing :
+    ${focalPlaneSequencerConfigSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied start of topic ===
+    ${focalPlaneSequencerConfigSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied end of topic ===
+    ${focalPlaneSequencerConfigSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneSequencerConfigSettingsApplied_start}    end=${focalPlaneSequencerConfigSettingsApplied_end + 1}
+    Log Many    ${focalPlaneSequencerConfigSettingsApplied_list}
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === [putSample logevent_focalPlaneSequencerConfigSettingsApplied] writing a message containing :
+    ${focalPlaneRebRaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied start of topic ===
+    ${focalPlaneRebRaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied end of topic ===
+    ${focalPlaneRebRaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsSettingsApplied_start}    end=${focalPlaneRebRaftsSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRebRaftsSettingsApplied_list}
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === [putSample logevent_focalPlaneRebRaftsSettingsApplied] writing a message containing :
+    ${focalPlaneRebRaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied start of topic ===
+    ${focalPlaneRebRaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied end of topic ===
+    ${focalPlaneRebRaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsPowerSettingsApplied_start}    end=${focalPlaneRebRaftsPowerSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRebRaftsPowerSettingsApplied_list}
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === [putSample logevent_focalPlaneRebRaftsPowerSettingsApplied] writing a message containing :
+    ${daq_monitorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitorSettingsApplied start of topic ===
+    ${daq_monitorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitorSettingsApplied end of topic ===
+    ${daq_monitorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitorSettingsApplied_start}    end=${daq_monitorSettingsApplied_end + 1}
+    Log Many    ${daq_monitorSettingsApplied_list}
+    Should Contain    ${daq_monitorSettingsApplied_list}    === CCCamera_daq_monitorSettingsApplied start of topic ===
+    Should Contain    ${daq_monitorSettingsApplied_list}    === CCCamera_daq_monitorSettingsApplied end of topic ===
+    Should Contain    ${daq_monitorSettingsApplied_list}    === [putSample logevent_daq_monitorSettingsApplied] writing a message containing :
+    ${daq_monitor_StatsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StatsSettingsApplied start of topic ===
+    ${daq_monitor_StatsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StatsSettingsApplied end of topic ===
+    ${daq_monitor_StatsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StatsSettingsApplied_start}    end=${daq_monitor_StatsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_StatsSettingsApplied_list}
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === CCCamera_daq_monitor_StatsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === CCCamera_daq_monitor_StatsSettingsApplied end of topic ===
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === [putSample logevent_daq_monitor_StatsSettingsApplied] writing a message containing :
     ${daq_monitor_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StoreSettingsApplied start of topic ===
     ${daq_monitor_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StoreSettingsApplied end of topic ===
     ${daq_monitor_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreSettingsApplied_start}    end=${daq_monitor_StoreSettingsApplied_end + 1}
@@ -401,440 +345,6 @@ Start Sender
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === CCCamera_daq_monitor_StoreSettingsApplied start of topic ===
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === CCCamera_daq_monitor_StoreSettingsApplied end of topic ===
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === [putSample logevent_daq_monitor_StoreSettingsApplied] writing a message containing :
-    ${daq_monitor_Store_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
-    ${daq_monitor_Store_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
-    ${daq_monitor_Store_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsSettingsApplied_start}    end=${daq_monitor_Store_LimitsSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Store_LimitsSettingsApplied_list}
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === [putSample logevent_daq_monitor_Store_LimitsSettingsApplied] writing a message containing :
-    ${daq_monitor_Store_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
-    ${daq_monitor_Store_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
-    ${daq_monitor_Store_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_StoreSettingsApplied_start}    end=${daq_monitor_Store_StoreSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Store_StoreSettingsApplied_list}
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === [putSample logevent_daq_monitor_Store_StoreSettingsApplied] writing a message containing :
-    ${rebpowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpowerSettingsApplied start of topic ===
-    ${rebpowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpowerSettingsApplied end of topic ===
-    ${rebpowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpowerSettingsApplied_start}    end=${rebpowerSettingsApplied_end + 1}
-    Log Many    ${rebpowerSettingsApplied_list}
-    Should Contain    ${rebpowerSettingsApplied_list}    === CCCamera_rebpowerSettingsApplied start of topic ===
-    Should Contain    ${rebpowerSettingsApplied_list}    === CCCamera_rebpowerSettingsApplied end of topic ===
-    Should Contain    ${rebpowerSettingsApplied_list}    === [putSample logevent_rebpowerSettingsApplied] writing a message containing :
-    ${rebpower_EmergencyResponseManagerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
-    ${rebpower_EmergencyResponseManagerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
-    ${rebpower_EmergencyResponseManagerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_EmergencyResponseManagerSettingsApplied_start}    end=${rebpower_EmergencyResponseManagerSettingsApplied_end + 1}
-    Log Many    ${rebpower_EmergencyResponseManagerSettingsApplied_list}
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === [putSample logevent_rebpower_EmergencyResponseManagerSettingsApplied] writing a message containing :
-    ${rebpower_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
-    ${rebpower_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
-    ${rebpower_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasksSettingsApplied_start}    end=${rebpower_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${rebpower_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === [putSample logevent_rebpower_PeriodicTasksSettingsApplied] writing a message containing :
-    ${rebpower_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${rebpower_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${rebpower_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasks_timersSettingsApplied_start}    end=${rebpower_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${rebpower_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_rebpower_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${rebpower_RebSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebSettingsApplied start of topic ===
-    ${rebpower_RebSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebSettingsApplied end of topic ===
-    ${rebpower_RebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebSettingsApplied_start}    end=${rebpower_RebSettingsApplied_end + 1}
-    Log Many    ${rebpower_RebSettingsApplied_list}
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === CCCamera_rebpower_RebSettingsApplied start of topic ===
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === CCCamera_rebpower_RebSettingsApplied end of topic ===
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === [putSample logevent_rebpower_RebSettingsApplied] writing a message containing :
-    ${rebpower_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
-    ${rebpower_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
-    ${rebpower_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_LimitsSettingsApplied_start}    end=${rebpower_Reb_LimitsSettingsApplied_end + 1}
-    Log Many    ${rebpower_Reb_LimitsSettingsApplied_list}
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === [putSample logevent_rebpower_Reb_LimitsSettingsApplied] writing a message containing :
-    ${rebpower_Rebps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
-    ${rebpower_Rebps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
-    ${rebpower_Rebps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_LimitsSettingsApplied_start}    end=${rebpower_Rebps_LimitsSettingsApplied_end + 1}
-    Log Many    ${rebpower_Rebps_LimitsSettingsApplied_list}
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === [putSample logevent_rebpower_Rebps_LimitsSettingsApplied] writing a message containing :
-    ${rebpower_Rebps_PowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
-    ${rebpower_Rebps_PowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
-    ${rebpower_Rebps_PowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_PowerSettingsApplied_start}    end=${rebpower_Rebps_PowerSettingsApplied_end + 1}
-    Log Many    ${rebpower_Rebps_PowerSettingsApplied_list}
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === [putSample logevent_rebpower_Rebps_PowerSettingsApplied] writing a message containing :
-    ${vacuum_Cold1_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cold1_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cold1_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold1_CryoconSettingsApplied_start}    end=${vacuum_Cold1_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold1_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === [putSample logevent_vacuum_Cold1_CryoconSettingsApplied] writing a message containing :
-    ${vacuum_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold1_LimitsSettingsApplied_start}    end=${vacuum_Cold1_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold1_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_Cold1_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_Cold2_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cold2_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cold2_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_CryoconSettingsApplied_start}    end=${vacuum_Cold2_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold2_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === [putSample logevent_vacuum_Cold2_CryoconSettingsApplied] writing a message containing :
-    ${vacuum_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_LimitsSettingsApplied_start}    end=${vacuum_Cold2_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold2_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_Cold2_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_Cryo_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cryo_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cryo_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_CryoconSettingsApplied_start}    end=${vacuum_Cryo_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cryo_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === [putSample logevent_vacuum_Cryo_CryoconSettingsApplied] writing a message containing :
-    ${vacuum_Cryo_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cryo_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cryo_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_LimitsSettingsApplied_start}    end=${vacuum_Cryo_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cryo_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_Cryo_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_IonPumps_CryoSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied start of topic ===
-    ${vacuum_IonPumps_CryoSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied end of topic ===
-    ${vacuum_IonPumps_CryoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumps_CryoSettingsApplied_start}    end=${vacuum_IonPumps_CryoSettingsApplied_end + 1}
-    Log Many    ${vacuum_IonPumps_CryoSettingsApplied_list}
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied start of topic ===
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied end of topic ===
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === [putSample logevent_vacuum_IonPumps_CryoSettingsApplied] writing a message containing :
-    ${vacuum_IonPumps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied start of topic ===
-    ${vacuum_IonPumps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied end of topic ===
-    ${vacuum_IonPumps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumps_LimitsSettingsApplied_start}    end=${vacuum_IonPumps_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_IonPumps_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_IonPumps_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied start of topic ===
-    ${vacuum_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied end of topic ===
-    ${vacuum_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_PeriodicTasksSettingsApplied_start}    end=${vacuum_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${vacuum_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === [putSample logevent_vacuum_PeriodicTasksSettingsApplied] writing a message containing :
-    ${vacuum_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${vacuum_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${vacuum_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_PeriodicTasks_timersSettingsApplied_start}    end=${vacuum_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${vacuum_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_vacuum_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${vacuum_Rtds_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied start of topic ===
-    ${vacuum_Rtds_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied end of topic ===
-    ${vacuum_Rtds_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Rtds_DeviceSettingsApplied_start}    end=${vacuum_Rtds_DeviceSettingsApplied_end + 1}
-    Log Many    ${vacuum_Rtds_DeviceSettingsApplied_list}
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === [putSample logevent_vacuum_Rtds_DeviceSettingsApplied] writing a message containing :
-    ${vacuum_Rtds_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied start of topic ===
-    ${vacuum_Rtds_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied end of topic ===
-    ${vacuum_Rtds_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Rtds_LimitsSettingsApplied_start}    end=${vacuum_Rtds_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Rtds_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_Rtds_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_TurboSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_TurboSettingsApplied start of topic ===
-    ${vacuum_TurboSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_TurboSettingsApplied end of topic ===
-    ${vacuum_TurboSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSettingsApplied_start}    end=${vacuum_TurboSettingsApplied_end + 1}
-    Log Many    ${vacuum_TurboSettingsApplied_list}
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === CCCamera_vacuum_TurboSettingsApplied start of topic ===
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === CCCamera_vacuum_TurboSettingsApplied end of topic ===
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === [putSample logevent_vacuum_TurboSettingsApplied] writing a message containing :
-    ${vacuum_Turbo_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied start of topic ===
-    ${vacuum_Turbo_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied end of topic ===
-    ${vacuum_Turbo_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Turbo_LimitsSettingsApplied_start}    end=${vacuum_Turbo_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Turbo_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_Turbo_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_VQMonitor_CryoSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied start of topic ===
-    ${vacuum_VQMonitor_CryoSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied end of topic ===
-    ${vacuum_VQMonitor_CryoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_CryoSettingsApplied_start}    end=${vacuum_VQMonitor_CryoSettingsApplied_end + 1}
-    Log Many    ${vacuum_VQMonitor_CryoSettingsApplied_list}
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === [putSample logevent_vacuum_VQMonitor_CryoSettingsApplied] writing a message containing :
-    ${vacuum_VQMonitor_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied start of topic ===
-    ${vacuum_VQMonitor_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied end of topic ===
-    ${vacuum_VQMonitor_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_LimitsSettingsApplied_start}    end=${vacuum_VQMonitor_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_VQMonitor_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === [putSample logevent_vacuum_VQMonitor_LimitsSettingsApplied] writing a message containing :
-    ${vacuum_VacPluto_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied start of topic ===
-    ${vacuum_VacPluto_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied end of topic ===
-    ${vacuum_VacPluto_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VacPluto_DeviceSettingsApplied_start}    end=${vacuum_VacPluto_DeviceSettingsApplied_end + 1}
-    Log Many    ${vacuum_VacPluto_DeviceSettingsApplied_list}
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === [putSample logevent_vacuum_VacPluto_DeviceSettingsApplied] writing a message containing :
-    ${quadbox_BFR_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
-    ${quadbox_BFR_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
-    ${quadbox_BFR_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_LimitsSettingsApplied_start}    end=${quadbox_BFR_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_BFR_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === [putSample logevent_quadbox_BFR_LimitsSettingsApplied] writing a message containing :
-    ${quadbox_BFR_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
-    ${quadbox_BFR_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
-    ${quadbox_BFR_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_QuadboxSettingsApplied_start}    end=${quadbox_BFR_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_BFR_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_BFR_QuadboxSettingsApplied] writing a message containing :
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VC_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === [putSample logevent_quadbox_PDU_24VC_LimitsSettingsApplied] writing a message containing :
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VC_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_PDU_24VC_QuadboxSettingsApplied] writing a message containing :
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VD_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === [putSample logevent_quadbox_PDU_24VD_LimitsSettingsApplied] writing a message containing :
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VD_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_PDU_24VD_QuadboxSettingsApplied] writing a message containing :
-    ${quadbox_PDU_48V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_48V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_48V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_LimitsSettingsApplied_start}    end=${quadbox_PDU_48V_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_48V_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === [putSample logevent_quadbox_PDU_48V_LimitsSettingsApplied] writing a message containing :
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_48V_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_PDU_48V_QuadboxSettingsApplied] writing a message containing :
-    ${quadbox_PDU_5V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_5V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_5V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_LimitsSettingsApplied_start}    end=${quadbox_PDU_5V_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_5V_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === [putSample logevent_quadbox_PDU_5V_LimitsSettingsApplied] writing a message containing :
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_5V_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_PDU_5V_QuadboxSettingsApplied] writing a message containing :
-    ${quadbox_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
-    ${quadbox_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
-    ${quadbox_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasksSettingsApplied_start}    end=${quadbox_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${quadbox_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === [putSample logevent_quadbox_PeriodicTasksSettingsApplied] writing a message containing :
-    ${quadbox_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${quadbox_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${quadbox_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasks_timersSettingsApplied_start}    end=${quadbox_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${quadbox_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_quadbox_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === [putSample logevent_quadbox_REB_Bulk_PS_QuadboxSettingsApplied] writing a message containing :
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_HardwareIdSettingsApplied_start}    end=${focal_plane_Ccd_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === [putSample logevent_focal_plane_Ccd_HardwareIdSettingsApplied] writing a message containing :
-    ${focal_plane_Ccd_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Ccd_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Ccd_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_LimitsSettingsApplied_start}    end=${focal_plane_Ccd_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === [putSample logevent_focal_plane_Ccd_LimitsSettingsApplied] writing a message containing :
-    ${focal_plane_Ccd_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
-    ${focal_plane_Ccd_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
-    ${focal_plane_Ccd_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsSettingsApplied_start}    end=${focal_plane_Ccd_RaftsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === [putSample logevent_focal_plane_Ccd_RaftsSettingsApplied] writing a message containing :
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceSettingsApplied_start}    end=${focal_plane_ImageDatabaseServiceSettingsApplied_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === [putSample logevent_focal_plane_ImageDatabaseServiceSettingsApplied] writing a message containing :
-    ${focal_plane_ImageNameServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
-    ${focal_plane_ImageNameServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
-    ${focal_plane_ImageNameServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceSettingsApplied_start}    end=${focal_plane_ImageNameServiceSettingsApplied_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceSettingsApplied_list}
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === [putSample logevent_focal_plane_ImageNameServiceSettingsApplied] writing a message containing :
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}    end=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end + 1}
-    Log Many    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === [putSample logevent_focal_plane_InstrumentConfig_InstrumentSettingsApplied] writing a message containing :
-    ${focal_plane_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
-    ${focal_plane_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
-    ${focal_plane_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksSettingsApplied_start}    end=${focal_plane_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === [putSample logevent_focal_plane_PeriodicTasksSettingsApplied] writing a message containing :
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersSettingsApplied_start}    end=${focal_plane_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === [putSample logevent_focal_plane_PeriodicTasks_timersSettingsApplied] writing a message containing :
-    ${focal_plane_Raft_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Raft_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Raft_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_HardwareIdSettingsApplied_start}    end=${focal_plane_Raft_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === [putSample logevent_focal_plane_Raft_HardwareIdSettingsApplied] writing a message containing :
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === [putSample logevent_focal_plane_Raft_RaftTempControlSettingsApplied] writing a message containing :
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === [putSample logevent_focal_plane_Raft_RaftTempControlStatusSettingsApplied] writing a message containing :
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebTotalPower_LimitsSettingsApplied_start}    end=${focal_plane_RebTotalPower_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === [putSample logevent_focal_plane_RebTotalPower_LimitsSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Reb_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Reb_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdSettingsApplied_start}    end=${focal_plane_Reb_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_HardwareIdSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_LimitsSettingsApplied_start}    end=${focal_plane_Reb_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_LimitsSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsSettingsApplied_start}    end=${focal_plane_Reb_RaftsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_RaftsSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsLimitsSettingsApplied_start}    end=${focal_plane_Reb_RaftsLimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_RaftsLimitsSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsPowerSettingsApplied_start}    end=${focal_plane_Reb_RaftsPowerSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_RaftsPowerSettingsApplied] writing a message containing :
-    ${focal_plane_Reb_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
-    ${focal_plane_Reb_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
-    ${focal_plane_Reb_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_timersSettingsApplied_start}    end=${focal_plane_Reb_timersSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_timersSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === [putSample logevent_focal_plane_Reb_timersSettingsApplied] writing a message containing :
-    ${focal_plane_Segment_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Segment_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Segment_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsSettingsApplied_start}    end=${focal_plane_Segment_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Segment_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === [putSample logevent_focal_plane_Segment_LimitsSettingsApplied] writing a message containing :
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQSettingsApplied_start}    end=${focal_plane_SequencerConfig_DAQSettingsApplied_end + 1}
-    Log Many    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === [putSample logevent_focal_plane_SequencerConfig_DAQSettingsApplied] writing a message containing :
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerSettingsApplied_start}    end=${focal_plane_SequencerConfig_SequencerSettingsApplied_end + 1}
-    Log Many    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === [putSample logevent_focal_plane_SequencerConfig_SequencerSettingsApplied] writing a message containing :
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}    end=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end + 1}
-    Log Many    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === [putSample logevent_focal_plane_WebHooksConfig_VisualizationSettingsApplied] writing a message containing :
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}
@@ -1186,125 +696,69 @@ Read Subscriber
     Should Contain    ${focalPlaneSummaryInfo_list}    === CCCamera_focalPlaneSummaryInfo start of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === CCCamera_focalPlaneSummaryInfo end of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === [getSample logevent_focalPlaneSummaryInfo ] message received :0
-    ${fcsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcsSettingsApplied start of topic ===
-    ${fcsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcsSettingsApplied end of topic ===
-    ${fcsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcsSettingsApplied_start}    end=${fcsSettingsApplied_end + 1}
-    Log Many    ${fcsSettingsApplied_list}
-    Should Contain    ${fcsSettingsApplied_list}    === CCCamera_fcsSettingsApplied start of topic ===
-    Should Contain    ${fcsSettingsApplied_list}    === CCCamera_fcsSettingsApplied end of topic ===
-    Should Contain    ${fcsSettingsApplied_list}    === [getSample logevent_fcsSettingsApplied ] message received :0
-    ${fcs_LinearEncoderSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoderSettingsApplied start of topic ===
-    ${fcs_LinearEncoderSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoderSettingsApplied end of topic ===
-    ${fcs_LinearEncoderSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_LinearEncoderSettingsApplied_start}    end=${fcs_LinearEncoderSettingsApplied_end + 1}
-    Log Many    ${fcs_LinearEncoderSettingsApplied_list}
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === CCCamera_fcs_LinearEncoderSettingsApplied start of topic ===
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === CCCamera_fcs_LinearEncoderSettingsApplied end of topic ===
-    Should Contain    ${fcs_LinearEncoderSettingsApplied_list}    === [getSample logevent_fcs_LinearEncoderSettingsApplied ] message received :0
-    ${fcs_LinearEncoder_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied start of topic ===
-    ${fcs_LinearEncoder_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied end of topic ===
-    ${fcs_LinearEncoder_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_LinearEncoder_LimitsSettingsApplied_start}    end=${fcs_LinearEncoder_LimitsSettingsApplied_end + 1}
-    Log Many    ${fcs_LinearEncoder_LimitsSettingsApplied_list}
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied start of topic ===
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === CCCamera_fcs_LinearEncoder_LimitsSettingsApplied end of topic ===
-    Should Contain    ${fcs_LinearEncoder_LimitsSettingsApplied_list}    === [getSample logevent_fcs_LinearEncoder_LimitsSettingsApplied ] message received :0
-    ${fcs_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied start of topic ===
-    ${fcs_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied end of topic ===
-    ${fcs_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_PeriodicTasksSettingsApplied_start}    end=${fcs_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${fcs_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === CCCamera_fcs_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${fcs_PeriodicTasksSettingsApplied_list}    === [getSample logevent_fcs_PeriodicTasksSettingsApplied ] message received :0
-    ${fcs_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${fcs_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${fcs_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_PeriodicTasks_timersSettingsApplied_start}    end=${fcs_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${fcs_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_fcs_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${fcs_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_fcs_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${fcs_StepperMotorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotorSettingsApplied start of topic ===
-    ${fcs_StepperMotorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotorSettingsApplied end of topic ===
-    ${fcs_StepperMotorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotorSettingsApplied_start}    end=${fcs_StepperMotorSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotorSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === CCCamera_fcs_StepperMotorSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === CCCamera_fcs_StepperMotorSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotorSettingsApplied_list}    === [getSample logevent_fcs_StepperMotorSettingsApplied ] message received :0
-    ${fcs_StepperMotor_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied start of topic ===
-    ${fcs_StepperMotor_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied end of topic ===
-    ${fcs_StepperMotor_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotor_LimitsSettingsApplied_start}    end=${fcs_StepperMotor_LimitsSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotor_LimitsSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === CCCamera_fcs_StepperMotor_LimitsSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotor_LimitsSettingsApplied_list}    === [getSample logevent_fcs_StepperMotor_LimitsSettingsApplied ] message received :0
-    ${fcs_StepperMotor_MotorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied start of topic ===
-    ${fcs_StepperMotor_MotorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied end of topic ===
-    ${fcs_StepperMotor_MotorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${fcs_StepperMotor_MotorSettingsApplied_start}    end=${fcs_StepperMotor_MotorSettingsApplied_end + 1}
-    Log Many    ${fcs_StepperMotor_MotorSettingsApplied_list}
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied start of topic ===
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === CCCamera_fcs_StepperMotor_MotorSettingsApplied end of topic ===
-    Should Contain    ${fcs_StepperMotor_MotorSettingsApplied_list}    === [getSample logevent_fcs_StepperMotor_MotorSettingsApplied ] message received :0
-    ${bonn_shutter_Device_GeneralSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied start of topic ===
-    ${bonn_shutter_Device_GeneralSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied end of topic ===
-    ${bonn_shutter_Device_GeneralSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_GeneralSettingsApplied_start}    end=${bonn_shutter_Device_GeneralSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_Device_GeneralSettingsApplied_list}
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_Device_GeneralSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_Device_GeneralSettingsApplied_list}    === [getSample logevent_bonn_shutter_Device_GeneralSettingsApplied ] message received :0
-    ${bonn_shutter_Device_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied start of topic ===
-    ${bonn_shutter_Device_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied end of topic ===
-    ${bonn_shutter_Device_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_LimitsSettingsApplied_start}    end=${bonn_shutter_Device_LimitsSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_Device_LimitsSettingsApplied_list}
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === CCCamera_bonn_shutter_Device_LimitsSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_Device_LimitsSettingsApplied_list}    === [getSample logevent_bonn_shutter_Device_LimitsSettingsApplied ] message received :0
-    ${bonn_shutter_GeneralSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied start of topic ===
-    ${bonn_shutter_GeneralSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied end of topic ===
-    ${bonn_shutter_GeneralSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_GeneralSettingsApplied_start}    end=${bonn_shutter_GeneralSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_GeneralSettingsApplied_list}
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === CCCamera_bonn_shutter_GeneralSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_GeneralSettingsApplied_list}    === [getSample logevent_bonn_shutter_GeneralSettingsApplied ] message received :0
-    ${bonn_shutter_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied start of topic ===
-    ${bonn_shutter_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied end of topic ===
-    ${bonn_shutter_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasksSettingsApplied_start}    end=${bonn_shutter_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksSettingsApplied_list}    === [getSample logevent_bonn_shutter_PeriodicTasksSettingsApplied ] message received :0
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_timersSettingsApplied_start}    end=${bonn_shutter_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_bonn_shutter_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_bonn_shutter_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${daq_monitor_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
-    ${daq_monitor_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
-    ${daq_monitor_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksSettingsApplied_start}    end=${daq_monitor_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === [getSample logevent_daq_monitor_PeriodicTasksSettingsApplied ] message received :0
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersSettingsApplied_start}    end=${daq_monitor_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_daq_monitor_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${daq_monitor_Stats_StatisticsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
-    ${daq_monitor_Stats_StatisticsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
-    ${daq_monitor_Stats_StatisticsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_StatisticsSettingsApplied_start}    end=${daq_monitor_Stats_StatisticsSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Stats_StatisticsSettingsApplied_list}
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === CCCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === [getSample logevent_daq_monitor_Stats_StatisticsSettingsApplied ] message received :0
-    ${daq_monitor_Stats_buildSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
-    ${daq_monitor_Stats_buildSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
-    ${daq_monitor_Stats_buildSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildSettingsApplied_start}    end=${daq_monitor_Stats_buildSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Stats_buildSettingsApplied_list}
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === CCCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === [getSample logevent_daq_monitor_Stats_buildSettingsApplied ] message received :0
+    ${focalPlaneHardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied start of topic ===
+    ${focalPlaneHardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied end of topic ===
+    ${focalPlaneHardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneHardwareIdSettingsApplied_start}    end=${focalPlaneHardwareIdSettingsApplied_end + 1}
+    Log Many    ${focalPlaneHardwareIdSettingsApplied_list}
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === CCCamera_focalPlaneHardwareIdSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneHardwareIdSettingsApplied_list}    === [getSample logevent_focalPlaneHardwareIdSettingsApplied ] message received :0
+    ${focalPlaneRaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied start of topic ===
+    ${focalPlaneRaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied end of topic ===
+    ${focalPlaneRaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlStatusSettingsApplied_start}    end=${focalPlaneRaftTempControlStatusSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRaftTempControlStatusSettingsApplied_list}
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlStatusSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRaftTempControlStatusSettingsApplied_list}    === [getSample logevent_focalPlaneRaftTempControlStatusSettingsApplied ] message received :0
+    ${focalPlaneRaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied start of topic ===
+    ${focalPlaneRaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied end of topic ===
+    ${focalPlaneRaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRaftTempControlSettingsApplied_start}    end=${focalPlaneRaftTempControlSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRaftTempControlSettingsApplied_list}
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === CCCamera_focalPlaneRaftTempControlSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRaftTempControlSettingsApplied_list}    === [getSample logevent_focalPlaneRaftTempControlSettingsApplied ] message received :0
+    ${focalPlaneDAQSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneDAQSettingsApplied start of topic ===
+    ${focalPlaneDAQSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneDAQSettingsApplied end of topic ===
+    ${focalPlaneDAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneDAQSettingsApplied_start}    end=${focalPlaneDAQSettingsApplied_end + 1}
+    Log Many    ${focalPlaneDAQSettingsApplied_list}
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === CCCamera_focalPlaneDAQSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === CCCamera_focalPlaneDAQSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneDAQSettingsApplied_list}    === [getSample logevent_focalPlaneDAQSettingsApplied ] message received :0
+    ${focalPlaneSequencerConfigSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied start of topic ===
+    ${focalPlaneSequencerConfigSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied end of topic ===
+    ${focalPlaneSequencerConfigSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneSequencerConfigSettingsApplied_start}    end=${focalPlaneSequencerConfigSettingsApplied_end + 1}
+    Log Many    ${focalPlaneSequencerConfigSettingsApplied_list}
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === CCCamera_focalPlaneSequencerConfigSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneSequencerConfigSettingsApplied_list}    === [getSample logevent_focalPlaneSequencerConfigSettingsApplied ] message received :0
+    ${focalPlaneRebRaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied start of topic ===
+    ${focalPlaneRebRaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied end of topic ===
+    ${focalPlaneRebRaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsSettingsApplied_start}    end=${focalPlaneRebRaftsSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRebRaftsSettingsApplied_list}
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRebRaftsSettingsApplied_list}    === [getSample logevent_focalPlaneRebRaftsSettingsApplied ] message received :0
+    ${focalPlaneRebRaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied start of topic ===
+    ${focalPlaneRebRaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied end of topic ===
+    ${focalPlaneRebRaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focalPlaneRebRaftsPowerSettingsApplied_start}    end=${focalPlaneRebRaftsPowerSettingsApplied_end + 1}
+    Log Many    ${focalPlaneRebRaftsPowerSettingsApplied_list}
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied start of topic ===
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === CCCamera_focalPlaneRebRaftsPowerSettingsApplied end of topic ===
+    Should Contain    ${focalPlaneRebRaftsPowerSettingsApplied_list}    === [getSample logevent_focalPlaneRebRaftsPowerSettingsApplied ] message received :0
+    ${daq_monitorSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitorSettingsApplied start of topic ===
+    ${daq_monitorSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitorSettingsApplied end of topic ===
+    ${daq_monitorSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitorSettingsApplied_start}    end=${daq_monitorSettingsApplied_end + 1}
+    Log Many    ${daq_monitorSettingsApplied_list}
+    Should Contain    ${daq_monitorSettingsApplied_list}    === CCCamera_daq_monitorSettingsApplied start of topic ===
+    Should Contain    ${daq_monitorSettingsApplied_list}    === CCCamera_daq_monitorSettingsApplied end of topic ===
+    Should Contain    ${daq_monitorSettingsApplied_list}    === [getSample logevent_daq_monitorSettingsApplied ] message received :0
+    ${daq_monitor_StatsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StatsSettingsApplied start of topic ===
+    ${daq_monitor_StatsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StatsSettingsApplied end of topic ===
+    ${daq_monitor_StatsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StatsSettingsApplied_start}    end=${daq_monitor_StatsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_StatsSettingsApplied_list}
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === CCCamera_daq_monitor_StatsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === CCCamera_daq_monitor_StatsSettingsApplied end of topic ===
+    Should Contain    ${daq_monitor_StatsSettingsApplied_list}    === [getSample logevent_daq_monitor_StatsSettingsApplied ] message received :0
     ${daq_monitor_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StoreSettingsApplied start of topic ===
     ${daq_monitor_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_StoreSettingsApplied end of topic ===
     ${daq_monitor_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreSettingsApplied_start}    end=${daq_monitor_StoreSettingsApplied_end + 1}
@@ -1312,440 +766,6 @@ Read Subscriber
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === CCCamera_daq_monitor_StoreSettingsApplied start of topic ===
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === CCCamera_daq_monitor_StoreSettingsApplied end of topic ===
     Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === [getSample logevent_daq_monitor_StoreSettingsApplied ] message received :0
-    ${daq_monitor_Store_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
-    ${daq_monitor_Store_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
-    ${daq_monitor_Store_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsSettingsApplied_start}    end=${daq_monitor_Store_LimitsSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Store_LimitsSettingsApplied_list}
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === CCCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === [getSample logevent_daq_monitor_Store_LimitsSettingsApplied ] message received :0
-    ${daq_monitor_Store_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
-    ${daq_monitor_Store_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
-    ${daq_monitor_Store_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_StoreSettingsApplied_start}    end=${daq_monitor_Store_StoreSettingsApplied_end + 1}
-    Log Many    ${daq_monitor_Store_StoreSettingsApplied_list}
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === CCCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
-    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === [getSample logevent_daq_monitor_Store_StoreSettingsApplied ] message received :0
-    ${rebpowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpowerSettingsApplied start of topic ===
-    ${rebpowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpowerSettingsApplied end of topic ===
-    ${rebpowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpowerSettingsApplied_start}    end=${rebpowerSettingsApplied_end + 1}
-    Log Many    ${rebpowerSettingsApplied_list}
-    Should Contain    ${rebpowerSettingsApplied_list}    === CCCamera_rebpowerSettingsApplied start of topic ===
-    Should Contain    ${rebpowerSettingsApplied_list}    === CCCamera_rebpowerSettingsApplied end of topic ===
-    Should Contain    ${rebpowerSettingsApplied_list}    === [getSample logevent_rebpowerSettingsApplied ] message received :0
-    ${rebpower_EmergencyResponseManagerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
-    ${rebpower_EmergencyResponseManagerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
-    ${rebpower_EmergencyResponseManagerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_EmergencyResponseManagerSettingsApplied_start}    end=${rebpower_EmergencyResponseManagerSettingsApplied_end + 1}
-    Log Many    ${rebpower_EmergencyResponseManagerSettingsApplied_list}
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === CCCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
-    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === [getSample logevent_rebpower_EmergencyResponseManagerSettingsApplied ] message received :0
-    ${rebpower_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
-    ${rebpower_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
-    ${rebpower_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasksSettingsApplied_start}    end=${rebpower_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${rebpower_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === [getSample logevent_rebpower_PeriodicTasksSettingsApplied ] message received :0
-    ${rebpower_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${rebpower_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${rebpower_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasks_timersSettingsApplied_start}    end=${rebpower_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${rebpower_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_rebpower_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${rebpower_RebSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebSettingsApplied start of topic ===
-    ${rebpower_RebSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebSettingsApplied end of topic ===
-    ${rebpower_RebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebSettingsApplied_start}    end=${rebpower_RebSettingsApplied_end + 1}
-    Log Many    ${rebpower_RebSettingsApplied_list}
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === CCCamera_rebpower_RebSettingsApplied start of topic ===
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === CCCamera_rebpower_RebSettingsApplied end of topic ===
-    Should Contain    ${rebpower_RebSettingsApplied_list}    === [getSample logevent_rebpower_RebSettingsApplied ] message received :0
-    ${rebpower_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
-    ${rebpower_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
-    ${rebpower_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_LimitsSettingsApplied_start}    end=${rebpower_Reb_LimitsSettingsApplied_end + 1}
-    Log Many    ${rebpower_Reb_LimitsSettingsApplied_list}
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === CCCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === [getSample logevent_rebpower_Reb_LimitsSettingsApplied ] message received :0
-    ${rebpower_Rebps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
-    ${rebpower_Rebps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
-    ${rebpower_Rebps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_LimitsSettingsApplied_start}    end=${rebpower_Rebps_LimitsSettingsApplied_end + 1}
-    Log Many    ${rebpower_Rebps_LimitsSettingsApplied_list}
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === CCCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === [getSample logevent_rebpower_Rebps_LimitsSettingsApplied ] message received :0
-    ${rebpower_Rebps_PowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
-    ${rebpower_Rebps_PowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
-    ${rebpower_Rebps_PowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_PowerSettingsApplied_start}    end=${rebpower_Rebps_PowerSettingsApplied_end + 1}
-    Log Many    ${rebpower_Rebps_PowerSettingsApplied_list}
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === CCCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
-    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === [getSample logevent_rebpower_Rebps_PowerSettingsApplied ] message received :0
-    ${vacuum_Cold1_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cold1_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cold1_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold1_CryoconSettingsApplied_start}    end=${vacuum_Cold1_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold1_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold1_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold1_CryoconSettingsApplied_list}    === [getSample logevent_vacuum_Cold1_CryoconSettingsApplied ] message received :0
-    ${vacuum_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold1_LimitsSettingsApplied_start}    end=${vacuum_Cold1_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold1_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold1_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold1_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_Cold1_LimitsSettingsApplied ] message received :0
-    ${vacuum_Cold2_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cold2_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cold2_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_CryoconSettingsApplied_start}    end=${vacuum_Cold2_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold2_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cold2_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold2_CryoconSettingsApplied_list}    === [getSample logevent_vacuum_Cold2_CryoconSettingsApplied ] message received :0
-    ${vacuum_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cold2_LimitsSettingsApplied_start}    end=${vacuum_Cold2_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cold2_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cold2_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cold2_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_Cold2_LimitsSettingsApplied ] message received :0
-    ${vacuum_Cryo_CryoconSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied start of topic ===
-    ${vacuum_Cryo_CryoconSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied end of topic ===
-    ${vacuum_Cryo_CryoconSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_CryoconSettingsApplied_start}    end=${vacuum_Cryo_CryoconSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cryo_CryoconSettingsApplied_list}
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === CCCamera_vacuum_Cryo_CryoconSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cryo_CryoconSettingsApplied_list}    === [getSample logevent_vacuum_Cryo_CryoconSettingsApplied ] message received :0
-    ${vacuum_Cryo_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied start of topic ===
-    ${vacuum_Cryo_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied end of topic ===
-    ${vacuum_Cryo_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_LimitsSettingsApplied_start}    end=${vacuum_Cryo_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Cryo_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Cryo_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Cryo_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_Cryo_LimitsSettingsApplied ] message received :0
-    ${vacuum_IonPumps_CryoSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied start of topic ===
-    ${vacuum_IonPumps_CryoSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied end of topic ===
-    ${vacuum_IonPumps_CryoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumps_CryoSettingsApplied_start}    end=${vacuum_IonPumps_CryoSettingsApplied_end + 1}
-    Log Many    ${vacuum_IonPumps_CryoSettingsApplied_list}
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied start of topic ===
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === CCCamera_vacuum_IonPumps_CryoSettingsApplied end of topic ===
-    Should Contain    ${vacuum_IonPumps_CryoSettingsApplied_list}    === [getSample logevent_vacuum_IonPumps_CryoSettingsApplied ] message received :0
-    ${vacuum_IonPumps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied start of topic ===
-    ${vacuum_IonPumps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied end of topic ===
-    ${vacuum_IonPumps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumps_LimitsSettingsApplied_start}    end=${vacuum_IonPumps_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_IonPumps_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === CCCamera_vacuum_IonPumps_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_IonPumps_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_IonPumps_LimitsSettingsApplied ] message received :0
-    ${vacuum_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied start of topic ===
-    ${vacuum_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied end of topic ===
-    ${vacuum_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_PeriodicTasksSettingsApplied_start}    end=${vacuum_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${vacuum_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${vacuum_PeriodicTasksSettingsApplied_list}    === [getSample logevent_vacuum_PeriodicTasksSettingsApplied ] message received :0
-    ${vacuum_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${vacuum_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${vacuum_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_PeriodicTasks_timersSettingsApplied_start}    end=${vacuum_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${vacuum_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_vacuum_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${vacuum_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_vacuum_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${vacuum_Rtds_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied start of topic ===
-    ${vacuum_Rtds_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied end of topic ===
-    ${vacuum_Rtds_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Rtds_DeviceSettingsApplied_start}    end=${vacuum_Rtds_DeviceSettingsApplied_end + 1}
-    Log Many    ${vacuum_Rtds_DeviceSettingsApplied_list}
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === CCCamera_vacuum_Rtds_DeviceSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Rtds_DeviceSettingsApplied_list}    === [getSample logevent_vacuum_Rtds_DeviceSettingsApplied ] message received :0
-    ${vacuum_Rtds_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied start of topic ===
-    ${vacuum_Rtds_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied end of topic ===
-    ${vacuum_Rtds_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Rtds_LimitsSettingsApplied_start}    end=${vacuum_Rtds_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Rtds_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === CCCamera_vacuum_Rtds_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Rtds_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_Rtds_LimitsSettingsApplied ] message received :0
-    ${vacuum_TurboSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_TurboSettingsApplied start of topic ===
-    ${vacuum_TurboSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_TurboSettingsApplied end of topic ===
-    ${vacuum_TurboSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSettingsApplied_start}    end=${vacuum_TurboSettingsApplied_end + 1}
-    Log Many    ${vacuum_TurboSettingsApplied_list}
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === CCCamera_vacuum_TurboSettingsApplied start of topic ===
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === CCCamera_vacuum_TurboSettingsApplied end of topic ===
-    Should Contain    ${vacuum_TurboSettingsApplied_list}    === [getSample logevent_vacuum_TurboSettingsApplied ] message received :0
-    ${vacuum_Turbo_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied start of topic ===
-    ${vacuum_Turbo_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied end of topic ===
-    ${vacuum_Turbo_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Turbo_LimitsSettingsApplied_start}    end=${vacuum_Turbo_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_Turbo_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === CCCamera_vacuum_Turbo_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_Turbo_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_Turbo_LimitsSettingsApplied ] message received :0
-    ${vacuum_VQMonitor_CryoSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied start of topic ===
-    ${vacuum_VQMonitor_CryoSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied end of topic ===
-    ${vacuum_VQMonitor_CryoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_CryoSettingsApplied_start}    end=${vacuum_VQMonitor_CryoSettingsApplied_end + 1}
-    Log Many    ${vacuum_VQMonitor_CryoSettingsApplied_list}
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_CryoSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VQMonitor_CryoSettingsApplied_list}    === [getSample logevent_vacuum_VQMonitor_CryoSettingsApplied ] message received :0
-    ${vacuum_VQMonitor_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied start of topic ===
-    ${vacuum_VQMonitor_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied end of topic ===
-    ${vacuum_VQMonitor_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_LimitsSettingsApplied_start}    end=${vacuum_VQMonitor_LimitsSettingsApplied_end + 1}
-    Log Many    ${vacuum_VQMonitor_LimitsSettingsApplied_list}
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === CCCamera_vacuum_VQMonitor_LimitsSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VQMonitor_LimitsSettingsApplied_list}    === [getSample logevent_vacuum_VQMonitor_LimitsSettingsApplied ] message received :0
-    ${vacuum_VacPluto_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied start of topic ===
-    ${vacuum_VacPluto_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied end of topic ===
-    ${vacuum_VacPluto_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VacPluto_DeviceSettingsApplied_start}    end=${vacuum_VacPluto_DeviceSettingsApplied_end + 1}
-    Log Many    ${vacuum_VacPluto_DeviceSettingsApplied_list}
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied start of topic ===
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === CCCamera_vacuum_VacPluto_DeviceSettingsApplied end of topic ===
-    Should Contain    ${vacuum_VacPluto_DeviceSettingsApplied_list}    === [getSample logevent_vacuum_VacPluto_DeviceSettingsApplied ] message received :0
-    ${quadbox_BFR_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
-    ${quadbox_BFR_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
-    ${quadbox_BFR_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_LimitsSettingsApplied_start}    end=${quadbox_BFR_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_BFR_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === CCCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === [getSample logevent_quadbox_BFR_LimitsSettingsApplied ] message received :0
-    ${quadbox_BFR_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
-    ${quadbox_BFR_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
-    ${quadbox_BFR_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_QuadboxSettingsApplied_start}    end=${quadbox_BFR_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_BFR_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === CCCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_BFR_QuadboxSettingsApplied ] message received :0
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VC_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === [getSample logevent_quadbox_PDU_24VC_LimitsSettingsApplied ] message received :0
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VC_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_PDU_24VC_QuadboxSettingsApplied ] message received :0
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VD_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === [getSample logevent_quadbox_PDU_24VD_LimitsSettingsApplied ] message received :0
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VD_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_PDU_24VD_QuadboxSettingsApplied ] message received :0
-    ${quadbox_PDU_48V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_48V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_48V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_LimitsSettingsApplied_start}    end=${quadbox_PDU_48V_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_48V_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === [getSample logevent_quadbox_PDU_48V_LimitsSettingsApplied ] message received :0
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_48V_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_PDU_48V_QuadboxSettingsApplied ] message received :0
-    ${quadbox_PDU_5V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
-    ${quadbox_PDU_5V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
-    ${quadbox_PDU_5V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_LimitsSettingsApplied_start}    end=${quadbox_PDU_5V_LimitsSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_5V_LimitsSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === [getSample logevent_quadbox_PDU_5V_LimitsSettingsApplied ] message received :0
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
-    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_5V_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === CCCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_PDU_5V_QuadboxSettingsApplied ] message received :0
-    ${quadbox_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
-    ${quadbox_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
-    ${quadbox_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasksSettingsApplied_start}    end=${quadbox_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${quadbox_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === [getSample logevent_quadbox_PeriodicTasksSettingsApplied ] message received :0
-    ${quadbox_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${quadbox_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${quadbox_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasks_timersSettingsApplied_start}    end=${quadbox_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${quadbox_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_quadbox_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
-    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end + 1}
-    Log Many    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === CCCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
-    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === [getSample logevent_quadbox_REB_Bulk_PS_QuadboxSettingsApplied ] message received :0
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_HardwareIdSettingsApplied_start}    end=${focal_plane_Ccd_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === [getSample logevent_focal_plane_Ccd_HardwareIdSettingsApplied ] message received :0
-    ${focal_plane_Ccd_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Ccd_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Ccd_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_LimitsSettingsApplied_start}    end=${focal_plane_Ccd_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === [getSample logevent_focal_plane_Ccd_LimitsSettingsApplied ] message received :0
-    ${focal_plane_Ccd_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
-    ${focal_plane_Ccd_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
-    ${focal_plane_Ccd_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsSettingsApplied_start}    end=${focal_plane_Ccd_RaftsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsSettingsApplied_list}
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === [getSample logevent_focal_plane_Ccd_RaftsSettingsApplied ] message received :0
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
-    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceSettingsApplied_start}    end=${focal_plane_ImageDatabaseServiceSettingsApplied_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === [getSample logevent_focal_plane_ImageDatabaseServiceSettingsApplied ] message received :0
-    ${focal_plane_ImageNameServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
-    ${focal_plane_ImageNameServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
-    ${focal_plane_ImageNameServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceSettingsApplied_start}    end=${focal_plane_ImageNameServiceSettingsApplied_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceSettingsApplied_list}
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === CCCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === [getSample logevent_focal_plane_ImageNameServiceSettingsApplied ] message received :0
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
-    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}    end=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end + 1}
-    Log Many    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === CCCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === [getSample logevent_focal_plane_InstrumentConfig_InstrumentSettingsApplied ] message received :0
-    ${focal_plane_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
-    ${focal_plane_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
-    ${focal_plane_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksSettingsApplied_start}    end=${focal_plane_PeriodicTasksSettingsApplied_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksSettingsApplied_list}
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === [getSample logevent_focal_plane_PeriodicTasksSettingsApplied ] message received :0
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
-    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersSettingsApplied_start}    end=${focal_plane_PeriodicTasks_timersSettingsApplied_end + 1}
-    Log Many    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === CCCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === [getSample logevent_focal_plane_PeriodicTasks_timersSettingsApplied ] message received :0
-    ${focal_plane_Raft_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Raft_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Raft_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_HardwareIdSettingsApplied_start}    end=${focal_plane_Raft_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === [getSample logevent_focal_plane_Raft_HardwareIdSettingsApplied ] message received :0
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
-    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === [getSample logevent_focal_plane_Raft_RaftTempControlSettingsApplied ] message received :0
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
-    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === CCCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === [getSample logevent_focal_plane_Raft_RaftTempControlStatusSettingsApplied ] message received :0
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
-    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebTotalPower_LimitsSettingsApplied_start}    end=${focal_plane_RebTotalPower_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === CCCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === [getSample logevent_focal_plane_RebTotalPower_LimitsSettingsApplied ] message received :0
-    ${focal_plane_Reb_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
-    ${focal_plane_Reb_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
-    ${focal_plane_Reb_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdSettingsApplied_start}    end=${focal_plane_Reb_HardwareIdSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_HardwareIdSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === CCCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_HardwareIdSettingsApplied ] message received :0
-    ${focal_plane_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_LimitsSettingsApplied_start}    end=${focal_plane_Reb_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_LimitsSettingsApplied ] message received :0
-    ${focal_plane_Reb_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsSettingsApplied_start}    end=${focal_plane_Reb_RaftsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_RaftsSettingsApplied ] message received :0
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsLimitsSettingsApplied_start}    end=${focal_plane_Reb_RaftsLimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_RaftsLimitsSettingsApplied ] message received :0
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
-    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsPowerSettingsApplied_start}    end=${focal_plane_Reb_RaftsPowerSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === CCCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_RaftsPowerSettingsApplied ] message received :0
-    ${focal_plane_Reb_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
-    ${focal_plane_Reb_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
-    ${focal_plane_Reb_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_timersSettingsApplied_start}    end=${focal_plane_Reb_timersSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Reb_timersSettingsApplied_list}
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === CCCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === [getSample logevent_focal_plane_Reb_timersSettingsApplied ] message received :0
-    ${focal_plane_Segment_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
-    ${focal_plane_Segment_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
-    ${focal_plane_Segment_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsSettingsApplied_start}    end=${focal_plane_Segment_LimitsSettingsApplied_end + 1}
-    Log Many    ${focal_plane_Segment_LimitsSettingsApplied_list}
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === CCCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === [getSample logevent_focal_plane_Segment_LimitsSettingsApplied ] message received :0
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
-    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQSettingsApplied_start}    end=${focal_plane_SequencerConfig_DAQSettingsApplied_end + 1}
-    Log Many    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === [getSample logevent_focal_plane_SequencerConfig_DAQSettingsApplied ] message received :0
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
-    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerSettingsApplied_start}    end=${focal_plane_SequencerConfig_SequencerSettingsApplied_end + 1}
-    Log Many    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === CCCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === [getSample logevent_focal_plane_SequencerConfig_SequencerSettingsApplied ] message received :0
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
-    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}    end=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end + 1}
-    Log Many    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === CCCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
-    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === [getSample logevent_focal_plane_WebHooksConfig_VisualizationSettingsApplied ] message received :0
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}
