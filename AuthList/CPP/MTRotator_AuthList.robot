@@ -58,7 +58,7 @@ Verify First AuthList Test
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK
     Should Contain    ${test_output}    === [ackCommand_setLogLevel] acknowledging a command with :
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK
-    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity${SPACE}${SPACE}${SPACE}${SPACE}: MTRotator    3
+    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity${SPACE}${SPACE}${SPACE}${SPACE}: ${subSystem}    3
     Should Match Regexp    ${test_output}[-1]    === \\[waitForCompletion_setLogLevel\\] command [0-9]{10,} completed ok :
 
 Verify Second AuthList Test
@@ -187,8 +187,8 @@ Verify Seventh AuthList Test
 Verify Eighth AuthList Test
     [Tags]    functional
     Log Many    ${output.stdout}    ${output.stderr}
-    Should Contain    ${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM1M3
-    ${start}=    Get Index From List    ${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,MTM2,Test identity=MTM1M3
+    Should Contain    ${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=MTM1M3
+    ${start}=    Get Index From List    ${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=MTM1M3
     ${end}=    Get Index From List    ${full_list}    =====================================================================    start=${start}
     ${test_output}=    Get Slice From List    ${full_list}    start=${start}    end=${end}
     Log    ${test_output}
@@ -198,7 +198,7 @@ Verify Eighth AuthList Test
     Should Contain    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1
     Should Contain    ${test_output}    === command setLogLevel issued =${SPACE}
     Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}authorizedUsers : user@host,user2@other    2
-    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : MTM1M3,MTM2,Test    2
+    Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : MTM1M3,Test    2
     Should Contain X Times    ${test_output}    ${SPACE}${SPACE}${SPACE}${SPACE}identity${SPACE}${SPACE}${SPACE}${SPACE}: MTM1M3    1
     Should Match Regexp    ${test_output}[-1]    === \\[waitForCompletion_setLogLevel\\] command [0-9]{10,} Not permitted by authList
     Sleep    10s    Allow DDS threads to finish
