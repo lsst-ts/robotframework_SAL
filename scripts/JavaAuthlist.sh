@@ -289,8 +289,8 @@ function verifyEighthTest {
     echo "Verify Eighth AuthList Test" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
-    echo "    Should Contain    \${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=${identity}" >> $testSuite
-    echo "    \${start}=    Get Index From List    \${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=MTM1M3,Test identity=${identity}" >> $testSuite
+    echo "    Should Contain    \${output.stdout}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=${identity},Test identity=${identity}" >> $testSuite
+    echo "    \${start}=    Get Index From List    \${full_list}    Test with authList authorizedUsers=user@host,user2@other, nonAuthorizedCSCs=${identity},Test identity=${identity}" >> $testSuite
     echo "    \${end}=    Get Index From List    \${full_list}    =====================================================================    start=\${start}" >> $testSuite
     echo "    \${test_output}=    Get Slice From List    \${full_list}    start=\${start}    end=\${end}" >> $testSuite
     echo "    Log    \${test_output}" >> $testSuite
@@ -303,7 +303,7 @@ function verifyEighthTest {
     echo "    Should Contain    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}result\${SPACE}\${SPACE}\${SPACE}: OK" >> $testSuite
     echo "    Should Contain    \${test_output}    === [putSample logevent_authList] writing a message containing :" >> $testSuite
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}authorizedUsers : user@host,user2@other    1" >> $testSuite
-    echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}nonAuthorizedCSCs : MTM1M3,Test    1" >> $testSuite
+    echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}nonAuthorizedCSCs : ${identity},Test    1" >> $testSuite
     echo "    Should Contain X Times    \${test_output}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}identity : ${identity}    1" >> $testSuite
     echo "    Should Contain Match    \${test_output}    *waitForCompletion_setLogLevel* command * Not permitted by authList*" >> $testSuite
     echo "    Sleep    10s    Allow DDS threads to finish" >> $testSuite
