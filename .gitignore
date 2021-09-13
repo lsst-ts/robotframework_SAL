@@ -48,14 +48,10 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-*stdout.txt
-*stderr.txt
 ospl-error.log
 ospl-info.log
-*stderrPublisher.txt
-*stderrSubscriber.txt
-*stdoutPublisher.txt
-*stdoutSubscriber.txt
+*stderr*.txt
+*stdout*.txt
 
 # Translations
 *.mo

@@ -8,6 +8,8 @@
 
 # Source common functions
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
+source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
+
 
 #  Define variables to be used in script
 workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Telemetry
@@ -15,80 +17,36 @@ workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Telemetry
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
-#  Determine what tests to generate. Call _common.sh.generateTests()
+#  Determine what tests to generate.
 function main() {
-    arg=$1
+    subSystem=$1
 
-    # Get the XML definition file. This requires the CSC be capitalized properly. This in done in the _common.sh.getEntity() function.
-    subsystem=$(getEntity $arg)
-    file=($TS_XML_DIR/sal_interfaces/$subsystem/*_Telemetry.xml)
-
+    # Get the XML definition file.
+    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
 
     # Get the RuntimeLanguages list
-    rtlang=($(getRuntimeLanguages $subsystem))
+    rtlang=($(getRuntimeLanguages $subSystem))
 
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $arg "CPP" "Telemetry" || exit 1
+        clearTestSuites $subSystem "CPP" "Telemetry" || exit 1
         # Create test suite.
-        createTestSuite $arg $file || exit 1
+        createTestSuite $subSystem $file || exit 1
     else
-        echo Skipping: $subsystem has no C++ Telemetry topics.
+        echo Skipping: $subSystem has no C++ Telemetry topics.
         return 0
     fi
 }
 
-#  Local FUNCTIONS
-
-#  Get EFDB_Topics from Telemetry XML.
-function getTopics {
-    subSystem=$(getEntity $1)
-    file=$2
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry/EFDB_Topic" -v . -n ${file} |sed "s/${subSystem}_//g" )
-    topicsArray=($output)
-}
-
-function getTopicParameters() {
-    file=$1
-    index=$2
-    unset parametersArray
-    output=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item/EFDB_Name" -v . -n ${file} )
-    parametersArray=($output)
-}
-
-function getParameterIndex() {
-    value=$1
-    for i in "${!parametersArray[@]}"; do
-        if [[ "${parametersArray[$i]}" = "${value}" ]]; then
-            parameterIndex="${i}";
-        fi
-    done
-    echo $parameterIndex
-}
-
-function getParameterType() {
-    subSystem=$1
-    index=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterType=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$index]/item[$itemIndex]/IDL_Type" -v . -n $file )
-    echo $parameterType
-}
-
-function getParameterCount() {
-    subSystem=$1
-    topicIndex=$2
-    itemIndex=$(($3 + 1))    # Item indices start at 1, while bash arrays start at 0. Add 1 to index to compensate.
-    parameterCount=$( xml sel -t -m "//SALTelemetrySet/SALTelemetry[$topicIndex]/item[$itemIndex]/Count" -v . -n $file )
-    echo $parameterCount
-}
+### Local FUNCTIONS ###
 
 function createSettings {
     local subSystem=$1
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
-    echo "Documentation    $(capitializeSubsystem $subSystem) ${topic} communications tests." >> $testSuite
+    echo "Documentation    $subSystem ${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
@@ -196,7 +154,7 @@ function readSubscriber {
             echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
             echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
             echo "    \${${item}_list}=    Get Slice From List    \${full_list}    start=\${${item}_start}    end=\${${item}_end}" >> $testSuite
-            getTopicParameters $file $itemIndex
+            parametersArray=($(getTopicParameters $subSystem $file $item "Telemetry"))
             readSubscriber_params $file $item $itemIndex $testSuite
             (( itemIndex++ ))
         done
@@ -214,9 +172,10 @@ function readSubscriber_params {
         #else
             #n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
         #fi
-        parameterIndex=$(getParameterIndex $parameter)
-        parameterType="$(getParameterType $file $topicIndex $parameterIndex)"
-        parameterCount=$(getParameterCount $file $topicIndex $parameterIndex)
+        parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
+        parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Telemetry")"
+        parameterCount=$(getParameterCount $subSystem $file $topic $parameterIndex "Telemetry")
+        #echo "parameter:"$parameter "parameterIndex:"$parameterIndex "parameterType:"$parameterType "parameterCount:"$parameterCount "file:"$file""
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    10" >>$testSuite
@@ -248,14 +207,16 @@ function createTestSuite {
     topicIndex=1
 
     # Get the topics for the CSC.
-    getTopics $subSystem $file
+    topicsArray=($(getTopics $subSystem $file $messageType))
 
     if [ ${#topicsArray[@]} -eq 0 ]; then
-        echo Skipping: $subSystem has no telemetry.
+        echo Skipping: $subSystem has no Telemetry.
     else
         # Generate the test suite for each message type.
-        echo Generating test suite:
-        testSuiteCombined=$workDirCombined/$(capitializeSubsystem $subSystem)_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
+        echo ==== Generating Combined messaging test suite ====
+        echo "RuntimeLanguages: $rtlang"
+        echo "C++ Telemetry Topics: ${topicsArray[@]}"
+        testSuiteCombined=$workDirCombined/${subSystem}_$(tr '[:lower:]' '[:upper:]' <<< ${messageType:0:1})${messageType:1}.robot
         echo $testSuiteCombined
         createSettings $subSystem $messageType $testSuiteCombined
         createVariables $subSystem $testSuiteCombined "all"
@@ -264,7 +225,7 @@ function createTestSuite {
         startSubscriber $testSuiteCombined
         startPublisher $testSuiteCombined
         readSubscriber $file $topicIndex $testSuiteCombined
-        echo ==== Combined Telemetry test generation complete ====
+        echo ============== Combined Telemetry test generation complete ==============
         echo ""
     fi
     # Generate the test suite for each topic.
@@ -272,7 +233,7 @@ function createTestSuite {
     #topicIndex=1
     #for topic in "${topicsArray[@]}"; do
     ##  Define test suite name
-    #testSuite=$workDir/$(capitializeSubsystem $subSystem)_${topic}.robot
+    #testSuite=$workDir/${subSystem}_${topic}.robot
         
     #  Get EFDB_Topic Telemetry parameters
     #getTopicParameters $file $topicIndex

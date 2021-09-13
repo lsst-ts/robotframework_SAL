@@ -6,15 +6,10 @@
 # List of test suites
 Combined/JAVA/Events/ATCamera_Events.robot
 Combined/JAVA/Events/ATHeaderService_Events.robot
-Combined/JAVA/Events/ATTCS_Events.robot
 Combined/JAVA/Events/CCCamera_Events.robot
 Combined/JAVA/Events/CCHeaderService_Events.robot
+Combined/JAVA/Events/GCHeaderService_Events.robot
 Combined/JAVA/Events/MTCamera_Events.robot
-Combined/JAVA/Events/MTGuider_Events.robot
 Combined/JAVA/Events/MTHeaderService_Events.robot
-Combined/JAVA/Events/MTLaserTracker_Events.robot
 Combined/JAVA/Events/MTRotator_Events.robot
-Combined/JAVA/Events/MTTCS_Events.robot
-Combined/JAVA/Events/OCS_Events.robot
-Combined/JAVA/Events/PointingComponent_Events.robot
 Combined/JAVA/Events/Test_Events.robot

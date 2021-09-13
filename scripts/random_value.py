@@ -1,4 +1,8 @@
 #!/usr/local/bin/python
+##
+### Very simple Python script to generate 
+### random values for the given data-type.
+###
 
 import random
 import string

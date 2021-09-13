@@ -6,11 +6,12 @@ import inspect
 import argparse
 
 # This array defines the list of current CSCs.
-csc_array = ['AdamSensors', 'ATAOS', 'ATArchiver', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATOODS', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATWhiteLight', 'Authorize', 'CatchupArchiver', 'CBP', 'CCArchiver', 'CCCamera', 'CCHeaderService', 'CCOODS', 'DIMM', 'DREAM', 'DSM', 'EAS', 'Electrometer', 'FiberSpectrograph', 'GenericCamera', 'Guider', 'HVAC', 'IOTA', 'LinearStage', 'LOVE', 'MTAOS', 'MTCamera', 'MTDome', 'MTDomeTrajectory', 'MTEEC', 'MTHeaderService', 'MTHexapod', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTPtg', 'MTRotator', 'MTVMS', 'OCPS', 'PMD', 'PromptProcessing', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher', 'WeatherStation']
+csc_array = ['AdamSensors', 'ATAOS', 'ATArchiver', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATOODS', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATWhiteLight', 'Authorize', 'CatchupArchiver', 'CBP', 'CCArchiver', 'CCCamera', 'CCHeaderService', 'CCOODS', 'DIMM', 'DREAM', 'DSM', 'EAS', 'Electrometer', 'ESS', 'FiberSpectrograph', 'GCHeaderService', 'GenericCamera', 'GIS', 'Guider', 'HVAC', 'IOTA', 'LinearStage', 'LOVE', 'MTAOS', 'MTCamera', 'MTDome', 'MTDomeTrajectory', 'MTEEC', 'MTHeaderService', 'MTHexapod', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTPtg', 'MTRotator', 'MTVMS', 'OCPS', 'PMD', 'PromptProcessing', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher', 'WeatherStation']
 
 def GenerateTests(csc, language):
     """Test Suite generator."""
     complete=True
+    print("Starting test suite generation...\n")
     if  csc == "all":
         for csc in csc_array:
             if ('cpp' in language) or ('all' in language):
@@ -31,7 +32,7 @@ def GenerateTests(csc, language):
                 #subprocess.check_call(["./PythonEvents.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
                 complete=False
-        print("COMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
+        print("\nCOMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
     elif csc in csc_array:
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call(["./CppPubSub.sh", csc])
@@ -51,7 +52,7 @@ def GenerateTests(csc, language):
                 #subprocess.check_call(["./PythonEvents.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
                 complete=False
-            print("COMPLETED all test suites for the " + csc) if complete else print("This was a " + str(language))
+            print("\nCOMPLETED all test suites for the " + csc + " CSC") if complete else print("This was a " + str(language))
     else:
         print("Something has gone very wrong. CSC: " + csc + ", Language(s): " + str(language))
 
