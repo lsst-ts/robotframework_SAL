@@ -44,13 +44,6 @@ Start Sender
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === [putSample logevent_largeFileObjectAvailable] writing a message containing :
     ${settingVersions_start}=    Get Index From List    ${full_list}    === GCHeaderService_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === GCHeaderService_settingVersions end of topic ===
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
@@ -128,6 +121,13 @@ Start Sender
     Should Contain    ${authList_list}    === GCHeaderService_authList start of topic ===
     Should Contain    ${authList_list}    === GCHeaderService_authList end of topic ===
     Should Contain    ${authList_list}    === [putSample logevent_authList] writing a message containing :
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === [putSample logevent_largeFileObjectAvailable] writing a message containing :
 
 Read Subscriber
     [Tags]    functional
@@ -136,13 +136,6 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== GCHeaderService all loggers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === [getSample logevent_largeFileObjectAvailable ] message received :0
     ${settingVersions_start}=    Get Index From List    ${full_list}    === GCHeaderService_settingVersions start of topic ===
     ${settingVersions_end}=    Get Index From List    ${full_list}    === GCHeaderService_settingVersions end of topic ===
     ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
@@ -220,3 +213,10 @@ Read Subscriber
     Should Contain    ${authList_list}    === GCHeaderService_authList start of topic ===
     Should Contain    ${authList_list}    === GCHeaderService_authList end of topic ===
     Should Contain    ${authList_list}    === [getSample logevent_authList ] message received :0
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === GCHeaderService_largeFileObjectAvailable end of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === [getSample logevent_largeFileObjectAvailable ] message received :0

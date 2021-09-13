@@ -177,6 +177,13 @@ Start Sender
     Should Contain    ${authList_list}    === MTRotator_authList start of topic ===
     Should Contain    ${authList_list}    === MTRotator_authList end of topic ===
     Should Contain    ${authList_list}    === [putSample logevent_authList] writing a message containing :
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === MTRotator_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === MTRotator_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === MTRotator_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === MTRotator_largeFileObjectAvailable end of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === [putSample logevent_largeFileObjectAvailable] writing a message containing :
 
 Read Subscriber
     [Tags]    functional
@@ -318,3 +325,10 @@ Read Subscriber
     Should Contain    ${authList_list}    === MTRotator_authList start of topic ===
     Should Contain    ${authList_list}    === MTRotator_authList end of topic ===
     Should Contain    ${authList_list}    === [getSample logevent_authList ] message received :0
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === MTRotator_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === MTRotator_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === MTRotator_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === MTRotator_largeFileObjectAvailable end of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === [getSample logevent_largeFileObjectAvailable ] message received :0
