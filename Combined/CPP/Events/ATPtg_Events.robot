@@ -60,14 +60,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_detailedState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event detailedState generated =
-    Comment    ======= Verify ${subSystem}_mountGuideMode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mountGuideMode
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event mountGuideMode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mountGuideMode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event mountGuideMode generated =
     Comment    ======= Verify ${subSystem}_azWrapWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azWrapWarning
     @{words}=    Split String    ${line}
@@ -84,22 +76,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_wavelength_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event wavelength generated =
-    Comment    ======= Verify ${subSystem}_inPositionEl test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPositionEl
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inPositionEl iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPositionEl_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inPositionEl generated =
-    Comment    ======= Verify ${subSystem}_axesTrackMode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_axesTrackMode
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event axesTrackMode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_axesTrackMode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event axesTrackMode generated =
     Comment    ======= Verify ${subSystem}_objectSetWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_objectSetWarning
     @{words}=    Split String    ${line}
@@ -180,14 +156,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_mountDataWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mountDataWarning generated =
-    Comment    ======= Verify ${subSystem}_accessMode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_accessMode
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event accessMode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_accessMode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event accessMode generated =
     Comment    ======= Verify ${subSystem}_rotWrapWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_rotWrapWarning
     @{words}=    Split String    ${line}
@@ -196,30 +164,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_rotWrapWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event rotWrapWarning generated =
-    Comment    ======= Verify ${subSystem}_inPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPosition
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inPosition iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPosition_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inPosition generated =
-    Comment    ======= Verify ${subSystem}_inPositionRot test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPositionRot
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inPositionRot iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPositionRot_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inPositionRot generated =
-    Comment    ======= Verify ${subSystem}_inPositionAz test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPositionAz
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inPositionAz iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPositionAz_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inPositionAz generated =
     Comment    ======= Verify ${subSystem}_iers test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_iers
     @{words}=    Split String    ${line}
@@ -396,6 +340,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_authList_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event authList generated =
+    Comment    ======= Verify ${subSystem}_largeFileObjectAvailable test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_largeFileObjectAvailable
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event largeFileObjectAvailable iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_largeFileObjectAvailable_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event largeFileObjectAvailable generated =
 
 Read Logger
     [Tags]    functional
@@ -423,12 +375,6 @@ Read Logger
     ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${mountGuideMode_start}=    Get Index From List    ${full_list}    === Event mountGuideMode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mountGuideMode_start}
-    ${mountGuideMode_end}=    Evaluate    ${end}+${1}
-    ${mountGuideMode_list}=    Get Slice From List    ${full_list}    start=${mountGuideMode_start}    end=${mountGuideMode_end}
-    Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
-    Should Contain X Times    ${mountGuideMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azWrapWarning_start}=    Get Index From List    ${full_list}    === Event azWrapWarning received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azWrapWarning_start}
     ${azWrapWarning_end}=    Evaluate    ${end}+${1}
@@ -441,19 +387,6 @@ Read Logger
     ${wavelength_list}=    Get Slice From List    ${full_list}    start=${wavelength_start}    end=${wavelength_end}
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    1
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionEl_start}=    Get Index From List    ${full_list}    === Event inPositionEl received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionEl_start}
-    ${inPositionEl_end}=    Evaluate    ${end}+${1}
-    ${inPositionEl_list}=    Get Slice From List    ${full_list}    start=${inPositionEl_start}    end=${inPositionEl_end}
-    Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${inPositionEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${axesTrackMode_start}=    Get Index From List    ${full_list}    === Event axesTrackMode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${axesTrackMode_start}
-    ${axesTrackMode_end}=    Evaluate    ${end}+${1}
-    ${axesTrackMode_list}=    Get Slice From List    ${full_list}    start=${axesTrackMode_start}    end=${axesTrackMode_end}
-    Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
-    Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
-    Should Contain X Times    ${axesTrackMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${objectSetWarning_start}=    Get Index From List    ${full_list}    === Event objectSetWarning received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${objectSetWarning_start}
     ${objectSetWarning_end}=    Evaluate    ${end}+${1}
@@ -544,36 +477,12 @@ Read Logger
     ${mountDataWarning_list}=    Get Slice From List    ${full_list}    start=${mountDataWarning_start}    end=${mountDataWarning_end}
     Should Contain X Times    ${mountDataWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${mountDataWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${accessMode_start}=    Get Index From List    ${full_list}    === Event accessMode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${accessMode_start}
-    ${accessMode_end}=    Evaluate    ${end}+${1}
-    ${accessMode_list}=    Get Slice From List    ${full_list}    start=${accessMode_start}    end=${accessMode_end}
-    Should Contain X Times    ${accessMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${accessMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${rotWrapWarning_start}=    Get Index From List    ${full_list}    === Event rotWrapWarning received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${rotWrapWarning_start}
     ${rotWrapWarning_end}=    Evaluate    ${end}+${1}
     ${rotWrapWarning_list}=    Get Slice From List    ${full_list}    start=${rotWrapWarning_start}    end=${rotWrapWarning_end}
     Should Contain X Times    ${rotWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${rotWrapWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPosition_start}
-    ${inPosition_end}=    Evaluate    ${end}+${1}
-    ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${inPosition_end}
-    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionRot_start}=    Get Index From List    ${full_list}    === Event inPositionRot received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionRot_start}
-    ${inPositionRot_end}=    Evaluate    ${end}+${1}
-    ${inPositionRot_list}=    Get Slice From List    ${full_list}    start=${inPositionRot_start}    end=${inPositionRot_end}
-    Should Contain X Times    ${inPositionRot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${inPositionRot_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${inPositionAz_start}=    Get Index From List    ${full_list}    === Event inPositionAz received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${inPositionAz_start}
-    ${inPositionAz_end}=    Evaluate    ${end}+${1}
-    ${inPositionAz_list}=    Get Slice From List    ${full_list}    start=${inPositionAz_start}    end=${inPositionAz_end}
-    Should Contain X Times    ${inPositionAz_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eventState : 1    1
-    Should Contain X Times    ${inPositionAz_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${iers_start}=    Get Index From List    ${full_list}    === Event iers received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${iers_start}
     ${iers_end}=    Evaluate    ${end}+${1}
@@ -757,3 +666,15 @@ Read Logger
     Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}authorizedUsers : RO    1
     Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : RO    1
     Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === Event largeFileObjectAvailable received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${largeFileObjectAvailable_start}
+    ${largeFileObjectAvailable_end}=    Evaluate    ${end}+${1}
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end}
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : 1    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byteSize : 1    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}checkSum : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : RO    1
+    Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
