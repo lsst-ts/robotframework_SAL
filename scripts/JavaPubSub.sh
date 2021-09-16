@@ -141,8 +141,9 @@ function startJavaCombinedPublisherProcess {
         echo "    Log Many    \${${item}_list}" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-        echo "    Should Contain    \${${item}_list}    === [putSample ${item}] writing a message containing :" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === [${item}] message sent 200" >> $testSuite
+        # Comment out this test; this message is surpressed with debugLevel=0, which is the default setting.
+        #echo "    Should Contain    \${${item}_list}    === [putSample ${item}] writing a message containing :" >> $testSuite
     done
     echo "" >> $testSuite
 }
@@ -163,9 +164,10 @@ function readSubscriber {
         echo "    Log Many    \${${item}_list}" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-        echo "    Should Contain    \${${item}_list}    === [getSample ${item} ] message received :0" >> $testSuite
         echo "    Run Keyword And Ignore Error    Should Contain    \${${item}_list}    === [${item} Subscriber] message received :10" >> $testSuite
         echo "    Run Keyword And Ignore Error    Should Contain    \${${item}_list}    === [${item} Subscriber] message received :200" >> $testSuite
+        # Comment out this test; this message is surpressed with debugLevel=0, which is the default setting.
+        #echo "    Should Contain    \${${item}_list}    === [getSample ${item} ] message received :0" >> $testSuite
     done
 }
 

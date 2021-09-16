@@ -144,7 +144,8 @@ function startJavaCombinedSenderProcess() {
         echo "    Log Many    \${${item}_list}" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-        echo "    Should Contain    \${${item}_list}    === [putSample logevent_${item}] writing a message containing :" >> $testSuite
+        # Comment out this test; this message is surpressed with debugLevel=0, which is the default setting.
+        #echo "    Should Contain    \${${item}_list}    === [putSample logevent_${item}] writing a message containing :" >> $testSuite
     done
     echo "" >> $testSuite
 }
@@ -168,7 +169,8 @@ function readLogger() {
         echo "    Log Many    \${${item}_list}" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    Should Contain    \${${item}_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
-        echo "    Should Contain    \${${item}_list}    === [getSample logevent_$item ] message received :0" >> $testSuite
+        # Comment out this test; this message is surpressed with debugLevel=0, which is the default setting.
+        #echo "    Should Contain    \${${item}_list}    === [getSample logevent_$item ] message received :0" >> $testSuite
     done
 }
 
