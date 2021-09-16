@@ -50,7 +50,6 @@ Start Publisher
     Log Many    ${ccwFollowingError_list}
     Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError start of topic ===
     Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError end of topic ===
-    Should Contain    ${ccwFollowingError_list}    === [putSample ccwFollowingError] writing a message containing :
     Should Contain    ${ccwFollowingError_list}    === [ccwFollowingError] message sent 200
     ${rotation_start}=    Get Index From List    ${full_list}    === MTRotator_rotation start of topic ===
     ${rotation_end}=    Get Index From List    ${full_list}    === MTRotator_rotation end of topic ===
@@ -58,7 +57,6 @@ Start Publisher
     Log Many    ${rotation_list}
     Should Contain    ${rotation_list}    === MTRotator_rotation start of topic ===
     Should Contain    ${rotation_list}    === MTRotator_rotation end of topic ===
-    Should Contain    ${rotation_list}    === [putSample rotation] writing a message containing :
     Should Contain    ${rotation_list}    === [rotation] message sent 200
     ${electrical_start}=    Get Index From List    ${full_list}    === MTRotator_electrical start of topic ===
     ${electrical_end}=    Get Index From List    ${full_list}    === MTRotator_electrical end of topic ===
@@ -66,7 +64,6 @@ Start Publisher
     Log Many    ${electrical_list}
     Should Contain    ${electrical_list}    === MTRotator_electrical start of topic ===
     Should Contain    ${electrical_list}    === MTRotator_electrical end of topic ===
-    Should Contain    ${electrical_list}    === [putSample electrical] writing a message containing :
     Should Contain    ${electrical_list}    === [electrical] message sent 200
     ${motors_start}=    Get Index From List    ${full_list}    === MTRotator_motors start of topic ===
     ${motors_end}=    Get Index From List    ${full_list}    === MTRotator_motors end of topic ===
@@ -74,7 +71,6 @@ Start Publisher
     Log Many    ${motors_list}
     Should Contain    ${motors_list}    === MTRotator_motors start of topic ===
     Should Contain    ${motors_list}    === MTRotator_motors end of topic ===
-    Should Contain    ${motors_list}    === [putSample motors] writing a message containing :
     Should Contain    ${motors_list}    === [motors] message sent 200
 
 Read Subscriber
@@ -90,7 +86,6 @@ Read Subscriber
     Log Many    ${ccwFollowingError_list}
     Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError start of topic ===
     Should Contain    ${ccwFollowingError_list}    === MTRotator_ccwFollowingError end of topic ===
-    Should Contain    ${ccwFollowingError_list}    === [getSample ccwFollowingError ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${ccwFollowingError_list}    === [ccwFollowingError Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${ccwFollowingError_list}    === [ccwFollowingError Subscriber] message received :200
     ${rotation_start}=    Get Index From List    ${full_list}    === MTRotator_rotation start of topic ===
@@ -99,7 +94,6 @@ Read Subscriber
     Log Many    ${rotation_list}
     Should Contain    ${rotation_list}    === MTRotator_rotation start of topic ===
     Should Contain    ${rotation_list}    === MTRotator_rotation end of topic ===
-    Should Contain    ${rotation_list}    === [getSample rotation ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${rotation_list}    === [rotation Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${rotation_list}    === [rotation Subscriber] message received :200
     ${electrical_start}=    Get Index From List    ${full_list}    === MTRotator_electrical start of topic ===
@@ -108,7 +102,6 @@ Read Subscriber
     Log Many    ${electrical_list}
     Should Contain    ${electrical_list}    === MTRotator_electrical start of topic ===
     Should Contain    ${electrical_list}    === MTRotator_electrical end of topic ===
-    Should Contain    ${electrical_list}    === [getSample electrical ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${electrical_list}    === [electrical Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${electrical_list}    === [electrical Subscriber] message received :200
     ${motors_start}=    Get Index From List    ${full_list}    === MTRotator_motors start of topic ===
@@ -117,6 +110,5 @@ Read Subscriber
     Log Many    ${motors_list}
     Should Contain    ${motors_list}    === MTRotator_motors start of topic ===
     Should Contain    ${motors_list}    === MTRotator_motors end of topic ===
-    Should Contain    ${motors_list}    === [getSample motors ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${motors_list}    === [motors Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${motors_list}    === [motors Subscriber] message received :200
