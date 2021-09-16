@@ -50,7 +50,6 @@ Start Publisher
     Log Many    ${daq_monitor_Store_list}
     Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store start of topic ===
     Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store end of topic ===
-    Should Contain    ${daq_monitor_Store_list}    === [putSample daq_monitor_Store] writing a message containing :
     Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store] message sent 200
     ${fp_Reb_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb start of topic ===
     ${fp_Reb_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb end of topic ===
@@ -58,7 +57,6 @@ Start Publisher
     Log Many    ${fp_Reb_list}
     Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb start of topic ===
     Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb end of topic ===
-    Should Contain    ${fp_Reb_list}    === [putSample fp_Reb] writing a message containing :
     Should Contain    ${fp_Reb_list}    === [fp_Reb] message sent 200
     ${fp_Ccd_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd start of topic ===
     ${fp_Ccd_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd end of topic ===
@@ -66,7 +64,6 @@ Start Publisher
     Log Many    ${fp_Ccd_list}
     Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd start of topic ===
     Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd end of topic ===
-    Should Contain    ${fp_Ccd_list}    === [putSample fp_Ccd] writing a message containing :
     Should Contain    ${fp_Ccd_list}    === [fp_Ccd] message sent 200
     ${fp_Segment_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment start of topic ===
     ${fp_Segment_end}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment end of topic ===
@@ -74,7 +71,6 @@ Start Publisher
     Log Many    ${fp_Segment_list}
     Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment start of topic ===
     Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment end of topic ===
-    Should Contain    ${fp_Segment_list}    === [putSample fp_Segment] writing a message containing :
     Should Contain    ${fp_Segment_list}    === [fp_Segment] message sent 200
     ${fp_RebTotalPower_start}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower start of topic ===
     ${fp_RebTotalPower_end}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower end of topic ===
@@ -82,7 +78,6 @@ Start Publisher
     Log Many    ${fp_RebTotalPower_list}
     Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower start of topic ===
     Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower end of topic ===
-    Should Contain    ${fp_RebTotalPower_list}    === [putSample fp_RebTotalPower] writing a message containing :
     Should Contain    ${fp_RebTotalPower_list}    === [fp_RebTotalPower] message sent 200
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
     ${wreb_end}=    Get Index From List    ${full_list}    === ATCamera_wreb end of topic ===
@@ -90,7 +85,6 @@ Start Publisher
     Log Many    ${wreb_list}
     Should Contain    ${wreb_list}    === ATCamera_wreb start of topic ===
     Should Contain    ${wreb_list}    === ATCamera_wreb end of topic ===
-    Should Contain    ${wreb_list}    === [putSample wreb] writing a message containing :
     Should Contain    ${wreb_list}    === [wreb] message sent 200
     ${bonnShutter_start}=    Get Index From List    ${full_list}    === ATCamera_bonnShutter start of topic ===
     ${bonnShutter_end}=    Get Index From List    ${full_list}    === ATCamera_bonnShutter end of topic ===
@@ -98,7 +92,6 @@ Start Publisher
     Log Many    ${bonnShutter_list}
     Should Contain    ${bonnShutter_list}    === ATCamera_bonnShutter start of topic ===
     Should Contain    ${bonnShutter_list}    === ATCamera_bonnShutter end of topic ===
-    Should Contain    ${bonnShutter_list}    === [putSample bonnShutter] writing a message containing :
     Should Contain    ${bonnShutter_list}    === [bonnShutter] message sent 200
     ${wrebPower_start}=    Get Index From List    ${full_list}    === ATCamera_wrebPower start of topic ===
     ${wrebPower_end}=    Get Index From List    ${full_list}    === ATCamera_wrebPower end of topic ===
@@ -106,7 +99,6 @@ Start Publisher
     Log Many    ${wrebPower_list}
     Should Contain    ${wrebPower_list}    === ATCamera_wrebPower start of topic ===
     Should Contain    ${wrebPower_list}    === ATCamera_wrebPower end of topic ===
-    Should Contain    ${wrebPower_list}    === [putSample wrebPower] writing a message containing :
     Should Contain    ${wrebPower_list}    === [wrebPower] message sent 200
     ${vacuum_start}=    Get Index From List    ${full_list}    === ATCamera_vacuum start of topic ===
     ${vacuum_end}=    Get Index From List    ${full_list}    === ATCamera_vacuum end of topic ===
@@ -114,7 +106,6 @@ Start Publisher
     Log Many    ${vacuum_list}
     Should Contain    ${vacuum_list}    === ATCamera_vacuum start of topic ===
     Should Contain    ${vacuum_list}    === ATCamera_vacuum end of topic ===
-    Should Contain    ${vacuum_list}    === [putSample vacuum] writing a message containing :
     Should Contain    ${vacuum_list}    === [vacuum] message sent 200
 
 Read Subscriber
@@ -130,7 +121,6 @@ Read Subscriber
     Log Many    ${daq_monitor_Store_list}
     Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store start of topic ===
     Should Contain    ${daq_monitor_Store_list}    === ATCamera_daq_monitor_Store end of topic ===
-    Should Contain    ${daq_monitor_Store_list}    === [getSample daq_monitor_Store ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :200
     ${fp_Reb_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Reb start of topic ===
@@ -139,7 +129,6 @@ Read Subscriber
     Log Many    ${fp_Reb_list}
     Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb start of topic ===
     Should Contain    ${fp_Reb_list}    === ATCamera_fp_Reb end of topic ===
-    Should Contain    ${fp_Reb_list}    === [getSample fp_Reb ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${fp_Reb_list}    === [fp_Reb Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fp_Reb_list}    === [fp_Reb Subscriber] message received :200
     ${fp_Ccd_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Ccd start of topic ===
@@ -148,7 +137,6 @@ Read Subscriber
     Log Many    ${fp_Ccd_list}
     Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd start of topic ===
     Should Contain    ${fp_Ccd_list}    === ATCamera_fp_Ccd end of topic ===
-    Should Contain    ${fp_Ccd_list}    === [getSample fp_Ccd ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${fp_Ccd_list}    === [fp_Ccd Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fp_Ccd_list}    === [fp_Ccd Subscriber] message received :200
     ${fp_Segment_start}=    Get Index From List    ${full_list}    === ATCamera_fp_Segment start of topic ===
@@ -157,7 +145,6 @@ Read Subscriber
     Log Many    ${fp_Segment_list}
     Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment start of topic ===
     Should Contain    ${fp_Segment_list}    === ATCamera_fp_Segment end of topic ===
-    Should Contain    ${fp_Segment_list}    === [getSample fp_Segment ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${fp_Segment_list}    === [fp_Segment Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fp_Segment_list}    === [fp_Segment Subscriber] message received :200
     ${fp_RebTotalPower_start}=    Get Index From List    ${full_list}    === ATCamera_fp_RebTotalPower start of topic ===
@@ -166,7 +153,6 @@ Read Subscriber
     Log Many    ${fp_RebTotalPower_list}
     Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower start of topic ===
     Should Contain    ${fp_RebTotalPower_list}    === ATCamera_fp_RebTotalPower end of topic ===
-    Should Contain    ${fp_RebTotalPower_list}    === [getSample fp_RebTotalPower ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${fp_RebTotalPower_list}    === [fp_RebTotalPower Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fp_RebTotalPower_list}    === [fp_RebTotalPower Subscriber] message received :200
     ${wreb_start}=    Get Index From List    ${full_list}    === ATCamera_wreb start of topic ===
@@ -175,7 +161,6 @@ Read Subscriber
     Log Many    ${wreb_list}
     Should Contain    ${wreb_list}    === ATCamera_wreb start of topic ===
     Should Contain    ${wreb_list}    === ATCamera_wreb end of topic ===
-    Should Contain    ${wreb_list}    === [getSample wreb ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${wreb_list}    === [wreb Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${wreb_list}    === [wreb Subscriber] message received :200
     ${bonnShutter_start}=    Get Index From List    ${full_list}    === ATCamera_bonnShutter start of topic ===
@@ -184,7 +169,6 @@ Read Subscriber
     Log Many    ${bonnShutter_list}
     Should Contain    ${bonnShutter_list}    === ATCamera_bonnShutter start of topic ===
     Should Contain    ${bonnShutter_list}    === ATCamera_bonnShutter end of topic ===
-    Should Contain    ${bonnShutter_list}    === [getSample bonnShutter ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${bonnShutter_list}    === [bonnShutter Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${bonnShutter_list}    === [bonnShutter Subscriber] message received :200
     ${wrebPower_start}=    Get Index From List    ${full_list}    === ATCamera_wrebPower start of topic ===
@@ -193,7 +177,6 @@ Read Subscriber
     Log Many    ${wrebPower_list}
     Should Contain    ${wrebPower_list}    === ATCamera_wrebPower start of topic ===
     Should Contain    ${wrebPower_list}    === ATCamera_wrebPower end of topic ===
-    Should Contain    ${wrebPower_list}    === [getSample wrebPower ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${wrebPower_list}    === [wrebPower Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${wrebPower_list}    === [wrebPower Subscriber] message received :200
     ${vacuum_start}=    Get Index From List    ${full_list}    === ATCamera_vacuum start of topic ===
@@ -202,6 +185,5 @@ Read Subscriber
     Log Many    ${vacuum_list}
     Should Contain    ${vacuum_list}    === ATCamera_vacuum start of topic ===
     Should Contain    ${vacuum_list}    === ATCamera_vacuum end of topic ===
-    Should Contain    ${vacuum_list}    === [getSample vacuum ] message received :0
     Run Keyword And Ignore Error    Should Contain    ${vacuum_list}    === [vacuum Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${vacuum_list}    === [vacuum Subscriber] message received :200
