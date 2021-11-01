@@ -44,6 +44,38 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_availableSettings_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event availableSettings generated =
+    Comment    ======= Verify ${subSystem}_controllerSettingsName test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_controllerSettingsName
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event controllerSettingsName iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_controllerSettingsName_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event controllerSettingsName generated =
+    Comment    ======= Verify ${subSystem}_azimuthControllerSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthControllerSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event azimuthControllerSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthControllerSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event azimuthControllerSettings generated =
+    Comment    ======= Verify ${subSystem}_elevationControllerSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationControllerSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event elevationControllerSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationControllerSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event elevationControllerSettings generated =
+    Comment    ======= Verify ${subSystem}_cameraCableWrapControllerSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapControllerSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event cameraCableWrapControllerSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapControllerSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event cameraCableWrapControllerSettings generated =
     Comment    ======= Verify ${subSystem}_azimuthSystemState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthSystemState
     @{words}=    Split String    ${line}
@@ -470,6 +502,80 @@ Read Logger
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}createdDates : RO    1
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}modifiedDates : RO    1
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${controllerSettingsName_start}=    Get Index From List    ${full_list}    === Event controllerSettingsName received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${controllerSettingsName_start}
+    ${controllerSettingsName_end}=    Evaluate    ${end}+${1}
+    ${controllerSettingsName_list}=    Get Slice From List    ${full_list}    start=${controllerSettingsName_start}    end=${controllerSettingsName_end}
+    Should Contain X Times    ${controllerSettingsName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsName : RO    1
+    Should Contain X Times    ${controllerSettingsName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${azimuthControllerSettings_start}=    Get Index From List    ${full_list}    === Event azimuthControllerSettings received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthControllerSettings_start}
+    ${azimuthControllerSettings_end}=    Evaluate    ${end}+${1}
+    ${azimuthControllerSettings_list}=    Get Slice From List    ${full_list}    start=${azimuthControllerSettings_start}    end=${azimuthControllerSettings_end}
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPositionEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPositionEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minOperationalL1LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxOperationalL1LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL2LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL2LimitEnabled : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPosition : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPosition : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1Limit : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1Limit : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdVelocity : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveVelocity : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveAcceleration : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveJerk : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingVelocity : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
+    Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${elevationControllerSettings_start}=    Get Index From List    ${full_list}    === Event elevationControllerSettings received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationControllerSettings_start}
+    ${elevationControllerSettings_end}=    Evaluate    ${end}+${1}
+    ${elevationControllerSettings_list}=    Get Slice From List    ${full_list}    start=${elevationControllerSettings_start}    end=${elevationControllerSettings_end}
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPositionEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPositionEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minOperationalL1LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxOperationalL1LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minOperationalL2LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxOperationalL2LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL2LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL2LimitEnabled : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPosition : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPosition : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1Limit : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1Limit : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdVelocity : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveVelocity : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveAcceleration : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveJerk : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingVelocity : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
+    Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${cameraCableWrapControllerSettings_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapControllerSettings received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${cameraCableWrapControllerSettings_start}
+    ${cameraCableWrapControllerSettings_end}=    Evaluate    ${end}+${1}
+    ${cameraCableWrapControllerSettings_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapControllerSettings_start}    end=${cameraCableWrapControllerSettings_end}
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}l1LimitsEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}l2LimitsEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPosition : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPosition : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1Limit : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1Limit : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdVelocity : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveVelocity : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveAcceleration : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMoveJerk : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingVelocity : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthSystemState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthSystemState_start}
     ${azimuthSystemState_end}=    Evaluate    ${end}+${1}
