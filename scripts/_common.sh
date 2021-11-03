@@ -6,28 +6,31 @@
 #  email:  rbovill@lsst.org
 
 ###  VARIABLES  ###
-added_generics_mandatory_commands=("setAuthList",)
+added_generics_mandatory_commands=()
 
-added_generics_mandatory_events=("authList", "heartbeat", "softwareVersions",)
+added_generics_mandatory_events=(
+    "heartbeat",
+    "logLevel",
+    "logMessage",
+    "softwareVersions",
+)
 
 added_generics_csc_commands=(
     "disable",
     "enable",
     "exitControl",
+    "setAuthList",
     "setLogLevel",
     "standby",
     "start",
 )
 
 added_generics_csc_events=(
+    "authList",
     "errorCode",
     "simulationMode",
     "summaryState",
 )
-
-added_generics_log_commands=()
-
-added_generics_log_events=("logLevel", "logMessage",)
 
 added_generics_configurable_commands=()
 
@@ -78,9 +81,6 @@ function getTopics() {
         generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
         if [[ $generics_field =~ "csc" ]]; then
             generics+=("${added_generics_csc_commands[@]}")
-        fi
-        if [[ $generics_field == "log" ]]; then
-            generics=("${added_generics_log_commands[@]}")
         fi
         if [[ $generics_field == "configurable" ]]; then
             generics=("${added_generics_configurable_commands[@]}")
