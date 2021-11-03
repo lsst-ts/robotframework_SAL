@@ -260,24 +260,36 @@ Start Sender
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
-    ${authList_start}=    Get Index From List    ${full_list}    === ATCamera_authList start of topic ===
-    ${authList_end}=    Get Index From List    ${full_list}    === ATCamera_authList end of topic ===
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
-    Log Many    ${authList_list}
-    Should Contain    ${authList_list}    === ATCamera_authList start of topic ===
-    Should Contain    ${authList_list}    === ATCamera_authList end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === ATCamera_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === ATCamera_heartbeat end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === ATCamera_logLevel start of topic ===
+    ${logLevel_end}=    Get Index From List    ${full_list}    === ATCamera_logLevel end of topic ===
+    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
+    Log Many    ${logLevel_list}
+    Should Contain    ${logLevel_list}    === ATCamera_logLevel start of topic ===
+    Should Contain    ${logLevel_list}    === ATCamera_logLevel end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === ATCamera_logMessage start of topic ===
+    ${logMessage_end}=    Get Index From List    ${full_list}    === ATCamera_logMessage end of topic ===
+    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
+    Log Many    ${logMessage_list}
+    Should Contain    ${logMessage_list}    === ATCamera_logMessage start of topic ===
+    Should Contain    ${logMessage_list}    === ATCamera_logMessage end of topic ===
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === ATCamera_softwareVersions start of topic ===
     ${softwareVersions_end}=    Get Index From List    ${full_list}    === ATCamera_softwareVersions end of topic ===
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === ATCamera_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === ATCamera_softwareVersions end of topic ===
+    ${authList_start}=    Get Index From List    ${full_list}    === ATCamera_authList start of topic ===
+    ${authList_end}=    Get Index From List    ${full_list}    === ATCamera_authList end of topic ===
+    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
+    Log Many    ${authList_list}
+    Should Contain    ${authList_list}    === ATCamera_authList start of topic ===
+    Should Contain    ${authList_list}    === ATCamera_authList end of topic ===
     ${errorCode_start}=    Get Index From List    ${full_list}    === ATCamera_errorCode start of topic ===
     ${errorCode_end}=    Get Index From List    ${full_list}    === ATCamera_errorCode end of topic ===
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
@@ -520,24 +532,36 @@ Read Subscriber
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
-    ${authList_start}=    Get Index From List    ${full_list}    === ATCamera_authList start of topic ===
-    ${authList_end}=    Get Index From List    ${full_list}    === ATCamera_authList end of topic ===
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
-    Log Many    ${authList_list}
-    Should Contain    ${authList_list}    === ATCamera_authList start of topic ===
-    Should Contain    ${authList_list}    === ATCamera_authList end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === ATCamera_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === ATCamera_heartbeat end of topic ===
+    ${logLevel_start}=    Get Index From List    ${full_list}    === ATCamera_logLevel start of topic ===
+    ${logLevel_end}=    Get Index From List    ${full_list}    === ATCamera_logLevel end of topic ===
+    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
+    Log Many    ${logLevel_list}
+    Should Contain    ${logLevel_list}    === ATCamera_logLevel start of topic ===
+    Should Contain    ${logLevel_list}    === ATCamera_logLevel end of topic ===
+    ${logMessage_start}=    Get Index From List    ${full_list}    === ATCamera_logMessage start of topic ===
+    ${logMessage_end}=    Get Index From List    ${full_list}    === ATCamera_logMessage end of topic ===
+    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
+    Log Many    ${logMessage_list}
+    Should Contain    ${logMessage_list}    === ATCamera_logMessage start of topic ===
+    Should Contain    ${logMessage_list}    === ATCamera_logMessage end of topic ===
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === ATCamera_softwareVersions start of topic ===
     ${softwareVersions_end}=    Get Index From List    ${full_list}    === ATCamera_softwareVersions end of topic ===
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === ATCamera_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === ATCamera_softwareVersions end of topic ===
+    ${authList_start}=    Get Index From List    ${full_list}    === ATCamera_authList start of topic ===
+    ${authList_end}=    Get Index From List    ${full_list}    === ATCamera_authList end of topic ===
+    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
+    Log Many    ${authList_list}
+    Should Contain    ${authList_list}    === ATCamera_authList start of topic ===
+    Should Contain    ${authList_list}    === ATCamera_authList end of topic ===
     ${errorCode_start}=    Get Index From List    ${full_list}    === ATCamera_errorCode start of topic ===
     ${errorCode_end}=    Get Index From List    ${full_list}    === ATCamera_errorCode end of topic ===
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
