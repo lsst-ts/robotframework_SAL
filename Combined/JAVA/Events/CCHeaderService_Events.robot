@@ -44,78 +44,42 @@ Start Sender
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_settingVersions end of topic ===
-    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
-    Log Many    ${settingVersions_list}
-    Should Contain    ${settingVersions_list}    === CCHeaderService_settingVersions start of topic ===
-    Should Contain    ${settingVersions_list}    === CCHeaderService_settingVersions end of topic ===
-    ${errorCode_start}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode end of topic ===
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
-    Log Many    ${errorCode_list}
-    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode start of topic ===
-    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode end of topic ===
-    ${summaryState_start}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState end of topic ===
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
-    Log Many    ${summaryState_list}
-    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState start of topic ===
-    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState end of topic ===
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === CCHeaderService_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === CCHeaderService_appliedSettingsMatchStart end of topic ===
-    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
-    Log Many    ${appliedSettingsMatchStart_list}
-    Should Contain    ${appliedSettingsMatchStart_list}    === CCHeaderService_appliedSettingsMatchStart start of topic ===
-    Should Contain    ${appliedSettingsMatchStart_list}    === CCHeaderService_appliedSettingsMatchStart end of topic ===
-    ${logLevel_start}=    Get Index From List    ${full_list}    === CCHeaderService_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === CCHeaderService_logLevel end of topic ===
-    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
-    Log Many    ${logLevel_list}
-    Should Contain    ${logLevel_list}    === CCHeaderService_logLevel start of topic ===
-    Should Contain    ${logLevel_list}    === CCHeaderService_logLevel end of topic ===
-    ${logMessage_start}=    Get Index From List    ${full_list}    === CCHeaderService_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === CCHeaderService_logMessage end of topic ===
-    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
-    Log Many    ${logMessage_list}
-    Should Contain    ${logMessage_list}    === CCHeaderService_logMessage start of topic ===
-    Should Contain    ${logMessage_list}    === CCHeaderService_logMessage end of topic ===
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === CCHeaderService_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === CCHeaderService_settingsApplied end of topic ===
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
-    Log Many    ${settingsApplied_list}
-    Should Contain    ${settingsApplied_list}    === CCHeaderService_settingsApplied start of topic ===
-    Should Contain    ${settingsApplied_list}    === CCHeaderService_settingsApplied end of topic ===
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode end of topic ===
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
-    Log Many    ${simulationMode_list}
-    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode start of topic ===
-    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode end of topic ===
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions start of topic ===
-    ${softwareVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions end of topic ===
-    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
-    Log Many    ${softwareVersions_list}
-    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions start of topic ===
-    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions end of topic ===
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat end of topic ===
     ${authList_start}=    Get Index From List    ${full_list}    === CCHeaderService_authList start of topic ===
     ${authList_end}=    Get Index From List    ${full_list}    === CCHeaderService_authList end of topic ===
     ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
     Log Many    ${authList_list}
     Should Contain    ${authList_list}    === CCHeaderService_authList start of topic ===
     Should Contain    ${authList_list}    === CCHeaderService_authList end of topic ===
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === CCHeaderService_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === CCHeaderService_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === CCHeaderService_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === CCHeaderService_largeFileObjectAvailable end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat end of topic ===
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions start of topic ===
+    ${softwareVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions end of topic ===
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
+    Log Many    ${softwareVersions_list}
+    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions start of topic ===
+    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -124,75 +88,39 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== CCHeaderService all loggers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=29
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_settingVersions end of topic ===
-    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
-    Log Many    ${settingVersions_list}
-    Should Contain    ${settingVersions_list}    === CCHeaderService_settingVersions start of topic ===
-    Should Contain    ${settingVersions_list}    === CCHeaderService_settingVersions end of topic ===
-    ${errorCode_start}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode end of topic ===
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
-    Log Many    ${errorCode_list}
-    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode start of topic ===
-    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode end of topic ===
-    ${summaryState_start}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState end of topic ===
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
-    Log Many    ${summaryState_list}
-    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState start of topic ===
-    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState end of topic ===
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === CCHeaderService_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === CCHeaderService_appliedSettingsMatchStart end of topic ===
-    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
-    Log Many    ${appliedSettingsMatchStart_list}
-    Should Contain    ${appliedSettingsMatchStart_list}    === CCHeaderService_appliedSettingsMatchStart start of topic ===
-    Should Contain    ${appliedSettingsMatchStart_list}    === CCHeaderService_appliedSettingsMatchStart end of topic ===
-    ${logLevel_start}=    Get Index From List    ${full_list}    === CCHeaderService_logLevel start of topic ===
-    ${logLevel_end}=    Get Index From List    ${full_list}    === CCHeaderService_logLevel end of topic ===
-    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
-    Log Many    ${logLevel_list}
-    Should Contain    ${logLevel_list}    === CCHeaderService_logLevel start of topic ===
-    Should Contain    ${logLevel_list}    === CCHeaderService_logLevel end of topic ===
-    ${logMessage_start}=    Get Index From List    ${full_list}    === CCHeaderService_logMessage start of topic ===
-    ${logMessage_end}=    Get Index From List    ${full_list}    === CCHeaderService_logMessage end of topic ===
-    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end + 1}
-    Log Many    ${logMessage_list}
-    Should Contain    ${logMessage_list}    === CCHeaderService_logMessage start of topic ===
-    Should Contain    ${logMessage_list}    === CCHeaderService_logMessage end of topic ===
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === CCHeaderService_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === CCHeaderService_settingsApplied end of topic ===
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
-    Log Many    ${settingsApplied_list}
-    Should Contain    ${settingsApplied_list}    === CCHeaderService_settingsApplied start of topic ===
-    Should Contain    ${settingsApplied_list}    === CCHeaderService_settingsApplied end of topic ===
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode end of topic ===
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
-    Log Many    ${simulationMode_list}
-    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode start of topic ===
-    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode end of topic ===
-    ${softwareVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions start of topic ===
-    ${softwareVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions end of topic ===
-    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
-    Log Many    ${softwareVersions_list}
-    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions start of topic ===
-    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions end of topic ===
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat end of topic ===
     ${authList_start}=    Get Index From List    ${full_list}    === CCHeaderService_authList start of topic ===
     ${authList_end}=    Get Index From List    ${full_list}    === CCHeaderService_authList end of topic ===
     ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
     Log Many    ${authList_list}
     Should Contain    ${authList_list}    === CCHeaderService_authList start of topic ===
     Should Contain    ${authList_list}    === CCHeaderService_authList end of topic ===
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === CCHeaderService_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === CCHeaderService_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === CCHeaderService_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === CCHeaderService_largeFileObjectAvailable end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === CCHeaderService_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === CCHeaderService_heartbeat end of topic ===
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions start of topic ===
+    ${softwareVersions_end}=    Get Index From List    ${full_list}    === CCHeaderService_softwareVersions end of topic ===
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
+    Log Many    ${softwareVersions_list}
+    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions start of topic ===
+    Should Contain    ${softwareVersions_list}    === CCHeaderService_softwareVersions end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === CCHeaderService_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === CCHeaderService_errorCode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === CCHeaderService_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === CCHeaderService_simulationMode end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === CCHeaderService_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === CCHeaderService_summaryState end of topic ===
