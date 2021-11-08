@@ -452,14 +452,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_appliedCylinderForces_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event appliedCylinderForces generated =
-    Comment    ======= Verify ${subSystem}_modbusResponse test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_modbusResponse
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event modbusResponse iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_modbusResponse_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event modbusResponse generated =
     Comment    ======= Verify ${subSystem}_forceActuatorBumpTestStatus test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceActuatorBumpTestStatus
     @{words}=    Split String    ${line}
@@ -1579,18 +1571,6 @@ Read Logger
     Should Contain X Times    ${appliedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForces : 0    1
     Should Contain X Times    ${appliedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderForces : 0    1
     Should Contain X Times    ${appliedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${modbusResponse_start}=    Get Index From List    ${full_list}    === Event modbusResponse received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${modbusResponse_start}
-    ${modbusResponse_end}=    Evaluate    ${end}+${1}
-    ${modbusResponse_list}=    Get Slice From List    ${full_list}    start=${modbusResponse_start}    end=${modbusResponse_end}
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}responseValid : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}address : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}functionCode : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataLength : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}data : 0    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}crc : 1    1
-    Should Contain X Times    ${modbusResponse_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${forceActuatorBumpTestStatus_start}=    Get Index From List    ${full_list}    === Event forceActuatorBumpTestStatus received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${forceActuatorBumpTestStatus_start}
     ${forceActuatorBumpTestStatus_end}=    Evaluate    ${end}+${1}
