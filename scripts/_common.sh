@@ -5,6 +5,41 @@
 #  author: Rob Bovill
 #  email:  rbovill@lsst.org
 
+###  VARIABLES  ###
+added_generics_mandatory_commands=()
+
+added_generics_mandatory_events=(
+    "heartbeat",
+    "logLevel",
+    "logMessage",
+    "softwareVersions",
+)
+
+added_generics_csc_commands=(
+    "disable",
+    "enable",
+    "exitControl",
+    "setAuthList",
+    "setLogLevel",
+    "standby",
+    "start",
+)
+
+added_generics_csc_events=(
+    "authList",
+    "errorCode",
+    "simulationMode",
+    "summaryState",
+)
+
+added_generics_configurable_commands=()
+
+added_generics_configurable_events=(
+    "appliedSettingsMatchStart",
+    "settingsApplied",
+    "settingVersions",
+)
+
 
 ###  FUNCTIONS  ###
 
@@ -38,26 +73,49 @@ function getTopics() {
     else
         keep_num=3
     fi
-    output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ' ' |awk '{$1=$1};1')
-    topics=$output
+    topics=( $( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
 
-    ## If CSC uses the Generic Commands or Events, add those.
-    if [[ $topic_type == "Command" || $topic_type == "Event" ]]; then
-        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../Generics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-        if [[ $generics_field == "yes" ]]; then
-            local generics=$( xml sel -t -m "//SALObjects/SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALGenerics.xml |sed "s/SALGeneric_${lower_topic}_//" |tr '\r\n' ' ' )
-        elif [[ $generics_field == "no" ]]; then
-            local generics=()
-        else
-            local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v Generics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
-            for topic in ${array[@]}; do
-                if [[ "$topic" == *"${lower_topic}_"* ]]; then
-                    generics+=$(echo "$topic " |sed "s/${lower_topic}_//g")
-                fi
-            done
+    ## If CSC uses the Generic Commands, add those.
+    if [[ $topic_type == "Command" ]]; then
+        generics=(${added_generics_mandatory_commands[@]})
+        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+        if [[ $generics_field =~ "csc" ]]; then
+            generics+=("${added_generics_csc_commands[@]}")
         fi
+        if [[ $generics_field == "configurable" ]]; then
+            generics=("${added_generics_configurable_commands[@]}")
+        fi
+        local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        for topic in ${array[@]}; do
+            if [[ "$topic" == *"${lower_topic}_"* ]]; then
+                str=$(echo "$topic," |sed "s/${lower_topic}_//g")
+                generics+=$("$str")
+            fi  
+        done
     fi
-    echo "$topics $generics"
+
+    ## If CSC uses the Generic Events, add those.
+    if [[ $topic_type == "Event" ]]; then
+        generics=(${added_generics_mandatory_events[@]})
+        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+        if [[ $generics_field =~ "csc" ]]; then
+            generics+=("${added_generics_csc_events[@]}")
+        fi
+        if [[ $generics_field == "log" ]]; then
+            generics+=("${added_generics_log_events[@]}")
+        fi
+        if [[ $generics_field == "configurable" ]]; then
+            generics+=("${added_generics_configurable_events[@]}")
+        fi
+        local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        for topic in ${array[@]}; do
+            if [[ "$topic" == *"${lower_topic}_"* ]]; then
+                str=$(echo "$topic," |sed "s/${lower_topic}_//g")
+                generics+=$("$str")
+            fi
+        done
+    fi
+    echo "${topics[@]} ${generics[@]}" |sed 's/,//g'
 }
 
 
@@ -69,10 +127,10 @@ function clearTestSuites() {
     local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
     local slash="/"
     if [ -n "$3" ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}; else local topic_type=""; fi #Topic type is capitalized 
-        echo ""
-        echo "==================================== ${subsystem} ${language} ${topic_type} tests ===================================="
-        #files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Separate/$language/$topic_type/${subsystem}_* ; ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
-        files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+    echo ""
+    echo "==================================== ${subsystem} ${language} ${topic_type} tests ===================================="
+    #files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Separate/$language/$topic_type/${subsystem}_* ; ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+    files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
     if [ $? -eq 0 ]; then
         echo "Deleting:"
         echo "$files"

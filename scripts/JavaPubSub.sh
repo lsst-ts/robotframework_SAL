@@ -81,6 +81,10 @@ function verifyCompPubSub {
     local testSuite=$1
     echo "Verify Component Publisher and Subscriber" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
+    if [[ $subSystem == "Test" ]]; then
+        echo "    Comment    The Test CSC is not a true Java artifact and is never published as such. Remove the MavenVersion string to accommodate RPM packaging." >> $testSuite
+        echo "    Set Suite Variable    \${MavenVersion}    \${EMPTY}" >> $testSuite
+    fi
     if [ $topic ]; then
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_pub.jar" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_sub.jar" >> $testSuite

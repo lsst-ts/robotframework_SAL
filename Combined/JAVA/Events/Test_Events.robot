@@ -17,6 +17,8 @@ ${timeout}    45s
 *** Test Cases ***
 Verify Component Sender and Logger
     [Tags]    smoke
+    Comment    The Test CSC is not a true Java artifact and is never published as such. Remove the MavenVersion string to accommodate RPM packaging.
+    Set Suite Variable    ${MavenVersion}    ${EMPTY}
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}Event_${component}.java
     File Should Exist    ${SALWorkDir}/${subSystem}/java/src/${subSystem}EventLogger_${component}.java
     File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/src/test/java/${subSystem}Event_${component}.java
@@ -56,30 +58,12 @@ Start Sender
     Log Many    ${arrays_list}
     Should Contain    ${arrays_list}    === Test_arrays start of topic ===
     Should Contain    ${arrays_list}    === Test_arrays end of topic ===
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === Test_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === Test_settingVersions end of topic ===
-    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
-    Log Many    ${settingVersions_list}
-    Should Contain    ${settingVersions_list}    === Test_settingVersions start of topic ===
-    Should Contain    ${settingVersions_list}    === Test_settingVersions end of topic ===
-    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
-    Log Many    ${errorCode_list}
-    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
-    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
-    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
-    Log Many    ${summaryState_list}
-    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
-    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart end of topic ===
-    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
-    Log Many    ${appliedSettingsMatchStart_list}
-    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart start of topic ===
-    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === Test_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === Test_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
@@ -92,42 +76,36 @@ Start Sender
     Log Many    ${logMessage_list}
     Should Contain    ${logMessage_list}    === Test_logMessage start of topic ===
     Should Contain    ${logMessage_list}    === Test_logMessage end of topic ===
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Test_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === Test_settingsApplied end of topic ===
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
-    Log Many    ${settingsApplied_list}
-    Should Contain    ${settingsApplied_list}    === Test_settingsApplied start of topic ===
-    Should Contain    ${settingsApplied_list}    === Test_settingsApplied end of topic ===
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
-    Log Many    ${simulationMode_list}
-    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
-    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Test_softwareVersions start of topic ===
     ${softwareVersions_end}=    Get Index From List    ${full_list}    === Test_softwareVersions end of topic ===
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === Test_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === Test_softwareVersions end of topic ===
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
     ${authList_start}=    Get Index From List    ${full_list}    === Test_authList start of topic ===
     ${authList_end}=    Get Index From List    ${full_list}    === Test_authList end of topic ===
     ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
     Log Many    ${authList_list}
     Should Contain    ${authList_list}    === Test_authList start of topic ===
     Should Contain    ${authList_list}    === Test_authList end of topic ===
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === Test_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === Test_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === Test_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === Test_largeFileObjectAvailable end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -148,30 +126,12 @@ Read Subscriber
     Log Many    ${arrays_list}
     Should Contain    ${arrays_list}    === Test_arrays start of topic ===
     Should Contain    ${arrays_list}    === Test_arrays end of topic ===
-    ${settingVersions_start}=    Get Index From List    ${full_list}    === Test_settingVersions start of topic ===
-    ${settingVersions_end}=    Get Index From List    ${full_list}    === Test_settingVersions end of topic ===
-    ${settingVersions_list}=    Get Slice From List    ${full_list}    start=${settingVersions_start}    end=${settingVersions_end + 1}
-    Log Many    ${settingVersions_list}
-    Should Contain    ${settingVersions_list}    === Test_settingVersions start of topic ===
-    Should Contain    ${settingVersions_list}    === Test_settingVersions end of topic ===
-    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
-    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
-    Log Many    ${errorCode_list}
-    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
-    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
-    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
-    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
-    Log Many    ${summaryState_list}
-    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
-    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
-    ${appliedSettingsMatchStart_start}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart start of topic ===
-    ${appliedSettingsMatchStart_end}=    Get Index From List    ${full_list}    === Test_appliedSettingsMatchStart end of topic ===
-    ${appliedSettingsMatchStart_list}=    Get Slice From List    ${full_list}    start=${appliedSettingsMatchStart_start}    end=${appliedSettingsMatchStart_end + 1}
-    Log Many    ${appliedSettingsMatchStart_list}
-    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart start of topic ===
-    Should Contain    ${appliedSettingsMatchStart_list}    === Test_appliedSettingsMatchStart end of topic ===
+    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
+    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
+    Log Many    ${heartbeat_list}
+    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
+    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === Test_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === Test_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
@@ -184,39 +144,33 @@ Read Subscriber
     Log Many    ${logMessage_list}
     Should Contain    ${logMessage_list}    === Test_logMessage start of topic ===
     Should Contain    ${logMessage_list}    === Test_logMessage end of topic ===
-    ${settingsApplied_start}=    Get Index From List    ${full_list}    === Test_settingsApplied start of topic ===
-    ${settingsApplied_end}=    Get Index From List    ${full_list}    === Test_settingsApplied end of topic ===
-    ${settingsApplied_list}=    Get Slice From List    ${full_list}    start=${settingsApplied_start}    end=${settingsApplied_end + 1}
-    Log Many    ${settingsApplied_list}
-    Should Contain    ${settingsApplied_list}    === Test_settingsApplied start of topic ===
-    Should Contain    ${settingsApplied_list}    === Test_settingsApplied end of topic ===
-    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
-    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
-    Log Many    ${simulationMode_list}
-    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
-    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Test_softwareVersions start of topic ===
     ${softwareVersions_end}=    Get Index From List    ${full_list}    === Test_softwareVersions end of topic ===
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end + 1}
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === Test_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === Test_softwareVersions end of topic ===
-    ${heartbeat_start}=    Get Index From List    ${full_list}    === Test_heartbeat start of topic ===
-    ${heartbeat_end}=    Get Index From List    ${full_list}    === Test_heartbeat end of topic ===
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
-    Log Many    ${heartbeat_list}
-    Should Contain    ${heartbeat_list}    === Test_heartbeat start of topic ===
-    Should Contain    ${heartbeat_list}    === Test_heartbeat end of topic ===
     ${authList_start}=    Get Index From List    ${full_list}    === Test_authList start of topic ===
     ${authList_end}=    Get Index From List    ${full_list}    === Test_authList end of topic ===
     ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
     Log Many    ${authList_list}
     Should Contain    ${authList_list}    === Test_authList start of topic ===
     Should Contain    ${authList_list}    === Test_authList end of topic ===
-    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === Test_largeFileObjectAvailable start of topic ===
-    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === Test_largeFileObjectAvailable end of topic ===
-    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
-    Log Many    ${largeFileObjectAvailable_list}
-    Should Contain    ${largeFileObjectAvailable_list}    === Test_largeFileObjectAvailable start of topic ===
-    Should Contain    ${largeFileObjectAvailable_list}    === Test_largeFileObjectAvailable end of topic ===
+    ${errorCode_start}=    Get Index From List    ${full_list}    === Test_errorCode start of topic ===
+    ${errorCode_end}=    Get Index From List    ${full_list}    === Test_errorCode end of topic ===
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
+    Log Many    ${errorCode_list}
+    Should Contain    ${errorCode_list}    === Test_errorCode start of topic ===
+    Should Contain    ${errorCode_list}    === Test_errorCode end of topic ===
+    ${simulationMode_start}=    Get Index From List    ${full_list}    === Test_simulationMode start of topic ===
+    ${simulationMode_end}=    Get Index From List    ${full_list}    === Test_simulationMode end of topic ===
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end + 1}
+    Log Many    ${simulationMode_list}
+    Should Contain    ${simulationMode_list}    === Test_simulationMode start of topic ===
+    Should Contain    ${simulationMode_list}    === Test_simulationMode end of topic ===
+    ${summaryState_start}=    Get Index From List    ${full_list}    === Test_summaryState start of topic ===
+    ${summaryState_end}=    Get Index From List    ${full_list}    === Test_summaryState end of topic ===
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end + 1}
+    Log Many    ${summaryState_list}
+    Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
+    Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===

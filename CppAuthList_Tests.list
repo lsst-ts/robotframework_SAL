@@ -1,0 +1,15 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CppAuthList
+--output CppAuthList
+
+# List of test suites
+AuthList/CPP/ATMCS_AuthList.robot
+AuthList/CPP/ATPtg_AuthList.robot
+AuthList/CPP/Guider_AuthList.robot
+AuthList/CPP/MTM1M3_AuthList.robot
+AuthList/CPP/MTMount_AuthList.robot
+AuthList/CPP/MTPtg_AuthList.robot
+AuthList/CPP/MTRotator_AuthList.robot
+AuthList/CPP/Script_AuthList.robot
+AuthList/CPP/WeatherStation_AuthList.robot

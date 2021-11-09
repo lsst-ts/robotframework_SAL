@@ -68,14 +68,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_state_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event state generated =
-    Comment    ======= Verify ${subSystem}_authList test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_authList
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event authList iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_authList_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event authList generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -100,6 +92,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_logMessage_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event logMessage generated =
+    Comment    ======= Verify ${subSystem}_softwareVersions test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_softwareVersions
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event softwareVersions iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersions_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event softwareVersions generated =
 
 Read Logger
     [Tags]    functional
@@ -122,6 +122,7 @@ Read Logger
     ${description_list}=    Get Slice From List    ${full_list}    start=${description_start}    end=${description_end}
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}classname : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : RO    1
+    Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}help : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}remotes : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${metadata_start}=    Get Index From List    ${full_list}    === Event metadata received =${SPACE}
@@ -137,6 +138,7 @@ Read Logger
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nimages : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : RO    1
+    Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalCheckpoints : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${state_start}
@@ -146,14 +148,8 @@ Read Logger
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lastCheckpoint : RO    1
+    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numCheckpoints : 1    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
-    ${authList_start}=    Get Index From List    ${full_list}    === Event authList received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${authList_start}
-    ${authList_end}=    Evaluate    ${end}+${1}
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end}
-    Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}authorizedUsers : RO    1
-    Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : RO    1
-    Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
     ${heartbeat_end}=    Evaluate    ${end}+${1}
@@ -165,6 +161,7 @@ Read Logger
     ${logLevel_end}=    Evaluate    ${end}+${1}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
+    Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
@@ -178,4 +175,15 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}functionName : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lineNumber : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
+    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
+    ${softwareVersions_end}=    Evaluate    ${end}+${1}
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openSpliceVersion : RO    1
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
+    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1

@@ -85,6 +85,10 @@ function verifyCompSenderLogger() {
     local testSuite=$1
     echo "Verify Component Sender and Logger" >> $testSuite
     echo "    [Tags]    smoke" >> $testSuite
+    if [[ $subSystem == "Test" ]]; then
+        echo "    Comment    The Test CSC is not a true Java artifact and is never published as such. Remove the MavenVersion string to accommodate RPM packaging." >> $testSuite
+        echo "    Set Suite Variable    \${MavenVersion}    \${EMPTY}" >> $testSuite
+    fi
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}Event_\${component}.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/\${subSystem}/java/src/\${subSystem}EventLogger_\${component}.java" >> $testSuite
     echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Event_\${component}.java" >> $testSuite
