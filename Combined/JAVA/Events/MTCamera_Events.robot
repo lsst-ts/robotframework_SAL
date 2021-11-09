@@ -242,6 +242,816 @@ Start Sender
     Log Many    ${focalPlaneSummaryInfo_list}
     Should Contain    ${focalPlaneSummaryInfo_list}    === MTCamera_focalPlaneSummaryInfo start of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === MTCamera_focalPlaneSummaryInfo end of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_LimitsSettingsApplied_start}    end=${quadbox_BFR_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_BFR_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_QuadboxSettingsApplied_start}    end=${quadbox_BFR_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_BFR_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VC_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VC_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VD_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VD_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_LimitsSettingsApplied_start}    end=${quadbox_PDU_48V_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_48V_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_48V_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_LimitsSettingsApplied_start}    end=${quadbox_PDU_5V_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_5V_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_5V_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasksSettingsApplied_start}    end=${quadbox_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${quadbox_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasks_timersSettingsApplied_start}    end=${quadbox_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${quadbox_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied start of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_LimitsSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
+    ${rebpowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpowerSettingsApplied start of topic ===
+    ${rebpowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpowerSettingsApplied end of topic ===
+    ${rebpowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpowerSettingsApplied_start}    end=${rebpowerSettingsApplied_end + 1}
+    Log Many    ${rebpowerSettingsApplied_list}
+    Should Contain    ${rebpowerSettingsApplied_list}    === MTCamera_rebpowerSettingsApplied start of topic ===
+    Should Contain    ${rebpowerSettingsApplied_list}    === MTCamera_rebpowerSettingsApplied end of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_EmergencyResponseManagerSettingsApplied_start}    end=${rebpower_EmergencyResponseManagerSettingsApplied_end + 1}
+    Log Many    ${rebpower_EmergencyResponseManagerSettingsApplied_list}
+    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
+    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasksSettingsApplied_start}    end=${rebpower_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${rebpower_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasks_timersSettingsApplied_start}    end=${rebpower_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${rebpower_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${rebpower_RebSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebSettingsApplied start of topic ===
+    ${rebpower_RebSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebSettingsApplied end of topic ===
+    ${rebpower_RebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebSettingsApplied_start}    end=${rebpower_RebSettingsApplied_end + 1}
+    Log Many    ${rebpower_RebSettingsApplied_list}
+    Should Contain    ${rebpower_RebSettingsApplied_list}    === MTCamera_rebpower_RebSettingsApplied start of topic ===
+    Should Contain    ${rebpower_RebSettingsApplied_list}    === MTCamera_rebpower_RebSettingsApplied end of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_LimitsSettingsApplied_start}    end=${rebpower_Reb_LimitsSettingsApplied_end + 1}
+    Log Many    ${rebpower_Reb_LimitsSettingsApplied_list}
+    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_LimitsSettingsApplied_start}    end=${rebpower_Rebps_LimitsSettingsApplied_end + 1}
+    Log Many    ${rebpower_Rebps_LimitsSettingsApplied_list}
+    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_PowerSettingsApplied_start}    end=${rebpower_Rebps_PowerSettingsApplied_end + 1}
+    Log Many    ${rebpower_Rebps_PowerSettingsApplied_list}
+    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
+    ${hexSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hexSettingsApplied start of topic ===
+    ${hexSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hexSettingsApplied end of topic ===
+    ${hexSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hexSettingsApplied_start}    end=${hexSettingsApplied_end + 1}
+    Log Many    ${hexSettingsApplied_list}
+    Should Contain    ${hexSettingsApplied_list}    === MTCamera_hexSettingsApplied start of topic ===
+    Should Contain    ${hexSettingsApplied_list}    === MTCamera_hexSettingsApplied end of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied start of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied end of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cold1_LimitsSettingsApplied_start}    end=${hex_Cold1_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cold1_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cold1_LimitsSettingsApplied_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cold1_LimitsSettingsApplied_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied end of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied start of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied end of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cold2_LimitsSettingsApplied_start}    end=${hex_Cold2_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cold2_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cold2_LimitsSettingsApplied_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cold2_LimitsSettingsApplied_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo1_LimitsSettingsApplied_start}    end=${hex_Cryo1_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo1_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo1_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo1_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo2_LimitsSettingsApplied_start}    end=${hex_Cryo2_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo2_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo2_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo2_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo3_LimitsSettingsApplied_start}    end=${hex_Cryo3_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo3_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo3_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo3_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo4_LimitsSettingsApplied_start}    end=${hex_Cryo4_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo4_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo4_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo4_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo5_LimitsSettingsApplied_start}    end=${hex_Cryo5_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo5_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo5_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo5_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo6_LimitsSettingsApplied_start}    end=${hex_Cryo6_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo6_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo6_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo6_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied end of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied start of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DeviceSettingsApplied_start}    end=${hex_Maq20_DeviceSettingsApplied_end + 1}
+    Log Many    ${hex_Maq20_DeviceSettingsApplied_list}
+    Should Contain    ${hex_Maq20_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied start of topic ===
+    Should Contain    ${hex_Maq20_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied start of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20x_DeviceSettingsApplied_start}    end=${hex_Maq20x_DeviceSettingsApplied_end + 1}
+    Log Many    ${hex_Maq20x_DeviceSettingsApplied_list}
+    Should Contain    ${hex_Maq20x_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied start of topic ===
+    Should Contain    ${hex_Maq20x_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied end of topic ===
+    ${hex_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksSettingsApplied start of topic ===
+    ${hex_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksSettingsApplied end of topic ===
+    ${hex_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasksSettingsApplied_start}    end=${hex_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${hex_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${hex_PeriodicTasksSettingsApplied_list}    === MTCamera_hex_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${hex_PeriodicTasksSettingsApplied_list}    === MTCamera_hex_PeriodicTasksSettingsApplied end of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_timersSettingsApplied_start}    end=${hex_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${hex_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${hex_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${hex_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_CompLimitsSettingsApplied_start}    end=${refrig_Cold1_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied start of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_DeviceSettingsApplied_start}    end=${refrig_Cold1_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied start of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_LimitsSettingsApplied_start}    end=${refrig_Cold1_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_CompLimitsSettingsApplied_start}    end=${refrig_Cold2_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied start of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_DeviceSettingsApplied_start}    end=${refrig_Cold2_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied start of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_LimitsSettingsApplied_start}    end=${refrig_Cold2_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied end of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied start of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied end of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_CoolMaq20_DeviceSettingsApplied_start}    end=${refrig_CoolMaq20_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_CoolMaq20_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_CoolMaq20_DeviceSettingsApplied_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_CoolMaq20_DeviceSettingsApplied_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_CompLimitsSettingsApplied_start}    end=${refrig_Cryo1_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DeviceSettingsApplied_start}    end=${refrig_Cryo1_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_LimitsSettingsApplied_start}    end=${refrig_Cryo1_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_CompLimitsSettingsApplied_start}    end=${refrig_Cryo2_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DeviceSettingsApplied_start}    end=${refrig_Cryo2_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_LimitsSettingsApplied_start}    end=${refrig_Cryo2_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_CompLimitsSettingsApplied_start}    end=${refrig_Cryo3_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DeviceSettingsApplied_start}    end=${refrig_Cryo3_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_LimitsSettingsApplied_start}    end=${refrig_Cryo3_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_CompLimitsSettingsApplied_start}    end=${refrig_Cryo4_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DeviceSettingsApplied_start}    end=${refrig_Cryo4_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_LimitsSettingsApplied_start}    end=${refrig_Cryo4_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_CompLimitsSettingsApplied_start}    end=${refrig_Cryo5_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DeviceSettingsApplied_start}    end=${refrig_Cryo5_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_LimitsSettingsApplied_start}    end=${refrig_Cryo5_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_CompLimitsSettingsApplied_start}    end=${refrig_Cryo6_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DeviceSettingsApplied_start}    end=${refrig_Cryo6_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_LimitsSettingsApplied_start}    end=${refrig_Cryo6_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied end of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied start of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied end of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasksSettingsApplied_start}    end=${refrig_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${refrig_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${refrig_PeriodicTasksSettingsApplied_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${refrig_PeriodicTasksSettingsApplied_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied end of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_timersSettingsApplied_start}    end=${refrig_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${refrig_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${refrig_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied start of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied end of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_AgentMonitorServiceSettingsApplied_start}    end=${vacuum_AgentMonitorServiceSettingsApplied_end + 1}
+    Log Many    ${vacuum_AgentMonitorServiceSettingsApplied_list}
+    Should Contain    ${vacuum_AgentMonitorServiceSettingsApplied_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied start of topic ===
+    Should Contain    ${vacuum_AgentMonitorServiceSettingsApplied_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied end of topic ===
+    ${vacuum_CIP1CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1CSettingsApplied start of topic ===
+    ${vacuum_CIP1CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1CSettingsApplied end of topic ===
+    ${vacuum_CIP1CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1CSettingsApplied_start}    end=${vacuum_CIP1CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP1CSettingsApplied_list}    === MTCamera_vacuum_CIP1CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1CSettingsApplied_list}    === MTCamera_vacuum_CIP1CSettingsApplied end of topic ===
+    ${vacuum_CIP1_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_ISettingsApplied start of topic ===
+    ${vacuum_CIP1_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_ISettingsApplied end of topic ===
+    ${vacuum_CIP1_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_ISettingsApplied_start}    end=${vacuum_CIP1_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP1_ISettingsApplied_list}    === MTCamera_vacuum_CIP1_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1_ISettingsApplied_list}    === MTCamera_vacuum_CIP1_ISettingsApplied end of topic ===
+    ${vacuum_CIP1_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_VSettingsApplied start of topic ===
+    ${vacuum_CIP1_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_VSettingsApplied end of topic ===
+    ${vacuum_CIP1_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_VSettingsApplied_start}    end=${vacuum_CIP1_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP1_VSettingsApplied_list}    === MTCamera_vacuum_CIP1_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1_VSettingsApplied_list}    === MTCamera_vacuum_CIP1_VSettingsApplied end of topic ===
+    ${vacuum_CIP2CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2CSettingsApplied start of topic ===
+    ${vacuum_CIP2CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2CSettingsApplied end of topic ===
+    ${vacuum_CIP2CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2CSettingsApplied_start}    end=${vacuum_CIP2CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP2CSettingsApplied_list}    === MTCamera_vacuum_CIP2CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2CSettingsApplied_list}    === MTCamera_vacuum_CIP2CSettingsApplied end of topic ===
+    ${vacuum_CIP2_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_ISettingsApplied start of topic ===
+    ${vacuum_CIP2_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_ISettingsApplied end of topic ===
+    ${vacuum_CIP2_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_ISettingsApplied_start}    end=${vacuum_CIP2_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP2_ISettingsApplied_list}    === MTCamera_vacuum_CIP2_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2_ISettingsApplied_list}    === MTCamera_vacuum_CIP2_ISettingsApplied end of topic ===
+    ${vacuum_CIP2_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_VSettingsApplied start of topic ===
+    ${vacuum_CIP2_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_VSettingsApplied end of topic ===
+    ${vacuum_CIP2_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_VSettingsApplied_start}    end=${vacuum_CIP2_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP2_VSettingsApplied_list}    === MTCamera_vacuum_CIP2_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2_VSettingsApplied_list}    === MTCamera_vacuum_CIP2_VSettingsApplied end of topic ===
+    ${vacuum_CIP3CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3CSettingsApplied start of topic ===
+    ${vacuum_CIP3CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3CSettingsApplied end of topic ===
+    ${vacuum_CIP3CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3CSettingsApplied_start}    end=${vacuum_CIP3CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP3CSettingsApplied_list}    === MTCamera_vacuum_CIP3CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3CSettingsApplied_list}    === MTCamera_vacuum_CIP3CSettingsApplied end of topic ===
+    ${vacuum_CIP3_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_ISettingsApplied start of topic ===
+    ${vacuum_CIP3_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_ISettingsApplied end of topic ===
+    ${vacuum_CIP3_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_ISettingsApplied_start}    end=${vacuum_CIP3_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP3_ISettingsApplied_list}    === MTCamera_vacuum_CIP3_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3_ISettingsApplied_list}    === MTCamera_vacuum_CIP3_ISettingsApplied end of topic ===
+    ${vacuum_CIP3_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_VSettingsApplied start of topic ===
+    ${vacuum_CIP3_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_VSettingsApplied end of topic ===
+    ${vacuum_CIP3_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_VSettingsApplied_start}    end=${vacuum_CIP3_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP3_VSettingsApplied_list}    === MTCamera_vacuum_CIP3_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3_VSettingsApplied_list}    === MTCamera_vacuum_CIP3_VSettingsApplied end of topic ===
+    ${vacuum_CIP4CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4CSettingsApplied start of topic ===
+    ${vacuum_CIP4CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4CSettingsApplied end of topic ===
+    ${vacuum_CIP4CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4CSettingsApplied_start}    end=${vacuum_CIP4CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP4CSettingsApplied_list}    === MTCamera_vacuum_CIP4CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4CSettingsApplied_list}    === MTCamera_vacuum_CIP4CSettingsApplied end of topic ===
+    ${vacuum_CIP4_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_ISettingsApplied start of topic ===
+    ${vacuum_CIP4_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_ISettingsApplied end of topic ===
+    ${vacuum_CIP4_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_ISettingsApplied_start}    end=${vacuum_CIP4_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP4_ISettingsApplied_list}    === MTCamera_vacuum_CIP4_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4_ISettingsApplied_list}    === MTCamera_vacuum_CIP4_ISettingsApplied end of topic ===
+    ${vacuum_CIP4_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_VSettingsApplied start of topic ===
+    ${vacuum_CIP4_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_VSettingsApplied end of topic ===
+    ${vacuum_CIP4_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_VSettingsApplied_start}    end=${vacuum_CIP4_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP4_VSettingsApplied_list}    === MTCamera_vacuum_CIP4_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4_VSettingsApplied_list}    === MTCamera_vacuum_CIP4_VSettingsApplied end of topic ===
+    ${vacuum_CIP5CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5CSettingsApplied start of topic ===
+    ${vacuum_CIP5CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5CSettingsApplied end of topic ===
+    ${vacuum_CIP5CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5CSettingsApplied_start}    end=${vacuum_CIP5CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP5CSettingsApplied_list}    === MTCamera_vacuum_CIP5CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5CSettingsApplied_list}    === MTCamera_vacuum_CIP5CSettingsApplied end of topic ===
+    ${vacuum_CIP5_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_ISettingsApplied start of topic ===
+    ${vacuum_CIP5_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_ISettingsApplied end of topic ===
+    ${vacuum_CIP5_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_ISettingsApplied_start}    end=${vacuum_CIP5_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP5_ISettingsApplied_list}    === MTCamera_vacuum_CIP5_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5_ISettingsApplied_list}    === MTCamera_vacuum_CIP5_ISettingsApplied end of topic ===
+    ${vacuum_CIP5_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_VSettingsApplied start of topic ===
+    ${vacuum_CIP5_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_VSettingsApplied end of topic ===
+    ${vacuum_CIP5_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_VSettingsApplied_start}    end=${vacuum_CIP5_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP5_VSettingsApplied_list}    === MTCamera_vacuum_CIP5_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5_VSettingsApplied_list}    === MTCamera_vacuum_CIP5_VSettingsApplied end of topic ===
+    ${vacuum_CIP6CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6CSettingsApplied start of topic ===
+    ${vacuum_CIP6CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6CSettingsApplied end of topic ===
+    ${vacuum_CIP6CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6CSettingsApplied_start}    end=${vacuum_CIP6CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP6CSettingsApplied_list}    === MTCamera_vacuum_CIP6CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6CSettingsApplied_list}    === MTCamera_vacuum_CIP6CSettingsApplied end of topic ===
+    ${vacuum_CIP6_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_ISettingsApplied start of topic ===
+    ${vacuum_CIP6_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_ISettingsApplied end of topic ===
+    ${vacuum_CIP6_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_ISettingsApplied_start}    end=${vacuum_CIP6_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP6_ISettingsApplied_list}    === MTCamera_vacuum_CIP6_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6_ISettingsApplied_list}    === MTCamera_vacuum_CIP6_ISettingsApplied end of topic ===
+    ${vacuum_CIP6_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_VSettingsApplied start of topic ===
+    ${vacuum_CIP6_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_VSettingsApplied end of topic ===
+    ${vacuum_CIP6_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_VSettingsApplied_start}    end=${vacuum_CIP6_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP6_VSettingsApplied_list}    === MTCamera_vacuum_CIP6_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6_VSettingsApplied_list}    === MTCamera_vacuum_CIP6_VSettingsApplied end of topic ===
+    ${vacuum_CryoVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacSettingsApplied start of topic ===
+    ${vacuum_CryoVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacSettingsApplied end of topic ===
+    ${vacuum_CryoVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVacSettingsApplied_start}    end=${vacuum_CryoVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_CryoVacSettingsApplied_list}
+    Should Contain    ${vacuum_CryoVacSettingsApplied_list}    === MTCamera_vacuum_CryoVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CryoVacSettingsApplied_list}    === MTCamera_vacuum_CryoVacSettingsApplied end of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied start of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied end of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVacGaugeSettingsApplied_start}    end=${vacuum_CryoVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_CryoVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_CryoVacGaugeSettingsApplied_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CryoVacGaugeSettingsApplied_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied end of topic ===
+    ${vacuum_ForelineVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacSettingsApplied start of topic ===
+    ${vacuum_ForelineVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacSettingsApplied end of topic ===
+    ${vacuum_ForelineVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVacSettingsApplied_start}    end=${vacuum_ForelineVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_ForelineVacSettingsApplied_list}
+    Should Contain    ${vacuum_ForelineVacSettingsApplied_list}    === MTCamera_vacuum_ForelineVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_ForelineVacSettingsApplied_list}    === MTCamera_vacuum_ForelineVacSettingsApplied end of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied start of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied end of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVacGaugeSettingsApplied_start}    end=${vacuum_ForelineVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_ForelineVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_ForelineVacGaugeSettingsApplied_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_ForelineVacGaugeSettingsApplied_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied end of topic ===
+    ${vacuum_HeartbeatSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HeartbeatSettingsApplied start of topic ===
+    ${vacuum_HeartbeatSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HeartbeatSettingsApplied end of topic ===
+    ${vacuum_HeartbeatSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_HeartbeatSettingsApplied_start}    end=${vacuum_HeartbeatSettingsApplied_end + 1}
+    Log Many    ${vacuum_HeartbeatSettingsApplied_list}
+    Should Contain    ${vacuum_HeartbeatSettingsApplied_list}    === MTCamera_vacuum_HeartbeatSettingsApplied start of topic ===
+    Should Contain    ${vacuum_HeartbeatSettingsApplied_list}    === MTCamera_vacuum_HeartbeatSettingsApplied end of topic ===
+    ${vacuum_Hex1VacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacSettingsApplied start of topic ===
+    ${vacuum_Hex1VacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacSettingsApplied end of topic ===
+    ${vacuum_Hex1VacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1VacSettingsApplied_start}    end=${vacuum_Hex1VacSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex1VacSettingsApplied_list}
+    Should Contain    ${vacuum_Hex1VacSettingsApplied_list}    === MTCamera_vacuum_Hex1VacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex1VacSettingsApplied_list}    === MTCamera_vacuum_Hex1VacSettingsApplied end of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied start of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1VacGaugeSettingsApplied_start}    end=${vacuum_Hex1VacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex1VacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_Hex1VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex1VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex2VacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacSettingsApplied start of topic ===
+    ${vacuum_Hex2VacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacSettingsApplied end of topic ===
+    ${vacuum_Hex2VacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2VacSettingsApplied_start}    end=${vacuum_Hex2VacSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex2VacSettingsApplied_list}
+    Should Contain    ${vacuum_Hex2VacSettingsApplied_list}    === MTCamera_vacuum_Hex2VacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex2VacSettingsApplied_list}    === MTCamera_vacuum_Hex2VacSettingsApplied end of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied start of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2VacGaugeSettingsApplied_start}    end=${vacuum_Hex2VacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex2VacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_Hex2VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex2VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied end of topic ===
+    ${vacuum_IonPumpsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumpsSettingsApplied start of topic ===
+    ${vacuum_IonPumpsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumpsSettingsApplied end of topic ===
+    ${vacuum_IonPumpsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumpsSettingsApplied_start}    end=${vacuum_IonPumpsSettingsApplied_end + 1}
+    Log Many    ${vacuum_IonPumpsSettingsApplied_list}
+    Should Contain    ${vacuum_IonPumpsSettingsApplied_list}    === MTCamera_vacuum_IonPumpsSettingsApplied start of topic ===
+    Should Contain    ${vacuum_IonPumpsSettingsApplied_list}    === MTCamera_vacuum_IonPumpsSettingsApplied end of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied start of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied end of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_checkSettingsApplied_start}    end=${vacuum_Monitor_checkSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_checkSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_checkSettingsApplied_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_checkSettingsApplied_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied end of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied start of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied end of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_publishSettingsApplied_start}    end=${vacuum_Monitor_publishSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_publishSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_publishSettingsApplied_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_publishSettingsApplied_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied end of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied start of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied end of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_updateSettingsApplied_start}    end=${vacuum_Monitor_updateSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_updateSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_updateSettingsApplied_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_updateSettingsApplied_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied end of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied start of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied end of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_RuntimeInfoSettingsApplied_start}    end=${vacuum_RuntimeInfoSettingsApplied_end + 1}
+    Log Many    ${vacuum_RuntimeInfoSettingsApplied_list}
+    Should Contain    ${vacuum_RuntimeInfoSettingsApplied_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied start of topic ===
+    Should Contain    ${vacuum_RuntimeInfoSettingsApplied_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied end of topic ===
+    ${vacuum_SchedulersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_SchedulersSettingsApplied start of topic ===
+    ${vacuum_SchedulersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_SchedulersSettingsApplied end of topic ===
+    ${vacuum_SchedulersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_SchedulersSettingsApplied_start}    end=${vacuum_SchedulersSettingsApplied_end + 1}
+    Log Many    ${vacuum_SchedulersSettingsApplied_list}
+    Should Contain    ${vacuum_SchedulersSettingsApplied_list}    === MTCamera_vacuum_SchedulersSettingsApplied start of topic ===
+    Should Contain    ${vacuum_SchedulersSettingsApplied_list}    === MTCamera_vacuum_SchedulersSettingsApplied end of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied start of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied end of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboCurrentSettingsApplied_start}    end=${vacuum_TurboCurrentSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboCurrentSettingsApplied_list}
+    Should Contain    ${vacuum_TurboCurrentSettingsApplied_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboCurrentSettingsApplied_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied end of topic ===
+    ${vacuum_TurboPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPowerSettingsApplied start of topic ===
+    ${vacuum_TurboPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPowerSettingsApplied end of topic ===
+    ${vacuum_TurboPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPowerSettingsApplied_start}    end=${vacuum_TurboPowerSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPowerSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPowerSettingsApplied_list}    === MTCamera_vacuum_TurboPowerSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPowerSettingsApplied_list}    === MTCamera_vacuum_TurboPowerSettingsApplied end of topic ===
+    ${vacuum_TurboPumpSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpSettingsApplied start of topic ===
+    ${vacuum_TurboPumpSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpSettingsApplied end of topic ===
+    ${vacuum_TurboPumpSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpSettingsApplied_start}    end=${vacuum_TurboPumpSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPumpSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPumpSettingsApplied_list}    === MTCamera_vacuum_TurboPumpSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPumpSettingsApplied_list}    === MTCamera_vacuum_TurboPumpSettingsApplied end of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied start of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied end of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpTempSettingsApplied_start}    end=${vacuum_TurboPumpTempSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPumpTempSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPumpTempSettingsApplied_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPumpTempSettingsApplied_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied end of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied start of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied end of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSpeedSettingsApplied_start}    end=${vacuum_TurboSpeedSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboSpeedSettingsApplied_list}
+    Should Contain    ${vacuum_TurboSpeedSettingsApplied_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboSpeedSettingsApplied_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied end of topic ===
+    ${vacuum_TurboVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacSettingsApplied start of topic ===
+    ${vacuum_TurboVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacSettingsApplied end of topic ===
+    ${vacuum_TurboVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVacSettingsApplied_start}    end=${vacuum_TurboVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVacSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVacSettingsApplied_list}    === MTCamera_vacuum_TurboVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVacSettingsApplied_list}    === MTCamera_vacuum_TurboVacSettingsApplied end of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied start of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied end of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVacGaugeSettingsApplied_start}    end=${vacuum_TurboVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVacGaugeSettingsApplied_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVacGaugeSettingsApplied_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied end of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied start of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied end of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVoltageSettingsApplied_start}    end=${vacuum_TurboVoltageSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVoltageSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVoltageSettingsApplied_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVoltageSettingsApplied_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied end of topic ===
+    ${vacuum_VacPlutoSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_VacPlutoSettingsApplied start of topic ===
+    ${vacuum_VacPlutoSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_VacPlutoSettingsApplied end of topic ===
+    ${vacuum_VacPlutoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VacPlutoSettingsApplied_start}    end=${vacuum_VacPlutoSettingsApplied_end + 1}
+    Log Many    ${vacuum_VacPlutoSettingsApplied_list}
+    Should Contain    ${vacuum_VacPlutoSettingsApplied_list}    === MTCamera_vacuum_VacPlutoSettingsApplied start of topic ===
+    Should Contain    ${vacuum_VacPlutoSettingsApplied_list}    === MTCamera_vacuum_VacPlutoSettingsApplied end of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied start of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied end of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Vacuum_stateSettingsApplied_start}    end=${vacuum_Vacuum_stateSettingsApplied_end + 1}
+    Log Many    ${vacuum_Vacuum_stateSettingsApplied_list}
+    Should Contain    ${vacuum_Vacuum_stateSettingsApplied_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Vacuum_stateSettingsApplied_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksSettingsApplied_start}    end=${daq_monitor_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersSettingsApplied_start}    end=${daq_monitor_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_StatisticsSettingsApplied_start}    end=${daq_monitor_Stats_StatisticsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Stats_StatisticsSettingsApplied_list}
+    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildSettingsApplied_start}    end=${daq_monitor_Stats_buildSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Stats_buildSettingsApplied_list}
+    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
+    ${daq_monitor_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreSettingsApplied start of topic ===
+    ${daq_monitor_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreSettingsApplied end of topic ===
+    ${daq_monitor_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreSettingsApplied_start}    end=${daq_monitor_StoreSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_StoreSettingsApplied_list}
+    Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === MTCamera_daq_monitor_StoreSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === MTCamera_daq_monitor_StoreSettingsApplied end of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsSettingsApplied_start}    end=${daq_monitor_Store_LimitsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Store_LimitsSettingsApplied_list}
+    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_StoreSettingsApplied_start}    end=${daq_monitor_Store_StoreSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Store_StoreSettingsApplied_list}
+    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_HardwareIdSettingsApplied_start}    end=${focal_plane_Ccd_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_LimitsSettingsApplied_start}    end=${focal_plane_Ccd_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsSettingsApplied_start}    end=${focal_plane_Ccd_RaftsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_RaftsSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceSettingsApplied_start}    end=${focal_plane_ImageDatabaseServiceSettingsApplied_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}
+    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceSettingsApplied_start}    end=${focal_plane_ImageNameServiceSettingsApplied_end + 1}
+    Log Many    ${focal_plane_ImageNameServiceSettingsApplied_list}
+    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}    end=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end + 1}
+    Log Many    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}
+    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksSettingsApplied_start}    end=${focal_plane_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${focal_plane_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersSettingsApplied_start}    end=${focal_plane_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_HardwareIdSettingsApplied_start}    end=${focal_plane_Raft_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebTotalPower_LimitsSettingsApplied_start}    end=${focal_plane_RebTotalPower_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdSettingsApplied_start}    end=${focal_plane_Reb_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_LimitsSettingsApplied_start}    end=${focal_plane_Reb_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsSettingsApplied_start}    end=${focal_plane_Reb_RaftsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsLimitsSettingsApplied_start}    end=${focal_plane_Reb_RaftsLimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsPowerSettingsApplied_start}    end=${focal_plane_Reb_RaftsPowerSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_timersSettingsApplied_start}    end=${focal_plane_Reb_timersSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_timersSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsSettingsApplied_start}    end=${focal_plane_Segment_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Segment_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQSettingsApplied_start}    end=${focal_plane_SequencerConfig_DAQSettingsApplied_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}
+    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerSettingsApplied_start}    end=${focal_plane_SequencerConfig_SequencerSettingsApplied_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}
+    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}    end=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end + 1}
+    Log Many    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}
+    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -496,6 +1306,816 @@ Read Subscriber
     Log Many    ${focalPlaneSummaryInfo_list}
     Should Contain    ${focalPlaneSummaryInfo_list}    === MTCamera_focalPlaneSummaryInfo start of topic ===
     Should Contain    ${focalPlaneSummaryInfo_list}    === MTCamera_focalPlaneSummaryInfo end of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
+    ${quadbox_BFR_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_LimitsSettingsApplied_start}    end=${quadbox_BFR_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_BFR_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_BFR_LimitsSettingsApplied_list}    === MTCamera_quadbox_BFR_LimitsSettingsApplied end of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
+    ${quadbox_BFR_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_BFR_QuadboxSettingsApplied_start}    end=${quadbox_BFR_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_BFR_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_BFR_QuadboxSettingsApplied_list}    === MTCamera_quadbox_BFR_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VC_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VC_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VC_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VC_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VC_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VC_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_LimitsSettingsApplied_start}    end=${quadbox_PDU_24VD_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VD_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_24VD_QuadboxSettingsApplied_start}    end=${quadbox_PDU_24VD_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_24VD_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_24VD_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_LimitsSettingsApplied_start}    end=${quadbox_PDU_48V_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_48V_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_48V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_48V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_48V_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_48V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_48V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_LimitsSettingsApplied_start}    end=${quadbox_PDU_5V_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_5V_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_5V_LimitsSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_LimitsSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PDU_5V_QuadboxSettingsApplied_start}    end=${quadbox_PDU_5V_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PDU_5V_QuadboxSettingsApplied_list}    === MTCamera_quadbox_PDU_5V_QuadboxSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasksSettingsApplied_start}    end=${quadbox_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${quadbox_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PeriodicTasksSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasksSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${quadbox_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_PeriodicTasks_timersSettingsApplied_start}    end=${quadbox_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${quadbox_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${quadbox_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_quadbox_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied start of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_LimitsSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_LimitsSettingsApplied_end + 1}
+    Log Many    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}
+    Should Contain    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied start of topic ===
+    Should Contain    ${quadbox_REB_Bulk_PS_LimitsSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_LimitsSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
+    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_start}    end=${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_end + 1}
+    Log Many    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}
+    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied start of topic ===
+    Should Contain    ${quadbox_REB_Bulk_PS_QuadboxSettingsApplied_list}    === MTCamera_quadbox_REB_Bulk_PS_QuadboxSettingsApplied end of topic ===
+    ${rebpowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpowerSettingsApplied start of topic ===
+    ${rebpowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpowerSettingsApplied end of topic ===
+    ${rebpowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpowerSettingsApplied_start}    end=${rebpowerSettingsApplied_end + 1}
+    Log Many    ${rebpowerSettingsApplied_list}
+    Should Contain    ${rebpowerSettingsApplied_list}    === MTCamera_rebpowerSettingsApplied start of topic ===
+    Should Contain    ${rebpowerSettingsApplied_list}    === MTCamera_rebpowerSettingsApplied end of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
+    ${rebpower_EmergencyResponseManagerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_EmergencyResponseManagerSettingsApplied_start}    end=${rebpower_EmergencyResponseManagerSettingsApplied_end + 1}
+    Log Many    ${rebpower_EmergencyResponseManagerSettingsApplied_list}
+    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied start of topic ===
+    Should Contain    ${rebpower_EmergencyResponseManagerSettingsApplied_list}    === MTCamera_rebpower_EmergencyResponseManagerSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasksSettingsApplied_start}    end=${rebpower_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${rebpower_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${rebpower_PeriodicTasksSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasksSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${rebpower_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_PeriodicTasks_timersSettingsApplied_start}    end=${rebpower_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${rebpower_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${rebpower_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_rebpower_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${rebpower_RebSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebSettingsApplied start of topic ===
+    ${rebpower_RebSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebSettingsApplied end of topic ===
+    ${rebpower_RebSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebSettingsApplied_start}    end=${rebpower_RebSettingsApplied_end + 1}
+    Log Many    ${rebpower_RebSettingsApplied_list}
+    Should Contain    ${rebpower_RebSettingsApplied_list}    === MTCamera_rebpower_RebSettingsApplied start of topic ===
+    Should Contain    ${rebpower_RebSettingsApplied_list}    === MTCamera_rebpower_RebSettingsApplied end of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
+    ${rebpower_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_LimitsSettingsApplied_start}    end=${rebpower_Reb_LimitsSettingsApplied_end + 1}
+    Log Many    ${rebpower_Reb_LimitsSettingsApplied_list}
+    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Reb_LimitsSettingsApplied_list}    === MTCamera_rebpower_Reb_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_LimitsSettingsApplied_start}    end=${rebpower_Rebps_LimitsSettingsApplied_end + 1}
+    Log Many    ${rebpower_Rebps_LimitsSettingsApplied_list}
+    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Rebps_LimitsSettingsApplied_list}    === MTCamera_rebpower_Rebps_LimitsSettingsApplied end of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
+    ${rebpower_Rebps_PowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_PowerSettingsApplied_start}    end=${rebpower_Rebps_PowerSettingsApplied_end + 1}
+    Log Many    ${rebpower_Rebps_PowerSettingsApplied_list}
+    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied start of topic ===
+    Should Contain    ${rebpower_Rebps_PowerSettingsApplied_list}    === MTCamera_rebpower_Rebps_PowerSettingsApplied end of topic ===
+    ${hexSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hexSettingsApplied start of topic ===
+    ${hexSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hexSettingsApplied end of topic ===
+    ${hexSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hexSettingsApplied_start}    end=${hexSettingsApplied_end + 1}
+    Log Many    ${hexSettingsApplied_list}
+    Should Contain    ${hexSettingsApplied_list}    === MTCamera_hexSettingsApplied start of topic ===
+    Should Contain    ${hexSettingsApplied_list}    === MTCamera_hexSettingsApplied end of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied start of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied end of topic ===
+    ${hex_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cold1_LimitsSettingsApplied_start}    end=${hex_Cold1_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cold1_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cold1_LimitsSettingsApplied_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cold1_LimitsSettingsApplied_list}    === MTCamera_hex_Cold1_LimitsSettingsApplied end of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied start of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied end of topic ===
+    ${hex_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cold2_LimitsSettingsApplied_start}    end=${hex_Cold2_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cold2_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cold2_LimitsSettingsApplied_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cold2_LimitsSettingsApplied_list}    === MTCamera_hex_Cold2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo1_LimitsSettingsApplied_start}    end=${hex_Cryo1_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo1_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo1_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo1_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo1_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo2_LimitsSettingsApplied_start}    end=${hex_Cryo2_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo2_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo2_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo2_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo2_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo3_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo3_LimitsSettingsApplied_start}    end=${hex_Cryo3_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo3_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo3_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo3_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo3_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo4_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo4_LimitsSettingsApplied_start}    end=${hex_Cryo4_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo4_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo4_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo4_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo4_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo5_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo5_LimitsSettingsApplied_start}    end=${hex_Cryo5_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo5_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo5_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo5_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo5_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied start of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied end of topic ===
+    ${hex_Cryo6_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Cryo6_LimitsSettingsApplied_start}    end=${hex_Cryo6_LimitsSettingsApplied_end + 1}
+    Log Many    ${hex_Cryo6_LimitsSettingsApplied_list}
+    Should Contain    ${hex_Cryo6_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied start of topic ===
+    Should Contain    ${hex_Cryo6_LimitsSettingsApplied_list}    === MTCamera_hex_Cryo6_LimitsSettingsApplied end of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied start of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DeviceSettingsApplied_start}    end=${hex_Maq20_DeviceSettingsApplied_end + 1}
+    Log Many    ${hex_Maq20_DeviceSettingsApplied_list}
+    Should Contain    ${hex_Maq20_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied start of topic ===
+    Should Contain    ${hex_Maq20_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied start of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied end of topic ===
+    ${hex_Maq20x_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20x_DeviceSettingsApplied_start}    end=${hex_Maq20x_DeviceSettingsApplied_end + 1}
+    Log Many    ${hex_Maq20x_DeviceSettingsApplied_list}
+    Should Contain    ${hex_Maq20x_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied start of topic ===
+    Should Contain    ${hex_Maq20x_DeviceSettingsApplied_list}    === MTCamera_hex_Maq20x_DeviceSettingsApplied end of topic ===
+    ${hex_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksSettingsApplied start of topic ===
+    ${hex_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksSettingsApplied end of topic ===
+    ${hex_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasksSettingsApplied_start}    end=${hex_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${hex_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${hex_PeriodicTasksSettingsApplied_list}    === MTCamera_hex_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${hex_PeriodicTasksSettingsApplied_list}    === MTCamera_hex_PeriodicTasksSettingsApplied end of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${hex_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_timersSettingsApplied_start}    end=${hex_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${hex_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${hex_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${hex_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_hex_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_CompLimitsSettingsApplied_start}    end=${refrig_Cold1_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied start of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold1_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_DeviceSettingsApplied_start}    end=${refrig_Cold1_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied start of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_LimitsSettingsApplied_start}    end=${refrig_Cold1_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold1_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_CompLimitsSettingsApplied_start}    end=${refrig_Cold2_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied start of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold2_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_DeviceSettingsApplied_start}    end=${refrig_Cold2_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cold2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied start of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cold2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_LimitsSettingsApplied_start}    end=${refrig_Cold2_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cold2_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cold2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cold2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cold2_LimitsSettingsApplied end of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied start of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied end of topic ===
+    ${refrig_CoolMaq20_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_CoolMaq20_DeviceSettingsApplied_start}    end=${refrig_CoolMaq20_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_CoolMaq20_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_CoolMaq20_DeviceSettingsApplied_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_CoolMaq20_DeviceSettingsApplied_list}    === MTCamera_refrig_CoolMaq20_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_CompLimitsSettingsApplied_start}    end=${refrig_Cryo1_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DeviceSettingsApplied_start}    end=${refrig_Cryo1_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo1_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo1_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_LimitsSettingsApplied_start}    end=${refrig_Cryo1_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo1_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo1_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo1_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_CompLimitsSettingsApplied_start}    end=${refrig_Cryo2_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo2_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DeviceSettingsApplied_start}    end=${refrig_Cryo2_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo2_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo2_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_LimitsSettingsApplied_start}    end=${refrig_Cryo2_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo2_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo2_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo2_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_CompLimitsSettingsApplied_start}    end=${refrig_Cryo3_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo3_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DeviceSettingsApplied_start}    end=${refrig_Cryo3_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo3_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo3_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_LimitsSettingsApplied_start}    end=${refrig_Cryo3_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo3_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo3_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo3_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo3_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_CompLimitsSettingsApplied_start}    end=${refrig_Cryo4_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo4_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DeviceSettingsApplied_start}    end=${refrig_Cryo4_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo4_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo4_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_LimitsSettingsApplied_start}    end=${refrig_Cryo4_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo4_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo4_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo4_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo4_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_CompLimitsSettingsApplied_start}    end=${refrig_Cryo5_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo5_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DeviceSettingsApplied_start}    end=${refrig_Cryo5_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo5_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo5_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_LimitsSettingsApplied_start}    end=${refrig_Cryo5_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo5_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo5_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo5_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo5_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied start of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_CompLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_CompLimitsSettingsApplied_start}    end=${refrig_Cryo6_CompLimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_CompLimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_CompLimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_CompLimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied start of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo6_DeviceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DeviceSettingsApplied_start}    end=${refrig_Cryo6_DeviceSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_DeviceSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_DeviceSettingsApplied_list}    === MTCamera_refrig_Cryo6_DeviceSettingsApplied end of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied start of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied end of topic ===
+    ${refrig_Cryo6_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_LimitsSettingsApplied_start}    end=${refrig_Cryo6_LimitsSettingsApplied_end + 1}
+    Log Many    ${refrig_Cryo6_LimitsSettingsApplied_list}
+    Should Contain    ${refrig_Cryo6_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied start of topic ===
+    Should Contain    ${refrig_Cryo6_LimitsSettingsApplied_list}    === MTCamera_refrig_Cryo6_LimitsSettingsApplied end of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied start of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied end of topic ===
+    ${refrig_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasksSettingsApplied_start}    end=${refrig_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${refrig_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${refrig_PeriodicTasksSettingsApplied_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${refrig_PeriodicTasksSettingsApplied_list}    === MTCamera_refrig_PeriodicTasksSettingsApplied end of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${refrig_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_timersSettingsApplied_start}    end=${refrig_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${refrig_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${refrig_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_refrig_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied start of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied end of topic ===
+    ${vacuum_AgentMonitorServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_AgentMonitorServiceSettingsApplied_start}    end=${vacuum_AgentMonitorServiceSettingsApplied_end + 1}
+    Log Many    ${vacuum_AgentMonitorServiceSettingsApplied_list}
+    Should Contain    ${vacuum_AgentMonitorServiceSettingsApplied_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied start of topic ===
+    Should Contain    ${vacuum_AgentMonitorServiceSettingsApplied_list}    === MTCamera_vacuum_AgentMonitorServiceSettingsApplied end of topic ===
+    ${vacuum_CIP1CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1CSettingsApplied start of topic ===
+    ${vacuum_CIP1CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1CSettingsApplied end of topic ===
+    ${vacuum_CIP1CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1CSettingsApplied_start}    end=${vacuum_CIP1CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP1CSettingsApplied_list}    === MTCamera_vacuum_CIP1CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1CSettingsApplied_list}    === MTCamera_vacuum_CIP1CSettingsApplied end of topic ===
+    ${vacuum_CIP1_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_ISettingsApplied start of topic ===
+    ${vacuum_CIP1_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_ISettingsApplied end of topic ===
+    ${vacuum_CIP1_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_ISettingsApplied_start}    end=${vacuum_CIP1_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP1_ISettingsApplied_list}    === MTCamera_vacuum_CIP1_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1_ISettingsApplied_list}    === MTCamera_vacuum_CIP1_ISettingsApplied end of topic ===
+    ${vacuum_CIP1_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_VSettingsApplied start of topic ===
+    ${vacuum_CIP1_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_VSettingsApplied end of topic ===
+    ${vacuum_CIP1_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_VSettingsApplied_start}    end=${vacuum_CIP1_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP1_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP1_VSettingsApplied_list}    === MTCamera_vacuum_CIP1_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP1_VSettingsApplied_list}    === MTCamera_vacuum_CIP1_VSettingsApplied end of topic ===
+    ${vacuum_CIP2CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2CSettingsApplied start of topic ===
+    ${vacuum_CIP2CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2CSettingsApplied end of topic ===
+    ${vacuum_CIP2CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2CSettingsApplied_start}    end=${vacuum_CIP2CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP2CSettingsApplied_list}    === MTCamera_vacuum_CIP2CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2CSettingsApplied_list}    === MTCamera_vacuum_CIP2CSettingsApplied end of topic ===
+    ${vacuum_CIP2_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_ISettingsApplied start of topic ===
+    ${vacuum_CIP2_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_ISettingsApplied end of topic ===
+    ${vacuum_CIP2_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_ISettingsApplied_start}    end=${vacuum_CIP2_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP2_ISettingsApplied_list}    === MTCamera_vacuum_CIP2_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2_ISettingsApplied_list}    === MTCamera_vacuum_CIP2_ISettingsApplied end of topic ===
+    ${vacuum_CIP2_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_VSettingsApplied start of topic ===
+    ${vacuum_CIP2_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_VSettingsApplied end of topic ===
+    ${vacuum_CIP2_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_VSettingsApplied_start}    end=${vacuum_CIP2_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP2_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP2_VSettingsApplied_list}    === MTCamera_vacuum_CIP2_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP2_VSettingsApplied_list}    === MTCamera_vacuum_CIP2_VSettingsApplied end of topic ===
+    ${vacuum_CIP3CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3CSettingsApplied start of topic ===
+    ${vacuum_CIP3CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3CSettingsApplied end of topic ===
+    ${vacuum_CIP3CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3CSettingsApplied_start}    end=${vacuum_CIP3CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP3CSettingsApplied_list}    === MTCamera_vacuum_CIP3CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3CSettingsApplied_list}    === MTCamera_vacuum_CIP3CSettingsApplied end of topic ===
+    ${vacuum_CIP3_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_ISettingsApplied start of topic ===
+    ${vacuum_CIP3_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_ISettingsApplied end of topic ===
+    ${vacuum_CIP3_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_ISettingsApplied_start}    end=${vacuum_CIP3_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP3_ISettingsApplied_list}    === MTCamera_vacuum_CIP3_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3_ISettingsApplied_list}    === MTCamera_vacuum_CIP3_ISettingsApplied end of topic ===
+    ${vacuum_CIP3_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_VSettingsApplied start of topic ===
+    ${vacuum_CIP3_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_VSettingsApplied end of topic ===
+    ${vacuum_CIP3_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_VSettingsApplied_start}    end=${vacuum_CIP3_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP3_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP3_VSettingsApplied_list}    === MTCamera_vacuum_CIP3_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP3_VSettingsApplied_list}    === MTCamera_vacuum_CIP3_VSettingsApplied end of topic ===
+    ${vacuum_CIP4CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4CSettingsApplied start of topic ===
+    ${vacuum_CIP4CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4CSettingsApplied end of topic ===
+    ${vacuum_CIP4CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4CSettingsApplied_start}    end=${vacuum_CIP4CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP4CSettingsApplied_list}    === MTCamera_vacuum_CIP4CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4CSettingsApplied_list}    === MTCamera_vacuum_CIP4CSettingsApplied end of topic ===
+    ${vacuum_CIP4_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_ISettingsApplied start of topic ===
+    ${vacuum_CIP4_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_ISettingsApplied end of topic ===
+    ${vacuum_CIP4_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_ISettingsApplied_start}    end=${vacuum_CIP4_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP4_ISettingsApplied_list}    === MTCamera_vacuum_CIP4_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4_ISettingsApplied_list}    === MTCamera_vacuum_CIP4_ISettingsApplied end of topic ===
+    ${vacuum_CIP4_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_VSettingsApplied start of topic ===
+    ${vacuum_CIP4_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_VSettingsApplied end of topic ===
+    ${vacuum_CIP4_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_VSettingsApplied_start}    end=${vacuum_CIP4_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP4_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP4_VSettingsApplied_list}    === MTCamera_vacuum_CIP4_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP4_VSettingsApplied_list}    === MTCamera_vacuum_CIP4_VSettingsApplied end of topic ===
+    ${vacuum_CIP5CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5CSettingsApplied start of topic ===
+    ${vacuum_CIP5CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5CSettingsApplied end of topic ===
+    ${vacuum_CIP5CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5CSettingsApplied_start}    end=${vacuum_CIP5CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP5CSettingsApplied_list}    === MTCamera_vacuum_CIP5CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5CSettingsApplied_list}    === MTCamera_vacuum_CIP5CSettingsApplied end of topic ===
+    ${vacuum_CIP5_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_ISettingsApplied start of topic ===
+    ${vacuum_CIP5_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_ISettingsApplied end of topic ===
+    ${vacuum_CIP5_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_ISettingsApplied_start}    end=${vacuum_CIP5_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP5_ISettingsApplied_list}    === MTCamera_vacuum_CIP5_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5_ISettingsApplied_list}    === MTCamera_vacuum_CIP5_ISettingsApplied end of topic ===
+    ${vacuum_CIP5_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_VSettingsApplied start of topic ===
+    ${vacuum_CIP5_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_VSettingsApplied end of topic ===
+    ${vacuum_CIP5_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_VSettingsApplied_start}    end=${vacuum_CIP5_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP5_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP5_VSettingsApplied_list}    === MTCamera_vacuum_CIP5_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP5_VSettingsApplied_list}    === MTCamera_vacuum_CIP5_VSettingsApplied end of topic ===
+    ${vacuum_CIP6CSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6CSettingsApplied start of topic ===
+    ${vacuum_CIP6CSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6CSettingsApplied end of topic ===
+    ${vacuum_CIP6CSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6CSettingsApplied_start}    end=${vacuum_CIP6CSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6CSettingsApplied_list}
+    Should Contain    ${vacuum_CIP6CSettingsApplied_list}    === MTCamera_vacuum_CIP6CSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6CSettingsApplied_list}    === MTCamera_vacuum_CIP6CSettingsApplied end of topic ===
+    ${vacuum_CIP6_ISettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_ISettingsApplied start of topic ===
+    ${vacuum_CIP6_ISettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_ISettingsApplied end of topic ===
+    ${vacuum_CIP6_ISettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_ISettingsApplied_start}    end=${vacuum_CIP6_ISettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6_ISettingsApplied_list}
+    Should Contain    ${vacuum_CIP6_ISettingsApplied_list}    === MTCamera_vacuum_CIP6_ISettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6_ISettingsApplied_list}    === MTCamera_vacuum_CIP6_ISettingsApplied end of topic ===
+    ${vacuum_CIP6_VSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_VSettingsApplied start of topic ===
+    ${vacuum_CIP6_VSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_VSettingsApplied end of topic ===
+    ${vacuum_CIP6_VSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_VSettingsApplied_start}    end=${vacuum_CIP6_VSettingsApplied_end + 1}
+    Log Many    ${vacuum_CIP6_VSettingsApplied_list}
+    Should Contain    ${vacuum_CIP6_VSettingsApplied_list}    === MTCamera_vacuum_CIP6_VSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CIP6_VSettingsApplied_list}    === MTCamera_vacuum_CIP6_VSettingsApplied end of topic ===
+    ${vacuum_CryoVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacSettingsApplied start of topic ===
+    ${vacuum_CryoVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacSettingsApplied end of topic ===
+    ${vacuum_CryoVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVacSettingsApplied_start}    end=${vacuum_CryoVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_CryoVacSettingsApplied_list}
+    Should Contain    ${vacuum_CryoVacSettingsApplied_list}    === MTCamera_vacuum_CryoVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CryoVacSettingsApplied_list}    === MTCamera_vacuum_CryoVacSettingsApplied end of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied start of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied end of topic ===
+    ${vacuum_CryoVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVacGaugeSettingsApplied_start}    end=${vacuum_CryoVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_CryoVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_CryoVacGaugeSettingsApplied_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_CryoVacGaugeSettingsApplied_list}    === MTCamera_vacuum_CryoVacGaugeSettingsApplied end of topic ===
+    ${vacuum_ForelineVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacSettingsApplied start of topic ===
+    ${vacuum_ForelineVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacSettingsApplied end of topic ===
+    ${vacuum_ForelineVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVacSettingsApplied_start}    end=${vacuum_ForelineVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_ForelineVacSettingsApplied_list}
+    Should Contain    ${vacuum_ForelineVacSettingsApplied_list}    === MTCamera_vacuum_ForelineVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_ForelineVacSettingsApplied_list}    === MTCamera_vacuum_ForelineVacSettingsApplied end of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied start of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied end of topic ===
+    ${vacuum_ForelineVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVacGaugeSettingsApplied_start}    end=${vacuum_ForelineVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_ForelineVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_ForelineVacGaugeSettingsApplied_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_ForelineVacGaugeSettingsApplied_list}    === MTCamera_vacuum_ForelineVacGaugeSettingsApplied end of topic ===
+    ${vacuum_HeartbeatSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HeartbeatSettingsApplied start of topic ===
+    ${vacuum_HeartbeatSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HeartbeatSettingsApplied end of topic ===
+    ${vacuum_HeartbeatSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_HeartbeatSettingsApplied_start}    end=${vacuum_HeartbeatSettingsApplied_end + 1}
+    Log Many    ${vacuum_HeartbeatSettingsApplied_list}
+    Should Contain    ${vacuum_HeartbeatSettingsApplied_list}    === MTCamera_vacuum_HeartbeatSettingsApplied start of topic ===
+    Should Contain    ${vacuum_HeartbeatSettingsApplied_list}    === MTCamera_vacuum_HeartbeatSettingsApplied end of topic ===
+    ${vacuum_Hex1VacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacSettingsApplied start of topic ===
+    ${vacuum_Hex1VacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacSettingsApplied end of topic ===
+    ${vacuum_Hex1VacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1VacSettingsApplied_start}    end=${vacuum_Hex1VacSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex1VacSettingsApplied_list}
+    Should Contain    ${vacuum_Hex1VacSettingsApplied_list}    === MTCamera_vacuum_Hex1VacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex1VacSettingsApplied_list}    === MTCamera_vacuum_Hex1VacSettingsApplied end of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied start of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex1VacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1VacGaugeSettingsApplied_start}    end=${vacuum_Hex1VacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex1VacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_Hex1VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex1VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex1VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex2VacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacSettingsApplied start of topic ===
+    ${vacuum_Hex2VacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacSettingsApplied end of topic ===
+    ${vacuum_Hex2VacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2VacSettingsApplied_start}    end=${vacuum_Hex2VacSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex2VacSettingsApplied_list}
+    Should Contain    ${vacuum_Hex2VacSettingsApplied_list}    === MTCamera_vacuum_Hex2VacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex2VacSettingsApplied_list}    === MTCamera_vacuum_Hex2VacSettingsApplied end of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied start of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied end of topic ===
+    ${vacuum_Hex2VacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2VacGaugeSettingsApplied_start}    end=${vacuum_Hex2VacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_Hex2VacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_Hex2VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Hex2VacGaugeSettingsApplied_list}    === MTCamera_vacuum_Hex2VacGaugeSettingsApplied end of topic ===
+    ${vacuum_IonPumpsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumpsSettingsApplied start of topic ===
+    ${vacuum_IonPumpsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_IonPumpsSettingsApplied end of topic ===
+    ${vacuum_IonPumpsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_IonPumpsSettingsApplied_start}    end=${vacuum_IonPumpsSettingsApplied_end + 1}
+    Log Many    ${vacuum_IonPumpsSettingsApplied_list}
+    Should Contain    ${vacuum_IonPumpsSettingsApplied_list}    === MTCamera_vacuum_IonPumpsSettingsApplied start of topic ===
+    Should Contain    ${vacuum_IonPumpsSettingsApplied_list}    === MTCamera_vacuum_IonPumpsSettingsApplied end of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied start of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied end of topic ===
+    ${vacuum_Monitor_checkSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_checkSettingsApplied_start}    end=${vacuum_Monitor_checkSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_checkSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_checkSettingsApplied_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_checkSettingsApplied_list}    === MTCamera_vacuum_Monitor_checkSettingsApplied end of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied start of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied end of topic ===
+    ${vacuum_Monitor_publishSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_publishSettingsApplied_start}    end=${vacuum_Monitor_publishSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_publishSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_publishSettingsApplied_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_publishSettingsApplied_list}    === MTCamera_vacuum_Monitor_publishSettingsApplied end of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied start of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied end of topic ===
+    ${vacuum_Monitor_updateSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Monitor_updateSettingsApplied_start}    end=${vacuum_Monitor_updateSettingsApplied_end + 1}
+    Log Many    ${vacuum_Monitor_updateSettingsApplied_list}
+    Should Contain    ${vacuum_Monitor_updateSettingsApplied_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Monitor_updateSettingsApplied_list}    === MTCamera_vacuum_Monitor_updateSettingsApplied end of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied start of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied end of topic ===
+    ${vacuum_RuntimeInfoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_RuntimeInfoSettingsApplied_start}    end=${vacuum_RuntimeInfoSettingsApplied_end + 1}
+    Log Many    ${vacuum_RuntimeInfoSettingsApplied_list}
+    Should Contain    ${vacuum_RuntimeInfoSettingsApplied_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied start of topic ===
+    Should Contain    ${vacuum_RuntimeInfoSettingsApplied_list}    === MTCamera_vacuum_RuntimeInfoSettingsApplied end of topic ===
+    ${vacuum_SchedulersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_SchedulersSettingsApplied start of topic ===
+    ${vacuum_SchedulersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_SchedulersSettingsApplied end of topic ===
+    ${vacuum_SchedulersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_SchedulersSettingsApplied_start}    end=${vacuum_SchedulersSettingsApplied_end + 1}
+    Log Many    ${vacuum_SchedulersSettingsApplied_list}
+    Should Contain    ${vacuum_SchedulersSettingsApplied_list}    === MTCamera_vacuum_SchedulersSettingsApplied start of topic ===
+    Should Contain    ${vacuum_SchedulersSettingsApplied_list}    === MTCamera_vacuum_SchedulersSettingsApplied end of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied start of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied end of topic ===
+    ${vacuum_TurboCurrentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboCurrentSettingsApplied_start}    end=${vacuum_TurboCurrentSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboCurrentSettingsApplied_list}
+    Should Contain    ${vacuum_TurboCurrentSettingsApplied_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboCurrentSettingsApplied_list}    === MTCamera_vacuum_TurboCurrentSettingsApplied end of topic ===
+    ${vacuum_TurboPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPowerSettingsApplied start of topic ===
+    ${vacuum_TurboPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPowerSettingsApplied end of topic ===
+    ${vacuum_TurboPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPowerSettingsApplied_start}    end=${vacuum_TurboPowerSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPowerSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPowerSettingsApplied_list}    === MTCamera_vacuum_TurboPowerSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPowerSettingsApplied_list}    === MTCamera_vacuum_TurboPowerSettingsApplied end of topic ===
+    ${vacuum_TurboPumpSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpSettingsApplied start of topic ===
+    ${vacuum_TurboPumpSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpSettingsApplied end of topic ===
+    ${vacuum_TurboPumpSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpSettingsApplied_start}    end=${vacuum_TurboPumpSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPumpSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPumpSettingsApplied_list}    === MTCamera_vacuum_TurboPumpSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPumpSettingsApplied_list}    === MTCamera_vacuum_TurboPumpSettingsApplied end of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied start of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied end of topic ===
+    ${vacuum_TurboPumpTempSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpTempSettingsApplied_start}    end=${vacuum_TurboPumpTempSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboPumpTempSettingsApplied_list}
+    Should Contain    ${vacuum_TurboPumpTempSettingsApplied_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboPumpTempSettingsApplied_list}    === MTCamera_vacuum_TurboPumpTempSettingsApplied end of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied start of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied end of topic ===
+    ${vacuum_TurboSpeedSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSpeedSettingsApplied_start}    end=${vacuum_TurboSpeedSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboSpeedSettingsApplied_list}
+    Should Contain    ${vacuum_TurboSpeedSettingsApplied_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboSpeedSettingsApplied_list}    === MTCamera_vacuum_TurboSpeedSettingsApplied end of topic ===
+    ${vacuum_TurboVacSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacSettingsApplied start of topic ===
+    ${vacuum_TurboVacSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacSettingsApplied end of topic ===
+    ${vacuum_TurboVacSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVacSettingsApplied_start}    end=${vacuum_TurboVacSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVacSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVacSettingsApplied_list}    === MTCamera_vacuum_TurboVacSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVacSettingsApplied_list}    === MTCamera_vacuum_TurboVacSettingsApplied end of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied start of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied end of topic ===
+    ${vacuum_TurboVacGaugeSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVacGaugeSettingsApplied_start}    end=${vacuum_TurboVacGaugeSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVacGaugeSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVacGaugeSettingsApplied_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVacGaugeSettingsApplied_list}    === MTCamera_vacuum_TurboVacGaugeSettingsApplied end of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied start of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied end of topic ===
+    ${vacuum_TurboVoltageSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVoltageSettingsApplied_start}    end=${vacuum_TurboVoltageSettingsApplied_end + 1}
+    Log Many    ${vacuum_TurboVoltageSettingsApplied_list}
+    Should Contain    ${vacuum_TurboVoltageSettingsApplied_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied start of topic ===
+    Should Contain    ${vacuum_TurboVoltageSettingsApplied_list}    === MTCamera_vacuum_TurboVoltageSettingsApplied end of topic ===
+    ${vacuum_VacPlutoSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_VacPlutoSettingsApplied start of topic ===
+    ${vacuum_VacPlutoSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_VacPlutoSettingsApplied end of topic ===
+    ${vacuum_VacPlutoSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_VacPlutoSettingsApplied_start}    end=${vacuum_VacPlutoSettingsApplied_end + 1}
+    Log Many    ${vacuum_VacPlutoSettingsApplied_list}
+    Should Contain    ${vacuum_VacPlutoSettingsApplied_list}    === MTCamera_vacuum_VacPlutoSettingsApplied start of topic ===
+    Should Contain    ${vacuum_VacPlutoSettingsApplied_list}    === MTCamera_vacuum_VacPlutoSettingsApplied end of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied start of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied end of topic ===
+    ${vacuum_Vacuum_stateSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${vacuum_Vacuum_stateSettingsApplied_start}    end=${vacuum_Vacuum_stateSettingsApplied_end + 1}
+    Log Many    ${vacuum_Vacuum_stateSettingsApplied_list}
+    Should Contain    ${vacuum_Vacuum_stateSettingsApplied_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied start of topic ===
+    Should Contain    ${vacuum_Vacuum_stateSettingsApplied_list}    === MTCamera_vacuum_Vacuum_stateSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksSettingsApplied_start}    end=${daq_monitor_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasksSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasksSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersSettingsApplied_start}    end=${daq_monitor_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_daq_monitor_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
+    ${daq_monitor_Stats_StatisticsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_StatisticsSettingsApplied_start}    end=${daq_monitor_Stats_StatisticsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Stats_StatisticsSettingsApplied_list}
+    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Stats_StatisticsSettingsApplied_list}    === MTCamera_daq_monitor_Stats_StatisticsSettingsApplied end of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
+    ${daq_monitor_Stats_buildSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildSettingsApplied_start}    end=${daq_monitor_Stats_buildSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Stats_buildSettingsApplied_list}
+    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Stats_buildSettingsApplied_list}    === MTCamera_daq_monitor_Stats_buildSettingsApplied end of topic ===
+    ${daq_monitor_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreSettingsApplied start of topic ===
+    ${daq_monitor_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreSettingsApplied end of topic ===
+    ${daq_monitor_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreSettingsApplied_start}    end=${daq_monitor_StoreSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_StoreSettingsApplied_list}
+    Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === MTCamera_daq_monitor_StoreSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_StoreSettingsApplied_list}    === MTCamera_daq_monitor_StoreSettingsApplied end of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
+    ${daq_monitor_Store_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsSettingsApplied_start}    end=${daq_monitor_Store_LimitsSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Store_LimitsSettingsApplied_list}
+    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Store_LimitsSettingsApplied_list}    === MTCamera_daq_monitor_Store_LimitsSettingsApplied end of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
+    ${daq_monitor_Store_StoreSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_StoreSettingsApplied_start}    end=${daq_monitor_Store_StoreSettingsApplied_end + 1}
+    Log Many    ${daq_monitor_Store_StoreSettingsApplied_list}
+    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied start of topic ===
+    Should Contain    ${daq_monitor_Store_StoreSettingsApplied_list}    === MTCamera_daq_monitor_Store_StoreSettingsApplied end of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_HardwareIdSettingsApplied_start}    end=${focal_plane_Ccd_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Ccd_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_LimitsSettingsApplied_start}    end=${focal_plane_Ccd_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Ccd_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsSettingsApplied_start}    end=${focal_plane_Ccd_RaftsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Ccd_RaftsSettingsApplied_list}
+    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Ccd_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Ccd_RaftsSettingsApplied end of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceSettingsApplied_start}    end=${focal_plane_ImageDatabaseServiceSettingsApplied_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}
+    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageDatabaseServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
+    ${focal_plane_ImageNameServiceSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceSettingsApplied_start}    end=${focal_plane_ImageNameServiceSettingsApplied_end + 1}
+    Log Many    ${focal_plane_ImageNameServiceSettingsApplied_list}
+    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_ImageNameServiceSettingsApplied_list}    === MTCamera_focal_plane_ImageNameServiceSettingsApplied end of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
+    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_start}    end=${focal_plane_InstrumentConfig_InstrumentSettingsApplied_end + 1}
+    Log Many    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}
+    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_InstrumentConfig_InstrumentSettingsApplied_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasksSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksSettingsApplied_start}    end=${focal_plane_PeriodicTasksSettingsApplied_end + 1}
+    Log Many    ${focal_plane_PeriodicTasksSettingsApplied_list}
+    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasksSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasksSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersSettingsApplied_start}    end=${focal_plane_PeriodicTasks_timersSettingsApplied_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}
+    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_timersSettingsApplied_list}    === MTCamera_focal_plane_PeriodicTasks_timersSettingsApplied end of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Raft_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_HardwareIdSettingsApplied_start}    end=${focal_plane_Raft_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Raft_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_RaftTempControlSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
+    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_start}    end=${focal_plane_Raft_RaftTempControlStatusSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}
+    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Raft_RaftTempControlStatusSettingsApplied_list}    === MTCamera_focal_plane_Raft_RaftTempControlStatusSettingsApplied end of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
+    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebTotalPower_LimitsSettingsApplied_start}    end=${focal_plane_RebTotalPower_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_RebTotalPower_LimitsSettingsApplied_list}    === MTCamera_focal_plane_RebTotalPower_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Reb_HardwareIdSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdSettingsApplied_start}    end=${focal_plane_Reb_HardwareIdSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_HardwareIdSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_HardwareIdSettingsApplied_list}    === MTCamera_focal_plane_Reb_HardwareIdSettingsApplied end of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_LimitsSettingsApplied_start}    end=${focal_plane_Reb_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsSettingsApplied_start}    end=${focal_plane_Reb_RaftsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsLimitsSettingsApplied_start}    end=${focal_plane_Reb_RaftsLimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsLimitsSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsLimitsSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
+    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_RaftsPowerSettingsApplied_start}    end=${focal_plane_Reb_RaftsPowerSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_RaftsPowerSettingsApplied_list}    === MTCamera_focal_plane_Reb_RaftsPowerSettingsApplied end of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
+    ${focal_plane_Reb_timersSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_timersSettingsApplied_start}    end=${focal_plane_Reb_timersSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Reb_timersSettingsApplied_list}
+    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Reb_timersSettingsApplied_list}    === MTCamera_focal_plane_Reb_timersSettingsApplied end of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
+    ${focal_plane_Segment_LimitsSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsSettingsApplied_start}    end=${focal_plane_Segment_LimitsSettingsApplied_end + 1}
+    Log Many    ${focal_plane_Segment_LimitsSettingsApplied_list}
+    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_Segment_LimitsSettingsApplied_list}    === MTCamera_focal_plane_Segment_LimitsSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQSettingsApplied_start}    end=${focal_plane_SequencerConfig_DAQSettingsApplied_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}
+    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_DAQSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_DAQSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
+    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerSettingsApplied_start}    end=${focal_plane_SequencerConfig_SequencerSettingsApplied_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}
+    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_SequencerSettingsApplied_list}    === MTCamera_focal_plane_SequencerConfig_SequencerSettingsApplied end of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
+    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}=    Get Slice From List    ${full_list}    start=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_start}    end=${focal_plane_WebHooksConfig_VisualizationSettingsApplied_end + 1}
+    Log Many    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}
+    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied start of topic ===
+    Should Contain    ${focal_plane_WebHooksConfig_VisualizationSettingsApplied_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationSettingsApplied end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
