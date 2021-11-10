@@ -73,7 +73,11 @@ function getTopics() {
     else
         keep_num=3
     fi
-    topics=( $( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
+    if [[ -f $file ]]; then
+        topics=( $( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
+    else
+        topics=()
+    fi
 
     ## If CSC uses the Generic Commands, add those.
     if [[ $topic_type == "Command" ]]; then
@@ -85,11 +89,12 @@ function getTopics() {
         if [[ $generics_field == "configurable" ]]; then
             generics=("${added_generics_configurable_commands[@]}")
         fi
-        local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
+            echo "Topic: $topic"
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
-                str=$(echo "$topic," |sed "s/${lower_topic}_//g")
-                generics+=$("$str")
+                str=$(echo " $topic," |sed "s/${lower_topic}_//g")
+                generics+="$str"
             fi  
         done
     fi
@@ -107,11 +112,11 @@ function getTopics() {
         if [[ $generics_field == "configurable" ]]; then
             generics+=("${added_generics_configurable_events[@]}")
         fi
-        local array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
-                str=$(echo "$topic," |sed "s/${lower_topic}_//g")
-                generics+=$("$str")
+                str=$(echo " $topic," |sed "s/${lower_topic}_//g")
+                generics+="$str"
             fi
         done
     fi
