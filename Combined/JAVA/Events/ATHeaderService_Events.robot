@@ -43,12 +43,19 @@ Start Sender
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
+    @{full_list}=    Split To Lines    ${output.stdout}    start=29
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATHeaderService_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATHeaderService_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === ATHeaderService_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === ATHeaderService_heartbeat end of topic ===
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === ATHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === ATHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === ATHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === ATHeaderService_largeFileObjectAvailable end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === ATHeaderService_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === ATHeaderService_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
@@ -105,6 +112,12 @@ Read Subscriber
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === ATHeaderService_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === ATHeaderService_heartbeat end of topic ===
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === ATHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === ATHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === ATHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === ATHeaderService_largeFileObjectAvailable end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === ATHeaderService_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === ATHeaderService_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}

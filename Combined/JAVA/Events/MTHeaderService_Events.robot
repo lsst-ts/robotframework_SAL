@@ -50,6 +50,12 @@ Start Sender
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === MTHeaderService_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === MTHeaderService_heartbeat end of topic ===
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === MTHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === MTHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === MTHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === MTHeaderService_largeFileObjectAvailable end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === MTHeaderService_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === MTHeaderService_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
@@ -106,6 +112,12 @@ Read Subscriber
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === MTHeaderService_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === MTHeaderService_heartbeat end of topic ===
+    ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === MTHeaderService_largeFileObjectAvailable start of topic ===
+    ${largeFileObjectAvailable_end}=    Get Index From List    ${full_list}    === MTHeaderService_largeFileObjectAvailable end of topic ===
+    ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${largeFileObjectAvailable_end + 1}
+    Log Many    ${largeFileObjectAvailable_list}
+    Should Contain    ${largeFileObjectAvailable_list}    === MTHeaderService_largeFileObjectAvailable start of topic ===
+    Should Contain    ${largeFileObjectAvailable_list}    === MTHeaderService_largeFileObjectAvailable end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === MTHeaderService_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === MTHeaderService_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
