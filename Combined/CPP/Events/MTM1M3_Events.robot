@@ -484,6 +484,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_hardpointActuatorSettings_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event hardpointActuatorSettings generated =
+    Comment    ======= Verify ${subSystem}_positionControllerSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_positionControllerSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event positionControllerSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_positionControllerSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event positionControllerSettings generated =
     Comment    ======= Verify ${subSystem}_displacementSensorSettings test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_displacementSensorSettings
     @{words}=    Split String    ${line}
@@ -1633,6 +1641,24 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureWarningHigh : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureWarningLow : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${positionControllerSettings_start}=    Get Index From List    ${full_list}    === Event positionControllerSettings received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${positionControllerSettings_start}
+    ${positionControllerSettings_end}=    Evaluate    ${end}+${1}
+    ${positionControllerSettings_list}=    Get Slice From List    ${full_list}    start=${positionControllerSettings_start}    end=${positionControllerSettings_end}
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceToStepsCoefficient : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderToStepsCoefficient : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxStepsPerLoop : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raiseHPForceLimitLow : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raiseHPForceLimitHigh : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raiseHPForceMargin : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raiseTimeout : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerHPForceLimitLow : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerHPForceLimitHigh : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerHPForceMargin : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerTimeout : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerPositionOffset : 1    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}referencePosition : 0    1
+    Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${displacementSensorSettings_start}=    Get Index From List    ${full_list}    === Event displacementSensorSettings received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${displacementSensorSettings_start}
     ${displacementSensorSettings_end}=    Evaluate    ${end}+${1}
