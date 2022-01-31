@@ -26,13 +26,7 @@ def GenerateTests(csc, language):
                 subprocess.check_call(["./JavaAuthlist.sh", csc])
                 #subprocess.check_call(["./JavaState.sh", csc])
                 #subprocess.check_call(["./JavaComCon.sh", csc])
-            if ('python' in language) or ('all' in language):
-                print("No python tests, yet.")
-                #subprocess.check_call(["./PythonPubSub.sh", csc])
-                #subprocess.check_call(["./PythonState.sh", csc])
-                #subprocess.check_call(["./PythonComCon.sh", csc])
-                #subprocess.check_call(["./PythonEvents.sh", csc])
-            if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
+            if ('cpp' not in language) and ('java' not in language) and ('all' not in language):
                 complete=False
         print("\nCOMPLETED ALL test suites for ALL CSCs.") if complete else print("This was a " + str(language))
     elif csc in csc_array:
@@ -48,13 +42,7 @@ def GenerateTests(csc, language):
                 subprocess.check_call(["./JavaAuthlist.sh", csc])
                 #subprocess.check_call(["./JavaState.sh", csc])
                 #subprocess.check_call(["./JavaComCon.sh", csc])
-            if ('python' in language) or ('all' in language):
-                print("No python tests, yet.")
-                #subprocess.check_call(["./PythonPubSub.sh", csc])
-                #subprocess.check_call(["./PythonState.sh", csc])
-                #subprocess.check_call(["./PythonComCon.sh", csc])
-                #subprocess.check_call(["./PythonEvents.sh", csc])
-            if ('cpp' not in language) and ('java' not in language) and ('python' not in language) and ('all' not in language):
+            if ('cpp' not in language) and ('java' not in language) and ('all' not in language):
                 complete=False
             print("\nCOMPLETED all test suites for the " + csc + " CSC") if complete else print("This was a " + str(language))
     else:
@@ -83,9 +71,9 @@ def DefineArguments():
         type = str.lower,
         required=False,
         nargs='+',
-        choices=['cpp', 'python', 'java', 'all', 'test'],
+        choices=['cpp', 'java', 'all', 'test'],
         default='all',
-        help='''Do you want to generate the C++ (cpp), Python (python) or Java (java) tests? (Default is ALL)''')
+        help='''Do you want to generate the C++ (cpp), or Java (java) tests? (Default is ALL)''')
     args = parser.parse_args()
     return args
 
