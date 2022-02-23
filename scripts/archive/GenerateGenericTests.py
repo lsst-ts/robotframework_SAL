@@ -6,7 +6,7 @@ import inspect
 import argparse
 
 # This array defines the list of current CSCs.
-csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCalCS', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATEEC', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATSpectrograph', 'ATTCS', 'ATThermoelectricCooler', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'DIMM', 'Dome', 'DomeADB', 'DomeAPS', 'DomeLouvers', 'DomeLWS', 'DomeMONCS', 'DomeTHCS', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'FiberSpectrograph', 'IOTA', 'Hexapod', 'HVAC', 'LinearStage', 'MTArchiver', 'MTCalCS', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM2', 'MTMount', 'MTOFC', 'MTTCS', 'MTWEP', 'MTVMS', 'OCS', 'PointingComponent', 'PromptProcessing', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'Sequencer', 'SummitFacility', 'Test', 'TunableLaser']
+csc_array = ['ATAOS', 'ATArchiver', 'ATBuilding', 'ATCalCS', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATEEC', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATPneumatics', 'ATSpectrograph', 'ATTCS', 'ATThermoelectricCooler', 'ATWhiteLight', 'CatchupArchiver', 'CBP', 'DIMM', 'Dome', 'DomeADB', 'DomeAPS', 'DomeLouvers', 'DomeLWS', 'DomeMONCS', 'DomeTHCS', 'EAS', 'EFD', 'EFDTransformationServer', 'Electrometer', 'FiberSpectrograph', 'IOTA', 'Hexapod', 'HVAC', 'LinearStage', 'MTArchiver', 'MTCalCS', 'MTCamera', 'MTDomeTrajectory', 'MTEEC', 'MTGuider', 'MTHeaderService', 'MTLaserTracker', 'MTM1M3', 'MTM2', 'MTMount', 'MTOFC', 'MTTCS', 'MTWEP', 'MTVMS', 'OCS', 'PointingComponent', 'Rotator', 'Scheduler', 'Script', 'ScriptQueue', 'Sequencer', 'SummitFacility', 'Test', 'TunableLaser']
 
 def GenerateTests(csc, language):
 	"""Test Suite generator."""

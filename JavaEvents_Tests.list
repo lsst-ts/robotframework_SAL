@@ -307,15 +307,6 @@ JAVA/Events/OCS_ocsScriptEnd.robot
 JAVA/Events/OCS_ocsScriptEntititesInUse.robot
 JAVA/Events/OCS_ocsScriptError.robot
 JAVA/Events/OCS_ocsScriptStart.robot
-JAVA/Events/PromptProcessing_AppliedSettingsMatchStart.robot
-JAVA/Events/PromptProcessing_DetailedState.robot
-JAVA/Events/PromptProcessing_ErrorCode.robot
-JAVA/Events/PromptProcessing_SettingVersions.robot
-JAVA/Events/PromptProcessing_SettingsApplied.robot
-JAVA/Events/PromptProcessing_SummaryState.robot
-JAVA/Events/PromptProcessing_promptprocessingEntityShutdown.robot
-JAVA/Events/PromptProcessing_promptprocessingEntityStartup.robot
-JAVA/Events/PromptProcessing_promptprocessingEntitySummaryState.robot
 JAVA/Events/Rotator_deviceError.robot
 JAVA/Events/Rotator_inPosition.robot
 JAVA/Events/Rotator_interlock.robot
