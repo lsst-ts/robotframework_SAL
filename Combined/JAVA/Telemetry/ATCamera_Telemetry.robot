@@ -86,6 +86,13 @@ Start Publisher
     Should Contain    ${vacuum_list}    === ATCamera_vacuum start of topic ===
     Should Contain    ${vacuum_list}    === ATCamera_vacuum end of topic ===
     Should Contain    ${vacuum_list}    === [vacuum] message sent 200
+    ${bonn_shutter_Device_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device start of topic ===
+    ${bonn_shutter_Device_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device end of topic ===
+    ${bonn_shutter_Device_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_start}    end=${bonn_shutter_Device_end + 1}
+    Log Many    ${bonn_shutter_Device_list}
+    Should Contain    ${bonn_shutter_Device_list}    === ATCamera_bonn_shutter_Device start of topic ===
+    Should Contain    ${bonn_shutter_Device_list}    === ATCamera_bonn_shutter_Device end of topic ===
+    Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -142,3 +149,11 @@ Read Subscriber
     Should Contain    ${vacuum_list}    === ATCamera_vacuum end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${vacuum_list}    === [vacuum Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${vacuum_list}    === [vacuum Subscriber] message received :200
+    ${bonn_shutter_Device_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device start of topic ===
+    ${bonn_shutter_Device_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device end of topic ===
+    ${bonn_shutter_Device_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_start}    end=${bonn_shutter_Device_end + 1}
+    Log Many    ${bonn_shutter_Device_list}
+    Should Contain    ${bonn_shutter_Device_list}    === ATCamera_bonn_shutter_Device start of topic ===
+    Should Contain    ${bonn_shutter_Device_list}    === ATCamera_bonn_shutter_Device end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device Subscriber] message received :200
