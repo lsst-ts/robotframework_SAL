@@ -195,14 +195,6 @@ JAVA/Commands/MTMount_openMirrorCover.robot
 JAVA/Commands/MTMount_trackTarget.robot
 JAVA/Commands/OCS_script.robot
 JAVA/Commands/OCS_sequence.robot
-JAVA/Commands/PromptProcessing_abort.robot
-JAVA/Commands/PromptProcessing_disable.robot
-JAVA/Commands/PromptProcessing_enable.robot
-JAVA/Commands/PromptProcessing_enterControl.robot
-JAVA/Commands/PromptProcessing_exitControl.robot
-JAVA/Commands/PromptProcessing_setValue.robot
-JAVA/Commands/PromptProcessing_standby.robot
-JAVA/Commands/PromptProcessing_start.robot
 JAVA/Commands/Rotator_clearError.robot
 JAVA/Commands/Rotator_configureAcceleration.robot
 JAVA/Commands/Rotator_configureVelocity.robot

@@ -57,7 +57,6 @@ CPP/StateMachine/MTVMS_StateMachine.robot
 CPP/StateMachine/MTWEP_StateMachine.robot
 CPP/StateMachine/OCS_StateMachine.robot
 CPP/StateMachine/PointingComponent_StateMachine.robot
-CPP/StateMachine/PromptProcessing_StateMachine.robot
 CPP/StateMachine/Rotator_StateMachine.robot
 CPP/StateMachine/Scheduler_StateMachine.robot
 CPP/StateMachine/ScriptQueue_StateMachine.robot

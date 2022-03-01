@@ -197,14 +197,6 @@ CPP/Commands/MTMount_openMirrorCover.robot
 CPP/Commands/MTMount_trackTarget.robot
 CPP/Commands/OCS_script.robot
 CPP/Commands/OCS_sequence.robot
-CPP/Commands/PromptProcessing_abort.robot
-CPP/Commands/PromptProcessing_disable.robot
-CPP/Commands/PromptProcessing_enable.robot
-CPP/Commands/PromptProcessing_enterControl.robot
-CPP/Commands/PromptProcessing_exitControl.robot
-CPP/Commands/PromptProcessing_setValue.robot
-CPP/Commands/PromptProcessing_standby.robot
-CPP/Commands/PromptProcessing_start.robot
 CPP/Commands/Rotator_clearError.robot
 CPP/Commands/Rotator_configureAcceleration.robot
 CPP/Commands/Rotator_configureVelocity.robot

@@ -35,9 +35,8 @@ added_generics_csc_events=(
 added_generics_configurable_commands=()
 
 added_generics_configurable_events=(
-    "appliedSettingsMatchStart",
-    "settingsApplied",
-    "settingVersions",
+    "configurationApplied",
+    "configurationsAvailable",
 )
 
 
