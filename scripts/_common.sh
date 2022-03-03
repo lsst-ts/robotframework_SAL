@@ -39,6 +39,22 @@ added_generics_configurable_events=(
     "configurationsAvailable",
 )
 
+## The topics listed below must be listed explicitly
+## in the AddedGenerics tag in SALSubsystems.xml.
+## They are listed here for completeness only.
+## The getCommandTopics() and getEventTopics()
+## functions handle explicity named topics.
+
+added_generics_NOT_mandatory_commands=(
+    "abort",
+    "enterControl",
+)
+
+added_generics_NOT_mandatory_events=(
+    "largeFileObjectAvailable",
+    "statusCode",
+)
+
 
 ###  FUNCTIONS  ###
 
