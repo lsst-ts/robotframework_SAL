@@ -106,6 +106,18 @@ Start Sender
     Log Many    ${summaryState_list}
     Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
     Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
+    ${configurationApplied_start}=    Get Index From List    ${full_list}    === Test_configurationApplied start of topic ===
+    ${configurationApplied_end}=    Get Index From List    ${full_list}    === Test_configurationApplied end of topic ===
+    ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${configurationApplied_end + 1}
+    Log Many    ${configurationApplied_list}
+    Should Contain    ${configurationApplied_list}    === Test_configurationApplied start of topic ===
+    Should Contain    ${configurationApplied_list}    === Test_configurationApplied end of topic ===
+    ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Test_configurationsAvailable start of topic ===
+    ${configurationsAvailable_end}=    Get Index From List    ${full_list}    === Test_configurationsAvailable end of topic ===
+    ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${configurationsAvailable_end + 1}
+    Log Many    ${configurationsAvailable_list}
+    Should Contain    ${configurationsAvailable_list}    === Test_configurationsAvailable start of topic ===
+    Should Contain    ${configurationsAvailable_list}    === Test_configurationsAvailable end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -174,3 +186,15 @@ Read Subscriber
     Log Many    ${summaryState_list}
     Should Contain    ${summaryState_list}    === Test_summaryState start of topic ===
     Should Contain    ${summaryState_list}    === Test_summaryState end of topic ===
+    ${configurationApplied_start}=    Get Index From List    ${full_list}    === Test_configurationApplied start of topic ===
+    ${configurationApplied_end}=    Get Index From List    ${full_list}    === Test_configurationApplied end of topic ===
+    ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${configurationApplied_end + 1}
+    Log Many    ${configurationApplied_list}
+    Should Contain    ${configurationApplied_list}    === Test_configurationApplied start of topic ===
+    Should Contain    ${configurationApplied_list}    === Test_configurationApplied end of topic ===
+    ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Test_configurationsAvailable start of topic ===
+    ${configurationsAvailable_end}=    Get Index From List    ${full_list}    === Test_configurationsAvailable end of topic ===
+    ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${configurationsAvailable_end + 1}
+    Log Many    ${configurationsAvailable_list}
+    Should Contain    ${configurationsAvailable_list}    === Test_configurationsAvailable start of topic ===
+    Should Contain    ${configurationsAvailable_list}    === Test_configurationsAvailable end of topic ===

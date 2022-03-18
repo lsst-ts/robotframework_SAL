@@ -596,6 +596,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_summaryState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event summaryState generated =
+    Comment    ======= Verify ${subSystem}_configurationApplied test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configurationApplied
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event configurationApplied iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configurationApplied_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event configurationApplied generated =
+    Comment    ======= Verify ${subSystem}_configurationsAvailable test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configurationsAvailable
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event configurationsAvailable iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configurationsAvailable_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
     [Tags]    functional
@@ -1638,8 +1654,9 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointMeasuredForceFSBWarningLow : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointMeasuredForceWarningHigh : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointMeasuredForceWarningLow : 1    1
-    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureWarningHigh : 1    1
-    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureWarningLow : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultHigh : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultLow : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultLowRaising : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${positionControllerSettings_start}=    Get Index From List    ${full_list}    === Event positionControllerSettings received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${positionControllerSettings_start}
@@ -1775,3 +1792,22 @@ Read Logger
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${configurationApplied_start}=    Get Index From List    ${full_list}    === Event configurationApplied received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${configurationApplied_start}
+    ${configurationApplied_end}=    Evaluate    ${end}+${1}
+    ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${configurationApplied_end}
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurations : RO    1
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otherInfo : RO    1
+    Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Event configurationsAvailable received =${SPACE}
+    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${configurationsAvailable_start}
+    ${configurationsAvailable_end}=    Evaluate    ${end}+${1}
+    ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${configurationsAvailable_end}
+    Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overrides : RO    1
+    Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
+    Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
+    Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
+    Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
