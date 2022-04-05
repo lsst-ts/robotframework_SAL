@@ -150,3 +150,14 @@ Read Subscriber
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 7    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 8    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}torque : 9    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 0    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 1    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 2    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 3    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 4    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 5    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 6    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 7    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 8    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}current : 9    1
+    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busVoltage : 1    10

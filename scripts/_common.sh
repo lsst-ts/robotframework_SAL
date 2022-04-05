@@ -98,10 +98,10 @@ function getTopics() {
     if [[ $topic_type == "Command" ]]; then
         generics=(${added_generics_mandatory_commands[@]})
         generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-        if [[ $generics_field =~ "csc" ]]; then
+        if [[ $generics_field == *"csc"* ]]; then
             generics+=("${added_generics_csc_commands[@]}")
         fi
-        if [[ $generics_field == "configurable" ]]; then
+        if [[ $generics_field == *"configurable"* ]]; then
             generics=("${added_generics_configurable_commands[@]}")
         fi
         array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
@@ -118,13 +118,13 @@ function getTopics() {
     if [[ $topic_type == "Event" ]]; then
         generics=(${added_generics_mandatory_events[@]})
         generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
-        if [[ $generics_field =~ "csc" ]]; then
+        if [[ $generics_field == *"csc"* ]]; then
             generics+=("${added_generics_csc_events[@]}")
         fi
-        if [[ $generics_field == "log" ]]; then
+        if [[ $generics_field == *"log"* ]]; then
             generics+=("${added_generics_log_events[@]}")
         fi
-        if [[ $generics_field == "configurable" ]]; then
+        if [[ $generics_field == *"configurable"* ]]; then
             generics+=("${added_generics_configurable_events[@]}")
         fi
         array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
