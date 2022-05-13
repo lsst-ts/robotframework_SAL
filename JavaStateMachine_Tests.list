@@ -151,10 +151,6 @@ JAVA/StateMachine/OCS_exitControl.robot
 JAVA/StateMachine/OCS_standby.robot
 JAVA/StateMachine/OCS_start.robot
 JAVA/StateMachine/OCS_stop.robot
-JAVA/StateMachine/PromptProcessing_disable.robot
-JAVA/StateMachine/PromptProcessing_enable.robot
-JAVA/StateMachine/PromptProcessing_standby.robot
-JAVA/StateMachine/PromptProcessing_start.robot
 JAVA/StateMachine/Rotator_abort.robot
 JAVA/StateMachine/Rotator_disable.robot
 JAVA/StateMachine/Rotator_enable.robot

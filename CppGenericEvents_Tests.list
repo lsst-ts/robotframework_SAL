@@ -57,7 +57,6 @@ CPP/GenericEvents/MTVMS_GenericEvents.robot
 CPP/GenericEvents/MTWEP_GenericEvents.robot
 CPP/GenericEvents/OCS_GenericEvents.robot
 CPP/GenericEvents/PointingComponent_GenericEvents.robot
-CPP/GenericEvents/PromptProcessing_GenericEvents.robot
 CPP/GenericEvents/Rotator_GenericEvents.robot
 CPP/GenericEvents/Scheduler_GenericEvents.robot
 CPP/GenericEvents/ScriptQueue_GenericEvents.robot

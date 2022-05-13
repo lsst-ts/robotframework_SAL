@@ -307,15 +307,6 @@ CPP/Events/OCS_ocsScriptEnd.robot
 CPP/Events/OCS_ocsScriptEntititesInUse.robot
 CPP/Events/OCS_ocsScriptError.robot
 CPP/Events/OCS_ocsScriptStart.robot
-CPP/Events/PromptProcessing_AppliedSettingsMatchStart.robot
-CPP/Events/PromptProcessing_DetailedState.robot
-CPP/Events/PromptProcessing_ErrorCode.robot
-CPP/Events/PromptProcessing_SettingVersions.robot
-CPP/Events/PromptProcessing_SettingsApplied.robot
-CPP/Events/PromptProcessing_SummaryState.robot
-CPP/Events/PromptProcessing_promptprocessingEntityShutdown.robot
-CPP/Events/PromptProcessing_promptprocessingEntityStartup.robot
-CPP/Events/PromptProcessing_promptprocessingEntitySummaryState.robot
 CPP/Events/Rotator_deviceError.robot
 CPP/Events/Rotator_inPosition.robot
 CPP/Events/Rotator_interlock.robot
