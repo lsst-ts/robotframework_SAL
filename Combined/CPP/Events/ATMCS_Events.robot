@@ -398,40 +398,29 @@ Read Logger
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${detailedState_start}=    Get Index From List    ${full_list}    === Event detailedState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${detailedState_start}
-    ${detailedState_end}=    Evaluate    ${end}+${1}
-    ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${detailedState_end}
+    ${end}=    Evaluate    ${detailedState_start}+${2}
+    ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
-    Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${atMountState_start}=    Get Index From List    ${full_list}    === Event atMountState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${atMountState_start}
-    ${atMountState_end}=    Evaluate    ${end}+${1}
-    ${atMountState_list}=    Get Slice From List    ${full_list}    start=${atMountState_start}    end=${atMountState_end}
+    ${end}=    Evaluate    ${atMountState_start}+${2}
+    ${atMountState_list}=    Get Slice From List    ${full_list}    start=${atMountState_start}    end=${end}
     Should Contain X Times    ${atMountState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
-    Should Contain X Times    ${atMountState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3State_start}=    Get Index From List    ${full_list}    === Event m3State received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3State_start}
-    ${m3State_end}=    Evaluate    ${end}+${1}
-    ${m3State_list}=    Get Slice From List    ${full_list}    start=${m3State_start}    end=${m3State_end}
+    ${end}=    Evaluate    ${m3State_start}+${2}
+    ${m3State_list}=    Get Slice From List    ${full_list}    start=${m3State_start}    end=${end}
     Should Contain X Times    ${m3State_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
-    Should Contain X Times    ${m3State_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3PortSelected_start}=    Get Index From List    ${full_list}    === Event m3PortSelected received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3PortSelected_start}
-    ${m3PortSelected_end}=    Evaluate    ${end}+${1}
-    ${m3PortSelected_list}=    Get Slice From List    ${full_list}    start=${m3PortSelected_start}    end=${m3PortSelected_end}
+    ${end}=    Evaluate    ${m3PortSelected_start}+${2}
+    ${m3PortSelected_list}=    Get Slice From List    ${full_list}    start=${m3PortSelected_start}    end=${end}
     Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selected : 1    1
-    Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${positionLimits_start}=    Get Index From List    ${full_list}    === Event positionLimits received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${positionLimits_start}
-    ${positionLimits_end}=    Evaluate    ${end}+${1}
-    ${positionLimits_list}=    Get Slice From List    ${full_list}    start=${positionLimits_start}    end=${positionLimits_end}
+    ${end}=    Evaluate    ${positionLimits_start}+${3}
+    ${positionLimits_list}=    Get Slice From List    ${full_list}    start=${positionLimits_start}    end=${end}
     Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimum : 0    1
     Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maximum : 0    1
-    Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${target_start}
-    ${target_end}=    Evaluate    ${end}+${1}
-    ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${target_end}
+    ${end}=    Evaluate    ${target_start}+${13}
+    ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
@@ -444,206 +433,139 @@ Read Logger
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationInPosition_start}=    Get Index From List    ${full_list}    === Event elevationInPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationInPosition_start}
-    ${elevationInPosition_end}=    Evaluate    ${end}+${1}
-    ${elevationInPosition_list}=    Get Slice From List    ${full_list}    start=${elevationInPosition_start}    end=${elevationInPosition_end}
+    ${end}=    Evaluate    ${elevationInPosition_start}+${2}
+    ${elevationInPosition_list}=    Get Slice From List    ${full_list}    start=${elevationInPosition_start}    end=${end}
     Should Contain X Times    ${elevationInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${elevationInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthInPosition_start}=    Get Index From List    ${full_list}    === Event azimuthInPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthInPosition_start}
-    ${azimuthInPosition_end}=    Evaluate    ${end}+${1}
-    ${azimuthInPosition_list}=    Get Slice From List    ${full_list}    start=${azimuthInPosition_start}    end=${azimuthInPosition_end}
+    ${end}=    Evaluate    ${azimuthInPosition_start}+${2}
+    ${azimuthInPosition_list}=    Get Slice From List    ${full_list}    start=${azimuthInPosition_start}    end=${end}
     Should Contain X Times    ${azimuthInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${azimuthInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth1RotatorInPosition_start}=    Get Index From List    ${full_list}    === Event nasmyth1RotatorInPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth1RotatorInPosition_start}
-    ${nasmyth1RotatorInPosition_end}=    Evaluate    ${end}+${1}
-    ${nasmyth1RotatorInPosition_list}=    Get Slice From List    ${full_list}    start=${nasmyth1RotatorInPosition_start}    end=${nasmyth1RotatorInPosition_end}
+    ${end}=    Evaluate    ${nasmyth1RotatorInPosition_start}+${2}
+    ${nasmyth1RotatorInPosition_list}=    Get Slice From List    ${full_list}    start=${nasmyth1RotatorInPosition_start}    end=${end}
     Should Contain X Times    ${nasmyth1RotatorInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${nasmyth1RotatorInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth2RotatorInPosition_start}=    Get Index From List    ${full_list}    === Event nasmyth2RotatorInPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth2RotatorInPosition_start}
-    ${nasmyth2RotatorInPosition_end}=    Evaluate    ${end}+${1}
-    ${nasmyth2RotatorInPosition_list}=    Get Slice From List    ${full_list}    start=${nasmyth2RotatorInPosition_start}    end=${nasmyth2RotatorInPosition_end}
+    ${end}=    Evaluate    ${nasmyth2RotatorInPosition_start}+${2}
+    ${nasmyth2RotatorInPosition_list}=    Get Slice From List    ${full_list}    start=${nasmyth2RotatorInPosition_start}    end=${end}
     Should Contain X Times    ${nasmyth2RotatorInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${nasmyth2RotatorInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3InPosition_start}=    Get Index From List    ${full_list}    === Event m3InPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3InPosition_start}
-    ${m3InPosition_end}=    Evaluate    ${end}+${1}
-    ${m3InPosition_list}=    Get Slice From List    ${full_list}    start=${m3InPosition_start}    end=${m3InPosition_end}
+    ${end}=    Evaluate    ${m3InPosition_start}+${2}
+    ${m3InPosition_list}=    Get Slice From List    ${full_list}    start=${m3InPosition_start}    end=${end}
     Should Contain X Times    ${m3InPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${m3InPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${allAxesInPosition_start}=    Get Index From List    ${full_list}    === Event allAxesInPosition received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${allAxesInPosition_start}
-    ${allAxesInPosition_end}=    Evaluate    ${end}+${1}
-    ${allAxesInPosition_list}=    Get Slice From List    ${full_list}    start=${allAxesInPosition_start}    end=${allAxesInPosition_end}
+    ${end}=    Evaluate    ${allAxesInPosition_start}+${2}
+    ${allAxesInPosition_list}=    Get Slice From List    ${full_list}    start=${allAxesInPosition_start}    end=${end}
     Should Contain X Times    ${allAxesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    Should Contain X Times    ${allAxesInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthToppleBlockCCW_start}=    Get Index From List    ${full_list}    === Event azimuthToppleBlockCCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthToppleBlockCCW_start}
-    ${azimuthToppleBlockCCW_end}=    Evaluate    ${end}+${1}
-    ${azimuthToppleBlockCCW_list}=    Get Slice From List    ${full_list}    start=${azimuthToppleBlockCCW_start}    end=${azimuthToppleBlockCCW_end}
+    ${end}=    Evaluate    ${azimuthToppleBlockCCW_start}+${2}
+    ${azimuthToppleBlockCCW_list}=    Get Slice From List    ${full_list}    start=${azimuthToppleBlockCCW_start}    end=${end}
     Should Contain X Times    ${azimuthToppleBlockCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${azimuthToppleBlockCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthToppleBlockCW_start}=    Get Index From List    ${full_list}    === Event azimuthToppleBlockCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthToppleBlockCW_start}
-    ${azimuthToppleBlockCW_end}=    Evaluate    ${end}+${1}
-    ${azimuthToppleBlockCW_list}=    Get Slice From List    ${full_list}    start=${azimuthToppleBlockCW_start}    end=${azimuthToppleBlockCW_end}
+    ${end}=    Evaluate    ${azimuthToppleBlockCW_start}+${2}
+    ${azimuthToppleBlockCW_list}=    Get Slice From List    ${full_list}    start=${azimuthToppleBlockCW_start}    end=${end}
     Should Contain X Times    ${azimuthToppleBlockCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${azimuthToppleBlockCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3RotatorDetentSwitches_start}=    Get Index From List    ${full_list}    === Event m3RotatorDetentSwitches received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3RotatorDetentSwitches_start}
-    ${m3RotatorDetentSwitches_end}=    Evaluate    ${end}+${1}
-    ${m3RotatorDetentSwitches_list}=    Get Slice From List    ${full_list}    start=${m3RotatorDetentSwitches_start}    end=${m3RotatorDetentSwitches_end}
+    ${end}=    Evaluate    ${m3RotatorDetentSwitches_start}+${4}
+    ${m3RotatorDetentSwitches_list}=    Get Slice From List    ${full_list}    start=${m3RotatorDetentSwitches_start}    end=${end}
     Should Contain X Times    ${m3RotatorDetentSwitches_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Active : 1    1
     Should Contain X Times    ${m3RotatorDetentSwitches_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port3Active : 1    1
     Should Contain X Times    ${m3RotatorDetentSwitches_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Active : 1    1
-    Should Contain X Times    ${m3RotatorDetentSwitches_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationLimitSwitchLower_start}=    Get Index From List    ${full_list}    === Event elevationLimitSwitchLower received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationLimitSwitchLower_start}
-    ${elevationLimitSwitchLower_end}=    Evaluate    ${end}+${1}
-    ${elevationLimitSwitchLower_list}=    Get Slice From List    ${full_list}    start=${elevationLimitSwitchLower_start}    end=${elevationLimitSwitchLower_end}
+    ${end}=    Evaluate    ${elevationLimitSwitchLower_start}+${2}
+    ${elevationLimitSwitchLower_list}=    Get Slice From List    ${full_list}    start=${elevationLimitSwitchLower_start}    end=${end}
     Should Contain X Times    ${elevationLimitSwitchLower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${elevationLimitSwitchLower_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationLimitSwitchUpper_start}=    Get Index From List    ${full_list}    === Event elevationLimitSwitchUpper received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationLimitSwitchUpper_start}
-    ${elevationLimitSwitchUpper_end}=    Evaluate    ${end}+${1}
-    ${elevationLimitSwitchUpper_list}=    Get Slice From List    ${full_list}    start=${elevationLimitSwitchUpper_start}    end=${elevationLimitSwitchUpper_end}
+    ${end}=    Evaluate    ${elevationLimitSwitchUpper_start}+${2}
+    ${elevationLimitSwitchUpper_list}=    Get Slice From List    ${full_list}    start=${elevationLimitSwitchUpper_start}    end=${end}
     Should Contain X Times    ${elevationLimitSwitchUpper_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${elevationLimitSwitchUpper_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthLimitSwitchCCW_start}=    Get Index From List    ${full_list}    === Event azimuthLimitSwitchCCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthLimitSwitchCCW_start}
-    ${azimuthLimitSwitchCCW_end}=    Evaluate    ${end}+${1}
-    ${azimuthLimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${azimuthLimitSwitchCCW_start}    end=${azimuthLimitSwitchCCW_end}
+    ${end}=    Evaluate    ${azimuthLimitSwitchCCW_start}+${2}
+    ${azimuthLimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${azimuthLimitSwitchCCW_start}    end=${end}
     Should Contain X Times    ${azimuthLimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${azimuthLimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthLimitSwitchCW_start}=    Get Index From List    ${full_list}    === Event azimuthLimitSwitchCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthLimitSwitchCW_start}
-    ${azimuthLimitSwitchCW_end}=    Evaluate    ${end}+${1}
-    ${azimuthLimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${azimuthLimitSwitchCW_start}    end=${azimuthLimitSwitchCW_end}
+    ${end}=    Evaluate    ${azimuthLimitSwitchCW_start}+${2}
+    ${azimuthLimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${azimuthLimitSwitchCW_start}    end=${end}
     Should Contain X Times    ${azimuthLimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${azimuthLimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth1LimitSwitchCCW_start}=    Get Index From List    ${full_list}    === Event nasmyth1LimitSwitchCCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth1LimitSwitchCCW_start}
-    ${nasmyth1LimitSwitchCCW_end}=    Evaluate    ${end}+${1}
-    ${nasmyth1LimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth1LimitSwitchCCW_start}    end=${nasmyth1LimitSwitchCCW_end}
+    ${end}=    Evaluate    ${nasmyth1LimitSwitchCCW_start}+${2}
+    ${nasmyth1LimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth1LimitSwitchCCW_start}    end=${end}
     Should Contain X Times    ${nasmyth1LimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${nasmyth1LimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth1LimitSwitchCW_start}=    Get Index From List    ${full_list}    === Event nasmyth1LimitSwitchCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth1LimitSwitchCW_start}
-    ${nasmyth1LimitSwitchCW_end}=    Evaluate    ${end}+${1}
-    ${nasmyth1LimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth1LimitSwitchCW_start}    end=${nasmyth1LimitSwitchCW_end}
+    ${end}=    Evaluate    ${nasmyth1LimitSwitchCW_start}+${2}
+    ${nasmyth1LimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth1LimitSwitchCW_start}    end=${end}
     Should Contain X Times    ${nasmyth1LimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${nasmyth1LimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth2LimitSwitchCCW_start}=    Get Index From List    ${full_list}    === Event nasmyth2LimitSwitchCCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth2LimitSwitchCCW_start}
-    ${nasmyth2LimitSwitchCCW_end}=    Evaluate    ${end}+${1}
-    ${nasmyth2LimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth2LimitSwitchCCW_start}    end=${nasmyth2LimitSwitchCCW_end}
+    ${end}=    Evaluate    ${nasmyth2LimitSwitchCCW_start}+${2}
+    ${nasmyth2LimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth2LimitSwitchCCW_start}    end=${end}
     Should Contain X Times    ${nasmyth2LimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${nasmyth2LimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth2LimitSwitchCW_start}=    Get Index From List    ${full_list}    === Event nasmyth2LimitSwitchCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth2LimitSwitchCW_start}
-    ${nasmyth2LimitSwitchCW_end}=    Evaluate    ${end}+${1}
-    ${nasmyth2LimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth2LimitSwitchCW_start}    end=${nasmyth2LimitSwitchCW_end}
+    ${end}=    Evaluate    ${nasmyth2LimitSwitchCW_start}+${2}
+    ${nasmyth2LimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${nasmyth2LimitSwitchCW_start}    end=${end}
     Should Contain X Times    ${nasmyth2LimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${nasmyth2LimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3RotatorLimitSwitchCCW_start}=    Get Index From List    ${full_list}    === Event m3RotatorLimitSwitchCCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3RotatorLimitSwitchCCW_start}
-    ${m3RotatorLimitSwitchCCW_end}=    Evaluate    ${end}+${1}
-    ${m3RotatorLimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${m3RotatorLimitSwitchCCW_start}    end=${m3RotatorLimitSwitchCCW_end}
+    ${end}=    Evaluate    ${m3RotatorLimitSwitchCCW_start}+${2}
+    ${m3RotatorLimitSwitchCCW_list}=    Get Slice From List    ${full_list}    start=${m3RotatorLimitSwitchCCW_start}    end=${end}
     Should Contain X Times    ${m3RotatorLimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${m3RotatorLimitSwitchCCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3RotatorLimitSwitchCW_start}=    Get Index From List    ${full_list}    === Event m3RotatorLimitSwitchCW received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3RotatorLimitSwitchCW_start}
-    ${m3RotatorLimitSwitchCW_end}=    Evaluate    ${end}+${1}
-    ${m3RotatorLimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${m3RotatorLimitSwitchCW_start}    end=${m3RotatorLimitSwitchCW_end}
+    ${end}=    Evaluate    ${m3RotatorLimitSwitchCW_start}+${2}
+    ${m3RotatorLimitSwitchCW_list}=    Get Slice From List    ${full_list}    start=${m3RotatorLimitSwitchCW_start}    end=${end}
     Should Contain X Times    ${m3RotatorLimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
-    Should Contain X Times    ${m3RotatorLimitSwitchCW_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationDriveStatus_start}=    Get Index From List    ${full_list}    === Event elevationDriveStatus received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationDriveStatus_start}
-    ${elevationDriveStatus_end}=    Evaluate    ${end}+${1}
-    ${elevationDriveStatus_list}=    Get Slice From List    ${full_list}    start=${elevationDriveStatus_start}    end=${elevationDriveStatus_end}
+    ${end}=    Evaluate    ${elevationDriveStatus_start}+${2}
+    ${elevationDriveStatus_list}=    Get Slice From List    ${full_list}    start=${elevationDriveStatus_start}    end=${end}
     Should Contain X Times    ${elevationDriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${elevationDriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthDrive1Status_start}=    Get Index From List    ${full_list}    === Event azimuthDrive1Status received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthDrive1Status_start}
-    ${azimuthDrive1Status_end}=    Evaluate    ${end}+${1}
-    ${azimuthDrive1Status_list}=    Get Slice From List    ${full_list}    start=${azimuthDrive1Status_start}    end=${azimuthDrive1Status_end}
+    ${end}=    Evaluate    ${azimuthDrive1Status_start}+${2}
+    ${azimuthDrive1Status_list}=    Get Slice From List    ${full_list}    start=${azimuthDrive1Status_start}    end=${end}
     Should Contain X Times    ${azimuthDrive1Status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${azimuthDrive1Status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthDrive2Status_start}=    Get Index From List    ${full_list}    === Event azimuthDrive2Status received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthDrive2Status_start}
-    ${azimuthDrive2Status_end}=    Evaluate    ${end}+${1}
-    ${azimuthDrive2Status_list}=    Get Slice From List    ${full_list}    start=${azimuthDrive2Status_start}    end=${azimuthDrive2Status_end}
+    ${end}=    Evaluate    ${azimuthDrive2Status_start}+${2}
+    ${azimuthDrive2Status_list}=    Get Slice From List    ${full_list}    start=${azimuthDrive2Status_start}    end=${end}
     Should Contain X Times    ${azimuthDrive2Status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${azimuthDrive2Status_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth1DriveStatus_start}=    Get Index From List    ${full_list}    === Event nasmyth1DriveStatus received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth1DriveStatus_start}
-    ${nasmyth1DriveStatus_end}=    Evaluate    ${end}+${1}
-    ${nasmyth1DriveStatus_list}=    Get Slice From List    ${full_list}    start=${nasmyth1DriveStatus_start}    end=${nasmyth1DriveStatus_end}
+    ${end}=    Evaluate    ${nasmyth1DriveStatus_start}+${2}
+    ${nasmyth1DriveStatus_list}=    Get Slice From List    ${full_list}    start=${nasmyth1DriveStatus_start}    end=${end}
     Should Contain X Times    ${nasmyth1DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${nasmyth1DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth2DriveStatus_start}=    Get Index From List    ${full_list}    === Event nasmyth2DriveStatus received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth2DriveStatus_start}
-    ${nasmyth2DriveStatus_end}=    Evaluate    ${end}+${1}
-    ${nasmyth2DriveStatus_list}=    Get Slice From List    ${full_list}    start=${nasmyth2DriveStatus_start}    end=${nasmyth2DriveStatus_end}
+    ${end}=    Evaluate    ${nasmyth2DriveStatus_start}+${2}
+    ${nasmyth2DriveStatus_list}=    Get Slice From List    ${full_list}    start=${nasmyth2DriveStatus_start}    end=${end}
     Should Contain X Times    ${nasmyth2DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${nasmyth2DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${m3DriveStatus_start}=    Get Index From List    ${full_list}    === Event m3DriveStatus received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${m3DriveStatus_start}
-    ${m3DriveStatus_end}=    Evaluate    ${end}+${1}
-    ${m3DriveStatus_list}=    Get Slice From List    ${full_list}    start=${m3DriveStatus_start}    end=${m3DriveStatus_end}
+    ${end}=    Evaluate    ${m3DriveStatus_start}+${2}
+    ${m3DriveStatus_list}=    Get Slice From List    ${full_list}    start=${m3DriveStatus_start}    end=${end}
     Should Contain X Times    ${m3DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
-    Should Contain X Times    ${m3DriveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationBrake_start}=    Get Index From List    ${full_list}    === Event elevationBrake received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationBrake_start}
-    ${elevationBrake_end}=    Evaluate    ${end}+${1}
-    ${elevationBrake_list}=    Get Slice From List    ${full_list}    start=${elevationBrake_start}    end=${elevationBrake_end}
+    ${end}=    Evaluate    ${elevationBrake_start}+${2}
+    ${elevationBrake_list}=    Get Slice From List    ${full_list}    start=${elevationBrake_start}    end=${end}
     Should Contain X Times    ${elevationBrake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    Should Contain X Times    ${elevationBrake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthBrake1_start}=    Get Index From List    ${full_list}    === Event azimuthBrake1 received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthBrake1_start}
-    ${azimuthBrake1_end}=    Evaluate    ${end}+${1}
-    ${azimuthBrake1_list}=    Get Slice From List    ${full_list}    start=${azimuthBrake1_start}    end=${azimuthBrake1_end}
+    ${end}=    Evaluate    ${azimuthBrake1_start}+${2}
+    ${azimuthBrake1_list}=    Get Slice From List    ${full_list}    start=${azimuthBrake1_start}    end=${end}
     Should Contain X Times    ${azimuthBrake1_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    Should Contain X Times    ${azimuthBrake1_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${azimuthBrake2_start}=    Get Index From List    ${full_list}    === Event azimuthBrake2 received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${azimuthBrake2_start}
-    ${azimuthBrake2_end}=    Evaluate    ${end}+${1}
-    ${azimuthBrake2_list}=    Get Slice From List    ${full_list}    start=${azimuthBrake2_start}    end=${azimuthBrake2_end}
+    ${end}=    Evaluate    ${azimuthBrake2_start}+${2}
+    ${azimuthBrake2_list}=    Get Slice From List    ${full_list}    start=${azimuthBrake2_start}    end=${end}
     Should Contain X Times    ${azimuthBrake2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    Should Contain X Times    ${azimuthBrake2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth1Brake_start}=    Get Index From List    ${full_list}    === Event nasmyth1Brake received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth1Brake_start}
-    ${nasmyth1Brake_end}=    Evaluate    ${end}+${1}
-    ${nasmyth1Brake_list}=    Get Slice From List    ${full_list}    start=${nasmyth1Brake_start}    end=${nasmyth1Brake_end}
+    ${end}=    Evaluate    ${nasmyth1Brake_start}+${2}
+    ${nasmyth1Brake_list}=    Get Slice From List    ${full_list}    start=${nasmyth1Brake_start}    end=${end}
     Should Contain X Times    ${nasmyth1Brake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    Should Contain X Times    ${nasmyth1Brake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${nasmyth2Brake_start}=    Get Index From List    ${full_list}    === Event nasmyth2Brake received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${nasmyth2Brake_start}
-    ${nasmyth2Brake_end}=    Evaluate    ${end}+${1}
-    ${nasmyth2Brake_list}=    Get Slice From List    ${full_list}    start=${nasmyth2Brake_start}    end=${nasmyth2Brake_end}
+    ${end}=    Evaluate    ${nasmyth2Brake_start}+${2}
+    ${nasmyth2Brake_list}=    Get Slice From List    ${full_list}    start=${nasmyth2Brake_start}    end=${end}
     Should Contain X Times    ${nasmyth2Brake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    Should Contain X Times    ${nasmyth2Brake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${heartbeat_start}
-    ${heartbeat_end}=    Evaluate    ${end}+${1}
-    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end}
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeat : 1    1
-    Should Contain X Times    ${heartbeat_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
+    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logLevel_start}
-    ${logLevel_end}=    Evaluate    ${end}+${1}
-    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end}
+    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
-    Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${logMessage_start}
-    ${logMessage_end}=    Evaluate    ${end}+${1}
-    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${logMessage_end}
+    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}message : RO    1
@@ -653,41 +575,30 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lineNumber : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
-    Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${softwareVersions_start}
-    ${softwareVersions_end}=    Evaluate    ${end}+${1}
-    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${softwareVersions_end}
+    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openSpliceVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
-    Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${authList_start}=    Get Index From List    ${full_list}    === Event authList received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${authList_start}
-    ${authList_end}=    Evaluate    ${end}+${1}
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end}
+    ${end}=    Evaluate    ${authList_start}+${3}
+    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${end}
     Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}authorizedUsers : RO    1
     Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nonAuthorizedCSCs : RO    1
-    Should Contain X Times    ${authList_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${errorCode_start}
-    ${errorCode_end}=    Evaluate    ${end}+${1}
-    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end}
+    ${end}=    Evaluate    ${errorCode_start}+${4}
+    ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : RO    1
-    Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${simulationMode_start}
-    ${simulationMode_end}=    Evaluate    ${end}+${1}
-    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${simulationMode_end}
+    ${end}=    Evaluate    ${simulationMode_start}+${2}
+    ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
-    Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${summaryState_start}
-    ${summaryState_end}=    Evaluate    ${end}+${1}
-    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${summaryState_end}
+    ${end}=    Evaluate    ${summaryState_start}+${2}
+    ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
-    Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
