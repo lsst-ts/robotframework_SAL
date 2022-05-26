@@ -958,9 +958,18 @@ Read Logger
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroZMODDACWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroZPhaseWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroZFlashWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroXPZTTemperatureStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroYPZTTemperatureStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroZPZTTemperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroXSLDTemperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroYSLDTemperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroZSLDTemperatureStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelXStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelYStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelZStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelXTemperatureStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelYTemperatureStatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gyroAccelZTemperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gcbTemperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gcbDSPSPIFlashStatusWarning : 1    1
@@ -973,6 +982,7 @@ Read Logger
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}v1_2StatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}v3_3StatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}v5StatusWarning : 1    1
+    Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}v15StatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gcbFPGAStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fpgaStatusWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hiSpeedSPORTStatusWarning : 1    1
