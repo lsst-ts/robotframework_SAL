@@ -26,7 +26,7 @@ Start Logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
-    Should Contain    "${output}"    "1"
+    Should Contain    ${output}    Popen
     Wait Until Keyword Succeeds    90s    5s    File Should Contain    ${EXECDIR}${/}stdout.txt    === ${subSystem} loggers ready
     ${output}=    Get File    ${EXECDIR}${/}stdout.txt
     Log    ${output}
