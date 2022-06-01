@@ -24,7 +24,7 @@ Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
-    Should Contain    "${output}"   "1"
+    Should Contain    "${output}"   Popen
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
