@@ -101,12 +101,12 @@ function startLogger() {
     if [ $topic ]; then
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=\${subSystem}_Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
-        echo "    Should Contain    \"\${output}\"    Popen" >> $testSuite
+        echo "    Should Contain    \${output}    Popen" >> $testSuite
         echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === Event \${component} logger ready =" >> $testSuite
     else
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=\${subSystem}_Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
-        echo "    Should Contain    \"\${output}\"    Popen" >> $testSuite
+        echo "    Should Contain    \${output}    Popen" >> $testSuite
         echo "    Wait Until Keyword Succeeds    90s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
     fi
     echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite

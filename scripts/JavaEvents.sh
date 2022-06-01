@@ -113,7 +113,7 @@ function startJavaCombinedLoggerProcess() {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Logger Program." >> $testSuite
     echo "    \${loggerOutput}=    Start Process    mvn    -Dtest\=\${subSystem}EventLogger_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=logger    stdout=\${EXECDIR}\${/}stdoutLogger.txt    stderr=\${EXECDIR}\${/}stderrLogger.txt" >> $testSuite    
-    echo "    Should Contain    \"\${loggerOutput}\"    Popen" >> $testSuite
+    echo "    Should Contain    \${loggerOutput}    Popen" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}stdoutLogger.txt" >> $testSuite
     echo "" >> $testSuite
 }
@@ -137,7 +137,7 @@ function startJavaCombinedSenderProcess() {
     echo "    END" >> $testSuite
     echo "    Comment    Executing Combined Java Sender Program." >> $testSuite
     echo "    \${senderOutput}=    Start Process    mvn    -Dtest\=\${subSystem}Event_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=sender    stdout=\${EXECDIR}\${/}stdoutSender.txt    stderr=\${EXECDIR}\${/}stderrSender.txt" >> $testSuite    
-    echo "    Should Contain    \"\${senderOutput}\"    Popen" >> $testSuite
+    echo "    Should Contain    \${senderOutput}    Popen" >> $testSuite
     echo "    \${output}=    Wait For Process    sender    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all events ready =====" >> $testSuite

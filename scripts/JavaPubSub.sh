@@ -110,7 +110,7 @@ function startJavaCombinedSubscriberProcess {
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Subscriber Program." >> $testSuite
     echo "    \${output}=    Start Process    mvn    -e    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
-    echo "    Should Contain    \"\${output}\"   Popen" >> $testSuite
+    echo "    Should Contain    \${output}   Popen" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
     echo "    \${subscriberOutput}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
