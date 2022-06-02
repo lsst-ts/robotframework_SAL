@@ -26,7 +26,7 @@ Start Logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
-    Should Contain    "${output}"    "1"
+    Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    90s    5s    File Should Contain    ${EXECDIR}${/}stdout.txt    === ${subSystem} loggers ready
     ${output}=    Get File    ${EXECDIR}${/}stdout.txt
     Log    ${output}
@@ -911,7 +911,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisFollowingErrorWarning : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorWarning : 0    1
     ${gyroWarning_start}=    Get Index From List    ${full_list}    === Event gyroWarning received =${SPACE}
-    ${end}=    Evaluate    ${gyroWarning_start}+${50}
+    ${end}=    Evaluate    ${gyroWarning_start}+${60}
     ${gyroWarning_list}=    Get Slice From List    ${full_list}    start=${gyroWarning_start}    end=${end}
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
