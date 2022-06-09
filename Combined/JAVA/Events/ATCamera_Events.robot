@@ -698,6 +698,12 @@ Start Sender
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -1414,6 +1420,12 @@ Read Subscriber
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}

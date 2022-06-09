@@ -657,15 +657,12 @@ Read Logger
     Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${mainCabinetThermalSystemState_start}=    Get Index From List    ${full_list}    === Event mainCabinetThermalSystemState received =${SPACE}
-    ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mainCabinetThermalSystemState_start}
-    ${mainCabinetThermalSystemState_end}=    Evaluate    ${end}+${1}
-    ${mainCabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermalSystemState_start}    end=${mainCabinetThermalSystemState_end}
+    ${end}=    Evaluate    ${mainCabinetThermalSystemState_start}+${4}
+    ${mainCabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermalSystemState_start}    end=${end}
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
-    Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${mainAxesPowerSupplySystemState_start}=    Get Index From List    ${full_list}    === Event mainAxesPowerSupplySystemState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mainAxesPowerSupplySystemState_start}
     ${mainAxesPowerSupplySystemState_end}=    Evaluate    ${end}+${1}
@@ -774,14 +771,12 @@ Read Logger
     ${deployablePlatformsMotionState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsMotionState_start}    end=${deployablePlatformsMotionState_end}
     Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
-    Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${elevationLockingPinMotionState_start}=    Get Index From List    ${full_list}    === Event elevationLockingPinMotionState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${elevationLockingPinMotionState_start}
     ${elevationLockingPinMotionState_end}=    Evaluate    ${end}+${1}
     ${elevationLockingPinMotionState_list}=    Get Slice From List    ${full_list}    start=${elevationLockingPinMotionState_start}    end=${elevationLockingPinMotionState_end}
     Should Contain X Times    ${elevationLockingPinMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${elevationLockingPinMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
-    Should Contain X Times    ${elevationLockingPinMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${error_start}=    Get Index From List    ${full_list}    === Event error received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${error_start}
     ${error_end}=    Evaluate    ${end}+${1}
@@ -798,14 +793,12 @@ Read Logger
     ${mirrorCoverLocksMotionState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocksMotionState_start}    end=${mirrorCoverLocksMotionState_end}
     Should Contain X Times    ${mirrorCoverLocksMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${mirrorCoverLocksMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
-    Should Contain X Times    ${mirrorCoverLocksMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${mirrorCoversMotionState_start}=    Get Index From List    ${full_list}    === Event mirrorCoversMotionState received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${mirrorCoversMotionState_start}
     ${mirrorCoversMotionState_end}=    Evaluate    ${end}+${1}
     ${mirrorCoversMotionState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoversMotionState_start}    end=${mirrorCoversMotionState_end}
     Should Contain X Times    ${mirrorCoversMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${mirrorCoversMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
-    Should Contain X Times    ${mirrorCoversMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    1
     ${safetyInterlocks_start}=    Get Index From List    ${full_list}    === Event safetyInterlocks received =${SPACE}
     ${end}=    Get Index From List    ${full_list}    ${SPACE}${SPACE}${SPACE}${SPACE}priority : 1    start=${safetyInterlocks_start}
     ${safetyInterlocks_end}=    Evaluate    ${end}+${1}
