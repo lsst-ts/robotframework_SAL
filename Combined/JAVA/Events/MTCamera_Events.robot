@@ -26,6 +26,7 @@ Start Logger
     [Tags]    functional
     Comment    Executing Combined Java Logger Program.
     ${loggerOutput}=    Start Process    mvn    -Dtest\=${subSystem}EventLogger_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=logger    stdout=${EXECDIR}${/}stdoutLogger.txt    stderr=${EXECDIR}${/}stderrLogger.txt
+    Should Be Equal    ${loggerOutput.returncode}   ${NONE}
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}stdoutLogger.txt
 
 Start Sender
@@ -39,6 +40,7 @@ Start Sender
     END
     Comment    Executing Combined Java Sender Program.
     ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
+    Should Be Equal    ${senderOutput.returncode}   ${NONE}
     ${output}=    Wait For Process    sender    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
@@ -1088,6 +1090,12 @@ Start Sender
     Log Many    ${image_handling_Reb_GeneralConfiguration_list}
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -2206,6 +2214,12 @@ Read Subscriber
     Log Many    ${image_handling_Reb_GeneralConfiguration_list}
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}

@@ -24,7 +24,7 @@ Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
-    Should Contain    "${output}"   "1"
+    Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
@@ -91,7 +91,6 @@ Read Subscriber
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorque : 1    10
     Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${azimuthDrives_start}=    Get Index From List    ${full_list}    === MTMount_azimuthDrives start of topic ===
@@ -113,7 +112,16 @@ Read Subscriber
     ${cameraCableWrap_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrap_start}    end=${cameraCableWrap_end}
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 0    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 1    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 2    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 3    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 4    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 5    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 6    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 7    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 8    1
+    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 9    1
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${elevation_start}=    Get Index From List    ${full_list}    === MTMount_elevation start of topic ===
     ${elevation_end}=    Get Index From List    ${full_list}    === MTMount_elevation end of topic ===
@@ -122,7 +130,6 @@ Read Subscriber
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
-    Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorque : 1    10
     Should Contain X Times    ${elevation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${elevationDrives_start}=    Get Index From List    ${full_list}    === MTMount_elevationDrives start of topic ===

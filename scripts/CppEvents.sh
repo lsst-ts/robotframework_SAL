@@ -101,12 +101,12 @@ function startLogger() {
     if [ $topic ]; then
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=\${subSystem}_Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
-        echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
+        echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
         echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === Event \${component} logger ready =" >> $testSuite
     else
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_logger    alias=\${subSystem}_Logger     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
-        echo "    Should Contain    \"\${output}\"    \"1\"" >> $testSuite
+        echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
         echo "    Wait Until Keyword Succeeds    90s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} loggers ready" >> $testSuite
     fi
     echo "    \${output}=    Get File    \${EXECDIR}\${/}stdout.txt" >> $testSuite
@@ -165,26 +165,29 @@ function readLogger() {
     echo "    Log Many    @{full_list}" >> $testSuite
     if [ $topic ]; then
         echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
-        echo "    Should Contain X Times    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : ${argumentsArray[${#argumentsArray[@]}-1]}    1" >> $testSuite
         readLogger_params $file $topic $topicIndex $testSuite
     else
         echo "    Should Contain    \${output.stdout}    === \${subSystem} loggers ready" >> $testSuite
         itemIndex=1
         for topic in "${topicsArray[@]}"; do
+            ## NOTE: Since the priority field was removed in SAL v6.2, there is no common last parameter for each topic.
+            ## As such, this script now uses the length of the parametersArray to determine end of the slice.
+            unset parametersArray
+            parametersArray=($(getTopicParameters $subSystem $file $topic "Events"))
+            length=${#parametersArray[@]}
+            (( length++ )) ## The end index is exclusive, so increment by 1 to get the full slice.
+            ## Redirect the topic definition file to SALGenerics.xml if $topic is Generic.
             for generic in "${generic_events[@]}"; do
                 [[ $generic == "$topic" ]] && file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
             done
+            ## Get the slice, then test the output.
             echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === Event ${topic} received =\${SPACE}" >> $testSuite
-            echo "    \${end}=    Get Index From List    \${full_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    start=\${${topic}_start}" >> $testSuite
-            echo "    \${${topic}_end}=    Evaluate    \${end}+\${1}" >> $testSuite
-            echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${${topic}_end}" >> $testSuite
-            unset parametersArray
+            echo "    \${end}=    Evaluate    \${${topic}_start}+\${${length}}" >> $testSuite
+            echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${end}" >> $testSuite
             for generic in "${generic_events[@]}"; do
                 [[ $generic == "$topic" ]] && local subSystem=SALGeneric  && local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
             done
-            parametersArray=($(getTopicParameters $subSystem $file $topic "Events"))
             readLogger_params $file $topic $itemIndex $testSuite
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}priority : 1    1" >> $testSuite
             (( itemIndex++ ))
         done
     fi

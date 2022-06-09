@@ -24,7 +24,7 @@ Start Subscriber
     [Tags]    functional
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
-    Should Contain    "${output}"   "1"
+    Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
     Comment    Sleep for 6s to allow DDS time to register all the topics.
     Sleep    6s
@@ -120,16 +120,6 @@ Read Subscriber
     ${motors_start}=    Get Index From List    ${full_list}    === MTRotator_motors start of topic ===
     ${motors_end}=    Get Index From List    ${full_list}    === MTRotator_motors end of topic ===
     ${motors_list}=    Get Slice From List    ${full_list}    start=${motors_start}    end=${motors_end}
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 0    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 1    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 2    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 3    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 4    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 5    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 6    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 7    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 8    1
-    Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrated : 9    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 0    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 1    1
     Should Contain X Times    ${motors_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raw : 2    1

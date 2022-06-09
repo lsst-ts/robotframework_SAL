@@ -26,6 +26,7 @@ Start Logger
     [Tags]    functional
     Comment    Executing Combined Java Logger Program.
     ${loggerOutput}=    Start Process    mvn    -Dtest\=${subSystem}EventLogger_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=logger    stdout=${EXECDIR}${/}stdoutLogger.txt    stderr=${EXECDIR}${/}stderrLogger.txt
+    Should Be Equal    ${loggerOutput.returncode}   ${NONE}
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}stdoutLogger.txt
 
 Start Sender
@@ -39,6 +40,7 @@ Start Sender
     END
     Comment    Executing Combined Java Sender Program.
     ${senderOutput}=    Start Process    mvn    -Dtest\=${subSystem}Event_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersion}_${SALVersion}${Build_Number}${MavenVersion}/    alias=sender    stdout=${EXECDIR}${/}stdoutSender.txt    stderr=${EXECDIR}${/}stderrSender.txt
+    Should Be Equal    ${senderOutput.returncode}   ${NONE}
     ${output}=    Wait For Process    sender    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
@@ -188,30 +190,30 @@ Start Sender
     Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === ATCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === ATCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceConfiguration_start}    end=${focal_plane_ImageDatabaseServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceConfiguration_start}    end=${focal_plane_ImageNameServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameService_GeneralConfiguration_start}    end=${focal_plane_ImageNameService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageNameService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentConfiguration_start}    end=${focal_plane_InstrumentConfig_InstrumentConfiguration_end + 1}
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksConfiguration_start}    end=${focal_plane_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksConfiguration_list}
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_timersConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_timersConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersConfiguration_start}    end=${focal_plane_PeriodicTasks_timersConfiguration_end + 1}
@@ -242,6 +244,12 @@ Start Sender
     Log Many    ${focal_plane_RebTotalPower_LimitsConfiguration_list}
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === ATCamera_focal_plane_RebTotalPower_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === ATCamera_focal_plane_RebTotalPower_LimitsConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_DevicesConfiguration_start}    end=${focal_plane_Reb_DevicesConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -296,12 +304,12 @@ Start Sender
     Log Many    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === ATCamera_focal_plane_WebHooksConfig_VisualizationConfiguration start of topic ===
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === ATCamera_focal_plane_WebHooksConfig_VisualizationConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksConfiguration_start}    end=${daq_monitor_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksConfiguration_list}
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_GeneralConfiguration_start}    end=${daq_monitor_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_timersConfiguration start of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_timersConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersConfiguration_start}    end=${daq_monitor_PeriodicTasks_timersConfiguration_end + 1}
@@ -314,18 +322,18 @@ Start Sender
     Log Many    ${daq_monitor_Stats_StatisticsConfiguration_list}
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === ATCamera_daq_monitor_Stats_StatisticsConfiguration start of topic ===
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === ATCamera_daq_monitor_Stats_StatisticsConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    ${daq_monitor_Stats_buildConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Stats_buildConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildConfiguration_start}    end=${daq_monitor_Stats_buildConfiguration_end + 1}
-    Log Many    ${daq_monitor_Stats_buildConfiguration_list}
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === ATCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === ATCamera_daq_monitor_Stats_buildConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_StoreConfiguration start of topic ===
     ${daq_monitor_StoreConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_StoreConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreConfiguration_start}    end=${daq_monitor_StoreConfiguration_end + 1}
     Log Many    ${daq_monitor_StoreConfiguration_list}
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === ATCamera_daq_monitor_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === ATCamera_daq_monitor_StoreConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_DevicesConfiguration_start}    end=${daq_monitor_Store_DevicesConfiguration_end + 1}
+    Log Many    ${daq_monitor_Store_DevicesConfiguration_list}
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_LimitsConfiguration start of topic ===
     ${daq_monitor_Store_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_LimitsConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsConfiguration_start}    end=${daq_monitor_Store_LimitsConfiguration_end + 1}
@@ -338,24 +346,12 @@ Start Sender
     Log Many    ${daq_monitor_Store_StoreConfiguration_list}
     Should Contain    ${daq_monitor_Store_StoreConfiguration_list}    === ATCamera_daq_monitor_Store_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_Store_StoreConfiguration_list}    === ATCamera_daq_monitor_Store_StoreConfiguration end of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration start of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration end of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_AgentMonitorService_timersConfiguration_start}    end=${ats_power_AgentMonitorService_timersConfiguration_end + 1}
-    Log Many    ${ats_power_AgentMonitorService_timersConfiguration_list}
-    Should Contain    ${ats_power_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration end of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration start of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration end of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_I_LimitsConfiguration_start}    end=${ats_power_Analog_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_Analog_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Analog_I_LimitsConfiguration_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Analog_I_LimitsConfiguration_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration end of topic ===
-    ${ats_power_Analog_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_PowerConfiguration start of topic ===
-    ${ats_power_Analog_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_PowerConfiguration end of topic ===
-    ${ats_power_Analog_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_PowerConfiguration_start}    end=${ats_power_Analog_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Analog_PowerConfiguration_list}
-    Should Contain    ${ats_power_Analog_PowerConfiguration_list}    === ATCamera_ats_power_Analog_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Analog_PowerConfiguration_list}    === ATCamera_ats_power_Analog_PowerConfiguration end of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_V_LimitsConfiguration start of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_V_LimitsConfiguration end of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_V_LimitsConfiguration_start}    end=${ats_power_Analog_V_LimitsConfiguration_end + 1}
@@ -368,12 +364,6 @@ Start Sender
     Log Many    ${ats_power_Aux_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Aux_I_LimitsConfiguration_list}    === ATCamera_ats_power_Aux_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Aux_I_LimitsConfiguration_list}    === ATCamera_ats_power_Aux_I_LimitsConfiguration end of topic ===
-    ${ats_power_Aux_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_PowerConfiguration start of topic ===
-    ${ats_power_Aux_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_PowerConfiguration end of topic ===
-    ${ats_power_Aux_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Aux_PowerConfiguration_start}    end=${ats_power_Aux_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Aux_PowerConfiguration_list}
-    Should Contain    ${ats_power_Aux_PowerConfiguration_list}    === ATCamera_ats_power_Aux_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Aux_PowerConfiguration_list}    === ATCamera_ats_power_Aux_PowerConfiguration end of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_V_LimitsConfiguration start of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_V_LimitsConfiguration end of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Aux_V_LimitsConfiguration_start}    end=${ats_power_Aux_V_LimitsConfiguration_end + 1}
@@ -404,30 +394,12 @@ Start Sender
     Log Many    ${ats_power_ClkLow_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_ClkLow_V_LimitsConfiguration_list}    === ATCamera_ats_power_ClkLow_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_ClkLow_V_LimitsConfiguration_list}    === ATCamera_ats_power_ClkLow_V_LimitsConfiguration end of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration start of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration end of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_ClockHigh_PowerConfiguration_start}    end=${ats_power_ClockHigh_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_ClockHigh_PowerConfiguration_list}
-    Should Contain    ${ats_power_ClockHigh_PowerConfiguration_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_ClockHigh_PowerConfiguration_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration end of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration start of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration end of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_ClockLow_PowerConfiguration_start}    end=${ats_power_ClockLow_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_ClockLow_PowerConfiguration_list}
-    Should Contain    ${ats_power_ClockLow_PowerConfiguration_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_ClockLow_PowerConfiguration_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration end of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration start of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration end of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_I_LimitsConfiguration_start}    end=${ats_power_DPHI_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_DPHI_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_DPHI_I_LimitsConfiguration_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_DPHI_I_LimitsConfiguration_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration end of topic ===
-    ${ats_power_DPHI_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_PowerConfiguration start of topic ===
-    ${ats_power_DPHI_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_PowerConfiguration end of topic ===
-    ${ats_power_DPHI_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_PowerConfiguration_start}    end=${ats_power_DPHI_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_DPHI_PowerConfiguration_list}
-    Should Contain    ${ats_power_DPHI_PowerConfiguration_list}    === ATCamera_ats_power_DPHI_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_DPHI_PowerConfiguration_list}    === ATCamera_ats_power_DPHI_PowerConfiguration end of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_V_LimitsConfiguration start of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_V_LimitsConfiguration end of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_V_LimitsConfiguration_start}    end=${ats_power_DPHI_V_LimitsConfiguration_end + 1}
@@ -440,12 +412,6 @@ Start Sender
     Log Many    ${ats_power_Digital_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Digital_I_LimitsConfiguration_list}    === ATCamera_ats_power_Digital_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Digital_I_LimitsConfiguration_list}    === ATCamera_ats_power_Digital_I_LimitsConfiguration end of topic ===
-    ${ats_power_Digital_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_PowerConfiguration start of topic ===
-    ${ats_power_Digital_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_PowerConfiguration end of topic ===
-    ${ats_power_Digital_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Digital_PowerConfiguration_start}    end=${ats_power_Digital_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Digital_PowerConfiguration_list}
-    Should Contain    ${ats_power_Digital_PowerConfiguration_list}    === ATCamera_ats_power_Digital_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Digital_PowerConfiguration_list}    === ATCamera_ats_power_Digital_PowerConfiguration end of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_V_LimitsConfiguration start of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_V_LimitsConfiguration end of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Digital_V_LimitsConfiguration_start}    end=${ats_power_Digital_V_LimitsConfiguration_end + 1}
@@ -458,12 +424,6 @@ Start Sender
     Log Many    ${ats_power_Fan_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Fan_I_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Fan_I_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_I_LimitsConfiguration end of topic ===
-    ${ats_power_Fan_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_PowerConfiguration start of topic ===
-    ${ats_power_Fan_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_PowerConfiguration end of topic ===
-    ${ats_power_Fan_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Fan_PowerConfiguration_start}    end=${ats_power_Fan_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Fan_PowerConfiguration_list}
-    Should Contain    ${ats_power_Fan_PowerConfiguration_list}    === ATCamera_ats_power_Fan_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Fan_PowerConfiguration_list}    === ATCamera_ats_power_Fan_PowerConfiguration end of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration start of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration end of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Fan_V_LimitsConfiguration_start}    end=${ats_power_Fan_V_LimitsConfiguration_end + 1}
@@ -476,78 +436,66 @@ Start Sender
     Log Many    ${ats_power_HVBias_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_HVBias_I_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_HVBias_I_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration end of topic ===
-    ${ats_power_HVBias_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_PowerConfiguration start of topic ===
-    ${ats_power_HVBias_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_PowerConfiguration end of topic ===
-    ${ats_power_HVBias_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_PowerConfiguration_start}    end=${ats_power_HVBias_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_HVBias_PowerConfiguration_list}
-    Should Contain    ${ats_power_HVBias_PowerConfiguration_list}    === ATCamera_ats_power_HVBias_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_HVBias_PowerConfiguration_list}    === ATCamera_ats_power_HVBias_PowerConfiguration end of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration start of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration end of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_V_LimitsConfiguration_start}    end=${ats_power_HVBias_V_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_HVBias_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_HVBias_V_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_HVBias_V_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration end of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg1_DevicesConfiguration_start}    end=${ats_power_Hameg1_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg1_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg1_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg1_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration end of topic ===
     ${ats_power_Hameg1_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration start of topic ===
     ${ats_power_Hameg1_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration end of topic ===
     ${ats_power_Hameg1_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg1_PowerConfiguration_start}    end=${ats_power_Hameg1_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg1_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg1_PowerConfiguration_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg1_PowerConfiguration_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration end of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg2_DevicesConfiguration_start}    end=${ats_power_Hameg2_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg2_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg2_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg2_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration end of topic ===
     ${ats_power_Hameg2_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration start of topic ===
     ${ats_power_Hameg2_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration end of topic ===
     ${ats_power_Hameg2_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg2_PowerConfiguration_start}    end=${ats_power_Hameg2_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg2_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg2_PowerConfiguration_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg2_PowerConfiguration_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration end of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg3_DevicesConfiguration_start}    end=${ats_power_Hameg3_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg3_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg3_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg3_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration end of topic ===
     ${ats_power_Hameg3_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration start of topic ===
     ${ats_power_Hameg3_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration end of topic ===
     ${ats_power_Hameg3_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg3_PowerConfiguration_start}    end=${ats_power_Hameg3_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg3_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg3_PowerConfiguration_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg3_PowerConfiguration_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration end of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration start of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration end of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Heartbeat_timersConfiguration_start}    end=${ats_power_Heartbeat_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Heartbeat_timersConfiguration_list}
-    Should Contain    ${ats_power_Heartbeat_timersConfiguration_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Heartbeat_timersConfiguration_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration end of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration start of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration end of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Keithley_DevicesConfiguration_start}    end=${ats_power_Keithley_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Keithley_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Keithley_DevicesConfiguration_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Keithley_DevicesConfiguration_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration end of topic ===
     ${ats_power_Keithley_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_PowerConfiguration start of topic ===
     ${ats_power_Keithley_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_PowerConfiguration end of topic ===
     ${ats_power_Keithley_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Keithley_PowerConfiguration_start}    end=${ats_power_Keithley_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Keithley_PowerConfiguration_list}
     Should Contain    ${ats_power_Keithley_PowerConfiguration_list}    === ATCamera_ats_power_Keithley_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Keithley_PowerConfiguration_list}    === ATCamera_ats_power_Keithley_PowerConfiguration end of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration start of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration end of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_check_timersConfiguration_start}    end=${ats_power_Monitor_check_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_check_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_check_timersConfiguration_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_check_timersConfiguration_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration end of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration start of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_publish_timersConfiguration_start}    end=${ats_power_Monitor_publish_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_publish_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration start of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration end of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_update_timersConfiguration_start}    end=${ats_power_Monitor_update_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_update_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_update_timersConfiguration_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_update_timersConfiguration_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration end of topic ===
     ${ats_power_OD_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration start of topic ===
     ${ats_power_OD_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration end of topic ===
     ${ats_power_OD_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_I_LimitsConfiguration_start}    end=${ats_power_OD_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_OD_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_OD_I_LimitsConfiguration_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OD_I_LimitsConfiguration_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration end of topic ===
-    ${ats_power_OD_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_PowerConfiguration start of topic ===
-    ${ats_power_OD_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_PowerConfiguration end of topic ===
-    ${ats_power_OD_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_PowerConfiguration_start}    end=${ats_power_OD_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_OD_PowerConfiguration_list}
-    Should Contain    ${ats_power_OD_PowerConfiguration_list}    === ATCamera_ats_power_OD_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_OD_PowerConfiguration_list}    === ATCamera_ats_power_OD_PowerConfiguration end of topic ===
     ${ats_power_OD_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_V_LimitsConfiguration start of topic ===
     ${ats_power_OD_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_V_LimitsConfiguration end of topic ===
     ${ats_power_OD_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_V_LimitsConfiguration_start}    end=${ats_power_OD_V_LimitsConfiguration_end + 1}
@@ -560,84 +508,60 @@ Start Sender
     Log Many    ${ats_power_OTM_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_OTM_I_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OTM_I_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_I_LimitsConfiguration end of topic ===
-    ${ats_power_OTM_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_PowerConfiguration start of topic ===
-    ${ats_power_OTM_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_PowerConfiguration end of topic ===
-    ${ats_power_OTM_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OTM_PowerConfiguration_start}    end=${ats_power_OTM_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_OTM_PowerConfiguration_list}
-    Should Contain    ${ats_power_OTM_PowerConfiguration_list}    === ATCamera_ats_power_OTM_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_OTM_PowerConfiguration_list}    === ATCamera_ats_power_OTM_PowerConfiguration end of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration start of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration end of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OTM_V_LimitsConfiguration_start}    end=${ats_power_OTM_V_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_OTM_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_OTM_V_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OTM_V_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration end of topic ===
-    ${ats_power_Power_state_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Power_state_timersConfiguration start of topic ===
-    ${ats_power_Power_state_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Power_state_timersConfiguration end of topic ===
-    ${ats_power_Power_state_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Power_state_timersConfiguration_start}    end=${ats_power_Power_state_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Power_state_timersConfiguration_list}
-    Should Contain    ${ats_power_Power_state_timersConfiguration_list}    === ATCamera_ats_power_Power_state_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Power_state_timersConfiguration_list}    === ATCamera_ats_power_Power_state_timersConfiguration end of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration start of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_RuntimeInfo_timersConfiguration_start}    end=${ats_power_RuntimeInfo_timersConfiguration_end + 1}
-    Log Many    ${ats_power_RuntimeInfo_timersConfiguration_list}
-    Should Contain    ${ats_power_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_power_SchedulersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_SchedulersConfiguration start of topic ===
-    ${ats_power_SchedulersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_SchedulersConfiguration end of topic ===
-    ${ats_power_SchedulersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_SchedulersConfiguration_start}    end=${ats_power_SchedulersConfiguration_end + 1}
-    Log Many    ${ats_power_SchedulersConfiguration_list}
-    Should Contain    ${ats_power_SchedulersConfiguration_list}    === ATCamera_ats_power_SchedulersConfiguration start of topic ===
-    Should Contain    ${ats_power_SchedulersConfiguration_list}    === ATCamera_ats_power_SchedulersConfiguration end of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration start of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration end of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_AgentMonitorService_timersConfiguration_start}    end=${ats_AgentMonitorService_timersConfiguration_end + 1}
-    Log Many    ${ats_AgentMonitorService_timersConfiguration_list}
-    Should Contain    ${ats_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration start of topic ===
-    Should Contain    ${ats_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_PeriodicTasks_GeneralConfiguration_start}    end=${ats_power_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${ats_power_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_PeriodicTasks_timersConfiguration_start}    end=${ats_power_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${ats_power_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     ${ats_CryoCon_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DeviceConfiguration_start}    end=${ats_CryoCon_DeviceConfiguration_end + 1}
     Log Many    ${ats_CryoCon_DeviceConfiguration_list}
     Should Contain    ${ats_CryoCon_DeviceConfiguration_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     Should Contain    ${ats_CryoCon_DeviceConfiguration_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
-    ${ats_Heartbeat_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Heartbeat_timersConfiguration start of topic ===
-    ${ats_Heartbeat_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Heartbeat_timersConfiguration end of topic ===
-    ${ats_Heartbeat_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Heartbeat_timersConfiguration_start}    end=${ats_Heartbeat_timersConfiguration_end + 1}
-    Log Many    ${ats_Heartbeat_timersConfiguration_list}
-    Should Contain    ${ats_Heartbeat_timersConfiguration_list}    === ATCamera_ats_Heartbeat_timersConfiguration start of topic ===
-    Should Contain    ${ats_Heartbeat_timersConfiguration_list}    === ATCamera_ats_Heartbeat_timersConfiguration end of topic ===
-    ${ats_Monitor_check_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_check_timersConfiguration start of topic ===
-    ${ats_Monitor_check_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_check_timersConfiguration end of topic ===
-    ${ats_Monitor_check_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_check_timersConfiguration_start}    end=${ats_Monitor_check_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_check_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_check_timersConfiguration_list}    === ATCamera_ats_Monitor_check_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_check_timersConfiguration_list}    === ATCamera_ats_Monitor_check_timersConfiguration end of topic ===
-    ${ats_Monitor_publish_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_publish_timersConfiguration start of topic ===
-    ${ats_Monitor_publish_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_Monitor_publish_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_publish_timersConfiguration_start}    end=${ats_Monitor_publish_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_publish_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_Monitor_publish_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_Monitor_update_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_update_timersConfiguration start of topic ===
-    ${ats_Monitor_update_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_update_timersConfiguration end of topic ===
-    ${ats_Monitor_update_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_update_timersConfiguration_start}    end=${ats_Monitor_update_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_update_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_update_timersConfiguration_list}    === ATCamera_ats_Monitor_update_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_update_timersConfiguration_list}    === ATCamera_ats_Monitor_update_timersConfiguration end of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration start of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_RuntimeInfo_timersConfiguration_start}    end=${ats_RuntimeInfo_timersConfiguration_end + 1}
-    Log Many    ${ats_RuntimeInfo_timersConfiguration_list}
-    Should Contain    ${ats_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration start of topic ===
-    Should Contain    ${ats_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_SchedulersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_SchedulersConfiguration start of topic ===
-    ${ats_SchedulersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_SchedulersConfiguration end of topic ===
-    ${ats_SchedulersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_SchedulersConfiguration_start}    end=${ats_SchedulersConfiguration_end + 1}
-    Log Many    ${ats_SchedulersConfiguration_list}
-    Should Contain    ${ats_SchedulersConfiguration_list}    === ATCamera_ats_SchedulersConfiguration start of topic ===
-    Should Contain    ${ats_SchedulersConfiguration_list}    === ATCamera_ats_SchedulersConfiguration end of topic ===
+    ${ats_CryoCon_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DevicesConfiguration start of topic ===
+    ${ats_CryoCon_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DevicesConfiguration end of topic ===
+    ${ats_CryoCon_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DevicesConfiguration_start}    end=${ats_CryoCon_DevicesConfiguration_end + 1}
+    Log Many    ${ats_CryoCon_DevicesConfiguration_list}
+    Should Contain    ${ats_CryoCon_DevicesConfiguration_list}    === ATCamera_ats_CryoCon_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_CryoCon_DevicesConfiguration_list}    === ATCamera_ats_CryoCon_DevicesConfiguration end of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_PeriodicTasks_GeneralConfiguration_start}    end=${ats_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${ats_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${ats_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration start of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_PeriodicTasks_timersConfiguration_start}    end=${ats_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${ats_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${ats_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${ats_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration start of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration end of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Pfeiffer_DeviceConfiguration_start}    end=${ats_Pfeiffer_DeviceConfiguration_end + 1}
+    Log Many    ${ats_Pfeiffer_DeviceConfiguration_list}
+    Should Contain    ${ats_Pfeiffer_DeviceConfiguration_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration start of topic ===
+    Should Contain    ${ats_Pfeiffer_DeviceConfiguration_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration end of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration start of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration end of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Pfeiffer_DevicesConfiguration_start}    end=${ats_Pfeiffer_DevicesConfiguration_end + 1}
+    Log Many    ${ats_Pfeiffer_DevicesConfiguration_list}
+    Should Contain    ${ats_Pfeiffer_DevicesConfiguration_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_Pfeiffer_DevicesConfiguration_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration end of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_TempCCDSetPoint_LimitsConfiguration start of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_TempCCDSetPoint_LimitsConfiguration end of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_TempCCDSetPoint_LimitsConfiguration_start}    end=${ats_TempCCDSetPoint_LimitsConfiguration_end + 1}
@@ -668,18 +592,48 @@ Start Sender
     Log Many    ${ats_Vacuum_LimitsConfiguration_list}
     Should Contain    ${ats_Vacuum_LimitsConfiguration_list}    === ATCamera_ats_Vacuum_LimitsConfiguration start of topic ===
     Should Contain    ${ats_Vacuum_LimitsConfiguration_list}    === ATCamera_ats_Vacuum_LimitsConfiguration end of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration start of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration end of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasksConfiguration_start}    end=${bonn_shutter_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasksConfiguration_list}
-    Should Contain    ${bonn_shutter_PeriodicTasksConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration end of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration start of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration end of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_DevicesConfiguration_start}    end=${bonn_shutter_Device_DevicesConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_DevicesConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_DevicesConfiguration_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_DevicesConfiguration_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration end of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration start of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration end of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_GeneralConfiguration_start}    end=${bonn_shutter_Device_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_GeneralConfiguration_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_GeneralConfiguration_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration end of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration start of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration end of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_LimitsConfiguration_start}    end=${bonn_shutter_Device_LimitsConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_LimitsConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_LimitsConfiguration_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_LimitsConfiguration_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration end of topic ===
+    ${bonn_shutter_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_GeneralConfiguration start of topic ===
+    ${bonn_shutter_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_GeneralConfiguration end of topic ===
+    ${bonn_shutter_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_GeneralConfiguration_start}    end=${bonn_shutter_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_GeneralConfiguration_list}    === ATCamera_bonn_shutter_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_GeneralConfiguration_list}    === ATCamera_bonn_shutter_GeneralConfiguration end of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_GeneralConfiguration_start}    end=${bonn_shutter_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration end of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration start of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration end of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_timersConfiguration_start}    end=${bonn_shutter_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_CommandsConfiguration_start}    end=${image_handling_ImageHandler_CommandsConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_CommandsConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_DAQConfiguration start of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_DAQConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_DAQConfiguration_start}    end=${image_handling_ImageHandler_DAQConfiguration_end + 1}
@@ -692,30 +646,30 @@ Start Sender
     Log Many    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === ATCamera_image_handling_ImageHandler_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === ATCamera_image_handling_ImageHandler_FitsHandlingConfiguration end of topic ===
-    ${image_handling_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasksConfiguration start of topic ===
-    ${image_handling_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasksConfiguration end of topic ===
-    ${image_handling_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasksConfiguration_start}    end=${image_handling_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${image_handling_PeriodicTasksConfiguration_list}
-    Should Contain    ${image_handling_PeriodicTasksConfiguration_list}    === ATCamera_image_handling_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${image_handling_PeriodicTasksConfiguration_list}    === ATCamera_image_handling_PeriodicTasksConfiguration end of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_GeneralConfiguration_start}    end=${image_handling_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${image_handling_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_timersConfiguration_start}    end=${image_handling_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${image_handling_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
-    ${image_handling_RebConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_RebConfiguration start of topic ===
-    ${image_handling_RebConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_RebConfiguration end of topic ===
-    ${image_handling_RebConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_RebConfiguration_start}    end=${image_handling_RebConfiguration_end + 1}
-    Log Many    ${image_handling_RebConfiguration_list}
-    Should Contain    ${image_handling_RebConfiguration_list}    === ATCamera_image_handling_RebConfiguration start of topic ===
-    Should Contain    ${image_handling_RebConfiguration_list}    === ATCamera_image_handling_RebConfiguration end of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_FitsHandlingConfiguration_start}    end=${image_handling_Reb_FitsHandlingConfiguration_end + 1}
     Log Many    ${image_handling_Reb_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
+    ${image_handling_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_GeneralConfiguration start of topic ===
+    ${image_handling_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${image_handling_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_GeneralConfiguration_start}    end=${image_handling_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_Reb_GeneralConfiguration_list}
+    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === ATCamera_image_handling_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === ATCamera_image_handling_Reb_GeneralConfiguration end of topic ===
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === ATCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === ATCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}
@@ -746,6 +700,12 @@ Start Sender
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -964,30 +924,30 @@ Read Subscriber
     Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === ATCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === ATCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceConfiguration_start}    end=${focal_plane_ImageDatabaseServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceConfiguration_start}    end=${focal_plane_ImageNameServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === ATCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameService_GeneralConfiguration_start}    end=${focal_plane_ImageNameService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageNameService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === ATCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentConfiguration_start}    end=${focal_plane_InstrumentConfig_InstrumentConfiguration_end + 1}
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksConfiguration_start}    end=${focal_plane_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksConfiguration_list}
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === ATCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_timersConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_timersConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersConfiguration_start}    end=${focal_plane_PeriodicTasks_timersConfiguration_end + 1}
@@ -1018,6 +978,12 @@ Read Subscriber
     Log Many    ${focal_plane_RebTotalPower_LimitsConfiguration_list}
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === ATCamera_focal_plane_RebTotalPower_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === ATCamera_focal_plane_RebTotalPower_LimitsConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_DevicesConfiguration_start}    end=${focal_plane_Reb_DevicesConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -1072,12 +1038,12 @@ Read Subscriber
     Log Many    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === ATCamera_focal_plane_WebHooksConfig_VisualizationConfiguration start of topic ===
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === ATCamera_focal_plane_WebHooksConfig_VisualizationConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksConfiguration_start}    end=${daq_monitor_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksConfiguration_list}
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_GeneralConfiguration_start}    end=${daq_monitor_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_timersConfiguration start of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_PeriodicTasks_timersConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersConfiguration_start}    end=${daq_monitor_PeriodicTasks_timersConfiguration_end + 1}
@@ -1090,18 +1056,18 @@ Read Subscriber
     Log Many    ${daq_monitor_Stats_StatisticsConfiguration_list}
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === ATCamera_daq_monitor_Stats_StatisticsConfiguration start of topic ===
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === ATCamera_daq_monitor_Stats_StatisticsConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    ${daq_monitor_Stats_buildConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Stats_buildConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildConfiguration_start}    end=${daq_monitor_Stats_buildConfiguration_end + 1}
-    Log Many    ${daq_monitor_Stats_buildConfiguration_list}
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === ATCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === ATCamera_daq_monitor_Stats_buildConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_StoreConfiguration start of topic ===
     ${daq_monitor_StoreConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_StoreConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreConfiguration_start}    end=${daq_monitor_StoreConfiguration_end + 1}
     Log Many    ${daq_monitor_StoreConfiguration_list}
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === ATCamera_daq_monitor_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === ATCamera_daq_monitor_StoreConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_DevicesConfiguration_start}    end=${daq_monitor_Store_DevicesConfiguration_end + 1}
+    Log Many    ${daq_monitor_Store_DevicesConfiguration_list}
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === ATCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_LimitsConfiguration start of topic ===
     ${daq_monitor_Store_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Store_LimitsConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsConfiguration_start}    end=${daq_monitor_Store_LimitsConfiguration_end + 1}
@@ -1114,24 +1080,12 @@ Read Subscriber
     Log Many    ${daq_monitor_Store_StoreConfiguration_list}
     Should Contain    ${daq_monitor_Store_StoreConfiguration_list}    === ATCamera_daq_monitor_Store_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_Store_StoreConfiguration_list}    === ATCamera_daq_monitor_Store_StoreConfiguration end of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration start of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration end of topic ===
-    ${ats_power_AgentMonitorService_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_AgentMonitorService_timersConfiguration_start}    end=${ats_power_AgentMonitorService_timersConfiguration_end + 1}
-    Log Many    ${ats_power_AgentMonitorService_timersConfiguration_list}
-    Should Contain    ${ats_power_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_power_AgentMonitorService_timersConfiguration end of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration start of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration end of topic ===
     ${ats_power_Analog_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_I_LimitsConfiguration_start}    end=${ats_power_Analog_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_Analog_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Analog_I_LimitsConfiguration_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Analog_I_LimitsConfiguration_list}    === ATCamera_ats_power_Analog_I_LimitsConfiguration end of topic ===
-    ${ats_power_Analog_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_PowerConfiguration start of topic ===
-    ${ats_power_Analog_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_PowerConfiguration end of topic ===
-    ${ats_power_Analog_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_PowerConfiguration_start}    end=${ats_power_Analog_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Analog_PowerConfiguration_list}
-    Should Contain    ${ats_power_Analog_PowerConfiguration_list}    === ATCamera_ats_power_Analog_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Analog_PowerConfiguration_list}    === ATCamera_ats_power_Analog_PowerConfiguration end of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_V_LimitsConfiguration start of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Analog_V_LimitsConfiguration end of topic ===
     ${ats_power_Analog_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Analog_V_LimitsConfiguration_start}    end=${ats_power_Analog_V_LimitsConfiguration_end + 1}
@@ -1144,12 +1098,6 @@ Read Subscriber
     Log Many    ${ats_power_Aux_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Aux_I_LimitsConfiguration_list}    === ATCamera_ats_power_Aux_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Aux_I_LimitsConfiguration_list}    === ATCamera_ats_power_Aux_I_LimitsConfiguration end of topic ===
-    ${ats_power_Aux_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_PowerConfiguration start of topic ===
-    ${ats_power_Aux_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_PowerConfiguration end of topic ===
-    ${ats_power_Aux_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Aux_PowerConfiguration_start}    end=${ats_power_Aux_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Aux_PowerConfiguration_list}
-    Should Contain    ${ats_power_Aux_PowerConfiguration_list}    === ATCamera_ats_power_Aux_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Aux_PowerConfiguration_list}    === ATCamera_ats_power_Aux_PowerConfiguration end of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_V_LimitsConfiguration start of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Aux_V_LimitsConfiguration end of topic ===
     ${ats_power_Aux_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Aux_V_LimitsConfiguration_start}    end=${ats_power_Aux_V_LimitsConfiguration_end + 1}
@@ -1180,30 +1128,12 @@ Read Subscriber
     Log Many    ${ats_power_ClkLow_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_ClkLow_V_LimitsConfiguration_list}    === ATCamera_ats_power_ClkLow_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_ClkLow_V_LimitsConfiguration_list}    === ATCamera_ats_power_ClkLow_V_LimitsConfiguration end of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration start of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration end of topic ===
-    ${ats_power_ClockHigh_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_ClockHigh_PowerConfiguration_start}    end=${ats_power_ClockHigh_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_ClockHigh_PowerConfiguration_list}
-    Should Contain    ${ats_power_ClockHigh_PowerConfiguration_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_ClockHigh_PowerConfiguration_list}    === ATCamera_ats_power_ClockHigh_PowerConfiguration end of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration start of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration end of topic ===
-    ${ats_power_ClockLow_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_ClockLow_PowerConfiguration_start}    end=${ats_power_ClockLow_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_ClockLow_PowerConfiguration_list}
-    Should Contain    ${ats_power_ClockLow_PowerConfiguration_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_ClockLow_PowerConfiguration_list}    === ATCamera_ats_power_ClockLow_PowerConfiguration end of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration start of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration end of topic ===
     ${ats_power_DPHI_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_I_LimitsConfiguration_start}    end=${ats_power_DPHI_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_DPHI_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_DPHI_I_LimitsConfiguration_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_DPHI_I_LimitsConfiguration_list}    === ATCamera_ats_power_DPHI_I_LimitsConfiguration end of topic ===
-    ${ats_power_DPHI_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_PowerConfiguration start of topic ===
-    ${ats_power_DPHI_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_PowerConfiguration end of topic ===
-    ${ats_power_DPHI_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_PowerConfiguration_start}    end=${ats_power_DPHI_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_DPHI_PowerConfiguration_list}
-    Should Contain    ${ats_power_DPHI_PowerConfiguration_list}    === ATCamera_ats_power_DPHI_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_DPHI_PowerConfiguration_list}    === ATCamera_ats_power_DPHI_PowerConfiguration end of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_V_LimitsConfiguration start of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_DPHI_V_LimitsConfiguration end of topic ===
     ${ats_power_DPHI_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_DPHI_V_LimitsConfiguration_start}    end=${ats_power_DPHI_V_LimitsConfiguration_end + 1}
@@ -1216,12 +1146,6 @@ Read Subscriber
     Log Many    ${ats_power_Digital_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Digital_I_LimitsConfiguration_list}    === ATCamera_ats_power_Digital_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Digital_I_LimitsConfiguration_list}    === ATCamera_ats_power_Digital_I_LimitsConfiguration end of topic ===
-    ${ats_power_Digital_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_PowerConfiguration start of topic ===
-    ${ats_power_Digital_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_PowerConfiguration end of topic ===
-    ${ats_power_Digital_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Digital_PowerConfiguration_start}    end=${ats_power_Digital_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Digital_PowerConfiguration_list}
-    Should Contain    ${ats_power_Digital_PowerConfiguration_list}    === ATCamera_ats_power_Digital_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Digital_PowerConfiguration_list}    === ATCamera_ats_power_Digital_PowerConfiguration end of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_V_LimitsConfiguration start of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Digital_V_LimitsConfiguration end of topic ===
     ${ats_power_Digital_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Digital_V_LimitsConfiguration_start}    end=${ats_power_Digital_V_LimitsConfiguration_end + 1}
@@ -1234,12 +1158,6 @@ Read Subscriber
     Log Many    ${ats_power_Fan_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_Fan_I_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Fan_I_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_I_LimitsConfiguration end of topic ===
-    ${ats_power_Fan_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_PowerConfiguration start of topic ===
-    ${ats_power_Fan_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_PowerConfiguration end of topic ===
-    ${ats_power_Fan_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Fan_PowerConfiguration_start}    end=${ats_power_Fan_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_Fan_PowerConfiguration_list}
-    Should Contain    ${ats_power_Fan_PowerConfiguration_list}    === ATCamera_ats_power_Fan_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_Fan_PowerConfiguration_list}    === ATCamera_ats_power_Fan_PowerConfiguration end of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration start of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration end of topic ===
     ${ats_power_Fan_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Fan_V_LimitsConfiguration_start}    end=${ats_power_Fan_V_LimitsConfiguration_end + 1}
@@ -1252,78 +1170,66 @@ Read Subscriber
     Log Many    ${ats_power_HVBias_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_HVBias_I_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_HVBias_I_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration end of topic ===
-    ${ats_power_HVBias_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_PowerConfiguration start of topic ===
-    ${ats_power_HVBias_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_PowerConfiguration end of topic ===
-    ${ats_power_HVBias_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_PowerConfiguration_start}    end=${ats_power_HVBias_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_HVBias_PowerConfiguration_list}
-    Should Contain    ${ats_power_HVBias_PowerConfiguration_list}    === ATCamera_ats_power_HVBias_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_HVBias_PowerConfiguration_list}    === ATCamera_ats_power_HVBias_PowerConfiguration end of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration start of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration end of topic ===
     ${ats_power_HVBias_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_V_LimitsConfiguration_start}    end=${ats_power_HVBias_V_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_HVBias_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_HVBias_V_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_HVBias_V_LimitsConfiguration_list}    === ATCamera_ats_power_HVBias_V_LimitsConfiguration end of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg1_DevicesConfiguration_start}    end=${ats_power_Hameg1_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg1_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg1_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg1_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg1_DevicesConfiguration end of topic ===
     ${ats_power_Hameg1_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration start of topic ===
     ${ats_power_Hameg1_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration end of topic ===
     ${ats_power_Hameg1_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg1_PowerConfiguration_start}    end=${ats_power_Hameg1_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg1_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg1_PowerConfiguration_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg1_PowerConfiguration_list}    === ATCamera_ats_power_Hameg1_PowerConfiguration end of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg2_DevicesConfiguration_start}    end=${ats_power_Hameg2_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg2_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg2_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg2_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg2_DevicesConfiguration end of topic ===
     ${ats_power_Hameg2_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration start of topic ===
     ${ats_power_Hameg2_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration end of topic ===
     ${ats_power_Hameg2_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg2_PowerConfiguration_start}    end=${ats_power_Hameg2_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg2_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg2_PowerConfiguration_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg2_PowerConfiguration_list}    === ATCamera_ats_power_Hameg2_PowerConfiguration end of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration start of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration end of topic ===
+    ${ats_power_Hameg3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg3_DevicesConfiguration_start}    end=${ats_power_Hameg3_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Hameg3_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Hameg3_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Hameg3_DevicesConfiguration_list}    === ATCamera_ats_power_Hameg3_DevicesConfiguration end of topic ===
     ${ats_power_Hameg3_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration start of topic ===
     ${ats_power_Hameg3_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration end of topic ===
     ${ats_power_Hameg3_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Hameg3_PowerConfiguration_start}    end=${ats_power_Hameg3_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Hameg3_PowerConfiguration_list}
     Should Contain    ${ats_power_Hameg3_PowerConfiguration_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Hameg3_PowerConfiguration_list}    === ATCamera_ats_power_Hameg3_PowerConfiguration end of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration start of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration end of topic ===
-    ${ats_power_Heartbeat_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Heartbeat_timersConfiguration_start}    end=${ats_power_Heartbeat_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Heartbeat_timersConfiguration_list}
-    Should Contain    ${ats_power_Heartbeat_timersConfiguration_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Heartbeat_timersConfiguration_list}    === ATCamera_ats_power_Heartbeat_timersConfiguration end of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration start of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration end of topic ===
+    ${ats_power_Keithley_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Keithley_DevicesConfiguration_start}    end=${ats_power_Keithley_DevicesConfiguration_end + 1}
+    Log Many    ${ats_power_Keithley_DevicesConfiguration_list}
+    Should Contain    ${ats_power_Keithley_DevicesConfiguration_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_power_Keithley_DevicesConfiguration_list}    === ATCamera_ats_power_Keithley_DevicesConfiguration end of topic ===
     ${ats_power_Keithley_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_PowerConfiguration start of topic ===
     ${ats_power_Keithley_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Keithley_PowerConfiguration end of topic ===
     ${ats_power_Keithley_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Keithley_PowerConfiguration_start}    end=${ats_power_Keithley_PowerConfiguration_end + 1}
     Log Many    ${ats_power_Keithley_PowerConfiguration_list}
     Should Contain    ${ats_power_Keithley_PowerConfiguration_list}    === ATCamera_ats_power_Keithley_PowerConfiguration start of topic ===
     Should Contain    ${ats_power_Keithley_PowerConfiguration_list}    === ATCamera_ats_power_Keithley_PowerConfiguration end of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration start of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration end of topic ===
-    ${ats_power_Monitor_check_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_check_timersConfiguration_start}    end=${ats_power_Monitor_check_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_check_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_check_timersConfiguration_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_check_timersConfiguration_list}    === ATCamera_ats_power_Monitor_check_timersConfiguration end of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration start of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_power_Monitor_publish_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_publish_timersConfiguration_start}    end=${ats_power_Monitor_publish_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_publish_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_power_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration start of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration end of topic ===
-    ${ats_power_Monitor_update_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Monitor_update_timersConfiguration_start}    end=${ats_power_Monitor_update_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Monitor_update_timersConfiguration_list}
-    Should Contain    ${ats_power_Monitor_update_timersConfiguration_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Monitor_update_timersConfiguration_list}    === ATCamera_ats_power_Monitor_update_timersConfiguration end of topic ===
     ${ats_power_OD_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration start of topic ===
     ${ats_power_OD_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration end of topic ===
     ${ats_power_OD_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_I_LimitsConfiguration_start}    end=${ats_power_OD_I_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_OD_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_OD_I_LimitsConfiguration_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OD_I_LimitsConfiguration_list}    === ATCamera_ats_power_OD_I_LimitsConfiguration end of topic ===
-    ${ats_power_OD_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_PowerConfiguration start of topic ===
-    ${ats_power_OD_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_PowerConfiguration end of topic ===
-    ${ats_power_OD_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_PowerConfiguration_start}    end=${ats_power_OD_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_OD_PowerConfiguration_list}
-    Should Contain    ${ats_power_OD_PowerConfiguration_list}    === ATCamera_ats_power_OD_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_OD_PowerConfiguration_list}    === ATCamera_ats_power_OD_PowerConfiguration end of topic ===
     ${ats_power_OD_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_V_LimitsConfiguration start of topic ===
     ${ats_power_OD_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OD_V_LimitsConfiguration end of topic ===
     ${ats_power_OD_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OD_V_LimitsConfiguration_start}    end=${ats_power_OD_V_LimitsConfiguration_end + 1}
@@ -1336,84 +1242,60 @@ Read Subscriber
     Log Many    ${ats_power_OTM_I_LimitsConfiguration_list}
     Should Contain    ${ats_power_OTM_I_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_I_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OTM_I_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_I_LimitsConfiguration end of topic ===
-    ${ats_power_OTM_PowerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_PowerConfiguration start of topic ===
-    ${ats_power_OTM_PowerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_PowerConfiguration end of topic ===
-    ${ats_power_OTM_PowerConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OTM_PowerConfiguration_start}    end=${ats_power_OTM_PowerConfiguration_end + 1}
-    Log Many    ${ats_power_OTM_PowerConfiguration_list}
-    Should Contain    ${ats_power_OTM_PowerConfiguration_list}    === ATCamera_ats_power_OTM_PowerConfiguration start of topic ===
-    Should Contain    ${ats_power_OTM_PowerConfiguration_list}    === ATCamera_ats_power_OTM_PowerConfiguration end of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration start of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration end of topic ===
     ${ats_power_OTM_V_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_OTM_V_LimitsConfiguration_start}    end=${ats_power_OTM_V_LimitsConfiguration_end + 1}
     Log Many    ${ats_power_OTM_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_OTM_V_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_OTM_V_LimitsConfiguration_list}    === ATCamera_ats_power_OTM_V_LimitsConfiguration end of topic ===
-    ${ats_power_Power_state_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Power_state_timersConfiguration start of topic ===
-    ${ats_power_Power_state_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_Power_state_timersConfiguration end of topic ===
-    ${ats_power_Power_state_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_Power_state_timersConfiguration_start}    end=${ats_power_Power_state_timersConfiguration_end + 1}
-    Log Many    ${ats_power_Power_state_timersConfiguration_list}
-    Should Contain    ${ats_power_Power_state_timersConfiguration_list}    === ATCamera_ats_power_Power_state_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_Power_state_timersConfiguration_list}    === ATCamera_ats_power_Power_state_timersConfiguration end of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration start of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_power_RuntimeInfo_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_RuntimeInfo_timersConfiguration_start}    end=${ats_power_RuntimeInfo_timersConfiguration_end + 1}
-    Log Many    ${ats_power_RuntimeInfo_timersConfiguration_list}
-    Should Contain    ${ats_power_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration start of topic ===
-    Should Contain    ${ats_power_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_power_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_power_SchedulersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_SchedulersConfiguration start of topic ===
-    ${ats_power_SchedulersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_SchedulersConfiguration end of topic ===
-    ${ats_power_SchedulersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_SchedulersConfiguration_start}    end=${ats_power_SchedulersConfiguration_end + 1}
-    Log Many    ${ats_power_SchedulersConfiguration_list}
-    Should Contain    ${ats_power_SchedulersConfiguration_list}    === ATCamera_ats_power_SchedulersConfiguration start of topic ===
-    Should Contain    ${ats_power_SchedulersConfiguration_list}    === ATCamera_ats_power_SchedulersConfiguration end of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration start of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration end of topic ===
-    ${ats_AgentMonitorService_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_AgentMonitorService_timersConfiguration_start}    end=${ats_AgentMonitorService_timersConfiguration_end + 1}
-    Log Many    ${ats_AgentMonitorService_timersConfiguration_list}
-    Should Contain    ${ats_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration start of topic ===
-    Should Contain    ${ats_AgentMonitorService_timersConfiguration_list}    === ATCamera_ats_AgentMonitorService_timersConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_PeriodicTasks_GeneralConfiguration_start}    end=${ats_power_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${ats_power_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_power_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_PeriodicTasks_timersConfiguration_start}    end=${ats_power_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${ats_power_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     ${ats_CryoCon_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DeviceConfiguration_start}    end=${ats_CryoCon_DeviceConfiguration_end + 1}
     Log Many    ${ats_CryoCon_DeviceConfiguration_list}
     Should Contain    ${ats_CryoCon_DeviceConfiguration_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     Should Contain    ${ats_CryoCon_DeviceConfiguration_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
-    ${ats_Heartbeat_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Heartbeat_timersConfiguration start of topic ===
-    ${ats_Heartbeat_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Heartbeat_timersConfiguration end of topic ===
-    ${ats_Heartbeat_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Heartbeat_timersConfiguration_start}    end=${ats_Heartbeat_timersConfiguration_end + 1}
-    Log Many    ${ats_Heartbeat_timersConfiguration_list}
-    Should Contain    ${ats_Heartbeat_timersConfiguration_list}    === ATCamera_ats_Heartbeat_timersConfiguration start of topic ===
-    Should Contain    ${ats_Heartbeat_timersConfiguration_list}    === ATCamera_ats_Heartbeat_timersConfiguration end of topic ===
-    ${ats_Monitor_check_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_check_timersConfiguration start of topic ===
-    ${ats_Monitor_check_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_check_timersConfiguration end of topic ===
-    ${ats_Monitor_check_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_check_timersConfiguration_start}    end=${ats_Monitor_check_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_check_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_check_timersConfiguration_list}    === ATCamera_ats_Monitor_check_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_check_timersConfiguration_list}    === ATCamera_ats_Monitor_check_timersConfiguration end of topic ===
-    ${ats_Monitor_publish_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_publish_timersConfiguration start of topic ===
-    ${ats_Monitor_publish_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_Monitor_publish_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_publish_timersConfiguration_start}    end=${ats_Monitor_publish_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_publish_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_Monitor_publish_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_publish_timersConfiguration_list}    === ATCamera_ats_Monitor_publish_timersConfiguration end of topic ===
-    ${ats_Monitor_update_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_update_timersConfiguration start of topic ===
-    ${ats_Monitor_update_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Monitor_update_timersConfiguration end of topic ===
-    ${ats_Monitor_update_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Monitor_update_timersConfiguration_start}    end=${ats_Monitor_update_timersConfiguration_end + 1}
-    Log Many    ${ats_Monitor_update_timersConfiguration_list}
-    Should Contain    ${ats_Monitor_update_timersConfiguration_list}    === ATCamera_ats_Monitor_update_timersConfiguration start of topic ===
-    Should Contain    ${ats_Monitor_update_timersConfiguration_list}    === ATCamera_ats_Monitor_update_timersConfiguration end of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration start of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_RuntimeInfo_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_RuntimeInfo_timersConfiguration_start}    end=${ats_RuntimeInfo_timersConfiguration_end + 1}
-    Log Many    ${ats_RuntimeInfo_timersConfiguration_list}
-    Should Contain    ${ats_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration start of topic ===
-    Should Contain    ${ats_RuntimeInfo_timersConfiguration_list}    === ATCamera_ats_RuntimeInfo_timersConfiguration end of topic ===
-    ${ats_SchedulersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_SchedulersConfiguration start of topic ===
-    ${ats_SchedulersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_SchedulersConfiguration end of topic ===
-    ${ats_SchedulersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_SchedulersConfiguration_start}    end=${ats_SchedulersConfiguration_end + 1}
-    Log Many    ${ats_SchedulersConfiguration_list}
-    Should Contain    ${ats_SchedulersConfiguration_list}    === ATCamera_ats_SchedulersConfiguration start of topic ===
-    Should Contain    ${ats_SchedulersConfiguration_list}    === ATCamera_ats_SchedulersConfiguration end of topic ===
+    ${ats_CryoCon_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DevicesConfiguration start of topic ===
+    ${ats_CryoCon_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DevicesConfiguration end of topic ===
+    ${ats_CryoCon_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DevicesConfiguration_start}    end=${ats_CryoCon_DevicesConfiguration_end + 1}
+    Log Many    ${ats_CryoCon_DevicesConfiguration_list}
+    Should Contain    ${ats_CryoCon_DevicesConfiguration_list}    === ATCamera_ats_CryoCon_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_CryoCon_DevicesConfiguration_list}    === ATCamera_ats_CryoCon_DevicesConfiguration end of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_PeriodicTasks_GeneralConfiguration_start}    end=${ats_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${ats_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${ats_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_ats_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration start of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_PeriodicTasks_timersConfiguration_start}    end=${ats_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${ats_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${ats_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${ats_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration start of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration end of topic ===
+    ${ats_Pfeiffer_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Pfeiffer_DeviceConfiguration_start}    end=${ats_Pfeiffer_DeviceConfiguration_end + 1}
+    Log Many    ${ats_Pfeiffer_DeviceConfiguration_list}
+    Should Contain    ${ats_Pfeiffer_DeviceConfiguration_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration start of topic ===
+    Should Contain    ${ats_Pfeiffer_DeviceConfiguration_list}    === ATCamera_ats_Pfeiffer_DeviceConfiguration end of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration start of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration end of topic ===
+    ${ats_Pfeiffer_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_Pfeiffer_DevicesConfiguration_start}    end=${ats_Pfeiffer_DevicesConfiguration_end + 1}
+    Log Many    ${ats_Pfeiffer_DevicesConfiguration_list}
+    Should Contain    ${ats_Pfeiffer_DevicesConfiguration_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration start of topic ===
+    Should Contain    ${ats_Pfeiffer_DevicesConfiguration_list}    === ATCamera_ats_Pfeiffer_DevicesConfiguration end of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_TempCCDSetPoint_LimitsConfiguration start of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_TempCCDSetPoint_LimitsConfiguration end of topic ===
     ${ats_TempCCDSetPoint_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_TempCCDSetPoint_LimitsConfiguration_start}    end=${ats_TempCCDSetPoint_LimitsConfiguration_end + 1}
@@ -1444,18 +1326,48 @@ Read Subscriber
     Log Many    ${ats_Vacuum_LimitsConfiguration_list}
     Should Contain    ${ats_Vacuum_LimitsConfiguration_list}    === ATCamera_ats_Vacuum_LimitsConfiguration start of topic ===
     Should Contain    ${ats_Vacuum_LimitsConfiguration_list}    === ATCamera_ats_Vacuum_LimitsConfiguration end of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration start of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration end of topic ===
-    ${bonn_shutter_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasksConfiguration_start}    end=${bonn_shutter_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${bonn_shutter_PeriodicTasksConfiguration_list}
-    Should Contain    ${bonn_shutter_PeriodicTasksConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${bonn_shutter_PeriodicTasksConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasksConfiguration end of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration start of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration end of topic ===
+    ${bonn_shutter_Device_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_DevicesConfiguration_start}    end=${bonn_shutter_Device_DevicesConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_DevicesConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_DevicesConfiguration_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_DevicesConfiguration_list}    === ATCamera_bonn_shutter_Device_DevicesConfiguration end of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration start of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration end of topic ===
+    ${bonn_shutter_Device_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_GeneralConfiguration_start}    end=${bonn_shutter_Device_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_GeneralConfiguration_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_GeneralConfiguration_list}    === ATCamera_bonn_shutter_Device_GeneralConfiguration end of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration start of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration end of topic ===
+    ${bonn_shutter_Device_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_Device_LimitsConfiguration_start}    end=${bonn_shutter_Device_LimitsConfiguration_end + 1}
+    Log Many    ${bonn_shutter_Device_LimitsConfiguration_list}
+    Should Contain    ${bonn_shutter_Device_LimitsConfiguration_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_Device_LimitsConfiguration_list}    === ATCamera_bonn_shutter_Device_LimitsConfiguration end of topic ===
+    ${bonn_shutter_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_GeneralConfiguration start of topic ===
+    ${bonn_shutter_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_GeneralConfiguration end of topic ===
+    ${bonn_shutter_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_GeneralConfiguration_start}    end=${bonn_shutter_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_GeneralConfiguration_list}    === ATCamera_bonn_shutter_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_GeneralConfiguration_list}    === ATCamera_bonn_shutter_GeneralConfiguration end of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_GeneralConfiguration_start}    end=${bonn_shutter_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${bonn_shutter_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_GeneralConfiguration end of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration start of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration end of topic ===
     ${bonn_shutter_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${bonn_shutter_PeriodicTasks_timersConfiguration_start}    end=${bonn_shutter_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${bonn_shutter_PeriodicTasks_timersConfiguration_list}    === ATCamera_bonn_shutter_PeriodicTasks_timersConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_CommandsConfiguration_start}    end=${image_handling_ImageHandler_CommandsConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_CommandsConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === ATCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_DAQConfiguration start of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_ImageHandler_DAQConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_DAQConfiguration_start}    end=${image_handling_ImageHandler_DAQConfiguration_end + 1}
@@ -1468,30 +1380,30 @@ Read Subscriber
     Log Many    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === ATCamera_image_handling_ImageHandler_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === ATCamera_image_handling_ImageHandler_FitsHandlingConfiguration end of topic ===
-    ${image_handling_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasksConfiguration start of topic ===
-    ${image_handling_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasksConfiguration end of topic ===
-    ${image_handling_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasksConfiguration_start}    end=${image_handling_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${image_handling_PeriodicTasksConfiguration_list}
-    Should Contain    ${image_handling_PeriodicTasksConfiguration_list}    === ATCamera_image_handling_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${image_handling_PeriodicTasksConfiguration_list}    === ATCamera_image_handling_PeriodicTasksConfiguration end of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${image_handling_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_GeneralConfiguration_start}    end=${image_handling_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${image_handling_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_PeriodicTasks_GeneralConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
     ${image_handling_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_timersConfiguration_start}    end=${image_handling_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${image_handling_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === ATCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
-    ${image_handling_RebConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_RebConfiguration start of topic ===
-    ${image_handling_RebConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_RebConfiguration end of topic ===
-    ${image_handling_RebConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_RebConfiguration_start}    end=${image_handling_RebConfiguration_end + 1}
-    Log Many    ${image_handling_RebConfiguration_list}
-    Should Contain    ${image_handling_RebConfiguration_list}    === ATCamera_image_handling_RebConfiguration start of topic ===
-    Should Contain    ${image_handling_RebConfiguration_list}    === ATCamera_image_handling_RebConfiguration end of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
     ${image_handling_Reb_FitsHandlingConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_FitsHandlingConfiguration_start}    end=${image_handling_Reb_FitsHandlingConfiguration_end + 1}
     Log Many    ${image_handling_Reb_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === ATCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
+    ${image_handling_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_GeneralConfiguration start of topic ===
+    ${image_handling_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${image_handling_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_GeneralConfiguration_start}    end=${image_handling_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_Reb_GeneralConfiguration_list}
+    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === ATCamera_image_handling_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === ATCamera_image_handling_Reb_GeneralConfiguration end of topic ===
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === ATCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === ATCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}
@@ -1522,6 +1434,12 @@ Read Subscriber
     Log Many    ${imageVisualization_list}
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization start of topic ===
     Should Contain    ${imageVisualization_list}    === ATCamera_imageVisualization end of topic ===
+    ${summaryStatus_start}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus start of topic ===
+    ${summaryStatus_end}=    Get Index From List    ${full_list}    === ATCamera_summaryStatus end of topic ===
+    ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
+    Log Many    ${summaryStatus_list}
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus start of topic ===
+    Should Contain    ${summaryStatus_list}    === ATCamera_summaryStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === ATCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === ATCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
