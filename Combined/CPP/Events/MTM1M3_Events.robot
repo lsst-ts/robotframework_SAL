@@ -1002,10 +1002,10 @@ Read Logger
     ${powerSupplyStatus_list}=    Get Slice From List    ${full_list}    start=${powerSupplyStatus_start}    end=${powerSupplyStatus_end}
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpMirrorCellUtility220VAC1Status : 1    1
-    Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpCabinetUtility220VACStatus : 1    1
-    Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpExternalEquipment220VACStatus : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpMirrorCellUtility220VAC2Status : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpMirrorCellUtility220VAC3Status : 1    1
+    Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpCabinetUtility220VACStatus : 1    1
+    Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpExternalEquipment220VACStatus : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerNetworkARedundancyControlStatus : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerNetworkBRedundancyControlStatus : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerNetworkCRedundancyControlStatus : 1    1
