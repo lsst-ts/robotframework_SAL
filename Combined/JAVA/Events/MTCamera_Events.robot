@@ -1090,6 +1090,90 @@ Start Sender
     Log Many    ${image_handling_Reb_GeneralConfiguration_list}
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${fcs_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_DevicesConfiguration start of topic ===
+    ${fcs_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_DevicesConfiguration end of topic ===
+    ${fcs_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_DevicesConfiguration_start}    end=${fcs_DevicesConfiguration_end + 1}
+    Log Many    ${fcs_DevicesConfiguration_list}
+    Should Contain    ${fcs_DevicesConfiguration_list}    === MTCamera_fcs_DevicesConfiguration start of topic ===
+    Should Contain    ${fcs_DevicesConfiguration_list}    === MTCamera_fcs_DevicesConfiguration end of topic ===
+    ${fcs_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_GeneralConfiguration start of topic ===
+    ${fcs_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_GeneralConfiguration end of topic ===
+    ${fcs_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_GeneralConfiguration_start}    end=${fcs_GeneralConfiguration_end + 1}
+    Log Many    ${fcs_GeneralConfiguration_list}
+    Should Contain    ${fcs_GeneralConfiguration_list}    === MTCamera_fcs_GeneralConfiguration start of topic ===
+    Should Contain    ${fcs_GeneralConfiguration_list}    === MTCamera_fcs_GeneralConfiguration end of topic ===
+    ${fcs_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LimitsConfiguration start of topic ===
+    ${fcs_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LimitsConfiguration end of topic ===
+    ${fcs_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_LimitsConfiguration_start}    end=${fcs_LimitsConfiguration_end + 1}
+    Log Many    ${fcs_LimitsConfiguration_list}
+    Should Contain    ${fcs_LimitsConfiguration_list}    === MTCamera_fcs_LimitsConfiguration start of topic ===
+    Should Contain    ${fcs_LimitsConfiguration_list}    === MTCamera_fcs_LimitsConfiguration end of topic ===
+    ${fcs_autochangerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_autochangerConfiguration start of topic ===
+    ${fcs_autochangerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_autochangerConfiguration end of topic ===
+    ${fcs_autochangerConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_autochangerConfiguration_start}    end=${fcs_autochangerConfiguration_end + 1}
+    Log Many    ${fcs_autochangerConfiguration_list}
+    Should Contain    ${fcs_autochangerConfiguration_list}    === MTCamera_fcs_autochangerConfiguration start of topic ===
+    Should Contain    ${fcs_autochangerConfiguration_list}    === MTCamera_fcs_autochangerConfiguration end of topic ===
+    ${fcs_canbusConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_canbusConfiguration start of topic ===
+    ${fcs_canbusConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_canbusConfiguration end of topic ===
+    ${fcs_canbusConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_canbusConfiguration_start}    end=${fcs_canbusConfiguration_end + 1}
+    Log Many    ${fcs_canbusConfiguration_list}
+    Should Contain    ${fcs_canbusConfiguration_list}    === MTCamera_fcs_canbusConfiguration start of topic ===
+    Should Contain    ${fcs_canbusConfiguration_list}    === MTCamera_fcs_canbusConfiguration end of topic ===
+    ${fcs_carouselConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_carouselConfiguration start of topic ===
+    ${fcs_carouselConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_carouselConfiguration end of topic ===
+    ${fcs_carouselConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_carouselConfiguration_start}    end=${fcs_carouselConfiguration_end + 1}
+    Log Many    ${fcs_carouselConfiguration_list}
+    Should Contain    ${fcs_carouselConfiguration_list}    === MTCamera_fcs_carouselConfiguration start of topic ===
+    Should Contain    ${fcs_carouselConfiguration_list}    === MTCamera_fcs_carouselConfiguration end of topic ===
+    ${fcs_controllerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_controllerConfiguration start of topic ===
+    ${fcs_controllerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_controllerConfiguration end of topic ===
+    ${fcs_controllerConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_controllerConfiguration_start}    end=${fcs_controllerConfiguration_end + 1}
+    Log Many    ${fcs_controllerConfiguration_list}
+    Should Contain    ${fcs_controllerConfiguration_list}    === MTCamera_fcs_controllerConfiguration start of topic ===
+    Should Contain    ${fcs_controllerConfiguration_list}    === MTCamera_fcs_controllerConfiguration end of topic ===
+    ${fcs_filterConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_filterConfiguration start of topic ===
+    ${fcs_filterConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_filterConfiguration end of topic ===
+    ${fcs_filterConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_filterConfiguration_start}    end=${fcs_filterConfiguration_end + 1}
+    Log Many    ${fcs_filterConfiguration_list}
+    Should Contain    ${fcs_filterConfiguration_list}    === MTCamera_fcs_filterConfiguration start of topic ===
+    Should Contain    ${fcs_filterConfiguration_list}    === MTCamera_fcs_filterConfiguration end of topic ===
+    ${fcs_loaderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_loaderConfiguration start of topic ===
+    ${fcs_loaderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_loaderConfiguration end of topic ===
+    ${fcs_loaderConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_loaderConfiguration_start}    end=${fcs_loaderConfiguration_end + 1}
+    Log Many    ${fcs_loaderConfiguration_list}
+    Should Contain    ${fcs_loaderConfiguration_list}    === MTCamera_fcs_loaderConfiguration start of topic ===
+    Should Contain    ${fcs_loaderConfiguration_list}    === MTCamera_fcs_loaderConfiguration end of topic ===
+    ${fcs_nodeIDConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_nodeIDConfiguration start of topic ===
+    ${fcs_nodeIDConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_nodeIDConfiguration end of topic ===
+    ${fcs_nodeIDConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_nodeIDConfiguration_start}    end=${fcs_nodeIDConfiguration_end + 1}
+    Log Many    ${fcs_nodeIDConfiguration_list}
+    Should Contain    ${fcs_nodeIDConfiguration_list}    === MTCamera_fcs_nodeIDConfiguration start of topic ===
+    Should Contain    ${fcs_nodeIDConfiguration_list}    === MTCamera_fcs_nodeIDConfiguration end of topic ===
+    ${fcs_readRateConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_readRateConfiguration start of topic ===
+    ${fcs_readRateConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_readRateConfiguration end of topic ===
+    ${fcs_readRateConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_readRateConfiguration_start}    end=${fcs_readRateConfiguration_end + 1}
+    Log Many    ${fcs_readRateConfiguration_list}
+    Should Contain    ${fcs_readRateConfiguration_list}    === MTCamera_fcs_readRateConfiguration start of topic ===
+    Should Contain    ${fcs_readRateConfiguration_list}    === MTCamera_fcs_readRateConfiguration end of topic ===
+    ${fcs_sensorConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_sensorConfiguration start of topic ===
+    ${fcs_sensorConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_sensorConfiguration end of topic ===
+    ${fcs_sensorConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_sensorConfiguration_start}    end=${fcs_sensorConfiguration_end + 1}
+    Log Many    ${fcs_sensorConfiguration_list}
+    Should Contain    ${fcs_sensorConfiguration_list}    === MTCamera_fcs_sensorConfiguration start of topic ===
+    Should Contain    ${fcs_sensorConfiguration_list}    === MTCamera_fcs_sensorConfiguration end of topic ===
+    ${fcs_serialNBConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_serialNBConfiguration start of topic ===
+    ${fcs_serialNBConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_serialNBConfiguration end of topic ===
+    ${fcs_serialNBConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_serialNBConfiguration_start}    end=${fcs_serialNBConfiguration_end + 1}
+    Log Many    ${fcs_serialNBConfiguration_list}
+    Should Contain    ${fcs_serialNBConfiguration_list}    === MTCamera_fcs_serialNBConfiguration start of topic ===
+    Should Contain    ${fcs_serialNBConfiguration_list}    === MTCamera_fcs_serialNBConfiguration end of topic ===
+    ${fcs_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_timersConfiguration start of topic ===
+    ${fcs_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_timersConfiguration end of topic ===
+    ${fcs_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_timersConfiguration_start}    end=${fcs_timersConfiguration_end + 1}
+    Log Many    ${fcs_timersConfiguration_list}
+    Should Contain    ${fcs_timersConfiguration_list}    === MTCamera_fcs_timersConfiguration start of topic ===
+    Should Contain    ${fcs_timersConfiguration_list}    === MTCamera_fcs_timersConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
@@ -2214,6 +2298,90 @@ Read Subscriber
     Log Many    ${image_handling_Reb_GeneralConfiguration_list}
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${fcs_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_DevicesConfiguration start of topic ===
+    ${fcs_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_DevicesConfiguration end of topic ===
+    ${fcs_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_DevicesConfiguration_start}    end=${fcs_DevicesConfiguration_end + 1}
+    Log Many    ${fcs_DevicesConfiguration_list}
+    Should Contain    ${fcs_DevicesConfiguration_list}    === MTCamera_fcs_DevicesConfiguration start of topic ===
+    Should Contain    ${fcs_DevicesConfiguration_list}    === MTCamera_fcs_DevicesConfiguration end of topic ===
+    ${fcs_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_GeneralConfiguration start of topic ===
+    ${fcs_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_GeneralConfiguration end of topic ===
+    ${fcs_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_GeneralConfiguration_start}    end=${fcs_GeneralConfiguration_end + 1}
+    Log Many    ${fcs_GeneralConfiguration_list}
+    Should Contain    ${fcs_GeneralConfiguration_list}    === MTCamera_fcs_GeneralConfiguration start of topic ===
+    Should Contain    ${fcs_GeneralConfiguration_list}    === MTCamera_fcs_GeneralConfiguration end of topic ===
+    ${fcs_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LimitsConfiguration start of topic ===
+    ${fcs_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LimitsConfiguration end of topic ===
+    ${fcs_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_LimitsConfiguration_start}    end=${fcs_LimitsConfiguration_end + 1}
+    Log Many    ${fcs_LimitsConfiguration_list}
+    Should Contain    ${fcs_LimitsConfiguration_list}    === MTCamera_fcs_LimitsConfiguration start of topic ===
+    Should Contain    ${fcs_LimitsConfiguration_list}    === MTCamera_fcs_LimitsConfiguration end of topic ===
+    ${fcs_autochangerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_autochangerConfiguration start of topic ===
+    ${fcs_autochangerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_autochangerConfiguration end of topic ===
+    ${fcs_autochangerConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_autochangerConfiguration_start}    end=${fcs_autochangerConfiguration_end + 1}
+    Log Many    ${fcs_autochangerConfiguration_list}
+    Should Contain    ${fcs_autochangerConfiguration_list}    === MTCamera_fcs_autochangerConfiguration start of topic ===
+    Should Contain    ${fcs_autochangerConfiguration_list}    === MTCamera_fcs_autochangerConfiguration end of topic ===
+    ${fcs_canbusConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_canbusConfiguration start of topic ===
+    ${fcs_canbusConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_canbusConfiguration end of topic ===
+    ${fcs_canbusConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_canbusConfiguration_start}    end=${fcs_canbusConfiguration_end + 1}
+    Log Many    ${fcs_canbusConfiguration_list}
+    Should Contain    ${fcs_canbusConfiguration_list}    === MTCamera_fcs_canbusConfiguration start of topic ===
+    Should Contain    ${fcs_canbusConfiguration_list}    === MTCamera_fcs_canbusConfiguration end of topic ===
+    ${fcs_carouselConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_carouselConfiguration start of topic ===
+    ${fcs_carouselConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_carouselConfiguration end of topic ===
+    ${fcs_carouselConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_carouselConfiguration_start}    end=${fcs_carouselConfiguration_end + 1}
+    Log Many    ${fcs_carouselConfiguration_list}
+    Should Contain    ${fcs_carouselConfiguration_list}    === MTCamera_fcs_carouselConfiguration start of topic ===
+    Should Contain    ${fcs_carouselConfiguration_list}    === MTCamera_fcs_carouselConfiguration end of topic ===
+    ${fcs_controllerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_controllerConfiguration start of topic ===
+    ${fcs_controllerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_controllerConfiguration end of topic ===
+    ${fcs_controllerConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_controllerConfiguration_start}    end=${fcs_controllerConfiguration_end + 1}
+    Log Many    ${fcs_controllerConfiguration_list}
+    Should Contain    ${fcs_controllerConfiguration_list}    === MTCamera_fcs_controllerConfiguration start of topic ===
+    Should Contain    ${fcs_controllerConfiguration_list}    === MTCamera_fcs_controllerConfiguration end of topic ===
+    ${fcs_filterConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_filterConfiguration start of topic ===
+    ${fcs_filterConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_filterConfiguration end of topic ===
+    ${fcs_filterConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_filterConfiguration_start}    end=${fcs_filterConfiguration_end + 1}
+    Log Many    ${fcs_filterConfiguration_list}
+    Should Contain    ${fcs_filterConfiguration_list}    === MTCamera_fcs_filterConfiguration start of topic ===
+    Should Contain    ${fcs_filterConfiguration_list}    === MTCamera_fcs_filterConfiguration end of topic ===
+    ${fcs_loaderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_loaderConfiguration start of topic ===
+    ${fcs_loaderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_loaderConfiguration end of topic ===
+    ${fcs_loaderConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_loaderConfiguration_start}    end=${fcs_loaderConfiguration_end + 1}
+    Log Many    ${fcs_loaderConfiguration_list}
+    Should Contain    ${fcs_loaderConfiguration_list}    === MTCamera_fcs_loaderConfiguration start of topic ===
+    Should Contain    ${fcs_loaderConfiguration_list}    === MTCamera_fcs_loaderConfiguration end of topic ===
+    ${fcs_nodeIDConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_nodeIDConfiguration start of topic ===
+    ${fcs_nodeIDConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_nodeIDConfiguration end of topic ===
+    ${fcs_nodeIDConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_nodeIDConfiguration_start}    end=${fcs_nodeIDConfiguration_end + 1}
+    Log Many    ${fcs_nodeIDConfiguration_list}
+    Should Contain    ${fcs_nodeIDConfiguration_list}    === MTCamera_fcs_nodeIDConfiguration start of topic ===
+    Should Contain    ${fcs_nodeIDConfiguration_list}    === MTCamera_fcs_nodeIDConfiguration end of topic ===
+    ${fcs_readRateConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_readRateConfiguration start of topic ===
+    ${fcs_readRateConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_readRateConfiguration end of topic ===
+    ${fcs_readRateConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_readRateConfiguration_start}    end=${fcs_readRateConfiguration_end + 1}
+    Log Many    ${fcs_readRateConfiguration_list}
+    Should Contain    ${fcs_readRateConfiguration_list}    === MTCamera_fcs_readRateConfiguration start of topic ===
+    Should Contain    ${fcs_readRateConfiguration_list}    === MTCamera_fcs_readRateConfiguration end of topic ===
+    ${fcs_sensorConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_sensorConfiguration start of topic ===
+    ${fcs_sensorConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_sensorConfiguration end of topic ===
+    ${fcs_sensorConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_sensorConfiguration_start}    end=${fcs_sensorConfiguration_end + 1}
+    Log Many    ${fcs_sensorConfiguration_list}
+    Should Contain    ${fcs_sensorConfiguration_list}    === MTCamera_fcs_sensorConfiguration start of topic ===
+    Should Contain    ${fcs_sensorConfiguration_list}    === MTCamera_fcs_sensorConfiguration end of topic ===
+    ${fcs_serialNBConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_serialNBConfiguration start of topic ===
+    ${fcs_serialNBConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_serialNBConfiguration end of topic ===
+    ${fcs_serialNBConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_serialNBConfiguration_start}    end=${fcs_serialNBConfiguration_end + 1}
+    Log Many    ${fcs_serialNBConfiguration_list}
+    Should Contain    ${fcs_serialNBConfiguration_list}    === MTCamera_fcs_serialNBConfiguration start of topic ===
+    Should Contain    ${fcs_serialNBConfiguration_list}    === MTCamera_fcs_serialNBConfiguration end of topic ===
+    ${fcs_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_timersConfiguration start of topic ===
+    ${fcs_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_timersConfiguration end of topic ===
+    ${fcs_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_timersConfiguration_start}    end=${fcs_timersConfiguration_end + 1}
+    Log Many    ${fcs_timersConfiguration_list}
+    Should Contain    ${fcs_timersConfiguration_list}    === MTCamera_fcs_timersConfiguration start of topic ===
+    Should Contain    ${fcs_timersConfiguration_list}    === MTCamera_fcs_timersConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}

@@ -401,6 +401,13 @@ Start Publisher
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment start of topic ===
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment] message sent 200
+    ${fcs_start}=    Get Index From List    ${full_list}    === MTCamera_fcs start of topic ===
+    ${fcs_end}=    Get Index From List    ${full_list}    === MTCamera_fcs end of topic ===
+    ${fcs_list}=    Get Slice From List    ${full_list}    start=${fcs_start}    end=${fcs_end + 1}
+    Log Many    ${fcs_list}
+    Should Contain    ${fcs_list}    === MTCamera_fcs start of topic ===
+    Should Contain    ${fcs_list}    === MTCamera_fcs end of topic ===
+    Should Contain    ${fcs_list}    === [fcs] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -817,3 +824,11 @@ Read Subscriber
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :200
+    ${fcs_start}=    Get Index From List    ${full_list}    === MTCamera_fcs start of topic ===
+    ${fcs_end}=    Get Index From List    ${full_list}    === MTCamera_fcs end of topic ===
+    ${fcs_list}=    Get Slice From List    ${full_list}    start=${fcs_start}    end=${fcs_end + 1}
+    Log Many    ${fcs_list}
+    Should Contain    ${fcs_list}    === MTCamera_fcs start of topic ===
+    Should Contain    ${fcs_list}    === MTCamera_fcs end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_list}    === [fcs Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_list}    === [fcs Subscriber] message received :200
