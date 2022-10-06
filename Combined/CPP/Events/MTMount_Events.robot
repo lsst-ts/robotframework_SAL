@@ -324,6 +324,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_connected_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event connected generated =
+    Comment    ======= Verify ${subSystem}_telemetryConnected test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_telemetryConnected
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event telemetryConnected iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_telemetryConnected_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event telemetryConnected generated =
     Comment    ======= Verify ${subSystem}_deployablePlatformsMotionState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformsMotionState
     @{words}=    Split String    ${line}
@@ -708,10 +716,13 @@ Read Logger
     ${commander_list}=    Get Slice From List    ${full_list}    start=${commander_start}    end=${end}
     Should Contain X Times    ${commander_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commander : 1    1
     ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
-    ${end}=    Evaluate    ${connected_start}+${3}
+    ${end}=    Evaluate    ${connected_start}+${2}
     ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${end}
-    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : 1    1
-    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}replies : 1    1
+    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
+    ${telemetryConnected_start}=    Get Index From List    ${full_list}    === Event telemetryConnected received =${SPACE}
+    ${end}=    Evaluate    ${telemetryConnected_start}+${2}
+    ${telemetryConnected_list}=    Get Slice From List    ${full_list}    start=${telemetryConnected_start}    end=${end}
+    Should Contain X Times    ${telemetryConnected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
     ${deployablePlatformsMotionState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformsMotionState received =${SPACE}
     ${end}=    Evaluate    ${deployablePlatformsMotionState_start}+${3}
     ${deployablePlatformsMotionState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsMotionState_start}    end=${end}
