@@ -8,6 +8,7 @@ Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
+Force Tags    CAP-933
 
 *** Variables ***
 ${subSystem}    MTCamera
