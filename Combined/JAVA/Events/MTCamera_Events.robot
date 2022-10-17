@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTCamera_Events communications tests.
-Force Tags    messaging    java    
+Force Tags    messaging    java    CAP-933
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -8,7 +8,6 @@ Library    Collections
 Library    Process
 Library    String
 Resource    ${EXECDIR}${/}Global_Vars.robot
-Force Tags    CAP-933
 
 *** Variables ***
 ${subSystem}    MTCamera
