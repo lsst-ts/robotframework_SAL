@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTCamera AuthList tests.
-Force Tags    authlist    java    
+Force Tags    authlist    java    CAP-933
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
