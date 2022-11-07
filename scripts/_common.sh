@@ -62,7 +62,7 @@ function getRuntimeLanguages() {
     ## Returns the <RuntimeLanguages> values for the given CSC (subsystem).
     ##
     local subsystem=$1
-    local output=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subsystem']/RuntimeLanguages" -v . -n $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml )
+    local output=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subsystem']/RuntimeLanguages" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
     echo $output | tr '[:upper:]' '[:lower:]'
 }
 
@@ -70,8 +70,8 @@ function getRuntimeLanguages() {
 function getTopics() {
     ## Returns the Commands|Events|Telemetry topics (<EFDB_Topic>) 
     ## for the given CSC (subsystem).  This includes topics
-    ## defined in the CSC interface definitions in ts_xml/sal_interfaces/<CSC> 
-    ## AND any Generic topics, as defined in ts_xml/sal_interfaces/SALSubsystems.xml.
+    ## defined in the CSC interface definitions in $TS_XML_DIR/sal_interfaces/<CSC> 
+    ## AND any Generic topics, as defined in $TS_XML_DIR/sal_interfaces/SALSubsystems.xml.
     ##
     local subSystem=$1
     local file=$2
@@ -104,7 +104,7 @@ function getTopics() {
         if [[ $generics_field == *"configurable"* ]]; then
             generics=("${added_generics_configurable_commands[@]}")
         fi
-        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
             echo "Topic: $topic"
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
@@ -127,7 +127,7 @@ function getTopics() {
         if [[ $generics_field == *"configurable"* ]]; then
             generics+=("${added_generics_configurable_events[@]}")
         fi
-        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $HOME/trunk/ts_xml/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
                 str=$(echo " $topic," |sed "s/${lower_topic}_//g")
