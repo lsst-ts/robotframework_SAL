@@ -76,6 +76,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cameraCableWrapControllerSettings_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapControllerSettings generated =
+    Comment    ======= Verify ${subSystem}_azimuthHomed test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthHomed
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event azimuthHomed iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_azimuthHomed_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event azimuthHomed generated =
+    Comment    ======= Verify ${subSystem}_elevationHomed test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationHomed
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event elevationHomed iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationHomed_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event elevationHomed generated =
     Comment    ======= Verify ${subSystem}_azimuthSystemState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthSystemState
     @{words}=    Split String    ${line}
@@ -558,6 +574,14 @@ Read Logger
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingVelocity : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
+    ${azimuthHomed_start}=    Get Index From List    ${full_list}    === Event azimuthHomed received =${SPACE}
+    ${end}=    Evaluate    ${azimuthHomed_start}+${2}
+    ${azimuthHomed_list}=    Get Slice From List    ${full_list}    start=${azimuthHomed_start}    end=${end}
+    Should Contain X Times    ${azimuthHomed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}homed : 1    1
+    ${elevationHomed_start}=    Get Index From List    ${full_list}    === Event elevationHomed received =${SPACE}
+    ${end}=    Evaluate    ${elevationHomed_start}+${2}
+    ${elevationHomed_list}=    Get Slice From List    ${full_list}    start=${elevationHomed_start}    end=${end}
+    Should Contain X Times    ${elevationHomed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}homed : 1    1
     ${azimuthSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthSystemState received =${SPACE}
     ${end}=    Evaluate    ${azimuthSystemState_start}+${3}
     ${azimuthSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthSystemState_start}    end=${end}
