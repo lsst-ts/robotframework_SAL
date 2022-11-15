@@ -958,6 +958,12 @@ Start Sender
     Log Many    ${summaryStatus_list}
     Should Contain    ${summaryStatus_list}    === CCCamera_summaryStatus start of topic ===
     Should Contain    ${summaryStatus_list}    === CCCamera_summaryStatus end of topic ===
+    ${alertRaised_start}=    Get Index From List    ${full_list}    === CCCamera_alertRaised start of topic ===
+    ${alertRaised_end}=    Get Index From List    ${full_list}    === CCCamera_alertRaised end of topic ===
+    ${alertRaised_list}=    Get Slice From List    ${full_list}    start=${alertRaised_start}    end=${alertRaised_end + 1}
+    Log Many    ${alertRaised_list}
+    Should Contain    ${alertRaised_list}    === CCCamera_alertRaised start of topic ===
+    Should Contain    ${alertRaised_list}    === CCCamera_alertRaised end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === CCCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === CCCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -1944,6 +1950,12 @@ Read Subscriber
     Log Many    ${summaryStatus_list}
     Should Contain    ${summaryStatus_list}    === CCCamera_summaryStatus start of topic ===
     Should Contain    ${summaryStatus_list}    === CCCamera_summaryStatus end of topic ===
+    ${alertRaised_start}=    Get Index From List    ${full_list}    === CCCamera_alertRaised start of topic ===
+    ${alertRaised_end}=    Get Index From List    ${full_list}    === CCCamera_alertRaised end of topic ===
+    ${alertRaised_list}=    Get Slice From List    ${full_list}    start=${alertRaised_start}    end=${alertRaised_end + 1}
+    Log Many    ${alertRaised_list}
+    Should Contain    ${alertRaised_list}    === CCCamera_alertRaised start of topic ===
+    Should Contain    ${alertRaised_list}    === CCCamera_alertRaised end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === CCCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === CCCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
