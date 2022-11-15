@@ -325,7 +325,7 @@ function createTestSuite {
 
     # The identity value is different for indexed CSCs. 
     # This if-else block handles the various cases.
-    enumeration=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']/IndexEnumeration" -v . -n $HOME/trunk/ts_xml/python/lsst/ts/xml/data/sal_interfaces/SALSubsystems.xml )
+    enumeration=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']/IndexEnumeration" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
     if [[ "$enumeration" == "no" ]]; then
         identity='${subSystem}'
     elif [[ "$subSystem" == "GCHeaderService" ]]; then

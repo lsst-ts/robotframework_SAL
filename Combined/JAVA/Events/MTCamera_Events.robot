@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTCamera_Events communications tests.
-Force Tags    messaging    java    CAP-933
+Force Tags    messaging    java    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${Build_Number}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -1294,6 +1294,12 @@ Start Sender
     Log Many    ${summaryStatus_list}
     Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus start of topic ===
     Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus end of topic ===
+    ${alertRaised_start}=    Get Index From List    ${full_list}    === MTCamera_alertRaised start of topic ===
+    ${alertRaised_end}=    Get Index From List    ${full_list}    === MTCamera_alertRaised end of topic ===
+    ${alertRaised_list}=    Get Slice From List    ${full_list}    start=${alertRaised_start}    end=${alertRaised_end + 1}
+    Log Many    ${alertRaised_list}
+    Should Contain    ${alertRaised_list}    === MTCamera_alertRaised start of topic ===
+    Should Contain    ${alertRaised_list}    === MTCamera_alertRaised end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -2616,6 +2622,12 @@ Read Subscriber
     Log Many    ${summaryStatus_list}
     Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus start of topic ===
     Should Contain    ${summaryStatus_list}    === MTCamera_summaryStatus end of topic ===
+    ${alertRaised_start}=    Get Index From List    ${full_list}    === MTCamera_alertRaised start of topic ===
+    ${alertRaised_end}=    Get Index From List    ${full_list}    === MTCamera_alertRaised end of topic ===
+    ${alertRaised_list}=    Get Slice From List    ${full_list}    start=${alertRaised_start}    end=${alertRaised_end + 1}
+    Log Many    ${alertRaised_list}
+    Should Contain    ${alertRaised_list}    === MTCamera_alertRaised start of topic ===
+    Should Contain    ${alertRaised_list}    === MTCamera_alertRaised end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
