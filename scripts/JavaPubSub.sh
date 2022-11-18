@@ -69,7 +69,7 @@ function createVariables {
     if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTM2|Scheduler)$ ]]; then
         timeout="900s"
     elif [[ "$subSystem" =~ ^(HVAC|MTCamera|MTMount)$ ]]; then
-        timeout="1500s"
+        timeout="1800s"
     else
         timeout="400s"
     fi
