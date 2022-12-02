@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTCamera
 ${component}    all
-${timeout}    1800s
+${timeout}    2700s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
