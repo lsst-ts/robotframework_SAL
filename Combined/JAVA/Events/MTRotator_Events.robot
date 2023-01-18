@@ -100,6 +100,12 @@ Start Sender
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === MTRotator_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === MTRotator_heartbeat end of topic ===
+    ${clockOffset_start}=    Get Index From List    ${full_list}    === MTRotator_clockOffset start of topic ===
+    ${clockOffset_end}=    Get Index From List    ${full_list}    === MTRotator_clockOffset end of topic ===
+    ${clockOffset_list}=    Get Slice From List    ${full_list}    start=${clockOffset_start}    end=${clockOffset_end + 1}
+    Log Many    ${clockOffset_list}
+    Should Contain    ${clockOffset_list}    === MTRotator_clockOffset start of topic ===
+    Should Contain    ${clockOffset_list}    === MTRotator_clockOffset end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === MTRotator_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === MTRotator_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
@@ -216,6 +222,12 @@ Read Subscriber
     Log Many    ${heartbeat_list}
     Should Contain    ${heartbeat_list}    === MTRotator_heartbeat start of topic ===
     Should Contain    ${heartbeat_list}    === MTRotator_heartbeat end of topic ===
+    ${clockOffset_start}=    Get Index From List    ${full_list}    === MTRotator_clockOffset start of topic ===
+    ${clockOffset_end}=    Get Index From List    ${full_list}    === MTRotator_clockOffset end of topic ===
+    ${clockOffset_list}=    Get Slice From List    ${full_list}    start=${clockOffset_start}    end=${clockOffset_end + 1}
+    Log Many    ${clockOffset_list}
+    Should Contain    ${clockOffset_list}    === MTRotator_clockOffset start of topic ===
+    Should Contain    ${clockOffset_list}    === MTRotator_clockOffset end of topic ===
     ${logLevel_start}=    Get Index From List    ${full_list}    === MTRotator_logLevel start of topic ===
     ${logLevel_end}=    Get Index From List    ${full_list}    === MTRotator_logLevel end of topic ===
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${logLevel_end + 1}
