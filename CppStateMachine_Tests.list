@@ -5,7 +5,6 @@
 
 # List of test suites
 CPP/StateMachine/ATAOS_StateMachine.robot
-CPP/StateMachine/ATArchiver_StateMachine.robot
 CPP/StateMachine/ATBuilding_StateMachine.robot
 CPP/StateMachine/ATCalCS_StateMachine.robot
 CPP/StateMachine/ATCamera_StateMachine.robot
@@ -40,7 +39,6 @@ CPP/StateMachine/HVAC_StateMachine.robot
 CPP/StateMachine/Hexapod_StateMachine.robot
 CPP/StateMachine/IOTA_StateMachine.robot
 CPP/StateMachine/LinearStage_StateMachine.robot
-CPP/StateMachine/MTArchiver_StateMachine.robot
 CPP/StateMachine/MTCalCS_StateMachine.robot
 CPP/StateMachine/MTCamera_StateMachine.robot
 CPP/StateMachine/MTDomeTrajectory_StateMachine.robot

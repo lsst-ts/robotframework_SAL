@@ -4,8 +4,6 @@
 --output CppTelemetry
 
 # List of test suites
-CPP/Telemetry/Archiver_SequencerHeartbeat.robot
-CPP/Telemetry/AtArchiver_SequencerHeartbeat.robot
 CPP/Telemetry/AtCamera_Heartbeat.robot
 CPP/Telemetry/AtCamera_WREB.robot
 CPP/Telemetry/AtHeaderService_LoopTime_ms.robot

@@ -4,7 +4,6 @@
 --output Pathfinder
 
 # List of test suites
-CPP/StateMachine/ATArchiver_StateMachine.robot
 CPP/StateMachine/ATCamera_StateMachine.robot
 CPP/StateMachine/ATHeaderService_StateMachine.robot
 CPP/StateMachine/ATMonochromator_StateMachine.robot
