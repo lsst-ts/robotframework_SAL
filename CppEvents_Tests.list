@@ -4,24 +4,6 @@
 --output CppEvents
 
 # List of test suites
-CPP/Events/Archiver_AppliedSettingsMatchStart.robot
-CPP/Events/Archiver_DetailedState.robot
-CPP/Events/Archiver_ErrorCode.robot
-CPP/Events/Archiver_SettingVersions.robot
-CPP/Events/Archiver_SettingsApplied.robot
-CPP/Events/Archiver_SummaryState.robot
-CPP/Events/Archiver_archiverEntityShutdown.robot
-CPP/Events/Archiver_archiverEntityStartup.robot
-CPP/Events/Archiver_archiverEntitySummaryState.robot
-CPP/Events/AtArchiver_AppliedSettingsMatchStart.robot
-CPP/Events/AtArchiver_DetailedState.robot
-CPP/Events/AtArchiver_ErrorCode.robot
-CPP/Events/AtArchiver_SettingVersions.robot
-CPP/Events/AtArchiver_SettingsApplied.robot
-CPP/Events/AtArchiver_SummaryState.robot
-CPP/Events/AtArchiver_archiverEntityShutdown.robot
-CPP/Events/AtArchiver_archiverEntityStartup.robot
-CPP/Events/AtArchiver_archiverEntitySummaryState.robot
 CPP/Events/AtCamera_AppliedSettingsMatchStart.robot
 CPP/Events/AtCamera_ErrorCode.robot
 CPP/Events/AtCamera_SettingVersions.robot
@@ -115,15 +97,6 @@ CPP/Events/Camera_startSetFilter.robot
 CPP/Events/Camera_startShutterClose.robot
 CPP/Events/Camera_startShutterOpen.robot
 CPP/Events/Camera_startUnloadFilter.robot
-CPP/Events/CatchupArchiver_AppliedSettingsMatchStart.robot
-CPP/Events/CatchupArchiver_DetailedState.robot
-CPP/Events/CatchupArchiver_ErrorCode.robot
-CPP/Events/CatchupArchiver_SettingVersions.robot
-CPP/Events/CatchupArchiver_SettingsApplied.robot
-CPP/Events/CatchupArchiver_SummaryState.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
 CPP/Events/DomeADB_AccelerationLimitReached.robot
 CPP/Events/DomeADB_AccelerationLimitSubsided.robot
 CPP/Events/DomeADB_BrakeDisengaged.robot

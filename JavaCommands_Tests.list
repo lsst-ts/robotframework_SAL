@@ -4,22 +4,6 @@
 --output JavaCommands
 
 # List of test suites
-JAVA/Commands/Archiver_abort.robot
-JAVA/Commands/Archiver_disable.robot
-JAVA/Commands/Archiver_enable.robot
-JAVA/Commands/Archiver_enterControl.robot
-JAVA/Commands/Archiver_exitControl.robot
-JAVA/Commands/Archiver_setValue.robot
-JAVA/Commands/Archiver_standby.robot
-JAVA/Commands/Archiver_start.robot
-JAVA/Commands/AtArchiver_abort.robot
-JAVA/Commands/AtArchiver_disable.robot
-JAVA/Commands/AtArchiver_enable.robot
-JAVA/Commands/AtArchiver_enterControl.robot
-JAVA/Commands/AtArchiver_exitControl.robot
-JAVA/Commands/AtArchiver_setValue.robot
-JAVA/Commands/AtArchiver_standby.robot
-JAVA/Commands/AtArchiver_start.robot
 JAVA/Commands/AtCamera_abort.robot
 JAVA/Commands/AtCamera_clear.robot
 JAVA/Commands/AtCamera_disable.robot
@@ -78,14 +62,6 @@ JAVA/Commands/Camera_start.robot
 JAVA/Commands/Camera_startImage.robot
 JAVA/Commands/Camera_stop.robot
 JAVA/Commands/Camera_takeImages.robot
-JAVA/Commands/CatchupArchiver_abort.robot
-JAVA/Commands/CatchupArchiver_disable.robot
-JAVA/Commands/CatchupArchiver_enable.robot
-JAVA/Commands/CatchupArchiver_enterControl.robot
-JAVA/Commands/CatchupArchiver_exitControl.robot
-JAVA/Commands/CatchupArchiver_setValue.robot
-JAVA/Commands/CatchupArchiver_standby.robot
-JAVA/Commands/CatchupArchiver_start.robot
 JAVA/Commands/DomeADB_Crawl.robot
 JAVA/Commands/DomeADB_Echo.robot
 JAVA/Commands/DomeADB_Move.robot
