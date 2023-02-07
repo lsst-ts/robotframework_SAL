@@ -4,22 +4,6 @@
 --output JavaCommands
 
 # List of test suites
-JAVA/Commands/Archiver_abort.robot
-JAVA/Commands/Archiver_disable.robot
-JAVA/Commands/Archiver_enable.robot
-JAVA/Commands/Archiver_enterControl.robot
-JAVA/Commands/Archiver_exitControl.robot
-JAVA/Commands/Archiver_setValue.robot
-JAVA/Commands/Archiver_standby.robot
-JAVA/Commands/Archiver_start.robot
-JAVA/Commands/AtArchiver_abort.robot
-JAVA/Commands/AtArchiver_disable.robot
-JAVA/Commands/AtArchiver_enable.robot
-JAVA/Commands/AtArchiver_enterControl.robot
-JAVA/Commands/AtArchiver_exitControl.robot
-JAVA/Commands/AtArchiver_setValue.robot
-JAVA/Commands/AtArchiver_standby.robot
-JAVA/Commands/AtArchiver_start.robot
 JAVA/Commands/AtCamera_abort.robot
 JAVA/Commands/AtCamera_clear.robot
 JAVA/Commands/AtCamera_disable.robot

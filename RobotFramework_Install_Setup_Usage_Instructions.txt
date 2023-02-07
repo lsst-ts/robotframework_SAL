@@ -164,7 +164,7 @@ rebot --name SAL_Regression -o regression_output.xml -l regression_log.html -r r
 Sample command line to run individual automated test suites
 ===========================================================
 Navigate to $ROBOTFRAMEWORK_SAL_DIR (location of robotframework_SAL from checked out git repo).
-> robot -A /path/to/SAL_Vars.txt SALGEN/Archiver_salgenerator.robot
+> robot -A /path/to/SAL_Vars.txt SALGEN/Test_salgenerator.robot
 
 Sample command line to run a block of test suites
 =================================================

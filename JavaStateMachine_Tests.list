@@ -4,18 +4,6 @@
 --output JavaStateMachine
 
 # List of test suites
-JAVA/StateMachine/Archiver_abort.robot
-JAVA/StateMachine/Archiver_disable.robot
-JAVA/StateMachine/Archiver_enable.robot
-JAVA/StateMachine/Archiver_enterControl.robot
-JAVA/StateMachine/Archiver_exitControl.robot
-JAVA/StateMachine/Archiver_standby.robot
-JAVA/StateMachine/Archiver_start.robot
-JAVA/StateMachine/Archiver_stop.robot
-JAVA/StateMachine/AtArchiver_disable.robot
-JAVA/StateMachine/AtArchiver_enable.robot
-JAVA/StateMachine/AtArchiver_standby.robot
-JAVA/StateMachine/AtArchiver_start.robot
 JAVA/StateMachine/AtCamera_disable.robot
 JAVA/StateMachine/AtCamera_enable.robot
 JAVA/StateMachine/AtCamera_standby.robot

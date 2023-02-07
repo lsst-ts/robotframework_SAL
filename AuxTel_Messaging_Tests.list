@@ -4,25 +4,21 @@
 --output AuxTelMessaging
 
 # List of test suites
-CPP/StateMachine/ATArchiver_StateMachine.robot
 CPP/StateMachine/ATCamera_StateMachine.robot
 CPP/StateMachine/ATHeaderService_StateMachine.robot
 CPP/StateMachine/ATMonochromator_StateMachine.robot
 CPP/StateMachine/Electrometer_StateMachine.robot
 CPP/StateMachine/FiberSpectrograph_StateMachine.robot
-CPP/GenericEvents/ATArchiver_GenericEvents.robot
 CPP/GenericEvents/ATCamera_GenericEvents.robot
 CPP/GenericEvents/ATHeaderService_GenericEvents.robot
 CPP/GenericEvents/ATMonochromator_GenericEvents.robot
 CPP/GenericEvents/Electrometer_GenericEvents.robot
 CPP/GenericEvents/FiberSpectrograph_GenericEvents.robot
-PYTHON/StateMachine/ATArchiver_StateMachine.robot
 PYTHON/StateMachine/ATCamera_StateMachine.robot
 PYTHON/StateMachine/ATHeaderService_StateMachine.robot
 PYTHON/StateMachine/ATMonochromator_StateMachine.robot
 PYTHON/StateMachine/Electrometer_StateMachine.robot
 PYTHON/StateMachine/FiberSpectrograph_StateMachine.robot
-PYTHON/GenericEvents/ATArchiver_GenericEvents.robot
 PYTHON/GenericEvents/ATCamera_GenericEvents.robot
 PYTHON/GenericEvents/ATHeaderService_GenericEvents.robot
 PYTHON/GenericEvents/ATMonochromator_GenericEvents.robot

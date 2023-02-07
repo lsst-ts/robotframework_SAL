@@ -4,8 +4,6 @@
 --output JavaTelemetry
 
 # List of test suites
-JAVA/Telemetry/Archiver_SequencerHeartbeat.robot
-JAVA/Telemetry/AtArchiver_SequencerHeartbeat.robot
 JAVA/Telemetry/AtCamera_Heartbeat.robot
 JAVA/Telemetry/AtCamera_WREB.robot
 JAVA/Telemetry/AtHeaderService_LoopTime_ms.robot

@@ -4,24 +4,6 @@
 --output CppEvents
 
 # List of test suites
-CPP/Events/Archiver_AppliedSettingsMatchStart.robot
-CPP/Events/Archiver_DetailedState.robot
-CPP/Events/Archiver_ErrorCode.robot
-CPP/Events/Archiver_SettingVersions.robot
-CPP/Events/Archiver_SettingsApplied.robot
-CPP/Events/Archiver_SummaryState.robot
-CPP/Events/Archiver_archiverEntityShutdown.robot
-CPP/Events/Archiver_archiverEntityStartup.robot
-CPP/Events/Archiver_archiverEntitySummaryState.robot
-CPP/Events/AtArchiver_AppliedSettingsMatchStart.robot
-CPP/Events/AtArchiver_DetailedState.robot
-CPP/Events/AtArchiver_ErrorCode.robot
-CPP/Events/AtArchiver_SettingVersions.robot
-CPP/Events/AtArchiver_SettingsApplied.robot
-CPP/Events/AtArchiver_SummaryState.robot
-CPP/Events/AtArchiver_archiverEntityShutdown.robot
-CPP/Events/AtArchiver_archiverEntityStartup.robot
-CPP/Events/AtArchiver_archiverEntitySummaryState.robot
 CPP/Events/AtCamera_AppliedSettingsMatchStart.robot
 CPP/Events/AtCamera_ErrorCode.robot
 CPP/Events/AtCamera_SettingVersions.robot

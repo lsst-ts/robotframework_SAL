@@ -4,22 +4,6 @@
 --output CppCommands
 
 # List of test suites
-CPP/Commands/Archiver_abort.robot
-CPP/Commands/Archiver_disable.robot
-CPP/Commands/Archiver_enable.robot
-CPP/Commands/Archiver_enterControl.robot
-CPP/Commands/Archiver_exitControl.robot
-CPP/Commands/Archiver_setValue.robot
-CPP/Commands/Archiver_standby.robot
-CPP/Commands/Archiver_start.robot
-CPP/Commands/AtArchiver_abort.robot
-CPP/Commands/AtArchiver_disable.robot
-CPP/Commands/AtArchiver_enable.robot
-CPP/Commands/AtArchiver_enterControl.robot
-CPP/Commands/AtArchiver_exitControl.robot
-CPP/Commands/AtArchiver_setValue.robot
-CPP/Commands/AtArchiver_standby.robot
-CPP/Commands/AtArchiver_start.robot
 CPP/Commands/AtCamera_abort.robot
 CPP/Commands/AtCamera_clear.robot
 CPP/Commands/AtCamera_disable.robot
