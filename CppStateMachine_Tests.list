@@ -21,7 +21,6 @@ CPP/StateMachine/ATTCS_StateMachine.robot
 CPP/StateMachine/ATThermoelectricCooler_StateMachine.robot
 CPP/StateMachine/ATWhiteLight_StateMachine.robot
 CPP/StateMachine/CBP_StateMachine.robot
-CPP/StateMachine/CatchupArchiver_StateMachine.robot
 CPP/StateMachine/DIMM_StateMachine.robot
 CPP/StateMachine/DomeADB_StateMachine.robot
 CPP/StateMachine/DomeAPS_StateMachine.robot

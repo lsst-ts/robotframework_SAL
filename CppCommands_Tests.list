@@ -62,14 +62,6 @@ CPP/Commands/Camera_start.robot
 CPP/Commands/Camera_startImage.robot
 CPP/Commands/Camera_stop.robot
 CPP/Commands/Camera_takeImages.robot
-CPP/Commands/CatchupArchiver_abort.robot
-CPP/Commands/CatchupArchiver_disable.robot
-CPP/Commands/CatchupArchiver_enable.robot
-CPP/Commands/CatchupArchiver_enterControl.robot
-CPP/Commands/CatchupArchiver_exitControl.robot
-CPP/Commands/CatchupArchiver_setValue.robot
-CPP/Commands/CatchupArchiver_standby.robot
-CPP/Commands/CatchupArchiver_start.robot
 CPP/Commands/DomeADB_Crawl.robot
 CPP/Commands/DomeADB_Echo.robot
 CPP/Commands/DomeADB_Move.robot

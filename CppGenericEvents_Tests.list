@@ -21,7 +21,6 @@ CPP/GenericEvents/ATTCS_GenericEvents.robot
 CPP/GenericEvents/ATThermoelectricCooler_GenericEvents.robot
 CPP/GenericEvents/ATWhiteLight_GenericEvents.robot
 CPP/GenericEvents/CBP_GenericEvents.robot
-CPP/GenericEvents/CatchupArchiver_GenericEvents.robot
 CPP/GenericEvents/DIMM_GenericEvents.robot
 CPP/GenericEvents/DomeADB_GenericEvents.robot
 CPP/GenericEvents/DomeAPS_GenericEvents.robot
