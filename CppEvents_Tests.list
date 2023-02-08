@@ -97,15 +97,6 @@ CPP/Events/Camera_startSetFilter.robot
 CPP/Events/Camera_startShutterClose.robot
 CPP/Events/Camera_startShutterOpen.robot
 CPP/Events/Camera_startUnloadFilter.robot
-CPP/Events/CatchupArchiver_AppliedSettingsMatchStart.robot
-CPP/Events/CatchupArchiver_DetailedState.robot
-CPP/Events/CatchupArchiver_ErrorCode.robot
-CPP/Events/CatchupArchiver_SettingVersions.robot
-CPP/Events/CatchupArchiver_SettingsApplied.robot
-CPP/Events/CatchupArchiver_SummaryState.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
-CPP/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
 CPP/Events/DomeADB_AccelerationLimitReached.robot
 CPP/Events/DomeADB_AccelerationLimitSubsided.robot
 CPP/Events/DomeADB_BrakeDisengaged.robot

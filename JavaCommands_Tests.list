@@ -62,14 +62,6 @@ JAVA/Commands/Camera_start.robot
 JAVA/Commands/Camera_startImage.robot
 JAVA/Commands/Camera_stop.robot
 JAVA/Commands/Camera_takeImages.robot
-JAVA/Commands/CatchupArchiver_abort.robot
-JAVA/Commands/CatchupArchiver_disable.robot
-JAVA/Commands/CatchupArchiver_enable.robot
-JAVA/Commands/CatchupArchiver_enterControl.robot
-JAVA/Commands/CatchupArchiver_exitControl.robot
-JAVA/Commands/CatchupArchiver_setValue.robot
-JAVA/Commands/CatchupArchiver_standby.robot
-JAVA/Commands/CatchupArchiver_start.robot
 JAVA/Commands/DomeADB_Crawl.robot
 JAVA/Commands/DomeADB_Echo.robot
 JAVA/Commands/DomeADB_Move.robot

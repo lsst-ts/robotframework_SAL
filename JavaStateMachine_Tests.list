@@ -28,13 +28,6 @@ JAVA/StateMachine/Camera_exitControl.robot
 JAVA/StateMachine/Camera_standby.robot
 JAVA/StateMachine/Camera_start.robot
 JAVA/StateMachine/Camera_stop.robot
-JAVA/StateMachine/CatchupArchiver_abort.robot
-JAVA/StateMachine/CatchupArchiver_disable.robot
-JAVA/StateMachine/CatchupArchiver_enable.robot
-JAVA/StateMachine/CatchupArchiver_enterControl.robot
-JAVA/StateMachine/CatchupArchiver_exitControl.robot
-JAVA/StateMachine/CatchupArchiver_standby.robot
-JAVA/StateMachine/CatchupArchiver_start.robot
 JAVA/StateMachine/DomeADB_abort.robot
 JAVA/StateMachine/DomeADB_disable.robot
 JAVA/StateMachine/DomeADB_enable.robot
