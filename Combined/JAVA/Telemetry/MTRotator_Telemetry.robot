@@ -17,8 +17,8 @@ ${timeout}    400s
 *** Test Cases ***
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersion}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersion}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
 
 Start Subscriber
     [Tags]    functional

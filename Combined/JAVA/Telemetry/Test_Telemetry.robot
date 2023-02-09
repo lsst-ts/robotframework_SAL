@@ -19,8 +19,8 @@ Verify Component Publisher and Subscriber
     [Tags]    smoke
     Comment    The Test CSC is not a true Java artifact and is never published as such. Remove the MavenVersion string to accommodate RPM packaging.
     Set Suite Variable    ${MavenVersion}    ${EMPTY}
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersion}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersion}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
 
 Start Subscriber
     [Tags]    functional
