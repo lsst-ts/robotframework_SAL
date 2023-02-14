@@ -569,10 +569,10 @@ Read Logger
     ${cameraCableWrapControllerSettings_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapControllerSettings received =${SPACE}
     ${end}=    Evaluate    ${cameraCableWrapControllerSettings_start}+${16}
     ${cameraCableWrapControllerSettings_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapControllerSettings_start}    end=${end}
-    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minl1LimitEnabled : 1    1
-    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxl1LimitEnabled : 1    1
-    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minl2LimitEnabled : 1    1
-    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxl2LimitEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1LimitEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1LimitEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL2LimitEnabled : 1    1
+    Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL2LimitEnabled : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPosition : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPosition : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1Limit : 1    1
