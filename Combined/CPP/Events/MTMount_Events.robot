@@ -188,22 +188,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_elevationDrivesThermalSystemState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationDrivesThermalSystemState generated =
-    Comment    ======= Verify ${subSystem}_az0101CabinetThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_az0101CabinetThermalSystemState
+    Comment    ======= Verify ${subSystem}_cabinet0101ThermalSystemState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cabinet0101ThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event az0101CabinetThermalSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_az0101CabinetThermalSystemState_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event cabinet0101ThermalSystemState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_cabinet0101ThermalSystemState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event az0101CabinetThermalSystemState generated =
-    Comment    ======= Verify ${subSystem}_modbusTemperatureControllersSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_modbusTemperatureControllersSystemState
+    Should Contain    ${output.stdout}    === Event cabinet0101ThermalSystemState generated =
+    Comment    ======= Verify ${subSystem}_auxiliaryCabinetsThermalSystemState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_auxiliaryCabinetsThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event modbusTemperatureControllersSystemState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_modbusTemperatureControllersSystemState_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event auxiliaryCabinetsThermalSystemState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_auxiliaryCabinetsThermalSystemState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event modbusTemperatureControllersSystemState generated =
+    Should Contain    ${output.stdout}    === Event auxiliaryCabinetsThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_mainCabinetThermalSystemState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mainCabinetThermalSystemState
     @{words}=    Split String    ${line}
@@ -665,19 +665,19 @@ Read Logger
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
-    ${az0101CabinetThermalSystemState_start}=    Get Index From List    ${full_list}    === Event az0101CabinetThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${az0101CabinetThermalSystemState_start}+${4}
-    ${az0101CabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${az0101CabinetThermalSystemState_start}    end=${end}
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
-    Should Contain X Times    ${az0101CabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
-    ${modbusTemperatureControllersSystemState_start}=    Get Index From List    ${full_list}    === Event modbusTemperatureControllersSystemState received =${SPACE}
-    ${end}=    Evaluate    ${modbusTemperatureControllersSystemState_start}+${5}
-    ${modbusTemperatureControllersSystemState_list}=    Get Slice From List    ${full_list}    start=${modbusTemperatureControllersSystemState_start}    end=${end}
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
-    Should Contain X Times    ${modbusTemperatureControllersSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
+    ${cabinet0101ThermalSystemState_start}=    Get Index From List    ${full_list}    === Event cabinet0101ThermalSystemState received =${SPACE}
+    ${end}=    Evaluate    ${cabinet0101ThermalSystemState_start}+${4}
+    ${cabinet0101ThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${cabinet0101ThermalSystemState_start}    end=${end}
+    Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
+    Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
+    Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
+    ${auxiliaryCabinetsThermalSystemState_start}=    Get Index From List    ${full_list}    === Event auxiliaryCabinetsThermalSystemState received =${SPACE}
+    ${end}=    Evaluate    ${auxiliaryCabinetsThermalSystemState_start}+${5}
+    ${auxiliaryCabinetsThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${auxiliaryCabinetsThermalSystemState_start}    end=${end}
+    Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
+    Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
+    Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
+    Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
     ${mainCabinetThermalSystemState_start}=    Get Index From List    ${full_list}    === Event mainCabinetThermalSystemState received =${SPACE}
     ${end}=    Evaluate    ${mainCabinetThermalSystemState_start}+${4}
     ${mainCabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermalSystemState_start}    end=${end}

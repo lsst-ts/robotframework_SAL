@@ -76,14 +76,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::deployablePlatforms_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_deployablePlatforms end of topic ===
-    Comment    ======= Verify ${subSystem}_cabinet0101 test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cabinet0101
+    Comment    ======= Verify ${subSystem}_cabinet0101Thermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_cabinet0101Thermal
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === MTMount_cabinet0101 start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cabinet0101_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTMount_cabinet0101Thermal start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cabinet0101Thermal_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTMount_cabinet0101 end of topic ===
+    Should Contain    ${output.stdout}    === MTMount_cabinet0101Thermal end of topic ===
     Comment    ======= Verify ${subSystem}_azimuthCableWrap test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_azimuthCableWrap
     @{words}=    Split String    ${line}
@@ -148,14 +148,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::encoder_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_encoder end of topic ===
-    Comment    ======= Verify ${subSystem}_mountControlMainCabinet test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mountControlMainCabinet
+    Comment    ======= Verify ${subSystem}_mainCabinetThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mainCabinetThermal
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === MTMount_mountControlMainCabinet start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mountControlMainCabinet_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTMount_mainCabinetThermal start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mainCabinetThermal_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTMount_mountControlMainCabinet end of topic ===
+    Should Contain    ${output.stdout}    === MTMount_mainCabinetThermal end of topic ===
     Comment    ======= Verify ${subSystem}_mirrorCoverLocks test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mirrorCoverLocks
     @{words}=    Split String    ${line}
@@ -188,14 +188,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::topEndChiller_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_topEndChiller end of topic ===
-    Comment    ======= Verify ${subSystem}_auxiliaryBoxes test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_auxiliaryBoxes
+    Comment    ======= Verify ${subSystem}_auxiliaryCabinetsThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_auxiliaryCabinetsThermal
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === MTMount_auxiliaryBoxes start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::auxiliaryBoxes_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === MTMount_auxiliaryCabinetsThermal start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::auxiliaryCabinetsThermal_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTMount_auxiliaryBoxes end of topic ===
+    Should Contain    ${output.stdout}    === MTMount_auxiliaryCabinetsThermal end of topic ===
     Comment    ======= Verify ${subSystem}_oilSupplySystem test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_oilSupplySystem
     @{words}=    Split String    ${line}
@@ -345,14 +345,14 @@ Read Subscriber
     Should Contain X Times    ${deployablePlatforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentagePlatform2Drive : 8    1
     Should Contain X Times    ${deployablePlatforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentagePlatform2Drive : 9    1
     Should Contain X Times    ${deployablePlatforms_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${cabinet0101_start}=    Get Index From List    ${full_list}    === MTMount_cabinet0101 start of topic ===
-    ${cabinet0101_end}=    Get Index From List    ${full_list}    === MTMount_cabinet0101 end of topic ===
-    ${cabinet0101_list}=    Get Slice From List    ${full_list}    start=${cabinet0101_start}    end=${cabinet0101_end}
-    Should Contain X Times    ${cabinet0101_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperature : 1    10
-    Should Contain X Times    ${cabinet0101_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualValvePosition : 1    10
-    Should Contain X Times    ${cabinet0101_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
-    Should Contain X Times    ${cabinet0101_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointValvePosition : 1    10
-    Should Contain X Times    ${cabinet0101_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    ${cabinet0101Thermal_start}=    Get Index From List    ${full_list}    === MTMount_cabinet0101Thermal start of topic ===
+    ${cabinet0101Thermal_end}=    Get Index From List    ${full_list}    === MTMount_cabinet0101Thermal end of topic ===
+    ${cabinet0101Thermal_list}=    Get Slice From List    ${full_list}    start=${cabinet0101Thermal_start}    end=${cabinet0101Thermal_end}
+    Should Contain X Times    ${cabinet0101Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperature : 1    10
+    Should Contain X Times    ${cabinet0101Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualValvePosition : 1    10
+    Should Contain X Times    ${cabinet0101Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
+    Should Contain X Times    ${cabinet0101Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointValvePosition : 1    10
+    Should Contain X Times    ${cabinet0101Thermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${azimuthCableWrap_start}=    Get Index From List    ${full_list}    === MTMount_azimuthCableWrap start of topic ===
     ${azimuthCableWrap_end}=    Get Index From List    ${full_list}    === MTMount_azimuthCableWrap end of topic ===
     ${azimuthCableWrap_list}=    Get Slice From List    ${full_list}    start=${azimuthCableWrap_start}    end=${azimuthCableWrap_end}
@@ -626,22 +626,22 @@ Read Subscriber
     Should Contain X Times    ${encoder_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderHeadReadReferenceEL : 8    1
     Should Contain X Times    ${encoder_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderHeadReadReferenceEL : 9    1
     Should Contain X Times    ${encoder_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${mountControlMainCabinet_start}=    Get Index From List    ${full_list}    === MTMount_mountControlMainCabinet start of topic ===
-    ${mountControlMainCabinet_end}=    Get Index From List    ${full_list}    === MTMount_mountControlMainCabinet end of topic ===
-    ${mountControlMainCabinet_list}=    Get Slice From List    ${full_list}    start=${mountControlMainCabinet_start}    end=${mountControlMainCabinet_end}
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperature : 1    10
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 0    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 1    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 2    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 3    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 4    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 5    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 6    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 7    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 8    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 9    1
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
-    Should Contain X Times    ${mountControlMainCabinet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    ${mainCabinetThermal_start}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal start of topic ===
+    ${mainCabinetThermal_end}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal end of topic ===
+    ${mainCabinetThermal_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermal_start}    end=${mainCabinetThermal_end}
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 0    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 1    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 2    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 3    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 4    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 5    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 6    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 7    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 8    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 9    1
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${mirrorCoverLocks_start}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks start of topic ===
     ${mirrorCoverLocks_end}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks end of topic ===
     ${mirrorCoverLocks_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocks_start}    end=${mirrorCoverLocks_end}
@@ -745,20 +745,20 @@ Read Subscriber
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threeWayValvePosition201 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threeWayValvePosition202 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    ${auxiliaryBoxes_start}=    Get Index From List    ${full_list}    === MTMount_auxiliaryBoxes start of topic ===
-    ${auxiliaryBoxes_end}=    Get Index From List    ${full_list}    === MTMount_auxiliaryBoxes end of topic ===
-    ${auxiliaryBoxes_list}=    Get Slice From List    ${full_list}    start=${auxiliaryBoxes_start}    end=${auxiliaryBoxes_end}
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthDriveCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthPowerDistributionCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthPowerDistributionTransformer0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationPowerDistributionCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationPowerDistributionCabinet0002 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthDZCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthPowerDistributionCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthPowerDistributionTransformer0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureElevationPowerDistributionCabinet0001 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureElevationPowerDistributionCabinet0002 : 1    10
-    Should Contain X Times    ${auxiliaryBoxes_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    ${auxiliaryCabinetsThermal_start}=    Get Index From List    ${full_list}    === MTMount_auxiliaryCabinetsThermal start of topic ===
+    ${auxiliaryCabinetsThermal_end}=    Get Index From List    ${full_list}    === MTMount_auxiliaryCabinetsThermal end of topic ===
+    ${auxiliaryCabinetsThermal_list}=    Get Slice From List    ${full_list}    start=${auxiliaryCabinetsThermal_start}    end=${auxiliaryCabinetsThermal_end}
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthDriveCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthPowerDistributionCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthPowerDistributionTransformer0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationPowerDistributionCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationPowerDistributionCabinet0002 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthDZCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthPowerDistributionCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureAzimuthPowerDistributionTransformer0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureElevationPowerDistributionCabinet0001 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureElevationPowerDistributionCabinet0002 : 1    10
+    Should Contain X Times    ${auxiliaryCabinetsThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${oilSupplySystem_start}=    Get Index From List    ${full_list}    === MTMount_oilSupplySystem start of topic ===
     ${oilSupplySystem_end}=    Get Index From List    ${full_list}    === MTMount_oilSupplySystem end of topic ===
     ${oilSupplySystem_list}=    Get Slice From List    ${full_list}    start=${oilSupplySystem_start}    end=${oilSupplySystem_end}

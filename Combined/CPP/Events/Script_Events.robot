@@ -138,7 +138,7 @@ Read Logger
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}help : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}remotes : RO    1
     ${metadata_start}=    Get Index From List    ${full_list}    === Event metadata received =${SPACE}
-    ${end}=    Evaluate    ${metadata_start}+${11}
+    ${end}=    Evaluate    ${metadata_start}+${12}
     ${metadata_list}=    Get Slice From List    ${full_list}    start=${metadata_start}    end=${end}
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coordinateSystem : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
@@ -148,6 +148,7 @@ Read Logger
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dome : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nimages : 1    1
+    Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instrument : RO    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : RO    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalCheckpoints : 1    1
     ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
