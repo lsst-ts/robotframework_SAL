@@ -380,7 +380,6 @@ Read Subscriber
     ${cameraCableWrap_start}=    Get Index From List    ${full_list}    === MTMount_cameraCableWrap start of topic ===
     ${cameraCableWrap_end}=    Get Index From List    ${full_list}    === MTMount_cameraCableWrap end of topic ===
     ${cameraCableWrap_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrap_start}    end=${cameraCableWrap_end}
-    Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 0    1
     Should Contain X Times    ${cameraCableWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorquePercentage : 1    1
