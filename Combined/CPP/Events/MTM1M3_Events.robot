@@ -132,6 +132,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceSetpointWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceSetpointWarning generated =
+    Comment    ======= Verify ${subSystem}_raisingLoweringInfo test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_raisingLoweringInfo
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event raisingLoweringInfo iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_raisingLoweringInfo_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event raisingLoweringInfo generated =
     Comment    ======= Verify ${subSystem}_forceActuatorState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceActuatorState
     @{words}=    Split String    ${line}
@@ -188,6 +196,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceActuatorForceWarning_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceActuatorForceWarning generated =
+    Comment    ======= Verify ${subSystem}_forceActuatorFollowingErrorCounter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceActuatorFollowingErrorCounter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event forceActuatorFollowingErrorCounter iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceActuatorFollowingErrorCounter_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event forceActuatorFollowingErrorCounter generated =
     Comment    ======= Verify ${subSystem}_gyroWarning test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_gyroWarning
     @{words}=    Split String    ${line}
@@ -742,8 +758,17 @@ Read Logger
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityForceWarning : 0    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyForceWarning : 1    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceWarning : 0    1
+    ${raisingLoweringInfo_start}=    Get Index From List    ${full_list}    === Event raisingLoweringInfo received =${SPACE}
+    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${7}
+    ${raisingLoweringInfo_list}=    Get Slice From List    ${full_list}    start=${raisingLoweringInfo_start}    end=${end}
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}weightSupportedPercent : 1    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitAirPressure : 1    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitHardpoint : 0    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitZForceActuator : 0    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitYForceActuator : 0    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitXForceActuator : 0    1
     ${forceActuatorState_start}=    Get Index From List    ${full_list}    === Event forceActuatorState received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorState_start}+${14}
+    ${end}=    Evaluate    ${forceActuatorState_start}+${13}
     ${forceActuatorState_list}=    Get Slice From List    ${full_list}    start=${forceActuatorState_start}    end=${end}
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
@@ -757,7 +782,6 @@ Read Logger
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityForcesApplied : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeOpticForcesApplied : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}balanceForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}supportPercentage : 1    1
     ${hardpointMonitorInfo_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorInfo received =${SPACE}
     ${end}=    Evaluate    ${hardpointMonitorInfo_start}+${14}
     ${hardpointMonitorInfo_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorInfo_start}    end=${end}
@@ -822,10 +846,11 @@ Read Logger
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkCOutputMismatch : 1    1
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkDOutputMismatch : 1    1
     ${forceActuatorForceWarning_start}=    Get Index From List    ${full_list}    === Event forceActuatorForceWarning received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorForceWarning_start}+${11}
+    ${end}=    Evaluate    ${forceActuatorForceWarning_start}+${20}
     ${forceActuatorForceWarning_list}=    Get Slice From List    ${full_list}    start=${forceActuatorForceWarning_start}    end=${end}
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyFault : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyPrimaryAxisMeasuredForceWarning : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisMeasuredForceWarning : 0    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisMeasuredForceWarning : 1    1
@@ -834,6 +859,22 @@ Read Logger
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorWarning : 0    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisFollowingErrorWarning : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorWarning : 0    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyPrimaryAxisFollowingErrorCountingFault : 1    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorCountingFault : 0    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisFollowingErrorCountingFault : 1    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorCountingFault : 0    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyPrimaryAxisFollowingErrorImmediateFault : 1    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorImmediateFault : 0    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisFollowingErrorImmediateFault : 1    1
+    Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorImmediateFault : 0    1
+    ${forceActuatorFollowingErrorCounter_start}=    Get Index From List    ${full_list}    === Event forceActuatorFollowingErrorCounter received =${SPACE}
+    ${end}=    Evaluate    ${forceActuatorFollowingErrorCounter_start}+${6}
+    ${forceActuatorFollowingErrorCounter_list}=    Get Slice From List    ${full_list}    start=${forceActuatorFollowingErrorCounter_start}    end=${end}
+    Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}counter : 1    1
+    Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorWarningCounter : 0    1
+    Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorWarningCounter : 0    1
+    Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorCountingCounter : 0    1
+    Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorCountingCounter : 0    1
     ${gyroWarning_start}=    Get Index From List    ${full_list}    === Event gyroWarning received =${SPACE}
     ${end}=    Evaluate    ${gyroWarning_start}+${60}
     ${gyroWarning_list}=    Get Slice From List    ${full_list}    start=${gyroWarning_start}    end=${end}
@@ -980,7 +1021,7 @@ Read Logger
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calculatedD : 0    1
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calculatedE : 0    1
     ${hardpointActuatorWarning_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorWarning received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorWarning_start}+${49}
+    ${end}=    Evaluate    ${hardpointActuatorWarning_start}+${57}
     ${hardpointActuatorWarning_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorWarning_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -998,6 +1039,14 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limitSwitch1Operated : 0    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyLimitSwitch2Operated : 1    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limitSwitch2Operated : 0    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyLowProximityWarning : 1    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowProximityWarning : 0    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyHighProximityWarning : 1    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}highProximityWarning : 0    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyLowAirPressureFault : 1    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowAirPressureFault : 0    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyHighAirPressureFault : 1    1
+    Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}highAirPressureFault : 0    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyUniqueIdCRCError : 1    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uniqueIdCRCError : 0    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyApplicationTypeMismatch : 1    1
@@ -1324,10 +1373,16 @@ Read Logger
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceActuatorEnabled : 0    1
     ${forceActuatorSettings_start}=    Get Index From List    ${full_list}    === Event forceActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorSettings_start}+${24}
+    ${end}=    Evaluate    ${forceActuatorSettings_start}+${30}
     ${forceActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${forceActuatorSettings_start}    end=${end}
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netActiveOpticForceTolerance : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledActuators : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorWarningThreshold : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorCountingFaultThreshold : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorImmediateFaultThreshold : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryFollowingErrorWarningThreshold : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryFollowingErrorCountingFaultThreshold : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryFollowingErrorImmediateFaultThreshold : 0    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useInclinometer : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mirrorXMoment : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mirrorYMoment : 1    1
@@ -1350,7 +1405,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestSettleTime : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestMeasurements : 1    1
     ${hardpointActuatorSettings_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${12}
+    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${15}
     ${hardpointActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorSettings_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerStep : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerEncoder : 1    1
@@ -1363,6 +1418,9 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultHigh : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultLow : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airPressureFaultLowRaising : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderOffset : 0    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowProximityEncoder : 0    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}highProximityEncoder : 0    1
     ${positionControllerSettings_start}=    Get Index From List    ${full_list}    === Event positionControllerSettings received =${SPACE}
     ${end}=    Evaluate    ${positionControllerSettings_start}+${14}
     ${positionControllerSettings_list}=    Get Slice From List    ${full_list}    start=${positionControllerSettings_start}    end=${end}

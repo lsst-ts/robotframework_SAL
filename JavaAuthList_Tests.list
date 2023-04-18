@@ -8,6 +8,7 @@ AuthList/JAVA/MTRotator_AuthList.robot
 AuthList/JAVA/MTHeaderService_AuthList.robot
 AuthList/JAVA/MTCamera_AuthList.robot
 AuthList/JAVA/GCHeaderService_AuthList.robot
+AuthList/JAVA/ESS_AuthList.robot
 AuthList/JAVA/CCHeaderService_AuthList.robot
 AuthList/JAVA/CCCamera_AuthList.robot
 AuthList/JAVA/ATHeaderService_AuthList.robot

@@ -48,7 +48,7 @@ function createSettings {
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
     echo "Force Tags    messaging    java    $skipped" >> $testSuite
-    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${Build_Number}    \${MavenVersion}    \${timeout}" >> $testSuite
+    echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite
     echo "Library    Collections" >> $testSuite
@@ -66,7 +66,7 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTM2|Scheduler)$ ]]; then
+    if [[ "$subSystem" =~ ^(ATCamera|CCCamera|MTM2|Scheduler|ESS)$ ]]; then
         timeout="900s"
     elif [[ "$subSystem" =~ ^(MTCamera)$ ]]; then
         timeout="3600s"
@@ -89,8 +89,8 @@ function verifyCompPubSub {
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_pub.jar" >> $testSuite
         echo "    File Should Exist    \${SALWorkDir}/\${subSystem}_\${component}/java/standalone/saj_\${subSystem}_\${component}_sub.jar" >> $testSuite
     else
-        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Publisher_all.java" >> $testSuite
-        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/src/test/java/\${subSystem}Subscriber_all.java" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersionBase}_\${SALVersionBase}\${MavenVersion}/src/test/java/\${subSystem}Publisher_all.java" >> $testSuite
+        echo "    File Should Exist    \${SALWorkDir}/maven/\${subSystem}-\${XMLVersionBase}_\${SALVersionBase}\${MavenVersion}/src/test/java/\${subSystem}Subscriber_all.java" >> $testSuite
     fi
     echo "" >> $testSuite
 }
@@ -109,7 +109,7 @@ function startJavaCombinedSubscriberProcess {
     echo "Start Subscriber" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Subscriber Program." >> $testSuite
-    echo "    \${output}=    Start Process    mvn    -e    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
+    echo "    \${output}=    Start Process    mvn    -e    -Dtest\=\${subSystem}Subscriber_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersionBase}_\${SALVersionBase}\${MavenVersion}/    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrSubscriber.txt" >> $testSuite    
     echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
     echo "    Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdoutSubscriber.txt" >> $testSuite
     echo "    Comment    Wait for Subscriber program to be ready." >> $testSuite
@@ -133,7 +133,7 @@ function startJavaCombinedPublisherProcess {
     echo "Start Publisher" >> $testSuite
     echo "    [Tags]    functional" >> $testSuite
     echo "    Comment    Executing Combined Java Publisher Program." >> $testSuite
-    echo "    \${output}=    Run Process    mvn    -e    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersion}_\${SALVersion}\${Build_Number}\${MavenVersion}/    alias=\${subSystem}_Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
+    echo "    \${output}=    Run Process    mvn    -e    -Dtest\=\${subSystem}Publisher_all.java    test    cwd=\${SALWorkDir}/maven/\${subSystem}-\${XMLVersionBase}_\${SALVersionBase}\${MavenVersion}/    alias=\${subSystem}_Publisher    stdout=\${EXECDIR}\${/}\${subSystem}_stdoutPublisher.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderrPublisher.txt" >> $testSuite    
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all publishers ready =====" >> $testSuite
     echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite

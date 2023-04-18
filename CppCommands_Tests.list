@@ -4,22 +4,6 @@
 --output CppCommands
 
 # List of test suites
-CPP/Commands/Archiver_abort.robot
-CPP/Commands/Archiver_disable.robot
-CPP/Commands/Archiver_enable.robot
-CPP/Commands/Archiver_enterControl.robot
-CPP/Commands/Archiver_exitControl.robot
-CPP/Commands/Archiver_setValue.robot
-CPP/Commands/Archiver_standby.robot
-CPP/Commands/Archiver_start.robot
-CPP/Commands/AtArchiver_abort.robot
-CPP/Commands/AtArchiver_disable.robot
-CPP/Commands/AtArchiver_enable.robot
-CPP/Commands/AtArchiver_enterControl.robot
-CPP/Commands/AtArchiver_exitControl.robot
-CPP/Commands/AtArchiver_setValue.robot
-CPP/Commands/AtArchiver_standby.robot
-CPP/Commands/AtArchiver_start.robot
 CPP/Commands/AtCamera_abort.robot
 CPP/Commands/AtCamera_clear.robot
 CPP/Commands/AtCamera_disable.robot
@@ -78,14 +62,6 @@ CPP/Commands/Camera_start.robot
 CPP/Commands/Camera_startImage.robot
 CPP/Commands/Camera_stop.robot
 CPP/Commands/Camera_takeImages.robot
-CPP/Commands/CatchupArchiver_abort.robot
-CPP/Commands/CatchupArchiver_disable.robot
-CPP/Commands/CatchupArchiver_enable.robot
-CPP/Commands/CatchupArchiver_enterControl.robot
-CPP/Commands/CatchupArchiver_exitControl.robot
-CPP/Commands/CatchupArchiver_setValue.robot
-CPP/Commands/CatchupArchiver_standby.robot
-CPP/Commands/CatchupArchiver_start.robot
 CPP/Commands/DomeADB_Crawl.robot
 CPP/Commands/DomeADB_Echo.robot
 CPP/Commands/DomeADB_Move.robot

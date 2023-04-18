@@ -5,7 +5,6 @@
 
 # List of test suites
 CPP/GenericEvents/ATAOS_GenericEvents.robot
-CPP/GenericEvents/ATArchiver_GenericEvents.robot
 CPP/GenericEvents/ATBuilding_GenericEvents.robot
 CPP/GenericEvents/ATCalCS_GenericEvents.robot
 CPP/GenericEvents/ATCamera_GenericEvents.robot
@@ -22,7 +21,6 @@ CPP/GenericEvents/ATTCS_GenericEvents.robot
 CPP/GenericEvents/ATThermoelectricCooler_GenericEvents.robot
 CPP/GenericEvents/ATWhiteLight_GenericEvents.robot
 CPP/GenericEvents/CBP_GenericEvents.robot
-CPP/GenericEvents/CatchupArchiver_GenericEvents.robot
 CPP/GenericEvents/DIMM_GenericEvents.robot
 CPP/GenericEvents/DomeADB_GenericEvents.robot
 CPP/GenericEvents/DomeAPS_GenericEvents.robot
@@ -40,7 +38,6 @@ CPP/GenericEvents/HVAC_GenericEvents.robot
 CPP/GenericEvents/Hexapod_GenericEvents.robot
 CPP/GenericEvents/IOTA_GenericEvents.robot
 CPP/GenericEvents/LinearStage_GenericEvents.robot
-CPP/GenericEvents/MTArchiver_GenericEvents.robot
 CPP/GenericEvents/MTCalCS_GenericEvents.robot
 CPP/GenericEvents/MTCamera_GenericEvents.robot
 CPP/GenericEvents/MTDomeTrajectory_GenericEvents.robot

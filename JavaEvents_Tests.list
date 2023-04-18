@@ -4,24 +4,6 @@
 --output JavaEvents
 
 # List of test suites
-JAVA/Events/Archiver_AppliedSettingsMatchStart.robot
-JAVA/Events/Archiver_DetailedState.robot
-JAVA/Events/Archiver_ErrorCode.robot
-JAVA/Events/Archiver_SettingVersions.robot
-JAVA/Events/Archiver_SettingsApplied.robot
-JAVA/Events/Archiver_SummaryState.robot
-JAVA/Events/Archiver_archiverEntityShutdown.robot
-JAVA/Events/Archiver_archiverEntityStartup.robot
-JAVA/Events/Archiver_archiverEntitySummaryState.robot
-JAVA/Events/AtArchiver_AppliedSettingsMatchStart.robot
-JAVA/Events/AtArchiver_DetailedState.robot
-JAVA/Events/AtArchiver_ErrorCode.robot
-JAVA/Events/AtArchiver_SettingVersions.robot
-JAVA/Events/AtArchiver_SettingsApplied.robot
-JAVA/Events/AtArchiver_SummaryState.robot
-JAVA/Events/AtArchiver_archiverEntityShutdown.robot
-JAVA/Events/AtArchiver_archiverEntityStartup.robot
-JAVA/Events/AtArchiver_archiverEntitySummaryState.robot
 JAVA/Events/AtCamera_AppliedSettingsMatchStart.robot
 JAVA/Events/AtCamera_ErrorCode.robot
 JAVA/Events/AtCamera_SettingVersions.robot
@@ -115,15 +97,6 @@ JAVA/Events/Camera_startSetFilter.robot
 JAVA/Events/Camera_startShutterClose.robot
 JAVA/Events/Camera_startShutterOpen.robot
 JAVA/Events/Camera_startUnloadFilter.robot
-JAVA/Events/CatchupArchiver_AppliedSettingsMatchStart.robot
-JAVA/Events/CatchupArchiver_DetailedState.robot
-JAVA/Events/CatchupArchiver_ErrorCode.robot
-JAVA/Events/CatchupArchiver_SettingVersions.robot
-JAVA/Events/CatchupArchiver_SettingsApplied.robot
-JAVA/Events/CatchupArchiver_SummaryState.robot
-JAVA/Events/CatchupArchiver_catchuparchiverEntityShutdown.robot
-JAVA/Events/CatchupArchiver_catchuparchiverEntityStartup.robot
-JAVA/Events/CatchupArchiver_catchuparchiverEntitySummaryState.robot
 JAVA/Events/DomeADB_AccelerationLimitReached.robot
 JAVA/Events/DomeADB_AccelerationLimitSubsided.robot
 JAVA/Events/DomeADB_BrakeDisengaged.robot

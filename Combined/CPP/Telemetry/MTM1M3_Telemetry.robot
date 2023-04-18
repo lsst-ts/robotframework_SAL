@@ -220,6 +220,26 @@ Read Subscriber
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForce : 7    1
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForce : 8    1
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForce : 9    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 0    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 1    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 2    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 3    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 4    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 5    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 6    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 7    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 8    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderFollowingError : 9    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 0    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 1    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 2    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 3    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 4    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 5    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 6    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 7    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 8    1
+    Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderFollowingError : 9    1
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 0    1
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 1    1
     Should Contain X Times    ${forceActuatorData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 2    1

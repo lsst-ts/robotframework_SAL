@@ -252,6 +252,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_pointData_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event pointData generated =
+    Comment    ======= Verify ${subSystem}_observatoryLocation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_observatoryLocation
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event observatoryLocation iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_observatoryLocation_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event observatoryLocation generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -497,6 +505,13 @@ Read Logger
     Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredElevation : 1    1
     Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredRotator : 1    1
     Should Contain X Times    ${pointData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}filePath : RO    1
+    ${observatoryLocation_start}=    Get Index From List    ${full_list}    === Event observatoryLocation received =${SPACE}
+    ${end}=    Evaluate    ${observatoryLocation_start}+${5}
+    ${observatoryLocation_list}=    Get Slice From List    ${full_list}    start=${observatoryLocation_start}    end=${end}
+    Should Contain X Times    ${observatoryLocation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longitude : 1    1
+    Should Contain X Times    ${observatoryLocation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latitude : 1    1
+    Should Contain X Times    ${observatoryLocation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}height : 1    1
+    Should Contain X Times    ${observatoryLocation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeZone : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
