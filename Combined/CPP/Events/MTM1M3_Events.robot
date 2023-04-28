@@ -140,6 +140,22 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_raisingLoweringInfo_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event raisingLoweringInfo generated =
+    Comment    ======= Verify ${subSystem}_boosterValveSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_boosterValveSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event boosterValveSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_boosterValveSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event boosterValveSettings generated =
+    Comment    ======= Verify ${subSystem}_boosterValveStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_boosterValveStatus
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event boosterValveStatus iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_boosterValveStatus_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event boosterValveStatus generated =
     Comment    ======= Verify ${subSystem}_forceActuatorState test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceActuatorState
     @{words}=    Split String    ${line}
@@ -767,12 +783,31 @@ Read Logger
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitZForceActuator : 0    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitYForceActuator : 0    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitXForceActuator : 0    1
+    ${boosterValveSettings_start}=    Get Index From List    ${full_list}    === Event boosterValveSettings received =${SPACE}
+    ${end}=    Evaluate    ${boosterValveSettings_start}+${11}
+    ${boosterValveSettings_list}=    Get Slice From List    ${full_list}    start=${boosterValveSettings_start}    end=${end}
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggerEnabled : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggerOpen : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggerClose : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerTriggerEnabled : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerXTriggerOpen : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerXTriggerClose : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerYTriggerOpen : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerYTriggerClose : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerOpen : 1    1
+    Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerClose : 1    1
+    ${boosterValveStatus_start}=    Get Index From List    ${full_list}    === Event boosterValveStatus received =${SPACE}
+    ${end}=    Evaluate    ${boosterValveStatus_start}+${5}
+    ${boosterValveStatus_list}=    Get Slice From List    ${full_list}    start=${boosterValveStatus_start}    end=${end}
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    1
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userTriggered : 1    1
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggered : 1    1
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerTriggered : 1    1
     ${forceActuatorState_start}=    Get Index From List    ${full_list}    === Event forceActuatorState received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorState_start}+${13}
+    ${end}=    Evaluate    ${forceActuatorState_start}+${12}
     ${forceActuatorState_list}=    Get Slice From List    ${full_list}    start=${forceActuatorState_start}    end=${end}
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}staticForcesApplied : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationForcesApplied : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthForcesApplied : 1    1
@@ -1373,10 +1408,15 @@ Read Logger
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceActuatorEnabled : 0    1
     ${forceActuatorSettings_start}=    Get Index From List    ${full_list}    === Event forceActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorSettings_start}+${30}
+    ${end}=    Evaluate    ${forceActuatorSettings_start}+${35}
     ${forceActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${forceActuatorSettings_start}    end=${end}
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netActiveOpticForceTolerance : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledActuators : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderMeasuredForceLowLimit : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderMeasuredForceHighLimit : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderMeasuredForceLowLimit : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderMeasuredForceHighLimit : 0    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredWarningPercentage : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorWarningThreshold : 0    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorCountingFaultThreshold : 0    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryFollowingErrorImmediateFaultThreshold : 0    1
