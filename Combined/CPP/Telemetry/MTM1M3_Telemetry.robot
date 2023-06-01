@@ -287,7 +287,6 @@ Read Subscriber
     ${outerLoopData_list}=    Get Slice From List    ${full_list}    start=${outerLoopData_start}    end=${outerLoopData_end}
     Should Contain X Times    ${outerLoopData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${outerLoopData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}broadcastCounter : 1    10
-    Should Contain X Times    ${outerLoopData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    10
     Should Contain X Times    ${outerLoopData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executionTime : 1    10
     ${accelerometerData_start}=    Get Index From List    ${full_list}    === MTM1M3_accelerometerData start of topic ===
     ${accelerometerData_end}=    Get Index From List    ${full_list}    === MTM1M3_accelerometerData end of topic ===

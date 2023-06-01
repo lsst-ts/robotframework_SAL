@@ -761,6 +761,9 @@ Read Subscriber
     ${oilSupplySystem_start}=    Get Index From List    ${full_list}    === MTMount_oilSupplySystem start of topic ===
     ${oilSupplySystem_end}=    Get Index From List    ${full_list}    === MTMount_oilSupplySystem end of topic ===
     ${oilSupplySystem_list}=    Get Slice From List    ${full_list}    start=${oilSupplySystem_start}    end=${oilSupplySystem_end}
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAzimuthCabinet5001 : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationCabinet5001 : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureElevationCabinet5002 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperature : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}computedOilFilmThicknessAzimuthBearing5004 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}computedOilFilmThicknessAzimuthBearing5014 : 1    10

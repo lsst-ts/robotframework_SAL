@@ -12,4 +12,3 @@ AuthList/CPP/MTMount_AuthList.robot
 AuthList/CPP/MTPtg_AuthList.robot
 AuthList/CPP/MTRotator_AuthList.robot
 AuthList/CPP/Script_AuthList.robot
-AuthList/CPP/WeatherStation_AuthList.robot
