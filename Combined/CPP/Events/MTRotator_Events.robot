@@ -229,16 +229,20 @@ Read Logger
     ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${end}
     Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${configuration_start}=    Get Index From List    ${full_list}    === Event configuration received =${SPACE}
-    ${end}=    Evaluate    ${configuration_start}+${9}
+    ${end}=    Evaluate    ${configuration_start}+${13}
     ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${end}
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleLowerLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleUpperLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationLimit : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emergencyAccelerationLimit : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emergencyJerkLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionErrorThreshold : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleLowerLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorThreshold : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackingSuccessPositionThreshold : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackingLostTimeout : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disableLimitMaxTime : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxConfigurableVelocityLimit : 1    1
     ${commandableByDDS_start}=    Get Index From List    ${full_list}    === Event commandableByDDS received =${SPACE}
     ${end}=    Evaluate    ${commandableByDDS_start}+${2}
     ${commandableByDDS_list}=    Get Slice From List    ${full_list}    start=${commandableByDDS_start}    end=${end}
