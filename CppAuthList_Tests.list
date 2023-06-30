@@ -6,6 +6,7 @@
 # List of test suites
 AuthList/CPP/ATMCS_AuthList.robot
 AuthList/CPP/ATPtg_AuthList.robot
+AuthList/CPP/ESS_AuthList.robot
 AuthList/CPP/Guider_AuthList.robot
 AuthList/CPP/MTM1M3_AuthList.robot
 AuthList/CPP/MTMount_AuthList.robot
