@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    MTRotator_Events communications tests.
+Documentation    ESS_Events communications tests.
 Force Tags    messaging    cpp    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    MTRotator
+${subSystem}    ESS
 ${component}    all
 ${timeout}    180s
 
@@ -36,70 +36,38 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_controllerState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_controllerState
+    Comment    ======= Verify ${subSystem}_lightningStrike test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_lightningStrike
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event controllerState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_controllerState_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event lightningStrike iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_lightningStrike_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event controllerState generated =
-    Comment    ======= Verify ${subSystem}_connected test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_connected
+    Should Contain    ${output.stdout}    === Event lightningStrike generated =
+    Comment    ======= Verify ${subSystem}_highElectricField test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_highElectricField
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event connected iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_connected_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event highElectricField iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_highElectricField_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event connected generated =
-    Comment    ======= Verify ${subSystem}_interlock test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_interlock
+    Should Contain    ${output.stdout}    === Event highElectricField generated =
+    Comment    ======= Verify ${subSystem}_precipitation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_precipitation
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event interlock iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_interlock_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event precipitation iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_precipitation_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event interlock generated =
-    Comment    ======= Verify ${subSystem}_target test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_target
+    Should Contain    ${output.stdout}    === Event precipitation generated =
+    Comment    ======= Verify ${subSystem}_sensorStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_sensorStatus
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event target iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_target_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event sensorStatus iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_sensorStatus_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event target generated =
-    Comment    ======= Verify ${subSystem}_tracking test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_tracking
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event tracking iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_tracking_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event tracking generated =
-    Comment    ======= Verify ${subSystem}_inPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_inPosition
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event inPosition iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPosition_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event inPosition generated =
-    Comment    ======= Verify ${subSystem}_configuration test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configuration
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event configuration iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configuration_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event configuration generated =
-    Comment    ======= Verify ${subSystem}_commandableByDDS test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_commandableByDDS
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event commandableByDDS iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_commandableByDDS_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event commandableByDDS generated =
+    Should Contain    ${output.stdout}    === Event sensorStatus generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -108,14 +76,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_heartbeat_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event heartbeat generated =
-    Comment    ======= Verify ${subSystem}_clockOffset test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_clockOffset
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event clockOffset iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_clockOffset_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event clockOffset generated =
     Comment    ======= Verify ${subSystem}_logLevel test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_logLevel
     @{words}=    Split String    ${line}
@@ -197,63 +157,34 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${controllerState_start}=    Get Index From List    ${full_list}    === Event controllerState received =${SPACE}
-    ${end}=    Evaluate    ${controllerState_start}+${5}
-    ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${end}
-    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}controllerState : 1    1
-    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offlineSubstate : 1    1
-    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledSubstate : 1    1
-    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applicationStatus : 1    1
-    ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
-    ${end}=    Evaluate    ${connected_start}+${2}
-    ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${end}
-    Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
-    ${interlock_start}=    Get Index From List    ${full_list}    === Event interlock received =${SPACE}
-    ${end}=    Evaluate    ${interlock_start}+${2}
-    ${interlock_list}=    Get Slice From List    ${full_list}    start=${interlock_start}    end=${end}
-    Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
-    ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
-    ${end}=    Evaluate    ${target_start}+${4}
-    ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 1    1
-    Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 1    1
-    ${tracking_start}=    Get Index From List    ${full_list}    === Event tracking received =${SPACE}
-    ${end}=    Evaluate    ${tracking_start}+${4}
-    ${tracking_list}=    Get Slice From List    ${full_list}    start=${tracking_start}    end=${end}
-    Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracking : 1    1
-    Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lost : 1    1
-    Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}noNewCommand : 1    1
-    ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
-    ${end}=    Evaluate    ${inPosition_start}+${2}
-    ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${end}
-    Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
-    ${configuration_start}=    Get Index From List    ${full_list}    === Event configuration received =${SPACE}
-    ${end}=    Evaluate    ${configuration_start}+${13}
-    ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${end}
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleLowerLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleUpperLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emergencyAccelerationLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emergencyJerkLimit : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionErrorThreshold : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorThreshold : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackingSuccessPositionThreshold : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackingLostTimeout : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disableLimitMaxTime : 1    1
-    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxConfigurableVelocityLimit : 1    1
-    ${commandableByDDS_start}=    Get Index From List    ${full_list}    === Event commandableByDDS received =${SPACE}
-    ${end}=    Evaluate    ${commandableByDDS_start}+${2}
-    ${commandableByDDS_list}=    Get Slice From List    ${full_list}    start=${commandableByDDS_start}    end=${end}
-    Should Contain X Times    ${commandableByDDS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
+    ${lightningStrike_start}=    Get Index From List    ${full_list}    === Event lightningStrike received =${SPACE}
+    ${end}=    Evaluate    ${lightningStrike_start}+${5}
+    ${lightningStrike_list}=    Get Slice From List    ${full_list}    start=${lightningStrike_start}    end=${end}
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}correctedDistance : 1    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uncorrectedDistance : 1    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bearing : 1    1
+    ${highElectricField_start}=    Get Index From List    ${full_list}    === Event highElectricField received =${SPACE}
+    ${end}=    Evaluate    ${highElectricField_start}+${3}
+    ${highElectricField_list}=    Get Slice From List    ${full_list}    start=${highElectricField_start}    end=${end}
+    Should Contain X Times    ${highElectricField_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${highElectricField_list}    ${SPACE}${SPACE}${SPACE}${SPACE}strength : 1    1
+    ${precipitation_start}=    Get Index From List    ${full_list}    === Event precipitation received =${SPACE}
+    ${end}=    Evaluate    ${precipitation_start}+${5}
+    ${precipitation_list}=    Get Slice From List    ${full_list}    start=${precipitation_start}    end=${end}
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raining : 1    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}snowing : 1    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    1
+    ${sensorStatus_start}=    Get Index From List    ${full_list}    === Event sensorStatus received =${SPACE}
+    ${end}=    Evaluate    ${sensorStatus_start}+${4}
+    ${sensorStatus_list}=    Get Slice From List    ${full_list}    start=${sensorStatus_start}    end=${end}
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorStatus : 1    1
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serverStatus : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
-    ${clockOffset_start}=    Get Index From List    ${full_list}    === Event clockOffset received =${SPACE}
-    ${end}=    Evaluate    ${clockOffset_start}+${2}
-    ${clockOffset_list}=    Get Slice From List    ${full_list}    start=${clockOffset_start}    end=${end}
-    Should Contain X Times    ${clockOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offset : 1    1
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
     ${end}=    Evaluate    ${logLevel_start}+${3}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}

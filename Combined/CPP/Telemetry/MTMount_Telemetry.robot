@@ -36,6 +36,14 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
+    Comment    ======= Verify ${subSystem}_telemetryClientHeartbeat test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_telemetryClientHeartbeat
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === MTMount_telemetryClientHeartbeat start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::telemetryClientHeartbeat_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === MTMount_telemetryClientHeartbeat end of topic ===
     Comment    ======= Verify ${subSystem}_azimuth test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_azimuth
     @{words}=    Split String    ${line}
@@ -244,6 +252,9 @@ Read Subscriber
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTMount subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
+    ${telemetryClientHeartbeat_start}=    Get Index From List    ${full_list}    === MTMount_telemetryClientHeartbeat start of topic ===
+    ${telemetryClientHeartbeat_end}=    Get Index From List    ${full_list}    === MTMount_telemetryClientHeartbeat end of topic ===
+    ${telemetryClientHeartbeat_list}=    Get Slice From List    ${full_list}    start=${telemetryClientHeartbeat_start}    end=${telemetryClientHeartbeat_end}
     ${azimuth_start}=    Get Index From List    ${full_list}    === MTMount_azimuth start of topic ===
     ${azimuth_end}=    Get Index From List    ${full_list}    === MTMount_azimuth end of topic ===
     ${azimuth_list}=    Get Slice From List    ${full_list}    start=${azimuth_start}    end=${azimuth_end}
