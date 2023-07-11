@@ -36,7 +36,6 @@ CPP/GenericEvents/Electrometer_GenericEvents.robot
 CPP/GenericEvents/FiberSpectrograph_GenericEvents.robot
 CPP/GenericEvents/HVAC_GenericEvents.robot
 CPP/GenericEvents/Hexapod_GenericEvents.robot
-CPP/GenericEvents/IOTA_GenericEvents.robot
 CPP/GenericEvents/LinearStage_GenericEvents.robot
 CPP/GenericEvents/MTCalCS_GenericEvents.robot
 CPP/GenericEvents/MTCamera_GenericEvents.robot

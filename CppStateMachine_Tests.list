@@ -36,7 +36,6 @@ CPP/StateMachine/Electrometer_StateMachine.robot
 CPP/StateMachine/FiberSpectrograph_StateMachine.robot
 CPP/StateMachine/HVAC_StateMachine.robot
 CPP/StateMachine/Hexapod_StateMachine.robot
-CPP/StateMachine/IOTA_StateMachine.robot
 CPP/StateMachine/LinearStage_StateMachine.robot
 CPP/StateMachine/MTCalCS_StateMachine.robot
 CPP/StateMachine/MTCamera_StateMachine.robot
