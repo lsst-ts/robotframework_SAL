@@ -47,7 +47,7 @@ Start Sender
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
     ${scalars_end}=    Get Index From List    ${full_list}    === Test_scalars end of topic ===
     ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end + 1}
@@ -127,7 +127,7 @@ Read Subscriber
     ${output}=    Wait For Process    logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== Test all loggers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
     ${scalars_end}=    Get Index From List    ${full_list}    === Test_scalars end of topic ===
     ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${scalars_end + 1}
