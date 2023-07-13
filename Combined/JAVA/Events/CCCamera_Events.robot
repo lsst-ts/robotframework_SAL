@@ -45,7 +45,7 @@ Start Sender
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${offlineDetailedState_start}=    Get Index From List    ${full_list}    === CCCamera_offlineDetailedState start of topic ===
     ${offlineDetailedState_end}=    Get Index From List    ${full_list}    === CCCamera_offlineDetailedState end of topic ===
     ${offlineDetailedState_list}=    Get Slice From List    ${full_list}    start=${offlineDetailedState_start}    end=${offlineDetailedState_end + 1}
@@ -1037,7 +1037,7 @@ Read Subscriber
     ${output}=    Wait For Process    logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== CCCamera all loggers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${offlineDetailedState_start}=    Get Index From List    ${full_list}    === CCCamera_offlineDetailedState start of topic ===
     ${offlineDetailedState_end}=    Get Index From List    ${full_list}    === CCCamera_offlineDetailedState end of topic ===
     ${offlineDetailedState_list}=    Get Slice From List    ${full_list}    start=${offlineDetailedState_start}    end=${offlineDetailedState_end + 1}
