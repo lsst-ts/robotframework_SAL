@@ -45,7 +45,7 @@ Start Sender
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all events ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${controllerState_start}=    Get Index From List    ${full_list}    === MTRotator_controllerState start of topic ===
     ${controllerState_end}=    Get Index From List    ${full_list}    === MTRotator_controllerState end of topic ===
     ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${controllerState_end + 1}
@@ -167,7 +167,7 @@ Read Subscriber
     ${output}=    Wait For Process    logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== MTRotator all loggers ready =====
-    @{full_list}=    Split To Lines    ${output.stdout}    start=29
+    @{full_list}=    Split To Lines    ${output.stdout}    start=27
     ${controllerState_start}=    Get Index From List    ${full_list}    === MTRotator_controllerState start of topic ===
     ${controllerState_end}=    Get Index From List    ${full_list}    === MTRotator_controllerState end of topic ===
     ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${controllerState_end + 1}
