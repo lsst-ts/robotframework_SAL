@@ -142,7 +142,7 @@ function startJavaCombinedSenderProcess() {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== \${subSystem} all events ready =====" >> $testSuite
     echo "    Should Contain    \${output.stdout}    [INFO] BUILD SUCCESS" >> $testSuite
-    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=27" >> $testSuite
     for item in "${topicsArray[@]}"; do
         echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
@@ -167,7 +167,7 @@ function readLogger() {
     echo "    \${output}=    Wait For Process    logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem all loggers ready =====" >> $testSuite
-    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=29" >> $testSuite
+    echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=27" >> $testSuite
     for item in "${topicsArray[@]}"; do
         echo "    \${${item}_start}=    Get Index From List    \${full_list}    === ${subSystem}_${item} start of topic ===" >> $testSuite
         echo "    \${${item}_end}=    Get Index From List    \${full_list}    === ${subSystem}_${item} end of topic ===" >> $testSuite
