@@ -164,6 +164,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceActuatorState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceActuatorState generated =
+    Comment    ======= Verify ${subSystem}_forceControllerState test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_forceControllerState
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event forceControllerState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceControllerState_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event forceControllerState generated =
     Comment    ======= Verify ${subSystem}_hardpointMonitorInfo test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_hardpointMonitorInfo
     @{words}=    Split String    ${line}
@@ -804,19 +812,23 @@ Read Logger
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggered : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerTriggered : 1    1
     ${forceActuatorState_start}=    Get Index From List    ${full_list}    === Event forceActuatorState received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorState_start}+${12}
+    ${end}=    Evaluate    ${forceActuatorState_start}+${3}
     ${forceActuatorState_list}=    Get Slice From List    ${full_list}    start=${forceActuatorState_start}    end=${end}
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}staticForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}thermalForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offsetForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeOpticForcesApplied : 1    1
-    Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}balanceForcesApplied : 1    1
+    ${forceControllerState_start}=    Get Index From List    ${full_list}    === Event forceControllerState received =${SPACE}
+    ${end}=    Evaluate    ${forceControllerState_start}+${11}
+    ${forceControllerState_list}=    Get Slice From List    ${full_list}    start=${forceControllerState_start}    end=${end}
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}staticForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}thermalForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offsetForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeOpticForcesApplied : 1    1
+    Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}balanceForcesApplied : 1    1
     ${hardpointMonitorInfo_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorInfo received =${SPACE}
     ${end}=    Evaluate    ${hardpointMonitorInfo_start}+${14}
     ${hardpointMonitorInfo_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorInfo_start}    end=${end}
