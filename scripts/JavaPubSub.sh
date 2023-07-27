@@ -43,11 +43,12 @@ function main() {
 
 function createSettings {
     local subSystem=$1
+    local csc_tag=$(echo $subSystem |tr '[:upper:]' '[:lower:]')
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    ${subSystem}_${topic} communications tests." >> $testSuite
-    echo "Force Tags    messaging    java    $skipped" >> $testSuite
+    echo "Force Tags    messaging    java    $csc_tag    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${Host}    \${subSystem}    \${component}    \${MavenVersion}    \${timeout}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite

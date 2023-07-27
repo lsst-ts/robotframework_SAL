@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATMCS_Events communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    atmcs    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

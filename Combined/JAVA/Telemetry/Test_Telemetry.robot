@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Test_Telemetry communications tests.
-Force Tags    messaging    java    
+Force Tags    messaging    java    test    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

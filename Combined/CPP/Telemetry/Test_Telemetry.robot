@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Test Telemetry communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    test    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
