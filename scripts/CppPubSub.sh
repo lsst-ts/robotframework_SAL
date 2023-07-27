@@ -43,11 +43,12 @@ function main() {
 
 function createSettings {
     local subSystem=$1
+    local csc_tag=$(echo $subSystem |tr '[:upper:]' '[:lower:]')
     local topic=$(tr '[:lower:]' '[:upper:]' <<< ${2:0:1})${2:1}
     local testSuite=$3
     echo "*** Settings ***" >> $testSuite
     echo "Documentation    $subSystem ${topic} communications tests." >> $testSuite
-    echo "Force Tags    messaging    cpp    $skipped" >> $testSuite
+    echo "Force Tags    messaging    cpp    $csc_tag    $skipped" >> $testSuite
     echo "Suite Setup    Log Many    \${timeout}    \${subSystem}    \${component}" >> $testSuite
     echo "Suite Teardown    Terminate All Processes" >> $testSuite
     echo "Library    OperatingSystem" >> $testSuite

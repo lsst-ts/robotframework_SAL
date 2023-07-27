@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTM1M3 Telemetry communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    mtm1m3    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
