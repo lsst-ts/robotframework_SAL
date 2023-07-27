@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTM1M3_Events communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    mtm1m3    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

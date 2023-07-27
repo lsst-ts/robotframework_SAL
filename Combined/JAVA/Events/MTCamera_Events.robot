@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    MTCamera_Events communications tests.
-Force Tags    messaging    java    
+Force Tags    messaging    java    mtcamera    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

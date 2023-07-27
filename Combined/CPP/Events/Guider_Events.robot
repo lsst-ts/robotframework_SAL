@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Guider_Events communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    guider    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

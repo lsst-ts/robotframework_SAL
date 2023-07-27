@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    ATPtg Telemetry communications tests.
-Force Tags    messaging    cpp    
+Force Tags    messaging    cpp    atptg    
 Suite Setup    Log Many    ${timeout}    ${subSystem}    ${component}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem

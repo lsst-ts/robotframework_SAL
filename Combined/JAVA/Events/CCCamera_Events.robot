@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    CCCamera_Events communications tests.
-Force Tags    messaging    java    
+Force Tags    messaging    java    cccamera    
 Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
