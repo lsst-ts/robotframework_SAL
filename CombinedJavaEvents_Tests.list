@@ -8,6 +8,7 @@ Combined/JAVA/Events/ATCamera_Events.robot
 Combined/JAVA/Events/ATHeaderService_Events.robot
 Combined/JAVA/Events/CCCamera_Events.robot
 Combined/JAVA/Events/CCHeaderService_Events.robot
+Combined/JAVA/Events/DIMM_Events.robot
 Combined/JAVA/Events/ESS_Events.robot
 Combined/JAVA/Events/GCHeaderService_Events.robot
 Combined/JAVA/Events/MTCamera_Events.robot
