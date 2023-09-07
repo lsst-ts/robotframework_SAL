@@ -6,7 +6,6 @@
 # List of test suites
 Combined/JAVA/Telemetry/ATCamera_Telemetry.robot
 Combined/JAVA/Telemetry/CCCamera_Telemetry.robot
-Combined/JAVA/Telemetry/DIMM_Telemetry.robot
 Combined/JAVA/Telemetry/ESS_Telemetry.robot
 Combined/JAVA/Telemetry/MTRotator_Telemetry.robot
 Combined/JAVA/Telemetry/Test_Telemetry.robot
