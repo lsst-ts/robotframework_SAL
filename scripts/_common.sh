@@ -62,7 +62,7 @@ function getRuntimeLanguages() {
     ## Returns the <RuntimeLanguages> values for the given CSC (subsystem).
     ##
     local subsystem=$1
-    local output=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subsystem']/RuntimeLanguages" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+    local output=$( xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subsystem']/RuntimeLanguages" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
     echo $output | tr '[:upper:]' '[:lower:]'
 }
 
@@ -89,7 +89,7 @@ function getTopics() {
         keep_num=3
     fi
     if [[ -f $file ]]; then
-        topics=( $( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
+        topics=( $( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
     else
         topics=()
     fi
@@ -97,14 +97,14 @@ function getTopics() {
     ## If CSC uses the Generic Commands, add those.
     if [[ $topic_type == "Command" ]]; then
         generics=(${added_generics_mandatory_commands[@]})
-        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+        generics_field=$( xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
         if [[ $generics_field == *"csc"* ]]; then
             generics+=("${added_generics_csc_commands[@]}")
         fi
         if [[ $generics_field == *"configurable"* ]]; then
             generics=("${added_generics_configurable_commands[@]}")
         fi
-        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
             echo "Topic: $topic"
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
@@ -117,7 +117,7 @@ function getTopics() {
     ## If CSC uses the Generic Events, add those.
     if [[ $topic_type == "Event" ]]; then
         generics=(${added_generics_mandatory_events[@]})
-        generics_field=$( xml sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
+        generics_field=$( xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem/Name[text()='${subSystem}']/../AddedGenerics" -v . -n $TS_XML_DIR/sal_interfaces/SALSubsystems.xml )
         if [[ $generics_field == *"csc"* ]]; then
             generics+=("${added_generics_csc_events[@]}")
         fi
@@ -127,7 +127,7 @@ function getTopics() {
         if [[ $generics_field == *"configurable"* ]]; then
             generics+=("${added_generics_configurable_events[@]}")
         fi
-        array=($(xml sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
+        array=($(xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
                 str=$(echo " $topic," |sed "s/${lower_topic}_//g")

@@ -12,8 +12,8 @@
 ##
 ## Arrays that contain all the Generic Commands and Events.
 ##
-declare -a generic_commands=($(xml sel -t -m "//SALObjects/SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
-declare -a generic_events=($(xml sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
+declare -a generic_commands=($(xmlstarlet sel -t -m "//SALObjects/SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
+declare -a generic_events=($(xmlstarlet sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
 
 ###  FUNCTIONS  ###
@@ -34,7 +34,7 @@ function getTopicParameters() {
         topic_type="Command"
         topic_complete="command_${topic}"
     fi
-    output=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}[EFDB_Topic='${subSystem}_${topic_complete}']/item/EFDB_Name" -v . -n $file |tr '\r\n' ' ' |awk '{$1=$1};1')
+    output=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}[EFDB_Topic='${subSystem}_${topic_complete}']/item/EFDB_Name" -v . -n $file |tr '\r\n' ' ' |awk '{$1=$1};1')
     echo $output
 }
 
@@ -75,8 +75,8 @@ function getParameterType() {
         local subSystem=SALGeneric
         local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
     fi
-    #echo "xml sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type\" -v . -n $file"
-    parameterType=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type" -v . -n $file )
+    #echo "xmlstarlet sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type\" -v . -n $file"
+    parameterType=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type" -v . -n $file )
     echo $parameterType
 }
 
@@ -102,7 +102,7 @@ function getParameterCount() {
         local subSystem=SALGeneric
         local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
     fi
-    #echo "xml sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count\" -v . -n $file"
-    count=$( xml sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count" -v . -n $file )
+    #echo "xmlstarlet sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count\" -v . -n $file"
+    count=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count" -v . -n $file )
     echo $count
 }

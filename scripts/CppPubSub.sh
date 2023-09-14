@@ -171,7 +171,7 @@ function readSubscriber_params {
         #if [ $topic ]; then
             #n=1
         #else
-            #n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
+            #n=$(xmlstarlet sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
         #fi
         parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
         parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Telemetry")"
