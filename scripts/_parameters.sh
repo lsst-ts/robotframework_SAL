@@ -12,8 +12,8 @@
 ##
 ## Arrays that contain all the Generic Commands and Events.
 ##
-declare -a generic_commands=($(xmlstarlet sel -t -m "//SALObjects/SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
-declare -a generic_events=($(xmlstarlet sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
+declare -a generic_commands=($(xmlstarlet sel -t -m "//SALObjects/SALCommandSet/SALCommand/EFDB_Topic" -v . -n $TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
+declare -a generic_events=($(xmlstarlet sel -t -m "//SALObjects/SALEventSet/SALEvent/EFDB_Topic" -v . -n $TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml |cut -d"_" -f 3 ))
 
 
 ###  FUNCTIONS  ###
@@ -73,7 +73,7 @@ function getParameterType() {
     fi
     if [[ ${generic_events[@]} =~ "${topic}<" ]]; then
         local subSystem=SALGeneric
-        local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+        local file=$TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml 
     fi
     #echo "xmlstarlet sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type\" -v . -n $file"
     parameterType=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/IDL_Type" -v . -n $file )
@@ -100,7 +100,7 @@ function getParameterCount() {
     fi
     if [[ ${generic_events[@]} =~ "${topic}<" ]]; then
         local subSystem=SALGeneric
-        local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+        local file=$TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml 
     fi
     #echo "xmlstarlet sel -t -m \"//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count\" -v . -n $file"
     count=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic[text()='${subSystem}_${topic_complete}']/../item[$index]/Count" -v . -n $file )
