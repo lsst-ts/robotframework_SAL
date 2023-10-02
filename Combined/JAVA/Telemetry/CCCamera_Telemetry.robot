@@ -58,6 +58,13 @@ Start Publisher
     Should Contain    ${bonn_shutter_Device_list}    === CCCamera_bonn_shutter_Device start of topic ===
     Should Contain    ${bonn_shutter_Device_list}    === CCCamera_bonn_shutter_Device end of topic ===
     Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device] message sent 200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === CCCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === CCCamera_daq_monitor_Reb_Trending end of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending] message sent 200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -65,6 +72,13 @@ Start Publisher
     Should Contain    ${daq_monitor_Store_list}    === CCCamera_daq_monitor_Store start of topic ===
     Should Contain    ${daq_monitor_Store_list}    === CCCamera_daq_monitor_Store end of topic ===
     Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store] message sent 200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === CCCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === CCCamera_daq_monitor_Sum_Trending end of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending] message sent 200
     ${rebpower_Reb_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb start of topic ===
     ${rebpower_Reb_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb end of topic ===
     ${rebpower_Reb_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_start}    end=${rebpower_Reb_end + 1}
@@ -215,6 +229,14 @@ Read Subscriber
     Should Contain    ${bonn_shutter_Device_list}    === CCCamera_bonn_shutter_Device end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${bonn_shutter_Device_list}    === [bonn_shutter_Device Subscriber] message received :200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === CCCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === CCCamera_daq_monitor_Reb_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -223,6 +245,14 @@ Read Subscriber
     Should Contain    ${daq_monitor_Store_list}    === CCCamera_daq_monitor_Store end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === CCCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === CCCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === CCCamera_daq_monitor_Sum_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :200
     ${rebpower_Reb_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb start of topic ===
     ${rebpower_Reb_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Reb end of topic ===
     ${rebpower_Reb_list}=    Get Slice From List    ${full_list}    start=${rebpower_Reb_start}    end=${rebpower_Reb_end + 1}

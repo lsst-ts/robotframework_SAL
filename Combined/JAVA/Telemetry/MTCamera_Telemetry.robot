@@ -366,6 +366,13 @@ Start Publisher
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
     Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage] message sent 200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending] message sent 200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -373,6 +380,13 @@ Start Publisher
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store start of topic ===
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store end of topic ===
     Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store] message sent 200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending] message sent 200
     ${focal_plane_Ccd_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd start of topic ===
     ${focal_plane_Ccd_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd end of topic ===
     ${focal_plane_Ccd_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_start}    end=${focal_plane_Ccd_end + 1}
@@ -1169,6 +1183,14 @@ Read Subscriber
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -1177,6 +1199,14 @@ Read Subscriber
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :200
     ${focal_plane_Ccd_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd start of topic ===
     ${focal_plane_Ccd_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd end of topic ===
     ${focal_plane_Ccd_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_start}    end=${focal_plane_Ccd_end + 1}

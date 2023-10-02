@@ -1054,6 +1054,18 @@ Start Sender
     Log Many    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationConfiguration start of topic ===
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationConfiguration end of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration start of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration end of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_FitsService_GeneralConfiguration_start}    end=${image_handling_FitsService_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_FitsService_GeneralConfiguration_list}
+    Should Contain    ${image_handling_FitsService_GeneralConfiguration_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_FitsService_GeneralConfiguration_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_CommandsConfiguration_start}    end=${image_handling_ImageHandler_CommandsConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_CommandsConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_DAQConfiguration start of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_DAQConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_DAQConfiguration_start}    end=${image_handling_ImageHandler_DAQConfiguration_end + 1}
@@ -1066,6 +1078,12 @@ Start Sender
     Log Many    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === MTCamera_image_handling_ImageHandler_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === MTCamera_image_handling_ImageHandler_FitsHandlingConfiguration end of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration start of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration end of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_GuiderConfiguration_start}    end=${image_handling_ImageHandler_GuiderConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_GuiderConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_GuiderConfiguration_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_GuiderConfiguration_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration end of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_GeneralConfiguration_start}    end=${image_handling_PeriodicTasks_GeneralConfiguration_end + 1}
@@ -1078,18 +1096,12 @@ Start Sender
     Log Many    ${image_handling_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === MTCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === MTCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_FitsHandlingConfiguration_start}    end=${image_handling_Reb_FitsHandlingConfiguration_end + 1}
-    Log Many    ${image_handling_Reb_FitsHandlingConfiguration_list}
-    Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
-    Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
-    ${image_handling_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
-    ${image_handling_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
-    ${image_handling_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_GeneralConfiguration_start}    end=${image_handling_Reb_GeneralConfiguration_end + 1}
-    Log Many    ${image_handling_Reb_GeneralConfiguration_list}
-    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
-    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_StatusAggregator_GeneralConfiguration_start}    end=${image_handling_StatusAggregator_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_StatusAggregator_GeneralConfiguration_list}
+    Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
     ${fcs_Loader_sensorConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_sensorConfiguration start of topic ===
     ${fcs_Loader_sensorConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_sensorConfiguration end of topic ===
     ${fcs_Loader_sensorConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_sensorConfiguration_start}    end=${fcs_Loader_sensorConfiguration_end + 1}
@@ -2382,6 +2394,18 @@ Read Subscriber
     Log Many    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationConfiguration start of topic ===
     Should Contain    ${focal_plane_WebHooksConfig_VisualizationConfiguration_list}    === MTCamera_focal_plane_WebHooksConfig_VisualizationConfiguration end of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration start of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration end of topic ===
+    ${image_handling_FitsService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_FitsService_GeneralConfiguration_start}    end=${image_handling_FitsService_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_FitsService_GeneralConfiguration_list}
+    Should Contain    ${image_handling_FitsService_GeneralConfiguration_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_FitsService_GeneralConfiguration_list}    === MTCamera_image_handling_FitsService_GeneralConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
+    ${image_handling_ImageHandler_CommandsConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_CommandsConfiguration_start}    end=${image_handling_ImageHandler_CommandsConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_CommandsConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_CommandsConfiguration_list}    === MTCamera_image_handling_ImageHandler_CommandsConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_DAQConfiguration start of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_DAQConfiguration end of topic ===
     ${image_handling_ImageHandler_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_DAQConfiguration_start}    end=${image_handling_ImageHandler_DAQConfiguration_end + 1}
@@ -2394,6 +2418,12 @@ Read Subscriber
     Log Many    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === MTCamera_image_handling_ImageHandler_FitsHandlingConfiguration start of topic ===
     Should Contain    ${image_handling_ImageHandler_FitsHandlingConfiguration_list}    === MTCamera_image_handling_ImageHandler_FitsHandlingConfiguration end of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration start of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration end of topic ===
+    ${image_handling_ImageHandler_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_ImageHandler_GuiderConfiguration_start}    end=${image_handling_ImageHandler_GuiderConfiguration_end + 1}
+    Log Many    ${image_handling_ImageHandler_GuiderConfiguration_list}
+    Should Contain    ${image_handling_ImageHandler_GuiderConfiguration_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration start of topic ===
+    Should Contain    ${image_handling_ImageHandler_GuiderConfiguration_list}    === MTCamera_image_handling_ImageHandler_GuiderConfiguration end of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_PeriodicTasks_GeneralConfiguration start of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_PeriodicTasks_GeneralConfiguration end of topic ===
     ${image_handling_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_PeriodicTasks_GeneralConfiguration_start}    end=${image_handling_PeriodicTasks_GeneralConfiguration_end + 1}
@@ -2406,18 +2436,12 @@ Read Subscriber
     Log Many    ${image_handling_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === MTCamera_image_handling_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${image_handling_PeriodicTasks_timersConfiguration_list}    === MTCamera_image_handling_PeriodicTasks_timersConfiguration end of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
-    ${image_handling_Reb_FitsHandlingConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_FitsHandlingConfiguration_start}    end=${image_handling_Reb_FitsHandlingConfiguration_end + 1}
-    Log Many    ${image_handling_Reb_FitsHandlingConfiguration_list}
-    Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration start of topic ===
-    Should Contain    ${image_handling_Reb_FitsHandlingConfiguration_list}    === MTCamera_image_handling_Reb_FitsHandlingConfiguration end of topic ===
-    ${image_handling_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
-    ${image_handling_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
-    ${image_handling_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_Reb_GeneralConfiguration_start}    end=${image_handling_Reb_GeneralConfiguration_end + 1}
-    Log Many    ${image_handling_Reb_GeneralConfiguration_list}
-    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration start of topic ===
-    Should Contain    ${image_handling_Reb_GeneralConfiguration_list}    === MTCamera_image_handling_Reb_GeneralConfiguration end of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
+    ${image_handling_StatusAggregator_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${image_handling_StatusAggregator_GeneralConfiguration_start}    end=${image_handling_StatusAggregator_GeneralConfiguration_end + 1}
+    Log Many    ${image_handling_StatusAggregator_GeneralConfiguration_list}
+    Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
+    Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
     ${fcs_Loader_sensorConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_sensorConfiguration start of topic ===
     ${fcs_Loader_sensorConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_sensorConfiguration end of topic ===
     ${fcs_Loader_sensorConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_sensorConfiguration_start}    end=${fcs_Loader_sensorConfiguration_end + 1}

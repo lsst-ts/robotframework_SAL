@@ -791,9 +791,10 @@ Read Logger
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyForceWarning : 1    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceWarning : 0    1
     ${raisingLoweringInfo_start}=    Get Index From List    ${full_list}    === Event raisingLoweringInfo received =${SPACE}
-    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${7}
+    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${8}
     ${raisingLoweringInfo_list}=    Get Slice From List    ${full_list}    start=${raisingLoweringInfo_start}    end=${end}
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}weightSupportedPercent : 1    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeTimeout : 1    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitAirPressure : 1    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitHardpoint : 0    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitZForceActuator : 0    1
