@@ -208,6 +208,12 @@ Start Sender
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_MonitoringConfig_MonitoringConfiguration_start}    end=${focal_plane_MonitoringConfig_MonitoringConfiguration_end + 1}
+    Log Many    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
@@ -286,12 +292,30 @@ Start Sender
     Log Many    ${focal_plane_Reb_timersConfiguration_list}
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === ATCamera_focal_plane_Reb_timersConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === ATCamera_focal_plane_Reb_timersConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}    end=${focal_plane_RebsAverageTemp6_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}    end=${focal_plane_RebsAverageTemp6_LimitsConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQConfiguration_start}    end=${focal_plane_SequencerConfig_DAQConfiguration_end + 1}
     Log Many    ${focal_plane_SequencerConfig_DAQConfiguration_list}
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_GuiderConfiguration_start}    end=${focal_plane_SequencerConfig_GuiderConfiguration_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_GuiderConfiguration_list}
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_SequencerConfiguration start of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_SequencerConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerConfiguration_start}    end=${focal_plane_SequencerConfig_SequencerConfiguration_end + 1}
@@ -954,6 +978,12 @@ Read Subscriber
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === ATCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_MonitoringConfig_MonitoringConfiguration_start}    end=${focal_plane_MonitoringConfig_MonitoringConfiguration_end + 1}
+    Log Many    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === ATCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
@@ -1032,12 +1062,30 @@ Read Subscriber
     Log Many    ${focal_plane_Reb_timersConfiguration_list}
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === ATCamera_focal_plane_Reb_timersConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === ATCamera_focal_plane_Reb_timersConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}    end=${focal_plane_RebsAverageTemp6_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}    end=${focal_plane_RebsAverageTemp6_LimitsConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === ATCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
     ${focal_plane_SequencerConfig_DAQConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_DAQConfiguration_start}    end=${focal_plane_SequencerConfig_DAQConfiguration_end + 1}
     Log Many    ${focal_plane_SequencerConfig_DAQConfiguration_list}
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_GuiderConfiguration_start}    end=${focal_plane_SequencerConfig_GuiderConfiguration_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_GuiderConfiguration_list}
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === ATCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_SequencerConfiguration start of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_SequencerConfig_SequencerConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerConfiguration_start}    end=${focal_plane_SequencerConfig_SequencerConfiguration_end + 1}

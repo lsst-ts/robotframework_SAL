@@ -940,30 +940,36 @@ Start Sender
     Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceConfiguration_start}    end=${focal_plane_ImageDatabaseServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceConfiguration_start}    end=${focal_plane_ImageNameServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameService_GeneralConfiguration_start}    end=${focal_plane_ImageNameService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageNameService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentConfiguration_start}    end=${focal_plane_InstrumentConfig_InstrumentConfiguration_end + 1}
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksConfiguration_start}    end=${focal_plane_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksConfiguration_list}
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_MonitoringConfig_MonitoringConfiguration_start}    end=${focal_plane_MonitoringConfig_MonitoringConfiguration_end + 1}
+    Log Many    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersConfiguration_start}    end=${focal_plane_PeriodicTasks_timersConfiguration_end + 1}
@@ -994,6 +1000,12 @@ Start Sender
     Log Many    ${focal_plane_RebTotalPower_LimitsConfiguration_list}
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === MTCamera_focal_plane_RebTotalPower_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === MTCamera_focal_plane_RebTotalPower_LimitsConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_DevicesConfiguration_start}    end=${focal_plane_Reb_DevicesConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -1030,6 +1042,18 @@ Start Sender
     Log Many    ${focal_plane_Reb_timersConfiguration_list}
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === MTCamera_focal_plane_Reb_timersConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === MTCamera_focal_plane_Reb_timersConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}    end=${focal_plane_RebsAverageTemp6_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}    end=${focal_plane_RebsAverageTemp6_LimitsConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
     ${focal_plane_Segment_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsConfiguration start of topic ===
     ${focal_plane_Segment_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsConfiguration end of topic ===
     ${focal_plane_Segment_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsConfiguration_start}    end=${focal_plane_Segment_LimitsConfiguration_end + 1}
@@ -1042,6 +1066,12 @@ Start Sender
     Log Many    ${focal_plane_SequencerConfig_DAQConfiguration_list}
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_GuiderConfiguration_start}    end=${focal_plane_SequencerConfig_GuiderConfiguration_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_GuiderConfiguration_list}
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerConfiguration start of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerConfiguration_start}    end=${focal_plane_SequencerConfig_SequencerConfiguration_end + 1}
@@ -2280,30 +2310,36 @@ Read Subscriber
     Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageDatabaseServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseServiceConfiguration_start}    end=${focal_plane_ImageDatabaseServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageDatabaseServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageDatabaseServiceConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
-    ${focal_plane_ImageNameServiceConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameServiceConfiguration_start}    end=${focal_plane_ImageNameServiceConfiguration_end + 1}
-    Log Many    ${focal_plane_ImageNameServiceConfiguration_list}
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration start of topic ===
-    Should Contain    ${focal_plane_ImageNameServiceConfiguration_list}    === MTCamera_focal_plane_ImageNameServiceConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
+    ${focal_plane_ImageNameService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageNameService_GeneralConfiguration_start}    end=${focal_plane_ImageNameService_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_ImageNameService_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_ImageNameService_GeneralConfiguration_list}    === MTCamera_focal_plane_ImageNameService_GeneralConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
     ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_InstrumentConfig_InstrumentConfiguration_start}    end=${focal_plane_InstrumentConfig_InstrumentConfiguration_end + 1}
     Log Many    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration start of topic ===
     Should Contain    ${focal_plane_InstrumentConfig_InstrumentConfiguration_list}    === MTCamera_focal_plane_InstrumentConfig_InstrumentConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
-    ${focal_plane_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasksConfiguration_start}    end=${focal_plane_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${focal_plane_PeriodicTasksConfiguration_list}
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${focal_plane_PeriodicTasksConfiguration_list}    === MTCamera_focal_plane_PeriodicTasksConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_MonitoringConfig_MonitoringConfiguration_start}    end=${focal_plane_MonitoringConfig_MonitoringConfiguration_end + 1}
+    Log Many    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration start of topic ===
+    Should Contain    ${focal_plane_MonitoringConfig_MonitoringConfiguration_list}    === MTCamera_focal_plane_MonitoringConfig_MonitoringConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_GeneralConfiguration_start}    end=${focal_plane_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_focal_plane_PeriodicTasks_GeneralConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersConfiguration start of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_PeriodicTasks_timersConfiguration end of topic ===
     ${focal_plane_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_PeriodicTasks_timersConfiguration_start}    end=${focal_plane_PeriodicTasks_timersConfiguration_end + 1}
@@ -2334,6 +2370,12 @@ Read Subscriber
     Log Many    ${focal_plane_RebTotalPower_LimitsConfiguration_list}
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === MTCamera_focal_plane_RebTotalPower_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_LimitsConfiguration_list}    === MTCamera_focal_plane_RebTotalPower_LimitsConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_DevicesConfiguration_start}    end=${focal_plane_Reb_DevicesConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -2370,6 +2412,18 @@ Read Subscriber
     Log Many    ${focal_plane_Reb_timersConfiguration_list}
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === MTCamera_focal_plane_Reb_timersConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_timersConfiguration_list}    === MTCamera_focal_plane_Reb_timersConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_GeneralConfiguration_start}    end=${focal_plane_RebsAverageTemp6_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_GeneralConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_GeneralConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
+    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_LimitsConfiguration_start}    end=${focal_plane_RebsAverageTemp6_LimitsConfiguration_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_LimitsConfiguration_list}    === MTCamera_focal_plane_RebsAverageTemp6_LimitsConfiguration end of topic ===
     ${focal_plane_Segment_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsConfiguration start of topic ===
     ${focal_plane_Segment_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment_LimitsConfiguration end of topic ===
     ${focal_plane_Segment_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_LimitsConfiguration_start}    end=${focal_plane_Segment_LimitsConfiguration_end + 1}
@@ -2382,6 +2436,12 @@ Read Subscriber
     Log Many    ${focal_plane_SequencerConfig_DAQConfiguration_list}
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_DAQConfiguration start of topic ===
     Should Contain    ${focal_plane_SequencerConfig_DAQConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_DAQConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
+    ${focal_plane_SequencerConfig_GuiderConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_GuiderConfiguration_start}    end=${focal_plane_SequencerConfig_GuiderConfiguration_end + 1}
+    Log Many    ${focal_plane_SequencerConfig_GuiderConfiguration_list}
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration start of topic ===
+    Should Contain    ${focal_plane_SequencerConfig_GuiderConfiguration_list}    === MTCamera_focal_plane_SequencerConfig_GuiderConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerConfiguration start of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_SequencerConfig_SequencerConfiguration end of topic ===
     ${focal_plane_SequencerConfig_SequencerConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_SequencerConfig_SequencerConfiguration_start}    end=${focal_plane_SequencerConfig_SequencerConfiguration_end + 1}

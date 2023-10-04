@@ -65,6 +65,13 @@ Start Publisher
     Should Contain    ${focal_plane_RebTotalPower_list}    === ATCamera_focal_plane_RebTotalPower start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_list}    === ATCamera_focal_plane_RebTotalPower end of topic ===
     Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower] message sent 200
+    ${focal_plane_RebsAverageTemp6_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    ${focal_plane_RebsAverageTemp6_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    ${focal_plane_RebsAverageTemp6_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_start}    end=${focal_plane_RebsAverageTemp6_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === ATCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === ATCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6] message sent 200
     ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Reb_Trending start of topic ===
     ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Reb_Trending end of topic ===
     ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
@@ -139,6 +146,14 @@ Read Subscriber
     Should Contain    ${focal_plane_RebTotalPower_list}    === ATCamera_focal_plane_RebTotalPower end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower Subscriber] message received :200
+    ${focal_plane_RebsAverageTemp6_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    ${focal_plane_RebsAverageTemp6_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    ${focal_plane_RebsAverageTemp6_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_start}    end=${focal_plane_RebsAverageTemp6_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === ATCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === ATCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6 Subscriber] message received :200
     ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Reb_Trending start of topic ===
     ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === ATCamera_daq_monitor_Reb_Trending end of topic ===
     ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}

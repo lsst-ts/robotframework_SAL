@@ -71,7 +71,6 @@ Read Subscriber
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    10
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    10
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    10
@@ -158,16 +157,6 @@ Read Subscriber
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 7    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 8    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 9    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 1    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 2    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 3    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 4    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 5    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 6    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 7    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 8    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 9    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 2    1
