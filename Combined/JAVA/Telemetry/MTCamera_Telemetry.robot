@@ -156,20 +156,6 @@ Start Publisher
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 start of topic ===
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 end of topic ===
     Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6] message sent 200
-    ${refrig_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 start of topic ===
-    ${refrig_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 end of topic ===
-    ${refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_start}    end=${refrig_Cold1_end + 1}
-    Log Many    ${refrig_Cold1_list}
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 start of topic ===
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 end of topic ===
-    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1] message sent 200
-    ${refrig_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 start of topic ===
-    ${refrig_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 end of topic ===
-    ${refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_start}    end=${refrig_Cold2_end + 1}
-    Log Many    ${refrig_Cold2_list}
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 start of topic ===
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 end of topic ===
-    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2] message sent 200
     ${refrig_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 start of topic ===
     ${refrig_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 end of topic ===
     ${refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_start}    end=${refrig_Cryo1_end + 1}
@@ -814,6 +800,20 @@ Start Publisher
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
     Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2] message sent 200
+    ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
+    ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
+    ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
+    Log Many    ${chiller_Chiller_list}
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller start of topic ===
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
+    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller] message sent 200
+    ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
+    ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
+    ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
+    Log Many    ${chiller_Maq20_list}
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 start of topic ===
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
+    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -950,22 +950,6 @@ Read Subscriber
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6 Subscriber] message received :200
-    ${refrig_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 start of topic ===
-    ${refrig_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 end of topic ===
-    ${refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_start}    end=${refrig_Cold1_end + 1}
-    Log Many    ${refrig_Cold1_list}
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 start of topic ===
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1 Subscriber] message received :200
-    ${refrig_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 start of topic ===
-    ${refrig_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 end of topic ===
-    ${refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_start}    end=${refrig_Cold2_end + 1}
-    Log Many    ${refrig_Cold2_list}
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 start of topic ===
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2 Subscriber] message received :200
     ${refrig_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 start of topic ===
     ${refrig_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 end of topic ===
     ${refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_start}    end=${refrig_Cryo1_end + 1}
@@ -1702,3 +1686,19 @@ Read Subscriber
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :200
+    ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
+    ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
+    ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
+    Log Many    ${chiller_Chiller_list}
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller start of topic ===
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :200
+    ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
+    ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
+    ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
+    Log Many    ${chiller_Maq20_list}
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 start of topic ===
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :200

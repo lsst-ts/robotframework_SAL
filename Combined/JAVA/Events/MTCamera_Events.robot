@@ -376,12 +376,6 @@ Start Sender
     Log Many    ${rebpower_Rebps_PowerConfiguration_list}
     Should Contain    ${rebpower_Rebps_PowerConfiguration_list}    === MTCamera_rebpower_Rebps_PowerConfiguration start of topic ===
     Should Contain    ${rebpower_Rebps_PowerConfiguration_list}    === MTCamera_rebpower_Rebps_PowerConfiguration end of topic ===
-    ${hexConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hexConfiguration start of topic ===
-    ${hexConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hexConfiguration end of topic ===
-    ${hexConfiguration_list}=    Get Slice From List    ${full_list}    start=${hexConfiguration_start}    end=${hexConfiguration_end + 1}
-    Log Many    ${hexConfiguration_list}
-    Should Contain    ${hexConfiguration_list}    === MTCamera_hexConfiguration start of topic ===
-    Should Contain    ${hexConfiguration_list}    === MTCamera_hexConfiguration end of topic ===
     ${hex_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsConfiguration start of topic ===
     ${hex_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsConfiguration end of topic ===
     ${hex_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Cold1_LimitsConfiguration_start}    end=${hex_Cold1_LimitsConfiguration_end + 1}
@@ -430,186 +424,174 @@ Start Sender
     Log Many    ${hex_Cryo6_LimitsConfiguration_list}
     Should Contain    ${hex_Cryo6_LimitsConfiguration_list}    === MTCamera_hex_Cryo6_LimitsConfiguration start of topic ===
     Should Contain    ${hex_Cryo6_LimitsConfiguration_list}    === MTCamera_hex_Cryo6_LimitsConfiguration end of topic ===
+    ${hex_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_GeneralConfiguration start of topic ===
+    ${hex_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_GeneralConfiguration end of topic ===
+    ${hex_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_GeneralConfiguration_start}    end=${hex_GeneralConfiguration_end + 1}
+    Log Many    ${hex_GeneralConfiguration_list}
+    Should Contain    ${hex_GeneralConfiguration_list}    === MTCamera_hex_GeneralConfiguration start of topic ===
+    Should Contain    ${hex_GeneralConfiguration_list}    === MTCamera_hex_GeneralConfiguration end of topic ===
     ${hex_Maq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceConfiguration start of topic ===
     ${hex_Maq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceConfiguration end of topic ===
     ${hex_Maq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DeviceConfiguration_start}    end=${hex_Maq20_DeviceConfiguration_end + 1}
     Log Many    ${hex_Maq20_DeviceConfiguration_list}
     Should Contain    ${hex_Maq20_DeviceConfiguration_list}    === MTCamera_hex_Maq20_DeviceConfiguration start of topic ===
     Should Contain    ${hex_Maq20_DeviceConfiguration_list}    === MTCamera_hex_Maq20_DeviceConfiguration end of topic ===
-    ${hex_Maq20x_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceConfiguration start of topic ===
-    ${hex_Maq20x_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceConfiguration end of topic ===
-    ${hex_Maq20x_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20x_DeviceConfiguration_start}    end=${hex_Maq20x_DeviceConfiguration_end + 1}
-    Log Many    ${hex_Maq20x_DeviceConfiguration_list}
-    Should Contain    ${hex_Maq20x_DeviceConfiguration_list}    === MTCamera_hex_Maq20x_DeviceConfiguration start of topic ===
-    Should Contain    ${hex_Maq20x_DeviceConfiguration_list}    === MTCamera_hex_Maq20x_DeviceConfiguration end of topic ===
-    ${hex_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksConfiguration start of topic ===
-    ${hex_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksConfiguration end of topic ===
-    ${hex_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasksConfiguration_start}    end=${hex_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${hex_PeriodicTasksConfiguration_list}
-    Should Contain    ${hex_PeriodicTasksConfiguration_list}    === MTCamera_hex_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${hex_PeriodicTasksConfiguration_list}    === MTCamera_hex_PeriodicTasksConfiguration end of topic ===
+    ${hex_Maq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DevicesConfiguration start of topic ===
+    ${hex_Maq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DevicesConfiguration end of topic ===
+    ${hex_Maq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DevicesConfiguration_start}    end=${hex_Maq20_DevicesConfiguration_end + 1}
+    Log Many    ${hex_Maq20_DevicesConfiguration_list}
+    Should Contain    ${hex_Maq20_DevicesConfiguration_list}    === MTCamera_hex_Maq20_DevicesConfiguration start of topic ===
+    Should Contain    ${hex_Maq20_DevicesConfiguration_list}    === MTCamera_hex_Maq20_DevicesConfiguration end of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_GeneralConfiguration_start}    end=${hex_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${hex_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${hex_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${hex_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration end of topic ===
     ${hex_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration start of topic ===
     ${hex_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration end of topic ===
     ${hex_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_timersConfiguration_start}    end=${hex_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${hex_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${hex_PeriodicTasks_timersConfiguration_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${hex_PeriodicTasks_timersConfiguration_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration end of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration start of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_CompLimitsConfiguration_start}    end=${refrig_Cold1_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cold1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceConfiguration start of topic ===
-    ${refrig_Cold1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceConfiguration end of topic ===
-    ${refrig_Cold1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_DeviceConfiguration_start}    end=${refrig_Cold1_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_DeviceConfiguration_list}
-    Should Contain    ${refrig_Cold1_DeviceConfiguration_list}    === MTCamera_refrig_Cold1_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_DeviceConfiguration_list}    === MTCamera_refrig_Cold1_DeviceConfiguration end of topic ===
-    ${refrig_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsConfiguration start of topic ===
-    ${refrig_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsConfiguration end of topic ===
-    ${refrig_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_LimitsConfiguration_start}    end=${refrig_Cold1_LimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_LimitsConfiguration_list}
-    Should Contain    ${refrig_Cold1_LimitsConfiguration_list}    === MTCamera_refrig_Cold1_LimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_LimitsConfiguration_list}    === MTCamera_refrig_Cold1_LimitsConfiguration end of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration start of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_CompLimitsConfiguration_start}    end=${refrig_Cold2_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cold2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceConfiguration start of topic ===
-    ${refrig_Cold2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceConfiguration end of topic ===
-    ${refrig_Cold2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_DeviceConfiguration_start}    end=${refrig_Cold2_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_DeviceConfiguration_list}
-    Should Contain    ${refrig_Cold2_DeviceConfiguration_list}    === MTCamera_refrig_Cold2_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_DeviceConfiguration_list}    === MTCamera_refrig_Cold2_DeviceConfiguration end of topic ===
-    ${refrig_Cold2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsConfiguration start of topic ===
-    ${refrig_Cold2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsConfiguration end of topic ===
-    ${refrig_Cold2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_LimitsConfiguration_start}    end=${refrig_Cold2_LimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_LimitsConfiguration_list}
-    Should Contain    ${refrig_Cold2_LimitsConfiguration_list}    === MTCamera_refrig_Cold2_LimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_LimitsConfiguration_list}    === MTCamera_refrig_Cold2_LimitsConfiguration end of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration start of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration end of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_CoolMaq20_DeviceConfiguration_start}    end=${refrig_CoolMaq20_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_CoolMaq20_DeviceConfiguration_list}
-    Should Contain    ${refrig_CoolMaq20_DeviceConfiguration_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_CoolMaq20_DeviceConfiguration_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration end of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_CompLimitsConfiguration_start}    end=${refrig_Cryo1_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo1_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration start of topic ===
     ${refrig_Cryo1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration end of topic ===
     ${refrig_Cryo1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DeviceConfiguration_start}    end=${refrig_Cryo1_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo1_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo1_DeviceConfiguration_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo1_DeviceConfiguration_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration start of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DevicesConfiguration_start}    end=${refrig_Cryo1_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo1_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo1_DevicesConfiguration_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo1_DevicesConfiguration_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration end of topic ===
     ${refrig_Cryo1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration start of topic ===
     ${refrig_Cryo1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration end of topic ===
     ${refrig_Cryo1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_LimitsConfiguration_start}    end=${refrig_Cryo1_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo1_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo1_LimitsConfiguration_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo1_LimitsConfiguration_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration end of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_CompLimitsConfiguration_start}    end=${refrig_Cryo2_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo2_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration start of topic ===
     ${refrig_Cryo2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration end of topic ===
     ${refrig_Cryo2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DeviceConfiguration_start}    end=${refrig_Cryo2_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo2_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo2_DeviceConfiguration_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo2_DeviceConfiguration_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration start of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DevicesConfiguration_start}    end=${refrig_Cryo2_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo2_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo2_DevicesConfiguration_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo2_DevicesConfiguration_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration end of topic ===
     ${refrig_Cryo2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration start of topic ===
     ${refrig_Cryo2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration end of topic ===
     ${refrig_Cryo2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_LimitsConfiguration_start}    end=${refrig_Cryo2_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo2_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo2_LimitsConfiguration_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo2_LimitsConfiguration_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration end of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_CompLimitsConfiguration_start}    end=${refrig_Cryo3_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo3_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo3_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo3_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo3_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration start of topic ===
     ${refrig_Cryo3_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration end of topic ===
     ${refrig_Cryo3_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DeviceConfiguration_start}    end=${refrig_Cryo3_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo3_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo3_DeviceConfiguration_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo3_DeviceConfiguration_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration start of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DevicesConfiguration_start}    end=${refrig_Cryo3_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo3_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo3_DevicesConfiguration_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo3_DevicesConfiguration_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration end of topic ===
     ${refrig_Cryo3_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration start of topic ===
     ${refrig_Cryo3_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration end of topic ===
     ${refrig_Cryo3_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_LimitsConfiguration_start}    end=${refrig_Cryo3_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo3_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo3_LimitsConfiguration_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo3_LimitsConfiguration_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration end of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_CompLimitsConfiguration_start}    end=${refrig_Cryo4_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo4_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo4_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo4_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration end of topic ===
+    ${refrig_Cryo3_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_PicConfiguration start of topic ===
+    ${refrig_Cryo3_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_PicConfiguration end of topic ===
+    ${refrig_Cryo3_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_PicConfiguration_start}    end=${refrig_Cryo3_PicConfiguration_end + 1}
+    Log Many    ${refrig_Cryo3_PicConfiguration_list}
+    Should Contain    ${refrig_Cryo3_PicConfiguration_list}    === MTCamera_refrig_Cryo3_PicConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo3_PicConfiguration_list}    === MTCamera_refrig_Cryo3_PicConfiguration end of topic ===
     ${refrig_Cryo4_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration start of topic ===
     ${refrig_Cryo4_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration end of topic ===
     ${refrig_Cryo4_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DeviceConfiguration_start}    end=${refrig_Cryo4_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo4_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo4_DeviceConfiguration_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo4_DeviceConfiguration_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration start of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DevicesConfiguration_start}    end=${refrig_Cryo4_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo4_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo4_DevicesConfiguration_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo4_DevicesConfiguration_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration end of topic ===
     ${refrig_Cryo4_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration start of topic ===
     ${refrig_Cryo4_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration end of topic ===
     ${refrig_Cryo4_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_LimitsConfiguration_start}    end=${refrig_Cryo4_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo4_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo4_LimitsConfiguration_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo4_LimitsConfiguration_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration end of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_CompLimitsConfiguration_start}    end=${refrig_Cryo5_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo5_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo5_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo5_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo5_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration start of topic ===
     ${refrig_Cryo5_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration end of topic ===
     ${refrig_Cryo5_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DeviceConfiguration_start}    end=${refrig_Cryo5_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo5_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo5_DeviceConfiguration_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo5_DeviceConfiguration_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration start of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DevicesConfiguration_start}    end=${refrig_Cryo5_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo5_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo5_DevicesConfiguration_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo5_DevicesConfiguration_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration end of topic ===
     ${refrig_Cryo5_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration start of topic ===
     ${refrig_Cryo5_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration end of topic ===
     ${refrig_Cryo5_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_LimitsConfiguration_start}    end=${refrig_Cryo5_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo5_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo5_LimitsConfiguration_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo5_LimitsConfiguration_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration end of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_CompLimitsConfiguration_start}    end=${refrig_Cryo6_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo6_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo6_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo6_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration end of topic ===
+    ${refrig_Cryo5_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_PicConfiguration start of topic ===
+    ${refrig_Cryo5_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_PicConfiguration end of topic ===
+    ${refrig_Cryo5_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_PicConfiguration_start}    end=${refrig_Cryo5_PicConfiguration_end + 1}
+    Log Many    ${refrig_Cryo5_PicConfiguration_list}
+    Should Contain    ${refrig_Cryo5_PicConfiguration_list}    === MTCamera_refrig_Cryo5_PicConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo5_PicConfiguration_list}    === MTCamera_refrig_Cryo5_PicConfiguration end of topic ===
     ${refrig_Cryo6_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration start of topic ===
     ${refrig_Cryo6_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration end of topic ===
     ${refrig_Cryo6_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DeviceConfiguration_start}    end=${refrig_Cryo6_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo6_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo6_DeviceConfiguration_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo6_DeviceConfiguration_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration start of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DevicesConfiguration_start}    end=${refrig_Cryo6_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo6_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo6_DevicesConfiguration_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo6_DevicesConfiguration_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration end of topic ===
     ${refrig_Cryo6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration start of topic ===
     ${refrig_Cryo6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration end of topic ===
     ${refrig_Cryo6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_LimitsConfiguration_start}    end=${refrig_Cryo6_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo6_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo6_LimitsConfiguration_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo6_LimitsConfiguration_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration end of topic ===
-    ${refrig_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksConfiguration start of topic ===
-    ${refrig_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksConfiguration end of topic ===
-    ${refrig_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasksConfiguration_start}    end=${refrig_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${refrig_PeriodicTasksConfiguration_list}
-    Should Contain    ${refrig_PeriodicTasksConfiguration_list}    === MTCamera_refrig_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${refrig_PeriodicTasksConfiguration_list}    === MTCamera_refrig_PeriodicTasksConfiguration end of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_CryoCompLimits_CompLimitsConfiguration_start}    end=${refrig_CryoCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_GeneralConfiguration_start}    end=${refrig_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${refrig_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${refrig_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_PicConfiguration_start}    end=${refrig_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${refrig_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${refrig_PeriodicTasks_PicConfiguration_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_PicConfiguration_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration end of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersConfiguration start of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersConfiguration end of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_timersConfiguration_start}    end=${refrig_PeriodicTasks_timersConfiguration_end + 1}
@@ -880,12 +862,12 @@ Start Sender
     Log Many    ${vacuum_Vacuum_stateConfiguration_list}
     Should Contain    ${vacuum_Vacuum_stateConfiguration_list}    === MTCamera_vacuum_Vacuum_stateConfiguration start of topic ===
     Should Contain    ${vacuum_Vacuum_stateConfiguration_list}    === MTCamera_vacuum_Vacuum_stateConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksConfiguration_start}    end=${daq_monitor_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksConfiguration_list}
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_GeneralConfiguration_start}    end=${daq_monitor_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersConfiguration start of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersConfiguration_start}    end=${daq_monitor_PeriodicTasks_timersConfiguration_end + 1}
@@ -898,18 +880,18 @@ Start Sender
     Log Many    ${daq_monitor_Stats_StatisticsConfiguration_list}
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === MTCamera_daq_monitor_Stats_StatisticsConfiguration start of topic ===
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === MTCamera_daq_monitor_Stats_StatisticsConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    ${daq_monitor_Stats_buildConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildConfiguration_start}    end=${daq_monitor_Stats_buildConfiguration_end + 1}
-    Log Many    ${daq_monitor_Stats_buildConfiguration_list}
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === MTCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === MTCamera_daq_monitor_Stats_buildConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreConfiguration start of topic ===
     ${daq_monitor_StoreConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreConfiguration_start}    end=${daq_monitor_StoreConfiguration_end + 1}
     Log Many    ${daq_monitor_StoreConfiguration_list}
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === MTCamera_daq_monitor_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === MTCamera_daq_monitor_StoreConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_DevicesConfiguration_start}    end=${daq_monitor_Store_DevicesConfiguration_end + 1}
+    Log Many    ${daq_monitor_Store_DevicesConfiguration_list}
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsConfiguration start of topic ===
     ${daq_monitor_Store_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsConfiguration_start}    end=${daq_monitor_Store_LimitsConfiguration_end + 1}
@@ -1330,6 +1312,36 @@ Start Sender
     Log Many    ${fcs_TempRearBox_LimitsConfiguration_list}
     Should Contain    ${fcs_TempRearBox_LimitsConfiguration_list}    === MTCamera_fcs_TempRearBox_LimitsConfiguration start of topic ===
     Should Contain    ${fcs_TempRearBox_LimitsConfiguration_list}    === MTCamera_fcs_TempRearBox_LimitsConfiguration end of topic ===
+    ${chiller_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_DeviceConfiguration start of topic ===
+    ${chiller_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_DeviceConfiguration end of topic ===
+    ${chiller_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_DeviceConfiguration_start}    end=${chiller_DeviceConfiguration_end + 1}
+    Log Many    ${chiller_DeviceConfiguration_list}
+    Should Contain    ${chiller_DeviceConfiguration_list}    === MTCamera_chiller_DeviceConfiguration start of topic ===
+    Should Contain    ${chiller_DeviceConfiguration_list}    === MTCamera_chiller_DeviceConfiguration end of topic ===
+    ${chiller_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_DevicesConfiguration start of topic ===
+    ${chiller_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_DevicesConfiguration end of topic ===
+    ${chiller_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_DevicesConfiguration_start}    end=${chiller_DevicesConfiguration_end + 1}
+    Log Many    ${chiller_DevicesConfiguration_list}
+    Should Contain    ${chiller_DevicesConfiguration_list}    === MTCamera_chiller_DevicesConfiguration start of topic ===
+    Should Contain    ${chiller_DevicesConfiguration_list}    === MTCamera_chiller_DevicesConfiguration end of topic ===
+    ${chiller_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_GeneralConfiguration start of topic ===
+    ${chiller_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_GeneralConfiguration end of topic ===
+    ${chiller_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_GeneralConfiguration_start}    end=${chiller_GeneralConfiguration_end + 1}
+    Log Many    ${chiller_GeneralConfiguration_list}
+    Should Contain    ${chiller_GeneralConfiguration_list}    === MTCamera_chiller_GeneralConfiguration start of topic ===
+    Should Contain    ${chiller_GeneralConfiguration_list}    === MTCamera_chiller_GeneralConfiguration end of topic ===
+    ${chiller_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
+    ${chiller_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_LimitsConfiguration_start}    end=${chiller_LimitsConfiguration_end + 1}
+    Log Many    ${chiller_LimitsConfiguration_list}
+    Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
+    Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration start of topic ===
+    ${chiller_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration end of topic ===
+    ${chiller_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_timersConfiguration_start}    end=${chiller_timersConfiguration_end + 1}
+    Log Many    ${chiller_timersConfiguration_list}
+    Should Contain    ${chiller_timersConfiguration_list}    === MTCamera_chiller_timersConfiguration start of topic ===
+    Should Contain    ${chiller_timersConfiguration_list}    === MTCamera_chiller_timersConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
@@ -1746,12 +1758,6 @@ Read Subscriber
     Log Many    ${rebpower_Rebps_PowerConfiguration_list}
     Should Contain    ${rebpower_Rebps_PowerConfiguration_list}    === MTCamera_rebpower_Rebps_PowerConfiguration start of topic ===
     Should Contain    ${rebpower_Rebps_PowerConfiguration_list}    === MTCamera_rebpower_Rebps_PowerConfiguration end of topic ===
-    ${hexConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hexConfiguration start of topic ===
-    ${hexConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hexConfiguration end of topic ===
-    ${hexConfiguration_list}=    Get Slice From List    ${full_list}    start=${hexConfiguration_start}    end=${hexConfiguration_end + 1}
-    Log Many    ${hexConfiguration_list}
-    Should Contain    ${hexConfiguration_list}    === MTCamera_hexConfiguration start of topic ===
-    Should Contain    ${hexConfiguration_list}    === MTCamera_hexConfiguration end of topic ===
     ${hex_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsConfiguration start of topic ===
     ${hex_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Cold1_LimitsConfiguration end of topic ===
     ${hex_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Cold1_LimitsConfiguration_start}    end=${hex_Cold1_LimitsConfiguration_end + 1}
@@ -1800,186 +1806,174 @@ Read Subscriber
     Log Many    ${hex_Cryo6_LimitsConfiguration_list}
     Should Contain    ${hex_Cryo6_LimitsConfiguration_list}    === MTCamera_hex_Cryo6_LimitsConfiguration start of topic ===
     Should Contain    ${hex_Cryo6_LimitsConfiguration_list}    === MTCamera_hex_Cryo6_LimitsConfiguration end of topic ===
+    ${hex_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_GeneralConfiguration start of topic ===
+    ${hex_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_GeneralConfiguration end of topic ===
+    ${hex_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_GeneralConfiguration_start}    end=${hex_GeneralConfiguration_end + 1}
+    Log Many    ${hex_GeneralConfiguration_list}
+    Should Contain    ${hex_GeneralConfiguration_list}    === MTCamera_hex_GeneralConfiguration start of topic ===
+    Should Contain    ${hex_GeneralConfiguration_list}    === MTCamera_hex_GeneralConfiguration end of topic ===
     ${hex_Maq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceConfiguration start of topic ===
     ${hex_Maq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DeviceConfiguration end of topic ===
     ${hex_Maq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DeviceConfiguration_start}    end=${hex_Maq20_DeviceConfiguration_end + 1}
     Log Many    ${hex_Maq20_DeviceConfiguration_list}
     Should Contain    ${hex_Maq20_DeviceConfiguration_list}    === MTCamera_hex_Maq20_DeviceConfiguration start of topic ===
     Should Contain    ${hex_Maq20_DeviceConfiguration_list}    === MTCamera_hex_Maq20_DeviceConfiguration end of topic ===
-    ${hex_Maq20x_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceConfiguration start of topic ===
-    ${hex_Maq20x_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20x_DeviceConfiguration end of topic ===
-    ${hex_Maq20x_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20x_DeviceConfiguration_start}    end=${hex_Maq20x_DeviceConfiguration_end + 1}
-    Log Many    ${hex_Maq20x_DeviceConfiguration_list}
-    Should Contain    ${hex_Maq20x_DeviceConfiguration_list}    === MTCamera_hex_Maq20x_DeviceConfiguration start of topic ===
-    Should Contain    ${hex_Maq20x_DeviceConfiguration_list}    === MTCamera_hex_Maq20x_DeviceConfiguration end of topic ===
-    ${hex_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksConfiguration start of topic ===
-    ${hex_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasksConfiguration end of topic ===
-    ${hex_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasksConfiguration_start}    end=${hex_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${hex_PeriodicTasksConfiguration_list}
-    Should Contain    ${hex_PeriodicTasksConfiguration_list}    === MTCamera_hex_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${hex_PeriodicTasksConfiguration_list}    === MTCamera_hex_PeriodicTasksConfiguration end of topic ===
+    ${hex_Maq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DevicesConfiguration start of topic ===
+    ${hex_Maq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_Maq20_DevicesConfiguration end of topic ===
+    ${hex_Maq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_Maq20_DevicesConfiguration_start}    end=${hex_Maq20_DevicesConfiguration_end + 1}
+    Log Many    ${hex_Maq20_DevicesConfiguration_list}
+    Should Contain    ${hex_Maq20_DevicesConfiguration_list}    === MTCamera_hex_Maq20_DevicesConfiguration start of topic ===
+    Should Contain    ${hex_Maq20_DevicesConfiguration_list}    === MTCamera_hex_Maq20_DevicesConfiguration end of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${hex_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_GeneralConfiguration_start}    end=${hex_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${hex_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${hex_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${hex_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_hex_PeriodicTasks_GeneralConfiguration end of topic ===
     ${hex_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration start of topic ===
     ${hex_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration end of topic ===
     ${hex_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${hex_PeriodicTasks_timersConfiguration_start}    end=${hex_PeriodicTasks_timersConfiguration_end + 1}
     Log Many    ${hex_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${hex_PeriodicTasks_timersConfiguration_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${hex_PeriodicTasks_timersConfiguration_list}    === MTCamera_hex_PeriodicTasks_timersConfiguration end of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration start of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold1_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_CompLimitsConfiguration_start}    end=${refrig_Cold1_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cold1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceConfiguration start of topic ===
-    ${refrig_Cold1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_DeviceConfiguration end of topic ===
-    ${refrig_Cold1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_DeviceConfiguration_start}    end=${refrig_Cold1_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_DeviceConfiguration_list}
-    Should Contain    ${refrig_Cold1_DeviceConfiguration_list}    === MTCamera_refrig_Cold1_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_DeviceConfiguration_list}    === MTCamera_refrig_Cold1_DeviceConfiguration end of topic ===
-    ${refrig_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsConfiguration start of topic ===
-    ${refrig_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1_LimitsConfiguration end of topic ===
-    ${refrig_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_LimitsConfiguration_start}    end=${refrig_Cold1_LimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold1_LimitsConfiguration_list}
-    Should Contain    ${refrig_Cold1_LimitsConfiguration_list}    === MTCamera_refrig_Cold1_LimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold1_LimitsConfiguration_list}    === MTCamera_refrig_Cold1_LimitsConfiguration end of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration start of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold2_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_CompLimitsConfiguration_start}    end=${refrig_Cold2_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cold2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cold2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cold2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceConfiguration start of topic ===
-    ${refrig_Cold2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_DeviceConfiguration end of topic ===
-    ${refrig_Cold2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_DeviceConfiguration_start}    end=${refrig_Cold2_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_DeviceConfiguration_list}
-    Should Contain    ${refrig_Cold2_DeviceConfiguration_list}    === MTCamera_refrig_Cold2_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_DeviceConfiguration_list}    === MTCamera_refrig_Cold2_DeviceConfiguration end of topic ===
-    ${refrig_Cold2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsConfiguration start of topic ===
-    ${refrig_Cold2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2_LimitsConfiguration end of topic ===
-    ${refrig_Cold2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_LimitsConfiguration_start}    end=${refrig_Cold2_LimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cold2_LimitsConfiguration_list}
-    Should Contain    ${refrig_Cold2_LimitsConfiguration_list}    === MTCamera_refrig_Cold2_LimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cold2_LimitsConfiguration_list}    === MTCamera_refrig_Cold2_LimitsConfiguration end of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration start of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration end of topic ===
-    ${refrig_CoolMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_CoolMaq20_DeviceConfiguration_start}    end=${refrig_CoolMaq20_DeviceConfiguration_end + 1}
-    Log Many    ${refrig_CoolMaq20_DeviceConfiguration_list}
-    Should Contain    ${refrig_CoolMaq20_DeviceConfiguration_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration start of topic ===
-    Should Contain    ${refrig_CoolMaq20_DeviceConfiguration_list}    === MTCamera_refrig_CoolMaq20_DeviceConfiguration end of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo1_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_CompLimitsConfiguration_start}    end=${refrig_Cryo1_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo1_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo1_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo1_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration start of topic ===
     ${refrig_Cryo1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration end of topic ===
     ${refrig_Cryo1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DeviceConfiguration_start}    end=${refrig_Cryo1_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo1_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo1_DeviceConfiguration_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo1_DeviceConfiguration_list}    === MTCamera_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration start of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${refrig_Cryo1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_DevicesConfiguration_start}    end=${refrig_Cryo1_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo1_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo1_DevicesConfiguration_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo1_DevicesConfiguration_list}    === MTCamera_refrig_Cryo1_DevicesConfiguration end of topic ===
     ${refrig_Cryo1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration start of topic ===
     ${refrig_Cryo1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration end of topic ===
     ${refrig_Cryo1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_LimitsConfiguration_start}    end=${refrig_Cryo1_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo1_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo1_LimitsConfiguration_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo1_LimitsConfiguration_list}    === MTCamera_refrig_Cryo1_LimitsConfiguration end of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo2_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_CompLimitsConfiguration_start}    end=${refrig_Cryo2_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo2_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo2_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo2_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration start of topic ===
     ${refrig_Cryo2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration end of topic ===
     ${refrig_Cryo2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DeviceConfiguration_start}    end=${refrig_Cryo2_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo2_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo2_DeviceConfiguration_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo2_DeviceConfiguration_list}    === MTCamera_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration start of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${refrig_Cryo2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_DevicesConfiguration_start}    end=${refrig_Cryo2_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo2_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo2_DevicesConfiguration_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo2_DevicesConfiguration_list}    === MTCamera_refrig_Cryo2_DevicesConfiguration end of topic ===
     ${refrig_Cryo2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration start of topic ===
     ${refrig_Cryo2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration end of topic ===
     ${refrig_Cryo2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo2_LimitsConfiguration_start}    end=${refrig_Cryo2_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo2_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo2_LimitsConfiguration_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo2_LimitsConfiguration_list}    === MTCamera_refrig_Cryo2_LimitsConfiguration end of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo3_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_CompLimitsConfiguration_start}    end=${refrig_Cryo3_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo3_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo3_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo3_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo3_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo3_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration start of topic ===
     ${refrig_Cryo3_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration end of topic ===
     ${refrig_Cryo3_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DeviceConfiguration_start}    end=${refrig_Cryo3_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo3_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo3_DeviceConfiguration_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo3_DeviceConfiguration_list}    === MTCamera_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration start of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${refrig_Cryo3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_DevicesConfiguration_start}    end=${refrig_Cryo3_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo3_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo3_DevicesConfiguration_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo3_DevicesConfiguration_list}    === MTCamera_refrig_Cryo3_DevicesConfiguration end of topic ===
     ${refrig_Cryo3_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration start of topic ===
     ${refrig_Cryo3_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration end of topic ===
     ${refrig_Cryo3_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_LimitsConfiguration_start}    end=${refrig_Cryo3_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo3_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo3_LimitsConfiguration_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo3_LimitsConfiguration_list}    === MTCamera_refrig_Cryo3_LimitsConfiguration end of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo4_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_CompLimitsConfiguration_start}    end=${refrig_Cryo4_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo4_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo4_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo4_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo4_CompLimitsConfiguration end of topic ===
+    ${refrig_Cryo3_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_PicConfiguration start of topic ===
+    ${refrig_Cryo3_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo3_PicConfiguration end of topic ===
+    ${refrig_Cryo3_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo3_PicConfiguration_start}    end=${refrig_Cryo3_PicConfiguration_end + 1}
+    Log Many    ${refrig_Cryo3_PicConfiguration_list}
+    Should Contain    ${refrig_Cryo3_PicConfiguration_list}    === MTCamera_refrig_Cryo3_PicConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo3_PicConfiguration_list}    === MTCamera_refrig_Cryo3_PicConfiguration end of topic ===
     ${refrig_Cryo4_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration start of topic ===
     ${refrig_Cryo4_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration end of topic ===
     ${refrig_Cryo4_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DeviceConfiguration_start}    end=${refrig_Cryo4_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo4_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo4_DeviceConfiguration_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo4_DeviceConfiguration_list}    === MTCamera_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration start of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${refrig_Cryo4_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_DevicesConfiguration_start}    end=${refrig_Cryo4_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo4_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo4_DevicesConfiguration_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo4_DevicesConfiguration_list}    === MTCamera_refrig_Cryo4_DevicesConfiguration end of topic ===
     ${refrig_Cryo4_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration start of topic ===
     ${refrig_Cryo4_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration end of topic ===
     ${refrig_Cryo4_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo4_LimitsConfiguration_start}    end=${refrig_Cryo4_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo4_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo4_LimitsConfiguration_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo4_LimitsConfiguration_list}    === MTCamera_refrig_Cryo4_LimitsConfiguration end of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo5_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_CompLimitsConfiguration_start}    end=${refrig_Cryo5_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo5_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo5_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo5_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo5_CompLimitsConfiguration end of topic ===
     ${refrig_Cryo5_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration start of topic ===
     ${refrig_Cryo5_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration end of topic ===
     ${refrig_Cryo5_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DeviceConfiguration_start}    end=${refrig_Cryo5_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo5_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo5_DeviceConfiguration_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo5_DeviceConfiguration_list}    === MTCamera_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration start of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${refrig_Cryo5_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_DevicesConfiguration_start}    end=${refrig_Cryo5_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo5_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo5_DevicesConfiguration_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo5_DevicesConfiguration_list}    === MTCamera_refrig_Cryo5_DevicesConfiguration end of topic ===
     ${refrig_Cryo5_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration start of topic ===
     ${refrig_Cryo5_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration end of topic ===
     ${refrig_Cryo5_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_LimitsConfiguration_start}    end=${refrig_Cryo5_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo5_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo5_LimitsConfiguration_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo5_LimitsConfiguration_list}    === MTCamera_refrig_Cryo5_LimitsConfiguration end of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration start of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration end of topic ===
-    ${refrig_Cryo6_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_CompLimitsConfiguration_start}    end=${refrig_Cryo6_CompLimitsConfiguration_end + 1}
-    Log Many    ${refrig_Cryo6_CompLimitsConfiguration_list}
-    Should Contain    ${refrig_Cryo6_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration start of topic ===
-    Should Contain    ${refrig_Cryo6_CompLimitsConfiguration_list}    === MTCamera_refrig_Cryo6_CompLimitsConfiguration end of topic ===
+    ${refrig_Cryo5_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_PicConfiguration start of topic ===
+    ${refrig_Cryo5_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo5_PicConfiguration end of topic ===
+    ${refrig_Cryo5_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo5_PicConfiguration_start}    end=${refrig_Cryo5_PicConfiguration_end + 1}
+    Log Many    ${refrig_Cryo5_PicConfiguration_list}
+    Should Contain    ${refrig_Cryo5_PicConfiguration_list}    === MTCamera_refrig_Cryo5_PicConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo5_PicConfiguration_list}    === MTCamera_refrig_Cryo5_PicConfiguration end of topic ===
     ${refrig_Cryo6_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration start of topic ===
     ${refrig_Cryo6_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration end of topic ===
     ${refrig_Cryo6_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DeviceConfiguration_start}    end=${refrig_Cryo6_DeviceConfiguration_end + 1}
     Log Many    ${refrig_Cryo6_DeviceConfiguration_list}
     Should Contain    ${refrig_Cryo6_DeviceConfiguration_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration start of topic ===
     Should Contain    ${refrig_Cryo6_DeviceConfiguration_list}    === MTCamera_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration start of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${refrig_Cryo6_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_DevicesConfiguration_start}    end=${refrig_Cryo6_DevicesConfiguration_end + 1}
+    Log Many    ${refrig_Cryo6_DevicesConfiguration_list}
+    Should Contain    ${refrig_Cryo6_DevicesConfiguration_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration start of topic ===
+    Should Contain    ${refrig_Cryo6_DevicesConfiguration_list}    === MTCamera_refrig_Cryo6_DevicesConfiguration end of topic ===
     ${refrig_Cryo6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration start of topic ===
     ${refrig_Cryo6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration end of topic ===
     ${refrig_Cryo6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo6_LimitsConfiguration_start}    end=${refrig_Cryo6_LimitsConfiguration_end + 1}
     Log Many    ${refrig_Cryo6_LimitsConfiguration_list}
     Should Contain    ${refrig_Cryo6_LimitsConfiguration_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration start of topic ===
     Should Contain    ${refrig_Cryo6_LimitsConfiguration_list}    === MTCamera_refrig_Cryo6_LimitsConfiguration end of topic ===
-    ${refrig_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksConfiguration start of topic ===
-    ${refrig_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasksConfiguration end of topic ===
-    ${refrig_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasksConfiguration_start}    end=${refrig_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${refrig_PeriodicTasksConfiguration_list}
-    Should Contain    ${refrig_PeriodicTasksConfiguration_list}    === MTCamera_refrig_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${refrig_PeriodicTasksConfiguration_list}    === MTCamera_refrig_PeriodicTasksConfiguration end of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_CryoCompLimits_CompLimitsConfiguration_start}    end=${refrig_CryoCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${refrig_CryoCompLimits_CompLimitsConfiguration_list}    === MTCamera_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${refrig_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_GeneralConfiguration_start}    end=${refrig_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${refrig_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${refrig_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${refrig_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_PicConfiguration_start}    end=${refrig_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${refrig_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${refrig_PeriodicTasks_PicConfiguration_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${refrig_PeriodicTasks_PicConfiguration_list}    === MTCamera_refrig_PeriodicTasks_PicConfiguration end of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersConfiguration start of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_PeriodicTasks_timersConfiguration end of topic ===
     ${refrig_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${refrig_PeriodicTasks_timersConfiguration_start}    end=${refrig_PeriodicTasks_timersConfiguration_end + 1}
@@ -2250,12 +2244,12 @@ Read Subscriber
     Log Many    ${vacuum_Vacuum_stateConfiguration_list}
     Should Contain    ${vacuum_Vacuum_stateConfiguration_list}    === MTCamera_vacuum_Vacuum_stateConfiguration start of topic ===
     Should Contain    ${vacuum_Vacuum_stateConfiguration_list}    === MTCamera_vacuum_Vacuum_stateConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
-    ${daq_monitor_PeriodicTasksConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasksConfiguration_start}    end=${daq_monitor_PeriodicTasksConfiguration_end + 1}
-    Log Many    ${daq_monitor_PeriodicTasksConfiguration_list}
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration start of topic ===
-    Should Contain    ${daq_monitor_PeriodicTasksConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasksConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_GeneralConfiguration_start}    end=${daq_monitor_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${daq_monitor_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_daq_monitor_PeriodicTasks_GeneralConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersConfiguration start of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_PeriodicTasks_timersConfiguration end of topic ===
     ${daq_monitor_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_PeriodicTasks_timersConfiguration_start}    end=${daq_monitor_PeriodicTasks_timersConfiguration_end + 1}
@@ -2268,18 +2262,18 @@ Read Subscriber
     Log Many    ${daq_monitor_Stats_StatisticsConfiguration_list}
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === MTCamera_daq_monitor_Stats_StatisticsConfiguration start of topic ===
     Should Contain    ${daq_monitor_Stats_StatisticsConfiguration_list}    === MTCamera_daq_monitor_Stats_StatisticsConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    ${daq_monitor_Stats_buildConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Stats_buildConfiguration end of topic ===
-    ${daq_monitor_Stats_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Stats_buildConfiguration_start}    end=${daq_monitor_Stats_buildConfiguration_end + 1}
-    Log Many    ${daq_monitor_Stats_buildConfiguration_list}
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === MTCamera_daq_monitor_Stats_buildConfiguration start of topic ===
-    Should Contain    ${daq_monitor_Stats_buildConfiguration_list}    === MTCamera_daq_monitor_Stats_buildConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreConfiguration start of topic ===
     ${daq_monitor_StoreConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_StoreConfiguration end of topic ===
     ${daq_monitor_StoreConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_StoreConfiguration_start}    end=${daq_monitor_StoreConfiguration_end + 1}
     Log Many    ${daq_monitor_StoreConfiguration_list}
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === MTCamera_daq_monitor_StoreConfiguration start of topic ===
     Should Contain    ${daq_monitor_StoreConfiguration_list}    === MTCamera_daq_monitor_StoreConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
+    ${daq_monitor_Store_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_DevicesConfiguration_start}    end=${daq_monitor_Store_DevicesConfiguration_end + 1}
+    Log Many    ${daq_monitor_Store_DevicesConfiguration_list}
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration start of topic ===
+    Should Contain    ${daq_monitor_Store_DevicesConfiguration_list}    === MTCamera_daq_monitor_Store_DevicesConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsConfiguration start of topic ===
     ${daq_monitor_Store_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store_LimitsConfiguration end of topic ===
     ${daq_monitor_Store_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_LimitsConfiguration_start}    end=${daq_monitor_Store_LimitsConfiguration_end + 1}
@@ -2700,6 +2694,36 @@ Read Subscriber
     Log Many    ${fcs_TempRearBox_LimitsConfiguration_list}
     Should Contain    ${fcs_TempRearBox_LimitsConfiguration_list}    === MTCamera_fcs_TempRearBox_LimitsConfiguration start of topic ===
     Should Contain    ${fcs_TempRearBox_LimitsConfiguration_list}    === MTCamera_fcs_TempRearBox_LimitsConfiguration end of topic ===
+    ${chiller_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_DeviceConfiguration start of topic ===
+    ${chiller_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_DeviceConfiguration end of topic ===
+    ${chiller_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_DeviceConfiguration_start}    end=${chiller_DeviceConfiguration_end + 1}
+    Log Many    ${chiller_DeviceConfiguration_list}
+    Should Contain    ${chiller_DeviceConfiguration_list}    === MTCamera_chiller_DeviceConfiguration start of topic ===
+    Should Contain    ${chiller_DeviceConfiguration_list}    === MTCamera_chiller_DeviceConfiguration end of topic ===
+    ${chiller_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_DevicesConfiguration start of topic ===
+    ${chiller_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_DevicesConfiguration end of topic ===
+    ${chiller_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_DevicesConfiguration_start}    end=${chiller_DevicesConfiguration_end + 1}
+    Log Many    ${chiller_DevicesConfiguration_list}
+    Should Contain    ${chiller_DevicesConfiguration_list}    === MTCamera_chiller_DevicesConfiguration start of topic ===
+    Should Contain    ${chiller_DevicesConfiguration_list}    === MTCamera_chiller_DevicesConfiguration end of topic ===
+    ${chiller_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_GeneralConfiguration start of topic ===
+    ${chiller_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_GeneralConfiguration end of topic ===
+    ${chiller_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_GeneralConfiguration_start}    end=${chiller_GeneralConfiguration_end + 1}
+    Log Many    ${chiller_GeneralConfiguration_list}
+    Should Contain    ${chiller_GeneralConfiguration_list}    === MTCamera_chiller_GeneralConfiguration start of topic ===
+    Should Contain    ${chiller_GeneralConfiguration_list}    === MTCamera_chiller_GeneralConfiguration end of topic ===
+    ${chiller_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
+    ${chiller_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_LimitsConfiguration_start}    end=${chiller_LimitsConfiguration_end + 1}
+    Log Many    ${chiller_LimitsConfiguration_list}
+    Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
+    Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration start of topic ===
+    ${chiller_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration end of topic ===
+    ${chiller_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_timersConfiguration_start}    end=${chiller_timersConfiguration_end + 1}
+    Log Many    ${chiller_timersConfiguration_list}
+    Should Contain    ${chiller_timersConfiguration_list}    === MTCamera_chiller_timersConfiguration start of topic ===
+    Should Contain    ${chiller_timersConfiguration_list}    === MTCamera_chiller_timersConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
