@@ -25,7 +25,7 @@ function main() {
     subSystem=$1
 
     # Get the XML definition file.
-    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Events.xml)
+    file=($TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/$subSystem/*_Events.xml)
 
     # Get the RuntimeLanguages list
     rtlang=($(getRuntimeLanguages $subSystem))

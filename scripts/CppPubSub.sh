@@ -22,7 +22,7 @@ function main() {
     subSystem=$1
 
     # Get the XML definition file.
-    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Telemetry.xml)
+    file=($TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/$subSystem/*_Telemetry.xml)
 
     # Get the RuntimeLanguages list
     rtlang=($(getRuntimeLanguages $subSystem))
@@ -171,7 +171,7 @@ function readSubscriber_params {
         #if [ $topic ]; then
             #n=1
         #else
-            #n=$(xml sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
+            #n=$(xmlstarlet sel -t -m "//SALTelemetrySet/SALTelemetry/item/EFDB_Name" -v . -n $file |sort |grep -cw $parameter)
         #fi
         parameterIndex=$(getParameterIndex $parameter ${parametersArray[@]})
         parameterType="$(getParameterType $subSystem $file $topic $parameterIndex "Telemetry")"

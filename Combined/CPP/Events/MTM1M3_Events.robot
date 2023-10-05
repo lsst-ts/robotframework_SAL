@@ -172,6 +172,14 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_forceControllerState_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event forceControllerState generated =
+    Comment    ======= Verify ${subSystem}_slewControllerSettings test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_slewControllerSettings
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event slewControllerSettings iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_slewControllerSettings_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event slewControllerSettings generated =
     Comment    ======= Verify ${subSystem}_hardpointMonitorInfo test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_hardpointMonitorInfo
     @{words}=    Split String    ${line}
@@ -783,9 +791,10 @@ Read Logger
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyForceWarning : 1    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceWarning : 0    1
     ${raisingLoweringInfo_start}=    Get Index From List    ${full_list}    === Event raisingLoweringInfo received =${SPACE}
-    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${7}
+    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${8}
     ${raisingLoweringInfo_list}=    Get Slice From List    ${full_list}    start=${raisingLoweringInfo_start}    end=${end}
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}weightSupportedPercent : 1    1
+    Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeTimeout : 1    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitAirPressure : 1    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitHardpoint : 0    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitZForceActuator : 0    1
@@ -805,9 +814,10 @@ Read Logger
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerOpen : 1    1
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerClose : 1    1
     ${boosterValveStatus_start}=    Get Index From List    ${full_list}    === Event boosterValveStatus received =${SPACE}
-    ${end}=    Evaluate    ${boosterValveStatus_start}+${5}
+    ${end}=    Evaluate    ${boosterValveStatus_start}+${6}
     ${boosterValveStatus_list}=    Get Slice From List    ${full_list}    start=${boosterValveStatus_start}    end=${end}
-    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    1
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}opened : 1    1
+    Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewTriggered : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}userTriggered : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggered : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerTriggered : 1    1
@@ -829,6 +839,13 @@ Read Logger
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityForcesApplied : 1    1
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeOpticForcesApplied : 1    1
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}balanceForcesApplied : 1    1
+    ${slewControllerSettings_start}=    Get Index From List    ${full_list}    === Event slewControllerSettings received =${SPACE}
+    ${end}=    Evaluate    ${slewControllerSettings_start}+${5}
+    ${slewControllerSettings_list}=    Get Slice From List    ${full_list}    start=${slewControllerSettings_start}    end=${end}
+    Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}triggerBoosterValves : 1    1
+    Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useAccelerationForces : 1    1
+    Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useBalanceForces : 1    1
+    Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useVelocityForces : 1    1
     ${hardpointMonitorInfo_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorInfo received =${SPACE}
     ${end}=    Evaluate    ${hardpointMonitorInfo_start}+${14}
     ${hardpointMonitorInfo_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorInfo_start}    end=${end}
@@ -1469,7 +1486,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestSettleTime : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestMeasurements : 1    1
     ${hardpointActuatorSettings_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${15}
+    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${19}
     ${hardpointActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorSettings_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerStep : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerEncoder : 1    1
@@ -1485,6 +1502,10 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderOffset : 0    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowProximityEncoder : 0    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}highProximityEncoder : 0    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointBreakawayFaultLow : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointBreakawayFaultHigh : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreTensionRaisingLowering : 1    1
+    Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inRangeReadoutsToChaseFromWaitingTension : 1    1
     ${positionControllerSettings_start}=    Get Index From List    ${full_list}    === Event positionControllerSettings received =${SPACE}
     ${end}=    Evaluate    ${positionControllerSettings_start}+${14}
     ${positionControllerSettings_list}=    Get Slice From List    ${full_list}    start=${positionControllerSettings_start}    end=${end}
@@ -1511,8 +1532,9 @@ Read Logger
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotationOffset : 1    1
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotationOffset : 1    1
     ${pidSettings_start}=    Get Index From List    ${full_list}    === Event pidSettings received =${SPACE}
-    ${end}=    Evaluate    ${pidSettings_start}+${6}
+    ${end}=    Evaluate    ${pidSettings_start}+${7}
     ${pidSettings_list}=    Get Slice From List    ${full_list}    start=${pidSettings_start}    end=${end}
+    Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingName : RO    1
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 0    1
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}p : 0    1
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 0    1

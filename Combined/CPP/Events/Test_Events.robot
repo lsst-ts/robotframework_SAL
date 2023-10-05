@@ -142,7 +142,7 @@ Read Logger
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${scalars_start}=    Get Index From List    ${full_list}    === Event scalars received =${SPACE}
-    ${end}=    Evaluate    ${scalars_start}+${13}
+    ${end}=    Evaluate    ${scalars_start}+${12}
     ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${end}
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x01    1
@@ -152,12 +152,11 @@ Read Logger
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    1
     Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    1
     ${arrays_start}=    Get Index From List    ${full_list}    === Event arrays received =${SPACE}
-    ${end}=    Evaluate    ${arrays_start}+${12}
+    ${end}=    Evaluate    ${arrays_start}+${11}
     ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${end}
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x00    1
@@ -167,7 +166,6 @@ Read Logger
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedLong0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}

@@ -25,7 +25,7 @@ function main() {
     subSystem=$1
 
     # Get the XML definition file.
-    file=($TS_XML_DIR/sal_interfaces/$subSystem/*_Events.xml)
+    file=($TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/$subSystem/*_Events.xml)
 
 
     # Get the RuntimeLanguages list
@@ -179,14 +179,14 @@ function readLogger() {
             (( length++ )) ## The end index is exclusive, so increment by 1 to get the full slice.
             ## Redirect the topic definition file to SALGenerics.xml if $topic is Generic.
             for generic in "${generic_events[@]}"; do
-                [[ $generic == "$topic" ]] && file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+                [[ $generic == "$topic" ]] && file=$TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml 
             done
             ## Get the slice, then test the output.
             echo "    \${${topic}_start}=    Get Index From List    \${full_list}    === Event ${topic} received =\${SPACE}" >> $testSuite
             echo "    \${end}=    Evaluate    \${${topic}_start}+\${${length}}" >> $testSuite
             echo "    \${${topic}_list}=    Get Slice From List    \${full_list}    start=\${${topic}_start}    end=\${end}" >> $testSuite
             for generic in "${generic_events[@]}"; do
-                [[ $generic == "$topic" ]] && local subSystem=SALGeneric  && local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml 
+                [[ $generic == "$topic" ]] && local subSystem=SALGeneric  && local file=$TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml 
             done
             readLogger_params $file $topic $itemIndex $testSuite
             (( itemIndex++ ))
@@ -269,7 +269,7 @@ function createTestSuite() {
 
         ##  Get correct topic source (SAlGenerics or Subsystem XML)
         #for generic in "${generic_events[@]}"; do
-            #[[ $generic == "$topic" ]] && local file=$TS_XML_DIR/sal_interfaces/SALGenerics.xml
+            #[[ $generic == "$topic" ]] && local file=$TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALGenerics.xml
         #done
 
         ##  Get EFDB_Topic elements

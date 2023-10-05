@@ -156,20 +156,6 @@ Start Publisher
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 start of topic ===
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 end of topic ===
     Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6] message sent 200
-    ${refrig_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 start of topic ===
-    ${refrig_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 end of topic ===
-    ${refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_start}    end=${refrig_Cold1_end + 1}
-    Log Many    ${refrig_Cold1_list}
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 start of topic ===
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 end of topic ===
-    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1] message sent 200
-    ${refrig_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 start of topic ===
-    ${refrig_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 end of topic ===
-    ${refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_start}    end=${refrig_Cold2_end + 1}
-    Log Many    ${refrig_Cold2_list}
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 start of topic ===
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 end of topic ===
-    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2] message sent 200
     ${refrig_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 start of topic ===
     ${refrig_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 end of topic ===
     ${refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_start}    end=${refrig_Cryo1_end + 1}
@@ -366,6 +352,13 @@ Start Publisher
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
     Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage] message sent 200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending] message sent 200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -373,6 +366,13 @@ Start Publisher
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store start of topic ===
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store end of topic ===
     Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store] message sent 200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending] message sent 200
     ${focal_plane_Ccd_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd start of topic ===
     ${focal_plane_Ccd_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd end of topic ===
     ${focal_plane_Ccd_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_start}    end=${focal_plane_Ccd_end + 1}
@@ -394,6 +394,13 @@ Start Publisher
     Should Contain    ${focal_plane_RebTotalPower_list}    === MTCamera_focal_plane_RebTotalPower start of topic ===
     Should Contain    ${focal_plane_RebTotalPower_list}    === MTCamera_focal_plane_RebTotalPower end of topic ===
     Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower] message sent 200
+    ${focal_plane_RebsAverageTemp6_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    ${focal_plane_RebsAverageTemp6_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    ${focal_plane_RebsAverageTemp6_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_start}    end=${focal_plane_RebsAverageTemp6_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === MTCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === MTCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6] message sent 200
     ${focal_plane_Segment_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment start of topic ===
     ${focal_plane_Segment_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment end of topic ===
     ${focal_plane_Segment_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_start}    end=${focal_plane_Segment_end + 1}
@@ -793,6 +800,20 @@ Start Publisher
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
     Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2] message sent 200
+    ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
+    ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
+    ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
+    Log Many    ${chiller_Chiller_list}
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller start of topic ===
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
+    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller] message sent 200
+    ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
+    ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
+    ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
+    Log Many    ${chiller_Maq20_list}
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 start of topic ===
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
+    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -929,22 +950,6 @@ Read Subscriber
     Should Contain    ${hex_Cryo6_list}    === MTCamera_hex_Cryo6 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${hex_Cryo6_list}    === [hex_Cryo6 Subscriber] message received :200
-    ${refrig_Cold1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 start of topic ===
-    ${refrig_Cold1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold1 end of topic ===
-    ${refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold1_start}    end=${refrig_Cold1_end + 1}
-    Log Many    ${refrig_Cold1_list}
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 start of topic ===
-    Should Contain    ${refrig_Cold1_list}    === MTCamera_refrig_Cold1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold1_list}    === [refrig_Cold1 Subscriber] message received :200
-    ${refrig_Cold2_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 start of topic ===
-    ${refrig_Cold2_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cold2 end of topic ===
-    ${refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${refrig_Cold2_start}    end=${refrig_Cold2_end + 1}
-    Log Many    ${refrig_Cold2_list}
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 start of topic ===
-    Should Contain    ${refrig_Cold2_list}    === MTCamera_refrig_Cold2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${refrig_Cold2_list}    === [refrig_Cold2 Subscriber] message received :200
     ${refrig_Cryo1_start}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 start of topic ===
     ${refrig_Cryo1_end}=    Get Index From List    ${full_list}    === MTCamera_refrig_Cryo1 end of topic ===
     ${refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${refrig_Cryo1_start}    end=${refrig_Cryo1_end + 1}
@@ -1169,6 +1174,14 @@ Read Subscriber
     Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :200
+    ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
+    Log Many    ${daq_monitor_Reb_Trending_list}
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
+    Should Contain    ${daq_monitor_Reb_Trending_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Reb_Trending_list}    === [daq_monitor_Reb_Trending Subscriber] message received :200
     ${daq_monitor_Store_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store start of topic ===
     ${daq_monitor_Store_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Store end of topic ===
     ${daq_monitor_Store_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Store_start}    end=${daq_monitor_Store_end + 1}
@@ -1177,6 +1190,14 @@ Read Subscriber
     Should Contain    ${daq_monitor_Store_list}    === MTCamera_daq_monitor_Store end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Store_list}    === [daq_monitor_Store Subscriber] message received :200
+    ${daq_monitor_Sum_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    ${daq_monitor_Sum_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    ${daq_monitor_Sum_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Sum_Trending_start}    end=${daq_monitor_Sum_Trending_end + 1}
+    Log Many    ${daq_monitor_Sum_Trending_list}
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending start of topic ===
+    Should Contain    ${daq_monitor_Sum_Trending_list}    === MTCamera_daq_monitor_Sum_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${daq_monitor_Sum_Trending_list}    === [daq_monitor_Sum_Trending Subscriber] message received :200
     ${focal_plane_Ccd_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd start of topic ===
     ${focal_plane_Ccd_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd end of topic ===
     ${focal_plane_Ccd_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_start}    end=${focal_plane_Ccd_end + 1}
@@ -1201,6 +1222,14 @@ Read Subscriber
     Should Contain    ${focal_plane_RebTotalPower_list}    === MTCamera_focal_plane_RebTotalPower end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebTotalPower_list}    === [focal_plane_RebTotalPower Subscriber] message received :200
+    ${focal_plane_RebsAverageTemp6_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    ${focal_plane_RebsAverageTemp6_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    ${focal_plane_RebsAverageTemp6_list}=    Get Slice From List    ${full_list}    start=${focal_plane_RebsAverageTemp6_start}    end=${focal_plane_RebsAverageTemp6_end + 1}
+    Log Many    ${focal_plane_RebsAverageTemp6_list}
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === MTCamera_focal_plane_RebsAverageTemp6 start of topic ===
+    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === MTCamera_focal_plane_RebsAverageTemp6 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${focal_plane_RebsAverageTemp6_list}    === [focal_plane_RebsAverageTemp6 Subscriber] message received :200
     ${focal_plane_Segment_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment start of topic ===
     ${focal_plane_Segment_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Segment end of topic ===
     ${focal_plane_Segment_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Segment_start}    end=${focal_plane_Segment_end + 1}
@@ -1657,3 +1686,19 @@ Read Subscriber
     Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :200
+    ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
+    ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
+    ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
+    Log Many    ${chiller_Chiller_list}
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller start of topic ===
+    Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :200
+    ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
+    ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
+    ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
+    Log Many    ${chiller_Maq20_list}
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 start of topic ===
+    Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :200

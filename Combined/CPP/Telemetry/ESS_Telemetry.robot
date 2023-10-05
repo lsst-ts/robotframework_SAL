@@ -202,7 +202,7 @@ Read Subscriber
     ${dewPoint_list}=    Get Slice From List    ${full_list}    start=${dewPoint_start}    end=${dewPoint_end}
     Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dewPoint : 1    10
+    Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dewPointItem : 1    10
     Should Contain X Times    ${dewPoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${pressure_start}=    Get Index From List    ${full_list}    === ESS_pressure start of topic ===
     ${pressure_end}=    Get Index From List    ${full_list}    === ESS_pressure end of topic ===
@@ -210,44 +210,44 @@ Read Subscriber
     Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numChannels : 1    10
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 0    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 1    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 2    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 3    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 4    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 5    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 6    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 7    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 8    1
-    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressure : 9    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 0    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 1    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 2    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 3    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 4    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 5    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 6    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 7    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 8    1
+    Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pressureItem : 9    1
     Should Contain X Times    ${pressure_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${rainRate_start}=    Get Index From List    ${full_list}    === ESS_rainRate start of topic ===
     ${rainRate_end}=    Get Index From List    ${full_list}    === ESS_rainRate end of topic ===
     ${rainRate_list}=    Get Slice From List    ${full_list}    start=${rainRate_start}    end=${rainRate_end}
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rainRate : 1    10
+    Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rainRateItem : 1    10
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${relativeHumidity_start}=    Get Index From List    ${full_list}    === ESS_relativeHumidity start of topic ===
     ${relativeHumidity_end}=    Get Index From List    ${full_list}    === ESS_relativeHumidity end of topic ===
     ${relativeHumidity_list}=    Get Slice From List    ${full_list}    start=${relativeHumidity_start}    end=${relativeHumidity_end}
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}relativeHumidity : 1    10
+    Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}relativeHumidityItem : 1    10
     Should Contain X Times    ${relativeHumidity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${snowRate_start}=    Get Index From List    ${full_list}    === ESS_snowRate start of topic ===
     ${snowRate_end}=    Get Index From List    ${full_list}    === ESS_snowRate end of topic ===
     ${snowRate_list}=    Get Slice From List    ${full_list}    start=${snowRate_start}    end=${snowRate_end}
     Should Contain X Times    ${snowRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${snowRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${snowRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}snowRate : 1    10
+    Should Contain X Times    ${snowRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}snowRateItem : 1    10
     Should Contain X Times    ${snowRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${solarRadiation_start}=    Get Index From List    ${full_list}    === ESS_solarRadiation start of topic ===
     ${solarRadiation_end}=    Get Index From List    ${full_list}    === ESS_solarRadiation end of topic ===
     ${solarRadiation_list}=    Get Slice From List    ${full_list}    start=${solarRadiation_start}    end=${solarRadiation_end}
     Should Contain X Times    ${solarRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${solarRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${solarRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}solarRadiation : 1    10
+    Should Contain X Times    ${solarRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}solarRadiationItem : 1    10
     Should Contain X Times    ${solarRadiation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${temperature_start}=    Get Index From List    ${full_list}    === ESS_temperature start of topic ===
     ${temperature_end}=    Get Index From List    ${full_list}    === ESS_temperature end of topic ===
@@ -255,16 +255,16 @@ Read Subscriber
     Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numChannels : 1    10
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 0    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 1    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 2    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 3    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 4    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 5    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 6    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 7    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 8    1
-    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperature : 9    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 0    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 1    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 2    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 3    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 4    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 5    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 6    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 7    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 8    1
+    Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureItem : 9    1
     Should Contain X Times    ${temperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${accelerometer_start}=    Get Index From List    ${full_list}    === ESS_accelerometer start of topic ===
     ${accelerometer_end}=    Get Index From List    ${full_list}    === ESS_accelerometer end of topic ===
