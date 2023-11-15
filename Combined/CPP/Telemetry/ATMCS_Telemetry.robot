@@ -84,14 +84,14 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::measuredMotorVelocity_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_measuredMotorVelocity end of topic ===
-    Comment    ======= Verify ${subSystem}_nasymth_m3_mountMotorEncoders test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nasymth_m3_mountMotorEncoders
+    Comment    ======= Verify ${subSystem}_nasmyth_m3_mountMotorEncoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nasmyth_m3_mountMotorEncoders
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain    ${output.stdout}    === ATMCS_nasymth_m3_mountMotorEncoders start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nasymth_m3_mountMotorEncoders_${revcode} writing a message containing :    10
+    Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nasmyth_m3_mountMotorEncoders_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === ATMCS_nasymth_m3_mountMotorEncoders end of topic ===
+    Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders end of topic ===
     Comment    ======= Verify ${subSystem}_azEl_mountMotorEncoders test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_azEl_mountMotorEncoders
     @{words}=    Split String    ${line}
@@ -544,70 +544,70 @@ Read Subscriber
     Should Contain X Times    ${measuredMotorVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Velocity : 7    1
     Should Contain X Times    ${measuredMotorVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Velocity : 8    1
     Should Contain X Times    ${measuredMotorVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Velocity : 9    1
-    ${nasymth_m3_mountMotorEncoders_start}=    Get Index From List    ${full_list}    === ATMCS_nasymth_m3_mountMotorEncoders start of topic ===
-    ${nasymth_m3_mountMotorEncoders_end}=    Get Index From List    ${full_list}    === ATMCS_nasymth_m3_mountMotorEncoders end of topic ===
-    ${nasymth_m3_mountMotorEncoders_list}=    Get Slice From List    ${full_list}    start=${nasymth_m3_mountMotorEncoders_start}    end=${nasymth_m3_mountMotorEncoders_end}
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cRIO_timestamp : 1    10
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 9    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 9    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 9    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 9    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 9    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 0    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 1    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 2    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 3    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 4    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 5    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 6    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 7    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 8    1
-    Should Contain X Times    ${nasymth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 9    1
+    ${nasmyth_m3_mountMotorEncoders_start}=    Get Index From List    ${full_list}    === ATMCS_nasmyth_m3_mountMotorEncoders start of topic ===
+    ${nasmyth_m3_mountMotorEncoders_end}=    Get Index From List    ${full_list}    === ATMCS_nasmyth_m3_mountMotorEncoders end of topic ===
+    ${nasmyth_m3_mountMotorEncoders_list}=    Get Slice From List    ${full_list}    start=${nasmyth_m3_mountMotorEncoders_start}    end=${nasmyth_m3_mountMotorEncoders_end}
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cRIO_timestamp : 1    10
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1Encoder : 9    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2Encoder : 9    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3Encoder : 9    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1EncoderRaw : 9    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2EncoderRaw : 9    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 0    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 1    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 2    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 3    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 4    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 5    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 6    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 7    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 8    1
+    Should Contain X Times    ${nasmyth_m3_mountMotorEncoders_list}    ${SPACE}${SPACE}${SPACE}${SPACE}m3EncoderRaw : 9    1
     ${azEl_mountMotorEncoders_start}=    Get Index From List    ${full_list}    === ATMCS_azEl_mountMotorEncoders start of topic ===
     ${azEl_mountMotorEncoders_end}=    Get Index From List    ${full_list}    === ATMCS_azEl_mountMotorEncoders end of topic ===
     ${azEl_mountMotorEncoders_list}=    Get Slice From List    ${full_list}    start=${azEl_mountMotorEncoders_start}    end=${azEl_mountMotorEncoders_end}

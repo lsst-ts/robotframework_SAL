@@ -201,7 +201,7 @@ Read Logger
     ${end}=    Evaluate    ${controllerState_start}+${5}
     ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${end}
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}controllerState : 1    1
-    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offlineSubstate : 1    1
+    Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}faultSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applicationStatus : 1    1
     ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
@@ -229,7 +229,7 @@ Read Logger
     ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${end}
     Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${configuration_start}=    Get Index From List    ${full_list}    === Event configuration received =${SPACE}
-    ${end}=    Evaluate    ${configuration_start}+${13}
+    ${end}=    Evaluate    ${configuration_start}+${14}
     ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${end}
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleLowerLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleUpperLimit : 1    1
@@ -243,6 +243,7 @@ Read Logger
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackingLostTimeout : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}disableLimitMaxTime : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxConfigurableVelocityLimit : 1    1
+    Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}drivesEnabled : 1    1
     ${commandableByDDS_start}=    Get Index From List    ${full_list}    === Event commandableByDDS received =${SPACE}
     ${end}=    Evaluate    ${commandableByDDS_start}+${2}
     ${commandableByDDS_list}=    Get Slice From List    ${full_list}    start=${commandableByDDS_start}    end=${end}

@@ -117,6 +117,16 @@ Read Subscriber
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 7    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 8    1
     Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyLatchingFaultStatus : 9    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 0    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 1    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 2    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 3    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 4    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 5    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 6    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 7    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 8    1
+    Should Contain X Times    ${electrical_list}    ${SPACE}${SPACE}${SPACE}${SPACE}copleyFaultStatus : 9    1
     ${motors_start}=    Get Index From List    ${full_list}    === MTRotator_motors start of topic ===
     ${motors_end}=    Get Index From List    ${full_list}    === MTRotator_motors end of topic ===
     ${motors_list}=    Get Slice From List    ${full_list}    start=${motors_start}    end=${motors_end}

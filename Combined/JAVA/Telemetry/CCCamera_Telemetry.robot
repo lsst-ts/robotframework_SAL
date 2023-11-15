@@ -86,6 +86,13 @@ Start Publisher
     Should Contain    ${rebpower_Reb_list}    === CCCamera_rebpower_Reb start of topic ===
     Should Contain    ${rebpower_Reb_list}    === CCCamera_rebpower_Reb end of topic ===
     Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb] message sent 200
+    ${rebpower_RebTotalPower_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebTotalPower start of topic ===
+    ${rebpower_RebTotalPower_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebTotalPower end of topic ===
+    ${rebpower_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebTotalPower_start}    end=${rebpower_RebTotalPower_end + 1}
+    Log Many    ${rebpower_RebTotalPower_list}
+    Should Contain    ${rebpower_RebTotalPower_list}    === CCCamera_rebpower_RebTotalPower start of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === CCCamera_rebpower_RebTotalPower end of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower] message sent 200
     ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps start of topic ===
     ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps end of topic ===
     ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
@@ -268,6 +275,14 @@ Read Subscriber
     Should Contain    ${rebpower_Reb_list}    === CCCamera_rebpower_Reb end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb Subscriber] message received :200
+    ${rebpower_RebTotalPower_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebTotalPower start of topic ===
+    ${rebpower_RebTotalPower_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_RebTotalPower end of topic ===
+    ${rebpower_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebTotalPower_start}    end=${rebpower_RebTotalPower_end + 1}
+    Log Many    ${rebpower_RebTotalPower_list}
+    Should Contain    ${rebpower_RebTotalPower_list}    === CCCamera_rebpower_RebTotalPower start of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === CCCamera_rebpower_RebTotalPower end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower Subscriber] message received :200
     ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps start of topic ===
     ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === CCCamera_rebpower_Rebps end of topic ===
     ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
