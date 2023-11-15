@@ -93,6 +93,13 @@ Start Publisher
     Should Contain    ${rebpower_Reb_list}    === MTCamera_rebpower_Reb start of topic ===
     Should Contain    ${rebpower_Reb_list}    === MTCamera_rebpower_Reb end of topic ===
     Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb] message sent 200
+    ${rebpower_RebTotalPower_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebTotalPower start of topic ===
+    ${rebpower_RebTotalPower_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebTotalPower end of topic ===
+    ${rebpower_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebTotalPower_start}    end=${rebpower_RebTotalPower_end + 1}
+    Log Many    ${rebpower_RebTotalPower_list}
+    Should Contain    ${rebpower_RebTotalPower_list}    === MTCamera_rebpower_RebTotalPower start of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === MTCamera_rebpower_RebTotalPower end of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower] message sent 200
     ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps start of topic ===
     ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps end of topic ===
     ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
@@ -198,160 +205,34 @@ Start Publisher
     Should Contain    ${refrig_Cryo6_list}    === MTCamera_refrig_Cryo6 start of topic ===
     Should Contain    ${refrig_Cryo6_list}    === MTCamera_refrig_Cryo6 end of topic ===
     Should Contain    ${refrig_Cryo6_list}    === [refrig_Cryo6] message sent 200
-    ${vacuum_CIP1_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_I start of topic ===
-    ${vacuum_CIP1_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_I end of topic ===
-    ${vacuum_CIP1_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_I_start}    end=${vacuum_CIP1_I_end + 1}
-    Log Many    ${vacuum_CIP1_I_list}
-    Should Contain    ${vacuum_CIP1_I_list}    === MTCamera_vacuum_CIP1_I start of topic ===
-    Should Contain    ${vacuum_CIP1_I_list}    === MTCamera_vacuum_CIP1_I end of topic ===
-    Should Contain    ${vacuum_CIP1_I_list}    === [vacuum_CIP1_I] message sent 200
-    ${vacuum_CIP1_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_V start of topic ===
-    ${vacuum_CIP1_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_V end of topic ===
-    ${vacuum_CIP1_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_V_start}    end=${vacuum_CIP1_V_end + 1}
-    Log Many    ${vacuum_CIP1_V_list}
-    Should Contain    ${vacuum_CIP1_V_list}    === MTCamera_vacuum_CIP1_V start of topic ===
-    Should Contain    ${vacuum_CIP1_V_list}    === MTCamera_vacuum_CIP1_V end of topic ===
-    Should Contain    ${vacuum_CIP1_V_list}    === [vacuum_CIP1_V] message sent 200
-    ${vacuum_CIP2_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_I start of topic ===
-    ${vacuum_CIP2_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_I end of topic ===
-    ${vacuum_CIP2_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_I_start}    end=${vacuum_CIP2_I_end + 1}
-    Log Many    ${vacuum_CIP2_I_list}
-    Should Contain    ${vacuum_CIP2_I_list}    === MTCamera_vacuum_CIP2_I start of topic ===
-    Should Contain    ${vacuum_CIP2_I_list}    === MTCamera_vacuum_CIP2_I end of topic ===
-    Should Contain    ${vacuum_CIP2_I_list}    === [vacuum_CIP2_I] message sent 200
-    ${vacuum_CIP2_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_V start of topic ===
-    ${vacuum_CIP2_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_V end of topic ===
-    ${vacuum_CIP2_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_V_start}    end=${vacuum_CIP2_V_end + 1}
-    Log Many    ${vacuum_CIP2_V_list}
-    Should Contain    ${vacuum_CIP2_V_list}    === MTCamera_vacuum_CIP2_V start of topic ===
-    Should Contain    ${vacuum_CIP2_V_list}    === MTCamera_vacuum_CIP2_V end of topic ===
-    Should Contain    ${vacuum_CIP2_V_list}    === [vacuum_CIP2_V] message sent 200
-    ${vacuum_CIP3_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_I start of topic ===
-    ${vacuum_CIP3_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_I end of topic ===
-    ${vacuum_CIP3_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_I_start}    end=${vacuum_CIP3_I_end + 1}
-    Log Many    ${vacuum_CIP3_I_list}
-    Should Contain    ${vacuum_CIP3_I_list}    === MTCamera_vacuum_CIP3_I start of topic ===
-    Should Contain    ${vacuum_CIP3_I_list}    === MTCamera_vacuum_CIP3_I end of topic ===
-    Should Contain    ${vacuum_CIP3_I_list}    === [vacuum_CIP3_I] message sent 200
-    ${vacuum_CIP3_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_V start of topic ===
-    ${vacuum_CIP3_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_V end of topic ===
-    ${vacuum_CIP3_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_V_start}    end=${vacuum_CIP3_V_end + 1}
-    Log Many    ${vacuum_CIP3_V_list}
-    Should Contain    ${vacuum_CIP3_V_list}    === MTCamera_vacuum_CIP3_V start of topic ===
-    Should Contain    ${vacuum_CIP3_V_list}    === MTCamera_vacuum_CIP3_V end of topic ===
-    Should Contain    ${vacuum_CIP3_V_list}    === [vacuum_CIP3_V] message sent 200
-    ${vacuum_CIP4_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_I start of topic ===
-    ${vacuum_CIP4_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_I end of topic ===
-    ${vacuum_CIP4_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_I_start}    end=${vacuum_CIP4_I_end + 1}
-    Log Many    ${vacuum_CIP4_I_list}
-    Should Contain    ${vacuum_CIP4_I_list}    === MTCamera_vacuum_CIP4_I start of topic ===
-    Should Contain    ${vacuum_CIP4_I_list}    === MTCamera_vacuum_CIP4_I end of topic ===
-    Should Contain    ${vacuum_CIP4_I_list}    === [vacuum_CIP4_I] message sent 200
-    ${vacuum_CIP4_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_V start of topic ===
-    ${vacuum_CIP4_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_V end of topic ===
-    ${vacuum_CIP4_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_V_start}    end=${vacuum_CIP4_V_end + 1}
-    Log Many    ${vacuum_CIP4_V_list}
-    Should Contain    ${vacuum_CIP4_V_list}    === MTCamera_vacuum_CIP4_V start of topic ===
-    Should Contain    ${vacuum_CIP4_V_list}    === MTCamera_vacuum_CIP4_V end of topic ===
-    Should Contain    ${vacuum_CIP4_V_list}    === [vacuum_CIP4_V] message sent 200
-    ${vacuum_CIP5_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_I start of topic ===
-    ${vacuum_CIP5_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_I end of topic ===
-    ${vacuum_CIP5_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_I_start}    end=${vacuum_CIP5_I_end + 1}
-    Log Many    ${vacuum_CIP5_I_list}
-    Should Contain    ${vacuum_CIP5_I_list}    === MTCamera_vacuum_CIP5_I start of topic ===
-    Should Contain    ${vacuum_CIP5_I_list}    === MTCamera_vacuum_CIP5_I end of topic ===
-    Should Contain    ${vacuum_CIP5_I_list}    === [vacuum_CIP5_I] message sent 200
-    ${vacuum_CIP5_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_V start of topic ===
-    ${vacuum_CIP5_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_V end of topic ===
-    ${vacuum_CIP5_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_V_start}    end=${vacuum_CIP5_V_end + 1}
-    Log Many    ${vacuum_CIP5_V_list}
-    Should Contain    ${vacuum_CIP5_V_list}    === MTCamera_vacuum_CIP5_V start of topic ===
-    Should Contain    ${vacuum_CIP5_V_list}    === MTCamera_vacuum_CIP5_V end of topic ===
-    Should Contain    ${vacuum_CIP5_V_list}    === [vacuum_CIP5_V] message sent 200
-    ${vacuum_CIP6_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_I start of topic ===
-    ${vacuum_CIP6_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_I end of topic ===
-    ${vacuum_CIP6_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_I_start}    end=${vacuum_CIP6_I_end + 1}
-    Log Many    ${vacuum_CIP6_I_list}
-    Should Contain    ${vacuum_CIP6_I_list}    === MTCamera_vacuum_CIP6_I start of topic ===
-    Should Contain    ${vacuum_CIP6_I_list}    === MTCamera_vacuum_CIP6_I end of topic ===
-    Should Contain    ${vacuum_CIP6_I_list}    === [vacuum_CIP6_I] message sent 200
-    ${vacuum_CIP6_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_V start of topic ===
-    ${vacuum_CIP6_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_V end of topic ===
-    ${vacuum_CIP6_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_V_start}    end=${vacuum_CIP6_V_end + 1}
-    Log Many    ${vacuum_CIP6_V_list}
-    Should Contain    ${vacuum_CIP6_V_list}    === MTCamera_vacuum_CIP6_V start of topic ===
-    Should Contain    ${vacuum_CIP6_V_list}    === MTCamera_vacuum_CIP6_V end of topic ===
-    Should Contain    ${vacuum_CIP6_V_list}    === [vacuum_CIP6_V] message sent 200
-    ${vacuum_CryoVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVac start of topic ===
-    ${vacuum_CryoVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVac end of topic ===
-    ${vacuum_CryoVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVac_start}    end=${vacuum_CryoVac_end + 1}
-    Log Many    ${vacuum_CryoVac_list}
-    Should Contain    ${vacuum_CryoVac_list}    === MTCamera_vacuum_CryoVac start of topic ===
-    Should Contain    ${vacuum_CryoVac_list}    === MTCamera_vacuum_CryoVac end of topic ===
-    Should Contain    ${vacuum_CryoVac_list}    === [vacuum_CryoVac] message sent 200
-    ${vacuum_ForelineVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVac start of topic ===
-    ${vacuum_ForelineVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVac end of topic ===
-    ${vacuum_ForelineVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVac_start}    end=${vacuum_ForelineVac_end + 1}
-    Log Many    ${vacuum_ForelineVac_list}
-    Should Contain    ${vacuum_ForelineVac_list}    === MTCamera_vacuum_ForelineVac start of topic ===
-    Should Contain    ${vacuum_ForelineVac_list}    === MTCamera_vacuum_ForelineVac end of topic ===
-    Should Contain    ${vacuum_ForelineVac_list}    === [vacuum_ForelineVac] message sent 200
-    ${vacuum_Hex1Vac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1Vac start of topic ===
-    ${vacuum_Hex1Vac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1Vac end of topic ===
-    ${vacuum_Hex1Vac_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1Vac_start}    end=${vacuum_Hex1Vac_end + 1}
-    Log Many    ${vacuum_Hex1Vac_list}
-    Should Contain    ${vacuum_Hex1Vac_list}    === MTCamera_vacuum_Hex1Vac start of topic ===
-    Should Contain    ${vacuum_Hex1Vac_list}    === MTCamera_vacuum_Hex1Vac end of topic ===
-    Should Contain    ${vacuum_Hex1Vac_list}    === [vacuum_Hex1Vac] message sent 200
-    ${vacuum_Hex2Vac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2Vac start of topic ===
-    ${vacuum_Hex2Vac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2Vac end of topic ===
-    ${vacuum_Hex2Vac_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2Vac_start}    end=${vacuum_Hex2Vac_end + 1}
-    Log Many    ${vacuum_Hex2Vac_list}
-    Should Contain    ${vacuum_Hex2Vac_list}    === MTCamera_vacuum_Hex2Vac start of topic ===
-    Should Contain    ${vacuum_Hex2Vac_list}    === MTCamera_vacuum_Hex2Vac end of topic ===
-    Should Contain    ${vacuum_Hex2Vac_list}    === [vacuum_Hex2Vac] message sent 200
-    ${vacuum_TurboCurrent_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrent start of topic ===
-    ${vacuum_TurboCurrent_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrent end of topic ===
-    ${vacuum_TurboCurrent_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboCurrent_start}    end=${vacuum_TurboCurrent_end + 1}
-    Log Many    ${vacuum_TurboCurrent_list}
-    Should Contain    ${vacuum_TurboCurrent_list}    === MTCamera_vacuum_TurboCurrent start of topic ===
-    Should Contain    ${vacuum_TurboCurrent_list}    === MTCamera_vacuum_TurboCurrent end of topic ===
-    Should Contain    ${vacuum_TurboCurrent_list}    === [vacuum_TurboCurrent] message sent 200
-    ${vacuum_TurboPower_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPower start of topic ===
-    ${vacuum_TurboPower_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPower end of topic ===
-    ${vacuum_TurboPower_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPower_start}    end=${vacuum_TurboPower_end + 1}
-    Log Many    ${vacuum_TurboPower_list}
-    Should Contain    ${vacuum_TurboPower_list}    === MTCamera_vacuum_TurboPower start of topic ===
-    Should Contain    ${vacuum_TurboPower_list}    === MTCamera_vacuum_TurboPower end of topic ===
-    Should Contain    ${vacuum_TurboPower_list}    === [vacuum_TurboPower] message sent 200
-    ${vacuum_TurboPumpTemp_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTemp start of topic ===
-    ${vacuum_TurboPumpTemp_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTemp end of topic ===
-    ${vacuum_TurboPumpTemp_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpTemp_start}    end=${vacuum_TurboPumpTemp_end + 1}
-    Log Many    ${vacuum_TurboPumpTemp_list}
-    Should Contain    ${vacuum_TurboPumpTemp_list}    === MTCamera_vacuum_TurboPumpTemp start of topic ===
-    Should Contain    ${vacuum_TurboPumpTemp_list}    === MTCamera_vacuum_TurboPumpTemp end of topic ===
-    Should Contain    ${vacuum_TurboPumpTemp_list}    === [vacuum_TurboPumpTemp] message sent 200
-    ${vacuum_TurboSpeed_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeed start of topic ===
-    ${vacuum_TurboSpeed_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeed end of topic ===
-    ${vacuum_TurboSpeed_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSpeed_start}    end=${vacuum_TurboSpeed_end + 1}
-    Log Many    ${vacuum_TurboSpeed_list}
-    Should Contain    ${vacuum_TurboSpeed_list}    === MTCamera_vacuum_TurboSpeed start of topic ===
-    Should Contain    ${vacuum_TurboSpeed_list}    === MTCamera_vacuum_TurboSpeed end of topic ===
-    Should Contain    ${vacuum_TurboSpeed_list}    === [vacuum_TurboSpeed] message sent 200
-    ${vacuum_TurboVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVac start of topic ===
-    ${vacuum_TurboVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVac end of topic ===
-    ${vacuum_TurboVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVac_start}    end=${vacuum_TurboVac_end + 1}
-    Log Many    ${vacuum_TurboVac_list}
-    Should Contain    ${vacuum_TurboVac_list}    === MTCamera_vacuum_TurboVac start of topic ===
-    Should Contain    ${vacuum_TurboVac_list}    === MTCamera_vacuum_TurboVac end of topic ===
-    Should Contain    ${vacuum_TurboVac_list}    === [vacuum_TurboVac] message sent 200
-    ${vacuum_TurboVoltage_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
-    ${vacuum_TurboVoltage_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
-    ${vacuum_TurboVoltage_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVoltage_start}    end=${vacuum_TurboVoltage_end + 1}
-    Log Many    ${vacuum_TurboVoltage_list}
-    Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
-    Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
-    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage] message sent 200
+    ${vacuum_Cip_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cip start of topic ===
+    ${vacuum_Cip_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cip end of topic ===
+    ${vacuum_Cip_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cip_start}    end=${vacuum_Cip_end + 1}
+    Log Many    ${vacuum_Cip_list}
+    Should Contain    ${vacuum_Cip_list}    === MTCamera_vacuum_Cip start of topic ===
+    Should Contain    ${vacuum_Cip_list}    === MTCamera_vacuum_Cip end of topic ===
+    Should Contain    ${vacuum_Cip_list}    === [vacuum_Cip] message sent 200
+    ${vacuum_Cryo_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cryo start of topic ===
+    ${vacuum_Cryo_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cryo end of topic ===
+    ${vacuum_Cryo_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_start}    end=${vacuum_Cryo_end + 1}
+    Log Many    ${vacuum_Cryo_list}
+    Should Contain    ${vacuum_Cryo_list}    === MTCamera_vacuum_Cryo start of topic ===
+    Should Contain    ${vacuum_Cryo_list}    === MTCamera_vacuum_Cryo end of topic ===
+    Should Contain    ${vacuum_Cryo_list}    === [vacuum_Cryo] message sent 200
+    ${vacuum_HX_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HX start of topic ===
+    ${vacuum_HX_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HX end of topic ===
+    ${vacuum_HX_list}=    Get Slice From List    ${full_list}    start=${vacuum_HX_start}    end=${vacuum_HX_end + 1}
+    Log Many    ${vacuum_HX_list}
+    Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX start of topic ===
+    Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX end of topic ===
+    Should Contain    ${vacuum_HX_list}    === [vacuum_HX] message sent 200
+    ${vacuum_Inst_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst start of topic ===
+    ${vacuum_Inst_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst end of topic ===
+    ${vacuum_Inst_list}=    Get Slice From List    ${full_list}    start=${vacuum_Inst_start}    end=${vacuum_Inst_end + 1}
+    Log Many    ${vacuum_Inst_list}
+    Should Contain    ${vacuum_Inst_list}    === MTCamera_vacuum_Inst start of topic ===
+    Should Contain    ${vacuum_Inst_list}    === MTCamera_vacuum_Inst end of topic ===
+    Should Contain    ${vacuum_Inst_list}    === [vacuum_Inst] message sent 200
     ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
     ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
     ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
@@ -408,398 +289,300 @@ Start Publisher
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment start of topic ===
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment] message sent 200
-    ${fcs_AcSensorsGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcSensorsGateway start of topic ===
-    ${fcs_AcSensorsGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcSensorsGateway end of topic ===
-    ${fcs_AcSensorsGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_AcSensorsGateway_start}    end=${fcs_AcSensorsGateway_end + 1}
-    Log Many    ${fcs_AcSensorsGateway_list}
-    Should Contain    ${fcs_AcSensorsGateway_list}    === MTCamera_fcs_AcSensorsGateway start of topic ===
-    Should Contain    ${fcs_AcSensorsGateway_list}    === MTCamera_fcs_AcSensorsGateway end of topic ===
-    Should Contain    ${fcs_AcSensorsGateway_list}    === [fcs_AcSensorsGateway] message sent 200
-    ${fcs_AcTruckXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminus start of topic ===
-    ${fcs_AcTruckXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminus end of topic ===
-    ${fcs_AcTruckXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXminus_start}    end=${fcs_AcTruckXminus_end + 1}
-    Log Many    ${fcs_AcTruckXminus_list}
-    Should Contain    ${fcs_AcTruckXminus_list}    === MTCamera_fcs_AcTruckXminus start of topic ===
-    Should Contain    ${fcs_AcTruckXminus_list}    === MTCamera_fcs_AcTruckXminus end of topic ===
-    Should Contain    ${fcs_AcTruckXminus_list}    === [fcs_AcTruckXminus] message sent 200
-    ${fcs_AcTruckXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminusController start of topic ===
-    ${fcs_AcTruckXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminusController end of topic ===
-    ${fcs_AcTruckXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXminusController_start}    end=${fcs_AcTruckXminusController_end + 1}
-    Log Many    ${fcs_AcTruckXminusController_list}
-    Should Contain    ${fcs_AcTruckXminusController_list}    === MTCamera_fcs_AcTruckXminusController start of topic ===
-    Should Contain    ${fcs_AcTruckXminusController_list}    === MTCamera_fcs_AcTruckXminusController end of topic ===
-    Should Contain    ${fcs_AcTruckXminusController_list}    === [fcs_AcTruckXminusController] message sent 200
-    ${fcs_AcTruckXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplus start of topic ===
-    ${fcs_AcTruckXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplus end of topic ===
-    ${fcs_AcTruckXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXplus_start}    end=${fcs_AcTruckXplus_end + 1}
-    Log Many    ${fcs_AcTruckXplus_list}
-    Should Contain    ${fcs_AcTruckXplus_list}    === MTCamera_fcs_AcTruckXplus start of topic ===
-    Should Contain    ${fcs_AcTruckXplus_list}    === MTCamera_fcs_AcTruckXplus end of topic ===
-    Should Contain    ${fcs_AcTruckXplus_list}    === [fcs_AcTruckXplus] message sent 200
-    ${fcs_AcTruckXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplusController start of topic ===
-    ${fcs_AcTruckXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplusController end of topic ===
-    ${fcs_AcTruckXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXplusController_start}    end=${fcs_AcTruckXplusController_end + 1}
-    Log Many    ${fcs_AcTruckXplusController_list}
-    Should Contain    ${fcs_AcTruckXplusController_list}    === MTCamera_fcs_AcTruckXplusController start of topic ===
-    Should Contain    ${fcs_AcTruckXplusController_list}    === MTCamera_fcs_AcTruckXplusController end of topic ===
-    Should Contain    ${fcs_AcTruckXplusController_list}    === [fcs_AcTruckXplusController] message sent 200
-    ${fcs_Accelerobf_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Accelerobf start of topic ===
-    ${fcs_Accelerobf_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Accelerobf end of topic ===
-    ${fcs_Accelerobf_list}=    Get Slice From List    ${full_list}    start=${fcs_Accelerobf_start}    end=${fcs_Accelerobf_end + 1}
-    Log Many    ${fcs_Accelerobf_list}
-    Should Contain    ${fcs_Accelerobf_list}    === MTCamera_fcs_Accelerobf start of topic ===
-    Should Contain    ${fcs_Accelerobf_list}    === MTCamera_fcs_Accelerobf end of topic ===
-    Should Contain    ${fcs_Accelerobf_list}    === [fcs_Accelerobf] message sent 200
-    ${fcs_Ai814_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Ai814 start of topic ===
-    ${fcs_Ai814_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Ai814 end of topic ===
-    ${fcs_Ai814_list}=    Get Slice From List    ${full_list}    start=${fcs_Ai814_start}    end=${fcs_Ai814_end + 1}
-    Log Many    ${fcs_Ai814_list}
-    Should Contain    ${fcs_Ai814_list}    === MTCamera_fcs_Ai814 start of topic ===
-    Should Contain    ${fcs_Ai814_list}    === MTCamera_fcs_Ai814 end of topic ===
-    Should Contain    ${fcs_Ai814_list}    === [fcs_Ai814] message sent 200
-    ${fcs_Autochanger_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger start of topic ===
-    ${fcs_Autochanger_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger end of topic ===
-    ${fcs_Autochanger_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_start}    end=${fcs_Autochanger_end + 1}
-    Log Many    ${fcs_Autochanger_list}
-    Should Contain    ${fcs_Autochanger_list}    === MTCamera_fcs_Autochanger start of topic ===
-    Should Contain    ${fcs_Autochanger_list}    === MTCamera_fcs_Autochanger end of topic ===
-    Should Contain    ${fcs_Autochanger_list}    === [fcs_Autochanger] message sent 200
-    ${fcs_AutochangerTrucks_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AutochangerTrucks start of topic ===
-    ${fcs_AutochangerTrucks_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AutochangerTrucks end of topic ===
-    ${fcs_AutochangerTrucks_list}=    Get Slice From List    ${full_list}    start=${fcs_AutochangerTrucks_start}    end=${fcs_AutochangerTrucks_end + 1}
-    Log Many    ${fcs_AutochangerTrucks_list}
-    Should Contain    ${fcs_AutochangerTrucks_list}    === MTCamera_fcs_AutochangerTrucks start of topic ===
-    Should Contain    ${fcs_AutochangerTrucks_list}    === MTCamera_fcs_AutochangerTrucks end of topic ===
-    Should Contain    ${fcs_AutochangerTrucks_list}    === [fcs_AutochangerTrucks] message sent 200
-    ${fcs_BrakeSystemGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_BrakeSystemGateway start of topic ===
-    ${fcs_BrakeSystemGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_BrakeSystemGateway end of topic ===
-    ${fcs_BrakeSystemGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_BrakeSystemGateway_start}    end=${fcs_BrakeSystemGateway_end + 1}
-    Log Many    ${fcs_BrakeSystemGateway_list}
-    Should Contain    ${fcs_BrakeSystemGateway_list}    === MTCamera_fcs_BrakeSystemGateway start of topic ===
-    Should Contain    ${fcs_BrakeSystemGateway_list}    === MTCamera_fcs_BrakeSystemGateway end of topic ===
-    Should Contain    ${fcs_BrakeSystemGateway_list}    === [fcs_BrakeSystemGateway] message sent 200
-    ${fcs_Carousel_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel start of topic ===
-    ${fcs_Carousel_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel end of topic ===
-    ${fcs_Carousel_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_start}    end=${fcs_Carousel_end + 1}
-    Log Many    ${fcs_Carousel_list}
-    Should Contain    ${fcs_Carousel_list}    === MTCamera_fcs_Carousel start of topic ===
-    Should Contain    ${fcs_Carousel_list}    === MTCamera_fcs_Carousel end of topic ===
-    Should Contain    ${fcs_Carousel_list}    === [fcs_Carousel] message sent 200
-    ${fcs_CarouselController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarouselController start of topic ===
-    ${fcs_CarouselController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarouselController end of topic ===
-    ${fcs_CarouselController_list}=    Get Slice From List    ${full_list}    start=${fcs_CarouselController_start}    end=${fcs_CarouselController_end + 1}
-    Log Many    ${fcs_CarouselController_list}
-    Should Contain    ${fcs_CarouselController_list}    === MTCamera_fcs_CarouselController start of topic ===
-    Should Contain    ${fcs_CarouselController_list}    === MTCamera_fcs_CarouselController end of topic ===
-    Should Contain    ${fcs_CarouselController_list}    === [fcs_CarouselController] message sent 200
-    ${fcs_Carrier_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carrier start of topic ===
-    ${fcs_Carrier_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carrier end of topic ===
-    ${fcs_Carrier_list}=    Get Slice From List    ${full_list}    start=${fcs_Carrier_start}    end=${fcs_Carrier_end + 1}
-    Log Many    ${fcs_Carrier_list}
-    Should Contain    ${fcs_Carrier_list}    === MTCamera_fcs_Carrier start of topic ===
-    Should Contain    ${fcs_Carrier_list}    === MTCamera_fcs_Carrier end of topic ===
-    Should Contain    ${fcs_Carrier_list}    === [fcs_Carrier] message sent 200
-    ${fcs_CarrierController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarrierController start of topic ===
-    ${fcs_CarrierController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarrierController end of topic ===
-    ${fcs_CarrierController_list}=    Get Slice From List    ${full_list}    start=${fcs_CarrierController_start}    end=${fcs_CarrierController_end + 1}
-    Log Many    ${fcs_CarrierController_list}
-    Should Contain    ${fcs_CarrierController_list}    === MTCamera_fcs_CarrierController start of topic ===
-    Should Contain    ${fcs_CarrierController_list}    === MTCamera_fcs_CarrierController end of topic ===
-    Should Contain    ${fcs_CarrierController_list}    === [fcs_CarrierController] message sent 200
-    ${fcs_CcsVersions_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CcsVersions start of topic ===
-    ${fcs_CcsVersions_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CcsVersions end of topic ===
-    ${fcs_CcsVersions_list}=    Get Slice From List    ${full_list}    start=${fcs_CcsVersions_start}    end=${fcs_CcsVersions_end + 1}
-    Log Many    ${fcs_CcsVersions_list}
-    Should Contain    ${fcs_CcsVersions_list}    === MTCamera_fcs_CcsVersions start of topic ===
-    Should Contain    ${fcs_CcsVersions_list}    === MTCamera_fcs_CcsVersions end of topic ===
-    Should Contain    ${fcs_CcsVersions_list}    === [fcs_CcsVersions] message sent 200
-    ${fcs_ClampXminus1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus1 start of topic ===
-    ${fcs_ClampXminus1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus1 end of topic ===
-    ${fcs_ClampXminus1_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus1_start}    end=${fcs_ClampXminus1_end + 1}
-    Log Many    ${fcs_ClampXminus1_list}
-    Should Contain    ${fcs_ClampXminus1_list}    === MTCamera_fcs_ClampXminus1 start of topic ===
-    Should Contain    ${fcs_ClampXminus1_list}    === MTCamera_fcs_ClampXminus1 end of topic ===
-    Should Contain    ${fcs_ClampXminus1_list}    === [fcs_ClampXminus1] message sent 200
-    ${fcs_ClampXminus2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus2 start of topic ===
-    ${fcs_ClampXminus2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus2 end of topic ===
-    ${fcs_ClampXminus2_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus2_start}    end=${fcs_ClampXminus2_end + 1}
-    Log Many    ${fcs_ClampXminus2_list}
-    Should Contain    ${fcs_ClampXminus2_list}    === MTCamera_fcs_ClampXminus2 start of topic ===
-    Should Contain    ${fcs_ClampXminus2_list}    === MTCamera_fcs_ClampXminus2 end of topic ===
-    Should Contain    ${fcs_ClampXminus2_list}    === [fcs_ClampXminus2] message sent 200
-    ${fcs_ClampXminus3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus3 start of topic ===
-    ${fcs_ClampXminus3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus3 end of topic ===
-    ${fcs_ClampXminus3_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus3_start}    end=${fcs_ClampXminus3_end + 1}
-    Log Many    ${fcs_ClampXminus3_list}
-    Should Contain    ${fcs_ClampXminus3_list}    === MTCamera_fcs_ClampXminus3 start of topic ===
-    Should Contain    ${fcs_ClampXminus3_list}    === MTCamera_fcs_ClampXminus3 end of topic ===
-    Should Contain    ${fcs_ClampXminus3_list}    === [fcs_ClampXminus3] message sent 200
-    ${fcs_ClampXminus4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus4 start of topic ===
-    ${fcs_ClampXminus4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus4 end of topic ===
-    ${fcs_ClampXminus4_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus4_start}    end=${fcs_ClampXminus4_end + 1}
-    Log Many    ${fcs_ClampXminus4_list}
-    Should Contain    ${fcs_ClampXminus4_list}    === MTCamera_fcs_ClampXminus4 start of topic ===
-    Should Contain    ${fcs_ClampXminus4_list}    === MTCamera_fcs_ClampXminus4 end of topic ===
-    Should Contain    ${fcs_ClampXminus4_list}    === [fcs_ClampXminus4] message sent 200
-    ${fcs_ClampXminus5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus5 start of topic ===
-    ${fcs_ClampXminus5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus5 end of topic ===
-    ${fcs_ClampXminus5_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus5_start}    end=${fcs_ClampXminus5_end + 1}
-    Log Many    ${fcs_ClampXminus5_list}
-    Should Contain    ${fcs_ClampXminus5_list}    === MTCamera_fcs_ClampXminus5 start of topic ===
-    Should Contain    ${fcs_ClampXminus5_list}    === MTCamera_fcs_ClampXminus5 end of topic ===
-    Should Contain    ${fcs_ClampXminus5_list}    === [fcs_ClampXminus5] message sent 200
-    ${fcs_ClampXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminusController start of topic ===
-    ${fcs_ClampXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminusController end of topic ===
-    ${fcs_ClampXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminusController_start}    end=${fcs_ClampXminusController_end + 1}
-    Log Many    ${fcs_ClampXminusController_list}
-    Should Contain    ${fcs_ClampXminusController_list}    === MTCamera_fcs_ClampXminusController start of topic ===
-    Should Contain    ${fcs_ClampXminusController_list}    === MTCamera_fcs_ClampXminusController end of topic ===
-    Should Contain    ${fcs_ClampXminusController_list}    === [fcs_ClampXminusController] message sent 200
-    ${fcs_ClampXplus1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus1 start of topic ===
-    ${fcs_ClampXplus1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus1 end of topic ===
-    ${fcs_ClampXplus1_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus1_start}    end=${fcs_ClampXplus1_end + 1}
-    Log Many    ${fcs_ClampXplus1_list}
-    Should Contain    ${fcs_ClampXplus1_list}    === MTCamera_fcs_ClampXplus1 start of topic ===
-    Should Contain    ${fcs_ClampXplus1_list}    === MTCamera_fcs_ClampXplus1 end of topic ===
-    Should Contain    ${fcs_ClampXplus1_list}    === [fcs_ClampXplus1] message sent 200
-    ${fcs_ClampXplus2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus2 start of topic ===
-    ${fcs_ClampXplus2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus2 end of topic ===
-    ${fcs_ClampXplus2_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus2_start}    end=${fcs_ClampXplus2_end + 1}
-    Log Many    ${fcs_ClampXplus2_list}
-    Should Contain    ${fcs_ClampXplus2_list}    === MTCamera_fcs_ClampXplus2 start of topic ===
-    Should Contain    ${fcs_ClampXplus2_list}    === MTCamera_fcs_ClampXplus2 end of topic ===
-    Should Contain    ${fcs_ClampXplus2_list}    === [fcs_ClampXplus2] message sent 200
-    ${fcs_ClampXplus3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus3 start of topic ===
-    ${fcs_ClampXplus3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus3 end of topic ===
-    ${fcs_ClampXplus3_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus3_start}    end=${fcs_ClampXplus3_end + 1}
-    Log Many    ${fcs_ClampXplus3_list}
-    Should Contain    ${fcs_ClampXplus3_list}    === MTCamera_fcs_ClampXplus3 start of topic ===
-    Should Contain    ${fcs_ClampXplus3_list}    === MTCamera_fcs_ClampXplus3 end of topic ===
-    Should Contain    ${fcs_ClampXplus3_list}    === [fcs_ClampXplus3] message sent 200
-    ${fcs_ClampXplus4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus4 start of topic ===
-    ${fcs_ClampXplus4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus4 end of topic ===
-    ${fcs_ClampXplus4_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus4_start}    end=${fcs_ClampXplus4_end + 1}
-    Log Many    ${fcs_ClampXplus4_list}
-    Should Contain    ${fcs_ClampXplus4_list}    === MTCamera_fcs_ClampXplus4 start of topic ===
-    Should Contain    ${fcs_ClampXplus4_list}    === MTCamera_fcs_ClampXplus4 end of topic ===
-    Should Contain    ${fcs_ClampXplus4_list}    === [fcs_ClampXplus4] message sent 200
-    ${fcs_ClampXplus5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus5 start of topic ===
-    ${fcs_ClampXplus5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus5 end of topic ===
-    ${fcs_ClampXplus5_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus5_start}    end=${fcs_ClampXplus5_end + 1}
-    Log Many    ${fcs_ClampXplus5_list}
-    Should Contain    ${fcs_ClampXplus5_list}    === MTCamera_fcs_ClampXplus5 start of topic ===
-    Should Contain    ${fcs_ClampXplus5_list}    === MTCamera_fcs_ClampXplus5 end of topic ===
-    Should Contain    ${fcs_ClampXplus5_list}    === [fcs_ClampXplus5] message sent 200
-    ${fcs_ClampXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplusController start of topic ===
-    ${fcs_ClampXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplusController end of topic ===
-    ${fcs_ClampXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplusController_start}    end=${fcs_ClampXplusController_end + 1}
-    Log Many    ${fcs_ClampXplusController_list}
-    Should Contain    ${fcs_ClampXplusController_list}    === MTCamera_fcs_ClampXplusController start of topic ===
-    Should Contain    ${fcs_ClampXplusController_list}    === MTCamera_fcs_ClampXplusController end of topic ===
-    Should Contain    ${fcs_ClampXplusController_list}    === [fcs_ClampXplusController] message sent 200
-    ${fcs_Config_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Config start of topic ===
-    ${fcs_Config_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Config end of topic ===
-    ${fcs_Config_list}=    Get Slice From List    ${full_list}    start=${fcs_Config_start}    end=${fcs_Config_end + 1}
-    Log Many    ${fcs_Config_list}
-    Should Contain    ${fcs_Config_list}    === MTCamera_fcs_Config start of topic ===
-    Should Contain    ${fcs_Config_list}    === MTCamera_fcs_Config end of topic ===
-    Should Contain    ${fcs_Config_list}    === [fcs_Config] message sent 200
-    ${fcs_Hooks_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hooks start of topic ===
-    ${fcs_Hooks_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hooks end of topic ===
-    ${fcs_Hooks_list}=    Get Slice From List    ${full_list}    start=${fcs_Hooks_start}    end=${fcs_Hooks_end + 1}
-    Log Many    ${fcs_Hooks_list}
-    Should Contain    ${fcs_Hooks_list}    === MTCamera_fcs_Hooks start of topic ===
-    Should Contain    ${fcs_Hooks_list}    === MTCamera_fcs_Hooks end of topic ===
-    Should Contain    ${fcs_Hooks_list}    === [fcs_Hooks] message sent 200
-    ${fcs_HooksController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_HooksController start of topic ===
-    ${fcs_HooksController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_HooksController end of topic ===
-    ${fcs_HooksController_list}=    Get Slice From List    ${full_list}    start=${fcs_HooksController_start}    end=${fcs_HooksController_end + 1}
-    Log Many    ${fcs_HooksController_list}
-    Should Contain    ${fcs_HooksController_list}    === MTCamera_fcs_HooksController start of topic ===
-    Should Contain    ${fcs_HooksController_list}    === MTCamera_fcs_HooksController end of topic ===
-    Should Contain    ${fcs_HooksController_list}    === [fcs_HooksController] message sent 200
-    ${fcs_Hyttc580_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hyttc580 start of topic ===
-    ${fcs_Hyttc580_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hyttc580 end of topic ===
-    ${fcs_Hyttc580_list}=    Get Slice From List    ${full_list}    start=${fcs_Hyttc580_start}    end=${fcs_Hyttc580_end + 1}
-    Log Many    ${fcs_Hyttc580_list}
-    Should Contain    ${fcs_Hyttc580_list}    === MTCamera_fcs_Hyttc580 start of topic ===
-    Should Contain    ${fcs_Hyttc580_list}    === MTCamera_fcs_Hyttc580 end of topic ===
-    Should Contain    ${fcs_Hyttc580_list}    === [fcs_Hyttc580] message sent 200
-    ${fcs_LatchXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminus start of topic ===
-    ${fcs_LatchXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminus end of topic ===
-    ${fcs_LatchXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXminus_start}    end=${fcs_LatchXminus_end + 1}
-    Log Many    ${fcs_LatchXminus_list}
-    Should Contain    ${fcs_LatchXminus_list}    === MTCamera_fcs_LatchXminus start of topic ===
-    Should Contain    ${fcs_LatchXminus_list}    === MTCamera_fcs_LatchXminus end of topic ===
-    Should Contain    ${fcs_LatchXminus_list}    === [fcs_LatchXminus] message sent 200
-    ${fcs_LatchXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminusController start of topic ===
-    ${fcs_LatchXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminusController end of topic ===
-    ${fcs_LatchXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXminusController_start}    end=${fcs_LatchXminusController_end + 1}
-    Log Many    ${fcs_LatchXminusController_list}
-    Should Contain    ${fcs_LatchXminusController_list}    === MTCamera_fcs_LatchXminusController start of topic ===
-    Should Contain    ${fcs_LatchXminusController_list}    === MTCamera_fcs_LatchXminusController end of topic ===
-    Should Contain    ${fcs_LatchXminusController_list}    === [fcs_LatchXminusController] message sent 200
-    ${fcs_LatchXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplus start of topic ===
-    ${fcs_LatchXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplus end of topic ===
-    ${fcs_LatchXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXplus_start}    end=${fcs_LatchXplus_end + 1}
-    Log Many    ${fcs_LatchXplus_list}
-    Should Contain    ${fcs_LatchXplus_list}    === MTCamera_fcs_LatchXplus start of topic ===
-    Should Contain    ${fcs_LatchXplus_list}    === MTCamera_fcs_LatchXplus end of topic ===
-    Should Contain    ${fcs_LatchXplus_list}    === [fcs_LatchXplus] message sent 200
-    ${fcs_LatchXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplusController start of topic ===
-    ${fcs_LatchXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplusController end of topic ===
-    ${fcs_LatchXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXplusController_start}    end=${fcs_LatchXplusController_end + 1}
-    Log Many    ${fcs_LatchXplusController_list}
-    Should Contain    ${fcs_LatchXplusController_list}    === MTCamera_fcs_LatchXplusController start of topic ===
-    Should Contain    ${fcs_LatchXplusController_list}    === MTCamera_fcs_LatchXplusController end of topic ===
-    Should Contain    ${fcs_LatchXplusController_list}    === [fcs_LatchXplusController] message sent 200
-    ${fcs_Latches_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Latches start of topic ===
-    ${fcs_Latches_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Latches end of topic ===
-    ${fcs_Latches_list}=    Get Slice From List    ${full_list}    start=${fcs_Latches_start}    end=${fcs_Latches_end + 1}
-    Log Many    ${fcs_Latches_list}
-    Should Contain    ${fcs_Latches_list}    === MTCamera_fcs_Latches start of topic ===
-    Should Contain    ${fcs_Latches_list}    === MTCamera_fcs_Latches end of topic ===
-    Should Contain    ${fcs_Latches_list}    === [fcs_Latches] message sent 200
-    ${fcs_Loader_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader start of topic ===
-    ${fcs_Loader_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader end of topic ===
-    ${fcs_Loader_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_start}    end=${fcs_Loader_end + 1}
-    Log Many    ${fcs_Loader_list}
-    Should Contain    ${fcs_Loader_list}    === MTCamera_fcs_Loader start of topic ===
-    Should Contain    ${fcs_Loader_list}    === MTCamera_fcs_Loader end of topic ===
-    Should Contain    ${fcs_Loader_list}    === [fcs_Loader] message sent 200
-    ${fcs_LoaderPlutoGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LoaderPlutoGateway start of topic ===
-    ${fcs_LoaderPlutoGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LoaderPlutoGateway end of topic ===
-    ${fcs_LoaderPlutoGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_LoaderPlutoGateway_start}    end=${fcs_LoaderPlutoGateway_end + 1}
-    Log Many    ${fcs_LoaderPlutoGateway_list}
-    Should Contain    ${fcs_LoaderPlutoGateway_list}    === MTCamera_fcs_LoaderPlutoGateway start of topic ===
-    Should Contain    ${fcs_LoaderPlutoGateway_list}    === MTCamera_fcs_LoaderPlutoGateway end of topic ===
-    Should Contain    ${fcs_LoaderPlutoGateway_list}    === [fcs_LoaderPlutoGateway] message sent 200
-    ${fcs_OnlineClampXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminus start of topic ===
-    ${fcs_OnlineClampXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminus end of topic ===
-    ${fcs_OnlineClampXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXminus_start}    end=${fcs_OnlineClampXminus_end + 1}
-    Log Many    ${fcs_OnlineClampXminus_list}
-    Should Contain    ${fcs_OnlineClampXminus_list}    === MTCamera_fcs_OnlineClampXminus start of topic ===
-    Should Contain    ${fcs_OnlineClampXminus_list}    === MTCamera_fcs_OnlineClampXminus end of topic ===
-    Should Contain    ${fcs_OnlineClampXminus_list}    === [fcs_OnlineClampXminus] message sent 200
-    ${fcs_OnlineClampXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminusController start of topic ===
-    ${fcs_OnlineClampXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminusController end of topic ===
-    ${fcs_OnlineClampXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXminusController_start}    end=${fcs_OnlineClampXminusController_end + 1}
-    Log Many    ${fcs_OnlineClampXminusController_list}
-    Should Contain    ${fcs_OnlineClampXminusController_list}    === MTCamera_fcs_OnlineClampXminusController start of topic ===
-    Should Contain    ${fcs_OnlineClampXminusController_list}    === MTCamera_fcs_OnlineClampXminusController end of topic ===
-    Should Contain    ${fcs_OnlineClampXminusController_list}    === [fcs_OnlineClampXminusController] message sent 200
-    ${fcs_OnlineClampXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplus start of topic ===
-    ${fcs_OnlineClampXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplus end of topic ===
-    ${fcs_OnlineClampXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXplus_start}    end=${fcs_OnlineClampXplus_end + 1}
-    Log Many    ${fcs_OnlineClampXplus_list}
-    Should Contain    ${fcs_OnlineClampXplus_list}    === MTCamera_fcs_OnlineClampXplus start of topic ===
-    Should Contain    ${fcs_OnlineClampXplus_list}    === MTCamera_fcs_OnlineClampXplus end of topic ===
-    Should Contain    ${fcs_OnlineClampXplus_list}    === [fcs_OnlineClampXplus] message sent 200
-    ${fcs_OnlineClampXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplusController start of topic ===
-    ${fcs_OnlineClampXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplusController end of topic ===
-    ${fcs_OnlineClampXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXplusController_start}    end=${fcs_OnlineClampXplusController_end + 1}
-    Log Many    ${fcs_OnlineClampXplusController_list}
-    Should Contain    ${fcs_OnlineClampXplusController_list}    === MTCamera_fcs_OnlineClampXplusController start of topic ===
-    Should Contain    ${fcs_OnlineClampXplusController_list}    === MTCamera_fcs_OnlineClampXplusController end of topic ===
-    Should Contain    ${fcs_OnlineClampXplusController_list}    === [fcs_OnlineClampXplusController] message sent 200
-    ${fcs_OnlineClampYminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminus start of topic ===
-    ${fcs_OnlineClampYminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminus end of topic ===
-    ${fcs_OnlineClampYminus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampYminus_start}    end=${fcs_OnlineClampYminus_end + 1}
-    Log Many    ${fcs_OnlineClampYminus_list}
-    Should Contain    ${fcs_OnlineClampYminus_list}    === MTCamera_fcs_OnlineClampYminus start of topic ===
-    Should Contain    ${fcs_OnlineClampYminus_list}    === MTCamera_fcs_OnlineClampYminus end of topic ===
-    Should Contain    ${fcs_OnlineClampYminus_list}    === [fcs_OnlineClampYminus] message sent 200
-    ${fcs_OnlineClampYminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminusController start of topic ===
-    ${fcs_OnlineClampYminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminusController end of topic ===
-    ${fcs_OnlineClampYminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampYminusController_start}    end=${fcs_OnlineClampYminusController_end + 1}
-    Log Many    ${fcs_OnlineClampYminusController_list}
-    Should Contain    ${fcs_OnlineClampYminusController_list}    === MTCamera_fcs_OnlineClampYminusController start of topic ===
-    Should Contain    ${fcs_OnlineClampYminusController_list}    === MTCamera_fcs_OnlineClampYminusController end of topic ===
-    Should Contain    ${fcs_OnlineClampYminusController_list}    === [fcs_OnlineClampYminusController] message sent 200
-    ${fcs_OnlineClamps_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClamps start of topic ===
-    ${fcs_OnlineClamps_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClamps end of topic ===
-    ${fcs_OnlineClamps_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClamps_start}    end=${fcs_OnlineClamps_end + 1}
-    Log Many    ${fcs_OnlineClamps_list}
-    Should Contain    ${fcs_OnlineClamps_list}    === MTCamera_fcs_OnlineClamps start of topic ===
-    Should Contain    ${fcs_OnlineClamps_list}    === MTCamera_fcs_OnlineClamps end of topic ===
-    Should Contain    ${fcs_OnlineClamps_list}    === [fcs_OnlineClamps] message sent 200
-    ${fcs_OnlineStrainGauge_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineStrainGauge start of topic ===
-    ${fcs_OnlineStrainGauge_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineStrainGauge end of topic ===
-    ${fcs_OnlineStrainGauge_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineStrainGauge_start}    end=${fcs_OnlineStrainGauge_end + 1}
-    Log Many    ${fcs_OnlineStrainGauge_list}
-    Should Contain    ${fcs_OnlineStrainGauge_list}    === MTCamera_fcs_OnlineStrainGauge start of topic ===
-    Should Contain    ${fcs_OnlineStrainGauge_list}    === MTCamera_fcs_OnlineStrainGauge end of topic ===
-    Should Contain    ${fcs_OnlineStrainGauge_list}    === [fcs_OnlineStrainGauge] message sent 200
-    ${fcs_ProximitySensorsDevice_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ProximitySensorsDevice start of topic ===
-    ${fcs_ProximitySensorsDevice_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ProximitySensorsDevice end of topic ===
-    ${fcs_ProximitySensorsDevice_list}=    Get Slice From List    ${full_list}    start=${fcs_ProximitySensorsDevice_start}    end=${fcs_ProximitySensorsDevice_end + 1}
-    Log Many    ${fcs_ProximitySensorsDevice_list}
-    Should Contain    ${fcs_ProximitySensorsDevice_list}    === MTCamera_fcs_ProximitySensorsDevice start of topic ===
-    Should Contain    ${fcs_ProximitySensorsDevice_list}    === MTCamera_fcs_ProximitySensorsDevice end of topic ===
-    Should Contain    ${fcs_ProximitySensorsDevice_list}    === [fcs_ProximitySensorsDevice] message sent 200
-    ${fcs_Pt100_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Pt100 start of topic ===
-    ${fcs_Pt100_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Pt100 end of topic ===
-    ${fcs_Pt100_list}=    Get Slice From List    ${full_list}    start=${fcs_Pt100_start}    end=${fcs_Pt100_end + 1}
-    Log Many    ${fcs_Pt100_list}
-    Should Contain    ${fcs_Pt100_list}    === MTCamera_fcs_Pt100 start of topic ===
-    Should Contain    ${fcs_Pt100_list}    === MTCamera_fcs_Pt100 end of topic ===
-    Should Contain    ${fcs_Pt100_list}    === [fcs_Pt100] message sent 200
-    ${fcs_RuntimeInfo_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_RuntimeInfo start of topic ===
-    ${fcs_RuntimeInfo_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_RuntimeInfo end of topic ===
-    ${fcs_RuntimeInfo_list}=    Get Slice From List    ${full_list}    start=${fcs_RuntimeInfo_start}    end=${fcs_RuntimeInfo_end + 1}
-    Log Many    ${fcs_RuntimeInfo_list}
-    Should Contain    ${fcs_RuntimeInfo_list}    === MTCamera_fcs_RuntimeInfo start of topic ===
-    Should Contain    ${fcs_RuntimeInfo_list}    === MTCamera_fcs_RuntimeInfo end of topic ===
-    Should Contain    ${fcs_RuntimeInfo_list}    === [fcs_RuntimeInfo] message sent 200
-    ${fcs_Socket1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket1 start of topic ===
-    ${fcs_Socket1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket1 end of topic ===
-    ${fcs_Socket1_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket1_start}    end=${fcs_Socket1_end + 1}
-    Log Many    ${fcs_Socket1_list}
-    Should Contain    ${fcs_Socket1_list}    === MTCamera_fcs_Socket1 start of topic ===
-    Should Contain    ${fcs_Socket1_list}    === MTCamera_fcs_Socket1 end of topic ===
-    Should Contain    ${fcs_Socket1_list}    === [fcs_Socket1] message sent 200
-    ${fcs_Socket2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket2 start of topic ===
-    ${fcs_Socket2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket2 end of topic ===
-    ${fcs_Socket2_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket2_start}    end=${fcs_Socket2_end + 1}
-    Log Many    ${fcs_Socket2_list}
-    Should Contain    ${fcs_Socket2_list}    === MTCamera_fcs_Socket2 start of topic ===
-    Should Contain    ${fcs_Socket2_list}    === MTCamera_fcs_Socket2 end of topic ===
-    Should Contain    ${fcs_Socket2_list}    === [fcs_Socket2] message sent 200
-    ${fcs_Socket3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket3 start of topic ===
-    ${fcs_Socket3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket3 end of topic ===
-    ${fcs_Socket3_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket3_start}    end=${fcs_Socket3_end + 1}
-    Log Many    ${fcs_Socket3_list}
-    Should Contain    ${fcs_Socket3_list}    === MTCamera_fcs_Socket3 start of topic ===
-    Should Contain    ${fcs_Socket3_list}    === MTCamera_fcs_Socket3 end of topic ===
-    Should Contain    ${fcs_Socket3_list}    === [fcs_Socket3] message sent 200
-    ${fcs_Socket4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket4 start of topic ===
-    ${fcs_Socket4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket4 end of topic ===
-    ${fcs_Socket4_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket4_start}    end=${fcs_Socket4_end + 1}
-    Log Many    ${fcs_Socket4_list}
-    Should Contain    ${fcs_Socket4_list}    === MTCamera_fcs_Socket4 start of topic ===
-    Should Contain    ${fcs_Socket4_list}    === MTCamera_fcs_Socket4 end of topic ===
-    Should Contain    ${fcs_Socket4_list}    === [fcs_Socket4] message sent 200
-    ${fcs_Socket5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket5 start of topic ===
-    ${fcs_Socket5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket5 end of topic ===
-    ${fcs_Socket5_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket5_start}    end=${fcs_Socket5_end + 1}
-    Log Many    ${fcs_Socket5_list}
-    Should Contain    ${fcs_Socket5_list}    === MTCamera_fcs_Socket5 start of topic ===
-    Should Contain    ${fcs_Socket5_list}    === MTCamera_fcs_Socket5 end of topic ===
-    Should Contain    ${fcs_Socket5_list}    === [fcs_Socket5] message sent 200
-    ${fcs_TempSensorsDevice1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice1 start of topic ===
-    ${fcs_TempSensorsDevice1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice1 end of topic ===
-    ${fcs_TempSensorsDevice1_list}=    Get Slice From List    ${full_list}    start=${fcs_TempSensorsDevice1_start}    end=${fcs_TempSensorsDevice1_end + 1}
-    Log Many    ${fcs_TempSensorsDevice1_list}
-    Should Contain    ${fcs_TempSensorsDevice1_list}    === MTCamera_fcs_TempSensorsDevice1 start of topic ===
-    Should Contain    ${fcs_TempSensorsDevice1_list}    === MTCamera_fcs_TempSensorsDevice1 end of topic ===
-    Should Contain    ${fcs_TempSensorsDevice1_list}    === [fcs_TempSensorsDevice1] message sent 200
-    ${fcs_TempSensorsDevice2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
-    ${fcs_TempSensorsDevice2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
-    ${fcs_TempSensorsDevice2_list}=    Get Slice From List    ${full_list}    start=${fcs_TempSensorsDevice2_start}    end=${fcs_TempSensorsDevice2_end + 1}
-    Log Many    ${fcs_TempSensorsDevice2_list}
-    Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
-    Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
-    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2] message sent 200
+    ${fcs_Autochanger_AutochangerTrucks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
+    ${fcs_Autochanger_AutochangerTrucks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
+    ${fcs_Autochanger_AutochangerTrucks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_AutochangerTrucks_Trending_start}    end=${fcs_Autochanger_AutochangerTrucks_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_AutochangerTrucks_Trending_list}
+    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
+    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === [fcs_Autochanger_AutochangerTrucks_Trending] message sent 200
+    ${fcs_Autochanger_Latches_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Latches_Trending start of topic ===
+    ${fcs_Autochanger_Latches_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Latches_Trending end of topic ===
+    ${fcs_Autochanger_Latches_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_Latches_Trending_start}    end=${fcs_Autochanger_Latches_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_Latches_Trending_list}
+    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === MTCamera_fcs_Autochanger_Latches_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === MTCamera_fcs_Autochanger_Latches_Trending end of topic ===
+    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === [fcs_Autochanger_Latches_Trending] message sent 200
+    ${fcs_Autochanger_OnlineClamps_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending start of topic ===
+    ${fcs_Autochanger_OnlineClamps_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending end of topic ===
+    ${fcs_Autochanger_OnlineClamps_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_OnlineClamps_Trending_start}    end=${fcs_Autochanger_OnlineClamps_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_OnlineClamps_Trending_list}
+    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending end of topic ===
+    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === [fcs_Autochanger_OnlineClamps_Trending] message sent 200
+    ${fcs_Autochanger_Temperatures_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Temperatures start of topic ===
+    ${fcs_Autochanger_Temperatures_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Temperatures end of topic ===
+    ${fcs_Autochanger_Temperatures_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_Temperatures_start}    end=${fcs_Autochanger_Temperatures_end + 1}
+    Log Many    ${fcs_Autochanger_Temperatures_list}
+    Should Contain    ${fcs_Autochanger_Temperatures_list}    === MTCamera_fcs_Autochanger_Temperatures start of topic ===
+    Should Contain    ${fcs_Autochanger_Temperatures_list}    === MTCamera_fcs_Autochanger_Temperatures end of topic ===
+    Should Contain    ${fcs_Autochanger_Temperatures_list}    === [fcs_Autochanger_Temperatures] message sent 200
+    ${fcs_Canbus0_AcSensorsGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending start of topic ===
+    ${fcs_Canbus0_AcSensorsGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending end of topic ===
+    ${fcs_Canbus0_AcSensorsGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcSensorsGateway_Trending_start}    end=${fcs_Canbus0_AcSensorsGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcSensorsGateway_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === [fcs_Canbus0_AcSensorsGateway_Trending] message sent 200
+    ${fcs_Canbus0_AcTruckXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending start of topic ===
+    ${fcs_Canbus0_AcTruckXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending end of topic ===
+    ${fcs_Canbus0_AcTruckXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcTruckXminusController_Trending_start}    end=${fcs_Canbus0_AcTruckXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcTruckXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === [fcs_Canbus0_AcTruckXminusController_Trending] message sent 200
+    ${fcs_Canbus0_AcTruckXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending start of topic ===
+    ${fcs_Canbus0_AcTruckXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending end of topic ===
+    ${fcs_Canbus0_AcTruckXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcTruckXplusController_Trending_start}    end=${fcs_Canbus0_AcTruckXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcTruckXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === [fcs_Canbus0_AcTruckXplusController_Trending] message sent 200
+    ${fcs_Canbus0_Accelerobf_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending start of topic ===
+    ${fcs_Canbus0_Accelerobf_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending end of topic ===
+    ${fcs_Canbus0_Accelerobf_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Accelerobf_Trending_start}    end=${fcs_Canbus0_Accelerobf_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Accelerobf_Trending_list}
+    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === [fcs_Canbus0_Accelerobf_Trending] message sent 200
+    ${fcs_Canbus0_Ai814_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Ai814_Trending start of topic ===
+    ${fcs_Canbus0_Ai814_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Ai814_Trending end of topic ===
+    ${fcs_Canbus0_Ai814_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Ai814_Trending_start}    end=${fcs_Canbus0_Ai814_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Ai814_Trending_list}
+    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === MTCamera_fcs_Canbus0_Ai814_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === MTCamera_fcs_Canbus0_Ai814_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === [fcs_Canbus0_Ai814_Trending] message sent 200
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending start of topic ===
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending end of topic ===
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_BrakeSystemGateway_Trending_start}    end=${fcs_Canbus0_BrakeSystemGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}
+    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === [fcs_Canbus0_BrakeSystemGateway_Trending] message sent 200
+    ${fcs_Canbus0_CarouselController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending start of topic ===
+    ${fcs_Canbus0_CarouselController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending end of topic ===
+    ${fcs_Canbus0_CarouselController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_CarouselController_Trending_start}    end=${fcs_Canbus0_CarouselController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_CarouselController_Trending_list}
+    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === [fcs_Canbus0_CarouselController_Trending] message sent 200
+    ${fcs_Canbus0_ClampXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending start of topic ===
+    ${fcs_Canbus0_ClampXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending end of topic ===
+    ${fcs_Canbus0_ClampXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ClampXminusController_Trending_start}    end=${fcs_Canbus0_ClampXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ClampXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === [fcs_Canbus0_ClampXminusController_Trending] message sent 200
+    ${fcs_Canbus0_ClampXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending start of topic ===
+    ${fcs_Canbus0_ClampXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending end of topic ===
+    ${fcs_Canbus0_ClampXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ClampXplusController_Trending_start}    end=${fcs_Canbus0_ClampXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ClampXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === [fcs_Canbus0_ClampXplusController_Trending] message sent 200
+    ${fcs_Canbus0_Hyttc580_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending start of topic ===
+    ${fcs_Canbus0_Hyttc580_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending end of topic ===
+    ${fcs_Canbus0_Hyttc580_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Hyttc580_Trending_start}    end=${fcs_Canbus0_Hyttc580_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Hyttc580_Trending_list}
+    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === [fcs_Canbus0_Hyttc580_Trending] message sent 200
+    ${fcs_Canbus0_LatchXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending start of topic ===
+    ${fcs_Canbus0_LatchXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending end of topic ===
+    ${fcs_Canbus0_LatchXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_LatchXminusController_Trending_start}    end=${fcs_Canbus0_LatchXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_LatchXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === [fcs_Canbus0_LatchXminusController_Trending] message sent 200
+    ${fcs_Canbus0_LatchXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending start of topic ===
+    ${fcs_Canbus0_LatchXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending end of topic ===
+    ${fcs_Canbus0_LatchXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_LatchXplusController_Trending_start}    end=${fcs_Canbus0_LatchXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_LatchXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === [fcs_Canbus0_LatchXplusController_Trending] message sent 200
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampXminusController_Trending_start}    end=${fcs_Canbus0_OnlineClampXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === [fcs_Canbus0_OnlineClampXminusController_Trending] message sent 200
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampXplusController_Trending_start}    end=${fcs_Canbus0_OnlineClampXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === [fcs_Canbus0_OnlineClampXplusController_Trending] message sent 200
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampYminusController_Trending_start}    end=${fcs_Canbus0_OnlineClampYminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === [fcs_Canbus0_OnlineClampYminusController_Trending] message sent 200
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending start of topic ===
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending end of topic ===
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineStrainGauge_Trending_start}    end=${fcs_Canbus0_OnlineStrainGauge_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === [fcs_Canbus0_OnlineStrainGauge_Trending] message sent 200
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending start of topic ===
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending end of topic ===
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ProximitySensorsDevice_Trending_start}    end=${fcs_Canbus0_ProximitySensorsDevice_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}
+    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === [fcs_Canbus0_ProximitySensorsDevice_Trending] message sent 200
+    ${fcs_Canbus0_Pt100_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Pt100_Trending start of topic ===
+    ${fcs_Canbus0_Pt100_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Pt100_Trending end of topic ===
+    ${fcs_Canbus0_Pt100_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Pt100_Trending_start}    end=${fcs_Canbus0_Pt100_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Pt100_Trending_list}
+    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === MTCamera_fcs_Canbus0_Pt100_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === MTCamera_fcs_Canbus0_Pt100_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === [fcs_Canbus0_Pt100_Trending] message sent 200
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending start of topic ===
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending end of topic ===
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_TempSensorsDevice1_Trending_start}    end=${fcs_Canbus0_TempSensorsDevice1_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === [fcs_Canbus0_TempSensorsDevice1_Trending] message sent 200
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending start of topic ===
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending end of topic ===
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_TempSensorsDevice2_Trending_start}    end=${fcs_Canbus0_TempSensorsDevice2_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending end of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === [fcs_Canbus0_TempSensorsDevice2_Trending] message sent 200
+    ${fcs_Canbus1_CarrierController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending start of topic ===
+    ${fcs_Canbus1_CarrierController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending end of topic ===
+    ${fcs_Canbus1_CarrierController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_CarrierController_Trending_start}    end=${fcs_Canbus1_CarrierController_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_CarrierController_Trending_list}
+    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === [fcs_Canbus1_CarrierController_Trending] message sent 200
+    ${fcs_Canbus1_HooksController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_HooksController_Trending start of topic ===
+    ${fcs_Canbus1_HooksController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_HooksController_Trending end of topic ===
+    ${fcs_Canbus1_HooksController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_HooksController_Trending_start}    end=${fcs_Canbus1_HooksController_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_HooksController_Trending_list}
+    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === MTCamera_fcs_Canbus1_HooksController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === MTCamera_fcs_Canbus1_HooksController_Trending end of topic ===
+    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === [fcs_Canbus1_HooksController_Trending] message sent 200
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending start of topic ===
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending end of topic ===
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_LoaderPlutoGateway_Trending_start}    end=${fcs_Canbus1_LoaderPlutoGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}
+    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending end of topic ===
+    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === [fcs_Canbus1_LoaderPlutoGateway_Trending] message sent 200
+    ${fcs_Carousel_Socket1_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket1_Trending start of topic ===
+    ${fcs_Carousel_Socket1_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket1_Trending end of topic ===
+    ${fcs_Carousel_Socket1_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket1_Trending_start}    end=${fcs_Carousel_Socket1_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket1_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === MTCamera_fcs_Carousel_Socket1_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === MTCamera_fcs_Carousel_Socket1_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === [fcs_Carousel_Socket1_Trending] message sent 200
+    ${fcs_Carousel_Socket2_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket2_Trending start of topic ===
+    ${fcs_Carousel_Socket2_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket2_Trending end of topic ===
+    ${fcs_Carousel_Socket2_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket2_Trending_start}    end=${fcs_Carousel_Socket2_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket2_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === MTCamera_fcs_Carousel_Socket2_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === MTCamera_fcs_Carousel_Socket2_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === [fcs_Carousel_Socket2_Trending] message sent 200
+    ${fcs_Carousel_Socket3_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket3_Trending start of topic ===
+    ${fcs_Carousel_Socket3_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket3_Trending end of topic ===
+    ${fcs_Carousel_Socket3_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket3_Trending_start}    end=${fcs_Carousel_Socket3_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket3_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === MTCamera_fcs_Carousel_Socket3_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === MTCamera_fcs_Carousel_Socket3_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === [fcs_Carousel_Socket3_Trending] message sent 200
+    ${fcs_Carousel_Socket4_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket4_Trending start of topic ===
+    ${fcs_Carousel_Socket4_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket4_Trending end of topic ===
+    ${fcs_Carousel_Socket4_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket4_Trending_start}    end=${fcs_Carousel_Socket4_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket4_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === MTCamera_fcs_Carousel_Socket4_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === MTCamera_fcs_Carousel_Socket4_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === [fcs_Carousel_Socket4_Trending] message sent 200
+    ${fcs_Carousel_Socket5_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket5_Trending start of topic ===
+    ${fcs_Carousel_Socket5_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket5_Trending end of topic ===
+    ${fcs_Carousel_Socket5_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket5_Trending_start}    end=${fcs_Carousel_Socket5_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket5_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === MTCamera_fcs_Carousel_Socket5_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === MTCamera_fcs_Carousel_Socket5_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === [fcs_Carousel_Socket5_Trending] message sent 200
+    ${fcs_Carousel_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Trending start of topic ===
+    ${fcs_Carousel_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Trending end of topic ===
+    ${fcs_Carousel_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Trending_start}    end=${fcs_Carousel_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Trending_list}
+    Should Contain    ${fcs_Carousel_Trending_list}    === MTCamera_fcs_Carousel_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Trending_list}    === MTCamera_fcs_Carousel_Trending end of topic ===
+    Should Contain    ${fcs_Carousel_Trending_list}    === [fcs_Carousel_Trending] message sent 200
+    ${fcs_Duration_Autochanger_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Autochanger_Trending start of topic ===
+    ${fcs_Duration_Autochanger_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Autochanger_Trending end of topic ===
+    ${fcs_Duration_Autochanger_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Autochanger_Trending_start}    end=${fcs_Duration_Autochanger_Trending_end + 1}
+    Log Many    ${fcs_Duration_Autochanger_Trending_list}
+    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === MTCamera_fcs_Duration_Autochanger_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === MTCamera_fcs_Duration_Autochanger_Trending end of topic ===
+    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === [fcs_Duration_Autochanger_Trending] message sent 200
+    ${fcs_Duration_Carousel_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Carousel_Trending start of topic ===
+    ${fcs_Duration_Carousel_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Carousel_Trending end of topic ===
+    ${fcs_Duration_Carousel_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Carousel_Trending_start}    end=${fcs_Duration_Carousel_Trending_end + 1}
+    Log Many    ${fcs_Duration_Carousel_Trending_list}
+    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === MTCamera_fcs_Duration_Carousel_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === MTCamera_fcs_Duration_Carousel_Trending end of topic ===
+    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === [fcs_Duration_Carousel_Trending] message sent 200
+    ${fcs_Duration_Loader_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Loader_Trending start of topic ===
+    ${fcs_Duration_Loader_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Loader_Trending end of topic ===
+    ${fcs_Duration_Loader_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Loader_Trending_start}    end=${fcs_Duration_Loader_Trending_end + 1}
+    Log Many    ${fcs_Duration_Loader_Trending_list}
+    Should Contain    ${fcs_Duration_Loader_Trending_list}    === MTCamera_fcs_Duration_Loader_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Loader_Trending_list}    === MTCamera_fcs_Duration_Loader_Trending end of topic ===
+    Should Contain    ${fcs_Duration_Loader_Trending_list}    === [fcs_Duration_Loader_Trending] message sent 200
+    ${fcs_Duration_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Trending start of topic ===
+    ${fcs_Duration_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Trending end of topic ===
+    ${fcs_Duration_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Trending_start}    end=${fcs_Duration_Trending_end + 1}
+    Log Many    ${fcs_Duration_Trending_list}
+    Should Contain    ${fcs_Duration_Trending_list}    === MTCamera_fcs_Duration_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Trending_list}    === MTCamera_fcs_Duration_Trending end of topic ===
+    Should Contain    ${fcs_Duration_Trending_list}    === [fcs_Duration_Trending] message sent 200
+    ${fcs_Fcs_Mcm_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Fcs_Mcm_Trending start of topic ===
+    ${fcs_Fcs_Mcm_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Fcs_Mcm_Trending end of topic ===
+    ${fcs_Fcs_Mcm_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Fcs_Mcm_Trending_start}    end=${fcs_Fcs_Mcm_Trending_end + 1}
+    Log Many    ${fcs_Fcs_Mcm_Trending_list}
+    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === MTCamera_fcs_Fcs_Mcm_Trending start of topic ===
+    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === MTCamera_fcs_Fcs_Mcm_Trending end of topic ===
+    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === [fcs_Fcs_Mcm_Trending] message sent 200
+    ${fcs_Loader_Carrier_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Carrier_Trending start of topic ===
+    ${fcs_Loader_Carrier_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Carrier_Trending end of topic ===
+    ${fcs_Loader_Carrier_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_Carrier_Trending_start}    end=${fcs_Loader_Carrier_Trending_end + 1}
+    Log Many    ${fcs_Loader_Carrier_Trending_list}
+    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === MTCamera_fcs_Loader_Carrier_Trending start of topic ===
+    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === MTCamera_fcs_Loader_Carrier_Trending end of topic ===
+    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === [fcs_Loader_Carrier_Trending] message sent 200
+    ${fcs_Loader_Hooks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Hooks_Trending start of topic ===
+    ${fcs_Loader_Hooks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Hooks_Trending end of topic ===
+    ${fcs_Loader_Hooks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_Hooks_Trending_start}    end=${fcs_Loader_Hooks_Trending_end + 1}
+    Log Many    ${fcs_Loader_Hooks_Trending_list}
+    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === MTCamera_fcs_Loader_Hooks_Trending start of topic ===
+    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === MTCamera_fcs_Loader_Hooks_Trending end of topic ===
+    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === [fcs_Loader_Hooks_Trending] message sent 200
+    ${fcs_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Trending start of topic ===
+    ${fcs_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Trending end of topic ===
+    ${fcs_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Trending_start}    end=${fcs_Trending_end + 1}
+    Log Many    ${fcs_Trending_list}
+    Should Contain    ${fcs_Trending_list}    === MTCamera_fcs_Trending start of topic ===
+    Should Contain    ${fcs_Trending_list}    === MTCamera_fcs_Trending end of topic ===
+    Should Contain    ${fcs_Trending_list}    === [fcs_Trending] message sent 200
+    ${shutter_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_shutter_Trending start of topic ===
+    ${shutter_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_shutter_Trending end of topic ===
+    ${shutter_Trending_list}=    Get Slice From List    ${full_list}    start=${shutter_Trending_start}    end=${shutter_Trending_end + 1}
+    Log Many    ${shutter_Trending_list}
+    Should Contain    ${shutter_Trending_list}    === MTCamera_shutter_Trending start of topic ===
+    Should Contain    ${shutter_Trending_list}    === MTCamera_shutter_Trending end of topic ===
+    Should Contain    ${shutter_Trending_list}    === [shutter_Trending] message sent 200
     ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
     ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
     ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
@@ -807,6 +590,13 @@ Start Publisher
     Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller start of topic ===
     Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
     Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller] message sent 200
+    ${chiller_FParam_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_FParam_Trending start of topic ===
+    ${chiller_FParam_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_FParam_Trending end of topic ===
+    ${chiller_FParam_Trending_list}=    Get Slice From List    ${full_list}    start=${chiller_FParam_Trending_start}    end=${chiller_FParam_Trending_end + 1}
+    Log Many    ${chiller_FParam_Trending_list}
+    Should Contain    ${chiller_FParam_Trending_list}    === MTCamera_chiller_FParam_Trending start of topic ===
+    Should Contain    ${chiller_FParam_Trending_list}    === MTCamera_chiller_FParam_Trending end of topic ===
+    Should Contain    ${chiller_FParam_Trending_list}    === [chiller_FParam_Trending] message sent 200
     ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
     ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
     ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
@@ -814,6 +604,41 @@ Start Publisher
     Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 start of topic ===
     Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
     Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20] message sent 200
+    ${thermal_Cold_Temp_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cold_Temp start of topic ===
+    ${thermal_Cold_Temp_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cold_Temp end of topic ===
+    ${thermal_Cold_Temp_list}=    Get Slice From List    ${full_list}    start=${thermal_Cold_Temp_start}    end=${thermal_Cold_Temp_end + 1}
+    Log Many    ${thermal_Cold_Temp_list}
+    Should Contain    ${thermal_Cold_Temp_list}    === MTCamera_thermal_Cold_Temp start of topic ===
+    Should Contain    ${thermal_Cold_Temp_list}    === MTCamera_thermal_Cold_Temp end of topic ===
+    Should Contain    ${thermal_Cold_Temp_list}    === [thermal_Cold_Temp] message sent 200
+    ${thermal_Cryo_Temp_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cryo_Temp start of topic ===
+    ${thermal_Cryo_Temp_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cryo_Temp end of topic ===
+    ${thermal_Cryo_Temp_list}=    Get Slice From List    ${full_list}    start=${thermal_Cryo_Temp_start}    end=${thermal_Cryo_Temp_end + 1}
+    Log Many    ${thermal_Cryo_Temp_list}
+    Should Contain    ${thermal_Cryo_Temp_list}    === MTCamera_thermal_Cryo_Temp start of topic ===
+    Should Contain    ${thermal_Cryo_Temp_list}    === MTCamera_thermal_Cryo_Temp end of topic ===
+    Should Contain    ${thermal_Cryo_Temp_list}    === [thermal_Cryo_Temp] message sent 200
+    ${thermal_Rtd_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Rtd start of topic ===
+    ${thermal_Rtd_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Rtd end of topic ===
+    ${thermal_Rtd_list}=    Get Slice From List    ${full_list}    start=${thermal_Rtd_start}    end=${thermal_Rtd_end + 1}
+    Log Many    ${thermal_Rtd_list}
+    Should Contain    ${thermal_Rtd_list}    === MTCamera_thermal_Rtd start of topic ===
+    Should Contain    ${thermal_Rtd_list}    === MTCamera_thermal_Rtd end of topic ===
+    Should Contain    ${thermal_Rtd_list}    === [thermal_Rtd] message sent 200
+    ${thermal_Trim_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim start of topic ===
+    ${thermal_Trim_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim end of topic ===
+    ${thermal_Trim_list}=    Get Slice From List    ${full_list}    start=${thermal_Trim_start}    end=${thermal_Trim_end + 1}
+    Log Many    ${thermal_Trim_list}
+    Should Contain    ${thermal_Trim_list}    === MTCamera_thermal_Trim start of topic ===
+    Should Contain    ${thermal_Trim_list}    === MTCamera_thermal_Trim end of topic ===
+    Should Contain    ${thermal_Trim_list}    === [thermal_Trim] message sent 200
+    ${thermal_Trim_Htrs_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim_Htrs start of topic ===
+    ${thermal_Trim_Htrs_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
+    ${thermal_Trim_Htrs_list}=    Get Slice From List    ${full_list}    start=${thermal_Trim_Htrs_start}    end=${thermal_Trim_Htrs_end + 1}
+    Log Many    ${thermal_Trim_Htrs_list}
+    Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs start of topic ===
+    Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
+    Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -878,6 +703,14 @@ Read Subscriber
     Should Contain    ${rebpower_Reb_list}    === MTCamera_rebpower_Reb end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${rebpower_Reb_list}    === [rebpower_Reb Subscriber] message received :200
+    ${rebpower_RebTotalPower_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebTotalPower start of topic ===
+    ${rebpower_RebTotalPower_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_RebTotalPower end of topic ===
+    ${rebpower_RebTotalPower_list}=    Get Slice From List    ${full_list}    start=${rebpower_RebTotalPower_start}    end=${rebpower_RebTotalPower_end + 1}
+    Log Many    ${rebpower_RebTotalPower_list}
+    Should Contain    ${rebpower_RebTotalPower_list}    === MTCamera_rebpower_RebTotalPower start of topic ===
+    Should Contain    ${rebpower_RebTotalPower_list}    === MTCamera_rebpower_RebTotalPower end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${rebpower_RebTotalPower_list}    === [rebpower_RebTotalPower Subscriber] message received :200
     ${rebpower_Rebps_start}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps start of topic ===
     ${rebpower_Rebps_end}=    Get Index From List    ${full_list}    === MTCamera_rebpower_Rebps end of topic ===
     ${rebpower_Rebps_list}=    Get Slice From List    ${full_list}    start=${rebpower_Rebps_start}    end=${rebpower_Rebps_end + 1}
@@ -998,182 +831,38 @@ Read Subscriber
     Should Contain    ${refrig_Cryo6_list}    === MTCamera_refrig_Cryo6 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${refrig_Cryo6_list}    === [refrig_Cryo6 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${refrig_Cryo6_list}    === [refrig_Cryo6 Subscriber] message received :200
-    ${vacuum_CIP1_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_I start of topic ===
-    ${vacuum_CIP1_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_I end of topic ===
-    ${vacuum_CIP1_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_I_start}    end=${vacuum_CIP1_I_end + 1}
-    Log Many    ${vacuum_CIP1_I_list}
-    Should Contain    ${vacuum_CIP1_I_list}    === MTCamera_vacuum_CIP1_I start of topic ===
-    Should Contain    ${vacuum_CIP1_I_list}    === MTCamera_vacuum_CIP1_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP1_I_list}    === [vacuum_CIP1_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP1_I_list}    === [vacuum_CIP1_I Subscriber] message received :200
-    ${vacuum_CIP1_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_V start of topic ===
-    ${vacuum_CIP1_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP1_V end of topic ===
-    ${vacuum_CIP1_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP1_V_start}    end=${vacuum_CIP1_V_end + 1}
-    Log Many    ${vacuum_CIP1_V_list}
-    Should Contain    ${vacuum_CIP1_V_list}    === MTCamera_vacuum_CIP1_V start of topic ===
-    Should Contain    ${vacuum_CIP1_V_list}    === MTCamera_vacuum_CIP1_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP1_V_list}    === [vacuum_CIP1_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP1_V_list}    === [vacuum_CIP1_V Subscriber] message received :200
-    ${vacuum_CIP2_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_I start of topic ===
-    ${vacuum_CIP2_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_I end of topic ===
-    ${vacuum_CIP2_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_I_start}    end=${vacuum_CIP2_I_end + 1}
-    Log Many    ${vacuum_CIP2_I_list}
-    Should Contain    ${vacuum_CIP2_I_list}    === MTCamera_vacuum_CIP2_I start of topic ===
-    Should Contain    ${vacuum_CIP2_I_list}    === MTCamera_vacuum_CIP2_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP2_I_list}    === [vacuum_CIP2_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP2_I_list}    === [vacuum_CIP2_I Subscriber] message received :200
-    ${vacuum_CIP2_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_V start of topic ===
-    ${vacuum_CIP2_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP2_V end of topic ===
-    ${vacuum_CIP2_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP2_V_start}    end=${vacuum_CIP2_V_end + 1}
-    Log Many    ${vacuum_CIP2_V_list}
-    Should Contain    ${vacuum_CIP2_V_list}    === MTCamera_vacuum_CIP2_V start of topic ===
-    Should Contain    ${vacuum_CIP2_V_list}    === MTCamera_vacuum_CIP2_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP2_V_list}    === [vacuum_CIP2_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP2_V_list}    === [vacuum_CIP2_V Subscriber] message received :200
-    ${vacuum_CIP3_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_I start of topic ===
-    ${vacuum_CIP3_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_I end of topic ===
-    ${vacuum_CIP3_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_I_start}    end=${vacuum_CIP3_I_end + 1}
-    Log Many    ${vacuum_CIP3_I_list}
-    Should Contain    ${vacuum_CIP3_I_list}    === MTCamera_vacuum_CIP3_I start of topic ===
-    Should Contain    ${vacuum_CIP3_I_list}    === MTCamera_vacuum_CIP3_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP3_I_list}    === [vacuum_CIP3_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP3_I_list}    === [vacuum_CIP3_I Subscriber] message received :200
-    ${vacuum_CIP3_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_V start of topic ===
-    ${vacuum_CIP3_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP3_V end of topic ===
-    ${vacuum_CIP3_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP3_V_start}    end=${vacuum_CIP3_V_end + 1}
-    Log Many    ${vacuum_CIP3_V_list}
-    Should Contain    ${vacuum_CIP3_V_list}    === MTCamera_vacuum_CIP3_V start of topic ===
-    Should Contain    ${vacuum_CIP3_V_list}    === MTCamera_vacuum_CIP3_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP3_V_list}    === [vacuum_CIP3_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP3_V_list}    === [vacuum_CIP3_V Subscriber] message received :200
-    ${vacuum_CIP4_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_I start of topic ===
-    ${vacuum_CIP4_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_I end of topic ===
-    ${vacuum_CIP4_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_I_start}    end=${vacuum_CIP4_I_end + 1}
-    Log Many    ${vacuum_CIP4_I_list}
-    Should Contain    ${vacuum_CIP4_I_list}    === MTCamera_vacuum_CIP4_I start of topic ===
-    Should Contain    ${vacuum_CIP4_I_list}    === MTCamera_vacuum_CIP4_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP4_I_list}    === [vacuum_CIP4_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP4_I_list}    === [vacuum_CIP4_I Subscriber] message received :200
-    ${vacuum_CIP4_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_V start of topic ===
-    ${vacuum_CIP4_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP4_V end of topic ===
-    ${vacuum_CIP4_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP4_V_start}    end=${vacuum_CIP4_V_end + 1}
-    Log Many    ${vacuum_CIP4_V_list}
-    Should Contain    ${vacuum_CIP4_V_list}    === MTCamera_vacuum_CIP4_V start of topic ===
-    Should Contain    ${vacuum_CIP4_V_list}    === MTCamera_vacuum_CIP4_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP4_V_list}    === [vacuum_CIP4_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP4_V_list}    === [vacuum_CIP4_V Subscriber] message received :200
-    ${vacuum_CIP5_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_I start of topic ===
-    ${vacuum_CIP5_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_I end of topic ===
-    ${vacuum_CIP5_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_I_start}    end=${vacuum_CIP5_I_end + 1}
-    Log Many    ${vacuum_CIP5_I_list}
-    Should Contain    ${vacuum_CIP5_I_list}    === MTCamera_vacuum_CIP5_I start of topic ===
-    Should Contain    ${vacuum_CIP5_I_list}    === MTCamera_vacuum_CIP5_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP5_I_list}    === [vacuum_CIP5_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP5_I_list}    === [vacuum_CIP5_I Subscriber] message received :200
-    ${vacuum_CIP5_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_V start of topic ===
-    ${vacuum_CIP5_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP5_V end of topic ===
-    ${vacuum_CIP5_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP5_V_start}    end=${vacuum_CIP5_V_end + 1}
-    Log Many    ${vacuum_CIP5_V_list}
-    Should Contain    ${vacuum_CIP5_V_list}    === MTCamera_vacuum_CIP5_V start of topic ===
-    Should Contain    ${vacuum_CIP5_V_list}    === MTCamera_vacuum_CIP5_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP5_V_list}    === [vacuum_CIP5_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP5_V_list}    === [vacuum_CIP5_V Subscriber] message received :200
-    ${vacuum_CIP6_I_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_I start of topic ===
-    ${vacuum_CIP6_I_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_I end of topic ===
-    ${vacuum_CIP6_I_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_I_start}    end=${vacuum_CIP6_I_end + 1}
-    Log Many    ${vacuum_CIP6_I_list}
-    Should Contain    ${vacuum_CIP6_I_list}    === MTCamera_vacuum_CIP6_I start of topic ===
-    Should Contain    ${vacuum_CIP6_I_list}    === MTCamera_vacuum_CIP6_I end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP6_I_list}    === [vacuum_CIP6_I Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP6_I_list}    === [vacuum_CIP6_I Subscriber] message received :200
-    ${vacuum_CIP6_V_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_V start of topic ===
-    ${vacuum_CIP6_V_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CIP6_V end of topic ===
-    ${vacuum_CIP6_V_list}=    Get Slice From List    ${full_list}    start=${vacuum_CIP6_V_start}    end=${vacuum_CIP6_V_end + 1}
-    Log Many    ${vacuum_CIP6_V_list}
-    Should Contain    ${vacuum_CIP6_V_list}    === MTCamera_vacuum_CIP6_V start of topic ===
-    Should Contain    ${vacuum_CIP6_V_list}    === MTCamera_vacuum_CIP6_V end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP6_V_list}    === [vacuum_CIP6_V Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CIP6_V_list}    === [vacuum_CIP6_V Subscriber] message received :200
-    ${vacuum_CryoVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVac start of topic ===
-    ${vacuum_CryoVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_CryoVac end of topic ===
-    ${vacuum_CryoVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_CryoVac_start}    end=${vacuum_CryoVac_end + 1}
-    Log Many    ${vacuum_CryoVac_list}
-    Should Contain    ${vacuum_CryoVac_list}    === MTCamera_vacuum_CryoVac start of topic ===
-    Should Contain    ${vacuum_CryoVac_list}    === MTCamera_vacuum_CryoVac end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CryoVac_list}    === [vacuum_CryoVac Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_CryoVac_list}    === [vacuum_CryoVac Subscriber] message received :200
-    ${vacuum_ForelineVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVac start of topic ===
-    ${vacuum_ForelineVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_ForelineVac end of topic ===
-    ${vacuum_ForelineVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_ForelineVac_start}    end=${vacuum_ForelineVac_end + 1}
-    Log Many    ${vacuum_ForelineVac_list}
-    Should Contain    ${vacuum_ForelineVac_list}    === MTCamera_vacuum_ForelineVac start of topic ===
-    Should Contain    ${vacuum_ForelineVac_list}    === MTCamera_vacuum_ForelineVac end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_ForelineVac_list}    === [vacuum_ForelineVac Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_ForelineVac_list}    === [vacuum_ForelineVac Subscriber] message received :200
-    ${vacuum_Hex1Vac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1Vac start of topic ===
-    ${vacuum_Hex1Vac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex1Vac end of topic ===
-    ${vacuum_Hex1Vac_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex1Vac_start}    end=${vacuum_Hex1Vac_end + 1}
-    Log Many    ${vacuum_Hex1Vac_list}
-    Should Contain    ${vacuum_Hex1Vac_list}    === MTCamera_vacuum_Hex1Vac start of topic ===
-    Should Contain    ${vacuum_Hex1Vac_list}    === MTCamera_vacuum_Hex1Vac end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hex1Vac_list}    === [vacuum_Hex1Vac Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hex1Vac_list}    === [vacuum_Hex1Vac Subscriber] message received :200
-    ${vacuum_Hex2Vac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2Vac start of topic ===
-    ${vacuum_Hex2Vac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hex2Vac end of topic ===
-    ${vacuum_Hex2Vac_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hex2Vac_start}    end=${vacuum_Hex2Vac_end + 1}
-    Log Many    ${vacuum_Hex2Vac_list}
-    Should Contain    ${vacuum_Hex2Vac_list}    === MTCamera_vacuum_Hex2Vac start of topic ===
-    Should Contain    ${vacuum_Hex2Vac_list}    === MTCamera_vacuum_Hex2Vac end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hex2Vac_list}    === [vacuum_Hex2Vac Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hex2Vac_list}    === [vacuum_Hex2Vac Subscriber] message received :200
-    ${vacuum_TurboCurrent_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrent start of topic ===
-    ${vacuum_TurboCurrent_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboCurrent end of topic ===
-    ${vacuum_TurboCurrent_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboCurrent_start}    end=${vacuum_TurboCurrent_end + 1}
-    Log Many    ${vacuum_TurboCurrent_list}
-    Should Contain    ${vacuum_TurboCurrent_list}    === MTCamera_vacuum_TurboCurrent start of topic ===
-    Should Contain    ${vacuum_TurboCurrent_list}    === MTCamera_vacuum_TurboCurrent end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboCurrent_list}    === [vacuum_TurboCurrent Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboCurrent_list}    === [vacuum_TurboCurrent Subscriber] message received :200
-    ${vacuum_TurboPower_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPower start of topic ===
-    ${vacuum_TurboPower_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPower end of topic ===
-    ${vacuum_TurboPower_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPower_start}    end=${vacuum_TurboPower_end + 1}
-    Log Many    ${vacuum_TurboPower_list}
-    Should Contain    ${vacuum_TurboPower_list}    === MTCamera_vacuum_TurboPower start of topic ===
-    Should Contain    ${vacuum_TurboPower_list}    === MTCamera_vacuum_TurboPower end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboPower_list}    === [vacuum_TurboPower Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboPower_list}    === [vacuum_TurboPower Subscriber] message received :200
-    ${vacuum_TurboPumpTemp_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTemp start of topic ===
-    ${vacuum_TurboPumpTemp_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboPumpTemp end of topic ===
-    ${vacuum_TurboPumpTemp_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboPumpTemp_start}    end=${vacuum_TurboPumpTemp_end + 1}
-    Log Many    ${vacuum_TurboPumpTemp_list}
-    Should Contain    ${vacuum_TurboPumpTemp_list}    === MTCamera_vacuum_TurboPumpTemp start of topic ===
-    Should Contain    ${vacuum_TurboPumpTemp_list}    === MTCamera_vacuum_TurboPumpTemp end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboPumpTemp_list}    === [vacuum_TurboPumpTemp Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboPumpTemp_list}    === [vacuum_TurboPumpTemp Subscriber] message received :200
-    ${vacuum_TurboSpeed_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeed start of topic ===
-    ${vacuum_TurboSpeed_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboSpeed end of topic ===
-    ${vacuum_TurboSpeed_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboSpeed_start}    end=${vacuum_TurboSpeed_end + 1}
-    Log Many    ${vacuum_TurboSpeed_list}
-    Should Contain    ${vacuum_TurboSpeed_list}    === MTCamera_vacuum_TurboSpeed start of topic ===
-    Should Contain    ${vacuum_TurboSpeed_list}    === MTCamera_vacuum_TurboSpeed end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboSpeed_list}    === [vacuum_TurboSpeed Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboSpeed_list}    === [vacuum_TurboSpeed Subscriber] message received :200
-    ${vacuum_TurboVac_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVac start of topic ===
-    ${vacuum_TurboVac_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVac end of topic ===
-    ${vacuum_TurboVac_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVac_start}    end=${vacuum_TurboVac_end + 1}
-    Log Many    ${vacuum_TurboVac_list}
-    Should Contain    ${vacuum_TurboVac_list}    === MTCamera_vacuum_TurboVac start of topic ===
-    Should Contain    ${vacuum_TurboVac_list}    === MTCamera_vacuum_TurboVac end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVac_list}    === [vacuum_TurboVac Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVac_list}    === [vacuum_TurboVac Subscriber] message received :200
-    ${vacuum_TurboVoltage_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
-    ${vacuum_TurboVoltage_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
-    ${vacuum_TurboVoltage_list}=    Get Slice From List    ${full_list}    start=${vacuum_TurboVoltage_start}    end=${vacuum_TurboVoltage_end + 1}
-    Log Many    ${vacuum_TurboVoltage_list}
-    Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage start of topic ===
-    Should Contain    ${vacuum_TurboVoltage_list}    === MTCamera_vacuum_TurboVoltage end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${vacuum_TurboVoltage_list}    === [vacuum_TurboVoltage Subscriber] message received :200
+    ${vacuum_Cip_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cip start of topic ===
+    ${vacuum_Cip_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cip end of topic ===
+    ${vacuum_Cip_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cip_start}    end=${vacuum_Cip_end + 1}
+    Log Many    ${vacuum_Cip_list}
+    Should Contain    ${vacuum_Cip_list}    === MTCamera_vacuum_Cip start of topic ===
+    Should Contain    ${vacuum_Cip_list}    === MTCamera_vacuum_Cip end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Cip_list}    === [vacuum_Cip Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Cip_list}    === [vacuum_Cip Subscriber] message received :200
+    ${vacuum_Cryo_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cryo start of topic ===
+    ${vacuum_Cryo_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Cryo end of topic ===
+    ${vacuum_Cryo_list}=    Get Slice From List    ${full_list}    start=${vacuum_Cryo_start}    end=${vacuum_Cryo_end + 1}
+    Log Many    ${vacuum_Cryo_list}
+    Should Contain    ${vacuum_Cryo_list}    === MTCamera_vacuum_Cryo start of topic ===
+    Should Contain    ${vacuum_Cryo_list}    === MTCamera_vacuum_Cryo end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Cryo_list}    === [vacuum_Cryo Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Cryo_list}    === [vacuum_Cryo Subscriber] message received :200
+    ${vacuum_HX_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HX start of topic ===
+    ${vacuum_HX_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_HX end of topic ===
+    ${vacuum_HX_list}=    Get Slice From List    ${full_list}    start=${vacuum_HX_start}    end=${vacuum_HX_end + 1}
+    Log Many    ${vacuum_HX_list}
+    Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX start of topic ===
+    Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_HX_list}    === [vacuum_HX Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_HX_list}    === [vacuum_HX Subscriber] message received :200
+    ${vacuum_Inst_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst start of topic ===
+    ${vacuum_Inst_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst end of topic ===
+    ${vacuum_Inst_list}=    Get Slice From List    ${full_list}    start=${vacuum_Inst_start}    end=${vacuum_Inst_end + 1}
+    Log Many    ${vacuum_Inst_list}
+    Should Contain    ${vacuum_Inst_list}    === MTCamera_vacuum_Inst start of topic ===
+    Should Contain    ${vacuum_Inst_list}    === MTCamera_vacuum_Inst end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Inst_list}    === [vacuum_Inst Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Inst_list}    === [vacuum_Inst Subscriber] message received :200
     ${daq_monitor_Reb_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending start of topic ===
     ${daq_monitor_Reb_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_daq_monitor_Reb_Trending end of topic ===
     ${daq_monitor_Reb_Trending_list}=    Get Slice From List    ${full_list}    start=${daq_monitor_Reb_Trending_start}    end=${daq_monitor_Reb_Trending_end + 1}
@@ -1238,454 +927,342 @@ Read Subscriber
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :200
-    ${fcs_AcSensorsGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcSensorsGateway start of topic ===
-    ${fcs_AcSensorsGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcSensorsGateway end of topic ===
-    ${fcs_AcSensorsGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_AcSensorsGateway_start}    end=${fcs_AcSensorsGateway_end + 1}
-    Log Many    ${fcs_AcSensorsGateway_list}
-    Should Contain    ${fcs_AcSensorsGateway_list}    === MTCamera_fcs_AcSensorsGateway start of topic ===
-    Should Contain    ${fcs_AcSensorsGateway_list}    === MTCamera_fcs_AcSensorsGateway end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcSensorsGateway_list}    === [fcs_AcSensorsGateway Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcSensorsGateway_list}    === [fcs_AcSensorsGateway Subscriber] message received :200
-    ${fcs_AcTruckXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminus start of topic ===
-    ${fcs_AcTruckXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminus end of topic ===
-    ${fcs_AcTruckXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXminus_start}    end=${fcs_AcTruckXminus_end + 1}
-    Log Many    ${fcs_AcTruckXminus_list}
-    Should Contain    ${fcs_AcTruckXminus_list}    === MTCamera_fcs_AcTruckXminus start of topic ===
-    Should Contain    ${fcs_AcTruckXminus_list}    === MTCamera_fcs_AcTruckXminus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXminus_list}    === [fcs_AcTruckXminus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXminus_list}    === [fcs_AcTruckXminus Subscriber] message received :200
-    ${fcs_AcTruckXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminusController start of topic ===
-    ${fcs_AcTruckXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXminusController end of topic ===
-    ${fcs_AcTruckXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXminusController_start}    end=${fcs_AcTruckXminusController_end + 1}
-    Log Many    ${fcs_AcTruckXminusController_list}
-    Should Contain    ${fcs_AcTruckXminusController_list}    === MTCamera_fcs_AcTruckXminusController start of topic ===
-    Should Contain    ${fcs_AcTruckXminusController_list}    === MTCamera_fcs_AcTruckXminusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXminusController_list}    === [fcs_AcTruckXminusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXminusController_list}    === [fcs_AcTruckXminusController Subscriber] message received :200
-    ${fcs_AcTruckXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplus start of topic ===
-    ${fcs_AcTruckXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplus end of topic ===
-    ${fcs_AcTruckXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXplus_start}    end=${fcs_AcTruckXplus_end + 1}
-    Log Many    ${fcs_AcTruckXplus_list}
-    Should Contain    ${fcs_AcTruckXplus_list}    === MTCamera_fcs_AcTruckXplus start of topic ===
-    Should Contain    ${fcs_AcTruckXplus_list}    === MTCamera_fcs_AcTruckXplus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXplus_list}    === [fcs_AcTruckXplus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXplus_list}    === [fcs_AcTruckXplus Subscriber] message received :200
-    ${fcs_AcTruckXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplusController start of topic ===
-    ${fcs_AcTruckXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AcTruckXplusController end of topic ===
-    ${fcs_AcTruckXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_AcTruckXplusController_start}    end=${fcs_AcTruckXplusController_end + 1}
-    Log Many    ${fcs_AcTruckXplusController_list}
-    Should Contain    ${fcs_AcTruckXplusController_list}    === MTCamera_fcs_AcTruckXplusController start of topic ===
-    Should Contain    ${fcs_AcTruckXplusController_list}    === MTCamera_fcs_AcTruckXplusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXplusController_list}    === [fcs_AcTruckXplusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AcTruckXplusController_list}    === [fcs_AcTruckXplusController Subscriber] message received :200
-    ${fcs_Accelerobf_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Accelerobf start of topic ===
-    ${fcs_Accelerobf_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Accelerobf end of topic ===
-    ${fcs_Accelerobf_list}=    Get Slice From List    ${full_list}    start=${fcs_Accelerobf_start}    end=${fcs_Accelerobf_end + 1}
-    Log Many    ${fcs_Accelerobf_list}
-    Should Contain    ${fcs_Accelerobf_list}    === MTCamera_fcs_Accelerobf start of topic ===
-    Should Contain    ${fcs_Accelerobf_list}    === MTCamera_fcs_Accelerobf end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Accelerobf_list}    === [fcs_Accelerobf Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Accelerobf_list}    === [fcs_Accelerobf Subscriber] message received :200
-    ${fcs_Ai814_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Ai814 start of topic ===
-    ${fcs_Ai814_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Ai814 end of topic ===
-    ${fcs_Ai814_list}=    Get Slice From List    ${full_list}    start=${fcs_Ai814_start}    end=${fcs_Ai814_end + 1}
-    Log Many    ${fcs_Ai814_list}
-    Should Contain    ${fcs_Ai814_list}    === MTCamera_fcs_Ai814 start of topic ===
-    Should Contain    ${fcs_Ai814_list}    === MTCamera_fcs_Ai814 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Ai814_list}    === [fcs_Ai814 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Ai814_list}    === [fcs_Ai814 Subscriber] message received :200
-    ${fcs_Autochanger_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger start of topic ===
-    ${fcs_Autochanger_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger end of topic ===
-    ${fcs_Autochanger_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_start}    end=${fcs_Autochanger_end + 1}
-    Log Many    ${fcs_Autochanger_list}
-    Should Contain    ${fcs_Autochanger_list}    === MTCamera_fcs_Autochanger start of topic ===
-    Should Contain    ${fcs_Autochanger_list}    === MTCamera_fcs_Autochanger end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_list}    === [fcs_Autochanger Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_list}    === [fcs_Autochanger Subscriber] message received :200
-    ${fcs_AutochangerTrucks_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_AutochangerTrucks start of topic ===
-    ${fcs_AutochangerTrucks_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_AutochangerTrucks end of topic ===
-    ${fcs_AutochangerTrucks_list}=    Get Slice From List    ${full_list}    start=${fcs_AutochangerTrucks_start}    end=${fcs_AutochangerTrucks_end + 1}
-    Log Many    ${fcs_AutochangerTrucks_list}
-    Should Contain    ${fcs_AutochangerTrucks_list}    === MTCamera_fcs_AutochangerTrucks start of topic ===
-    Should Contain    ${fcs_AutochangerTrucks_list}    === MTCamera_fcs_AutochangerTrucks end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AutochangerTrucks_list}    === [fcs_AutochangerTrucks Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_AutochangerTrucks_list}    === [fcs_AutochangerTrucks Subscriber] message received :200
-    ${fcs_BrakeSystemGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_BrakeSystemGateway start of topic ===
-    ${fcs_BrakeSystemGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_BrakeSystemGateway end of topic ===
-    ${fcs_BrakeSystemGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_BrakeSystemGateway_start}    end=${fcs_BrakeSystemGateway_end + 1}
-    Log Many    ${fcs_BrakeSystemGateway_list}
-    Should Contain    ${fcs_BrakeSystemGateway_list}    === MTCamera_fcs_BrakeSystemGateway start of topic ===
-    Should Contain    ${fcs_BrakeSystemGateway_list}    === MTCamera_fcs_BrakeSystemGateway end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_BrakeSystemGateway_list}    === [fcs_BrakeSystemGateway Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_BrakeSystemGateway_list}    === [fcs_BrakeSystemGateway Subscriber] message received :200
-    ${fcs_Carousel_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel start of topic ===
-    ${fcs_Carousel_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel end of topic ===
-    ${fcs_Carousel_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_start}    end=${fcs_Carousel_end + 1}
-    Log Many    ${fcs_Carousel_list}
-    Should Contain    ${fcs_Carousel_list}    === MTCamera_fcs_Carousel start of topic ===
-    Should Contain    ${fcs_Carousel_list}    === MTCamera_fcs_Carousel end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_list}    === [fcs_Carousel Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_list}    === [fcs_Carousel Subscriber] message received :200
-    ${fcs_CarouselController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarouselController start of topic ===
-    ${fcs_CarouselController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarouselController end of topic ===
-    ${fcs_CarouselController_list}=    Get Slice From List    ${full_list}    start=${fcs_CarouselController_start}    end=${fcs_CarouselController_end + 1}
-    Log Many    ${fcs_CarouselController_list}
-    Should Contain    ${fcs_CarouselController_list}    === MTCamera_fcs_CarouselController start of topic ===
-    Should Contain    ${fcs_CarouselController_list}    === MTCamera_fcs_CarouselController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CarouselController_list}    === [fcs_CarouselController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CarouselController_list}    === [fcs_CarouselController Subscriber] message received :200
-    ${fcs_Carrier_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carrier start of topic ===
-    ${fcs_Carrier_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carrier end of topic ===
-    ${fcs_Carrier_list}=    Get Slice From List    ${full_list}    start=${fcs_Carrier_start}    end=${fcs_Carrier_end + 1}
-    Log Many    ${fcs_Carrier_list}
-    Should Contain    ${fcs_Carrier_list}    === MTCamera_fcs_Carrier start of topic ===
-    Should Contain    ${fcs_Carrier_list}    === MTCamera_fcs_Carrier end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Carrier_list}    === [fcs_Carrier Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Carrier_list}    === [fcs_Carrier Subscriber] message received :200
-    ${fcs_CarrierController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarrierController start of topic ===
-    ${fcs_CarrierController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CarrierController end of topic ===
-    ${fcs_CarrierController_list}=    Get Slice From List    ${full_list}    start=${fcs_CarrierController_start}    end=${fcs_CarrierController_end + 1}
-    Log Many    ${fcs_CarrierController_list}
-    Should Contain    ${fcs_CarrierController_list}    === MTCamera_fcs_CarrierController start of topic ===
-    Should Contain    ${fcs_CarrierController_list}    === MTCamera_fcs_CarrierController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CarrierController_list}    === [fcs_CarrierController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CarrierController_list}    === [fcs_CarrierController Subscriber] message received :200
-    ${fcs_CcsVersions_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_CcsVersions start of topic ===
-    ${fcs_CcsVersions_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_CcsVersions end of topic ===
-    ${fcs_CcsVersions_list}=    Get Slice From List    ${full_list}    start=${fcs_CcsVersions_start}    end=${fcs_CcsVersions_end + 1}
-    Log Many    ${fcs_CcsVersions_list}
-    Should Contain    ${fcs_CcsVersions_list}    === MTCamera_fcs_CcsVersions start of topic ===
-    Should Contain    ${fcs_CcsVersions_list}    === MTCamera_fcs_CcsVersions end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CcsVersions_list}    === [fcs_CcsVersions Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_CcsVersions_list}    === [fcs_CcsVersions Subscriber] message received :200
-    ${fcs_ClampXminus1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus1 start of topic ===
-    ${fcs_ClampXminus1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus1 end of topic ===
-    ${fcs_ClampXminus1_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus1_start}    end=${fcs_ClampXminus1_end + 1}
-    Log Many    ${fcs_ClampXminus1_list}
-    Should Contain    ${fcs_ClampXminus1_list}    === MTCamera_fcs_ClampXminus1 start of topic ===
-    Should Contain    ${fcs_ClampXminus1_list}    === MTCamera_fcs_ClampXminus1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus1_list}    === [fcs_ClampXminus1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus1_list}    === [fcs_ClampXminus1 Subscriber] message received :200
-    ${fcs_ClampXminus2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus2 start of topic ===
-    ${fcs_ClampXminus2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus2 end of topic ===
-    ${fcs_ClampXminus2_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus2_start}    end=${fcs_ClampXminus2_end + 1}
-    Log Many    ${fcs_ClampXminus2_list}
-    Should Contain    ${fcs_ClampXminus2_list}    === MTCamera_fcs_ClampXminus2 start of topic ===
-    Should Contain    ${fcs_ClampXminus2_list}    === MTCamera_fcs_ClampXminus2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus2_list}    === [fcs_ClampXminus2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus2_list}    === [fcs_ClampXminus2 Subscriber] message received :200
-    ${fcs_ClampXminus3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus3 start of topic ===
-    ${fcs_ClampXminus3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus3 end of topic ===
-    ${fcs_ClampXminus3_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus3_start}    end=${fcs_ClampXminus3_end + 1}
-    Log Many    ${fcs_ClampXminus3_list}
-    Should Contain    ${fcs_ClampXminus3_list}    === MTCamera_fcs_ClampXminus3 start of topic ===
-    Should Contain    ${fcs_ClampXminus3_list}    === MTCamera_fcs_ClampXminus3 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus3_list}    === [fcs_ClampXminus3 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus3_list}    === [fcs_ClampXminus3 Subscriber] message received :200
-    ${fcs_ClampXminus4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus4 start of topic ===
-    ${fcs_ClampXminus4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus4 end of topic ===
-    ${fcs_ClampXminus4_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus4_start}    end=${fcs_ClampXminus4_end + 1}
-    Log Many    ${fcs_ClampXminus4_list}
-    Should Contain    ${fcs_ClampXminus4_list}    === MTCamera_fcs_ClampXminus4 start of topic ===
-    Should Contain    ${fcs_ClampXminus4_list}    === MTCamera_fcs_ClampXminus4 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus4_list}    === [fcs_ClampXminus4 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus4_list}    === [fcs_ClampXminus4 Subscriber] message received :200
-    ${fcs_ClampXminus5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus5 start of topic ===
-    ${fcs_ClampXminus5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminus5 end of topic ===
-    ${fcs_ClampXminus5_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminus5_start}    end=${fcs_ClampXminus5_end + 1}
-    Log Many    ${fcs_ClampXminus5_list}
-    Should Contain    ${fcs_ClampXminus5_list}    === MTCamera_fcs_ClampXminus5 start of topic ===
-    Should Contain    ${fcs_ClampXminus5_list}    === MTCamera_fcs_ClampXminus5 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus5_list}    === [fcs_ClampXminus5 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminus5_list}    === [fcs_ClampXminus5 Subscriber] message received :200
-    ${fcs_ClampXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminusController start of topic ===
-    ${fcs_ClampXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXminusController end of topic ===
-    ${fcs_ClampXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXminusController_start}    end=${fcs_ClampXminusController_end + 1}
-    Log Many    ${fcs_ClampXminusController_list}
-    Should Contain    ${fcs_ClampXminusController_list}    === MTCamera_fcs_ClampXminusController start of topic ===
-    Should Contain    ${fcs_ClampXminusController_list}    === MTCamera_fcs_ClampXminusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminusController_list}    === [fcs_ClampXminusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXminusController_list}    === [fcs_ClampXminusController Subscriber] message received :200
-    ${fcs_ClampXplus1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus1 start of topic ===
-    ${fcs_ClampXplus1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus1 end of topic ===
-    ${fcs_ClampXplus1_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus1_start}    end=${fcs_ClampXplus1_end + 1}
-    Log Many    ${fcs_ClampXplus1_list}
-    Should Contain    ${fcs_ClampXplus1_list}    === MTCamera_fcs_ClampXplus1 start of topic ===
-    Should Contain    ${fcs_ClampXplus1_list}    === MTCamera_fcs_ClampXplus1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus1_list}    === [fcs_ClampXplus1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus1_list}    === [fcs_ClampXplus1 Subscriber] message received :200
-    ${fcs_ClampXplus2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus2 start of topic ===
-    ${fcs_ClampXplus2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus2 end of topic ===
-    ${fcs_ClampXplus2_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus2_start}    end=${fcs_ClampXplus2_end + 1}
-    Log Many    ${fcs_ClampXplus2_list}
-    Should Contain    ${fcs_ClampXplus2_list}    === MTCamera_fcs_ClampXplus2 start of topic ===
-    Should Contain    ${fcs_ClampXplus2_list}    === MTCamera_fcs_ClampXplus2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus2_list}    === [fcs_ClampXplus2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus2_list}    === [fcs_ClampXplus2 Subscriber] message received :200
-    ${fcs_ClampXplus3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus3 start of topic ===
-    ${fcs_ClampXplus3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus3 end of topic ===
-    ${fcs_ClampXplus3_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus3_start}    end=${fcs_ClampXplus3_end + 1}
-    Log Many    ${fcs_ClampXplus3_list}
-    Should Contain    ${fcs_ClampXplus3_list}    === MTCamera_fcs_ClampXplus3 start of topic ===
-    Should Contain    ${fcs_ClampXplus3_list}    === MTCamera_fcs_ClampXplus3 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus3_list}    === [fcs_ClampXplus3 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus3_list}    === [fcs_ClampXplus3 Subscriber] message received :200
-    ${fcs_ClampXplus4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus4 start of topic ===
-    ${fcs_ClampXplus4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus4 end of topic ===
-    ${fcs_ClampXplus4_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus4_start}    end=${fcs_ClampXplus4_end + 1}
-    Log Many    ${fcs_ClampXplus4_list}
-    Should Contain    ${fcs_ClampXplus4_list}    === MTCamera_fcs_ClampXplus4 start of topic ===
-    Should Contain    ${fcs_ClampXplus4_list}    === MTCamera_fcs_ClampXplus4 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus4_list}    === [fcs_ClampXplus4 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus4_list}    === [fcs_ClampXplus4 Subscriber] message received :200
-    ${fcs_ClampXplus5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus5 start of topic ===
-    ${fcs_ClampXplus5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplus5 end of topic ===
-    ${fcs_ClampXplus5_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplus5_start}    end=${fcs_ClampXplus5_end + 1}
-    Log Many    ${fcs_ClampXplus5_list}
-    Should Contain    ${fcs_ClampXplus5_list}    === MTCamera_fcs_ClampXplus5 start of topic ===
-    Should Contain    ${fcs_ClampXplus5_list}    === MTCamera_fcs_ClampXplus5 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus5_list}    === [fcs_ClampXplus5 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplus5_list}    === [fcs_ClampXplus5 Subscriber] message received :200
-    ${fcs_ClampXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplusController start of topic ===
-    ${fcs_ClampXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ClampXplusController end of topic ===
-    ${fcs_ClampXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_ClampXplusController_start}    end=${fcs_ClampXplusController_end + 1}
-    Log Many    ${fcs_ClampXplusController_list}
-    Should Contain    ${fcs_ClampXplusController_list}    === MTCamera_fcs_ClampXplusController start of topic ===
-    Should Contain    ${fcs_ClampXplusController_list}    === MTCamera_fcs_ClampXplusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplusController_list}    === [fcs_ClampXplusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ClampXplusController_list}    === [fcs_ClampXplusController Subscriber] message received :200
-    ${fcs_Config_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Config start of topic ===
-    ${fcs_Config_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Config end of topic ===
-    ${fcs_Config_list}=    Get Slice From List    ${full_list}    start=${fcs_Config_start}    end=${fcs_Config_end + 1}
-    Log Many    ${fcs_Config_list}
-    Should Contain    ${fcs_Config_list}    === MTCamera_fcs_Config start of topic ===
-    Should Contain    ${fcs_Config_list}    === MTCamera_fcs_Config end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Config_list}    === [fcs_Config Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Config_list}    === [fcs_Config Subscriber] message received :200
-    ${fcs_Hooks_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hooks start of topic ===
-    ${fcs_Hooks_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hooks end of topic ===
-    ${fcs_Hooks_list}=    Get Slice From List    ${full_list}    start=${fcs_Hooks_start}    end=${fcs_Hooks_end + 1}
-    Log Many    ${fcs_Hooks_list}
-    Should Contain    ${fcs_Hooks_list}    === MTCamera_fcs_Hooks start of topic ===
-    Should Contain    ${fcs_Hooks_list}    === MTCamera_fcs_Hooks end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Hooks_list}    === [fcs_Hooks Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Hooks_list}    === [fcs_Hooks Subscriber] message received :200
-    ${fcs_HooksController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_HooksController start of topic ===
-    ${fcs_HooksController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_HooksController end of topic ===
-    ${fcs_HooksController_list}=    Get Slice From List    ${full_list}    start=${fcs_HooksController_start}    end=${fcs_HooksController_end + 1}
-    Log Many    ${fcs_HooksController_list}
-    Should Contain    ${fcs_HooksController_list}    === MTCamera_fcs_HooksController start of topic ===
-    Should Contain    ${fcs_HooksController_list}    === MTCamera_fcs_HooksController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_HooksController_list}    === [fcs_HooksController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_HooksController_list}    === [fcs_HooksController Subscriber] message received :200
-    ${fcs_Hyttc580_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hyttc580 start of topic ===
-    ${fcs_Hyttc580_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Hyttc580 end of topic ===
-    ${fcs_Hyttc580_list}=    Get Slice From List    ${full_list}    start=${fcs_Hyttc580_start}    end=${fcs_Hyttc580_end + 1}
-    Log Many    ${fcs_Hyttc580_list}
-    Should Contain    ${fcs_Hyttc580_list}    === MTCamera_fcs_Hyttc580 start of topic ===
-    Should Contain    ${fcs_Hyttc580_list}    === MTCamera_fcs_Hyttc580 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Hyttc580_list}    === [fcs_Hyttc580 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Hyttc580_list}    === [fcs_Hyttc580 Subscriber] message received :200
-    ${fcs_LatchXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminus start of topic ===
-    ${fcs_LatchXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminus end of topic ===
-    ${fcs_LatchXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXminus_start}    end=${fcs_LatchXminus_end + 1}
-    Log Many    ${fcs_LatchXminus_list}
-    Should Contain    ${fcs_LatchXminus_list}    === MTCamera_fcs_LatchXminus start of topic ===
-    Should Contain    ${fcs_LatchXminus_list}    === MTCamera_fcs_LatchXminus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXminus_list}    === [fcs_LatchXminus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXminus_list}    === [fcs_LatchXminus Subscriber] message received :200
-    ${fcs_LatchXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminusController start of topic ===
-    ${fcs_LatchXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXminusController end of topic ===
-    ${fcs_LatchXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXminusController_start}    end=${fcs_LatchXminusController_end + 1}
-    Log Many    ${fcs_LatchXminusController_list}
-    Should Contain    ${fcs_LatchXminusController_list}    === MTCamera_fcs_LatchXminusController start of topic ===
-    Should Contain    ${fcs_LatchXminusController_list}    === MTCamera_fcs_LatchXminusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXminusController_list}    === [fcs_LatchXminusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXminusController_list}    === [fcs_LatchXminusController Subscriber] message received :200
-    ${fcs_LatchXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplus start of topic ===
-    ${fcs_LatchXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplus end of topic ===
-    ${fcs_LatchXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXplus_start}    end=${fcs_LatchXplus_end + 1}
-    Log Many    ${fcs_LatchXplus_list}
-    Should Contain    ${fcs_LatchXplus_list}    === MTCamera_fcs_LatchXplus start of topic ===
-    Should Contain    ${fcs_LatchXplus_list}    === MTCamera_fcs_LatchXplus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXplus_list}    === [fcs_LatchXplus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXplus_list}    === [fcs_LatchXplus Subscriber] message received :200
-    ${fcs_LatchXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplusController start of topic ===
-    ${fcs_LatchXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LatchXplusController end of topic ===
-    ${fcs_LatchXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_LatchXplusController_start}    end=${fcs_LatchXplusController_end + 1}
-    Log Many    ${fcs_LatchXplusController_list}
-    Should Contain    ${fcs_LatchXplusController_list}    === MTCamera_fcs_LatchXplusController start of topic ===
-    Should Contain    ${fcs_LatchXplusController_list}    === MTCamera_fcs_LatchXplusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXplusController_list}    === [fcs_LatchXplusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LatchXplusController_list}    === [fcs_LatchXplusController Subscriber] message received :200
-    ${fcs_Latches_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Latches start of topic ===
-    ${fcs_Latches_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Latches end of topic ===
-    ${fcs_Latches_list}=    Get Slice From List    ${full_list}    start=${fcs_Latches_start}    end=${fcs_Latches_end + 1}
-    Log Many    ${fcs_Latches_list}
-    Should Contain    ${fcs_Latches_list}    === MTCamera_fcs_Latches start of topic ===
-    Should Contain    ${fcs_Latches_list}    === MTCamera_fcs_Latches end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Latches_list}    === [fcs_Latches Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Latches_list}    === [fcs_Latches Subscriber] message received :200
-    ${fcs_Loader_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader start of topic ===
-    ${fcs_Loader_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader end of topic ===
-    ${fcs_Loader_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_start}    end=${fcs_Loader_end + 1}
-    Log Many    ${fcs_Loader_list}
-    Should Contain    ${fcs_Loader_list}    === MTCamera_fcs_Loader start of topic ===
-    Should Contain    ${fcs_Loader_list}    === MTCamera_fcs_Loader end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_list}    === [fcs_Loader Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_list}    === [fcs_Loader Subscriber] message received :200
-    ${fcs_LoaderPlutoGateway_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_LoaderPlutoGateway start of topic ===
-    ${fcs_LoaderPlutoGateway_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_LoaderPlutoGateway end of topic ===
-    ${fcs_LoaderPlutoGateway_list}=    Get Slice From List    ${full_list}    start=${fcs_LoaderPlutoGateway_start}    end=${fcs_LoaderPlutoGateway_end + 1}
-    Log Many    ${fcs_LoaderPlutoGateway_list}
-    Should Contain    ${fcs_LoaderPlutoGateway_list}    === MTCamera_fcs_LoaderPlutoGateway start of topic ===
-    Should Contain    ${fcs_LoaderPlutoGateway_list}    === MTCamera_fcs_LoaderPlutoGateway end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LoaderPlutoGateway_list}    === [fcs_LoaderPlutoGateway Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_LoaderPlutoGateway_list}    === [fcs_LoaderPlutoGateway Subscriber] message received :200
-    ${fcs_OnlineClampXminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminus start of topic ===
-    ${fcs_OnlineClampXminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminus end of topic ===
-    ${fcs_OnlineClampXminus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXminus_start}    end=${fcs_OnlineClampXminus_end + 1}
-    Log Many    ${fcs_OnlineClampXminus_list}
-    Should Contain    ${fcs_OnlineClampXminus_list}    === MTCamera_fcs_OnlineClampXminus start of topic ===
-    Should Contain    ${fcs_OnlineClampXminus_list}    === MTCamera_fcs_OnlineClampXminus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXminus_list}    === [fcs_OnlineClampXminus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXminus_list}    === [fcs_OnlineClampXminus Subscriber] message received :200
-    ${fcs_OnlineClampXminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminusController start of topic ===
-    ${fcs_OnlineClampXminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXminusController end of topic ===
-    ${fcs_OnlineClampXminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXminusController_start}    end=${fcs_OnlineClampXminusController_end + 1}
-    Log Many    ${fcs_OnlineClampXminusController_list}
-    Should Contain    ${fcs_OnlineClampXminusController_list}    === MTCamera_fcs_OnlineClampXminusController start of topic ===
-    Should Contain    ${fcs_OnlineClampXminusController_list}    === MTCamera_fcs_OnlineClampXminusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXminusController_list}    === [fcs_OnlineClampXminusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXminusController_list}    === [fcs_OnlineClampXminusController Subscriber] message received :200
-    ${fcs_OnlineClampXplus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplus start of topic ===
-    ${fcs_OnlineClampXplus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplus end of topic ===
-    ${fcs_OnlineClampXplus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXplus_start}    end=${fcs_OnlineClampXplus_end + 1}
-    Log Many    ${fcs_OnlineClampXplus_list}
-    Should Contain    ${fcs_OnlineClampXplus_list}    === MTCamera_fcs_OnlineClampXplus start of topic ===
-    Should Contain    ${fcs_OnlineClampXplus_list}    === MTCamera_fcs_OnlineClampXplus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXplus_list}    === [fcs_OnlineClampXplus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXplus_list}    === [fcs_OnlineClampXplus Subscriber] message received :200
-    ${fcs_OnlineClampXplusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplusController start of topic ===
-    ${fcs_OnlineClampXplusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampXplusController end of topic ===
-    ${fcs_OnlineClampXplusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampXplusController_start}    end=${fcs_OnlineClampXplusController_end + 1}
-    Log Many    ${fcs_OnlineClampXplusController_list}
-    Should Contain    ${fcs_OnlineClampXplusController_list}    === MTCamera_fcs_OnlineClampXplusController start of topic ===
-    Should Contain    ${fcs_OnlineClampXplusController_list}    === MTCamera_fcs_OnlineClampXplusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXplusController_list}    === [fcs_OnlineClampXplusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampXplusController_list}    === [fcs_OnlineClampXplusController Subscriber] message received :200
-    ${fcs_OnlineClampYminus_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminus start of topic ===
-    ${fcs_OnlineClampYminus_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminus end of topic ===
-    ${fcs_OnlineClampYminus_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampYminus_start}    end=${fcs_OnlineClampYminus_end + 1}
-    Log Many    ${fcs_OnlineClampYminus_list}
-    Should Contain    ${fcs_OnlineClampYminus_list}    === MTCamera_fcs_OnlineClampYminus start of topic ===
-    Should Contain    ${fcs_OnlineClampYminus_list}    === MTCamera_fcs_OnlineClampYminus end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampYminus_list}    === [fcs_OnlineClampYminus Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampYminus_list}    === [fcs_OnlineClampYminus Subscriber] message received :200
-    ${fcs_OnlineClampYminusController_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminusController start of topic ===
-    ${fcs_OnlineClampYminusController_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClampYminusController end of topic ===
-    ${fcs_OnlineClampYminusController_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClampYminusController_start}    end=${fcs_OnlineClampYminusController_end + 1}
-    Log Many    ${fcs_OnlineClampYminusController_list}
-    Should Contain    ${fcs_OnlineClampYminusController_list}    === MTCamera_fcs_OnlineClampYminusController start of topic ===
-    Should Contain    ${fcs_OnlineClampYminusController_list}    === MTCamera_fcs_OnlineClampYminusController end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampYminusController_list}    === [fcs_OnlineClampYminusController Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClampYminusController_list}    === [fcs_OnlineClampYminusController Subscriber] message received :200
-    ${fcs_OnlineClamps_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClamps start of topic ===
-    ${fcs_OnlineClamps_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineClamps end of topic ===
-    ${fcs_OnlineClamps_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineClamps_start}    end=${fcs_OnlineClamps_end + 1}
-    Log Many    ${fcs_OnlineClamps_list}
-    Should Contain    ${fcs_OnlineClamps_list}    === MTCamera_fcs_OnlineClamps start of topic ===
-    Should Contain    ${fcs_OnlineClamps_list}    === MTCamera_fcs_OnlineClamps end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClamps_list}    === [fcs_OnlineClamps Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineClamps_list}    === [fcs_OnlineClamps Subscriber] message received :200
-    ${fcs_OnlineStrainGauge_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineStrainGauge start of topic ===
-    ${fcs_OnlineStrainGauge_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_OnlineStrainGauge end of topic ===
-    ${fcs_OnlineStrainGauge_list}=    Get Slice From List    ${full_list}    start=${fcs_OnlineStrainGauge_start}    end=${fcs_OnlineStrainGauge_end + 1}
-    Log Many    ${fcs_OnlineStrainGauge_list}
-    Should Contain    ${fcs_OnlineStrainGauge_list}    === MTCamera_fcs_OnlineStrainGauge start of topic ===
-    Should Contain    ${fcs_OnlineStrainGauge_list}    === MTCamera_fcs_OnlineStrainGauge end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineStrainGauge_list}    === [fcs_OnlineStrainGauge Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_OnlineStrainGauge_list}    === [fcs_OnlineStrainGauge Subscriber] message received :200
-    ${fcs_ProximitySensorsDevice_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_ProximitySensorsDevice start of topic ===
-    ${fcs_ProximitySensorsDevice_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_ProximitySensorsDevice end of topic ===
-    ${fcs_ProximitySensorsDevice_list}=    Get Slice From List    ${full_list}    start=${fcs_ProximitySensorsDevice_start}    end=${fcs_ProximitySensorsDevice_end + 1}
-    Log Many    ${fcs_ProximitySensorsDevice_list}
-    Should Contain    ${fcs_ProximitySensorsDevice_list}    === MTCamera_fcs_ProximitySensorsDevice start of topic ===
-    Should Contain    ${fcs_ProximitySensorsDevice_list}    === MTCamera_fcs_ProximitySensorsDevice end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ProximitySensorsDevice_list}    === [fcs_ProximitySensorsDevice Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_ProximitySensorsDevice_list}    === [fcs_ProximitySensorsDevice Subscriber] message received :200
-    ${fcs_Pt100_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Pt100 start of topic ===
-    ${fcs_Pt100_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Pt100 end of topic ===
-    ${fcs_Pt100_list}=    Get Slice From List    ${full_list}    start=${fcs_Pt100_start}    end=${fcs_Pt100_end + 1}
-    Log Many    ${fcs_Pt100_list}
-    Should Contain    ${fcs_Pt100_list}    === MTCamera_fcs_Pt100 start of topic ===
-    Should Contain    ${fcs_Pt100_list}    === MTCamera_fcs_Pt100 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Pt100_list}    === [fcs_Pt100 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Pt100_list}    === [fcs_Pt100 Subscriber] message received :200
-    ${fcs_RuntimeInfo_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_RuntimeInfo start of topic ===
-    ${fcs_RuntimeInfo_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_RuntimeInfo end of topic ===
-    ${fcs_RuntimeInfo_list}=    Get Slice From List    ${full_list}    start=${fcs_RuntimeInfo_start}    end=${fcs_RuntimeInfo_end + 1}
-    Log Many    ${fcs_RuntimeInfo_list}
-    Should Contain    ${fcs_RuntimeInfo_list}    === MTCamera_fcs_RuntimeInfo start of topic ===
-    Should Contain    ${fcs_RuntimeInfo_list}    === MTCamera_fcs_RuntimeInfo end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_RuntimeInfo_list}    === [fcs_RuntimeInfo Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_RuntimeInfo_list}    === [fcs_RuntimeInfo Subscriber] message received :200
-    ${fcs_Socket1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket1 start of topic ===
-    ${fcs_Socket1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket1 end of topic ===
-    ${fcs_Socket1_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket1_start}    end=${fcs_Socket1_end + 1}
-    Log Many    ${fcs_Socket1_list}
-    Should Contain    ${fcs_Socket1_list}    === MTCamera_fcs_Socket1 start of topic ===
-    Should Contain    ${fcs_Socket1_list}    === MTCamera_fcs_Socket1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket1_list}    === [fcs_Socket1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket1_list}    === [fcs_Socket1 Subscriber] message received :200
-    ${fcs_Socket2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket2 start of topic ===
-    ${fcs_Socket2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket2 end of topic ===
-    ${fcs_Socket2_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket2_start}    end=${fcs_Socket2_end + 1}
-    Log Many    ${fcs_Socket2_list}
-    Should Contain    ${fcs_Socket2_list}    === MTCamera_fcs_Socket2 start of topic ===
-    Should Contain    ${fcs_Socket2_list}    === MTCamera_fcs_Socket2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket2_list}    === [fcs_Socket2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket2_list}    === [fcs_Socket2 Subscriber] message received :200
-    ${fcs_Socket3_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket3 start of topic ===
-    ${fcs_Socket3_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket3 end of topic ===
-    ${fcs_Socket3_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket3_start}    end=${fcs_Socket3_end + 1}
-    Log Many    ${fcs_Socket3_list}
-    Should Contain    ${fcs_Socket3_list}    === MTCamera_fcs_Socket3 start of topic ===
-    Should Contain    ${fcs_Socket3_list}    === MTCamera_fcs_Socket3 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket3_list}    === [fcs_Socket3 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket3_list}    === [fcs_Socket3 Subscriber] message received :200
-    ${fcs_Socket4_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket4 start of topic ===
-    ${fcs_Socket4_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket4 end of topic ===
-    ${fcs_Socket4_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket4_start}    end=${fcs_Socket4_end + 1}
-    Log Many    ${fcs_Socket4_list}
-    Should Contain    ${fcs_Socket4_list}    === MTCamera_fcs_Socket4 start of topic ===
-    Should Contain    ${fcs_Socket4_list}    === MTCamera_fcs_Socket4 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket4_list}    === [fcs_Socket4 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket4_list}    === [fcs_Socket4 Subscriber] message received :200
-    ${fcs_Socket5_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket5 start of topic ===
-    ${fcs_Socket5_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Socket5 end of topic ===
-    ${fcs_Socket5_list}=    Get Slice From List    ${full_list}    start=${fcs_Socket5_start}    end=${fcs_Socket5_end + 1}
-    Log Many    ${fcs_Socket5_list}
-    Should Contain    ${fcs_Socket5_list}    === MTCamera_fcs_Socket5 start of topic ===
-    Should Contain    ${fcs_Socket5_list}    === MTCamera_fcs_Socket5 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket5_list}    === [fcs_Socket5 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_Socket5_list}    === [fcs_Socket5 Subscriber] message received :200
-    ${fcs_TempSensorsDevice1_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice1 start of topic ===
-    ${fcs_TempSensorsDevice1_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice1 end of topic ===
-    ${fcs_TempSensorsDevice1_list}=    Get Slice From List    ${full_list}    start=${fcs_TempSensorsDevice1_start}    end=${fcs_TempSensorsDevice1_end + 1}
-    Log Many    ${fcs_TempSensorsDevice1_list}
-    Should Contain    ${fcs_TempSensorsDevice1_list}    === MTCamera_fcs_TempSensorsDevice1 start of topic ===
-    Should Contain    ${fcs_TempSensorsDevice1_list}    === MTCamera_fcs_TempSensorsDevice1 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice1_list}    === [fcs_TempSensorsDevice1 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice1_list}    === [fcs_TempSensorsDevice1 Subscriber] message received :200
-    ${fcs_TempSensorsDevice2_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
-    ${fcs_TempSensorsDevice2_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
-    ${fcs_TempSensorsDevice2_list}=    Get Slice From List    ${full_list}    start=${fcs_TempSensorsDevice2_start}    end=${fcs_TempSensorsDevice2_end + 1}
-    Log Many    ${fcs_TempSensorsDevice2_list}
-    Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 start of topic ===
-    Should Contain    ${fcs_TempSensorsDevice2_list}    === MTCamera_fcs_TempSensorsDevice2 end of topic ===
-    Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :10
-    Run Keyword And Ignore Error    Should Contain    ${fcs_TempSensorsDevice2_list}    === [fcs_TempSensorsDevice2 Subscriber] message received :200
+    ${fcs_Autochanger_AutochangerTrucks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
+    ${fcs_Autochanger_AutochangerTrucks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
+    ${fcs_Autochanger_AutochangerTrucks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_AutochangerTrucks_Trending_start}    end=${fcs_Autochanger_AutochangerTrucks_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_AutochangerTrucks_Trending_list}
+    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === [fcs_Autochanger_AutochangerTrucks_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_AutochangerTrucks_Trending_list}    === [fcs_Autochanger_AutochangerTrucks_Trending Subscriber] message received :200
+    ${fcs_Autochanger_Latches_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Latches_Trending start of topic ===
+    ${fcs_Autochanger_Latches_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Latches_Trending end of topic ===
+    ${fcs_Autochanger_Latches_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_Latches_Trending_start}    end=${fcs_Autochanger_Latches_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_Latches_Trending_list}
+    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === MTCamera_fcs_Autochanger_Latches_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === MTCamera_fcs_Autochanger_Latches_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === [fcs_Autochanger_Latches_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_Latches_Trending_list}    === [fcs_Autochanger_Latches_Trending Subscriber] message received :200
+    ${fcs_Autochanger_OnlineClamps_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending start of topic ===
+    ${fcs_Autochanger_OnlineClamps_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending end of topic ===
+    ${fcs_Autochanger_OnlineClamps_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_OnlineClamps_Trending_start}    end=${fcs_Autochanger_OnlineClamps_Trending_end + 1}
+    Log Many    ${fcs_Autochanger_OnlineClamps_Trending_list}
+    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending start of topic ===
+    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === MTCamera_fcs_Autochanger_OnlineClamps_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === [fcs_Autochanger_OnlineClamps_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_OnlineClamps_Trending_list}    === [fcs_Autochanger_OnlineClamps_Trending Subscriber] message received :200
+    ${fcs_Autochanger_Temperatures_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Temperatures start of topic ===
+    ${fcs_Autochanger_Temperatures_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_Temperatures end of topic ===
+    ${fcs_Autochanger_Temperatures_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_Temperatures_start}    end=${fcs_Autochanger_Temperatures_end + 1}
+    Log Many    ${fcs_Autochanger_Temperatures_list}
+    Should Contain    ${fcs_Autochanger_Temperatures_list}    === MTCamera_fcs_Autochanger_Temperatures start of topic ===
+    Should Contain    ${fcs_Autochanger_Temperatures_list}    === MTCamera_fcs_Autochanger_Temperatures end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_Temperatures_list}    === [fcs_Autochanger_Temperatures Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Autochanger_Temperatures_list}    === [fcs_Autochanger_Temperatures Subscriber] message received :200
+    ${fcs_Canbus0_AcSensorsGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending start of topic ===
+    ${fcs_Canbus0_AcSensorsGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending end of topic ===
+    ${fcs_Canbus0_AcSensorsGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcSensorsGateway_Trending_start}    end=${fcs_Canbus0_AcSensorsGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcSensorsGateway_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === MTCamera_fcs_Canbus0_AcSensorsGateway_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === [fcs_Canbus0_AcSensorsGateway_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcSensorsGateway_Trending_list}    === [fcs_Canbus0_AcSensorsGateway_Trending Subscriber] message received :200
+    ${fcs_Canbus0_AcTruckXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending start of topic ===
+    ${fcs_Canbus0_AcTruckXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending end of topic ===
+    ${fcs_Canbus0_AcTruckXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcTruckXminusController_Trending_start}    end=${fcs_Canbus0_AcTruckXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcTruckXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXminusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === [fcs_Canbus0_AcTruckXminusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcTruckXminusController_Trending_list}    === [fcs_Canbus0_AcTruckXminusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_AcTruckXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending start of topic ===
+    ${fcs_Canbus0_AcTruckXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending end of topic ===
+    ${fcs_Canbus0_AcTruckXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_AcTruckXplusController_Trending_start}    end=${fcs_Canbus0_AcTruckXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_AcTruckXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === MTCamera_fcs_Canbus0_AcTruckXplusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === [fcs_Canbus0_AcTruckXplusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_AcTruckXplusController_Trending_list}    === [fcs_Canbus0_AcTruckXplusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_Accelerobf_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending start of topic ===
+    ${fcs_Canbus0_Accelerobf_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending end of topic ===
+    ${fcs_Canbus0_Accelerobf_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Accelerobf_Trending_start}    end=${fcs_Canbus0_Accelerobf_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Accelerobf_Trending_list}
+    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === MTCamera_fcs_Canbus0_Accelerobf_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === [fcs_Canbus0_Accelerobf_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Accelerobf_Trending_list}    === [fcs_Canbus0_Accelerobf_Trending Subscriber] message received :200
+    ${fcs_Canbus0_Ai814_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Ai814_Trending start of topic ===
+    ${fcs_Canbus0_Ai814_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Ai814_Trending end of topic ===
+    ${fcs_Canbus0_Ai814_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Ai814_Trending_start}    end=${fcs_Canbus0_Ai814_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Ai814_Trending_list}
+    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === MTCamera_fcs_Canbus0_Ai814_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === MTCamera_fcs_Canbus0_Ai814_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === [fcs_Canbus0_Ai814_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Ai814_Trending_list}    === [fcs_Canbus0_Ai814_Trending Subscriber] message received :200
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending start of topic ===
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending end of topic ===
+    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_BrakeSystemGateway_Trending_start}    end=${fcs_Canbus0_BrakeSystemGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}
+    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === MTCamera_fcs_Canbus0_BrakeSystemGateway_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === [fcs_Canbus0_BrakeSystemGateway_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_BrakeSystemGateway_Trending_list}    === [fcs_Canbus0_BrakeSystemGateway_Trending Subscriber] message received :200
+    ${fcs_Canbus0_CarouselController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending start of topic ===
+    ${fcs_Canbus0_CarouselController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending end of topic ===
+    ${fcs_Canbus0_CarouselController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_CarouselController_Trending_start}    end=${fcs_Canbus0_CarouselController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_CarouselController_Trending_list}
+    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === MTCamera_fcs_Canbus0_CarouselController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === [fcs_Canbus0_CarouselController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_CarouselController_Trending_list}    === [fcs_Canbus0_CarouselController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_ClampXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending start of topic ===
+    ${fcs_Canbus0_ClampXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending end of topic ===
+    ${fcs_Canbus0_ClampXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ClampXminusController_Trending_start}    end=${fcs_Canbus0_ClampXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ClampXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXminusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === [fcs_Canbus0_ClampXminusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ClampXminusController_Trending_list}    === [fcs_Canbus0_ClampXminusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_ClampXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending start of topic ===
+    ${fcs_Canbus0_ClampXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending end of topic ===
+    ${fcs_Canbus0_ClampXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ClampXplusController_Trending_start}    end=${fcs_Canbus0_ClampXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ClampXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_ClampXplusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === [fcs_Canbus0_ClampXplusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ClampXplusController_Trending_list}    === [fcs_Canbus0_ClampXplusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_Hyttc580_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending start of topic ===
+    ${fcs_Canbus0_Hyttc580_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending end of topic ===
+    ${fcs_Canbus0_Hyttc580_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Hyttc580_Trending_start}    end=${fcs_Canbus0_Hyttc580_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Hyttc580_Trending_list}
+    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === MTCamera_fcs_Canbus0_Hyttc580_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === [fcs_Canbus0_Hyttc580_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Hyttc580_Trending_list}    === [fcs_Canbus0_Hyttc580_Trending Subscriber] message received :200
+    ${fcs_Canbus0_LatchXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending start of topic ===
+    ${fcs_Canbus0_LatchXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending end of topic ===
+    ${fcs_Canbus0_LatchXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_LatchXminusController_Trending_start}    end=${fcs_Canbus0_LatchXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_LatchXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXminusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === [fcs_Canbus0_LatchXminusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_LatchXminusController_Trending_list}    === [fcs_Canbus0_LatchXminusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_LatchXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending start of topic ===
+    ${fcs_Canbus0_LatchXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending end of topic ===
+    ${fcs_Canbus0_LatchXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_LatchXplusController_Trending_start}    end=${fcs_Canbus0_LatchXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_LatchXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === MTCamera_fcs_Canbus0_LatchXplusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === [fcs_Canbus0_LatchXplusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_LatchXplusController_Trending_list}    === [fcs_Canbus0_LatchXplusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampXminusController_Trending_start}    end=${fcs_Canbus0_OnlineClampXminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXminusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === [fcs_Canbus0_OnlineClampXminusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampXminusController_Trending_list}    === [fcs_Canbus0_OnlineClampXminusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampXplusController_Trending_start}    end=${fcs_Canbus0_OnlineClampXplusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampXplusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === [fcs_Canbus0_OnlineClampXplusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampXplusController_Trending_list}    === [fcs_Canbus0_OnlineClampXplusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending start of topic ===
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending end of topic ===
+    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineClampYminusController_Trending_start}    end=${fcs_Canbus0_OnlineClampYminusController_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === MTCamera_fcs_Canbus0_OnlineClampYminusController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === [fcs_Canbus0_OnlineClampYminusController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineClampYminusController_Trending_list}    === [fcs_Canbus0_OnlineClampYminusController_Trending Subscriber] message received :200
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending start of topic ===
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending end of topic ===
+    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_OnlineStrainGauge_Trending_start}    end=${fcs_Canbus0_OnlineStrainGauge_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}
+    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === MTCamera_fcs_Canbus0_OnlineStrainGauge_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === [fcs_Canbus0_OnlineStrainGauge_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_OnlineStrainGauge_Trending_list}    === [fcs_Canbus0_OnlineStrainGauge_Trending Subscriber] message received :200
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending start of topic ===
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending end of topic ===
+    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_ProximitySensorsDevice_Trending_start}    end=${fcs_Canbus0_ProximitySensorsDevice_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}
+    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === MTCamera_fcs_Canbus0_ProximitySensorsDevice_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === [fcs_Canbus0_ProximitySensorsDevice_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_ProximitySensorsDevice_Trending_list}    === [fcs_Canbus0_ProximitySensorsDevice_Trending Subscriber] message received :200
+    ${fcs_Canbus0_Pt100_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Pt100_Trending start of topic ===
+    ${fcs_Canbus0_Pt100_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_Pt100_Trending end of topic ===
+    ${fcs_Canbus0_Pt100_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_Pt100_Trending_start}    end=${fcs_Canbus0_Pt100_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_Pt100_Trending_list}
+    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === MTCamera_fcs_Canbus0_Pt100_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === MTCamera_fcs_Canbus0_Pt100_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === [fcs_Canbus0_Pt100_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_Pt100_Trending_list}    === [fcs_Canbus0_Pt100_Trending Subscriber] message received :200
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending start of topic ===
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending end of topic ===
+    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_TempSensorsDevice1_Trending_start}    end=${fcs_Canbus0_TempSensorsDevice1_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice1_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === [fcs_Canbus0_TempSensorsDevice1_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_TempSensorsDevice1_Trending_list}    === [fcs_Canbus0_TempSensorsDevice1_Trending Subscriber] message received :200
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending start of topic ===
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending end of topic ===
+    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus0_TempSensorsDevice2_Trending_start}    end=${fcs_Canbus0_TempSensorsDevice2_Trending_end + 1}
+    Log Many    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending start of topic ===
+    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === MTCamera_fcs_Canbus0_TempSensorsDevice2_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === [fcs_Canbus0_TempSensorsDevice2_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus0_TempSensorsDevice2_Trending_list}    === [fcs_Canbus0_TempSensorsDevice2_Trending Subscriber] message received :200
+    ${fcs_Canbus1_CarrierController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending start of topic ===
+    ${fcs_Canbus1_CarrierController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending end of topic ===
+    ${fcs_Canbus1_CarrierController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_CarrierController_Trending_start}    end=${fcs_Canbus1_CarrierController_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_CarrierController_Trending_list}
+    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === MTCamera_fcs_Canbus1_CarrierController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === [fcs_Canbus1_CarrierController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_CarrierController_Trending_list}    === [fcs_Canbus1_CarrierController_Trending Subscriber] message received :200
+    ${fcs_Canbus1_HooksController_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_HooksController_Trending start of topic ===
+    ${fcs_Canbus1_HooksController_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_HooksController_Trending end of topic ===
+    ${fcs_Canbus1_HooksController_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_HooksController_Trending_start}    end=${fcs_Canbus1_HooksController_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_HooksController_Trending_list}
+    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === MTCamera_fcs_Canbus1_HooksController_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === MTCamera_fcs_Canbus1_HooksController_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === [fcs_Canbus1_HooksController_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_HooksController_Trending_list}    === [fcs_Canbus1_HooksController_Trending Subscriber] message received :200
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending start of topic ===
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending end of topic ===
+    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Canbus1_LoaderPlutoGateway_Trending_start}    end=${fcs_Canbus1_LoaderPlutoGateway_Trending_end + 1}
+    Log Many    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}
+    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending start of topic ===
+    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === MTCamera_fcs_Canbus1_LoaderPlutoGateway_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === [fcs_Canbus1_LoaderPlutoGateway_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Canbus1_LoaderPlutoGateway_Trending_list}    === [fcs_Canbus1_LoaderPlutoGateway_Trending Subscriber] message received :200
+    ${fcs_Carousel_Socket1_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket1_Trending start of topic ===
+    ${fcs_Carousel_Socket1_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket1_Trending end of topic ===
+    ${fcs_Carousel_Socket1_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket1_Trending_start}    end=${fcs_Carousel_Socket1_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket1_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === MTCamera_fcs_Carousel_Socket1_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === MTCamera_fcs_Carousel_Socket1_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === [fcs_Carousel_Socket1_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket1_Trending_list}    === [fcs_Carousel_Socket1_Trending Subscriber] message received :200
+    ${fcs_Carousel_Socket2_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket2_Trending start of topic ===
+    ${fcs_Carousel_Socket2_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket2_Trending end of topic ===
+    ${fcs_Carousel_Socket2_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket2_Trending_start}    end=${fcs_Carousel_Socket2_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket2_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === MTCamera_fcs_Carousel_Socket2_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === MTCamera_fcs_Carousel_Socket2_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === [fcs_Carousel_Socket2_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket2_Trending_list}    === [fcs_Carousel_Socket2_Trending Subscriber] message received :200
+    ${fcs_Carousel_Socket3_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket3_Trending start of topic ===
+    ${fcs_Carousel_Socket3_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket3_Trending end of topic ===
+    ${fcs_Carousel_Socket3_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket3_Trending_start}    end=${fcs_Carousel_Socket3_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket3_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === MTCamera_fcs_Carousel_Socket3_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === MTCamera_fcs_Carousel_Socket3_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === [fcs_Carousel_Socket3_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket3_Trending_list}    === [fcs_Carousel_Socket3_Trending Subscriber] message received :200
+    ${fcs_Carousel_Socket4_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket4_Trending start of topic ===
+    ${fcs_Carousel_Socket4_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket4_Trending end of topic ===
+    ${fcs_Carousel_Socket4_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket4_Trending_start}    end=${fcs_Carousel_Socket4_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket4_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === MTCamera_fcs_Carousel_Socket4_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === MTCamera_fcs_Carousel_Socket4_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === [fcs_Carousel_Socket4_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket4_Trending_list}    === [fcs_Carousel_Socket4_Trending Subscriber] message received :200
+    ${fcs_Carousel_Socket5_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket5_Trending start of topic ===
+    ${fcs_Carousel_Socket5_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Socket5_Trending end of topic ===
+    ${fcs_Carousel_Socket5_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Socket5_Trending_start}    end=${fcs_Carousel_Socket5_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Socket5_Trending_list}
+    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === MTCamera_fcs_Carousel_Socket5_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === MTCamera_fcs_Carousel_Socket5_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === [fcs_Carousel_Socket5_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Socket5_Trending_list}    === [fcs_Carousel_Socket5_Trending Subscriber] message received :200
+    ${fcs_Carousel_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Trending start of topic ===
+    ${fcs_Carousel_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Carousel_Trending end of topic ===
+    ${fcs_Carousel_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Carousel_Trending_start}    end=${fcs_Carousel_Trending_end + 1}
+    Log Many    ${fcs_Carousel_Trending_list}
+    Should Contain    ${fcs_Carousel_Trending_list}    === MTCamera_fcs_Carousel_Trending start of topic ===
+    Should Contain    ${fcs_Carousel_Trending_list}    === MTCamera_fcs_Carousel_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Trending_list}    === [fcs_Carousel_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Carousel_Trending_list}    === [fcs_Carousel_Trending Subscriber] message received :200
+    ${fcs_Duration_Autochanger_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Autochanger_Trending start of topic ===
+    ${fcs_Duration_Autochanger_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Autochanger_Trending end of topic ===
+    ${fcs_Duration_Autochanger_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Autochanger_Trending_start}    end=${fcs_Duration_Autochanger_Trending_end + 1}
+    Log Many    ${fcs_Duration_Autochanger_Trending_list}
+    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === MTCamera_fcs_Duration_Autochanger_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === MTCamera_fcs_Duration_Autochanger_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === [fcs_Duration_Autochanger_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Autochanger_Trending_list}    === [fcs_Duration_Autochanger_Trending Subscriber] message received :200
+    ${fcs_Duration_Carousel_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Carousel_Trending start of topic ===
+    ${fcs_Duration_Carousel_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Carousel_Trending end of topic ===
+    ${fcs_Duration_Carousel_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Carousel_Trending_start}    end=${fcs_Duration_Carousel_Trending_end + 1}
+    Log Many    ${fcs_Duration_Carousel_Trending_list}
+    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === MTCamera_fcs_Duration_Carousel_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === MTCamera_fcs_Duration_Carousel_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === [fcs_Duration_Carousel_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Carousel_Trending_list}    === [fcs_Duration_Carousel_Trending Subscriber] message received :200
+    ${fcs_Duration_Loader_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Loader_Trending start of topic ===
+    ${fcs_Duration_Loader_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Loader_Trending end of topic ===
+    ${fcs_Duration_Loader_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Loader_Trending_start}    end=${fcs_Duration_Loader_Trending_end + 1}
+    Log Many    ${fcs_Duration_Loader_Trending_list}
+    Should Contain    ${fcs_Duration_Loader_Trending_list}    === MTCamera_fcs_Duration_Loader_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Loader_Trending_list}    === MTCamera_fcs_Duration_Loader_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Loader_Trending_list}    === [fcs_Duration_Loader_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Loader_Trending_list}    === [fcs_Duration_Loader_Trending Subscriber] message received :200
+    ${fcs_Duration_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Trending start of topic ===
+    ${fcs_Duration_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Duration_Trending end of topic ===
+    ${fcs_Duration_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Duration_Trending_start}    end=${fcs_Duration_Trending_end + 1}
+    Log Many    ${fcs_Duration_Trending_list}
+    Should Contain    ${fcs_Duration_Trending_list}    === MTCamera_fcs_Duration_Trending start of topic ===
+    Should Contain    ${fcs_Duration_Trending_list}    === MTCamera_fcs_Duration_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Trending_list}    === [fcs_Duration_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Duration_Trending_list}    === [fcs_Duration_Trending Subscriber] message received :200
+    ${fcs_Fcs_Mcm_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Fcs_Mcm_Trending start of topic ===
+    ${fcs_Fcs_Mcm_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Fcs_Mcm_Trending end of topic ===
+    ${fcs_Fcs_Mcm_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Fcs_Mcm_Trending_start}    end=${fcs_Fcs_Mcm_Trending_end + 1}
+    Log Many    ${fcs_Fcs_Mcm_Trending_list}
+    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === MTCamera_fcs_Fcs_Mcm_Trending start of topic ===
+    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === MTCamera_fcs_Fcs_Mcm_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === [fcs_Fcs_Mcm_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Fcs_Mcm_Trending_list}    === [fcs_Fcs_Mcm_Trending Subscriber] message received :200
+    ${fcs_Loader_Carrier_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Carrier_Trending start of topic ===
+    ${fcs_Loader_Carrier_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Carrier_Trending end of topic ===
+    ${fcs_Loader_Carrier_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_Carrier_Trending_start}    end=${fcs_Loader_Carrier_Trending_end + 1}
+    Log Many    ${fcs_Loader_Carrier_Trending_list}
+    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === MTCamera_fcs_Loader_Carrier_Trending start of topic ===
+    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === MTCamera_fcs_Loader_Carrier_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === [fcs_Loader_Carrier_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_Carrier_Trending_list}    === [fcs_Loader_Carrier_Trending Subscriber] message received :200
+    ${fcs_Loader_Hooks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Hooks_Trending start of topic ===
+    ${fcs_Loader_Hooks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Loader_Hooks_Trending end of topic ===
+    ${fcs_Loader_Hooks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Loader_Hooks_Trending_start}    end=${fcs_Loader_Hooks_Trending_end + 1}
+    Log Many    ${fcs_Loader_Hooks_Trending_list}
+    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === MTCamera_fcs_Loader_Hooks_Trending start of topic ===
+    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === MTCamera_fcs_Loader_Hooks_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === [fcs_Loader_Hooks_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Loader_Hooks_Trending_list}    === [fcs_Loader_Hooks_Trending Subscriber] message received :200
+    ${fcs_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Trending start of topic ===
+    ${fcs_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Trending end of topic ===
+    ${fcs_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Trending_start}    end=${fcs_Trending_end + 1}
+    Log Many    ${fcs_Trending_list}
+    Should Contain    ${fcs_Trending_list}    === MTCamera_fcs_Trending start of topic ===
+    Should Contain    ${fcs_Trending_list}    === MTCamera_fcs_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Trending_list}    === [fcs_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${fcs_Trending_list}    === [fcs_Trending Subscriber] message received :200
+    ${shutter_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_shutter_Trending start of topic ===
+    ${shutter_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_shutter_Trending end of topic ===
+    ${shutter_Trending_list}=    Get Slice From List    ${full_list}    start=${shutter_Trending_start}    end=${shutter_Trending_end + 1}
+    Log Many    ${shutter_Trending_list}
+    Should Contain    ${shutter_Trending_list}    === MTCamera_shutter_Trending start of topic ===
+    Should Contain    ${shutter_Trending_list}    === MTCamera_shutter_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${shutter_Trending_list}    === [shutter_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${shutter_Trending_list}    === [shutter_Trending Subscriber] message received :200
     ${chiller_Chiller_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller start of topic ===
     ${chiller_Chiller_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Chiller end of topic ===
     ${chiller_Chiller_list}=    Get Slice From List    ${full_list}    start=${chiller_Chiller_start}    end=${chiller_Chiller_end + 1}
@@ -1694,6 +1271,14 @@ Read Subscriber
     Should Contain    ${chiller_Chiller_list}    === MTCamera_chiller_Chiller end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${chiller_Chiller_list}    === [chiller_Chiller Subscriber] message received :200
+    ${chiller_FParam_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_FParam_Trending start of topic ===
+    ${chiller_FParam_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_FParam_Trending end of topic ===
+    ${chiller_FParam_Trending_list}=    Get Slice From List    ${full_list}    start=${chiller_FParam_Trending_start}    end=${chiller_FParam_Trending_end + 1}
+    Log Many    ${chiller_FParam_Trending_list}
+    Should Contain    ${chiller_FParam_Trending_list}    === MTCamera_chiller_FParam_Trending start of topic ===
+    Should Contain    ${chiller_FParam_Trending_list}    === MTCamera_chiller_FParam_Trending end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${chiller_FParam_Trending_list}    === [chiller_FParam_Trending Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${chiller_FParam_Trending_list}    === [chiller_FParam_Trending Subscriber] message received :200
     ${chiller_Maq20_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 start of topic ===
     ${chiller_Maq20_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_Maq20 end of topic ===
     ${chiller_Maq20_list}=    Get Slice From List    ${full_list}    start=${chiller_Maq20_start}    end=${chiller_Maq20_end + 1}
@@ -1702,3 +1287,43 @@ Read Subscriber
     Should Contain    ${chiller_Maq20_list}    === MTCamera_chiller_Maq20 end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${chiller_Maq20_list}    === [chiller_Maq20 Subscriber] message received :200
+    ${thermal_Cold_Temp_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cold_Temp start of topic ===
+    ${thermal_Cold_Temp_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cold_Temp end of topic ===
+    ${thermal_Cold_Temp_list}=    Get Slice From List    ${full_list}    start=${thermal_Cold_Temp_start}    end=${thermal_Cold_Temp_end + 1}
+    Log Many    ${thermal_Cold_Temp_list}
+    Should Contain    ${thermal_Cold_Temp_list}    === MTCamera_thermal_Cold_Temp start of topic ===
+    Should Contain    ${thermal_Cold_Temp_list}    === MTCamera_thermal_Cold_Temp end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Cold_Temp_list}    === [thermal_Cold_Temp Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Cold_Temp_list}    === [thermal_Cold_Temp Subscriber] message received :200
+    ${thermal_Cryo_Temp_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cryo_Temp start of topic ===
+    ${thermal_Cryo_Temp_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Cryo_Temp end of topic ===
+    ${thermal_Cryo_Temp_list}=    Get Slice From List    ${full_list}    start=${thermal_Cryo_Temp_start}    end=${thermal_Cryo_Temp_end + 1}
+    Log Many    ${thermal_Cryo_Temp_list}
+    Should Contain    ${thermal_Cryo_Temp_list}    === MTCamera_thermal_Cryo_Temp start of topic ===
+    Should Contain    ${thermal_Cryo_Temp_list}    === MTCamera_thermal_Cryo_Temp end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Cryo_Temp_list}    === [thermal_Cryo_Temp Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Cryo_Temp_list}    === [thermal_Cryo_Temp Subscriber] message received :200
+    ${thermal_Rtd_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Rtd start of topic ===
+    ${thermal_Rtd_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Rtd end of topic ===
+    ${thermal_Rtd_list}=    Get Slice From List    ${full_list}    start=${thermal_Rtd_start}    end=${thermal_Rtd_end + 1}
+    Log Many    ${thermal_Rtd_list}
+    Should Contain    ${thermal_Rtd_list}    === MTCamera_thermal_Rtd start of topic ===
+    Should Contain    ${thermal_Rtd_list}    === MTCamera_thermal_Rtd end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Rtd_list}    === [thermal_Rtd Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Rtd_list}    === [thermal_Rtd Subscriber] message received :200
+    ${thermal_Trim_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim start of topic ===
+    ${thermal_Trim_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim end of topic ===
+    ${thermal_Trim_list}=    Get Slice From List    ${full_list}    start=${thermal_Trim_start}    end=${thermal_Trim_end + 1}
+    Log Many    ${thermal_Trim_list}
+    Should Contain    ${thermal_Trim_list}    === MTCamera_thermal_Trim start of topic ===
+    Should Contain    ${thermal_Trim_list}    === MTCamera_thermal_Trim end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_list}    === [thermal_Trim Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_list}    === [thermal_Trim Subscriber] message received :200
+    ${thermal_Trim_Htrs_start}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim_Htrs start of topic ===
+    ${thermal_Trim_Htrs_end}=    Get Index From List    ${full_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
+    ${thermal_Trim_Htrs_list}=    Get Slice From List    ${full_list}    start=${thermal_Trim_Htrs_start}    end=${thermal_Trim_Htrs_end + 1}
+    Log Many    ${thermal_Trim_Htrs_list}
+    Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs start of topic ===
+    Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs Subscriber] message received :200
