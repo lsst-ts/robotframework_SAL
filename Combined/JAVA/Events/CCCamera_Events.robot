@@ -718,12 +718,6 @@ Start Sender
     Log Many    ${focal_plane_Ccd_LimitsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === CCCamera_focal_plane_Ccd_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === CCCamera_focal_plane_Ccd_LimitsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsConfiguration_start}    end=${focal_plane_Ccd_RaftsConfiguration_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
@@ -1728,12 +1722,6 @@ Read Subscriber
     Log Many    ${focal_plane_Ccd_LimitsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === CCCamera_focal_plane_Ccd_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === CCCamera_focal_plane_Ccd_LimitsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsConfiguration_start}    end=${focal_plane_Ccd_RaftsConfiguration_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === CCCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
