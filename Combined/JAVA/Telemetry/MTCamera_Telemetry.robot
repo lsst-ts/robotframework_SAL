@@ -639,6 +639,34 @@ Start Publisher
     Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs start of topic ===
     Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
     Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs] message sent 200
+    ${utiltrunk_Body_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body start of topic ===
+    ${utiltrunk_Body_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body end of topic ===
+    ${utiltrunk_Body_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Body_start}    end=${utiltrunk_Body_end + 1}
+    Log Many    ${utiltrunk_Body_list}
+    Should Contain    ${utiltrunk_Body_list}    === MTCamera_utiltrunk_Body start of topic ===
+    Should Contain    ${utiltrunk_Body_list}    === MTCamera_utiltrunk_Body end of topic ===
+    Should Contain    ${utiltrunk_Body_list}    === [utiltrunk_Body] message sent 200
+    ${utiltrunk_MPC_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC start of topic ===
+    ${utiltrunk_MPC_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC end of topic ===
+    ${utiltrunk_MPC_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPC_start}    end=${utiltrunk_MPC_end + 1}
+    Log Many    ${utiltrunk_MPC_list}
+    Should Contain    ${utiltrunk_MPC_list}    === MTCamera_utiltrunk_MPC start of topic ===
+    Should Contain    ${utiltrunk_MPC_list}    === MTCamera_utiltrunk_MPC end of topic ===
+    Should Contain    ${utiltrunk_MPC_list}    === [utiltrunk_MPC] message sent 200
+    ${utiltrunk_UT_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT start of topic ===
+    ${utiltrunk_UT_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT end of topic ===
+    ${utiltrunk_UT_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UT_start}    end=${utiltrunk_UT_end + 1}
+    Log Many    ${utiltrunk_UT_list}
+    Should Contain    ${utiltrunk_UT_list}    === MTCamera_utiltrunk_UT start of topic ===
+    Should Contain    ${utiltrunk_UT_list}    === MTCamera_utiltrunk_UT end of topic ===
+    Should Contain    ${utiltrunk_UT_list}    === [utiltrunk_UT] message sent 200
+    ${utiltrunk_VPC_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC start of topic ===
+    ${utiltrunk_VPC_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC end of topic ===
+    ${utiltrunk_VPC_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPC_start}    end=${utiltrunk_VPC_end + 1}
+    Log Many    ${utiltrunk_VPC_list}
+    Should Contain    ${utiltrunk_VPC_list}    === MTCamera_utiltrunk_VPC start of topic ===
+    Should Contain    ${utiltrunk_VPC_list}    === MTCamera_utiltrunk_VPC end of topic ===
+    Should Contain    ${utiltrunk_VPC_list}    === [utiltrunk_VPC] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -1327,3 +1355,35 @@ Read Subscriber
     Should Contain    ${thermal_Trim_Htrs_list}    === MTCamera_thermal_Trim_Htrs end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${thermal_Trim_Htrs_list}    === [thermal_Trim_Htrs Subscriber] message received :200
+    ${utiltrunk_Body_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body start of topic ===
+    ${utiltrunk_Body_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body end of topic ===
+    ${utiltrunk_Body_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Body_start}    end=${utiltrunk_Body_end + 1}
+    Log Many    ${utiltrunk_Body_list}
+    Should Contain    ${utiltrunk_Body_list}    === MTCamera_utiltrunk_Body start of topic ===
+    Should Contain    ${utiltrunk_Body_list}    === MTCamera_utiltrunk_Body end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_Body_list}    === [utiltrunk_Body Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_Body_list}    === [utiltrunk_Body Subscriber] message received :200
+    ${utiltrunk_MPC_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC start of topic ===
+    ${utiltrunk_MPC_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC end of topic ===
+    ${utiltrunk_MPC_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPC_start}    end=${utiltrunk_MPC_end + 1}
+    Log Many    ${utiltrunk_MPC_list}
+    Should Contain    ${utiltrunk_MPC_list}    === MTCamera_utiltrunk_MPC start of topic ===
+    Should Contain    ${utiltrunk_MPC_list}    === MTCamera_utiltrunk_MPC end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_MPC_list}    === [utiltrunk_MPC Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_MPC_list}    === [utiltrunk_MPC Subscriber] message received :200
+    ${utiltrunk_UT_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT start of topic ===
+    ${utiltrunk_UT_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT end of topic ===
+    ${utiltrunk_UT_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UT_start}    end=${utiltrunk_UT_end + 1}
+    Log Many    ${utiltrunk_UT_list}
+    Should Contain    ${utiltrunk_UT_list}    === MTCamera_utiltrunk_UT start of topic ===
+    Should Contain    ${utiltrunk_UT_list}    === MTCamera_utiltrunk_UT end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_UT_list}    === [utiltrunk_UT Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_UT_list}    === [utiltrunk_UT Subscriber] message received :200
+    ${utiltrunk_VPC_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC start of topic ===
+    ${utiltrunk_VPC_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC end of topic ===
+    ${utiltrunk_VPC_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPC_start}    end=${utiltrunk_VPC_end + 1}
+    Log Many    ${utiltrunk_VPC_list}
+    Should Contain    ${utiltrunk_VPC_list}    === MTCamera_utiltrunk_VPC start of topic ===
+    Should Contain    ${utiltrunk_VPC_list}    === MTCamera_utiltrunk_VPC end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_VPC_list}    === [utiltrunk_VPC Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${utiltrunk_VPC_list}    === [utiltrunk_VPC Subscriber] message received :200

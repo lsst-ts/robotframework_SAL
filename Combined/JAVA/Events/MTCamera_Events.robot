@@ -952,12 +952,6 @@ Start Sender
     Log Many    ${focal_plane_Ccd_LimitsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === MTCamera_focal_plane_Ccd_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === MTCamera_focal_plane_Ccd_LimitsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsConfiguration_start}    end=${focal_plane_Ccd_RaftsConfiguration_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
@@ -1390,6 +1384,156 @@ Start Sender
     Log Many    ${thermal_timersConfiguration_list}
     Should Contain    ${thermal_timersConfiguration_list}    === MTCamera_thermal_timersConfiguration start of topic ===
     Should Contain    ${thermal_timersConfiguration_list}    === MTCamera_thermal_timersConfiguration end of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration start of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration end of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BFR_DevicesConfiguration_start}    end=${utiltrunk_BFR_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_BFR_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_BFR_DevicesConfiguration_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BFR_DevicesConfiguration_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration end of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration start of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration end of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BFR_UtilConfiguration_start}    end=${utiltrunk_BFR_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_BFR_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_BFR_UtilConfiguration_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BFR_UtilConfiguration_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BodyMaq20_DeviceConfiguration_start}    end=${utiltrunk_BodyMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BodyMaq20_DevicesConfiguration_start}    end=${utiltrunk_BodyMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration start of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration end of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Body_LimitsConfiguration_start}    end=${utiltrunk_Body_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_Body_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_Body_LimitsConfiguration_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Body_LimitsConfiguration_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_CryoMaq20_DeviceConfiguration_start}    end=${utiltrunk_CryoMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_CryoMaq20_DevicesConfiguration_start}    end=${utiltrunk_CryoMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration start of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPCFan_PicConfiguration_start}    end=${utiltrunk_MPCFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_MPCFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_MPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_MPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration start of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPC_LimitsConfiguration_start}    end=${utiltrunk_MPC_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_MPC_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_MPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_MPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration start of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PDU_48V_DevicesConfiguration_start}    end=${utiltrunk_PDU_48V_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_PDU_48V_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_PDU_48V_DevicesConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PDU_48V_DevicesConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration start of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PDU_48V_UtilConfiguration_start}    end=${utiltrunk_PDU_48V_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_PDU_48V_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_PDU_48V_UtilConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PDU_48V_UtilConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_GeneralConfiguration_start}    end=${utiltrunk_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_PicConfiguration_start}    end=${utiltrunk_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_PicConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_PicConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_timersConfiguration_start}    end=${utiltrunk_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_timersConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_timersConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration end of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration start of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration end of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Pluto_DeviceConfiguration_start}    end=${utiltrunk_Pluto_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_Pluto_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_Pluto_DeviceConfiguration_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Pluto_DeviceConfiguration_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration end of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration start of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration end of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Pluto_DevicesConfiguration_start}    end=${utiltrunk_Pluto_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_Pluto_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_Pluto_DevicesConfiguration_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Pluto_DevicesConfiguration_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration end of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration start of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration end of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Telescope_DevicesConfiguration_start}    end=${utiltrunk_Telescope_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_Telescope_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_Telescope_DevicesConfiguration_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Telescope_DevicesConfiguration_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration end of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration start of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration end of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UTFan_PicConfiguration_start}    end=${utiltrunk_UTFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_UTFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_UTFan_PicConfiguration_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UTFan_PicConfiguration_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration end of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration start of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration end of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UT_LimitsConfiguration_start}    end=${utiltrunk_UT_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_UT_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_UT_LimitsConfiguration_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UT_LimitsConfiguration_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtMaq20_DeviceConfiguration_start}    end=${utiltrunk_UtMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_UtMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtMaq20_DevicesConfiguration_start}    end=${utiltrunk_UtMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_UtMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtilConfiguration start of topic ===
+    ${utiltrunk_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtilConfiguration end of topic ===
+    ${utiltrunk_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtilConfiguration_start}    end=${utiltrunk_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_UtilConfiguration_list}    === MTCamera_utiltrunk_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtilConfiguration_list}    === MTCamera_utiltrunk_UtilConfiguration end of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration start of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPCFan_PicConfiguration_start}    end=${utiltrunk_VPCFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPCFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_VPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration start of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration end of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPCHtrs_VpcConfiguration_start}    end=${utiltrunk_VPCHtrs_VpcConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPCHtrs_VpcConfiguration_list}
+    Should Contain    ${utiltrunk_VPCHtrs_VpcConfiguration_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPCHtrs_VpcConfiguration_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration end of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration start of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPC_LimitsConfiguration_start}    end=${utiltrunk_VPC_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPC_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_VPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
@@ -2382,12 +2526,6 @@ Read Subscriber
     Log Many    ${focal_plane_Ccd_LimitsConfiguration_list}
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === MTCamera_focal_plane_Ccd_LimitsConfiguration start of topic ===
     Should Contain    ${focal_plane_Ccd_LimitsConfiguration_list}    === MTCamera_focal_plane_Ccd_LimitsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
-    ${focal_plane_Ccd_RaftsConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Ccd_RaftsConfiguration_start}    end=${focal_plane_Ccd_RaftsConfiguration_end + 1}
-    Log Many    ${focal_plane_Ccd_RaftsConfiguration_list}
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration start of topic ===
-    Should Contain    ${focal_plane_Ccd_RaftsConfiguration_list}    === MTCamera_focal_plane_Ccd_RaftsConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration start of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_ImageDatabaseService_GeneralConfiguration end of topic ===
     ${focal_plane_ImageDatabaseService_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_ImageDatabaseService_GeneralConfiguration_start}    end=${focal_plane_ImageDatabaseService_GeneralConfiguration_end + 1}
@@ -2820,6 +2958,156 @@ Read Subscriber
     Log Many    ${thermal_timersConfiguration_list}
     Should Contain    ${thermal_timersConfiguration_list}    === MTCamera_thermal_timersConfiguration start of topic ===
     Should Contain    ${thermal_timersConfiguration_list}    === MTCamera_thermal_timersConfiguration end of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration start of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration end of topic ===
+    ${utiltrunk_BFR_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BFR_DevicesConfiguration_start}    end=${utiltrunk_BFR_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_BFR_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_BFR_DevicesConfiguration_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BFR_DevicesConfiguration_list}    === MTCamera_utiltrunk_BFR_DevicesConfiguration end of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration start of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration end of topic ===
+    ${utiltrunk_BFR_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BFR_UtilConfiguration_start}    end=${utiltrunk_BFR_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_BFR_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_BFR_UtilConfiguration_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BFR_UtilConfiguration_list}    === MTCamera_utiltrunk_BFR_UtilConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BodyMaq20_DeviceConfiguration_start}    end=${utiltrunk_BodyMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BodyMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_BodyMaq20_DevicesConfiguration_start}    end=${utiltrunk_BodyMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_BodyMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_BodyMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration start of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration end of topic ===
+    ${utiltrunk_Body_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Body_LimitsConfiguration_start}    end=${utiltrunk_Body_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_Body_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_Body_LimitsConfiguration_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Body_LimitsConfiguration_list}    === MTCamera_utiltrunk_Body_LimitsConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_CryoMaq20_DeviceConfiguration_start}    end=${utiltrunk_CryoMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_CryoMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_CryoMaq20_DevicesConfiguration_start}    end=${utiltrunk_CryoMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_CryoMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_CryoMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration start of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_MPCFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPCFan_PicConfiguration_start}    end=${utiltrunk_MPCFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_MPCFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_MPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_MPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_MPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration start of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_MPC_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_MPC_LimitsConfiguration_start}    end=${utiltrunk_MPC_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_MPC_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_MPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_MPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_MPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration start of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PDU_48V_DevicesConfiguration_start}    end=${utiltrunk_PDU_48V_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_PDU_48V_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_PDU_48V_DevicesConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PDU_48V_DevicesConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_DevicesConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration start of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration end of topic ===
+    ${utiltrunk_PDU_48V_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PDU_48V_UtilConfiguration_start}    end=${utiltrunk_PDU_48V_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_PDU_48V_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_PDU_48V_UtilConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PDU_48V_UtilConfiguration_list}    === MTCamera_utiltrunk_PDU_48V_UtilConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_GeneralConfiguration_start}    end=${utiltrunk_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_PicConfiguration_start}    end=${utiltrunk_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_PicConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_PicConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_PicConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration start of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration end of topic ===
+    ${utiltrunk_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_PeriodicTasks_timersConfiguration_start}    end=${utiltrunk_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${utiltrunk_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${utiltrunk_PeriodicTasks_timersConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${utiltrunk_PeriodicTasks_timersConfiguration_list}    === MTCamera_utiltrunk_PeriodicTasks_timersConfiguration end of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration start of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration end of topic ===
+    ${utiltrunk_Pluto_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Pluto_DeviceConfiguration_start}    end=${utiltrunk_Pluto_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_Pluto_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_Pluto_DeviceConfiguration_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Pluto_DeviceConfiguration_list}    === MTCamera_utiltrunk_Pluto_DeviceConfiguration end of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration start of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration end of topic ===
+    ${utiltrunk_Pluto_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Pluto_DevicesConfiguration_start}    end=${utiltrunk_Pluto_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_Pluto_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_Pluto_DevicesConfiguration_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Pluto_DevicesConfiguration_list}    === MTCamera_utiltrunk_Pluto_DevicesConfiguration end of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration start of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration end of topic ===
+    ${utiltrunk_Telescope_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_Telescope_DevicesConfiguration_start}    end=${utiltrunk_Telescope_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_Telescope_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_Telescope_DevicesConfiguration_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_Telescope_DevicesConfiguration_list}    === MTCamera_utiltrunk_Telescope_DevicesConfiguration end of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration start of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration end of topic ===
+    ${utiltrunk_UTFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UTFan_PicConfiguration_start}    end=${utiltrunk_UTFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_UTFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_UTFan_PicConfiguration_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UTFan_PicConfiguration_list}    === MTCamera_utiltrunk_UTFan_PicConfiguration end of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration start of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration end of topic ===
+    ${utiltrunk_UT_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UT_LimitsConfiguration_start}    end=${utiltrunk_UT_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_UT_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_UT_LimitsConfiguration_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UT_LimitsConfiguration_list}    === MTCamera_utiltrunk_UT_LimitsConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration start of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtMaq20_DeviceConfiguration_start}    end=${utiltrunk_UtMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtMaq20_DeviceConfiguration_list}
+    Should Contain    ${utiltrunk_UtMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtMaq20_DeviceConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DeviceConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration start of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_UtMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtMaq20_DevicesConfiguration_start}    end=${utiltrunk_UtMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtMaq20_DevicesConfiguration_list}
+    Should Contain    ${utiltrunk_UtMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtMaq20_DevicesConfiguration_list}    === MTCamera_utiltrunk_UtMaq20_DevicesConfiguration end of topic ===
+    ${utiltrunk_UtilConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtilConfiguration start of topic ===
+    ${utiltrunk_UtilConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_UtilConfiguration end of topic ===
+    ${utiltrunk_UtilConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_UtilConfiguration_start}    end=${utiltrunk_UtilConfiguration_end + 1}
+    Log Many    ${utiltrunk_UtilConfiguration_list}
+    Should Contain    ${utiltrunk_UtilConfiguration_list}    === MTCamera_utiltrunk_UtilConfiguration start of topic ===
+    Should Contain    ${utiltrunk_UtilConfiguration_list}    === MTCamera_utiltrunk_UtilConfiguration end of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration start of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_VPCFan_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPCFan_PicConfiguration_start}    end=${utiltrunk_VPCFan_PicConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPCFan_PicConfiguration_list}
+    Should Contain    ${utiltrunk_VPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPCFan_PicConfiguration_list}    === MTCamera_utiltrunk_VPCFan_PicConfiguration end of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration start of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration end of topic ===
+    ${utiltrunk_VPCHtrs_VpcConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPCHtrs_VpcConfiguration_start}    end=${utiltrunk_VPCHtrs_VpcConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPCHtrs_VpcConfiguration_list}
+    Should Contain    ${utiltrunk_VPCHtrs_VpcConfiguration_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPCHtrs_VpcConfiguration_list}    === MTCamera_utiltrunk_VPCHtrs_VpcConfiguration end of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration start of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration end of topic ===
+    ${utiltrunk_VPC_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${utiltrunk_VPC_LimitsConfiguration_start}    end=${utiltrunk_VPC_LimitsConfiguration_end + 1}
+    Log Many    ${utiltrunk_VPC_LimitsConfiguration_list}
+    Should Contain    ${utiltrunk_VPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration start of topic ===
+    Should Contain    ${utiltrunk_VPC_LimitsConfiguration_list}    === MTCamera_utiltrunk_VPC_LimitsConfiguration end of topic ===
     ${summaryStatus_start}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus start of topic ===
     ${summaryStatus_end}=    Get Index From List    ${full_list}    === MTCamera_summaryStatus end of topic ===
     ${summaryStatus_list}=    Get Slice From List    ${full_list}    start=${summaryStatus_start}    end=${summaryStatus_end + 1}
