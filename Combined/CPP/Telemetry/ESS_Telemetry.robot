@@ -148,6 +148,70 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::spectrumAnalyzer_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_spectrumAnalyzer end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeBroadBandHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeBroadBandHighGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeBroadBandHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeBroadBandLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeBroadBandLowGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeBroadBandLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeHighBroadBandHighGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeHighBroadBandHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeHighBroadBandLowGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeHighBroadBandLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeLongPeriodHighGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeLongPeriodLowGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeLongPeriodLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeUltraLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeUltraLongPeriodHighGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeUltraLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    Comment    ======= Verify ${subSystem}_earthquakeVeryLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeVeryLongPeriodHighGain
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeVeryLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -378,3 +442,183 @@ Read Subscriber
     Should Contain X Times    ${spectrumAnalyzer_list}    ${SPACE}${SPACE}${SPACE}${SPACE}spectrum : 8    1
     Should Contain X Times    ${spectrumAnalyzer_list}    ${SPACE}${SPACE}${SPACE}${SPACE}spectrum : 9    1
     Should Contain X Times    ${spectrumAnalyzer_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    ${earthquakeBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    ${earthquakeBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandHighGain_start}    end=${earthquakeBroadBandHighGain_end}
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 0    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 2    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 3    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 4    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 5    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 6    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 7    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 8    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 9    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 0    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 2    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 3    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 4    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 5    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 6    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 7    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 8    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 9    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 0    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 2    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 3    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 4    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 5    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 6    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 7    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 8    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 9    1
+    Should Contain X Times    ${earthquakeBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    ${earthquakeBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    ${earthquakeBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandLowGain_start}    end=${earthquakeBroadBandLowGain_end}
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 0    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 2    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 3    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 4    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 5    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 6    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 7    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 8    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 9    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 0    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 2    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 3    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 4    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 5    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 6    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 7    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 8    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 9    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 0    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 2    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 3    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 4    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 5    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 6    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 7    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 8    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 9    1
+    Should Contain X Times    ${earthquakeBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeHighBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    ${earthquakeHighBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    ${earthquakeHighBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandHighGain_start}    end=${earthquakeHighBroadBandHighGain_end}
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeHighBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    ${earthquakeHighBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    ${earthquakeHighBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandLowGain_start}    end=${earthquakeHighBroadBandLowGain_end}
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 0    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 2    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 3    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 4    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 5    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 6    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 7    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 8    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 9    1
+    Should Contain X Times    ${earthquakeHighBroadBandLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    ${earthquakeLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    ${earthquakeLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodHighGain_start}    end=${earthquakeLongPeriodHighGain_end}
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeLongPeriodLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    ${earthquakeLongPeriodLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    ${earthquakeLongPeriodLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodLowGain_start}    end=${earthquakeLongPeriodLowGain_end}
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    10
+    Should Contain X Times    ${earthquakeLongPeriodLowGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeUltraLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    ${earthquakeUltraLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    ${earthquakeUltraLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeUltraLongPeriodHighGain_start}    end=${earthquakeUltraLongPeriodHighGain_end}
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    10
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    10
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    10
+    Should Contain X Times    ${earthquakeUltraLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${earthquakeVeryLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    ${earthquakeVeryLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    ${earthquakeVeryLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeVeryLongPeriodHighGain_start}    end=${earthquakeVeryLongPeriodHighGain_end}
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationEastWest : 1    10
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    10
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    10
+    Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
