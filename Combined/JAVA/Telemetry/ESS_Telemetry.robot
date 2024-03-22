@@ -142,6 +142,62 @@ Start Publisher
     Should Contain    ${spectrumAnalyzer_list}    === ESS_spectrumAnalyzer start of topic ===
     Should Contain    ${spectrumAnalyzer_list}    === ESS_spectrumAnalyzer end of topic ===
     Should Contain    ${spectrumAnalyzer_list}    === [spectrumAnalyzer] message sent 200
+    ${earthquakeBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    ${earthquakeBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    ${earthquakeBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandHighGain_start}    end=${earthquakeBroadBandHighGain_end + 1}
+    Log Many    ${earthquakeBroadBandHighGain_list}
+    Should Contain    ${earthquakeBroadBandHighGain_list}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    Should Contain    ${earthquakeBroadBandHighGain_list}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    Should Contain    ${earthquakeBroadBandHighGain_list}    === [earthquakeBroadBandHighGain] message sent 200
+    ${earthquakeBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    ${earthquakeBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    ${earthquakeBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandLowGain_start}    end=${earthquakeBroadBandLowGain_end + 1}
+    Log Many    ${earthquakeBroadBandLowGain_list}
+    Should Contain    ${earthquakeBroadBandLowGain_list}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    Should Contain    ${earthquakeBroadBandLowGain_list}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    Should Contain    ${earthquakeBroadBandLowGain_list}    === [earthquakeBroadBandLowGain] message sent 200
+    ${earthquakeHighBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    ${earthquakeHighBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    ${earthquakeHighBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandHighGain_start}    end=${earthquakeHighBroadBandHighGain_end + 1}
+    Log Many    ${earthquakeHighBroadBandHighGain_list}
+    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === [earthquakeHighBroadBandHighGain] message sent 200
+    ${earthquakeHighBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    ${earthquakeHighBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    ${earthquakeHighBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandLowGain_start}    end=${earthquakeHighBroadBandLowGain_end + 1}
+    Log Many    ${earthquakeHighBroadBandLowGain_list}
+    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === [earthquakeHighBroadBandLowGain] message sent 200
+    ${earthquakeLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    ${earthquakeLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    ${earthquakeLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodHighGain_start}    end=${earthquakeLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeLongPeriodHighGain_list}
+    Should Contain    ${earthquakeLongPeriodHighGain_list}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeLongPeriodHighGain_list}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    Should Contain    ${earthquakeLongPeriodHighGain_list}    === [earthquakeLongPeriodHighGain] message sent 200
+    ${earthquakeLongPeriodLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    ${earthquakeLongPeriodLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    ${earthquakeLongPeriodLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodLowGain_start}    end=${earthquakeLongPeriodLowGain_end + 1}
+    Log Many    ${earthquakeLongPeriodLowGain_list}
+    Should Contain    ${earthquakeLongPeriodLowGain_list}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    Should Contain    ${earthquakeLongPeriodLowGain_list}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    Should Contain    ${earthquakeLongPeriodLowGain_list}    === [earthquakeLongPeriodLowGain] message sent 200
+    ${earthquakeUltraLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    ${earthquakeUltraLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    ${earthquakeUltraLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeUltraLongPeriodHighGain_start}    end=${earthquakeUltraLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeUltraLongPeriodHighGain_list}
+    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === [earthquakeUltraLongPeriodHighGain] message sent 200
+    ${earthquakeVeryLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    ${earthquakeVeryLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    ${earthquakeVeryLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeVeryLongPeriodHighGain_start}    end=${earthquakeVeryLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeVeryLongPeriodHighGain_list}
+    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -262,3 +318,67 @@ Read Subscriber
     Should Contain    ${spectrumAnalyzer_list}    === ESS_spectrumAnalyzer end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${spectrumAnalyzer_list}    === [spectrumAnalyzer Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${spectrumAnalyzer_list}    === [spectrumAnalyzer Subscriber] message received :200
+    ${earthquakeBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    ${earthquakeBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    ${earthquakeBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandHighGain_start}    end=${earthquakeBroadBandHighGain_end + 1}
+    Log Many    ${earthquakeBroadBandHighGain_list}
+    Should Contain    ${earthquakeBroadBandHighGain_list}    === ESS_earthquakeBroadBandHighGain start of topic ===
+    Should Contain    ${earthquakeBroadBandHighGain_list}    === ESS_earthquakeBroadBandHighGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeBroadBandHighGain_list}    === [earthquakeBroadBandHighGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeBroadBandHighGain_list}    === [earthquakeBroadBandHighGain Subscriber] message received :200
+    ${earthquakeBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    ${earthquakeBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    ${earthquakeBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeBroadBandLowGain_start}    end=${earthquakeBroadBandLowGain_end + 1}
+    Log Many    ${earthquakeBroadBandLowGain_list}
+    Should Contain    ${earthquakeBroadBandLowGain_list}    === ESS_earthquakeBroadBandLowGain start of topic ===
+    Should Contain    ${earthquakeBroadBandLowGain_list}    === ESS_earthquakeBroadBandLowGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeBroadBandLowGain_list}    === [earthquakeBroadBandLowGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeBroadBandLowGain_list}    === [earthquakeBroadBandLowGain Subscriber] message received :200
+    ${earthquakeHighBroadBandHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    ${earthquakeHighBroadBandHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    ${earthquakeHighBroadBandHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandHighGain_start}    end=${earthquakeHighBroadBandHighGain_end + 1}
+    Log Many    ${earthquakeHighBroadBandHighGain_list}
+    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
+    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === [earthquakeHighBroadBandHighGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeHighBroadBandHighGain_list}    === [earthquakeHighBroadBandHighGain Subscriber] message received :200
+    ${earthquakeHighBroadBandLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    ${earthquakeHighBroadBandLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    ${earthquakeHighBroadBandLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeHighBroadBandLowGain_start}    end=${earthquakeHighBroadBandLowGain_end + 1}
+    Log Many    ${earthquakeHighBroadBandLowGain_list}
+    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
+    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === [earthquakeHighBroadBandLowGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeHighBroadBandLowGain_list}    === [earthquakeHighBroadBandLowGain Subscriber] message received :200
+    ${earthquakeLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    ${earthquakeLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    ${earthquakeLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodHighGain_start}    end=${earthquakeLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeLongPeriodHighGain_list}
+    Should Contain    ${earthquakeLongPeriodHighGain_list}    === ESS_earthquakeLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeLongPeriodHighGain_list}    === ESS_earthquakeLongPeriodHighGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeLongPeriodHighGain_list}    === [earthquakeLongPeriodHighGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeLongPeriodHighGain_list}    === [earthquakeLongPeriodHighGain Subscriber] message received :200
+    ${earthquakeLongPeriodLowGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    ${earthquakeLongPeriodLowGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    ${earthquakeLongPeriodLowGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeLongPeriodLowGain_start}    end=${earthquakeLongPeriodLowGain_end + 1}
+    Log Many    ${earthquakeLongPeriodLowGain_list}
+    Should Contain    ${earthquakeLongPeriodLowGain_list}    === ESS_earthquakeLongPeriodLowGain start of topic ===
+    Should Contain    ${earthquakeLongPeriodLowGain_list}    === ESS_earthquakeLongPeriodLowGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeLongPeriodLowGain_list}    === [earthquakeLongPeriodLowGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeLongPeriodLowGain_list}    === [earthquakeLongPeriodLowGain Subscriber] message received :200
+    ${earthquakeUltraLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    ${earthquakeUltraLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    ${earthquakeUltraLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeUltraLongPeriodHighGain_start}    end=${earthquakeUltraLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeUltraLongPeriodHighGain_list}
+    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === [earthquakeUltraLongPeriodHighGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeUltraLongPeriodHighGain_list}    === [earthquakeUltraLongPeriodHighGain Subscriber] message received :200
+    ${earthquakeVeryLongPeriodHighGain_start}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    ${earthquakeVeryLongPeriodHighGain_end}=    Get Index From List    ${full_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    ${earthquakeVeryLongPeriodHighGain_list}=    Get Slice From List    ${full_list}    start=${earthquakeVeryLongPeriodHighGain_start}    end=${earthquakeVeryLongPeriodHighGain_end + 1}
+    Log Many    ${earthquakeVeryLongPeriodHighGain_list}
+    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
+    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :200
