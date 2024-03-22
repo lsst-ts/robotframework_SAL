@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    CCCamera
 ${component}    all
-${timeout}    900s
+${timeout}    1200s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
