@@ -934,6 +934,216 @@ Start Sender
     Log Many    ${mpm_Pluto_DevicesConfiguration_list}
     Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === CCCamera_mpm_Pluto_DevicesConfiguration start of topic ===
     Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === CCCamera_mpm_Pluto_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_DeviceConfiguration_start}    end=${pathfinder_refrig_Cold1_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_DevicesConfiguration_start}    end=${pathfinder_refrig_Cold1_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_LimitsConfiguration_start}    end=${pathfinder_refrig_Cold1_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_PicConfiguration_start}    end=${pathfinder_refrig_Cold1_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_DeviceConfiguration_start}    end=${pathfinder_refrig_Cold2_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_DevicesConfiguration_start}    end=${pathfinder_refrig_Cold2_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_LimitsConfiguration_start}    end=${pathfinder_refrig_Cold2_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_PicConfiguration_start}    end=${pathfinder_refrig_Cold2_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration start of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_start}    end=${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CoolMaq20_DeviceConfiguration_start}    end=${pathfinder_refrig_CoolMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CoolMaq20_DevicesConfiguration_start}    end=${pathfinder_refrig_CoolMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo1_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo1_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo1_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo2_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo2_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo2_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_PicConfiguration_start}    end=${pathfinder_refrig_Cryo2_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo3_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo3_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo3_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_PicConfiguration_start}    end=${pathfinder_refrig_Cryo3_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo4_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo4_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo4_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo5_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo5_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo5_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo6_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo6_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo6_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_start}    end=${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_PicConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_timersConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration end of topic ===
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}
@@ -1938,6 +2148,216 @@ Read Subscriber
     Log Many    ${mpm_Pluto_DevicesConfiguration_list}
     Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === CCCamera_mpm_Pluto_DevicesConfiguration start of topic ===
     Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === CCCamera_mpm_Pluto_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_DeviceConfiguration_start}    end=${pathfinder_refrig_Cold1_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_DevicesConfiguration_start}    end=${pathfinder_refrig_Cold1_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_LimitsConfiguration_start}    end=${pathfinder_refrig_Cold1_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold1_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_PicConfiguration_start}    end=${pathfinder_refrig_Cold1_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold1_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold1_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_DeviceConfiguration_start}    end=${pathfinder_refrig_Cold2_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_DevicesConfiguration_start}    end=${pathfinder_refrig_Cold2_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_LimitsConfiguration_start}    end=${pathfinder_refrig_Cold2_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cold2_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_PicConfiguration_start}    end=${pathfinder_refrig_Cold2_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cold2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cold2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration start of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_start}    end=${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_ColdCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CoolMaq20_DeviceConfiguration_start}    end=${pathfinder_refrig_CoolMaq20_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CoolMaq20_DevicesConfiguration_start}    end=${pathfinder_refrig_CoolMaq20_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CoolMaq20_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_CoolMaq20_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo1_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo1_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo1_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo1_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo2_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo2_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo2_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo2_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_PicConfiguration_start}    end=${pathfinder_refrig_Cryo2_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo2_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo3_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo3_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo3_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo3_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_PicConfiguration_start}    end=${pathfinder_refrig_Cryo3_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_PicConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo3_PicConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo4_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo4_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo4_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo4_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo5_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo5_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo5_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo5_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_DeviceConfiguration_start}    end=${pathfinder_refrig_Cryo6_DeviceConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_DeviceConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DeviceConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_DevicesConfiguration_start}    end=${pathfinder_refrig_Cryo6_DevicesConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_DevicesConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_DevicesConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration start of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_LimitsConfiguration_start}    end=${pathfinder_refrig_Cryo6_LimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_LimitsConfiguration_list}    === CCCamera_pathfinder_refrig_Cryo6_LimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_start}    end=${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}
+    Should Contain    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration_list}    === CCCamera_pathfinder_refrig_CryoCompLimits_CompLimitsConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_GeneralConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_PicConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_PicConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_PicConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_PicConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration start of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration end of topic ===
+    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_PeriodicTasks_timersConfiguration_start}    end=${pathfinder_refrig_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${pathfinder_refrig_PeriodicTasks_timersConfiguration_list}    === CCCamera_pathfinder_refrig_PeriodicTasks_timersConfiguration end of topic ===
     ${shutterBladeMotionProfile_start}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile start of topic ===
     ${shutterBladeMotionProfile_end}=    Get Index From List    ${full_list}    === CCCamera_shutterBladeMotionProfile end of topic ===
     ${shutterBladeMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterBladeMotionProfile_start}    end=${shutterBladeMotionProfile_end + 1}

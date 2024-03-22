@@ -219,6 +219,62 @@ Start Publisher
     Should Contain    ${focal_plane_Segment_list}    === CCCamera_focal_plane_Segment start of topic ===
     Should Contain    ${focal_plane_Segment_list}    === CCCamera_focal_plane_Segment end of topic ===
     Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment] message sent 200
+    ${pathfinder_refrig_Cold1_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1 start of topic ===
+    ${pathfinder_refrig_Cold1_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1 end of topic ===
+    ${pathfinder_refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_start}    end=${pathfinder_refrig_Cold1_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_list}
+    Should Contain    ${pathfinder_refrig_Cold1_list}    === CCCamera_pathfinder_refrig_Cold1 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_list}    === CCCamera_pathfinder_refrig_Cold1 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_list}    === [pathfinder_refrig_Cold1] message sent 200
+    ${pathfinder_refrig_Cold2_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2 start of topic ===
+    ${pathfinder_refrig_Cold2_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2 end of topic ===
+    ${pathfinder_refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_start}    end=${pathfinder_refrig_Cold2_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_list}
+    Should Contain    ${pathfinder_refrig_Cold2_list}    === CCCamera_pathfinder_refrig_Cold2 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_list}    === CCCamera_pathfinder_refrig_Cold2 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_list}    === [pathfinder_refrig_Cold2] message sent 200
+    ${pathfinder_refrig_Cryo1_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1 start of topic ===
+    ${pathfinder_refrig_Cryo1_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1 end of topic ===
+    ${pathfinder_refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_start}    end=${pathfinder_refrig_Cryo1_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_list}    === CCCamera_pathfinder_refrig_Cryo1 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_list}    === CCCamera_pathfinder_refrig_Cryo1 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_list}    === [pathfinder_refrig_Cryo1] message sent 200
+    ${pathfinder_refrig_Cryo2_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2 start of topic ===
+    ${pathfinder_refrig_Cryo2_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2 end of topic ===
+    ${pathfinder_refrig_Cryo2_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_start}    end=${pathfinder_refrig_Cryo2_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_list}    === CCCamera_pathfinder_refrig_Cryo2 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_list}    === CCCamera_pathfinder_refrig_Cryo2 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_list}    === [pathfinder_refrig_Cryo2] message sent 200
+    ${pathfinder_refrig_Cryo3_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3 start of topic ===
+    ${pathfinder_refrig_Cryo3_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3 end of topic ===
+    ${pathfinder_refrig_Cryo3_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_start}    end=${pathfinder_refrig_Cryo3_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_list}    === CCCamera_pathfinder_refrig_Cryo3 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_list}    === CCCamera_pathfinder_refrig_Cryo3 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_list}    === [pathfinder_refrig_Cryo3] message sent 200
+    ${pathfinder_refrig_Cryo4_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4 start of topic ===
+    ${pathfinder_refrig_Cryo4_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4 end of topic ===
+    ${pathfinder_refrig_Cryo4_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_start}    end=${pathfinder_refrig_Cryo4_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_list}    === CCCamera_pathfinder_refrig_Cryo4 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_list}    === CCCamera_pathfinder_refrig_Cryo4 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_list}    === [pathfinder_refrig_Cryo4] message sent 200
+    ${pathfinder_refrig_Cryo5_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5 start of topic ===
+    ${pathfinder_refrig_Cryo5_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5 end of topic ===
+    ${pathfinder_refrig_Cryo5_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_start}    end=${pathfinder_refrig_Cryo5_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_list}    === CCCamera_pathfinder_refrig_Cryo5 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_list}    === CCCamera_pathfinder_refrig_Cryo5 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_list}    === [pathfinder_refrig_Cryo5] message sent 200
+    ${pathfinder_refrig_Cryo6_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6 start of topic ===
+    ${pathfinder_refrig_Cryo6_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6 end of topic ===
+    ${pathfinder_refrig_Cryo6_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_start}    end=${pathfinder_refrig_Cryo6_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_list}    === CCCamera_pathfinder_refrig_Cryo6 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_list}    === CCCamera_pathfinder_refrig_Cryo6 end of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_list}    === [pathfinder_refrig_Cryo6] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -427,3 +483,67 @@ Read Subscriber
     Should Contain    ${focal_plane_Segment_list}    === CCCamera_focal_plane_Segment end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :200
+    ${pathfinder_refrig_Cold1_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1 start of topic ===
+    ${pathfinder_refrig_Cold1_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold1 end of topic ===
+    ${pathfinder_refrig_Cold1_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold1_start}    end=${pathfinder_refrig_Cold1_end + 1}
+    Log Many    ${pathfinder_refrig_Cold1_list}
+    Should Contain    ${pathfinder_refrig_Cold1_list}    === CCCamera_pathfinder_refrig_Cold1 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold1_list}    === CCCamera_pathfinder_refrig_Cold1 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cold1_list}    === [pathfinder_refrig_Cold1 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cold1_list}    === [pathfinder_refrig_Cold1 Subscriber] message received :200
+    ${pathfinder_refrig_Cold2_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2 start of topic ===
+    ${pathfinder_refrig_Cold2_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cold2 end of topic ===
+    ${pathfinder_refrig_Cold2_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cold2_start}    end=${pathfinder_refrig_Cold2_end + 1}
+    Log Many    ${pathfinder_refrig_Cold2_list}
+    Should Contain    ${pathfinder_refrig_Cold2_list}    === CCCamera_pathfinder_refrig_Cold2 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cold2_list}    === CCCamera_pathfinder_refrig_Cold2 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cold2_list}    === [pathfinder_refrig_Cold2 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cold2_list}    === [pathfinder_refrig_Cold2 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo1_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1 start of topic ===
+    ${pathfinder_refrig_Cryo1_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo1 end of topic ===
+    ${pathfinder_refrig_Cryo1_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo1_start}    end=${pathfinder_refrig_Cryo1_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo1_list}
+    Should Contain    ${pathfinder_refrig_Cryo1_list}    === CCCamera_pathfinder_refrig_Cryo1 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo1_list}    === CCCamera_pathfinder_refrig_Cryo1 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo1_list}    === [pathfinder_refrig_Cryo1 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo1_list}    === [pathfinder_refrig_Cryo1 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo2_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2 start of topic ===
+    ${pathfinder_refrig_Cryo2_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo2 end of topic ===
+    ${pathfinder_refrig_Cryo2_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo2_start}    end=${pathfinder_refrig_Cryo2_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo2_list}
+    Should Contain    ${pathfinder_refrig_Cryo2_list}    === CCCamera_pathfinder_refrig_Cryo2 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo2_list}    === CCCamera_pathfinder_refrig_Cryo2 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo2_list}    === [pathfinder_refrig_Cryo2 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo2_list}    === [pathfinder_refrig_Cryo2 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo3_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3 start of topic ===
+    ${pathfinder_refrig_Cryo3_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo3 end of topic ===
+    ${pathfinder_refrig_Cryo3_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo3_start}    end=${pathfinder_refrig_Cryo3_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo3_list}
+    Should Contain    ${pathfinder_refrig_Cryo3_list}    === CCCamera_pathfinder_refrig_Cryo3 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo3_list}    === CCCamera_pathfinder_refrig_Cryo3 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo3_list}    === [pathfinder_refrig_Cryo3 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo3_list}    === [pathfinder_refrig_Cryo3 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo4_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4 start of topic ===
+    ${pathfinder_refrig_Cryo4_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo4 end of topic ===
+    ${pathfinder_refrig_Cryo4_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo4_start}    end=${pathfinder_refrig_Cryo4_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo4_list}
+    Should Contain    ${pathfinder_refrig_Cryo4_list}    === CCCamera_pathfinder_refrig_Cryo4 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo4_list}    === CCCamera_pathfinder_refrig_Cryo4 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo4_list}    === [pathfinder_refrig_Cryo4 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo4_list}    === [pathfinder_refrig_Cryo4 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo5_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5 start of topic ===
+    ${pathfinder_refrig_Cryo5_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo5 end of topic ===
+    ${pathfinder_refrig_Cryo5_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo5_start}    end=${pathfinder_refrig_Cryo5_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo5_list}
+    Should Contain    ${pathfinder_refrig_Cryo5_list}    === CCCamera_pathfinder_refrig_Cryo5 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo5_list}    === CCCamera_pathfinder_refrig_Cryo5 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo5_list}    === [pathfinder_refrig_Cryo5 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo5_list}    === [pathfinder_refrig_Cryo5 Subscriber] message received :200
+    ${pathfinder_refrig_Cryo6_start}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6 start of topic ===
+    ${pathfinder_refrig_Cryo6_end}=    Get Index From List    ${full_list}    === CCCamera_pathfinder_refrig_Cryo6 end of topic ===
+    ${pathfinder_refrig_Cryo6_list}=    Get Slice From List    ${full_list}    start=${pathfinder_refrig_Cryo6_start}    end=${pathfinder_refrig_Cryo6_end + 1}
+    Log Many    ${pathfinder_refrig_Cryo6_list}
+    Should Contain    ${pathfinder_refrig_Cryo6_list}    === CCCamera_pathfinder_refrig_Cryo6 start of topic ===
+    Should Contain    ${pathfinder_refrig_Cryo6_list}    === CCCamera_pathfinder_refrig_Cryo6 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo6_list}    === [pathfinder_refrig_Cryo6 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${pathfinder_refrig_Cryo6_list}    === [pathfinder_refrig_Cryo6 Subscriber] message received :200

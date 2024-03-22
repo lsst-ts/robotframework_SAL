@@ -226,6 +226,13 @@ Start Publisher
     Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX start of topic ===
     Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX end of topic ===
     Should Contain    ${vacuum_HX_list}    === [vacuum_HX] message sent 200
+    ${vacuum_Hip_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip start of topic ===
+    ${vacuum_Hip_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip end of topic ===
+    ${vacuum_Hip_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hip_start}    end=${vacuum_Hip_end + 1}
+    Log Many    ${vacuum_Hip_list}
+    Should Contain    ${vacuum_Hip_list}    === MTCamera_vacuum_Hip start of topic ===
+    Should Contain    ${vacuum_Hip_list}    === MTCamera_vacuum_Hip end of topic ===
+    Should Contain    ${vacuum_Hip_list}    === [vacuum_Hip] message sent 200
     ${vacuum_Inst_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst start of topic ===
     ${vacuum_Inst_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst end of topic ===
     ${vacuum_Inst_list}=    Get Slice From List    ${full_list}    start=${vacuum_Inst_start}    end=${vacuum_Inst_end + 1}
@@ -289,6 +296,62 @@ Start Publisher
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment start of topic ===
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment] message sent 200
+    ${mpm_CLP_RTD_03_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03 start of topic ===
+    ${mpm_CLP_RTD_03_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03 end of topic ===
+    ${mpm_CLP_RTD_03_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_03_start}    end=${mpm_CLP_RTD_03_end + 1}
+    Log Many    ${mpm_CLP_RTD_03_list}
+    Should Contain    ${mpm_CLP_RTD_03_list}    === MTCamera_mpm_CLP_RTD_03 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_03_list}    === MTCamera_mpm_CLP_RTD_03 end of topic ===
+    Should Contain    ${mpm_CLP_RTD_03_list}    === [mpm_CLP_RTD_03] message sent 200
+    ${mpm_CLP_RTD_05_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05 start of topic ===
+    ${mpm_CLP_RTD_05_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05 end of topic ===
+    ${mpm_CLP_RTD_05_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_05_start}    end=${mpm_CLP_RTD_05_end + 1}
+    Log Many    ${mpm_CLP_RTD_05_list}
+    Should Contain    ${mpm_CLP_RTD_05_list}    === MTCamera_mpm_CLP_RTD_05 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_05_list}    === MTCamera_mpm_CLP_RTD_05 end of topic ===
+    Should Contain    ${mpm_CLP_RTD_05_list}    === [mpm_CLP_RTD_05] message sent 200
+    ${mpm_CLP_RTD_50_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50 start of topic ===
+    ${mpm_CLP_RTD_50_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50 end of topic ===
+    ${mpm_CLP_RTD_50_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_50_start}    end=${mpm_CLP_RTD_50_end + 1}
+    Log Many    ${mpm_CLP_RTD_50_list}
+    Should Contain    ${mpm_CLP_RTD_50_list}    === MTCamera_mpm_CLP_RTD_50 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_50_list}    === MTCamera_mpm_CLP_RTD_50 end of topic ===
+    Should Contain    ${mpm_CLP_RTD_50_list}    === [mpm_CLP_RTD_50] message sent 200
+    ${mpm_CLP_RTD_55_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55 start of topic ===
+    ${mpm_CLP_RTD_55_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55 end of topic ===
+    ${mpm_CLP_RTD_55_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_55_start}    end=${mpm_CLP_RTD_55_end + 1}
+    Log Many    ${mpm_CLP_RTD_55_list}
+    Should Contain    ${mpm_CLP_RTD_55_list}    === MTCamera_mpm_CLP_RTD_55 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_55_list}    === MTCamera_mpm_CLP_RTD_55 end of topic ===
+    Should Contain    ${mpm_CLP_RTD_55_list}    === [mpm_CLP_RTD_55] message sent 200
+    ${mpm_CYP_RTD_12_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12 start of topic ===
+    ${mpm_CYP_RTD_12_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12 end of topic ===
+    ${mpm_CYP_RTD_12_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_12_start}    end=${mpm_CYP_RTD_12_end + 1}
+    Log Many    ${mpm_CYP_RTD_12_list}
+    Should Contain    ${mpm_CYP_RTD_12_list}    === MTCamera_mpm_CYP_RTD_12 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_12_list}    === MTCamera_mpm_CYP_RTD_12 end of topic ===
+    Should Contain    ${mpm_CYP_RTD_12_list}    === [mpm_CYP_RTD_12] message sent 200
+    ${mpm_CYP_RTD_14_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14 start of topic ===
+    ${mpm_CYP_RTD_14_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14 end of topic ===
+    ${mpm_CYP_RTD_14_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_14_start}    end=${mpm_CYP_RTD_14_end + 1}
+    Log Many    ${mpm_CYP_RTD_14_list}
+    Should Contain    ${mpm_CYP_RTD_14_list}    === MTCamera_mpm_CYP_RTD_14 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_14_list}    === MTCamera_mpm_CYP_RTD_14 end of topic ===
+    Should Contain    ${mpm_CYP_RTD_14_list}    === [mpm_CYP_RTD_14] message sent 200
+    ${mpm_CYP_RTD_31_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31 start of topic ===
+    ${mpm_CYP_RTD_31_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31 end of topic ===
+    ${mpm_CYP_RTD_31_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_31_start}    end=${mpm_CYP_RTD_31_end + 1}
+    Log Many    ${mpm_CYP_RTD_31_list}
+    Should Contain    ${mpm_CYP_RTD_31_list}    === MTCamera_mpm_CYP_RTD_31 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_31_list}    === MTCamera_mpm_CYP_RTD_31 end of topic ===
+    Should Contain    ${mpm_CYP_RTD_31_list}    === [mpm_CYP_RTD_31] message sent 200
+    ${mpm_CYP_RTD_43_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43 start of topic ===
+    ${mpm_CYP_RTD_43_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43 end of topic ===
+    ${mpm_CYP_RTD_43_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_43_start}    end=${mpm_CYP_RTD_43_end + 1}
+    Log Many    ${mpm_CYP_RTD_43_list}
+    Should Contain    ${mpm_CYP_RTD_43_list}    === MTCamera_mpm_CYP_RTD_43 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_43_list}    === MTCamera_mpm_CYP_RTD_43 end of topic ===
+    Should Contain    ${mpm_CYP_RTD_43_list}    === [mpm_CYP_RTD_43] message sent 200
     ${fcs_Autochanger_AutochangerTrucks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
     ${fcs_Autochanger_AutochangerTrucks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
     ${fcs_Autochanger_AutochangerTrucks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_AutochangerTrucks_Trending_start}    end=${fcs_Autochanger_AutochangerTrucks_Trending_end + 1}
@@ -883,6 +946,14 @@ Read Subscriber
     Should Contain    ${vacuum_HX_list}    === MTCamera_vacuum_HX end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${vacuum_HX_list}    === [vacuum_HX Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${vacuum_HX_list}    === [vacuum_HX Subscriber] message received :200
+    ${vacuum_Hip_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip start of topic ===
+    ${vacuum_Hip_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip end of topic ===
+    ${vacuum_Hip_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hip_start}    end=${vacuum_Hip_end + 1}
+    Log Many    ${vacuum_Hip_list}
+    Should Contain    ${vacuum_Hip_list}    === MTCamera_vacuum_Hip start of topic ===
+    Should Contain    ${vacuum_Hip_list}    === MTCamera_vacuum_Hip end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hip_list}    === [vacuum_Hip Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${vacuum_Hip_list}    === [vacuum_Hip Subscriber] message received :200
     ${vacuum_Inst_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst start of topic ===
     ${vacuum_Inst_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Inst end of topic ===
     ${vacuum_Inst_list}=    Get Slice From List    ${full_list}    start=${vacuum_Inst_start}    end=${vacuum_Inst_end + 1}
@@ -955,6 +1026,70 @@ Read Subscriber
     Should Contain    ${focal_plane_Segment_list}    === MTCamera_focal_plane_Segment end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${focal_plane_Segment_list}    === [focal_plane_Segment Subscriber] message received :200
+    ${mpm_CLP_RTD_03_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03 start of topic ===
+    ${mpm_CLP_RTD_03_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03 end of topic ===
+    ${mpm_CLP_RTD_03_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_03_start}    end=${mpm_CLP_RTD_03_end + 1}
+    Log Many    ${mpm_CLP_RTD_03_list}
+    Should Contain    ${mpm_CLP_RTD_03_list}    === MTCamera_mpm_CLP_RTD_03 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_03_list}    === MTCamera_mpm_CLP_RTD_03 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_03_list}    === [mpm_CLP_RTD_03 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_03_list}    === [mpm_CLP_RTD_03 Subscriber] message received :200
+    ${mpm_CLP_RTD_05_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05 start of topic ===
+    ${mpm_CLP_RTD_05_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05 end of topic ===
+    ${mpm_CLP_RTD_05_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_05_start}    end=${mpm_CLP_RTD_05_end + 1}
+    Log Many    ${mpm_CLP_RTD_05_list}
+    Should Contain    ${mpm_CLP_RTD_05_list}    === MTCamera_mpm_CLP_RTD_05 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_05_list}    === MTCamera_mpm_CLP_RTD_05 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_05_list}    === [mpm_CLP_RTD_05 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_05_list}    === [mpm_CLP_RTD_05 Subscriber] message received :200
+    ${mpm_CLP_RTD_50_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50 start of topic ===
+    ${mpm_CLP_RTD_50_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50 end of topic ===
+    ${mpm_CLP_RTD_50_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_50_start}    end=${mpm_CLP_RTD_50_end + 1}
+    Log Many    ${mpm_CLP_RTD_50_list}
+    Should Contain    ${mpm_CLP_RTD_50_list}    === MTCamera_mpm_CLP_RTD_50 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_50_list}    === MTCamera_mpm_CLP_RTD_50 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_50_list}    === [mpm_CLP_RTD_50 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_50_list}    === [mpm_CLP_RTD_50 Subscriber] message received :200
+    ${mpm_CLP_RTD_55_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55 start of topic ===
+    ${mpm_CLP_RTD_55_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55 end of topic ===
+    ${mpm_CLP_RTD_55_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_55_start}    end=${mpm_CLP_RTD_55_end + 1}
+    Log Many    ${mpm_CLP_RTD_55_list}
+    Should Contain    ${mpm_CLP_RTD_55_list}    === MTCamera_mpm_CLP_RTD_55 start of topic ===
+    Should Contain    ${mpm_CLP_RTD_55_list}    === MTCamera_mpm_CLP_RTD_55 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_55_list}    === [mpm_CLP_RTD_55 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CLP_RTD_55_list}    === [mpm_CLP_RTD_55 Subscriber] message received :200
+    ${mpm_CYP_RTD_12_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12 start of topic ===
+    ${mpm_CYP_RTD_12_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12 end of topic ===
+    ${mpm_CYP_RTD_12_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_12_start}    end=${mpm_CYP_RTD_12_end + 1}
+    Log Many    ${mpm_CYP_RTD_12_list}
+    Should Contain    ${mpm_CYP_RTD_12_list}    === MTCamera_mpm_CYP_RTD_12 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_12_list}    === MTCamera_mpm_CYP_RTD_12 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_12_list}    === [mpm_CYP_RTD_12 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_12_list}    === [mpm_CYP_RTD_12 Subscriber] message received :200
+    ${mpm_CYP_RTD_14_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14 start of topic ===
+    ${mpm_CYP_RTD_14_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14 end of topic ===
+    ${mpm_CYP_RTD_14_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_14_start}    end=${mpm_CYP_RTD_14_end + 1}
+    Log Many    ${mpm_CYP_RTD_14_list}
+    Should Contain    ${mpm_CYP_RTD_14_list}    === MTCamera_mpm_CYP_RTD_14 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_14_list}    === MTCamera_mpm_CYP_RTD_14 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_14_list}    === [mpm_CYP_RTD_14 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_14_list}    === [mpm_CYP_RTD_14 Subscriber] message received :200
+    ${mpm_CYP_RTD_31_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31 start of topic ===
+    ${mpm_CYP_RTD_31_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31 end of topic ===
+    ${mpm_CYP_RTD_31_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_31_start}    end=${mpm_CYP_RTD_31_end + 1}
+    Log Many    ${mpm_CYP_RTD_31_list}
+    Should Contain    ${mpm_CYP_RTD_31_list}    === MTCamera_mpm_CYP_RTD_31 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_31_list}    === MTCamera_mpm_CYP_RTD_31 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_31_list}    === [mpm_CYP_RTD_31 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_31_list}    === [mpm_CYP_RTD_31 Subscriber] message received :200
+    ${mpm_CYP_RTD_43_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43 start of topic ===
+    ${mpm_CYP_RTD_43_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43 end of topic ===
+    ${mpm_CYP_RTD_43_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_43_start}    end=${mpm_CYP_RTD_43_end + 1}
+    Log Many    ${mpm_CYP_RTD_43_list}
+    Should Contain    ${mpm_CYP_RTD_43_list}    === MTCamera_mpm_CYP_RTD_43 start of topic ===
+    Should Contain    ${mpm_CYP_RTD_43_list}    === MTCamera_mpm_CYP_RTD_43 end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_43_list}    === [mpm_CYP_RTD_43 Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${mpm_CYP_RTD_43_list}    === [mpm_CYP_RTD_43 Subscriber] message received :200
     ${fcs_Autochanger_AutochangerTrucks_Trending_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending start of topic ===
     ${fcs_Autochanger_AutochangerTrucks_Trending_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_AutochangerTrucks_Trending end of topic ===
     ${fcs_Autochanger_AutochangerTrucks_Trending_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_AutochangerTrucks_Trending_start}    end=${fcs_Autochanger_AutochangerTrucks_Trending_end + 1}

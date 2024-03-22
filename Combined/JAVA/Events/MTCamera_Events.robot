@@ -790,6 +790,12 @@ Start Sender
     Log Many    ${vacuum_HexVacGauge_DevicesConfiguration_list}
     Should Contain    ${vacuum_HexVacGauge_DevicesConfiguration_list}    === MTCamera_vacuum_HexVacGauge_DevicesConfiguration start of topic ===
     Should Contain    ${vacuum_HexVacGauge_DevicesConfiguration_list}    === MTCamera_vacuum_HexVacGauge_DevicesConfiguration end of topic ===
+    ${vacuum_Hip_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip_LimitsConfiguration start of topic ===
+    ${vacuum_Hip_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip_LimitsConfiguration end of topic ===
+    ${vacuum_Hip_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hip_LimitsConfiguration_start}    end=${vacuum_Hip_LimitsConfiguration_end + 1}
+    Log Many    ${vacuum_Hip_LimitsConfiguration_list}
+    Should Contain    ${vacuum_Hip_LimitsConfiguration_list}    === MTCamera_vacuum_Hip_LimitsConfiguration start of topic ===
+    Should Contain    ${vacuum_Hip_LimitsConfiguration_list}    === MTCamera_vacuum_Hip_LimitsConfiguration end of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_InstVacGauge_CryoConfiguration start of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_InstVacGauge_CryoConfiguration end of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_InstVacGauge_CryoConfiguration_start}    end=${vacuum_InstVacGauge_CryoConfiguration_end + 1}
@@ -1144,6 +1150,78 @@ Start Sender
     Log Many    ${image_handling_StatusAggregator_GeneralConfiguration_list}
     Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_03_LimitsConfiguration_start}    end=${mpm_CLP_RTD_03_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_03_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_03_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_03_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_05_LimitsConfiguration_start}    end=${mpm_CLP_RTD_05_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_05_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_05_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_05_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_50_LimitsConfiguration_start}    end=${mpm_CLP_RTD_50_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_50_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_50_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_50_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_55_LimitsConfiguration_start}    end=${mpm_CLP_RTD_55_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_55_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_55_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_55_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_12_LimitsConfiguration_start}    end=${mpm_CYP_RTD_12_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_12_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_12_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_12_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_14_LimitsConfiguration_start}    end=${mpm_CYP_RTD_14_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_14_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_14_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_14_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_31_LimitsConfiguration_start}    end=${mpm_CYP_RTD_31_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_31_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_31_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_31_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_43_LimitsConfiguration_start}    end=${mpm_CYP_RTD_43_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_43_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_43_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_43_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration end of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_PeriodicTasks_GeneralConfiguration_start}    end=${mpm_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${mpm_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${mpm_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${mpm_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration start of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration end of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_PeriodicTasks_timersConfiguration_start}    end=${mpm_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${mpm_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${mpm_PeriodicTasks_timersConfiguration_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${mpm_PeriodicTasks_timersConfiguration_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration end of topic ===
+    ${mpm_Pluto_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DeviceConfiguration start of topic ===
+    ${mpm_Pluto_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DeviceConfiguration end of topic ===
+    ${mpm_Pluto_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_Pluto_DeviceConfiguration_start}    end=${mpm_Pluto_DeviceConfiguration_end + 1}
+    Log Many    ${mpm_Pluto_DeviceConfiguration_list}
+    Should Contain    ${mpm_Pluto_DeviceConfiguration_list}    === MTCamera_mpm_Pluto_DeviceConfiguration start of topic ===
+    Should Contain    ${mpm_Pluto_DeviceConfiguration_list}    === MTCamera_mpm_Pluto_DeviceConfiguration end of topic ===
+    ${mpm_Pluto_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DevicesConfiguration start of topic ===
+    ${mpm_Pluto_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DevicesConfiguration end of topic ===
+    ${mpm_Pluto_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_Pluto_DevicesConfiguration_start}    end=${mpm_Pluto_DevicesConfiguration_end + 1}
+    Log Many    ${mpm_Pluto_DevicesConfiguration_list}
+    Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === MTCamera_mpm_Pluto_DevicesConfiguration start of topic ===
+    Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === MTCamera_mpm_Pluto_DevicesConfiguration end of topic ===
     ${fcs_Autochanger_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_LimitsConfiguration start of topic ===
     ${fcs_Autochanger_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_LimitsConfiguration end of topic ===
     ${fcs_Autochanger_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_LimitsConfiguration_start}    end=${fcs_Autochanger_LimitsConfiguration_end + 1}
@@ -1546,6 +1624,12 @@ Start Sender
     Log Many    ${alertRaised_list}
     Should Contain    ${alertRaised_list}    === MTCamera_alertRaised start of topic ===
     Should Contain    ${alertRaised_list}    === MTCamera_alertRaised end of topic ===
+    ${filterChangerPowerStatus_start}=    Get Index From List    ${full_list}    === MTCamera_filterChangerPowerStatus start of topic ===
+    ${filterChangerPowerStatus_end}=    Get Index From List    ${full_list}    === MTCamera_filterChangerPowerStatus end of topic ===
+    ${filterChangerPowerStatus_list}=    Get Slice From List    ${full_list}    start=${filterChangerPowerStatus_start}    end=${filterChangerPowerStatus_end + 1}
+    Log Many    ${filterChangerPowerStatus_list}
+    Should Contain    ${filterChangerPowerStatus_list}    === MTCamera_filterChangerPowerStatus start of topic ===
+    Should Contain    ${filterChangerPowerStatus_list}    === MTCamera_filterChangerPowerStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -2364,6 +2448,12 @@ Read Subscriber
     Log Many    ${vacuum_HexVacGauge_DevicesConfiguration_list}
     Should Contain    ${vacuum_HexVacGauge_DevicesConfiguration_list}    === MTCamera_vacuum_HexVacGauge_DevicesConfiguration start of topic ===
     Should Contain    ${vacuum_HexVacGauge_DevicesConfiguration_list}    === MTCamera_vacuum_HexVacGauge_DevicesConfiguration end of topic ===
+    ${vacuum_Hip_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip_LimitsConfiguration start of topic ===
+    ${vacuum_Hip_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_Hip_LimitsConfiguration end of topic ===
+    ${vacuum_Hip_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_Hip_LimitsConfiguration_start}    end=${vacuum_Hip_LimitsConfiguration_end + 1}
+    Log Many    ${vacuum_Hip_LimitsConfiguration_list}
+    Should Contain    ${vacuum_Hip_LimitsConfiguration_list}    === MTCamera_vacuum_Hip_LimitsConfiguration start of topic ===
+    Should Contain    ${vacuum_Hip_LimitsConfiguration_list}    === MTCamera_vacuum_Hip_LimitsConfiguration end of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_vacuum_InstVacGauge_CryoConfiguration start of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_vacuum_InstVacGauge_CryoConfiguration end of topic ===
     ${vacuum_InstVacGauge_CryoConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_InstVacGauge_CryoConfiguration_start}    end=${vacuum_InstVacGauge_CryoConfiguration_end + 1}
@@ -2718,6 +2808,78 @@ Read Subscriber
     Log Many    ${image_handling_StatusAggregator_GeneralConfiguration_list}
     Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration start of topic ===
     Should Contain    ${image_handling_StatusAggregator_GeneralConfiguration_list}    === MTCamera_image_handling_StatusAggregator_GeneralConfiguration end of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_03_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_03_LimitsConfiguration_start}    end=${mpm_CLP_RTD_03_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_03_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_03_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_03_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_03_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_05_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_05_LimitsConfiguration_start}    end=${mpm_CLP_RTD_05_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_05_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_05_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_05_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_05_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_50_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_50_LimitsConfiguration_start}    end=${mpm_CLP_RTD_50_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_50_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_50_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_50_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_50_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration start of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration end of topic ===
+    ${mpm_CLP_RTD_55_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CLP_RTD_55_LimitsConfiguration_start}    end=${mpm_CLP_RTD_55_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CLP_RTD_55_LimitsConfiguration_list}
+    Should Contain    ${mpm_CLP_RTD_55_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CLP_RTD_55_LimitsConfiguration_list}    === MTCamera_mpm_CLP_RTD_55_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_12_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_12_LimitsConfiguration_start}    end=${mpm_CYP_RTD_12_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_12_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_12_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_12_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_12_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_14_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_14_LimitsConfiguration_start}    end=${mpm_CYP_RTD_14_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_14_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_14_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_14_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_14_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_31_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_31_LimitsConfiguration_start}    end=${mpm_CYP_RTD_31_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_31_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_31_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_31_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_31_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration start of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration end of topic ===
+    ${mpm_CYP_RTD_43_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_CYP_RTD_43_LimitsConfiguration_start}    end=${mpm_CYP_RTD_43_LimitsConfiguration_end + 1}
+    Log Many    ${mpm_CYP_RTD_43_LimitsConfiguration_list}
+    Should Contain    ${mpm_CYP_RTD_43_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration start of topic ===
+    Should Contain    ${mpm_CYP_RTD_43_LimitsConfiguration_list}    === MTCamera_mpm_CYP_RTD_43_LimitsConfiguration end of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration start of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${mpm_PeriodicTasks_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_PeriodicTasks_GeneralConfiguration_start}    end=${mpm_PeriodicTasks_GeneralConfiguration_end + 1}
+    Log Many    ${mpm_PeriodicTasks_GeneralConfiguration_list}
+    Should Contain    ${mpm_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration start of topic ===
+    Should Contain    ${mpm_PeriodicTasks_GeneralConfiguration_list}    === MTCamera_mpm_PeriodicTasks_GeneralConfiguration end of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration start of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration end of topic ===
+    ${mpm_PeriodicTasks_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_PeriodicTasks_timersConfiguration_start}    end=${mpm_PeriodicTasks_timersConfiguration_end + 1}
+    Log Many    ${mpm_PeriodicTasks_timersConfiguration_list}
+    Should Contain    ${mpm_PeriodicTasks_timersConfiguration_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration start of topic ===
+    Should Contain    ${mpm_PeriodicTasks_timersConfiguration_list}    === MTCamera_mpm_PeriodicTasks_timersConfiguration end of topic ===
+    ${mpm_Pluto_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DeviceConfiguration start of topic ===
+    ${mpm_Pluto_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DeviceConfiguration end of topic ===
+    ${mpm_Pluto_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_Pluto_DeviceConfiguration_start}    end=${mpm_Pluto_DeviceConfiguration_end + 1}
+    Log Many    ${mpm_Pluto_DeviceConfiguration_list}
+    Should Contain    ${mpm_Pluto_DeviceConfiguration_list}    === MTCamera_mpm_Pluto_DeviceConfiguration start of topic ===
+    Should Contain    ${mpm_Pluto_DeviceConfiguration_list}    === MTCamera_mpm_Pluto_DeviceConfiguration end of topic ===
+    ${mpm_Pluto_DevicesConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DevicesConfiguration start of topic ===
+    ${mpm_Pluto_DevicesConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_mpm_Pluto_DevicesConfiguration end of topic ===
+    ${mpm_Pluto_DevicesConfiguration_list}=    Get Slice From List    ${full_list}    start=${mpm_Pluto_DevicesConfiguration_start}    end=${mpm_Pluto_DevicesConfiguration_end + 1}
+    Log Many    ${mpm_Pluto_DevicesConfiguration_list}
+    Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === MTCamera_mpm_Pluto_DevicesConfiguration start of topic ===
+    Should Contain    ${mpm_Pluto_DevicesConfiguration_list}    === MTCamera_mpm_Pluto_DevicesConfiguration end of topic ===
     ${fcs_Autochanger_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_LimitsConfiguration start of topic ===
     ${fcs_Autochanger_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_fcs_Autochanger_LimitsConfiguration end of topic ===
     ${fcs_Autochanger_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${fcs_Autochanger_LimitsConfiguration_start}    end=${fcs_Autochanger_LimitsConfiguration_end + 1}
@@ -3120,6 +3282,12 @@ Read Subscriber
     Log Many    ${alertRaised_list}
     Should Contain    ${alertRaised_list}    === MTCamera_alertRaised start of topic ===
     Should Contain    ${alertRaised_list}    === MTCamera_alertRaised end of topic ===
+    ${filterChangerPowerStatus_start}=    Get Index From List    ${full_list}    === MTCamera_filterChangerPowerStatus start of topic ===
+    ${filterChangerPowerStatus_end}=    Get Index From List    ${full_list}    === MTCamera_filterChangerPowerStatus end of topic ===
+    ${filterChangerPowerStatus_list}=    Get Slice From List    ${full_list}    start=${filterChangerPowerStatus_start}    end=${filterChangerPowerStatus_end + 1}
+    Log Many    ${filterChangerPowerStatus_list}
+    Should Contain    ${filterChangerPowerStatus_list}    === MTCamera_filterChangerPowerStatus start of topic ===
+    Should Contain    ${filterChangerPowerStatus_list}    === MTCamera_filterChangerPowerStatus end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTCamera_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTCamera_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
