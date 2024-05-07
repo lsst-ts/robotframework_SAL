@@ -145,12 +145,10 @@ function clearTestSuites() {
     ##
     local subsystem=$1
     local language=$(echo $2 |tr [a-z] [A-Z]) #Programming language is fully capitalized
-    local slash="/"
     if [ -n "$3" ]; then local topic_type=$(tr '[:lower:]' '[:upper:]' <<< ${3:0:1})${3:1}; else local topic_type=""; fi #Topic type is capitalized 
-    echo ""
     echo "==================================== ${subsystem} ${language} ${topic_type} tests ===================================="
-    #files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Separate/$language/$topic_type/${subsystem}_* ; ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
-    files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+    #files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Separate/${path}$language/$topic_type/${subsystem}_* ; ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/$language/$topic_type/${subsystem}_${topic_type}*)
+    files=$(ls -1 $ROBOTFRAMEWORK_SAL_DIR/Combined/${path}$language/$topic_type/${subsystem}_${topic_type}*)
     if [ $? -eq 0 ]; then
         echo "Deleting:"
         echo "$files"
