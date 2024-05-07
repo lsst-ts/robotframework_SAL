@@ -116,7 +116,6 @@ function startPublisher {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     if [ $topic ]; then
         echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
-        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
         echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component}_\${revcode} writing a message containing :    9" >> $testSuite
@@ -124,7 +123,6 @@ function startPublisher {
     else
         for item in "${topicsArray[@]}"; do
             echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
-            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
             echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} start of topic ===" >> $testSuite
