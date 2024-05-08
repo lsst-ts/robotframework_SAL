@@ -37,7 +37,6 @@ Start Publisher
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
     Comment    ======= Verify ${subSystem}_airTurbulence test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_airTurbulence
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_airTurbulence start of topic ===
@@ -45,7 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_airTurbulence end of topic ===
     Comment    ======= Verify ${subSystem}_airFlow test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_airFlow
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_airFlow start of topic ===
@@ -53,7 +51,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_airFlow end of topic ===
     Comment    ======= Verify ${subSystem}_dewPoint test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_dewPoint
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_dewPoint start of topic ===
@@ -61,7 +58,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_dewPoint end of topic ===
     Comment    ======= Verify ${subSystem}_pressure test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_pressure
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_pressure start of topic ===
@@ -69,7 +65,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_pressure end of topic ===
     Comment    ======= Verify ${subSystem}_rainRate test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_rainRate
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_rainRate start of topic ===
@@ -77,7 +72,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_rainRate end of topic ===
     Comment    ======= Verify ${subSystem}_relativeHumidity test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_relativeHumidity
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_relativeHumidity start of topic ===
@@ -85,7 +79,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_relativeHumidity end of topic ===
     Comment    ======= Verify ${subSystem}_snowRate test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_snowRate
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_snowRate start of topic ===
@@ -93,7 +86,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_snowRate end of topic ===
     Comment    ======= Verify ${subSystem}_solarRadiation test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_solarRadiation
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_solarRadiation start of topic ===
@@ -101,7 +93,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_solarRadiation end of topic ===
     Comment    ======= Verify ${subSystem}_temperature test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_temperature
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_temperature start of topic ===
@@ -109,7 +100,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_temperature end of topic ===
     Comment    ======= Verify ${subSystem}_accelerometer test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_accelerometer
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_accelerometer start of topic ===
@@ -117,7 +107,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_accelerometer end of topic ===
     Comment    ======= Verify ${subSystem}_accelerometerPSD test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_accelerometerPSD
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_accelerometerPSD start of topic ===
@@ -125,7 +114,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_accelerometerPSD end of topic ===
     Comment    ======= Verify ${subSystem}_electricFieldStrength test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_electricFieldStrength
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_electricFieldStrength start of topic ===
@@ -133,7 +121,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_electricFieldStrength end of topic ===
     Comment    ======= Verify ${subSystem}_lightningStrikeStatus test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_lightningStrikeStatus
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_lightningStrikeStatus start of topic ===
@@ -141,7 +128,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_lightningStrikeStatus end of topic ===
     Comment    ======= Verify ${subSystem}_spectrumAnalyzer test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_spectrumAnalyzer
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_spectrumAnalyzer start of topic ===
@@ -149,7 +135,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_spectrumAnalyzer end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeBroadBandHighGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeBroadBandHighGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain start of topic ===
@@ -157,7 +142,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeBroadBandLowGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeBroadBandLowGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain start of topic ===
@@ -165,7 +149,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandHighGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeHighBroadBandHighGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
@@ -173,7 +156,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandLowGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeHighBroadBandLowGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
@@ -181,7 +163,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeLongPeriodHighGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeLongPeriodHighGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain start of topic ===
@@ -189,7 +170,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeLongPeriodLowGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeLongPeriodLowGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain start of topic ===
@@ -197,7 +177,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeUltraLongPeriodHighGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeUltraLongPeriodHighGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
@@ -205,7 +184,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
     Comment    ======= Verify ${subSystem}_earthquakeVeryLongPeriodHighGain test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_earthquakeVeryLongPeriodHighGain
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===

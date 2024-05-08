@@ -37,7 +37,6 @@ Start Publisher
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
     Comment    ======= Verify ${subSystem}_forceActuatorData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_forceActuatorData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_forceActuatorData start of topic ===
@@ -45,7 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_forceActuatorData end of topic ===
     Comment    ======= Verify ${subSystem}_inclinometerData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_inclinometerData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_inclinometerData start of topic ===
@@ -53,7 +51,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_inclinometerData end of topic ===
     Comment    ======= Verify ${subSystem}_outerLoopData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_outerLoopData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_outerLoopData start of topic ===
@@ -61,7 +58,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_outerLoopData end of topic ===
     Comment    ======= Verify ${subSystem}_accelerometerData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_accelerometerData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_accelerometerData start of topic ===
@@ -69,7 +65,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_accelerometerData end of topic ===
     Comment    ======= Verify ${subSystem}_hardpointActuatorData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_hardpointActuatorData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_hardpointActuatorData start of topic ===
@@ -77,7 +72,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_hardpointActuatorData end of topic ===
     Comment    ======= Verify ${subSystem}_imsData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_imsData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_imsData start of topic ===
@@ -85,7 +79,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_imsData end of topic ===
     Comment    ======= Verify ${subSystem}_forceActuatorPressure test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_forceActuatorPressure
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_forceActuatorPressure start of topic ===
@@ -93,7 +86,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_forceActuatorPressure end of topic ===
     Comment    ======= Verify ${subSystem}_gyroData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_gyroData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_gyroData start of topic ===
@@ -101,7 +93,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_gyroData end of topic ===
     Comment    ======= Verify ${subSystem}_powerSupplyData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_powerSupplyData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_powerSupplyData start of topic ===
@@ -109,7 +100,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_powerSupplyData end of topic ===
     Comment    ======= Verify ${subSystem}_pidData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_pidData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_pidData start of topic ===
@@ -117,7 +107,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_pidData end of topic ===
     Comment    ======= Verify ${subSystem}_hardpointMonitorData test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_hardpointMonitorData
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_hardpointMonitorData start of topic ===
@@ -125,7 +114,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_hardpointMonitorData end of topic ===
     Comment    ======= Verify ${subSystem}_appliedAzimuthForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedAzimuthForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedAzimuthForces start of topic ===
@@ -133,7 +121,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedAzimuthForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedAccelerationForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedAccelerationForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedAccelerationForces start of topic ===
@@ -141,7 +128,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedAccelerationForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedBalanceForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedBalanceForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedBalanceForces start of topic ===
@@ -149,7 +135,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedBalanceForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedCylinderForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedCylinderForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedCylinderForces start of topic ===
@@ -157,7 +142,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedCylinderForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedElevationForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedElevationForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedElevationForces start of topic ===
@@ -165,7 +149,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedElevationForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedForces start of topic ===
@@ -173,7 +156,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedThermalForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedThermalForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedThermalForces start of topic ===
@@ -181,7 +163,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3_appliedThermalForces end of topic ===
     Comment    ======= Verify ${subSystem}_appliedVelocityForces test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_appliedVelocityForces
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTM1M3_appliedVelocityForces start of topic ===
