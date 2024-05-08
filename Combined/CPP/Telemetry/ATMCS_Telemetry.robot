@@ -37,7 +37,6 @@ Start Publisher
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
     Comment    ======= Verify ${subSystem}_trajectory test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_trajectory
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_trajectory start of topic ===
@@ -45,7 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_trajectory end of topic ===
     Comment    ======= Verify ${subSystem}_mount_AzEl_Encoders test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mount_AzEl_Encoders
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_mount_AzEl_Encoders start of topic ===
@@ -53,7 +51,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_mount_AzEl_Encoders end of topic ===
     Comment    ======= Verify ${subSystem}_mount_Nasmyth_Encoders test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mount_Nasmyth_Encoders
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_mount_Nasmyth_Encoders start of topic ===
@@ -61,7 +58,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_mount_Nasmyth_Encoders end of topic ===
     Comment    ======= Verify ${subSystem}_torqueDemand test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_torqueDemand
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_torqueDemand start of topic ===
@@ -69,7 +65,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_torqueDemand end of topic ===
     Comment    ======= Verify ${subSystem}_measuredTorque test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_measuredTorque
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_measuredTorque start of topic ===
@@ -77,7 +72,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_measuredTorque end of topic ===
     Comment    ======= Verify ${subSystem}_measuredMotorVelocity test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_measuredMotorVelocity
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_measuredMotorVelocity start of topic ===
@@ -85,7 +79,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_measuredMotorVelocity end of topic ===
     Comment    ======= Verify ${subSystem}_nasmyth_m3_mountMotorEncoders test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_nasmyth_m3_mountMotorEncoders
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders start of topic ===
@@ -93,7 +86,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders end of topic ===
     Comment    ======= Verify ${subSystem}_azEl_mountMotorEncoders test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_azEl_mountMotorEncoders
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === ATMCS_azEl_mountMotorEncoders start of topic ===
