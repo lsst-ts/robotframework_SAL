@@ -12,8 +12,8 @@ source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 
 #  Define variables to be used in script
-workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Telemetry
-workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Telemetry
+workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/DDS_CPP/Telemetry
+workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/DDS_CPP/Telemetry
 declare -a topicsArray=($EMPTY)
 declare -a parametersArray=($EMPTY)
 
@@ -30,7 +30,7 @@ function main() {
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $subSystem "CPP" "Telemetry" || exit 1
+        clearTestSuites $subSystem "DDS_CPP" "Telemetry" || exit 1
         # Create test suite.
         createTestSuite $subSystem $file || exit 1
     else
@@ -116,6 +116,7 @@ function startPublisher {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     if [ $topic ]; then
         echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
         echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component}_\${revcode} writing a message containing :    9" >> $testSuite
@@ -123,6 +124,7 @@ function startPublisher {
     else
         for item in "${topicsArray[@]}"; do
             echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
             echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} start of topic ===" >> $testSuite

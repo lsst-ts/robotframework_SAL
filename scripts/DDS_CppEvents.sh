@@ -10,8 +10,8 @@ source $ROBOTFRAMEWORK_SAL_DIR/scripts/_common.sh
 source $ROBOTFRAMEWORK_SAL_DIR/scripts/_parameters.sh
 
 #  Define variables to be used in script
-workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/CPP/Events
-workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/CPP/Events
+workDir=$ROBOTFRAMEWORK_SAL_DIR/Separate/DDS_CPP/Events
+workDirCombined=$ROBOTFRAMEWORK_SAL_DIR/Combined/DDS_CPP/Events
 device=$EMPTY
 property=$EMPTY
 action=$EMPTY
@@ -34,7 +34,7 @@ function main() {
     # Now generate the test suites.
     if [[ "$rtlang" =~ "cpp" ]]; then
         # Delete all test associated test suites first, to catch any removed topics.
-        clearTestSuites $subSystem "CPP" "Events" || exit 1
+        clearTestSuites $subSystem "DDS_CPP" "Events" || exit 1
         # Create test suite.
         createTestSuite $subSystem $file || exit 1
     else
@@ -131,6 +131,7 @@ function startSender() {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     if [ $topic ]; then
         echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${topic}" >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
         echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    1" >> $testSuite
@@ -138,6 +139,7 @@ function startSender() {
     else
         for item in "${topicsArray[@]}"; do
             echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/idl-templates/validated/\${subSystem}_revCodes.tcl    \${subSystem}_logevent_${item}" >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
             echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    === Event ${item} iseq = 0    1" >> $testSuite

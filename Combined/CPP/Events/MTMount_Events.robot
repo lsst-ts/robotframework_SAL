@@ -37,7 +37,6 @@ Start Sender
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
     Comment    ======= Verify ${subSystem}_availableSettings test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_availableSettings
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event availableSettings iseq = 0    1
@@ -45,7 +44,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event availableSettings generated =
     Comment    ======= Verify ${subSystem}_controllerSettingsName test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_controllerSettingsName
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event controllerSettingsName iseq = 0    1
@@ -53,7 +51,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event controllerSettingsName generated =
     Comment    ======= Verify ${subSystem}_azimuthControllerSettings test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthControllerSettings
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthControllerSettings iseq = 0    1
@@ -61,7 +58,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthControllerSettings generated =
     Comment    ======= Verify ${subSystem}_elevationControllerSettings test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationControllerSettings
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationControllerSettings iseq = 0    1
@@ -69,7 +65,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationControllerSettings generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapControllerSettings test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapControllerSettings
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapControllerSettings iseq = 0    1
@@ -77,7 +72,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapControllerSettings generated =
     Comment    ======= Verify ${subSystem}_azimuthHomed test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthHomed
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthHomed iseq = 0    1
@@ -85,7 +79,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthHomed generated =
     Comment    ======= Verify ${subSystem}_elevationHomed test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationHomed
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationHomed iseq = 0    1
@@ -93,7 +86,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationHomed generated =
     Comment    ======= Verify ${subSystem}_azimuthSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthSystemState iseq = 0    1
@@ -101,7 +93,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthSystemState generated =
     Comment    ======= Verify ${subSystem}_elevationSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationSystemState iseq = 0    1
@@ -109,7 +100,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationSystemState generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapSystemState iseq = 0    1
@@ -117,7 +107,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapSystemState generated =
     Comment    ======= Verify ${subSystem}_balanceSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_balanceSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event balanceSystemState iseq = 0    1
@@ -125,7 +114,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event balanceSystemState generated =
     Comment    ======= Verify ${subSystem}_mirrorCoversSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoversSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mirrorCoversSystemState iseq = 0    1
@@ -133,7 +121,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mirrorCoversSystemState generated =
     Comment    ======= Verify ${subSystem}_mirrorCoverLocksSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoverLocksSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mirrorCoverLocksSystemState iseq = 0    1
@@ -141,7 +128,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mirrorCoverLocksSystemState generated =
     Comment    ======= Verify ${subSystem}_azimuthCableWrapSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthCableWrapSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthCableWrapSystemState iseq = 0    1
@@ -149,7 +135,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthCableWrapSystemState generated =
     Comment    ======= Verify ${subSystem}_lockingPinsSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_lockingPinsSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event lockingPinsSystemState iseq = 0    1
@@ -157,7 +142,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event lockingPinsSystemState generated =
     Comment    ======= Verify ${subSystem}_deployablePlatformsSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformsSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event deployablePlatformsSystemState iseq = 0    1
@@ -165,7 +149,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event deployablePlatformsSystemState generated =
     Comment    ======= Verify ${subSystem}_oilSupplySystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_oilSupplySystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event oilSupplySystemState iseq = 0    1
@@ -173,7 +156,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event oilSupplySystemState generated =
     Comment    ======= Verify ${subSystem}_azimuthDrivesThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthDrivesThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthDrivesThermalSystemState iseq = 0    1
@@ -181,7 +163,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthDrivesThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_elevationDrivesThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationDrivesThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationDrivesThermalSystemState iseq = 0    1
@@ -189,7 +170,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationDrivesThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_cabinet0101ThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cabinet0101ThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cabinet0101ThermalSystemState iseq = 0    1
@@ -197,7 +177,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cabinet0101ThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_auxiliaryCabinetsThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_auxiliaryCabinetsThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event auxiliaryCabinetsThermalSystemState iseq = 0    1
@@ -205,7 +184,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event auxiliaryCabinetsThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_mainCabinetThermalSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mainCabinetThermalSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mainCabinetThermalSystemState iseq = 0    1
@@ -213,7 +191,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mainCabinetThermalSystemState generated =
     Comment    ======= Verify ${subSystem}_mainAxesPowerSupplySystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mainAxesPowerSupplySystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mainAxesPowerSupplySystemState iseq = 0    1
@@ -221,7 +198,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mainAxesPowerSupplySystemState generated =
     Comment    ======= Verify ${subSystem}_topEndChillerSystemState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_topEndChillerSystemState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event topEndChillerSystemState iseq = 0    1
@@ -229,7 +205,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event topEndChillerSystemState generated =
     Comment    ======= Verify ${subSystem}_elevationInPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationInPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationInPosition iseq = 0    1
@@ -237,7 +212,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationInPosition generated =
     Comment    ======= Verify ${subSystem}_azimuthInPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthInPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthInPosition iseq = 0    1
@@ -245,7 +219,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthInPosition generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapInPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapInPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapInPosition iseq = 0    1
@@ -253,7 +226,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapInPosition generated =
     Comment    ======= Verify ${subSystem}_elevationMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationMotionState iseq = 0    1
@@ -261,7 +233,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationMotionState generated =
     Comment    ======= Verify ${subSystem}_azimuthMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthMotionState iseq = 0    1
@@ -269,7 +240,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthMotionState generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapMotionState iseq = 0    1
@@ -277,7 +247,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapMotionState generated =
     Comment    ======= Verify ${subSystem}_elevationLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationLimits
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationLimits iseq = 0    1
@@ -285,7 +254,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationLimits generated =
     Comment    ======= Verify ${subSystem}_azimuthLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthLimits
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthLimits iseq = 0    1
@@ -293,7 +261,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthLimits generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapLimits test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapLimits
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapLimits iseq = 0    1
@@ -301,7 +268,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapLimits generated =
     Comment    ======= Verify ${subSystem}_azimuthToppleBlock test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_azimuthToppleBlock
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event azimuthToppleBlock iseq = 0    1
@@ -309,7 +275,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event azimuthToppleBlock generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapFollowing test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapFollowing
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapFollowing iseq = 0    1
@@ -317,7 +282,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapFollowing generated =
     Comment    ======= Verify ${subSystem}_cameraCableWrapTarget test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_cameraCableWrapTarget
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event cameraCableWrapTarget iseq = 0    1
@@ -325,7 +289,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event cameraCableWrapTarget generated =
     Comment    ======= Verify ${subSystem}_commander test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_commander
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event commander iseq = 0    1
@@ -333,7 +296,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event commander generated =
     Comment    ======= Verify ${subSystem}_connected test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_connected
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event connected iseq = 0    1
@@ -341,7 +303,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event connected generated =
     Comment    ======= Verify ${subSystem}_telemetryConnected test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_telemetryConnected
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event telemetryConnected iseq = 0    1
@@ -349,7 +310,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event telemetryConnected generated =
     Comment    ======= Verify ${subSystem}_deployablePlatformsMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_deployablePlatformsMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event deployablePlatformsMotionState iseq = 0    1
@@ -357,7 +317,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event deployablePlatformsMotionState generated =
     Comment    ======= Verify ${subSystem}_elevationLockingPinMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_elevationLockingPinMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event elevationLockingPinMotionState iseq = 0    1
@@ -365,7 +324,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event elevationLockingPinMotionState generated =
     Comment    ======= Verify ${subSystem}_error test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_error
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event error iseq = 0    1
@@ -373,7 +331,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event error generated =
     Comment    ======= Verify ${subSystem}_mirrorCoverLocksMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoverLocksMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mirrorCoverLocksMotionState iseq = 0    1
@@ -381,7 +338,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mirrorCoverLocksMotionState generated =
     Comment    ======= Verify ${subSystem}_mirrorCoversMotionState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_mirrorCoversMotionState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event mirrorCoversMotionState iseq = 0    1
@@ -389,7 +345,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event mirrorCoversMotionState generated =
     Comment    ======= Verify ${subSystem}_safetyInterlocks test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_safetyInterlocks
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event safetyInterlocks iseq = 0    1
@@ -397,7 +352,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event safetyInterlocks generated =
     Comment    ======= Verify ${subSystem}_target test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_target
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event target iseq = 0    1
@@ -405,7 +359,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event target generated =
     Comment    ======= Verify ${subSystem}_warning test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_warning
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event warning iseq = 0    1
@@ -413,7 +366,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event warning generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event heartbeat iseq = 0    1
@@ -421,7 +373,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event heartbeat generated =
     Comment    ======= Verify ${subSystem}_clockOffset test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_clockOffset
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event clockOffset iseq = 0    1
@@ -429,7 +380,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event clockOffset generated =
     Comment    ======= Verify ${subSystem}_logLevel test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_logLevel
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event logLevel iseq = 0    1
@@ -437,7 +387,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event logLevel generated =
     Comment    ======= Verify ${subSystem}_logMessage test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_logMessage
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event logMessage iseq = 0    1
@@ -445,7 +394,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event logMessage generated =
     Comment    ======= Verify ${subSystem}_softwareVersions test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_softwareVersions
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event softwareVersions iseq = 0    1
@@ -453,7 +401,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event softwareVersions generated =
     Comment    ======= Verify ${subSystem}_authList test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_authList
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event authList iseq = 0    1
@@ -461,7 +408,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event authList generated =
     Comment    ======= Verify ${subSystem}_errorCode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_errorCode
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event errorCode iseq = 0    1
@@ -469,7 +415,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event errorCode generated =
     Comment    ======= Verify ${subSystem}_simulationMode test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_simulationMode
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event simulationMode iseq = 0    1
@@ -477,7 +422,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event simulationMode generated =
     Comment    ======= Verify ${subSystem}_summaryState test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_summaryState
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event summaryState iseq = 0    1
@@ -485,7 +429,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event summaryState generated =
     Comment    ======= Verify ${subSystem}_configurationApplied test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configurationApplied
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event configurationApplied iseq = 0    1
@@ -493,7 +436,6 @@ Start Sender
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event configurationApplied generated =
     Comment    ======= Verify ${subSystem}_configurationsAvailable test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_configurationsAvailable
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event configurationsAvailable iseq = 0    1
