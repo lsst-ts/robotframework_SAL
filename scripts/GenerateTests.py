@@ -6,7 +6,7 @@ import inspect
 import argparse
 
 # This array defines the list of current CSCs.
-csc_array = ['ATAOS', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATOODS', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATWhiteLight', 'CBP', 'CCCamera', 'CCHeaderService', 'CCOODS', 'DIMM', 'DREAM', 'DSM', 'EAS', 'Electrometer', 'ESS', 'FiberSpectrograph', 'GCHeaderService', 'GenericCamera', 'GIS', 'Guider', 'HVAC', 'LaserTracker', 'LEDProjetor', 'LinearStage', 'LOVE', 'MTAirCompressor', 'MTAOS', 'MTCamera', 'MTDome', 'MTDomeTrajectory', 'MTEEC', 'MTHeaderService', 'MTHexapod', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTOODS', 'MTPtg', 'MTRotator', 'MTVMS', 'OCPS', 'PMD', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher', 'WeatherForecast']
+csc_array = ['ATAOS', 'ATBuilding', 'ATCamera', 'ATDome', 'ATDomeTrajectory', 'ATHeaderService', 'ATHexapod', 'ATMCS', 'ATMonochromator', 'ATOODS', 'ATPneumatics', 'ATPtg', 'ATSpectrograph', 'ATWhiteLight', 'CBP', 'CCCamera', 'CCHeaderService', 'CCOODS', 'DIMM', 'DREAM', 'DSM', 'EAS', 'Electrometer', 'EPM', 'ESS', 'FiberSpectrograph', 'GCHeaderService', 'GenericCamera', 'GIS', 'Guider', 'HVAC', 'LaserTracker', 'LEDProjetor', 'LinearStage', 'LOVE', 'MTAirCompressor', 'MTAOS', 'MTCamera', 'MTDome', 'MTDomeTrajectory', 'MTEEC', 'MTHeaderService', 'MTHexapod', 'MTM1M3', 'MTM1M3TS', 'MTM2', 'MTMount', 'MTOODS', 'MTPtg', 'MTRotator', 'MTVMS', 'OCPS', 'PMD', 'Scheduler', 'Script', 'ScriptQueue', 'SummitFacility', 'Test', 'TunableLaser', 'Watcher', 'WeatherForecast']
 
 def GenerateTests(csc, language, dds):
     """Test Suite generator."""
