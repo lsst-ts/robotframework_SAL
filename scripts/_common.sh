@@ -19,14 +19,12 @@ added_generics_csc_commands=(
     "disable",
     "enable",
     "exitControl",
-    "setAuthList",
     "setLogLevel",
     "standby",
     "start",
 )
 
 added_generics_csc_events=(
-    "authList",
     "errorCode",
     "simulationMode",
     "summaryState",
