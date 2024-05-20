@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    Test_Events communications tests.
-Force Tags    messaging    cpp    test    
+Documentation    ESS_Events communications tests.
+Force Tags    messaging    cpp    ess    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Test
+${subSystem}    ESS
 ${component}    all
 ${timeout}    180s
 
@@ -36,22 +36,38 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_scalars test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_scalars
+    Comment    ======= Verify ${subSystem}_lightningStrike test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_lightningStrike
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event scalars iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_scalars_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event lightningStrike iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_lightningStrike_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event scalars generated =
-    Comment    ======= Verify ${subSystem}_arrays test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_arrays
+    Should Contain    ${output.stdout}    === Event lightningStrike generated =
+    Comment    ======= Verify ${subSystem}_highElectricField test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_highElectricField
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event arrays iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_arrays_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event highElectricField iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_highElectricField_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event arrays generated =
+    Should Contain    ${output.stdout}    === Event highElectricField generated =
+    Comment    ======= Verify ${subSystem}_precipitation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_precipitation
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event precipitation iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_precipitation_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event precipitation generated =
+    Comment    ======= Verify ${subSystem}_sensorStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_sensorStatus
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain X Times    ${output.stdout}    === Event sensorStatus iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_sensorStatus_${revcode} writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === Event sensorStatus generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -141,33 +157,31 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${scalars_start}=    Get Index From List    ${full_list}    === Event scalars received =${SPACE}
-    ${end}=    Evaluate    ${scalars_start}+${12}
-    ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${end}
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x01    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    1
-    ${arrays_start}=    Get Index From List    ${full_list}    === Event arrays received =${SPACE}
-    ${end}=    Evaluate    ${arrays_start}+${11}
-    ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${end}
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x00    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 0    1
+    ${lightningStrike_start}=    Get Index From List    ${full_list}    === Event lightningStrike received =${SPACE}
+    ${end}=    Evaluate    ${lightningStrike_start}+${5}
+    ${lightningStrike_list}=    Get Slice From List    ${full_list}    start=${lightningStrike_start}    end=${end}
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}correctedDistance : 1    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uncorrectedDistance : 1    1
+    Should Contain X Times    ${lightningStrike_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bearing : 1    1
+    ${highElectricField_start}=    Get Index From List    ${full_list}    === Event highElectricField received =${SPACE}
+    ${end}=    Evaluate    ${highElectricField_start}+${3}
+    ${highElectricField_list}=    Get Slice From List    ${full_list}    start=${highElectricField_start}    end=${end}
+    Should Contain X Times    ${highElectricField_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${highElectricField_list}    ${SPACE}${SPACE}${SPACE}${SPACE}strength : 1    1
+    ${precipitation_start}=    Get Index From List    ${full_list}    === Event precipitation received =${SPACE}
+    ${end}=    Evaluate    ${precipitation_start}+${5}
+    ${precipitation_list}=    Get Slice From List    ${full_list}    start=${precipitation_start}    end=${end}
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raining : 1    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}snowing : 1    1
+    Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    1
+    ${sensorStatus_start}=    Get Index From List    ${full_list}    === Event sensorStatus received =${SPACE}
+    ${end}=    Evaluate    ${sensorStatus_start}+${4}
+    ${sensorStatus_list}=    Get Slice From List    ${full_list}    start=${sensorStatus_start}    end=${end}
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    1
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorStatus : 1    1
+    Should Contain X Times    ${sensorStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serverStatus : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
