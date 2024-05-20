@@ -1,0 +1,16 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CombinedJavaEvents
+--output CombinedJavaEvents
+
+# List of test suites
+Combined/DDS_JAVA/Events/ATCamera_Events.robot
+Combined/DDS_JAVA/Events/ATHeaderService_Events.robot
+Combined/DDS_JAVA/Events/CCCamera_Events.robot
+Combined/DDS_JAVA/Events/CCHeaderService_Events.robot
+Combined/DDS_JAVA/Events/ESS_Events.robot
+Combined/DDS_JAVA/Events/GCHeaderService_Events.robot
+Combined/DDS_JAVA/Events/MTCamera_Events.robot
+Combined/DDS_JAVA/Events/MTHeaderService_Events.robot
+Combined/DDS_JAVA/Events/MTRotator_Events.robot
+Combined/DDS_JAVA/Events/Test_Events.robot

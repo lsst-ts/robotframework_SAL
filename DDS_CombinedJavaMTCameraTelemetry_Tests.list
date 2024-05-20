@@ -1,0 +1,7 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CombinedJavaMTCameraTelemetry
+--output CombinedJavaMTCameraTelemetry
+
+# List of test suites
+Combined/DDS_JAVA/Telemetry/MTCamera_Telemetry.robot
