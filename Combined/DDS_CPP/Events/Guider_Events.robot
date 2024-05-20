@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation    Test_Events communications tests.
-Force Tags    messaging    cpp    test    
+Documentation    Guider_Events communications tests.
+Force Tags    messaging    cpp    guider    
 Suite Setup    Log Many    ${subSystem}    ${component}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
@@ -11,7 +11,7 @@ Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
-${subSystem}    Test
+${subSystem}    Guider
 ${component}    all
 ${timeout}    180s
 
@@ -36,22 +36,14 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_scalars test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_scalars
+    Comment    ======= Verify ${subSystem}_guidingStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_guidingStatus
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event scalars iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_scalars_${revcode} writing a message containing :    1
+    Should Contain X Times    ${output.stdout}    === Event guidingStatus iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_guidingStatus_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event scalars generated =
-    Comment    ======= Verify ${subSystem}_arrays test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_arrays
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event arrays iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_arrays_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event arrays generated =
+    Should Contain    ${output.stdout}    === Event guidingStatus generated =
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_heartbeat
     @{words}=    Split String    ${line}
@@ -141,33 +133,16 @@ Read Logger
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
-    ${scalars_start}=    Get Index From List    ${full_list}    === Event scalars received =${SPACE}
-    ${end}=    Evaluate    ${scalars_start}+${12}
-    ${scalars_list}=    Get Slice From List    ${full_list}    start=${scalars_start}    end=${end}
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x01    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    1
-    Should Contain X Times    ${scalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    1
-    ${arrays_start}=    Get Index From List    ${full_list}    === Event arrays received =${SPACE}
-    ${end}=    Evaluate    ${arrays_start}+${11}
-    ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${end}
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : \x00    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 0    1
+    ${guidingStatus_start}=    Get Index From List    ${full_list}    === Event guidingStatus received =${SPACE}
+    ${end}=    Evaluate    ${guidingStatus_start}+${8}
+    ${guidingStatus_list}=    Get Slice From List    ${full_list}    start=${guidingStatus_start}    end=${end}
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXLeft : 0    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
+    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
