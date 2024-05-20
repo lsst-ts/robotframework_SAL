@@ -292,14 +292,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersions_${revcode} writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Event softwareVersions generated =
-    Comment    ======= Verify ${subSystem}_authList test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_authList
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
-    Should Contain X Times    ${output.stdout}    === Event authList iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_authList_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === Event authList generated =
     Comment    ======= Verify ${subSystem}_errorCode test messages =======
     ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_logevent_errorCode
     @{words}=    Split String    ${line}
@@ -540,9 +532,6 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}openSpliceVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
-    ${authList_start}=    Get Index From List    ${full_list}    === Event authList received =${SPACE}
-    ${end}=    Evaluate    ${authList_start}+${1}
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${end}
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
     ${end}=    Evaluate    ${errorCode_start}+${4}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
