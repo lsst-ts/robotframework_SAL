@@ -76,12 +76,6 @@ Start Sender
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === MTHeaderService_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === MTHeaderService_softwareVersions end of topic ===
-    ${authList_start}=    Get Index From List    ${full_list}    === MTHeaderService_authList start of topic ===
-    ${authList_end}=    Get Index From List    ${full_list}    === MTHeaderService_authList end of topic ===
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
-    Log Many    ${authList_list}
-    Should Contain    ${authList_list}    === MTHeaderService_authList start of topic ===
-    Should Contain    ${authList_list}    === MTHeaderService_authList end of topic ===
     ${errorCode_start}=    Get Index From List    ${full_list}    === MTHeaderService_errorCode start of topic ===
     ${errorCode_end}=    Get Index From List    ${full_list}    === MTHeaderService_errorCode end of topic ===
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
@@ -138,12 +132,6 @@ Read Subscriber
     Log Many    ${softwareVersions_list}
     Should Contain    ${softwareVersions_list}    === MTHeaderService_softwareVersions start of topic ===
     Should Contain    ${softwareVersions_list}    === MTHeaderService_softwareVersions end of topic ===
-    ${authList_start}=    Get Index From List    ${full_list}    === MTHeaderService_authList start of topic ===
-    ${authList_end}=    Get Index From List    ${full_list}    === MTHeaderService_authList end of topic ===
-    ${authList_list}=    Get Slice From List    ${full_list}    start=${authList_start}    end=${authList_end + 1}
-    Log Many    ${authList_list}
-    Should Contain    ${authList_list}    === MTHeaderService_authList start of topic ===
-    Should Contain    ${authList_list}    === MTHeaderService_authList end of topic ===
     ${errorCode_start}=    Get Index From List    ${full_list}    === MTHeaderService_errorCode start of topic ===
     ${errorCode_end}=    Get Index From List    ${full_list}    === MTHeaderService_errorCode end of topic ===
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${errorCode_end + 1}
