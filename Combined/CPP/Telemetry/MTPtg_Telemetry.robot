@@ -37,7 +37,6 @@ Start Publisher
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
     Comment    ======= Verify ${subSystem}_currentTargetStatus test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_currentTargetStatus
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_currentTargetStatus start of topic ===
@@ -45,7 +44,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_currentTargetStatus end of topic ===
     Comment    ======= Verify ${subSystem}_guiding test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_guiding
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_guiding start of topic ===
@@ -53,7 +51,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_guiding end of topic ===
     Comment    ======= Verify ${subSystem}_timeAndDate test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_timeAndDate
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_timeAndDate start of topic ===
@@ -61,7 +58,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_timeAndDate end of topic ===
     Comment    ======= Verify ${subSystem}_mountStatus test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mountStatus
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_mountStatus start of topic ===
@@ -69,7 +65,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_mountStatus end of topic ===
     Comment    ======= Verify ${subSystem}_skyEnvironment test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_skyEnvironment
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_skyEnvironment start of topic ===
@@ -77,7 +72,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_skyEnvironment end of topic ===
     Comment    ======= Verify ${subSystem}_namedAzEl test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_namedAzEl
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_namedAzEl start of topic ===
@@ -85,7 +79,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_namedAzEl end of topic ===
     Comment    ======= Verify ${subSystem}_mountPosition test messages =======
-    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_mountPosition
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[2]
     Should Contain    ${output.stdout}    === MTPtg_mountPosition start of topic ===

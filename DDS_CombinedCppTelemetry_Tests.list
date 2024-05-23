@@ -1,0 +1,15 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CombinedCppTelemetry
+--output CombinedCppTelemetry
+
+# List of test suites
+Combined/DDS_CPP/Telemetry/ATMCS_Telemetry.robot
+Combined/DDS_CPP/Telemetry/ATPtg_Telemetry.robot
+Combined/DDS_CPP/Telemetry/ESS_Telemetry.robot
+Combined/DDS_CPP/Telemetry/Guider_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTM1M3_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTMount_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTPtg_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTRotator_Telemetry.robot
+Combined/DDS_CPP/Telemetry/Test_Telemetry.robot
