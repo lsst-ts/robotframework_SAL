@@ -568,6 +568,12 @@ Start Sender
     Log Many    ${vacuum_Turbo_LimitsConfiguration_list}
     Should Contain    ${vacuum_Turbo_LimitsConfiguration_list}    === CCCamera_vacuum_Turbo_LimitsConfiguration start of topic ===
     Should Contain    ${vacuum_Turbo_LimitsConfiguration_list}    === CCCamera_vacuum_Turbo_LimitsConfiguration end of topic ===
+    ${vacuum_Turbo_buildConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_buildConfiguration start of topic ===
+    ${vacuum_Turbo_buildConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_buildConfiguration end of topic ===
+    ${vacuum_Turbo_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_Turbo_buildConfiguration_start}    end=${vacuum_Turbo_buildConfiguration_end + 1}
+    Log Many    ${vacuum_Turbo_buildConfiguration_list}
+    Should Contain    ${vacuum_Turbo_buildConfiguration_list}    === CCCamera_vacuum_Turbo_buildConfiguration start of topic ===
+    Should Contain    ${vacuum_Turbo_buildConfiguration_list}    === CCCamera_vacuum_Turbo_buildConfiguration end of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoConfiguration start of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoConfiguration end of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_CryoConfiguration_start}    end=${vacuum_VQMonitor_CryoConfiguration_end + 1}
@@ -784,6 +790,12 @@ Start Sender
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === CCCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === CCCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -1776,6 +1788,12 @@ Read Subscriber
     Log Many    ${vacuum_Turbo_LimitsConfiguration_list}
     Should Contain    ${vacuum_Turbo_LimitsConfiguration_list}    === CCCamera_vacuum_Turbo_LimitsConfiguration start of topic ===
     Should Contain    ${vacuum_Turbo_LimitsConfiguration_list}    === CCCamera_vacuum_Turbo_LimitsConfiguration end of topic ===
+    ${vacuum_Turbo_buildConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_buildConfiguration start of topic ===
+    ${vacuum_Turbo_buildConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_Turbo_buildConfiguration end of topic ===
+    ${vacuum_Turbo_buildConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_Turbo_buildConfiguration_start}    end=${vacuum_Turbo_buildConfiguration_end + 1}
+    Log Many    ${vacuum_Turbo_buildConfiguration_list}
+    Should Contain    ${vacuum_Turbo_buildConfiguration_list}    === CCCamera_vacuum_Turbo_buildConfiguration start of topic ===
+    Should Contain    ${vacuum_Turbo_buildConfiguration_list}    === CCCamera_vacuum_Turbo_buildConfiguration end of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoConfiguration start of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_vacuum_VQMonitor_CryoConfiguration end of topic ===
     ${vacuum_VQMonitor_CryoConfiguration_list}=    Get Slice From List    ${full_list}    start=${vacuum_VQMonitor_CryoConfiguration_start}    end=${vacuum_VQMonitor_CryoConfiguration_end + 1}
@@ -1992,6 +2010,12 @@ Read Subscriber
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === CCCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === CCCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === CCCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === CCCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}

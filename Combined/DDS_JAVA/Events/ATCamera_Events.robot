@@ -250,6 +250,12 @@ Start Sender
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -448,6 +454,12 @@ Start Sender
     Log Many    ${ats_power_Fan_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_Fan_V_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Fan_V_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration end of topic ===
+    ${ats_power_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_GeneralConfiguration start of topic ===
+    ${ats_power_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_GeneralConfiguration end of topic ===
+    ${ats_power_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_GeneralConfiguration_start}    end=${ats_power_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_GeneralConfiguration_list}
+    Should Contain    ${ats_power_GeneralConfiguration_list}    === ATCamera_ats_power_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_GeneralConfiguration_list}    === ATCamera_ats_power_GeneralConfiguration end of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration start of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration end of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_I_LimitsConfiguration_start}    end=${ats_power_HVBias_I_LimitsConfiguration_end + 1}
@@ -544,6 +556,12 @@ Start Sender
     Log Many    ${ats_power_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration start of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration end of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_StatusAggregator_GeneralConfiguration_start}    end=${ats_power_StatusAggregator_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_StatusAggregator_GeneralConfiguration_list}
+    Should Contain    ${ats_power_StatusAggregator_GeneralConfiguration_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_StatusAggregator_GeneralConfiguration_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     ${ats_CryoCon_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DeviceConfiguration_start}    end=${ats_CryoCon_DeviceConfiguration_end + 1}
@@ -1008,6 +1026,12 @@ Read Subscriber
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === ATCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === ATCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -1206,6 +1230,12 @@ Read Subscriber
     Log Many    ${ats_power_Fan_V_LimitsConfiguration_list}
     Should Contain    ${ats_power_Fan_V_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration start of topic ===
     Should Contain    ${ats_power_Fan_V_LimitsConfiguration_list}    === ATCamera_ats_power_Fan_V_LimitsConfiguration end of topic ===
+    ${ats_power_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_GeneralConfiguration start of topic ===
+    ${ats_power_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_GeneralConfiguration end of topic ===
+    ${ats_power_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_GeneralConfiguration_start}    end=${ats_power_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_GeneralConfiguration_list}
+    Should Contain    ${ats_power_GeneralConfiguration_list}    === ATCamera_ats_power_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_GeneralConfiguration_list}    === ATCamera_ats_power_GeneralConfiguration end of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration start of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_HVBias_I_LimitsConfiguration end of topic ===
     ${ats_power_HVBias_I_LimitsConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_HVBias_I_LimitsConfiguration_start}    end=${ats_power_HVBias_I_LimitsConfiguration_end + 1}
@@ -1302,6 +1332,12 @@ Read Subscriber
     Log Many    ${ats_power_PeriodicTasks_timersConfiguration_list}
     Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration start of topic ===
     Should Contain    ${ats_power_PeriodicTasks_timersConfiguration_list}    === ATCamera_ats_power_PeriodicTasks_timersConfiguration end of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration start of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration end of topic ===
+    ${ats_power_StatusAggregator_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_power_StatusAggregator_GeneralConfiguration_start}    end=${ats_power_StatusAggregator_GeneralConfiguration_end + 1}
+    Log Many    ${ats_power_StatusAggregator_GeneralConfiguration_list}
+    Should Contain    ${ats_power_StatusAggregator_GeneralConfiguration_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration start of topic ===
+    Should Contain    ${ats_power_StatusAggregator_GeneralConfiguration_list}    === ATCamera_ats_power_StatusAggregator_GeneralConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_start}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration start of topic ===
     ${ats_CryoCon_DeviceConfiguration_end}=    Get Index From List    ${full_list}    === ATCamera_ats_CryoCon_DeviceConfiguration end of topic ===
     ${ats_CryoCon_DeviceConfiguration_list}=    Get Slice From List    ${full_list}    start=${ats_CryoCon_DeviceConfiguration_start}    end=${ats_CryoCon_DeviceConfiguration_end + 1}
