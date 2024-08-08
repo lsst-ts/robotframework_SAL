@@ -154,12 +154,6 @@ Start Sender
     Log Many    ${startReadout_list}
     Should Contain    ${startReadout_list}    === ATCamera_startReadout start of topic ===
     Should Contain    ${startReadout_list}    === ATCamera_startReadout end of topic ===
-    ${shutterMotionProfile_start}=    Get Index From List    ${full_list}    === ATCamera_shutterMotionProfile start of topic ===
-    ${shutterMotionProfile_end}=    Get Index From List    ${full_list}    === ATCamera_shutterMotionProfile end of topic ===
-    ${shutterMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterMotionProfile_start}    end=${shutterMotionProfile_end + 1}
-    Log Many    ${shutterMotionProfile_list}
-    Should Contain    ${shutterMotionProfile_list}    === ATCamera_shutterMotionProfile start of topic ===
-    Should Contain    ${shutterMotionProfile_list}    === ATCamera_shutterMotionProfile end of topic ===
     ${imageReadoutParameters_start}=    Get Index From List    ${full_list}    === ATCamera_imageReadoutParameters start of topic ===
     ${imageReadoutParameters_end}=    Get Index From List    ${full_list}    === ATCamera_imageReadoutParameters end of topic ===
     ${imageReadoutParameters_list}=    Get Slice From List    ${full_list}    start=${imageReadoutParameters_start}    end=${imageReadoutParameters_end + 1}
@@ -930,12 +924,6 @@ Read Subscriber
     Log Many    ${startReadout_list}
     Should Contain    ${startReadout_list}    === ATCamera_startReadout start of topic ===
     Should Contain    ${startReadout_list}    === ATCamera_startReadout end of topic ===
-    ${shutterMotionProfile_start}=    Get Index From List    ${full_list}    === ATCamera_shutterMotionProfile start of topic ===
-    ${shutterMotionProfile_end}=    Get Index From List    ${full_list}    === ATCamera_shutterMotionProfile end of topic ===
-    ${shutterMotionProfile_list}=    Get Slice From List    ${full_list}    start=${shutterMotionProfile_start}    end=${shutterMotionProfile_end + 1}
-    Log Many    ${shutterMotionProfile_list}
-    Should Contain    ${shutterMotionProfile_list}    === ATCamera_shutterMotionProfile start of topic ===
-    Should Contain    ${shutterMotionProfile_list}    === ATCamera_shutterMotionProfile end of topic ===
     ${imageReadoutParameters_start}=    Get Index From List    ${full_list}    === ATCamera_imageReadoutParameters start of topic ===
     ${imageReadoutParameters_end}=    Get Index From List    ${full_list}    === ATCamera_imageReadoutParameters end of topic ===
     ${imageReadoutParameters_list}=    Get Slice From List    ${full_list}    start=${imageReadoutParameters_start}    end=${imageReadoutParameters_end + 1}
