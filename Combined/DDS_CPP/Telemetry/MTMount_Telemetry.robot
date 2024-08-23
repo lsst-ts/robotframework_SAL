@@ -276,6 +276,46 @@ Read Subscriber
     ${safetySystem_start}=    Get Index From List    ${full_list}    === MTMount_safetySystem start of topic ===
     ${safetySystem_end}=    Get Index From List    ${full_list}    === MTMount_safetySystem end of topic ===
     ${safetySystem_list}=    Get Slice From List    ${full_list}    start=${safetySystem_start}    end=${safetySystem_end}
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 9    1
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}versionNumber : 1    10
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}versionNumberTimestamp : 1    10
@@ -974,6 +1014,12 @@ Read Subscriber
     ${mainCabinetThermal_start}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal start of topic ===
     ${mainCabinetThermal_end}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal end of topic ===
     ${mainCabinetThermal_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermal_start}    end=${mainCabinetThermal_end}
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axesPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axesPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperature : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 0    1
@@ -999,6 +1045,10 @@ Read Subscriber
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tmaPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tmaPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valveFeedback : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valveFeedbackTimestamp : 1    10
     ${mirrorCoverLocks_start}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks start of topic ===
     ${mirrorCoverLocks_end}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks end of topic ===
     ${mirrorCoverLocks_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocks_start}    end=${mirrorCoverLocks_end}
@@ -1556,6 +1606,8 @@ Read Subscriber
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5011Timestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5121 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5121Timestamp : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureCabinets : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureCabinetsTimestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valvePositionFacilities5201 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valvePositionFacilities5201Timestamp : 1    10

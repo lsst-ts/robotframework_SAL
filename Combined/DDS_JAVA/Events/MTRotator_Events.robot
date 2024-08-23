@@ -94,6 +94,12 @@ Start Sender
     Log Many    ${commandableByDDS_list}
     Should Contain    ${commandableByDDS_list}    === MTRotator_commandableByDDS start of topic ===
     Should Contain    ${commandableByDDS_list}    === MTRotator_commandableByDDS end of topic ===
+    ${lowFrequencyVibration_start}=    Get Index From List    ${full_list}    === MTRotator_lowFrequencyVibration start of topic ===
+    ${lowFrequencyVibration_end}=    Get Index From List    ${full_list}    === MTRotator_lowFrequencyVibration end of topic ===
+    ${lowFrequencyVibration_list}=    Get Slice From List    ${full_list}    start=${lowFrequencyVibration_start}    end=${lowFrequencyVibration_end + 1}
+    Log Many    ${lowFrequencyVibration_list}
+    Should Contain    ${lowFrequencyVibration_list}    === MTRotator_lowFrequencyVibration start of topic ===
+    Should Contain    ${lowFrequencyVibration_list}    === MTRotator_lowFrequencyVibration end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTRotator_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTRotator_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}
@@ -210,6 +216,12 @@ Read Subscriber
     Log Many    ${commandableByDDS_list}
     Should Contain    ${commandableByDDS_list}    === MTRotator_commandableByDDS start of topic ===
     Should Contain    ${commandableByDDS_list}    === MTRotator_commandableByDDS end of topic ===
+    ${lowFrequencyVibration_start}=    Get Index From List    ${full_list}    === MTRotator_lowFrequencyVibration start of topic ===
+    ${lowFrequencyVibration_end}=    Get Index From List    ${full_list}    === MTRotator_lowFrequencyVibration end of topic ===
+    ${lowFrequencyVibration_list}=    Get Slice From List    ${full_list}    start=${lowFrequencyVibration_start}    end=${lowFrequencyVibration_end + 1}
+    Log Many    ${lowFrequencyVibration_list}
+    Should Contain    ${lowFrequencyVibration_list}    === MTRotator_lowFrequencyVibration start of topic ===
+    Should Contain    ${lowFrequencyVibration_list}    === MTRotator_lowFrequencyVibration end of topic ===
     ${heartbeat_start}=    Get Index From List    ${full_list}    === MTRotator_heartbeat start of topic ===
     ${heartbeat_end}=    Get Index From List    ${full_list}    === MTRotator_heartbeat end of topic ===
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${heartbeat_end + 1}

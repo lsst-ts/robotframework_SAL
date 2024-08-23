@@ -1030,6 +1030,12 @@ Start Sender
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -1414,6 +1420,12 @@ Start Sender
     Log Many    ${chiller_LimitsConfiguration_list}
     Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
     Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_PicConfiguration start of topic ===
+    ${chiller_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_PicConfiguration end of topic ===
+    ${chiller_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_PicConfiguration_start}    end=${chiller_PicConfiguration_end + 1}
+    Log Many    ${chiller_PicConfiguration_list}
+    Should Contain    ${chiller_PicConfiguration_list}    === MTCamera_chiller_PicConfiguration start of topic ===
+    Should Contain    ${chiller_PicConfiguration_list}    === MTCamera_chiller_PicConfiguration end of topic ===
     ${chiller_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration start of topic ===
     ${chiller_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration end of topic ===
     ${chiller_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_timersConfiguration_start}    end=${chiller_timersConfiguration_end + 1}
@@ -3210,6 +3222,12 @@ Read Subscriber
     Log Many    ${focal_plane_Reb_DevicesConfiguration_list}
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration start of topic ===
     Should Contain    ${focal_plane_Reb_DevicesConfiguration_list}    === MTCamera_focal_plane_Reb_DevicesConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
+    ${focal_plane_Reb_GeneralConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_GeneralConfiguration_start}    end=${focal_plane_Reb_GeneralConfiguration_end + 1}
+    Log Many    ${focal_plane_Reb_GeneralConfiguration_list}
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration start of topic ===
+    Should Contain    ${focal_plane_Reb_GeneralConfiguration_list}    === MTCamera_focal_plane_Reb_GeneralConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration start of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_focal_plane_Reb_HardwareIdConfiguration end of topic ===
     ${focal_plane_Reb_HardwareIdConfiguration_list}=    Get Slice From List    ${full_list}    start=${focal_plane_Reb_HardwareIdConfiguration_start}    end=${focal_plane_Reb_HardwareIdConfiguration_end + 1}
@@ -3594,6 +3612,12 @@ Read Subscriber
     Log Many    ${chiller_LimitsConfiguration_list}
     Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration start of topic ===
     Should Contain    ${chiller_LimitsConfiguration_list}    === MTCamera_chiller_LimitsConfiguration end of topic ===
+    ${chiller_PicConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_PicConfiguration start of topic ===
+    ${chiller_PicConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_PicConfiguration end of topic ===
+    ${chiller_PicConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_PicConfiguration_start}    end=${chiller_PicConfiguration_end + 1}
+    Log Many    ${chiller_PicConfiguration_list}
+    Should Contain    ${chiller_PicConfiguration_list}    === MTCamera_chiller_PicConfiguration start of topic ===
+    Should Contain    ${chiller_PicConfiguration_list}    === MTCamera_chiller_PicConfiguration end of topic ===
     ${chiller_timersConfiguration_start}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration start of topic ===
     ${chiller_timersConfiguration_end}=    Get Index From List    ${full_list}    === MTCamera_chiller_timersConfiguration end of topic ===
     ${chiller_timersConfiguration_list}=    Get Slice From List    ${full_list}    start=${chiller_timersConfiguration_start}    end=${chiller_timersConfiguration_end + 1}
