@@ -36,53 +36,67 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_currentTargetStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "currentTargetStatus"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_currentTargetStatus test messages =======
     Should Contain    ${output.stdout}    === MTPtg_currentTargetStatus start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::currentTargetStatus_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.currentTargetStatus writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_currentTargetStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_guiding test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "guiding"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_guiding test messages =======
     Should Contain    ${output.stdout}    === MTPtg_guiding start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::guiding_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.guiding writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_guiding end of topic ===
-    Comment    ======= Verify ${subSystem}_timeAndDate test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "timeAndDate"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_timeAndDate test messages =======
     Should Contain    ${output.stdout}    === MTPtg_timeAndDate start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::timeAndDate_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.timeAndDate writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_timeAndDate end of topic ===
-    Comment    ======= Verify ${subSystem}_mountStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mountStatus"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mountStatus test messages =======
     Should Contain    ${output.stdout}    === MTPtg_mountStatus start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mountStatus_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mountStatus writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_mountStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_skyEnvironment test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "skyEnvironment"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_skyEnvironment test messages =======
     Should Contain    ${output.stdout}    === MTPtg_skyEnvironment start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::skyEnvironment_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.skyEnvironment writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_skyEnvironment end of topic ===
-    Comment    ======= Verify ${subSystem}_namedAzEl test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "namedAzEl"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_namedAzEl test messages =======
     Should Contain    ${output.stdout}    === MTPtg_namedAzEl start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::namedAzEl_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.namedAzEl writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_namedAzEl end of topic ===
-    Comment    ======= Verify ${subSystem}_mountPosition test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mountPosition"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mountPosition test messages =======
     Should Contain    ${output.stdout}    === MTPtg_mountPosition start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mountPosition_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mountPosition writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTPtg_mountPosition end of topic ===
 

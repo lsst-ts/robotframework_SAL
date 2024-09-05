@@ -36,11 +36,13 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_offsets test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "offsets"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_offsets test messages =======
     Should Contain    ${output.stdout}    === Guider_offsets start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::offsets_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.offsets writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === Guider_offsets end of topic ===
 

@@ -36,60 +36,76 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_trajectory test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "trajectory"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_trajectory test messages =======
     Should Contain    ${output.stdout}    === ATMCS_trajectory start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::trajectory_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.trajectory writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_trajectory end of topic ===
-    Comment    ======= Verify ${subSystem}_mount_AzEl_Encoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mount_AzEl_Encoders"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mount_AzEl_Encoders test messages =======
     Should Contain    ${output.stdout}    === ATMCS_mount_AzEl_Encoders start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mount_AzEl_Encoders_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mount_AzEl_Encoders writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_mount_AzEl_Encoders end of topic ===
-    Comment    ======= Verify ${subSystem}_mount_Nasmyth_Encoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mount_Nasmyth_Encoders"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mount_Nasmyth_Encoders test messages =======
     Should Contain    ${output.stdout}    === ATMCS_mount_Nasmyth_Encoders start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mount_Nasmyth_Encoders_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mount_Nasmyth_Encoders writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_mount_Nasmyth_Encoders end of topic ===
-    Comment    ======= Verify ${subSystem}_torqueDemand test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "torqueDemand"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_torqueDemand test messages =======
     Should Contain    ${output.stdout}    === ATMCS_torqueDemand start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::torqueDemand_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.torqueDemand writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_torqueDemand end of topic ===
-    Comment    ======= Verify ${subSystem}_measuredTorque test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "measuredTorque"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_measuredTorque test messages =======
     Should Contain    ${output.stdout}    === ATMCS_measuredTorque start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::measuredTorque_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.measuredTorque writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_measuredTorque end of topic ===
-    Comment    ======= Verify ${subSystem}_measuredMotorVelocity test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "measuredMotorVelocity"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_measuredMotorVelocity test messages =======
     Should Contain    ${output.stdout}    === ATMCS_measuredMotorVelocity start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::measuredMotorVelocity_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.measuredMotorVelocity writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_measuredMotorVelocity end of topic ===
-    Comment    ======= Verify ${subSystem}_nasmyth_m3_mountMotorEncoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "nasmyth_m3_mountMotorEncoders"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_nasmyth_m3_mountMotorEncoders test messages =======
     Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::nasmyth_m3_mountMotorEncoders_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.nasmyth_m3_mountMotorEncoders writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_nasmyth_m3_mountMotorEncoders end of topic ===
-    Comment    ======= Verify ${subSystem}_azEl_mountMotorEncoders test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "azEl_mountMotorEncoders"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_azEl_mountMotorEncoders test messages =======
     Should Contain    ${output.stdout}    === ATMCS_azEl_mountMotorEncoders start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azEl_mountMotorEncoders_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.azEl_mountMotorEncoders writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ATMCS_azEl_mountMotorEncoders end of topic ===
 

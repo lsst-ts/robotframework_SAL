@@ -36,158 +36,202 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_airTurbulence test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "airTurbulence"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_airTurbulence test messages =======
     Should Contain    ${output.stdout}    === ESS_airTurbulence start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::airTurbulence_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.airTurbulence writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_airTurbulence end of topic ===
-    Comment    ======= Verify ${subSystem}_airFlow test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "airFlow"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_airFlow test messages =======
     Should Contain    ${output.stdout}    === ESS_airFlow start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::airFlow_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.airFlow writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_airFlow end of topic ===
-    Comment    ======= Verify ${subSystem}_dewPoint test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "dewPoint"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_dewPoint test messages =======
     Should Contain    ${output.stdout}    === ESS_dewPoint start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::dewPoint_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.dewPoint writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_dewPoint end of topic ===
-    Comment    ======= Verify ${subSystem}_pressure test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "pressure"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_pressure test messages =======
     Should Contain    ${output.stdout}    === ESS_pressure start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::pressure_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.pressure writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_pressure end of topic ===
-    Comment    ======= Verify ${subSystem}_rainRate test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "rainRate"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_rainRate test messages =======
     Should Contain    ${output.stdout}    === ESS_rainRate start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::rainRate_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.rainRate writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_rainRate end of topic ===
-    Comment    ======= Verify ${subSystem}_relativeHumidity test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "relativeHumidity"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_relativeHumidity test messages =======
     Should Contain    ${output.stdout}    === ESS_relativeHumidity start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::relativeHumidity_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.relativeHumidity writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_relativeHumidity end of topic ===
-    Comment    ======= Verify ${subSystem}_snowRate test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "snowRate"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_snowRate test messages =======
     Should Contain    ${output.stdout}    === ESS_snowRate start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::snowRate_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.snowRate writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_snowRate end of topic ===
-    Comment    ======= Verify ${subSystem}_solarRadiation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "solarRadiation"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_solarRadiation test messages =======
     Should Contain    ${output.stdout}    === ESS_solarRadiation start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::solarRadiation_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.solarRadiation writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_solarRadiation end of topic ===
-    Comment    ======= Verify ${subSystem}_temperature test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "temperature"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_temperature test messages =======
     Should Contain    ${output.stdout}    === ESS_temperature start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::temperature_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.temperature writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_temperature end of topic ===
-    Comment    ======= Verify ${subSystem}_accelerometer test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "accelerometer"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_accelerometer test messages =======
     Should Contain    ${output.stdout}    === ESS_accelerometer start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::accelerometer_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.accelerometer writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_accelerometer end of topic ===
-    Comment    ======= Verify ${subSystem}_accelerometerPSD test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "accelerometerPSD"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_accelerometerPSD test messages =======
     Should Contain    ${output.stdout}    === ESS_accelerometerPSD start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::accelerometerPSD_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.accelerometerPSD writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_accelerometerPSD end of topic ===
-    Comment    ======= Verify ${subSystem}_electricFieldStrength test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "electricFieldStrength"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_electricFieldStrength test messages =======
     Should Contain    ${output.stdout}    === ESS_electricFieldStrength start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::electricFieldStrength_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.electricFieldStrength writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_electricFieldStrength end of topic ===
-    Comment    ======= Verify ${subSystem}_lightningStrikeStatus test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "lightningStrikeStatus"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_lightningStrikeStatus test messages =======
     Should Contain    ${output.stdout}    === ESS_lightningStrikeStatus start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lightningStrikeStatus_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.lightningStrikeStatus writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_lightningStrikeStatus end of topic ===
-    Comment    ======= Verify ${subSystem}_spectrumAnalyzer test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "spectrumAnalyzer"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_spectrumAnalyzer test messages =======
     Should Contain    ${output.stdout}    === ESS_spectrumAnalyzer start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::spectrumAnalyzer_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.spectrumAnalyzer writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_spectrumAnalyzer end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeBroadBandHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeBroadBandHighGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeBroadBandHighGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeBroadBandHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeBroadBandHighGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandHighGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeBroadBandLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeBroadBandLowGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeBroadBandLowGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeBroadBandLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeBroadBandLowGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeBroadBandLowGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeHighBroadBandHighGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandHighGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeHighBroadBandHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeHighBroadBandHighGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandHighGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeHighBroadBandLowGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeHighBroadBandLowGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeHighBroadBandLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeHighBroadBandLowGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeHighBroadBandLowGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeLongPeriodHighGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodHighGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeLongPeriodHighGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodHighGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodLowGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeLongPeriodLowGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeLongPeriodLowGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeLongPeriodLowGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeLongPeriodLowGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeLongPeriodLowGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeUltraLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeUltraLongPeriodHighGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeUltraLongPeriodHighGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeUltraLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeUltraLongPeriodHighGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeUltraLongPeriodHighGain end of topic ===
-    Comment    ======= Verify ${subSystem}_earthquakeVeryLongPeriodHighGain test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "earthquakeVeryLongPeriodHighGain"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_earthquakeVeryLongPeriodHighGain test messages =======
     Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeVeryLongPeriodHighGain_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.earthquakeVeryLongPeriodHighGain writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
 

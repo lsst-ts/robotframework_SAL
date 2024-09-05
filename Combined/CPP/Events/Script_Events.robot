@@ -135,7 +135,7 @@ Read Logger
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : RO    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalCheckpoints : 1    1
     ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
-    ${end}=    Evaluate    ${state_start}+${9}
+    ${end}=    Evaluate    ${state_start}+${10}
     ${state_list}=    Get Slice From List    ${full_list}    start=${state_start}    end=${end}
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : \x01    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
@@ -145,6 +145,7 @@ Read Logger
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blockId : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dayObs : 1    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blockExecution : 1    1
+    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executionId : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
