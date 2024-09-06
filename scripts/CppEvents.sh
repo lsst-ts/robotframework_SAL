@@ -130,19 +130,23 @@ function startSender() {
     fi
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     if [ $topic ]; then
-        echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/avro-templates/\${subSystem}/\${subSystem}_hash_table.json    \"logevent_${topic}\"" >> $testSuite
+        echo "    \${line}=    Remove String    \${line}    \\\"    \:    \," >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
-        echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
+        echo "    \${revcode}=    Set Variable    \${words}[1]" >> $testSuite
+        echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::logevent_\${component}_\${revcode} writing a message containing :    1" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    1" >> $testSuite
     else
         for item in "${topicsArray[@]}"; do
-            echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/avro-templates/\${subSystem}/\${subSystem}_hash_table.json    \"logevent_${item}\"" >> $testSuite
+            echo "    \${line}=    Remove String    \${line}    \\\"    \:    \," >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
-            echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
+            echo "    \${revcode}=    Set Variable    \${words}[1]" >> $testSuite
+            echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    === Event ${item} iseq = 0    1" >> $testSuite
-            echo "    Should Contain X Times    \${output.stdout}    === [putSample] \${subSystem}::logevent_${item}_\${revcode} writing a message containing :    1" >> $testSuite
-            echo "    Should Contain    \${output.stdout}    revCode \ : \${revcode}    10" >>$testSuite
+            echo "    Should Contain X Times    \${output.stdout}    === [putSample] \${subSystem}.logevent_${item} writing a message containing :    1" >> $testSuite
+            echo "    Should Contain    \${output.stdout}    revCode \ : \${revcode}" >>$testSuite
             echo "    Should Contain    \${output.stdout}    === Event ${item} generated =" >> $testSuite
         done
     fi
