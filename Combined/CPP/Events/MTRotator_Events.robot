@@ -36,131 +36,176 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_controllerState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_controllerState test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event controllerState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_controllerState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_controllerState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event controllerState generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_connected"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_connected test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event connected iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_connected_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_connected writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event connected generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_interlock"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_interlock test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event interlock iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_interlock_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_interlock writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event interlock generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_target"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_target test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event target iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_target_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_target writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event target generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_tracking"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_tracking test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event tracking iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_tracking_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_tracking writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event tracking generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_inPosition"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_inPosition test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event inPosition iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_inPosition_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_inPosition writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event inPosition generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_configuration"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_configuration test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event configuration iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configuration_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_configuration writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event configuration generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_commandableByDDS"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_commandableByDDS test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event commandableByDDS iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_commandableByDDS_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_commandableByDDS writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event commandableByDDS generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_lowFrequencyVibration"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_lowFrequencyVibration test messages =======
+    Should Contain X Times    ${output.stdout}    === Event lowFrequencyVibration iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_lowFrequencyVibration writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event lowFrequencyVibration generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_heartbeat test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event heartbeat iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_heartbeat_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_heartbeat writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event heartbeat generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_clockOffset"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_clockOffset test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event clockOffset iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_clockOffset_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_clockOffset writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event clockOffset generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_logLevel"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_logLevel test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event logLevel iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_logLevel_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_logLevel writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event logLevel generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_logMessage"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_logMessage test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event logMessage iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_logMessage_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_logMessage writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event logMessage generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_softwareVersions"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_softwareVersions test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event softwareVersions iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_softwareVersions_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_softwareVersions writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event softwareVersions generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_errorCode"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_errorCode test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event errorCode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_errorCode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_errorCode writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event errorCode generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_simulationMode"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_simulationMode test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event simulationMode iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_simulationMode_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_simulationMode writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event simulationMode generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_summaryState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_summaryState test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event summaryState iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_summaryState_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_summaryState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event summaryState generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_configurationApplied"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
     Comment    ======= Verify ${subSystem}_configurationApplied test messages =======
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
     Should Contain X Times    ${output.stdout}    === Event configurationApplied iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configurationApplied_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_configurationApplied writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event configurationApplied generated =
-    Comment    ======= Verify ${subSystem}_configurationsAvailable test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_configurationsAvailable"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_configurationsAvailable test messages =======
     Should Contain X Times    ${output.stdout}    === Event configurationsAvailable iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}::logevent_configurationsAvailable_${revcode} writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_configurationsAvailable writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
@@ -222,6 +267,10 @@ Read Logger
     ${end}=    Evaluate    ${commandableByDDS_start}+${2}
     ${commandableByDDS_list}=    Get Slice From List    ${full_list}    start=${commandableByDDS_start}    end=${end}
     Should Contain X Times    ${commandableByDDS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
+    ${lowFrequencyVibration_start}=    Get Index From List    ${full_list}    === Event lowFrequencyVibration received =${SPACE}
+    ${end}=    Evaluate    ${lowFrequencyVibration_start}+${2}
+    ${lowFrequencyVibration_list}=    Get Slice From List    ${full_list}    start=${lowFrequencyVibration_start}    end=${end}
+    Should Contain X Times    ${lowFrequencyVibration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frequency : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${1}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}

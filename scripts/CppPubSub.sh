@@ -115,18 +115,22 @@ function startPublisher {
     fi
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     if [ $topic ]; then
-        echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    \${line}=    Grep File    \${SALWorkDir}/avro-templates/\${subSystem}/\${subSystem}_hash_table.json    \"${topic}\"" >> $testSuite
+        echo "    \${line}=    Remove String    \${line}    \\\"    \:    \," >> $testSuite
         echo "    @{words}=    Split String    \${line}" >> $testSuite
-        echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
-        echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::\${component}_\${revcode} writing a message containing :    9" >> $testSuite
+        echo "    \${revcode}=    Set Variable    \${words}[1]" >> $testSuite
+        echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+        echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}.${item} writing a message containing :    9" >> $testSuite
         echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    9" >> $testSuite
     else
         for item in "${topicsArray[@]}"; do
-            echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
+            echo "    \${line}=    Grep File    \${SALWorkDir}/avro-templates/\${subSystem}/\${subSystem}_hash_table.json    \"${item}\"" >> $testSuite
+            echo "    \${line}=    Remove String    \${line}    \\\"    \:    \," >> $testSuite
             echo "    @{words}=    Split String    \${line}" >> $testSuite
-            echo "    \${revcode}=    Set Variable    \${words}[2]" >> $testSuite
+            echo "    \${revcode}=    Set Variable    \${words}[1]" >> $testSuite
+            echo "    Comment    ======= Verify \${subSystem}_${item} test messages =======" >> $testSuite
             echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} start of topic ===" >> $testSuite
-            echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}::${item}_\${revcode} writing a message containing :    10" >> $testSuite
+            echo "    Should Contain X Times    \${output.stdout}    [putSample] \${subSystem}.${item} writing a message containing :    10" >> $testSuite
             echo "    Should Contain X Times    \${output.stdout}    revCode \ : \${revcode}    10" >> $testSuite
             echo "    Should Contain    \${output.stdout}    === ${subSystem}_${item} end of topic ===" >> $testSuite
         done

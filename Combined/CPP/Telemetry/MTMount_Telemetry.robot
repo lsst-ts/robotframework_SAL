@@ -36,186 +36,238 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
-    Comment    ======= Verify ${subSystem}_telemetryClientHeartbeat test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "telemetryClientHeartbeat"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_telemetryClientHeartbeat test messages =======
     Should Contain    ${output.stdout}    === MTMount_telemetryClientHeartbeat start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::telemetryClientHeartbeat_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.telemetryClientHeartbeat writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_telemetryClientHeartbeat end of topic ===
-    Comment    ======= Verify ${subSystem}_azimuth test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "azimuth"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_azimuth test messages =======
     Should Contain    ${output.stdout}    === MTMount_azimuth start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuth_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.azimuth writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_azimuth end of topic ===
-    Comment    ======= Verify ${subSystem}_safetySystem test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "safetySystem"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_safetySystem test messages =======
     Should Contain    ${output.stdout}    === MTMount_safetySystem start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::safetySystem_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.safetySystem writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_safetySystem end of topic ===
-    Comment    ======= Verify ${subSystem}_elevation test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "elevation"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_elevation test messages =======
     Should Contain    ${output.stdout}    === MTMount_elevation start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::elevation_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.elevation writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_elevation end of topic ===
-    Comment    ======= Verify ${subSystem}_lockingPins test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "lockingPins"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_lockingPins test messages =======
     Should Contain    ${output.stdout}    === MTMount_lockingPins start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::lockingPins_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.lockingPins writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_lockingPins end of topic ===
-    Comment    ======= Verify ${subSystem}_deployablePlatforms test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "deployablePlatforms"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_deployablePlatforms test messages =======
     Should Contain    ${output.stdout}    === MTMount_deployablePlatforms start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::deployablePlatforms_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.deployablePlatforms writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_deployablePlatforms end of topic ===
-    Comment    ======= Verify ${subSystem}_cabinet0101Thermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "cabinet0101Thermal"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_cabinet0101Thermal test messages =======
     Should Contain    ${output.stdout}    === MTMount_cabinet0101Thermal start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cabinet0101Thermal_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.cabinet0101Thermal writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_cabinet0101Thermal end of topic ===
-    Comment    ======= Verify ${subSystem}_azimuthCableWrap test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "azimuthCableWrap"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_azimuthCableWrap test messages =======
     Should Contain    ${output.stdout}    === MTMount_azimuthCableWrap start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuthCableWrap_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.azimuthCableWrap writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_azimuthCableWrap end of topic ===
-    Comment    ======= Verify ${subSystem}_cameraCableWrap test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "cameraCableWrap"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_cameraCableWrap test messages =======
     Should Contain    ${output.stdout}    === MTMount_cameraCableWrap start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cameraCableWrap_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.cameraCableWrap writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_cameraCableWrap end of topic ===
-    Comment    ======= Verify ${subSystem}_balancing test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "balancing"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_balancing test messages =======
     Should Contain    ${output.stdout}    === MTMount_balancing start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::balancing_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.balancing writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_balancing end of topic ===
-    Comment    ======= Verify ${subSystem}_azimuthDrives test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "azimuthDrives"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_azimuthDrives test messages =======
     Should Contain    ${output.stdout}    === MTMount_azimuthDrives start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuthDrives_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.azimuthDrives writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_azimuthDrives end of topic ===
-    Comment    ======= Verify ${subSystem}_azimuthDrivesThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "azimuthDrivesThermal"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_azimuthDrivesThermal test messages =======
     Should Contain    ${output.stdout}    === MTMount_azimuthDrivesThermal start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::azimuthDrivesThermal_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.azimuthDrivesThermal writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_azimuthDrivesThermal end of topic ===
-    Comment    ======= Verify ${subSystem}_elevationDrives test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "elevationDrives"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_elevationDrives test messages =======
     Should Contain    ${output.stdout}    === MTMount_elevationDrives start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::elevationDrives_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.elevationDrives writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_elevationDrives end of topic ===
-    Comment    ======= Verify ${subSystem}_elevationDrivesThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "elevationDrivesThermal"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_elevationDrivesThermal test messages =======
     Should Contain    ${output.stdout}    === MTMount_elevationDrivesThermal start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::elevationDrivesThermal_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.elevationDrivesThermal writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_elevationDrivesThermal end of topic ===
-    Comment    ======= Verify ${subSystem}_encoder test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "encoder"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_encoder test messages =======
     Should Contain    ${output.stdout}    === MTMount_encoder start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::encoder_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.encoder writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_encoder end of topic ===
-    Comment    ======= Verify ${subSystem}_mainCabinetThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mainCabinetThermal"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mainCabinetThermal test messages =======
     Should Contain    ${output.stdout}    === MTMount_mainCabinetThermal start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mainCabinetThermal_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mainCabinetThermal writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_mainCabinetThermal end of topic ===
-    Comment    ======= Verify ${subSystem}_mirrorCoverLocks test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mirrorCoverLocks"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mirrorCoverLocks test messages =======
     Should Contain    ${output.stdout}    === MTMount_mirrorCoverLocks start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mirrorCoverLocks_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mirrorCoverLocks writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_mirrorCoverLocks end of topic ===
-    Comment    ======= Verify ${subSystem}_mirrorCover test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mirrorCover"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mirrorCover test messages =======
     Should Contain    ${output.stdout}    === MTMount_mirrorCover start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mirrorCover_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mirrorCover writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_mirrorCover end of topic ===
-    Comment    ======= Verify ${subSystem}_mainPowerSupply test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "mainPowerSupply"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_mainPowerSupply test messages =======
     Should Contain    ${output.stdout}    === MTMount_mainPowerSupply start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::mainPowerSupply_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.mainPowerSupply writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_mainPowerSupply end of topic ===
-    Comment    ======= Verify ${subSystem}_topEndChiller test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "topEndChiller"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_topEndChiller test messages =======
     Should Contain    ${output.stdout}    === MTMount_topEndChiller start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::topEndChiller_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.topEndChiller writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_topEndChiller end of topic ===
-    Comment    ======= Verify ${subSystem}_auxiliaryCabinetsThermal test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "auxiliaryCabinetsThermal"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_auxiliaryCabinetsThermal test messages =======
     Should Contain    ${output.stdout}    === MTMount_auxiliaryCabinetsThermal start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::auxiliaryCabinetsThermal_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.auxiliaryCabinetsThermal writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_auxiliaryCabinetsThermal end of topic ===
-    Comment    ======= Verify ${subSystem}_oilSupplySystem test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "oilSupplySystem"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_oilSupplySystem test messages =======
     Should Contain    ${output.stdout}    === MTMount_oilSupplySystem start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::oilSupplySystem_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.oilSupplySystem writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_oilSupplySystem end of topic ===
-    Comment    ======= Verify ${subSystem}_compressedAir test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "compressedAir"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_compressedAir test messages =======
     Should Contain    ${output.stdout}    === MTMount_compressedAir start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::compressedAir_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.compressedAir writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_compressedAir end of topic ===
-    Comment    ======= Verify ${subSystem}_cooling test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "cooling"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_cooling test messages =======
     Should Contain    ${output.stdout}    === MTMount_cooling start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::cooling_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.cooling writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_cooling end of topic ===
-    Comment    ======= Verify ${subSystem}_dynaleneCooling test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "dynaleneCooling"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_dynaleneCooling test messages =======
     Should Contain    ${output.stdout}    === MTMount_dynaleneCooling start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::dynaleneCooling_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.dynaleneCooling writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_dynaleneCooling end of topic ===
-    Comment    ======= Verify ${subSystem}_generalPurposeGlycolWater test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "generalPurposeGlycolWater"
+    ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[2]
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_generalPurposeGlycolWater test messages =======
     Should Contain    ${output.stdout}    === MTMount_generalPurposeGlycolWater start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::generalPurposeGlycolWater_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.generalPurposeGlycolWater writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTMount_generalPurposeGlycolWater end of topic ===
 
@@ -250,6 +302,46 @@ Read Subscriber
     ${safetySystem_start}=    Get Index From List    ${full_list}    === MTMount_safetySystem start of topic ===
     ${safetySystem_end}=    Get Index From List    ${full_list}    === MTMount_safetySystem end of topic ===
     ${safetySystem_list}=    Get Slice From List    ${full_list}    start=${safetySystem_start}    end=${safetySystem_end}
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAz : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureAzTimestamp : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureEl : 9    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 0    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 1    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 2    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 3    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 4    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 5    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 6    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 7    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 8    1
+    Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}brakePressureElTimestamp : 9    1
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}versionNumber : 1    10
     Should Contain X Times    ${safetySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}versionNumberTimestamp : 1    10
@@ -948,6 +1040,12 @@ Read Subscriber
     ${mainCabinetThermal_start}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal start of topic ===
     ${mainCabinetThermal_end}=    Get Index From List    ${full_list}    === MTMount_mainCabinetThermal end of topic ===
     ${mainCabinetThermal_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermal_start}    end=${mainCabinetThermal_end}
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axesPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}axesPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperature : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetExternalTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetInternalTemperature : 0    1
@@ -973,6 +1071,10 @@ Read Subscriber
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperature : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureTimestamp : 1    10
     Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tmaPxiTemperature : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tmaPxiTemperatureTimestamp : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valveFeedback : 1    10
+    Should Contain X Times    ${mainCabinetThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valveFeedbackTimestamp : 1    10
     ${mirrorCoverLocks_start}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks start of topic ===
     ${mirrorCoverLocks_end}=    Get Index From List    ${full_list}    === MTMount_mirrorCoverLocks end of topic ===
     ${mirrorCoverLocks_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocks_start}    end=${mirrorCoverLocks_end}
@@ -1530,6 +1632,8 @@ Read Subscriber
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5011Timestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5121 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilTemperatureFacilities5121Timestamp : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureCabinets : 1    10
+    Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpointTemperatureCabinetsTimestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valvePositionFacilities5201 : 1    10
     Should Contain X Times    ${oilSupplySystem_list}    ${SPACE}${SPACE}${SPACE}${SPACE}valvePositionFacilities5201Timestamp : 1    10
