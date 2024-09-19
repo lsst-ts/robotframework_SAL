@@ -36,6 +36,7 @@ Start Publisher
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "ccwFollowingError"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -78,6 +79,9 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== MTRotator subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${ccwFollowingError_start}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError start of topic ===

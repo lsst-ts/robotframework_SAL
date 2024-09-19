@@ -36,6 +36,7 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_detailedState"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -447,6 +448,9 @@ Read Logger
     Switch Process    ${subSystem}_Logger
     ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready

@@ -114,6 +114,7 @@ function startPublisher {
         echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_publisher" >> $testSuite
     fi
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    1/1 brokers are down" >> $testSuite
     if [ $topic ]; then
         echo "    \${line}=    Grep File    \${SALWorkDir}/avro-templates/\${subSystem}/\${subSystem}_hash_table.json    \"${topic}\"" >> $testSuite
         echo "    \${line}=    Remove String    \${line}    \\\"    \:    \," >> $testSuite
@@ -147,6 +148,9 @@ function readSubscriber {
     echo "    Switch Process    \${subSystem}_Subscriber" >> $testSuite
     echo "    \${output}=    Wait For Process    \${subSystem}_Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    1/1 brokers are down" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Consume failed" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Broker: Unknown topic or partition" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
     if [ $topic ]; then
