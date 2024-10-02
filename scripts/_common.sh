@@ -203,15 +203,25 @@ function checkIfSkipped() {
     subsystem=$(echo $1 |tr '[:upper:]' '[:lower:]')
     topic=$(echo $2 |tr '[:upper:]' '[:lower:]')
     messageType=$(echo $3 |tr '[:upper:]' '[:lower:]')
-    if [[ ("$subsystem" == "atmonochromator") && ("$topic" == "internalcommand") ]]; then
-        skipped="TSS-2724"
-    elif [[ ("$subsystem" == "eec") && ("$topic" == "internalcommand") ]]; then
-        skipped="TSS-2724"
-    elif [[ ("$subsystem" == "tcs") && ("$topic" == "internalcommand") ]]; then
-        skipped="TSS-2724"
+    if [[ ("$subsystem" == "script") ]]; then
+        skipped="skipped"
     else
         skipped=""
     fi
     echo $skipped
 }
 
+
+function indexedCSC() {
+    ## Indexed CSCs have the 'salIndex' parameter added
+    ## to the message output. This function determines
+    ## if the given CSC is indexed, so the output can
+    ## be properly determined.
+    subSystem=$1
+    index_enumeration=($(xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v IndexEnumeration $TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALSubsystems.xml))
+    if [[ "$index_enumeration" == "no" ]]; then
+        return 1
+    else
+        return 0
+    fi
+}
