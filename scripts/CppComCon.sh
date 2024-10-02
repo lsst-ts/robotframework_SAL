@@ -105,7 +105,7 @@ function startController() {
         echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
         echo "    Wait Until Keyword Succeeds    60s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${component} controller ready =" >> $testSuite
     else
-        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_Controller    alias=\${subSystem}_Controller     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
+        echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_controller    alias=\${subSystem}_Controller     stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
         echo "    Log    \${output}" >> $testSuite
         echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
         echo "    Wait Until Keyword Succeeds    90s    5s    File Should Contain    \${EXECDIR}\${/}stdout.txt    === \${subSystem} all controllers ready" >> $testSuite
