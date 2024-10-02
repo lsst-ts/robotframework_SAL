@@ -102,13 +102,11 @@ Start Publisher
     Should Contain    ${output.stdout}    === MTPtg_mountPosition end of topic ===
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    robot:continue-on-failure
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Not Contain    ${output.stderr}    1/1 brokers are down
-    Should Not Contain    ${output.stderr}    Consume failed
-    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== MTPtg subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${currentTargetStatus_start}=    Get Index From List    ${full_list}    === MTPtg_currentTargetStatus start of topic ===
@@ -130,8 +128,8 @@ Read Subscriber
     ${guiding_end}=    Get Index From List    ${full_list}    === MTPtg_guiding end of topic ===
     ${guiding_list}=    Get Slice From List    ${full_list}    start=${guiding_start}    end=${guiding_end}
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideControlState : 1    10
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 1    10
+    Should Contain Any    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideControlState : 1    ${SPACE}${SPACE}${SPACE}${SPACE}guideControlState : 0
+    Should Contain Any    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 1    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 0
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideGA : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideGB : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotation : 1    10

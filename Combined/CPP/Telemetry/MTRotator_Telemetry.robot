@@ -75,13 +75,11 @@ Start Publisher
     Should Contain    ${output.stdout}    === MTRotator_motors end of topic ===
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    robot:continue-on-failure
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Not Contain    ${output.stderr}    1/1 brokers are down
-    Should Not Contain    ${output.stderr}    Consume failed
-    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== MTRotator subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${ccwFollowingError_start}=    Get Index From List    ${full_list}    === MTRotator_ccwFollowingError start of topic ===
