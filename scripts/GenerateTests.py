@@ -23,12 +23,10 @@ def GenerateTests(csc, language, dds):
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call([f"./{path}CppPubSub.sh", csc])
                 subprocess.check_call([f"./{path}CppEvents.sh", csc])
-                #subprocess.check_call([f"./{path}CppState.sh", csc])
-                #subprocess.check_call([f"./{path}CppComCon.sh", csc])
+                subprocess.check_call([f"./{path}CppComCon.sh", csc])
             if ('java' in language) or ('all' in language):
                 subprocess.check_call([f"./{path}JavaPubSub.sh", csc])
                 subprocess.check_call([f"./{path}JavaEvents.sh", csc])
-                #subprocess.check_call([f"./{path}JavaState.sh", csc])
                 #subprocess.check_call([f"./{path}JavaComCon.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('all' not in language):
                 complete=False
@@ -37,12 +35,10 @@ def GenerateTests(csc, language, dds):
             if ('cpp' in language) or ('all' in language):
                 subprocess.check_call([f"./{path}CppPubSub.sh", csc])
                 subprocess.check_call([f"./{path}CppEvents.sh", csc])
-                #subprocess.check_call([f"./CppState.sh", csc])
                 #subprocess.check_call([f"./CppComCon.sh", csc])
             if ('java' in language) or ('all' in language):
                 subprocess.check_call([f"./{path}JavaPubSub.sh", csc])
                 subprocess.check_call([f"./{path}JavaEvents.sh", csc])
-                #subprocess.check_call([f"./{path}JavaState.sh", csc])
                 #subprocess.check_call([f"./{path}JavaComCon.sh", csc])
             if ('cpp' not in language) and ('java' not in language) and ('all' not in language):
                 complete=False
