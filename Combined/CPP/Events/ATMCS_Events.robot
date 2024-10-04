@@ -467,10 +467,8 @@ Read Logger
     ${m3PortSelected_list}=    Get Slice From List    ${full_list}    start=${m3PortSelected_start}    end=${end}
     Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selected : 1    1
     ${positionLimits_start}=    Get Index From List    ${full_list}    === Event positionLimits received =${SPACE}
-    ${end}=    Evaluate    ${positionLimits_start}+${3}
+    ${end}=    Evaluate    ${positionLimits_start}+${1}
     ${positionLimits_list}=    Get Slice From List    ${full_list}    start=${positionLimits_start}    end=${end}
-    Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimum : 0    1
-    Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maximum : 0    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
     ${end}=    Evaluate    ${target_start}+${13}
     ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}
