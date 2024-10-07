@@ -1638,7 +1638,16 @@ Read Subscriber
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0003Timestamp : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0004 : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0004Timestamp : 1    10
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 1    10
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 0    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 1    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 2    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 3    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 4    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 5    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 6    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 7    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 8    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 9    1
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005Timestamp : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0006 : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0006Timestamp : 1    10

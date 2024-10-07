@@ -212,6 +212,46 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::earthquakeVeryLongPeriodHighGain_${revcode} writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
+    Comment    ======= Verify ${subSystem}_netbooter test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_netbooter
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_netbooter start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::netbooter_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_netbooter end of topic ===
+    Comment    ======= Verify ${subSystem}_raritan test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_raritan
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_raritan start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::raritan_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_raritan end of topic ===
+    Comment    ======= Verify ${subSystem}_schneiderPm5xxx test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_schneiderPm5xxx
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_schneiderPm5xxx start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::schneiderPm5xxx_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_schneiderPm5xxx end of topic ===
+    Comment    ======= Verify ${subSystem}_xups test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_xups
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_xups start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::xups_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_xups end of topic ===
+    Comment    ======= Verify ${subSystem}_aircraftTrack test messages =======
+    ${line}=    Grep File    ${SALWorkDir}/idl-templates/validated/${subSystem}_revCodes.tcl    ${subSystem}_aircraftTrack
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[2]
+    Should Contain    ${output.stdout}    === ESS_aircraftTrack start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}::aircraftTrack_${revcode} writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_aircraftTrack end of topic ===
 
 Read Subscriber
     [Tags]    functional
@@ -622,3 +662,254 @@ Read Subscriber
     Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationNorthSouth : 1    10
     Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerationZenith : 1    10
     Should Contain X Times    ${earthquakeVeryLongPeriodHighGain_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${netbooter_start}=    Get Index From List    ${full_list}    === ESS_netbooter start of topic ===
+    ${netbooter_end}=    Get Index From List    ${full_list}    === ESS_netbooter end of topic ===
+    ${netbooter_list}=    Get Slice From List    ${full_list}    start=${netbooter_start}    end=${netbooter_end}
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}systemDescription : RO    10
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acCurrentDraw : 1    10
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acMaxDraw : 1    10
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 0    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 1    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 2    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 3    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 4    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 5    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 6    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 7    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 8    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerOutletStatus : 9    1
+    Should Contain X Times    ${netbooter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    ${raritan_start}=    Get Index From List    ${full_list}    === ESS_raritan start of topic ===
+    ${raritan_end}=    Get Index From List    ${full_list}    === ESS_raritan end of topic ===
+    ${raritan_list}=    Get Slice From List    ${full_list}    start=${raritan_start}    end=${raritan_end}
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}systemDescription : RO    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletRmsCurrent : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletUnbalancedCurrent : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletRmsVoltage : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletActivePower : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletApparentPower : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletPowerFactor : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletActiveEnergy : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletFrequency : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletUnbalancedVoltage : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inletUnbalancedLineLineVoltage : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsCurrent : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletRmsVoltage : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActivePower : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletApparentPower : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletPowerFactor : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 1    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 2    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 3    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 4    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 5    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 6    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 7    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 8    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    ${schneiderPm5xxx_start}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx start of topic ===
+    ${schneiderPm5xxx_end}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx end of topic ===
+    ${schneiderPm5xxx_list}=    Get Slice From List    ${full_list}    start=${schneiderPm5xxx_start}    end=${schneiderPm5xxx_end}
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}systemDescription : RO    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serialNumber : RO    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVan : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVbn : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVcn : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVab : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVbc : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}measuredLineVoltageVca : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadCurrentA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadCurrentB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadCurrentC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}neutralCurrent : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}systemFrequency : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activePowerA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activePowerB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activePowerC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reactivePowerA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reactivePowerB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reactivePowerC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}apparentPowerA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}apparentPowerB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}apparentPowerC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerFactorA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerFactorB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerFactorC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}displacementPowerFactorA : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}displacementPowerFactorB : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}displacementPowerFactorC : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalPowerFactor : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalDisplacementPowerFactor : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalActivePower : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalReactivePower : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalApparentPower : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeEnergyDelivered : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reactiveEnergyDelivered : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}apparentEnergyDelivered : 1    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}resetDateTime : RO    10
+    Should Contain X Times    ${schneiderPm5xxx_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    ${xups_start}=    Get Index From List    ${full_list}    === ESS_xups start of topic ===
+    ${xups_end}=    Get Index From List    ${full_list}    === ESS_xups end of topic ===
+    ${xups_list}=    Get Slice From List    ${full_list}    start=${xups_start}    end=${xups_end}
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}systemDescription : RO    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryCapacity : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryTimeRemaining : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryVoltage : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}envAmbientTemp : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryCurrent : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCurrent : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputPower : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputVoltage : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputFrequency : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputPower : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputFrequency : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputLoad : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 0    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 1    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 2    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 3    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 4    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 5    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 6    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 7    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 8    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassVoltage : 9    1
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassFrequency : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryAbmStatus : 1    10
+    Should Contain X Times    ${xups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    ${aircraftTrack_start}=    Get Index From List    ${full_list}    === ESS_aircraftTrack start of topic ===
+    ${aircraftTrack_end}=    Get Index From List    ${full_list}    === ESS_aircraftTrack end of topic ===
+    ${aircraftTrack_list}=    Get Slice From List    ${full_list}    start=${aircraftTrack_start}    end=${aircraftTrack_end}
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}track : RO    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}transponder : RO    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}altitude : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}speed : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latitude : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longitude : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityX : 1    10
+    Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityY : 1    10
