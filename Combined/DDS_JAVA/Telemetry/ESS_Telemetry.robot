@@ -198,6 +198,41 @@ Start Publisher
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain] message sent 200
+    ${netbooter_start}=    Get Index From List    ${full_list}    === ESS_netbooter start of topic ===
+    ${netbooter_end}=    Get Index From List    ${full_list}    === ESS_netbooter end of topic ===
+    ${netbooter_list}=    Get Slice From List    ${full_list}    start=${netbooter_start}    end=${netbooter_end + 1}
+    Log Many    ${netbooter_list}
+    Should Contain    ${netbooter_list}    === ESS_netbooter start of topic ===
+    Should Contain    ${netbooter_list}    === ESS_netbooter end of topic ===
+    Should Contain    ${netbooter_list}    === [netbooter] message sent 200
+    ${raritan_start}=    Get Index From List    ${full_list}    === ESS_raritan start of topic ===
+    ${raritan_end}=    Get Index From List    ${full_list}    === ESS_raritan end of topic ===
+    ${raritan_list}=    Get Slice From List    ${full_list}    start=${raritan_start}    end=${raritan_end + 1}
+    Log Many    ${raritan_list}
+    Should Contain    ${raritan_list}    === ESS_raritan start of topic ===
+    Should Contain    ${raritan_list}    === ESS_raritan end of topic ===
+    Should Contain    ${raritan_list}    === [raritan] message sent 200
+    ${schneiderPm5xxx_start}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx start of topic ===
+    ${schneiderPm5xxx_end}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx end of topic ===
+    ${schneiderPm5xxx_list}=    Get Slice From List    ${full_list}    start=${schneiderPm5xxx_start}    end=${schneiderPm5xxx_end + 1}
+    Log Many    ${schneiderPm5xxx_list}
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx start of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx end of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx] message sent 200
+    ${xups_start}=    Get Index From List    ${full_list}    === ESS_xups start of topic ===
+    ${xups_end}=    Get Index From List    ${full_list}    === ESS_xups end of topic ===
+    ${xups_list}=    Get Slice From List    ${full_list}    start=${xups_start}    end=${xups_end + 1}
+    Log Many    ${xups_list}
+    Should Contain    ${xups_list}    === ESS_xups start of topic ===
+    Should Contain    ${xups_list}    === ESS_xups end of topic ===
+    Should Contain    ${xups_list}    === [xups] message sent 200
+    ${aircraftTrack_start}=    Get Index From List    ${full_list}    === ESS_aircraftTrack start of topic ===
+    ${aircraftTrack_end}=    Get Index From List    ${full_list}    === ESS_aircraftTrack end of topic ===
+    ${aircraftTrack_list}=    Get Slice From List    ${full_list}    start=${aircraftTrack_start}    end=${aircraftTrack_end + 1}
+    Log Many    ${aircraftTrack_list}
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack start of topic ===
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack end of topic ===
+    Should Contain    ${aircraftTrack_list}    === [aircraftTrack] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -382,3 +417,43 @@ Read Subscriber
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :200
+    ${netbooter_start}=    Get Index From List    ${full_list}    === ESS_netbooter start of topic ===
+    ${netbooter_end}=    Get Index From List    ${full_list}    === ESS_netbooter end of topic ===
+    ${netbooter_list}=    Get Slice From List    ${full_list}    start=${netbooter_start}    end=${netbooter_end + 1}
+    Log Many    ${netbooter_list}
+    Should Contain    ${netbooter_list}    === ESS_netbooter start of topic ===
+    Should Contain    ${netbooter_list}    === ESS_netbooter end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${netbooter_list}    === [netbooter Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${netbooter_list}    === [netbooter Subscriber] message received :200
+    ${raritan_start}=    Get Index From List    ${full_list}    === ESS_raritan start of topic ===
+    ${raritan_end}=    Get Index From List    ${full_list}    === ESS_raritan end of topic ===
+    ${raritan_list}=    Get Slice From List    ${full_list}    start=${raritan_start}    end=${raritan_end + 1}
+    Log Many    ${raritan_list}
+    Should Contain    ${raritan_list}    === ESS_raritan start of topic ===
+    Should Contain    ${raritan_list}    === ESS_raritan end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${raritan_list}    === [raritan Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${raritan_list}    === [raritan Subscriber] message received :200
+    ${schneiderPm5xxx_start}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx start of topic ===
+    ${schneiderPm5xxx_end}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx end of topic ===
+    ${schneiderPm5xxx_list}=    Get Slice From List    ${full_list}    start=${schneiderPm5xxx_start}    end=${schneiderPm5xxx_end + 1}
+    Log Many    ${schneiderPm5xxx_list}
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx start of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx Subscriber] message received :200
+    ${xups_start}=    Get Index From List    ${full_list}    === ESS_xups start of topic ===
+    ${xups_end}=    Get Index From List    ${full_list}    === ESS_xups end of topic ===
+    ${xups_list}=    Get Slice From List    ${full_list}    start=${xups_start}    end=${xups_end + 1}
+    Log Many    ${xups_list}
+    Should Contain    ${xups_list}    === ESS_xups start of topic ===
+    Should Contain    ${xups_list}    === ESS_xups end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${xups_list}    === [xups Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${xups_list}    === [xups Subscriber] message received :200
+    ${aircraftTrack_start}=    Get Index From List    ${full_list}    === ESS_aircraftTrack start of topic ===
+    ${aircraftTrack_end}=    Get Index From List    ${full_list}    === ESS_aircraftTrack end of topic ===
+    ${aircraftTrack_list}=    Get Slice From List    ${full_list}    start=${aircraftTrack_start}    end=${aircraftTrack_end + 1}
+    Log Many    ${aircraftTrack_list}
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack start of topic ===
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${aircraftTrack_list}    === [aircraftTrack Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${aircraftTrack_list}    === [aircraftTrack Subscriber] message received :200
