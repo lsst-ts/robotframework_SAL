@@ -20,14 +20,32 @@ def GenerateTests(csc, dds):
         path = ""
     if csc == "all":
         for csc in csc_array:
-            subprocess.check_call([f"./{path}CppPubSub.sh", csc]) || complete=False
-            subprocess.check_call([f"./{path}CppEvents.sh", csc]) || complete=False
-            subprocess.check_call([f"./{path}CppComCon.sh", csc]) || complete=False
+            try:
+                subprocess.check_call([f"./{path}CppPubSub.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
+            try:
+                subprocess.check_call([f"./{path}CppEvents.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
+            try:
+                subprocess.check_call([f"./{path}CppComCon.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
         print("\nCOMPLETED ALL test suites for ALL CSCs.") if complete else print("There was a problem generating the test suites.")
     elif csc in csc_array:
-                subprocess.check_call([f"./{path}CppPubSub.sh", csc]) || complete=False
-                subprocess.check_call([f"./{path}CppEvents.sh", csc]) || complete=False
-                subprocess.check_call([f"./{path}CppComCon.sh", csc]) || complete=False
+            try:
+                subprocess.check_call([f"./{path}CppPubSub.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
+            try:
+                subprocess.check_call([f"./{path}CppEvents.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
+            try:
+                subprocess.check_call([f"./{path}CppComCon.sh", csc])
+            except subprocess.CalledProcessError:
+                complete=False
             print("\nCOMPLETED all test suites for the " + csc + " CSC") if complete else print("There was a problem generating the test suites.")
     else:
         print("Something has gone very wrong.") 
