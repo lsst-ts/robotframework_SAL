@@ -258,21 +258,6 @@ Read Subscriber
     ${azimuth_start}=    Get Index From List    ${full_list}    === MTMount_azimuth start of topic ===
     ${azimuth_end}=    Get Index From List    ${full_list}    === MTMount_azimuth end of topic ===
     ${azimuth_list}=    Get Slice From List    ${full_list}    start=${azimuth_start}    end=${azimuth_end}
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAcceleration : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualAccelerationTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualJerk : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualJerkTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPosition : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualPositionTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorque : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTorqueTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocity : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualVelocityTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPosition : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandPositionTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocity : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}demandVelocityTimestamp : 1    10
-    Should Contain X Times    ${azimuth_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     ${safetySystem_start}=    Get Index From List    ${full_list}    === MTMount_safetySystem start of topic ===
     ${safetySystem_end}=    Get Index From List    ${full_list}    === MTMount_safetySystem end of topic ===
     ${safetySystem_list}=    Get Slice From List    ${full_list}    start=${safetySystem_start}    end=${safetySystem_end}
@@ -1638,16 +1623,7 @@ Read Subscriber
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0003Timestamp : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0004 : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0004Timestamp : 1    10
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 0    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 1    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 2    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 3    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 4    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 5    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 6    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 7    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 8    1
-    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 9    1
+    Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005 : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0005Timestamp : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0006 : 1    10
     Should Contain X Times    ${cooling_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressureAzimuth0006Timestamp : 1    10
