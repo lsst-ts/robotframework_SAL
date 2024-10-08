@@ -120,16 +120,7 @@ Read Subscriber
     ${guiding_list}=    Get Slice From List    ${full_list}    start=${guiding_start}    end=${guiding_end}
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideControlState : 1    10
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 0    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 1    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 2    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 3    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 4    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 5    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 6    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 7    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 8    1
-    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 9    1
+    Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideAutoClearState : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideGA : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}guideGB : 1    10
     Should Contain X Times    ${guiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotation : 1    10
