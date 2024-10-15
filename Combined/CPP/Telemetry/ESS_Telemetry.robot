@@ -21,18 +21,16 @@ Verify Component Publisher and Subscriber
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber
 
 Start Subscriber
-    [Tags]    functional
+    [Tags]    functional    subscriber
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
-    Comment    Sleep for 6s to allow DDS time to register all the topics.
-    Sleep    6s
     ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== ESS subscribers ready =====
 
 Start Publisher
-    [Tags]    functional
+    [Tags]    functional    publisher    robot:continue-on-failure
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
@@ -281,7 +279,7 @@ Start Publisher
     Should Contain    ${output.stdout}    === ESS_aircraftTrack end of topic ===
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    subscriber    robot:continue-on-failure
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -780,16 +778,7 @@ Read Subscriber
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 7    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 8    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 9    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 0    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 1    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 2    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 3    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 4    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 5    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 6    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 7    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 8    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 9    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 1    10
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 0    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 1    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 2    1

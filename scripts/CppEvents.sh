@@ -97,7 +97,7 @@ function verifyCompSenderLogger() {
 function startLogger() {
     local testSuite=$1
     echo "Start Logger" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
+    echo "    [Tags]    functional    logger" >> $testSuite
     echo "    Comment    Start Logger." >> $testSuite
     if [ $topic ]; then
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_log    alias=\${subSystem}_Logger    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
@@ -121,7 +121,7 @@ function startSender() {
     #local property=$2
     local testSuite=$1
     echo "Start Sender" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
+    echo "    [Tags]    functional    sender    robot:continue-on-failure" >> $testSuite
     echo "    Comment    Start Sender." >> $testSuite
     if [ $topic ]; then
         echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_send     $( printf '%b    ' ${argumentsArray[@]} )" >> $testSuite
@@ -160,7 +160,7 @@ function readLogger() {
     #local device=$4
     #local property=$5
     echo "Read Logger" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
+    echo "    [Tags]    functional    logger    robot:continue-on-failure" >> $testSuite
     echo "    Switch Process    \${subSystem}_Logger" >> $testSuite
     echo "    \${output}=    Wait For Process    handle=\${subSystem}_Logger    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite

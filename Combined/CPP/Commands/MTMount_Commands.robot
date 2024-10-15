@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -60,7 +60,7 @@ Start Commander
     ${openMirrorCovers_list}=    Get Slice From List    ${full_list}    start=${openMirrorCovers_start}    end=${openMirrorCovers_end+3}
     Log    ${openMirrorCovers_list}
     Should Contain X Times    ${openMirrorCovers_list}    === ${subSystem}_openMirrorCovers start of topic ===    1
-    Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leaf : 0    1
+    Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leaf : 1    1
     Should Contain    ${openMirrorCovers_list}    === issueCommand_openMirrorCovers writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${openMirrorCovers_list}[-2]    Command roundtrip was
@@ -113,7 +113,7 @@ Start Commander
     ${park_list}=    Get Slice From List    ${full_list}    start=${park_start}    end=${park_end+3}
     Log    ${park_list}
     Should Contain X Times    ${park_list}    === ${subSystem}_park start of topic ===    1
-    Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain    ${park_list}    === issueCommand_park writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${park_list}[-2]    Command roundtrip was
@@ -153,8 +153,8 @@ Start Commander
     ${applySettingsSet_list}=    Get Slice From List    ${full_list}    start=${applySettingsSet_start}    end=${applySettingsSet_end+3}
     Log    ${applySettingsSet_list}
     Should Contain X Times    ${applySettingsSet_list}    === ${subSystem}_applySettingsSet start of topic ===    1
-    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}restoreDefaults : 0    1
-    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings :${SPACE}    1
+    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}restoreDefaults : 1    1
+    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : RO    1
     Should Contain    ${applySettingsSet_list}    === issueCommand_applySettingsSet writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${applySettingsSet_list}[-2]    Command roundtrip was
@@ -168,8 +168,8 @@ Start Commander
     ${moveToTarget_list}=    Get Slice From List    ${full_list}    start=${moveToTarget_start}    end=${moveToTarget_end+3}
     Log    ${moveToTarget_list}
     Should Contain X Times    ${moveToTarget_list}    === ${subSystem}_moveToTarget start of topic ===    1
-    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
+    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain    ${moveToTarget_list}    === issueCommand_moveToTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${moveToTarget_list}[-2]    Command roundtrip was
@@ -183,20 +183,20 @@ Start Commander
     ${setThermal_list}=    Get Slice From List    ${full_list}    start=${setThermal_start}    end=${setThermal_end+3}
     Log    ${setThermal_list}
     Should Contain X Times    ${setThermal_list}    === ${subSystem}_setThermal start of topic ===    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101State : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101Setpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerSetpoint : 0    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101State : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101Setpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerSetpoint : 1    1
     Should Contain    ${setThermal_list}    === issueCommand_setThermal writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${setThermal_list}[-2]    Command roundtrip was
@@ -223,14 +223,14 @@ Start Commander
     ${trackTarget_list}=    Get Slice From List    ${full_list}    start=${trackTarget_start}    end=${trackTarget_end+3}
     Log    ${trackTarget_list}
     Should Contain X Times    ${trackTarget_list}    === ${subSystem}_trackTarget start of topic ===    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys :${SPACE}    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys :${SPACE}    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
     Should Contain    ${trackTarget_list}    === issueCommand_trackTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${trackTarget_list}[-2]    Command roundtrip was
@@ -270,7 +270,7 @@ Start Commander
     ${clearError_list}=    Get Slice From List    ${full_list}    start=${clearError_start}    end=${clearError_end+3}
     Log    ${clearError_list}
     Should Contain X Times    ${clearError_list}    === ${subSystem}_clearError start of topic ===    1
-    Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 0    1
+    Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 1    1
     Should Contain    ${clearError_list}    === issueCommand_clearError writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${clearError_list}[-2]    Command roundtrip was
@@ -356,7 +356,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -382,7 +382,7 @@ Read Controller
     ${openMirrorCovers_list}=    Get Slice From List    ${full_list}    start=${openMirrorCovers_start}    end=${openMirrorCovers_end+1}
     Log    ${openMirrorCovers_list}
     Should Contain X Times    ${openMirrorCovers_list}    === ${subSystem}_openMirrorCovers start of topic ===    1
-    Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leaf : 0    1
+    Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leaf : 1    1
     Should Contain X Times    ${openMirrorCovers_list}    === ackCommand_openMirrorCovers acknowledging a command with :    2
     Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${openMirrorCovers_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -435,7 +435,7 @@ Read Controller
     ${park_list}=    Get Slice From List    ${full_list}    start=${park_start}    end=${park_end+1}
     Log    ${park_list}
     Should Contain X Times    ${park_list}    === ${subSystem}_park start of topic ===    1
-    Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${park_list}    === ackCommand_park acknowledging a command with :    2
     Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${park_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -475,8 +475,8 @@ Read Controller
     ${applySettingsSet_list}=    Get Slice From List    ${full_list}    start=${applySettingsSet_start}    end=${applySettingsSet_end+1}
     Log    ${applySettingsSet_list}
     Should Contain X Times    ${applySettingsSet_list}    === ${subSystem}_applySettingsSet start of topic ===    1
-    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}restoreDefaults : 0    1
-    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings :${SPACE}    1
+    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}restoreDefaults : 1    1
+    Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settings : RO    1
     Should Contain X Times    ${applySettingsSet_list}    === ackCommand_applySettingsSet acknowledging a command with :    2
     Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${applySettingsSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -490,8 +490,8 @@ Read Controller
     ${moveToTarget_list}=    Get Slice From List    ${full_list}    start=${moveToTarget_start}    end=${moveToTarget_end+1}
     Log    ${moveToTarget_list}
     Should Contain X Times    ${moveToTarget_list}    === ${subSystem}_moveToTarget start of topic ===    1
-    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
+    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${moveToTarget_list}    === ackCommand_moveToTarget acknowledging a command with :    2
     Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${moveToTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -505,20 +505,20 @@ Read Controller
     ${setThermal_list}=    Get Slice From List    ${full_list}    start=${setThermal_start}    end=${setThermal_end+1}
     Log    ${setThermal_list}
     Should Contain X Times    ${setThermal_list}    === ${subSystem}_setThermal start of topic ===    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101State : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerState : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101Setpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetSetpoint : 0    1
-    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerSetpoint : 0    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101State : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerState : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthDrivesSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationDrivesSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinet0101Setpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainCabinetSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryCabinetsSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}oilSupplySystemCabinetSetpoint : 1    1
+    Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}topEndChillerSetpoint : 1    1
     Should Contain X Times    ${setThermal_list}    === ackCommand_setThermal acknowledging a command with :    2
     Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${setThermal_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -545,14 +545,14 @@ Read Controller
     ${trackTarget_list}=    Get Slice From List    ${full_list}    start=${trackTarget_start}    end=${trackTarget_end+1}
     Log    ${trackTarget_list}
     Should Contain X Times    ${trackTarget_list}    === ${subSystem}_trackTarget start of topic ===    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys :${SPACE}    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys :${SPACE}    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
     Should Contain X Times    ${trackTarget_list}    === ackCommand_trackTarget acknowledging a command with :    2
     Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -592,7 +592,7 @@ Read Controller
     ${clearError_list}=    Get Slice From List    ${full_list}    start=${clearError_start}    end=${clearError_end+1}
     Log    ${clearError_list}
     Should Contain X Times    ${clearError_list}    === ${subSystem}_clearError start of topic ===    1
-    Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 0    1
+    Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mask : 1    1
     Should Contain X Times    ${clearError_list}    === ackCommand_clearError acknowledging a command with :    2
     Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${clearError_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

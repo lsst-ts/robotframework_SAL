@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -51,8 +51,8 @@ Start Commander
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 0    1
+    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
+    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
     Should Contain    ${startGuiding_list}    === issueCommand_startGuiding writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${startGuiding_list}[-2]    Command roundtrip was
@@ -164,7 +164,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -181,8 +181,8 @@ Read Controller
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 0    1
+    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
+    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
     Should Contain X Times    ${startGuiding_list}    === ackCommand_startGuiding acknowledging a command with :    2
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

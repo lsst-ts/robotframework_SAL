@@ -97,7 +97,7 @@ function verifyCommanderController() {
 function startController() {
     local testSuite=$1
     echo "Start Controller" >> $testSuite
-    echo "    [Tags]    functional" >> $testSuite
+    echo "    [Tags]    functional    controller" >> $testSuite
     echo "    Comment    Start Controller." >> $testSuite
     if [ $topic ]; then
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_controller    alias=\${subSystem}_Controller    stdout=\${EXECDIR}\${/}stdout.txt    stderr=\${EXECDIR}\${/}stderr.txt" >> $testSuite
@@ -121,7 +121,7 @@ function startCommander() {
     local topicIndex=$2
     local testSuite=$3
     echo "Start Commander" >> $testSuite
-    echo "    [Tags]    functional    robot:continue-on-failure" >> $testSuite
+    echo "    [Tags]    functional    commander    robot:continue-on-failure" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
     if [ $topic ]; then
         echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_commander     $( printf '%b    ' ${argumentsArray[@]} )" >> $testSuite
@@ -167,7 +167,7 @@ function readController() {
     #local device=$4
     #local property=$5
     echo "Read Controller" >> $testSuite
-    echo "    [Tags]    functional    robot:continue-on-failure" >> $testSuite
+    echo "    [Tags]    functional    controller    robot:continue-on-failure" >> $testSuite
     echo "    Switch Process    \${subSystem}_Controller" >> $testSuite
     echo "    \${output}=    Wait For Process    handle=\${subSystem}_Controller    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
@@ -222,25 +222,28 @@ function CommanderController_params() {
         if [[ $testSuite == *"$topic"* ]]; then
             topic="full"
         fi
+        #echo "Parameter details: $parameter $parameterType $parameterCount"
         if [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
+            #echo "$parameter $parameterType boolean Count == 1"
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
             #echo "$parameter $parameterType String or Char"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter :\${SPACE}    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : RO    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" != "string" ) ]]; then
             #echo "$parameter $parameterType Count 1"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
-    elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "boolean" ) ||  ( "$parameterType" == "float" ) || ( "$parameterType" == "double" ) || ( "$parameterType" == *"short"* ) || ( "$parameterType" == *"int"* ) || ( "$parameterType" == *"long"* )) ]]; then
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
+        elif [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "boolean" ) ||  ( "$parameterType" == "float" ) || ( "$parameterType" == "double" ) || ( "$parameterType" == *"short"* ) || ( "$parameterType" == *"int"* ) || ( "$parameterType" == *"long"* )) ]]; then
+            #echo "$parameter $parameterType Count != 1"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
         else
             #echo "$parameter $parameterType Else"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         fi
     done
 }

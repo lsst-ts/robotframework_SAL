@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -119,7 +119,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}

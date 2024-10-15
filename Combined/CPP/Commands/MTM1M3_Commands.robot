@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -86,7 +86,7 @@ Start Commander
     ${raiseM1M3_list}=    Get Slice From List    ${full_list}    start=${raiseM1M3_start}    end=${raiseM1M3_end+3}
     Log    ${raiseM1M3_list}
     Should Contain X Times    ${raiseM1M3_list}    === ${subSystem}_raiseM1M3 start of topic ===    1
-    Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassReferencePosition : 0    1
+    Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassReferencePosition : 1    1
     Should Contain    ${raiseM1M3_list}    === issueCommand_raiseM1M3 writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${raiseM1M3_list}[-2]    Command roundtrip was
@@ -257,7 +257,7 @@ Start Commander
     ${testHardpoint_list}=    Get Slice From List    ${full_list}    start=${testHardpoint_start}    end=${testHardpoint_end+3}
     Log    ${testHardpoint_list}
     Should Contain X Times    ${testHardpoint_list}    === ${subSystem}_testHardpoint start of topic ===    1
-    Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 0    1
+    Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 1    1
     Should Contain    ${testHardpoint_list}    === issueCommand_testHardpoint writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${testHardpoint_list}[-2]    Command roundtrip was
@@ -271,7 +271,7 @@ Start Commander
     ${killHardpointTest_list}=    Get Slice From List    ${full_list}    start=${killHardpointTest_start}    end=${killHardpointTest_end+3}
     Log    ${killHardpointTest_list}
     Should Contain X Times    ${killHardpointTest_list}    === ${subSystem}_killHardpointTest start of topic ===    1
-    Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 0    1
+    Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 1    1
     Should Contain    ${killHardpointTest_list}    === issueCommand_killHardpointTest writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${killHardpointTest_list}[-2]    Command roundtrip was
@@ -327,12 +327,12 @@ Start Commander
     ${translateM1M3_list}=    Get Slice From List    ${full_list}    start=${translateM1M3_start}    end=${translateM1M3_end+3}
     Log    ${translateM1M3_list}
     Should Contain X Times    ${translateM1M3_list}    === ${subSystem}_translateM1M3 start of topic ===    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 0    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 1    1
     Should Contain    ${translateM1M3_list}    === issueCommand_translateM1M3 writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${translateM1M3_list}[-2]    Command roundtrip was
@@ -386,12 +386,12 @@ Start Commander
     ${positionM1M3_list}=    Get Slice From List    ${full_list}    start=${positionM1M3_start}    end=${positionM1M3_end+3}
     Log    ${positionM1M3_list}
     Should Contain X Times    ${positionM1M3_list}    === ${subSystem}_positionM1M3 start of topic ===    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 0    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 1    1
     Should Contain    ${positionM1M3_list}    === issueCommand_positionM1M3 writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${positionM1M3_list}[-2]    Command roundtrip was
@@ -431,14 +431,14 @@ Start Commander
     ${turnPowerOn_list}=    Get Slice From List    ${full_list}    start=${turnPowerOn_start}    end=${turnPowerOn_end+3}
     Log    ${turnPowerOn_list}
     Should Contain X Times    ${turnPowerOn_list}    === ${subSystem}_turnPowerOn start of topic ===    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOn : 0    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOn : 1    1
     Should Contain    ${turnPowerOn_list}    === issueCommand_turnPowerOn writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${turnPowerOn_list}[-2]    Command roundtrip was
@@ -452,14 +452,14 @@ Start Commander
     ${turnPowerOff_list}=    Get Slice From List    ${full_list}    start=${turnPowerOff_start}    end=${turnPowerOff_end+3}
     Log    ${turnPowerOff_list}
     Should Contain X Times    ${turnPowerOff_list}    === ${subSystem}_turnPowerOff start of topic ===    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOff : 0    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOff : 1    1
     Should Contain    ${turnPowerOff_list}    === issueCommand_turnPowerOff writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${turnPowerOff_list}[-2]    Command roundtrip was
@@ -531,12 +531,12 @@ Start Commander
     ${applyOffsetForcesByMirrorForce_list}=    Get Slice From List    ${full_list}    start=${applyOffsetForcesByMirrorForce_start}    end=${applyOffsetForcesByMirrorForce_end+3}
     Log    ${applyOffsetForcesByMirrorForce_list}
     Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    === ${subSystem}_applyOffsetForcesByMirrorForce start of topic ===    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xMoment : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yMoment : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zMoment : 0    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xMoment : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yMoment : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zMoment : 1    1
     Should Contain    ${applyOffsetForcesByMirrorForce_list}    === issueCommand_applyOffsetForcesByMirrorForce writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${applyOffsetForcesByMirrorForce_list}[-2]    Command roundtrip was
@@ -550,12 +550,12 @@ Start Commander
     ${updatePID_list}=    Get Slice From List    ${full_list}    start=${updatePID_start}    end=${updatePID_end+3}
     Log    ${updatePID_list}
     Should Contain X Times    ${updatePID_list}    === ${subSystem}_updatePID start of topic ===    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}p : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}d : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n : 0    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}p : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}d : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n : 1    1
     Should Contain    ${updatePID_list}    === issueCommand_updatePID writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${updatePID_list}[-2]    Command roundtrip was
@@ -569,7 +569,7 @@ Start Commander
     ${resetPID_list}=    Get Slice From List    ${full_list}    start=${resetPID_start}    end=${resetPID_end+3}
     Log    ${resetPID_list}
     Should Contain X Times    ${resetPID_list}    === ${subSystem}_resetPID start of topic ===    1
-    Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 0    1
+    Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 1    1
     Should Contain    ${resetPID_list}    === issueCommand_resetPID writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${resetPID_list}[-2]    Command roundtrip was
@@ -583,9 +583,9 @@ Start Commander
     ${forceActuatorBumpTest_list}=    Get Slice From List    ${full_list}    start=${forceActuatorBumpTest_start}    end=${forceActuatorBumpTest_end+3}
     Log    ${forceActuatorBumpTest_list}
     Should Contain X Times    ${forceActuatorBumpTest_list}    === ${subSystem}_forceActuatorBumpTest start of topic ===    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testPrimary : 0    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testSecondary : 0    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testPrimary : 1    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testSecondary : 1    1
     Should Contain    ${forceActuatorBumpTest_list}    === issueCommand_forceActuatorBumpTest writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${forceActuatorBumpTest_list}[-2]    Command roundtrip was
@@ -612,7 +612,7 @@ Start Commander
     ${disableForceActuator_list}=    Get Slice From List    ${full_list}    start=${disableForceActuator_start}    end=${disableForceActuator_end+3}
     Log    ${disableForceActuator_list}
     Should Contain X Times    ${disableForceActuator_list}    === ${subSystem}_disableForceActuator start of topic ===    1
-    Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
+    Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
     Should Contain    ${disableForceActuator_list}    === issueCommand_disableForceActuator writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${disableForceActuator_list}[-2]    Command roundtrip was
@@ -626,7 +626,7 @@ Start Commander
     ${enableForceActuator_list}=    Get Slice From List    ${full_list}    start=${enableForceActuator_start}    end=${enableForceActuator_end+3}
     Log    ${enableForceActuator_list}
     Should Contain X Times    ${enableForceActuator_list}    === ${subSystem}_enableForceActuator start of topic ===    1
-    Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
+    Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
     Should Contain    ${enableForceActuator_list}    === issueCommand_enableForceActuator writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${enableForceActuator_list}[-2]    Command roundtrip was
@@ -653,8 +653,8 @@ Start Commander
     ${enableDisableForceComponent_list}=    Get Slice From List    ${full_list}    start=${enableDisableForceComponent_start}    end=${enableDisableForceComponent_end+3}
     Log    ${enableDisableForceComponent_list}
     Should Contain X Times    ${enableDisableForceComponent_list}    === ${subSystem}_enableDisableForceComponent start of topic ===    1
-    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceComponent : 0    1
-    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 0    1
+    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceComponent : 1    1
+    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
     Should Contain    ${enableDisableForceComponent_list}    === issueCommand_enableDisableForceComponent writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${enableDisableForceComponent_list}[-2]    Command roundtrip was
@@ -668,8 +668,8 @@ Start Commander
     ${setSlewControllerSettings_list}=    Get Slice From List    ${full_list}    start=${setSlewControllerSettings_start}    end=${setSlewControllerSettings_end+3}
     Log    ${setSlewControllerSettings_list}
     Should Contain X Times    ${setSlewControllerSettings_list}    === ${subSystem}_setSlewControllerSettings start of topic ===    1
-    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewSettings : 0    1
-    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enableSlewManagement : 0    1
+    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewSettings : 1    1
+    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enableSlewManagement : 1    1
     Should Contain    ${setSlewControllerSettings_list}    === issueCommand_setSlewControllerSettings writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${setSlewControllerSettings_list}[-2]    Command roundtrip was
@@ -755,7 +755,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -807,7 +807,7 @@ Read Controller
     ${raiseM1M3_list}=    Get Slice From List    ${full_list}    start=${raiseM1M3_start}    end=${raiseM1M3_end+1}
     Log    ${raiseM1M3_list}
     Should Contain X Times    ${raiseM1M3_list}    === ${subSystem}_raiseM1M3 start of topic ===    1
-    Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassReferencePosition : 0    1
+    Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassReferencePosition : 1    1
     Should Contain X Times    ${raiseM1M3_list}    === ackCommand_raiseM1M3 acknowledging a command with :    2
     Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${raiseM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -978,7 +978,7 @@ Read Controller
     ${testHardpoint_list}=    Get Slice From List    ${full_list}    start=${testHardpoint_start}    end=${testHardpoint_end+1}
     Log    ${testHardpoint_list}
     Should Contain X Times    ${testHardpoint_list}    === ${subSystem}_testHardpoint start of topic ===    1
-    Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 0    1
+    Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 1    1
     Should Contain X Times    ${testHardpoint_list}    === ackCommand_testHardpoint acknowledging a command with :    2
     Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${testHardpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -992,7 +992,7 @@ Read Controller
     ${killHardpointTest_list}=    Get Slice From List    ${full_list}    start=${killHardpointTest_start}    end=${killHardpointTest_end+1}
     Log    ${killHardpointTest_list}
     Should Contain X Times    ${killHardpointTest_list}    === ${subSystem}_killHardpointTest start of topic ===    1
-    Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 0    1
+    Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointActuator : 1    1
     Should Contain X Times    ${killHardpointTest_list}    === ackCommand_killHardpointTest acknowledging a command with :    2
     Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${killHardpointTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1048,12 +1048,12 @@ Read Controller
     ${translateM1M3_list}=    Get Slice From List    ${full_list}    start=${translateM1M3_start}    end=${translateM1M3_end+1}
     Log    ${translateM1M3_list}
     Should Contain X Times    ${translateM1M3_list}    === ${subSystem}_translateM1M3 start of topic ===    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zTranslation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 0    1
-    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 0    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zTranslation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 1    1
+    Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 1    1
     Should Contain X Times    ${translateM1M3_list}    === ackCommand_translateM1M3 acknowledging a command with :    2
     Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${translateM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1107,12 +1107,12 @@ Read Controller
     ${positionM1M3_list}=    Get Slice From List    ${full_list}    start=${positionM1M3_start}    end=${positionM1M3_end+1}
     Log    ${positionM1M3_list}
     Should Contain X Times    ${positionM1M3_list}    === ${subSystem}_positionM1M3 start of topic ===    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zPosition : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 0    1
-    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 0    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zPosition : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xRotation : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotation : 1    1
+    Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotation : 1    1
     Should Contain X Times    ${positionM1M3_list}    === ackCommand_positionM1M3 acknowledging a command with :    2
     Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${positionM1M3_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1152,14 +1152,14 @@ Read Controller
     ${turnPowerOn_list}=    Get Slice From List    ${full_list}    start=${turnPowerOn_start}    end=${turnPowerOn_end+1}
     Log    ${turnPowerOn_list}
     Should Contain X Times    ${turnPowerOn_list}    === ${subSystem}_turnPowerOn start of topic ===    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOn : 0    1
-    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOn : 0    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOn : 1    1
+    Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOn : 1    1
     Should Contain X Times    ${turnPowerOn_list}    === ackCommand_turnPowerOn acknowledging a command with :    2
     Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${turnPowerOn_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1173,14 +1173,14 @@ Read Controller
     ${turnPowerOff_list}=    Get Slice From List    ${full_list}    start=${turnPowerOff_start}    end=${turnPowerOff_end+1}
     Log    ${turnPowerOff_list}
     Should Contain X Times    ${turnPowerOff_list}    === ${subSystem}_turnPowerOff start of topic ===    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOff : 0    1
-    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOff : 0    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkAOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkBOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkCOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnPowerNetworkDOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkAOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkBOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkCOff : 1    1
+    Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turnAuxPowerNetworkDOff : 1    1
     Should Contain X Times    ${turnPowerOff_list}    === ackCommand_turnPowerOff acknowledging a command with :    2
     Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${turnPowerOff_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1252,12 +1252,12 @@ Read Controller
     ${applyOffsetForcesByMirrorForce_list}=    Get Slice From List    ${full_list}    start=${applyOffsetForcesByMirrorForce_start}    end=${applyOffsetForcesByMirrorForce_end+1}
     Log    ${applyOffsetForcesByMirrorForce_list}
     Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    === ${subSystem}_applyOffsetForcesByMirrorForce start of topic ===    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForce : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xMoment : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yMoment : 0    1
-    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zMoment : 0    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForce : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xMoment : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yMoment : 1    1
+    Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zMoment : 1    1
     Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    === ackCommand_applyOffsetForcesByMirrorForce acknowledging a command with :    2
     Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${applyOffsetForcesByMirrorForce_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1271,12 +1271,12 @@ Read Controller
     ${updatePID_list}=    Get Slice From List    ${full_list}    start=${updatePID_start}    end=${updatePID_end+1}
     Log    ${updatePID_list}
     Should Contain X Times    ${updatePID_list}    === ${subSystem}_updatePID start of topic ===    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}p : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}d : 0    1
-    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n : 0    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}p : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}i : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}d : 1    1
+    Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n : 1    1
     Should Contain X Times    ${updatePID_list}    === ackCommand_updatePID acknowledging a command with :    2
     Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${updatePID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1290,7 +1290,7 @@ Read Controller
     ${resetPID_list}=    Get Slice From List    ${full_list}    start=${resetPID_start}    end=${resetPID_end+1}
     Log    ${resetPID_list}
     Should Contain X Times    ${resetPID_list}    === ${subSystem}_resetPID start of topic ===    1
-    Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 0    1
+    Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pid : 1    1
     Should Contain X Times    ${resetPID_list}    === ackCommand_resetPID acknowledging a command with :    2
     Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${resetPID_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1304,9 +1304,9 @@ Read Controller
     ${forceActuatorBumpTest_list}=    Get Slice From List    ${full_list}    start=${forceActuatorBumpTest_start}    end=${forceActuatorBumpTest_end+1}
     Log    ${forceActuatorBumpTest_list}
     Should Contain X Times    ${forceActuatorBumpTest_list}    === ${subSystem}_forceActuatorBumpTest start of topic ===    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testPrimary : 0    1
-    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testSecondary : 0    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testPrimary : 1    1
+    Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testSecondary : 1    1
     Should Contain X Times    ${forceActuatorBumpTest_list}    === ackCommand_forceActuatorBumpTest acknowledging a command with :    2
     Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${forceActuatorBumpTest_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1333,7 +1333,7 @@ Read Controller
     ${disableForceActuator_list}=    Get Slice From List    ${full_list}    start=${disableForceActuator_start}    end=${disableForceActuator_end+1}
     Log    ${disableForceActuator_list}
     Should Contain X Times    ${disableForceActuator_list}    === ${subSystem}_disableForceActuator start of topic ===    1
-    Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
+    Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
     Should Contain X Times    ${disableForceActuator_list}    === ackCommand_disableForceActuator acknowledging a command with :    2
     Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${disableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1347,7 +1347,7 @@ Read Controller
     ${enableForceActuator_list}=    Get Slice From List    ${full_list}    start=${enableForceActuator_start}    end=${enableForceActuator_end+1}
     Log    ${enableForceActuator_list}
     Should Contain X Times    ${enableForceActuator_list}    === ${subSystem}_enableForceActuator start of topic ===    1
-    Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 0    1
+    Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
     Should Contain X Times    ${enableForceActuator_list}    === ackCommand_enableForceActuator acknowledging a command with :    2
     Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${enableForceActuator_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1374,8 +1374,8 @@ Read Controller
     ${enableDisableForceComponent_list}=    Get Slice From List    ${full_list}    start=${enableDisableForceComponent_start}    end=${enableDisableForceComponent_end+1}
     Log    ${enableDisableForceComponent_list}
     Should Contain X Times    ${enableDisableForceComponent_list}    === ${subSystem}_enableDisableForceComponent start of topic ===    1
-    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceComponent : 0    1
-    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 0    1
+    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceComponent : 1    1
+    Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enable : 1    1
     Should Contain X Times    ${enableDisableForceComponent_list}    === ackCommand_enableDisableForceComponent acknowledging a command with :    2
     Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${enableDisableForceComponent_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1389,8 +1389,8 @@ Read Controller
     ${setSlewControllerSettings_list}=    Get Slice From List    ${full_list}    start=${setSlewControllerSettings_start}    end=${setSlewControllerSettings_end+1}
     Log    ${setSlewControllerSettings_list}
     Should Contain X Times    ${setSlewControllerSettings_list}    === ${subSystem}_setSlewControllerSettings start of topic ===    1
-    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewSettings : 0    1
-    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enableSlewManagement : 0    1
+    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewSettings : 1    1
+    Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enableSlewManagement : 1    1
     Should Contain X Times    ${setSlewControllerSettings_list}    === ackCommand_setSlewControllerSettings acknowledging a command with :    2
     Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${setSlewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

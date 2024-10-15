@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -47,17 +47,17 @@ Start Commander
     ${setScalars_list}=    Get Slice From List    ${full_list}    start=${setScalars_start}    end=${setScalars_end+3}
     Log    ${setScalars_list}
     Should Contain X Times    ${setScalars_list}    === ${subSystem}_setScalars start of topic ===    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 :${SPACE}    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    1
     Should Contain    ${setScalars_list}    === issueCommand_setScalars writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${setScalars_list}[-2]    Command roundtrip was
@@ -107,8 +107,8 @@ Start Commander
     ${wait_list}=    Get Slice From List    ${full_list}    start=${wait_start}    end=${wait_end+3}
     Log    ${wait_list}
     Should Contain X Times    ${wait_list}    === ${subSystem}_wait start of topic ===    1
-    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack : 0    1
-    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 0    1
+    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack : 1    1
+    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
     Should Contain    ${wait_list}    === issueCommand_wait writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${wait_list}[-2]    Command roundtrip was
@@ -194,7 +194,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -207,17 +207,17 @@ Read Controller
     ${setScalars_list}=    Get Slice From List    ${full_list}    start=${setScalars_start}    end=${setScalars_end+1}
     Log    ${setScalars_list}
     Should Contain X Times    ${setScalars_list}    === ${subSystem}_setScalars start of topic ===    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 0    1
-    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 :${SPACE}    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}short0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}int0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}long0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longLong0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedShort0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unsignedInt0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}float0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}double0 : 1    1
+    Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}string0 : RO    1
     Should Contain X Times    ${setScalars_list}    === ackCommand_setScalars acknowledging a command with :    2
     Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${setScalars_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -267,8 +267,8 @@ Read Controller
     ${wait_list}=    Get Slice From List    ${full_list}    start=${wait_start}    end=${wait_end+1}
     Log    ${wait_list}
     Should Contain X Times    ${wait_list}    === ${subSystem}_wait start of topic ===    1
-    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack : 0    1
-    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 0    1
+    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack : 1    1
+    Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}duration : 1    1
     Should Contain X Times    ${wait_list}    === ackCommand_wait acknowledging a command with :    2
     Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${wait_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

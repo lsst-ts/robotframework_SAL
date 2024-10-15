@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -47,7 +47,7 @@ Start Commander
     ${pointCloseFile_list}=    Get Slice From List    ${full_list}    start=${pointCloseFile_start}    end=${pointCloseFile_end+3}
     Log    ${pointCloseFile_list}
     Should Contain X Times    ${pointCloseFile_list}    === ${subSystem}_pointCloseFile start of topic ===    1
-    Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${pointCloseFile_list}    === issueCommand_pointCloseFile writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${pointCloseFile_list}[-2]    Command roundtrip was
@@ -61,7 +61,7 @@ Start Commander
     ${poriginAbsorb_list}=    Get Slice From List    ${full_list}    start=${poriginAbsorb_start}    end=${poriginAbsorb_end+3}
     Log    ${poriginAbsorb_list}
     Should Contain X Times    ${poriginAbsorb_list}    === ${subSystem}_poriginAbsorb start of topic ===    1
-    Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${poriginAbsorb_list}    === issueCommand_poriginAbsorb writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${poriginAbsorb_list}[-2]    Command roundtrip was
@@ -75,7 +75,7 @@ Start Commander
     ${guideClear_list}=    Get Slice From List    ${full_list}    start=${guideClear_start}    end=${guideClear_end+3}
     Log    ${guideClear_list}
     Should Contain X Times    ${guideClear_list}    === ${subSystem}_guideClear start of topic ===    1
-    Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${guideClear_list}    === issueCommand_guideClear writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${guideClear_list}[-2]    Command roundtrip was
@@ -89,9 +89,9 @@ Start Commander
     ${collOffset_list}=    Get Slice From List    ${full_list}    start=${collOffset_start}    end=${collOffset_end+3}
     Log    ${collOffset_list}
     Should Contain X Times    ${collOffset_list}    === ${subSystem}_collOffset start of topic ===    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ca : 0    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ce : 0    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ca : 1    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ce : 1    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${collOffset_list}    === issueCommand_collOffset writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${collOffset_list}[-2]    Command roundtrip was
@@ -105,7 +105,7 @@ Start Commander
     ${rotOffset_list}=    Get Slice From List    ${full_list}    start=${rotOffset_start}    end=${rotOffset_end+3}
     Log    ${rotOffset_list}
     Should Contain X Times    ${rotOffset_list}    === ${subSystem}_rotOffset start of topic ===    1
-    Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iaa : 0    1
+    Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iaa : 1    1
     Should Contain    ${rotOffset_list}    === issueCommand_rotOffset writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${rotOffset_list}[-2]    Command roundtrip was
@@ -119,7 +119,7 @@ Start Commander
     ${clearCollOffset_list}=    Get Slice From List    ${full_list}    start=${clearCollOffset_start}    end=${clearCollOffset_end+3}
     Log    ${clearCollOffset_list}
     Should Contain X Times    ${clearCollOffset_list}    === ${subSystem}_clearCollOffset start of topic ===    1
-    Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${clearCollOffset_list}    === issueCommand_clearCollOffset writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${clearCollOffset_list}[-2]    Command roundtrip was
@@ -133,8 +133,8 @@ Start Commander
     ${poriginXY_list}=    Get Slice From List    ${full_list}    start=${poriginXY_start}    end=${poriginXY_end+3}
     Log    ${poriginXY_list}
     Should Contain X Times    ${poriginXY_list}    === ${subSystem}_poriginXY start of topic ===    1
-    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 0    1
-    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 0    1
+    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 1    1
+    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 1    1
     Should Contain    ${poriginXY_list}    === issueCommand_poriginXY writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${poriginXY_list}[-2]    Command roundtrip was
@@ -148,7 +148,7 @@ Start Commander
     ${iersUpdate_list}=    Get Slice From List    ${full_list}    start=${iersUpdate_start}    end=${iersUpdate_end+3}
     Log    ${iersUpdate_list}
     Should Contain X Times    ${iersUpdate_list}    === ${subSystem}_iersUpdate start of topic ===    1
-    Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${iersUpdate_list}    === issueCommand_iersUpdate writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${iersUpdate_list}[-2]    Command roundtrip was
@@ -162,10 +162,10 @@ Start Commander
     ${offsetRADec_list}=    Get Slice From List    ${full_list}    start=${offsetRADec_start}    end=${offsetRADec_end+3}
     Log    ${offsetRADec_list}
     Should Contain X Times    ${offsetRADec_list}    === ${subSystem}_offsetRADec start of topic ===    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}type : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off1 : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off2 : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}type : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off1 : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off2 : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${offsetRADec_list}    === issueCommand_offsetRADec writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${offsetRADec_list}[-2]    Command roundtrip was
@@ -179,7 +179,7 @@ Start Commander
     ${pointAddData_list}=    Get Slice From List    ${full_list}    start=${pointAddData_start}    end=${pointAddData_end+3}
     Log    ${pointAddData_list}
     Should Contain X Times    ${pointAddData_list}    === ${subSystem}_pointAddData start of topic ===    1
-    Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${pointAddData_list}    === issueCommand_pointAddData writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${pointAddData_list}[-2]    Command roundtrip was
@@ -193,7 +193,7 @@ Start Commander
     ${guideControl_list}=    Get Slice From List    ${full_list}    start=${guideControl_start}    end=${guideControl_end+3}
     Log    ${guideControl_list}
     Should Contain X Times    ${guideControl_list}    === ${subSystem}_guideControl start of topic ===    1
-    Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 0    1
+    Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain    ${guideControl_list}    === issueCommand_guideControl writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${guideControl_list}[-2]    Command roundtrip was
@@ -207,7 +207,7 @@ Start Commander
     ${offsetAbsorb_list}=    Get Slice From List    ${full_list}    start=${offsetAbsorb_start}    end=${offsetAbsorb_end+3}
     Log    ${offsetAbsorb_list}
     Should Contain X Times    ${offsetAbsorb_list}    === ${subSystem}_offsetAbsorb start of topic ===    1
-    Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${offsetAbsorb_list}    === issueCommand_offsetAbsorb writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${offsetAbsorb_list}[-2]    Command roundtrip was
@@ -221,13 +221,13 @@ Start Commander
     ${ephemTarget_list}=    Get Slice From List    ${full_list}    start=${ephemTarget_start}    end=${ephemTarget_end+3}
     Log    ${ephemTarget_list}
     Should Contain X Times    ${ephemTarget_list}    === ${subSystem}_ephemTarget start of topic ===    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile :${SPACE}    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile : RO    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain    ${ephemTarget_list}    === issueCommand_ephemTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${ephemTarget_list}[-2]    Command roundtrip was
@@ -241,7 +241,7 @@ Start Commander
     ${wavelength_list}=    Get Slice From List    ${full_list}    start=${wavelength_start}    end=${wavelength_end+3}
     Log    ${wavelength_list}
     Should Contain X Times    ${wavelength_list}    === ${subSystem}_wavelength start of topic ===    1
-    Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 0    1
+    Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    1
     Should Contain    ${wavelength_list}    === issueCommand_wavelength writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${wavelength_list}[-2]    Command roundtrip was
@@ -255,7 +255,7 @@ Start Commander
     ${pointLoadModel_list}=    Get Slice From List    ${full_list}    start=${pointLoadModel_start}    end=${pointLoadModel_end+3}
     Log    ${pointLoadModel_list}
     Should Contain X Times    ${pointLoadModel_list}    === ${subSystem}_pointLoadModel start of topic ===    1
-    Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingFile :${SPACE}    1
+    Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingFile : RO    1
     Should Contain    ${pointLoadModel_list}    === issueCommand_pointLoadModel writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${pointLoadModel_list}[-2]    Command roundtrip was
@@ -269,7 +269,7 @@ Start Commander
     ${azCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${azCurrentWrap_start}    end=${azCurrentWrap_end+3}
     Log    ${azCurrentWrap_list}
     Should Contain X Times    ${azCurrentWrap_list}    === ${subSystem}_azCurrentWrap start of topic ===    1
-    Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 0    1
+    Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 1    1
     Should Contain    ${azCurrentWrap_list}    === issueCommand_azCurrentWrap writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${azCurrentWrap_list}[-2]    Command roundtrip was
@@ -283,7 +283,7 @@ Start Commander
     ${debugLevel_list}=    Get Slice From List    ${full_list}    start=${debugLevel_start}    end=${debugLevel_end+3}
     Log    ${debugLevel_list}
     Should Contain X Times    ${debugLevel_list}    === ${subSystem}_debugLevel start of topic ===    1
-    Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 0    1
+    Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain    ${debugLevel_list}    === issueCommand_debugLevel writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${debugLevel_list}[-2]    Command roundtrip was
@@ -297,26 +297,26 @@ Start Commander
     ${raDecTarget_list}=    Get Slice From List    ${full_list}    start=${raDecTarget_start}    end=${raDecTarget_end+3}
     Log    ${raDecTarget_list}
     Should Contain X Times    ${raDecTarget_list}    === ${subSystem}_raDecTarget start of topic ===    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmRA : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmDec : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rv : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotAngle : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotStartFrame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotTrackFrame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azWrapStrategy : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeOnTarget : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmRA : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmDec : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rv : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotAngle : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotStartFrame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotTrackFrame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azWrapStrategy : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeOnTarget : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain    ${raDecTarget_list}    === issueCommand_raDecTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${raDecTarget_list}[-2]    Command roundtrip was
@@ -330,8 +330,8 @@ Start Commander
     ${offsetPA_list}=    Get Slice From List    ${full_list}    start=${offsetPA_start}    end=${offsetPA_end+3}
     Log    ${offsetPA_list}
     Should Contain X Times    ${offsetPA_list}    === ${subSystem}_offsetPA start of topic ===    1
-    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 0    1
-    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radius : 0    1
+    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 1    1
+    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radius : 1    1
     Should Contain    ${offsetPA_list}    === issueCommand_offsetPA writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${offsetPA_list}[-2]    Command roundtrip was
@@ -345,7 +345,7 @@ Start Commander
     ${rotCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${rotCurrentWrap_start}    end=${rotCurrentWrap_end+3}
     Log    ${rotCurrentWrap_list}
     Should Contain X Times    ${rotCurrentWrap_list}    === ${subSystem}_rotCurrentWrap start of topic ===    1
-    Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 0    1
+    Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 1    1
     Should Contain    ${rotCurrentWrap_list}    === issueCommand_rotCurrentWrap writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${rotCurrentWrap_list}[-2]    Command roundtrip was
@@ -359,9 +359,9 @@ Start Commander
     ${poriginOffset_list}=    Get Slice From List    ${full_list}    start=${poriginOffset_start}    end=${poriginOffset_end+3}
     Log    ${poriginOffset_list}
     Should Contain X Times    ${poriginOffset_list}    === ${subSystem}_poriginOffset start of topic ===    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dx : 0    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dy : 0    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dx : 1    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dy : 1    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${poriginOffset_list}    === issueCommand_poriginOffset writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${poriginOffset_list}[-2]    Command roundtrip was
@@ -375,7 +375,7 @@ Start Commander
     ${offsetClear_list}=    Get Slice From List    ${full_list}    start=${offsetClear_start}    end=${offsetClear_end+3}
     Log    ${offsetClear_list}
     Should Contain X Times    ${offsetClear_list}    === ${subSystem}_offsetClear start of topic ===    1
-    Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${offsetClear_list}    === issueCommand_offsetClear writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${offsetClear_list}[-2]    Command roundtrip was
@@ -389,9 +389,9 @@ Start Commander
     ${offsetAzEl_list}=    Get Slice From List    ${full_list}    start=${offsetAzEl_start}    end=${offsetAzEl_end+3}
     Log    ${offsetAzEl_list}
     Should Contain X Times    ${offsetAzEl_list}    === ${subSystem}_offsetAzEl start of topic ===    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 0    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 0    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 1    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 1    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${offsetAzEl_list}    === issueCommand_offsetAzEl writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${offsetAzEl_list}[-2]    Command roundtrip was
@@ -405,11 +405,11 @@ Start Commander
     ${azElTarget_list}=    Get Slice From List    ${full_list}    start=${azElTarget_start}    end=${azElTarget_end+3}
     Log    ${azElTarget_list}
     Should Contain X Times    ${azElTarget_list}    === ${subSystem}_azElTarget start of topic ===    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
     Should Contain    ${azElTarget_list}    === issueCommand_azElTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${azElTarget_list}[-2]    Command roundtrip was
@@ -423,12 +423,12 @@ Start Commander
     ${planetTarget_list}=    Get Slice From List    ${full_list}    start=${planetTarget_start}    end=${planetTarget_end+3}
     Log    ${planetTarget_list}
     Should Contain X Times    ${planetTarget_list}    === ${subSystem}_planetTarget start of topic ===    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain    ${planetTarget_list}    === issueCommand_planetTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${planetTarget_list}[-2]    Command roundtrip was
@@ -442,7 +442,7 @@ Start Commander
     ${pointNewFile_list}=    Get Slice From List    ${full_list}    start=${pointNewFile_start}    end=${pointNewFile_end+3}
     Log    ${pointNewFile_list}
     Should Contain X Times    ${pointNewFile_list}    === ${subSystem}_pointNewFile start of topic ===    1
-    Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${pointNewFile_list}    === issueCommand_pointNewFile writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${pointNewFile_list}[-2]    Command roundtrip was
@@ -456,7 +456,7 @@ Start Commander
     ${poriginClear_list}=    Get Slice From List    ${full_list}    start=${poriginClear_start}    end=${poriginClear_end+3}
     Log    ${poriginClear_list}
     Should Contain X Times    ${poriginClear_list}    === ${subSystem}_poriginClear start of topic ===    1
-    Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain    ${poriginClear_list}    === issueCommand_poriginClear writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${poriginClear_list}[-2]    Command roundtrip was
@@ -470,7 +470,7 @@ Start Commander
     ${focusName_list}=    Get Slice From List    ${full_list}    start=${focusName_start}    end=${focusName_end+3}
     Log    ${focusName_list}
     Should Contain X Times    ${focusName_list}    === ${subSystem}_focusName start of topic ===    1
-    Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 0    1
+    Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
     Should Contain    ${focusName_list}    === issueCommand_focusName writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${focusName_list}[-2]    Command roundtrip was
@@ -484,7 +484,7 @@ Start Commander
     ${amLimitSet_list}=    Get Slice From List    ${full_list}    start=${amLimitSet_start}    end=${amLimitSet_end+3}
     Log    ${amLimitSet_list}
     Should Contain X Times    ${amLimitSet_list}    === ${subSystem}_amLimitSet start of topic ===    1
-    Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}amlimit : 0    1
+    Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}amlimit : 1    1
     Should Contain    ${amLimitSet_list}    === issueCommand_amLimitSet writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${amLimitSet_list}[-2]    Command roundtrip was
@@ -498,7 +498,7 @@ Start Commander
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+3}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain    ${stopTracking_list}    === issueCommand_stopTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${stopTracking_list}[-2]    Command roundtrip was
@@ -512,7 +512,7 @@ Start Commander
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+3}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
+    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
     Should Contain    ${startTracking_list}    === issueCommand_startTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${startTracking_list}[-2]    Command roundtrip was
@@ -598,7 +598,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -611,7 +611,7 @@ Read Controller
     ${pointCloseFile_list}=    Get Slice From List    ${full_list}    start=${pointCloseFile_start}    end=${pointCloseFile_end+1}
     Log    ${pointCloseFile_list}
     Should Contain X Times    ${pointCloseFile_list}    === ${subSystem}_pointCloseFile start of topic ===    1
-    Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${pointCloseFile_list}    === ackCommand_pointCloseFile acknowledging a command with :    2
     Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${pointCloseFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -625,7 +625,7 @@ Read Controller
     ${poriginAbsorb_list}=    Get Slice From List    ${full_list}    start=${poriginAbsorb_start}    end=${poriginAbsorb_end+1}
     Log    ${poriginAbsorb_list}
     Should Contain X Times    ${poriginAbsorb_list}    === ${subSystem}_poriginAbsorb start of topic ===    1
-    Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${poriginAbsorb_list}    === ackCommand_poriginAbsorb acknowledging a command with :    2
     Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${poriginAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -639,7 +639,7 @@ Read Controller
     ${guideClear_list}=    Get Slice From List    ${full_list}    start=${guideClear_start}    end=${guideClear_end+1}
     Log    ${guideClear_list}
     Should Contain X Times    ${guideClear_list}    === ${subSystem}_guideClear start of topic ===    1
-    Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${guideClear_list}    === ackCommand_guideClear acknowledging a command with :    2
     Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${guideClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -653,9 +653,9 @@ Read Controller
     ${collOffset_list}=    Get Slice From List    ${full_list}    start=${collOffset_start}    end=${collOffset_end+1}
     Log    ${collOffset_list}
     Should Contain X Times    ${collOffset_list}    === ${subSystem}_collOffset start of topic ===    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ca : 0    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ce : 0    1
-    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ca : 1    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ce : 1    1
+    Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${collOffset_list}    === ackCommand_collOffset acknowledging a command with :    2
     Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${collOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -669,7 +669,7 @@ Read Controller
     ${rotOffset_list}=    Get Slice From List    ${full_list}    start=${rotOffset_start}    end=${rotOffset_end+1}
     Log    ${rotOffset_list}
     Should Contain X Times    ${rotOffset_list}    === ${subSystem}_rotOffset start of topic ===    1
-    Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iaa : 0    1
+    Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iaa : 1    1
     Should Contain X Times    ${rotOffset_list}    === ackCommand_rotOffset acknowledging a command with :    2
     Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${rotOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -683,7 +683,7 @@ Read Controller
     ${clearCollOffset_list}=    Get Slice From List    ${full_list}    start=${clearCollOffset_start}    end=${clearCollOffset_end+1}
     Log    ${clearCollOffset_list}
     Should Contain X Times    ${clearCollOffset_list}    === ${subSystem}_clearCollOffset start of topic ===    1
-    Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${clearCollOffset_list}    === ackCommand_clearCollOffset acknowledging a command with :    2
     Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${clearCollOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -697,8 +697,8 @@ Read Controller
     ${poriginXY_list}=    Get Slice From List    ${full_list}    start=${poriginXY_start}    end=${poriginXY_end+1}
     Log    ${poriginXY_list}
     Should Contain X Times    ${poriginXY_list}    === ${subSystem}_poriginXY start of topic ===    1
-    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 0    1
-    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 0    1
+    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 1    1
+    Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 1    1
     Should Contain X Times    ${poriginXY_list}    === ackCommand_poriginXY acknowledging a command with :    2
     Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${poriginXY_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -712,7 +712,7 @@ Read Controller
     ${iersUpdate_list}=    Get Slice From List    ${full_list}    start=${iersUpdate_start}    end=${iersUpdate_end+1}
     Log    ${iersUpdate_list}
     Should Contain X Times    ${iersUpdate_list}    === ${subSystem}_iersUpdate start of topic ===    1
-    Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${iersUpdate_list}    === ackCommand_iersUpdate acknowledging a command with :    2
     Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${iersUpdate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -726,10 +726,10 @@ Read Controller
     ${offsetRADec_list}=    Get Slice From List    ${full_list}    start=${offsetRADec_start}    end=${offsetRADec_end+1}
     Log    ${offsetRADec_list}
     Should Contain X Times    ${offsetRADec_list}    === ${subSystem}_offsetRADec start of topic ===    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}type : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off1 : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off2 : 0    1
-    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}type : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off1 : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}off2 : 1    1
+    Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${offsetRADec_list}    === ackCommand_offsetRADec acknowledging a command with :    2
     Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${offsetRADec_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -743,7 +743,7 @@ Read Controller
     ${pointAddData_list}=    Get Slice From List    ${full_list}    start=${pointAddData_start}    end=${pointAddData_end+1}
     Log    ${pointAddData_list}
     Should Contain X Times    ${pointAddData_list}    === ${subSystem}_pointAddData start of topic ===    1
-    Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${pointAddData_list}    === ackCommand_pointAddData acknowledging a command with :    2
     Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${pointAddData_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -757,7 +757,7 @@ Read Controller
     ${guideControl_list}=    Get Slice From List    ${full_list}    start=${guideControl_start}    end=${guideControl_end+1}
     Log    ${guideControl_list}
     Should Contain X Times    ${guideControl_list}    === ${subSystem}_guideControl start of topic ===    1
-    Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 0    1
+    Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${guideControl_list}    === ackCommand_guideControl acknowledging a command with :    2
     Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${guideControl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -771,7 +771,7 @@ Read Controller
     ${offsetAbsorb_list}=    Get Slice From List    ${full_list}    start=${offsetAbsorb_start}    end=${offsetAbsorb_end+1}
     Log    ${offsetAbsorb_list}
     Should Contain X Times    ${offsetAbsorb_list}    === ${subSystem}_offsetAbsorb start of topic ===    1
-    Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${offsetAbsorb_list}    === ackCommand_offsetAbsorb acknowledging a command with :    2
     Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${offsetAbsorb_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -785,13 +785,13 @@ Read Controller
     ${ephemTarget_list}=    Get Slice From List    ${full_list}    start=${ephemTarget_start}    end=${ephemTarget_end+1}
     Log    ${ephemTarget_list}
     Should Contain X Times    ${ephemTarget_list}    === ${subSystem}_ephemTarget start of topic ===    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile :${SPACE}    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
-    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ephemFile : RO    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
+    Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain X Times    ${ephemTarget_list}    === ackCommand_ephemTarget acknowledging a command with :    2
     Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${ephemTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -805,7 +805,7 @@ Read Controller
     ${wavelength_list}=    Get Slice From List    ${full_list}    start=${wavelength_start}    end=${wavelength_end+1}
     Log    ${wavelength_list}
     Should Contain X Times    ${wavelength_list}    === ${subSystem}_wavelength start of topic ===    1
-    Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 0    1
+    Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wavelength : 1    1
     Should Contain X Times    ${wavelength_list}    === ackCommand_wavelength acknowledging a command with :    2
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${wavelength_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -819,7 +819,7 @@ Read Controller
     ${pointLoadModel_list}=    Get Slice From List    ${full_list}    start=${pointLoadModel_start}    end=${pointLoadModel_end+1}
     Log    ${pointLoadModel_list}
     Should Contain X Times    ${pointLoadModel_list}    === ${subSystem}_pointLoadModel start of topic ===    1
-    Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingFile :${SPACE}    1
+    Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pointingFile : RO    1
     Should Contain X Times    ${pointLoadModel_list}    === ackCommand_pointLoadModel acknowledging a command with :    2
     Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${pointLoadModel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -833,7 +833,7 @@ Read Controller
     ${azCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${azCurrentWrap_start}    end=${azCurrentWrap_end+1}
     Log    ${azCurrentWrap_list}
     Should Contain X Times    ${azCurrentWrap_list}    === ${subSystem}_azCurrentWrap start of topic ===    1
-    Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 0    1
+    Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 1    1
     Should Contain X Times    ${azCurrentWrap_list}    === ackCommand_azCurrentWrap acknowledging a command with :    2
     Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${azCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -847,7 +847,7 @@ Read Controller
     ${debugLevel_list}=    Get Slice From List    ${full_list}    start=${debugLevel_start}    end=${debugLevel_end+1}
     Log    ${debugLevel_list}
     Should Contain X Times    ${debugLevel_list}    === ${subSystem}_debugLevel start of topic ===    1
-    Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 0    1
+    Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${debugLevel_list}    === ackCommand_debugLevel acknowledging a command with :    2
     Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${debugLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -861,26 +861,26 @@ Read Controller
     ${raDecTarget_list}=    Get Slice From List    ${full_list}    start=${raDecTarget_start}    end=${raDecTarget_end+1}
     Log    ${raDecTarget_list}
     Should Contain X Times    ${raDecTarget_list}    === ${subSystem}_raDecTarget start of topic ===    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmRA : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmDec : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rv : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotAngle : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotStartFrame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotTrackFrame : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azWrapStrategy : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeOnTarget : 0    1
-    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}epoch : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}equinox : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ra : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}declination : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parallax : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmRA : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pmDec : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rv : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotAngle : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotStartFrame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotTrackFrame : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotMode : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azWrapStrategy : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeOnTarget : 1    1
+    Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain X Times    ${raDecTarget_list}    === ackCommand_raDecTarget acknowledging a command with :    2
     Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${raDecTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -894,8 +894,8 @@ Read Controller
     ${offsetPA_list}=    Get Slice From List    ${full_list}    start=${offsetPA_start}    end=${offsetPA_end+1}
     Log    ${offsetPA_list}
     Should Contain X Times    ${offsetPA_list}    === ${subSystem}_offsetPA start of topic ===    1
-    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 0    1
-    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radius : 0    1
+    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 1    1
+    Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radius : 1    1
     Should Contain X Times    ${offsetPA_list}    === ackCommand_offsetPA acknowledging a command with :    2
     Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${offsetPA_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -909,7 +909,7 @@ Read Controller
     ${rotCurrentWrap_list}=    Get Slice From List    ${full_list}    start=${rotCurrentWrap_start}    end=${rotCurrentWrap_end+1}
     Log    ${rotCurrentWrap_list}
     Should Contain X Times    ${rotCurrentWrap_list}    === ${subSystem}_rotCurrentWrap start of topic ===    1
-    Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 0    1
+    Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wrap : 1    1
     Should Contain X Times    ${rotCurrentWrap_list}    === ackCommand_rotCurrentWrap acknowledging a command with :    2
     Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${rotCurrentWrap_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -923,9 +923,9 @@ Read Controller
     ${poriginOffset_list}=    Get Slice From List    ${full_list}    start=${poriginOffset_start}    end=${poriginOffset_end+1}
     Log    ${poriginOffset_list}
     Should Contain X Times    ${poriginOffset_list}    === ${subSystem}_poriginOffset start of topic ===    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dx : 0    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dy : 0    1
-    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dx : 1    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dy : 1    1
+    Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${poriginOffset_list}    === ackCommand_poriginOffset acknowledging a command with :    2
     Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${poriginOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -939,7 +939,7 @@ Read Controller
     ${offsetClear_list}=    Get Slice From List    ${full_list}    start=${offsetClear_start}    end=${offsetClear_end+1}
     Log    ${offsetClear_list}
     Should Contain X Times    ${offsetClear_list}    === ${subSystem}_offsetClear start of topic ===    1
-    Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${offsetClear_list}    === ackCommand_offsetClear acknowledging a command with :    2
     Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${offsetClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -953,9 +953,9 @@ Read Controller
     ${offsetAzEl_list}=    Get Slice From List    ${full_list}    start=${offsetAzEl_start}    end=${offsetAzEl_end+1}
     Log    ${offsetAzEl_list}
     Should Contain X Times    ${offsetAzEl_list}    === ${subSystem}_offsetAzEl start of topic ===    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 0    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 0    1
-    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}az : 1    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}el : 1    1
+    Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${offsetAzEl_list}    === ackCommand_offsetAzEl acknowledging a command with :    2
     Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${offsetAzEl_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -969,11 +969,11 @@ Read Controller
     ${azElTarget_list}=    Get Slice From List    ${full_list}    start=${azElTarget_start}    end=${azElTarget_end+1}
     Log    ${azElTarget_list}
     Should Contain X Times    ${azElTarget_list}    === ${subSystem}_azElTarget start of topic ===    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName :${SPACE}    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetName : RO    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azDegs : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elDegs : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
     Should Contain X Times    ${azElTarget_list}    === ackCommand_azElTarget acknowledging a command with :    2
     Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${azElTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -987,12 +987,12 @@ Read Controller
     ${planetTarget_list}=    Get Slice From List    ${full_list}    start=${planetTarget_start}    end=${planetTarget_end+1}
     Log    ${planetTarget_list}
     Should Contain X Times    ${planetTarget_list}    === ${subSystem}_planetTarget start of topic ===    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 0    1
-    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 0    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}planetName : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dRA : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dDec : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotPA : 1    1
+    Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}validateOnly : 1    1
     Should Contain X Times    ${planetTarget_list}    === ackCommand_planetTarget acknowledging a command with :    2
     Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${planetTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1006,7 +1006,7 @@ Read Controller
     ${pointNewFile_list}=    Get Slice From List    ${full_list}    start=${pointNewFile_start}    end=${pointNewFile_end+1}
     Log    ${pointNewFile_list}
     Should Contain X Times    ${pointNewFile_list}    === ${subSystem}_pointNewFile start of topic ===    1
-    Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${pointNewFile_list}    === ackCommand_pointNewFile acknowledging a command with :    2
     Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${pointNewFile_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1020,7 +1020,7 @@ Read Controller
     ${poriginClear_list}=    Get Slice From List    ${full_list}    start=${poriginClear_start}    end=${poriginClear_end+1}
     Log    ${poriginClear_list}
     Should Contain X Times    ${poriginClear_list}    === ${subSystem}_poriginClear start of topic ===    1
-    Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 0    1
+    Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}num : 1    1
     Should Contain X Times    ${poriginClear_list}    === ackCommand_poriginClear acknowledging a command with :    2
     Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${poriginClear_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1034,7 +1034,7 @@ Read Controller
     ${focusName_list}=    Get Slice From List    ${full_list}    start=${focusName_start}    end=${focusName_end+1}
     Log    ${focusName_list}
     Should Contain X Times    ${focusName_list}    === ${subSystem}_focusName start of topic ===    1
-    Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 0    1
+    Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}focus : 1    1
     Should Contain X Times    ${focusName_list}    === ackCommand_focusName acknowledging a command with :    2
     Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${focusName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1048,7 +1048,7 @@ Read Controller
     ${amLimitSet_list}=    Get Slice From List    ${full_list}    start=${amLimitSet_start}    end=${amLimitSet_end+1}
     Log    ${amLimitSet_list}
     Should Contain X Times    ${amLimitSet_list}    === ${subSystem}_amLimitSet start of topic ===    1
-    Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}amlimit : 0    1
+    Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}amlimit : 1    1
     Should Contain X Times    ${amLimitSet_list}    === ackCommand_amLimitSet acknowledging a command with :    2
     Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${amLimitSet_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1062,7 +1062,7 @@ Read Controller
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+1}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 0    1
+    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignored : 1    1
     Should Contain X Times    ${stopTracking_list}    === ackCommand_stopTracking acknowledging a command with :    2
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -1076,7 +1076,7 @@ Read Controller
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+1}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
+    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
     Should Contain X Times    ${startTracking_list}    === ackCommand_startTracking acknowledging a command with :    2
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

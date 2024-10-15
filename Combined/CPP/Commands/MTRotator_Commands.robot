@@ -22,7 +22,7 @@ Verify Component Commander and Controller
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -47,7 +47,7 @@ Start Commander
     ${configureAcceleration_list}=    Get Slice From List    ${full_list}    start=${configureAcceleration_start}    end=${configureAcceleration_end+3}
     Log    ${configureAcceleration_list}
     Should Contain X Times    ${configureAcceleration_list}    === ${subSystem}_configureAcceleration start of topic ===    1
-    Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 0    1
+    Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 1    1
     Should Contain    ${configureAcceleration_list}    === issueCommand_configureAcceleration writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${configureAcceleration_list}[-2]    Command roundtrip was
@@ -61,7 +61,7 @@ Start Commander
     ${configureVelocity_list}=    Get Slice From List    ${full_list}    start=${configureVelocity_start}    end=${configureVelocity_end+3}
     Log    ${configureVelocity_list}
     Should Contain X Times    ${configureVelocity_list}    === ${subSystem}_configureVelocity start of topic ===    1
-    Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vlimit : 0    1
+    Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vlimit : 1    1
     Should Contain    ${configureVelocity_list}    === issueCommand_configureVelocity writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${configureVelocity_list}[-2]    Command roundtrip was
@@ -75,7 +75,7 @@ Start Commander
     ${configureJerk_list}=    Get Slice From List    ${full_list}    start=${configureJerk_start}    end=${configureJerk_end+3}
     Log    ${configureJerk_list}
     Should Contain X Times    ${configureJerk_list}    === ${subSystem}_configureJerk start of topic ===    1
-    Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 0    1
+    Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 1    1
     Should Contain    ${configureJerk_list}    === issueCommand_configureJerk writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${configureJerk_list}[-2]    Command roundtrip was
@@ -89,7 +89,7 @@ Start Commander
     ${configureEmergencyAcceleration_list}=    Get Slice From List    ${full_list}    start=${configureEmergencyAcceleration_start}    end=${configureEmergencyAcceleration_end+3}
     Log    ${configureEmergencyAcceleration_list}
     Should Contain X Times    ${configureEmergencyAcceleration_list}    === ${subSystem}_configureEmergencyAcceleration start of topic ===    1
-    Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 0    1
+    Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 1    1
     Should Contain    ${configureEmergencyAcceleration_list}    === issueCommand_configureEmergencyAcceleration writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${configureEmergencyAcceleration_list}[-2]    Command roundtrip was
@@ -103,7 +103,7 @@ Start Commander
     ${configureEmergencyJerk_list}=    Get Slice From List    ${full_list}    start=${configureEmergencyJerk_start}    end=${configureEmergencyJerk_end+3}
     Log    ${configureEmergencyJerk_list}
     Should Contain X Times    ${configureEmergencyJerk_list}    === ${subSystem}_configureEmergencyJerk start of topic ===    1
-    Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 0    1
+    Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 1    1
     Should Contain    ${configureEmergencyJerk_list}    === issueCommand_configureEmergencyJerk writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${configureEmergencyJerk_list}[-2]    Command roundtrip was
@@ -130,7 +130,7 @@ Start Commander
     ${move_list}=    Get Slice From List    ${full_list}    start=${move_start}    end=${move_end+3}
     Log    ${move_list}
     Should Contain X Times    ${move_list}    === ${subSystem}_move start of topic ===    1
-    Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain    ${move_list}    === issueCommand_move writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${move_list}[-2]    Command roundtrip was
@@ -144,9 +144,9 @@ Start Commander
     ${track_list}=    Get Slice From List    ${full_list}    start=${track_start}    end=${track_end+3}
     Log    ${track_list}
     Should Contain X Times    ${track_list}    === ${subSystem}_track start of topic ===    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 0    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 0    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 0    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 1    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 1    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 1    1
     Should Contain    ${track_list}    === issueCommand_track writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${track_list}[-2]    Command roundtrip was
@@ -258,7 +258,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -271,7 +271,7 @@ Read Controller
     ${configureAcceleration_list}=    Get Slice From List    ${full_list}    start=${configureAcceleration_start}    end=${configureAcceleration_end+1}
     Log    ${configureAcceleration_list}
     Should Contain X Times    ${configureAcceleration_list}    === ${subSystem}_configureAcceleration start of topic ===    1
-    Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 0    1
+    Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 1    1
     Should Contain X Times    ${configureAcceleration_list}    === ackCommand_configureAcceleration acknowledging a command with :    2
     Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${configureAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -285,7 +285,7 @@ Read Controller
     ${configureVelocity_list}=    Get Slice From List    ${full_list}    start=${configureVelocity_start}    end=${configureVelocity_end+1}
     Log    ${configureVelocity_list}
     Should Contain X Times    ${configureVelocity_list}    === ${subSystem}_configureVelocity start of topic ===    1
-    Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vlimit : 0    1
+    Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}vlimit : 1    1
     Should Contain X Times    ${configureVelocity_list}    === ackCommand_configureVelocity acknowledging a command with :    2
     Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${configureVelocity_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -299,7 +299,7 @@ Read Controller
     ${configureJerk_list}=    Get Slice From List    ${full_list}    start=${configureJerk_start}    end=${configureJerk_end+1}
     Log    ${configureJerk_list}
     Should Contain X Times    ${configureJerk_list}    === ${subSystem}_configureJerk start of topic ===    1
-    Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 0    1
+    Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 1    1
     Should Contain X Times    ${configureJerk_list}    === ackCommand_configureJerk acknowledging a command with :    2
     Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${configureJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -313,7 +313,7 @@ Read Controller
     ${configureEmergencyAcceleration_list}=    Get Slice From List    ${full_list}    start=${configureEmergencyAcceleration_start}    end=${configureEmergencyAcceleration_end+1}
     Log    ${configureEmergencyAcceleration_list}
     Should Contain X Times    ${configureEmergencyAcceleration_list}    === ${subSystem}_configureEmergencyAcceleration start of topic ===    1
-    Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 0    1
+    Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}alimit : 1    1
     Should Contain X Times    ${configureEmergencyAcceleration_list}    === ackCommand_configureEmergencyAcceleration acknowledging a command with :    2
     Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${configureEmergencyAcceleration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -327,7 +327,7 @@ Read Controller
     ${configureEmergencyJerk_list}=    Get Slice From List    ${full_list}    start=${configureEmergencyJerk_start}    end=${configureEmergencyJerk_end+1}
     Log    ${configureEmergencyJerk_list}
     Should Contain X Times    ${configureEmergencyJerk_list}    === ${subSystem}_configureEmergencyJerk start of topic ===    1
-    Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 0    1
+    Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jlimit : 1    1
     Should Contain X Times    ${configureEmergencyJerk_list}    === ackCommand_configureEmergencyJerk acknowledging a command with :    2
     Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${configureEmergencyJerk_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -354,7 +354,7 @@ Read Controller
     ${move_list}=    Get Slice From List    ${full_list}    start=${move_start}    end=${move_end+1}
     Log    ${move_list}
     Should Contain X Times    ${move_list}    === ${subSystem}_move start of topic ===    1
-    Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
+    Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${move_list}    === ackCommand_move acknowledging a command with :    2
     Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${move_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -368,9 +368,9 @@ Read Controller
     ${track_list}=    Get Slice From List    ${full_list}    start=${track_start}    end=${track_end+1}
     Log    ${track_list}
     Should Contain X Times    ${track_list}    === ${subSystem}_track start of topic ===    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 0    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 0    1
-    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 0    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angle : 1    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 1    1
+    Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 1    1
     Should Contain X Times    ${track_list}    === ackCommand_track acknowledging a command with :    2
     Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${track_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

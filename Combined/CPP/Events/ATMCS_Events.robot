@@ -22,7 +22,7 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger
 
 Start Logger
-    [Tags]    functional
+    [Tags]    functional    logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Logger
     Log    ${output}
 
 Start Sender
-    [Tags]    functional
+    [Tags]    functional    sender    robot:continue-on-failure
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
@@ -443,7 +443,7 @@ Start Sender
     Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
-    [Tags]    functional
+    [Tags]    functional    logger    robot:continue-on-failure
     Switch Process    ${subSystem}_Logger
     ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -467,8 +467,10 @@ Read Logger
     ${m3PortSelected_list}=    Get Slice From List    ${full_list}    start=${m3PortSelected_start}    end=${end}
     Should Contain X Times    ${m3PortSelected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}selected : 1    1
     ${positionLimits_start}=    Get Index From List    ${full_list}    === Event positionLimits received =${SPACE}
-    ${end}=    Evaluate    ${positionLimits_start}+${1}
+    ${end}=    Evaluate    ${positionLimits_start}+${3}
     ${positionLimits_list}=    Get Slice From List    ${full_list}    start=${positionLimits_start}    end=${end}
+    Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimum : 0    1
+    Should Contain X Times    ${positionLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maximum : 0    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
     ${end}=    Evaluate    ${target_start}+${13}
     ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}

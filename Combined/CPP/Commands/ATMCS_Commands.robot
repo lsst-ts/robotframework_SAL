@@ -20,9 +20,11 @@ Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
+    ${output}=    Run Process    env
+    Log Many    ${output.stdout}    ${output.stderr}
 
 Start Controller
-    [Tags]    functional
+    [Tags]    functional    controller
     Comment    Start Controller.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller    alias=${subSystem}_Controller     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +34,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    commander    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -47,7 +49,7 @@ Start Commander
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+3}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 0    1
+    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain    ${startTracking_list}    === issueCommand_startTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${startTracking_list}[-2]    Command roundtrip was
@@ -61,18 +63,18 @@ Start Commander
     ${trackTarget_list}=    Get Slice From List    ${full_list}    start=${trackTarget_start}    end=${trackTarget_end+3}
     Log    ${trackTarget_list}
     Should Contain X Times    ${trackTarget_list}    === ${subSystem}_trackTarget start of topic ===    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngle : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngleVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngle : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngleVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys :${SPACE}    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys :${SPACE}    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngle : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngleVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngle : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngleVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
     Should Contain    ${trackTarget_list}    === issueCommand_trackTarget writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${trackTarget_list}[-2]    Command roundtrip was
@@ -86,7 +88,7 @@ Start Commander
     ${setInstrumentPort_list}=    Get Slice From List    ${full_list}    start=${setInstrumentPort_start}    end=${setInstrumentPort_end+3}
     Log    ${setInstrumentPort_list}
     Should Contain X Times    ${setInstrumentPort_list}    === ${subSystem}_setInstrumentPort start of topic ===    1
-    Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 0    1
+    Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain    ${setInstrumentPort_list}    === issueCommand_setInstrumentPort writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${setInstrumentPort_list}[-2]    Command roundtrip was
@@ -100,7 +102,7 @@ Start Commander
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+3}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 0    1
+    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain    ${stopTracking_list}    === issueCommand_stopTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${stopTracking_list}[-2]    Command roundtrip was
@@ -186,7 +188,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    robot:continue-on-failure
+    [Tags]    functional    controller    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -199,7 +201,7 @@ Read Controller
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+1}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 0    1
+    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain X Times    ${startTracking_list}    === ackCommand_startTracking acknowledging a command with :    2
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -213,18 +215,18 @@ Read Controller
     ${trackTarget_list}=    Get Slice From List    ${full_list}    start=${trackTarget_start}    end=${trackTarget_end+1}
     Log    ${trackTarget_list}
     Should Contain X Times    ${trackTarget_list}    === ${subSystem}_trackTarget start of topic ===    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngle : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngleVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngle : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngleVelocity : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 0    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys :${SPACE}    1
-    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys :${SPACE}    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuth : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}azimuthVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngle : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth1RotatorAngleVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngle : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nasmyth2RotatorAngleVelocity : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackId : 1    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
+    Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
     Should Contain X Times    ${trackTarget_list}    === ackCommand_trackTarget acknowledging a command with :    2
     Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${trackTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -238,7 +240,7 @@ Read Controller
     ${setInstrumentPort_list}=    Get Slice From List    ${full_list}    start=${setInstrumentPort_start}    end=${setInstrumentPort_end+1}
     Log    ${setInstrumentPort_list}
     Should Contain X Times    ${setInstrumentPort_list}    === ${subSystem}_setInstrumentPort start of topic ===    1
-    Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 0    1
+    Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}port : 1    1
     Should Contain X Times    ${setInstrumentPort_list}    === ackCommand_setInstrumentPort acknowledging a command with :    2
     Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${setInstrumentPort_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -252,7 +254,7 @@ Read Controller
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+1}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 0    1
+    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain X Times    ${stopTracking_list}    === ackCommand_stopTracking acknowledging a command with :    2
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
