@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    CCHeaderService_Events communications tests.
 Force Tags    messaging    java    ccheaderservice    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
+Suite Setup    Log Many    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections
