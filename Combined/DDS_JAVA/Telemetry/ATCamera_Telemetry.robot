@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    ATCamera_Telemetry communications tests.
 Force Tags    messaging    java    atcamera    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
+Suite Setup    Log Many    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections
