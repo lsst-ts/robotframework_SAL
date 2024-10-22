@@ -20,8 +20,6 @@ Verify Component Commander and Controller
     [Tags]    smoke
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_controller
-    ${output}=    Run Process    env
-    Log Many    ${output.stdout}    ${output.stderr}
 
 Start Controller
     [Tags]    functional    controller

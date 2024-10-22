@@ -155,7 +155,7 @@ Read Logger
     ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
     ${end}=    Evaluate    ${state_start}+${10}
     ${state_list}=    Get Slice From List    ${full_list}    start=${state_start}    end=${end}
-    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : \x01    1
+    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lastCheckpoint : RO    1

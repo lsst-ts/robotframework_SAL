@@ -1188,7 +1188,16 @@ Read Subscriber
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0504 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0504Timestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505 : 1    10
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 0    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 1    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 2    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 3    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 4    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 5    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 6    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 7    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 8    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 9    1
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureTimestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ductTemperatureSensor0506 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ductTemperatureSensor0506Timestamp : 1    10
