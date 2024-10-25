@@ -91,7 +91,7 @@ function getTopics() {
         keep_num=3
     fi
     if [[ -f $file ]]; then
-        topics=( $( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$subSystem=$subSystem};1' |sed 's/,/, /g' ) )
+        topics=( $( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |sed 's/,/, /g' ) )
     else
         topics=()
     fi
