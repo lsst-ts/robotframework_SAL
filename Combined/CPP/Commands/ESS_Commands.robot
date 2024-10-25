@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ESS
 ${component}    all
-${timeout}    180s
+${timeout}    300s
 
 *** Test Cases ***
 Verify Component Commander and Controller
@@ -124,6 +124,8 @@ Read Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    ==== ${subSystem} all controllers ready ====

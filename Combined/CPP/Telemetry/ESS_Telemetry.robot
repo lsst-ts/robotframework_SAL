@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ESS
 ${component}    all
-${timeout}    15s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -283,6 +283,9 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== ESS subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${airTurbulence_start}=    Get Index From List    ${full_list}    === ESS_airTurbulence start of topic ===
@@ -778,7 +781,8 @@ Read Subscriber
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 7    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 8    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletActiveEnergy : 9    1
-    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 1    10
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 0    1
+    Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletOnOff : 1    9
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 0    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 1    1
     Should Contain X Times    ${raritan_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outletFrequency : 2    1

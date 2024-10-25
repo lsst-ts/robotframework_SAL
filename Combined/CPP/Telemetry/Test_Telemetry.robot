@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    Test
 ${component}    all
-${timeout}    15s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -58,6 +58,9 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== Test subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${scalars_start}=    Get Index From List    ${full_list}    === Test_scalars start of topic ===
@@ -77,7 +80,8 @@ Read Subscriber
     ${arrays_start}=    Get Index From List    ${full_list}    === Test_arrays start of topic ===
     ${arrays_end}=    Get Index From List    ${full_list}    === Test_arrays end of topic ===
     ${arrays_list}=    Get Slice From List    ${full_list}    start=${arrays_start}    end=${arrays_end}
-    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    10
+    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 0    1
+    Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}boolean0 : 1    9
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 0    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 1    1
     Should Contain X Times    ${arrays_list}    ${SPACE}${SPACE}${SPACE}${SPACE}byte0 : 2    1

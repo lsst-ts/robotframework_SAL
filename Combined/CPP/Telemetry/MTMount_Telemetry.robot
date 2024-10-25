@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    all
-${timeout}    15s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -274,6 +274,9 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== MTMount subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${telemetryClientHeartbeat_start}=    Get Index From List    ${full_list}    === MTMount_telemetryClientHeartbeat start of topic ===
@@ -1188,16 +1191,7 @@ Read Subscriber
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0504 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0504Timestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505 : 1    10
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 0    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 1    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 2    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 3    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 4    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 5    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 6    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 7    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 8    1
-    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 9    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureSensor0505Timestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientTemperatureTimestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ductTemperatureSensor0506 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ductTemperatureSensor0506Timestamp : 1    10

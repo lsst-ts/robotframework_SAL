@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ATMCS
 ${component}    all
-${timeout}    15s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -112,6 +112,9 @@ Read Subscriber
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== ATMCS subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${trajectory_start}=    Get Index From List    ${full_list}    === ATMCS_trajectory start of topic ===
