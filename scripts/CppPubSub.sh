@@ -66,7 +66,7 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    15s" >> $testSuite
+    echo "\${timeout}    120s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -145,6 +145,9 @@ function readSubscriber {
     echo "    Switch Process    \${subSystem}_Subscriber" >> $testSuite
     echo "    \${output}=    Wait For Process    \${subSystem}_Subscriber    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    1/1 brokers are down" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Consume failed" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Broker: Unknown topic or partition" >> $testSuite
     echo "    Should Contain    \${output.stdout}    ===== $subSystem subscribers ready =====" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=1" >> $testSuite
     if [ $topic ]; then
@@ -180,8 +183,11 @@ function readSubscriber_params {
         if [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
-        elif [[ ( "$parameterType" == "boolean" ) ]]; then
+        elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    10" >>$testSuite
+        elif [[ ( $parameterCount -ne 1 ) && ( "$parameterType" == "boolean" ) ]]; then
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    9" >>$testSuite
         elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then
             #echo "$parameter $parameterType String or Char"
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : RO    10" >>$testSuite

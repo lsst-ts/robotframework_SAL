@@ -125,21 +125,24 @@ Read Logger
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${checkpoints_start}=    Get Index From List    ${full_list}    === Event checkpoints received =${SPACE}
-    ${end}=    Evaluate    ${checkpoints_start}+${3}
+    ${end}=    Evaluate    ${checkpoints_start}+${4}
     ${checkpoints_list}=    Get Slice From List    ${full_list}    start=${checkpoints_start}    end=${end}
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}pause : RO    1
     Should Contain X Times    ${checkpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stop : RO    1
     ${description_start}=    Get Index From List    ${full_list}    === Event description received =${SPACE}
-    ${end}=    Evaluate    ${description_start}+${5}
+    ${end}=    Evaluate    ${description_start}+${6}
     ${description_list}=    Get Slice From List    ${full_list}    start=${description_start}    end=${end}
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}classname : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}description : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}help : RO    1
     Should Contain X Times    ${description_list}    ${SPACE}${SPACE}${SPACE}${SPACE}remotes : RO    1
     ${metadata_start}=    Get Index From List    ${full_list}    === Event metadata received =${SPACE}
-    ${end}=    Evaluate    ${metadata_start}+${12}
+    ${end}=    Evaluate    ${metadata_start}+${13}
     ${metadata_list}=    Get Slice From List    ${full_list}    start=${metadata_start}    end=${end}
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coordinateSystem : 1    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 0    1
@@ -153,9 +156,9 @@ Read Logger
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}survey : RO    1
     Should Contain X Times    ${metadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalCheckpoints : 1    1
     ${state_start}=    Get Index From List    ${full_list}    === Event state received =${SPACE}
-    ${end}=    Evaluate    ${state_start}+${10}
+    ${end}=    Evaluate    ${state_start}+${11}
     ${state_list}=    Get Slice From List    ${full_list}    start=${state_start}    end=${end}
-    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : \x01    1
+    Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}groupId : RO    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lastCheckpoint : RO    1
@@ -165,10 +168,10 @@ Read Logger
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blockExecution : 1    1
     Should Contain X Times    ${state_list}    ${SPACE}${SPACE}${SPACE}${SPACE}executionId : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${largeFileObjectAvailable_start}=    Get Index From List    ${full_list}    === Event largeFileObjectAvailable received =${SPACE}
-    ${end}=    Evaluate    ${largeFileObjectAvailable_start}+${8}
+    ${end}=    Evaluate    ${largeFileObjectAvailable_start}+${9}
     ${largeFileObjectAvailable_list}=    Get Slice From List    ${full_list}    start=${largeFileObjectAvailable_start}    end=${end}
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}url : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generator : RO    1
@@ -178,12 +181,12 @@ Read Logger
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mimeType : RO    1
     Should Contain X Times    ${largeFileObjectAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}id : RO    1
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${end}=    Evaluate    ${logLevel_start}+${4}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${end}=    Evaluate    ${logMessage_start}+${11}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
@@ -195,7 +198,7 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${end}=    Evaluate    ${softwareVersions_start}+${7}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1

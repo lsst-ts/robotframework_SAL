@@ -166,6 +166,9 @@ function readLogger() {
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=0" >> $testSuite
     echo "    Log Many    @{full_list}" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    1/1 brokers are down" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Consume failed" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Broker: Unknown topic or partition" >> $testSuite
     if [ $topic ]; then
         echo "    Should Contain    \${output.stdout}    === Event \${component} logger ready =" >> $testSuite
         readLogger_params $file $topic $topicIndex $testSuite
@@ -178,6 +181,7 @@ function readLogger() {
             unset parametersArray
             parametersArray=($(getTopicParameters $subSystem $file $topic "Events"))
             length=${#parametersArray[@]}
+            (( length++ )) ## Events topics include the salIndex parameter, so increment by 1 to account.
             (( length++ )) ## The end index is exclusive, so increment by 1 to get the full slice.
             ## Redirect the topic definition file to SALGenerics.xml if $topic is Generic.
             for generic in "${generic_events[@]}"; do
@@ -211,10 +215,10 @@ function readLogger_params() {
         fi
         if [[ ( $parameterCount -ne 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x00    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 0    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && (( "$parameterType" == "byte" ) || ( "$parameterType" == "octet" )) ]]; then
             #echo "$parameter $parameterType Byte"
-            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : \\x01    1" >>$testSuite
+            echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         elif [[ ( $parameterCount -eq 1 ) && ( "$parameterType" == "boolean" ) ]]; then
             echo "    Should Contain X Times    \${${topic}_list}    \${SPACE}\${SPACE}\${SPACE}\${SPACE}$parameter : 1    1" >>$testSuite
         elif [[ ( "$parameterType" == "string" ) || ( "$parameterType" == "char" ) ]]; then

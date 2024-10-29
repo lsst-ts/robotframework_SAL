@@ -69,7 +69,7 @@ function createVariables() {
     local testSuite=$2
     local topic=$3
     if [ "$topic" == "all" ]; then
-        timeout="180s"
+        timeout="300s"
     else
         timeout="3s"
     fi
@@ -172,8 +172,8 @@ function readController() {
     echo "    \${output}=    Wait For Process    handle=\${subSystem}_Controller    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite
     echo "    Should Not Contain    \${output.stderr}    1/1 brokers are down" >> $testSuite
-    #echo "    Should Not Contain    \${output.stderr}    Consume failed" >> $testSuite
-    #echo "    Should Not Contain    \${output.stderr}    Broker: Unknown topic or partition" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Consume failed" >> $testSuite
+    echo "    Should Not Contain    \${output.stderr}    Broker: Unknown topic or partition" >> $testSuite
     echo "    @{full_list}=    Split To Lines    \${output.stdout}    start=0" >> $testSuite
     echo "    Log Many    @{full_list}" >> $testSuite
     if [ $topic ]; then

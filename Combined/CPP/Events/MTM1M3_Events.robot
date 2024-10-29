@@ -656,14 +656,17 @@ Read Logger
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${detailedState_start}=    Get Index From List    ${full_list}    === Event detailedState received =${SPACE}
-    ${end}=    Evaluate    ${detailedState_start}+${3}
+    ${end}=    Evaluate    ${detailedState_start}+${4}
     ${detailedState_list}=    Get Slice From List    ${full_list}    start=${detailedState_start}    end=${end}
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${detailedState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}detailedState : 1    1
     ${hardpointActuatorInfo_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorInfo received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorInfo_start}+${23}
+    ${end}=    Evaluate    ${hardpointActuatorInfo_start}+${24}
     ${hardpointActuatorInfo_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorInfo_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}referenceId : 0    1
@@ -688,7 +691,7 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupLoadCellOffset : 0    1
     Should Contain X Times    ${hardpointActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backupLoadCellSensitivity : 0    1
     ${forceActuatorInfo_start}=    Get Index From List    ${full_list}    === Event forceActuatorInfo received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorInfo_start}+${39}
+    ${end}=    Evaluate    ${forceActuatorInfo_start}+${40}
     ${forceActuatorInfo_list}=    Get Slice From List    ${full_list}    start=${forceActuatorInfo_start}    end=${end}
     Should Contain X Times    ${forceActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}referenceId : 0    1
@@ -729,7 +732,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mezzanineMajorRevision : 0    1
     Should Contain X Times    ${forceActuatorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mezzanineMinorRevision : 0    1
     ${ilcWarning_start}=    Get Index From List    ${full_list}    === Event ilcWarning received =${SPACE}
-    ${end}=    Evaluate    ${ilcWarning_start}+${13}
+    ${end}=    Evaluate    ${ilcWarning_start}+${14}
     ${ilcWarning_list}=    Get Slice From List    ${full_list}    start=${ilcWarning_start}    end=${end}
     Should Contain X Times    ${ilcWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${ilcWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
@@ -744,7 +747,7 @@ Read Logger
     Should Contain X Times    ${ilcWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownFunction : 1    1
     Should Contain X Times    ${ilcWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownProblem : 1    1
     ${interlockWarning_start}=    Get Index From List    ${full_list}    === Event interlockWarning received =${SPACE}
-    ${end}=    Evaluate    ${interlockWarning_start}+${10}
+    ${end}=    Evaluate    ${interlockWarning_start}+${11}
     ${interlockWarning_list}=    Get Slice From List    ${full_list}    start=${interlockWarning_start}    end=${end}
     Should Contain X Times    ${interlockWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${interlockWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -756,7 +759,7 @@ Read Logger
     Should Contain X Times    ${interlockWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gisHeartbeatLost : 1    1
     Should Contain X Times    ${interlockWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cabinetDoorOpen : 1    1
     ${airSupplyStatus_start}=    Get Index From List    ${full_list}    === Event airSupplyStatus received =${SPACE}
-    ${end}=    Evaluate    ${airSupplyStatus_start}+${6}
+    ${end}=    Evaluate    ${airSupplyStatus_start}+${7}
     ${airSupplyStatus_list}=    Get Slice From List    ${full_list}    start=${airSupplyStatus_start}    end=${end}
     Should Contain X Times    ${airSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${airSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airCommandedOn : 1    1
@@ -764,20 +767,20 @@ Read Logger
     Should Contain X Times    ${airSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airValveOpened : 1    1
     Should Contain X Times    ${airSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airValveClosed : 1    1
     ${airSupplyWarning_start}=    Get Index From List    ${full_list}    === Event airSupplyWarning received =${SPACE}
-    ${end}=    Evaluate    ${airSupplyWarning_start}+${5}
+    ${end}=    Evaluate    ${airSupplyWarning_start}+${6}
     ${airSupplyWarning_list}=    Get Slice From List    ${full_list}    start=${airSupplyWarning_start}    end=${end}
     Should Contain X Times    ${airSupplyWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${airSupplyWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
     Should Contain X Times    ${airSupplyWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandOutputMismatch : 1    1
     Should Contain X Times    ${airSupplyWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandSensorMismatch : 1    1
     ${interlockStatus_start}=    Get Index From List    ${full_list}    === Event interlockStatus received =${SPACE}
-    ${end}=    Evaluate    ${interlockStatus_start}+${4}
+    ${end}=    Evaluate    ${interlockStatus_start}+${5}
     ${interlockStatus_list}=    Get Slice From List    ${full_list}    start=${interlockStatus_start}    end=${end}
     Should Contain X Times    ${interlockStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${interlockStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeatCommandedState : 1    1
     Should Contain X Times    ${interlockStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heartbeatOutputState : 1    1
     ${displacementSensorWarning_start}=    Get Index From List    ${full_list}    === Event displacementSensorWarning received =${SPACE}
-    ${end}=    Evaluate    ${displacementSensorWarning_start}+${17}
+    ${end}=    Evaluate    ${displacementSensorWarning_start}+${18}
     ${displacementSensorWarning_list}=    Get Slice From List    ${full_list}    start=${displacementSensorWarning_start}    end=${end}
     Should Contain X Times    ${displacementSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${displacementSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -796,7 +799,7 @@ Read Logger
     Should Contain X Times    ${displacementSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownCommand : 1    1
     Should Contain X Times    ${displacementSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownProblem : 1    1
     ${inclinometerSensorWarning_start}=    Get Index From List    ${full_list}    === Event inclinometerSensorWarning received =${SPACE}
-    ${end}=    Evaluate    ${inclinometerSensorWarning_start}+${11}
+    ${end}=    Evaluate    ${inclinometerSensorWarning_start}+${12}
     ${inclinometerSensorWarning_list}=    Get Slice From List    ${full_list}    start=${inclinometerSensorWarning_start}    end=${end}
     Should Contain X Times    ${inclinometerSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${inclinometerSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -809,13 +812,13 @@ Read Logger
     Should Contain X Times    ${inclinometerSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownFunction : 1    1
     Should Contain X Times    ${inclinometerSensorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unknownProblem : 1    1
     ${accelerometerWarning_start}=    Get Index From List    ${full_list}    === Event accelerometerWarning received =${SPACE}
-    ${end}=    Evaluate    ${accelerometerWarning_start}+${4}
+    ${end}=    Evaluate    ${accelerometerWarning_start}+${5}
     ${accelerometerWarning_list}=    Get Slice From List    ${full_list}    start=${accelerometerWarning_start}    end=${end}
     Should Contain X Times    ${accelerometerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${accelerometerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
     Should Contain X Times    ${accelerometerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}responseTimeout : 1    1
     ${forceSetpointWarning_start}=    Get Index From List    ${full_list}    === Event forceSetpointWarning received =${SPACE}
-    ${end}=    Evaluate    ${forceSetpointWarning_start}+${34}
+    ${end}=    Evaluate    ${forceSetpointWarning_start}+${35}
     ${forceSetpointWarning_list}=    Get Slice From List    ${full_list}    start=${forceSetpointWarning_start}    end=${end}
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -851,7 +854,7 @@ Read Logger
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyForceWarning : 1    1
     Should Contain X Times    ${forceSetpointWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceWarning : 0    1
     ${raisingLoweringInfo_start}=    Get Index From List    ${full_list}    === Event raisingLoweringInfo received =${SPACE}
-    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${8}
+    ${end}=    Evaluate    ${raisingLoweringInfo_start}+${9}
     ${raisingLoweringInfo_list}=    Get Slice From List    ${full_list}    start=${raisingLoweringInfo_start}    end=${end}
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}weightSupportedPercent : 1    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeTimeout : 1    1
@@ -861,7 +864,7 @@ Read Logger
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitYForceActuator : 0    1
     Should Contain X Times    ${raisingLoweringInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waitXForceActuator : 0    1
     ${boosterValveSettings_start}=    Get Index From List    ${full_list}    === Event boosterValveSettings received =${SPACE}
-    ${end}=    Evaluate    ${boosterValveSettings_start}+${11}
+    ${end}=    Evaluate    ${boosterValveSettings_start}+${12}
     ${boosterValveSettings_list}=    Get Slice From List    ${full_list}    start=${boosterValveSettings_start}    end=${end}
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggerEnabled : 1    1
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggerOpen : 1    1
@@ -874,7 +877,7 @@ Read Logger
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerOpen : 1    1
     Should Contain X Times    ${boosterValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerZTriggerClose : 1    1
     ${boosterValveStatus_start}=    Get Index From List    ${full_list}    === Event boosterValveStatus received =${SPACE}
-    ${end}=    Evaluate    ${boosterValveStatus_start}+${6}
+    ${end}=    Evaluate    ${boosterValveStatus_start}+${7}
     ${boosterValveStatus_list}=    Get Slice From List    ${full_list}    start=${boosterValveStatus_start}    end=${end}
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}opened : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewTriggered : 1    1
@@ -882,12 +885,12 @@ Read Logger
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}followingErrorTriggered : 1    1
     Should Contain X Times    ${boosterValveStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}accelerometerTriggered : 1    1
     ${forceActuatorState_start}=    Get Index From List    ${full_list}    === Event forceActuatorState received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorState_start}+${3}
+    ${end}=    Evaluate    ${forceActuatorState_start}+${4}
     ${forceActuatorState_list}=    Get Slice From List    ${full_list}    start=${forceActuatorState_start}    end=${end}
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
     ${forceControllerState_start}=    Get Index From List    ${full_list}    === Event forceControllerState received =${SPACE}
-    ${end}=    Evaluate    ${forceControllerState_start}+${11}
+    ${end}=    Evaluate    ${forceControllerState_start}+${12}
     ${forceControllerState_list}=    Get Slice From List    ${full_list}    start=${forceControllerState_start}    end=${end}
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}slewFlag : 1    1
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}staticForcesApplied : 1    1
@@ -900,14 +903,14 @@ Read Logger
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}activeOpticForcesApplied : 1    1
     Should Contain X Times    ${forceControllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}balanceForcesApplied : 1    1
     ${slewControllerSettings_start}=    Get Index From List    ${full_list}    === Event slewControllerSettings received =${SPACE}
-    ${end}=    Evaluate    ${slewControllerSettings_start}+${5}
+    ${end}=    Evaluate    ${slewControllerSettings_start}+${6}
     ${slewControllerSettings_list}=    Get Slice From List    ${full_list}    start=${slewControllerSettings_start}    end=${end}
     Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}triggerBoosterValves : 1    1
     Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useAccelerationForces : 1    1
     Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useBalanceForces : 1    1
     Should Contain X Times    ${slewControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}useVelocityForces : 1    1
     ${hardpointMonitorInfo_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorInfo received =${SPACE}
-    ${end}=    Evaluate    ${hardpointMonitorInfo_start}+${14}
+    ${end}=    Evaluate    ${hardpointMonitorInfo_start}+${15}
     ${hardpointMonitorInfo_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorInfo_start}    end=${end}
     Should Contain X Times    ${hardpointMonitorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointMonitorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}referenceId : 0    1
@@ -923,21 +926,21 @@ Read Logger
     Should Contain X Times    ${hardpointMonitorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mezzanineMajorRevision : 0    1
     Should Contain X Times    ${hardpointMonitorInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mezzanineMinorRevision : 0    1
     ${cellLightStatus_start}=    Get Index From List    ${full_list}    === Event cellLightStatus received =${SPACE}
-    ${end}=    Evaluate    ${cellLightStatus_start}+${5}
+    ${end}=    Evaluate    ${cellLightStatus_start}+${6}
     ${cellLightStatus_list}=    Get Slice From List    ${full_list}    start=${cellLightStatus_start}    end=${end}
     Should Contain X Times    ${cellLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${cellLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLightsCommandedOn : 1    1
     Should Contain X Times    ${cellLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLightsOutputOn : 1    1
     Should Contain X Times    ${cellLightStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLightsOn : 1    1
     ${cellLightWarning_start}=    Get Index From List    ${full_list}    === Event cellLightWarning received =${SPACE}
-    ${end}=    Evaluate    ${cellLightWarning_start}+${5}
+    ${end}=    Evaluate    ${cellLightWarning_start}+${6}
     ${cellLightWarning_list}=    Get Slice From List    ${full_list}    start=${cellLightWarning_start}    end=${end}
     Should Contain X Times    ${cellLightWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${cellLightWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
     Should Contain X Times    ${cellLightWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLightsOutputMismatch : 1    1
     Should Contain X Times    ${cellLightWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cellLightsSensorMismatch : 1    1
     ${powerStatus_start}=    Get Index From List    ${full_list}    === Event powerStatus received =${SPACE}
-    ${end}=    Evaluate    ${powerStatus_start}+${18}
+    ${end}=    Evaluate    ${powerStatus_start}+${19}
     ${powerStatus_list}=    Get Slice From List    ${full_list}    start=${powerStatus_start}    end=${end}
     Should Contain X Times    ${powerStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${powerStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerNetworkACommandedOn : 1    1
@@ -957,7 +960,7 @@ Read Logger
     Should Contain X Times    ${powerStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkDCommandedOn : 1    1
     Should Contain X Times    ${powerStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkDOutputOn : 1    1
     ${powerWarning_start}=    Get Index From List    ${full_list}    === Event powerWarning received =${SPACE}
-    ${end}=    Evaluate    ${powerWarning_start}+${11}
+    ${end}=    Evaluate    ${powerWarning_start}+${12}
     ${powerWarning_list}=    Get Slice From List    ${full_list}    start=${powerWarning_start}    end=${end}
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -970,7 +973,7 @@ Read Logger
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkCOutputMismatch : 1    1
     Should Contain X Times    ${powerWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxPowerNetworkDOutputMismatch : 1    1
     ${forceActuatorForceWarning_start}=    Get Index From List    ${full_list}    === Event forceActuatorForceWarning received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorForceWarning_start}+${22}
+    ${end}=    Evaluate    ${forceActuatorForceWarning_start}+${23}
     ${forceActuatorForceWarning_list}=    Get Slice From List    ${full_list}    start=${forceActuatorForceWarning_start}    end=${end}
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -994,7 +997,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anySecondaryAxisFollowingErrorImmediateFault : 1    1
     Should Contain X Times    ${forceActuatorForceWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorImmediateFault : 0    1
     ${forceActuatorFollowingErrorCounter_start}=    Get Index From List    ${full_list}    === Event forceActuatorFollowingErrorCounter received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorFollowingErrorCounter_start}+${6}
+    ${end}=    Evaluate    ${forceActuatorFollowingErrorCounter_start}+${7}
     ${forceActuatorFollowingErrorCounter_list}=    Get Slice From List    ${full_list}    start=${forceActuatorFollowingErrorCounter_start}    end=${end}
     Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}counter : 1    1
     Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorWarningCounter : 0    1
@@ -1002,7 +1005,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryAxisFollowingErrorCountingCounter : 0    1
     Should Contain X Times    ${forceActuatorFollowingErrorCounter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryAxisFollowingErrorCountingCounter : 0    1
     ${gyroWarning_start}=    Get Index From List    ${full_list}    === Event gyroWarning received =${SPACE}
-    ${end}=    Evaluate    ${gyroWarning_start}+${60}
+    ${end}=    Evaluate    ${gyroWarning_start}+${61}
     ${gyroWarning_list}=    Get Slice From List    ${full_list}    start=${gyroWarning_start}    end=${end}
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -1064,7 +1067,7 @@ Read Logger
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gcbADCCommsWarning : 1    1
     Should Contain X Times    ${gyroWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mSYNCExternalTimingWarning : 1    1
     ${powerSupplyStatus_start}=    Get Index From List    ${full_list}    === Event powerSupplyStatus received =${SPACE}
-    ${end}=    Evaluate    ${powerSupplyStatus_start}+${25}
+    ${end}=    Evaluate    ${powerSupplyStatus_start}+${26}
     ${powerSupplyStatus_list}=    Get Slice From List    ${full_list}    start=${powerSupplyStatus_start}    end=${end}
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rcpMirrorCellUtility220VAC1Status : 1    1
@@ -1091,7 +1094,7 @@ Read Logger
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}externalEquipmentPowerNetworkStatus : 1    1
     Should Contain X Times    ${powerSupplyStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}laserTrackerPowerNetworkStatus : 1    1
     ${appliedOffsetForces_start}=    Get Index From List    ${full_list}    === Event appliedOffsetForces received =${SPACE}
-    ${end}=    Evaluate    ${appliedOffsetForces_start}+${12}
+    ${end}=    Evaluate    ${appliedOffsetForces_start}+${13}
     ${appliedOffsetForces_list}=    Get Slice From List    ${full_list}    start=${appliedOffsetForces_start}    end=${end}
     Should Contain X Times    ${appliedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${appliedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1105,7 +1108,7 @@ Read Logger
     Should Contain X Times    ${appliedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${appliedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${appliedStaticForces_start}=    Get Index From List    ${full_list}    === Event appliedStaticForces received =${SPACE}
-    ${end}=    Evaluate    ${appliedStaticForces_start}+${12}
+    ${end}=    Evaluate    ${appliedStaticForces_start}+${13}
     ${appliedStaticForces_list}=    Get Slice From List    ${full_list}    start=${appliedStaticForces_start}    end=${end}
     Should Contain X Times    ${appliedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${appliedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1119,7 +1122,7 @@ Read Logger
     Should Contain X Times    ${appliedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${appliedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${appliedActiveOpticForces_start}=    Get Index From List    ${full_list}    === Event appliedActiveOpticForces received =${SPACE}
-    ${end}=    Evaluate    ${appliedActiveOpticForces_start}+${6}
+    ${end}=    Evaluate    ${appliedActiveOpticForces_start}+${7}
     ${appliedActiveOpticForces_list}=    Get Slice From List    ${full_list}    start=${appliedActiveOpticForces_start}    end=${end}
     Should Contain X Times    ${appliedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${appliedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
@@ -1127,13 +1130,13 @@ Read Logger
     Should Contain X Times    ${appliedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
     Should Contain X Times    ${appliedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
     ${commandRejectionWarning_start}=    Get Index From List    ${full_list}    === Event commandRejectionWarning received =${SPACE}
-    ${end}=    Evaluate    ${commandRejectionWarning_start}+${4}
+    ${end}=    Evaluate    ${commandRejectionWarning_start}+${5}
     ${commandRejectionWarning_list}=    Get Slice From List    ${full_list}    start=${commandRejectionWarning_start}    end=${end}
     Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}command : RO    1
     Should Contain X Times    ${commandRejectionWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reason : RO    1
     ${pidInfo_start}=    Get Index From List    ${full_list}    === Event pidInfo received =${SPACE}
-    ${end}=    Evaluate    ${pidInfo_start}+${12}
+    ${end}=    Evaluate    ${pidInfo_start}+${13}
     ${pidInfo_list}=    Get Slice From List    ${full_list}    start=${pidInfo_start}    end=${end}
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 0    1
@@ -1147,7 +1150,7 @@ Read Logger
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calculatedD : 0    1
     Should Contain X Times    ${pidInfo_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calculatedE : 0    1
     ${hardpointActuatorWarning_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorWarning received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorWarning_start}+${57}
+    ${end}=    Evaluate    ${hardpointActuatorWarning_start}+${58}
     ${hardpointActuatorWarning_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorWarning_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -1206,7 +1209,7 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyBroadcastCounterWarning : 1    1
     Should Contain X Times    ${hardpointActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}broadcastCounterWarning : 0    1
     ${hardpointMonitorWarning_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorWarning received =${SPACE}
-    ${end}=    Evaluate    ${hardpointMonitorWarning_start}+${57}
+    ${end}=    Evaluate    ${hardpointMonitorWarning_start}+${58}
     ${hardpointMonitorWarning_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorWarning_start}    end=${end}
     Should Contain X Times    ${hardpointMonitorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointMonitorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -1265,18 +1268,18 @@ Read Logger
     Should Contain X Times    ${hardpointMonitorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyMezzanineApplicationCRCMismatch : 1    1
     Should Contain X Times    ${hardpointMonitorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mezzanineApplicationCRCMismatch : 0    1
     ${hardpointActuatorState_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorState received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorState_start}+${4}
+    ${end}=    Evaluate    ${hardpointActuatorState_start}+${5}
     ${hardpointActuatorState_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorState_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
     Should Contain X Times    ${hardpointActuatorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionState : 0    1
     ${hardpointMonitorState_start}=    Get Index From List    ${full_list}    === Event hardpointMonitorState received =${SPACE}
-    ${end}=    Evaluate    ${hardpointMonitorState_start}+${3}
+    ${end}=    Evaluate    ${hardpointMonitorState_start}+${4}
     ${hardpointMonitorState_list}=    Get Slice From List    ${full_list}    start=${hardpointMonitorState_start}    end=${end}
     Should Contain X Times    ${hardpointMonitorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${hardpointMonitorState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ilcState : 0    1
     ${forceActuatorWarning_start}=    Get Index From List    ${full_list}    === Event forceActuatorWarning received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorWarning_start}+${63}
+    ${end}=    Evaluate    ${forceActuatorWarning_start}+${64}
     ${forceActuatorWarning_list}=    Get Slice From List    ${full_list}    start=${forceActuatorWarning_start}    end=${end}
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyWarning : 1    1
@@ -1341,7 +1344,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyBroadcastCounterWarning : 1    1
     Should Contain X Times    ${forceActuatorWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}broadcastCounterWarning : 0    1
     ${preclippedStaticForces_start}=    Get Index From List    ${full_list}    === Event preclippedStaticForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedStaticForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedStaticForces_start}+${13}
     ${preclippedStaticForces_list}=    Get Slice From List    ${full_list}    start=${preclippedStaticForces_start}    end=${end}
     Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1355,7 +1358,7 @@ Read Logger
     Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedStaticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedElevationForces_start}=    Get Index From List    ${full_list}    === Event preclippedElevationForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedElevationForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedElevationForces_start}+${13}
     ${preclippedElevationForces_list}=    Get Slice From List    ${full_list}    start=${preclippedElevationForces_start}    end=${end}
     Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1369,7 +1372,7 @@ Read Logger
     Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedElevationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedAzimuthForces_start}=    Get Index From List    ${full_list}    === Event preclippedAzimuthForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedAzimuthForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedAzimuthForces_start}+${13}
     ${preclippedAzimuthForces_list}=    Get Slice From List    ${full_list}    start=${preclippedAzimuthForces_start}    end=${end}
     Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1383,7 +1386,7 @@ Read Logger
     Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedAzimuthForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedThermalForces_start}=    Get Index From List    ${full_list}    === Event preclippedThermalForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedThermalForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedThermalForces_start}+${13}
     ${preclippedThermalForces_list}=    Get Slice From List    ${full_list}    start=${preclippedThermalForces_start}    end=${end}
     Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1397,7 +1400,7 @@ Read Logger
     Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedThermalForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedActiveOpticForces_start}=    Get Index From List    ${full_list}    === Event preclippedActiveOpticForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedActiveOpticForces_start}+${6}
+    ${end}=    Evaluate    ${preclippedActiveOpticForces_start}+${7}
     ${preclippedActiveOpticForces_list}=    Get Slice From List    ${full_list}    start=${preclippedActiveOpticForces_start}    end=${end}
     Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zForces : 0    1
@@ -1405,7 +1408,7 @@ Read Logger
     Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mx : 1    1
     Should Contain X Times    ${preclippedActiveOpticForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}my : 1    1
     ${preclippedVelocityForces_start}=    Get Index From List    ${full_list}    === Event preclippedVelocityForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedVelocityForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedVelocityForces_start}+${13}
     ${preclippedVelocityForces_list}=    Get Slice From List    ${full_list}    start=${preclippedVelocityForces_start}    end=${end}
     Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1419,7 +1422,7 @@ Read Logger
     Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedVelocityForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedAccelerationForces_start}=    Get Index From List    ${full_list}    === Event preclippedAccelerationForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedAccelerationForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedAccelerationForces_start}+${13}
     ${preclippedAccelerationForces_list}=    Get Slice From List    ${full_list}    start=${preclippedAccelerationForces_start}    end=${end}
     Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1433,7 +1436,7 @@ Read Logger
     Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedAccelerationForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedBalanceForces_start}=    Get Index From List    ${full_list}    === Event preclippedBalanceForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedBalanceForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedBalanceForces_start}+${13}
     ${preclippedBalanceForces_list}=    Get Slice From List    ${full_list}    start=${preclippedBalanceForces_start}    end=${end}
     Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1447,7 +1450,7 @@ Read Logger
     Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedBalanceForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedOffsetForces_start}=    Get Index From List    ${full_list}    === Event preclippedOffsetForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedOffsetForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedOffsetForces_start}+${13}
     ${preclippedOffsetForces_list}=    Get Slice From List    ${full_list}    start=${preclippedOffsetForces_start}    end=${end}
     Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1461,7 +1464,7 @@ Read Logger
     Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedOffsetForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedForces_start}=    Get Index From List    ${full_list}    === Event preclippedForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedForces_start}+${12}
+    ${end}=    Evaluate    ${preclippedForces_start}+${13}
     ${preclippedForces_list}=    Get Slice From List    ${full_list}    start=${preclippedForces_start}    end=${end}
     Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xForces : 0    1
@@ -1475,13 +1478,13 @@ Read Logger
     Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mz : 1    1
     Should Contain X Times    ${preclippedForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceMagnitude : 1    1
     ${preclippedCylinderForces_start}=    Get Index From List    ${full_list}    === Event preclippedCylinderForces received =${SPACE}
-    ${end}=    Evaluate    ${preclippedCylinderForces_start}+${4}
+    ${end}=    Evaluate    ${preclippedCylinderForces_start}+${5}
     ${preclippedCylinderForces_list}=    Get Slice From List    ${full_list}    start=${preclippedCylinderForces_start}    end=${end}
     Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryCylinderForces : 0    1
     Should Contain X Times    ${preclippedCylinderForces_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryCylinderForces : 0    1
     ${forceActuatorBumpTestStatus_start}=    Get Index From List    ${full_list}    === Event forceActuatorBumpTestStatus received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorBumpTestStatus_start}+${7}
+    ${end}=    Evaluate    ${forceActuatorBumpTestStatus_start}+${8}
     ${forceActuatorBumpTestStatus_list}=    Get Slice From List    ${full_list}    start=${forceActuatorBumpTestStatus_start}    end=${end}
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
@@ -1490,16 +1493,16 @@ Read Logger
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTestTimestamps : 0    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTest : 0    1
     ${hardpointTestStatus_start}=    Get Index From List    ${full_list}    === Event hardpointTestStatus received =${SPACE}
-    ${end}=    Evaluate    ${hardpointTestStatus_start}+${2}
+    ${end}=    Evaluate    ${hardpointTestStatus_start}+${3}
     ${hardpointTestStatus_list}=    Get Slice From List    ${full_list}    start=${hardpointTestStatus_start}    end=${end}
     Should Contain X Times    ${hardpointTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testState : 0    1
     ${enabledForceActuators_start}=    Get Index From List    ${full_list}    === Event enabledForceActuators received =${SPACE}
-    ${end}=    Evaluate    ${enabledForceActuators_start}+${3}
+    ${end}=    Evaluate    ${enabledForceActuators_start}+${4}
     ${enabledForceActuators_list}=    Get Slice From List    ${full_list}    start=${enabledForceActuators_start}    end=${end}
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceActuatorEnabled : 0    1
     ${forceActuatorSettings_start}=    Get Index From List    ${full_list}    === Event forceActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorSettings_start}+${45}
+    ${end}=    Evaluate    ${forceActuatorSettings_start}+${46}
     ${forceActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${forceActuatorSettings_start}    end=${end}
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netActiveOpticForceTolerance : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledActuators : 0    1
@@ -1546,7 +1549,7 @@ Read Logger
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestSettleTime : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestMeasurements : 1    1
     ${hardpointActuatorSettings_start}=    Get Index From List    ${full_list}    === Event hardpointActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${19}
+    ${end}=    Evaluate    ${hardpointActuatorSettings_start}+${20}
     ${hardpointActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${hardpointActuatorSettings_start}    end=${end}
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerStep : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}micrometersPerEncoder : 1    1
@@ -1567,7 +1570,7 @@ Read Logger
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ignoreTensionRaisingLowering : 1    1
     Should Contain X Times    ${hardpointActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inRangeReadoutsToChaseFromWaitingTension : 1    1
     ${positionControllerSettings_start}=    Get Index From List    ${full_list}    === Event positionControllerSettings received =${SPACE}
-    ${end}=    Evaluate    ${positionControllerSettings_start}+${14}
+    ${end}=    Evaluate    ${positionControllerSettings_start}+${15}
     ${positionControllerSettings_list}=    Get Slice From List    ${full_list}    start=${positionControllerSettings_start}    end=${end}
     Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceToStepsCoefficient : 1    1
     Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}encoderToStepsCoefficient : 1    1
@@ -1583,7 +1586,7 @@ Read Logger
     Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerPositionOffset : 1    1
     Should Contain X Times    ${positionControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}referencePosition : 0    1
     ${displacementSensorSettings_start}=    Get Index From List    ${full_list}    === Event displacementSensorSettings received =${SPACE}
-    ${end}=    Evaluate    ${displacementSensorSettings_start}+${7}
+    ${end}=    Evaluate    ${displacementSensorSettings_start}+${8}
     ${displacementSensorSettings_list}=    Get Slice From List    ${full_list}    start=${displacementSensorSettings_start}    end=${end}
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xPositionOffset : 1    1
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yPositionOffset : 1    1
@@ -1592,7 +1595,7 @@ Read Logger
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yRotationOffset : 1    1
     Should Contain X Times    ${displacementSensorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zRotationOffset : 1    1
     ${pidSettings_start}=    Get Index From List    ${full_list}    === Event pidSettings received =${SPACE}
-    ${end}=    Evaluate    ${pidSettings_start}+${7}
+    ${end}=    Evaluate    ${pidSettings_start}+${8}
     ${pidSettings_list}=    Get Slice From List    ${full_list}    start=${pidSettings_start}    end=${end}
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingName : RO    1
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestep : 0    1
@@ -1601,7 +1604,7 @@ Read Logger
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}d : 0    1
     Should Contain X Times    ${pidSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n : 0    1
     ${accelerometerSettings_start}=    Get Index From List    ${full_list}    === Event accelerometerSettings received =${SPACE}
-    ${end}=    Evaluate    ${accelerometerSettings_start}+${10}
+    ${end}=    Evaluate    ${accelerometerSettings_start}+${11}
     ${accelerometerSettings_list}=    Get Slice From List    ${full_list}    start=${accelerometerSettings_start}    end=${end}
     Should Contain X Times    ${accelerometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angularAccelerationDistance : 0    1
     Should Contain X Times    ${accelerometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bias : 0    1
@@ -1613,12 +1616,12 @@ Read Logger
     Should Contain X Times    ${accelerometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limitsWarningHigh : 0    1
     Should Contain X Times    ${accelerometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limitsFaultHigh : 0    1
     ${gyroSettings_start}=    Get Index From List    ${full_list}    === Event gyroSettings received =${SPACE}
-    ${end}=    Evaluate    ${gyroSettings_start}+${3}
+    ${end}=    Evaluate    ${gyroSettings_start}+${4}
     ${gyroSettings_list}=    Get Slice From List    ${full_list}    start=${gyroSettings_start}    end=${end}
     Should Contain X Times    ${gyroSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dataRate : 1    1
     Should Contain X Times    ${gyroSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}angularVelocityOffset : 0    1
     ${inclinometerSettings_start}=    Get Index From List    ${full_list}    === Event inclinometerSettings received =${SPACE}
-    ${end}=    Evaluate    ${inclinometerSettings_start}+${6}
+    ${end}=    Evaluate    ${inclinometerSettings_start}+${7}
     ${inclinometerSettings_list}=    Get Slice From List    ${full_list}    start=${inclinometerSettings_start}    end=${end}
     Should Contain X Times    ${inclinometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inclinometerOffset : 1    1
     Should Contain X Times    ${inclinometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}faultLow : 1    1
@@ -1626,15 +1629,15 @@ Read Logger
     Should Contain X Times    ${inclinometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}warningHigh : 1    1
     Should Contain X Times    ${inclinometerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}faultHigh : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${end}=    Evaluate    ${logLevel_start}+${4}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${end}=    Evaluate    ${logMessage_start}+${11}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
@@ -1646,7 +1649,7 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${end}=    Evaluate    ${softwareVersions_start}+${7}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
@@ -1654,21 +1657,21 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Evaluate    ${errorCode_start}+${4}
+    ${end}=    Evaluate    ${errorCode_start}+${5}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : RO    1
     ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Evaluate    ${simulationMode_start}+${2}
+    ${end}=    Evaluate    ${simulationMode_start}+${3}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Evaluate    ${summaryState_start}+${2}
+    ${end}=    Evaluate    ${summaryState_start}+${3}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     ${configurationApplied_start}=    Get Index From List    ${full_list}    === Event configurationApplied received =${SPACE}
-    ${end}=    Evaluate    ${configurationApplied_start}+${6}
+    ${end}=    Evaluate    ${configurationApplied_start}+${7}
     ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${end}
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurations : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
@@ -1676,7 +1679,7 @@ Read Logger
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otherInfo : RO    1
     ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Event configurationsAvailable received =${SPACE}
-    ${end}=    Evaluate    ${configurationsAvailable_start}+${5}
+    ${end}=    Evaluate    ${configurationsAvailable_start}+${6}
     ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${end}
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overrides : RO    1
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1

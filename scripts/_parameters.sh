@@ -34,7 +34,7 @@ function getTopicParameters() {
         topic_type="Command"
         topic_complete="command_${topic}"
     fi
-    output=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}[EFDB_Topic='${subSystem}_${topic_complete}']/item/EFDB_Name" -v . -n $file |tr '\r\n' ' ' |awk '{$1=$1};1')
+    output=$( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}[EFDB_Topic='${subSystem}_${topic_complete}']/item/EFDB_Name" -v . -n $file |tr '\r\n' ' ' )
     echo $output
 }
 
