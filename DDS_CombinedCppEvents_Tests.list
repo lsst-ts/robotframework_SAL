@@ -9,7 +9,9 @@ Combined/DDS_CPP/Events/ATPtg_Events.robot
 Combined/DDS_CPP/Events/ESS_Events.robot
 Combined/DDS_CPP/Events/Guider_Events.robot
 Combined/DDS_CPP/Events/MTM1M3_Events.robot
+Combined/DDS_CPP/Events/MTM1M3TS_Events.robot
 Combined/DDS_CPP/Events/MTMount_Events.robot
 Combined/DDS_CPP/Events/MTPtg_Events.robot
 Combined/DDS_CPP/Events/MTRotator_Events.robot
+Combined/DDS_CPP/Events/MTVMS_Events.robot
 Combined/DDS_CPP/Events/Test_Events.robot
