@@ -459,6 +459,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_warning writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event warning generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_motionLockState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_motionLockState test messages =======
+    Should Contain X Times    ${output.stdout}    === Event motionLockState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_motionLockState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event motionLockState generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -868,6 +877,11 @@ Read Logger
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}code : 1    1
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}text : RO    1
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : 1    1
+    ${motionLockState_start}=    Get Index From List    ${full_list}    === Event motionLockState received =${SPACE}
+    ${end}=    Evaluate    ${motionLockState_start}+${4}
+    ${motionLockState_list}=    Get Slice From List    ${full_list}    start=${motionLockState_start}    end=${end}
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lockState : 1    1
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}

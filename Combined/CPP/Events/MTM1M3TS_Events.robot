@@ -270,7 +270,7 @@ Read Logger
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyBreakerHeater1Error : 1    1
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}breakerHeater1Error : 0    1
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyBreakerFan2Error : 1    1
-    Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}breakerFan2Error : 0    1
+    Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}breakerFan2Error : 1    1
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyUniqueIdCRCError : 1    1
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uniqueIdCRCError : 0    1
     Should Contain X Times    ${thermalWarning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyApplicationTypeMismatch : 1    1

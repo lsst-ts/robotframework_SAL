@@ -117,6 +117,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_lowFrequencyVibration writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event lowFrequencyVibration generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_motionLockState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_motionLockState test messages =======
+    Should Contain X Times    ${output.stdout}    === Event motionLockState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_motionLockState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event motionLockState generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -274,6 +283,11 @@ Read Logger
     ${end}=    Evaluate    ${lowFrequencyVibration_start}+${3}
     ${lowFrequencyVibration_list}=    Get Slice From List    ${full_list}    start=${lowFrequencyVibration_start}    end=${end}
     Should Contain X Times    ${lowFrequencyVibration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frequency : 1    1
+    ${motionLockState_start}=    Get Index From List    ${full_list}    === Event motionLockState received =${SPACE}
+    ${end}=    Evaluate    ${motionLockState_start}+${4}
+    ${motionLockState_list}=    Get Slice From List    ${full_list}    start=${motionLockState_start}    end=${end}
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lockState : 1    1
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}

@@ -1770,16 +1770,7 @@ Read Subscriber
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressurePier0002 : 1    10
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolPressurePier0002Timestamp : 1    10
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001 : 1    10
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 0    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 1    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 2    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 3    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 4    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 5    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 6    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 7    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 8    1
-    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 9    1
+    Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0001Timestamp : 1    10
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0002 : 1    10
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolTemperaturePier0002Timestamp : 1    10
     Should Contain X Times    ${generalPurposeGlycolWater_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10

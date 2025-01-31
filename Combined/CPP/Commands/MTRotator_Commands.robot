@@ -178,6 +178,32 @@ Start Commander
     Should Contain    ${stop_list}[-2]    Command roundtrip was
     Should Be Equal    ${stop_list}[-1]    303
     Should Contain    ${stop_list}    === ${subSystem}_stop end of topic ===
+    Comment    ======= Verify ${subSystem}_lockMotion test messages =======
+    Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
+    ${lockMotion_start}=    Get Index From List    ${full_list}    === MTRotator_lockMotion start of topic ===
+    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_lockMotion command*
+    ${lockMotion_end}=    Get Index From List    ${full_list}    ${line}
+    ${lockMotion_list}=    Get Slice From List    ${full_list}    start=${lockMotion_start}    end=${lockMotion_end+3}
+    Log    ${lockMotion_list}
+    Should Contain X Times    ${lockMotion_list}    === ${subSystem}_lockMotion start of topic ===    1
+    Should Contain    ${lockMotion_list}    === issueCommand_lockMotion writing a command containing :
+    Should Contain    ${line}    completed ok
+    Should Contain    ${lockMotion_list}[-2]    Command roundtrip was
+    Should Be Equal    ${lockMotion_list}[-1]    303
+    Should Contain    ${lockMotion_list}    === ${subSystem}_lockMotion end of topic ===
+    Comment    ======= Verify ${subSystem}_unlockMotion test messages =======
+    Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
+    ${unlockMotion_start}=    Get Index From List    ${full_list}    === MTRotator_unlockMotion start of topic ===
+    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_unlockMotion command*
+    ${unlockMotion_end}=    Get Index From List    ${full_list}    ${line}
+    ${unlockMotion_list}=    Get Slice From List    ${full_list}    start=${unlockMotion_start}    end=${unlockMotion_end+3}
+    Log    ${unlockMotion_list}
+    Should Contain X Times    ${unlockMotion_list}    === ${subSystem}_unlockMotion start of topic ===    1
+    Should Contain    ${unlockMotion_list}    === issueCommand_unlockMotion writing a command containing :
+    Should Contain    ${line}    completed ok
+    Should Contain    ${unlockMotion_list}[-2]    Command roundtrip was
+    Should Be Equal    ${unlockMotion_list}[-1]    303
+    Should Contain    ${unlockMotion_list}    === ${subSystem}_unlockMotion end of topic ===
     Comment    ======= Verify ${subSystem}_disable test messages =======
     Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
     ${disable_start}=    Get Index From List    ${full_list}    === MTRotator_disable start of topic ===
@@ -407,6 +433,32 @@ Read Controller
     Should Contain X Times    ${stop_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
     Should Contain X Times    ${stop_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
     Should Contain X Times    ${stop_list}    === ${subSystem}_stop end of topic ===    1
+    ${lockMotion_start}=    Get Index From List    ${full_list}    === MTRotator_lockMotion start of topic ===
+    ${lockMotion_end}=    Get Index From List    ${full_list}    === MTRotator_lockMotion end of topic ===
+    ${lockMotion_list}=    Get Slice From List    ${full_list}    start=${lockMotion_start}    end=${lockMotion_end+1}
+    Log    ${lockMotion_list}
+    Should Contain X Times    ${lockMotion_list}    === ${subSystem}_lockMotion start of topic ===    1
+    Should Contain X Times    ${lockMotion_list}    === ackCommand_lockMotion acknowledging a command with :    2
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${lockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${lockMotion_list}    === ${subSystem}_lockMotion end of topic ===    1
+    ${unlockMotion_start}=    Get Index From List    ${full_list}    === MTRotator_unlockMotion start of topic ===
+    ${unlockMotion_end}=    Get Index From List    ${full_list}    === MTRotator_unlockMotion end of topic ===
+    ${unlockMotion_list}=    Get Slice From List    ${full_list}    start=${unlockMotion_start}    end=${unlockMotion_end+1}
+    Log    ${unlockMotion_list}
+    Should Contain X Times    ${unlockMotion_list}    === ${subSystem}_unlockMotion start of topic ===    1
+    Should Contain X Times    ${unlockMotion_list}    === ackCommand_unlockMotion acknowledging a command with :    2
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${unlockMotion_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${unlockMotion_list}    === ${subSystem}_unlockMotion end of topic ===    1
     ${disable_start}=    Get Index From List    ${full_list}    === MTRotator_disable start of topic ===
     ${disable_end}=    Get Index From List    ${full_list}    === MTRotator_disable end of topic ===
     ${disable_list}=    Get Slice From List    ${full_list}    start=${disable_start}    end=${disable_end+1}
