@@ -12,7 +12,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ATPtg
 ${component}    all
-${timeout}    15s
+${timeout}    120s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -21,18 +21,16 @@ Verify Component Publisher and Subscriber
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber
 
 Start Subscriber
-    [Tags]    functional
+    [Tags]    functional    subscriber
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
-    Comment    Sleep for 6s to allow DDS time to register all the topics.
-    Sleep    6s
     ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
     Should Contain    ${output}    ===== ATPtg subscribers ready =====
 
 Start Publisher
-    [Tags]    functional
+    [Tags]    functional    publisher    robot:continue-on-failure
     Comment    Start Publisher.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_publisher
     Log Many    ${output.stdout}    ${output.stderr}
@@ -101,10 +99,13 @@ Start Publisher
     Should Contain    ${output.stdout}    === ATPtg_mountPositions end of topic ===
 
 Read Subscriber
-    [Tags]    functional
+    [Tags]    functional    subscriber    robot:continue-on-failure
     Switch Process    ${subSystem}_Subscriber
     ${output}=    Wait For Process    ${subSystem}_Subscriber    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    ===== ATPtg subscribers ready =====
     @{full_list}=    Split To Lines    ${output.stdout}    start=1
     ${currentTargetStatus_start}=    Get Index From List    ${full_list}    === ATPtg_currentTargetStatus start of topic ===

@@ -22,7 +22,7 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger
 
 Start Logger
-    [Tags]    functional
+    [Tags]    functional    logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Logger
     Log    ${output}
 
 Start Sender
-    [Tags]    functional
+    [Tags]    functional    sender    robot:continue-on-failure
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
@@ -117,6 +117,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_lowFrequencyVibration writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event lowFrequencyVibration generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_motionLockState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_motionLockState test messages =======
+    Should Contain X Times    ${output.stdout}    === Event motionLockState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_motionLockState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event motionLockState generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -209,46 +218,49 @@ Start Sender
     Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
-    [Tags]    functional
+    [Tags]    functional    logger    robot:continue-on-failure
     Switch Process    ${subSystem}_Logger
     ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${controllerState_start}=    Get Index From List    ${full_list}    === Event controllerState received =${SPACE}
-    ${end}=    Evaluate    ${controllerState_start}+${5}
+    ${end}=    Evaluate    ${controllerState_start}+${6}
     ${controllerState_list}=    Get Slice From List    ${full_list}    start=${controllerState_start}    end=${end}
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}controllerState : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}faultSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledSubstate : 1    1
     Should Contain X Times    ${controllerState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applicationStatus : 1    1
     ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
-    ${end}=    Evaluate    ${connected_start}+${2}
+    ${end}=    Evaluate    ${connected_start}+${3}
     ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${end}
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
     ${interlock_start}=    Get Index From List    ${full_list}    === Event interlock received =${SPACE}
-    ${end}=    Evaluate    ${interlock_start}+${2}
+    ${end}=    Evaluate    ${interlock_start}+${3}
     ${interlock_list}=    Get Slice From List    ${full_list}    start=${interlock_start}    end=${end}
     Should Contain X Times    ${interlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
-    ${end}=    Evaluate    ${target_start}+${4}
+    ${end}=    Evaluate    ${target_start}+${5}
     ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tai : 1    1
     ${tracking_start}=    Get Index From List    ${full_list}    === Event tracking received =${SPACE}
-    ${end}=    Evaluate    ${tracking_start}+${4}
+    ${end}=    Evaluate    ${tracking_start}+${5}
     ${tracking_list}=    Get Slice From List    ${full_list}    start=${tracking_start}    end=${end}
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracking : 1    1
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lost : 1    1
     Should Contain X Times    ${tracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}noNewCommand : 1    1
     ${inPosition_start}=    Get Index From List    ${full_list}    === Event inPosition received =${SPACE}
-    ${end}=    Evaluate    ${inPosition_start}+${2}
+    ${end}=    Evaluate    ${inPosition_start}+${3}
     ${inPosition_list}=    Get Slice From List    ${full_list}    start=${inPosition_start}    end=${end}
     Should Contain X Times    ${inPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${configuration_start}=    Get Index From List    ${full_list}    === Event configuration received =${SPACE}
-    ${end}=    Evaluate    ${configuration_start}+${14}
+    ${end}=    Evaluate    ${configuration_start}+${15}
     ${configuration_list}=    Get Slice From List    ${full_list}    start=${configuration_start}    end=${end}
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleLowerLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionAngleUpperLimit : 1    1
@@ -264,27 +276,32 @@ Read Logger
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxConfigurableVelocityLimit : 1    1
     Should Contain X Times    ${configuration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}drivesEnabled : 1    1
     ${commandableByDDS_start}=    Get Index From List    ${full_list}    === Event commandableByDDS received =${SPACE}
-    ${end}=    Evaluate    ${commandableByDDS_start}+${2}
+    ${end}=    Evaluate    ${commandableByDDS_start}+${3}
     ${commandableByDDS_list}=    Get Slice From List    ${full_list}    start=${commandableByDDS_start}    end=${end}
     Should Contain X Times    ${commandableByDDS_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     ${lowFrequencyVibration_start}=    Get Index From List    ${full_list}    === Event lowFrequencyVibration received =${SPACE}
-    ${end}=    Evaluate    ${lowFrequencyVibration_start}+${2}
+    ${end}=    Evaluate    ${lowFrequencyVibration_start}+${3}
     ${lowFrequencyVibration_list}=    Get Slice From List    ${full_list}    start=${lowFrequencyVibration_start}    end=${end}
     Should Contain X Times    ${lowFrequencyVibration_list}    ${SPACE}${SPACE}${SPACE}${SPACE}frequency : 1    1
+    ${motionLockState_start}=    Get Index From List    ${full_list}    === Event motionLockState received =${SPACE}
+    ${end}=    Evaluate    ${motionLockState_start}+${4}
+    ${motionLockState_list}=    Get Slice From List    ${full_list}    start=${motionLockState_start}    end=${end}
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lockState : 1    1
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${clockOffset_start}=    Get Index From List    ${full_list}    === Event clockOffset received =${SPACE}
-    ${end}=    Evaluate    ${clockOffset_start}+${2}
+    ${end}=    Evaluate    ${clockOffset_start}+${3}
     ${clockOffset_list}=    Get Slice From List    ${full_list}    start=${clockOffset_start}    end=${end}
     Should Contain X Times    ${clockOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offset : 1    1
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${end}=    Evaluate    ${logLevel_start}+${4}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${end}=    Evaluate    ${logMessage_start}+${11}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
@@ -296,7 +313,7 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${end}=    Evaluate    ${softwareVersions_start}+${7}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
@@ -304,21 +321,21 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Evaluate    ${errorCode_start}+${4}
+    ${end}=    Evaluate    ${errorCode_start}+${5}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : RO    1
     ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Evaluate    ${simulationMode_start}+${2}
+    ${end}=    Evaluate    ${simulationMode_start}+${3}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Evaluate    ${summaryState_start}+${2}
+    ${end}=    Evaluate    ${summaryState_start}+${3}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     ${configurationApplied_start}=    Get Index From List    ${full_list}    === Event configurationApplied received =${SPACE}
-    ${end}=    Evaluate    ${configurationApplied_start}+${6}
+    ${end}=    Evaluate    ${configurationApplied_start}+${7}
     ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${end}
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurations : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
@@ -326,7 +343,7 @@ Read Logger
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otherInfo : RO    1
     ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Event configurationsAvailable received =${SPACE}
-    ${end}=    Evaluate    ${configurationsAvailable_start}+${5}
+    ${end}=    Evaluate    ${configurationsAvailable_start}+${6}
     ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${end}
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overrides : RO    1
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1

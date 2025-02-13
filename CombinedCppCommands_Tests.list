@@ -1,0 +1,17 @@
+###  Test Suite list ###
+#  Change the title of the test results
+--name CombinedCppCommands
+--output CombinedCppCommands
+
+# List of test suites
+Combined/CPP/Commands/ATMCS_Commands.robot
+Combined/CPP/Commands/ATPtg_Commands.robot
+Combined/CPP/Commands/ESS_Commands.robot
+Combined/CPP/Commands/Guider_Commands.robot
+Combined/CPP/Commands/MTM1M3_Commands.robot
+Combined/CPP/Commands/MTM1M3TS_Commands.robot
+Combined/CPP/Commands/MTMount_Commands.robot
+Combined/CPP/Commands/MTPtg_Commands.robot
+Combined/CPP/Commands/MTRotator_Commands.robot
+Combined/CPP/Commands/MTVMS_Commands.robot
+Combined/CPP/Commands/Test_Commands.robot

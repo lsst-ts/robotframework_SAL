@@ -83,11 +83,15 @@ function getTopics() {
         topic_type="Event"
         lower_topic="logevent"
         keep_num=3
+    elif [[ $topic_type == "Commands" ]]; then
+        topic_type="Command"
+        lower_topic="command"
+        keep_num=3
     else
         keep_num=3
     fi
     if [[ -f $file ]]; then
-        topics=( $( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |awk '{$1=$1};1' |sed 's/,/, /g' ) )
+        topics=( $( xmlstarlet sel -t -m "//SAL${topic_type}Set/SAL${topic_type}/EFDB_Topic" -v . -n $file |cut -d"_" -f ${keep_num}- |tr '\r\n' ',' |sed 's/,/, /g' ) )
     else
         topics=()
     fi
@@ -100,11 +104,10 @@ function getTopics() {
             generics+=("${added_generics_csc_commands[@]}")
         fi
         if [[ $generics_field == *"configurable"* ]]; then
-            generics=("${added_generics_configurable_commands[@]}")
+            generics+=("${added_generics_configurable_commands[@]}")
         fi
         array=($(xmlstarlet sel -t -m "//SALSubsystemSet/SALSubsystem[Name='$subSystem']" -v AddedGenerics $TS_XML_DIR/python/lsst/ts/xml/data/sal_interfaces/SALSubsystems.xml |sed 's/,//g' ))
         for topic in ${array[@]}; do
-            echo "Topic: $topic"
             if [[ "$topic" == *"${lower_topic}_"* ]]; then
                 str=$(echo " $topic," |sed "s/${lower_topic}_//g")
                 generics+="$str"

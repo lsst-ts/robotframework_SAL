@@ -17,7 +17,7 @@ Installing RobotFramework and Libraries
 Robot Framework is a GitHub project.  Navigate to the following website for installation instructions.
 https://github.com/robotframework/robotframework
 
-It is assumed that all Repositories are stored locally in a trunk/ directory off the home folder, i.e. $HOME/trunk
+It is assumed that all Repositories are stored locally in a repos/ directory off the home folder, i.e. $HOME/repos
 
 Installing RobotFramework IDE
 -----------------------------
@@ -123,7 +123,7 @@ processes the individual results into one combined result set.  Below is a templ
 echo "=== Clearing previous test results. ==="
 rm -r $HOME/Reports/SAL_RegressionTests
 
-# Move to trunk/robotframework_SAL to run the tests.
+# Move to repos/robotframework_SAL to run the tests.
 echo "cd $ROBOTFRAMEWORK_SAL_DIR"
 cd $ROBOTFRAMEWORK_SAL_DIR
 

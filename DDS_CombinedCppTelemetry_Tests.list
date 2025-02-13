@@ -9,7 +9,9 @@ Combined/DDS_CPP/Telemetry/ATPtg_Telemetry.robot
 Combined/DDS_CPP/Telemetry/ESS_Telemetry.robot
 Combined/DDS_CPP/Telemetry/Guider_Telemetry.robot
 Combined/DDS_CPP/Telemetry/MTM1M3_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTM1M3TS_Telemetry.robot
 Combined/DDS_CPP/Telemetry/MTMount_Telemetry.robot
 Combined/DDS_CPP/Telemetry/MTPtg_Telemetry.robot
 Combined/DDS_CPP/Telemetry/MTRotator_Telemetry.robot
+Combined/DDS_CPP/Telemetry/MTVMS_Telemetry.robot
 Combined/DDS_CPP/Telemetry/Test_Telemetry.robot

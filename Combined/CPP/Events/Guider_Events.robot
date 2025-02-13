@@ -22,7 +22,7 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger
 
 Start Logger
-    [Tags]    functional
+    [Tags]    functional    logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Logger
     Log    ${output}
 
 Start Sender
-    [Tags]    functional
+    [Tags]    functional    sender    robot:continue-on-failure
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
@@ -128,15 +128,18 @@ Start Sender
     Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
-    [Tags]    functional
+    [Tags]    functional    logger    robot:continue-on-failure
     Switch Process    ${subSystem}_Logger
     ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${guidingStatus_start}=    Get Index From List    ${full_list}    === Event guidingStatus received =${SPACE}
-    ${end}=    Evaluate    ${guidingStatus_start}+${8}
+    ${end}=    Evaluate    ${guidingStatus_start}+${9}
     ${guidingStatus_list}=    Get Slice From List    ${full_list}    start=${guidingStatus_start}    end=${end}
     Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXLeft : 0    1
     Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
@@ -146,15 +149,15 @@ Read Logger
     Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
     Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${end}=    Evaluate    ${logLevel_start}+${4}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${end}=    Evaluate    ${logMessage_start}+${11}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
@@ -166,7 +169,7 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${end}=    Evaluate    ${softwareVersions_start}+${7}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
@@ -174,21 +177,21 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Evaluate    ${errorCode_start}+${4}
+    ${end}=    Evaluate    ${errorCode_start}+${5}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : RO    1
     ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Evaluate    ${simulationMode_start}+${2}
+    ${end}=    Evaluate    ${simulationMode_start}+${3}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Evaluate    ${summaryState_start}+${2}
+    ${end}=    Evaluate    ${summaryState_start}+${3}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     ${configurationApplied_start}=    Get Index From List    ${full_list}    === Event configurationApplied received =${SPACE}
-    ${end}=    Evaluate    ${configurationApplied_start}+${6}
+    ${end}=    Evaluate    ${configurationApplied_start}+${7}
     ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${end}
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurations : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
@@ -196,7 +199,7 @@ Read Logger
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otherInfo : RO    1
     ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Event configurationsAvailable received =${SPACE}
-    ${end}=    Evaluate    ${configurationsAvailable_start}+${5}
+    ${end}=    Evaluate    ${configurationsAvailable_start}+${6}
     ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${end}
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overrides : RO    1
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1

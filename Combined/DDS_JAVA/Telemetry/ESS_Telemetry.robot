@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    ESS_Telemetry communications tests.
 Force Tags    messaging    java    ess    
-Suite Setup    Log Many    ${Host}    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
+Suite Setup    Log Many    ${subSystem}    ${component}    ${MavenVersion}    ${timeout}
 Suite Teardown    Terminate All Processes
 Library    OperatingSystem
 Library    Collections
@@ -17,13 +17,13 @@ ${timeout}    1200s
 *** Test Cases ***
 Verify Component Publisher and Subscriber
     [Tags]    smoke
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
-    File Should Exist    ${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_dds-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Publisher_all.java
+    File Should Exist    ${SALWorkDir}/maven/${subSystem}_dds-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/src/test/java/${subSystem}Subscriber_all.java
 
 Start Subscriber
     [Tags]    functional
     Comment    Executing Combined Java Subscriber Program.
-    ${output}=    Start Process    mvn    -e    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
+    ${output}=    Start Process    mvn    -e    -Dtest\=${subSystem}Subscriber_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_dds-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt    stderr=${EXECDIR}${/}${subSystem}_stderrSubscriber.txt
     Should Be Equal    ${output.returncode}   ${NONE}
     Wait Until Keyword Succeeds    30    1s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdoutSubscriber.txt
     Comment    Wait for Subscriber program to be ready.
@@ -39,7 +39,7 @@ Start Subscriber
 Start Publisher
     [Tags]    functional
     Comment    Executing Combined Java Publisher Program.
-    ${output}=    Run Process    mvn    -e    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
+    ${output}=    Run Process    mvn    -e    -Dtest\=${subSystem}Publisher_all.java    test    cwd=${SALWorkDir}/maven/${subSystem}_dds-${XMLVersionBase}_${SALVersionBase}${MavenVersion}/    alias=${subSystem}_Publisher    stdout=${EXECDIR}${/}${subSystem}_stdoutPublisher.txt    stderr=${EXECDIR}${/}${subSystem}_stderrPublisher.txt
     Log Many    ${output.stdout}    ${output.stderr}
     Should Contain    ${output.stdout}    ===== ${subSystem} all publishers ready =====
     Should Contain    ${output.stdout}    [INFO] BUILD SUCCESS
@@ -198,6 +198,41 @@ Start Publisher
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain start of topic ===
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain] message sent 200
+    ${netbooter_start}=    Get Index From List    ${full_list}    === ESS_netbooter start of topic ===
+    ${netbooter_end}=    Get Index From List    ${full_list}    === ESS_netbooter end of topic ===
+    ${netbooter_list}=    Get Slice From List    ${full_list}    start=${netbooter_start}    end=${netbooter_end + 1}
+    Log Many    ${netbooter_list}
+    Should Contain    ${netbooter_list}    === ESS_netbooter start of topic ===
+    Should Contain    ${netbooter_list}    === ESS_netbooter end of topic ===
+    Should Contain    ${netbooter_list}    === [netbooter] message sent 200
+    ${raritan_start}=    Get Index From List    ${full_list}    === ESS_raritan start of topic ===
+    ${raritan_end}=    Get Index From List    ${full_list}    === ESS_raritan end of topic ===
+    ${raritan_list}=    Get Slice From List    ${full_list}    start=${raritan_start}    end=${raritan_end + 1}
+    Log Many    ${raritan_list}
+    Should Contain    ${raritan_list}    === ESS_raritan start of topic ===
+    Should Contain    ${raritan_list}    === ESS_raritan end of topic ===
+    Should Contain    ${raritan_list}    === [raritan] message sent 200
+    ${schneiderPm5xxx_start}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx start of topic ===
+    ${schneiderPm5xxx_end}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx end of topic ===
+    ${schneiderPm5xxx_list}=    Get Slice From List    ${full_list}    start=${schneiderPm5xxx_start}    end=${schneiderPm5xxx_end + 1}
+    Log Many    ${schneiderPm5xxx_list}
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx start of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx end of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx] message sent 200
+    ${xups_start}=    Get Index From List    ${full_list}    === ESS_xups start of topic ===
+    ${xups_end}=    Get Index From List    ${full_list}    === ESS_xups end of topic ===
+    ${xups_list}=    Get Slice From List    ${full_list}    start=${xups_start}    end=${xups_end + 1}
+    Log Many    ${xups_list}
+    Should Contain    ${xups_list}    === ESS_xups start of topic ===
+    Should Contain    ${xups_list}    === ESS_xups end of topic ===
+    Should Contain    ${xups_list}    === [xups] message sent 200
+    ${aircraftTrack_start}=    Get Index From List    ${full_list}    === ESS_aircraftTrack start of topic ===
+    ${aircraftTrack_end}=    Get Index From List    ${full_list}    === ESS_aircraftTrack end of topic ===
+    ${aircraftTrack_list}=    Get Slice From List    ${full_list}    start=${aircraftTrack_start}    end=${aircraftTrack_end + 1}
+    Log Many    ${aircraftTrack_list}
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack start of topic ===
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack end of topic ===
+    Should Contain    ${aircraftTrack_list}    === [aircraftTrack] message sent 200
 
 Read Subscriber
     [Tags]    functional
@@ -382,3 +417,43 @@ Read Subscriber
     Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === ESS_earthquakeVeryLongPeriodHighGain end of topic ===
     Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :10
     Run Keyword And Ignore Error    Should Contain    ${earthquakeVeryLongPeriodHighGain_list}    === [earthquakeVeryLongPeriodHighGain Subscriber] message received :200
+    ${netbooter_start}=    Get Index From List    ${full_list}    === ESS_netbooter start of topic ===
+    ${netbooter_end}=    Get Index From List    ${full_list}    === ESS_netbooter end of topic ===
+    ${netbooter_list}=    Get Slice From List    ${full_list}    start=${netbooter_start}    end=${netbooter_end + 1}
+    Log Many    ${netbooter_list}
+    Should Contain    ${netbooter_list}    === ESS_netbooter start of topic ===
+    Should Contain    ${netbooter_list}    === ESS_netbooter end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${netbooter_list}    === [netbooter Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${netbooter_list}    === [netbooter Subscriber] message received :200
+    ${raritan_start}=    Get Index From List    ${full_list}    === ESS_raritan start of topic ===
+    ${raritan_end}=    Get Index From List    ${full_list}    === ESS_raritan end of topic ===
+    ${raritan_list}=    Get Slice From List    ${full_list}    start=${raritan_start}    end=${raritan_end + 1}
+    Log Many    ${raritan_list}
+    Should Contain    ${raritan_list}    === ESS_raritan start of topic ===
+    Should Contain    ${raritan_list}    === ESS_raritan end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${raritan_list}    === [raritan Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${raritan_list}    === [raritan Subscriber] message received :200
+    ${schneiderPm5xxx_start}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx start of topic ===
+    ${schneiderPm5xxx_end}=    Get Index From List    ${full_list}    === ESS_schneiderPm5xxx end of topic ===
+    ${schneiderPm5xxx_list}=    Get Slice From List    ${full_list}    start=${schneiderPm5xxx_start}    end=${schneiderPm5xxx_end + 1}
+    Log Many    ${schneiderPm5xxx_list}
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx start of topic ===
+    Should Contain    ${schneiderPm5xxx_list}    === ESS_schneiderPm5xxx end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${schneiderPm5xxx_list}    === [schneiderPm5xxx Subscriber] message received :200
+    ${xups_start}=    Get Index From List    ${full_list}    === ESS_xups start of topic ===
+    ${xups_end}=    Get Index From List    ${full_list}    === ESS_xups end of topic ===
+    ${xups_list}=    Get Slice From List    ${full_list}    start=${xups_start}    end=${xups_end + 1}
+    Log Many    ${xups_list}
+    Should Contain    ${xups_list}    === ESS_xups start of topic ===
+    Should Contain    ${xups_list}    === ESS_xups end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${xups_list}    === [xups Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${xups_list}    === [xups Subscriber] message received :200
+    ${aircraftTrack_start}=    Get Index From List    ${full_list}    === ESS_aircraftTrack start of topic ===
+    ${aircraftTrack_end}=    Get Index From List    ${full_list}    === ESS_aircraftTrack end of topic ===
+    ${aircraftTrack_list}=    Get Slice From List    ${full_list}    start=${aircraftTrack_start}    end=${aircraftTrack_end + 1}
+    Log Many    ${aircraftTrack_list}
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack start of topic ===
+    Should Contain    ${aircraftTrack_list}    === ESS_aircraftTrack end of topic ===
+    Run Keyword And Ignore Error    Should Contain    ${aircraftTrack_list}    === [aircraftTrack Subscriber] message received :10
+    Run Keyword And Ignore Error    Should Contain    ${aircraftTrack_list}    === [aircraftTrack Subscriber] message received :200

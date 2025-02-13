@@ -22,7 +22,7 @@ Verify Component Sender and Logger
     File Should Exist    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger
 
 Start Logger
-    [Tags]    functional
+    [Tags]    functional    logger
     Comment    Start Logger.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_logger    alias=${subSystem}_Logger     stdout=${EXECDIR}${/}stdout.txt    stderr=${EXECDIR}${/}stderr.txt
     Log    ${output}
@@ -32,7 +32,7 @@ Start Logger
     Log    ${output}
 
 Start Sender
-    [Tags]    functional
+    [Tags]    functional    sender    robot:continue-on-failure
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
@@ -459,6 +459,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_warning writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event warning generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_motionLockState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_motionLockState test messages =======
+    Should Contain X Times    ${output.stdout}    === Event motionLockState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_motionLockState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event motionLockState generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -551,26 +560,29 @@ Start Sender
     Should Contain    ${output.stdout}    === Event configurationsAvailable generated =
 
 Read Logger
-    [Tags]    functional
+    [Tags]    functional    logger    robot:continue-on-failure
     Switch Process    ${subSystem}_Logger
     ${output}=    Wait For Process    handle=${subSystem}_Logger    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
+    Should Not Contain    ${output.stderr}    1/1 brokers are down
+    Should Not Contain    ${output.stderr}    Consume failed
+    Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
     ${availableSettings_start}=    Get Index From List    ${full_list}    === Event availableSettings received =${SPACE}
-    ${end}=    Evaluate    ${availableSettings_start}+${5}
+    ${end}=    Evaluate    ${availableSettings_start}+${6}
     ${availableSettings_list}=    Get Slice From List    ${full_list}    start=${availableSettings_start}    end=${end}
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}names : RO    1
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}descriptions : RO    1
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}createdDates : RO    1
     Should Contain X Times    ${availableSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}modifiedDates : RO    1
     ${controllerSettingsName_start}=    Get Index From List    ${full_list}    === Event controllerSettingsName received =${SPACE}
-    ${end}=    Evaluate    ${controllerSettingsName_start}+${2}
+    ${end}=    Evaluate    ${controllerSettingsName_start}+${3}
     ${controllerSettingsName_list}=    Get Slice From List    ${full_list}    start=${controllerSettingsName_start}    end=${end}
     Should Contain X Times    ${controllerSettingsName_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settingsName : RO    1
     ${azimuthControllerSettings_start}=    Get Index From List    ${full_list}    === Event azimuthControllerSettings received =${SPACE}
-    ${end}=    Evaluate    ${azimuthControllerSettings_start}+${20}
+    ${end}=    Evaluate    ${azimuthControllerSettings_start}+${21}
     ${azimuthControllerSettings_list}=    Get Slice From List    ${full_list}    start=${azimuthControllerSettings_start}    end=${end}
     Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPositionEnabled : 1    1
     Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPositionEnabled : 1    1
@@ -592,7 +604,7 @@ Read Logger
     Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
     Should Contain X Times    ${azimuthControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
     ${elevationControllerSettings_start}=    Get Index From List    ${full_list}    === Event elevationControllerSettings received =${SPACE}
-    ${end}=    Evaluate    ${elevationControllerSettings_start}+${22}
+    ${end}=    Evaluate    ${elevationControllerSettings_start}+${23}
     ${elevationControllerSettings_list}=    Get Slice From List    ${full_list}    start=${elevationControllerSettings_start}    end=${end}
     Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minCmdPositionEnabled : 1    1
     Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxCmdPositionEnabled : 1    1
@@ -616,7 +628,7 @@ Read Logger
     Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
     Should Contain X Times    ${elevationControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
     ${cameraCableWrapControllerSettings_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapControllerSettings received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapControllerSettings_start}+${16}
+    ${end}=    Evaluate    ${cameraCableWrapControllerSettings_start}+${17}
     ${cameraCableWrapControllerSettings_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapControllerSettings_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minL1LimitEnabled : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxL1LimitEnabled : 1    1
@@ -634,65 +646,65 @@ Read Logger
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingAcceleration : 1    1
     Should Contain X Times    ${cameraCableWrapControllerSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxTrackingJerk : 1    1
     ${azimuthHomed_start}=    Get Index From List    ${full_list}    === Event azimuthHomed received =${SPACE}
-    ${end}=    Evaluate    ${azimuthHomed_start}+${2}
+    ${end}=    Evaluate    ${azimuthHomed_start}+${3}
     ${azimuthHomed_list}=    Get Slice From List    ${full_list}    start=${azimuthHomed_start}    end=${end}
     Should Contain X Times    ${azimuthHomed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}homed : 1    1
     ${elevationHomed_start}=    Get Index From List    ${full_list}    === Event elevationHomed received =${SPACE}
-    ${end}=    Evaluate    ${elevationHomed_start}+${2}
+    ${end}=    Evaluate    ${elevationHomed_start}+${3}
     ${elevationHomed_list}=    Get Slice From List    ${full_list}    start=${elevationHomed_start}    end=${end}
     Should Contain X Times    ${elevationHomed_list}    ${SPACE}${SPACE}${SPACE}${SPACE}homed : 1    1
     ${azimuthSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthSystemState received =${SPACE}
-    ${end}=    Evaluate    ${azimuthSystemState_start}+${3}
+    ${end}=    Evaluate    ${azimuthSystemState_start}+${4}
     ${azimuthSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthSystemState_start}    end=${end}
     Should Contain X Times    ${azimuthSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${azimuthSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${elevationSystemState_start}=    Get Index From List    ${full_list}    === Event elevationSystemState received =${SPACE}
-    ${end}=    Evaluate    ${elevationSystemState_start}+${3}
+    ${end}=    Evaluate    ${elevationSystemState_start}+${4}
     ${elevationSystemState_list}=    Get Slice From List    ${full_list}    start=${elevationSystemState_start}    end=${end}
     Should Contain X Times    ${elevationSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${elevationSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${cameraCableWrapSystemState_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapSystemState received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapSystemState_start}+${3}
+    ${end}=    Evaluate    ${cameraCableWrapSystemState_start}+${4}
     ${cameraCableWrapSystemState_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapSystemState_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${cameraCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${balanceSystemState_start}=    Get Index From List    ${full_list}    === Event balanceSystemState received =${SPACE}
-    ${end}=    Evaluate    ${balanceSystemState_start}+${4}
+    ${end}=    Evaluate    ${balanceSystemState_start}+${5}
     ${balanceSystemState_list}=    Get Slice From List    ${full_list}    start=${balanceSystemState_start}    end=${end}
     Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${balanceSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${mirrorCoversSystemState_start}=    Get Index From List    ${full_list}    === Event mirrorCoversSystemState received =${SPACE}
-    ${end}=    Evaluate    ${mirrorCoversSystemState_start}+${4}
+    ${end}=    Evaluate    ${mirrorCoversSystemState_start}+${5}
     ${mirrorCoversSystemState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoversSystemState_start}    end=${end}
     Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${mirrorCoversSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${mirrorCoverLocksSystemState_start}=    Get Index From List    ${full_list}    === Event mirrorCoverLocksSystemState received =${SPACE}
-    ${end}=    Evaluate    ${mirrorCoverLocksSystemState_start}+${4}
+    ${end}=    Evaluate    ${mirrorCoverLocksSystemState_start}+${5}
     ${mirrorCoverLocksSystemState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocksSystemState_start}    end=${end}
     Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${mirrorCoverLocksSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${azimuthCableWrapSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthCableWrapSystemState received =${SPACE}
-    ${end}=    Evaluate    ${azimuthCableWrapSystemState_start}+${3}
+    ${end}=    Evaluate    ${azimuthCableWrapSystemState_start}+${4}
     ${azimuthCableWrapSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthCableWrapSystemState_start}    end=${end}
     Should Contain X Times    ${azimuthCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${azimuthCableWrapSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${lockingPinsSystemState_start}=    Get Index From List    ${full_list}    === Event lockingPinsSystemState received =${SPACE}
-    ${end}=    Evaluate    ${lockingPinsSystemState_start}+${4}
+    ${end}=    Evaluate    ${lockingPinsSystemState_start}+${5}
     ${lockingPinsSystemState_list}=    Get Slice From List    ${full_list}    start=${lockingPinsSystemState_start}    end=${end}
     Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${lockingPinsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${deployablePlatformsSystemState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformsSystemState received =${SPACE}
-    ${end}=    Evaluate    ${deployablePlatformsSystemState_start}+${4}
+    ${end}=    Evaluate    ${deployablePlatformsSystemState_start}+${5}
     ${deployablePlatformsSystemState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsSystemState_start}    end=${end}
     Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${deployablePlatformsSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motionControllerState : 0    1
     ${oilSupplySystemState_start}=    Get Index From List    ${full_list}    === Event oilSupplySystemState received =${SPACE}
-    ${end}=    Evaluate    ${oilSupplySystemState_start}+${7}
+    ${end}=    Evaluate    ${oilSupplySystemState_start}+${8}
     ${oilSupplySystemState_list}=    Get Slice From List    ${full_list}    start=${oilSupplySystemState_start}    end=${end}
     Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coolingPowerState : 1    1
@@ -701,123 +713,123 @@ Read Logger
     Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${oilSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
     ${azimuthDrivesThermalSystemState_start}=    Get Index From List    ${full_list}    === Event azimuthDrivesThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${azimuthDrivesThermalSystemState_start}+${5}
+    ${end}=    Evaluate    ${azimuthDrivesThermalSystemState_start}+${6}
     ${azimuthDrivesThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${azimuthDrivesThermalSystemState_start}    end=${end}
     Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${azimuthDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
     ${elevationDrivesThermalSystemState_start}=    Get Index From List    ${full_list}    === Event elevationDrivesThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${elevationDrivesThermalSystemState_start}+${5}
+    ${end}=    Evaluate    ${elevationDrivesThermalSystemState_start}+${6}
     ${elevationDrivesThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${elevationDrivesThermalSystemState_start}    end=${end}
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${elevationDrivesThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
     ${cabinet0101ThermalSystemState_start}=    Get Index From List    ${full_list}    === Event cabinet0101ThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${cabinet0101ThermalSystemState_start}+${4}
+    ${end}=    Evaluate    ${cabinet0101ThermalSystemState_start}+${5}
     ${cabinet0101ThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${cabinet0101ThermalSystemState_start}    end=${end}
     Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
     Should Contain X Times    ${cabinet0101ThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
     ${auxiliaryCabinetsThermalSystemState_start}=    Get Index From List    ${full_list}    === Event auxiliaryCabinetsThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${auxiliaryCabinetsThermalSystemState_start}+${5}
+    ${end}=    Evaluate    ${auxiliaryCabinetsThermalSystemState_start}+${6}
     ${auxiliaryCabinetsThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${auxiliaryCabinetsThermalSystemState_start}    end=${end}
     Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementPowerState : 0    1
     Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 0    1
     Should Contain X Times    ${auxiliaryCabinetsThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 0    1
     ${mainCabinetThermalSystemState_start}=    Get Index From List    ${full_list}    === Event mainCabinetThermalSystemState received =${SPACE}
-    ${end}=    Evaluate    ${mainCabinetThermalSystemState_start}+${4}
+    ${end}=    Evaluate    ${mainCabinetThermalSystemState_start}+${5}
     ${mainCabinetThermalSystemState_list}=    Get Slice From List    ${full_list}    start=${mainCabinetThermalSystemState_start}    end=${end}
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
     Should Contain X Times    ${mainCabinetThermalSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
     ${mainAxesPowerSupplySystemState_start}=    Get Index From List    ${full_list}    === Event mainAxesPowerSupplySystemState received =${SPACE}
-    ${end}=    Evaluate    ${mainAxesPowerSupplySystemState_start}+${2}
+    ${end}=    Evaluate    ${mainAxesPowerSupplySystemState_start}+${3}
     ${mainAxesPowerSupplySystemState_list}=    Get Slice From List    ${full_list}    start=${mainAxesPowerSupplySystemState_start}    end=${end}
     Should Contain X Times    ${mainAxesPowerSupplySystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     ${topEndChillerSystemState_start}=    Get Index From List    ${full_list}    === Event topEndChillerSystemState received =${SPACE}
-    ${end}=    Evaluate    ${topEndChillerSystemState_start}+${4}
+    ${end}=    Evaluate    ${topEndChillerSystemState_start}+${5}
     ${topEndChillerSystemState_list}=    Get Slice From List    ${full_list}    start=${topEndChillerSystemState_start}    end=${end}
     Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerState : 1    1
     Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}trackAmbient : 1    1
     Should Contain X Times    ${topEndChillerSystemState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setTemperature : 1    1
     ${elevationInPosition_start}=    Get Index From List    ${full_list}    === Event elevationInPosition received =${SPACE}
-    ${end}=    Evaluate    ${elevationInPosition_start}+${2}
+    ${end}=    Evaluate    ${elevationInPosition_start}+${3}
     ${elevationInPosition_list}=    Get Slice From List    ${full_list}    start=${elevationInPosition_start}    end=${end}
     Should Contain X Times    ${elevationInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${azimuthInPosition_start}=    Get Index From List    ${full_list}    === Event azimuthInPosition received =${SPACE}
-    ${end}=    Evaluate    ${azimuthInPosition_start}+${2}
+    ${end}=    Evaluate    ${azimuthInPosition_start}+${3}
     ${azimuthInPosition_list}=    Get Slice From List    ${full_list}    start=${azimuthInPosition_start}    end=${end}
     Should Contain X Times    ${azimuthInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${cameraCableWrapInPosition_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapInPosition received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapInPosition_start}+${2}
+    ${end}=    Evaluate    ${cameraCableWrapInPosition_start}+${3}
     ${cameraCableWrapInPosition_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapInPosition_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapInPosition_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
     ${elevationMotionState_start}=    Get Index From List    ${full_list}    === Event elevationMotionState received =${SPACE}
-    ${end}=    Evaluate    ${elevationMotionState_start}+${2}
+    ${end}=    Evaluate    ${elevationMotionState_start}+${3}
     ${elevationMotionState_list}=    Get Slice From List    ${full_list}    start=${elevationMotionState_start}    end=${end}
     Should Contain X Times    ${elevationMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     ${azimuthMotionState_start}=    Get Index From List    ${full_list}    === Event azimuthMotionState received =${SPACE}
-    ${end}=    Evaluate    ${azimuthMotionState_start}+${2}
+    ${end}=    Evaluate    ${azimuthMotionState_start}+${3}
     ${azimuthMotionState_list}=    Get Slice From List    ${full_list}    start=${azimuthMotionState_start}    end=${end}
     Should Contain X Times    ${azimuthMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     ${cameraCableWrapMotionState_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapMotionState received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapMotionState_start}+${2}
+    ${end}=    Evaluate    ${cameraCableWrapMotionState_start}+${3}
     ${cameraCableWrapMotionState_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapMotionState_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     ${elevationLimits_start}=    Get Index From List    ${full_list}    === Event elevationLimits received =${SPACE}
-    ${end}=    Evaluate    ${elevationLimits_start}+${2}
+    ${end}=    Evaluate    ${elevationLimits_start}+${3}
     ${elevationLimits_list}=    Get Slice From List    ${full_list}    start=${elevationLimits_start}    end=${end}
     Should Contain X Times    ${elevationLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limits : 1    1
     ${azimuthLimits_start}=    Get Index From List    ${full_list}    === Event azimuthLimits received =${SPACE}
-    ${end}=    Evaluate    ${azimuthLimits_start}+${2}
+    ${end}=    Evaluate    ${azimuthLimits_start}+${3}
     ${azimuthLimits_list}=    Get Slice From List    ${full_list}    start=${azimuthLimits_start}    end=${end}
     Should Contain X Times    ${azimuthLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limits : 1    1
     ${cameraCableWrapLimits_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapLimits received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapLimits_start}+${2}
+    ${end}=    Evaluate    ${cameraCableWrapLimits_start}+${3}
     ${cameraCableWrapLimits_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapLimits_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapLimits_list}    ${SPACE}${SPACE}${SPACE}${SPACE}limits : 1    1
     ${azimuthToppleBlock_start}=    Get Index From List    ${full_list}    === Event azimuthToppleBlock received =${SPACE}
-    ${end}=    Evaluate    ${azimuthToppleBlock_start}+${3}
+    ${end}=    Evaluate    ${azimuthToppleBlock_start}+${4}
     ${azimuthToppleBlock_list}=    Get Slice From List    ${full_list}    start=${azimuthToppleBlock_start}    end=${end}
     Should Contain X Times    ${azimuthToppleBlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reverse : 1    1
     Should Contain X Times    ${azimuthToppleBlock_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forward : 1    1
     ${cameraCableWrapFollowing_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapFollowing received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapFollowing_start}+${2}
+    ${end}=    Evaluate    ${cameraCableWrapFollowing_start}+${3}
     ${cameraCableWrapFollowing_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapFollowing_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapFollowing_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabled : 1    1
     ${cameraCableWrapTarget_start}=    Get Index From List    ${full_list}    === Event cameraCableWrapTarget received =${SPACE}
-    ${end}=    Evaluate    ${cameraCableWrapTarget_start}+${4}
+    ${end}=    Evaluate    ${cameraCableWrapTarget_start}+${5}
     ${cameraCableWrapTarget_list}=    Get Slice From List    ${full_list}    start=${cameraCableWrapTarget_start}    end=${end}
     Should Contain X Times    ${cameraCableWrapTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}position : 1    1
     Should Contain X Times    ${cameraCableWrapTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocity : 1    1
     Should Contain X Times    ${cameraCableWrapTarget_list}    ${SPACE}${SPACE}${SPACE}${SPACE}taiTime : 1    1
     ${commander_start}=    Get Index From List    ${full_list}    === Event commander received =${SPACE}
-    ${end}=    Evaluate    ${commander_start}+${2}
+    ${end}=    Evaluate    ${commander_start}+${3}
     ${commander_list}=    Get Slice From List    ${full_list}    start=${commander_start}    end=${end}
     Should Contain X Times    ${commander_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commander : 1    1
     ${connected_start}=    Get Index From List    ${full_list}    === Event connected received =${SPACE}
-    ${end}=    Evaluate    ${connected_start}+${2}
+    ${end}=    Evaluate    ${connected_start}+${3}
     ${connected_list}=    Get Slice From List    ${full_list}    start=${connected_start}    end=${end}
     Should Contain X Times    ${connected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
     ${telemetryConnected_start}=    Get Index From List    ${full_list}    === Event telemetryConnected received =${SPACE}
-    ${end}=    Evaluate    ${telemetryConnected_start}+${2}
+    ${end}=    Evaluate    ${telemetryConnected_start}+${3}
     ${telemetryConnected_list}=    Get Slice From List    ${full_list}    start=${telemetryConnected_start}    end=${end}
     Should Contain X Times    ${telemetryConnected_list}    ${SPACE}${SPACE}${SPACE}${SPACE}connected : 1    1
     ${deployablePlatformsMotionState_start}=    Get Index From List    ${full_list}    === Event deployablePlatformsMotionState received =${SPACE}
-    ${end}=    Evaluate    ${deployablePlatformsMotionState_start}+${3}
+    ${end}=    Evaluate    ${deployablePlatformsMotionState_start}+${4}
     ${deployablePlatformsMotionState_list}=    Get Slice From List    ${full_list}    start=${deployablePlatformsMotionState_start}    end=${end}
     Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${deployablePlatformsMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
     ${elevationLockingPinMotionState_start}=    Get Index From List    ${full_list}    === Event elevationLockingPinMotionState received =${SPACE}
-    ${end}=    Evaluate    ${elevationLockingPinMotionState_start}+${3}
+    ${end}=    Evaluate    ${elevationLockingPinMotionState_start}+${4}
     ${elevationLockingPinMotionState_list}=    Get Slice From List    ${full_list}    start=${elevationLockingPinMotionState_start}    end=${end}
     Should Contain X Times    ${elevationLockingPinMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${elevationLockingPinMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
     ${error_start}=    Get Index From List    ${full_list}    === Event error received =${SPACE}
-    ${end}=    Evaluate    ${error_start}+${6}
+    ${end}=    Evaluate    ${error_start}+${7}
     ${error_list}=    Get Slice From List    ${full_list}    start=${error_start}    end=${end}
     Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}latched : 1    1
     Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
@@ -825,17 +837,17 @@ Read Logger
     Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}text : RO    1
     Should Contain X Times    ${error_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : 1    1
     ${mirrorCoverLocksMotionState_start}=    Get Index From List    ${full_list}    === Event mirrorCoverLocksMotionState received =${SPACE}
-    ${end}=    Evaluate    ${mirrorCoverLocksMotionState_start}+${3}
+    ${end}=    Evaluate    ${mirrorCoverLocksMotionState_start}+${4}
     ${mirrorCoverLocksMotionState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoverLocksMotionState_start}    end=${end}
     Should Contain X Times    ${mirrorCoverLocksMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${mirrorCoverLocksMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
     ${mirrorCoversMotionState_start}=    Get Index From List    ${full_list}    === Event mirrorCoversMotionState received =${SPACE}
-    ${end}=    Evaluate    ${mirrorCoversMotionState_start}+${3}
+    ${end}=    Evaluate    ${mirrorCoversMotionState_start}+${4}
     ${mirrorCoversMotionState_list}=    Get Slice From List    ${full_list}    start=${mirrorCoversMotionState_start}    end=${end}
     Should Contain X Times    ${mirrorCoversMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}state : 1    1
     Should Contain X Times    ${mirrorCoversMotionState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elementsState : 0    1
     ${safetyInterlocks_start}=    Get Index From List    ${full_list}    === Event safetyInterlocks received =${SPACE}
-    ${end}=    Evaluate    ${safetyInterlocks_start}+${11}
+    ${end}=    Evaluate    ${safetyInterlocks_start}+${12}
     ${safetyInterlocks_list}=    Get Slice From List    ${full_list}    start=${safetyInterlocks_start}    end=${end}
     Should Contain X Times    ${safetyInterlocks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}causes : 1    1
     Should Contain X Times    ${safetyInterlocks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subcausesEmergencyStop : 1    1
@@ -848,7 +860,7 @@ Read Logger
     Should Contain X Times    ${safetyInterlocks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subcausesBrakesFailed : 1    1
     Should Contain X Times    ${safetyInterlocks_list}    ${SPACE}${SPACE}${SPACE}${SPACE}effects : 1    1
     ${target_start}=    Get Index From List    ${full_list}    === Event target received =${SPACE}
-    ${end}=    Evaluate    ${target_start}+${9}
+    ${end}=    Evaluate    ${target_start}+${10}
     ${target_list}=    Get Slice From List    ${full_list}    start=${target_start}    end=${end}
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevation : 1    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}elevationVelocity : 1    1
@@ -859,26 +871,31 @@ Read Logger
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tracksys : RO    1
     Should Contain X Times    ${target_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radesys : RO    1
     ${warning_start}=    Get Index From List    ${full_list}    === Event warning received =${SPACE}
-    ${end}=    Evaluate    ${warning_start}+${5}
+    ${end}=    Evaluate    ${warning_start}+${6}
     ${warning_list}=    Get Slice From List    ${full_list}    start=${warning_start}    end=${end}
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}active : 1    1
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}code : 1    1
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}text : RO    1
     Should Contain X Times    ${warning_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : 1    1
+    ${motionLockState_start}=    Get Index From List    ${full_list}    === Event motionLockState received =${SPACE}
+    ${end}=    Evaluate    ${motionLockState_start}+${4}
+    ${motionLockState_list}=    Get Slice From List    ${full_list}    start=${motionLockState_start}    end=${end}
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lockState : 1    1
+    Should Contain X Times    ${motionLockState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}identity : RO    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
-    ${end}=    Evaluate    ${heartbeat_start}+${1}
+    ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
     ${clockOffset_start}=    Get Index From List    ${full_list}    === Event clockOffset received =${SPACE}
-    ${end}=    Evaluate    ${clockOffset_start}+${2}
+    ${end}=    Evaluate    ${clockOffset_start}+${3}
     ${clockOffset_list}=    Get Slice From List    ${full_list}    start=${clockOffset_start}    end=${end}
     Should Contain X Times    ${clockOffset_list}    ${SPACE}${SPACE}${SPACE}${SPACE}offset : 1    1
     ${logLevel_start}=    Get Index From List    ${full_list}    === Event logLevel received =${SPACE}
-    ${end}=    Evaluate    ${logLevel_start}+${3}
+    ${end}=    Evaluate    ${logLevel_start}+${4}
     ${logLevel_list}=    Get Slice From List    ${full_list}    start=${logLevel_start}    end=${end}
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
     Should Contain X Times    ${logLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystem : RO    1
     ${logMessage_start}=    Get Index From List    ${full_list}    === Event logMessage received =${SPACE}
-    ${end}=    Evaluate    ${logMessage_start}+${10}
+    ${end}=    Evaluate    ${logMessage_start}+${11}
     ${logMessage_list}=    Get Slice From List    ${full_list}    start=${logMessage_start}    end=${end}
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}name : RO    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}level : 1    1
@@ -890,7 +907,7 @@ Read Logger
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}process : 1    1
     Should Contain X Times    ${logMessage_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     ${softwareVersions_start}=    Get Index From List    ${full_list}    === Event softwareVersions received =${SPACE}
-    ${end}=    Evaluate    ${softwareVersions_start}+${6}
+    ${end}=    Evaluate    ${softwareVersions_start}+${7}
     ${softwareVersions_list}=    Get Slice From List    ${full_list}    start=${softwareVersions_start}    end=${end}
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}salVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xmlVersion : RO    1
@@ -898,21 +915,21 @@ Read Logger
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cscVersion : RO    1
     Should Contain X Times    ${softwareVersions_list}    ${SPACE}${SPACE}${SPACE}${SPACE}subsystemVersions : RO    1
     ${errorCode_start}=    Get Index From List    ${full_list}    === Event errorCode received =${SPACE}
-    ${end}=    Evaluate    ${errorCode_start}+${4}
+    ${end}=    Evaluate    ${errorCode_start}+${5}
     ${errorCode_list}=    Get Slice From List    ${full_list}    start=${errorCode_start}    end=${end}
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorReport : RO    1
     Should Contain X Times    ${errorCode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}traceback : RO    1
     ${simulationMode_start}=    Get Index From List    ${full_list}    === Event simulationMode received =${SPACE}
-    ${end}=    Evaluate    ${simulationMode_start}+${2}
+    ${end}=    Evaluate    ${simulationMode_start}+${3}
     ${simulationMode_list}=    Get Slice From List    ${full_list}    start=${simulationMode_start}    end=${end}
     Should Contain X Times    ${simulationMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mode : 1    1
     ${summaryState_start}=    Get Index From List    ${full_list}    === Event summaryState received =${SPACE}
-    ${end}=    Evaluate    ${summaryState_start}+${2}
+    ${end}=    Evaluate    ${summaryState_start}+${3}
     ${summaryState_list}=    Get Slice From List    ${full_list}    start=${summaryState_start}    end=${end}
     Should Contain X Times    ${summaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     ${configurationApplied_start}=    Get Index From List    ${full_list}    === Event configurationApplied received =${SPACE}
-    ${end}=    Evaluate    ${configurationApplied_start}+${6}
+    ${end}=    Evaluate    ${configurationApplied_start}+${7}
     ${configurationApplied_list}=    Get Slice From List    ${full_list}    start=${configurationApplied_start}    end=${end}
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurations : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1
@@ -920,7 +937,7 @@ Read Logger
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}schemaVersion : RO    1
     Should Contain X Times    ${configurationApplied_list}    ${SPACE}${SPACE}${SPACE}${SPACE}otherInfo : RO    1
     ${configurationsAvailable_start}=    Get Index From List    ${full_list}    === Event configurationsAvailable received =${SPACE}
-    ${end}=    Evaluate    ${configurationsAvailable_start}+${5}
+    ${end}=    Evaluate    ${configurationsAvailable_start}+${6}
     ${configurationsAvailable_list}=    Get Slice From List    ${full_list}    start=${configurationsAvailable_start}    end=${end}
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overrides : RO    1
     Should Contain X Times    ${configurationsAvailable_list}    ${SPACE}${SPACE}${SPACE}${SPACE}version : RO    1

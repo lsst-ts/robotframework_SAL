@@ -9,8 +9,9 @@ Combined/CPP/Events/ATPtg_Events.robot
 Combined/CPP/Events/ESS_Events.robot
 Combined/CPP/Events/Guider_Events.robot
 Combined/CPP/Events/MTM1M3_Events.robot
+Combined/CPP/Events/MTM1M3TS_Events.robot
 Combined/CPP/Events/MTMount_Events.robot
 Combined/CPP/Events/MTPtg_Events.robot
 Combined/CPP/Events/MTRotator_Events.robot
-Combined/CPP/Events/Script_Events.robot
+Combined/CPP/Events/MTVMS_Events.robot
 Combined/CPP/Events/Test_Events.robot
