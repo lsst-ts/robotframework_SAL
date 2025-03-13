@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    commander    robot:continue-on-failure
+    [Tags]    functional    commander    DM-49462    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -186,7 +186,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    controller    robot:continue-on-failure
+    [Tags]    functional    controller    DM-49462    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}

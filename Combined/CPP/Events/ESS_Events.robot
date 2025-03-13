@@ -63,6 +63,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_precipitation writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event precipitation generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_ringssMeasurement"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_ringssMeasurement test messages =======
+    Should Contain X Times    ${output.stdout}    === Event ringssMeasurement iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_ringssMeasurement writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event ringssMeasurement generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_sensorStatus"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -184,6 +193,22 @@ Read Logger
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raining : 1    1
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}snowing : 1    1
     Should Contain X Times    ${precipitation_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    1
+    ${ringssMeasurement_start}=    Get Index From List    ${full_list}    === Event ringssMeasurement received =${SPACE}
+    ${end}=    Evaluate    ${ringssMeasurement_start}+${15}
+    ${ringssMeasurement_list}=    Get Slice From List    ${full_list}    start=${ringssMeasurement_start}    end=${end}
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hrNum : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zenithDistance : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fwhmScintillation : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fwhmSector : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fwhmFree : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wind : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tau0 : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}theta0 : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalVariance : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eRMS : 1    1
+    Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turbulenceProfiles : 0    1
     ${sensorStatus_start}=    Get Index From List    ${full_list}    === Event sensorStatus received =${SPACE}
     ${end}=    Evaluate    ${sensorStatus_start}+${5}
     ${sensorStatus_list}=    Get Slice From List    ${full_list}    start=${sensorStatus_start}    end=${end}
