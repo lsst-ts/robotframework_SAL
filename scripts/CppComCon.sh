@@ -120,8 +120,11 @@ function startCommander() {
     local file=$1
     local topicIndex=$2
     local testSuite=$3
+    if [ "$subSystem" == "ATMCS" ] || [ "$subSystem" == "ATPtg" ] || [ "$subSystem" == "Guider" ] || [ "$subSystem" == "MTM1M3" ] || [ "$subSystem" == "MTM1M3TS" ] || [ "$subSystem" == "MTMount" ] || [ "$subSystem" == "MTPtg" ] || [ "$subSystem" == "MTRotator" ] || [ "$subSystem" == "MTVMS" ] || [ "$subSystem" == "Test" ]; then
+        jira="DM-49462"
+    fi
     echo "Start Commander" >> $testSuite
-    echo "    [Tags]    functional    commander    robot:continue-on-failure" >> $testSuite
+    echo "    [Tags]    functional    commander    ${jira}    robot:continue-on-failure" >> $testSuite
     echo "    Comment    Start Commander." >> $testSuite
     if [ $topic ]; then
         echo "    \${output}=    Run Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_\${component}_commander     $( printf '%b    ' ${argumentsArray[@]} )" >> $testSuite
@@ -166,8 +169,11 @@ function readController() {
     local testSuite=$3
     #local device=$4
     #local property=$5
+    if [ "$subSystem" == "MTM1M3" ] || [ "$subSystem" == "MTM1M3TS" ] || [ "$subSystem" == "MTVMS" ]; then
+        jira="DM-49462"
+    fi
     echo "Read Controller" >> $testSuite
-    echo "    [Tags]    functional    controller    robot:continue-on-failure" >> $testSuite
+    echo "    [Tags]    functional    controller    ${jira}    robot:continue-on-failure" >> $testSuite
     echo "    Switch Process    \${subSystem}_Controller" >> $testSuite
     echo "    \${output}=    Wait For Process    handle=\${subSystem}_Controller    timeout=\${timeout}    on_timeout=terminate" >> $testSuite
     echo "    Log Many    \${output.stdout}    \${output.stderr}" >> $testSuite

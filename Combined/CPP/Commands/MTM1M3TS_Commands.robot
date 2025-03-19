@@ -32,7 +32,7 @@ Start Controller
     Log    ${output}
 
 Start Commander
-    [Tags]    functional    commander    robot:continue-on-failure
+    [Tags]    functional    commander    DM-49462    robot:continue-on-failure
     Comment    Start Commander.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_commander
     Log Many    ${output.stdout}    ${output.stderr}
@@ -61,7 +61,8 @@ Start Commander
     ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+3}
     Log    ${applySetpoint_list}
     Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
     Should Contain    ${applySetpoint_list}    === issueCommand_applySetpoint writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${applySetpoint_list}[-2]    Command roundtrip was
@@ -257,7 +258,7 @@ Start Commander
     Should Contain    ${start_list}    === ${subSystem}_start end of topic ===
 
 Read Controller
-    [Tags]    functional    controller    robot:continue-on-failure
+    [Tags]    functional    controller    DM-49462    robot:continue-on-failure
     Switch Process    ${subSystem}_Controller
     ${output}=    Wait For Process    handle=${subSystem}_Controller    timeout=${timeout}    on_timeout=terminate
     Log Many    ${output.stdout}    ${output.stderr}
@@ -286,7 +287,8 @@ Read Controller
     ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+1}
     Log    ${applySetpoint_list}
     Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
     Should Contain X Times    ${applySetpoint_list}    === ackCommand_applySetpoint acknowledging a command with :    2
     Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
