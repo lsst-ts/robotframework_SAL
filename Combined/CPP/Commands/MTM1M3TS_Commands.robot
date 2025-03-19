@@ -61,7 +61,8 @@ Start Commander
     ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+3}
     Log    ${applySetpoint_list}
     Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
     Should Contain    ${applySetpoint_list}    === issueCommand_applySetpoint writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${applySetpoint_list}[-2]    Command roundtrip was
@@ -286,7 +287,8 @@ Read Controller
     ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+1}
     Log    ${applySetpoint_list}
     Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
     Should Contain X Times    ${applySetpoint_list}    === ackCommand_applySetpoint acknowledging a command with :    2
     Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1

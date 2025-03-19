@@ -277,6 +277,24 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.aircraftTrack writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_aircraftTrack end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "agcGenset150"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_agcGenset150 test messages =======
+    Should Contain    ${output.stdout}    === ESS_agcGenset150 start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.agcGenset150 writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_agcGenset150 end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "particleMeasurements"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_particleMeasurements test messages =======
+    Should Contain    ${output.stdout}    === ESS_particleMeasurements start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.particleMeasurements writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_particleMeasurements end of topic ===
 
 Read Subscriber
     [Tags]    functional    subscriber    robot:continue-on-failure
@@ -933,3 +951,197 @@ Read Subscriber
     Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}longitude : 1    10
     Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityX : 1    10
     Should Contain X Times    ${aircraftTrack_list}    ${SPACE}${SPACE}${SPACE}${SPACE}velocityY : 1    10
+    ${agcGenset150_start}=    Get Index From List    ${full_list}    === ESS_agcGenset150 start of topic ===
+    ${agcGenset150_end}=    Get Index From List    ${full_list}    === ESS_agcGenset150 end of topic ===
+    ${agcGenset150_list}=    Get Slice From List    ${full_list}    start=${agcGenset150_start}    end=${agcGenset150_end}
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gbPositionOn : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mbPositionOn : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}running : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageFrequencyOk : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainFailure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blockMode : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}manualMode : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}semiAutoMode : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoMode : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testMode : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}gbPositionOff : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mbPositionOff : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}island : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}automaticMainsFailure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}peakShaving : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fixedPower : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPowerExport : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadTakeover : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerManagement : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyAlarmPMS : 0    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyAlarmPMS : 1    9
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyAlarmMains : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryTest : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readyAutoStartDG : 0    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readyAutoStartDG : 1    9
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainSyncInhibit : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyMainsSyncInhibit : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}applicationVersion : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL1L2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL2L3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL3L1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL1N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL2N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltageL3N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorFrequencyL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorFrequencyL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorFrequencyL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltagePhaseAngleL1L2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltagePhaseAngleL2L3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorVoltagePhaseAngleL3L1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorCurrentL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorCurrentL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorCurrentL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorPowerL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorPowerL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorPowerL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorPower : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorReactivePowerL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorReactivePowerL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorReactivePowerL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorReactivePower : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorApparentPowerL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorApparentPowerL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorApparentPowerL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorApparentPower : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorExportReactiveEnergyCounterTotal : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorExportActiveEnergyCounterDay : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorExportActiveEnergyCounterWeek : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorExportActiveEnergyCounterMonth : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorExportActiveEnergyCounterTotal : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}generatorPF : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL1L2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL2L3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL3L1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL1N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL2N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL3N : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltagePhaseAngleL1L2 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltagePhaseAngleL2L3 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltagePhaseAngleL3L1 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uBBL1uGENL1PhaseAngle : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uBBL2uGENL2PhaseAngle : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}uBBL3uGENL3PhaseAngle : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}absoluteRunningHours : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}relativeRunningHours : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberAlarms : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberUnacknowledgedAlarms : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberActiveAcknowledgedAlarms : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberGBOperations : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberMBOperations : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startAttempts : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dcSupplyTerm12 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serviceTimer1RunningHours : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serviceTimer1RunningDays : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serviceTimer2RunningHours : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serviceTimer2RunningDays : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cosPhi : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}cosPhiType : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rpm : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}runningHoursLoadProfile : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput20 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput21 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput22 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput23 : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPower : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineSpeed : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineCoolantTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineOilPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberActualFaults : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineOilTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuelTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}intakeManifold1Pressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airInletTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coolantLevel : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuelRate : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}chargeAirPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}intakeManifold1Temperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}driversDemandEnginePercentTorque : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualEnginePercentTorque : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}acceleratorPedalPosition : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}percentLoadCurrentSpeed : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airInletPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exhaustGasTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineHours : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineOilFilterDifferentialPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}keyswitchBatteryPotential : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuelDeliveryPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineOilLevel : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}crankcasePressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coolantPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}waterInFuel : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blowbyFlow : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuelRailPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timingRailPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}aftercoolerWaterInletTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turboOilTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particulateTrapInletPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airFilterDifferentialPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}coolantFilterDifferentialPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atmosphericPressure : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientAirTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exhaustTemperatureRight : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}exhaustTemperatureLeft : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 0    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 1    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 2    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 3    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 4    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 5    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 6    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 7    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 8    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}windingTemperature : 9    1
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}auxiliaryAnalogInfo : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineTurbocharger1CompressorOutletTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineIntercoolerTemperature : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineTripFuel : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineTotalFuel : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tripFuelGasseous : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalFuelGasseous : 1    10
+    ${particleMeasurements_start}=    Get Index From List    ${full_list}    === ESS_particleMeasurements start of topic ===
+    ${particleMeasurements_end}=    Get Index From List    ${full_list}    === ESS_particleMeasurements end of topic ===
+    ${particleMeasurements_list}=    Get Slice From List    ${full_list}    start=${particleMeasurements_start}    end=${particleMeasurements_end}
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 0    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 1    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 2    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 3    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 4    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 5    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 6    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 7    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 8    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}particleSizes : 9    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 0    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 1    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 2    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 3    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 4    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 5    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 6    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 7    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 8    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}matterConcentration : 9    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 0    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 1    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 2    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 3    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 4    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 5    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 6    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 7    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 8    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 9    1
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}typicalParticleSize : 1    10
+    Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
