@@ -55,6 +55,7 @@ function createSettings {
     echo "Library    Collections" >> $testSuite
     echo "Library    Process" >> $testSuite
     echo "Library    String" >> $testSuite
+    echo "Resource    \${EXECDIR}\${/}common.robot" >> $testSuite
     echo "Resource    \${EXECDIR}\${/}Global_Vars.robot" >> $testSuite
     echo "" >> $testSuite
 }
@@ -66,7 +67,7 @@ function createVariables {
     echo "*** Variables ***" >> $testSuite
     echo "\${subSystem}    $subSystem" >> $testSuite
     echo "\${component}    $topic" >> $testSuite
-    echo "\${timeout}    120s" >> $testSuite
+    echo "\${timeout}    300s" >> $testSuite
     echo "" >> $testSuite
 }
 
@@ -95,9 +96,7 @@ function startSubscriber {
         echo "    \${output}=    Start Process    \${SALWorkDir}/\${subSystem}/cpp/src/sacpp_\${subSystem}_all_subscriber    alias=\${subSystem}_Subscriber    stdout=\${EXECDIR}\${/}\${subSystem}_stdout.txt    stderr=\${EXECDIR}\${/}\${subSystem}_stderr.txt" >> $testSuite
     fi
     echo "    Should Be Equal    \${output.returncode}   \${NONE}" >> $testSuite
-    echo "    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    \${EXECDIR}\${/}\${subSystem}_stdout.txt" >> $testSuite
-    echo "    \${output}=    Get File    \${EXECDIR}\${/}\${subSystem}_stdout.txt" >> $testSuite
-    echo "    Should Contain    \${output}    ===== ${subSystem} subscribers ready =====" >> $testSuite
+    echo "    Wait Until Keyword Succeeds    60s    10    File Should Contain    \${EXECDIR}\${/}\${subSystem}_stdout.txt    ===== ${subSystem} subscribers ready =====" >> $testSuite
     echo "" >> $testSuite
 }
 
