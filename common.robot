@@ -6,5 +6,5 @@ Library          OperatingSystem
 File Should Contain
     [Arguments]    ${file}    ${string}
     [Documentation]    Takes a file and a string and checks the file contains the given string.
-    ${output}=    Get File    ${file}
+    ${output}=    Log File    ${file}
     Should Contain    ${output}    ${string}
