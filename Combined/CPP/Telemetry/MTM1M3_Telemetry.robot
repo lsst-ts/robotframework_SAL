@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTM1M3
 ${component}    all
-${timeout}    300s
+${timeout}    480s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber

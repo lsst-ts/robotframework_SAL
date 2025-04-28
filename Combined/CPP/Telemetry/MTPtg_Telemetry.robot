@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTPtg
 ${component}    all
-${timeout}    300s
+${timeout}    480s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber

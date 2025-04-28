@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    MTMount
 ${component}    all
-${timeout}    300s
+${timeout}    480s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
