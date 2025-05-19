@@ -360,6 +360,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_nasmyth2Brake writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event nasmyth2Brake generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_crioSummaryState"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_crioSummaryState test messages =======
+    Should Contain X Times    ${output.stdout}    === Event crioSummaryState iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_crioSummaryState writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event crioSummaryState generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -611,6 +620,10 @@ Read Logger
     ${end}=    Evaluate    ${nasmyth2Brake_start}+${3}
     ${nasmyth2Brake_list}=    Get Slice From List    ${full_list}    start=${nasmyth2Brake_start}    end=${end}
     Should Contain X Times    ${nasmyth2Brake_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engaged : 1    1
+    ${crioSummaryState_start}=    Get Index From List    ${full_list}    === Event crioSummaryState received =${SPACE}
+    ${end}=    Evaluate    ${crioSummaryState_start}+${3}
+    ${crioSummaryState_list}=    Get Slice From List    ${full_list}    start=${crioSummaryState_start}    end=${end}
+    Should Contain X Times    ${crioSummaryState_list}    ${SPACE}${SPACE}${SPACE}${SPACE}summaryState : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
