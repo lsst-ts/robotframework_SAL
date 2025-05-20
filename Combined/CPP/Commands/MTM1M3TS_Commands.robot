@@ -53,21 +53,21 @@ Start Commander
     Should Contain    ${setEngineeringMode_list}[-2]    Command roundtrip was
     Should Be Equal    ${setEngineeringMode_list}[-1]    303
     Should Contain    ${setEngineeringMode_list}    === ${subSystem}_setEngineeringMode end of topic ===
-    Comment    ======= Verify ${subSystem}_applySetpoint test messages =======
+    Comment    ======= Verify ${subSystem}_applySetpoints test messages =======
     Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
-    ${applySetpoint_start}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoint start of topic ===
-    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_applySetpoint command*
-    ${applySetpoint_end}=    Get Index From List    ${full_list}    ${line}
-    ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+3}
-    Log    ${applySetpoint_list}
-    Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
-    Should Contain    ${applySetpoint_list}    === issueCommand_applySetpoint writing a command containing :
+    ${applySetpoints_start}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoints start of topic ===
+    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_applySetpoints command*
+    ${applySetpoints_end}=    Get Index From List    ${full_list}    ${line}
+    ${applySetpoints_list}=    Get Slice From List    ${full_list}    start=${applySetpoints_start}    end=${applySetpoints_end+3}
+    Log    ${applySetpoints_list}
+    Should Contain X Times    ${applySetpoints_list}    === ${subSystem}_applySetpoints start of topic ===    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
+    Should Contain    ${applySetpoints_list}    === issueCommand_applySetpoints writing a command containing :
     Should Contain    ${line}    completed ok
-    Should Contain    ${applySetpoint_list}[-2]    Command roundtrip was
-    Should Be Equal    ${applySetpoint_list}[-1]    303
-    Should Contain    ${applySetpoint_list}    === ${subSystem}_applySetpoint end of topic ===
+    Should Contain    ${applySetpoints_list}[-2]    Command roundtrip was
+    Should Be Equal    ${applySetpoints_list}[-1]    303
+    Should Contain    ${applySetpoints_list}    === ${subSystem}_applySetpoints end of topic ===
     Comment    ======= Verify ${subSystem}_heaterFanDemand test messages =======
     Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
     ${heaterFanDemand_start}=    Get Index From List    ${full_list}    === MTM1M3TS_heaterFanDemand start of topic ===
@@ -282,21 +282,21 @@ Read Controller
     Should Contain X Times    ${setEngineeringMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
     Should Contain X Times    ${setEngineeringMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
     Should Contain X Times    ${setEngineeringMode_list}    === ${subSystem}_setEngineeringMode end of topic ===    1
-    ${applySetpoint_start}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoint start of topic ===
-    ${applySetpoint_end}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoint end of topic ===
-    ${applySetpoint_list}=    Get Slice From List    ${full_list}    start=${applySetpoint_start}    end=${applySetpoint_end+1}
-    Log    ${applySetpoint_list}
-    Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint start of topic ===    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
-    Should Contain X Times    ${applySetpoint_list}    === ackCommand_applySetpoint acknowledging a command with :    2
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${applySetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${applySetpoint_list}    === ${subSystem}_applySetpoint end of topic ===    1
+    ${applySetpoints_start}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoints start of topic ===
+    ${applySetpoints_end}=    Get Index From List    ${full_list}    === MTM1M3TS_applySetpoints end of topic ===
+    ${applySetpoints_list}=    Get Slice From List    ${full_list}    start=${applySetpoints_start}    end=${applySetpoints_end+1}
+    Log    ${applySetpoints_list}
+    Should Contain X Times    ${applySetpoints_list}    === ${subSystem}_applySetpoints start of topic ===    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
+    Should Contain X Times    ${applySetpoints_list}    === ackCommand_applySetpoints acknowledging a command with :    2
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${applySetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
+    Should Contain X Times    ${applySetpoints_list}    === ${subSystem}_applySetpoints end of topic ===    1
     ${heaterFanDemand_start}=    Get Index From List    ${full_list}    === MTM1M3TS_heaterFanDemand start of topic ===
     ${heaterFanDemand_end}=    Get Index From List    ${full_list}    === MTM1M3TS_heaterFanDemand end of topic ===
     ${heaterFanDemand_list}=    Get Slice From List    ${full_list}    start=${heaterFanDemand_start}    end=${heaterFanDemand_end+1}
