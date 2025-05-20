@@ -45,15 +45,24 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_engineeringMode writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event engineeringMode generated =
-    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_appliedSetpoint"
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_appliedSetpoints"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
     ${revcode}=    Set Variable    ${words}[1]
-    Comment    ======= Verify ${subSystem}_appliedSetpoint test messages =======
-    Should Contain X Times    ${output.stdout}    === Event appliedSetpoint iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_appliedSetpoint writing a message containing :    1
+    Comment    ======= Verify ${subSystem}_appliedSetpoints test messages =======
+    Should Contain X Times    ${output.stdout}    === Event appliedSetpoints iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_appliedSetpoints writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
-    Should Contain    ${output.stdout}    === Event appliedSetpoint generated =
+    Should Contain    ${output.stdout}    === Event appliedSetpoints generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_fcuTargets"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_fcuTargets test messages =======
+    Should Contain X Times    ${output.stdout}    === Event fcuTargets iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_fcuTargets writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event fcuTargets generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_enabledILC"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -108,15 +117,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_mixingValveSettings writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event mixingValveSettings generated =
-    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_flowMeterMPUStatus"
-    ${line}=    Remove String    ${line}    \"    \:    \,
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[1]
-    Comment    ======= Verify ${subSystem}_flowMeterMPUStatus test messages =======
-    Should Contain X Times    ${output.stdout}    === Event flowMeterMPUStatus iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_flowMeterMPUStatus writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}
-    Should Contain    ${output.stdout}    === Event flowMeterMPUStatus generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_glycolPumpStatus"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -126,15 +126,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_glycolPumpStatus writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event glycolPumpStatus generated =
-    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_glycolPumpMPUStatus"
-    ${line}=    Remove String    ${line}    \"    \:    \,
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[1]
-    Comment    ======= Verify ${subSystem}_glycolPumpMPUStatus test messages =======
-    Should Contain X Times    ${output.stdout}    === Event glycolPumpMPUStatus iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_glycolPumpMPUStatus writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}
-    Should Contain    ${output.stdout}    === Event glycolPumpMPUStatus generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -232,10 +223,16 @@ Read Logger
     ${end}=    Evaluate    ${engineeringMode_start}+${3}
     ${engineeringMode_list}=    Get Slice From List    ${full_list}    start=${engineeringMode_start}    end=${end}
     Should Contain X Times    ${engineeringMode_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineeringMode : 1    1
-    ${appliedSetpoint_start}=    Get Index From List    ${full_list}    === Event appliedSetpoint received =${SPACE}
-    ${end}=    Evaluate    ${appliedSetpoint_start}+${3}
-    ${appliedSetpoint_list}=    Get Slice From List    ${full_list}    start=${appliedSetpoint_start}    end=${end}
-    Should Contain X Times    ${appliedSetpoint_list}    ${SPACE}${SPACE}${SPACE}${SPACE}setpoint : 1    1
+    ${appliedSetpoints_start}=    Get Index From List    ${full_list}    === Event appliedSetpoints received =${SPACE}
+    ${end}=    Evaluate    ${appliedSetpoints_start}+${4}
+    ${appliedSetpoints_list}=    Get Slice From List    ${full_list}    start=${appliedSetpoints_start}    end=${end}
+    Should Contain X Times    ${appliedSetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}glycolSetpoint : 1    1
+    Should Contain X Times    ${appliedSetpoints_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heatersSetpoint : 1    1
+    ${fcuTargets_start}=    Get Index From List    ${full_list}    === Event fcuTargets received =${SPACE}
+    ${end}=    Evaluate    ${fcuTargets_start}+${4}
+    ${fcuTargets_list}=    Get Slice From List    ${full_list}    start=${fcuTargets_start}    end=${end}
+    Should Contain X Times    ${fcuTargets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}heaterPWM : 0    1
+    Should Contain X Times    ${fcuTargets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fanRPM : 0    1
     ${enabledILC_start}=    Get Index From List    ${full_list}    === Event enabledILC received =${SPACE}
     ${end}=    Evaluate    ${enabledILC_start}+${3}
     ${enabledILC_list}=    Get Slice From List    ${full_list}    start=${enabledILC_start}    end=${end}
@@ -317,18 +314,6 @@ Read Logger
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandingFullyOpened : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackFullyClosed : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackFullyOpened : 1    1
-    ${flowMeterMPUStatus_start}=    Get Index From List    ${full_list}    === Event flowMeterMPUStatus received =${SPACE}
-    ${end}=    Evaluate    ${flowMeterMPUStatus_start}+${11}
-    ${flowMeterMPUStatus_list}=    Get Slice From List    ${full_list}    start=${flowMeterMPUStatus_start}    end=${end}
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instructionPointer : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCounter : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCounter : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputTimeouts : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputTimeouts : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instructionPointerOnError : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}writeTimeout : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readTimeout : 1    1
-    Should Contain X Times    ${flowMeterMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     ${glycolPumpStatus_start}=    Get Index From List    ${full_list}    === Event glycolPumpStatus received =${SPACE}
     ${end}=    Evaluate    ${glycolPumpStatus_start}+${13}
     ${glycolPumpStatus_list}=    Get Slice From List    ${full_list}    start=${glycolPumpStatus_start}    end=${end}
@@ -343,18 +328,6 @@ Read Logger
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}operationCommandControlled : 1    1
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parametersLocked : 1    1
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
-    ${glycolPumpMPUStatus_start}=    Get Index From List    ${full_list}    === Event glycolPumpMPUStatus received =${SPACE}
-    ${end}=    Evaluate    ${glycolPumpMPUStatus_start}+${11}
-    ${glycolPumpMPUStatus_list}=    Get Slice From List    ${full_list}    start=${glycolPumpMPUStatus_start}    end=${end}
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instructionPointer : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCounter : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputCounter : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputTimeouts : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inputTimeouts : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}instructionPointerOnError : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}writeTimeout : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}readTimeout : 1    1
-    Should Contain X Times    ${glycolPumpMPUStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
