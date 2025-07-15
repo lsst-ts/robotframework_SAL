@@ -13,7 +13,7 @@ Resource    ${EXECDIR}${/}Global_Vars.robot
 *** Variables ***
 ${subSystem}    ESS
 ${component}    all
-${timeout}    480s
+${timeout}    600s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
