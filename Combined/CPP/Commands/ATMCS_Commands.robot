@@ -47,7 +47,6 @@ Start Commander
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+3}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain    ${startTracking_list}    === issueCommand_startTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${startTracking_list}[-2]    Command roundtrip was
@@ -100,7 +99,6 @@ Start Commander
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+3}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain    ${stopTracking_list}    === issueCommand_stopTracking writing a command containing :
     Should Contain    ${line}    completed ok
     Should Contain    ${stopTracking_list}[-2]    Command roundtrip was
@@ -201,7 +199,6 @@ Read Controller
     ${startTracking_list}=    Get Slice From List    ${full_list}    start=${startTracking_start}    end=${startTracking_end+1}
     Log    ${startTracking_list}
     Should Contain X Times    ${startTracking_list}    === ${subSystem}_startTracking start of topic ===    1
-    Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain X Times    ${startTracking_list}    === ackCommand_startTracking acknowledging a command with :    2
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${startTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
@@ -254,7 +251,6 @@ Read Controller
     ${stopTracking_list}=    Get Slice From List    ${full_list}    start=${stopTracking_start}    end=${stopTracking_end+1}
     Log    ${stopTracking_list}
     Should Contain X Times    ${stopTracking_list}    === ${subSystem}_stopTracking start of topic ===    1
-    Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}value : 1    1
     Should Contain X Times    ${stopTracking_list}    === ackCommand_stopTracking acknowledging a command with :    2
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
     Should Contain X Times    ${stopTracking_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
