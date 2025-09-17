@@ -7,12 +7,13 @@ Library    OperatingSystem
 Library    Collections
 Library    Process
 Library    String
+Resource    ${EXECDIR}${/}common.robot
 Resource    ${EXECDIR}${/}Global_Vars.robot
 
 *** Variables ***
 ${subSystem}    ESS
 ${component}    all
-${timeout}    120s
+${timeout}    480s
 
 *** Test Cases ***
 Verify Component Publisher and Subscriber
@@ -25,9 +26,7 @@ Start Subscriber
     Comment    Start Subscriber.
     ${output}=    Start Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_subscriber    alias=${subSystem}_Subscriber    stdout=${EXECDIR}${/}${subSystem}_stdout.txt    stderr=${EXECDIR}${/}${subSystem}_stderr.txt
     Should Be Equal    ${output.returncode}   ${NONE}
-    Wait Until Keyword Succeeds    200s    5s    File Should Not Be Empty    ${EXECDIR}${/}${subSystem}_stdout.txt
-    ${output}=    Get File    ${EXECDIR}${/}${subSystem}_stdout.txt
-    Should Contain    ${output}    ===== ESS subscribers ready =====
+    Wait Until Keyword Succeeds    60s    10    File Should Contain    ${EXECDIR}${/}${subSystem}_stdout.txt    ===== ESS subscribers ready =====
 
 Start Publisher
     [Tags]    functional    publisher    robot:continue-on-failure

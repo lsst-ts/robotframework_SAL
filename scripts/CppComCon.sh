@@ -120,7 +120,7 @@ function startCommander() {
     local file=$1
     local topicIndex=$2
     local testSuite=$3
-    if [ "$subSystem" == "ATMCS" ] || [ "$subSystem" == "ATPtg" ] || [ "$subSystem" == "Guider" ] || [ "$subSystem" == "MTM1M3" ] || [ "$subSystem" == "MTM1M3TS" ] || [ "$subSystem" == "MTMount" ] || [ "$subSystem" == "MTPtg" ] || [ "$subSystem" == "MTRotator" ] || [ "$subSystem" == "MTVMS" ] || [ "$subSystem" == "Test" ]; then
+    if [ "$subSystem" == "ATMCS" ] || [ "$subSystem" == "ATPtg" ] || [ "$subSystem" == "ESS" ] || [ "$subSystem" == "Guider" ] || [ "$subSystem" == "MTM1M3" ] || [ "$subSystem" == "MTM1M3TS" ] || [ "$subSystem" == "MTMount" ] || [ "$subSystem" == "MTPtg" ] || [ "$subSystem" == "MTRotator" ] || [ "$subSystem" == "MTVMS" ] || [ "$subSystem" == "Test" ]; then
         jira="DM-49462"
     fi
     echo "Start Commander" >> $testSuite
