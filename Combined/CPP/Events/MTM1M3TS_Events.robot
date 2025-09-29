@@ -308,12 +308,14 @@ Read Logger
     ${thermalSettings_list}=    Get Slice From List    ${full_list}    start=${thermalSettings_start}    end=${end}
     Should Contain X Times    ${thermalSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledFCU : 0    1
     ${mixingValveSettings_start}=    Get Index From List    ${full_list}    === Event mixingValveSettings received =${SPACE}
-    ${end}=    Evaluate    ${mixingValveSettings_start}+${6}
+    ${end}=    Evaluate    ${mixingValveSettings_start}+${8}
     ${mixingValveSettings_list}=    Get Slice From List    ${full_list}    start=${mixingValveSettings_start}    end=${end}
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandingFullyClosed : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandingFullyOpened : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackFullyClosed : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackFullyOpened : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackA : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackB : 1    1
     ${glycolPumpStatus_start}=    Get Index From List    ${full_list}    === Event glycolPumpStatus received =${SPACE}
     ${end}=    Evaluate    ${glycolPumpStatus_start}+${13}
     ${glycolPumpStatus_list}=    Get Slice From List    ${full_list}    start=${glycolPumpStatus_start}    end=${end}
