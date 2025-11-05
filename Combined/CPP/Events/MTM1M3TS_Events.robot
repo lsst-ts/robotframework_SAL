@@ -126,6 +126,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_glycolPumpStatus writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event glycolPumpStatus generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_airNozzles"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_airNozzles test messages =======
+    Should Contain X Times    ${output.stdout}    === Event airNozzles iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_airNozzles writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event airNozzles generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -330,6 +339,15 @@ Read Logger
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}operationCommandControlled : 1    1
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parametersLocked : 1    1
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
+    ${airNozzles_start}=    Get Index From List    ${full_list}    === Event airNozzles received =${SPACE}
+    ${end}=    Evaluate    ${airNozzles_start}+${8}
+    ${airNozzles_list}=    Get Slice From List    ${full_list}    start=${airNozzles_start}    end=${end}
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesA : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesB : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesC : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesD : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesE : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesF : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
