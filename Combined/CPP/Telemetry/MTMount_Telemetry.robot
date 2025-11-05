@@ -1185,6 +1185,10 @@ Read Subscriber
     ${topEndChiller_list}=    Get Slice From List    ${full_list}    start=${topEndChiller_start}    end=${topEndChiller_end}
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAmbient : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actualTemperatureAmbientTimestamp : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airCompressedValveFailure : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airCompressedValveFailureTimestamp : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airCompressedValveStatus : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}airCompressedValveStatusTimestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientRelativeHumiditySensor0501 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientRelativeHumiditySensor0501Timestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ambientRelativeHumiditySensor0502 : 1    10
@@ -2017,6 +2021,18 @@ Read Subscriber
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentCapacitorBank8FuseTimestamp : 7    1
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentCapacitorBank8FuseTimestamp : 8    1
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentCapacitorBank8FuseTimestamp : 9    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBank : 0    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBank : 1    9
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 0    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 1    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 2    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 3    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 4    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 5    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 6    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 7    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 8    1
+    Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fuseCapacitorBankTimestamp : 9    1
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureCapacitorBank : 0    1
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureCapacitorBank : 1    1
     Should Contain X Times    ${capacitorBank_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureCapacitorBank : 2    1
