@@ -340,14 +340,20 @@ Read Logger
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}parametersLocked : 1    1
     Should Contain X Times    ${glycolPumpStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorCode : 1    1
     ${airNozzles_start}=    Get Index From List    ${full_list}    === Event airNozzles received =${SPACE}
-    ${end}=    Evaluate    ${airNozzles_start}+${8}
+    ${end}=    Evaluate    ${airNozzles_start}+${14}
     ${airNozzles_list}=    Get Slice From List    ${full_list}    start=${airNozzles_start}    end=${end}
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesA : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterA : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesB : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterB : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesC : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterC : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesD : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterD : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesE : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterE : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesF : 0    1
+    Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterF : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
