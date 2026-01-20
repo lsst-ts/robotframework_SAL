@@ -161,6 +161,7 @@ Read Subscriber
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandedFrequency : 1    10
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}targetFrequency : 1    10
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputFrequency : 1    10
+    Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}speedFeedback : 1    10
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputCurrent : 1    10
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busVoltage : 1    10
     Should Contain X Times    ${glycolPump_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage : 1    10

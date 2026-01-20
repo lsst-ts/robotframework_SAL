@@ -477,6 +477,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_forceActuatorBumpTestStatus writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event forceActuatorBumpTestStatus generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_forceActuatorBumpTestStatistics"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_forceActuatorBumpTestStatistics test messages =======
+    Should Contain X Times    ${output.stdout}    === Event forceActuatorBumpTestStatistics iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_forceActuatorBumpTestStatistics writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event forceActuatorBumpTestStatistics generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_hardpointTestStatus"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -1490,6 +1499,17 @@ Read Logger
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}primaryTest : 0    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTestTimestamps : 0    1
     Should Contain X Times    ${forceActuatorBumpTestStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}secondaryTest : 0    1
+    ${forceActuatorBumpTestStatistics_start}=    Get Index From List    ${full_list}    === Event forceActuatorBumpTestStatistics received =${SPACE}
+    ${end}=    Evaluate    ${forceActuatorBumpTestStatistics_start}+${10}
+    ${forceActuatorBumpTestStatistics_list}=    Get Slice From List    ${full_list}    start=${forceActuatorBumpTestStatistics_start}    end=${end}
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}actuatorId : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testType : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stage : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}settleTime : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimum : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maximum : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}average : 1    1
+    Should Contain X Times    ${forceActuatorBumpTestStatistics_list}    ${SPACE}${SPACE}${SPACE}${SPACE}errorRMS : 1    1
     ${hardpointTestStatus_start}=    Get Index From List    ${full_list}    === Event hardpointTestStatus received =${SPACE}
     ${end}=    Evaluate    ${hardpointTestStatus_start}+${3}
     ${hardpointTestStatus_list}=    Get Slice From List    ${full_list}    start=${hardpointTestStatus_start}    end=${end}
@@ -1500,7 +1520,7 @@ Read Logger
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${enabledForceActuators_list}    ${SPACE}${SPACE}${SPACE}${SPACE}forceActuatorEnabled : 0    1
     ${forceActuatorSettings_start}=    Get Index From List    ${full_list}    === Event forceActuatorSettings received =${SPACE}
-    ${end}=    Evaluate    ${forceActuatorSettings_start}+${50}
+    ${end}=    Evaluate    ${forceActuatorSettings_start}+${54}
     ${forceActuatorSettings_list}=    Get Slice From List    ${full_list}    start=${forceActuatorSettings_start}    end=${end}
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netActiveOpticForceTolerance : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledActuators : 0    1
@@ -1545,6 +1565,10 @@ Read Logger
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowerDecrementPercentage : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}raiseLowerFollowingErrorLimit : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}hardpointBalanceForcesOnInActiveState : 1    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestTestedWarning : 1    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestTestedError : 1    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestNonTestedWarning : 1    1
+    Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestNonTestedError : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestSettleTime : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestMeasurements : 1    1
     Should Contain X Times    ${forceActuatorSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bumpTestMinimalDistance : 1    1
