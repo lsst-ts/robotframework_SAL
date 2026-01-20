@@ -135,6 +135,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_airNozzles writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event airNozzles generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_driveStatus2"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_driveStatus2 test messages =======
+    Should Contain X Times    ${output.stdout}    === Event driveStatus2 iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_driveStatus2 writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event driveStatus2 generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -317,7 +326,7 @@ Read Logger
     ${thermalSettings_list}=    Get Slice From List    ${full_list}    start=${thermalSettings_start}    end=${end}
     Should Contain X Times    ${thermalSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}enabledFCU : 0    1
     ${mixingValveSettings_start}=    Get Index From List    ${full_list}    === Event mixingValveSettings received =${SPACE}
-    ${end}=    Evaluate    ${mixingValveSettings_start}+${8}
+    ${end}=    Evaluate    ${mixingValveSettings_start}+${14}
     ${mixingValveSettings_list}=    Get Slice From List    ${full_list}    start=${mixingValveSettings_start}    end=${end}
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandingFullyClosed : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}commandingFullyOpened : 1    1
@@ -325,6 +334,12 @@ Read Logger
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackFullyOpened : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackA : 1    1
     Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positionFeedbackB : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inPosition : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}backlashStep : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}minimalMove : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maxMovingTime : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clearPIDGlycol : 1    1
+    Should Contain X Times    ${mixingValveSettings_list}    ${SPACE}${SPACE}${SPACE}${SPACE}clearPIDHeaters : 1    1
     ${glycolPumpStatus_start}=    Get Index From List    ${full_list}    === Event glycolPumpStatus received =${SPACE}
     ${end}=    Evaluate    ${glycolPumpStatus_start}+${13}
     ${glycolPumpStatus_list}=    Get Slice From List    ${full_list}    start=${glycolPumpStatus_start}    end=${end}
@@ -354,6 +369,22 @@ Read Logger
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterE : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nozzlesF : 0    1
     Should Contain X Times    ${airNozzles_list}    ${SPACE}${SPACE}${SPACE}${SPACE}orificesDiameterF : 0    1
+    ${driveStatus2_start}=    Get Index From List    ${full_list}    === Event driveStatus2 received =${SPACE}
+    ${end}=    Evaluate    ${driveStatus2_start}+${15}
+    ${driveStatus2_list}=    Get Slice From List    ${full_list}    start=${driveStatus2_start}    end=${end}
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}jogging : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fluxBreaking : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}motorOverload : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoRestartCountdown : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dcBraking : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}atFrequency : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoTuning : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emBraking : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentLimit : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}safetyS1 : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}safetyS2 : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}f111Status : 1    1
+    Should Contain X Times    ${driveStatus2_list}    ${SPACE}${SPACE}${SPACE}${SPACE}safeTqPermit : 1    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
