@@ -60,15 +60,6 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.glycolLoopTemperature writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === MTM1M3TS_glycolLoopTemperature end of topic ===
-    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "flowMeter"
-    ${line}=    Remove String    ${line}    \"    \:    \,
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[1]
-    Comment    ======= Verify ${subSystem}_flowMeter test messages =======
-    Should Contain    ${output.stdout}    === MTM1M3TS_flowMeter start of topic ===
-    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.flowMeter writing a message containing :    10
-    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
-    Should Contain    ${output.stdout}    === MTM1M3TS_flowMeter end of topic ===
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "glycolPump"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -147,14 +138,6 @@ Read Subscriber
     Should Contain X Times    ${glycolLoopTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}telescopeCoolantReturnTemperature : 1    10
     Should Contain X Times    ${glycolLoopTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mirrorCoolantSupplyTemperature : 1    10
     Should Contain X Times    ${glycolLoopTemperature_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mirrorCoolantReturnTemperature : 1    10
-    ${flowMeter_start}=    Get Index From List    ${full_list}    === MTM1M3TS_flowMeter start of topic ===
-    ${flowMeter_end}=    Get Index From List    ${full_list}    === MTM1M3TS_flowMeter end of topic ===
-    ${flowMeter_list}=    Get Slice From List    ${full_list}    start=${flowMeter_start}    end=${flowMeter_end}
-    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}signalStrength : 1    10
-    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flowRate : 1    10
-    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netTotalizer : 1    10
-    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positiveTotalizer : 1    10
-    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}negativeTotalizer : 1    10
     ${glycolPump_start}=    Get Index From List    ${full_list}    === MTM1M3TS_glycolPump start of topic ===
     ${glycolPump_end}=    Get Index From List    ${full_list}    === MTM1M3TS_glycolPump end of topic ===
     ${glycolPump_list}=    Get Slice From List    ${full_list}    start=${glycolPump_start}    end=${glycolPump_end}
