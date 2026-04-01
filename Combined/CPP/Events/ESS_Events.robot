@@ -72,6 +72,15 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_ringssMeasurement writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event ringssMeasurement generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_flowMeterIdentification"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_flowMeterIdentification test messages =======
+    Should Contain X Times    ${output.stdout}    === Event flowMeterIdentification iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_flowMeterIdentification writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event flowMeterIdentification generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_sensorStatus"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -209,6 +218,14 @@ Read Logger
     Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalVariance : 1    1
     Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}eRMS : 1    1
     Should Contain X Times    ${ringssMeasurement_list}    ${SPACE}${SPACE}${SPACE}${SPACE}turbulenceProfiles : 0    1
+    ${flowMeterIdentification_start}=    Get Index From List    ${full_list}    === Event flowMeterIdentification received =${SPACE}
+    ${end}=    Evaluate    ${flowMeterIdentification_start}+${7}
+    ${flowMeterIdentification_list}=    Get Slice From List    ${full_list}    start=${flowMeterIdentification_start}    end=${end}
+    Should Contain X Times    ${flowMeterIdentification_list}    ${SPACE}${SPACE}${SPACE}${SPACE}meterTag : RO    1
+    Should Contain X Times    ${flowMeterIdentification_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serialNumber : RO    1
+    Should Contain X Times    ${flowMeterIdentification_list}    ${SPACE}${SPACE}${SPACE}${SPACE}firmwareVersion : RO    1
+    Should Contain X Times    ${flowMeterIdentification_list}    ${SPACE}${SPACE}${SPACE}${SPACE}calibrationDate : RO    1
+    Should Contain X Times    ${flowMeterIdentification_list}    ${SPACE}${SPACE}${SPACE}${SPACE}dateCode : RO    1
     ${sensorStatus_start}=    Get Index From List    ${full_list}    === Event sensorStatus received =${SPACE}
     ${end}=    Evaluate    ${sensorStatus_start}+${5}
     ${sensorStatus_list}=    Get Slice From List    ${full_list}    start=${sensorStatus_start}    end=${end}

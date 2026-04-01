@@ -294,6 +294,24 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.particleMeasurements writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_particleMeasurements end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "m1m3ThermalGradients"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_m1m3ThermalGradients test messages =======
+    Should Contain    ${output.stdout}    === ESS_m1m3ThermalGradients start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.m1m3ThermalGradients writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_m1m3ThermalGradients end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "flowMeter"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_flowMeter test messages =======
+    Should Contain    ${output.stdout}    === ESS_flowMeter start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.flowMeter writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_flowMeter end of topic ===
 
 Read Subscriber
     [Tags]    functional    subscriber    robot:continue-on-failure
@@ -1144,3 +1162,22 @@ Read Subscriber
     Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberConcentration : 9    1
     Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}typicalParticleSize : 1    10
     Should Contain X Times    ${particleMeasurements_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${m1m3ThermalGradients_start}=    Get Index From List    ${full_list}    === ESS_m1m3ThermalGradients start of topic ===
+    ${m1m3ThermalGradients_end}=    Get Index From List    ${full_list}    === ESS_m1m3ThermalGradients end of topic ===
+    ${m1m3ThermalGradients_list}=    Get Slice From List    ${full_list}    start=${m1m3ThermalGradients_start}    end=${m1m3ThermalGradients_end}
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xGradient : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yGradient : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zGradient : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radialGradient : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}xGradientError : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}yGradientError : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}zGradientError : 1    10
+    Should Contain X Times    ${m1m3ThermalGradients_list}    ${SPACE}${SPACE}${SPACE}${SPACE}radialGradientError : 1    10
+    ${flowMeter_start}=    Get Index From List    ${full_list}    === ESS_flowMeter start of topic ===
+    ${flowMeter_end}=    Get Index From List    ${full_list}    === ESS_flowMeter end of topic ===
+    ${flowMeter_list}=    Get Slice From List    ${full_list}    start=${flowMeter_start}    end=${flowMeter_end}
+    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}signalStrength : 1    10
+    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flowRate : 1    10
+    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netTotalizer : 1    10
+    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positiveTotalizer : 1    10
+    Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}negativeTotalizer : 1    10
