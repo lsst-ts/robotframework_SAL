@@ -312,6 +312,24 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.flowMeter writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_flowMeter end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "e9sxups"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_e9sxups test messages =======
+    Should Contain    ${output.stdout}    === ESS_e9sxups start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.e9sxups writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_e9sxups end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "agcMains150"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_agcMains150 test messages =======
+    Should Contain    ${output.stdout}    === ESS_agcMains150 start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.agcMains150 writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_agcMains150 end of topic ===
 
 Read Subscriber
     [Tags]    functional    subscriber    robot:continue-on-failure
@@ -1125,6 +1143,7 @@ Read Subscriber
     Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}engineTotalFuel : 1    10
     Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tripFuelGasseous : 1    10
     Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}totalFuelGasseous : 1    10
+    Should Contain X Times    ${agcGenset150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
     ${particleMeasurements_start}=    Get Index From List    ${full_list}    === ESS_particleMeasurements start of topic ===
     ${particleMeasurements_end}=    Get Index From List    ${full_list}    === ESS_particleMeasurements end of topic ===
     ${particleMeasurements_list}=    Get Slice From List    ${full_list}    start=${particleMeasurements_start}    end=${particleMeasurements_end}
@@ -1181,3 +1200,202 @@ Read Subscriber
     Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}netTotalizer : 1    10
     Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}positiveTotalizer : 1    10
     Should Contain X Times    ${flowMeter_list}    ${SPACE}${SPACE}${SPACE}${SPACE}negativeTotalizer : 1    10
+    ${e9sxups_start}=    Get Index From List    ${full_list}    === ESS_e9sxups start of topic ===
+    ${e9sxups_end}=    Get Index From List    ${full_list}    === ESS_e9sxups end of topic ===
+    ${e9sxups_list}=    Get Slice From List    ${full_list}    start=${e9sxups_start}    end=${e9sxups_end}
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadProtectedStatus : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upsCoupled : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unitGeneralAlarm : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}configurationFirmwareFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upsInBackupStatus : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryLowWarning : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lowBattery : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}communicationFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upsOverload : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}emergencyStop : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryToBeChecked : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deviceVerificationFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upsClass : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}manualBypassPresent : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}modeEco : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryPresent : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryTestFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}wiringFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main1VoltageOutOfTolerance : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main1FuseFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}chargerOverTemperatureFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainFrequencyTolerance : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}redundancyLost : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}maintenancePosition : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main2Overload : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputOnBypass : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main2FrequencyOutOfTolerance : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}phaseM2OutOfTolerance : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main2InternalFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}chargerGeneralFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryCharge1 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryCharge2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inverterMajorFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}iverterOverload : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}inverterOverTemperature : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shortCircuit : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}electronicPowerSupplyFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}bypassWiringFault : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentPhase1Output : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentPhase2Output : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}currentPhase3Output : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltagePhase1Main2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltagePhase2Main2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltagePhase3Main2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage1N : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage2N : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputVoltage3N : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryVoltage : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputActivePowerPhase1 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputActivePowerPhase2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputActivePowerPhase3 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputApparentPowerPhase1 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputApparentPowerPhase2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputApparentPowerPhase3 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputTotalActivePower : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputTotalApparentPower : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputLoadLevel : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}powerFactory : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main1Frequency : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}main2Frequency : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}outputFrequency : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryBackupTime : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}batteryChargingLevel : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltageMain1Phase1 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltageMain1Phase2 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltageMain1Phase3 : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}manufacturerName : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}productName : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}upsModel : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}serialNumber : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}partNumber : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nominalApparentPower : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nominalActivePower : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}nominalBatteryVoltage : 1    10
+    Should Contain X Times    ${e9sxups_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    ${agcMains150_start}=    Get Index From List    ${full_list}    === ESS_agcMains150 start of topic ===
+    ${agcMains150_end}=    Get Index From List    ${full_list}    === ESS_agcMains150 end of topic ===
+    ${agcMains150_list}=    Get Slice From List    ${full_list}    start=${agcMains150_start}    end=${agcMains150_end}
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tbPositionOn : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mbPositionOn : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBarVoltageFrequencyOk : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}blockMode : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}semiAutoMode : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}autoMode : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}testMode : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tbPositionOff : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mbPositionOff : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}island : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}automaticMainsFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}peakShaving : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fixedPower : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPowerExport : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}loadTakeover : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}anyAlarmMains : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL1L2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL2L3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL3L1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL1N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL2N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsVoltageL3N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsFrequencyL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsFrequencyL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsFrequencyL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsCurrentL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsCurrentL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsCurrentL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPowerL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPowerL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPowerL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPower : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsReactivePowerL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsReactivePowerL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsReactivePowerL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsReactivePower : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsApparentPowerL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsApparentPowerL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsApparentPowerL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsApparentPower : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsExportReactiveEnergyCounterTotal : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsExportActiveEnergyCounterDay : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsExportActiveEnergyCounterWeek : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsExportActiveEnergyCounterMonth : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsExportActiveEnergyCounterTotal : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsPF : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL1L2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL2L3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL3L1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL1N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL2N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBVoltageL3N : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busBFrequencyL3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberAlarms : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberUnacknowledgedAlarms : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberActiveAcknowledgedAlarms : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberTBOperations : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}numberMBOperations : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput20 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput21 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput22 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}multiInput23 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reversePowerMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reversePowerMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}reversePowerMains3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overcurrentMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overcurrentMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overcurrentMains3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overcurrentMains4 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}voltDepOvercurrentMains : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shortCircuitMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}shortCircuitMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overvoltageMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overvoltageMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageMains3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyMains3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyMains1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyMains2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyMains3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overvoltageBusbar1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overvoltageBusbar2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overvoltageBusbar3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageBusbar1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageBusbar2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageBusbar3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}undervoltageBusbar4 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyBusbar1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyBusbar2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}overfrequencyBusbar3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyBusbar1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyBusbar2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyBusbar3 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}underfrequencyBusbar4 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unbalanceCurrent : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}unbalanceVoltage : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}directionalOvercurrent1 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}directionalOvercurrent2 : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}busbarVoltageUnbalance : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tieBreakerExternalTrip : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsBreakerExternalTrip : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}synchronizingWindow : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}synchronizingWindowFailureTB : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}synchronizingWindowFailureMB : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tieBreakerOpenFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tieBreakerCloseFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}tieBreakerPositionFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsBreakerOpenFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsBreakerCloseFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}mainsBreakerPositionFailure : 1    10
+    Should Contain X Times    ${agcMains150_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
