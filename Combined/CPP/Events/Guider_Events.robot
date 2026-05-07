@@ -36,6 +36,42 @@ Start Sender
     Comment    Start Sender.
     ${output}=    Run Process    ${SALWorkDir}/${subSystem}/cpp/src/sacpp_${subSystem}_all_sender
     Log Many    ${output.stdout}    ${output.stderr}
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_stateMetadata"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_stateMetadata test messages =======
+    Should Contain X Times    ${output.stdout}    === Event stateMetadata iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_stateMetadata writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event stateMetadata generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_seriesMetadata"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_seriesMetadata test messages =======
+    Should Contain X Times    ${output.stdout}    === Event seriesMetadata iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_seriesMetadata writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event seriesMetadata generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_perGuiderResults"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_perGuiderResults test messages =======
+    Should Contain X Times    ${output.stdout}    === Event perGuiderResults iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_perGuiderResults writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event perGuiderResults generated =
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_summaryResults"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_summaryResults test messages =======
+    Should Contain X Times    ${output.stdout}    === Event summaryResults iseq = 0    1
+    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_summaryResults writing a message containing :    1
+    Should Contain    ${output.stdout}    revCode \ : ${revcode}
+    Should Contain    ${output.stdout}    === Event summaryResults generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_guidingStatus"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -138,6 +174,58 @@ Read Logger
     Should Not Contain    ${output.stderr}    Consume failed
     Should Not Contain    ${output.stderr}    Broker: Unknown topic or partition
     Should Contain    ${output.stdout}    === ${subSystem} loggers ready
+    ${stateMetadata_start}=    Get Index From List    ${full_list}    === Event stateMetadata received =${SPACE}
+    ${end}=    Evaluate    ${stateMetadata_start}+${8}
+    ${stateMetadata_list}=    Get Slice From List    ${full_list}    start=${stateMetadata_start}    end=${end}
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 1    1
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seqno : 1    1
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stamp : 1    1
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
+    Should Contain X Times    ${stateMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensors : RO    1
+    ${seriesMetadata_start}=    Get Index From List    ${full_list}    === Event seriesMetadata received =${SPACE}
+    ${end}=    Evaluate    ${seriesMetadata_start}+${10}
+    ${seriesMetadata_list}=    Get Slice From List    ${full_list}    start=${seriesMetadata_start}    end=${end}
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_nrows : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_ncols : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_integration : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : RO    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}segment : 0    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startrow : 0    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startcol : 0    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}splitroi : 0    1
+    ${perGuiderResults_start}=    Get Index From List    ${full_list}    === Event perGuiderResults received =${SPACE}
+    ${end}=    Evaluate    ${perGuiderResults_start}+${19}
+    ${perGuiderResults_list}=    Get Slice From List    ${full_list}    start=${perGuiderResults_start}    end=${end}
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seqno : 1    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stamp : 1    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : RO    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux_err : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_x : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_y : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_x_err : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_y_err : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_dx : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_dy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_xx : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_yy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_xy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_fit_quality : 0    1
+    ${summaryResults_start}=    Get Index From List    ${full_list}    === Event summaryResults received =${SPACE}
+    ${end}=    Evaluate    ${summaryResults_start}+${11}
+    ${summaryResults_list}=    Get Slice From List    ${full_list}    start=${summaryResults_start}    end=${end}
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seqno : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stamp : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_x : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_y : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_rotation : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}good_stamps : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}quality_flag : 0    1
     ${guidingStatus_start}=    Get Index From List    ${full_list}    === Event guidingStatus received =${SPACE}
     ${end}=    Evaluate    ${guidingStatus_start}+${9}
     ${guidingStatus_list}=    Get Slice From List    ${full_list}    start=${guidingStatus_start}    end=${end}
