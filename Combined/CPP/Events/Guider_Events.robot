@@ -72,15 +72,6 @@ Start Sender
     Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_summaryResults writing a message containing :    1
     Should Contain    ${output.stdout}    revCode \ : ${revcode}
     Should Contain    ${output.stdout}    === Event summaryResults generated =
-    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_guidingStatus"
-    ${line}=    Remove String    ${line}    \"    \:    \,
-    @{words}=    Split String    ${line}
-    ${revcode}=    Set Variable    ${words}[1]
-    Comment    ======= Verify ${subSystem}_guidingStatus test messages =======
-    Should Contain X Times    ${output.stdout}    === Event guidingStatus iseq = 0    1
-    Should Contain X Times    ${output.stdout}    === [putSample] ${subSystem}.logevent_guidingStatus writing a message containing :    1
-    Should Contain    ${output.stdout}    revCode \ : ${revcode}
-    Should Contain    ${output.stdout}    === Event guidingStatus generated =
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "logevent_heartbeat"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -215,7 +206,7 @@ Read Logger
     Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_xy : 0    1
     Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_fit_quality : 0    1
     ${summaryResults_start}=    Get Index From List    ${full_list}    === Event summaryResults received =${SPACE}
-    ${end}=    Evaluate    ${summaryResults_start}+${11}
+    ${end}=    Evaluate    ${summaryResults_start}+${15}
     ${summaryResults_list}=    Get Slice From List    ${full_list}    start=${summaryResults_start}    end=${end}
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seqno : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stamp : 1    1
@@ -223,19 +214,13 @@ Read Logger
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_x : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_y : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_x_err : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_y_err : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scatter_x : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scatter_y : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_rotation : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}good_stamps : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}quality_flag : 0    1
-    ${guidingStatus_start}=    Get Index From List    ${full_list}    === Event guidingStatus received =${SPACE}
-    ${end}=    Evaluate    ${guidingStatus_start}+${9}
-    ${guidingStatus_list}=    Get Slice From List    ${full_list}    start=${guidingStatus_start}    end=${end}
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXLeft : 0    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
-    Should Contain X Times    ${guidingStatus_list}    ${SPACE}${SPACE}${SPACE}${SPACE}status : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
