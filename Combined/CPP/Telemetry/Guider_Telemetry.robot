@@ -58,4 +58,7 @@ Read Subscriber
     ${offsets_list}=    Get Slice From List    ${full_list}    start=${offsets_start}    end=${offsets_end}
     Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x : 1    10
     Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y : 1    10
+    Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}x_err : 1    10
+    Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}y_err : 1    10
     Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rotation : 1    10
+    Should Contain X Times    ${offsets_list}    ${SPACE}${SPACE}${SPACE}${SPACE}n_sensors : 1    10

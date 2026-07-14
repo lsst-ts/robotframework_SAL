@@ -78,6 +78,24 @@ Start Publisher
     Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.rainRate writing a message containing :    10
     Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
     Should Contain    ${output.stdout}    === ESS_rainRate end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "rainLevel"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_rainLevel test messages =======
+    Should Contain    ${output.stdout}    === ESS_rainLevel start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.rainLevel writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_rainLevel end of topic ===
+    ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "lightLevel"
+    ${line}=    Remove String    ${line}    \"    \:    \,
+    @{words}=    Split String    ${line}
+    ${revcode}=    Set Variable    ${words}[1]
+    Comment    ======= Verify ${subSystem}_lightLevel test messages =======
+    Should Contain    ${output.stdout}    === ESS_lightLevel start of topic ===
+    Should Contain X Times    ${output.stdout}    [putSample] ${subSystem}.lightLevel writing a message containing :    10
+    Should Contain X Times    ${output.stdout}    revCode \ : ${revcode}    10
+    Should Contain    ${output.stdout}    === ESS_lightLevel end of topic ===
     ${line}=    Grep File    ${SALWorkDir}/avro-templates/${subSystem}/${subSystem}_hash_table.json    "relativeHumidity"
     ${line}=    Remove String    ${line}    \"    \:    \,
     @{words}=    Split String    ${line}
@@ -413,6 +431,20 @@ Read Subscriber
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rainRateItem : 1    10
     Should Contain X Times    ${rainRate_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${rainLevel_start}=    Get Index From List    ${full_list}    === ESS_rainLevel start of topic ===
+    ${rainLevel_end}=    Get Index From List    ${full_list}    === ESS_rainLevel end of topic ===
+    ${rainLevel_list}=    Get Slice From List    ${full_list}    start=${rainLevel_start}    end=${rainLevel_end}
+    Should Contain X Times    ${rainLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${rainLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${rainLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}rainLevelItem : 1    10
+    Should Contain X Times    ${rainLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
+    ${lightLevel_start}=    Get Index From List    ${full_list}    === ESS_lightLevel start of topic ===
+    ${lightLevel_end}=    Get Index From List    ${full_list}    === ESS_lightLevel end of topic ===
+    ${lightLevel_list}=    Get Slice From List    ${full_list}    start=${lightLevel_start}    end=${lightLevel_end}
+    Should Contain X Times    ${lightLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensorName : RO    10
+    Should Contain X Times    ${lightLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    10
+    Should Contain X Times    ${lightLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}lightLevelItem : 1    10
+    Should Contain X Times    ${lightLevel_list}    ${SPACE}${SPACE}${SPACE}${SPACE}location : RO    10
     ${relativeHumidity_start}=    Get Index From List    ${full_list}    === ESS_relativeHumidity start of topic ===
     ${relativeHumidity_end}=    Get Index From List    ${full_list}    === ESS_relativeHumidity end of topic ===
     ${relativeHumidity_list}=    Get Slice From List    ${full_list}    start=${relativeHumidity_start}    end=${relativeHumidity_end}

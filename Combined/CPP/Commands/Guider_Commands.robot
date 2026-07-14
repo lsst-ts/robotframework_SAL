@@ -39,51 +39,6 @@ Start Commander
     Should Not Contain    ${output.stderr}    1/1 brokers are down
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
-    Comment    ======= Verify ${subSystem}_startGuiding test messages =======
-    Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
-    ${startGuiding_start}=    Get Index From List    ${full_list}    === Guider_startGuiding start of topic ===
-    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_startGuiding command*
-    ${startGuiding_end}=    Get Index From List    ${full_list}    ${line}
-    ${startGuiding_list}=    Get Slice From List    ${full_list}    start=${startGuiding_start}    end=${startGuiding_end+3}
-    Log    ${startGuiding_list}
-    Should Contain X Times    ${startGuiding_list}    === ${subSystem}_startGuiding start of topic ===    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXLeft : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
-    Should Contain    ${startGuiding_list}    === issueCommand_startGuiding writing a command containing :
-    Should Contain    ${line}    completed ok
-    Should Contain    ${startGuiding_list}[-2]    Command roundtrip was
-    Should Be Equal    ${startGuiding_list}[-1]    303
-    Should Contain    ${startGuiding_list}    === ${subSystem}_startGuiding end of topic ===
-    Comment    ======= Verify ${subSystem}_stopGuiding test messages =======
-    Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
-    ${stopGuiding_start}=    Get Index From List    ${full_list}    === Guider_stopGuiding start of topic ===
-    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_stopGuiding command*
-    ${stopGuiding_end}=    Get Index From List    ${full_list}    ${line}
-    ${stopGuiding_list}=    Get Slice From List    ${full_list}    start=${stopGuiding_start}    end=${stopGuiding_end+3}
-    Log    ${stopGuiding_list}
-    Should Contain X Times    ${stopGuiding_list}    === ${subSystem}_stopGuiding start of topic ===    1
-    Should Contain    ${stopGuiding_list}    === issueCommand_stopGuiding writing a command containing :
-    Should Contain    ${line}    completed ok
-    Should Contain    ${stopGuiding_list}[-2]    Command roundtrip was
-    Should Be Equal    ${stopGuiding_list}[-1]    303
-    Should Contain    ${stopGuiding_list}    === ${subSystem}_stopGuiding end of topic ===
-    Comment    ======= Verify ${subSystem}_resumeGuiding test messages =======
-    Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
-    ${resumeGuiding_start}=    Get Index From List    ${full_list}    === Guider_resumeGuiding start of topic ===
-    ${line}=    Get Lines Matching Pattern    ${output.stdout}    === waitForCompletion_resumeGuiding command*
-    ${resumeGuiding_end}=    Get Index From List    ${full_list}    ${line}
-    ${resumeGuiding_list}=    Get Slice From List    ${full_list}    start=${resumeGuiding_start}    end=${resumeGuiding_end+3}
-    Log    ${resumeGuiding_list}
-    Should Contain X Times    ${resumeGuiding_list}    === ${subSystem}_resumeGuiding start of topic ===    1
-    Should Contain    ${resumeGuiding_list}    === issueCommand_resumeGuiding writing a command containing :
-    Should Contain    ${line}    completed ok
-    Should Contain    ${resumeGuiding_list}[-2]    Command roundtrip was
-    Should Be Equal    ${resumeGuiding_list}[-1]    303
-    Should Contain    ${resumeGuiding_list}    === ${subSystem}_resumeGuiding end of topic ===
     Comment    ======= Verify ${subSystem}_disable test messages =======
     Should Contain    ${output.stdout}    ==== ${subSystem} all commanders ready ====
     ${disable_start}=    Get Index From List    ${full_list}    === Guider_disable start of topic ===
@@ -174,51 +129,6 @@ Read Controller
     @{full_list}=    Split To Lines    ${output.stdout}    start=0
     Log Many    @{full_list}
     Should Contain    ${output.stdout}    ==== ${subSystem} all controllers ready ====
-    ${startGuiding_start}=    Get Index From List    ${full_list}    === Guider_startGuiding start of topic ===
-    ${startGuiding_end}=    Get Index From List    ${full_list}    === Guider_startGuiding end of topic ===
-    ${startGuiding_list}=    Get Slice From List    ${full_list}    start=${startGuiding_start}    end=${startGuiding_end+1}
-    Log    ${startGuiding_list}
-    Should Contain X Times    ${startGuiding_list}    === ${subSystem}_startGuiding start of topic ===    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXLeft : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiXRight : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYBottom : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiYTop : 0    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}expTime : 1    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}binning : 1    1
-    Should Contain X Times    ${startGuiding_list}    === ackCommand_startGuiding acknowledging a command with :    2
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${startGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${startGuiding_list}    === ${subSystem}_startGuiding end of topic ===    1
-    ${stopGuiding_start}=    Get Index From List    ${full_list}    === Guider_stopGuiding start of topic ===
-    ${stopGuiding_end}=    Get Index From List    ${full_list}    === Guider_stopGuiding end of topic ===
-    ${stopGuiding_list}=    Get Slice From List    ${full_list}    start=${stopGuiding_start}    end=${stopGuiding_end+1}
-    Log    ${stopGuiding_list}
-    Should Contain X Times    ${stopGuiding_list}    === ${subSystem}_stopGuiding start of topic ===    1
-    Should Contain X Times    ${stopGuiding_list}    === ackCommand_stopGuiding acknowledging a command with :    2
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${stopGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${stopGuiding_list}    === ${subSystem}_stopGuiding end of topic ===    1
-    ${resumeGuiding_start}=    Get Index From List    ${full_list}    === Guider_resumeGuiding start of topic ===
-    ${resumeGuiding_end}=    Get Index From List    ${full_list}    === Guider_resumeGuiding end of topic ===
-    ${resumeGuiding_list}=    Get Slice From List    ${full_list}    start=${resumeGuiding_start}    end=${resumeGuiding_end+1}
-    Log    ${resumeGuiding_list}
-    Should Contain X Times    ${resumeGuiding_list}    === ${subSystem}_resumeGuiding start of topic ===    1
-    Should Contain X Times    ${resumeGuiding_list}    === ackCommand_resumeGuiding acknowledging a command with :    2
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 301    1
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}ack${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}: 303    1
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Ack : OK    1
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}result${SPACE}${SPACE}${SPACE}: Done : OK    1
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}error${SPACE}${SPACE}${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${resumeGuiding_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timeout${SPACE}${SPACE}: 0    2
-    Should Contain X Times    ${resumeGuiding_list}    === ${subSystem}_resumeGuiding end of topic ===    1
     ${disable_start}=    Get Index From List    ${full_list}    === Guider_disable start of topic ===
     ${disable_end}=    Get Index From List    ${full_list}    === Guider_disable end of topic ===
     ${disable_list}=    Get Slice From List    ${full_list}    start=${disable_start}    end=${disable_end+1}
