@@ -1251,6 +1251,10 @@ Read Subscriber
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureElectricalCabinetTimestamp : 7    1
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureElectricalCabinetTimestamp : 8    1
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}internalTemperatureElectricalCabinetTimestamp : 9    1
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leakDetectorAlarm : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leakDetectorAlarmTimestamp : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leakDetectorFailure : 1    10
+    Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}leakDetectorFailureTimestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureSensor0501 : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}temperatureSensor0501Timestamp : 1    10
     Should Contain X Times    ${topEndChiller_list}    ${SPACE}${SPACE}${SPACE}${SPACE}threeWayValvePosition201 : 1    10

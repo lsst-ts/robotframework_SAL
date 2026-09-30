@@ -177,9 +177,9 @@ Read Logger
     ${seriesMetadata_start}=    Get Index From List    ${full_list}    === Event seriesMetadata received =${SPACE}
     ${end}=    Evaluate    ${seriesMetadata_start}+${10}
     ${seriesMetadata_list}=    Get Slice From List    ${full_list}    start=${seriesMetadata_start}    end=${end}
-    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_nrows : 1    1
-    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_ncols : 1    1
-    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roi_common_integration : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiCommonNrows : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiCommonNcols : 1    1
+    Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}roiCommonIntegration : 1    1
     Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : RO    1
     Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}segment : 0    1
     Should Contain X Times    ${seriesMetadata_list}    ${SPACE}${SPACE}${SPACE}${SPACE}startrow : 0    1
@@ -194,33 +194,29 @@ Read Logger
     Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
     Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}sensor : RO    1
     Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}flux_err : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_x : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_y : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_x_err : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_y_err : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_dx : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_dy : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_xx : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_yy : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}moment_xy : 0    1
-    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroid_fit_quality : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}fluxErr : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidX : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidY : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidXErr : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidYErr : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidDx : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidDy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}momentXx : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}momentYy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}momentXy : 0    1
+    Should Contain X Times    ${perGuiderResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}centroidFitQuality : 0    1
     ${summaryResults_start}=    Get Index From List    ${full_list}    === Event summaryResults received =${SPACE}
-    ${end}=    Evaluate    ${summaryResults_start}+${15}
+    ${end}=    Evaluate    ${summaryResults_start}+${11}
     ${summaryResults_list}=    Get Slice From List    ${full_list}    start=${summaryResults_start}    end=${end}
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}seqno : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}stamp : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}timestamp : 1    1
     Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}obsid : RO    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_x : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_y : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_x_err : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_y_err : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scatter_x : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}scatter_y : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}delta_rotation : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}good_stamps : 1    1
-    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}quality_flag : 0    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deltaX : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deltaY : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}deltaRotation : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}goodStamps : 1    1
+    Should Contain X Times    ${summaryResults_list}    ${SPACE}${SPACE}${SPACE}${SPACE}qualityFlag : 0    1
     ${heartbeat_start}=    Get Index From List    ${full_list}    === Event heartbeat received =${SPACE}
     ${end}=    Evaluate    ${heartbeat_start}+${2}
     ${heartbeat_list}=    Get Slice From List    ${full_list}    start=${heartbeat_start}    end=${end}
